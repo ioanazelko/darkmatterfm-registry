@@ -86,17 +86,17 @@ properties:
           type: string
       lagrangian_available:
         type: string
-        enum: [yes, no, partial, unknown, not_applicable]
+        enum: ['yes', 'no', partial, unknown, not_applicable]
       renormalizable:
         type: string
-        enum: [yes, no, unknown, not_applicable]
+        enum: ['yes', 'no', unknown, not_applicable]
       eft_cutoff:
         anyOf:
           - $ref: "common.schema.yaml#/$defs/parameter"
           - type: "null"
       embedded_in_larger_framework:
         type: string
-        enum: [yes, no, unknown]
+        enum: ['yes', 'no', unknown]
       notes:
         type: string
     required:
@@ -199,7 +199,7 @@ properties:
                 - unknown
             exact_or_approximate:
               type: string
-              enum: [exact, approximate, broken, unknown]
+              enum: [exact, approximate, assumed, broken, unknown]
             breaking:
               type: string
             breaking_scale:
@@ -209,7 +209,7 @@ properties:
           required: [name, type, exact_or_approximate]
       topological_defects_possible:
         type: string
-        enum: [yes, no, unknown]
+        enum: ['yes', 'no', unknown, not_applicable]
     required:
       - stabilizing_mechanism
       - symmetries
@@ -253,16 +253,16 @@ properties:
         properties:
           elastic:
             type: string
-            enum: [yes, no, unknown, not_applicable]
+            enum: ['yes', 'no', unknown, not_applicable]
           inelastic:
             type: string
-            enum: [yes, no, unknown, not_applicable]
+            enum: ['yes', 'no', parameter_dependent, unknown, not_applicable]
           momentum_dependence:
             type: string
             enum: [none, mild, strong, unknown, not_applicable]
           velocity_dependence:
             type: string
-            enum: [none, mild, strong, unknown, not_applicable]
+            enum: [none, mild, strong, parameter_dependent, unknown, not_applicable]
           spin_dependence:
             type: string
             enum: [none, spin_independent, spin_dependent, both, unknown, not_applicable]
@@ -361,23 +361,23 @@ properties:
           type: string
       thermal_equilibrium_with_standard_model:
         type: string
-        enum: [yes, no, partial, unknown]
+        enum: ['yes', 'no', partial, unknown]
       thermal_equilibrium_with_hidden_sector:
         type: string
-        enum: [yes, no, partial, unknown, not_applicable]
+        enum: ['yes', 'no', partial, parameter_dependent, unknown, not_applicable]
       abundance_set_by:
         type: array
         items:
           type: string
       depends_on_reheating_temperature:
         type: string
-        enum: [yes, no, parameter_dependent, unknown]
+        enum: ['yes', 'no', parameter_dependent, unknown]
       can_produce_all_dark_matter:
         type: string
-        enum: [yes, no, parameter_dependent, unknown]
+        enum: ['yes', 'no', parameter_dependent, unknown]
       nonthermal_momentum_distribution:
         type: string
-        enum: [yes, no, parameter_dependent, unknown]
+        enum: ['yes', 'no', parameter_dependent, unknown, not_applicable]
       notes:
         type: string
     required:
@@ -405,16 +405,16 @@ properties:
           type: string
       requires_entropy_dilution:
         type: string
-        enum: [yes, no, parameter_dependent, unknown]
+        enum: ['yes', 'no', parameter_dependent, unknown, not_applicable]
       overclosure_risk:
         type: string
-        enum: [yes, no, parameter_dependent, unknown]
+        enum: ['yes', 'no', parameter_dependent, unknown]
       underproduction_risk:
         type: string
-        enum: [yes, no, parameter_dependent, unknown]
+        enum: ['yes', 'no', parameter_dependent, unknown, not_applicable]
       tuning_assessment:
         type: string
-        enum: [natural, mild_tuning, tuned, severe_tuning, unknown]
+        enum: [natural, mild_tuning, tuned, severe_tuning, parameter_dependent, unknown]
     required:
       - full_or_subcomponent
       - calculation_type
@@ -455,11 +455,13 @@ properties:
           type: string
       isocurvature_perturbations:
         type: string
-        enum: [yes, no, parameter_dependent, unknown]
+        enum: ['yes', 'no', parameter_dependent, unknown]
       bbn_relevance:
         $ref: "common.schema.yaml#/$defs/relevance"
       cmb_relevance:
         $ref: "common.schema.yaml#/$defs/relevance"
+      notes:
+        type: [string, "null"]
     required:
       - standard_history_assumed
       - bbn_relevance
@@ -482,9 +484,9 @@ properties:
           - unknown
       distribution_function_available:
         type: string
-        enum: [yes, no, approximate, unknown, not_applicable]
+        enum: ['yes', 'no', approximate, unknown, not_applicable]
       f_of_p_or_q:
-        type: string
+        type: [string, "null"]
       average_momentum_relative_to_thermal:
         anyOf:
           - type: number
@@ -497,13 +499,14 @@ properties:
       velocity_dispersion_today:
         anyOf:
           - $ref: "common.schema.yaml#/$defs/parameter"
+          - type: string
           - type: "null"
       phase_space_bounds:
         type: array
         items:
           type: string
       notes:
-        type: string
+        type: [string, "null"]
     required:
       - distribution_type
       - distribution_function_available
@@ -518,7 +521,7 @@ properties:
         properties:
           behaves_like_cdm:
             type: string
-            enum: [yes, no, approximately, scale_dependent, unknown]
+            enum: ['yes', 'no', approximately, scale_dependent, unknown]
           transfer_function_shape:
             type: string
             enum:
@@ -545,7 +548,7 @@ properties:
                 type: boolean
               validity:
                 type: string
-                enum: [valid, approximate, misleading, invalid, unknown]
+                enum: [valid, approximate, misleading, invalid, unknown, not_applicable]
               warning:
                 type: string
             required: [available, validity]
@@ -581,11 +584,13 @@ properties:
             type: string
           simulation_calibrated:
             type: string
-            enum: [yes, no, partial, unknown]
+            enum: ['yes', 'no', partial, unknown]
         required:
           - halo_mass_function_effect
           - subhalo_mass_function_effect
           - simulation_calibrated
+      notes:
+        type: [string, "null"]
     required:
       - linear
       - nonlinear
@@ -618,23 +623,13 @@ properties:
       $ref: "observable.schema.yaml#/$defs/observable"
 
   constraints:
-    type: object
-    additionalProperties: false
-    properties:
-      applicable:
-        type: array
-        items:
-          $ref: "constraint.schema.yaml#/$defs/constraint"
-      not_applicable:
-        type: array
-        items:
-          $ref: "constraint.schema.yaml#/$defs/constraint"
-      disputed_or_contextual:
-        type: array
-        items:
-          $ref: "constraint.schema.yaml#/$defs/constraint"
-    required:
-      - applicable
+    type: array
+    description: >
+      Flat list of constraint entries; each entry's `applies` field records
+      whether/how it applies (the earlier applicable/not_applicable buckets
+      are folded into that field).
+    items:
+      $ref: "constraint.schema.yaml#/$defs/constraint"
 
   validity_domain:
     type: array
@@ -668,7 +663,7 @@ properties:
     properties:
       analytic_formula_available:
         type: string
-        enum: [yes, no, approximate, unknown]
+        enum: ['yes', 'no', approximate, unknown]
       boltzmann_solver_required:
         type: string
         enum: [none, class, camb, modified_class, modified_camb, unknown]
@@ -678,10 +673,10 @@ properties:
           type: string
       semi_analytic_model_available:
         type: string
-        enum: [yes, no, partial, unknown]
+        enum: ['yes', 'no', partial, unknown]
       emulator_available:
         type: string
-        enum: [yes, no, partial, unknown]
+        enum: ['yes', 'no', partial, unknown]
       likelihoods_available:
         type: array
         items:
@@ -692,7 +687,7 @@ properties:
           type: string
       recasting_pipeline_available:
         type: string
-        enum: [yes, no, partial, unknown]
+        enum: ['yes', 'no', partial, unknown]
       custom_requirements:
         type: array
         items:
@@ -822,6 +817,134 @@ properties:
     required:
       - warnings
 
+  relations:
+    type: object
+    additionalProperties: false
+    description: >
+      Typed, directed edges from this model to other models in the registry.
+      Intended to be populated after deduplication into canonical entries,
+      so that targets are canonical model_ids; edges between per-paper
+      duplicate cards are not meaningful. Together with the family taxonomy
+      (coarse grouping) and dedup clusters (identity), these edges form the
+      model-relations graph and upgrade novelty checking from "is this model
+      already in the registry?" to "where does this model sit in theory space?".
+    properties:
+      edges:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          properties:
+            relation:
+              type: string
+              enum:
+                - special_case_of
+                - generalizes
+                - equivalent_in_limit
+                - uv_completion_of
+                - effective_limit_of
+                - shares_portal
+                - shares_mediator
+                - shares_production_mechanism
+                - same_signature_degenerate_with
+                - embedded_in_same_framework
+                - competes_with
+                - other
+            target_model_id:
+              type: string
+              pattern: '^[a-z0-9_-]+$'
+            target_model_name:
+              type:
+                - string
+                - "null"
+            limit_or_condition:
+              type:
+                - string
+                - "null"
+              description: >
+                Parameter limit or condition under which the relation holds
+                (e.g. "m_mediator -> infinity recovers the EFT", "theta -> 0").
+            rationale:
+              type: string
+            confidence:
+              type: string
+              enum: [low, medium, high, unknown]
+          required: [relation, target_model_id, rationale]
+    required:
+      - edges
+
+  capability_gaps:
+    type: object
+    additionalProperties: false
+    description: >
+      First-class record of what is MISSING to evaluate this model against
+      data: theoretical derivations, tools, simulations, emulators,
+      likelihoods, or data products. Complements computational_representation
+      (which records what exists) and route steps with status missing/partial.
+      Aggregated registry-wide, these entries form a community development
+      roadmap: which capabilities, if built, unblock the most high-priority
+      models.
+    properties:
+      gaps:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              type: string
+              pattern: '^[a-z0-9_-]+$'
+            gap_type:
+              type: string
+              enum:
+                - theory
+                - derivation
+                - tool
+                - simulation
+                - emulator
+                - likelihood
+                - data
+                - calibration
+                - other
+            description:
+              type: string
+            blocking_observables:
+              type: array
+              description: >
+                Observable ids or channels that cannot be evaluated until
+                this gap is closed.
+              items:
+                type: string
+            blocking_routes:
+              type: array
+              description: >
+                Route or forward-model-chain step ids whose status is
+                missing/partial because of this gap.
+              items:
+                type: string
+            proposed_resolution:
+              type:
+                - string
+                - "null"
+              description: >
+                Concrete suggested approach to close the gap (e.g. "extend the
+                ETHOS parameterization in a modified CLASS to cover oscillatory
+                kinetic decoupling").
+            estimated_effort:
+              type: string
+              enum: [small, medium, large, major_program, unknown]
+            severity:
+              type: string
+              enum:
+                - blocks_all_observables
+                - blocks_key_observables
+                - degrades_precision
+                - minor
+                - unknown
+          required: [gap_type, description]
+    required:
+      - gaps
+
 required:
   - schema_version
   - model_id
@@ -836,8 +959,6 @@ required:
   - cosmological_history
   - phase_space
   - structure_formation
-  - observables
-  - constraints
   - validity_domain
   - assumptions
   - associated_code

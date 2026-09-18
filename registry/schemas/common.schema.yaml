@@ -29,12 +29,15 @@ $defs:
       - disputed
       - excluded
       - deprecated
+      - specified
+      - derived
+      - benchmark
       - unknown
       - not_applicable
 
   yes_no_unknown:
     type: string
-    enum: [yes, no, partial, unknown, not_applicable]
+    enum: ['yes', 'no', partial, unknown, not_applicable]
 
   scalar_or_string:
     anyOf:
@@ -113,7 +116,7 @@ $defs:
         enum: [linear, log, log10, natural_log, categorical, derived, null]
       role:
         type: [string, "null"]
-        enum: [core, nuisance, derived, benchmark, computational, cosmological, astrophysical, experimental, null]
+        enum: [core, nuisance, derived, benchmark, computational, cosmological, astrophysical, experimental, phenomenological, null]
       status:
         $ref: "#/$defs/status"
       source_reference_ids:
@@ -134,7 +137,10 @@ $defs:
         type: string
       scope:
         type: string
-        enum:
+        description: >
+          Free-form scope label; extraction uses a rich vocabulary
+          (e.g. "direct detection", "Lyman-alpha recast").
+        examples:
           - global
           - theory
           - cosmological_history
@@ -152,7 +158,7 @@ $defs:
         type: [string, "null"]
       can_be_relaxed:
         type: string
-        enum: [yes, no, unknown, not_applicable]
+        enum: ['yes', 'no', partial, unknown, not_applicable]
       source_reference_ids:
         type: array
         items:
