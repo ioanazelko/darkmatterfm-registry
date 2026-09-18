@@ -1,4 +1,4 @@
-# darkmatterfm-theory-registry
+# darkmatterfm-registry
 
 Schemas, viewers and roadmap products of **DarkMatterFM-Registry**, a
 machine-readable registry of beyond-the-Standard-Model dark-matter models
