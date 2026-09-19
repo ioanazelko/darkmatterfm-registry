@@ -1,0 +1,328 @@
+_source:
+  shard: arXiv_src_1309_006_wds.tar
+  paper_id: '1309_3561'
+  source_member: 1309_3561.json
+schema_version: model_only_v0
+model_id: 1309_3561_extra_light_scalar_singlet_higgs_portal_v1
+identity:
+  name: Scalar singlet dark matter with an extra lighter scalar singlet
+  family: higgs_portal_dark_matter
+  aliases:
+  - SM plus S and light scalar phi Higgs portal model
+  short_description: A Higgs-portal model with real scalar singlet dark matter S and an additional lighter
+    real scalar that mixes with the Higgs, so S S annihilation to the lighter scalar sets the relic abundance.
+  historical_origin_or_motivation: Built to violate the SM+DM EFT assumption by adding a state lighter
+    than DM, decoupling the relic abundance from the invisible-Higgs width.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Standard Model plus scalar singlets
+  - Higgs portal
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  notes: The paper writes the scalar potential for H, S, and the additional real scalar.
+particle_content:
+  dark_matter_candidate:
+    name: real scalar singlet S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - lighter real scalar phi
+  mediators:
+  - mixed scalars h1 and h2
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - light scalar h2 when mixing permits decays
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: S is odd under Z2 while the extra scalar is even.
+  symmetries:
+  - name: Z2 acting on S
+    type: discrete
+    exact_or_approximate: exact
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - SM fermions through scalar mixing
+  dark_sector_couplings:
+  - H^dagger H S^2
+  - phi^2 S^2
+  - H^dagger H phi mixing
+  mediator_types:
+  - light scalar h2
+  - SM-like scalar h1
+  interaction_operators:
+  - quartic scalar potential terms involving H, S, and phi
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: mild
+    velocity_dependence: none
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - S S -> h2 h2
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: CP-even scalar portal
+  flavor_structure: SM Yukawa structure inherited through scalar mixing
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: DM mass
+    symbol: m_S
+    description: Mass of the Z2-odd singlet scalar.
+    range: m_h1/2 > m_S > m_h2 in the paper's benchmark hierarchy
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1309.3561'
+  - name: light scalar mass
+    symbol: m_h2
+    description: Mass of the mostly-singlet scalar lighter than DM.
+    range: examples include 20 and 50 GeV
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1309.3561'
+  - name: scalar mixing angle
+    symbol: theta
+    description: Mixing between the SM Higgs and extra scalar.
+    range: LEP-limited; examples discuss theta below about 0.13-0.2 depending on m_h2
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1309.3561'
+  - name: annihilation coupling combination
+    symbol: lambda_p
+    description: Combination lambda_6^2 + lambda_5^2 controlling S S -> h2 h2.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1309.3561'
+  - name: invisible-width coupling combination
+    symbol: lambda_h
+    description: Combination lambda_5 sin(theta) - lambda_6 cos(theta) controlling h invisible.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1309.3561'
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - thermal freeze-out through S S -> h2 h2
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - lambda_p
+  - m_S
+  - m_h2
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper emphasizes that lambda_p sets the relic abundance while a different coupling combination
+    sets h invisible.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - lambda_p
+  - lambda_h
+  - m_S
+  - m_h2
+  - scalar mixing angle
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: natural
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak symmetry breaking with scalar singlet mixing
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: light_scalar_hierarchy
+  applies_to: model
+  condition: Requires m_h1/2 > m_S > m_h2 with h1 at 125 GeV in the paper's setup.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: prompt_or_displaced_h2
+  applies_to: parameter
+  condition: Phenomenology depends on the scalar mixing angle because h2 may decay promptly, displaced,
+    or escape.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: z2_stability
+    description: The scalar S is exactly Z2 odd while the lighter scalar is Z2 even.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+  - id: singlet_no_vev
+    description: The extra scalar is assumed not to acquire a vev for simplicity in the paper.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public model-specific code is identified in the assigned text for this example.
+provenance:
+  model_id: 1309_3561_extra_light_scalar_singlet_higgs_portal_v1
+  model_name: Scalar singlet dark matter with an extra lighter scalar singlet
+  model_family: higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1309.3561'
+      title: Constraining Higgs mediated dark matter interactions
+      authors:
+      - Admir Greljo
+      - J. Julio
+      - Jernej F. Kamenik
+      - Christopher Smith
+      - Jure Zupan
+      year: 2013
+      arxiv_id: '1309.3561'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: gpt-5.5 dark matter model batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1309.3561'
+      section: SM + DM with extra scalar singlet
+      page: null
+      quote_or_summary: Adds two real scalars, S and phi; S is Z2 odd DM and phi is lighter/even.
+    - reference_id: '1309.3561'
+      section: SM + DM with extra scalar singlet
+      page: null
+      quote_or_summary: Relic abundance is set by S S -> h2 h2, decoupled from invisible Higgs branching.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1309.3561'
+      note: The model adds two real scalar singlets, with S identified as the Z2-odd DM candidate.
+      confidence: medium
+      section: SM + DM with extra scalar singlet
+      page: null
+    symmetries:
+    - reference_id: '1309.3561'
+      note: S is odd under Z2 while the additional scalar is even.
+      confidence: medium
+      section: SM + DM with extra scalar singlet
+      page: null
+    interactions:
+    - reference_id: '1309.3561'
+      note: The scalar potential includes H, S, and phi interactions and a Higgs-phi mixing parameter.
+      confidence: medium
+      section: SM + DM with extra scalar singlet
+      page: null
+    production_mechanism:
+    - reference_id: '1309.3561'
+      note: Dominant annihilation is S S -> h2 h2, governed by lambda_p rather than the invisible-Higgs
+        coupling.
+      confidence: medium
+      section: SM + DM with extra scalar singlet
+      page: null
+    parameter_ranges:
+    - reference_id: '1309.3561'
+      note: The hierarchy m_h1/2 > m_S > m_h2 is assumed, with h1 identified as the 125 GeV Higgs.
+      confidence: medium
+      section: SM + DM with extra scalar singlet
+      page: null
+    validity_domain:
+    - reference_id: '1309.3561'
+      note: The paper notes LEP bounds on scalar mixing and possible displaced h2 decays.
+      confidence: medium
+      section: SM + DM with extra scalar singlet
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - h2 lifetime
+  - scalar mixing limits
+  validation_status: expert_judgment_only
+  notes: Explicit scalar potential and relic mechanism are given; phenomenology depends on scalar mixing
+    and light-scalar decay.
+agent_failure_modes:
+  warnings:
+  - id: eft_violation
+    severity: low
+    category: assumption_mismatch
+    warning: Do not map this row to a SM+DM-only EFT; the lighter scalar is essential to the relic-density
+      logic.
+    mitigation: Keep h2 as an explicit state in downstream use.
+    source_reference_ids: []

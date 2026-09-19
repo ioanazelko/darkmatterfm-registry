@@ -1,0 +1,505 @@
+_source:
+  shard: arXiv_src_2404_132_wds.tar
+  paper_id: '2404_16090'
+  source_member: 2404_16090.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: do_not_treat_as_thermal_wimp
+    mitigation: Retain the weak-coupling and resonant-reheating assumptions when using this card.
+    severity: high
+    source_reference_ids:
+    - '2404_16090'
+    warning: The relic-density logic relies on freeze-in with no thermal equilibrium; thermal WIMP freeze-out
+      assumptions would be inappropriate.
+  - category: extrapolation
+    id: uv_completion_unspecified
+    mitigation: Avoid extrapolating to high scales or additional interactions without adding a UV-complete
+      model.
+    severity: medium
+    source_reference_ids:
+    - '2404_16090'
+    warning: The paper treats the scalar-mediated reheating setup as an effective toy model and does not
+      specify a UV completion.
+associated_code:
+  caveats: []
+  code_summary: The assigned text does not report a public model code release; the results are described
+    as Boltzmann-equation calculations and benchmark scans.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  computation_specific:
+  - can_be_relaxed: unknown
+    description: The relic abundance is computed with coupled Boltzmann equations and analytic approximations
+      for production regimes.
+    id: boltzmann_equation_treatment
+    impact_if_violated: Benchmark relic-density matching would need recalculation.
+    notes: null
+    scope: computation
+    source_reference_ids:
+    - '2404_16090'
+    status: established
+  constraint_specific: []
+  global:
+  - can_be_relaxed: unknown
+    description: The Boltzmann treatment assumes instantaneous thermalization of the SM plasma.
+    id: instantaneous_sm_thermalization
+    impact_if_violated: Initial occupation numbers and momenta could alter the reheating temperature profile
+      and freeze-in yield.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids:
+    - '2404_16090'
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: Quartic interactions and explicit direct inflaton/SM couplings to dark matter are taken
+      absent by construction.
+    id: quartic_and_direct_couplings_absent
+    impact_if_violated: Additional production channels could compete with the scalar-mediated freeze-in
+      channels.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '2404_16090'
+    status: assumed
+  - can_be_relaxed: 'no'
+    description: The dark matter coupling to the visible sector is sufficiently suppressed to maintain
+      freeze-in rather than freeze-out.
+    id: dark_matter_never_thermalizes
+    impact_if_violated: The relic-density calculation would require a thermal freeze-out or mixed treatment.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '2404_16090'
+    status: assumed
+cosmological_history:
+  bbn_relevance: medium
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - scalar-mediated resonant reheating
+  - temperature bump near the mediator pole
+  - possible early stiff era before radiation domination for n > 4
+  phase_transitions: []
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - UV FIMP during resonant reheating
+  - scalar-mediated resonant-reheating FIMP
+  family: freeze_in_dark_matter
+  historical_origin_or_motivation: The paper studies how an s-channel scalar resonance during reheating
+    changes ultraviolet freeze-in production and can reproduce the observed relic abundance.
+  model_kind: simplified_model
+  name: Resonant-reheating scalar freeze-in dark matter
+  short_description: A real singlet scalar dark matter candidate is produced out of equilibrium during
+    scalar-mediated resonant reheating through Higgs-bath and inflaton annihilations, with gravitational
+    production also considered.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: scalar interactions; CP assignment not specified
+  dark_sector_couplings:
+  - S chi chi
+  - phi phi S
+  - S h h
+  - inflaton annihilation to dark matter through S
+  - graviton-mediated inflaton annihilation
+  decay_channels: []
+  flavor_structure: not_applicable
+  interaction_operators:
+  - (1/2) lambda_phi phi^2 S
+  - (1/2) lambda_h S h^2
+  - (1/2) lambda_chi S chi^2
+  mediator_types:
+  - real singlet scalar S
+  - graviton
+  portals:
+  - higgs
+  - gravitational
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: not_applicable
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - SM Higgs-like field h
+  - thermal bath particles
+  tree_or_loop_level: tree
+model_id: 2404_16090_resonant_reheating_scalar_freeze_in_dm_v1
+parameters:
+  core:
+  - description: Mass of the real singlet scalar dark matter candidate.
+    name: dark matter mass
+    notes: null
+    range: varied across light, intermediate, and heavy regimes relative to the reheating temperature,
+      mediator mass, and inflaton mass
+    role: core
+    source_reference_ids:
+    - '2404_16090'
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+    value: null
+  - description: Mass of the real singlet scalar mediator S controlling the resonance.
+    name: scalar mediator mass
+    notes: null
+    range: benchmark examples include m_s around 1e8 GeV
+    role: core
+    source_reference_ids:
+    - '2404_16090'
+    status: inferred
+    symbol: m_s
+    unit: GeV
+    value: null
+  - description: Dimensionful coupling in the S chi chi interaction.
+    name: dark matter mediator coupling
+    notes: The extracted text renders the original symbol ambiguously; lambda_chi is a descriptive label.
+    range: null
+    role: core
+    source_reference_ids:
+    - '2404_16090'
+    status: inferred
+    symbol: lambda_chi
+    unit: GeV
+    value: null
+  - description: Dimensionful coupling in the S h h interaction connecting the mediator to the SM-like
+      bath field.
+    name: Higgs mediator coupling
+    notes: null
+    range: benchmark examples include values around 1e6 GeV
+    role: core
+    source_reference_ids:
+    - '2404_16090'
+    status: inferred
+    symbol: lambda_h
+    unit: GeV
+    value: null
+  - description: Dimensionful coupling in the phi phi S interaction used for scalar-mediated reheating
+      and inflaton annihilation to dark matter.
+    name: inflaton mediator coupling
+    notes: null
+    range: null
+    role: core
+    source_reference_ids:
+    - '2404_16090'
+    status: inferred
+    symbol: lambda_phi
+    unit: GeV
+    value: null
+  - description: Power in the monomial inflaton potential V(phi) proportional to phi^n.
+    name: inflaton potential index
+    notes: null
+    range: n >= 4 emphasized; n = 4 used in benchmark scans
+    role: core
+    source_reference_ids:
+    - '2404_16090'
+    status: established
+    symbol: n
+    unit: null
+    value: null
+  - description: Inflaton mass scale at the beginning of reheating in benchmark examples.
+    name: initial inflaton mass scale
+    notes: Used in the displayed benchmark examples for dark matter production.
+    range: null
+    role: core
+    source_reference_ids:
+    - '2404_16090'
+    status: established
+    symbol: m_I
+    unit: GeV
+    value: 1e12
+  - description: Hubble scale at the start of reheating in benchmark examples.
+    name: initial Hubble scale
+    notes: Chosen in the text to avoid gravitational overproduction in an example scan.
+    range: null
+    role: core
+    source_reference_ids:
+    - '2404_16090'
+    status: established
+    symbol: H_I
+    unit: GeV
+    value: 5e8
+  derived:
+  - description: Final comoving dark matter abundance/yield used to match the observed relic abundance.
+    name: dark matter yield
+    notes: null
+    range: null
+    role: derived
+    source_reference_ids:
+    - '2404_16090'
+    status: established
+    symbol: Y_0
+    unit: null
+    value: null
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: real singlet scalar dark matter
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - dark matter scalar treated as stable in the freeze-in calculation
+  mediators:
+  - real singlet scalar S
+  - graviton for gravitational production
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - oscillating inflaton condensate
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: nonthermal
+  free_streaming_length: null
+  notes: The assigned text focuses on relic yield during reheating rather than a late-time phase-space
+    distribution.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - scalar-mediator resonance during reheating
+  - reheating temperature history and entropy dilution
+  - DM mass relative to mediator and inflaton scales
+  - lambda_h, lambda_phi, and lambda_chi couplings
+  - gravitational production at high masses
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: 'yes'
+  mechanisms:
+  - freeze-in from SM Higgs-bath scattering through S
+  - freeze-in from inflaton annihilations through S
+  - graviton-mediated inflaton annihilation production
+  nonthermal_momentum_distribution: unknown
+  notes: The paper shows benchmark points and scans where the mechanisms fit the observed relic abundance.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats:
+  - Machine extraction from text where several mathematical symbols were flattened or omitted.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: Resonant reheating creates a nontrivial radiation-temperature bump when the time-varying inflaton
+        mass crosses the scalar-mediator pole.
+      page: null
+      reference_id: '2404_16090'
+      section: Reheating scenario
+    interactions:
+    - confidence: high
+      note: Interactions include phi phi S, S h h, and S chi chi terms, with S as the only mediator between
+        SM, inflaton, and DM in the toy setup.
+      page: null
+      reference_id: '2404_16090'
+      section: Reheating model and dark matter setup
+    parameter_ranges:
+    - confidence: medium
+      note: Benchmarks use n = 4, a_p/a_I = 1e5, a_t/a_I = 1e10, m_I = 1e12 GeV, and H_I = 5e8 GeV in
+        representative scans.
+      page: null
+      reference_id: '2404_16090'
+      section: Dark matter benchmark scans
+    particle_content:
+    - confidence: high
+      note: 'The dark matter candidate is introduced as the simplest scenario: a real singlet scalar with
+        mass m_chi and an S chi chi interaction.'
+      page: null
+      reference_id: '2404_16090'
+      section: Dark matter production / From the thermal bath
+    production_mechanism:
+    - confidence: high
+      note: DM is produced by freeze-in from Higgs bath scattering through S, by inflaton annihilations
+        through S, and by graviton exchange at high masses.
+      page: null
+      reference_id: '2404_16090'
+      section: Dark matter production
+    symmetries:
+    - confidence: medium
+      note: The text gives no explicit stabilizing symmetry; stability is inferred from the freeze-in
+        setup and pair interactions.
+      page: null
+      reference_id: '2404_16090'
+      section: Dark matter production setup
+    validity_domain:
+    - confidence: high
+      note: The paper says it is agnostic about UV completion and assumes quartic/direct interactions
+        are absent by construction.
+      page: null
+      reference_id: '2404_16090'
+      section: Model setup
+  external_links: {}
+  extraction:
+    confidence: medium
+    extracted_by: codex_dark_matter_batch_worker
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper investigates a novel scalar-mediated s-channel reheating model and its
+        impact on DM freeze-in.
+      reference_id: '2404_16090'
+      section: Introduction / model setup
+    - page: null
+      quote_or_summary: The DM is a real singlet scalar whose only visible-sector interaction is mediated
+        by S; weak couplings give freeze-in production.
+      reference_id: '2404_16090'
+      section: Dark matter production from the thermal bath
+    - page: null
+      quote_or_summary: The paper also computes inflaton-annihilation and gravitational production contributions
+        and compares regimes fitting the observed relic abundance.
+      reference_id: '2404_16090'
+      section: Dark matter production from inflaton annihilations
+    unresolved_items:
+    - The extracted text does not provide a clean source title.
+    - The UV completion and stabilizing symmetry are explicitly unspecified or not provided.
+  last_updated: '2026-05-31'
+  model_family: freeze_in_dark_matter
+  model_id: 2404_16090_resonant_reheating_scalar_freeze_in_dm_v1
+  model_name: Resonant-reheating scalar freeze-in dark matter
+  related_entries: []
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2404.16090'
+      authors: []
+      doi: null
+      notes: Assigned full text begins with report number MITP-24-045 and does not expose a clean title
+        in the extracted text.
+      reference_id: '2404_16090'
+      role: original_model
+      title: unknown
+      url: null
+      year: 2024
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - Boltzmann equations for inflaton, radiation, and dark matter number density
+  - s-channel scalar resonance at m_phi(a) about m_s/2
+  - thermal-bath, inflaton-annihilation, and gravitational production regimes
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: parameter_dependent
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - UV completion unspecified
+  - stabilizing symmetry not specified
+  - flattened symbols in extracted text
+  - relic abundance depends on nonstandard reheating history
+  notes: The model card captures a toy-model relic-production scenario, not a reviewed registry entry.
+  observational_robustness: not_applicable
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: No explicit stabilizing symmetry is given in the assigned text; the dark scalar
+    is treated as stable and appears only in pair interactions.
+  symmetries: []
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: partial
+  notes: The paper describes an effective toy model and remains agnostic about its UV completion.
+  parent_frameworks:
+  - inflationary reheating with monomial inflaton potential
+  - freeze-in/FIMP dark matter
+  renormalizable: unknown
+  theory_level: simplified_model
+validity_domain:
+- applies_to: production
+  caveats:
+  - If thermal equilibrium is reached, the freeze-in relic-density calculation does not apply.
+  condition: Dark matter interactions with the visible sector must be weak enough that the dark matter
+    never thermalizes with the radiation bath.
+  extrapolation_risk: high
+  id: freeze_in_nonthermal_condition
+  notes: null
+  source_reference_ids:
+  - '2404_16090'
+  status: assumed
+  valid_range: null
+- applies_to: theory
+  caveats:
+  - Additional interactions could modify reheating or dark matter production.
+  condition: The scalar-mediated reheating setup is treated as an effective toy model with unspecified
+    UV completion and absent quartic/direct couplings.
+  extrapolation_risk: high
+  id: effective_toy_model_uv_completion
+  notes: null
+  source_reference_ids:
+  - '2404_16090'
+  status: assumed
+  valid_range: null
+- applies_to: cosmological_history
+  caveats:
+  - If the mediator remains always heavier or always lighter than the inflaton, the resonant temperature
+    feature changes or disappears.
+  condition: A time-dependent inflaton mass in a monomial potential reaches the scalar mediator pole,
+    approximately m_phi(a) = m_s/2.
+  extrapolation_risk: medium
+  id: resonant_reheating_regime
+  notes: null
+  source_reference_ids:
+  - '2404_16090'
+  status: established
+  valid_range: The paper focuses on n >= 4 and illustrates n = 4 benchmark scans.

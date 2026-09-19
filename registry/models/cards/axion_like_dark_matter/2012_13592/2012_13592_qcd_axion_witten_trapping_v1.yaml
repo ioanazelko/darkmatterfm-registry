@@ -1,0 +1,364 @@
+_source:
+  shard: arXiv_src_2012_083_wds.tar
+  paper_id: '2012_13592'
+  source_member: 2012_13592.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: qcd_axion_witten_warn_01
+    mitigation: Check hidden-sector assumptions before reuse.
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: Do not apply the abundance result to generic axion misalignment without the hidden-monopole
+      Witten-effect history.
+associated_code:
+  caveats: []
+  code_summary: No associated model code identified in the assigned text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: PQ symmetry is spontaneously broken during inflation.
+    id: preinflationary_pq
+    impact_if_violated: Changes defect and isocurvature history.
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Hidden monopoles are generated after inflation and source the Witten-effect temporal
+      mass.
+    id: hidden_monopoles_after_inflation
+    impact_if_violated: Without monopoles the proposed trapping effect is absent.
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: 'no'
+    description: Hidden instanton contribution is kept small enough that the late QCD axion minimum remains
+      compatible with strong CP.
+    id: small_hidden_instanton_shift
+    impact_if_violated: Violation would invalidate the axion solution.
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: medium
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: parameter_dependent
+  kinetic_decoupling: null
+  nonstandard_features:
+  - PQ symmetry broken before inflation
+  - hidden monopoles generated after inflation
+  - temporary Witten-effect axion mass
+  - possible monopole disappearance before BBN in some scenarios
+  phase_transitions:
+  - hidden-sector phase transition producing monopoles
+  - QCD phase transition
+  standard_history_assumed: false
+  topological_defects:
+  - hidden monopoles
+identity:
+  aliases:
+  - trapping-effect QCD axion dark matter
+  family: axion_like_dark_matter
+  historical_origin_or_motivation: Developed to quantify how trapping near the top of the axion potential
+    can suppress or enhance scalar abundance.
+  model_kind: effective_field_theory
+  name: QCD axion dark matter with Witten-effect trapping
+  short_description: QCD axion dark matter whose early abundance is altered by a time-dependent Witten-effect
+    mass from hidden monopoles.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  dark_sector_couplings:
+  - axion coupling to hidden U(1)_H field strength and dual
+  - Witten-effect monopole-induced axion mass
+  decay_channels: []
+  interaction_operators:
+  - (a-a_*)/f_a,H times F_H dual(F_H)
+  - temperature-dependent QCD axion potential
+  mediator_types:
+  - QCD axion potential
+  - hidden gauge field
+  - hidden monopoles
+  portals:
+  - axion
+  - other
+  self_scattering_channels: []
+  standard_model_targets:
+  - QCD gluons through the axion potential
+  tree_or_loop_level: unknown
+model_id: 2012_13592_qcd_axion_witten_trapping_v1
+parameters:
+  core:
+  - description: PQ scale controlling the QCD axion mass.
+    name: axion decay constant
+    range: benchmarks 1e10, 1e11, and 1e12
+    role: core
+    status: inferred
+    symbol: f_a
+    unit: GeV
+  - description: Initial displacement used to test trapping near the top of the low-energy potential.
+    name: initial axion angle relative to potential maximum
+    range: 0.01 to pi/2 benchmarks
+    role: core
+    status: inferred
+    symbol: theta_* - theta_max
+  - description: Hidden gauge coupling constrained so SU(2)_H instantons do not shift the late axion minimum.
+    name: hidden gauge coupling
+    range:
+      inclusive_max: true
+      max: '0.07'
+      min: null
+      notes: Paper states alpha_H less than about 0.07.
+      unit: null
+    role: core
+    status: inferred
+    symbol: alpha_H
+  - description: Monopole abundance entering the Witten-effect axion mass.
+    name: hidden monopole abundance
+    range: bounded with axion abundance by the observed dark matter abundance unless monopoles disappear
+    role: core
+    status: inferred
+    symbol: Omega_M h^2
+  - description: Effective strength proportional to hidden coupling, anomaly ratio, and monopole abundance.
+    name: Witten-effect strength
+    range: model dependent
+    role: core
+    status: inferred
+    symbol: epsilon_W
+particle_content:
+  additional_dark_sector_particles:
+  - hidden U(1)_H monopoles and anti-monopoles
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: QCD axion a
+    number_of_components: single_component
+    spin: '0'
+    statistics: boson
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - hidden monopoles if stable
+  mediators:
+  - hidden gauge field coupled through axion anomaly
+  - QCD instanton potential
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: not_applicable
+  distribution_type: field_like
+  notes: Coherent axion field abundance rather than a thermal phase-space distribution.
+production:
+  abundance_set_by:
+  - initial axion angle
+  - hidden monopole abundance
+  - hidden gauge coupling
+  - axion decay constant
+  - degree of adiabaticity violation
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - vacuum misalignment with time-dependent Witten-effect trapping
+  - adiabatic suppression of oscillation abundance
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper evaluates axion abundance after a temporal monopole-induced mass shifts toward the
+    late QCD potential.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: Pre-inflationary PQ breaking and post-inflation hidden monopole production are assumed.
+      page: null
+      reference_id: primary
+      section: dynamics of axion
+    interactions:
+    - confidence: medium
+      note: The axion couples to hidden F dual F and to the QCD potential.
+      page: null
+      reference_id: primary
+      section: Witten effect section
+    parameter_ranges:
+    - confidence: medium
+      note: Benchmarks include f_a values around 1e10-1e12 GeV and alpha_H below about 0.07.
+      page: null
+      reference_id: primary
+      section: axion potential and results
+    particle_content:
+    - confidence: high
+      note: QCD axion is the dark matter candidate; hidden monopoles source the temporary mass.
+      page: null
+      reference_id: primary
+      section: opening and axion-potential sections
+    production_mechanism:
+    - confidence: high
+      note: Abundance follows misalignment dynamics modified by Witten-effect trapping and adiabatic suppression.
+      page: null
+      reference_id: primary
+      section: dynamics of axion
+    symmetries:
+    - confidence: medium
+      note: PQ axion and hidden U(1)_H gauge sector are specified through anomaly and monopole terms.
+      page: null
+      reference_id: primary
+      section: Witten effect section
+    validity_domain:
+    - confidence: medium
+      note: Hidden instanton contribution must not change the late axion minimum.
+      page: null
+      reference_id: primary
+      section: discussion
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0016
+    extraction_date: '2026-05-31'
+    extractor_name: Codex dark-matter batch worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Studies QCD axion abundance with a large temporal Witten-effect mass.
+      reference_id: primary
+      section: opening summary
+    - page: null
+      quote_or_summary: Axion potential combines QCD and Witten-effect contributions from hidden monopoles.
+      reference_id: primary
+      section: QCD axion dynamics
+    - page: null
+      quote_or_summary: Finds exponential abundance suppression for sufficiently strong trapping.
+      reference_id: primary
+      section: summary
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: axion_like_dark_matter
+  model_id: 2012_13592_qcd_axion_witten_trapping_v1
+  model_name: QCD axion dark matter with Witten-effect trapping
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2012.13592'
+      authors:
+      - Shota Nakagawa
+      - Fuminobu Takahashi
+      - Masaki Yamada
+      doi: null
+      notes: Local paper id 2012_13592; extraction used only assigned SQLite full text.
+      reference_id: primary
+      role: original_model
+      title: Trapping Effect for QCD Axion Dark Matter
+      url: null
+      year: 2020
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: either
+  key_dependencies:
+  - f_a
+  - initial misalignment angle
+  - hidden monopole abundance
+  - Witten-effect strength
+  - adiabaticity condition
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - hidden monopole abundance and lifetime
+  - initial axion angle
+  - strength of hidden instanton effects
+  notes: The paper supplies numerical dynamics but the run did not extract observational constraints.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    small_scale_power_effect: unknown
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: Peccei-Quinn shift symmetry leaves a long-lived axion; hidden-sector Witten effect
+    supplies a temporary early mass without shifting the late QCD minimum when alpha_H is small enough.
+  symmetries:
+  - breaking: spontaneously broken before inflation plus QCD anomaly
+    breaking_scale:
+      name: axion decay constant
+      range: benchmarks 1e10-1e12
+      symbol: f_a
+      unit: GeV
+    exact_or_approximate: broken
+    name: U(1)_PQ
+    type: global
+  - breaking: monopole phase transition assumed after inflation
+    breaking_scale: null
+    exact_or_approximate: unknown
+    name: hidden U(1)_H
+    type: gauge
+  topological_defects_possible: 'yes'
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The text gives the QCD axion potential plus an axion coupling to hidden gauge fields that induces
+    a monopole-dependent temporal mass.
+  parent_frameworks:
+  - Peccei-Quinn QCD axion
+  - hidden U(1)_H gauge sector with monopoles
+  - Witten effect
+  renormalizable: 'no'
+  theory_level: effective_field_theory
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Hidden instanton effects must not move the low-energy QCD axion minimum enough to spoil strong-CP
+    solution.
+  extrapolation_risk: high
+  id: qcd_axion_witten_01
+  source_reference_ids: []
+  status: inferred
+- applies_to: cosmological_history
+  caveats: []
+  condition: Numerical results assume pre-inflationary PQ breaking and specified hidden monopole abundance.
+  extrapolation_risk: medium
+  id: qcd_axion_witten_02
+  source_reference_ids: []
+  status: assumed
+- applies_to: parameter
+  caveats: []
+  condition: Adiabatic suppression is efficient only for sufficiently strong Witten-effect trapping and
+    suitable initial angle.
+  extrapolation_risk: medium
+  id: qcd_axion_witten_03
+  source_reference_ids: []
+  status: inferred

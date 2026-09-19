@@ -1,0 +1,392 @@
+_source:
+  shard: arXiv_src_2203_034_wds.tar
+  paper_id: '2203_04818'
+  source_member: 2203_04818.json
+schema_version: model_only_v0
+model_id: 2203_04818_multi_epoch_decaying_cdm_ensemble_v1
+identity:
+  name: Multi-epoch decaying cold dark matter ensemble
+  family: multi_component_dark_matter
+  aliases:
+  - multi-component decaying CDM ensemble
+  - dynamical dark matter ensemble decaying to dark radiation
+  short_description: A phenomenological hidden-sector ensemble of N cold dark matter species with different
+    lifetimes and initial abundances, each decaying into free-streaming dark radiation across cosmological
+    epochs.
+  historical_origin_or_motivation: The paper studies whether combining short- and long-lived decaying
+    dark matter components in a dynamical-dark-matter-style ensemble can address cosmological tensions.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - dynamical dark matter
+  - decaying cold dark matter
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper specifies species, decay widths, initial abundances, and Boltzmann/Friedmann evolution
+    rather than a microscopic Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: ensemble of N cold dark matter species chi_n
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - massless dark-sector particle behaving as dark radiation
+  mediators: []
+  dark_radiation_species:
+  - massless free-streaming dark radiation particle
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - long-lived members of the chi_n ensemble
+  unstable_parent_particles:
+  - decaying chi_n components
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Dark matter stability is replaced by a lifetime-abundance balancing relation
+    across an ensemble; individual components are allowed to decay.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets: []
+  dark_sector_couplings:
+  - dark-sector decays of chi_n to massless dark radiation
+  mediator_types:
+  - unknown
+  interaction_operators: []
+  annihilation_channels: []
+  decay_channels:
+  - chi_n to free-streaming dark radiation
+  self_scattering_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: number of dark matter species
+    symbol: N
+    description: Fixed model index specifying how many cold components are in the ensemble.
+    value: null
+    range: examples studied include N=1, N=2, N=10, and larger ensembles
+    unit: null
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '2203_04818'
+    notes: The paper discusses ambiguity in the choice of N and imposes relevance conditions.
+  - name: component decay widths
+    symbol: Gamma_n
+    description: Total decay width of each cold dark matter species, equal to inverse lifetime.
+    value: null
+    range: null
+    unit: null
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '2203_04818'
+    notes: Different values produce decays in different cosmological epochs.
+  - name: initial component abundances
+    symbol: rho_n(a_prod)
+    description: Initial energy density of each dark matter component at the production scale factor.
+    value: null
+    range: null
+    unit: null
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '2203_04818'
+    notes: The paper states these abundances are regulated by early-universe processes and fixed before
+      last scattering.
+  - name: dark-radiation initial abundance
+    symbol: rho_phi(a_prod)
+    description: Initial abundance of the massless dark field used in the Boltzmann system.
+    value: 0
+    range: null
+    unit: null
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '2203_04818'
+    notes: The numerical setup assumes negligible dark-radiation production in the very early universe.
+production:
+  mechanisms:
+  - unspecified early-universe production setting the initial chi_n abundances before last scattering
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - initial abundances rho_n(a_prod)
+  - decay widths Gamma_n
+  - number of components N
+  - late-time flatness consistency condition
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: Relic evolution is modeled phenomenologically through initial abundances and decays rather than
+    through a particle-production calculation.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - N
+  - Gamma_n
+  - rho_n(a_prod)
+  - dark-radiation energy density
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - multiple cold dark matter species decay in different epochs
+  - decays feed a massless dark-radiation component
+  - inverse decays are neglected
+  - dark radiation is initially negligible
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: high
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper assumes all chi_n components are cold with equation-of-state parameter approximately
+    zero after production; no phase-space distribution is provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: model is intended to affect late expansion and clustering through decays, but
+      no transfer-function model card data are extracted.
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: cold_component_limit
+  applies_to: model
+  condition: Each dark matter component is treated as cold with equation-of-state parameter w_n approximately
+    zero after production.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Relativistic or warm components would not be described by the extracted Boltzmann system.
+  source_reference_ids:
+  - '2203_04818'
+  notes: null
+- id: negligible_inverse_decays
+  applies_to: cosmological_history
+  condition: Inverse decay collision terms are omitted as negligible for the evolution of chi_n and dark
+    radiation.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - A thermalized dark sector or sizable inverse decays would change the energy-density evolution.
+  source_reference_ids:
+  - '2203_04818'
+  notes: null
+- id: phenomenological_initial_conditions
+  applies_to: production
+  condition: Initial abundances are fixed at a production scale factor before last scattering and are
+    not computed from a microphysical production model.
+  valid_range: a_prod much less than a_LS, with t_prod much less than the component lifetimes in the paper
+    setup
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - The model card does not specify a UV production mechanism.
+  source_reference_ids:
+  - '2203_04818'
+  notes: null
+assumptions:
+  global:
+  - id: cold_ensemble
+    description: All dark matter species in the ensemble are assumed cold after production.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The Friedmann and Boltzmann evolution would need additional pressure or momentum
+      terms.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2203_04818'
+    notes: null
+  - id: dark_radiation_decay_products
+    description: Each chi_n component decays into a massless dark-sector particle behaving as free-streaming
+      dark radiation.
+    scope: theory
+    status: assumed
+    impact_if_violated: Massive or interacting decay products would change the expansion history and energy-density
+      scaling.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2203_04818'
+    notes: The paper itself discusses other extensions only qualitatively.
+  - id: relevance_prior_for_N
+    description: For a chosen N, the paper imposes relevance conditions so that all N fields contribute
+      non-negligibly either directly or indirectly.
+    scope: computation
+    status: assumed
+    impact_if_violated: Models with different N could become observationally indistinguishable.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2203_04818'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public model-specific code or repository is identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats:
+  - The paper describes numerical Boltzmann/Friedmann evolution and MCMC methods, but no associated code
+    resource is extracted.
+provenance:
+  model_id: 2203_04818_multi_epoch_decaying_cdm_ensemble_v1
+  model_name: Multi-epoch decaying cold dark matter ensemble
+  model_family: multi_component_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2203_04818'
+      title: Decay of multiple dark matter particles to dark radiation in different epochs does not alleviate
+        the Hubble tension
+      authors:
+      - Luis A. Anchordoqui
+      - Vernon Barger
+      - Danny Marfatia
+      - Jorge F. Soriano
+      year: 2022
+      arxiv_id: '2203.04818'
+      doi: null
+      url: null
+      role: extension
+      notes: The paper develops and tests a multi-component decaying-CDM ensemble parameterization.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0018
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2203_04818'
+      section: Model setup
+      page: null
+      quote_or_summary: Considers a hidden sector with N dark matter particles of different lifetimes
+        decaying to a massless dark-sector particle.
+    - reference_id: '2203_04818'
+      section: Boltzmann system
+      page: null
+      quote_or_summary: Gives coupled energy-density equations for chi_n and the dark radiation field,
+        plus Friedmann evolution.
+    - reference_id: '2203_04818'
+      section: Ambiguity in N
+      page: null
+      quote_or_summary: Defines relevance conditions so the chosen number of ensemble fields has definite
+        model meaning.
+    unresolved_items:
+    - The model is phenomenological and does not specify spins, statistics, mediators, or production microphysics.
+    - This acceptance is borderline because the paper applies an existing dynamical-dark-matter framework
+      to cosmological tensions.
+  evidence:
+    particle_content:
+    - reference_id: '2203_04818'
+      note: The model contains N cold particle species chi_n and a massless dark-sector particle that
+        behaves as dark radiation.
+      confidence: high
+      section: Model setup
+      page: null
+    interactions:
+    - reference_id: '2203_04818'
+      note: Each chi_n decays to the massless dark radiation field; inverse decays are neglected.
+      confidence: high
+      section: Boltzmann equations
+      page: null
+    production_mechanism:
+    - reference_id: '2203_04818'
+      note: The initial abundances are fixed at a production epoch and are said to be regulated by unspecified
+        early-universe processes.
+      confidence: medium
+      section: Model setup
+      page: null
+    cosmological_history:
+    - reference_id: '2203_04818'
+      note: The paper evolves the ensemble and radiation energy densities with coupled Boltzmann equations
+        in a flat Friedmann cosmology.
+      confidence: high
+      section: Boltzmann system
+      page: null
+    validity_domain:
+    - reference_id: '2203_04818'
+      note: The setup assumes cold components, negligible inverse decays, and relevance priors for the
+        chosen N.
+      confidence: high
+      section: Model setup and ambiguity in N
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The paper concludes that this class does not alleviate the Hubble tension, but this run does not extract
+    constraints.
+  - The accepted row is a phenomenological model-card candidate, not a microscopic particle model.
+robustness:
+  overall: medium
+  theory_robustness: low
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - no microscopic Lagrangian
+  - unspecified production mechanism
+  - model acceptance is borderline under the batch rules
+  validation_status: expert_judgment_only
+  notes: The energy-density model is explicit, but particle-level information is intentionally phenomenological.
+agent_failure_modes:
+  warnings:
+  - id: do_not_infer_microphysics
+    severity: high
+    category: invalid_mapping
+    warning: Do not infer spins, couplings, mediators, or a UV completion beyond the N cold species and
+      massless dark-radiation final state specified in the paper.
+    mitigation: Keep usage at the phenomenological energy-density and lifetime-abundance level.
+    source_reference_ids:
+    - '2203_04818'
+  - id: existing_ddm_framework
+    severity: medium
+    category: assumption_mismatch
+    warning: This row represents a paper-specific multi-epoch decaying-CDM ensemble built on an existing
+      dynamical-dark-matter framework, not a wholly new named particle model.
+    mitigation: Avoid deduplicating or canonicalizing it beyond this paper-local candidate.
+    source_reference_ids:
+    - '2203_04818'

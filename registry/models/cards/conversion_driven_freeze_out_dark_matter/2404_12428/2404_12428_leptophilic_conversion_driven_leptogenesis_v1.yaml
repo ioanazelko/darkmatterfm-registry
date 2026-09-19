@@ -1,0 +1,435 @@
+_source:
+  shard: arXiv_src_2404_102_wds.tar
+  paper_id: '2404_12428'
+  source_member: 2404_12428.json
+agent_failure_modes:
+  warnings:
+  - category: invalid_mapping
+    id: do_not_treat_as_asymmetric_dm
+    mitigation: Keep production and asymmetry fields tied to conversion-driven leptogenesis.
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: The mechanism generates baryon asymmetry without creating a dark matter asymmetry; mapping
+      it to asymmetric dark matter would be wrong.
+  - category: assumption_mismatch
+    id: minimal_two_flavor_only
+    mitigation: Do not extrapolate three-flavor parameter space from this card.
+    severity: low
+    source_reference_ids:
+    - primary
+    warning: The numerical viability claim is shown for a minimal two-flavor benchmark, while three-flavor
+      variants are only discussed qualitatively.
+associated_code:
+  code_summary: The paper uses MadDM and MadGraph5_aMC@NLO for annihilation and conversion processes;
+    no public model-specific code release is stated.
+  has_associated_code: partial
+  primary_code_role: relic_density_calculation
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The Z2 parity stabilizing the lightest Majorana state is exact.
+    id: exact_z2
+    impact_if_violated: null
+    notes: null
+    scope: global
+    source_reference_ids:
+    - primary
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Boltzmann equations are solved in a standard expanding thermal history.
+    id: standard_radiation_history
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids:
+    - primary
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The displayed viability study uses a minimal two-flavor setup with vanishing initial
+      asymmetries.
+    id: minimal_flavor_setup
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - primary
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling:
+    description: Chemical decoupling initiated by cessation of efficient conversions.
+    name: conversion decoupling temperature
+    role: derived
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: T_dec
+    unit: GeV
+    value: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - out-of-equilibrium conversion epoch while dark matter is semi-relativistic
+  - electroweak sphalerons convert lepton asymmetry to baryon asymmetry
+  phase_transitions:
+  - electroweak sphaleron decoupling around T_Sphal approximately 140 GeV is relevant for freezing the
+    baryon asymmetry
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - conversion-driven leptogenesis
+  - leptophilic t-channel mediator dark matter model
+  family: conversion_driven_freeze_out_dark_matter
+  historical_origin_or_motivation: The paper links conversion-driven freeze-out with baryogenesis, aiming
+    to explain the dark matter relic abundance and baryon asymmetry without a dark matter asymmetry.
+  model_kind: simplified_model
+  name: Leptophilic conversion-driven leptogenesis dark matter model
+  short_description: A simplified leptophilic t-channel mediator model with a Majorana dark matter flavor
+    multiplet and charged scalar mediator, where semi-efficient conversions set the relic density and
+    CP-violating mediator decays generate a lepton asymmetry.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - charged scalar pair annihilation through gauge interactions dilutes the Z2-odd sector
+  cp_structure: Complex Yukawa phases generate finite-temperature CP asymmetries in conversion decays.
+  dark_sector_couplings:
+  - complex Yukawa matrix lambda_ki coupling charged scalar, right-handed leptons, and chi_i
+  - Higgs-portal coupling lambda_H
+  decay_channels:
+  - charged scalar decays and inverse decays to chi_i plus right-handed charged lepton
+  flavor_structure: Minimal proof-of-principle uses two Majorana flavors coupled to electron and muon
+    right-handed leptons.
+  interaction_operators:
+  - lambda_ki phi l_R,k chi_i plus Hermitian conjugate
+  - lambda_H H^dagger H phi^dagger phi
+  mediator_types:
+  - charged scalar t-channel mediator
+  portals:
+  - higgs
+  - other
+  self_scattering_channels: []
+  standard_model_targets:
+  - right-handed charged leptons
+  - Higgs doublet
+  tree_or_loop_level: both
+model_id: 2404_12428_leptophilic_conversion_driven_leptogenesis_v1
+parameters:
+  core:
+  - description: Mass of the lightest Majorana multiplet state.
+    name: dark matter mass
+    range: electroweak scale; viable examples up to about 510 GeV for 5 GeV splitting and 640 GeV for
+      2.5 GeV splitting
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: m_chi1
+    unit: GeV
+  - description: Mass of the charged scalar mediator.
+    name: charged scalar mediator mass
+    role: core
+    source_reference_ids:
+    - primary
+    status: unknown
+    symbol: m_phi
+  - description: Coupling between the charged scalar and the Higgs doublet.
+    name: Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - primary
+    status: unknown
+    symbol: lambda_H
+  - description: Leptophilic complex Yukawa couplings controlling conversions and CP violation.
+    name: Yukawa coupling matrix entries
+    range: order 1e-6 in viable examples
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: lambda_ki
+  - description: Quasi-degenerate mass splitting used for resonant CP enhancement.
+    name: Majorana multiplet mass splitting
+    range: 2.5-5 GeV examples highlighted
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: Delta m_12
+    unit: GeV
+  - description: Branching-ratio parameter used in the two-flavor Boltzmann system.
+    name: branching fraction parameter
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: B_1
+  derived:
+  - description: Sphaleron-converted baryon asymmetry targeted by the model.
+    name: baryon asymmetry
+    role: derived
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: Y_B
+    value: about 0.9e-10
+  - description: Relic abundance matched in viable parameter points.
+    name: dark matter relic abundance
+    role: derived
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: Omega h^2
+    value: '0.12'
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - heavier Majorana flavor-multiplet states chi_i
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lightest Majorana multiplet state chi_1
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - quasi-degenerate Majorana multiplet states in the resonantly enhanced two-flavor benchmark
+  long_lived_particles: []
+  mediators:
+  - charged scalar t-channel mediator with right-handed charged-lepton quantum numbers
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - charged scalar mediator decaying through conversion processes
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: thermal
+  f_of_p_or_q: not provided
+  free_streaming_length: null
+  notes: The paper solves abundance Boltzmann equations rather than presenting a late-time phase-space
+    distribution.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - semi-efficient conversions between chi_i and the charged scalar mediator
+  - charged scalar annihilation through gauge interactions
+  - Boltzmann evolution of abundances and asymmetries
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - conversion-driven freeze-out
+  - conversion-driven leptogenesis
+  nonthermal_momentum_distribution: unknown
+  notes: Freeze-out occurs when conversions cease to be efficient rather than through ordinary annihilation
+    freeze-out of the dark matter state.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  caveats:
+  - The model card does not encode collider signatures or constraints because this run excludes observables
+    and constraints.
+  created_at: '2026-06-01'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: Sphaleron processes convert the generated lepton asymmetry to baryon asymmetry near electroweak
+        sphaleron decoupling.
+      page: null
+      reference_id: primary
+      section: results discussion
+    interactions:
+    - confidence: high
+      note: The Lagrangian includes leptophilic Yukawa couplings to right-handed charged leptons and a
+        Higgs-portal scalar term.
+      page: null
+      reference_id: primary
+      section: model section
+    parameter_ranges:
+    - confidence: medium
+      note: The paper reports viable masses up to about 510-640 GeV depending on mass splitting, with
+        Yukawa entries of order 1e-6.
+      page: null
+      reference_id: primary
+      section: numerical results
+    particle_content:
+    - confidence: high
+      note: Majorana flavor multiplet chi_i with lightest chi_1 as dark matter and a charged scalar mediator
+        are introduced.
+      page: null
+      reference_id: primary
+      section: model section
+    production_mechanism:
+    - confidence: high
+      note: Semi-efficient conversions set the relic abundance and create the out-of-equilibrium condition
+        for leptogenesis.
+      page: null
+      reference_id: primary
+      section: introduction and Boltzmann-equation discussion
+    symmetries:
+    - confidence: high
+      note: New particles are odd under a Z2 symmetry while Standard Model particles are even.
+      page: null
+      reference_id: primary
+      section: model section
+    validity_domain:
+    - confidence: medium
+      note: The viability demonstration is restricted to a minimal two-flavor, quasi-degenerate Majorana
+        benchmark.
+      page: null
+      reference_id: primary
+      section: results and conclusion
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0013_worker
+    extraction_date: '2026-06-01'
+    extractor_name: Codex GPT-5 batch worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper establishes conversion-driven leptogenesis for a leptophilic model and
+        connects dark matter freeze-out to baryogenesis.
+      reference_id: primary
+      section: abstract/introduction
+    - page: null
+      quote_or_summary: It writes a simplified leptophilic t-channel mediator Lagrangian with Majorana
+        states chi_i, charged scalar phi, Yukawa matrix, Higgs portal, and Z2 parity.
+      reference_id: primary
+      section: model section
+    - page: null
+      quote_or_summary: Viable two-flavor points can achieve Omega h^2=0.12 and Y_B about 0.9e-10 for
+        electroweak-scale dark matter.
+      reference_id: primary
+      section: results/conclusions
+    unresolved_items: []
+  last_updated: '2026-06-01'
+  model_family: conversion_driven_freeze_out_dark_matter
+  model_id: 2404_12428_leptophilic_conversion_driven_leptogenesis_v1
+  model_name: Leptophilic conversion-driven leptogenesis dark matter model
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2404.12428'
+      authors:
+      - Jan Heisig
+      doi: null
+      notes: Assigned paper text from target_text.sqlite.
+      reference_id: primary
+      role: original_model
+      title: 'Conversion-driven leptogenesis: A testable theory of dark matter and baryogenesis at the
+        electroweak scale'
+      url: null
+      year: 2024
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - conversion rates
+  - Yukawa couplings
+  - charged scalar annihilation rate
+  - mass splitting
+  - CP-asymmetry parameters
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    name: target relic abundance
+    role: derived
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: Omega_chi h^2
+    unit: null
+    value: '0.12'
+  tuning_assessment: mild_tuning
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - resonant CP-asymmetry treatment
+  - minimal flavor assumptions
+  - future collider-search modeling
+  notes: Extraction is well supported for model identity and production logic; detailed flavor and thermal-field-theory
+    treatment is summarized compactly.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No warm-dark-matter mapping is provided.
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: A Z2 parity makes the new Majorana multiplet and charged scalar odd while Standard
+    Model particles are even.
+  symmetries:
+  - breaking: not discussed
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z2 dark parity
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: The paper writes a renormalizable Lagrangian for Majorana states chi_i, a charged scalar mediator,
+    Yukawa couplings to right-handed charged leptons, and a Higgs-portal term.
+  parent_frameworks:
+  - conversion-driven freeze-out
+  - lepton-flavored dark matter
+  - scotogenic-model-like extensions
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats:
+  - Three-flavor and non-minimal scalar mediator variants are left for future work.
+  condition: Proof-of-principle numerical results restrict to two quasi-degenerate Majorana states coupled
+    to the first two charged-lepton generations.
+  extrapolation_risk: medium
+  id: minimal_two_flavor_benchmark
+  notes: null
+  source_reference_ids:
+  - primary
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats:
+  - Density-matrix treatment is beyond the paper scope.
+  condition: Sufficient baryon asymmetry requires resonantly enhanced CP violation from quasi-degenerate
+    Majorana multiplet states.
+  extrapolation_risk: medium
+  id: resonant_cp_regime
+  notes: null
+  source_reference_ids:
+  - primary
+  status: inferred
+  valid_range: null

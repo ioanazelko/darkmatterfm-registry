@@ -1,0 +1,367 @@
+_source:
+  shard: arXiv_src_1904_032_wds.tar
+  paper_id: '1904_09998'
+  source_member: 1904_09998.json
+schema_version: model_only_v0
+model_id: 1904_09998_vdsidm_gravothermal_collapse_v1
+identity:
+  name: Velocity-dependent SIDM gravothermal-collapse benchmark
+  family: self_interacting_dark_matter
+  aliases:
+  - vdSIDM gravothermal collapse model
+  short_description: A velocity-dependent self-interacting dark matter benchmark with attractive Yukawa
+    self-scattering through a massive force carrier, chosen to trigger gravothermal collapse in dwarf-scale
+    subhalos.
+  historical_origin_or_motivation: The paper proposes gravothermal collapse of SIDM subhalos as a way
+    to explain the diverse inner densities of Milky Way satellites.
+  status: emerging
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - self-interacting dark matter
+  - Yukawa-mediated dark matter self-scattering
+  - DM-only cosmological simulations
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper parameterizes self-scattering through an attractive Yukawa potential with a massive
+    mediator and uses this in a vdSIDM simulation.
+particle_content:
+  dark_matter_candidate:
+    name: self-interacting dark matter particle
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - massive force carrier mediating self-scattering
+  mediators:
+  - massive force carrier
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: none
+symmetries:
+  stabilizing_mechanism: Not specified; the simulation treats the dark matter as cosmologically stable.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - none
+  standard_model_targets: []
+  dark_sector_couplings:
+  - attractive Yukawa potential with coupling strength alpha_c
+  mediator_types:
+  - massive force carrier
+  interaction_operators:
+  - velocity-dependent transfer cross section sigma_T(v_rel) fitted in the classical regime
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - DM DM to DM DM through a massive force carrier
+  cp_structure: not specified
+  flavor_structure: not specified
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: velocity at peak transfer rate
+    symbol: v_max
+    description: Velocity where sigma_T v_rel peaks in the chosen vdSIDM benchmark.
+    value: 25
+    unit: km/s
+    role: core
+    status: established
+  - name: maximum transfer cross section per mass
+    symbol: sigma_T_max/m_chi
+    description: Peak transfer cross section per mass used for the vdSIDM benchmark.
+    value: 60
+    unit: cm^2/g
+    role: core
+    status: established
+  - name: mediator mass
+    symbol: m_phi
+    description: Mass of the force carrier in the attractive Yukawa potential.
+    role: core
+    status: inferred
+  - name: Yukawa coupling strength
+    symbol: alpha_c
+    description: Dark-sector coupling strength in the attractive Yukawa potential.
+    role: core
+    status: inferred
+  - name: relative velocity
+    symbol: v_rel
+    description: Relative velocity of scattering dark matter particles entering sigma_T(v_rel).
+    role: core
+    status: established
+  - name: collapse velocity scale
+    symbol: v_rel collapse
+    description: Velocity scale around which the cross section must exceed the gravothermal-collapse threshold.
+    value: about 60 km/s
+    unit: km/s
+    role: core
+    status: inferred
+  nuisance:
+  - name: baryonic physics
+    description: Baryonic effects are omitted in the main DM-only simulation and discussed as an uncertainty.
+    role: astrophysical
+    status: assumed
+  derived:
+  - name: bimodal subhalo density population
+    description: Cored lower-density subhalos plus cuspy collapsed dense subhalos.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - unknown
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by: []
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: unknown
+  nonthermal_momentum_distribution: unknown
+  notes: The paper studies nonlinear structure formation and does not specify a particle-production history.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - assumed cosmological DM density in simulations
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: 'no'
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The benchmark is implemented through self-scattering in cold DM-like simulations rather than
+    a primordial phase-space calculation.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: invalid
+      warning: The vdSIDM benchmark is a self-scattering model, not a WDM cutoff model.
+    impact_on_sigma8_s8: not discussed
+  nonlinear:
+    halo_mass_function_effect: not the main focus; the benchmark is used to alter inner halo densities
+      through self-interactions
+    subhalo_mass_function_effect: produces a bimodal distribution of cored lower-density and gravothermally
+      collapsed cuspy dense subhalos in the simulation
+    infall_subhalo_mass_function_effect: not specified
+    present_day_bound_subhalo_mass_function_effect: examined for Milky Way satellite subhalos in one DM-only
+      simulation
+    concentration_mass_relation_effect: not specified
+    density_profile_effect: self-interactions can create cores or trigger gravothermal collapse into cusps
+      depending on halo history and velocity scale
+    core_or_cusp_effect: bimodal cored and cuspy/collapsed populations
+    subhalo_survival_effect: not specified
+    tidal_stripping_effect: discussed as an environmental uncertainty that can accelerate collapse
+    smallest_galaxies_effect: intended to accommodate dense ultra-faint Milky Way satellites while allowing
+      lower-density brighter satellites
+    simulation_calibrated: partial
+validity_domain:
+- id: dwarf_velocity_peak
+  applies_to: parameter
+  condition: Benchmark uses v_max = 25 km/s and sigma_T_max/m_chi = 60 cm^2/g.
+  status: established
+  extrapolation_risk: medium
+- id: collapse_threshold
+  applies_to: model
+  condition: The cross section must be above the gravothermal-collapse threshold around v_rel about 60
+    km/s and drop at higher velocities.
+  status: inferred
+  extrapolation_risk: high
+- id: dm_only_mw_satellite_context
+  applies_to: computation
+  condition: Results are based on a DM-only Milky Way-size simulation and are sensitive to baryonic physics
+    and satellite systematics.
+  status: established
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: stable_cold_dm_background
+    description: The model is treated as the full stable dark matter component in cosmological simulations.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+  - id: attractive_yukawa_self_scattering
+    description: Self-scattering is mediated by a massive force carrier through an attractive Yukawa potential.
+    scope: theory
+    status: established
+    can_be_relaxed: unknown
+  - id: dm_only_simulation
+    description: The main vdSIDM result is obtained without baryonic physics.
+    scope: computation
+    status: established
+    can_be_relaxed: unknown
+  constraint_specific: []
+  computation_specific: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper mentions a new simulation but the assigned text does not identify public model-specific
+    code.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  expected_inputs: []
+  expected_outputs: []
+  caveats: []
+provenance:
+  model_id: 1904_09998_vdsidm_gravothermal_collapse_v1
+  model_name: Velocity-dependent SIDM gravothermal-collapse benchmark
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper:1904.09998
+      title: 'The diverse dark matter density at sub-kiloparsec scales in Milky Way satellites: implications
+        for the nature of dark matter'
+      authors:
+      - Jesus Zavala
+      - Mark R. Lovell
+      - Mark Vogelsberger
+      - Jan D. Burger
+      year: 2019
+      arxiv_id: '1904.09998'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text from target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0006
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper:1904.09998
+      section: Abstract
+      page: null
+      quote_or_summary: The paper proposes a novel solution based on gravothermal collapse of SIDM halos
+        requiring velocity-dependent self-scattering.
+    - reference_id: paper:1904.09998
+      section: Simulation/model section
+      page: null
+      quote_or_summary: The paper adds a vdSIDM simulation with an attractive Yukawa potential and a massive
+        force carrier.
+    - reference_id: paper:1904.09998
+      section: Conclusions
+      page: null
+      quote_or_summary: The paper states that the cross section must exceed the collapse threshold near
+        60 km/s and drop at higher velocities.
+    unresolved_items:
+    - No microscopic spin/statistics assignment or relic-production history is provided.
+    - Only a benchmark cross-section shape is specified.
+  evidence:
+    particle_content:
+    - reference_id: paper:1904.09998
+      note: The vdSIDM model contains DM particles self-scattering through a massive force carrier.
+      confidence: medium
+      section: Simulation/model section
+      page: null
+    symmetries:
+    - reference_id: paper:1904.09998
+      note: No stabilizing symmetry is specified; stability is implicit in the cosmological DM simulation.
+      confidence: low
+      section: Full text
+      page: null
+    interactions:
+    - reference_id: paper:1904.09998
+      note: The transfer cross section is generated by an attractive Yukawa potential with coupling alpha_c
+        and mediator mass m_phi.
+      confidence: high
+      section: Simulation/model section
+      page: null
+    production_mechanism:
+    - reference_id: paper:1904.09998
+      note: The paper does not specify a particle-production mechanism; it assumes the DM component for
+        structure-formation simulations.
+      confidence: low
+      section: Full text
+      page: null
+    cosmological_history:
+    - reference_id: paper:1904.09998
+      note: The benchmark is tested in DM-only Milky Way satellite simulations.
+      confidence: medium
+      section: Simulation/model section
+      page: null
+    parameter_ranges:
+    - reference_id: paper:1904.09998
+      note: The paper chooses v_max = 25 km/s and sigma_T_max/m_chi = 60 cm^2/g for the vdSIDM benchmark.
+      confidence: high
+      section: Simulation/model section
+      page: null
+    validity_domain:
+    - reference_id: paper:1904.09998
+      note: The conclusion requires velocity dependence above the collapse threshold near 60 km/s and
+        falling at higher velocities.
+      confidence: high
+      section: Conclusions
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Accepted as a substantive phenomenological SIDM model variant; it is not a complete particle-physics
+    model.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - DM-only simulation assumptions
+  - ultra-faint satellite mass systematics
+  - lack of microscopic completion
+  validation_status: expert_judgment_only
+  notes: The benchmark is well specified for nonlinear structure formation but incomplete as a particle
+    model.
+agent_failure_modes:
+  warnings:
+  - id: phenomenological_sidm_only
+    severity: medium
+    category: invalid_mapping
+    warning: Do not treat this vdSIDM benchmark as a complete Lagrangian model or as a WDM transfer-function
+      cutoff.
+    mitigation: Use it as a velocity-dependent self-scattering benchmark with unknown relic-production
+      history.

@@ -1,0 +1,281 @@
+_source:
+  shard: arXiv_src_1612_003_wds.tar
+  paper_id: '1612_00773'
+  source_member: 1612_00773.json
+schema_version: model_only_v0
+model_id: 1612_00773_majorana_fermion_charged_scalar_mediator_v1
+identity:
+  name: Majorana fermion dark matter with charged scalar mediators
+  family: simplified_majorana_dark_matter
+  aliases:
+  - charged-mediator Majorana DM
+  short_description: A gauge-singlet Majorana fermion stabilized by Z_2 parity and coupled to a Standard
+    Model fermion through charged scalar mediators with sfermion-like quantum numbers.
+  historical_origin_or_motivation: The paper constructs the simplified model to connect dark matter annihilation
+    amplitudes to Standard Model fermion vertex functions.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Majorana fermion dark matter
+  - minimal flavor violation inspired simplified models
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper gives a renormalizable Yukawa interaction between chi, scalar mediators f_L/f_R, and
+    one SM fermion.
+particle_content:
+  dark_matter_candidate:
+    name: Majorana fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - charged scalar mediators f_L and f_R
+  mediators:
+  - charged scalar mediators
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z_2 parity makes chi and the charged scalar mediators odd and stabilizes the
+    lightest odd particle.
+  symmetries:
+  - name: Z_2 dark parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken in the simplified model
+    breaking_scale: null
+  - name: C and P assumptions
+    type: global
+    exact_or_approximate: assumed
+    breaking: imposed to isolate the helicity-preserving form-factor relation
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - one charged Standard Model fermion f
+  - optional SU(2)_L partner f_prime
+  dark_sector_couplings:
+  - lambda_f chi f_L P_L f
+  - lambda_f chi f_R P_R f
+  mediator_types:
+  - charged scalar
+  interaction_operators:
+  - lambda_f chi f_L P_L f + lambda_f chi f_R P_R f
+  annihilation_channels:
+  - chi chi -> f fbar
+  - chi chi -> f fbar gamma
+  - chi chi -> gamma gamma
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the Majorana fermion.
+    value: null
+    range: model dependent
+    unit: null
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: null
+  - name: scalar mediator mass
+    symbol: m_f_tilde
+    description: Common mass assumed for f_L and f_R mediators.
+    value: null
+    range: m_chi^2 / m_f_tilde^2 between 0 and 1
+    unit: null
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: null
+  - name: Yukawa coupling
+    symbol: lambda_f
+    description: Real dimensionless coupling to a single Standard Model fermion.
+    value: null
+    range: model dependent
+    unit: null
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: null
+production:
+  mechanisms:
+  - thermal freeze-out through p-wave annihilation to SM fermions
+  thermal_equilibrium_with_standard_model: 'yes'
+  abundance_set_by:
+  - p-wave annihilation chi chi -> f fbar
+  - internal bremsstrahlung and loop channels in the current epoch
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper states p-wave annihilation can be important during thermal freeze-out, while present-day
+    signals may be dominated by radiative channels.
+relic_density:
+  full_or_subcomponent: unknown
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_f_tilde
+  - lambda_f
+  - velocity suppression
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: single_fermion_dominance
+  applies_to: model
+  condition: The simplified Lagrangian assumes the dominant coupling is to a single Standard Model fermion.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1612.00773'
+  notes: null
+- id: no_weyl_mixing_limit
+  applies_to: model
+  condition: Key form-factor relations are derived when SM fermion helicity mixing is suppressed and C/P
+    are separately conserved.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1612.00773'
+  notes: null
+- id: degenerate_mediators
+  applies_to: model
+  condition: The benchmark assumes f_L and f_R do not mix and have the same mass.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1612.00773'
+  notes: null
+assumptions:
+  global:
+  - id: z2_stability
+    description: The dark matter and charged mediators are odd under a stabilizing Z_2.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1612.00773'
+    notes: null
+  - id: thermal_freezeout
+    description: The early-universe abundance is governed by thermal freeze-out annihilation.
+    scope: production
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1612.00773'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code resource is identified in the assigned text.
+provenance:
+  model_id: 1612_00773_majorana_fermion_charged_scalar_mediator_v1
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1612.00773'
+      title: Connecting Dark Matter Annihilation to the Vertex Functions of Standard Model Fermions
+      authors:
+      - Jason Kumar
+      - Christopher Light
+      year: 2016
+      arxiv_id: '1612.00773'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text used as the only source.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1612.00773'
+      section: null
+      page: null
+      quote_or_summary: null
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1612.00773'
+      note: The paper implements a gauge-singlet Majorana fermion with scalar mediators f_L and f_R.
+      confidence: medium
+      section: Simplified model
+      page: null
+    symmetries:
+    - reference_id: '1612.00773'
+      note: The text assumes chi and the scalar mediators are odd under a Z_2 symmetry that stabilizes
+        dark matter.
+      confidence: medium
+      section: Simplified model
+      page: null
+    interactions:
+    - reference_id: '1612.00773'
+      note: The Lagrangian couples chi to one Standard Model fermion through f_L and f_R with a real coupling
+        lambda_f.
+      confidence: medium
+      section: Simplified model
+      page: null
+    production_mechanism:
+    - reference_id: '1612.00773'
+      note: P-wave annihilation is described as relevant during thermal dark matter freeze-out.
+      confidence: medium
+      section: Introduction
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: low
+  dominant_uncertainties:
+  - This is a clean simplified model, but many phenomenological results rely on chiral-limit and degenerate-mediator
+    assumptions.
+  validation_status: expert_judgment_only
+  notes: This is a clean simplified model, but many phenomenological results rely on chiral-limit and
+    degenerate-mediator assumptions.
+agent_failure_modes:
+  warnings:
+  - id: single_fermion_simplification
+    severity: medium
+    category: assumption_mismatch
+    warning: Flavor-changing effects can enter if the mediator couples appreciably to multiple fermion
+      generations.
+    mitigation: Check the assigned paper before using this machine-extracted model card.
+    source_reference_ids:
+    - '1612.00773'

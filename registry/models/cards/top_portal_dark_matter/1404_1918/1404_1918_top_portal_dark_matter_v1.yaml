@@ -1,0 +1,268 @@
+_source:
+  shard: arXiv_src_1404_003_wds.tar
+  paper_id: '1404_1918'
+  source_member: 1404_1918.json
+schema_version: model_only_v0
+model_id: 1404_1918_top_portal_dark_matter_v1
+identity:
+  name: Top Portal Dark Matter
+  family: top_portal_dark_matter
+  aliases:
+  - TPDM
+  short_description: A simplified WIMP model where a singlet Dirac fermion dark matter particle couples
+    to the right-handed top quark through a color-charged scalar partner.
+  historical_origin_or_motivation: Minimal renormalizable top-quark portal interaction for weak-scale
+    dark matter.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - renormalizable simplified dark matter model
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper works with a minimal phenomenological model rather than a UV completion.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - color-charged scalar partner phi
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A discrete dark parity is assumed for the dark matter and partner fields; stability
+    requires the scalar partner to be heavier than chi.
+  symmetries:
+  - name: dark parity
+    type: discrete
+    exact_or_approximate: unknown
+    breaking: not discussed
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - right-handed top quark
+  dark_sector_couplings:
+  - g_DM phi* chi t_R + h.c.
+  mediator_types:
+  - color-charged scalar t-channel partner
+  interaction_operators:
+  - renormalizable top portal Yukawa-like coupling
+  annihilation_channels:
+  - chi chi -> t tbar through t-channel scalar exchange
+  - loop-level annihilation to lighter Standard Model states
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter coupling
+    symbol: g_DM
+    description: Coupling between chi, the scalar partner, and t_R
+    range:
+      min: 0
+      max: 4 pi
+      inclusive_min: false
+      inclusive_max: false
+      unit: null
+      notes: Paper requires perturbative g_DM < 4.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: dark matter mass
+    symbol: M_chi
+    description: WIMP mass
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: scalar partner mass
+    symbol: M_phi
+    description: Mass of color-charged scalar partner
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - thermal freeze-out via annihilation to t tbar
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - g_DM
+  - M_chi
+  - M_phi
+  - top-quark threshold
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper computes the relic abundance from the nonrelativistic annihilation cross section.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - s-wave and p-wave coefficients for chi chi -> t tbar
+  - freeze-out parameter x_F
+  - relativistic degrees of freedom
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Thermal WIMP-like production is used, but no phase-space distribution function is tabulated.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: tpdm_perturbative
+  applies_to: coupling
+  condition: g_DM is kept perturbative and the scalar partner is heavier than the dark matter particle.
+  valid_range: g_DM < 4 and M_phi > M_chi
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The model is not UV completed in the paper.
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: tpdm_full_dm
+    description: The relic abundance calculation treats chi as the full dark matter component.
+    scope: production
+    status: assumed
+    impact_if_violated: Relic-density interpretation and target couplings would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code release is identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1404_1918_top_portal_dark_matter_v1
+  model_name: Top Portal Dark Matter
+  model_family: top_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Top Portal Dark Matter
+      authors: []
+      year: 2014
+      arxiv_id: '1404.1918'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0012
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract
+      page: null
+      quote_or_summary: Simplified fermionic dark matter couples exclusively to right-handed top quarks
+        via a color-charged scalar; relic abundance is computed.
+    - reference_id: paper
+      section: TPDM model definition
+      page: null
+      quote_or_summary: Dirac fermion chi, color-charged scalar partner, three free parameters g_DM, M_chi,
+        and M_phi.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The paper defines dark matter as a Dirac fermion chi that is a Standard Model singlet, plus
+        a color-charged scalar partner with right-handed-top quantum numbers.
+      confidence: high
+      section: TPDM model definition
+    interactions:
+    - reference_id: paper
+      note: The Lagrangian contains a renormalizable coupling g_DM phi* chi t_R + h.c., so the dark matter
+        couples exclusively to the right-handed top quark.
+      confidence: high
+      section: TPDM model definition
+    production_mechanism:
+    - reference_id: paper
+      note: Early-universe annihilation proceeds through t-channel partner exchange to t tbar; the paper
+        expands the nonrelativistic cross section near freeze-out and uses it for relic density.
+      confidence: high
+      section: Relic density
+    parameter_ranges:
+    - reference_id: paper
+      note: The stated free parameters are g_DM, the WIMP mass M_chi, and the scalar partner mass M_phi;
+        perturbativity requires g_DM < 4 and stability assumes M_phi > M_chi.
+      confidence: high
+      section: TPDM model definition
+    validity_domain:
+    - reference_id: paper
+      note: The construction assumes the scalar partner does not get mass from the SM Higgs and has no
+        Higgs coupling, and that phi decays to t chi with 100 percent branching ratio.
+      confidence: high
+      section: TPDM model definition
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Machine extraction from text with TeX symbols partially stripped.
+  validation_status: expert_judgment_only
+  notes: Model-only extraction; search limits and observable forecasts were intentionally omitted.
+agent_failure_modes:
+  warnings:
+  - id: tpdm_simplified_uv
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper defines a simplified model; gauge or flavor UV-completion details are not specified.

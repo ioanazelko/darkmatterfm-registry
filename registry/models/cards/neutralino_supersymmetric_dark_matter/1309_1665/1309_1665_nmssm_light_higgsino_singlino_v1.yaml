@@ -1,0 +1,281 @@
+_source:
+  shard: arXiv_src_1309_003_wds.tar
+  paper_id: '1309_1665'
+  source_member: 1309_1665.json
+schema_version: model_only_v0
+model_id: 1309_1665_nmssm_light_higgsino_singlino_v1
+identity:
+  name: Light higgsino-singlino NMSSM simplified scenario
+  family: neutralino_supersymmetric_dark_matter
+  aliases:
+  - light higgsino-singlino scenario
+  - NMSSM singlino-like LSP scenario
+  short_description: A simplified NMSSM scenario with heavy electroweak gauginos and a light higgsino-singlino
+    neutralino sector, where the lightest neutralino is the dark matter candidate.
+  historical_origin_or_motivation: Motivated by low fine tuning, a 125 GeV SM-like Higgs, heavy gluino/gaugino
+    expectations, and the viability of a singlino-like LSP relic abundance.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - NMSSM
+  - supersymmetry
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the NMSSM superpotential, the neutralino mass matrix, and a two-parameter light
+    higgsino-singlino limit for collider reinterpretation.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino chi_1^0
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - singlino from the singlet superfield S
+  - higgsino-like neutralinos chi_2^0 and chi_3^0
+  - higgsino-like chargino chi_1^+/-
+  mediators:
+  - CP-even or CP-odd Higgs bosons for singlino annihilation
+  - W and Z bosons in electroweak production and decays
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The lightest neutralino is treated as the LSP dark matter candidate; the stabilizing
+    parity is not explicitly detailed in the extracted text.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  - other
+  standard_model_targets:
+  - Higgs bosons
+  - W bosons
+  - Z bosons
+  dark_sector_couplings:
+  - lambda S H_u H_d
+  - kappa S^3
+  mediator_types:
+  - Higgs bosons
+  - electroweak gauge bosons
+  - higgsino-singlino neutralinos
+  annihilation_channels:
+  - s-channel Higgs-boson annihilation
+  - coannihilation or higgsino-component channels when present
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: chargino mass
+    symbol: M_chi1_pm
+    description: Physical higgsino-like chargino mass used as one axis of the simplified scenario.
+    range: 100-400
+    unit: GeV
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1309.1665'
+  - name: lightest neutralino mass
+    symbol: M_chi1_0
+    description: LSP mass used as the second axis of the simplified scenario.
+    range: 0-100
+    unit: GeV
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1309.1665'
+  - name: singlet-Higgs coupling
+    symbol: lambda
+    description: NMSSM coupling fixed for the scenario.
+    value: 0.6
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1309.1665'
+  - name: ratio of Higgs vevs
+    symbol: tan_beta
+    description: Ratio of Higgs vacuum expectation values fixed for the scenario.
+    value: 2
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1309.1665'
+  - name: singlet self-coupling
+    symbol: kappa
+    description: Chosen to obtain the desired LSP mass for fixed lambda and mu_eff.
+    range: tabulated as a function of M_chi1_0 and M_chi1_pm
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1309.1665'
+production:
+  mechanisms:
+  - thermal freeze-out of a singlino-like neutralino through Higgs-boson s-channel annihilation and/or
+    coannihilation
+  - electroweak production of heavier higgsino-like states at colliders
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - neutralino annihilation cross section
+  - singlino-higgsino mixing
+  - possible coannihilation
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper states that a dominantly singlino LSP can obtain the desired relic density through
+    Higgs-boson annihilation, coannihilation, or higgsino admixture.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - Higgs-boson s-channel annihilation
+  - coannihilation
+  - higgsino fraction
+  - LSP mass
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: WIMP-like neutralino freeze-out is assumed in the motivation.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: heavy_gaugino_limit
+  applies_to: model
+  condition: Bino and wino masses are decoupled relative to the light higgsino-singlino sector.
+  status: assumed
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '1309.1665'
+- id: two_parameter_simplification
+  applies_to: model
+  condition: lambda=0.6 and tan_beta=2 are fixed, leaving M_chi1_pm and M_chi1_0 as the main scan variables.
+  status: assumed
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '1309.1665'
+assumptions:
+  global:
+  - id: heavy_sleptons
+    description: Sleptons are taken heavy so chargino and neutralino decays proceed through W/Z plus the
+      LSP.
+    scope: theory
+    status: assumed
+    source_reference_ids:
+    - '1309.1665'
+  - id: no_neutralino_to_higgs_decays
+    description: The simplified scenario is defined so neutralino decays to lighter Higgs bosons are absent.
+    scope: theory
+    status: assumed
+    source_reference_ids:
+    - '1309.1665'
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports using NMSSMTools to compute masses and mixing angles; no dedicated public
+    model files are identified in the text.
+  primary_code_role: model_definition
+provenance:
+  model_id: 1309_1665_nmssm_light_higgsino_singlino_v1
+  model_name: Light higgsino-singlino NMSSM simplified scenario
+  model_family: neutralino_supersymmetric_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1309.1665'
+      title: unknown
+      authors:
+      - Ulrich Ellwanger
+      year: 2013
+      arxiv_id: '1309.1665'
+      doi: null
+      url: null
+      role: benchmark
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: Codex batch-0002
+    extractor_name: dark-matter model-card extraction worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1309.1665'
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper proposes a simplified light higgsino-singlino NMSSM scenario determined
+        by chargino and LSP masses.
+    - reference_id: '1309.1665'
+      section: introduction
+      page: null
+      quote_or_summary: A dominantly singlino-like LSP can have the desired relic density through Higgs-boson
+        annihilation, coannihilation, or higgsino admixture.
+    unresolved_items:
+    - The paper is primarily a collider simplified-scenario proposal, so the relic-density treatment is
+      motivational rather than a full scan.
+  evidence:
+    particle_content:
+    - reference_id: '1309.1665'
+      note: The light sector contains higgsinos, a singlino, three light neutralinos, and a higgsino-like
+        chargino.
+      confidence: high
+    interactions:
+    - reference_id: '1309.1665'
+      note: The superpotential terms lambda S H_u H_d and kappa S^3 and the neutralino mass matrix define
+        the higgsino-singlino mixing.
+      confidence: high
+    production_mechanism:
+    - reference_id: '1309.1665'
+      note: The text motivates the scenario by singlino-like LSP annihilation via Higgs bosons and/or
+        coannihilation.
+      confidence: medium
+    parameter_ranges:
+    - reference_id: '1309.1665'
+      note: The scenario fixes lambda=0.6 and tan_beta=2 and scans M_chi1_pm=100-400 GeV and M_chi1_0=0-100
+        GeV.
+      confidence: high
+    validity_domain:
+    - reference_id: '1309.1665'
+      note: The simplified setup assumes heavy gauginos and avoids neutralino decays to Higgs states.
+      confidence: medium
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: low
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Relic density is described qualitatively in the paper rather than computed across the displayed benchmark
+    plane.
+agent_failure_modes:
+  warnings:
+  - id: collider_vs_dm_scope
+    severity: medium
+    category: other
+    warning: Do not treat this row as a full cosmological relic-density calculation; the paper develops
+      a collider-friendly simplified NMSSM dark matter scenario.
+    source_reference_ids:
+    - '1309.1665'

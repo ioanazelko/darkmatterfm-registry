@@ -1,0 +1,753 @@
+_source:
+  shard: arXiv_src_1603_003_wds.tar
+  paper_id: '1603_01366'
+  source_member: 1603_01366.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1603_01366_t_channel_scalar_mediator_dirac_fermion_v1
+identity:
+  name: t-channel scalar-mediator Dirac fermion dark matter
+  family: simplified_t_channel_scalar_mediator_dark_matter
+  aliases:
+  - tS
+  short_description: A simplified model in which stable SM-singlet Dirac fermion dark matter couples to
+    quark doublets through colored scalar mediator doublets.
+  historical_origin_or_motivation: The paper uses simplified models as alternatives to EFT interpretations
+    of collider dark-matter searches when mediator masses can be accessible at the LHC.
+  status: benchmark
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - simplified dark matter model
+  - heavy-mediator EFT limit
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper provides interaction Lagrangians for the benchmark simplified model but does not specify
+    a complete UV completion.
+particle_content:
+  dark_matter_candidate:
+    name: SM-singlet Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - colored scalar t-channel mediator doublets
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The dark fermion is assumed to be the lightest stable new particle.
+  symmetries:
+  - name: stability assumption for the lightest new particle
+    type: unknown
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - quarks
+  dark_sector_couplings:
+  - Yukawa-like DM-quark coupling through scalar mediators
+  mediator_types:
+  - colored scalar t-channel mediator doublets
+  interaction_operators:
+  - heavy-mediator limit rearranges to a combination of D5-D8 operators
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: both
+  annihilation_channels:
+  - annihilation to quarks through the mediator
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the Dirac fermion dark matter particle.
+    role: core
+    status: inferred
+  - name: mediator mass
+    symbol: M
+    description: Mass of the simplified mediator.
+    role: core
+    status: inferred
+  - name: quark-mediator coupling
+    symbol: g_q
+    description: Universal mediator coupling to quarks under the paper assumptions.
+    value: 1 in baseline scans; varied in coupling-limit plots
+    role: core
+    status: assumed
+  - name: DM-mediator coupling
+    symbol: g_chi
+    description: Mediator coupling to the dark fermion.
+    range: 0.2 to 5 in s-channel scans; coupling limits reported for all models
+    role: core
+    status: inferred
+  - name: mediator width
+    symbol: Gamma
+    description: Minimal width from decays to kinematically accessible dark matter and quarks.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through dark matter self-annihilation
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - self-annihilation cross section
+  - dark matter mass
+  - mediator mass
+  - mediator couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper uses thermal-relic abundance as a benchmark rather than a full cosmological history.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - annihilation cross section
+  - Planck abundance target
+  - micrOMEGAs calculation
+  - possible additional annihilation channels not included
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Thermal relic assumption used only for benchmark coupling contours.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: perturbative_couplings
+  applies_to: couplings
+  condition: Mediator and quark couplings are required to remain within the perturbative regime.
+  status: assumed
+  extrapolation_risk: medium
+- id: minimal_width_quality
+  applies_to: mediator_width
+  condition: The paper treats the mediator width as the minimal natural width and rejects regions with
+    width too large relative to the mediator mass.
+  status: assumed
+  extrapolation_risk: high
+- id: t_channel_stability
+  applies_to: mass_spectrum
+  condition: For the t-channel scalar model the mediator mass must exceed the DM mass to ensure stability
+    of the DM particle.
+  status: assumed
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: dirac_sm_singlet
+    description: The dark matter particle is a weakly interacting Dirac fermion and SM singlet.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+  - id: quark_only_couplings
+    description: The new sector couples only to Standard Model quarks in the model space studied.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+  - id: universal_quark_couplings
+    description: The mediator coupling to quarks is generation universal, following minimal-flavor-violation
+      assumptions.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+  - id: thermal_relic_benchmark
+    description: Thermal relic abundance is used as a benchmark comparison and may fail if nonthermal
+      history or additional channels are present.
+    scope: production
+    status: assumed
+    can_be_relaxed: 'yes'
+    impact_if_violated: Thermal coupling contours would not be definitive relic-density requirements.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses micrOMEGAs to determine couplings leading to the correct relic density;
+    no model-specific public implementation is identified in the extracted text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 1603_01366_t_channel_scalar_mediator_dirac_fermion_v1
+  model_name: t-channel scalar-mediator Dirac fermion dark matter
+  model_family: simplified_t_channel_scalar_mediator_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1603_01366'
+      title: unknown
+      authors: []
+      year: 2016
+      arxiv_id: '1603.01366'
+      doi: null
+      url: null
+      role: benchmark
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '1603.01366'
+      authors:
+      - Brennan, A. J.
+      - McDonald, M. F.
+      - Gramling, J.
+      - Jacques, T. D.
+      doi: 10.48550/arXiv.1603.01366
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1603.01366
+      role: original_model
+      title: 'Collide and Conquer: Constraints on Simplified Dark Matter Models using Mono-X Collider
+        Searches'
+      url: https://arxiv.org/abs/1603.01366
+      year: 2016
+    constraint_papers:
+    - arxiv_id: '1308.0592'
+      authors:
+      - An, Haipeng
+      - Wang, Lian-Tao
+      - Zhang, Hao
+      doi: 10.1103/PhysRevD.89.115014
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1308.0592
+      role: constraint
+      title: 'Dark matter with t-channel mediator: A simple step beyond contact interaction'
+      url: https://arxiv.org/abs/1308.0592
+      year: 2014
+    - arxiv_id: '1308.0612'
+      authors:
+      - Bai, Yang
+      - Berger, Joshua
+      doi: 10.1007/JHEP11(2013)171
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1308.0612
+      role: constraint
+      title: Fermion portal dark matter
+      url: https://arxiv.org/abs/1308.0612
+      year: 2013
+    - arxiv_id: '1407.8257'
+      authors:
+      - Buchmueller, Oliver
+      - Dolan, Matthew J.
+      - Malik, Sarah A.
+      - McCabe, Christopher
+      doi: 10.1007/JHEP01(2015)037
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1407.8257
+      role: constraint
+      title: 'Characterising dark matter searches at colliders and direct detection experiments: vector
+        mediators'
+      url: https://arxiv.org/abs/1407.8257
+      year: 2015
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0010
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1603_01366'
+      section: Model descriptions
+      page: null
+      quote_or_summary: Defines Dirac SM-singlet DM, mediator choices, and interaction Lagrangians for
+        sV, sA, and tS simplified models.
+    - reference_id: '1603_01366'
+      section: Comparison with relic density constraints
+      page: null
+      quote_or_summary: Uses thermal relic abundance and micrOMEGAs to obtain benchmark couplings.
+    unresolved_items:
+    - The strongest exclusion is imported from a related t-channel study and assumes thermal Dirac dark
+      matter.
+    - Modern monojet/jets+MET and direct-detection data were not rerun.
+  evidence:
+    particle_content:
+    - reference_id: '1603_01366'
+      note: Model assumptions state that the DM particle is a weakly interacting Dirac fermion, a SM singlet,
+        and the lightest stable new particle.
+      confidence: high
+      section: Model descriptions
+      page: null
+    interactions:
+    - reference_id: '1603_01366'
+      note: The paper defines a tS model with three generations of scalar mediator doublets coupling to
+        left-handed quark doublets and Dirac DM.
+      confidence: high
+      section: Model descriptions
+      page: null
+    production_mechanism:
+    - reference_id: '1603_01366'
+      note: The relic-density comparison assumes thermal relic DM and uses self-annihilation cross sections
+        and micrOMEGAs to find couplings reproducing the Planck abundance.
+      confidence: medium
+      section: Comparison with relic density constraints
+      page: null
+    parameter_ranges:
+    - reference_id: '1603_01366'
+      note: The paper scans representative DM and mediator masses, sets quark couplings to unity in baseline
+        scans, varies the dark coupling, and imposes perturbativity and width quality criteria.
+      confidence: medium
+      section: Mass and coupling points
+      page: null
+    validity_domain:
+    - reference_id: '1603_01366'
+      note: The paper treats the mediator width as the minimal natural width and regards regions with
+        excessive width or nonperturbative couplings as invalid.
+      confidence: medium
+      section: Treatment of the width
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper compares mono-X limits with relic-density and direct-detection constraints using
+        minimal mediator widths.
+      page: null
+      reference_id: arxiv:1603.01366
+      section: Results sections
+    - confidence: high
+      note: Related t-channel paper states that thermally produced Dirac fermion dark matter has no allowed
+        region after combined monojet and direct-detection constraints in that model.
+      page: null
+      reference_id: arxiv:1308.0592
+      section: Abstract
+    - confidence: medium
+      note: Related fermion-portal paper states direct detection and collider searches probe complementary
+        regions of mediator-DM parameter space.
+      page: null
+      reference_id: arxiv:1308.0612
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary paper recasts ATLAS monojet, mono-Z, and mono-W/Z searches for s-channel vector/axial-vector
+        and t-channel scalar simplified models.
+      page: null
+      reference_id: arxiv:1603.01366
+      section: Introduction and collider recast sections
+    - confidence: high
+      note: Related t-channel paper studies monojet, mediator pair production, relic, and direct-detection
+        complementarity.
+      page: null
+      reference_id: arxiv:1308.0592
+      section: Abstract
+    - confidence: high
+      note: Related vector-mediator paper develops a collider/direct-detection comparison for vector and
+        axial-vector mediators.
+      page: null
+      reference_id: arxiv:1407.8257
+      section: Model and results sections
+    routes:
+    - confidence: high
+      note: Primary paper describes the simulation and recasting chain from simplified-model parameters
+        to mono-X limits.
+      page: null
+      reference_id: arxiv:1603.01366
+      section: Signal simulation and recast sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The paper is primarily a collider reinterpretation/constraint study; the model-card row is limited
+    to the explicitly defined simplified-model benchmarks.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - simplified mediator completion not specified
+  - thermal relic comparison ignores possible additional channels
+  validation_status: partially_validated
+agent_failure_modes:
+  warnings:
+  - id: simplified_model_scope
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat this simplified benchmark as a complete UV theory; the paper only specifies
+      the interaction-level model used for collider/relic comparisons.
+    mitigation: Check any downstream use against the stated mediator-width and coupling assumptions.
+observables:
+- caveats:
+  - The exact reach depends on mediator flavor representation and whether second hard jets are included.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - ATLAS/CMS monojet searches
+  - jets+MET searches
+  id: obs_tscalar_monojet_jetsmet
+  key_quantities:
+  - description: Dirac fermion dark matter mass.
+    name: dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:1603.01366
+    - arxiv:1308.0592
+    - arxiv:1308.0612
+    status: inferred
+    symbol: m_chi
+  - description: t-channel scalar mediator mass.
+    name: colored scalar mediator mass
+    role: core
+    source_reference_ids:
+    - arxiv:1603.01366
+    - arxiv:1308.0592
+    - arxiv:1308.0612
+    status: inferred
+    symbol: m_phi
+  - description: Yukawa-like coupling controlling production, scattering, and annihilation.
+    name: quark-DM-mediator coupling
+    role: core
+    source_reference_ids:
+    - arxiv:1308.0592
+    - arxiv:1308.0612
+    status: inferred
+    symbol: lambda
+  linked_constraints:
+  - con_tscalar_monojet_direct
+  - con_tscalar_mediator_pair
+  linked_routes:
+  - route_tscalar_recast
+  name: t-channel scalar mediator monojet and jets+MET
+  notes: null
+  observability: high
+  predicted_effect: A colored scalar mediator in the t channel contributes to monojet plus missing-energy
+    searches and can also be pair-produced, giving jets plus missing transverse energy.
+  redshift_range: null
+  relevance: high
+  scale_range: LHC missing-energy kinematics
+  source_reference_ids:
+  - arxiv:1603.01366
+  - arxiv:1308.0592
+  - arxiv:1308.0612
+  subchannel: monojet plus mediator pair production
+- caveats:
+  - Direct-detection strength depends on flavor and chirality assignments.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - xenon detectors
+  - spin-sensitive targets
+  id: obs_tscalar_direct_detection
+  key_quantities:
+  - description: Nuclear scattering cross section from scalar mediator exchange.
+    name: direct-detection cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:1308.0592
+    - arxiv:1308.0612
+    status: inferred
+    symbol: sigma_N
+  - description: Splitting controlling collider/direct-detection complementarity.
+    name: mediator-DM mass splitting
+    role: core
+    source_reference_ids:
+    - arxiv:1308.0612
+    status: inferred
+    symbol: m_phi - m_chi
+  linked_constraints:
+  - con_tscalar_monojet_direct
+  linked_routes:
+  - route_tscalar_recast
+  name: t-channel Dirac direct detection
+  notes: null
+  observability: high
+  predicted_effect: The same t-channel mediator induces nuclear scattering; related t-channel work finds
+    severe combined monojet and direct-detection pressure for thermally produced Dirac fermion dark matter.
+  redshift_range: null
+  relevance: high
+  scale_range: nuclear recoil scales
+  source_reference_ids:
+  - arxiv:1308.0592
+  - arxiv:1308.0612
+  subchannel: nuclear recoil through scalar mediator
+- caveats:
+  - The no-allowed-region statement is source-model specific and assumes a thermal Dirac fermion.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe thermal bath
+  id: obs_tscalar_thermal_relic
+  key_quantities:
+  - description: Relic density target for the t-channel Dirac model.
+    name: thermal relic abundance
+    role: derived
+    source_reference_ids:
+    - arxiv:1308.0592
+    status: inferred
+    symbol: Omega h^2
+  - description: Dominant annihilation process through the scalar mediator.
+    name: annihilation channel
+    role: core
+    source_reference_ids:
+    - arxiv:1308.0592
+    - arxiv:1308.0612
+    status: inferred
+    symbol: chi chi -> q qbar
+  linked_constraints:
+  - con_tscalar_thermal_relic
+  linked_routes:
+  - route_tscalar_recast
+  name: t-channel thermal relic consistency
+  notes: null
+  observability: medium
+  predicted_effect: Thermal production of Dirac fermion dark matter in the related t-channel model is
+    highly constrained when collider and direct-detection bounds are combined.
+  redshift_range: thermal freeze-out epoch
+  relevance: high
+  scale_range: weak-scale mediator masses
+  source_reference_ids:
+  - arxiv:1308.0592
+  subchannel: thermal freeze-out
+constraints:
+- allowed_regions:
+  - Relaxing the full thermal relic assumption, changing mediator flavor structure, or moving to Majorana
+    dark matter can change the conclusion.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The strong exclusion assumes Dirac fermion dark matter thermally produced within the
+      related t-channel model.
+    id: dirac-thermal-tchannel
+    impact_if_violated: Nonthermal production, subcomponent dark matter, or altered flavor structure can
+      reopen parameter space.
+    notes: null
+    scope: combined collider/direct recast
+    source_reference_ids:
+    - arxiv:1308.0592
+    status: assumed
+  benchmark_implications:
+  - The assigned Dirac t-channel card should carry this as a strong recast warning.
+  caveats:
+  - This is a related-model result, not a freshly recomputed exclusion.
+  constrained_parameters:
+  - m_chi
+  - m_phi
+  - lambda
+  - sigma_N
+  constraint_type: other
+  data_release: CMS-like monojet plus direct-detection comparisons in related t-channel study
+  excluded_regions:
+  - Related t-channel study reports no parameter-space region satisfying combined monojet and direct-detection
+    constraints for thermally produced Dirac fermion dark matter in that framework.
+  id: con_tscalar_monojet_direct
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Combined monojet and direct-detection exclusion for thermal Dirac t-channel DM
+  notes: null
+  observable_channel: collider/direct_detection
+  recasting_needed: 'yes'
+  robustness: high
+  source_reference_ids:
+  - arxiv:1603.01366
+  - arxiv:1308.0592
+  - arxiv:1308.0612
+- allowed_regions:
+  - Heavier mediators or compressed spectra can weaken jets+MET reach and require dedicated recasts.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Mediator-pair searches are a required complement to monojet for t-channel models.
+  caveats:
+  - Detailed acceptance depends on the mediator representation and spectrum compression.
+  constrained_parameters:
+  - m_phi
+  - lambda
+  - m_chi
+  constraint_type: collider
+  data_release: LHC monojet and jets+MET searches in related studies
+  excluded_regions:
+  - Mediator pair-production searches exclude sufficiently light colored mediators even when monojet is
+    not dominant.
+  id: con_tscalar_mediator_pair
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Colored mediator pair-production and jets+MET limits
+  notes: null
+  observable_channel: collider
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1308.0592
+  - arxiv:1308.0612
+- allowed_regions:
+  - Subcomponent or nonthermal interpretations can evade the full relic-density target.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The relic target assumes standard thermal freeze-out and all dark matter in the Dirac
+      t-channel particle.
+    id: standard-freezeout-tscalar
+    impact_if_violated: Subcomponent or nonthermal histories weaken the target.
+    notes: null
+    scope: relic target
+    source_reference_ids:
+    - arxiv:1308.0592
+    status: assumed
+  benchmark_implications:
+  - Relic-density assumptions should be explicit before using the model as all dark matter.
+  caveats:
+  - No relic calculation was rerun.
+  constrained_parameters:
+  - Omega h^2
+  - lambda
+  - m_chi
+  - m_phi
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Full thermal relic interpretation is strongly disfavored in the Dirac t-channel setup after collider/direct-detection
+    combination in the related study.
+  id: con_tscalar_thermal_relic
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: t-channel thermal relic target
+  notes: null
+  observable_channel: cosmology
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1308.0592
+- allowed_regions:
+  - Minimal flavor violation or restricted coupling structures can avoid the strongest flavor bounds in
+    the related t-channel setup.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - A collider/direct-detection recast must specify the flavor representation.
+  caveats:
+  - Flavor constraints are structural; no flavor likelihood was run.
+  constrained_parameters:
+  - quark flavor couplings
+  - lambda
+  - mediator representation
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Generic flavor-changing neutral currents can constrain arbitrary mediator-quark couplings.
+  id: con_tscalar_mfv_flavor
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Flavor structure and MFV requirement
+  notes: null
+  observable_channel: flavor/collider
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1308.0592
+  - arxiv:1308.0612
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Strongest conclusion is assumption-dependent but important for this assigned Dirac model.
+    constraint_ids:
+    - con_tscalar_monojet_direct
+    - con_tscalar_mediator_pair
+    - con_tscalar_thermal_relic
+    - con_tscalar_mfv_flavor
+    derived_quantities:
+    - monojet acceptance
+    - jets+MET mediator-pair rate
+    - direct-detection cross section
+    - thermal relic abundance
+    - flavor-consistency flag
+    description: Recast t-channel scalar mediator Dirac dark matter into monojet, jets+MET, direct-detection,
+      flavor, and relic targets.
+    forward_model_chain:
+    - inputs:
+      - m_chi
+      - m_phi
+      - lambda
+      notes: null
+      outputs:
+      - monojet and jets+MET acceptances
+      step_id: s1
+      step_type: simulation
+      tool_or_code: MadGraph/Pythia/Delphes-style chain
+      validity: Requires mediator representation and flavor assumptions.
+    - inputs:
+      - acceptances
+      - LHC limits
+      notes: null
+      outputs:
+      - collider exclusion contours
+      step_id: s2
+      step_type: recasting
+      tool_or_code: null
+      validity: Run-I style source recast.
+    - inputs:
+      - masses
+      - lambda
+      notes: null
+      outputs:
+      - direct-detection cross section
+      - annihilation cross section
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Requires Dirac t-channel matching.
+    - inputs:
+      - flavor structure
+      notes: null
+      outputs:
+      - MFV/flavor-safety flag
+      step_id: s4
+      step_type: validation
+      tool_or_code: null
+      validity: Needed before comparing to generic flavor bounds.
+    id: route_tscalar_recast
+    input_parameters:
+    - m_chi
+    - m_phi
+    - lambda
+    - flavor representation
+    likelihoods:
+    - LHC likelihood unavailable
+    - direct-detection likelihood unavailable
+    - thermal relic likelihood unavailable
+    observable_ids:
+    - obs_tscalar_monojet_jetsmet
+    - obs_tscalar_direct_detection
+    - obs_tscalar_thermal_relic
+    required_code_resources:
+    - event generator and detector recast
+    - direct-detection matching code
+    - thermal relic calculator
+    - flavor-structure checker
+    route_status: planned
+    source_model_features:
+    - Dirac fermion DM
+    - colored scalar t-channel mediator
+    - quark portal coupling
+    validation_tests:
+    - recover related-study no-allowed-region statement under Dirac thermal assumptions

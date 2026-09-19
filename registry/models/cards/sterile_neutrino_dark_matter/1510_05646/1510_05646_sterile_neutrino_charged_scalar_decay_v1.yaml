@@ -1,0 +1,302 @@
+_source:
+  shard: arXiv_src_1510_011_wds.tar
+  paper_id: '1510_05646'
+  source_member: 1510_05646.json
+schema_version: model_only_v0
+model_id: 1510_05646_sterile_neutrino_charged_scalar_decay_v1
+identity:
+  name: Sterile-neutrino dark matter from charged scalar decay
+  family: sterile_neutrino_dark_matter
+  aliases: []
+  short_description: A singlet fermion dark matter candidate produced through decays and thermal-plasma
+    scatterings involving a charged scalar parent and charged final-state fermion.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - sterile neutrino extension of the Standard Model
+  - charged scalar mediator model
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper gives a U(1)-charged scalar Lagrangian and notes that SU(N)-charged scalar cases can
+    be obtained by replacements.
+particle_content:
+  dark_matter_candidate:
+    name: N singlet fermion
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - charged scalar phi
+  - charged fermion psi
+  mediators:
+  - charged scalar phi
+  - gauge field A_mu
+  unstable_parent_particles:
+  - charged scalar phi
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Feeble couplings of N to the plasma, with lifetime/mixing assumptions inherited
+    from sterile-neutrino dark matter.
+  symmetries:
+  - name: U(1)
+    type: gauge
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - other
+  standard_model_targets:
+  - charged fermion psi
+  - gauge plasma excitations
+  dark_sector_couplings:
+  - y N psi phi
+  mediator_types:
+  - charged scalar
+  - vector gauge boson
+  annihilation_channels: []
+  decay_channels:
+  - charged scalar -> N + charged fermion
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: singlet fermion mass
+    symbol: m_N
+    description: Mass of the sterile/singlet fermion dark matter candidate.
+    unit: unknown
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: charged scalar mass
+    symbol: m_phi
+    description: Mass of the charged scalar parent.
+    unit: unknown
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: Yukawa coupling
+    symbol: y
+    description: Coupling mediating charged scalar decay into N and a charged fermion.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: gauge coupling
+    symbol: alpha
+    description: Gauge interaction controlling thermal masses and scattering contributions.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: plasma temperature
+    symbol: T
+    description: Temperature separating vacuum, Pauli-suppressed, thermal-mass, and scattering regimes.
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - paper
+production:
+  mechanisms:
+  - charged scalar decay
+  - thermal scattering contribution
+  - freeze-in-like nonthermal production
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - decay rate
+  - Landau-damping/scattering contribution
+  - thermal masses
+  - Yukawa and gauge couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: At sufficiently high temperature, scatterings involving charged bath particles can dominate over
+    simple decays.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_N
+  - m_phi
+  - y
+  - gauge coupling
+  - thermal masses
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - hot charged plasma with frequent scatterings of charged particles
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: approximate
+  f_of_p_or_q: Momentum-dependent rates are formulated, with extra scattering contributions in the charged
+    case.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper stresses that thermal corrections alter free-streaming predictions.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: charged_bath_regimes
+  applies_to: production
+  condition: 'Use the charged-scalar rates with attention to the temperature regime: vacuum decay at low
+    T, Pauli suppression, thermal masses, and scattering at higher T.'
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: feeble_N_limit
+  applies_to: model
+  condition: Assumes N itself is weakly coupled enough to use a free spectral density approximation.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: charged_fields_thermalized
+    description: Charged scalar and final-state charged fermion have plasma interactions that can thermalize
+      them.
+    scope: production
+    status: assumed
+    impact_if_violated: Changing this assumption can alter the abundance or momentum distribution.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: singlet_N_not_thermalized
+    description: N interactions with the plasma are feeble enough that N does not rescatter significantly
+      after production.
+    scope: production
+    status: assumed
+    impact_if_violated: Changing this assumption can alter the abundance or momentum distribution.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public code is identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+provenance:
+  model_id: 1510_05646_sterile_neutrino_charged_scalar_decay_v1
+  model_name: Sterile-neutrino dark matter from charged scalar decay
+  model_family: sterile_neutrino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Sterile neutrino Dark Matter production from scalar decay in a thermal bath
+      year: 2015
+      arxiv_id: '1510.05646'
+      role: original_model
+      notes: Assigned full text from run SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Charged scalar decays
+      page: null
+      quote_or_summary: Provides a charged-scalar Lagrangian and identifies dark matter production by
+        y N psi phi.
+    - reference_id: paper
+      section: Full damping rate and scatterings
+      page: null
+      quote_or_summary: Discusses scattering and Landau-damping contributions at high temperature.
+    unresolved_items:
+    - Only model-card fields supported by the assigned text were populated; observables and constraints
+      intentionally omitted.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The charged-scalar setup produces the singlet fermion N together with a charged fermion from
+        decays of a U(1)-charged scalar.
+      confidence: high
+      section: Charged scalar decays
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The model Lagrangian contains a charged scalar, gauge field A_mu, charged fermion, and Yukawa
+        interaction y N psi phi plus h.c.
+      confidence: high
+      section: Charged scalar decays
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The paper computes N production from charged scalar decays and discusses scatterings/Landau
+        damping in the plasma.
+      confidence: high
+      section: Charged scalar decays
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: Charged particles in the final state scatter frequently in the hot bath, changing the production
+        rate at high temperature.
+      confidence: medium
+      section: Full damping rate and scatterings
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: The relevant quantities include m_N, charged scalar mass, Yukawa coupling y, gauge coupling,
+        and thermal fermion/scalar masses.
+      confidence: medium
+      section: Charged scalar decays
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The calculation distinguishes vacuum-decay, Pauli-suppressed, thermal-mass, and scattering-dominated
+        temperature regimes.
+      confidence: high
+      section: Regimes and scenarios
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  validation_status: expert_judgment_only
+  notes: Machine-extracted candidate from one paper; no external validation performed.
+agent_failure_modes:
+  warnings:
+  - id: charged_variant_generic
+    severity: medium
+    category: assumption_mismatch
+    warning: The charged-scalar construction is a generic thermal-production variant and not a fully specified
+      Standard Model charge assignment.
+    mitigation: Track whether a concrete U(1), SU(2), or other charged realization is intended.
+    source_reference_ids:
+    - paper

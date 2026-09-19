@@ -1,0 +1,398 @@
+_source:
+  shard: arXiv_src_0611_002_wds.tar
+  paper_id: hep-ph0611006
+  source_member: hep-ph0611006.json
+schema_version: model_only_v0
+model_id: hep-ph0611006_self_interacting_pseudoscalar_dm_v1
+identity:
+  name: Self-interacting pseudoscalar dark matter component
+  family: self_interacting_dark_matter
+  aliases:
+  - PVLAS-motivated self-interacting pseudoscalar dark matter
+  short_description: A light pseudoscalar with photon coupling and perturbative self-interaction, assumed
+    to form a subcomponent of galactic dark matter and to be trapped in stellar environments by self-scattering.
+  historical_origin_or_motivation: Motivated by reconciling PVLAS-like pseudoscalar-photon couplings with
+    solar astrophysical bounds using a self-interacting pseudoscalar dark-matter component.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - axion-like pseudoscalar coupled to photons
+  - self-interacting dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff:
+    name: inverse pseudoscalar-photon coupling
+    symbol: M_phi
+    description: Scale suppressing the pseudoscalar-photon operator.
+    range:
+      min: 100000.0
+      max: 600000.0
+      unit: GeV
+      notes: PVLAS-motivated range used in the paper.
+    unit: GeV
+    role: core
+    status: assumed
+  embedded_in_larger_framework: unknown
+  notes: The paper writes an effective Lagrangian containing the pseudoscalar kinetic/mass terms, photon
+    coupling, and a quartic self-coupling.
+particle_content:
+  dark_matter_candidate:
+    name: light pseudoscalar phi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: subcomponent
+  additional_dark_sector_particles: []
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - light pseudoscalar phi
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The pseudoscalar is assumed to survive from the early universe as dark matter;
+    the paper does not specify an exact stabilizing symmetry.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - axion
+  standard_model_targets:
+  - photons
+  - charged particles through Primakoff conversion
+  dark_sector_couplings:
+  - quartic pseudoscalar self-coupling
+  mediator_types:
+  - photon
+  interaction_operators:
+  - phi F Fdual / M_phi
+  - lambda phi^4
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - phi phi -> phi phi
+  - phi phi -> four phi fragmentation
+  cp_structure: pseudoscalar photon coupling
+  flavor_structure: not_applicable
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: pseudoscalar mass
+    symbol: m_phi
+    description: PVLAS-motivated pseudoscalar mass range.
+    range:
+      min: 0.7
+      max: 2.0
+      unit: meV
+      notes: The text gives 0.7 meV to 2 meV.
+    unit: meV
+    role: core
+    status: assumed
+  - name: inverse pseudoscalar-photon coupling
+    symbol: M_phi
+    description: Inverse two-photon coupling scale used to explain PVLAS-like mixing.
+    range:
+      min: 100000.0
+      max: 600000.0
+      unit: GeV
+      notes: The text gives 1e5 GeV to 6e5 GeV.
+    unit: GeV
+    role: core
+    status: assumed
+  - name: self-interaction strength
+    symbol: alpha_lambda
+    description: Perturbative quartic self-coupling parameter lambda^2/(4 pi).
+    value: approximately 0.1
+    role: core
+    status: assumed
+  - name: galactic dark-matter fraction
+    symbol: eta
+    description: Fraction of local galactic dark matter in pseudoscalars.
+    range:
+      min: 0
+      max: 0.1
+      unit: null
+      notes: The paper assumes eta less than 0.1.
+    role: core
+    status: assumed
+  nuisance: []
+  derived:
+  - name: local pseudoscalar number density
+    symbol: n_phi
+    description: Estimated near the solar position for m_phi about 10^-3 eV and eta below 0.1.
+    value: 2.4e11 cm^-3 times eta-normalization used in the text
+    unit: cm^-3
+    role: derived
+    status: inferred
+  - name: solar-core mean free path
+    symbol: l_phi
+    description: Mean free path estimate for phi phi scattering at E_cm about 1 keV and alpha_lambda about
+      0.1.
+    value: about 2e6 cm
+    unit: cm
+    role: derived
+    status: approximate
+production:
+  mechanisms:
+  - early-universe production assumed
+  - possible coherent oscillations of the pseudoscalar field
+  - gravitational concentration during star formation
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - assumed galactic subcomponent fraction
+  - possible coherent oscillation amplitude
+  - stellar gravitational collapse of an ambient pseudoscalar cloud
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'no'
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper explicitly postpones whether the pseudoscalar can be the dominant galactic dark matter
+    component and assumes a negligible subcomponent for its solar-system mechanism.
+relic_density:
+  full_or_subcomponent: subcomponent
+  target_fraction:
+    name: pseudoscalar dark-matter fraction
+    symbol: eta
+    description: Assumed fraction of galactic dark matter in pseudoscalars.
+    range:
+      min: 0
+      max: 0.1
+      unit: null
+      notes: Chosen so pseudoscalars contribute negligibly to the galactic dark-matter density.
+    role: cosmological
+    status: assumed
+  calculation_type: phenomenological
+  key_dependencies:
+  - pseudoscalar mass
+  - assumed galactic fraction
+  - coherent oscillation history if the field is to contribute significantly
+  requires_entropy_dilution: unknown
+  overclosure_risk: 'no'
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The text invokes nearly zero-temperature galactic pseudoscalars and possible coherent oscillations;
+    no distribution function is supplied.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    density_profile_effect: The motivation cites self-interacting dark matter as a way to address cuspy
+      halos, but this paper does not calculate halo structure.
+    simulation_calibrated: 'no'
+validity_domain:
+- id: pvlas_parameter_range
+  applies_to: model
+  condition: The numerical estimates use m_phi approximately 0.7-2 meV and M_phi approximately 1e5-6e5
+    GeV.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+- id: subcomponent_fraction
+  applies_to: model
+  condition: The solar-system mechanism assumes pseudoscalars are less than about 10 percent of the galactic
+    dark matter density.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: perturbative_self_coupling
+  applies_to: parameter
+  condition: The self-coupling parameter is taken near 0.1 and within the perturbative regime.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: phi_subcomponent
+    description: Pseudoscalars form a subcomponent of galactic dark matter and are present throughout
+      the galaxy.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    impact_if_violated: The trapping mechanism loses its dark-matter basis if this population is absent.
+  - id: large_self_coupling
+    description: A perturbative but relatively large pseudoscalar self-coupling makes the mean free path
+      small in stellar environments.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    impact_if_violated: Solar astrophysical bounds may reappear if self-scattering is too weak.
+  - id: solar_steady_state
+    description: The solar system plus pseudoscalar gas can be treated in steady state for the density-profile
+      estimates.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    impact_if_violated: The solar trapping estimates would change if no steady state is reached.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated code is mentioned in the assigned paper text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+provenance:
+  model_id: hep-ph0611006_self_interacting_pseudoscalar_dm_v1
+  model_name: Self-interacting pseudoscalar dark matter component
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Self-Interacting Dark Matter in the Solar System
+      authors:
+      - Avijit K. Ganguly
+      - Pankaj Jain
+      - Subhayan Mandal
+      - Sarah Stokes
+      year: 2006
+      arxiv_id: hep-ph/0611006
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0008
+    extractor_name: gpt-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-30'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract/Introduction
+      page: null
+      quote_or_summary: The paper considers self-interacting pseudoscalars pervading the galaxy as a dark-matter
+        component.
+    - reference_id: primary
+      section: Model setup
+      page: null
+      quote_or_summary: The effective Lagrangian, PVLAS parameter range, self-coupling, and galactic fraction
+        are specified.
+    - reference_id: primary
+      section: Conclusion
+      page: null
+      quote_or_summary: The authors conclude solar limits can be evaded if pseudoscalars form a self-interacting
+        dark-matter subcomponent.
+    unresolved_items:
+    - The paper does not compute a first-principles cosmological relic abundance and explicitly defers
+      whether pseudoscalars can dominate galactic dark matter.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The paper identifies weakly coupled, almost massless spin-0 pseudoscalars as the dark matter
+        studied.
+      confidence: medium
+      section: Abstract/Introduction
+      page: null
+    interactions:
+    - reference_id: primary
+      note: The effective Lagrangian includes a pseudoscalar-photon coupling and a quartic self-coupling.
+      confidence: medium
+      section: Model setup
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: The authors assume pseudoscalars are produced in the early universe and are present today
+        as a dark-matter component.
+      confidence: medium
+      section: Introduction
+      page: null
+    cosmological_history:
+    - reference_id: primary
+      note: The text states coherent oscillations could make the field behave as non-relativistic dark
+        matter, but does not calculate the abundance.
+      confidence: medium
+      section: Introduction
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: The paper uses m_phi = 0.7-2 meV, M_phi = 1e5-6e5 GeV, and alpha_lambda about 0.1.
+      confidence: medium
+      section: Model setup
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: The model is applied as a negligible galactic subcomponent with eta less than 0.1 and a solar-system
+        trapping mechanism.
+      confidence: medium
+      section: Model setup
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: low
+  theory_robustness: low
+  observational_robustness: unknown
+  computational_robustness: not_applicable
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - No relic-density calculation is provided.
+  - The dark-matter fraction and solar-system pseudoscalar density are assumed.
+  validation_status: expert_judgment_only
+  notes: Accepted as a proposed subcomponent dark-matter model, not as a demonstrated full dark-matter
+    abundance calculation.
+agent_failure_modes:
+  warnings:
+  - id: do_not_promote_to_full_dm
+    severity: high
+    category: assumption_mismatch
+    warning: The paper assumes a negligible pseudoscalar dark-matter fraction and postpones whether it
+      can be the dominant component.
+    mitigation: Use as a subcomponent model unless a separate relic-density calculation is supplied.
+    source_reference_ids:
+    - primary

@@ -1,0 +1,825 @@
+_source:
+  shard: arXiv_src_2106_052_wds.tar
+  paper_id: '2106_08339'
+  source_member: 2106_08339.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: w1
+    mitigation: Check the asymmetry assumption before using the self-scattering formula.
+    severity: high
+    source_reference_ids: []
+    warning: The repulsive, UV-insensitive self-interaction result assumes asymmetric dark matter; symmetric
+      dark matter would have an attractive potential and different indirect-detection behavior.
+  - category: notation_conflict
+    id: w2
+    mitigation: Verify against the source PDF before final registry use.
+    severity: medium
+    source_reference_ids: []
+    warning: The extracted text drops the particle symbols, so scalar-versus-fermion identity is uncertain
+      in this machine row.
+associated_code:
+  code_summary: The text mentions FeynRules and MadGraph for a laboratory decay simulation, but no model-specific
+    code release is identified.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The dark matter abundance is asymmetric, leaving primarily one stable dark species.
+    id: a1
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The heavier dark partner is sufficiently heavier than the momentum transfer for the effective
+      four-field interaction.
+    id: a2
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Neutrino masses cut off the long-range potential at distances larger than the inverse
+      neutrino mass.
+    id: a3
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: inferred
+cosmological_history:
+  bbn_relevance: high
+  chemical_decoupling: null
+  cmb_relevance: high
+  dark_sector_temperature: null
+  delta_neff:
+    description: Extra radiation constraint on light dark states at BBN/recombination.
+    name: Delta N_eff
+    range: conservative Delta N_eff < 0.5 applied in text
+    role: cosmological
+    source_reference_ids: []
+    status: inferred
+    symbol: Delta N_eff
+  isocurvature_perturbations: unknown
+  kinetic_decoupling:
+    description: Smallest halo cutoff induced by DM-neutrino kinetic coupling.
+    name: collisional damping cutoff
+    range: 10^7 to 10^9 solar masses favored for warm-DM behavior
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: M_cut
+    unit: solar masses
+  nonstandard_features:
+  - extended kinetic equilibrium with neutrinos
+  - collisional damping
+  - possible asymmetric dark matter
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - neutrino as the dark force
+  - neutrino portal self-interacting dark matter
+  family: self_interacting_dark_matter
+  historical_origin_or_motivation: Motivated by small-scale structure puzzles and the possibility that
+    Standard Model neutrinos mediate dark matter self-interactions.
+  model_kind: effective_field_theory
+  name: Neutrino-portal dark matter with neutrino-mediated self-interactions
+  short_description: An effective neutrino-portal model in which a stable dark state interacts with Standard
+    Model neutrinos, and two-neutrino exchange produces a long-range dark matter self-interaction without
+    a new dark force carrier.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - dark particle-antiparticle annihilation into neutrinos
+  cp_structure: unknown
+  dark_sector_couplings:
+  - neutrino-portal Yukawa coupling y
+  decay_channels:
+  - heavier dark partner to dark matter plus neutrino
+  flavor_structure: Flavor-dependent coupling to e, mu, or tau neutrinos; tau flavor has weakest laboratory
+    constraints in the discussed parameter space.
+  interaction_operators:
+  - (L H)(dark fermion)(dark scalar)/Lambda
+  - post-EWSB neutrino-dark-sector Yukawa interaction
+  - two-neutrino exchange potential proportional to 1/r^5
+  mediator_types:
+  - SM neutrinos
+  - heavier dark partner in the EFT matching
+  portals:
+  - neutrino
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    spin_dependence: unknown
+    velocity_dependence: mild
+  self_scattering_channels:
+  - dark matter self-scattering via two-neutrino exchange
+  standard_model_targets:
+  - SM lepton doublet
+  - Higgs doublet
+  - Standard Model neutrinos
+  tree_or_loop_level: both
+model_id: 2106_08339_neutrino_portal_dark_force_v1
+parameters:
+  core:
+  - description: Mass of the lighter stable dark state.
+    name: dark matter mass
+    range: MeV scale; lower limits near 9 MeV from N_eff for shown ratios
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_DM
+    unit: MeV
+  - description: Mass of the heavier dark fermion/scalar partner.
+    name: heavier dark partner mass
+    range: mass ratios 1.1 and 2 shown
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_partner
+    unit: MeV
+  - description: Yukawa coupling generated after electroweak symmetry breaking.
+    name: neutrino portal Yukawa coupling
+    range: favored values overlap self-interaction and warm-DM bands; perturbative in text
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: y
+  - description: Scale suppressing the dimension-5 neutrino portal operator.
+    name: cutoff scale
+    range: related by y = v/(sqrt(2) Lambda)
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: Lambda
+    unit: GeV
+particle_content:
+  additional_dark_sector_particles:
+  - dark fermion
+  - dark scalar
+  - heavier dark partner
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lighter neutrino-portal dark state
+    number_of_components: single_component
+    spin: unknown
+    statistics: unknown
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - heavier dark scalar or fermion partner
+  long_lived_particles: []
+  mediators:
+  - Standard Model neutrinos via two-neutrino exchange
+  standard_model_extension: minimal
+  unstable_parent_particles:
+  - heavier dark partner
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: mixed_cold_warm
+  f_of_p_or_q: No explicit phase-space distribution; warm-DM behavior comes from collisional damping through
+    neutrino coupling.
+  free_streaming_length: null
+  notes: The model is not thermal WDM; small-scale suppression is tied to prolonged kinetic equilibrium
+    with neutrinos.
+  phase_space_bounds:
+  - smallest halo cutoff M_cut around 10^7-10^9 solar masses
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - dark asymmetry
+  - annihilation of symmetric component
+  - neutrino portal coupling
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - asymmetric dark matter
+  - thermal contact with neutrinos
+  - symmetric component depletion
+  - kinetic coupling to neutrinos
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper assumes asymmetric dark matter for a repulsive, UV-insensitive self-interaction; it
+    checks that the coupling can efficiently deplete the symmetric population.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - The OCR/text extraction strips particle symbols, so the exact identity of the lighter scalar versus
+    fermion candidate is left as a dark state rather than over-specified.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The DM-neutrino interaction can keep the species in kinetic equilibrium, causing collisional
+        damping and a warm-DM-like cutoff mass.
+      page: null
+      reference_id: '2106_08339'
+      section: Overlap with warm dark matter
+    interactions:
+    - confidence: high
+      note: A dimension-5 neutrino-portal operator couples the SM lepton doublet and Higgs to the dark
+        fermion and scalar; below electroweak symmetry breaking it yields a neutrino-dark-sector Yukawa
+        interaction.
+      page: null
+      reference_id: '2106_08339'
+      section: Effective Lagrangian
+    parameter_ranges:
+    - confidence: medium
+      note: The paper studies MeV-scale dark states, Yukawa coupling y, mass ratios m_heavy/m_DM = 1.1
+        and 2, and a cutoff scale Lambda.
+      page: null
+      reference_id: '2106_08339'
+      section: Parameter space
+    particle_content:
+    - confidence: high
+      note: The model contains a dark fermion and dark scalar that are SM singlets; the lighter dark state
+        is stable and is taken as the dark matter candidate.
+      page: null
+      reference_id: '2106_08339'
+      section: Effective Lagrangian
+    production_mechanism:
+    - confidence: medium
+      note: The interaction thermalizes the dark states with neutrinos at high temperature, can deplete
+        the symmetric population, and supports asymmetric dark matter.
+      page: null
+      reference_id: '2106_08339'
+      section: Early universe constraints
+    symmetries:
+    - confidence: high
+      note: The dark fermion and scalar are charged under a global U(1) or Z2 symmetry; U(1) support implies
+        a Dirac fermion and complex scalar.
+      page: null
+      reference_id: '2106_08339'
+      section: Effective Lagrangian and early universe constraints
+    validity_domain:
+    - confidence: high
+      note: The 1/r^5 potential is used at distances shorter than the inverse neutrino mass and when the
+        heavier dark state can be integrated out.
+      page: null
+      reference_id: '2106_08339'
+      section: Dark matter self-interaction
+    observables:
+    - reference_id: src_2106_08339
+      note: Primary paper states the two-neutrino potential, SIDM band, collisional damping cutoff, Lyman-alpha
+        comparison, and precision-decay probes.
+      confidence: high
+      section: Main text and Summary
+      page: null
+    - reference_id: src_2310_10743
+      note: Related local text independently studies neutrino-mediated self-interaction in a degenerate
+        neutrino-portal dark sector.
+      confidence: medium
+      section: Abstract
+      page: null
+    constraints:
+    - reference_id: src_2106_08339
+      note: Primary paper quotes Bullet Cluster, Lyman-alpha, Delta N_eff, and invisible-width comparisons.
+      confidence: high
+      section: Constraints discussion
+      page: null
+    routes:
+    - reference_id: src_2106_08339
+      note: Primary paper provides the route from EFT operator to potential, scattering, damping, and
+        precision probes.
+      confidence: high
+      section: Model and phenomenology
+      page: null
+  extraction:
+    confidence: high
+    extracted_by: codex_dark_matter_batch_worker
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: SM-neutrino exchange generates a long-range potential between dark matter particles.
+      reference_id: '2106_08339'
+      section: Opening
+    - page: null
+      quote_or_summary: A dimension-5 neutrino portal links L, H, a dark fermion, and a dark scalar.
+      reference_id: '2106_08339'
+      section: Effective Lagrangian
+    - page: null
+      quote_or_summary: The framework can combine self-interacting and warm-dark-matter behavior.
+      reference_id: '2106_08339'
+      section: Summary
+    unresolved_items:
+    - OCR obscures some particle symbols, so scalar-versus-fermion labels inherited from the model card
+      should be checked against the PDF.
+    - No public likelihood tables or code release for the scattering recast were identified in the assigned
+      text.
+  last_updated: '2026-05-31'
+  model_family: self_interacting_dark_matter
+  model_id: 2106_08339_neutrino_portal_dark_force_v1
+  model_name: Neutrino-portal dark matter with neutrino-mediated self-interactions
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2106.08339'
+      authors:
+      - Nicholas Orlofsky
+      - Yue Zhang
+      doi: null
+      notes: Source text taken from the assigned run SQLite database only.
+      reference_id: '2106_08339'
+      role: original_model
+      title: Neutrino As The Dark Force
+      url: null
+      year: 2021
+    - reference_id: src_2106_08339
+      title: Neutrino as the dark force
+      authors:
+      - Orlofsky, Nicholas
+      - Zhang, Yue
+      year: 2021
+      arxiv_id: '2106.08339'
+      doi: 10.1103/PhysRevD.104.075010
+      url: https://arxiv.org/abs/2106.08339
+      role: original_model
+      notes: null
+    constraint_papers:
+    - reference_id: src_1803_08934
+      title: Probing the sterile neutrino portal to Dark Matter with γ rays
+      authors:
+      - Folgado, Miguel G.
+      - Gómez-Vargas, Germán A.
+      - Rius, Nuria
+      - Ruiz de Austri, Roberto
+      year: 2018
+      arxiv_id: '1803.08934'
+      doi: 10.1088/1475-7516/2018/08/002
+      url: https://arxiv.org/abs/1803.08934
+      role: constraint
+      notes: null
+    - reference_id: src_2310_10743
+      title: On dark matter self-interaction via single neutrino exchange potential
+      authors:
+      - Zhang, Yue
+      year: 2024
+      arxiv_id: '2310.10743'
+      doi: 10.1016/j.dark.2024.101434
+      url: https://arxiv.org/abs/2310.10743
+      role: extension
+      notes: null
+    - reference_id: src_1806_08579
+      title: Dark matter from freeze-in via the neutrino portal
+      authors:
+      - Becker, Mathias
+      year: 2019
+      arxiv_id: '1806.08579'
+      doi: 10.1140/epjc/s10052-019-7095-7
+      url: https://arxiv.org/abs/1806.08579
+      role: extension
+      notes: null
+    review_papers: []
+    external_databases: []
+  status: machine_extracted
+relic_density:
+  calculation_type: mixed
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - dark asymmetry
+  - y
+  - m_DM
+  - m_partner/m_DM
+  - neutrino flavor
+  overclosure_risk: unknown
+  requires_entropy_dilution: 'no'
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: unknown
+robustness:
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - exact lighter dark-state identity in stripped text
+  - UV sensitivity for attractive/symmetric variants
+  - laboratory constraints by neutrino flavor
+  notes: The self-interaction mechanism and cosmological logic are well supported, but the stripped text
+    obscures some notation.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    half_mode_mass:
+      description: Approximate collisional-damping cutoff scale.
+      name: cutoff halo mass
+      range: 10^7 to 10^9 solar masses
+      role: derived
+      source_reference_ids: []
+      status: inferred
+      symbol: M_cut
+      unit: solar masses
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: suppression
+    thermal_wdm_mapping:
+      available: false
+      validity: misleading
+      warning: Suppression is from neutrino-DM collisional damping rather than a thermal WDM distribution.
+    transfer_function_shape: smooth_cutoff
+  nonlinear:
+    concentration_mass_relation_effect: unknown
+    core_or_cusp_effect: self-interactions may alleviate core-cusp and too-big-to-fail tensions
+    density_profile_effect: self-interactions may affect cores
+    halo_mass_function_effect: small halos can be suppressed by the cutoff mass
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: suppressed formation of smallest halos is possible
+    subhalo_mass_function_effect: suppression relevant to missing satellite problem
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+symmetries:
+  stabilizing_mechanism: The lighter dark state is stable due to a global U(1) or Z2 dark-sector symmetry.
+  symmetries:
+  - breaking: unknown
+    breaking_scale: null
+    exact_or_approximate: unknown
+    name: global U(1) or Z2
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff:
+    description: Cutoff of the dimension-5 operator.
+    name: neutrino portal cutoff
+    range: not fixed; related to y = v/(sqrt(2) Lambda)
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: Lambda
+    unit: GeV
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: 'yes'
+  notes: The paper also sketches a UV completion with a gauge-singlet vectorlike fermion.
+  parent_frameworks:
+  - neutrino portal
+  - asymmetric dark matter
+  - self-interacting dark matter
+  renormalizable: 'no'
+  theory_level: effective_field_theory
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The 1/r^5 potential applies at distances shorter than the inverse neutrino mass and where
+    the heavier dark partner can be integrated out.
+  extrapolation_risk: medium
+  id: long_range_limit
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: The main self-scattering calculation assumes asymmetric dark matter so that the potential
+    is repulsive and UV-insensitive.
+  extrapolation_risk: high
+  id: asymmetric_repulsive
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: Tau-neutrino coupling is emphasized because electron and muon flavors face stronger meson/lepton
+    decay constraints.
+  extrapolation_risk: medium
+  id: flavor_choice
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+observables:
+- id: sidm_small_scale
+  name: Neutrino-mediated self-interaction in halos
+  channel: small_scale_structure
+  subchannel: self-interacting dark matter
+  predicted_effect: Two-neutrino exchange produces a long-range 1/r^5 potential that can yield transfer
+    cross sections in the self-interacting-DM range relevant to halo cores and satellite-scale tensions.
+  effect_direction: morphology_change
+  key_quantities:
+  - name: transfer cross section per mass
+    symbol: sigma_T/m_DM
+    range:
+      min: 0.03
+      max: 1.0
+      unit: cm^2/g
+      notes: Red self-interaction band quoted in the primary paper.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - src_2106_08339
+  redshift_range: null
+  scale_range: dwarf-galaxy to cluster halo scales
+  environments:
+  - dwarf galaxies
+  - galaxy clusters
+  observability: medium
+  relevance: critical
+  linked_constraints:
+  - bullet_cluster_self_interaction
+  linked_routes:
+  - route_neutrino_potential_to_structure
+  caveats:
+  - Born approximation is not valid for the two-neutrino potential; the paper uses a resummed/numerical
+    treatment.
+  source_reference_ids:
+  - src_2106_08339
+  - src_2310_10743
+  notes: null
+- id: collisional_damping_cutoff
+  name: DM-neutrino collisional damping cutoff
+  channel: small_scale_structure
+  subchannel: linear matter power cutoff
+  predicted_effect: Large neutrino-portal coupling can keep DM and neutrinos kinetically coupled, suppressing
+    small-scale density power and producing a warm-DM-like cutoff mass.
+  effect_direction: suppression
+  key_quantities:
+  - name: minimum halo cutoff mass
+    symbol: M_cut
+    range:
+      min: 1e7
+      max: 1e9
+      unit: solar masses
+      notes: Favored warm-DM-like range quoted in the primary paper.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - src_2106_08339
+  redshift_range: null
+  scale_range: halo masses near 1e7-1e9 solar masses
+  environments:
+  - linear matter power
+  - Milky Way satellites
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - lyman_neutrino_dm_scattering
+  linked_routes:
+  - route_neutrino_potential_to_structure
+  caveats:
+  - The Lyman-alpha comparison is a bound on elastic DM-neutrino scattering, not a published likelihood
+    for this exact EFT.
+  source_reference_ids:
+  - src_2106_08339
+  notes: null
+- id: precision_decay_missing_energy
+  name: Invisible and exotic precision-decay signatures
+  channel: precision_laboratory
+  subchannel: invisible Z/Higgs/lepton decays
+  predicted_effect: The same neutrino-portal Yukawa interaction contributes to invisible Higgs and Z decays
+    and to flavor-dependent lepton decays, making precision widths a laboratory probe.
+  effect_direction: rate_change
+  key_quantities:
+  - name: neutrino portal Yukawa coupling
+    symbol: y
+    description: Post-electroweak-symmetry-breaking Yukawa coupling between neutrinos and dark-sector
+      states.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_2106_08339
+  redshift_range: late-time laboratory
+  scale_range: Z, Higgs and charged-lepton decay samples
+  environments:
+  - colliders
+  - flavor factories
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - neff_mass_floor_precision
+  linked_routes:
+  - route_portal_to_precision_decays
+  caveats:
+  - Electron and muon flavor choices are much more tightly constrained than tau flavor in the discussed
+    cosmology target space.
+  source_reference_ids:
+  - src_2106_08339
+  notes: null
+constraints:
+- id: bullet_cluster_self_interaction
+  name: Cluster-scale upper bound on self-interaction
+  constraint_type: astrophysical
+  observable_channel: clusters
+  applies: parameter_dependent
+  constrained_parameters:
+  - sigma_T/m_DM
+  - y
+  - m_DM
+  excluded_regions:
+  - sigma_T/m_DM above roughly 1 cm^2/g is outside the primary paper self-interaction band and tied to
+    Bullet Cluster limits.
+  allowed_regions:
+  - 0.03-1 cm^2/g is the target band highlighted for self-interacting-DM phenomenology.
+  benchmark_implications:
+  - Self-interaction targets overlap the collisional-damping band for MeV-scale masses and tau-flavor
+    portal couplings.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: partial
+  robustness: medium
+  assumptions: []
+  caveats:
+  - Cluster bounds depend on halo velocity and self-scattering modeling.
+  source_reference_ids:
+  - src_2106_08339
+  notes: Primary paper quotes the Bullet Cluster-motivated upper edge for the plotted band.
+- id: lyman_neutrino_dm_scattering
+  name: Lyman-alpha DM-neutrino elastic-scattering bound
+  constraint_type: cosmological
+  observable_channel: lyman_alpha
+  applies: parameter_dependent
+  constrained_parameters:
+  - sigma_el/m_DM
+  - y
+  - m_DM
+  excluded_regions:
+  - Elastic DM-neutrino scattering above about 1e-36 cm^2/MeV for E_nu around 100 eV is excluded by the
+    primary paper comparison.
+  allowed_regions:
+  - The plotted warm-DM/self-interaction overlap remains partly below this Lyman-alpha bound.
+  benchmark_implications:
+  - Higher-energy neutrino bounds from SN1987A and IceCube are reported not to cut into the plotted parameter
+    space.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions: []
+  caveats:
+  - The row records the paper-level comparison, not a fresh Lyman-alpha likelihood evaluation.
+  source_reference_ids:
+  - src_2106_08339
+  notes: null
+- id: neff_mass_floor_precision
+  name: Delta N_eff lower mass floor and CMB-S4 reach
+  constraint_type: cosmological
+  observable_channel: cmb
+  applies: 'yes'
+  constrained_parameters:
+  - m_DM
+  - Delta N_eff
+  excluded_regions:
+  - For the two mass ratios shown, masses below about 8.9-9.7 MeV exceed the conservative Delta N_eff
+    limit used by the paper.
+  allowed_regions:
+  - Delta N_eff < 0.5 gives lower mass limits near 9 MeV; CMB-S4 is quoted as probing up to 16.9 MeV for
+    nearly degenerate dark states.
+  benchmark_implications:
+  - Precision cosmology is complementary to invisible Z/Higgs/lepton width probes.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: CMB/BBN Delta N_eff comparisons quoted in primary paper
+  recasting_needed: partial
+  robustness: medium
+  assumptions: []
+  caveats:
+  - The row does not recompute neutrino decoupling or N_eff.
+  source_reference_ids:
+  - src_2106_08339
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: route_neutrino_potential_to_structure
+    description: Map neutrino-portal EFT parameters to halo self-scattering and collisional-damping observables.
+    source_model_features:
+    - dimension-five neutrino portal
+    - two-neutrino exchange potential
+    - asymmetric dark matter
+    input_parameters:
+    - m_DM
+    - m_partner
+    - y
+    - neutrino mass cutoff
+    derived_quantities:
+    - 1/r^5 potential
+    - sigma_T/m_DM
+    - M_cut
+    - sigma_el/m_DM
+    forward_model_chain:
+    - step_id: eft_matching
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - y
+      - m_DM
+      - m_partner
+      outputs:
+      - effective four-field operator
+      - two-neutrino potential
+      validity: Valid when the heavier partner can be integrated out and distances are shorter than inverse
+        neutrino mass.
+      notes: null
+    - step_id: scattering_solution
+      step_type: semi_analytic_model
+      tool_or_code: phase-shift/shooting calculation
+      inputs:
+      - potential
+      - halo velocity
+      outputs:
+      - transfer cross section
+      validity: Born approximation is not used for the main two-neutrino result.
+      notes: null
+    - step_id: structure_comparison
+      step_type: data_transform
+      tool_or_code: null
+      inputs:
+      - sigma_T/m_DM
+      - DM-neutrino elastic scattering
+      outputs:
+      - SIDM band
+      - Lyman-alpha comparison
+      - M_cut
+      validity: Paper-level comparison only.
+      notes: null
+    observable_ids:
+    - sidm_small_scale
+    - collisional_damping_cutoff
+    constraint_ids:
+    - bullet_cluster_self_interaction
+    - lyman_neutrino_dm_scattering
+    likelihoods:
+    - No public likelihood identified in assigned text.
+    required_code_resources:
+    - Custom numerical scattering calculation would be needed for a faithful recast.
+    validation_tests:
+    - Reproduce Fig. 1 self-interaction and damping bands before using in a scan.
+    route_status: planned
+    agent_notes: null
+    caveats:
+    - Symmetric dark matter flips the potential to attractive and changes indirect-detection behavior.
+  - id: route_portal_to_precision_decays
+    description: Use the same portal coupling to predict invisible or exotic precision-decay widths and
+      Delta N_eff.
+    source_model_features:
+    - neutrino-portal Yukawa coupling
+    - light MeV-scale dark states
+    input_parameters:
+    - y
+    - m_DM
+    - m_partner
+    - flavor choice
+    derived_quantities:
+    - Higgs invisible width
+    - Z invisible width
+    - charged-lepton exotic width
+    - Delta N_eff
+    forward_model_chain:
+    - step_id: decay_widths
+      step_type: analytic_formula
+      tool_or_code: FeynRules/MadGraph for charged lepton mode in primary paper
+      inputs:
+      - y
+      - masses
+      - flavor
+      outputs:
+      - partial widths
+      validity: Analytic formulae are supplied for Higgs and Z; charged lepton mode was simulated.
+      notes: null
+    - step_id: cosmology_width_comparison
+      step_type: validation
+      tool_or_code: null
+      inputs:
+      - masses
+      - degrees of freedom
+      outputs:
+      - Delta N_eff mass floor
+      validity: Primary-paper estimate; full neutrino-decoupling recalc not included.
+      notes: null
+    observable_ids:
+    - precision_decay_missing_energy
+    constraint_ids:
+    - neff_mass_floor_precision
+    likelihoods:
+    - No likelihood file identified.
+    required_code_resources:
+    - Electroweak precision widths
+    - CMB-S4 N_eff forecast
+    validation_tests:
+    - Check flavor-specific laboratory bounds before accepting a parameter point.
+    route_status: planned
+    agent_notes: null
+    caveats:
+    - Tau-flavor portal is the least constrained case emphasized by the paper.

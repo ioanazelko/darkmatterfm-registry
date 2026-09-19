@@ -1,0 +1,694 @@
+_source:
+  shard: arXiv_src_2204_048_wds.tar
+  paper_id: '2204_07078'
+  source_member: 2204_07078.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2204_07078_self_scattering_vector_resonance_freezeout_v1
+identity:
+  name: Self-scattering vector-resonance freeze-out dark matter
+  family: self_interacting_thermal_relic_dark_matter
+  aliases:
+  - generic vector resonance model with self-scattering
+  - s-channel vector mediator freeze-out model
+  short_description: A freeze-out dark matter scenario with velocity-dependent s-channel vector-resonance
+    annihilation, where explicit elastic DM self-scattering modifies the momentum distribution and relic
+    abundance.
+  historical_origin_or_motivation: Used as a benchmark to quantify when momentum-dependent Boltzmann evolution
+    with self-scatterings departs from number-density or temperature-moment treatments.
+  status: benchmark
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - thermal relic freeze-out
+  - generic vector mediator model
+  - momentum-dependent Boltzmann equation
+  lagrangian_available: partial
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper takes a vector resonance model from earlier work and separates the mediator couplings
+    because self-scatterings break their degeneracy in the annihilation calculation.
+particle_content:
+  dark_matter_candidate:
+    name: generic dark matter particle chi
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - generic vector mediator A
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - dark matter particle chi
+  unstable_parent_particles:
+  - vector mediator A when kinematically allowed
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The dark matter particle is assumed stable on cosmological timescales; the assigned
+    text does not specify the stabilizing symmetry.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - heat-bath fermions f
+  dark_sector_couplings:
+  - DM-vector mediator coupling alpha_chi
+  - DM elastic self-scattering through the vector mediator
+  mediator_types:
+  - s-channel vector resonance A
+  interaction_operators:
+  - A_mu coupling to dark matter and bath fermions as given in the interaction Lagrangian
+  - Breit-Wigner resonant annihilation
+  - elastic DM self-scattering amplitude from mediator exchange
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels:
+  - chi chi annihilation to heat-bath fermions f f through A
+  self_scattering_channels:
+  - chi chi elastic self-scattering through vector-mediator exchange
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the annihilating dark matter particle.
+    value: '100'
+    unit: GeV
+    role: benchmark
+    status: established
+    source_reference_ids:
+    - '2204_07078'
+    notes: Benchmark value quoted for the vector-resonance example.
+  - name: mediator mass
+    symbol: m_A
+    description: Mass of the vector resonance mediator.
+    range: near 2 m_chi for resonant annihilation
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids:
+    - '2204_07078'
+  - name: resonance offset
+    symbol: delta
+    description: Deviation from exact resonance, defined from (2m_chi/m_A)^2 - 1 in the text.
+    role: core
+    status: established
+    source_reference_ids:
+    - '2204_07078'
+  - name: mediator width ratio
+    symbol: gamma
+    description: Dimensionless total width Gamma_A/m_A.
+    value: 3e-5
+    role: benchmark
+    status: established
+    source_reference_ids:
+    - '2204_07078'
+  - name: bath fermion mass ratio
+    symbol: epsilon
+    description: Ratio m_f/m_chi for the annihilation products.
+    value: '0.5'
+    role: benchmark
+    status: established
+    source_reference_ids:
+    - '2204_07078'
+  - name: mediator coupling to bath fermions
+    symbol: alpha_f
+    description: Coupling controlling annihilation to thermal-plasma fermions.
+    value: 1e-3
+    role: benchmark
+    status: established
+    source_reference_ids:
+    - '2204_07078'
+  - name: mediator coupling to dark matter
+    symbol: alpha_chi
+    description: Coupling controlling annihilation and self-scattering strength.
+    value: '5.85e-2'
+    role: benchmark
+    status: established
+    source_reference_ids:
+    - '2204_07078'
+  nuisance: []
+  derived:
+  - name: yield
+    symbol: Y
+    description: Comoving number density n_chi/s evolved in the Boltzmann calculation.
+    role: derived
+    status: established
+    source_reference_ids:
+    - '2204_07078'
+  - name: temperature parameter
+    symbol: y
+    description: Temperature-like moment m_chi T_chi s^{-2/3} compared across nBE, cBE, and fBE approaches.
+    role: derived
+    status: established
+    source_reference_ids:
+    - '2204_07078'
+production:
+  mechanisms:
+  - thermal freeze-out with resonant annihilation
+  - elastic self-scattering reshaping the DM momentum distribution
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - annihilation through a vector resonance
+  - kinetic decoupling
+  - strength of DM self-scattering
+  - momentum-dependent Boltzmann evolution
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The benchmark couplings are chosen so that the number-density Boltzmann equation reproduces the
+    observed relic density before self-scattering and full-distribution effects are compared.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: thermal relic abundance
+    symbol: Omega h^2
+    description: Observed dark matter abundance used as a benchmark target.
+    value: 0.120 +/- 0.001
+    role: derived
+    status: assumed
+    source_reference_ids:
+    - '2204_07078'
+  calculation_type: thermal
+  key_dependencies:
+  - resonance offset
+  - mediator width
+  - alpha_f
+  - alpha_chi
+  - DM self-scattering collision term
+  - kinetic decoupling
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - possible departure from local kinetic equilibrium during freeze-out
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling:
+    name: kinetic decoupling
+    symbol: T_kd
+    description: Kinetic decoupling is tracked through the distribution function rather than fixed by
+      a single quoted value.
+    value: model-dependent
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2204_07078'
+  chemical_decoupling:
+    name: chemical freeze-out
+    symbol: T_fo
+    description: Chemical decoupling occurs when annihilation becomes inefficient.
+    value: model-dependent
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2204_07078'
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'yes'
+  f_of_p_or_q: The full momentum-dependent Boltzmann equation evolves f_chi(p) including annihilation,
+    elastic scattering, and self-scattering collision terms.
+  average_momentum_relative_to_thermal: can deviate from Maxwell-Boltzmann shape when kinetic equilibrium
+    is inefficient
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The central development is that explicit self-scattering interpolates between fBE without self-scattering
+    and coupled moment-equation behavior.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No thermal-WDM mapping is supplied in the assigned text.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: near_resonance_freezeout
+  applies_to: model
+  condition: Applies to vector-resonance freeze-out where the annihilation cross section is strongly velocity
+    dependent near an s-channel resonance.
+  status: assumed
+  valid_range: m_A near 2 m_chi
+  extrapolation_risk: medium
+  caveats:
+  - The paper notes a velocity-dependent width may be needed in some cases beyond the simple Breit-Wigner
+    form.
+  source_reference_ids:
+  - '2204_07078'
+- id: self_scattering_strength_scan
+  applies_to: calculation
+  condition: The model is used to quantify how large alpha_chi must be for self-scattering to change the
+    relic-density calculation.
+  status: established
+  valid_range: benchmark scan around alpha_chi up to its relic-compatible maximum
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2204_07078'
+assumptions:
+  global:
+  - id: stable_chi
+    description: The dark matter species is stable on cosmological timescales and contributes to the present-day
+      DM density.
+    scope: production
+    status: assumed
+    impact_if_violated: If chi decays, the freeze-out relic-density interpretation fails.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2204_07078'
+  - id: thermal_bath_fermions
+    description: Bath fermions remain part of the thermal plasma and mediate kinetic contact with the
+      SM sector.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Different bath dynamics would change elastic scattering and kinetic decoupling.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2204_07078'
+  - id: self_scattering_collision_term
+    description: Elastic DM self-scattering is included at the level of the full distribution-function
+      Boltzmann equation.
+    scope: computation
+    status: established
+    impact_if_violated: Neglecting it can misestimate the relic density when self-scattering is strong
+      enough.
+    can_be_relaxed: not_applicable
+    source_reference_ids:
+    - '2204_07078'
+  constraint_specific: []
+  computation_specific: []
+associated_code:
+  has_associated_code: partial
+  code_summary: The authors build on the DRAKE framework and add a self-scattering collision-term implementation;
+    the text says the numerical code is available on request and planned for public release.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 2204_07078_self_scattering_vector_resonance_freezeout_v1
+  model_name: Self-scattering vector-resonance freeze-out dark matter
+  model_family: self_interacting_thermal_relic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2204_07078'
+      title: Impact of dark matter self-scattering on its relic abundance
+      year: 2022
+      arxiv_id: '2204.07078'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text from the local SQLite database.
+      authors:
+      - Andrzej Hryczuk
+      - Maxim Laletin
+    - arxiv_id: '2204.07078'
+      authors:
+      - Hryczuk, Andrzej
+      - Laletin, Maxim
+      doi: 10.1103/PhysRevD.106.023007
+      notes: Primary full text resolved locally; ADS used only for metadata discovery.
+      reference_id: '2204_07078'
+      role: original_model
+      title: Impact of dark matter self-scattering on its relic abundance
+      url: https://arxiv.org/abs/2204.07078
+      year: 2022
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0010
+    extractor_name: GPT-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2204_07078'
+      section: Vector resonance model
+      page: null
+      quote_or_summary: The paper defines a generic vector mediator A with couplings to DM and bath fermions,
+        then computes annihilation and self-scattering terms.
+    - reference_id: '2204_07078'
+      section: Results
+      page: null
+      quote_or_summary: Benchmark evolution of yield and temperature is compared across nBE, cBE, fBE,
+        and fBE with self-scattering.
+    unresolved_items:
+    - The text does not clearly expose the spin assignment of the generic dark matter particle in the
+      OCR.
+    - No public self-scattering extension to DRAKE was identified in the assigned text.
+    - The paper does not provide a model-independent rule for when the full phase-space treatment is mandatory.
+  evidence:
+    particle_content:
+    - reference_id: '2204_07078'
+      note: The model contains a dark matter particle, heat-bath fermions, and a generic vector mediator
+        A.
+      confidence: medium
+      section: Vector resonance model
+      page: null
+    interactions:
+    - reference_id: '2204_07078'
+      note: The vector-mediator Lagrangian and Breit-Wigner resonant annihilation cross section are given,
+        with a mediator-exchange self-scattering amplitude.
+      confidence: high
+      section: Vector resonance model
+      page: null
+    production_mechanism:
+    - reference_id: '2204_07078'
+      note: The model is a thermal freeze-out scenario where annihilation through a resonance determines
+        the relic abundance.
+      confidence: high
+      section: Introduction and vector resonance model
+      page: null
+    cosmological_history:
+    - reference_id: '2204_07078'
+      note: The calculation follows thermal freeze-out and kinetic decoupling using nBE, cBE, and full
+        distribution-function Boltzmann approaches.
+      confidence: medium
+      section: Formalism
+      page: null
+    parameter_ranges:
+    - reference_id: '2204_07078'
+      note: The benchmark uses m_chi=100 GeV, width ratio 3e-5, m_f/m_chi=0.5, alpha_f=1e-3, and alpha_chi=5.85e-2.
+      confidence: high
+      section: Vector resonance model
+      page: null
+    validity_domain:
+    - reference_id: '2204_07078'
+      note: The paper emphasizes the model-dependent regime where self-scattering must be explicit rather
+        than approximated by moment equations.
+      confidence: medium
+      section: Results
+      page: null
+    constraints:
+    - confidence: high
+      note: The introduction quotes Omega h^2 = 0.120 +/- 0.001 as the observed relic target.
+      page: null
+      reference_id: '2204_07078'
+      section: Introduction
+    - confidence: high
+      note: The methodology section explains why number-density treatments can fail when the distribution
+        is not near equilibrium.
+      page: null
+      reference_id: '2204_07078'
+      section: Boltzmann formalism
+    observables:
+    - confidence: high
+      note: The abstract states that self-scatterings significantly affect annihilation through the momentum
+        distribution in resonant, sub-threshold, and decay-injection examples.
+      page: null
+      reference_id: '2204_07078'
+      section: Abstract
+    - confidence: high
+      note: The conclusion states that the late-injection example can show nBE/fBE offsets up to a few
+        orders of magnitude.
+      page: null
+      reference_id: '2204_07078'
+      section: Conclusions
+    routes:
+    - confidence: high
+      note: The paper describes using DRAKE for the full Boltzmann equation and adding a complete self-scattering
+        collision term.
+      page: null
+      reference_id: '2204_07078'
+      section: Boltzmann formalism
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Machine-extracted candidate from one assigned paper; not a curated registry entry.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - The vector resonance benchmark is inherited from earlier work and used here to test distribution-function
+    effects.
+  - The exact mediator width treatment may need refinement near sharp resonances.
+  validation_status: partially_validated
+  notes: The paper validates limiting behavior between fBE and cBE but does not present a global phenomenological
+    fit.
+agent_failure_modes:
+  warnings:
+  - id: moment_equation_can_fail
+    severity: high
+    category: approximate_constraint
+    warning: A number-density or temperature-moment treatment can misestimate the relic abundance when
+      velocity-dependent annihilation and nonthermal momentum shapes matter.
+    mitigation: Use fBE with explicit self-scattering when cBE and fBE predictions differ beyond target
+      accuracy.
+    source_reference_ids:
+    - '2204_07078'
+observables:
+- caveats:
+  - The enhanced annihilation is an early-universe effect, not a late indirect-detection signature in
+    the studied examples.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early universe
+  id: vector_relic_density_shift
+  key_quantities:
+  - description: Rate redistributing dark matter momenta without changing particle number.
+    name: self-scattering rate
+    role: derived
+    source_reference_ids:
+    - '2204_07078'
+    status: inferred
+    symbol: Gamma_self
+  - description: Velocity-dependent annihilation controlling freeze-out.
+    name: annihilation cross section
+    role: core
+    source_reference_ids:
+    - '2204_07078'
+    status: inferred
+    symbol: sigma_ann v
+  - description: Observed thermal relic target quoted by the paper.
+    name: relic density
+    role: experimental
+    source_reference_ids:
+    - '2204_07078'
+    status: established
+    symbol: Omega_DM h^2
+    value: 0.120 +/- 0.001
+  linked_constraints:
+  - observed_relic_density_target
+  - full_boltzmann_solver_requirement
+  linked_routes:
+  - vector_full_boltzmann_route
+  name: Vector-resonance freeze-out self-scattering relic-density shift
+  notes: null
+  observability: medium
+  predicted_effect: Near a velocity-dependent resonance, self-scattering changes the dark matter momentum
+    distribution and therefore the thermally averaged annihilation history. The primary paper reports
+    that nBE and fBE relic predictions can differ by up to a few orders of magnitude in the late-injection
+    example.
+  redshift_range: radiation era freeze-out
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - '2204_07078'
+  subchannel: momentum-dependent thermal relic abundance
+- caveats:
+  - The primary paper explicitly leaves structure-formation consequences for future work.
+  channel: large_scale_structure
+  effect_direction: shape_change
+  environments:
+  - large-scale structure
+  id: vector_distribution_shape_relevance
+  key_quantities:
+  - description: Momentum-dependent dark matter phase-space distribution.
+    name: distribution function
+    role: derived
+    source_reference_ids:
+    - '2204_07078'
+    status: inferred
+    symbol: f(p,T)
+  linked_constraints:
+  - full_boltzmann_solver_requirement
+  linked_routes:
+  - vector_full_boltzmann_route
+  name: Vector-resonance freeze-out self-scattering phase-space distribution
+  notes: null
+  observability: low
+  predicted_effect: The paper notes that the late-time shape of a light-DM relic distribution could affect
+    large-scale structure, but this effect is outside its scope.
+  redshift_range: post-freeze-out to structure formation
+  relevance: low
+  scale_range: linear and small scales
+  source_reference_ids:
+  - '2204_07078'
+  subchannel: nonthermal relic momentum distribution
+constraints:
+- allowed_regions:
+  - Thermal components matching Omega h^2 = 0.120 +/- 0.001 are viable.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - Self-scattering can move a benchmark across the relic-density target by altering the momentum distribution.
+  caveats: []
+  constrained_parameters:
+  - Omega_DM h^2
+  - annihilation rate
+  - self-scattering rate
+  constraint_type: cosmological
+  data_release: Observed value quoted in primary text
+  excluded_regions:
+  - Parameter choices yielding relic abundance above the observed target overproduce dark matter.
+  id: observed_relic_density_target
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Observed dark matter relic-density target
+  notes: null
+  observable_channel: relic_density
+  recasting_needed: 'yes'
+  robustness: high
+  source_reference_ids:
+  - '2204_07078'
+- allowed_regions:
+  - A full fBE treatment including self-scattering is the supported route for the studied resonance, threshold,
+    and decay-injection scenarios.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: Annihilation, elastic-scattering, self-scattering, and optional decay collision terms
+      are specified for the benchmark model.
+    id: collision_terms_known
+    impact_if_violated: Without all collision terms the fBE route cannot be reproduced.
+    notes: null
+    scope: computation
+    source_reference_ids:
+    - '2204_07078'
+    status: assumed
+  benchmark_implications:
+  - Using an nBE or cBE approximation can misestimate the relic abundance, up to orders of magnitude in
+    the late-injection example.
+  caveats:
+  - The public DRAKE code did not include the self-scattering term at the time described by the paper.
+  - No simple model-independent criterion is provided for when self-scattering must be included.
+  constrained_parameters:
+  - f(p,T)
+  - elastic scattering rate
+  - self-scattering amplitude
+  - decay or threshold parameters
+  constraint_type: numerical
+  data_release: null
+  excluded_regions:
+  - Number-density Boltzmann treatments can be unreliable when kinetic equilibrium is disrupted or annihilation
+    is strongly velocity dependent.
+  id: full_boltzmann_solver_requirement
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Full momentum-dependent Boltzmann treatment requirement
+  notes: null
+  observable_channel: relic_density
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '2204_07078'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The calculation route exists in the paper, but the self-scattering implementation was
+      not identified as public reusable code.
+    caveats: []
+    constraint_ids:
+    - observed_relic_density_target
+    - full_boltzmann_solver_requirement
+    derived_quantities:
+    - f(p,T)
+    - Y(T)
+    - Omega_DM h^2
+    description: Compute relic density with the full momentum-dependent Boltzmann equation including self-scattering
+      for the vector-resonance freeze-out self-scattering benchmark.
+    forward_model_chain:
+    - inputs:
+      - annihilation matrix element
+      - elastic scattering
+      - self-scattering amplitude
+      notes: null
+      outputs:
+      - C_ann
+      - C_el
+      - C_self
+      step_id: construct_collision_terms
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Must match the benchmark model and velocity dependence.
+    - inputs:
+      - collision terms
+      - initial thermal distribution
+      notes: null
+      outputs:
+      - f(p,T)
+      - Y(T)
+      step_id: solve_full_boltzmann_equation
+      step_type: boltzmann_solver
+      tool_or_code: DRAKE-like fBE implementation with added self-scattering
+      validity: The paper uses DRAKE except for a self-scattering term not in the public version.
+    - inputs:
+      - Y(T_final)
+      notes: null
+      outputs:
+      - Omega_DM h^2
+      - offset from nBE/cBE
+      step_id: compare_relic_density
+      step_type: validation
+      tool_or_code: null
+      validity: Benchmark against the number-density and coupled-BE approximations shown in the paper.
+    id: vector_full_boltzmann_route
+    input_parameters:
+    - annihilation parameters
+    - self-scattering amplitude
+    - elastic-scattering rate
+    - initial conditions
+    likelihoods: []
+    observable_ids:
+    - vector_relic_density_shift
+    - vector_distribution_shape_relevance
+    required_code_resources:
+    - DRAKE or equivalent fBE solver plus custom self-scattering collision term
+    route_status: partially_implemented
+    source_model_features:
+    - elastic self-scattering
+    - velocity-dependent annihilation
+    - nonthermal phase-space evolution
+    validation_tests:
+    - Recover the paper comparison between nBE, cBE, and fBE treatments.

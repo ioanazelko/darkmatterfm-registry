@@ -1,0 +1,353 @@
+_source:
+  shard: arXiv_src_1112_008_wds.tar
+  paper_id: '1112_6052'
+  source_member: 1112_6052.json
+schema_version: model_only_v0
+model_id: 1112_6052_scalar_wimp_effective_operator_dm_v1
+identity:
+  name: Scalar WIMP effective-operator dark matter
+  family: effective_operator_wimp_dark_matter
+  aliases: []
+  short_description: An effective-field-theory WIMP model in which complex scalar WIMPs phi and phi* is
+    the only electroweak-scale new particle and interacts with Standard Model fermions through one dominant
+    four-particle operator up to dimension 6.
+  historical_origin_or_motivation: Constructed for model-independent comparison of relic-density, direct-detection,
+    and indirect-detection implications across WIMP spin assignments.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - model-independent WIMP EFT
+  - heavy-mediator effective theory
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff:
+    name: effective-theory cutoff
+    symbol: M_*
+    description: Implicit heavy scale encoded in the effective couplings.
+    role: core
+    status: unknown
+  embedded_in_larger_framework: unknown
+  notes: The scalar EFT includes dimension-5 S/SP operators and dimension-6 V/VA operators; for real scalar
+    WIMPs the vector-current operators vanish.
+particle_content:
+  dark_matter_candidate:
+    name: phi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - heavy particles integrated out into contact operators
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - phi
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: WIMP stability is assumed; the paper requires the candidate to be stable, electrically
+    neutral, and colorless but does not specify a stabilizing symmetry for the EFT.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - SM fermions
+  dark_sector_couplings:
+  - F_S,f
+  - F_V,f
+  - F_SP,f
+  - F_VA,f
+  mediator_types:
+  - contact EFT/heavy integrated-out mediator
+  interaction_operators:
+  - 'scalar S: phi* phi fbar f'
+  - 'vector V: phi* i<->partial_mu phi fbar gamma^mu f'
+  - 'scalar-pseudoscalar SP: phi* phi fbar i gamma5 f'
+  - 'vector-axialvector VA: phi* i<->partial_mu phi fbar gamma^mu gamma5 f'
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: mild
+    velocity_dependence: parameter_dependent
+    spin_dependence: both
+  annihilation_channels:
+  - WIMP anti-WIMP -> SM fermion anti-fermion
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: operator dependent
+  flavor_structure: The sum over f runs over SM fermions; coupling choices can be universal or mass proportional
+    in the paper.
+  tree_or_loop_level: not_applicable
+operators:
+  eft_operators:
+  - 'scalar S: phi* phi fbar f'
+  - 'vector V: phi* i<->partial_mu phi fbar gamma^mu f'
+  - 'scalar-pseudoscalar SP: phi* phi fbar i gamma5 f'
+  - 'vector-axialvector VA: phi* i<->partial_mu phi fbar gamma^mu gamma5 f'
+  contact_or_light_mediator: contact
+  coupling_types:
+  - F_S,f
+  - F_V,f
+  - F_SP,f
+  - F_VA,f
+parameters:
+  core:
+  - name: WIMP mass
+    symbol: M
+    description: Mass of the dark matter candidate.
+    range: few GeV to TeV WIMP range discussed generally
+    unit: GeV
+    role: core
+    status: inferred
+  - name: effective couplings
+    symbol: F_S,f, F_V,f, F_SP,f, F_VA,f
+    description: Operator-dependent real coupling constants to SM fermions.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through WIMP anti-WIMP annihilation to SM fermion pairs
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - annihilation cross section
+  - dominant EFT operator
+  - WIMP mass
+  - SM fermion couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper calculates annihilation cross sections and uses thermal relic-density logic under standard
+    assumptions.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: observed relic density
+    symbol: Omega_DM
+    description: Relic-density constraints are compared against observed dark matter density.
+    role: core
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - dominant operator
+  - WIMP mass
+  - couplings to SM fermions
+  - standard cosmology
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: freeze-out temperature
+    symbol: x_f
+    description: Thermal averaging uses x = M/T in the freeze-out calculation.
+    role: core
+    status: inferred
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: Standard nonrelativistic WIMP thermal averaging is used.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: single_operator_dominance
+  applies_to: EFT
+  condition: One four-particle operator dominates the WIMP-SM interaction.
+  status: assumed
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '1112_6052'
+- id: only_wimp_light
+  applies_to: model
+  condition: The WIMP is the only new electroweak-scale particle and heavier states are integrated out.
+  status: assumed
+  extrapolation_risk: high
+  source_reference_ids:
+  - '1112_6052'
+- id: no_resonance_coannihilation
+  applies_to: production
+  condition: Relic density is assumed not to be affected by resonances or coannihilations.
+  status: assumed
+  extrapolation_risk: high
+  source_reference_ids:
+  - '1112_6052'
+assumptions:
+  global:
+  - id: only_new_light_particle
+    description: The WIMP is the only new particle species at the electroweak scale; all other new species
+      are much heavier.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1112_6052'
+  - id: one_operator
+    description: The interaction is dominated by one operator from the listed EFT set.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1112_6052'
+  - id: fermion_pair_annihilation
+    description: WIMP anti-WIMP annihilation to SM fermion pairs dominates over gauge or Higgs final states.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1112_6052'
+  - id: standard_cosmology
+    description: Thermal relic-density comparisons assume standard cosmology unless exotic entropy generation
+      is invoked.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1112_6052'
+associated_code:
+  has_associated_code: 'no'
+  code_summary: No associated model code is described in the assigned text.
+provenance:
+  model_id: 1112_6052_scalar_wimp_effective_operator_dm_v1
+  model_name: Scalar WIMP effective-operator dark matter
+  model_family: effective_operator_wimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1112_6052'
+      title: 'Constraining the interaction strength between dark matter and visible matter: II. scalar,
+        vector and spin-3/2 dark matter'
+      authors:
+      - Zhao-Huan Yu
+      - Jia-Ming Zheng
+      - Xiao-Jun Bi
+      - Zhibing Li
+      - Dao-Xin Yao
+      - Hong-Hao Zhang
+      year: 2011
+      arxiv_id: '1112.6052'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the sole source used for this candidate.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_gpt5_dark_matter_worker_batch_0005
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1112_6052'
+      section: Introduction
+      quote_or_summary: The paper extends a model-independent EFT analysis to scalar, vector, and spin-3/2
+        WIMPs.
+    - reference_id: '1112_6052'
+      section: EFT setup
+      quote_or_summary: The WIMP is the only light new particle, one four-particle operator dominates,
+        and annihilation to SM fermion pairs sets relic-density logic.
+    unresolved_items:
+    - The EFT does not specify a UV completion or exact stabilizing symmetry.
+  evidence:
+    particle_content:
+    - reference_id: '1112_6052'
+      note: The paper explicitly treats complex scalar WIMPs phi and phi* as a WIMP dark matter candidate.
+      confidence: high
+      section: EFT setup
+    symmetries:
+    - reference_id: '1112_6052'
+      note: The WIMP is required to be stable, neutral, and colorless, but no stabilizing symmetry is
+        specified.
+      confidence: medium
+      section: Introduction
+    interactions:
+    - reference_id: '1112_6052'
+      note: 'The listed EFT operators for this spin class are: scalar S: phi* phi fbar f, vector V: phi*
+        i<->partial_mu phi fbar gamma^mu f, scalar-pseudoscalar SP: phi* phi fbar i gamma5 f, vector-axialvector
+        VA: phi* i<->partial_mu phi fbar gamma^mu gamma5 f.'
+      confidence: high
+      section: EFT setup
+    production_mechanism:
+    - reference_id: '1112_6052'
+      note: The paper computes WIMP anti-WIMP annihilation to SM fermion pairs and thermal averages for
+        relic density.
+      confidence: high
+      section: Relic-density subsection
+    cosmological_history:
+    - reference_id: '1112_6052'
+      note: The relic-density comparison uses standard thermal WIMP assumptions with no resonances or
+        coannihilations.
+      confidence: high
+      section: EFT setup
+    parameter_ranges:
+    - reference_id: '1112_6052'
+      note: Core parameters are the WIMP mass and operator-dependent effective couplings to SM fermions.
+      confidence: high
+      section: EFT setup
+    validity_domain:
+    - reference_id: '1112_6052'
+      note: The EFT assumes heavier new species are integrated out and one operator dominates.
+      confidence: high
+      section: EFT setup
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - This is an EFT model-card candidate, not a UV-complete model.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  validation_status: partially_validated
+  dominant_uncertainties:
+  - EFT cutoff not explicit
+  - one-operator dominance
+  - UV completion absent
+  notes: The paper provides explicit operators and relic-density calculations under stated EFT assumptions.
+agent_failure_modes:
+  warnings:
+  - id: eft_cutoff_unspecified
+    severity: medium
+    category: extrapolation
+    warning: Do not use the contact EFT above its implicit cutoff or in regimes requiring a light mediator.
+    mitigation: Check EFT validity before applying high-energy or resonance reasoning.
+    source_reference_ids:
+    - '1112_6052'
+  - id: no_uv_stabilizer
+    severity: low
+    category: assumption_mismatch
+    warning: The paper assumes WIMP stability but does not specify the symmetry that enforces it.
+    mitigation: Keep stabilizing mechanism as assumed/unknown unless another source supplies it.
+    source_reference_ids:
+    - '1112_6052'

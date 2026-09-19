@@ -1,0 +1,302 @@
+_source:
+  shard: arXiv_src_2006_045_wds.tar
+  paper_id: '2006_12461'
+  source_member: 2006_12461.json
+schema_version: model_only_v0
+model_id: 2006_12461_luminous_inelastic_dm_v1
+identity:
+  name: Luminous Dark Matter with keV inelastic splitting
+  family: inelastic_luminous_dark_matter
+  aliases:
+  - LDM for XENON1T
+  - two-state inelastic luminous dark matter
+  short_description: A low-mass dark matter particle chi scatters inelastically into a heavier state chi
+    prime with a 2-3 keV splitting; chi prime decays back to chi plus photons, producing a monoenergetic
+    electron-recoil line.
+  historical_origin_or_motivation: The paper proposes this Luminous Dark Matter setup to explain the XENON1T
+    low-energy electron-recoil excess.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - inelastic dark matter
+  - dark photon or generic mediator models
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives a two-state inelastic setup and notes that off-diagonal vector couplings arise
+    naturally for dark matter charged under broken continuous symmetries.
+particle_content:
+  dark_matter_candidate:
+    name: chi ground-state dark matter
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - chi prime excited dark state
+  mediators:
+  - generic mediator phi
+  - dark photon example
+  excited_or_degenerate_states:
+  - chi prime with mass splitting delta = m_chi_prime - m_chi
+  long_lived_particles:
+  - chi prime may have prompt or macroscopic decay length depending on parameters
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Ground-state chi is treated as the cosmological cold dark matter; the stabilizing
+    symmetry is model-dependent and not specified.
+  symmetries:
+  - name: spontaneously broken continuous dark symmetry in dark-photon examples
+    type: gauge
+    exact_or_approximate: broken
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - other
+  standard_model_targets:
+  - nuclei in detector material
+  - photons from chi prime decay
+  dark_sector_couplings:
+  - off-diagonal chi-chi-prime mediator coupling
+  mediator_types:
+  - dark photon or generic mediator phi
+  interaction_operators:
+  - chi A -> chi_prime A
+  - chi_prime -> chi gamma or multiple photons
+  scattering:
+    elastic: 'no'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: strong
+    spin_dependence: spin_independent
+  decay_channels:
+  - chi_prime -> chi gamma
+  - chi_prime -> chi plus multiple photons
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the ground-state Luminous Dark Matter particle.
+    range: viable examples from near 1 GeV kinematic cutoff up to about 15-17 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: inelastic mass splitting
+    symbol: delta
+    description: Mass difference between chi prime and chi, setting the photon line energy.
+    range: 2-3 keV; best-fit line around 2.75 keV in the paper analysis
+    unit: keV
+    role: core
+    status: inferred
+  - name: spin-independent nucleon cross section
+    symbol: sigma_SI
+    description: Cross section controlling inelastic upscattering on nuclei.
+    range: chosen to yield about 69.8 events per tonne-year for the XENON1T line fit, subject to XENON
+      bounds
+    role: core
+    status: inferred
+  - name: excited-state lifetime or decay length
+    symbol: tau_chi_prime
+    description: Lifetime controlling whether chi prime decays inside the detector or after scattering
+      in surrounding rock.
+    range: prompt to overburden-scale decay lengths are discussed qualitatively
+    role: core
+    status: unknown
+production:
+  mechanisms:
+  - cosmological cold dark matter population assumed; detector signal arises from inelastic upscattering
+    followed by excited-state decay
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - not specified in the paper text extracted for this model card
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: unknown
+  nonthermal_momentum_distribution: unknown
+  notes: The paper focuses on a direct-detection explanation and assumes cosmological cold dark matter
+    rather than deriving a relic-production mechanism.
+relic_density:
+  full_or_subcomponent: unknown
+  calculation_type: unknown
+  key_dependencies:
+  - local dark matter density assumed as 0.3 GeV/cm^3 for event-rate estimates
+  - relic production not specified
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: 'no'
+  notes: For rate estimates the paper uses a Maxwellian Galactic velocity distribution, not a cosmological
+    production distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: kinematic_threshold
+  applies_to: parameter
+  condition: Inelastic scattering requires m_chi v^2 to be large enough to access the keV splitting.
+  status: inferred
+  extrapolation_risk: medium
+- id: xenon_rate_window
+  applies_to: parameter
+  condition: The preferred splitting is around 2-3 keV and the paper finds viable masses from the near-GeV
+    cutoff up to roughly 15-17 GeV under XENON constraints.
+  status: inferred
+  extrapolation_risk: medium
+- id: lifetime_geometry
+  applies_to: model
+  condition: The excited state must decay in or near the detector, with decay length affecting prompt
+    signals and diurnal modulation.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: cosmological_chi_population
+    description: The ground state chi constitutes a cold dark matter population in the halo.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The detector-rate interpretation would not apply without a halo population.
+    can_be_relaxed: unknown
+  - id: purely_inelastic_scattering
+    description: The dominant detector interaction is inelastic chi A -> chi prime A.
+    scope: theory
+    status: assumed
+    impact_if_violated: Elastic recoils or absorption-like signals would change the interpretation.
+    can_be_relaxed: unknown
+  - id: line_from_excited_state_decay
+    description: The observed electron-recoil feature is modeled as photons from chi prime decay smeared
+      by detector resolution.
+    scope: other
+    status: assumed
+    impact_if_violated: A background line or different BSM source would remove the model motivation.
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No dedicated public code for the Luminous Dark Matter model is identified in the extracted
+    text.
+provenance:
+  model_id: 2006_12461_luminous_inelastic_dm_v1
+  model_name: Luminous Dark Matter with keV inelastic splitting
+  model_family: inelastic_luminous_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2006_12461'
+      title: Explaining the XENON1T excess with Luminous Dark Matter
+      authors:
+      - Nicole F. Bell
+      - James B. Dent
+      - Bhaskar Dutta
+      - Sumit Ghosh
+      - Jason Kumar
+      - Jayden L. Newstead
+      year: 2020
+      arxiv_id: '2006.12461'
+      doi: null
+      url: null
+      role: original_model
+      notes: Primary paper for the Luminous Dark Matter interpretation of the XENON1T electron-recoil
+        excess.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0001
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2006_12461'
+      section: Abstract and LDM setup
+      page: null
+      quote_or_summary: Introduces low-mass Luminous Dark Matter with 2-3 keV splitting.
+    - reference_id: '2006_12461'
+      section: Results
+      page: null
+      quote_or_summary: Discusses the line fit, mass window, and inelastic-scattering constraints.
+    unresolved_items:
+    - Relic-production mechanism for chi is not specified in the extracted text.
+    - The spin and full mediator Lagrangian are model-dependent.
+  evidence:
+    particle_content:
+    - reference_id: '2006_12461'
+      note: The setup has a ground state chi and heavier chi prime separated by delta = m_chi_prime -
+        m_chi.
+      confidence: medium
+    symmetries:
+    - reference_id: '2006_12461'
+      note: The paper notes that broken continuous dark symmetries can generically yield off-diagonal
+        vector couplings and inelastic scattering.
+      confidence: medium
+    interactions:
+    - reference_id: '2006_12461'
+      note: Dark matter scatters inelastically on nuclei to chi prime, which decays to chi and photons.
+      confidence: medium
+    production_mechanism:
+    - reference_id: '2006_12461'
+      note: The paper assumes a cosmological cold dark matter chi population but does not derive its relic
+        production.
+      confidence: low
+    cosmological_history:
+    - reference_id: '2006_12461'
+      note: Event rates use a local dark matter density and Maxwellian halo velocity distribution, not
+        an early-Universe abundance calculation.
+      confidence: low
+    parameter_ranges:
+    - reference_id: '2006_12461'
+      note: The XENON1T fit favors a 2-3 keV line; viable masses are discussed from about 1 GeV to about
+        15-17 GeV.
+      confidence: medium
+    validity_domain:
+    - reference_id: '2006_12461'
+      note: The model requires the mass splitting to be kinematically accessible and the excited-state
+        decay geometry to be compatible with the detector.
+      confidence: medium
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - This row records the paper-introduced direct-detection model, with relic production left unknown.
+robustness:
+  overall: medium
+  dominant_uncertainties:
+  - possible tritium or other line backgrounds
+  - unspecified relic production
+  - detector geometry and multi-scatter veto efficiency
+  - model-dependent excited-state lifetime
+  validation_status: expert_judgment_only
+  notes: The particle setup is clear, but cosmological completion is not supplied in the extracted text.
+agent_failure_modes:
+  warnings:
+  - id: relic_unknown
+    severity: medium
+    category: missing_likelihood
+    warning: Do not infer a thermal relic density or production mechanism for LDM from this paper; it
+      assumes a halo population.
+    mitigation: Keep relic_density fields unknown unless a separate source supplies production.
+  - id: background_degeneracy
+    severity: medium
+    category: degeneracy
+    warning: The XENON1T motivation is degenerate with possible backgrounds or other BSM line-like signals.
+    mitigation: Do not treat the excess fit as evidence for model validity.

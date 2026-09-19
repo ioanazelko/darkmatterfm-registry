@@ -1,0 +1,756 @@
+_source:
+  shard: arXiv_src_1602_011_wds.tar
+  paper_id: '1602_05427'
+  source_member: 1602_05427.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1602_05427_composite_accidental_qcd_axion_v1
+identity:
+  name: Composite accidental QCD axion
+  family: axion_like_dark_matter
+  aliases:
+  - composite accidental axion
+  - accidental composite axion
+  short_description: A QCD axion arising as a composite Goldstone boson of confining chiral gauge dynamics,
+    with the Peccei-Quinn symmetry protected as an accidental symmetry and cosmology tied to pre-inflationary
+    PQ breaking and axion initial displacement.
+  historical_origin_or_motivation: Motivated by the strong-CP problem and the need for a high-quality
+    Peccei-Quinn symmetry without imposing an exact global symmetry by hand.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Peccei-Quinn axion
+  - confining SU(N_c) gauge dynamics
+  - chiral moose/deconstructed gauge theory
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives confining gauge-theory constructions and a low-energy axion effective Lagrangian;
+    several UV embeddings protect PQ-breaking operators by chirality or moose locality.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion a
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: composite
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - new SU(N_c)-charged fermions carrying Standard Model quantum numbers
+  - additional axion-like singlets in some constructions
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - accidentally stable composite baryon states can occur in SU(N_c) versions
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The axion is protected by an accidental Peccei-Quinn shift symmetry that is spontaneously
+    broken by the confining dynamics and explicitly broken by QCD anomalies; dangerous higher-dimensional
+    PQ breaking is suppressed by chiral gauge structure.
+  symmetries:
+  - name: accidental U(1)_PQ
+    type: global
+    exact_or_approximate: approximate
+    breaking: Spontaneously broken by confinement; explicitly broken by the QCD anomaly and possible high-dimensional
+      operators.
+    breaking_scale:
+      name: PQ/confinement scale
+      symbol: f_PQ
+      description: Axion decay constant associated with the confining scale.
+      range: around 1e12 GeV in quality estimates; can be larger in pre-inflationary scenarios
+      unit: GeV
+      role: core
+      status: speculative
+  - name: SU(N_c) confining gauge symmetry
+    type: gauge
+    exact_or_approximate: exact
+    breaking: Confines at the axion-compositeness scale.
+    breaking_scale:
+      name: confinement scale
+      symbol: f
+      description: Scale of the strong SU(N_c) dynamics.
+      range: related to f_PQ
+      unit: GeV
+      role: core
+      status: inferred
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  standard_model_targets:
+  - gluons
+  - photons
+  - nucleons
+  - electrons through electroweak loops
+  dark_sector_couplings:
+  - QCD anomaly coupling a G G_dual
+  - electromagnetic anomaly coupling a F F_dual
+  - derivative axion couplings to matter
+  mediator_types: []
+  interaction_operators:
+  - (a/f_PQ) G G_dual
+  - (a/f_PQ) F F_dual
+  - derivative couplings to nucleons
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: Peccei-Quinn dynamics relaxes the QCD theta angle through the anomalous axion coupling.
+  flavor_structure: Determined by the Standard Model representations chosen for the new confining fermions.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: PQ decay constant
+    symbol: f_PQ
+    description: Axion decay constant.
+    range: ~1e12 GeV in the PQ-quality estimate; larger values discussed when PQ breaking precedes inflation
+    unit: GeV
+    role: core
+    status: inferred
+  - name: confining color number
+    symbol: N_c
+    description: Number of colors in the new confining gauge theory.
+    range: model-dependent; examples include N_c constrained by asymptotic freedom and PQ-quality requirements
+    role: core
+    status: speculative
+  - name: moose length
+    symbol: n
+    description: Number of moose sites controlling the dimension 3n+3 of a Wilson-line PQ-breaking operator.
+    range: n > 3 for f_PQ = 1e12 GeV
+    role: core
+    status: inferred
+  - name: electromagnetic-to-color anomaly ratio
+    symbol: E/N
+    description: Group-theory ratio fixing the axion-photon coupling.
+    range: model-dependent
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: ALP relic fraction
+    symbol: Omega_ALP/Omega_DM
+    description: Relic abundance for additional axion-like particles from explicit breaking.
+    value: 1.6 * (m_ALP/eV) * (f_PQ/1e11 GeV)^2 * theta^2
+    role: derived
+    status: inferred
+    notes: The paper states this is subdominant to the QCD axion density over its parameter range.
+production:
+  mechanisms:
+  - nonthermal initial-displacement production of the axion field
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - initial axion displacement angle
+  - f_PQ
+  - inflationary history
+  - reheating temperature below f_PQ
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper assumes PQ breaking before or during inflation, with reheating much below f_PQ, so
+    the visible patch has one initial displacement selected by the dark-matter abundance.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - initial axion displacement
+  - PQ scale f_PQ
+  - isocurvature bound on inflation scale
+  - absence or dilution of topological defects and stable baryons
+  requires_entropy_dilution: unknown
+  overclosure_risk: 'yes'
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - PQ symmetry broken before or during inflation
+  - reheating temperature much smaller than f_PQ
+  - topological defects must be avoided or removed
+  - stable composite baryons can overclose if thermalized
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - confining/PQ-breaking transition
+  topological_defects:
+  - global strings
+  - domain walls
+  isocurvature_perturbations: 'yes'
+  bbn_relevance: unknown
+  cmb_relevance: high
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  f_of_p_or_q: not_applicable for coherent axion field production
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: No explicit phase-space distribution is given; production is described through coherent initial
+    displacement.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: pq_quality_requirement
+  applies_to: model
+  condition: PQ-breaking operators must be forbidden or suppressed to at least roughly dimension 11 for
+    f_PQ around 1e12 GeV.
+  valid_range: operator dimension >= 11 in the paper's quality estimate
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - Depends on the UV operator spectrum and Planck-suppressed symmetry violation.
+  source_reference_ids:
+  - '1602_05427'
+  notes: null
+- id: preinflationary_pq_history
+  applies_to: cosmological_history
+  condition: PQ symmetry is broken during or before inflation and reheating is much below f_PQ to avoid
+    topological defects.
+  valid_range: T_reheat << f_PQ
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - The paper notes CMB isocurvature constraints on the inflation scale.
+  source_reference_ids:
+  - '1602_05427'
+  notes: null
+assumptions:
+  global:
+  - id: accidental_pq_quality
+    description: The chiral gauge/moose construction suppresses dangerous explicit PQ breaking enough
+      for the axion solution.
+    scope: theory
+    status: speculative
+    impact_if_violated: The axion no longer solves the strong-CP problem and the dark-matter interpretation
+      becomes invalid.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1602_05427'
+    notes: null
+  - id: defect_avoidance_history
+    description: Inflationary history removes domain walls, global strings, and stable composite relics
+      from the observable patch.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Stable defects or composite baryons can overclose the universe or rule out the
+      scenario.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1602_05427'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1602_05427_composite_accidental_qcd_axion_v1
+  model_name: Composite accidental QCD axion
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1602_05427'
+      title: Composite Accidental Axions
+      authors:
+      - Michele Redi
+      - Ryosuke Sato
+      year: 2016
+      arxiv_id: '1602.05427'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text.
+    - arxiv_id: '1602.05427'
+      authors:
+      - Redi, Michele
+      - Sato, Ryosuke
+      doi: 10.1007/JHEP05(2016)104
+      notes: Primary paper text was resolved locally and used for structured enrichment.
+      reference_id: '1602.05427'
+      role: original_model
+      title: Composite accidental axions
+      url: https://arxiv.org/abs/1602.05427
+      year: 2016
+    constraint_papers:
+    - arxiv_id: '2312.07650'
+      authors:
+      - Lu, Qianshu
+      - Reece, Matthew
+      - Sun, Zhiquan
+      doi: 10.1007/JHEP07(2024)227
+      notes: Related local text read for bounded discovery context.
+      reference_id: '2312.07650'
+      role: constraint
+      title: The quality/cosmology tension for a post-inflation QCD axion
+      url: https://arxiv.org/abs/2312.07650
+      year: 2024
+    - arxiv_id: '2112.08083'
+      authors:
+      - Lee, Seung J.
+      - Nakai, Yuichiro
+      - Suzuki, Motoo
+      doi: 10.1007/JHEP03(2022)038
+      notes: Related local text read for bounded discovery context.
+      reference_id: '2112.08083'
+      role: constraint
+      title: High quality axion via a doubly composite dynamics
+      url: https://arxiv.org/abs/2112.08083
+      year: 2022
+    - arxiv_id: '2108.13245'
+      authors:
+      - Hamaguchi, Koichi
+      - Kanazawa, Yoshiki
+      - Nagata, Natsumi
+      doi: 10.1103/PhysRevD.105.076008
+      notes: Related local text read for bounded discovery context.
+      reference_id: '2108.13245'
+      role: constraint
+      title: Axion quality problem alleviated by nonminimal coupling to gravity
+      url: https://arxiv.org/abs/2108.13245
+      year: 2022
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: gpt-5.5_dark_matter_model_worker_batch-0006
+    extractor_name: Codex GPT-5.5 dark-matter batch worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1602_05427'
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: Confining gauge theories generate axion candidates with accidental PQ symmetry.
+    - reference_id: '1602_05427'
+      section: Composite axion and accidental PQ sections
+      page: null
+      quote_or_summary: The QCD axion is a singlet Goldstone boson with anomaly couplings fixed by group
+        theory.
+    - reference_id: '1602_05427'
+      section: Phenomenology
+      page: null
+      quote_or_summary: Pre-inflationary PQ breaking and initial displacement are tied to the dark-matter
+        abundance.
+    unresolved_items:
+    - No numerical relic-density scan for the QCD axion is provided beyond the qualitative initial-displacement
+      discussion.
+    - A quantitative haloscope/stellar bound requires mapping each UV representation to a standard axion
+      coupling table.
+    - Post-inflationary composite-axion cosmology is left unresolved by the primary paper.
+  evidence:
+    particle_content:
+    - reference_id: '1602_05427'
+      note: The paper constructs composite QCD axion candidates from new confining fermions and identifies
+        additional ALP singlets in many models.
+      confidence: medium
+      section: Abstract/composite axion sections
+    symmetries:
+    - reference_id: '1602_05427'
+      note: PQ symmetry is accidental in chiral gauge or moose constructions, with higher-dimensional
+        breaking operators suppressed.
+      confidence: medium
+      section: Accidental PQ sections
+    interactions:
+    - reference_id: '1602_05427'
+      note: The effective axion Lagrangian includes gluon and photon anomaly couplings and model-independent
+        derivative couplings to matter.
+      confidence: medium
+      section: Composite axion/phenomenology
+    production_mechanism:
+    - reference_id: '1602_05427'
+      note: The cosmology assumes PQ breaking before or during inflation, reheating below f_PQ, and an
+        initial displacement fixed by the DM abundance.
+      confidence: medium
+      section: Topological defects and inflation
+    cosmological_history:
+    - reference_id: '1602_05427'
+      note: The paper emphasizes domain walls, global strings, stable baryons, and isocurvature as key
+        cosmological issues.
+      confidence: medium
+      section: Topological defects and inflation
+    parameter_ranges:
+    - reference_id: '1602_05427'
+      note: The PQ-quality discussion uses f_PQ around 1e12 GeV and operator-dimension bounds, while moose
+        length controls the breaking-operator dimension.
+      confidence: medium
+      section: Introduction/accidental symmetries
+    validity_domain:
+    - reference_id: '1602_05427'
+      note: The scenario most likely requires inflation below or before f_PQ-breaking conditions to avoid
+        severe topological-defect constraints.
+      confidence: medium
+      section: Conclusion
+    constraints:
+    - confidence: high
+      note: Primary text quotes PQ-quality, Planck isocurvature, domain-wall, and stable-baryon constraints.
+      page: null
+      reference_id: '1602.05427'
+      section: phenomenology and inflation discussion
+    observables:
+    - confidence: high
+      note: Primary text states the E/N photon coupling, CMB isocurvature bound, extra ALP mass windows,
+        and defect issues.
+      page: null
+      reference_id: '1602.05427'
+      section: phenomenology and inflation discussion
+    routes:
+    - confidence: high
+      note: Primary text gives the anomaly and cosmology ingredients needed for a forward route, but not
+        a packaged likelihood.
+      page: null
+      reference_id: '1602.05427'
+      section: model construction and phenomenology
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Topological-defect cosmology
+  - PQ quality against Planck-suppressed operators
+  - model-dependent anomaly coefficients
+  validation_status: expert_judgment_only
+  notes: Machine-extracted from a model-building paper; cosmological production is only qualitatively
+    specified.
+agent_failure_modes:
+  warnings:
+  - id: do_not_promote_alps_to_full_dm
+    severity: medium
+    category: assumption_mismatch
+    warning: Additional ALPs are described as subdominant; do not treat them as the accepted DM component
+      without new evidence.
+    mitigation: Use the QCD axion candidate for the model-card identity and keep ALPs as additional particles.
+    source_reference_ids:
+    - '1602_05427'
+  - id: topological_defect_history_required
+    severity: high
+    category: assumption_mismatch
+    warning: The paper flags domain walls, strings, and stable baryons as severe cosmological problems
+      unless the assumed inflationary history removes them.
+    mitigation: Surface the pre-inflationary PQ-breaking and low-reheating assumptions before using the
+      model cosmologically.
+    source_reference_ids:
+    - '1602_05427'
+observables:
+- caveats:
+  - The primary paper fixes model-building ingredients but does not provide an experimental likelihood.
+  channel: precision_laboratory
+  effect_direction: model_dependent
+  environments:
+  - laboratory axion searches
+  - stellar environments
+  id: obs_axion_photon_coupling
+  key_quantities:
+  - description: Controls axion coupling strength and misalignment abundance.
+    name: PQ decay constant
+    range: around 1e12 GeV or larger in pre-inflationary scenarios
+    role: core
+    source_reference_ids:
+    - '1602.05427'
+    status: established
+    symbol: f_PQ
+    unit: GeV
+  - description: Determines the axion-photon coupling in the composite construction.
+    name: electromagnetic-to-color anomaly ratio
+    range: representation dependent
+    role: derived
+    source_reference_ids:
+    - '1602.05427'
+    status: established
+    symbol: E/N
+  linked_constraints:
+  - con_pq_quality
+  linked_routes:
+  - route_composite_axion_to_cmb_defects_couplings
+  name: Composite QCD axion photon coupling
+  notes: null
+  observability: medium
+  predicted_effect: The anomaly ratio E/N fixes the low-energy axion-photon coupling once f_PQ and the
+    confining fermion representations are chosen.
+  redshift_range: late Universe laboratory searches
+  relevance: high
+  scale_range: QCD axion mass-coupling band
+  source_reference_ids:
+  - '1602.05427'
+  subchannel: haloscope/helioscope axion-photon coupling
+- caveats:
+  - Applies to the pre-inflationary PQ-breaking branch used to avoid stable defects.
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - cosmic microwave background
+  id: obs_cmb_isocurvature
+  key_quantities:
+  - description: Planck isocurvature bound quoted in the primary text.
+    name: inflationary Hubble scale
+    range: H_inf < 0.86e7 GeV (f_PQ/1e12 GeV)^0.408 at 95% C.L.
+    role: cosmological
+    source_reference_ids:
+    - '1602.05427'
+    status: established
+    symbol: H_inf
+    unit: GeV
+  - name: PQ decay constant
+    role: core
+    source_reference_ids:
+    - '1602.05427'
+    status: established
+    symbol: f_PQ
+  linked_constraints:
+  - con_cmb_isocurvature
+  linked_routes:
+  - route_composite_axion_to_cmb_defects_couplings
+  name: CMB isocurvature from pre-inflationary PQ breaking
+  notes: null
+  observability: high
+  predicted_effect: If PQ breaking happens before or during inflation, the homogeneous misalignment angle
+    produces CMB isocurvature controlled by H_inf/f_PQ.
+  redshift_range: inflation through recombination
+  relevance: critical
+  scale_range: CMB angular power spectra
+  source_reference_ids:
+  - '1602.05427'
+  subchannel: axion isocurvature
+- caveats:
+  - The paper presents these as possible effects of additional ALPs, not as a complete likelihood.
+  channel: other
+  effect_direction: model_dependent
+  environments:
+  - CMB
+  - spinning black holes
+  id: obs_extra_alp_polarization_black_hole
+  key_quantities:
+  - description: Mass of additional singlet axion-like states from explicit breaking.
+    name: ALP mass
+    range: 10^-33 eV to 4e-28 eV for possible CMB precession; 10^-18 eV to 10^-10 eV for black-hole rotation
+      effects
+    role: derived
+    source_reference_ids:
+    - '1602.05427'
+    status: inferred
+    symbol: m_ALP
+    unit: eV
+  linked_constraints: []
+  linked_routes:
+  - route_composite_axion_to_cmb_defects_couplings
+  name: Additional ALP polarization and black-hole-rotation effects
+  notes: null
+  observability: low
+  predicted_effect: Additional axion-like particles in some confining constructions can be light enough
+    to affect CMB polarization precession or black-hole rotation over the mass windows quoted in the paper.
+  redshift_range: late Universe
+  relevance: low
+  scale_range: CMB polarization and black-hole superradiance scales
+  source_reference_ids:
+  - '1602.05427'
+  subchannel: ultralight ALP byproducts
+constraints:
+- allowed_regions:
+  - Chiral gauge/moose constructions that forbid dangerous low-dimension operators can preserve axion
+    quality.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - Benchmarks must document the operator dimension or symmetry reason suppressing explicit PQ breaking.
+  caveats:
+  - This is a model-building constraint rather than a survey likelihood.
+  constrained_parameters:
+  - operator dimension d
+  - f_PQ
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Planck-suppressed PQ-breaking operators below roughly dimension 11 generically spoil the neutron-EDM
+    solution to strong CP.
+  id: con_pq_quality
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: PQ-quality bound on explicit symmetry breaking
+  notes: null
+  observable_channel: strong_cp
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - '1602.05427'
+- allowed_regions:
+  - Low-scale inflation or small enough isocurvature amplitude is required for the pre-inflationary branch.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: PQ symmetry is broken before or during inflation and reheating is much below f_PQ.
+    id: preinflationary_pq_breaking
+    impact_if_violated: If not satisfied, stable strings/domain walls and baryons must be handled directly.
+    notes: null
+    scope: cosmology
+    source_reference_ids:
+    - '1602.05427'
+    status: assumed
+  benchmark_implications:
+  - A future tensor detection implying H_inf near 1e14 GeV would severely constrain this scenario.
+  caveats: []
+  constrained_parameters:
+  - H_inf
+  - f_PQ
+  - initial misalignment angle
+  constraint_type: cosmological
+  data_release: Planck isocurvature result at k=0.05 Mpc^-1
+  excluded_regions:
+  - Large H_inf is excluded; the primary text quotes H_inf < 0.86e7 GeV (f_PQ/1e12 GeV)^0.408 at 95% C.L.
+  id: con_cmb_isocurvature
+  likelihood_available: unknown
+  likelihood_reference: Planck isocurvature likelihood quoted in primary paper
+  name: Planck isocurvature limit on pre-inflationary axion misalignment
+  notes: null
+  observable_channel: cmb
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - '1602.05427'
+- allowed_regions:
+  - Pre-inflationary PQ breaking with low reheating, or gauge groups without stable baryons, avoids the
+    problem.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - Composite-axion benchmarks need a cosmological history, not only a low-energy coupling choice.
+  caveats:
+  - Explicit wall breaking can conflict with the required PQ quality.
+  constrained_parameters:
+  - domain wall number
+  - stable composite baryon abundance
+  - reheating temperature
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Post-inflationary production of stable domain walls is ruled out in the primary discussion; thermalized
+    stable baryons can overclose the Universe.
+  id: con_topological_defects_stable_baryons
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Topological-defect and stable-composite overclosure problem
+  notes: null
+  observable_channel: topological_defects
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - '1602.05427'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: No public likelihood or model-specific scan code is supplied in the primary text.
+    caveats:
+    - Defect and stable-baryon outcomes are UV-completion dependent.
+    constraint_ids:
+    - con_pq_quality
+    - con_cmb_isocurvature
+    - con_topological_defects_stable_baryons
+    derived_quantities:
+    - g_a_gamma
+    - theta_eff from PQ breaking
+    - isocurvature amplitude
+    - defect/stable-baryon viability flag
+    description: Map the composite gauge construction to axion couplings, PQ quality, defect cosmology,
+      and CMB isocurvature tests.
+    forward_model_chain:
+    - inputs:
+      - fermion representations
+      - anomaly coefficients
+      notes: null
+      outputs:
+      - E/N
+      - axion-photon coupling input
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Low-energy anomaly matching in the primary text.
+    - inputs:
+      - PQ-breaking operator dimension
+      - f_PQ
+      notes: null
+      outputs:
+      - theta_eff quality estimate
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Planck-suppressed operator estimate used for PQ quality.
+    - inputs:
+      - f_PQ
+      - H_inf
+      - misalignment angle
+      notes: null
+      outputs:
+      - CMB isocurvature amplitude
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Pre-inflationary PQ breaking and Planck isocurvature assumptions.
+    - inputs:
+      - domain wall number
+      - stable baryon content
+      - T_RH
+      notes: null
+      outputs:
+      - cosmological viability flag
+      step_id: s4
+      step_type: validation
+      tool_or_code: null
+      validity: Requires a specified UV group and reheating history.
+    id: route_composite_axion_to_cmb_defects_couplings
+    input_parameters:
+    - f_PQ
+    - E/N
+    - operator dimension
+    - H_inf
+    - T_RH
+    likelihoods: []
+    observable_ids:
+    - obs_axion_photon_coupling
+    - obs_cmb_isocurvature
+    - obs_extra_alp_polarization_black_hole
+    required_code_resources: []
+    route_status: planned
+    source_model_features:
+    - accidental U(1)_PQ
+    - composite QCD axion
+    - confining gauge dynamics
+    - pre-inflationary PQ branch
+    validation_tests:
+    - Recover the quoted isocurvature H_inf bound for f_PQ=1e12 GeV.
+    - Check that dangerous PQ-breaking operators are above the quoted dimension threshold.

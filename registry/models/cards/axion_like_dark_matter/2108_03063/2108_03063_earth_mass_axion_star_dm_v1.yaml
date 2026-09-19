@@ -1,0 +1,473 @@
+_source:
+  shard: arXiv_src_2108_020_wds.tar
+  paper_id: '2108_03063'
+  source_member: 2108_03063.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: w1
+    mitigation: Keep the axion-star fraction distinct from the total axion dark matter abundance.
+    severity: medium
+    source_reference_ids: []
+    warning: Do not treat f_AS as all dark matter; the favored axion-star compact-object component is
+      about 27 percent of total dark matter.
+  - category: extrapolation
+    id: w2
+    mitigation: Flag mass-function assumptions before using this model card for inference.
+    severity: medium
+    source_reference_ids: []
+    warning: The paper assumes a monochromatic axion-star mass function; extended mass functions can shift
+      the interpretation.
+associated_code:
+  caveats: []
+  code_summary: No associated public code or repository is identified in the extracted text; the paper
+    describes Bayesian parameter estimation for microlensing counts.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+  supported_observable_channels: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: A fraction of cosmologically produced axions forms stable axion stars in the early Universe.
+    id: early_axion_star_formation
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The axion-star population is approximated by a single mass scale M_AS.
+    id: monochromatic_mass_function
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Axion stars follow the same spatial and velocity distributions as the assumed Milky Way
+      and M31 dark matter halos.
+    id: standard_halo_tracing
+    impact_if_violated: null
+    notes: null
+    scope: other
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: parameter_dependent
+  kinetic_decoupling: null
+  nonstandard_features:
+  - Peccei-Quinn symmetry broken before inflation in the discussed production scenario
+  - possible anthropic/low-misalignment region
+  - possible low reheating temperature or entropy production to allow high f_a
+  - early-universe axion-star formation
+  phase_transitions:
+  - Peccei-Quinn symmetry breaking
+  - QCD axion mass generation
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - axion-star dark matter
+  - QCD axion star microlensing model
+  - compact axion-star subcomponent dark matter
+  family: axion_like_dark_matter
+  historical_origin_or_motivation: Motivated by interpreting Subaru HSC and OGLE short-duration microlensing
+    events as compact axion-star lenses and mapping them to QCD-axion parameters.
+  model_kind: phenomenological_parameterization
+  name: Earth-mass axion-star dark matter for HSC and OGLE microlensing
+  short_description: A phenomenological dark-matter variant in which compact axion stars of roughly Earth
+    mass form in the early Universe and constitute about 27 percent of dark matter, explaining short-timescale
+    HSC and OGLE microlensing candidates.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: QCD axion solution to the strong CP problem is used as a benchmark.
+  dark_sector_couplings:
+  - attractive axion self-interaction from the quartic term in the axion potential
+  - self-gravity of the axion condensate
+  decay_channels:
+  - unstable overly massive axion stars may collapse and emit relativistic axions
+  flavor_structure: not_applicable
+  interaction_operators:
+  - QCD axion potential expanded as mass and attractive quartic terms
+  - axion-photon coupling g_a gamma used for parameter-space comparison
+  mediator_types:
+  - gravity
+  - axion self-interaction
+  portals:
+  - axion
+  - gravitational
+  scattering:
+    elastic: not_applicable
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: not_applicable
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - axion attractive self-interaction contributes to compact star stability and collapse threshold
+  standard_model_targets:
+  - photons through the axion-photon coupling in the QCD axion parameter mapping
+  tree_or_loop_level: unknown
+model_id: 2108_03063_earth_mass_axion_star_dm_v1
+parameters:
+  core:
+  - description: Monochromatic compact-object mass scale used for the microlensing interpretation.
+    name: axion-star mass
+    range: Earth-mass scale; joint fit near log10(M_AS/M_sun) = -5.52 with -0.10/+0.15 uncertainty
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: M_AS
+    unit: solar_mass
+  - description: Fraction of total dark matter in compact axion stars.
+    name: axion-star dark matter fraction
+    range: 27% with +7%/-13% uncertainty quoted in abstract/conclusion
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: f_AS
+    unit: fraction
+    value: '0.27'
+  - description: QCD axion mass range corresponding to the microlensing-favored axion stars.
+    name: axion mass
+    range: 10^-9 to 10^-6 eV
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_a
+    unit: eV
+  - description: Decay constant entering the QCD axion potential and axion-star mass/radius scaling.
+    fiducial_value: 10^14
+    name: axion decay constant
+    range: example 10^14 GeV; lower values depend on the axion production scenario
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: f_a
+    unit: GeV
+  - description: Radius of the most massive compact stable axion-star solution for the fiducial axion
+      parameters.
+    fiducial_value: 7.8e2
+    name: axion-star radius
+    range: scales with m_a and f_a as given in the text
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: R_AS
+    unit: km
+  derived:
+  - description: Timescale bins from HSC and OGLE used to infer M_AS and f_AS.
+    name: microlensing event timescale
+    range: HSC hour-scale event and OGLE 0.1-0.3 day ultra-short events
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: t_E
+  nuisance:
+  - description: The paper assumes a monochromatic delta-function axion-star mass function for simplicity.
+    name: mass function shape
+    role: nuisance
+    source_reference_ids: []
+    status: assumed
+    symbol: dN/dM
+    value: delta_function
+particle_content:
+  additional_dark_sector_particles:
+  - QCD axion or axion-like-particle constituent field
+  dark_matter_candidate:
+    elementary_or_composite: macroscopic
+    name: compact axion star composed of QCD axions or axion-like particles
+    number_of_components: subcomponent
+    spin: 0 constituent scalar field; macroscopic condensate
+    statistics: macroscopic_object
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - lighter and more diffuse axion-star solutions may exist
+  long_lived_particles: []
+  mediators:
+  - gravity
+  - attractive axion self-interaction
+  standard_model_extension: minimal
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: not_applicable
+  distribution_type: not_applicable
+  f_of_p_or_q: The dark matter object is a compact axion-star population in Galactic halos, not a particle
+    phase-space distribution in the paper.
+  free_streaming_length: null
+  notes: The paper assumes axion stars trace standard Milky Way and M31 halo distributions for microlensing
+    calculations.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - initial misalignment angle
+  - PQ breaking before inflation scenario
+  - fraction of axions condensed into axion stars
+  - axion-star mass function
+  can_produce_all_dark_matter: 'no'
+  depends_on_reheating_temperature: parameter_dependent
+  mechanisms:
+  - early-universe axion production by misalignment
+  - formation of stable compact axion stars from a fraction of axions
+  - monochromatic axion-star mass-function approximation
+  nonthermal_momentum_distribution: 'yes'
+  notes: The model assumes axion stars form in the early Universe and constitute a subcomponent of the
+    Milky Way and M31 dark matter halos. If QCD axions make all or most dark matter, the paper infers
+    that about 27 percent of axions condensed into axion stars.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats:
+  - This is a phenomenological axion-star subcomponent interpretation of microlensing events, not a new
+    fundamental axion theory.
+  - The mass-function and formation-efficiency assumptions are major open inputs.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The text treats PQ breaking before inflation, misalignment abundance, possible anthropic low-misalignment
+        regions, and possible entropy production.
+      page: null
+      reference_id: '2108_03063'
+      section: Axion abundance discussion
+    interactions:
+    - confidence: high
+      note: The axion potential includes an attractive self-interaction and self-gravity supports compact
+        axion-star solutions.
+      page: null
+      reference_id: '2108_03063'
+      section: Axion-star setup
+    parameter_ranges:
+    - confidence: high
+      note: The inferred model has Earth-mass axion stars, f_AS about 27 percent, and QCD axion masses
+        around 10^-9 to 10^-6 eV.
+      page: null
+      reference_id: '2108_03063'
+      section: Abstract and conclusion
+    particle_content:
+    - confidence: high
+      note: The candidate is a compact axion star made of QCD axions or axion-like particles.
+      page: null
+      reference_id: '2108_03063'
+      section: Introduction
+    production_mechanism:
+    - confidence: high
+      note: The paper discusses misalignment-produced axions and assumes axion stars form in the early
+        Universe as a fraction of dark matter.
+      page: null
+      reference_id: '2108_03063'
+      section: Introduction and model assumptions
+    symmetries:
+    - confidence: medium
+      note: The QCD axion benchmark is tied to Peccei-Quinn symmetry and the strong-CP solution.
+      page: null
+      reference_id: '2108_03063'
+      section: Axion potential
+    validity_domain:
+    - confidence: high
+      note: The paper requires axion stars to be compact enough to act as point microlenses and assumes
+        a delta-function mass function for simplicity.
+      page: null
+      reference_id: '2108_03063'
+      section: Microlensing model
+  extraction:
+    confidence: high
+    extracted_by: codex_dark_matter_batch_worker
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: HSC and OGLE events can be explained if Earth-mass axion stars make up about 27
+        percent of dark matter.
+      reference_id: '2108_03063'
+      section: Abstract
+    - page: null
+      quote_or_summary: The text gives the axion potential and stable axion-star mass/radius scaling.
+      reference_id: '2108_03063'
+      section: Axion-star setup
+    - page: null
+      quote_or_summary: The model assumes a monochromatic axion-star mass M_AS and fraction f_AS in Milky
+        Way and M31 halos.
+      reference_id: '2108_03063'
+      section: Microlensing inference
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: axion_like_dark_matter
+  model_id: 2108_03063_earth_mass_axion_star_dm_v1
+  model_name: Earth-mass axion-star dark matter for HSC and OGLE microlensing
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2108.03063'
+      authors:
+      - Sunao Sugiyama
+      - Masahiro Takada
+      - Alexander Kusenko
+      doi: null
+      notes: Accepted as a substantive axion-star dark matter variant/interpreter of HSC and OGLE short-timescale
+        microlensing events.
+      reference_id: '2108_03063'
+      role: extension
+      title: Possible evidence of axion stars in HSC and OGLE microlensing events
+      url: null
+      year: 2021
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: subcomponent
+  key_dependencies:
+  - m_a
+  - f_a
+  - initial misalignment
+  - axion-star formation efficiency
+  - monochromatic mass-function assumption
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: parameter_dependent
+  target_fraction:
+    description: HSC and OGLE events are consistent with this fraction of dark matter in axion stars.
+    name: axion-star fraction of dark matter
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 0.34
+      min: 0.14
+      notes: 27% with +7%/-13% quoted uncertainty
+      unit: fraction
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: f_AS
+    unit: fraction
+    value: 0.27
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: medium
+  dominant_uncertainties:
+  - axion-star formation efficiency
+  - monochromatic versus extended mass function
+  - small-number microlensing-event statistics
+  - QCD axion parameter mapping depends on model details
+  notes: The paper gives a clear model parameterization and production assumptions, but the interpretation
+    depends on a small event sample and uncertain axion-star formation physics.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    concentration_mass_relation_effect: unknown
+    core_or_cusp_effect: unknown
+    density_profile_effect: compact-object lenses trace assumed NFW halo profiles
+    halo_mass_function_effect: not discussed for axion-star subcomponent
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+symmetries:
+  stabilizing_mechanism: Stable axion-star solutions are supported by self-gravity and axion self-interactions;
+    the underlying axion is associated with Peccei-Quinn symmetry in the QCD-axion benchmark.
+  symmetries:
+  - breaking: broken before inflation in the discussed misalignment scenario and explicitly by QCD effects
+    breaking_scale:
+      description: PQ breaking scale used in the QCD axion mapping.
+      name: axion decay constant
+      range: example f_a = 10^14 GeV; broader allowed values model-dependent
+      role: core
+      source_reference_ids: []
+      status: inferred
+      symbol: f_a
+      unit: GeV
+    exact_or_approximate: broken
+    name: Peccei-Quinn U(1)
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The text gives the axion potential, mass/radius scaling for stable compact axion stars, and a
+    monochromatic axion-star mass-function parameterization.
+  parent_frameworks:
+  - QCD axion dark matter
+  - axion-like particle dark matter
+  - boson-star/axion-star compact objects
+  - microlensing compact-object dark matter
+  renormalizable: unknown
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The axion-star radius must be smaller than the Einstein radius for the relevant microlensing
+    events.
+  extrapolation_risk: medium
+  id: point_lens_compactness
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: The extraction follows the paper's simplifying delta-function mass function; extended mass
+    functions can change the interpretation.
+  extrapolation_risk: medium
+  id: monochromatic_mass_function
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: Axion stars are assumed to form in the early Universe and survive as a Galactic halo subcomponent.
+  extrapolation_risk: high
+  id: early_formation
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: The microlensing inference assumes axion stars follow the Milky Way and M31 dark matter halo
+    distributions.
+  extrapolation_risk: medium
+  id: halo_distribution
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null

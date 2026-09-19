@@ -1,0 +1,779 @@
+_source:
+  shard: arXiv_src_2106_085_wds.tar
+  paper_id: '2106_13857'
+  source_member: 2106_13857.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: notation_conflict
+    id: w1
+    mitigation: Check the source PDF before final registry publication.
+    severity: medium
+    source_reference_ids: []
+    warning: The OCR text strips some Greek symbols for neutral mass eigenstates, so use the descriptive
+      chi labels here pending human review.
+  - category: assumption_mismatch
+    id: w2
+    mitigation: Keep the Majorana/direct-detection distinction explicit.
+    severity: medium
+    source_reference_ids: []
+    warning: Do not map this to Dirac singlet-doublet dark matter; the paper emphasizes Majorana dark
+      matter and absent Z-mediated elastic scattering.
+associated_code:
+  caveats: []
+  code_summary: The paper states that MicrOmegas was used for relic-density calculations, but no associated
+    model implementation or repository is identified in the extracted text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+  supported_observable_channels: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The imposed Z2 symmetry is exact and makes the lightest odd state stable.
+    id: a1
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Standard thermal freeze-out cosmology is assumed for the relic-density calculation.
+    id: a2
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The heavier neutral and charged vector-like states can participate in co-annihilation
+      when the mass splitting is small.
+    id: a3
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: inferred
+cosmological_history:
+  bbn_relevance: low
+  chemical_decoupling:
+    description: Chemical decoupling of the thermal Majorana dark matter candidate.
+    name: freeze-out temperature
+    range: not specified; WIMP-like freeze-out assumed
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: T_f
+    unit: GeV
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions:
+  - electroweak symmetry breaking creates the neutral-state mass matrix
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - singlet-doublet Majorana dark matter
+  - vector-like doublet plus right-handed neutrino dark matter
+  family: singlet_doublet_fermion_dark_matter
+  historical_origin_or_motivation: Built to explain dark matter and tiny neutrino masses simultaneously
+    while avoiding the strong Z-mediated direct-detection limits of Dirac singlet-doublet dark matter.
+  model_kind: complete_theory
+  name: Singlet-doublet Majorana dark matter with Type-I seesaw neutrino masses
+  short_description: A minimal Standard Model extension with one vector-like fermion doublet and three
+    right-handed singlet neutrinos, where the lightest Majorana mixture of the neutral doublet state and
+    N_R1 is a thermal dark matter candidate stabilized by Z2.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - annihilation to Standard Model states through gauge and Higgs interactions
+  - co-annihilation with heavier electroweak doublet states
+  cp_structure: unknown
+  dark_sector_couplings:
+  - Yukawa coupling Y1 between vector-like doublet, Higgs, and N_R1
+  - seesaw Yukawa couplings Y_j for N_R2,N_R3
+  decay_channels: []
+  flavor_structure: N_R2 and N_R3 generate light neutrino masses through Type-I seesaw; N_R1 belongs to
+    the Z2-odd dark sector.
+  interaction_operators:
+  - Higgs-portal Yukawa mixing term
+  - electroweak gauge interactions of the doublet component
+  - Type-I seesaw Yukawa terms
+  mediator_types:
+  - Higgs boson
+  - Z boson suppressed for elastic scattering by Majorana nature
+  - W boson
+  portals:
+  - higgs
+  - vector
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs doublet
+  - electroweak gauge bosons
+  - SM lepton doublets
+  tree_or_loop_level: tree
+model_id: 2106_13857_singlet_doublet_majorana_dm_v1
+parameters:
+  core:
+  - description: Mass of the lightest neutral Majorana dark matter state.
+    name: dark matter mass
+    range: scanned in the relic-density and direct-detection plane
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_chi3
+    unit: GeV
+  - description: Mass splitting between chi_3 and the heavier neutral doublet-like states.
+    name: neutral-state mass splitting
+    range: direct-detection allowed values include roughly 10-15 GeV away from resonance
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: Delta M
+    unit: GeV
+  - description: Mixing between the neutral vector-like doublet component and N_R1.
+    name: singlet-doublet mixing angle
+    range: allowed up to about 0.6 in the text
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: theta
+    unit: null
+  - description: Controls doublet-singlet mixing and Higgs-portal direct detection.
+    name: Yukawa coupling to N_R1
+    range: related to Delta M and theta after electroweak symmetry breaking
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: Y1
+    unit: null
+  - description: Masses of the Z2-even right-handed neutrinos entering the Type-I seesaw.
+    name: right-handed neutrino masses
+    range: not fixed in extracted text
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: M_R2,M_R3
+    unit: GeV
+  derived:
+  - description: Planck-compatible abundance target quoted in the text.
+    name: target relic density
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: Omega h^2
+    unit: null
+    value: '0.1'
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - vector-like fermion doublet with neutral and charged components
+  - three right-handed singlet neutrinos
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: chi_3 lightest neutral Majorana mass eigenstate
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - heavier neutral Majorana states chi_1 and chi_2
+  - charged vector-like fermion
+  long_lived_particles: []
+  mediators:
+  - Standard Model Higgs boson
+  - electroweak gauge bosons
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: Thermal WIMP-like distribution after freeze-out; no explicit phase-space function is supplied.
+  free_streaming_length: null
+  notes: The model behaves as cold thermal relic dark matter in the paper.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - DM mass
+  - neutral-state mass splitting
+  - singlet-doublet mixing
+  - gauge and Higgs interactions
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out
+  - co-annihilation with heavier vector-like fermion states
+  nonthermal_momentum_distribution: 'no'
+  notes: The dark matter remains in the thermal bath and freezes out through number-changing processes;
+    MicrOmegas is used for the relic-density scan.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: A standard WIMP thermal relic history is assumed for the MicrOmegas relic-density calculation.
+      page: null
+      reference_id: '2106_13857'
+      section: Relic density
+    interactions:
+    - confidence: high
+      note: The candidate has electroweak gauge interactions through its doublet fraction and Higgs-portal
+        interactions through Y1.
+      page: null
+      reference_id: '2106_13857'
+      section: Relic density and direct detection
+    parameter_ranges:
+    - confidence: medium
+      note: The paper scans the dark matter mass, mass splitting, and mixing angle, and notes direct-search-allowed
+        mixing up to about 0.6.
+      page: null
+      reference_id: '2106_13857'
+      section: Parameter scan
+    particle_content:
+    - confidence: high
+      note: The dark matter is the lightest Majorana mixture of the vector-like doublet neutral component
+        and N_R1.
+      page: null
+      reference_id: '2106_13857'
+      section: Model setup
+    production_mechanism:
+    - confidence: high
+      note: The text describes thermal freeze-out and co-annihilation contributions that give the Planck-compatible
+        abundance.
+      page: null
+      reference_id: '2106_13857'
+      section: Relic density
+    symmetries:
+    - confidence: high
+      note: The vector-like doublet and N_R1 are odd under an imposed Z2 symmetry, stabilizing the lightest
+        odd state.
+      page: null
+      reference_id: '2106_13857'
+      section: Model setup
+    validity_domain:
+    - confidence: high
+      note: The Majorana nature removes Z-mediated elastic scattering, which is central to the allowed
+        direct-detection region.
+      page: null
+      reference_id: '2106_13857'
+      section: Direct detection
+    constraints:
+    - confidence: high
+      note: Primary text applies Planck/MicrOmegas relic-density scan and XENON1T direct-search comparison.
+      page: null
+      reference_id: '2106_13857'
+      section: Phenomenology
+    - confidence: medium
+      note: Related review text supports direct-detection and Majorana-Z suppression context for vector-like
+        leptonic dark matter.
+      page: null
+      reference_id: '1812_06505'
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary text describes thermal freeze-out, coannihilation for small mass splitting, Majorana
+        absence of Z elastic scattering, and Higgs-mediated direct detection.
+      page: null
+      reference_id: '2106_13857'
+      section: Dark sector phenomenology
+    - confidence: medium
+      note: Related text states Majorana mass forbids Z-mediated elastic scattering and highlights Higgs-mediated
+        direct detection.
+      page: null
+      reference_id: '1704_03417'
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Route follows primary independent parameters m_chi3, Delta M, and mixing angle with MicrOmegas
+        relic-density calculation.
+      page: null
+      reference_id: '2106_13857'
+      section: Dark sector phenomenology
+  extraction:
+    confidence: high
+    extracted_by: codex_dark_matter_batch_worker
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper proposes a vector-like fermion doublet plus right-handed neutrinos to
+        explain dark matter and neutrino mass.
+      reference_id: '2106_13857'
+      section: Opening summary
+    - page: null
+      quote_or_summary: The text gives the Z2 assignments, Lagrangian, and neutral Majorana mass matrix.
+      reference_id: '2106_13857'
+      section: Model setup
+    - page: null
+      quote_or_summary: The dark matter freezes out thermally and the allowed parameter space is scanned
+        against relic density and direct detection.
+      reference_id: '2106_13857'
+      section: Relic density and direct detection
+    unresolved_items:
+    - The primary local text is short and OCR-stripped; exact equation labels and figure contours should
+      be checked before registry publication.
+    - The XENON1T experimental source did not resolve locally, so only the primary-paper use of XENON1T
+      is encoded.
+  last_updated: '2026-05-31'
+  model_family: singlet_doublet_fermion_dark_matter
+  model_id: 2106_13857_singlet_doublet_majorana_dm_v1
+  model_name: Singlet-doublet Majorana dark matter with Type-I seesaw neutrino masses
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2106.13857'
+      authors:
+      - Manoranjan Dutta
+      - Subhaditya Bhattacharya
+      - Purusottam Ghosh
+      - Narendra Sahu
+      doi: null
+      notes: Source text taken from the assigned run SQLite database only.
+      reference_id: '2106_13857'
+      role: original_model
+      title: Majorana Dark Matter and Neutrino mass in a singlet-doublet extension of the Standard Model
+      url: null
+      year: 2021
+    - arxiv_id: '2106.13857'
+      authors:
+      - Dutta, Manoranjan
+      - Bhattacharya, Subhaditya
+      - Ghosh, Purusottam
+      - Sahu, Narendra
+      doi: 10.48550/arXiv.2106.13857
+      notes: Primary paper full text resolved locally.
+      reference_id: '2106_13857'
+      role: original_model
+      title: Majorana Dark Matter and Neutrino mass in a singlet-doublet extension of the Standard Model
+      url: https://arxiv.org/abs/2106.13857
+      year: 2021
+    constraint_papers:
+    - arxiv_id: '1704.03417'
+      authors:
+      - Bhattacharya, Subhaditya
+      - Sahoo, Nirakar
+      - Sahu, Narendra
+      doi: 10.1103/PhysRevD.96.035010
+      notes: Related local full text read for singlet-doublet Majorana/direct-detection context.
+      reference_id: '1704_03417'
+      role: extension
+      title: Singlet-doublet fermionic dark matter, neutrino mass, and collider signatures
+      url: https://arxiv.org/abs/1704.03417
+      year: 2017
+    - arxiv_id: '2009.00885'
+      authors:
+      - Dutta, Manoranjan
+      - Bhattacharya, Subhaditya
+      - Ghosh, Purusottam
+      - Sahu, Narendra
+      doi: 10.1088/1475-7516/2021/03/008
+      notes: Related local full text read for singlet-doublet Majorana dark matter and neutrino mass context.
+      reference_id: '2009_00885'
+      role: extension
+      title: Singlet-doublet Majorana dark matter and neutrino mass in a minimal type-I seesaw scenario
+      url: https://arxiv.org/abs/2009.00885
+      year: 2021
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1812.06505'
+      authors:
+      - Bhattacharya, Subhaditya
+      - Ghosh, Purusottam
+      - Sahoo, Nirakar
+      - Sahu, Narendra
+      doi: 10.3389/fphy.2019.00080
+      notes: Related local full text read for vector-like leptonic dark matter review context.
+      reference_id: '1812_06505'
+      role: review
+      title: Review on Vector-like Leptonic Dark Matter, Neutrino Mass and Collider Signatures
+      url: https://arxiv.org/abs/1812.06505
+      year: 2019
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_chi3
+  - Delta M
+  - theta
+  - Y1
+  - co-annihilation rates
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    description: The scan targets the observed dark matter abundance.
+    name: dark matter fraction
+    role: derived
+    source_reference_ids: []
+    status: assumed
+    symbol: Omega_chi/Omega_DM
+    unit: null
+    value: 1
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: medium
+  dominant_uncertainties:
+  - exact viable parameter ranges depend on the numerical scan and direct-detection inputs
+  - collider signatures are only sketched in the extracted text
+  notes: The model identity, Lagrangian, relic mechanism, and stabilizing symmetry are explicit in the
+    text.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    thermal_wdm_mapping:
+      available: false
+      validity: not_applicable
+      warning: The candidate is a heavy thermal WIMP-like Majorana fermion, not warm dark matter.
+    transfer_function_shape: cdm_like
+  nonlinear:
+    concentration_mass_relation_effect: unknown
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: no distinctive structure-formation effect discussed
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: no distinctive structure-formation effect discussed
+    subhalo_mass_function_effect: no distinctive structure-formation effect discussed
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+symmetries:
+  stabilizing_mechanism: An imposed Z2 symmetry makes the vector-like doublet and N_R1 odd while Standard
+    Model fields and N_R2,N_R3 are even, leaving the lightest odd Majorana state stable.
+  symmetries:
+  - breaking: unbroken in the dark sector
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z2
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  lagrangian_available: 'yes'
+  notes: The text writes the Standard Model extension, Yukawa terms, Majorana mass terms, and the neutral
+    dark-sector mass matrix.
+  parent_frameworks:
+  - singlet-doublet fermion dark matter
+  - Type-I seesaw neutrino mass model
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The neutral mass eigenstates and Majorana dark matter interpretation use the small-mixing
+    diagonalization described in the text.
+  extrapolation_risk: medium
+  id: majorana_mixing_limit
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: The Z2 symmetry must remain exact enough that chi_3 is stable cosmologically.
+  extrapolation_risk: high
+  id: z2_stability
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: parameter
+  caveats: []
+  condition: Relic-density viable points must also satisfy direct-detection bounds; the paper emphasizes
+    Higgs-mediated elastic scattering and absence of Z-mediated elastic scattering.
+  extrapolation_risk: medium
+  id: direct_detection_region
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+observables:
+- caveats:
+  - The primary paper is short and OCR-stripped, so exact figure values should be checked against the
+    PDF before publication.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe thermal bath
+  id: singlet_doublet_freezeout_coannihilation
+  key_quantities:
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - '2106_13857'
+    status: inferred
+    symbol: m_chi3
+    unit: GeV
+  - name: mass splitting
+    role: core
+    source_reference_ids:
+    - '2106_13857'
+    status: inferred
+    symbol: Delta M
+    unit: GeV
+  - name: mixing angle
+    role: core
+    source_reference_ids:
+    - '2106_13857'
+    status: inferred
+    symbol: theta
+  linked_constraints:
+  - planck_relic_density_target
+  linked_routes:
+  - singlet_doublet_majorana_relic_dd_route
+  name: Thermal freeze-out with electroweak coannihilation
+  notes: Primary text says smaller Delta M increases coannihilation.
+  observability: high
+  predicted_effect: The lightest Majorana neutral state remains in the thermal bath through gauge/Higgs
+    interactions and freezes out, with coannihilation enhanced for small doublet-singlet mass splitting.
+  redshift_range: null
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - '2106_13857'
+  - '2009_00885'
+  subchannel: thermal_freezeout_and_coannihilation
+- caveats:
+  - Z exchange is absent for elastic scattering because the DM is Majorana.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - terrestrial xenon detectors
+  id: majorana_higgs_portal_nuclear_recoils
+  key_quantities:
+  - name: Higgs portal Yukawa
+    role: core
+    source_reference_ids:
+    - '2106_13857'
+    status: inferred
+    symbol: Y_1
+  - name: mixing angle
+    role: core
+    source_reference_ids:
+    - '2106_13857'
+    status: inferred
+    symbol: theta
+  - name: mass splitting
+    role: core
+    source_reference_ids:
+    - '2106_13857'
+    status: inferred
+    symbol: Delta M
+    unit: GeV
+  linked_constraints:
+  - xenon1t_higgs_portal_constraint
+  linked_routes:
+  - singlet_doublet_majorana_relic_dd_route
+  name: Majorana Higgs-portal nuclear recoils
+  notes: Primary text reports direct-search limits on Delta M and mixing, except near the Z resonance.
+  observability: medium
+  predicted_effect: Majorana dark matter has no Z-mediated elastic scattering, but Higgs-portal exchange
+    gives direct-detection signals constrained by XENON1T.
+  redshift_range: null
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - '2106_13857'
+  - '1704_03417'
+  - '1812_06505'
+  subchannel: spin_independent_higgs_exchange
+constraints:
+- allowed_regions:
+  - MicrOmegas scan points with h^2 around 0.1 in the primary paper.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: chi_3 is assumed to supply the full dark matter abundance when applying the relic-density
+      target.
+    id: single_component_majorana_dm
+    impact_if_violated: Underabundant points may remain viable in multicomponent scenarios.
+    notes: null
+    scope: cosmology
+    source_reference_ids:
+    - '2106_13857'
+    status: assumed
+  benchmark_implications:
+  - Small mass splitting enhances coannihilation and changes the allowed mass range.
+  caveats: []
+  constrained_parameters:
+  - Omega_chi h^2
+  - m_chi3
+  - Delta M
+  - theta
+  constraint_type: cosmological
+  data_release: Planck relic-density value as quoted in primary paper
+  excluded_regions:
+  - Parameter points overproducing the target thermal abundance.
+  id: planck_relic_density_target
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Planck relic-density target
+  notes: Primary text quotes h^2 about 0.1 and uses MicrOmegas.
+  observable_channel: cmb_relic_abundance
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - '2106_13857'
+- allowed_regions:
+  - Primary-paper allowed points include Delta M around 10-15 GeV away from the Z-resonance region and
+    mixing up to about 0.6.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Elastic nuclear scattering is dominated by Higgs-portal exchange after Z-mediated elastic
+      scattering is removed by Majorana nature.
+    id: higgs_exchange_dominates_elastic_scattering
+    impact_if_violated: Additional mediators would require a new recast.
+    notes: null
+    scope: direct_detection
+    source_reference_ids:
+    - '2106_13857'
+    - '1704_03417'
+    - '1812_06505'
+    status: assumed
+  benchmark_implications:
+  - The Majorana nature removes Z-mediated elastic scattering but leaves Higgs exchange testable.
+  caveats: []
+  constrained_parameters:
+  - sigma_SI
+  - Y_1
+  - theta
+  - Delta M
+  - m_chi3
+  constraint_type: direct_detection
+  data_release: XENON1T limit as used in primary paper
+  excluded_regions:
+  - Large Higgs-portal mixing/coupling points above XENON1T direct-search limits.
+  id: xenon1t_higgs_portal_constraint
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: XENON1T Higgs-portal direct-detection constraint
+  notes: Related singlet-doublet texts support the Majorana suppression of Z-mediated elastic scattering
+    and the relevance of Higgs-mediated direct detection.
+  observable_channel: nuclear_recoils
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '2106_13857'
+  - '1704_03417'
+  - '1812_06505'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: No model files were identified; OCR stripping makes notation fragile.
+    caveats:
+    - Human PDF check recommended for exact neutral-state labels and figure values.
+    constraint_ids:
+    - planck_relic_density_target
+    - xenon1t_higgs_portal_constraint
+    derived_quantities:
+    - Omega_chi h^2
+    - sigma_SI
+    - coannihilation fraction
+    - neutrino mass compatibility
+    description: Scan the Majorana singlet-doublet parameter space for thermal relic density and Higgs-mediated
+      direct detection.
+    forward_model_chain:
+    - inputs:
+      - M
+      - M_R1
+      - Y_1
+      - theta
+      notes: OCR notation should be checked.
+      outputs:
+      - neutral Majorana masses
+      - mass splitting
+      step_id: spectrum
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Uses the approximate hierarchy in the primary paper.
+    - inputs:
+      - mass spectrum
+      - gauge/Higgs interactions
+      notes: Primary paper used MicrOmegas.
+      outputs:
+      - Omega_chi h^2
+      step_id: relic_density
+      step_type: boltzmann_solver
+      tool_or_code: MicrOmegas
+      validity: Thermal WIMP freeze-out with coannihilation.
+    - inputs:
+      - Higgs coupling
+      - m_chi3
+      - sigma_SI
+      notes: Use primary-paper XENON1T comparison as a screening recast.
+      outputs:
+      - XENON1T allowed points
+      step_id: direct_detection
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires current direct-detection likelihood for precision.
+    id: singlet_doublet_majorana_relic_dd_route
+    input_parameters:
+    - m_chi3
+    - Delta M
+    - theta
+    - Y_1
+    - M_R2
+    - M_R3
+    likelihoods:
+    - Planck relic-density target
+    - XENON1T spin-independent limit
+    observable_ids:
+    - singlet_doublet_freezeout_coannihilation
+    - majorana_higgs_portal_nuclear_recoils
+    required_code_resources:
+    - MicrOmegas model implementation
+    - singlet-doublet spectrum calculator
+    route_status: planned
+    source_model_features:
+    - Z2-odd vector-like doublet
+    - Z2-odd right-handed neutrino N_R1
+    - Majorana neutral mass eigenstates
+    - Type-I seesaw sector
+    validation_tests:
+    - Reproduce primary-paper relic and direct-detection scatter plots.
+    - Verify that Z-mediated elastic scattering is absent in the Majorana limit.

@@ -1,0 +1,773 @@
+_source:
+  shard: arXiv_src_0405_001_wds.tar
+  paper_id: hep-ph0405109
+  source_member: hep-ph0405109.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: hep_ph0405109_approximate_pq_singlino_lsp_v1
+identity:
+  name: Approximate-PQ electroweak supersymmetry with singlino LSP dark matter
+  family: supersymmetric_singlino_dark_matter
+  aliases:
+  - electroweak supersymmetry with approximate U(1)_PQ
+  - light singlet-superfield LSP
+  short_description: A weak-scale supersymmetric framework replacing the MSSM mu term with S H1 H2, yielding
+    a light mostly-singlet neutralino/singlino LSP that can be dark matter if its thermal abundance is
+    diluted before BBN.
+  historical_origin_or_motivation: Introduced to address the MSSM mu problem using an approximate Peccei-Quinn
+    symmetry while keeping distinct collider and cosmological signals.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - MSSM-like electroweak supersymmetry
+  - approximate Peccei-Quinn symmetry
+  - Ciafaloni-Pomarol mechanism
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The low-energy superpotential W includes S H1 H2 and soft terms include a pseudo-Goldstone mass
+    m_G; explicit PQ breaking can arise from higher-dimensional or weak renormalizable terms.
+particle_content:
+  dark_matter_candidate:
+    name: mostly singlet neutralino / singlino s
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - pseudo-Goldstone boson G
+  - light scalar H1 from singlet superfield S
+  mediators:
+  - Z boson
+  - Higgs bosons
+  - pseudo-Goldstone boson G
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - singlino LSP if R parity is conserved
+  unstable_parent_particles:
+  - MSSM-like next-to-lightest superpartner
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R parity conservation makes the lightest superpartner stable; approximate U(1)_PQ
+    controls the singlet sector and the pseudo-Goldstone mass.
+  symmetries:
+  - name: R parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unknown
+    breaking_scale: null
+  - name: approximate U(1)_PQ
+    type: global
+    exact_or_approximate: broken
+    breaking: explicit breaking gives m_G to the pseudo-Goldstone boson
+    breaking_scale: null
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - higgs
+  - vector
+  - other
+  standard_model_targets:
+  - electrons and photons through thermal plasma interactions
+  - Z boson
+  - Higgs bosons
+  dark_sector_couplings:
+  - G s s coupling suppressed by powers of the singlet-doublet coupling
+  - singlino couplings to Z and Higgs suppressed by singlet mixing
+  mediator_types:
+  - Higgs-sector scalars
+  - Z boson
+  - pseudo-Goldstone boson
+  interaction_operators:
+  - S H1 H2 superpotential coupling
+  - soft pseudo-Goldstone mass term m_G^2 G G / 2
+  annihilation_channels:
+  - e+ e- to s s in the thermal plasma
+  - G to s s when kinematically open
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: singlet-doublet coupling
+    symbol: lambda
+    description: Coupling in the S H1 H2 superpotential term that controls singlet-state masses and interactions.
+    range: about 10^-3 in the light pseudo-Goldstone window; can be larger for heavier m_G
+    role: core
+    status: inferred
+    source_reference_ids:
+    - hep-ph0405109
+  - name: singlet vacuum expectation value
+    symbol: s or F_G
+    description: Singlet vev/Goldstone decay scale controlling singlet interactions and the effective
+      mu parameter.
+    range: about 10^2-10^3 TeV for small m_G; down to a few TeV for heavier m_G
+    unit: TeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - hep-ph0405109
+  - name: pseudo-Goldstone mass
+    symbol: m_G
+    description: Explicit PQ-breaking mass of the pseudoscalar G.
+    range: allowed examples include roughly 300 keV to 100 MeV, with heavier cases discussed
+    unit: keV-MeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - hep-ph0405109
+  - name: singlino mass
+    symbol: m_s
+    description: Mass of the mostly-singlet neutralino LSP.
+    range: warm-DM discussion requires around or above 10 keV
+    unit: keV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - hep-ph0405109
+production:
+  mechanisms:
+  - thermal production followed by pre-BBN entropy dilution
+  - decoupling of singlino interactions before BBN
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - singlino mass
+  - singlet scale F_G
+  - decoupling of e+e- to s s
+  - entropy generation before BBN
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper states that an undiluted thermal abundance would exclude the theory, so viable singlino
+    dark matter requires large entropy dilution before BBN.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: singlino density target
+    symbol: Omega_s
+    description: Target abundance used in the paper discussion.
+    value: about 0.2
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - hep-ph0405109
+  calculation_type: mixed
+  key_dependencies:
+  - m_s
+  - F_G
+  - entropy dilution factor
+  - G to s s decoupling
+  requires_entropy_dilution: 'yes'
+  overclosure_risk: 'yes'
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - entropy generation after electroweak temperatures but before BBN
+  - possible light G effects on BBN/CMB radiation density
+  dark_sector_temperature: null
+  delta_neff:
+    name: CMB effective neutrino number
+    symbol: N_CMB
+    description: Example prediction when light G heats the photon/electron plasma after neutrino decoupling.
+    value: '2.4'
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - hep-ph0405109
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: e+e- to s s decoupling temperature
+    symbol: T_dec
+    description: Approximate decoupling temperature quoted for F_G around 100 TeV.
+    value: about 10 GeV
+    unit: GeV
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - hep-ph0405109
+  phase_transitions:
+  - electroweak/PQ breaking; possible QCD or late-particle entropy generation
+  topological_defects:
+  - global strings and domain walls may form after electroweak/PQ breaking
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds:
+  - warm dark matter bound quoted as roughly m_s greater than 10 keV
+  notes: The candidate is light enough that the paper explicitly checks warm dark matter limits.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: validity_entropy_dilution
+  applies_to: model
+  condition: Singlino LSP dark matter is viable only if entropy production reduces the thermal singlino
+    abundance before BBN.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - hep-ph0405109
+  notes: null
+- id: validity_small_pq_breaking
+  applies_to: model
+  condition: Explicit PQ breaking is assumed to affect low-energy data primarily through m_G.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - hep-ph0405109
+  notes: null
+assumptions:
+  global:
+  - id: r_parity_conserved
+    description: R parity is conserved so the singlino/neutralino LSP is stable.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - hep-ph0405109
+    notes: null
+  - id: late_entropy_generation
+    description: A large entropy-generation episode occurs after singlino decoupling and before BBN.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Without dilution the thermal singlino abundance would overclose/exclude the scenario.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - hep-ph0405109
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated code is described in the paper text.
+provenance:
+  model_id: hep_ph0405109_approximate_pq_singlino_lsp_v1
+  model_name: Approximate-PQ electroweak supersymmetry with singlino LSP dark matter
+  model_family: supersymmetric_singlino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: hep-ph0405109
+      title: Electroweak Supersymmetry with An Approximate U(1)_PQ
+      authors:
+      - Lawrence J. Hall
+      - Taizan Watari
+      year: 2004
+      arxiv_id: hep-ph/0405109
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: hep-ph/0405109
+      authors:
+      - Hall, Lawrence J.
+      - Watari, Taizan
+      doi: 10.1103/PhysRevD.70.115001
+      notes: null
+      reference_id: arxiv:hep-ph/0405109
+      role: original_model
+      title: Electroweak supersymmetry with an approximate U(1) Peccei-Quinn symmetry
+      url: https://arxiv.org/abs/hep-ph/0405109
+      year: 2004
+    constraint_papers:
+    - arxiv_id: astro-ph/0303622
+      authors:
+      - Yoshida, Naoki
+      - Sokasian, Aaron
+      - Hernquist, Lars
+      - Springel, Volker
+      doi: 10.1086/376963
+      notes: null
+      reference_id: arxiv:astro-ph/0303622
+      role: constraint
+      title: Early Structure Formation and Reionization in a Warm Dark Matter Cosmology
+      url: https://arxiv.org/abs/astro-ph/0303622
+      year: 2003
+    - arxiv_id: hep-ph/0511250
+      authors:
+      - Chang, Spencer
+      - Fox, Patrick J.
+      - Weiner, Neal
+      doi: 10.1088/1126-6708/2006/08/068
+      notes: null
+      reference_id: arxiv:hep-ph/0511250
+      role: constraint
+      title: Naturalness and Higgs decays in the MSSM with a singlet
+      url: https://arxiv.org/abs/hep-ph/0511250
+      year: 2006
+    - arxiv_id: '1505.05554'
+      authors:
+      - Potter, C. T.
+      doi: 10.1140/epjc/s10052-015-3867-x
+      notes: null
+      reference_id: arxiv:1505.05554
+      role: constraint
+      title: Natural NMSSM with a light Singlet Higgs and Singlino LSP
+      url: https://arxiv.org/abs/1505.05554
+      year: 2016
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex-gpt5-worker
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-30'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: hep-ph0405109
+      section: LSP s Dark Matter
+      page: null
+      quote_or_summary: Stable singlino LSP can be cosmological dark matter, but a thermal abundance requires
+        pre-BBN entropy dilution.
+    unresolved_items:
+    - The warm-DM bound is historical and requires a modern transfer-function recast.
+    - The entropy-production mechanism is not specified.
+    - One OCR-rendered F_G unit should be checked against the PDF before numeric reuse.
+  evidence:
+    particle_content:
+    - reference_id: hep-ph0405109
+      note: The spectrum summary identifies light singlet-superfield states G, H1, and a mostly-singlet
+        neutralino s that is the LSP.
+      confidence: high
+      section: Spectrum Summary
+      page: null
+    symmetries:
+    - reference_id: hep-ph0405109
+      note: R parity conservation is the stated condition for LSP stability, while approximate PQ breaking
+        gives G a mass.
+      confidence: high
+      section: LSP s Dark Matter and theory sections
+      page: null
+    interactions:
+    - reference_id: hep-ph0405109
+      note: Singlino interactions with Z, Higgs, and G are described as suppressed by powers of the small
+        coupling.
+      confidence: medium
+      section: Spectrum Summary
+      page: null
+    production_mechanism:
+    - reference_id: hep-ph0405109
+      note: The paper says stable s were in thermal equilibrium at the electroweak scale and must decouple
+        before BBN with entropy dilution.
+      confidence: high
+      section: LSP s Dark Matter
+      page: null
+    cosmological_history:
+    - reference_id: hep-ph0405109
+      note: The text discusses BBN/CMB effects of light G and the need for entropy generation before BBN.
+      confidence: medium
+      section: cosmology sections
+      page: null
+    parameter_ranges:
+    - reference_id: hep-ph0405109
+      note: Allowed examples include m_G from hundreds of keV to MeV/100 MeV scales and singlet scales
+        around 10^2-10^3 TeV in the light-G window.
+      confidence: medium
+      section: conclusion and LSP dark matter sections
+      page: null
+    validity_domain:
+    - reference_id: hep-ph0405109
+      note: The dark-matter statement is conditional on R parity and on avoiding a full thermal singlino
+        abundance.
+      confidence: high
+      section: LSP s Dark Matter
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text states thermal stable singlinos overclose without dilution before BBN.
+      page: null
+      reference_id: arxiv:hep-ph/0405109
+      section: LSP dark matter
+    - confidence: medium
+      note: Related singlet-Higgs paper supports collider recast issues for singlet sectors.
+      page: null
+      reference_id: arxiv:hep-ph/0511250
+      section: Higgs decays
+    observables:
+    - confidence: high
+      note: Primary text quotes singlino warm-DM mass, relic-density target, required dilution, and N_CMB/BBN
+        effects.
+      page: null
+      reference_id: arxiv:hep-ph/0405109
+      section: LSP dark matter
+    - confidence: medium
+      note: Related WDM simulation supports early-structure sensitivity for 10 keV WDM.
+      page: null
+      reference_id: arxiv:astro-ph/0303622
+      section: Abstract
+    - confidence: medium
+      note: Related NMSSM paper supplies a mostly singlino LSP spectrum comparison.
+      page: null
+      reference_id: arxiv:1505.05554
+      section: Neutralino sector
+    routes:
+    - confidence: high
+      note: Primary paper provides the approximate-PQ thermal-history and singlino DM route.
+      page: null
+      reference_id: arxiv:hep-ph/0405109
+      section: Cosmology
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The paper is primarily an electroweak supersymmetry framework; the dark-matter candidate is a conditional
+    cosmological application.
+robustness:
+  overall: low
+  theory_robustness: medium
+  observational_robustness: low
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Relic abundance viability depends on unspecified entropy generation.
+  - Light singlino phase-space behavior is only treated qualitatively.
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: conditional_lsp_dm
+    severity: high
+    category: assumption_mismatch
+    warning: Do not treat the singlino LSP as viable dark matter without the paper's R-parity and entropy-dilution
+      assumptions.
+    mitigation: null
+    source_reference_ids:
+    - hep-ph0405109
+  - id: not_invisible_axion_model
+    severity: medium
+    category: notation_conflict
+    warning: The paper says the pseudo-Goldstone G is too heavy to solve strong CP and should not simply
+      be canonicalized as an invisible axion.
+    mitigation: null
+    source_reference_ids:
+    - hep-ph0405109
+observables:
+- caveats:
+  - Historical WMAP-era bound needs modern transfer-function recast.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - early Universe
+  - first galaxies
+  - Lyman-alpha/reionization scales
+  id: obs_pq_singlino_wdm
+  key_quantities:
+  - name: singlino mass
+    range: at least about 10 keV in primary discussion
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0405109
+    status: inferred
+    symbol: m_s
+    unit: keV
+  - name: singlino relic density
+    role: derived
+    source_reference_ids:
+    - arxiv:hep-ph/0405109
+    status: inferred
+    symbol: Omega_s
+    value: about 0.2
+  - name: entropy dilution factor
+    range: about 10^4-10^5*(m_s/100 keV)
+    role: cosmological
+    source_reference_ids:
+    - arxiv:hep-ph/0405109
+    status: inferred
+    symbol: D
+  linked_constraints:
+  - con_pq_wdm_mass
+  - con_pq_overclosure_dilution
+  linked_routes:
+  - route_pq_singlino
+  name: Warm singlino structure cutoff
+  notes: null
+  observability: medium
+  predicted_effect: A light stable singlino LSP behaves as warm dark matter unless its mass is high enough
+    and its thermal abundance is diluted.
+  redshift_range: decoupling before BBN through first structure formation
+  relevance: critical
+  scale_range: small-scale matter power and reionization-sensitive halos
+  source_reference_ids:
+  - arxiv:hep-ph/0405109
+  - arxiv:astro-ph/0303622
+  subchannel: warm-DM free-streaming and reionization-scale suppression
+- caveats:
+  - Requires detailed thermal history of G, H_1, and singlino states.
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - BBN plasma
+  - CMB acoustic oscillations
+  id: obs_pq_light_neff
+  key_quantities:
+  - name: pseudo-Goldstone mass
+    range: keV to MeV windows in primary discussion
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0405109
+    status: inferred
+    symbol: m_G
+    unit: keV-MeV
+  - name: Goldstone decay constant
+    range: few TeV to 10^3 TeV depending on m_G
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0405109
+    status: inferred
+    symbol: F_G
+    unit: TeV
+  - name: effective CMB neutrino number
+    range: can differ from 3 depending on regime
+    role: derived
+    source_reference_ids:
+    - arxiv:hep-ph/0405109
+    status: inferred
+    symbol: N_CMB
+  linked_constraints:
+  - con_pq_overclosure_dilution
+  linked_routes:
+  - route_pq_singlino
+  name: Light PQ-sector contribution to N_eff
+  notes: null
+  observability: medium
+  predicted_effect: Light Goldstone-sector states can change radiation density during BBN and acoustic-oscillation
+    eras, including cases with N_CMB different from 3.
+  redshift_range: BBN through recombination
+  relevance: high
+  scale_range: homogeneous radiation-density observables
+  source_reference_ids:
+  - arxiv:hep-ph/0405109
+  subchannel: BBN/CMB radiation density from Goldstone-sector states
+- caveats:
+  - Collider implications are model-dependent and complementary.
+  channel: collider
+  effect_direction: morphology_change
+  environments:
+  - LEP/LHC supersymmetry and Higgs searches
+  id: obs_pq_collider_cascades
+  key_quantities:
+  - name: singlet-doublet coupling
+    range: small in approximate-PQ window; model-dependent in NMSSM variants
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0405109
+    - arxiv:1505.05554
+    status: inferred
+    symbol: lambda
+  - name: singlino component
+    role: derived
+    source_reference_ids:
+    - arxiv:1505.05554
+    status: inferred
+    symbol: N_15
+    value: about 1 in related natural-NMSSM benchmark
+  linked_constraints:
+  - con_pq_collider_recast
+  linked_routes:
+  - route_pq_singlino
+  name: Singlet-sector collider cascades
+  notes: null
+  observability: medium
+  predicted_effect: The approximate-PQ singlet sector changes SUSY cascades through an extra singlet/singlino
+    stage and connects to exotic or nonstandard Higgs decays in singlet-extended SUSY.
+  redshift_range: null
+  relevance: medium
+  scale_range: electroweak-scale collider processes
+  source_reference_ids:
+  - arxiv:hep-ph/0405109
+  - arxiv:hep-ph/0511250
+  - arxiv:1505.05554
+  subchannel: extra cascade stage, light singlet Higgs, and singlino LSP
+constraints:
+- allowed_regions:
+  - Primary text quotes m_s at least about 10 keV as roughly satisfying the warm-DM requirement.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - Modern Lyman-alpha/satellite recast is needed for final use.
+  caveats:
+  - Primary limit is old; one F_G OCR unit should be checked.
+  constrained_parameters:
+  - m_s
+  - F_G
+  - entropy dilution
+  constraint_type: astrophysical
+  data_release: WMAP-era reionization and related WDM structure simulations
+  excluded_regions:
+  - Too-light or too-warm stable singlinos suppress early structure and fail the quoted reionization/small-scale
+    requirement.
+  id: con_pq_wdm_mass
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Warm-DM lower mass/reionization bound
+  notes: null
+  observable_channel: large_scale_structure
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:hep-ph/0405109
+  - arxiv:astro-ph/0303622
+- allowed_regions:
+  - Primary text requires decoupling before BBN and entropy dilution of order 10^4-10^5*(m_s/100 keV).
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - Singlino LSP can be all DM only with an explicit pre-BBN dilution or suppressed-production history.
+  caveats:
+  - No explicit entropy-generation model is supplied.
+  constrained_parameters:
+  - Omega_s
+  - n_s/n_gamma
+  - D
+  - m_G
+  - Gamma(G -> s s)
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - A full thermal abundance of stable singlinos overcloses the Universe unless production is limited
+    or diluted before BBN.
+  id: con_pq_overclosure_dilution
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Thermal singlino overclosure and BBN-safe dilution
+  notes: null
+  observable_channel: relic_density and bbn
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0405109
+- allowed_regions:
+  - Small approximate-PQ couplings and singlet-dominated states can evade direct searches while modifying
+    cascades.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Collider signatures complement the relic-density route.
+  caveats:
+  - Related collider papers are not direct likelihoods for the 2004 model.
+  constrained_parameters:
+  - lambda
+  - singlet-doublet mixing
+  - Higgs exotic branching
+  - neutralino spectrum
+  constraint_type: collider
+  data_release: LEP/LHC Higgs and SUSY searches in related singlet-SUSY literature
+  excluded_regions:
+  - Large singlet mixing or exotic Higgs/neutralino decay rates are constrained by LEP/LHC searches.
+  id: con_pq_collider_recast
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Light singlet and singlino collider recasts
+  notes: null
+  observable_channel: collider
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0405109
+  - arxiv:hep-ph/0511250
+  - arxiv:1505.05554
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Cosmology route needs an explicit entropy-generation model.
+    caveats:
+    - Historical WMAP-era constraint should be modernized.
+    constraint_ids:
+    - con_pq_wdm_mass
+    - con_pq_overclosure_dilution
+    - con_pq_collider_recast
+    derived_quantities:
+    - Omega_s
+    - singlino distribution
+    - N_BBN
+    - N_CMB
+    - free-streaming cutoff
+    - collider cascade topology
+    description: Track approximate-PQ singlet thermal history into singlino relic density, warm-DM suppression,
+      BBN/CMB radiation density, and collider signatures.
+    forward_model_chain:
+    - inputs:
+      - interaction rates
+      - m_s
+      - m_G
+      - F_G
+      - entropy injection
+      notes: Primary gives rate estimates and required dilution.
+      outputs:
+      - decoupling temperatures
+      - n_s/n_gamma
+      - N_eff
+      step_id: thermal-history
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Requires specifying entropy source.
+    - inputs:
+      - singlino distribution
+      - singlet spectrum
+      notes: Related papers provide recast targets.
+      outputs:
+      - P(k) cutoff
+      - collider exclusions
+      step_id: wdm-and-collider-recast
+      step_type: recasting
+      tool_or_code: transfer-function and collider tools
+      validity: Modern data and model matching required.
+    id: route_pq_singlino
+    input_parameters:
+    - m_s
+    - m_G
+    - F_G
+    - lambda
+    - entropy dilution
+    - singlet spectrum
+    likelihoods:
+    - modern Lyman-alpha/satellite/reionization likelihoods
+    - BBN/CMB N_eff likelihoods
+    - LEP/LHC collider recasts
+    observable_ids:
+    - obs_pq_singlino_wdm
+    - obs_pq_light_neff
+    - obs_pq_collider_cascades
+    required_code_resources:
+    - thermal-history solver
+    - nonthermal WDM transfer code
+    - singlet-SUSY spectrum and collider recast tools
+    route_status: planned
+    source_model_features:
+    - R-parity-stable singlino LSP
+    - light pseudo-Goldstone
+    - approximate U(1)_PQ singlet sector
+    - required pre-BBN dilution
+    validation_tests:
+    - Recover primary m_s~10 keV historical bound and required dilution factor.

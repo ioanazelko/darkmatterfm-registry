@@ -1,0 +1,407 @@
+_source:
+  shard: arXiv_src_2002_018_wds.tar
+  paper_id: '2002_05554'
+  source_member: 2002_05554.json
+schema_version: model_only_v0
+model_id: 2002_05554_scnmssm_light_neutralino_dm_v1
+identity:
+  name: Light neutralino dark matter in the semi-constrained NMSSM
+  family: supersymmetric_neutralino_dark_matter
+  aliases:
+  - scNMSSM light dark matter
+  - singlino-dominated neutralino dark matter
+  short_description: A semi-constrained NMSSM scenario with non-universal Higgs masses where the lightest
+    neutralino is lighter than half the SM-like Higgs mass, can be singlino-dominated, and can obtain
+    the right relic density through funnel mechanisms.
+  historical_origin_or_motivation: Motivated by simultaneously obtaining sufficient relic density, muon
+    g-2 compatibility, and large Higgs invisible decay in the scNMSSM.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Z3-invariant NMSSM
+  - semi-constrained NMSSM with non-universal Higgs masses
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the Z3-invariant NMSSM superpotential, soft terms, Higgs sector, and neutralino
+    mass matrix with GUT-scale scNMSSM input parameters.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino chi_1^0
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - singlet superfield S
+  - additional neutralinos
+  - charginos
+  - singlet-like CP-even Higgs h1
+  - light CP-odd Higgs a1
+  mediators:
+  - SM-like Higgs h2
+  - Z boson
+  - singlet-like h1
+  - light pseudoscalar a1
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - neutralino and chargino electroweakino states
+  long_lived_particles: []
+  unstable_parent_particles:
+  - SM-like Higgs h2 can decay invisibly to chi_1^0 chi_1^0 in the studied scenario
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper identifies chi_1^0 as the LSP dark matter candidate; the exact stabilizing
+    symmetry is not explicitly stated in the extracted text.
+  symmetries:
+  - name: Z3
+    type: discrete
+    exact_or_approximate: unknown
+    breaking: singlet vacuum expectation value generates the effective mu term
+  - name: supersymmetry
+    type: global
+    exact_or_approximate: broken
+    breaking: soft SUSY-breaking terms
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - SM-like Higgs h2
+  - Z boson
+  - Higgs-sector final states
+  dark_sector_couplings:
+  - lambda S H_u H_d
+  - kappa S^3
+  - soft A_lambda and A_kappa terms
+  mediator_types:
+  - CP-even Higgs bosons
+  - CP-odd Higgs boson
+  - Z boson
+  interaction_operators:
+  - S H_u H_d
+  - S^3
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: both
+  annihilation_channels:
+  - h2 funnel
+  - Z funnel
+  - h1 funnel
+  - a1 funnel
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: CP-even and CP-odd Higgs mediators appear in the Higgs sector.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: lambda
+    symbol: lambda
+    description: NMSSM singlet-doublet superpotential coupling.
+    range: 0.1 to 0.2 in the scan
+    role: core
+    status: established
+    source_reference_ids: []
+  - name: unified scalar mass
+    symbol: M0
+    description: GUT-scale scalar mass input in the scNMSSM scan.
+    range: 0 to 0.5
+    unit: TeV
+    role: core
+    status: established
+    source_reference_ids: []
+  - name: unified gaugino mass
+    symbol: M1/2
+    description: GUT-scale gaugino mass input in the scNMSSM scan.
+    range: 0.5 to 2
+    unit: TeV
+    role: core
+    status: established
+    source_reference_ids: []
+  - name: kappa
+    symbol: kappa
+    description: NMSSM singlet self-coupling.
+    range: absolute value below 0.7 in the scan
+    role: core
+    status: established
+    source_reference_ids: []
+  - name: tan beta
+    symbol: tan_beta
+    description: Ratio of Higgs doublet vacuum expectation values.
+    range: 1 to 30
+    role: core
+    status: established
+    source_reference_ids: []
+  - name: lightest neutralino mass
+    symbol: m_chi10
+    description: LSP mass; the scan requires it below half the SM-like Higgs mass.
+    range: m_chi10 < m_hSM/2; singlino-dominated right-relic samples can be as light as 0 to 12 GeV
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids: []
+  nuisance: []
+  derived:
+  - name: singlino fraction
+    symbol: '|N15|^2'
+    description: Singlino content of the lightest neutralino.
+    range: greater than about 0.9 for right-relic-density samples highlighted in the paper
+    role: core
+    status: established
+    source_reference_ids: []
+  - name: relic density
+    symbol: Omega h^2
+    description: Neutralino thermal relic density calculated with micrOMEGAs inside NMSSMTools.
+    range: upper bound 0.131; right density around 0.1187 in highlighted samples
+    role: core
+    status: established
+    source_reference_ids: []
+production:
+  mechanisms:
+  - thermal freeze-out through Higgs and Z funnel annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - LSP mass
+  - singlino fraction
+  - h2/Z/h1/a1 funnel conditions
+  - NMSSM Higgs-sector couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper permits subdominant neutralino density but identifies surviving samples with the right
+    relic density.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - h2 funnel with m_chi10 near m_h2/2
+  - Z funnel with m_chi10 near m_Z/2
+  - h1 or a1 funnel for lighter LSPs
+  - singlino dominance
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak symmetry breaking with singlet vacuum expectation value
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: No explicit distribution function was extracted.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: scnmssm_scan_region
+  applies_to: parameter
+  condition: Applies to the semi-constrained NMSSM scan region with non-universal Higgs masses and m_chi10
+    below half the SM-like Higgs mass.
+  valid_range: lambda 0.1-0.2, M0 0-0.5 TeV, M1/2 0.5-2 TeV, |kappa| < 0.7, tan_beta 1-30, |A0|, |A_lambda|,
+    |A_kappa| < 10 TeV
+  status: established
+  extrapolation_risk: high
+  caveats:
+  - The funnel classifications are scan-dependent and should not be generalized outside the stated scNMSSM
+    region.
+  source_reference_ids:
+  - arxiv:2002.05554
+  notes: null
+- id: funnel_relic_regimes
+  applies_to: production
+  condition: Right relic-density samples lie in h2, Z, h1, or a1 funnel mechanisms depending on the LSP
+    mass.
+  valid_range: m_chi10 near m_h2/2 or m_Z/2, or m_chi10 below about 20 GeV with h1/a1 funnel
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - arxiv:2002.05554
+  notes: null
+assumptions:
+  global:
+  - id: lsp_dark_matter
+    description: The lightest neutralino chi_1^0 is treated as the dark matter candidate.
+    scope: theory
+    status: assumed
+    impact_if_violated: The relic-density and invisible-Higgs-decay interpretation would not define a
+      neutralino dark matter scenario.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - arxiv:2002.05554
+    notes: The paper does not explicitly spell out the stabilizing symmetry in the extracted text.
+  - id: standard_relic_calculation
+    description: Dark matter relic density is computed with micrOMEGAs 5.0 inside NMSSMTools under the
+      paper's scan assumptions.
+    scope: production
+    status: assumed
+    impact_if_violated: The classification into right-density and subcomponent samples may change.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - arxiv:2002.05554
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses NMSSMTools-5.5.2 with micrOMEGAs 5.0, SModelS 1.2.2, HiggsBounds 5.5.0,
+    and a PyTorch GAN/heuristic scan; no reusable model-specific repository was extracted.
+  primary_code_role: relic_density_calculation
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+provenance:
+  model_id: 2002_05554_scnmssm_light_neutralino_dm_v1
+  model_name: Light neutralino dark matter in the semi-constrained NMSSM
+  model_family: supersymmetric_neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2002.05554
+      title: unknown
+      year: 2020
+      arxiv_id: '2002.05554'
+      doi: null
+      url: null
+      role: extension
+      notes: Title was not recoverable from the assigned SQLite text; extraction used the paper text only.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0017
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:2002.05554
+      section: null
+      page: null
+      quote_or_summary: The introduction states the paper studies Higgs invisible decay and light dark
+        matter in the scNMSSM.
+    - reference_id: arxiv:2002.05554
+      section: Light dark matter and Higgs invisible decay
+      page: null
+      quote_or_summary: The paper identifies singlino-dominated chi_1^0 samples with right relic density
+        and funnel mechanisms.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2002.05554
+      note: The neutralino sector has five neutralinos and the paper identifies chi_1^0 as the LSP; right-density
+        samples are highly singlino-dominated.
+      confidence: medium
+      section: null
+      page: null
+    symmetries:
+    - reference_id: arxiv:2002.05554
+      note: The model is Z3-invariant NMSSM with a singlet superfield; LSP stabilization is implicit rather
+        than spelled out in the extracted text.
+      confidence: medium
+      section: null
+      page: null
+    interactions:
+    - reference_id: arxiv:2002.05554
+      note: The superpotential contains S H_u H_d and S^3 terms, and the relevant relic regimes use Higgs
+        and Z funnel annihilation.
+      confidence: medium
+      section: null
+      page: null
+    production_mechanism:
+    - reference_id: arxiv:2002.05554
+      note: The paper states all samples have LSP funnel mechanisms; lighter LSPs use h1 or a1 funnels.
+      confidence: medium
+      section: null
+      page: null
+    cosmological_history:
+    - reference_id: arxiv:2002.05554
+      note: The relic-density discussion uses standard WMAP/Planck-style Omega h^2 targets and micrOMEGAs
+        calculations.
+      confidence: medium
+      section: null
+      page: null
+    parameter_ranges:
+    - reference_id: arxiv:2002.05554
+      note: The scan uses lambda 0.1-0.2, M0 0-0.5 TeV, M1/2 0.5-2 TeV, |kappa| < 0.7, tan_beta 1-30,
+        and trilinear ranges below 10 TeV.
+      confidence: medium
+      section: null
+      page: null
+    validity_domain:
+    - reference_id: arxiv:2002.05554
+      note: The extracted scenario is limited to m_chi10 below half the SM-like Higgs mass and the scNMSSM
+        non-universal-Higgs scan region.
+      confidence: medium
+      section: null
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - scan dependence of the funnel regimes
+  - implicit LSP stabilizing assumption
+  - machine-learning-assisted sampling coverage
+  validation_status: partially_validated
+  notes: The paper supplies the model equations and scan ranges, but the extracted card should be treated
+    as a scenario within scNMSSM rather than a separate canonical model.
+agent_failure_modes:
+  warnings:
+  - id: implicit_stabilization
+    severity: medium
+    category: assumption_mismatch
+    warning: The text identifies chi_1^0 as LSP dark matter but does not explicitly state the stabilizing
+      symmetry.
+    mitigation: Keep the stabilizing mechanism marked as implicit/unknown unless reviewed against the
+      full source.
+    source_reference_ids:
+    - arxiv:2002.05554
+  - id: funnel_regimes_not_separate_models
+    severity: low
+    category: other
+    warning: The h2, Z, h1, and a1 funnels are parameter regimes within this scenario, not separate rows
+      here.
+    mitigation: Split them only if a downstream curator wants benchmark-regime entries.
+    source_reference_ids:
+    - arxiv:2002.05554

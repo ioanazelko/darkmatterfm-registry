@@ -1,0 +1,607 @@
+_source:
+  shard: arXiv_src_1410_002_wds.tar
+  paper_id: '1410_0683'
+  source_member: 1410_0683.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: invalid_mapping
+    id: phenomenological_decay
+    severity: medium
+    source_reference_ids: []
+    warning: No microscopic Lagrangian or spin assignments are provided; do not infer particle identity
+      beyond the decay topology.
+associated_code:
+  code_summary: No model implementation is identified as part of this extraction.
+  has_associated_code: unknown
+  repositories: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: No decays occur before recombination in the paper's normalization.
+    id: post_recombination_decay
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Decay products have no Standard Model interactions and no interactions among themselves.
+    id: noninteracting_products
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: low
+  chemical_decoupling: null
+  cmb_relevance: high
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - late dark matter decay after recombination
+  - dark radiation from decays
+  phase_transitions: []
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases: []
+  family: decaying_dark_matter
+  historical_origin_or_motivation: unknown
+  model_kind: phenomenological_parameterization
+  name: Two-body decaying dark matter with one massless and one massive daughter
+  short_description: A phenomenological decaying-dark-matter model where a parent dark-matter particle
+    decays into one massless relativistic daughter and one massive daughter with a calculable velocity
+    distribution.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  dark_sector_couplings:
+  - phenomenological decay
+  decay_channels:
+  - parent DM -> massless relativistic daughter + massive daughter
+  interaction_operators: []
+  mediator_types: []
+  portals:
+  - none
+  self_scattering_channels: []
+  standard_model_targets: []
+  tree_or_loop_level: not_applicable
+model_id: 1410_0683_two_body_decaying_dm_v1
+parameters:
+  core:
+  - description: Lifetime of the decaying parent dark matter particle
+    name: parent lifetime
+    role: core
+    status: speculative
+    symbol: tau
+  - description: Fraction of parent energy transferred to the massless daughter
+    name: relativistic energy fraction
+    range:
+      max: 1/2
+      min: 0
+      notes: Two-body kinematic range
+      unit: null
+    role: core
+    status: speculative
+    symbol: epsilon
+  - description: Ratio of massive daughter mass to parent mass
+    name: daughter mass ratio
+    role: core
+    status: speculative
+    symbol: m2/m0
+particle_content:
+  additional_dark_sector_particles:
+  - massless relativistic daughter particles
+  - massive daughter particle
+  dark_matter_candidate:
+    elementary_or_composite: unknown
+    name: decaying parent dark matter and massive daughter
+    number_of_components: multi_component
+    spin: unknown
+    statistics: unknown
+  dark_radiation_species:
+  - massless relativistic daughter particles
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - massive daughter particle
+  mediators: []
+  standard_model_extension: unknown
+  unstable_parent_particles:
+  - parent dark matter particle
+phase_space:
+  distribution_function_available: 'yes'
+  distribution_type: decay_produced
+  free_streaming_length: null
+  notes: Two-body model derives daughter velocities; many-body model assumes the massive daughter is stationary.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - parent abundance normalized at recombination
+  - decay lifetime
+  - energy fraction to radiation
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - phenomenological parent dark matter abundance
+  - late two-body decay after recombination
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper assumes an initial parent dark matter density rather than deriving a microphysical
+    production mechanism.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The model assumes no decays occur before recombination.
+      page: null
+      reference_id: primary
+      section: The parent
+    particle_content:
+    - confidence: medium
+      note: Parent particle 0 decays to massless daughter 1 and massive daughter 2.
+      page: null
+      reference_id: primary
+      section: Two-particle decay
+    phase_space:
+    - confidence: medium
+      note: The velocity distribution of the massive daughter is derived from momentum conservation and
+        redshifting.
+      page: null
+      reference_id: primary
+      section: Two-particle decay
+    production_mechanism:
+    - confidence: medium
+      note: Parent density is normalized at recombination and decays with lifetime tau.
+      page: null
+      reference_id: primary
+      section: The parent
+    constraints:
+    - confidence: high
+      note: Primary result excludes short lifetimes below about 10 Gyr for sufficiently large relativistic
+        energy fractions in the SNIa likelihood.
+      page: null
+      reference_id: arxiv:1410.0683
+      section: Results
+    - confidence: medium
+      note: Related Planck-2018 DCDM analysis quotes percent-level upper bounds on the decaying fraction
+        in massless-dark-radiation models.
+      page: null
+      reference_id: arxiv:2011.01632
+      section: Constraints
+    - confidence: medium
+      note: Related BOSS DR14 Lyman-alpha analysis treats late two-body DCDM power suppression as a complementary
+        constraint.
+      page: null
+      reference_id: arxiv:2210.06117
+      section: Results
+    observables:
+    - confidence: high
+      note: Primary paper derives the two-body massive-daughter velocity/equation-of-state and the many-body
+        stationary-daughter limit.
+      page: null
+      reference_id: arxiv:1410.0683
+      section: Two-particle and many-particle decay
+    - confidence: high
+      note: Primary paper compares both models with Union2.1 type-Ia supernova distance moduli using Planck-normalized
+        cosmological parameters.
+      page: null
+      reference_id: arxiv:1410.0683
+      section: Supernova constraints
+    - confidence: high
+      note: Related two-body decaying-DM analysis connects a massless plus massive daughter scenario to
+        CMB and linear matter-power observables.
+      page: null
+      reference_id: arxiv:2102.12498
+      section: Model and constraints
+    - confidence: medium
+      note: Related Lyman-alpha study constrains decays into dark radiation plus warm daughter through
+        redshift-dependent matter-power suppression.
+      page: null
+      reference_id: arxiv:2210.06117
+      section: Lyman-alpha constraints
+    routes:
+    - confidence: high
+      note: Primary route maps lifetime and relativistic energy fraction to density evolution and luminosity
+        distances.
+      page: null
+      reference_id: arxiv:1410.0683
+      section: Cosmological model and SNIa fit
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0009
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5.5 dark-matter model-card worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The first model has one massless relativistic daughter and one massive possibly
+        relativistic daughter.
+      reference_id: primary
+      section: Abstract
+    - page: null
+      quote_or_summary: The paper derives density evolution and the massive daughter's velocity distribution.
+      reference_id: primary
+      section: Two-particle decay
+    unresolved_items:
+    - No SNIa likelihood or related CMB/LSS likelihood was rerun; constraints are recorded as recast targets.
+  last_updated: '2026-05-31'
+  model_family: decaying_dark_matter
+  model_id: 1410_0683_two_body_decaying_dm_v1
+  model_name: Two-body decaying dark matter with one massless and one massive daughter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1410.0683'
+      authors:
+      - Gordon Blackadder
+      - Savvas M. Koushiappas
+      doi: null
+      notes: null
+      reference_id: primary
+      role: original_model
+      title: Dark matter with two- and many-body decays and supernovae type Ia
+      url: null
+      year: 2014
+    - arxiv_id: '1410.0683'
+      authors:
+      - Blackadder, Gordon
+      - Koushiappas, Savvas M.
+      doi: 10.1103/PhysRevD.90.103527
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1410.0683
+      role: original_model
+      title: Dark matter with two- and many-body decays and supernovae type Ia
+      url: https://arxiv.org/abs/1410.0683
+      year: 2014
+    constraint_papers:
+    - arxiv_id: '2102.12498'
+      authors:
+      - Abellán, Guillermo F.
+      - Murgia, Riccardo
+      - Poulin, Vivian
+      doi: 10.1103/PhysRevD.104.123533
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2102.12498
+      role: constraint
+      title: Linear cosmological constraints on two-body decaying dark matter scenarios and the S<SUB>8</SUB>
+        tension
+      url: https://arxiv.org/abs/2102.12498
+      year: 2021
+    - arxiv_id: '2011.01632'
+      authors:
+      - Nygaard, Andreas
+      - Tram, Thomas
+      - Hannestad, Steen
+      doi: 10.1088/1475-7516/2021/05/017
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2011.01632
+      role: constraint
+      title: Updated constraints on decaying cold dark matter
+      url: https://arxiv.org/abs/2011.01632
+      year: 2021
+    - arxiv_id: '2210.06117'
+      authors:
+      - Fuß, Lea
+      - Garny, Mathias
+      doi: 10.1088/1475-7516/2023/10/020
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2210.06117
+      role: constraint
+      title: Decaying Dark Matter and Lyman-α forest constraints
+      url: https://arxiv.org/abs/2210.06117
+      year: 2023
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: phenomenological
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - parent lifetime
+  - relativistic daughter energy fraction
+  - normalization at recombination
+  overclosure_risk: unknown
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: unknown
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties: []
+  notes: Machine-extracted from a single paper.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'no'
+    small_scale_power_effect: suppression
+    transfer_function_shape: scale_dependent_growth
+  nonlinear:
+    halo_mass_function_effect: potentially altered by relativistic decay products
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: potentially suppressed in decaying-DM motivation
+symmetries:
+  stabilizing_mechanism: Parent dark matter is long-lived but not absolutely stable.
+  symmetries: []
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'no'
+  notes: The paper derives a general phenomenological decay model rather than a particle Lagrangian.
+  parent_frameworks: []
+  renormalizable: not_applicable
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Applies to two-body decays with one massless relativistic and one massive daughter, with
+    no decays before recombination.
+  extrapolation_risk: medium
+  id: two_body_kinematics
+  notes: null
+  source_reference_ids: []
+  status: speculative
+observables:
+- caveats:
+  - The primary analysis normalizes the parent density at recombination and assumes no earlier decay.
+  channel: cosmology
+  effect_direction: shape_change
+  environments:
+  - homogeneous cosmology
+  - type-Ia supernova sample
+  id: obs_decay_snia_expansion
+  key_quantities:
+  - description: Decay lifetime of the parent dark matter particle.
+    name: parent lifetime
+    range: late-time values through greater than the age of the Universe
+    role: core
+    source_reference_ids:
+    - arxiv:1410.0683
+    status: inferred
+    symbol: tau
+    unit: Gyr
+  - description: Fraction of parent rest energy transferred to relativistic daughters.
+    name: relativistic energy fraction
+    range: 0-1/2 for two-body; 0-1 for many-body
+    role: core
+    source_reference_ids:
+    - arxiv:1410.0683
+    status: inferred
+    symbol: epsilon
+  linked_constraints:
+  - con_snia_tau_epsilon
+  linked_routes:
+  - route_decay_expansion_lss
+  name: Type-Ia supernova expansion-history response
+  notes: null
+  observability: high
+  predicted_effect: Late conversion of matter into dark radiation and a massive daughter changes H(z)
+    and therefore the supernova Hubble diagram.
+  redshift_range: post-recombination to z=0
+  relevance: critical
+  scale_range: background expansion
+  source_reference_ids:
+  - arxiv:1410.0683
+  subchannel: SNIa luminosity distances
+- caveats:
+  - Mapping is direct for two-body massive daughters but only approximate for the many-body stationary-daughter
+    toy model.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - large-scale structure
+  - weak lensing
+  - Lyman-alpha forest
+  id: obs_decay_lss_suppression
+  key_quantities:
+  - description: Mass splitting or radiation energy fraction controlling daughter kick/free streaming.
+    name: energy fraction to radiation
+    range: small epsilon can affect S8-scale power in related analyses
+    role: core
+    source_reference_ids:
+    - arxiv:2102.12498
+    - arxiv:2210.06117
+    status: inferred
+    symbol: epsilon
+  - description: Lifetime controlling the redshift at which suppression develops.
+    name: decay lifetime
+    range: tens to hundreds of Gyr in related S8/Lyman-alpha studies
+    role: core
+    source_reference_ids:
+    - arxiv:2102.12498
+    - arxiv:2210.06117
+    status: inferred
+    symbol: tau
+    unit: Gyr
+  linked_constraints:
+  - con_cmb_lss_decay_recast
+  linked_routes:
+  - route_decay_expansion_lss
+  name: Late-decay matter-power suppression
+  notes: null
+  observability: medium
+  predicted_effect: Massive daughter free streaming and dark-radiation energy injection suppress late
+    matter clustering in two-body decaying-DM recasts.
+  redshift_range: late universe; Lyman-alpha at z about 2-4
+  relevance: high
+  scale_range: k around 0.1-1 h/Mpc for S8 and about 1 h/Mpc or above for Lyman-alpha
+  source_reference_ids:
+  - arxiv:2102.12498
+  - arxiv:2210.06117
+  subchannel: CMB, weak lensing, and Lyman-alpha recasts
+constraints:
+- allowed_regions:
+  - Long lifetimes and small relativistic fractions approach CDM in the primary SNIa fit.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: Parent dark matter density is normalized at recombination and no decays occur before
+      recombination.
+    id: post_recombination_normalization
+    impact_if_violated: Earlier decays would change the CMB normalization and SNIa mapping.
+    notes: null
+    scope: cosmological history
+    source_reference_ids:
+    - arxiv:1410.0683
+    status: assumed
+  benchmark_implications:
+  - Both two-body and many-body primary benchmark planes are constrained mostly at large epsilon and tau
+    below about 10^10 years.
+  caveats:
+  - Primary contours were not digitized in this batch.
+  constrained_parameters:
+  - tau
+  - epsilon
+  constraint_type: cosmological
+  data_release: Union2.1 catalog of 580 SNIa
+  excluded_regions:
+  - Short lifetimes below about 10 Gyr are excluded for sufficiently large relativistic daughter energy
+    fraction.
+  id: con_snia_tau_epsilon
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Union2.1 SNIa lifetime-energy-fraction exclusion
+  notes: null
+  observable_channel: type-Ia supernovae
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1410.0683
+- allowed_regions:
+  - Some two-body massive-daughter parameter regions can reduce S8 tension without spoiling current CMB
+    data, but require full likelihood treatment.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Daughter products interact gravitationally or as dark radiation rather than electromagnetically.
+    id: dark_sector_only_decay_products
+    impact_if_violated: Visible decay products would face much stronger indirect limits.
+    notes: null
+    scope: decay channel
+    source_reference_ids:
+    - arxiv:1410.0683
+    - arxiv:2102.12498
+    status: assumed
+  benchmark_implications:
+  - Two-body row is the closer match to later CMB/LSS analyses; many-body row needs a model-dependent
+    mapping.
+  caveats:
+  - Related constraints use models and datasets beyond the primary SNIa-only fit.
+  constrained_parameters:
+  - tau
+  - epsilon
+  - decaying fraction
+  constraint_type: cosmological
+  data_release: Planck 2018, BOSS DR14 Lyman-alpha, weak-lensing summaries in related analyses
+  excluded_regions:
+  - Related DCDM-to-dark-radiation studies give percent-level fractional constraints for massless daughters
+    and Lyman-alpha restrictions on S8-favored two-body regions.
+  id: con_cmb_lss_decay_recast
+  likelihood_available: partial
+  likelihood_reference: null
+  name: CMB and LSS recast constraints on late dark-sector decay
+  notes: null
+  observable_channel: CMB/weak lensing/Lyman-alpha
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2102.12498
+  - arxiv:2011.01632
+  - arxiv:2210.06117
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Primary model assumes dark-sector daughters do not interact with the Standard Model.
+    constraint_ids:
+    - con_snia_tau_epsilon
+    - con_cmb_lss_decay_recast
+    derived_quantities:
+    - rho_parent(a)
+    - rho_dark_radiation(a)
+    - rho_massive_daughter(a)
+    - H(z)
+    - luminosity distance
+    - matter power suppression
+    description: Propagate late dark-matter decay parameters into expansion-history, CMB, and matter-power
+      observables.
+    forward_model_chain:
+    - inputs:
+      - tau
+      - epsilon
+      - daughter kinematics
+      notes: null
+      outputs:
+      - background densities
+      - massive-daughter equation of state
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary equations assume noninteracting daughters after recombination.
+    - inputs:
+      - background densities
+      - daughter perturbations
+      notes: null
+      outputs:
+      - CMB spectra
+      - linear matter power
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: CLASS/CAMB with decaying-DM support
+      validity: Needed for CMB/LSS recasts; not run in this batch.
+    - inputs:
+      - luminosity distances
+      - matter power or CMB spectra
+      notes: null
+      outputs:
+      - SNIa, CMB, weak-lensing, and Lyman-alpha constraints
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: Primary SNIa likelihood was not rerun; related likelihoods require recast.
+    id: route_decay_expansion_lss
+    input_parameters:
+    - tau
+    - epsilon
+    - daughter mass ratio or stationary daughter assumption
+    likelihoods:
+    - Union2.1 SNIa likelihood from primary not available here
+    - CMB/LSS/Lyman-alpha likelihoods require recast
+    observable_ids:
+    - obs_decay_snia_expansion
+    - obs_decay_lss_suppression
+    required_code_resources:
+    - Boltzmann solver with massive daughter perturbations
+    - SNIa likelihood code
+    - Lyman-alpha emulator for current recast
+    route_status: planned
+    source_model_features:
+    - parent dark matter lifetime
+    - relativistic daughter energy fraction
+    - massive daughter equation of state
+    validation_tests:
+    - recover primary short-lifetime SNIa exclusion
+    - recover S8-scale matter-power suppression for two-body DDM

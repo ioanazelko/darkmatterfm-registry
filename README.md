@@ -8,16 +8,18 @@ what the model is, but which observables and constraints apply, which
 computational routes evaluate it, what is *missing* to evaluate it, and
 where automated reasoning about it is most likely to go wrong.
 
-This repository holds the parts of the project that are small enough for
-Git: the schema suite, a browser for it, the capability-gap roadmap, the
-derived research-project ranking, and the scripts that build them. The
-full card release (thousands of cards, ~100 MB) is distributed separately.
+This repository holds the schema suite, a browser for it, all 6,145 model
+cards with a self-contained wiki for browsing them, the capability-gap
+roadmap, the derived research-project ranking, and the scripts that build
+them.
 
 ## Contents
 
 | Path | What it is |
 |---|---|
 | `registry/schemas/*.schema.yaml` | The seven JSON Schema (draft 2020-12, YAML source) files that every card is validated against: `bsm_model` (the card, 31 top-level sections), `common`, `observable`, `constraint`, `route`, `provenance`, `code`. See `registry/schemas/README.md`. |
+| `registry/models/cards/<family>/<paper>/<model_id>.yaml` | All 6,145 model cards, one YAML file per card (137 MB in total), grouped by model family and arXiv paper. The 2,004 enriched cards also carry `observables`, `constraints`, and `theory_to_observable_routing` sections. Two family directory names are shortened to 80 characters; the card's `identity.family` field is authoritative. |
+| `registry/darkmatterwiki.html` | Browse and search every card with a full detail pane: facets by family, model kind, status and portal, plus summary counts. Self-contained (62 MB, all card data embedded), so it needs a moment to load. Its navigation bar links the companion viewers `paper_status.html` (triage outcomes per paper), `ranking.html` (priority scores and tiers), `enrichment_status.html` and `enrichment_outputs.html` (the enrichment pass per model). |
 | `registry/schema_browser.html` | **Start here.** A self-contained, dependency-free browser for the whole schema suite: every section and field with its description, type, enum values, examples and required flag, `$ref` links resolved across files, and a stable anchor per node for deep links (e.g. `schema_browser.html#bsm_model/agent_failure_modes`, `#bsm_model/capability_gaps`, `#route/defs/route`). Download the file and open it in any browser. Built by `registry/build_schema_browser.py`. |
 | `registry/capability_gap_prompt.md` | The specification given to the annotation agents for the capability-gap pass: how each route step is judged available / partial / missing / unknown, and how gap entries are typed, graded and resolved. |
 | `registry/models/capability_gaps_full.jsonl` | Per-card capability-gap annotations for the 2,004 enriched cards (5,166 gap entries), schema-valid against the `capability_gaps` block of `bsm_model`. |
@@ -41,10 +43,10 @@ The schema browser and the project ranking rebuild from files in this
 repository alone (the ranking reads `capability_gap_roadmap.jsonl`). The
 roadmap builder reads `capability_gaps_full.jsonl` and
 `ranking_full_ranked.jsonl` (both included) **plus** the 2,004 enriched
-model cards themselves, for model names, families and observable channels;
-those cards belong to the full data release and are not in this repository,
-so that script is included for inspection of the aggregation rule and its
-outputs are committed. The per-card gap annotation step calls an LLM and is
+model cards, for model names, families and observable channels. The script
+reads them as JSON from a working directory outside the repository, so it is
+included for inspection of the aggregation rule and its outputs are
+committed; the same cards are in `registry/models/cards/` as YAML. The per-card gap annotation step calls an LLM and is
 not re-run by any script here; its outputs are `capability_gaps_full.jsonl`.
 
 ## Scoring, in one paragraph

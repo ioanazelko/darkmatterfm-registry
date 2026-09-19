@@ -1,0 +1,939 @@
+_source:
+  shard: arXiv_src_2310_121_wds.tar
+  paper_id: '2310_16087'
+  source_member: 2310_16087.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2310_16087_ksvz_axion_dgt5_q_decay_v1
+identity:
+  name: KSVZ axion dark matter with dimension-greater-than-five heavy-quark decays
+  family: axion_like_dark_matter
+  aliases:
+  - preferred axion model with d>5 Q decays
+  - KSVZ axion with early matter domination
+  short_description: A KSVZ-type QCD axion dark-matter variant in which the heavy colored fermion Q decays
+    through higher-dimensional operators, allowing early matter domination and reopening axion parameter
+    space previously disfavored under standard cosmology.
+  historical_origin_or_motivation: The paper challenges the usual preferred-axion conclusion that Q decays
+    must occur through dimension-5 or lower operators, arguing that late Q decay can alter misalignment
+    cosmology without adding particle content.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - KSVZ axion models
+  - Peccei-Quinn mechanism
+  - post-inflationary PQ breaking
+  lagrangian_available: partial
+  renormalizable: 'no'
+  eft_cutoff:
+    name: operator suppression scale
+    symbol: Lambda
+    description: Scale suppressing the higher-dimensional operators that mediate Q decay.
+    value: null
+    range: varied; often compared with the Planck scale
+    unit: GeV
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '2310_16087'
+    notes: The paper varies Lambda to show higher-dimensional decays can remain viable.
+  embedded_in_larger_framework: 'yes'
+  notes: The text writes the KSVZ-like Lagrangian L_SM + L_PQ - V_H + L_Qq, then treats L_Qq as effective
+    operators that allow the heavy Q fermion to decay.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - PQ scalar field
+  - heavy colored fermion Q
+  mediators:
+  - heavy KSVZ quark Q
+  - PQ scalar
+  dark_radiation_species:
+  - axions produced in heavy-Q decays
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - QCD axion
+  unstable_parent_particles:
+  - heavy colored fermion Q
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The axion is protected by the Peccei-Quinn shift symmetry structure and is cosmologically
+    stable; the heavy Q fermion is unstable through higher-dimensional operators.
+  symmetries:
+  - name: U(1)_PQ
+    type: global
+    exact_or_approximate: broken
+    breaking: Spontaneously broken PQ symmetry with QCD anomaly giving the axion mass.
+    breaking_scale:
+      name: PQ scale
+      symbol: f_a
+      description: Scale of U(1)_PQ breaking and axion decay constant.
+      value: null
+      range: related to m_a by the QCD axion mass relation
+      unit: GeV
+      role: core
+      status: inferred
+      source_reference_ids:
+      - '2310_16087'
+      notes: null
+  - name: U(1)_Q heavy-quark number
+    type: global
+    exact_or_approximate: broken
+    breaking: Broken by the effective Q-decay operators in L_Qq.
+    breaking_scale: null
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  - other
+  standard_model_targets:
+  - gluons
+  - photons
+  - SM quarks
+  dark_sector_couplings:
+  - PQ Yukawa coupling y_Q between the PQ scalar and heavy Q fermion
+  - effective Q-decay operators coupling Q to SM quarks
+  mediator_types:
+  - heavy colored fermion
+  - PQ scalar
+  interaction_operators:
+  - QCD and electromagnetic anomaly couplings of the axion
+  - higher-dimensional Q-decay operators with dimension d > 5
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels:
+  - Q Qbar annihilation into quarks and gluons before freeze-out
+  decay_channels:
+  - Q decays to Standard Model states
+  - Q decays can include axions with model-dependent branching ratio
+  self_scattering_channels: []
+  cp_structure: standard QCD axion CP solution; CP structure of Q decay operators not specified in model-card
+    detail
+  flavor_structure: Q decay operators couple to SM quarks q_L, d_R, or u_R in the paper's notation
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: axion mass
+    symbol: m_a
+    description: QCD axion mass related to f_a.
+    value: 5.7e-5 eV * (1e11 GeV / f_a)
+    range: extended to lower masses in viable d>5 scenarios according to the paper
+    unit: eV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2310_16087'
+    notes: Relation quoted in the introduction.
+  - name: PQ scale
+    symbol: f_a
+    description: Axion decay constant and PQ breaking scale.
+    value: null
+    range: model-dependent; tied to m_a and heavy-Q mass
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2310_16087'
+    notes: null
+  - name: heavy-quark mass
+    symbol: m_Q
+    description: Mass of the KSVZ heavy colored fermion, set by the PQ Yukawa coupling in the paper's
+      benchmark convention.
+    value: null
+    range: scanned; values around 1e12 GeV are highlighted for early matter domination estimates
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2310_16087'
+    notes: The text takes y_Q = 1 for the purposes of the work.
+  - name: Q-decay operator dimension
+    symbol: d
+    description: Mass dimension of the operator that makes Q unstable.
+    value: d > 5
+    range: d=6 and above are analyzed, with d=6 and d=7 emphasized
+    unit: null
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2310_16087'
+    notes: The paper argues d=6 decays can be compatible with observations once early matter domination
+      is included.
+  - name: initial misalignment angle
+    symbol: theta_i
+    description: Initial axion angle controlling misalignment abundance.
+    value: null
+    range: 0.5 to pi/3 in scans described by the paper
+    unit: null
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '2310_16087'
+    notes: null
+  - name: branching ratio to axions
+    symbol: BR_a
+    description: Fraction of heavy-Q decays producing axions, relevant for Delta N_eff.
+    value: null
+    range: model-dependent
+    unit: null
+    role: core
+    status: unknown
+    source_reference_ids:
+    - '2310_16087'
+    notes: The paper studies how N_eff constrains branching ratios into axions.
+  nuisance: []
+  derived:
+  - name: Q decay temperature
+    symbol: T_decay^Q
+    description: Temperature at which Q decays; compared with Q freeze-out, equality, BBN, and axion oscillation.
+    value: null
+    range: depends on m_Q, d, Lambda, and g_*
+    unit: GeV
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2310_16087'
+    notes: null
+production:
+  mechanisms:
+  - axion misalignment after post-inflationary PQ breaking
+  - entropy dilution from late heavy-Q decay after Q thermal freeze-out
+  - possible axion production in Q decays
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - f_a or m_a
+  - theta_i
+  - m_Q
+  - operator dimension d
+  - suppression scale Lambda
+  - duration of early matter domination
+  - branching ratio of Q decays to axions
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The heavy Q particles thermally freeze out and can dominate the energy budget before decaying,
+    changing the axion misalignment abundance.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: Planck dark-matter relic density
+    symbol: Omega_DM h^2
+    description: Thermal relic value used as the target for axion dark matter.
+    value: '0.12'
+    range: null
+    unit: null
+    role: cosmological
+    status: established
+    source_reference_ids:
+    - '2310_16087'
+    notes: The paper quotes 0.12 as the Planck value.
+  calculation_type: nonthermal
+  key_dependencies:
+  - misalignment abundance
+  - Q freeze-out yield
+  - Q decay width
+  - entropy injection during early matter domination
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - post-inflationary PQ symmetry breaking
+  - thermal freeze-out of heavy Q fermions
+  - early matter domination by metastable Q particles
+  - late Q decay before or near BBN limits
+  - possible extra dark radiation from Q decays to axions
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: Q freeze-out temperature
+    symbol: T_f
+    description: Temperature where the heavy Q abundance freezes out.
+    value: m_Q / x_f with x_f about 25
+    range: null
+    unit: GeV
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2310_16087'
+    notes: null
+  phase_transitions:
+  - PQ symmetry breaking
+  - QCD phase transition
+  topological_defects:
+  - domain walls possible unless N_DW = 1 or another solution is used
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  f_of_p_or_q: not_applicable
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Cold axions arise primarily from coherent misalignment; axions from Q decay are tracked separately
+    through N_eff logic.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No WDM transfer-function mapping is provided.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: ksvz_post_inflationary_setup
+  applies_to: model
+  condition: The paper focuses on KSVZ axion models with post-inflationary PQ breaking and reheating temperature
+    above f_a.
+  valid_range: T_R > f_a; heavy Q charged under SU(3)_c
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - DFSZ models are discussed only as contrast, not the focus.
+  source_reference_ids:
+  - '2310_16087'
+  notes: null
+- id: higher_dimensional_q_decay
+  applies_to: effective_operator
+  condition: Q decays through operators above dimension 5 without adding extra particle content.
+  valid_range: d >= 6 with viable regions depending on Lambda and m_Q
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - Validity depends on the unknown suppression scale and effective-operator completion.
+  source_reference_ids:
+  - '2310_16087'
+  notes: null
+- id: domain_wall_handling
+  applies_to: cosmological_history
+  condition: Domain wall problems are avoided, for example by taking domain wall number N_DW = 1 or invoking
+    another solution.
+  valid_range: N_DW = 1 in the explicit safe case mentioned by the paper
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The paper notes there are multiple ways around the domain-wall issue.
+  source_reference_ids:
+  - '2310_16087'
+  notes: null
+assumptions:
+  global:
+  - id: post_inflationary_pq
+    description: PQ symmetry breaks after inflation, so initial axion angles vary across patches and are
+      averaged in the relic calculation.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The misalignment abundance and isocurvature/domain-wall logic would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2310_16087'
+    notes: null
+  - id: effective_q_decay
+    description: The heavy Q fermion is allowed to decay through higher-dimensional effective operators
+      with no added particle content.
+    scope: theory
+    status: assumed
+    impact_if_violated: Q could be stable or decay too early, removing the early matter domination mechanism.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2310_16087'
+    notes: null
+  - id: heavy_q_thermal_history
+    description: The heavy Q particles reach thermal equilibrium at high temperature, freeze out, and
+      may dominate the energy density before decaying.
+    scope: production
+    status: inferred
+    impact_if_violated: Entropy dilution of axion misalignment abundance would be altered.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2310_16087'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper describes a numerical treatment but no public associated code was identified
+    in the assigned text.
+provenance:
+  model_id: 2310_16087_ksvz_axion_dgt5_q_decay_v1
+  model_name: KSVZ axion dark matter with dimension-greater-than-five heavy-quark decays
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2310_16087'
+      title: QCD axion models with heavy-quark decays above dimension five
+      authors: []
+      year: 2023
+      arxiv_id: '2310.16087'
+      doi: null
+      url: null
+      role: extension
+      notes: The local text begins with the QCD axion DM motivation and develops KSVZ heavy-Q decay variants;
+        no separate title metadata was present in the extracted text.
+    - arxiv_id: '2310.16087'
+      authors:
+      - Cheek, Andrew
+      - Osiński, Jacek K.
+      - Roszkowski, Leszek
+      doi: 10.1088/1475-7516/2024/03/061
+      notes: Primary assigned paper text was resolved locally.
+      reference_id: src_2310_16087
+      role: original_model
+      title: Extending preferred axion models via heavy-quark induced early matter domination
+      url: https://arxiv.org/abs/2310.16087
+      year: 2024
+    constraint_papers:
+    - arxiv_id: '1807.07176'
+      authors:
+      - Nelson, Ann E.
+      - Xiao, Huangyu
+      doi: 10.1103/PhysRevD.98.063516
+      notes: null
+      reference_id: src_1807_07176
+      role: extension
+      title: Axion cosmology with early matter domination
+      url: https://arxiv.org/abs/1807.07176
+      year: 2018
+    - arxiv_id: '1610.10051'
+      authors:
+      - Poulin, Vivian
+      - Lesgourgues, Julien
+      - Serpico, Pasquale D.
+      doi: 10.1088/1475-7516/2017/03/043
+      notes: null
+      reference_id: src_1610_10051
+      role: constraint
+      title: Cosmological constraints on exotic injection of electromagnetic energy
+      url: https://arxiv.org/abs/1610.10051
+      year: 2017
+    external_databases:
+    - name: NASA ADS
+      note: Used for sanitized metadata discovery; structured scientific claims rely on locally read primary
+        or related text.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers:
+    - arxiv_id: '1510.07633'
+      authors:
+      - Marsh, David J. E.
+      doi: 10.1016/j.physrep.2016.06.005
+      notes: null
+      reference_id: src_1510_07633
+      role: review
+      title: Axion cosmology
+      url: https://arxiv.org/abs/1510.07633
+      year: 2016
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0003
+    extractor_name: GPT-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2310_16087'
+      section: introduction/framework
+      page: null
+      quote_or_summary: The text says it challenges the d <= 5 Q-decay conclusion and shows d > 5 Q decays
+        can be cosmologically allowed.
+    - reference_id: '2310_16087'
+      section: early matter domination and numerical treatment
+      page: null
+      quote_or_summary: The paper tracks Q freeze-out, Q domination and decay, and axion misalignment
+        through coupled Friedmann-Boltzmann equations.
+    unresolved_items:
+    - The extracted text did not include a clean title block.
+    - The exact UV completion of the higher-dimensional Q-decay operators is not specified.
+    - Topological-defect axion production is deliberately unresolved because the primary text says it
+      is disputed.
+    - No public likelihood or contour table was found for the heavy-quark decay scan.
+  evidence:
+    particle_content:
+    - reference_id: '2310_16087'
+      note: The model uses a QCD axion from U(1)_PQ plus a heavy colored KSVZ fermion Q charged under
+        PQ symmetry.
+      confidence: high
+      section: preferred axion model framework
+      page: null
+    symmetries:
+    - reference_id: '2310_16087'
+      note: The paper states U(1)_PQ is spontaneously broken and anomalous, while Q decay operators break
+        the heavy-quark symmetry.
+      confidence: high
+      section: framework
+      page: null
+    interactions:
+    - reference_id: '2310_16087'
+      note: The KSVZ setup supplements the SM with L_PQ and L_Qq; L_Qq contains terms coupling Q to SM
+        quarks and is treated through higher-dimensional decay operators.
+      confidence: high
+      section: framework
+      page: null
+    production_mechanism:
+    - reference_id: '2310_16087'
+      note: Heavy Q freezes out thermally, may create early matter domination, and decays can dilute or
+        supplement the axion abundance set by misalignment.
+      confidence: high
+      section: early Q domination
+      page: null
+    cosmological_history:
+    - reference_id: '2310_16087'
+      note: The paper explicitly contrasts standard radiation domination with early matter domination
+        from frozen-out Q particles.
+      confidence: high
+      section: early matter domination
+      page: null
+    parameter_ranges:
+    - reference_id: '2310_16087'
+      note: The relevant scans vary m_Q, Lambda, operator dimension d, and theta_i, with d=6 and d=7 highlighted
+        as viable examples.
+      confidence: medium
+      section: numerical scan discussion
+      page: null
+    validity_domain:
+    - reference_id: '2310_16087'
+      note: The scenario is framed for post-inflationary KSVZ axion models and requires handling domain
+        walls and BBN limits on Q decay.
+      confidence: medium
+      section: framework and BBN discussion
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper uses T_decay^Q > T_BBN about 3 MeV as a robust decay criterion.
+      page: null
+      reference_id: src_2310_16087
+      section: null
+    - confidence: medium
+      note: Energy-injection constraints paper supports the BBN/CMB sensitivity to exotic electromagnetic
+        injection.
+      page: null
+      reference_id: src_1610_10051
+      section: null
+    - confidence: high
+      note: Axion cosmology review supports the standard misalignment, isocurvature, string, and domain-wall
+        caveats.
+      page: null
+      reference_id: src_1510_07633
+      section: null
+    observables:
+    - confidence: high
+      note: Primary paper states that d>5 heavy-quark decays can be cosmologically allowed and alter axion
+        misalignment dynamics.
+      page: null
+      reference_id: src_2310_16087
+      section: null
+    - confidence: medium
+      note: Related early-matter-domination axion paper supports the abundance shift from a nonstandard
+        pre-BBN history.
+      page: null
+      reference_id: src_1807_07176
+      section: null
+    routes:
+    - confidence: high
+      note: Primary paper links heavy-quark lifetimes, early matter domination, and axion abundance contours.
+      page: null
+      reference_id: src_2310_16087
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - This row records the paper's proposed KSVZ/d>5 decay variant, not the generic QCD axion model.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - unknown UV origin and suppression scale of Q-decay operators
+  - BBN and Delta N_eff sensitivity
+  - domain-wall assumptions
+  validation_status: expert_judgment_only
+  notes: The mechanism is quantitatively studied in the paper, but the model-card details remain EFT-level.
+agent_failure_modes:
+  warnings:
+  - id: do_not_merge_with_generic_axion
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not use this card as a generic QCD axion entry; its distinctive content is the d > 5 heavy-Q
+      decay and early-matter-domination cosmology.
+    mitigation: Check that the use case requires the KSVZ heavy-Q decay extension.
+    source_reference_ids:
+    - '2310_16087'
+  - id: eft_operator_validity
+    severity: medium
+    category: extrapolation
+    warning: Higher-dimensional Q-decay operators are represented phenomenologically; UV-completion assumptions
+      are not fixed by the paper.
+    mitigation: Keep Lambda and operator-dimension dependence explicit.
+    source_reference_ids:
+    - '2310_16087'
+observables:
+- caveats:
+  - Primary paper omits uncertain string/domain-wall axion production from the structured abundance calculation.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe
+  id: axion_abundance_emd_shift
+  key_quantities:
+  - description: Sets axion mass and couplings.
+    name: Axion decay constant
+    range: larger f_a/lower m_a can reopen under early matter domination
+    role: core
+    source_reference_ids:
+    - src_2310_16087
+    - src_1510_07633
+    - src_1807_07176
+    status: inferred
+    symbol: f_a
+    unit: GeV
+  - description: Initial axion displacement used in the abundance calculation.
+    name: Initial misalignment angle
+    range: benchmarks include 0.5 and pi/3
+    role: core
+    source_reference_ids:
+    - src_2310_16087
+    status: assumed
+    symbol: theta_i
+  - description: Mass of the KSVZ heavy quark whose decay can induce early matter domination.
+    name: Heavy-quark mass
+    range: model dependent and extended by d>5 decay operators
+    role: core
+    source_reference_ids:
+    - src_2310_16087
+    status: inferred
+    symbol: m_Q
+    unit: GeV
+  linked_constraints:
+  - axion_overproduction_misalignment
+  - heavy_quark_decay_before_bbn
+  linked_routes:
+  - ksvz_heavy_quark_decay_route
+  name: Axion relic abundance shifted by heavy-quark early matter domination
+  notes: null
+  observability: medium
+  predicted_effect: Long-lived KSVZ heavy quarks can dominate the energy budget before decaying, changing
+    the axion misalignment abundance and reopening lower axion masses/higher decay constants.
+  redshift_range: pre-BBN to QCD epoch
+  relevance: critical
+  scale_range: homogeneous cosmology
+  source_reference_ids:
+  - src_2310_16087
+  - src_1510_07633
+  - src_1807_07176
+  - src_1610_10051
+  subchannel: misalignment relic abundance
+- caveats:
+  - The exact energy-injection final states depend on the Q decay operator.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe plasma
+  id: heavy_quark_decay_cosmology
+  key_quantities:
+  - description: Lifetime induced by renormalizable or higher-dimensional Q decay operators.
+    name: Heavy-quark lifetime
+    range: roughly bounded by pre-BBN decay requirements
+    role: derived
+    source_reference_ids:
+    - src_2310_16087
+    - src_1610_10051
+    status: inferred
+    symbol: tau_Q
+    unit: s
+  - description: SM plasma temperature at heavy-quark decay.
+    name: Decay temperature
+    range: T_decay^Q > about 3 MeV in the primary paper
+    role: derived
+    source_reference_ids:
+    - src_2310_16087
+    status: inferred
+    symbol: T_decay^Q
+    unit: MeV
+  linked_constraints:
+  - heavy_quark_decay_before_bbn
+  linked_routes:
+  - ksvz_heavy_quark_decay_route
+  name: Energy injection and reheating from heavy-quark decay
+  notes: null
+  observability: medium
+  predicted_effect: The heavy quark must decay early enough that the SM plasma is warm before BBN; later
+    electromagnetic or hadronic injection would be constrained.
+  redshift_range: pre-BBN through recombination
+  relevance: high
+  scale_range: homogeneous cosmology
+  source_reference_ids:
+  - src_2310_16087
+  - src_1610_10051
+  subchannel: BBN and CMB energy injection
+- caveats:
+  - Primary paper intentionally does not include the uncertain defect contribution.
+  channel: cmb
+  effect_direction: model_dependent
+  environments:
+  - CMB
+  - axion string network
+  id: axion_isocurvature_defect_caveat
+  key_quantities:
+  - description: Whether PQ symmetry breaks before or after inflation.
+    name: PQ breaking history
+    range: pre-inflationary or post-inflationary
+    role: cosmological
+    source_reference_ids:
+    - src_2310_16087
+    - src_1510_07633
+    status: assumed
+    symbol: scenario
+  linked_constraints:
+  - topological_defect_isocurvature_limit
+  linked_routes:
+  - ksvz_heavy_quark_decay_route
+  name: Isocurvature and topological-defect sensitivity of axion dark matter
+  notes: null
+  observability: medium
+  predicted_effect: The model inherits standard axion sensitivity to pre/post-inflationary PQ breaking,
+    isocurvature fluctuations, strings, and domain walls.
+  redshift_range: inflation to recombination
+  relevance: medium
+  scale_range: CMB and horizon-scale perturbations
+  source_reference_ids:
+  - src_2310_16087
+  - src_1510_07633
+  subchannel: isocurvature and defect-sourced axions
+constraints:
+- allowed_regions:
+  - T_decay^Q above about 3 MeV is used as the robust pre-BBN criterion.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The SM plasma must be radiation dominated and warmer than the BBN scale before nucleosynthesis.
+    id: standard_bbn_temperature
+    impact_if_violated: Late decays spoil light-element and/or CMB observables.
+    notes: null
+    scope: cosmological constraint
+    source_reference_ids:
+    - src_2310_16087
+    - src_1610_10051
+    status: established
+  benchmark_implications:
+  - Dimension-greater-than-five heavy-quark decays can be viable when they still satisfy the decay-temperature
+    bound.
+  caveats:
+  - Detailed hadronic branching constraints were not reconstructed.
+  constrained_parameters:
+  - tau_Q
+  - T_decay^Q
+  - operator dimension d
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Operators that leave Q decays too late and cool the SM plasma below the BBN requirement.
+  id: heavy_quark_decay_before_bbn
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Heavy-quark decay before BBN
+  notes: No packaged likelihood was identified in the bounded read; recasting would require reproducing
+    the paper-level calculation.
+  observable_channel: BBN thermal history
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2310_16087
+  - src_1610_10051
+- allowed_regions:
+  - Heavy-quark-induced early matter domination can dilute or shift the allowed axion abundance.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The structured abundance follows the misalignment component and neglects uncertain defect
+      contributions.
+    id: misalignment_only
+    impact_if_violated: String/domain-wall production could move the allowed region.
+    notes: null
+    scope: axion abundance
+    source_reference_ids:
+    - src_2310_16087
+    - src_1510_07633
+    status: assumed
+  benchmark_implications:
+  - The KSVZ benchmark can extend viable axion masses to lower values without adding extra fields in the
+    cases studied.
+  caveats:
+  - Topological-defect contribution remains disputed and was not included as a hard constraint.
+  constrained_parameters:
+  - f_a
+  - m_a
+  - theta_i
+  - m_Q
+  - tau_Q
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Standard radiation-dominated misalignment can overproduce axions at high f_a unless tuned or depleted.
+  id: axion_overproduction_misalignment
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Axion overproduction/misalignment contour
+  notes: No packaged likelihood was identified in the bounded read; recasting would require reproducing
+    the paper-level calculation.
+  observable_channel: dark-matter abundance
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_2310_16087
+  - src_1510_07633
+  - src_1807_07176
+- allowed_regions:
+  - Scenarios with acceptable inflation scale/PQ history or N_DW = 1 can avoid the worst bounds.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: String and domain-wall axion production are omitted because their contribution is disputed.
+    id: defects_not_counted
+    impact_if_violated: Including them can increase the axion abundance and tighten viability.
+    notes: null
+    scope: model interpretation
+    source_reference_ids:
+    - src_2310_16087
+    - src_1510_07633
+    status: assumed
+  benchmark_implications:
+  - Primary-paper contours should not be interpreted as complete post-inflationary axion predictions.
+  caveats:
+  - Needs dedicated axion string/domain-wall simulation input.
+  constrained_parameters:
+  - H_I
+  - theta_i
+  - N_DW
+  - PQ history
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Large isocurvature modes or stable domain walls can exclude parts of axion parameter space.
+  id: topological_defect_isocurvature_limit
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Isocurvature and domain-wall caveats
+  notes: null
+  observable_channel: CMB isocurvature/topological defects
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2310_16087
+  - src_1510_07633
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Topological-defect and isocurvature constraints need a separate branch.
+    constraint_ids:
+    - heavy_quark_decay_before_bbn
+    - axion_overproduction_misalignment
+    - topological_defect_isocurvature_limit
+    derived_quantities:
+    - Q lifetime
+    - decay temperature
+    - entropy dilution
+    - Omega_a h^2
+    description: Compute heavy-quark freeze-out, domination, and decay, then propagate the altered expansion/entropy
+      history into axion misalignment abundance and BBN checks.
+    forward_model_chain:
+    - inputs:
+      - m_Q
+      - annihilation cross section
+      - decay width
+      notes: Determine whether Q dominates before decay.
+      outputs:
+      - rho_Q(T)
+      - T_decay^Q
+      step_id: q_history
+      step_type: boltzmann_solver
+      tool_or_code: custom cosmology integration
+      validity: valid for the chosen Q decay operator and thermal history
+    - inputs:
+      - f_a
+      - theta_i
+      - modified H(T)
+      notes: Use altered expansion from heavy-quark matter domination.
+      outputs:
+      - Omega_a h^2
+      step_id: axion_abundance
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: misalignment-only approximation
+    - inputs:
+      - T_decay^Q
+      - decay products
+      notes: Full hadronic/electromagnetic injection recast remains future work.
+      outputs:
+      - BBN pass/fail
+      step_id: bbn_check
+      step_type: recasting
+      tool_or_code: null
+      validity: coarse temperature criterion only
+    id: ksvz_heavy_quark_decay_route
+    input_parameters:
+    - f_a
+    - m_a
+    - theta_i
+    - m_Q
+    - operator dimension d
+    - suppression scale
+    likelihoods:
+    - Planck relic abundance target
+    - BBN decay-temperature cut
+    observable_ids:
+    - axion_abundance_emd_shift
+    - heavy_quark_decay_cosmology
+    - axion_isocurvature_defect_caveat
+    required_code_resources:
+    - custom axion-cosmology solver
+    route_status: planned
+    source_model_features:
+    - KSVZ axion
+    - heavy quark with d>5 decay operator
+    - early matter domination
+    validation_tests:
+    - Recover standard axion misalignment bound when Q never dominates.
+    - Check T_decay^Q > 3 MeV for every accepted benchmark.

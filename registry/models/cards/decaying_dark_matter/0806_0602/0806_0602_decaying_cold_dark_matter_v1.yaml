@@ -1,0 +1,304 @@
+_source:
+  shard: arXiv_src_0806_001_wds.tar
+  paper_id: 0806_0602
+  source_member: 0806_0602.json
+schema_version: model_only_v0
+model_id: 0806_0602_decaying_cold_dark_matter_v1
+identity:
+  name: Decaying cold dark matter with a retained massive daughter
+  family: decaying_dark_matter
+  aliases:
+  - D -> D_prime + light daughter decay model
+  short_description: A late-decaying cold dark matter scenario in which parent particles D decay to a
+    massive daughter D_prime plus a light daughter, heating small halos and reducing dwarf circular velocities.
+  historical_origin_or_motivation: Motivated by the dwarf-halo abundance deficit in collisionless CDM
+    simulations.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - cold_dark_matter
+  - two_body_decay_dark_matter
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper parameterizes the decay kinematics and lifetime rather than deriving them from a microscopic
+    Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: metastable parent D and massive daughter D_prime
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - light or massless daughter l
+  mediators: []
+  dark_radiation_species:
+  - light daughter l if effectively massless
+  excited_or_degenerate_states:
+  - parent D
+  - massive daughter D_prime
+  long_lived_particles:
+  - parent D with lifetime of a few to less than 30 Gyr
+  unstable_parent_particles:
+  - D
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: No exact stabilizing symmetry is specified; cosmological lifetime is a free parameter
+    and the massive daughter is treated as retained in halos.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets: []
+  dark_sector_couplings:
+  - two-body decay D -> D_prime + l
+  mediator_types: []
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels:
+  - D -> D_prime + light or massless daughter l
+  self_scattering_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: parent lifetime
+    symbol: tau
+    description: Mean lifetime of the decaying parent dark matter particle.
+    range: few Gyr to less than 30 Gyr in the paper fits
+    unit: Gyr
+    status: inferred
+    source_reference_ids:
+    - 0806_0602
+  - name: fractional mass splitting
+    symbol: Delta m / m_Dprime
+    description: Mass difference between initial and final heavy states divided by the massive daughter
+      mass.
+    range: 5e-5 to 7e-5 preferred for the dwarf-halo deficit calculation
+    status: inferred
+    source_reference_ids:
+    - 0806_0602
+  - name: daughter recoil speed
+    symbol: v_rc
+    description: Recoil speed of the massive daughter in the decay rest frame.
+    value: set by the small mass splitting
+    status: inferred
+    source_reference_ids:
+    - 0806_0602
+production:
+  mechanisms:
+  - primordial cold dark matter population followed by late two-body decays
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - initial cold dark matter abundance is assumed rather than derived
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper studies post-formation halo heating from decays, not a microscopic freeze-out calculation.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter fraction
+    description: The decaying species is treated as the dark matter component in halo evolution.
+    value: all halo dark matter in the semi-analytic model
+    status: assumed
+    source_reference_ids:
+    - 0806_0602
+  calculation_type: phenomenological
+  key_dependencies:
+  - initial halo mass function
+  - decay lifetime
+  - fractional mass splitting
+  - daughter retention in halos
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late dark matter decay after halo formation
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The decay gives the daughter a recoil velocity; the halo distribution is modeled through semi-analytic
+    halo profiles.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: Decays heat small halos and lower their present-day circular velocities
+      in the semi-analytic calculation.
+    subhalo_mass_function_effect: Intended to reduce the apparent dwarf-halo abundance relative to CDM
+      simulations.
+    density_profile_effect: Halo expansion is modeled through energy injection into virialized halos.
+    core_or_cusp_effect: Related prior work is discussed, but this paper focuses on circular-velocity
+      counts.
+    simulation_calibrated: partial
+validity_domain:
+- id: 0806_0602_vd_decay_kinematics
+  applies_to: model
+  condition: Applies to two-body decays where at least one massive daughter remains bound in halos and
+    receives kinetic energy from a small mass splitting.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Microscopic particle physics origin is not specified.
+  - Halo evolution uses semi-analytic Plummer/NFW approximations.
+  source_reference_ids:
+  - 0806_0602
+assumptions:
+  global:
+  - id: 0806_0602_assume_initial_cdm
+    description: The parent D population initially behaves as cold dark matter before late decay.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: If false, the dwarf-halo calculation would not map to CDM halo initial conditions.
+    source_reference_ids:
+    - 0806_0602
+  - id: 0806_0602_assume_bound_daughter
+    description: A massive daughter remains in the halo and heats it rather than removing most of the
+      halo mass.
+    scope: structure_formation
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: The modeled circular-velocity reduction depends on retained daughter kinetic energy.
+    source_reference_ids:
+    - 0806_0602
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 0806_0602_decaying_cold_dark_matter_v1
+  model_name: Decaying cold dark matter with a retained massive daughter
+  model_family: decaying_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: 0806_0602
+      title: Local text on dark-matter decay and dwarf-halo evolution
+      authors: []
+      year: 2008
+      arxiv_id: '0806.0602'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: gpt-5-codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: 0806_0602
+      section: abstract
+      page: null
+      quote_or_summary: Describes D -> D_prime + l decay and preferred lifetime/mass splitting for dwarf
+        halos.
+    - reference_id: 0806_0602
+      section: DM decay discussion
+      page: null
+      quote_or_summary: Restricts to decays with a massive daughter retained in halos and used for heating.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: 0806_0602
+      note: Parent D, massive daughter D_prime, and a light daughter l define the decay kinematics.
+      confidence: high
+      section: abstract
+      page: null
+    interactions:
+    - reference_id: 0806_0602
+      note: The core interaction is the two-body dark-matter decay D -> D_prime + l.
+      confidence: high
+      section: abstract
+      page: null
+    production_mechanism:
+    - reference_id: 0806_0602
+      note: Initial cold dark matter abundance is assumed; the paper develops late-decay halo effects
+        rather than freeze-out.
+      confidence: medium
+      section: DM decay discussion
+      page: null
+    cosmological_history:
+    - reference_id: 0806_0602
+      note: The relevant nonstandard history is a cosmological lifetime of a few to under 30 Gyr.
+      confidence: high
+      section: abstract
+      page: null
+    parameter_ranges:
+    - reference_id: 0806_0602
+      note: The preferred fractional mass splitting is about 5e-5 to 7e-5 in the dwarf-halo calculation.
+      confidence: high
+      section: abstract
+      page: null
+    validity_domain:
+    - reference_id: 0806_0602
+      note: The calculation uses semi-analytic halo evolution and assumes the massive daughter remains
+        bound.
+      confidence: medium
+      section: DM decay discussion
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - No microscopic decay operator or spin assignment is provided in the assigned text.
+robustness:
+  overall: medium
+  theory_robustness: low
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - microscopic decay model unspecified
+  - semi-analytic halo approximation
+  validation_status: expert_judgment_only
+  notes: The halo phenomenology is developed, but the particle physics completion is left open.
+agent_failure_modes:
+  warnings:
+  - id: 0806_0602_warn_decay_completion
+    severity: medium
+    category: invalid_mapping
+    warning: Do not treat this row as a complete particle-physics decay model; the paper parameterizes
+      the decay.
+    mitigation: Use only the lifetime and mass-splitting phenomenology supported by the text.
+    source_reference_ids:
+    - 0806_0602

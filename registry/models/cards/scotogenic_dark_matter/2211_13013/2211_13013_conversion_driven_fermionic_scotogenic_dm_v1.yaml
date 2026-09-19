@@ -1,0 +1,287 @@
+_source:
+  shard: arXiv_src_2211_095_wds.tar
+  paper_id: '2211_13013'
+  source_member: 2211_13013.json
+schema_version: model_only_v0
+model_id: 2211_13013_conversion_driven_fermionic_scotogenic_dm_v1
+identity:
+  name: Conversion-driven fermionic scotogenic dark matter
+  family: scotogenic_dark_matter
+  aliases: []
+  short_description: A scotogenic model region where right-handed singlet fermion dark matter obtains
+    its relic density through conversion-driven freeze-out with small Yukawa couplings.
+  historical_origin_or_motivation: Extracted from the assigned paper only.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - scotogenic model
+  - radiative neutrino mass model
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'no'
+  notes: The model extends the SM by an inert scalar doublet and three right-handed singlet Majorana fermions
+    odd under Z_2.
+particle_content:
+  dark_matter_candidate:
+    name: lightest right-handed Majorana fermion N_1
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - inert scalar doublet components H^+, H, A
+  - heavier singlet fermions N_2 and N_3
+  mediators:
+  - inert scalar doublet
+  dark_radiation_species: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: All new particles are odd under an unbroken Z_2 symmetry while SM particles are
+    even, stabilizing the lightest new particle.
+  symmetries:
+  - name: Z_2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken in the scenario
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  - higgs
+  standard_model_targets:
+  - lepton doublets
+  - Higgs doublet
+  - electroweak gauge bosons
+  dark_sector_couplings:
+  - Yukawa couplings y_ij between lepton doublets, inert doublet, and N_j
+  - scalar couplings lambda_1 through lambda_5
+  mediator_types:
+  - inert scalar doublet
+  interaction_operators:
+  - y L eta N
+  - Z_2-symmetric inert-doublet scalar potential
+  annihilation_channels:
+  - coannihilation with Z_2-odd scalar states
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: Majorana fermion masses
+    symbol: m_N_i
+    description: Masses of singlet fermions N_i.
+    status: inferred
+  - name: inert scalar masses
+    symbol: m_H, m_A, m_H+
+    description: Masses of the neutral and charged inert-doublet scalars.
+    status: inferred
+  - name: Yukawa matrix
+    symbol: y_ij
+    description: Small Yukawa couplings initiate chemical decoupling and also set radiative neutrino masses.
+    status: inferred
+  - name: lambda_5
+    symbol: lambda_5
+    description: Scalar coupling controlling H-A mass splitting and lepton-number violation.
+    status: inferred
+  - name: lambda_L
+    symbol: lambda_L
+    description: Combination lambda_3 + lambda_4 - lambda_5 used in the scalar sector.
+    status: inferred
+production:
+  mechanisms:
+  - conversion-driven freeze-out
+  - coannihilation
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - conversion rates between N_1 and coannihilating Z_2-odd partners
+  - coannihilation in the Z_2-odd sector
+  - small Yukawa couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves coupled Boltzmann equations for conversion-driven freeze-out and checks relic-density
+    computations.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - small Yukawa couplings
+  - mass splittings among Z_2-odd states
+  - coannihilation cross sections
+  - conversion rates
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - chemical decoupling within the Z_2-odd sector during freeze-out
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: The paper assumes the DM momentum distribution remains close to a thermal distribution during
+    the conversion-driven regime.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: cdf-regime
+  applies_to: parameter
+  condition: Conversion-driven freeze-out applies when conversion rates are small enough that chemical
+    decoupling of N_1 overlaps freeze-out of the Z_2-odd sector.
+  status: inferred
+  extrapolation_risk: unknown
+- id: thermal-momentum-assumption
+  applies_to: production
+  condition: Relic-density calculation assumes the N_1 momentum distribution remains close to thermal.
+  status: assumed
+  extrapolation_risk: unknown
+assumptions:
+  global:
+  - id: unbroken-z2
+    description: The Z_2 symmetry remains unbroken so that the lightest odd particle is stable.
+    scope: theory
+    status: established
+  - id: hierarchical-active-neutrinos
+    description: Small Yukawa couplings naturally reproduce small neutrino masses when active neutrinos
+      are hierarchical.
+    scope: theory
+    status: inferred
+  - id: near-thermal-momentum
+    description: The DM momentum distribution is close to thermal during the calculation.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports checks using MadGraph5_aMC@NLO/MadDM, micrOMEGAs, and SARAH implementations,
+    but no dedicated public model repository was extracted.
+  primary_code_role: relic_density_calculation
+  validation:
+    validation_status: internally_validated
+    benchmark_references: []
+    validation_notes: Two independent checks are described in the paper, with caveats for some micrOMEGAs
+      results.
+provenance:
+  model_id: 2211_13013_conversion_driven_fermionic_scotogenic_dm_v1
+  model_name: Conversion-driven fermionic scotogenic dark matter
+  model_family: scotogenic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2211_13013'
+      title: Dark matter and radiative neutrino masses in conversion-driven scotogenesis
+      authors: []
+      year: 2022
+      arxiv_id: '2211.13013'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0018
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2211_13013'
+      section: Abstract; model section; conversion-driven freeze-out section
+      page: null
+      quote_or_summary: The paper defines a Z_2 scotogenic model with N_k fermion DM and computes conversion-driven
+        freeze-out.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2211_13013'
+      note: The SM is extended by an inert SU(2)_L doublet and three right-handed singlet fermions; the
+        paper focuses on N_k fermion dark matter.
+      confidence: high
+      section: Model section
+      page: null
+    symmetries:
+    - reference_id: '2211_13013'
+      note: New particles are Z_2 odd and SM particles are even, guaranteeing stability of the lightest
+        new particle.
+      confidence: high
+      section: Model section
+      page: null
+    interactions:
+    - reference_id: '2211_13013'
+      note: The Lagrangian contains y L eta N Yukawa terms and a Z_2-symmetric scalar potential.
+      confidence: high
+      section: Model section
+      page: null
+    production_mechanism:
+    - reference_id: '2211_13013'
+      note: The relic density is generated via conversion-driven freeze-out governed by conversion rates
+        and coannihilation.
+      confidence: high
+      section: Abstract and conversion-driven freeze-out section
+      page: null
+    cosmological_history:
+    - reference_id: '2211_13013'
+      note: The paper solves coupled Boltzmann equations for the Z_2-odd species and discusses chemical
+        decoupling.
+      confidence: high
+      section: Conversion-driven freeze-out section
+      page: null
+    parameter_ranges:
+    - reference_id: '2211_13013'
+      note: Core parameters include N_i masses, inert scalar masses and splittings, Yukawa matrix entries,
+        and scalar couplings.
+      confidence: medium
+      section: Model section
+      page: null
+    validity_domain:
+    - reference_id: '2211_13013'
+      note: The calculation assumes the DM momentum distribution is sufficiently close to thermal.
+      confidence: medium
+      section: Relic-density discussion
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: high
+  theory_robustness: high
+  observational_robustness: unknown
+  computational_robustness: medium
+  validation_status: unvalidated
+  dominant_uncertainties:
+  - conversion-rate treatment near resonances
+  - neglected non-perturbative Sommerfeld and bound-state effects in some regions
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: micromegas-caveat
+    severity: medium
+    category: code_unvalidated
+    warning: The paper notes micrOMEGAs gave no or incorrect results in some conversion-driven cases due
+      to double counting near resonances.
+  - id: momentum-assumption
+    severity: medium
+    category: assumption_mismatch
+    warning: Relic-density logic assumes kinetic equilibrium or a near-thermal momentum distribution.
+    mitigation: Avoid applying the card where this assumption fails without re-solving momentum-dependent
+      equations.

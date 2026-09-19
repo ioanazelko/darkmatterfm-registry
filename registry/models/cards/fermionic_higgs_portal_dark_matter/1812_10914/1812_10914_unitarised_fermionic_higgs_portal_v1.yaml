@@ -1,0 +1,360 @@
+_source:
+  shard: arXiv_src_1812_032_wds.tar
+  paper_id: '1812_10914'
+  source_member: 1812_10914.json
+agent_failure_modes:
+  warnings:
+  - category: other
+    id: reinterpretation_as_uv_complete
+    mitigation: Keep the EFT cutoff and unitarisation assumptions explicit.
+    severity: medium
+    source_reference_ids:
+    - paper
+    warning: Do not treat the unitarised EFT as a UV-complete Higgs-portal model.
+  - category: other
+    id: search_limits_not_encoded
+    mitigation: Use only the model-definition and production fields from this row.
+    severity: low
+    source_reference_ids:
+    - paper
+    warning: The paper contains search-limit conclusions, but this run intentionally omits search-limit
+      fields.
+associated_code:
+  caveats: []
+  code_summary: No model-specific code is mentioned in the extracted paper text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  computation_specific: []
+  global:
+  - can_be_relaxed: 'yes'
+    description: The extraction follows the paper text where the dark matter is hypothesized as a Dirac
+      fermion; Majorana is stated to be analogous.
+    id: dirac_fermion_case
+    impact_if_violated: Particle-counting and bilinear conventions would change.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - paper
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The relic-density calculation uses a thermally averaged scattering rate and freeze-out
+      equation.
+    id: standard_thermal_freezeout
+    impact_if_violated: The relation between Lambda and the abundance would change.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - paper
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - fermionic Higgs portal EFT
+  - K-matrix unitarised Higgs-portal fermion dark matter
+  family: fermionic_higgs_portal_dark_matter
+  historical_origin_or_motivation: The paper revisits the simplest fermionic Higgs-portal dark matter
+    model because ordinary EFT amplitudes grow at high energy and can misestimate thermal cross sections.
+  model_kind: effective_field_theory
+  name: Unitarised fermionic Higgs-portal dark matter EFT
+  short_description: A Standard-Model-singlet Dirac fermion dark matter EFT coupled to the Higgs bilinear
+    through a dimension-5 scalar/pseudoscalar operator, with scattering amplitudes treated by K-matrix
+    unitarisation.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - chi chi annihilation to Standard Model states through the Higgs portal
+  cp_structure: CP phase xi interpolates between pure scalar xi=0 and pure pseudoscalar xi=pi/2 portal
+    interactions.
+  dark_sector_couplings:
+  - scalar and pseudoscalar Higgs-portal fermion bilinears
+  decay_channels: []
+  flavor_structure: flavor universal through the Higgs portal
+  interaction_operators:
+  - (1/Lambda) H^dagger H bar(chi)(cos xi + i sin xi gamma5) chi
+  mediator_types:
+  - Higgs boson
+  portals:
+  - higgs
+  scattering:
+    elastic: 'yes'
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs doublet
+  - Standard Model final states through Higgs exchange
+  tree_or_loop_level: tree
+model_id: 1812_10914_unitarised_fermionic_higgs_portal_v1
+operators:
+  contact_or_light_mediator: contact
+  coupling_types:
+  - scalar
+  - pseudoscalar
+  eft_operators:
+  - dimension-5 Higgs bilinear times scalar/pseudoscalar dark fermion bilinear
+  renormalizable_terms: []
+parameters:
+  core:
+  - description: Mass of the singlet fermion dark matter particle.
+    name: dark matter mass
+    range: around Higgs resonance and up to multi-TeV masses considered
+    role: core
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+  - description: Cutoff scale of the non-renormalisable Higgs-portal operator.
+    name: EFT cutoff scale
+    range: fit from thermal relic abundance
+    role: core
+    status: inferred
+    symbol: Lambda
+    unit: GeV
+  - description: Phase controlling scalar versus pseudoscalar Higgs-portal coupling.
+    name: CP phase
+    range: 0 to pi/2 limiting cases emphasized
+    role: core
+    status: inferred
+    symbol: xi
+  - description: Electroweak Higgs vacuum expectation value used when expanding the operator.
+    name: Higgs vacuum expectation value
+    role: core
+    status: established
+    symbol: v
+    unit: GeV
+    value: 246
+  derived:
+  - description: m_chi/T_F determined iteratively in the relic-density calculation.
+    name: inverse freeze-out temperature
+    role: derived
+    status: inferred
+    symbol: x_F
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: Dirac fermion chi
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - Standard Model Higgs boson
+  standard_model_extension: minimal
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: not provided
+  free_streaming_length: null
+  notes: The paper uses standard thermal freeze-out rather than a phase-space calculation.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - thermally averaged unitarised annihilation cross section
+  - dark matter mass
+  - EFT cutoff scale
+  - CP phase
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through Higgs-portal annihilation/scattering
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper fixes the desired abundance and computes the cutoff scale using unitarised cross sections.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: The lowest-order interaction is a dimension-5 H^dagger H times scalar/pseudoscalar fermion
+        bilinear operator.
+      page: null
+      reference_id: paper
+      section: model setup
+    parameter_ranges:
+    - confidence: medium
+      note: The paper emphasizes the CP phase limiting cases xi=0 and xi=pi/2 and masses near/below the
+        Higgs resonance and in the multi-TeV regime.
+      page: null
+      reference_id: paper
+      section: results
+    particle_content:
+    - confidence: high
+      note: The paper hypothesizes a Standard-Model-singlet Dirac fermion of mass m_chi as the dark matter
+        particle.
+      page: null
+      reference_id: paper
+      section: model setup
+    production_mechanism:
+    - confidence: high
+      note: The abstract and calculation state that the dark matter is thermally produced via Higgs interactions
+        and use thermally averaged rates.
+      page: null
+      reference_id: paper
+      section: abstract/relic density
+    validity_domain:
+    - confidence: high
+      note: K-matrix unitarisation is introduced because the EFT amplitude grows at high energy compared
+        with the cutoff.
+      page: null
+      reference_id: paper
+      section: unitarisation formalism
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0008
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper revisits fermionic Higgs-portal dark matter and applies K-matrix unitarisation.
+      reference_id: paper
+      section: Abstract and model setup
+    - page: null
+      quote_or_summary: The text gives the dimension-5 Higgs-portal operator and thermal freeze-out formulae.
+      reference_id: paper
+      section: Model and relic-density calculation
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: fermionic_higgs_portal_dark_matter
+  model_id: 1812_10914_unitarised_fermionic_higgs_portal_v1
+  model_name: Unitarised fermionic Higgs-portal dark matter EFT
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1812.10914'
+      authors:
+      - Shyam Balaji
+      - Archil Kobakhidze
+      doi: null
+      notes: The paper substantially develops the EFT treatment by unitarising the Higgs-portal scattering
+        amplitudes.
+      reference_id: paper
+      role: extension
+      title: More stringent constraints on the unitarised fermionic dark matter Higgs portal
+      url: null
+      year: 2018
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: either
+  key_dependencies:
+  - m_chi
+  - Lambda
+  - CP phase xi
+  - K-matrix unitarised scattering amplitudes
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    description: The paper discusses 100 percent and 10 percent dark-matter fractions for some portal
+      choices.
+    name: dark matter fraction
+    range: 10 percent to 100 percent in examples
+    role: core
+    status: inferred
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - No UV completion is specified for the dimension-5 operator.
+  - The extraction does not encode the paper search-limit results in this model-only pass.
+  notes: Accepted as a substantive unitarised variant of a known fermionic Higgs-portal EFT.
+  observational_robustness: not_applicable
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: A stabilizing symmetry is not specified in the extracted text; the fermion is
+    assumed stable as dark matter.
+  symmetries: []
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff:
+    description: Scale suppressing the dimension-5 Higgs-dark-matter operator.
+    name: EFT cutoff scale
+    notes: Computed from the desired thermal abundance in the paper.
+    role: core
+    status: inferred
+    symbol: Lambda
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: The paper treats the EFT with K-matrix unitarisation to obtain reliable high-energy scattering
+    cross sections.
+  parent_frameworks:
+  - Higgs portal dark matter
+  - K-matrix unitarised EFT
+  renormalizable: 'no'
+  theory_level: effective_field_theory
+validity_domain:
+- applies_to: EFT
+  caveats:
+  - Not a UV completion of the Higgs-portal operator.
+  condition: Tree-level scattering amplitudes are passed through K-matrix unitarisation to avoid the high-energy
+    growth that invalidates ordinary EFT cross sections.
+  extrapolation_risk: medium
+  id: unitarised_eft_application
+  notes: null
+  source_reference_ids:
+  - paper
+  status: approximate
+  valid_range: Applied by the paper across the mass and energy ranges used for the relic-density and search
+    analysis.

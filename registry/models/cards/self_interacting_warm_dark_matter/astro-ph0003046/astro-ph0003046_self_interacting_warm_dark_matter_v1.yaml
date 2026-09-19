@@ -1,0 +1,826 @@
+_source:
+  shard: arXiv_src_0003_001_wds.tar
+  paper_id: astro-ph0003046
+  source_member: astro-ph0003046.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: warn_do_not_canonicalize_candidate
+    mitigation: Keep the candidate as an unspecified warm self-interacting species unless another primary
+      source is added.
+    severity: medium
+    source_reference_ids:
+    - astro-ph0003046
+    warning: Do not map this entry to a specific sterile-neutrino, gravitino, axion, or mirror-sector
+      particle; the paper does not specify one.
+  - category: extrapolation
+    id: warn_linear_to_nonlinear_extrapolation
+    mitigation: Require simulations or later dedicated studies before using this row for nonlinear predictions.
+    severity: medium
+    source_reference_ids:
+    - astro-ph0003046
+    warning: The paper computes linear matter and CMB spectra, while halo-core and dwarf-galaxy improvements
+      are phenomenological implications.
+  - category: unit_convention
+    id: warn_cross_section_formatting
+    mitigation: Check the source PDF before using the numeric self-scattering cross section quantitatively.
+    severity: low
+    source_reference_ids:
+    - astro-ph0003046
+    warning: The extracted text renders the cross-section exponent ambiguously.
+associated_code:
+  caveats:
+  - No public model-specific implementation is identified in the assigned text.
+  code_summary: The authors state that they incorporated the self-interacting warm dark matter equations
+    into the publicly available CMBFAST code, but no model-specific code release is identified in the
+    paper.
+  containers_or_environments: []
+  expected_inputs:
+  - dark matter mass
+  - self-scattering cross section
+  - benchmark cosmological parameters
+  expected_outputs:
+  - linear matter power spectrum
+  - CMB angular power spectrum
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: boltzmann_solver_patch
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: CMBFAST is named, but the paper does not provide a patch or repository for the modified equations.
+    pinned_dependencies: unknown
+    reproducibility_level: partial
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references: []
+    validation_notes: The paper compares some results to prior hot dark matter calculations and standard
+      warm dark matter behavior.
+    validation_status: unknown
+assumptions:
+  computation_specific: []
+  constraint_specific: []
+  global:
+  - can_be_relaxed: unknown
+    description: The dark matter is treated as a single stable warm particle species.
+    id: assume_stable_single_species
+    impact_if_violated: Multiple components or instability would change the perturbation evolution and
+      relic interpretation.
+    notes: null
+    scope: global
+    source_reference_ids:
+    - astro-ph0003046
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Dark matter self-interactions are only two-particle scattering interactions.
+    id: assume_two_particle_self_scattering
+    impact_if_violated: Number-changing interactions could alter the unperturbed distribution and abundance
+      logic.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - astro-ph0003046
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: The unperturbed phase-space distribution is taken equal to the collisionless warm-particle
+      distribution despite self-interactions.
+    id: assume_collisionless_unperturbed_distribution
+    impact_if_violated: A different distribution would change free streaming and the linear power cutoff.
+    notes: Justified in the paper by conservation of entropy per particle for two-particle scattering.
+    scope: production
+    source_reference_ids:
+    - astro-ph0003046
+    status: approximate
+  - can_be_relaxed: 'yes'
+    description: Numerical spectra use Omega_X=0.95, Omega_B=0.05, and H0=50 km s^-1 Mpc^-1.
+    id: assume_benchmark_cosmology
+    impact_if_violated: The precise spectra and cutoff scales would need recalculation.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids:
+    - astro-ph0003046
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: low
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - dark matter self-scattering affects perturbation evolution after thermal decoupling
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - warm dark matter with self-interactions
+  family: self_interacting_warm_dark_matter
+  historical_origin_or_motivation: The paper combines warm dark matter thermal motion with self-interacting
+    dark matter ideas to address excessive small-scale structure and halo-core issues in cold or standard
+    warm dark matter.
+  model_kind: phenomenological_parameterization
+  name: Self-interacting warm dark matter
+  short_description: A warm dark matter particle species with significant two-particle self-scattering,
+    studied as a way to reduce free streaming and shift the small-scale power cutoff toward the Jeans
+    scale.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: unknown
+  dark_sector_couplings:
+  - two-particle self-scattering among dark matter particles
+  decay_channels: []
+  flavor_structure: unknown
+  interaction_operators: []
+  mediator_types:
+  - unspecified self-interaction mediator
+  - massive vector boson exchange used as an illustrative estimate
+  portals:
+  - unknown
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - dark matter particle self-scattering
+  standard_model_targets: []
+  tree_or_loop_level: unknown
+model_id: astro-ph0003046_self_interacting_warm_dark_matter_v1
+parameters:
+  core:
+  - description: Mass of the warm dark matter particle used in the linear power and CMB calculations.
+    fiducial_value: 1 keV
+    name: dark_matter_particle_mass
+    notes: The paper contrasts a 1 keV warm benchmark with hot dark matter at 10 eV and discusses smaller
+      warm masses for dwarf-galaxy/core considerations.
+    prior: null
+    range: null
+    role: core
+    scale: log
+    source_reference_ids:
+    - astro-ph0003046
+    status: assumed
+    symbol: m
+    unit: eV
+    value: 1 keV benchmark; lower masses near 300 eV are discussed as relevant for halo-core motivations
+  - description: Self-scattering cross section controlling the collision time in the relaxation-time approximation.
+    fiducial_value: null
+    name: self_scattering_cross_section
+    notes: The text states that cross sections of order 10^ 36 cm^2 as rendered by extraction change the
+      matter power spectrum; surrounding discussion says this is larger than typical weak cross sections,
+      so the numeric exponent should be treated cautiously.
+    prior: null
+    range: null
+    role: core
+    scale: log
+    source_reference_ids:
+    - astro-ph0003046
+    status: approximate
+    symbol: sigma_0
+    unit: cm^2
+    value: order needed to affect matter power spectrum; exponent sign is ambiguous in extracted text
+  - description: Mean time between dark matter self-collisions, with tau^{-1}=n sigma |v| in the paper.
+    fiducial_value: null
+    name: relaxation_time
+    notes: Used to add damping terms to Boltzmann hierarchy multipoles with l>=2 while conserving energy
+      and momentum.
+    prior: null
+    range: null
+    role: core
+    scale: null
+    source_reference_ids:
+    - astro-ph0003046
+    status: approximate
+    symbol: tau
+    unit: null
+    value: null
+  derived: []
+  nuisance:
+  - description: Dark matter density parameter used in the numerical calculations.
+    fiducial_value: 0.95
+    name: assumed_dark_matter_density_fraction
+    notes: The calculations also assume Omega_B=0.05 and H0=50 km s^-1 Mpc^-1.
+    prior: null
+    range: null
+    role: cosmological
+    scale: linear
+    source_reference_ids:
+    - astro-ph0003046
+    status: assumed
+    symbol: Omega_X
+    unit: null
+    value: 0.95
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: unknown
+    name: warm dark matter particle with self-interactions
+    number_of_components: single_component
+    spin: unknown
+    statistics: unknown
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - unspecified self-interaction mediator
+  - massive vector boson example for scattering estimate
+  standard_model_extension: unknown
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: approximate
+  distribution_type: thermal
+  f_of_p_or_q: The paper uses a Fermi-Dirac-like unperturbed distribution for a relativistically decoupled
+    species and assumes the self-interacting species keeps the collisionless distribution for the calculation.
+  free_streaming_length: null
+  notes: Self-interactions suppress free streaming; in the strong-scattering limit the relevant cutoff
+    is associated with the Jeans scale.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - assumed cosmological dark matter density in the power-spectrum calculations
+  - thermal warm-particle phase-space distribution
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - relativistic thermal decoupling assumed for the warm-particle distribution
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper does not derive the relic abundance from microphysics; it assumes the dark matter species
+    supplies Omega_X=0.95 for the cosmological calculations.
+  thermal_equilibrium_with_hidden_sector: partial
+  thermal_equilibrium_with_standard_model: unknown
+provenance:
+  caveats:
+  - Model is phenomenological and not tied to a specified particle-physics Lagrangian.
+  - The paper is a linear-spectrum/CMB calculation; nonlinear halo implications are not directly simulated.
+  created_at: '2026-05-30'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The numerical runs assume Omega_X=0.95, Omega_B=0.05, and H0=50 km s^-1 Mpc^-1.
+      page: null
+      reference_id: astro-ph0003046
+      section: results
+    interactions:
+    - confidence: high
+      note: Self-interactions are assumed to be two-particle scattering and are represented by collision
+        terms in the Boltzmann hierarchy.
+      page: null
+      reference_id: astro-ph0003046
+      section: introduction/Boltzmann equation
+    parameter_ranges:
+    - confidence: medium
+      note: The paper compares hot dark matter at 10 eV with warm dark matter at 1 keV and discusses self-scattering
+        cross sections large enough to affect the power spectrum.
+      page: null
+      reference_id: astro-ph0003046
+      section: results/conclusion
+    particle_content:
+    - confidence: high
+      note: The paper studies a warm dark matter particle species and uses a 1 keV warm benchmark in its
+        calculations.
+      page: null
+      reference_id: astro-ph0003046
+      section: results
+    production_mechanism:
+    - confidence: medium
+      note: The calculation assumes a relativistically decoupled warm-particle distribution and an input
+        dark matter density rather than deriving abundance from microphysics.
+      page: null
+      reference_id: astro-ph0003046
+      section: Boltzmann equation/results
+    symmetries:
+    - confidence: medium
+      note: The paper treats the dark matter particle as stable but does not provide a stabilizing symmetry.
+      page: null
+      reference_id: astro-ph0003046
+      section: full text
+    validity_domain:
+    - confidence: high
+      note: The authors explicitly use a relaxation-time approximation and note that no obvious particle
+        candidates are available for the required strong self-interactions.
+      page: null
+      reference_id: astro-ph0003046
+      section: Boltzmann equation/conclusion
+    constraints:
+    - confidence: high
+      note: Primary paper rules out self-interacting hot dark matter and calls SI-WDM marginally consistent
+        with then-current structure constraints.
+      page: null
+      reference_id: arxiv:astro-ph/0003046
+      section: Discussion
+    - confidence: medium
+      note: Related comment argues the original weak-coupling approximation is not appropriate in the
+        tight-coupling regime.
+      page: null
+      reference_id: arxiv:astro-ph/0106228
+      section: Comment
+    observables:
+    - confidence: high
+      note: Primary paper states self-interactions move the power cutoff from the free-streaming scale
+        toward the Jeans scale by roughly a factor 1.6 and leave the warm CMB spectrum nearly CDM-like.
+      page: null
+      reference_id: arxiv:astro-ph/0003046
+      section: Results
+    - confidence: medium
+      note: ArXiv fallback text provides a modern first-principles Boltzmann hierarchy for SI-WDM perturbations.
+      page: null
+      reference_id: arxiv:2002.05778
+      section: Abstract
+    routes:
+    - confidence: medium
+      note: Web/arXiv fallback source describes momentum-dependent collision kernels and interaction-rate
+        evolution as a route to linear power spectra.
+      page: null
+      reference_id: arxiv:2002.05778
+      section: Abstract
+  external_links:
+    datasets: []
+    likelihoods: []
+    public_codes: []
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0015_worker
+    extraction_date: '2026-05-30'
+    extractor_name: dark_matter_model_card_extraction_worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The authors combine warm dark matter and strong self-interactions and compute
+        matter and CMB spectra.
+      reference_id: astro-ph0003046
+      section: abstract
+    - page: null
+      quote_or_summary: The paper states it explores dark matter with both significant thermal motion
+        and self-interactions, assuming two-particle scattering.
+      reference_id: astro-ph0003046
+      section: introduction
+    - page: null
+      quote_or_summary: Self-scattering is inserted through a relaxation-time collision term, with tau^{-1}=n
+        sigma |v|.
+      reference_id: astro-ph0003046
+      section: Boltzmann equation and relaxation time
+    - page: null
+      quote_or_summary: For warm dark matter, strong self-interactions shift the cutoff to smaller scales
+        by about a factor 1.6 and leave CMB spectra nearly CDM-like.
+      reference_id: astro-ph0003046
+      section: results and conclusion
+    unresolved_items:
+    - No explicit particle identity, spin, stabilizing symmetry, or Lagrangian is specified.
+    - The self-scattering cross-section exponent is typographically ambiguous in the extracted text.
+    - Modern Lyman-alpha, satellite-count, and nonlinear halo constraints were not run.
+    - The original perturbation treatment is disputed by a related comment and should be validated before
+      numerical reuse.
+  last_updated: '2026-05-30'
+  model_family: self_interacting_warm_dark_matter
+  model_id: astro-ph0003046_self_interacting_warm_dark_matter_v1
+  model_name: Self-interacting warm dark matter
+  related_entries: []
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    constraint_papers:
+    - arxiv_id: '2108.02657'
+      authors:
+      - Yunis, Rafael
+      - Argüelles, Carlos R.
+      - Scóccola, Claudia G.
+      - López Nacir, Diana
+      - Giordano, Gastón
+      doi: 10.1088/1475-7516/2022/02/024
+      notes: Related full text resolved locally and read; used for modern SIDM Boltzmann/constraint context.
+      reference_id: arxiv:2108.02657
+      role: implementation
+      title: 'Self-interacting dark matter in cosmology: accurate numerical implementation and observational
+        constraints'
+      url: https://arxiv.org/abs/2108.02657
+      year: 2022
+    - arxiv_id: astro-ph/0106228
+      authors:
+      - Atrio-Barandela, Fernando
+      - Davidson, Sacha
+      doi: 10.1103/PhysRevD.64.088301
+      notes: Related full text resolved locally and read; comment/caveat on the original SI-WDM perturbation
+        treatment.
+      reference_id: arxiv:astro-ph/0106228
+      role: other
+      title: Comment on ``Self-interacting warm dark matter''
+      url: https://arxiv.org/abs/astro-ph/0106228
+      year: 2001
+    - arxiv_id: '2002.05778'
+      authors:
+      - Yunis, Rafael
+      - Argüelles, Carlos R.
+      - López Nacir, Diana
+      doi: 10.1088/1475-7516/2020/09/041
+      notes: Related text read through bounded arXiv fallback; used for modern SI-WDM Boltzmann-hierarchy
+        routing context.
+      reference_id: arxiv:2002.05778
+      role: implementation
+      title: Boltzmann hierarchies for self-interacting warm dark matter scenarios
+      url: https://arxiv.org/abs/2002.05778
+      year: 2020
+    external_databases: []
+    primary_papers:
+    - arxiv_id: astro-ph/0003046
+      authors:
+      - Steen Hannestad
+      - Robert J. Scherrer
+      doi: null
+      notes: Assigned full text from target_text.sqlite.
+      reference_id: astro-ph0003046
+      role: original_model
+      title: Self-interacting Warm Dark Matter
+      url: null
+      year: 2000
+    - arxiv_id: astro-ph/0003046
+      authors:
+      - Hannestad, Steen
+      - Scherrer, Robert J.
+      doi: 10.1103/PhysRevD.62.043522
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:astro-ph/0003046
+      role: original_model
+      title: Self-interacting warm dark matter
+      url: https://arxiv.org/abs/astro-ph/0003046
+      year: 2000
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: phenomenological
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - dark matter particle mass
+  - self-scattering cross section
+  - assumed Omega_X
+  overclosure_risk: unknown
+  requires_entropy_dilution: unknown
+  target_fraction:
+    description: Fractional density used for the self-interacting warm dark matter component in the calculations.
+    fiducial_value: 0.95
+    name: assumed_dark_matter_density_fraction
+    notes: This is an assumed cosmological input, not a relic-density prediction.
+    prior: null
+    range: null
+    role: cosmological
+    scale: linear
+    source_reference_ids:
+    - astro-ph0003046
+    status: assumed
+    symbol: Omega_X
+    unit: null
+    value: 0.95
+  tuning_assessment: unknown
+  underproduction_risk: unknown
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - No explicit microphysical candidate or Lagrangian is supplied.
+  - Required self-scattering strength and exponent formatting are uncertain in the extracted text.
+  - Nonlinear structure claims are inferred from linear power-spectrum behavior.
+  notes: The paper supplies a coherent phenomenological model and computation, but several particle-physics
+    details remain unknown.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: low
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: suppression
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper compares to standard warm dark matter but does not provide a registry-ready thermal
+        WDM mapping.
+    transfer_function_shape: smooth_cutoff
+  nonlinear:
+    concentration_mass_relation_effect: unknown
+    core_or_cusp_effect: Proposed motivation is to address halo core structure, but the paper only computes
+      linear spectra.
+    density_profile_effect: Motivated by avoiding singular galactic halos, but no nonlinear density-profile
+      calculation is provided.
+    halo_mass_function_effect: Not simulated in this paper; the motivation is to improve halo-core and
+      dwarf-galaxy behavior by moving the cutoff to smaller scales than collisionless WDM.
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: The shifted cutoff may help retain enough dwarf galaxies while allowing
+      a lower warm-particle mass.
+    subhalo_mass_function_effect: Expected to have more small-scale power than standard warm dark matter
+      but still differ from cold dark matter on sufficiently small scales.
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+symmetries:
+  stabilizing_mechanism: The dark matter particle is treated as stable, but no stabilizing symmetry is
+    specified in the paper.
+  symmetries: []
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'no'
+  notes: The paper uses a relaxation-time treatment of self-scattering rather than a specified Lagrangian;
+    it mentions a mirror sector only as a possible source of strongly self-interacting warm dark matter.
+  parent_frameworks:
+  - warm dark matter
+  - self-interacting dark matter
+  renormalizable: unknown
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: Boltzmann hierarchy
+  caveats:
+  - Energy and momentum conservation are enforced by leaving the l=0 and l=1 hierarchy terms collisionless.
+  condition: Self-scattering is modeled by a relaxation-time collision term rather than detailed collision
+    integrals or a specified microphysical interaction.
+  extrapolation_risk: medium
+  id: vd_relaxation_time_approximation
+  notes: The authors call this a cruder but more model-independent approximation.
+  source_reference_ids:
+  - astro-ph0003046
+  status: approximate
+  valid_range: null
+- applies_to: model
+  caveats:
+  - Number-changing self-interactions would invalidate the entropy-per-particle argument used for the
+    distribution.
+  condition: Self-interactions are assumed to consist only of two-particle scattering, with no number-changing
+    self-interactions.
+  extrapolation_risk: medium
+  id: vd_two_particle_self_scattering
+  notes: null
+  source_reference_ids:
+  - astro-ph0003046
+  status: assumed
+  valid_range: null
+- applies_to: structure_formation
+  caveats:
+  - Nonlinear halo and dwarf-galaxy conclusions are motivated by the shifted cutoff but not directly simulated.
+  condition: Quantitative results apply to linear matter power spectra and CMB spectra computed with modified
+    CMBFAST under the paper's benchmark cosmology.
+  extrapolation_risk: high
+  id: vd_linear_power_and_cmb
+  notes: null
+  source_reference_ids:
+  - astro-ph0003046
+  status: approximate
+  valid_range: null
+observables:
+- caveats:
+  - Primary result is linear only and uses an old benchmark cosmology.
+  channel: large_scale_structure
+  effect_direction: shape_change
+  environments:
+  - linear matter field
+  - dwarf-galaxy progenitor scales
+  id: obs_siwmd_matter_power_cutoff
+  key_quantities:
+  - description: Benchmark thermal mass in the primary spectra.
+    name: warm dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:astro-ph/0003046
+    status: inferred
+    symbol: m
+    unit: keV/eV
+    value: 1 keV warm case; 10 eV hot case ruled out
+  - description: Location where Delta^2(k) peaks in the primary fit.
+    name: cutoff wavenumber
+    range: 1.1 (m/1 keV)^(3/4) Mpc^-1 collisionless; 1.7 (m/1 keV)^(3/4) Mpc^-1 strongly self-interacting
+    role: core
+    source_reference_ids:
+    - arxiv:astro-ph/0003046
+    status: inferred
+    symbol: k_max
+    unit: Mpc^-1
+  - description: Approximate dividing line between weak and strong interaction regimes in the primary
+      benchmark.
+    name: scattering cross section scale
+    role: core
+    source_reference_ids:
+    - arxiv:astro-ph/0003046
+    status: inferred
+    symbol: sigma_0
+    unit: cm^2
+    value: about 1e-36 cm^2 for the warm/hot benchmark
+  linked_constraints:
+  - con_siwmd_small_scale_structure
+  linked_routes:
+  - route_siwmd_boltzmann_transfer
+  name: Self-interaction-shifted warm-DM power cutoff
+  notes: null
+  observability: medium
+  predicted_effect: Two-particle self-scattering suppresses free streaming and moves the cutoff toward
+    the Jeans scale, giving more small-scale power than collisionless WDM at fixed mass.
+  redshift_range: radiation era through low-redshift structure formation
+  relevance: critical
+  scale_range: subgalactic to Lyman-alpha-like linear scales
+  source_reference_ids:
+  - arxiv:astro-ph/0003046
+  - arxiv:2002.05778
+  subchannel: linear matter power spectrum
+- caveats:
+  - Modern CMB+LSS likelihoods were not rerun.
+  channel: cmb
+  effect_direction: null_signal
+  environments:
+  - cosmic microwave background
+  id: obs_siwmd_cmb_near_cdm
+  key_quantities:
+  - description: Primary paper computes C_l with modified CMBFAST.
+    name: CMB angular spectrum
+    range: CDM-like for warm SI-WDM benchmark
+    role: core
+    source_reference_ids:
+    - arxiv:astro-ph/0003046
+    status: inferred
+    symbol: C_l
+  linked_constraints:
+  - con_siwmd_small_scale_structure
+  linked_routes:
+  - route_siwmd_boltzmann_transfer
+  name: CMB near-degeneracy for warm self-interacting case
+  notes: null
+  observability: low
+  predicted_effect: For the warm benchmark, the CMB fluctuation spectrum is nearly indistinguishable from
+    standard CDM, so useful constraints must mainly come from large-scale and galactic structure.
+  redshift_range: recombination
+  relevance: medium
+  scale_range: CMB angular multipoles in source plots
+  source_reference_ids:
+  - arxiv:astro-ph/0003046
+  subchannel: temperature anisotropy spectrum
+constraints:
+- allowed_regions:
+  - Strongly self-interacting warm dark matter near the keV scale is described as marginally consistent
+    with then-current small-scale constraints.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: unknown
+    description: Self-interactions are elastic two-particle scattering, not number-changing interactions.
+    id: two_particle_scattering_only
+    impact_if_violated: The unperturbed phase-space distribution and perturbation treatment would change.
+    notes: null
+    scope: interactions
+    source_reference_ids:
+    - arxiv:astro-ph/0003046
+    status: assumed
+  benchmark_implications:
+  - The shifted cutoff by about a factor 1.6 is the key target for a modern transfer-function recast.
+  caveats:
+  - The source predates modern Lyman-alpha and satellite likelihoods.
+  constrained_parameters:
+  - m
+  - sigma_0
+  - k_max
+  - self-interaction rate
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Self-interacting hot dark matter with m around 10 eV is clearly ruled out in the primary analysis.
+  - Collisionless WDM masses small enough to address cores can erase too much dwarf-scale power.
+  id: con_siwmd_small_scale_structure
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Small-scale-structure viability of self-interacting WDM
+  notes: null
+  observable_channel: linear matter power and dwarf/galactic structure
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:astro-ph/0003046
+  - arxiv:2002.05778
+- allowed_regions:
+  - Modern SI-WDM routing should use a collision-term treatment that remains valid across interaction
+    regimes.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The perturbation hierarchy can be represented by a relaxation-time collision term.
+    id: relaxation_time_collision_term
+    impact_if_violated: Incorrect tight-coupling behavior can shift the predicted transfer function.
+    notes: null
+    scope: computation
+    source_reference_ids:
+    - arxiv:astro-ph/0003046
+    - arxiv:2002.05778
+    status: approximate
+  benchmark_implications:
+  - The primary k_max result should be treated as approximate until reproduced in a modern Boltzmann hierarchy.
+  caveats:
+  - The related comment disputes the original weak-coupling approximation and possible gauge-mode contamination.
+  constrained_parameters:
+  - collision term
+  - interaction rate/Hubble
+  - momentum kernel
+  constraint_type: numerical
+  data_release: null
+  excluded_regions:
+  - Very large cross sections may not be well modeled by the weak-coupling relaxation-time approximation
+    criticized in the comment.
+  id: con_siwmd_boltzmann_validity
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Boltzmann-hierarchy and tight-coupling validity caveat
+  notes: null
+  observable_channel: matter transfer function
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:astro-ph/0003046
+  - arxiv:astro-ph/0106228
+  - arxiv:2002.05778
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Original numerical treatment was disputed; structured constraints are therefore approximate/recast
+      targets.
+    constraint_ids:
+    - con_siwmd_small_scale_structure
+    - con_siwmd_boltzmann_validity
+    derived_quantities:
+    - interaction rate/Hubble
+    - Jeans scale
+    - transfer function
+    - k_max
+    description: Solve self-interacting warm-DM perturbations and map the transfer function to small-scale-structure
+      constraints.
+    forward_model_chain:
+    - inputs:
+      - f0
+      - collision term
+      - metric perturbations
+      notes: null
+      outputs:
+      - linear perturbations
+      step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: CMBFAST/CLASS-style solver
+      validity: Needs SI-WDM collision kernel or controlled approximation.
+    - inputs:
+      - linear perturbations
+      notes: null
+      outputs:
+      - matter power spectrum
+      - CMB spectrum
+      step_id: s2
+      step_type: transfer_function
+      tool_or_code: null
+      validity: Primary paper uses modified CMBFAST; modern route should use validated hierarchy.
+    - inputs:
+      - transfer function
+      notes: Not run in this batch.
+      outputs:
+      - Lyman-alpha/satellite/dwarf constraints
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: Requires modern nonlinear/IGM recast.
+    id: route_siwmd_boltzmann_transfer
+    input_parameters:
+    - m
+    - sigma_0 or interaction amplitude
+    - background distribution f0
+    - cosmological parameters
+    likelihoods:
+    - modern Lyman-alpha likelihood unavailable
+    - CMB likelihood not rerun
+    observable_ids:
+    - obs_siwmd_matter_power_cutoff
+    - obs_siwmd_cmb_near_cdm
+    required_code_resources:
+    - Boltzmann solver with SI-WDM hierarchy
+    - Lyman-alpha/satellite recast machinery
+    route_status: planned
+    source_model_features:
+    - warm thermal motion
+    - elastic dark matter self-scattering
+    - linear Boltzmann hierarchy
+    validation_tests:
+    - recover k_max shift from 1.1 to 1.7 Mpc^-1 at m=1 keV
+    - check tight-coupling limit against comment and modern hierarchy

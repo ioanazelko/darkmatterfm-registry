@@ -1,0 +1,313 @@
+_source:
+  shard: arXiv_src_0612_002_wds.tar
+  paper_id: hep-ph0612228
+  source_member: hep-ph0612228.json
+schema_version: model_only_v0
+model_id: hep-ph0612228_slim_scalar_mev_dark_matter_v1
+identity:
+  name: SLIM scalar MeV dark matter
+  family: light_scalar_dark_matter
+  aliases:
+  - Scalar as LIght as MeV
+  - SLIM particle
+  - MeV scalar dark matter linked to neutrino mass
+  short_description: A low-energy effective model in which a neutral scalar singlet dark-matter particle
+    couples to a Majorana neutrino and a left-handed neutrino, linking the annihilation rate and loop-induced
+    neutrino mass.
+  historical_origin_or_motivation: The paper proposes a quantitative relation between the observed dark-matter
+    abundance and small neutrino masses, with an MeV-scale scalar also motivated by the 511 keV Galactic
+    emission line.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - low-energy scalar-neutrino effective interaction
+  - radiative neutrino mass model
+  lagrangian_available: 'yes'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper explicitly calls the interaction a low-energy effective Lagrangian because it breaks
+    electroweak symmetry in the case detailed.
+particle_content:
+  dark_matter_candidate:
+    name: SLIM scalar phi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - Majorana neutrino N
+  mediators:
+  - Majorana neutrino N
+  excited_or_degenerate_states:
+  - complex-scalar case can contain two real components phi_1 and phi_2
+  unstable_parent_particles:
+  - N decays to the scalar and a left-handed neutrino when kinematically allowed
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper states the scalar is stable because m_phi < m_N forbids decay into
+    N; for a completion it mentions a possible Z2 parity for the lightest component.
+  symmetries:
+  - name: possible Z2 parity
+    type: discrete
+    exact_or_approximate: unknown
+    breaking: Not specified in the effective model.
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - left-handed neutrinos
+  dark_sector_couplings:
+  - g phi N nu_L
+  mediator_types:
+  - Majorana fermion N
+  annihilation_channels:
+  - SLIM SLIM -> nu_L nu_L
+  - SLIM SLIM -> anti-nu_L anti-nu_L
+  - suppressed SLIM SLIM -> nu_L anti-nu_L
+  decay_channels: []
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: SLIM scalar mass
+    symbol: m_phi
+    description: Mass of the neutral scalar dark-matter particle.
+    range: MeV range preferred; real-scalar case implies m_phi < about 10 MeV and LSS requires above a
+      few keV
+    unit: MeV
+    role: core
+    status: inferred
+  - name: Majorana neutrino mass
+    symbol: m_N
+    description: Heavy-neutrino mass with m_N > m_phi.
+    range: m_N > m_phi; example scale around 10 MeV in the coupling estimate
+    unit: MeV
+    role: core
+    status: inferred
+  - name: scalar-neutrino coupling
+    symbol: g
+    description: Coupling in the effective interaction g phi N nu_L.
+    range: 3e-4 to 1e-3 in the real-scalar discussion
+    role: core
+    status: inferred
+  - name: effective-theory cutoff
+    symbol: Lambda
+    description: Ultraviolet cutoff entering the loop-induced neutrino mass expression.
+    role: core
+    status: unknown
+  - name: annihilation rate
+    symbol: <sigma v>
+    description: Total SLIM pair-annihilation rate needed for the observed dark-matter abundance.
+    range: order 1e-26 cm^3/s
+    unit: cm^3/s
+    role: core
+    status: inferred
+  - name: left-handed neutrino mass
+    symbol: m_nu
+    description: Loop-induced Majorana mass tied to the annihilation rate.
+    range: sub-eV scale
+    unit: eV
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal annihilation of SLIM pairs into neutrinos sets the relic density
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - pair-annihilation cross section into neutrino and antineutrino final states
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper uses a thermal average for the annihilation cross section and relates the required
+    value to the measured dark-matter abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - g
+  - m_N
+  - m_phi/m_N
+  - effective cutoff Lambda
+  - neutrino mass scale
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The text uses thermal averaging but does not give an explicit phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: low_energy_eft
+  applies_to: EFT
+  condition: The Lagrangian is treated as a low-energy effective interaction below an unspecified cutoff.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: mass_hierarchy
+  applies_to: parameter
+  condition: The simple real-scalar relation assumes m_phi < m_N and m_N below the electroweak scale in
+    the discussed limit.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: no_scalar_vev
+  applies_to: model
+  condition: The scalar is assumed not to have a vacuum expectation value so tree-level neutrino masses
+    do not dominate.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+assumptions:
+  global:
+  - id: majorana_N
+    description: N has a Majorana mass, so lepton number is not conserved.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: The one-loop Majorana neutrino-mass relation would change.
+  - id: no_phi_vev
+    description: The scalar dark-matter field has no vacuum expectation value.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: A tree-level contribution could dominate the neutrino mass.
+  - id: abundance_cross_section
+    description: The observed dark-matter abundance fixes the order of the SLIM annihilation cross section.
+    scope: production
+    status: assumed
+    can_be_relaxed: 'yes'
+    impact_if_violated: Different cosmological histories would alter the mass/coupling inference.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated code is reported in the assigned paper text.
+provenance:
+  model_id: hep-ph0612228_slim_scalar_mev_dark_matter_v1
+  model_name: SLIM scalar MeV dark matter
+  model_family: light_scalar_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: hep-ph0612228
+      title: Are small neutrino masses unveiling the missing mass problem of the Universe?
+      authors:
+      - Celine Boehm
+      - Yasaman Farzan
+      - Thomas Hambye
+      - Sergio Palomares-Ruiz
+      - Silvia Pascoli
+      year: 2006
+      arxiv_id: null
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch-0010
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: hep-ph0612228
+      section: Opening summary
+      page: null
+      quote_or_summary: The paper presents a scenario linking dark-matter properties and neutrino masses
+        through an MeV scalar.
+    - reference_id: hep-ph0612228
+      section: Effective Lagrangian discussion
+      page: null
+      quote_or_summary: The scalar singlet is identified as the SLIM dark-matter particle and coupled
+        to N and nu_L.
+    - reference_id: hep-ph0612228
+      section: Relic-density relation
+      page: null
+      quote_or_summary: SLIM pair annihilation into neutrinos determines the relic density and is related
+        to the loop-induced neutrino mass.
+    unresolved_items:
+    - The paper discusses both real and complex scalar cases; this row records the common SLIM model rather
+      than splitting them into separate variants.
+  evidence:
+    particle_content:
+    - reference_id: hep-ph0612228
+      note: The dark matter candidate is a neutral scalar singlet called the SLIM particle, with a Majorana
+        neutrino N in the interaction.
+      confidence: high
+      section: Effective Lagrangian discussion
+      page: null
+    interactions:
+    - reference_id: hep-ph0612228
+      note: The model is based on the single coupling g phi N nu_L, which also generates a one-loop neutrino
+        mass.
+      confidence: high
+      section: Effective Lagrangian discussion
+      page: null
+    production_mechanism:
+    - reference_id: hep-ph0612228
+      note: SLIM pair annihilation to neutrino final states controls the number density and relic density.
+      confidence: high
+      section: Annihilation discussion
+      page: null
+    parameter_ranges:
+    - reference_id: hep-ph0612228
+      note: The text infers MeV-scale scalar dark matter and gives g roughly between 3e-4 and 1e-3 in
+        the real-scalar case.
+      confidence: medium
+      section: Mass-scale discussion
+      page: null
+    validity_domain:
+    - reference_id: hep-ph0612228
+      note: The authors describe the interaction as a low-energy effective Lagrangian and assume no scalar
+        vev.
+      confidence: high
+      section: Effective Lagrangian discussion
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: not_applicable
+  dominant_uncertainties:
+  - low-energy EFT completion
+  - real versus complex scalar variant
+  - cosmological-history dependence
+  validation_status: expert_judgment_only
+  notes: The model identity and relic-density logic are explicit, but several parameters are inferred
+    from order-of-magnitude relations.
+agent_failure_modes:
+  warnings:
+  - id: real_complex_variant
+    severity: medium
+    category: notation_conflict
+    warning: The assigned text uses symbol-stripped TeX; distinguish the common SLIM idea from the separate
+      real and complex scalar formulae before numerical use.

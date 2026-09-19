@@ -1,0 +1,662 @@
+_source:
+  shard: arXiv_src_1811_001_wds.tar
+  paper_id: '1811_00028'
+  source_member: 1811_00028.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1811_00028_ballistic_dark_matter_v1
+identity:
+  name: Ballistic Dark Matter
+  family: ballistic_dark_matter
+  aliases:
+  - BDM
+  short_description: An effective dark-sector model in which self-collisional dark radiation undergoes
+    a late transition into non-interacting nonrelativistic dark matter with inherited acoustic velocities.
+  historical_origin_or_motivation: The paper groups dark sectors that are initially relativistic and collisional
+    but become collisionless and nonrelativistic at late redshift, producing distinctive acoustic features
+    in matter perturbations.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - effective macroscopic dark-sector fluid
+  - pure dark gauge sector examples
+  - asymmetric dark matter examples
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper remains agnostic to microscopic particle physics and models the transition through
+    a time-dependent equation of state w_B(z) from 1/3 to 0.
+particle_content:
+  dark_matter_candidate:
+    name: effective nonrelativistic BDM particles after dark-sector phase transition
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - self-interacting relativistic dark radiation before transition
+  mediators: []
+  dark_radiation_species:
+  - dark radiation phase of the BDM fluid
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - collisionless nonrelativistic BDM component
+  unstable_parent_particles:
+  - dark radiation phase that converts to dark matter
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Not specified microscopically; the effective model assumes the post-transition
+    nonrelativistic component is stable dark matter.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - none
+  standard_model_targets: []
+  dark_sector_couplings:
+  - self-collisional dark radiation before transition
+  - post-transition collisionless dark matter
+  mediator_types: []
+  interaction_operators: []
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - effective self-collisions in the dark-radiation phase
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: transition redshift
+    symbol: z_star
+    description: Redshift at which the BDM fluid transitions from dark radiation to dark matter.
+    range: examples include 1e4, 4e4, and 1e5; fast all-DM transitions are shown to require z_star greater
+      than about 5e4
+    role: core
+    status: inferred
+  - name: transition duration
+    symbol: Delta z or Delta a
+    description: Width of the equation-of-state transition.
+    range: examples include transition widths 0.01, 0.1, and 1 in the paper's parametrization
+    role: core
+    status: inferred
+  - name: BDM dark matter fraction
+    symbol: f_BDM
+    description: Present-day fraction of total dark matter in the BDM component.
+    range:
+      min: 0
+      max: 1
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Defined as rho_BDM/(rho_BDM + rho_CDM).
+    role: core
+    status: inferred
+  - name: BDM equation of state
+    symbol: w_B(z)
+    description: Time-varying equation-of-state parameter changing from radiation-like to matter-like
+      behavior.
+    range: w_B = 1/3 before transition and w_B = 0 after transition
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - late dark-sector phase transition from self-collisional dark radiation to collisionless nonrelativistic
+    dark matter
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - present-day BDM fraction f_BDM
+  - conversion of dark-radiation energy density into dark matter
+  - transition redshift and duration
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper assumes all dark radiation energy converts to dark matter unless otherwise stated,
+    and allows BDM to be all or a fraction of total dark matter.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: BDM fraction
+    symbol: f_BDM
+    description: Fraction of total dark matter made of BDM.
+    range:
+      min: 0
+      max: 1
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: null
+    role: core
+    status: inferred
+  calculation_type: phenomenological
+  key_dependencies:
+  - f_BDM
+  - energy density in the dark radiation phase
+  - transition redshift
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - early self-interacting dark radiation phase
+  - late transition to nonrelativistic collisionless dark matter
+  - initial acoustic velocities inherited by dark matter perturbations
+  dark_sector_temperature: null
+  delta_neff:
+    name: extra effective relativistic degrees of freedom
+    symbol: Delta N_eff
+    description: BDM contributes as dark radiation before the phase transition.
+    range: scales with transition redshift and BDM fraction
+    role: core
+    status: inferred
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - dark-radiation to dark-matter transition at z_star
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: high
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'no'
+  f_of_p_or_q: The model is formulated as an effective fluid rather than a particle distribution function.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds:
+  - Post-transition peculiar velocities are inherited from acoustic oscillations and redshift away.
+  notes: The ballistic phase is driven by initial velocities after the transition.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: oscillatory
+    small_scale_power_effect: oscillations
+    half_mode_mass: null
+    impact_on_sigma8_s8: not quantified in extracted model card
+  nonlinear:
+    halo_mass_function_effect: not studied in this paper
+    subhalo_mass_function_effect: not studied in this paper
+    simulation_calibrated: 'no'
+validity_domain:
+- id: vd-effective-fluid
+  applies_to: model
+  condition: The dark sector can be approximated as a perfect fluid with vanishing anisotropic stress
+    and higher Boltzmann moments during the dark-radiation phase.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The paper notes the assumption can be relaxed only by using the full stress-energy tensor.
+  source_reference_ids:
+  - '1811_00028'
+  notes: null
+- id: vd-transition-before-equality
+  applies_to: cosmological_history
+  condition: To preserve the standard background by recombination, the transition must occur before matter-radiation
+    equality in the scenarios emphasized by the paper.
+  valid_range: z_star before equality; fast all-DM examples require z_star greater than about 5e4
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Later transitions would alter radiation content and perturbations more strongly.
+  source_reference_ids:
+  - '1811_00028'
+  notes: null
+assumptions:
+  global:
+  - id: assume-fluid-description
+    description: BDM perturbations are described by density and velocity perturbations of an effective
+      fluid with time-varying equation of state.
+    scope: theory
+    status: assumed
+    impact_if_violated: The predicted acoustic peaks could change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '1811_00028'
+    notes: null
+  - id: assume-energy-conversion
+    description: The dark-radiation energy density converts into the BDM nonrelativistic component unless
+      a residual radiation component is explicitly added.
+    scope: production
+    status: assumed
+    impact_if_violated: The relic fraction and Delta N_eff estimates would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '1811_00028'
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that the BDM species was implemented in CAMB and CLASS for transfer functions
+    and power spectra, but no model-specific repository is given.
+  primary_code_role: boltzmann_solver_patch
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  expected_inputs:
+  - transition redshift
+  - transition duration
+  - BDM fraction
+  expected_outputs:
+  - transfer function
+  - matter power spectrum
+provenance:
+  model_id: 1811_00028_ballistic_dark_matter_v1
+  model_name: Ballistic Dark Matter
+  model_family: ballistic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1811_00028'
+      title: Ballistic Dark Matter oscillates above CDM
+      authors:
+      - Anirban Das
+      - Basudeb Dasgupta
+      - Rishi Khatri
+      year: 2018
+      arxiv_id: '1811.00028'
+      doi: null
+      url: null
+      role: original_model
+      notes: Source text from assigned SQLite database only.
+    - arxiv_id: '1811.00028'
+      authors:
+      - Das, Anirban
+      - Dasgupta, Basudeb
+      - Khatri, Rishi
+      doi: 10.1088/1475-7516/2019/04/018
+      notes: Primary paper full text resolved locally from configured SQLite cache.
+      reference_id: src_1811_00028_primary
+      role: original_model
+      title: Ballistic Dark Matter oscillates above CDM
+      url: https://arxiv.org/abs/1811.00028
+      year: 2019
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0018
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1811_00028'
+      section: introduction/model
+      page: null
+      quote_or_summary: The paper says its purpose is to introduce BDM and defines it as dark radiation
+        transitioning to collisionless dark matter.
+    - reference_id: '1811_00028'
+      section: effective model
+      page: null
+      quote_or_summary: The BDM fluid has w_B = 1/3 before transition and w_B = 0 after transition, with
+        parameters z_star, duration, and f_BDM.
+    unresolved_items:
+    - No public CAMB/CLASS patch or full likelihood files were available in the assigned material.
+  evidence:
+    particle_content:
+    - reference_id: '1811_00028'
+      note: The effective candidate is a nonrelativistic collisionless component produced from a self-collisional
+        dark-radiation phase.
+      confidence: high
+      section: introduction/model
+      page: null
+    symmetries:
+    - reference_id: '1811_00028'
+      note: No microscopic stabilizing symmetry is specified; stability is an effective assumption of
+        the post-transition component.
+      confidence: medium
+      section: model
+      page: null
+    interactions:
+    - reference_id: '1811_00028'
+      note: The pre-transition phase is self-collisional and decoupled from the visible sector; the post-transition
+        phase is non-interacting/collisionless.
+      confidence: high
+      section: model
+      page: null
+    production_mechanism:
+    - reference_id: '1811_00028'
+      note: BDM is produced by a late transition from dark radiation to dark matter at redshift z_star.
+      confidence: high
+      section: model
+      page: null
+    cosmological_history:
+    - reference_id: '1811_00028'
+      note: The model includes a dark-radiation epoch, possible Delta N_eff before transition, and a later
+        matter-like phase.
+      confidence: high
+      section: extra relativistic degrees of freedom
+      page: null
+    parameter_ranges:
+    - reference_id: '1811_00028'
+      note: The paper varies transition redshift, transition duration, and BDM fraction, with examples
+        z_star = 1e4, 4e4, and 1e5.
+      confidence: medium
+      section: matter power spectrum
+      page: null
+    validity_domain:
+    - reference_id: '1811_00028'
+      note: The analytic treatment assumes a fluid with vanishing anisotropic stress and higher moments.
+      confidence: medium
+      section: model
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary full text discusses the constraint or comparison.
+      page: null
+      reference_id: src_1811_00028_primary
+      section: constraints/results discussion
+    - confidence: high
+      note: Primary full text discusses the constraint or comparison.
+      page: null
+      reference_id: src_1811_00028_primary
+      section: constraints/results discussion
+    observables:
+    - confidence: high
+      note: Primary full text supports the observable entry.
+      page: null
+      reference_id: src_1811_00028_primary
+      section: abstract and phenomenology discussion
+    - confidence: high
+      note: Primary full text supports the observable entry.
+      page: null
+      reference_id: src_1811_00028_primary
+      section: abstract and phenomenology discussion
+    routes:
+    - confidence: high
+      note: Primary full text describes the forward calculation route.
+      page: null
+      reference_id: src_1811_00028_primary
+      section: methods/results discussion
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - microscopic particle physics not specified
+  - perfect-fluid approximation
+  - nonlinear structure consequences left for future work
+  validation_status: smoke_test_only
+  notes: The model is intentionally phenomenological and macroscopic.
+agent_failure_modes:
+  warnings:
+  - id: warn-not-microphysical
+    severity: medium
+    category: invalid_mapping
+    warning: Do not map BDM to a unique particle species or Lagrangian; the paper is agnostic about microscopic
+      underpinnings.
+    mitigation: Represent it as an effective fluid/phenomenological parameterization.
+    source_reference_ids:
+    - '1811_00028'
+  - id: warn-transfer-features
+    severity: medium
+    category: extrapolation
+    warning: The oscillatory matter-power features are linear-theory results and nonlinear halo consequences
+      are not developed in the paper.
+    mitigation: Avoid claiming simulation-calibrated nonlinear predictions.
+    source_reference_ids:
+    - '1811_00028'
+observables:
+- caveats:
+  - The primary paper describes qualitative constraints and leaves a full parameter-space study to future
+    work.
+  channel: large_scale_structure
+  effect_direction: shape_change
+  environments:
+  - linear large-scale structure
+  - CMB last scattering
+  id: matter_power_acoustic_oscillations
+  key_quantities:
+  - description: Central redshift of the dark-radiation to dark-matter transition.
+    name: transition redshift
+    range: examples include 1e4 to 1e5; crude all-DM bound around greater than 5e4
+    role: core
+    source_reference_ids:
+    - src_1811_00028_primary
+    status: inferred
+    symbol: z_star
+  - description: Duration of the equation-of-state transition.
+    name: transition width
+    role: core
+    source_reference_ids:
+    - src_1811_00028_primary
+    status: inferred
+    symbol: Delta z or Delta a
+  - description: Present-day dark matter fraction in the ballistic component.
+    name: BDM fraction
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 1
+      min: 0
+      notes: Defined in the model card as rho_BDM/(rho_BDM+rho_CDM).
+      unit: null
+    role: core
+    source_reference_ids:
+    - src_1811_00028_primary
+    status: inferred
+    symbol: f_BDM
+  linked_constraints:
+  - wigglez_planck_power_constraint
+  linked_routes:
+  - bdm_camb_class_route
+  name: Acoustic features in the matter power spectrum
+  notes: null
+  observability: high
+  predicted_effect: A dark radiation phase that becomes collisionless dark matter leaves acoustic oscillations
+    and small-scale deviations in modes entering the horizon before the transition.
+  redshift_range: transition before recombination, typically z_star > z_eq for main examples
+  relevance: critical
+  scale_range: k around 0.1-1 h/Mpc in galaxy surveys and small-scale CMB sensitivity
+  source_reference_ids:
+  - src_1811_00028_primary
+  subchannel: linear matter power spectrum
+- caveats:
+  - CMB N_eff constraints do not apply in the all-energy-converts case if the transition is well before
+    recombination, as noted by the paper.
+  channel: cmb
+  effect_direction: enhancement
+  environments:
+  - early Universe
+  id: pretransition_dark_radiation_neff
+  key_quantities:
+  - description: Extra relativistic energy density from the dark radiation phase.
+    name: Delta N_eff
+    role: derived
+    source_reference_ids:
+    - src_1811_00028_primary
+    status: inferred
+    symbol: Delta N_eff
+  - description: Determines whether BBN or CMB radiation-density constraints apply.
+    name: transition redshift
+    role: core
+    source_reference_ids:
+    - src_1811_00028_primary
+    status: inferred
+    symbol: z_star
+  linked_constraints:
+  - bbn_neff_transition_constraint
+  linked_routes:
+  - bdm_camb_class_route
+  name: Dark radiation before the BDM transition
+  notes: null
+  observability: medium
+  predicted_effect: Before transition, BDM behaves as dark radiation and can contribute to N_eff if the
+    transition occurs late enough, especially after BBN.
+  redshift_range: BBN to recombination
+  relevance: medium
+  scale_range: background radiation density
+  source_reference_ids:
+  - src_1811_00028_primary
+  subchannel: BBN/CMB effective relativistic degrees of freedom
+constraints:
+- allowed_regions:
+  - Earlier transitions and/or subdominant BDM fractions reduce the visible oscillatory deviations.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The quoted bound is a visual/qualitative comparison without a full parameter degeneracy
+      analysis.
+    id: linear_power_only
+    impact_if_violated: A full likelihood with nuisance parameters could weaken or shift the threshold.
+    notes: null
+    scope: linear perturbation recast
+    source_reference_ids:
+    - src_1811_00028_primary
+    status: assumed
+  benchmark_implications:
+  - All-DM fast-transition examples need z_star roughly above the few times 1e4 scale to evade existing
+    power-spectrum data.
+  caveats:
+  - The paper explicitly calls the estimate crude and defers a detailed parameter-space study.
+  constrained_parameters:
+  - z_star
+  - transition duration
+  - f_BDM
+  constraint_type: cosmological
+  data_release: WiggleZ matter power and Planck CMB reach as discussed in primary paper
+  excluded_regions:
+  - For all dark matter in BDM, the paper states that z_star smaller than about 5e4 is already ruled out
+    by eye using WiggleZ-scale matter power; Planck small-scale CMB reaches comparable sensitivity.
+  id: wigglez_planck_power_constraint
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Qualitative matter-power and small-scale CMB constraint on transition redshift
+  notes: null
+  observable_channel: matter and CMB power spectra
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1811_00028_primary
+- allowed_regions:
+  - If all BDM energy converts to matter before recombination, CMB background N_eff limits may not apply,
+    though perturbation constraints remain.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: All dark radiation energy converts into dark matter unless a residual radiation component
+      is specified.
+    id: complete_energy_conversion
+    impact_if_violated: Residual dark radiation would reintroduce CMB N_eff constraints.
+    notes: null
+    scope: BDM background evolution
+    source_reference_ids:
+    - src_1811_00028_primary
+    status: assumed
+  benchmark_implications:
+  - Late-forming BDM must avoid excessive relativistic energy at BBN or include a modified abundance history.
+  caveats:
+  - No BBN likelihood or numerical bound is supplied in the primary paper.
+  constrained_parameters:
+  - z_star
+  - pretransition dark-radiation density
+  - residual radiation fraction
+  constraint_type: cosmological
+  data_release: BBN Delta N_eff constraints referenced qualitatively in the primary paper
+  excluded_regions:
+  - Transitions after BBN can be constrained by BBN Delta N_eff because the BDM component is still dark
+    radiation.
+  id: bbn_neff_transition_constraint
+  likelihood_available: partial
+  likelihood_reference: null
+  name: BBN radiation-density constraint for late BDM transition
+  notes: null
+  observable_channel: Delta N_eff
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1811_00028_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary paper reports a CAMB/CLASS implementation but no code artifact was found
+      in this batch.
+    caveats:
+    - Detailed constraints require nuisance parameters and nonlinear-scale cuts.
+    constraint_ids:
+    - wigglez_planck_power_constraint
+    - bbn_neff_transition_constraint
+    derived_quantities:
+    - transfer function
+    - matter power spectrum
+    - CMB TT spectrum
+    - Delta N_eff when applicable
+    description: Implement the BDM fluid in a Boltzmann code and compare transfer functions, matter power,
+      and CMB spectra to survey data.
+    forward_model_chain:
+    - inputs:
+      - BDM equation of state
+      - sound speed/velocity perturbation equations
+      - transition parameters
+      notes: Keep a trace CDM component in synchronous gauge as the paper notes.
+      outputs:
+      - BDM perturbation evolution
+      step_id: modify_fluid_evolution
+      step_type: boltzmann_solver
+      tool_or_code: CAMB or CLASS
+      validity: The primary paper implemented the species in both CAMB and CLASS.
+    - inputs:
+      - BDM perturbations
+      - cosmological parameters
+      notes: Acoustic features appear for modes entering before transition.
+      outputs:
+      - matter power spectrum
+      - CMB angular spectra
+      step_id: compute_spectra
+      step_type: boltzmann_solver
+      tool_or_code: CAMB or CLASS
+      validity: Linear theory; nonlinear corrections require separate treatment.
+    - inputs:
+      - matter power
+      - CMB spectra
+      - survey windows
+      notes: WiggleZ and Planck comparisons are the minimum recast targets.
+      outputs:
+      - constraints on z_star, width, f_BDM
+      step_id: survey_likelihood
+      step_type: likelihood
+      tool_or_code: null
+      validity: Requires external likelihoods not bundled with the paper.
+    id: bdm_camb_class_route
+    input_parameters:
+    - z_star
+    - transition width
+    - f_BDM
+    - background cosmological parameters
+    likelihoods:
+    - External WiggleZ/Planck/BBN likelihoods needed for production constraints.
+    observable_ids:
+    - matter_power_acoustic_oscillations
+    - pretransition_dark_radiation_neff
+    required_code_resources:
+    - CAMB or CLASS fork
+    - survey window functions
+    - CMB likelihoods
+    route_status: partially_implemented
+    source_model_features:
+    - dark radiation phase
+    - smooth transition in equation of state
+    - collisionless post-transition dark matter
+    validation_tests:
+    - Recover the paper statement that z_star below about 5e4 is visually disfavored for all-DM examples.

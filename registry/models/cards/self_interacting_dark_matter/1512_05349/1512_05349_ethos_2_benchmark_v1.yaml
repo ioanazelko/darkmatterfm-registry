@@ -1,0 +1,714 @@
+_source:
+  shard: data/astro-ph-00058.tar
+  paper_id: '1512_05349'
+  source_member: 1512_05349.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1512_05349_ethos_2_benchmark_v1
+identity:
+  name: ETHOS-2 interacting dark-matter dark-radiation benchmark
+  family: self_interacting_dark_matter
+  aliases:
+  - ETHOS-2
+  short_description: A benchmark interacting dark-matter/dark-radiation model with intermediate damping
+    and self-interaction behavior among the main ETHOS cases.
+  historical_origin_or_motivation: Explore interacting dark matter plus dark radiation as an alternative
+    to collisionless CDM on small scales.
+  status: speculative
+  model_kind: benchmark_mapping
+theory:
+  theory_level: benchmark_mapping
+  parent_frameworks:
+  - ETHOS effective theory of structure formation
+  lagrangian_available: partial
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper restricts to a massive fermion, massless neutrino-like dark radiation, and massive
+    vector mediator, then maps intrinsic parameters to ETHOS effective parameters.
+particle_content:
+  dark_matter_candidate:
+    name: massive fermionic dark matter particle
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - massless neutrino-like dark radiation fermion
+  mediators:
+  - massive vector mediator
+  dark_radiation_species:
+  - massless neutrino-like fermion
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: unknown; benchmark assumes a stable massive fermionic dark matter component.
+  symmetries:
+  - name: dark interaction symmetry
+    type: gauge
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets: []
+  dark_sector_couplings:
+  - DM-dark radiation scattering
+  - DM self-interaction via Yukawa potential
+  mediator_types:
+  - vector
+  interaction_operators:
+  - DM-DR matrix element scaling as (p_DR/m_chi)^2
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - velocity-dependent DM-DM self-scattering
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: unknown
+parameters:
+  core:
+  - name: ETHOS benchmark label
+    description: Paper-local ETHOS benchmark variant.
+    value: ETHOS-2
+    role: core
+    status: established
+  - name: DM particle mass
+    symbol: m_chi
+    description: Intrinsic massive fermionic dark matter mass in the ETHOS mapping.
+    range: specified by benchmark table; not preserved in extracted text
+    role: core
+    status: unknown
+  - name: vector mediator mass
+    symbol: m_phi
+    description: Massive vector mediator for DM-DR and DM-DM interactions.
+    range: specified by benchmark table; not preserved in extracted text
+    role: core
+    status: unknown
+  - name: DM-DR opacity coefficient
+    symbol: a4
+    description: Coefficient controlling DM drag opacity for matrix element scaling as (p_DR/m_chi)^2.
+    role: core
+    status: inferred
+  - name: dark radiation temperature ratio
+    symbol: xi
+    description: Present-day dark-radiation to CMB temperature ratio; the paper sets this to 0.5 for definiteness.
+    value: '0.5'
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - phenomenological full-DM benchmark; microscopic production not specified
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - assumed cosmological dark matter density in simulation
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: The paper uses Planck-consistent cosmological parameters and does not compute a particle relic
+    abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - Omega_m and Omega_b cosmological parameters
+  - ETHOS transfer function normalization
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late kinetic decoupling from dark radiation
+  - dark acoustic oscillations
+  - Silk-like damping
+  dark_sector_temperature:
+    name: dark radiation to CMB temperature ratio
+    symbol: xi
+    description: Present-day temperature ratio used in benchmarks.
+    value: '0.5'
+    role: core
+    status: assumed
+  delta_neff: null
+  kinetic_decoupling:
+    name: kinetic decoupling temperature
+    symbol: T_kd
+    description: Mapped to the halo mass-function cutoff.
+    range: benchmark dependent
+    role: core
+    status: inferred
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: unknown
+  phase_space_bounds: []
+  notes: Cold massive DM with dark-radiation-coupled perturbations; distribution function not given in
+    model-card text.
+  free_streaming_length:
+    name: effective cutoff scale
+    symbol: M_cut
+    description: Mapped from primordial damping or kinetic decoupling temperature.
+    range: benchmark dependent
+    role: core
+    status: inferred
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: oscillatory
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: reduced halo abundance below the cutoff scale
+    subhalo_mass_function_effect: reduced subhalo abundance and central masses relative to CDM
+    simulation_calibrated: 'yes'
+validity_domain:
+- id: ethos_effective_mapping
+  applies_to: model
+  condition: Valid for particle models whose linear transfer function and self-interaction cross sections
+    map to the same ETHOS effective parameters.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+- id: dm_only_simulations
+  applies_to: structure_formation
+  condition: The reported benchmark behavior is from dark-matter-only simulations without baryonic processes.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - primary
+assumptions:
+  global:
+  - id: full_dm_component
+    description: The N-body simulations treat the benchmark as the full dark matter sector for structure
+      formation.
+    scope: cosmological_history
+    status: assumed
+    source_reference_ids:
+    - primary
+    can_be_relaxed: unknown
+  - id: ethos_mapping_sufficient
+    description: The benchmark is represented by its transfer function and velocity-dependent self-interaction
+      cross section.
+    scope: computation
+    status: assumed
+    source_reference_ids:
+    - primary
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports modified CAMB transfer functions, MUSIC initial conditions, and AREPO
+    self-scattering simulations; no standalone model-card code release is specified.
+provenance:
+  model_id: 1512_05349_ethos_2_benchmark_v1
+  model_name: ETHOS-2 interacting dark-matter dark-radiation benchmark
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: First simulations within an effective theory of structure formation (ETHOS)
+      role: original_model
+      arxiv_id: '1512.05349'
+      year: 2015
+      doi: null
+      url: null
+    - arxiv_id: '1512.05349'
+      authors:
+      - Vogelsberger, Mark
+      - Zavala, Jesús
+      - Cyr-Racine, Francis-Yan
+      - Pfrommer, Christoph
+      - Bringmann, Torsten
+      - Sigurdson, Kris
+      doi: 10.1093/mnras/stw1076
+      notes: Primary paper text resolved locally; ADS used for bibliographic metadata and reference/citation
+        discovery. Related papers and arXiv fallback were used for discovery logging only.
+      reference_id: src_primary
+      role: original_model
+      title: 'ETHOS - an effective theory of structure formation: dark matter physics as a possible explanation
+        of the small-scale CDM problems'
+      url: https://arxiv.org/abs/1512.05349
+      year: 2016
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0288
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: full text
+      page: null
+      quote_or_summary: Model-card fields are supported by compact snippets in the evidence block.
+    unresolved_items:
+    - The local OCR text references the benchmark table but does not preserve all particle-physics numerical
+      table entries, so exact m_chi/m_phi/a4 values are not restated beyond already established qualitative
+      roles.
+    - Lyman-alpha limits require a dedicated hydrodynamical recast because the ETHOS cutoff shape differs
+      from thermal WDM.
+    - Related-paper reads were used only for discovery logging; structured claims cite the local primary
+      text.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: For the simulated ETHOS benchmarks, the underlying particle model uses massive fermionic DM
+        interacting with massless neutrino-like dark radiation through a massive vector mediator.
+      confidence: high
+      section: ETHOS model definitions
+    interactions:
+    - reference_id: primary
+      note: The paper maps DM-DR scattering to the a4 opacity coefficient and includes velocity-dependent
+        DM-DM self-interactions from a Yukawa potential.
+      confidence: high
+      section: ETHOS mapping
+    production_mechanism:
+    - reference_id: primary
+      note: The benchmarks assume the simulated cosmological dark matter component; the paper does not
+        derive a microscopic abundance-production history.
+      confidence: medium
+      section: model definitions
+    cosmological_history:
+    - reference_id: primary
+      note: Dark matter remains coupled to dark radiation until late kinetic decoupling, damping the primordial
+        power spectrum and imprinting dark acoustic oscillations.
+      confidence: high
+      section: introduction and ETHOS mapping
+    parameter_ranges:
+    - reference_id: primary
+      note: The paper labels benchmark parameter choices ETHOS-1 through ETHOS-4 and represents each by
+        a transfer function plus velocity-dependent transfer cross section.
+      confidence: high
+      section: model definitions
+    validity_domain:
+    - reference_id: primary
+      note: ETHOS-4 is specifically tuned to address missing-satellite and too-big-to-fail issues; ETHOS-1
+        to ETHOS-3 demonstrate the benchmark behavior.
+      confidence: high
+      section: model definitions and conclusions
+    constraints:
+    - confidence: high
+      note: Constraint claims are supported by locally resolved primary-paper text around relic-density,
+        collider, laboratory, cosmology, or astrophysical-viability discussions.
+      page: null
+      reference_id: src_primary
+      section: null
+    observables:
+    - confidence: high
+      note: Observable claims are supported by locally resolved primary-paper text around the abstract/introduction,
+        model-phenomenology, results, or conclusions sections.
+      page: null
+      reference_id: src_primary
+      section: null
+    routes:
+    - confidence: medium
+      note: Routing claims are supported by primary-paper descriptions of Boltzmann solves, recasts, simulation
+        pipelines, or numerical scan procedures.
+      page: null
+      reference_id: src_primary
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine extraction from one paper only; ignored constraints and observables per run instructions.
+agent_failure_modes:
+  warnings:
+  - id: benchmark_mapping_only
+    severity: medium
+    category: invalid_mapping
+    warning: ETHOS-2 is used as a benchmark; do not infer microscopic uniqueness from the ETHOS mapping.
+    mitigation: Check the primary paper before using unsupported constraints or signatures.
+    source_reference_ids:
+    - primary
+observables:
+- caveats:
+  - The benchmark table values for some particle masses are not preserved in the local OCR text.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - linear cosmological perturbations
+  id: ethos_2_linear_power_damping_dao
+  key_quantities:
+  - name: ETHOS benchmark label
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: established
+    symbol: benchmark
+    value: ETHOS-2
+  - description: Nonzero ETHOS opacity coefficient for the p_DR^2 matrix-element scaling
+    name: opacity coefficient
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    symbol: a4
+  - name: dark-radiation temperature ratio
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: assumed
+    symbol: xi
+    value: '0.5'
+  - description: Sound-horizon and diffusion scales controlling the cutoff
+    name: DAO and damping scales
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    symbol: r_DAO, r_SD
+  linked_constraints:
+  - ethos_2_lyman_alpha_cutoff_sensitivity
+  linked_routes:
+  - ethos_2_ethos_simulation_route
+  name: ETHOS-2 linear power suppression and dark acoustic oscillations
+  notes: null
+  observability: medium
+  predicted_effect: DM-dark-radiation scattering imprints Silk-like damping and dark acoustic oscillation
+    features in the initial matter power spectrum, suppressing primordial small-scale structure relative
+    to CDM.
+  redshift_range: initial conditions to z = 0
+  relevance: critical
+  scale_range: sub-galactic to Milky-Way halo scales
+  source_reference_ids:
+  - src_primary
+  subchannel: linear matter power spectrum
+- caveats: []
+  channel: milky_way_satellites
+  effect_direction: shape_change
+  environments:
+  - Milky Way-like halo
+  - dwarf spheroidals
+  id: ethos_2_subhalo_abundance_tbtf
+  key_quantities:
+  - description: Subhalo ranking and TBTF diagnostic
+    name: maximum circular velocity
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    symbol: V_max
+  - description: Power-spectrum cutoff proxy
+    name: cutoff scale
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    symbol: r_DAO/r_SD
+  - description: Self-interaction diagnostic
+    name: transfer cross section at dwarf velocities
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    symbol: sigma_T/m_chi at 30 km/s
+  linked_constraints:
+  - ethos_2_mw_satellite_viability
+  linked_routes:
+  - ethos_2_ethos_simulation_route
+  name: ETHOS-2 satellite abundance and TBTF response
+  notes: null
+  observability: high
+  predicted_effect: The ETHOS-2 benchmark changes Milky Way subhalo abundances and circular-velocity profiles
+    through the combined effect of primordial damping and late self-interactions; intermediate between
+    ETHOS-1 and ETHOS-3, with both power-spectrum damping and self-interactions affecting core densities.
+  redshift_range: z = 0
+  relevance: critical
+  scale_range: Milky Way satellite halo scales
+  source_reference_ids:
+  - src_primary
+  subchannel: subhalo mass function and circular-velocity profiles
+- caveats: []
+  channel: dwarf_galaxies
+  effect_direction: morphology_change
+  environments:
+  - dwarf galaxies
+  - Milky Way-size haloes
+  - clusters
+  id: ethos_2_self_interaction_core_density
+  key_quantities:
+  - description: ETHOS self-interaction summary values
+    name: transfer cross sections
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    symbol: sigma_T/m_chi at 30, 220, 1000 km/s
+  - description: Central density within the simulation softening-scale aperture
+    name: core density
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    symbol: rho_core
+  - description: Vector mediator mass from the benchmark table
+    name: mediator mass
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: unknown
+    symbol: m_phi
+  linked_constraints:
+  - ethos_2_cluster_self_interaction_consistency
+  - ethos_2_mw_satellite_viability
+  linked_routes:
+  - ethos_2_ethos_simulation_route
+  name: ETHOS-2 self-interaction impact on halo core densities
+  notes: null
+  observability: medium
+  predicted_effect: The velocity-dependent DM self-interaction alters halo core densities; for ETHOS-2,
+    low-mass halo core densities are reduced, with some self-interaction effects also appearing at larger
+    masses.
+  redshift_range: z = 0
+  relevance: high
+  scale_range: dwarf to cluster halo velocities
+  source_reference_ids:
+  - src_primary
+  subchannel: central density and velocity-dependent transfer cross section
+constraints:
+- allowed_regions:
+  - intermediate between ETHOS-1 and ETHOS-3, with both power-spectrum damping and self-interactions affecting
+    core densities
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The primary comparison uses dark-matter-only zoom simulations, with baryonic effects
+      discussed as caveats.
+    id: dm_only_zoom
+    impact_if_violated: Including baryons can alter satellite survival and central densities.
+    notes: null
+    scope: structure formation
+    source_reference_ids:
+    - src_primary
+    status: assumed
+  benchmark_implications:
+  - The ETHOS framework can use satellite counts and kinematics to indirectly constrain particle-physics
+    parameters.
+  caveats: []
+  constrained_parameters:
+  - a4
+  - r_DAO
+  - r_SD
+  - sigma_T/m_chi
+  - V_max
+  constraint_type: astrophysical
+  data_release: Milky Way satellite kinematic comparisons used in the primary paper
+  excluded_regions:
+  - Benchmarks that over-suppress the satellite population or over-reduce central densities are disfavored
+    by the primary paper's comparison to MW dwarf data.
+  id: ethos_2_mw_satellite_viability
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: ETHOS-2 Milky Way satellite and too-big-to-fail viability
+  notes: null
+  observable_channel: subhalo abundance and circular-velocity profiles
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_primary
+- allowed_regions:
+  - The primary paper notes that detailed hydrodynamical simulations are needed because the ETHOS cutoff
+    shape differs from thermal WDM.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: The Lyman-alpha comparison requires hydrodynamical simulations tailored to the ETHOS
+      transfer function.
+    id: hydro_recast_needed
+    impact_if_violated: Using WDM limits directly could misstate the allowed cutoff scale.
+    notes: null
+    scope: large-scale-structure recast
+    source_reference_ids:
+    - src_primary
+    status: assumed
+  benchmark_implications:
+  - Linear-power observables are an external constraint on the same damping parameters used in the simulations.
+  caveats: []
+  constrained_parameters:
+  - r_DAO
+  - r_SD
+  - a4
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Too-large small-scale cutoffs could be excluded by Lyman-alpha forest data, but the paper does not
+    perform that hydrodynamical recast.
+  id: ethos_2_lyman_alpha_cutoff_sensitivity
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: ETHOS-2 Lyman-alpha sensitivity to small-scale cutoff
+  notes: null
+  observable_channel: Lyman-alpha forest power spectrum
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - src_primary
+- allowed_regions:
+  - The Yukawa-like transfer cross section falls rapidly at high velocities, allowing large dwarf-scale
+    interactions while satisfying cluster-scale constraints in the simulated benchmarks.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - The three ETHOS cross-section summary velocities give a quick diagnostic before running full simulations.
+  caveats: []
+  constrained_parameters:
+  - sigma_T/m_chi at 1000 km/s
+  - mediator mass
+  - dark coupling
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Models with excessively large cluster-scale self-interaction cross sections would violate cluster-scale
+    constraints.
+  id: ethos_2_cluster_self_interaction_consistency
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: ETHOS-2 cluster-scale self-interaction consistency
+  notes: null
+  observable_channel: velocity-dependent self-interaction cross section
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: 'ETHOS-2: intermediate damping and self-interaction behavior.'
+    caveats: []
+    constraint_ids:
+    - ethos_2_mw_satellite_viability
+    - ethos_2_lyman_alpha_cutoff_sensitivity
+    - ethos_2_cluster_self_interaction_consistency
+    derived_quantities:
+    - linear transfer function
+    - halo mass function cutoff
+    - subhalo V_max function
+    - central density profiles
+    description: Map the ETHOS-2 particle benchmark into ETHOS effective parameters, generate modified
+      transfer functions, run self-interacting N-body simulations, and compare small-scale-structure observables.
+    forward_model_chain:
+    - inputs:
+      - particle masses and couplings
+      - xi
+      notes: null
+      outputs:
+      - a4
+      - dark-radiation abundance
+      - sigma_T/m_chi values
+      step_id: ethos_mapping
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary paper follows the ETHOS mapping for p_DR^2 matrix-element scaling.
+    - inputs:
+      - a4
+      - xi
+      - cosmological parameters
+      notes: null
+      outputs:
+      - modified matter transfer function
+      - DAO/Silk damping features
+      step_id: linear_transfer
+      step_type: transfer_function
+      tool_or_code: modified CAMB
+      validity: Transfer functions generated with modified CAMB.
+    - inputs:
+      - transfer functions
+      - z=127 cosmology
+      notes: null
+      outputs:
+      - MUSIC initial conditions
+      step_id: initial_conditions
+      step_type: data_transform
+      tool_or_code: MUSIC
+      validity: Uniform and zoom initial conditions use the same cosmological parameter set.
+    - inputs:
+      - initial conditions
+      - velocity-dependent cross section
+      notes: null
+      outputs:
+      - halo catalogues
+      - subhalo profiles
+      - core densities
+      step_id: nbody_self_scattering
+      step_type: simulation
+      tool_or_code: AREPO
+      validity: AREPO implementation assumes elastic isotropic DM self-scattering.
+    - inputs:
+      - subhalo abundance
+      - V_max profiles
+      - MW dwarf data
+      notes: null
+      outputs:
+      - MS/TBTF viability assessment
+      step_id: satellite_comparison
+      step_type: recasting
+      tool_or_code: null
+      validity: Dark-matter-only comparison; baryons are a caveat.
+    id: ethos_2_ethos_simulation_route
+    input_parameters:
+    - m_chi
+    - m_phi
+    - g_chi
+    - g_DR
+    - xi
+    - a4
+    - sigma_T/m_chi at 30, 220, 1000 km/s
+    likelihoods:
+    - MW satellite kinematic comparisons
+    - future Lyman-alpha hydrodynamical recast
+    - cluster self-interaction constraints
+    observable_ids:
+    - ethos_2_linear_power_damping_dao
+    - ethos_2_subhalo_abundance_tbtf
+    - ethos_2_self_interaction_core_density
+    required_code_resources:
+    - modified CAMB
+    - MUSIC
+    - AREPO with self-scattering
+    - halo/subhalo analysis pipeline
+    route_status: planned
+    source_model_features:
+    - massive fermionic dark matter
+    - massless neutrino-like dark radiation
+    - massive vector mediator
+    - nonzero a4 opacity coefficient
+    - velocity-dependent Yukawa self-interaction
+    validation_tests:
+    - reproduce the ETHOS-2 linear power spectrum and transfer-cross-section panel
+    - recover the primary paper subhalo abundance and circular-velocity profile comparisons

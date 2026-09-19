@@ -1,0 +1,973 @@
+_source:
+  shard: arXiv_src_1202_007_wds.tar
+  paper_id: '1202_5456'
+  source_member: 1202_5456.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1202_5456_leptophilic_sommerfeld_wimp_v1
+identity:
+  name: Leptophilic Sommerfeld-enhanced WIMP toy model
+  family: self_interacting_dark_matter
+  aliases:
+  - Sommerfeld-enhanced leptophilic WIMP
+  - scalar-pseudoscalar leptophilic WIMP
+  short_description: A fermionic WIMP toy model coupled to a light scalar and pseudoscalar, with Sommerfeld-enhanced
+    annihilation and self-scattering that can produce late reannihilation after kinetic decoupling and
+    modify the smallest protohalo mass.
+  historical_origin_or_motivation: The paper uses a simple leptophilic toy model to demonstrate a coupled
+    treatment of chemical and kinetic decoupling for dark matter with low-velocity enhanced annihilation.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - thermal WIMP dark matter
+  - Sommerfeld-enhanced annihilation
+  - leptophilic dark-sector mediator model
+  lagrangian_available: partial
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper notes that the toy setup roughly corresponds to a simplified version of an earlier
+    supersymmetric model, but uses it phenomenologically.
+particle_content:
+  dark_matter_candidate:
+    name: fermionic WIMP chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - light scalar phi_s
+  - pseudoscalar phi_p
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - fermionic WIMP chi
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The text treats chi as the dark-matter particle; the stabilizing symmetry is
+    not specified in the extracted toy-model description.
+  symmetries:
+  - name: dark matter stability symmetry
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: not specified
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - charged leptons
+  - possibly neutrinos with negligible effect in the paper discussion
+  dark_sector_couplings:
+  - chi couples to light scalar phi_s and pseudoscalar phi_p
+  - Sommerfeld enhancement from scalar-mediated low-velocity interaction
+  mediator_types:
+  - scalar
+  - pseudoscalar
+  interaction_operators:
+  - g_chi^s phi_s chi chi
+  - g_chi^p phi_p chi gamma5 chi
+  - g_l^s phi_s l l
+  - g_l^p phi_p l gamma5 l
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels:
+  - chi chi to phi_s phi_p with s-wave contribution
+  - mediators decay or couple preferentially to leptons
+  decay_channels: []
+  self_scattering_channels:
+  - chi chi self-scattering through scalar exchange
+  cp_structure: scalar and pseudoscalar mediator couplings are both used
+  flavor_structure: The paper assumes equal effective couplings to e, mu, and tau for simplicity.
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: WIMP mass
+    symbol: m_chi
+    description: Mass of the fermionic dark matter particle.
+    value: null
+    fiducial_value: null
+    range: null
+    unit: GeV or TeV
+    prior: null
+    scale: log
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1202_5456'
+    notes: The paper scans model parameters and discusses TeV-scale cosmic-ray-motivated examples.
+  - name: scalar mediator mass
+    symbol: m_s
+    description: Mass of the light scalar mediator responsible for scattering and Sommerfeld enhancement.
+    value: null
+    fiducial_value: below 100 MeV can yield very large cutoff masses
+    range: null
+    unit: MeV or GeV
+    prior: null
+    scale: log
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1202_5456'
+    notes: Mediator mass controls kinetic decoupling and the saturation of the Sommerfeld effect.
+  - name: pseudoscalar mediator mass
+    symbol: m_p
+    description: Mass of the pseudoscalar mediator entering the s-wave annihilation channel.
+    value: null
+    fiducial_value: null
+    range: null
+    unit: MeV or GeV
+    prior: null
+    scale: log
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1202_5456'
+    notes: null
+  - name: dark coupling to scalar/pseudoscalar
+    symbol: g_chi^s,g_chi^p
+    description: Couplings of the WIMP to phi_s and phi_p.
+    value: null
+    fiducial_value: often set equal in the simple scan
+    range: null
+    unit: null
+    prior: null
+    scale: null
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1202_5456'
+    notes: The relic density largely depends on an effective product of the scalar and pseudoscalar couplings.
+  - name: lepton coupling
+    symbol: g_l
+    description: Effective coupling of the mediators to Standard Model leptons.
+    value: null
+    fiducial_value: null
+    range: null
+    unit: null
+    prior: null
+    scale: log
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1202_5456'
+    notes: The paper assumes equal e, mu, and tau couplings for simplicity and scans g_l effects on kinetic
+      decoupling.
+  - name: Sommerfeld resonance regime
+    symbol: resonant_or_off_resonance
+    description: Whether the scalar-mediated Sommerfeld enhancement is on a resonance or off resonance.
+    value: parameter dependent
+    fiducial_value: null
+    range: null
+    unit: null
+    prior: null
+    scale: categorical
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1202_5456'
+    notes: On-resonance cases show much larger late annihilation effects.
+  nuisance: []
+  derived:
+  - name: cutoff mass for smallest protohalos
+    symbol: M_cut
+    description: Mass scale of the smallest gravitationally bound dark-matter protohalos derived from
+      asymptotic decoupling temperature.
+    value: roughly 1e-10 to 10 solar masses in the paper summary
+    fiducial_value: null
+    range:
+      min: 1e-10
+      max: '10'
+      inclusive_min: true
+      inclusive_max: true
+      unit: solar_mass
+      notes: Range quoted in the paper conclusion depends on parameters and experimental limits.
+    unit: solar_mass
+    prior: null
+    scale: log
+    role: derived
+    status: approximate
+    source_reference_ids:
+    - '1202_5456'
+    notes: null
+production:
+  mechanisms:
+  - thermal freeze-out
+  - Sommerfeld-enhanced late reannihilation after kinetic decoupling in parts of parameter space
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - coupled Boltzmann equations for WIMP number density and temperature
+  - Sommerfeld-enhanced annihilation rate
+  - kinetic decoupling and mediator/lepton scattering rates
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The coupling is adjusted in scans so the full coupled Boltzmann solution gives the observed relic
+    density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter density fraction
+    symbol: Omega_DM
+    description: Observed dark-matter density used as the relic-density target in the scans.
+    value: 0.229 +/- 0.015
+    fiducial_value: '0.229'
+    range: null
+    unit: null
+    prior: null
+    scale: null
+    role: cosmological
+    status: assumed
+    source_reference_ids:
+    - '1202_5456'
+    notes: null
+  calculation_type: thermal
+  key_dependencies:
+  - chemical decoupling near m_chi/25 in the standard picture
+  - kinetic decoupling temperature
+  - Sommerfeld saturation temperature
+  - resonant or off-resonant enhancement
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - possible reentry into annihilation after kinetic decoupling
+  - self-scattering can maintain a Maxwellian WIMP velocity distribution after kinetic decoupling
+  dark_sector_temperature:
+    name: WIMP temperature
+    symbol: T_chi
+    description: Dark-matter temperature evolved with the number density in the coupled equations.
+    value: null
+    fiducial_value: null
+    range: null
+    unit: temperature
+    prior: null
+    scale: null
+    role: cosmological
+    status: approximate
+    source_reference_ids:
+    - '1202_5456'
+    notes: null
+  delta_neff: null
+  kinetic_decoupling:
+    name: kinetic decoupling temperature
+    symbol: T_kd
+    description: Temperature where scattering with heat-bath particles ceases to maintain local thermal
+      equilibrium.
+    value: null
+    fiducial_value: null
+    range: null
+    unit: MeV or eV depending on regime
+    prior: null
+    scale: log
+    role: cosmological
+    status: approximate
+    source_reference_ids:
+    - '1202_5456'
+    notes: Can differ from the asymptotic decoupling temperature when annihilation continues.
+  chemical_decoupling:
+    name: chemical decoupling temperature
+    symbol: T_cd
+    description: Freeze-out temperature for the WIMP number density in the ordinary thermal history.
+    value: about m_chi/25
+    fiducial_value: m_chi/25
+    range: null
+    unit: temperature
+    prior: null
+    scale: null
+    role: cosmological
+    status: approximate
+    source_reference_ids:
+    - '1202_5456'
+    notes: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: The paper uses a Maxwellian velocity distribution while self-scattering remains efficient
+    and evolves the second moment through coupled Boltzmann equations.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: In some resonant regions, the paper cautions that the Maxwellian approximation may become unreliable.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: not_applicable
+      warning: The paper computes a cutoff/protohalo mass rather than a thermal-WDM mapping.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: smallest protohalo mass can be shifted by modified decoupling and late
+      annihilation
+    subhalo_mass_function_effect: cutoff mass affects the low-mass subhalo population
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: sommerfeld_enhanced_low_velocity
+  applies_to: model
+  condition: The formalism applies when annihilation rates are enhanced at small relative velocity.
+  valid_range: Sommerfeld-enhanced regimes including resonant and off-resonant cases
+  status: established
+  extrapolation_risk: medium
+  caveats:
+  - The scalar/pseudoscalar leptophilic model is only an illustrative toy model.
+  source_reference_ids:
+  - '1202_5456'
+  notes: null
+- id: maxwellian_self_scattering_assumption
+  applies_to: phase_space
+  condition: Post-kinetic-decoupling phase space is approximated as Maxwellian while self-scattering remains
+    effective.
+  valid_range: Away from special regions such as Ramsauer-Townsend-like suppression noted by the authors
+  status: approximate
+  extrapolation_risk: medium
+  caveats:
+  - The paper cautions that special resonant regions may invalidate the approximation.
+  source_reference_ids:
+  - '1202_5456'
+  notes: null
+- id: cutoff_mass_after_matter_equality
+  applies_to: structure_formation
+  condition: For strongly resonant cases, asymptotic free behavior can be reached near or after matter-radiation
+    equality.
+  valid_range: Approximate use of cutoff formulae in these extreme regimes
+  status: approximate
+  extrapolation_risk: high
+  caveats:
+  - The paper states that an exact relation between decoupling temperature and cutoff mass should be established
+    for these cases.
+  source_reference_ids:
+  - '1202_5456'
+  notes: null
+assumptions:
+  global:
+  - id: thermal_wimp_initial_history
+    description: The WIMP starts in thermodynamic equilibrium with the early universe before chemical
+      and kinetic decoupling.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The coupled freeze-out and reannihilation calculation would not set the abundance
+      as described.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1202_5456'
+    notes: null
+  - id: equal_lepton_couplings
+    description: The toy scan assumes equal effective mediator couplings to e, mu, and tau for simplicity.
+    scope: theory
+    status: assumed
+    impact_if_violated: Kinetic decoupling and lepton-scattering rates would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '1202_5456'
+    notes: null
+  - id: scalar_controls_sommerfeld
+    description: The light scalar mediator controls low-velocity scattering and Sommerfeld enhancement,
+      while the pseudoscalar enables an s-wave annihilation channel.
+    scope: production
+    status: assumed
+    impact_if_violated: The late-annihilation and relic-density behavior could be qualitatively different.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '1202_5456'
+    notes: null
+  constraint_specific: []
+  computation_specific:
+  - id: coupled_boltzmann_solution
+    description: Relic density and temperature are extracted from coupled equations for WIMP number density
+      and temperature.
+    scope: computation
+    status: established
+    impact_if_violated: Uncoupled or sudden-decoupling approximations can misestimate the relic density
+      and cutoff mass.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - '1202_5456'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  reproducibility:
+    reproducibility_level: unknown
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: null
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats: []
+provenance:
+  model_id: 1202_5456_leptophilic_sommerfeld_wimp_v1
+  model_name: Leptophilic Sommerfeld-enhanced WIMP toy model
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1202_5456'
+      title: Thermal decoupling and the smallest subhalo mass in dark matter models with Sommerfeld-enhanced
+        annihilation rates
+      authors:
+      - Laura G. van den Aarssen
+      - Torsten Bringmann
+      - Yasar C. Goedecke
+      year: 2012
+      arxiv_id: '1202.5456'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text is the sole source used.
+    - arxiv_id: '1202.5456'
+      authors:
+      - van den Aarssen, Laura G.
+      - Bringmann, Torsten
+      - Goedecke, Yașar C.
+      doi: 10.1103/PhysRevD.85.123512
+      notes: Primary paper full text resolved locally and ADS metadata used for bibliography.
+      reference_id: src-1202_5456-primary
+      role: original_model
+      title: Thermal decoupling and the smallest subhalo mass in dark matter models with Sommerfeld-enhanced
+        annihilation rates
+      url: https://arxiv.org/abs/1202.5456
+      year: 2012
+    constraint_papers:
+    - arxiv_id: '1704.02149'
+      authors:
+      - Kahlhoefer, Felix
+      - Schmidt-Hoberg, Kai
+      - Wild, Sebastian
+      doi: 10.1088/1475-7516/2017/08/003
+      notes: Local related full text read for light spin-0 mediator self-interaction constraints.
+      reference_id: src-1202-spin0-sidm
+      role: constraint
+      title: Dark matter self-interactions from a general spin-0 mediator
+      url: https://arxiv.org/abs/1704.02149
+      year: 2017
+    - arxiv_id: '1603.04057'
+      authors: []
+      doi: null
+      notes: Local related full text read for subhalo annihilation-signal context.
+      reference_id: src-1202-subhalo-annihilation
+      role: constraint
+      title: Related paper 1603_04057
+      url: https://arxiv.org/abs/1603.04057
+      year: null
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1512.05344'
+      authors:
+      - Cyr-Racine, Francis-Yan
+      - Sigurdson, Kris
+      - Zavala, Jesús
+      - Bringmann, Torsten
+      - Vogelsberger, Mark
+      - Pfrommer, Christoph
+      doi: 10.1103/PhysRevD.93.123527
+      notes: Local related full text read; maps dark-sector microphysics to matter power and self-interaction
+        observables.
+      reference_id: src-1202-ethos
+      role: implementation
+      title: 'ETHOS—an effective theory of structure formation: From dark particle physics to the matter
+        distribution of the Universe'
+      url: https://arxiv.org/abs/1512.05344
+      year: 2016
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0017
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1202_5456'
+      section: Introduction
+      page: null
+      quote_or_summary: The paper introduces coupled equations for WIMP number density and temperature
+        when Sommerfeld-enhanced annihilation interferes with kinetic decoupling.
+    - reference_id: '1202_5456'
+      section: A simple toy-model
+      page: null
+      quote_or_summary: The toy model has a fermionic DM particle coupled to a light scalar and pseudoscalar,
+        whose mediators couple weakly to SM leptons.
+    - reference_id: '1202_5456'
+      section: Conclusions
+      page: null
+      quote_or_summary: On resonance, annihilation after kinetic decoupling can deplete the abundance
+        by more than two orders of magnitude and shift protohalo cutoff masses.
+    unresolved_items:
+    - The toy model does not specify a stabilizing symmetry in the extracted text.
+    - Public code availability is not stated.
+    - Modern relic-density and indirect-detection datasets should replace the historical numerical inputs.
+    - A complete CMB/late-annihilation likelihood was not extracted from the primary paper.
+    - The toy leptophilic model needs a dedicated mediator-specific self-interaction recast.
+  evidence:
+    particle_content:
+    - reference_id: '1202_5456'
+      note: The model section states that the dark matter particle is fermionic and couples to scalar
+        phi_s and pseudoscalar phi_p mediators.
+      confidence: high
+      section: A simple toy-model
+      page: null
+    interactions:
+    - reference_id: '1202_5456'
+      note: The scalar mediates low-momentum-transfer scattering and Sommerfeld enhancement; the pseudoscalar
+        helps provide an s-wave annihilation channel.
+      confidence: high
+      section: A simple toy-model
+      page: null
+    production_mechanism:
+    - reference_id: '1202_5456'
+      note: The coupled Boltzmann equations track WIMP number density and temperature through chemical
+        decoupling, kinetic decoupling, and possible reannihilation.
+      confidence: high
+      section: Decoupling formalism
+      page: null
+    cosmological_history:
+    - reference_id: '1202_5456'
+      note: After kinetic decoupling, the WIMP temperature falls faster than the heat bath, which can
+        trigger renewed annihilation when the Sommerfeld effect grows at low velocity.
+      confidence: high
+      section: Introduction
+      page: null
+    parameter_ranges:
+    - reference_id: '1202_5456'
+      note: The paper scans mediator masses, lepton couplings, resonant/off-resonant cases, and adjusts
+        the coupling to match the observed relic density.
+      confidence: medium
+      section: Range of decoupling temperatures
+      page: null
+    structure_formation:
+    - reference_id: '1202_5456'
+      note: The paper computes cutoff masses for the smallest protohalos, roughly from 1e-10 to 10 solar
+        masses in the summary range.
+      confidence: high
+      section: Conclusions
+      page: null
+    validity_domain:
+    - reference_id: '1202_5456'
+      note: The authors caution about Maxwellian assumptions and cutoff-mass formulae in strongly resonant
+        cases where asymptotic behavior is reached late.
+      confidence: medium
+      section: Discussion
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text reports relic-density changes and model-dependent cutoff ranges.
+      page: null
+      reference_id: src-1202_5456-primary
+      section: null
+    - confidence: medium
+      note: Related full text read for light spin-0 mediator self-interaction recasting.
+      page: null
+      reference_id: src-1202-spin0-sidm
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text links post-kinetic-decoupling reannihilation to relic abundance and smallest
+        protohalo masses.
+      page: null
+      reference_id: src-1202_5456-primary
+      section: null
+    - confidence: medium
+      note: Related full text read for a general microphysics-to-matter-power mapping.
+      page: null
+      reference_id: src-1202-ethos
+      section: null
+    - confidence: medium
+      note: Related full text read for subhalo annihilation-signal context.
+      page: null
+      reference_id: src-1202-subhalo-annihilation
+      section: null
+    routes:
+    - confidence: high
+      note: Primary text provides the coupled Boltzmann and cutoff-mass ingredients.
+      page: null
+      reference_id: src-1202_5456-primary
+      section: null
+    - confidence: medium
+      note: ETHOS related text supports a reusable transfer-function route.
+      page: null
+      reference_id: src-1202-ethos
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: high
+  caveats:
+  - The leptophilic particle model is explicitly a simple toy model.
+  - Strongly resonant phase-space and cutoff-mass regimes require care.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - toy-model mediator sector
+  - resonance fine tuning
+  - phase-space approximation after kinetic decoupling
+  validation_status: expert_judgment_only
+  notes: The formalism is detailed, but this extraction records only the model-side content.
+agent_failure_modes:
+  warnings:
+  - id: constraint_language_omitted
+    severity: medium
+    category: other
+    warning: The paper discusses experimental limits, but this model-only extraction must not treat them
+      as constraint entries.
+    mitigation: Use the evidence only for model structure, production, relic density, and structure-formation
+      behavior.
+    source_reference_ids:
+    - '1202_5456'
+  - id: resonance_dependence
+    severity: medium
+    category: extrapolation
+    warning: On-resonance results can be much stronger than off-resonance results and are parameter dependent.
+    mitigation: Keep resonance assumptions explicit when reusing the model card.
+    source_reference_ids:
+    - '1202_5456'
+observables:
+- caveats:
+  - The paper treats simple leptophilic toy models; exact cutoff values are model- and coupling-dependent.
+  channel: small_scale_structure
+  effect_direction: shape_change
+  environments:
+  - early-universe kinetic decoupling
+  - small dark-matter subhalos
+  id: obs-sommerfeld-smallest-protohalos
+  key_quantities:
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - src-1202_5456-primary
+    status: inferred
+    symbol: m_chi
+  - name: light mediator masses
+    role: core
+    source_reference_ids:
+    - src-1202_5456-primary
+    status: inferred
+    symbol: m_s, m_p
+  - name: effective decoupling temperature
+    role: derived
+    source_reference_ids:
+    - src-1202_5456-primary
+    status: inferred
+    symbol: T_dec^eff
+  - name: small-scale cutoff mass
+    range: O(10^-10 M_sun) to O(10 M_sun), with larger values possible in strong force-carrier coupling
+      cases
+    role: derived
+    source_reference_ids:
+    - src-1202_5456-primary
+    status: approximate
+    symbol: M_cut
+    unit: solar_mass
+  linked_constraints:
+  - con-relic-density-reannihilation
+  - con-light-mediator-self-interaction
+  linked_routes:
+  - route-coupled-boltzmann-cutoff
+  name: Smallest protohalo mass cutoff after kinetic decoupling
+  notes: ETHOS-like mappings could make this route reusable across interacting dark sectors.
+  observability: medium
+  predicted_effect: Sommerfeld-enhanced reannihilation after kinetic decoupling changes the dark-matter
+    velocity dispersion and hence the cutoff mass for the smallest gravitationally bound objects.
+  redshift_range: pre-structure-formation initial conditions
+  relevance: high
+  scale_range: sub-Earth to stellar-mass protohalo scales in the primary examples
+  source_reference_ids:
+  - src-1202_5456-primary
+  - src-1202-ethos
+  subchannel: linear matter-power cutoff / protohalo mass
+- caveats:
+  - Requires coupled evolution of number density and temperature rather than a standard freeze-out calculation.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early-universe thermal bath
+  id: obs-post-kd-reannihilation
+  key_quantities:
+  - description: Velocity-dependent annihilation enhancement.
+    name: Sommerfeld enhancement
+    role: core
+    source_reference_ids:
+    - src-1202_5456-primary
+    status: inferred
+    symbol: S(v)
+  - name: yield
+    role: derived
+    source_reference_ids:
+    - src-1202_5456-primary
+    status: inferred
+    symbol: Y
+  - name: WIMP temperature variable
+    role: derived
+    source_reference_ids:
+    - src-1202_5456-primary
+    status: inferred
+    symbol: y
+  linked_constraints:
+  - con-relic-density-reannihilation
+  linked_routes:
+  - route-coupled-boltzmann-cutoff
+  name: Post-kinetic-decoupling reannihilation of Sommerfeld-enhanced WIMPs
+  notes: Primary paper reports relic abundance shifts by as much as two orders of magnitude or more in
+    examples.
+  observability: medium
+  predicted_effect: After kinetic decoupling the WIMP temperature drops faster than the radiation bath,
+    increasing the Sommerfeld-enhanced annihilation rate and restarting annihilations.
+  redshift_range: post-freeze-out, pre-structure-formation
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - src-1202_5456-primary
+  subchannel: thermal history / relic abundance
+- caveats:
+  - Primary paper focuses on thermal decoupling rather than a complete gamma-ray likelihood.
+  channel: indirect_detection
+  effect_direction: enhancement
+  environments:
+  - Milky Way subhalos
+  - dwarf-scale halos
+  id: obs-subhalo-annihilation-boost
+  key_quantities:
+  - name: annihilation cross section
+    role: core
+    source_reference_ids:
+    - src-1202_5456-primary
+    status: inferred
+    symbol: <sigma v>
+  - name: subhalo concentration / structure
+    role: astrophysical
+    source_reference_ids:
+    - src-1202-subhalo-annihilation
+    status: inferred
+  linked_constraints:
+  - con-light-mediator-self-interaction
+  linked_routes: []
+  name: Velocity-enhanced annihilation signals in subhalos
+  notes: Keep as an indirect-detection recast hook.
+  observability: medium
+  predicted_effect: Light mediators can enhance annihilation at low velocities, changing expected subhalo
+    annihilation signals and motivating subhalo-structure recasts.
+  redshift_range: late Universe
+  relevance: medium
+  scale_range: subhalo scales
+  source_reference_ids:
+  - src-1202_5456-primary
+  - src-1202-subhalo-annihilation
+  subchannel: annihilation in low-velocity structures
+constraints:
+- allowed_regions:
+  - Couplings and mediator masses for which the coupled Boltzmann evolution matches the dark-matter density.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: Use the paper's leptophilic toy model and coupled Y-y evolution.
+    id: assume-toy-model-thermal-history
+    impact_if_violated: Changing mediator content or scattering partners changes both relic density and
+      kinetic decoupling.
+    scope: thermal relic calculation
+    source_reference_ids:
+    - src-1202_5456-primary
+    status: established
+  benchmark_implications:
+  - Standard freeze-out estimates can be wrong by orders of magnitude when the Sommerfeld effect is active
+    after kinetic decoupling.
+  caveats:
+  - The primary cosmological density number is historical; modern recasts should update it.
+  constrained_parameters:
+  - m_chi
+  - m_s
+  - m_p
+  - g_chi^s
+  - g_chi^p
+  - g_l
+  constraint_type: cosmological
+  data_release: cosmological dark-matter density measurement used by the primary paper
+  excluded_regions:
+  - Toy-model parameter choices where post-decoupling reannihilation under- or overproduces the observed
+    dark-matter abundance.
+  id: con-relic-density-reannihilation
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Relic-density consistency with reannihilation
+  notes: Core model constraint.
+  observable_channel: dark-matter abundance
+  recasting_needed: 'yes'
+  robustness: high
+  source_reference_ids:
+  - src-1202_5456-primary
+- allowed_regions:
+  - Velocity-dependent self-interactions small enough at cluster velocities while potentially relevant
+    at dwarf velocities.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: Map scalar/pseudoscalar mediator exchange into transfer cross sections used in SIDM constraints.
+    id: assume-spin0-mediator-recast
+    impact_if_violated: Different spin/coupling structures can change velocity dependence and bounds.
+    scope: astrophysical self-interaction bounds
+    source_reference_ids:
+    - src-1202_5456-primary
+    - src-1202-spin0-sidm
+    status: approximate
+  benchmark_implications:
+  - The same light mediator responsible for Sommerfeld enhancement also affects self-scattering.
+  caveats:
+  - Primary paper does not provide a final modern SIDM exclusion surface.
+  constrained_parameters:
+  - m_s
+  - m_p
+  - g_chi^s
+  - g_chi^p
+  - sigma_T/m_chi
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Large self-scattering from light mediators can be constrained by halo shapes, clusters, and dwarf-scale
+    structure; exact regions require a mediator-specific recast.
+  id: con-light-mediator-self-interaction
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Light-mediator self-interaction and small-scale-structure bounds
+  notes: Related spin-0 mediator paper supplies recast context.
+  observable_channel: dark-matter self-scattering / halo structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src-1202_5456-primary
+  - src-1202-spin0-sidm
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The forward model is more important than isolated parameter cuts for this paper.
+    caveats:
+    - Leptophilic toy model constraints do not automatically cover all mediator embeddings.
+    constraint_ids:
+    - con-relic-density-reannihilation
+    - con-light-mediator-self-interaction
+    derived_quantities:
+    - Sommerfeld enhancement
+    - chemical and kinetic decoupling temperatures
+    - post-decoupling yield
+    - velocity dispersion
+    - M_cut
+    description: Integrate the coupled number-density and temperature evolution with Sommerfeld-enhanced
+      annihilation, then map the asymptotic velocity dispersion to a matter-power cutoff.
+    forward_model_chain:
+    - inputs:
+      - mediator masses
+      - couplings
+      - relative velocity
+      notes: Primary paper includes the Sommerfeld-enhanced setup.
+      outputs:
+      - S(v)
+      - enhanced annihilation rate
+      step_id: step-sommerfeld
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: valid in the nonrelativistic light-mediator regime
+    - inputs:
+      - S(v)
+      - scattering rates
+      - thermal history
+      notes: This is the main computational route.
+      outputs:
+      - Y(x)
+      - y(x)
+      - relic abundance
+      step_id: step-coupled-y-y
+      step_type: boltzmann_solver
+      tool_or_code: custom coupled Boltzmann integrator
+      validity: requires numerical integration through kinetic decoupling
+    - inputs:
+      - asymptotic velocity dispersion
+      - interaction rates
+      notes: Related ETHOS source gives a reusable mapping direction.
+      outputs:
+      - M_cut
+      - linear power cutoff
+      step_id: step-cutoff
+      step_type: transfer_function
+      tool_or_code: ETHOS or equivalent transfer mapping
+      validity: approximate without full Boltzmann hierarchy
+    id: route-coupled-boltzmann-cutoff
+    input_parameters:
+    - m_chi
+    - m_s
+    - m_p
+    - g_chi^s
+    - g_chi^p
+    - g_l
+    - kinetic-scattering rates
+    likelihoods:
+    - dark-matter abundance likelihood
+    - small-scale cutoff/subhalo likelihoods
+    - SIDM transfer-cross-section recasts
+    observable_ids:
+    - obs-sommerfeld-smallest-protohalos
+    - obs-post-kd-reannihilation
+    required_code_resources:
+    - coupled Boltzmann solver
+    - Sommerfeld factor calculator
+    - matter-transfer/cutoff mapper
+    route_status: planned
+    source_model_features:
+    - fermionic WIMP
+    - light scalar/pseudoscalar mediator
+    - leptophilic couplings
+    - velocity-dependent annihilation and self-scattering
+    validation_tests:
+    - Recover standard freeze-out when Sommerfeld enhancement is disabled.
+    - Reproduce the primary-paper cutoff-mass examples.

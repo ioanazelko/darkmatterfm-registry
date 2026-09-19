@@ -1,0 +1,266 @@
+_source:
+  shard: arXiv_src_0507_001_wds.tar
+  paper_id: astro-ph0507544
+  source_member: astro-ph0507544.json
+schema_version: model_only_v0
+model_id: astro-ph0507544_thermal_fermionic_hot_dm_v1
+identity:
+  name: Thermally produced fermionic hot dark matter
+  family: hot_dark_matter
+  aliases:
+  - fermionic thermal relic HDM
+  short_description: A generic stable single massive Majorana fermion hot dark matter component that decouples
+    while relativistic and retains a Fermi-Dirac phase-space distribution, developed in the paper to compare
+    free-streaming and halo infall against the opposite quantum statistics case.
+  historical_origin_or_motivation: The paper studies whether quantum statistics of thermally produced
+    hot dark matter can be distinguished in linear and nonlinear structure formation.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - thermal relic hot dark matter
+  - Lambda CDM plus subdominant HDM
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: The paper defines generic HDM species by spin/statistics, internal degrees of freedom, mass,
+    and decoupling degrees of freedom rather than a UV Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: single massive Majorana fermion
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: subcomponent
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity for structure formation
+  dark_radiation_species: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: The particle is assumed stable and no heavier particle decays into it; no specific
+    symmetry is given.
+  symmetries:
+  - name: unspecified stability assumption
+    type: unknown
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - unknown
+  standard_model_targets: []
+  dark_sector_couplings: []
+  mediator_types:
+  - gravity
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: hot dark matter mass
+    symbol: m_HDM
+    description: Mass of the HDM particle.
+    value: 0.2 eV and above in forecast examples; 1-4 eV for nonlinear infall window
+    unit: eV
+    role: core
+    status: inferred
+    notes: The paper also gives example models with Omega_HDM=0.02 and g_*=10.75.
+  - name: internal degrees of freedom
+    symbol: g
+    description: Internal degrees of freedom of the generic species.
+    value: 2
+    role: core
+    status: assumed
+  - name: decoupling degrees of freedom
+    symbol: g_*
+    description: Effective number of plasma degrees of freedom at relativistic decoupling.
+    value: 10.75 and larger examples; infall window near g_* about 30
+    role: core
+    status: inferred
+    notes: The paper relates g_* to the effective temperature of the species.
+  - name: density fraction relation
+    symbol: Omega_HDM h^2
+    description: Thermal relic density relation quoted for the species.
+    value: 2*(10.75/g_*)*(m/183 eV)
+    role: core
+    status: inferred
+    notes: Formula is quoted for a single massive g=2 Majorana fermion and a g=1 scalar respectively.
+production:
+  mechanisms:
+  - relativistic thermal decoupling
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - particle mass
+  - internal degrees of freedom
+  - effective decoupling degrees of freedom g_*
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'no'
+  nonthermal_momentum_distribution: 'no'
+  notes: The species is treated as a stable thermal relic with preserved Fermi-Dirac phase-space distribution.
+relic_density:
+  full_or_subcomponent: subcomponent
+  calculation_type: thermal
+  key_dependencies:
+  - m_HDM
+  - g
+  - g_*
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - subdominant HDM added to a flat Lambda CDM cosmology with three massless standard-model neutrinos
+    in the main comparison
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'yes'
+  f_of_p_or_q: f(p)=1/(exp(p/T) + 1)
+  average_momentum_relative_to_thermal: thermal relic value set by quantum statistics
+  notes: The phase-space distribution is Fermi-Dirac and is preserved after relativistic decoupling if
+    no heavier particle decays into the species.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'no'
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: free-streaming suppresses small-scale structure; fermions have phase-space-limited
+      halo infall
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: partial
+validity_domain:
+- id: subdominant_hdm
+  applies_to: model
+  condition: The paper treats HDM as a subdominant component of the matter density rather than all of
+    the dark matter.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: relativistic_decoupling
+  applies_to: production
+  condition: Thermal relic formulas apply to a stable particle that decoupled while relativistic and is
+    not repopulated by later decays.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+assumptions:
+  global:
+  - id: stable_species
+    description: The HDM particle is stable and no heavier particle decays into it.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Late decays would alter the preserved phase-space distribution.
+  - id: lambda_cdm_background
+    description: The comparison assumes a flat Lambda CDM background with Omega_m=0.3, Omega_Lambda=0.7,
+      Omega_b=0.05, h=0.7, and sigma_8=0.9.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper describes Boltzmann, Vlasov, and halo-model calculations but does not identify
+    a public model code.
+  primary_code_role: null
+provenance:
+  model_id: astro-ph0507544_thermal_fermionic_hot_dm_v1
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Is it possible to tell the difference between fermionic and bosonic hot dark matter?
+      year: 2005
+      arxiv_id: astro-ph/0507544
+      role: original_model
+      notes: Assigned full text in target_text.sqlite.
+      authors:
+      - Steen Hannestad
+      - Andreas Ringwald
+      - Huitzu Tu
+      - Yvonne Y. Y. Wong
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0012
+    extraction_date: '2026-05-30'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Introduction
+      page: null
+      quote_or_summary: 'The paper defines two generic HDM species: a single massive Majorana fermion
+        with g=2 and a single massive scalar with g=1.'
+    - reference_id: primary
+      section: Linear and nonlinear structure formation
+      page: null
+      quote_or_summary: It gives the thermal relic distributions, density fractions, free-streaming behavior,
+        and halo infall comparison.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The text explicitly defines the single massive Majorana fermion as one of two generic HDM
+        species.
+      confidence: high
+      section: Introduction
+    production_mechanism:
+    - reference_id: primary
+      note: The text states that a thermal relic decoupling while relativistic has a preserved Fermi-Dirac
+        distribution.
+      confidence: high
+      section: Linear regime
+    cosmological_history:
+    - reference_id: primary
+      note: The comparison is embedded in a Lambda CDM cosmology with a subdominant HDM contribution.
+      confidence: medium
+      section: Introduction
+    parameter_ranges:
+    - reference_id: primary
+      note: The paper quotes m_HDM values around 0.2 eV for future distinguishability and 1-4 eV with
+        g_* about 30 for nonlinear infall effects.
+      confidence: medium
+      section: Observation and conclusions
+    validity_domain:
+    - reference_id: primary
+      note: The HDM species must be stable with no late decays into it for the phase-space distribution
+        to remain valid.
+      confidence: high
+      section: Linear regime
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+  model_family: hot_dark_matter
+  model_name: Thermally produced fermionic hot dark matter
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  dominant_uncertainties:
+  - The species is generic and not tied to a specific particle-physics Lagrangian.
+  - The observable nonlinear infall window is narrow and parameter-dependent.
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: generic_species
+    severity: medium
+    category: invalid_mapping
+    warning: Do not map this row to a specific axion, neutrino, gravitino, or axino model without additional
+      paper support.

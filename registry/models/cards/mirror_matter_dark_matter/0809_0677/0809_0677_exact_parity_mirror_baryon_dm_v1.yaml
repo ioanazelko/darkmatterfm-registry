@@ -1,0 +1,671 @@
+_source:
+  shard: arXiv_src_0809_001_wds.tar
+  paper_id: 0809_0677
+  source_member: 0809_0677.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: mirror_beta_not_predicted
+    mitigation: null
+    severity: medium
+    source_reference_ids: []
+    warning: Do not infer a predicted mirror-baryon relic density from this paper alone; beta is treated
+      as an input parameter.
+  - category: assumption_mismatch
+    id: mirror_portal_assumption
+    mitigation: null
+    severity: medium
+    source_reference_ids: []
+    warning: The thermodynamic history assumes gravity-only coupling between sectors; kinetic mixing would
+      require a different treatment.
+associated_code:
+  code_summary: null
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The mirror sector has exact parity symmetry and the same microphysics as the ordinary
+      sector.
+    id: mirror_exact_parity
+    impact_if_violated: The thermodynamic degree-of-freedom mapping between sectors would change.
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: The study neglects kinetic mixing and any non-gravitational interaction between sectors.
+    id: mirror_no_non_gravitational_portal
+    impact_if_violated: The sectors might exchange entropy and fail to evolve independently.
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Chemical potentials of all species are assumed negligible in the thermodynamic calculation.
+    id: mirror_negligible_chemical_potentials
+    impact_if_violated: Energy, pressure, and entropy densities would be modified.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: high
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature:
+    name: mirror temperature ratio
+    range: approximately x away from annihilation epochs
+    status: approximate
+    symbol: T_prime/T
+    unit: null
+  delta_neff:
+    name: effective extra neutrino families
+    range: increases with x^4 and with decreasing temperature in the paper's estimates
+    status: approximate
+    symbol: Delta N_nu
+    unit: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - Hidden mirror sector with lower temperature than the ordinary sector
+  - Ordinary and mirror entropies are separately conserved
+  - Mirror electron-positron annihilation occurs at different ordinary-sector temperatures
+  - Effective number of extra neutrino families varies between BBN and CMB epochs
+  phase_transitions:
+  - mirror-sector and ordinary-sector electron-positron annihilation epochs
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - mirror matter
+  - mirror baryon dark matter
+  - M baryons
+  family: mirror_matter_dark_matter
+  historical_origin_or_motivation: The paper develops the thermal history of exact-parity mirror matter
+    below 100 MeV for mirror-dark-matter cosmology.
+  model_kind: complete_theory
+  name: Exact-parity mirror-baryon dark matter thermodynamic model
+  short_description: A hidden-sector exact mirror copy of ordinary matter in which mirror baryons constitute
+    self-collisional dark matter with a lower mirror temperature.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: mirror weak interactions have opposite chirality to the ordinary sector
+  dark_sector_couplings:
+  - mirror electromagnetic interactions
+  - mirror weak interactions
+  - mirror nuclear interactions
+  decay_channels: []
+  flavor_structure: mirror sector copies ordinary particle flavors and couplings.
+  interaction_operators: []
+  mediator_types:
+  - gravity
+  - mirror photons
+  - mirror Standard Model gauge bosons
+  portals:
+  - gravitational
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - mirror baryon and mirror atom self-collisions
+  standard_model_targets:
+  - ordinary sector through gravity only
+  tree_or_loop_level: not_applicable
+model_id: 0809_0677_exact_parity_mirror_baryon_dm_v1
+parameters:
+  core:
+  - description: Defined as (s_prime/s)^(1/3), approximately T_prime/T away from annihilation epochs.
+    name: mirror-to-ordinary entropy-temperature parameter
+    range: 0.1 to 0.7 values studied; BBN bound x < 0.7
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: x
+    unit: null
+  - description: Defined as Omega_b_prime / Omega_b.
+    name: mirror-to-ordinary baryon density ratio
+    range: greater than 1 if mirror baryons are a relevant dark matter fraction
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: beta
+    unit: null
+  - name: ordinary photon temperature
+    range: below 100 MeV for the paper's thermodynamic study
+    role: cosmological
+    source_reference_ids: []
+    status: inferred
+    symbol: T
+    unit: MeV
+  - description: Solved as a function of ordinary temperature from separate entropy conservation.
+    name: mirror photon temperature
+    role: cosmological
+    source_reference_ids: []
+    status: inferred
+    symbol: T_prime
+    unit: MeV
+particle_content:
+  additional_dark_sector_particles:
+  - mirror electrons
+  - mirror photons
+  - mirror neutrinos
+  - mirror nucleons
+  - mirror heavy elements
+  dark_matter_candidate:
+    elementary_or_composite: composite
+    name: mirror baryons
+    number_of_components: multi_component
+    spin: unknown
+    statistics: fermion
+  dark_radiation_species:
+  - mirror photons
+  - mirror neutrinos
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - mirror baryons
+  - mirror atoms
+  mediators:
+  - mirror photons
+  - mirror weak bosons
+  - mirror gluons
+  - gravity between sectors
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: approximate
+  distribution_type: thermal
+  f_of_p_or_q: Equilibrium Bose-Einstein and Fermi-Dirac distributions are used for species in each sector.
+  notes: The phase-space treatment is for thermodynamic species in the mirror sector, not a collisionless
+    WIMP distribution.
+production:
+  abundance_set_by:
+  - mirror baryon density ratio beta
+  - mirror-to-ordinary temperature/entropy ratio x
+  - inflationary or initial-condition asymmetry not modeled in detail
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - primordial mirror baryon abundance parameterized by beta
+  - separately conserved mirror-sector entropy after initial conditions are set
+  nonthermal_momentum_distribution: unknown
+  notes: The paper treats the thermal evolution below 100 MeV rather than a detailed mirror baryogenesis
+    mechanism.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The paper derives and numerically solves temperature and degree-of-freedom evolution around
+        mirror and ordinary e+e- annihilation.
+      page: null
+      reference_id: 0809_0677
+      section: null
+    interactions:
+    - confidence: high
+      note: The study keeps only gravity as the interaction between sectors and neglects possible kinetic
+        mixing.
+      page: null
+      reference_id: 0809_0677
+      section: null
+    parameter_ranges:
+    - confidence: high
+      note: The text gives x < 0.7 from BBN and beta > 1 for a relevant mirror-baryon dark matter fraction.
+      page: null
+      reference_id: 0809_0677
+      section: null
+    particle_content:
+    - confidence: high
+      note: The paper describes a hidden mirror sector with particles and interactions matching the ordinary
+        sector; mirror baryons are the dark matter candidate.
+      page: null
+      reference_id: 0809_0677
+      section: null
+    production_mechanism:
+    - confidence: medium
+      note: The mirror abundance is parameterized by x and beta, with separate entropy conservation maintaining
+        different sector temperatures.
+      page: null
+      reference_id: 0809_0677
+      section: null
+    symmetries:
+    - confidence: high
+      note: The model assumes exact parity symmetry between ordinary and mirror sectors.
+      page: null
+      reference_id: 0809_0677
+      section: null
+    validity_domain:
+    - confidence: high
+      note: The calculation is explicitly for temperatures below 100 MeV and is aimed at BBN/CMB-era thermodynamics.
+      page: null
+      reference_id: 0809_0677
+      section: null
+    constraints:
+    - confidence: medium
+      note: Primary paper quotes x<0.7, beta>1, and x<0.635 under a conservative N_eff estimate.
+      page: null
+      reference_id: src_primary_0809_0677
+      section: null
+    observables:
+    - confidence: high
+      note: Primary paper supports Delta N_eff, mirror BBN, CMB/LSS, and DAMA-context observables.
+      page: null
+      reference_id: src_primary_0809_0677
+      section: null
+    routes:
+    - confidence: medium
+      note: Route follows the thermodynamic calculation from x and T_prime to N_eff and mirror BBN inputs.
+      page: null
+      reference_id: src_primary_0809_0677
+      section: null
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0015
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5.5 dark-matter extraction worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: 'Abstract: mirror matter is a self-collisional dark matter candidate and the paper
+        studies early-Universe thermodynamics below 100 MeV.'
+      reference_id: 0809_0677
+      section: null
+    - page: null
+      quote_or_summary: 'Introduction: exact mirror parity gives a hidden sector with the same microphysics;
+        mirror baryons interact with mirror photons but not ordinary photons.'
+      reference_id: 0809_0677
+      section: null
+    - page: null
+      quote_or_summary: 'Thermodynamics section: x and beta parameterize the mirror sector, and separate
+        entropy conservation is imposed.'
+      reference_id: 0809_0677
+      section: null
+    unresolved_items:
+    - The paper substantially develops mirror dark matter thermodynamics but does not derive the origin
+      of the mirror baryon asymmetry.
+    - Mirror-sector direct-detection cross sections are not computed in the primary paper.
+    - The exact mirror heavy-element abundances are deferred to future mirror BBN calculations.
+  last_updated: '2026-05-31'
+  model_family: mirror_matter_dark_matter
+  model_id: 0809_0677_exact_parity_mirror_baryon_dm_v1
+  model_name: Exact-parity mirror-baryon dark matter thermodynamic model
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '0809.0677'
+      authors:
+      - Paolo Ciarcelluti
+      - Angela Lepidi
+      doi: null
+      notes: Only the assigned SQLite full text was used for this extraction.
+      reference_id: 0809_0677
+      role: extension
+      title: Thermodynamics of the early Universe with mirror dark matter
+      url: null
+      year: 2008
+    - arxiv_id: '0809.0677'
+      authors:
+      - Ciarcelluti, Paolo
+      - Lepidi, Angela
+      doi: 10.1103/PhysRevD.78.123003
+      notes: Primary paper full text resolved locally; ADS used for metadata.
+      reference_id: src_primary_0809_0677
+      role: original_model
+      title: Thermodynamics of the early Universe with mirror dark matter
+      url: https://arxiv.org/abs/0809.0677
+      year: 2008
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: phenomenological
+  full_or_subcomponent: either
+  key_dependencies:
+  - beta = Omega_b_prime / Omega_b
+  - x = (s_prime/s)^(1/3)
+  - BBN limit on extra radiation
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - The origin of beta is not modeled; non-gravitational portals are neglected.
+  notes: Machine extraction from one assigned paper; unsupported fields are left unknown.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    density_profile_effect: self-collisional mirror matter is noted, but nonlinear structure effects are
+      not computed in this paper.
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: Mirror baryons are stable by mirror-sector microphysics and are dark to ordinary
+    matter because the sectors interact only gravitationally in this study.
+  symmetries:
+  - breaking: unbroken in the model considered
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: exact mirror parity
+    type: discrete
+  - breaking: not discussed in the assigned text
+    breaking_scale: null
+    exact_or_approximate: unknown
+    name: mirror baryon number
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The text describes the mirror sector as having the same Lagrangian and coupling constants as
+    the ordinary sector, with opposite weak chirality.
+  parent_frameworks:
+  - exact parity mirror matter
+  - hidden-sector copy of Standard Model microphysics
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: cosmological_history
+  caveats:
+  - The paper does not provide a detailed high-temperature production mechanism for beta.
+  condition: Thermodynamic evolution is computed for temperatures below 100 MeV around neutrino decoupling
+    and electron-positron annihilation.
+  extrapolation_risk: medium
+  id: mirror_thermodynamics_below_100mev
+  notes: null
+  source_reference_ids: []
+  status: established
+- applies_to: interactions
+  caveats:
+  - Additional portals would change thermal contact and relic-history conclusions.
+  condition: Only gravitational interactions connect ordinary and mirror sectors; possible kinetic mixing
+    is neglected.
+  extrapolation_risk: medium
+  id: mirror_gravity_only_between_sectors
+  notes: null
+  source_reference_ids: []
+  status: assumed
+observables:
+- caveats:
+  - The observable is radiation-density evolution, not a direct particle-count measurement.
+  channel: cmb
+  effect_direction: enhancement
+  environments:
+  - early universe
+  id: delta_neff_evolution
+  key_quantities:
+  - description: x=(s_prime/s)^(1/3), approximately the mirror-to-ordinary temperature ratio away from
+      thresholds.
+    name: mirror-to-ordinary entropy ratio
+    range: <0.7 from BBN bound
+    role: core
+    source_reference_ids:
+    - src_primary_0809_0677
+    status: inferred
+    symbol: x
+  - description: beta=Omega_b_prime/Omega_b.
+    name: mirror baryon density ratio
+    range: '>1 if mirror baryons are a relevant dark matter fraction'
+    role: core
+    source_reference_ids:
+    - src_primary_0809_0677
+    status: inferred
+    symbol: beta
+  linked_constraints:
+  - mirror_temperature_ratio_bbn_bound
+  - conservative_neff_limit_x0635
+  linked_routes:
+  - mirror_thermodynamics_route
+  name: Temperature-dependent effective neutrino number from mirror particles
+  notes: null
+  observability: medium
+  predicted_effect: Mirror-sector degrees of freedom raise the effective number of neutrino species as
+    the universe cools through e+e- annihilation, with different values around BBN and CMB epochs.
+  redshift_range: BBN to CMB epochs
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - src_primary_0809_0677
+  subchannel: Delta N_eff
+- caveats:
+  - The paper does not compute detector-level direct-detection rates.
+  channel: large_scale_structure
+  effect_direction: shape_change
+  environments:
+  - mirror sector
+  - cosmic plasma
+  id: mirror_bbn_and_structure_inputs
+  key_quantities:
+  - name: ordinary temperature
+    range: below 100 MeV
+    role: core
+    source_reference_ids:
+    - src_primary_0809_0677
+    status: inferred
+    symbol: T
+    unit: MeV
+  - name: mirror temperature
+    role: core
+    source_reference_ids:
+    - src_primary_0809_0677
+    status: inferred
+    symbol: T_prime
+  linked_constraints:
+  - mirror_temperature_ratio_bbn_bound
+  linked_routes:
+  - mirror_thermodynamics_route
+  name: Mirror-sector BBN and structure-formation inputs
+  notes: null
+  observability: medium
+  predicted_effect: The calculated degrees of freedom and mirror temperatures are inputs for mirror nucleosynthesis,
+    CMB/LSS spectra, and nonlinear structure formation with mirror baryons.
+  redshift_range: below 100 MeV through late cosmology
+  relevance: high
+  scale_range: cosmological linear and nonlinear structure scales
+  source_reference_ids:
+  - src_primary_0809_0677
+  subchannel: mirror BBN and CMB/LSS power spectra
+- caveats:
+  - Kinetic mixing and detector response are outside this thermodynamic paper.
+  channel: direct_detection
+  effect_direction: model_dependent
+  environments:
+  - terrestrial direct-detection experiments
+  id: dama_mirror_heavy_elements_context
+  key_quantities:
+  - description: Future mirror BBN output needed by the proposed DAMA/LIBRA interpretation.
+    name: mirror heavy-element abundances
+    role: core
+    source_reference_ids:
+    - src_primary_0809_0677
+    status: unknown
+  linked_constraints: []
+  linked_routes:
+  - mirror_thermodynamics_route
+  name: DAMA/LIBRA mirror-heavy-element interpretation context
+  notes: null
+  observability: low
+  predicted_effect: The paper notes that mirror-sector primordial heavy elements are needed for interpreting
+    proposed DAMA/LIBRA mirror-matter explanations.
+  redshift_range: null
+  relevance: medium
+  scale_range: null
+  source_reference_ids:
+  - src_primary_0809_0677
+  subchannel: mirror-nucleus scattering context
+constraints:
+- allowed_regions:
+  - The paper summarizes mirror-parameter bounds as x < 0.7 and beta > 1.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: Ordinary and mirror sectors have only gravitational interactions in the thermodynamic
+      calculation, so their entropies are separately conserved.
+    id: separate_entropy_conservation
+    impact_if_violated: null
+    notes: null
+    scope: cosmology
+    source_reference_ids:
+    - src_primary_0809_0677
+    status: assumed
+  benchmark_implications:
+  - A relevant fraction of dark matter can be mirror baryons only when the mirror baryon density exceeds
+    the ordinary one.
+  caveats:
+  - Kinetic mixing is neglected in the thermodynamic study.
+  constrained_parameters:
+  - x
+  - beta
+  - Delta N_eff
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Mirror temperature ratios above about x=0.7 are disfavored by the BBN extra-neutrino-family bound
+    quoted in the paper.
+  id: mirror_temperature_ratio_bbn_bound
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN bound on the mirror-sector temperature ratio
+  notes: null
+  observable_channel: effective number of neutrino species
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_primary_0809_0677
+- allowed_regions:
+  - Example values in the paper give N_eff about 3.8 to 3.96 for x=0.6 and about 3.05 to 3.06 for x=0.3.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The paper assumes approximately instantaneous neutrino decoupling in both sectors for
+      analytic estimates.
+    id: instant_neutrino_decoupling
+    impact_if_violated: null
+    notes: null
+    scope: calculation
+    source_reference_ids:
+    - src_primary_0809_0677
+    status: assumed
+  benchmark_implications:
+  - The changing N_eff can help compare BBN-era and CMB/LSS-era inferences.
+  caveats:
+  - The paper is a thermodynamic input study, not a complete parameter likelihood.
+  constrained_parameters:
+  - x
+  - N_eff
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Assuming N_eff(T_D) < 4 implies x < 0.635 in the paper estimate.
+  id: conservative_neff_limit_x0635
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Conservative N_eff limit translated into x
+  notes: null
+  observable_channel: BBN and CMB radiation density
+  recasting_needed: unknown
+  robustness: medium
+  source_reference_ids:
+  - src_primary_0809_0677
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Primary paper supplies thermodynamic inputs rather than a full global fit.
+    caveats:
+    - Detector-level mirror interactions require kinetic-mixing assumptions absent from the primary calculation.
+    constraint_ids:
+    - mirror_temperature_ratio_bbn_bound
+    - conservative_neff_limit_x0635
+    derived_quantities:
+    - g_star(T)
+    - g_star_prime(T_prime)
+    - N_eff(T)
+    - mirror BBN inputs
+    description: Compute mirror-sector thermodynamic evolution and propagate it to N_eff, BBN, and structure
+      observables.
+    forward_model_chain:
+    - inputs:
+      - entropy conservation
+      - ordinary temperature T
+      notes: null
+      outputs:
+      - mirror temperature T_prime(T)
+      step_id: solve_temperatures
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Paper numerically solves these thermodynamic equations.
+    - inputs:
+      - T
+      - T_prime
+      notes: null
+      outputs:
+      - energetic and entropic degrees of freedom
+      step_id: compute_degrees_freedom
+      step_type: data_transform
+      tool_or_code: null
+      validity: Local full text supports this as the core calculation.
+    - inputs:
+      - N_eff(T)
+      - x
+      - beta
+      notes: null
+      outputs:
+      - BBN/CMB radiation density
+      - mirror BBN inputs
+      step_id: map_to_observables
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Requires coupling to BBN and CMB/LSS calculations for final data constraints.
+    id: mirror_thermodynamics_route
+    input_parameters:
+    - x
+    - beta
+    - T
+    - T_prime
+    - degrees of freedom
+    likelihoods: []
+    observable_ids:
+    - delta_neff_evolution
+    - mirror_bbn_and_structure_inputs
+    - dama_mirror_heavy_elements_context
+    required_code_resources:
+    - BBN solver
+    - Boltzmann/CMB-LSS code for mirror matter
+    route_status: planned
+    source_model_features:
+    - exact parity mirror sector
+    - mirror baryon dark matter
+    - separate ordinary/mirror entropy conservation
+    validation_tests:
+    - recover x<0.7 and x<0.635 estimates
+    - compare N_eff at BBN and post-e+e- epochs

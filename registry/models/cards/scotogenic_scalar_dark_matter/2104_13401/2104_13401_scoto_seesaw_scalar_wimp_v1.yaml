@@ -1,0 +1,829 @@
+_source:
+  shard: arXiv_src_2104_083_wds.tar
+  paper_id: '2104_13401'
+  source_member: 2104_13401.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2104_13401_scoto_seesaw_scalar_wimp_v1
+identity:
+  name: Scalar WIMP dark matter in the simplest scoto-seesaw model
+  family: scotogenic_scalar_dark_matter
+  aliases:
+  - scoto-seesaw scalar dark matter
+  - lightest dark particle eta_R WIMP
+  short_description: A WIMP scalar dark matter candidate in the minimal scoto-seesaw model, where a Z2-odd
+    inert scalar doublet and dark fermion supplement a missing-partner type-I seesaw so that neutrino
+    masses and dark matter are linked.
+  historical_origin_or_motivation: The paper substantially develops the simplest scoto-seesaw dark matter
+    completion by analyzing relic abundance, direct detection, vacuum stability, and dark parity consistency.
+  status: emerging
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - scoto-seesaw
+  - scotogenic model
+  - type-I seesaw
+  - inert scalar doublet dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The model combines a missing-partner type-I seesaw with a minimal dark sector and writes Yukawa
+    terms and the scalar potential.
+particle_content:
+  dark_matter_candidate:
+    name: real neutral scalar eta_R
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - imaginary neutral scalar eta_I
+  - charged scalar eta_plus
+  - dark fermion f
+  mediators:
+  - Higgs boson
+  - Z boson
+  - dark fermion f in radiative neutrino mass loop
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - eta_I
+  - eta_plus
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: An exact unbroken dark Z2 parity makes the lightest dark particle stable; the
+    analysis assumes eta_R is the lightest state for lambda_5 < 0.
+  symmetries:
+  - name: dark Z2 parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: must remain unbroken; the Z2-odd scalar must not acquire a VEV
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  - neutrino
+  standard_model_targets:
+  - leptons
+  - Higgs boson
+  - W bosons
+  - Z boson
+  - quarks
+  dark_sector_couplings:
+  - Y_f lepton-dark-fermion-scalar Yukawa coupling
+  - scalar quartics lambda, lambda_eta, lambda_3, lambda_4, lambda_5
+  - Higgs portal lambda_345
+  mediator_types:
+  - Higgs boson
+  - Z boson
+  - electroweak gauge bosons
+  - dark fermion f
+  interaction_operators:
+  - L_DM,SOL = Y_f L eta f + 1/2 M_f f f
+  - inert-doublet scalar potential with lambda_5 splitting eta_R and eta_I
+  - Higgs portal coupling lambda_345 eta_R eta_R h
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: mild
+    velocity_dependence: mild
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - eta_R eta_R to quarks and leptons
+  - eta_R eta_R to W+ W-
+  - eta_R eta_R to ZZ
+  - eta_R eta_R to hh
+  - eta_R eta_R to t tbar when open
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: eta_R and eta_I are CP-even/odd neutral scalar components split by lambda_5
+  flavor_structure: Y_N and Y_f Yukawa matrices determine neutrino masses; detailed flavor fit is outside
+    the model-card extraction.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: eta_R mass
+    symbol: m_eta_R
+    description: Mass of the assumed scalar dark matter candidate.
+    range: 'correct relic regions: <50, 70-100, and >550'
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids:
+    - '2104_13401'
+  - name: eta_I mass
+    symbol: m_eta_I
+    description: Mass of the other neutral inert scalar, split from eta_R by lambda_5.
+    range: model-dependent
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids:
+    - '2104_13401'
+  - name: charged scalar mass
+    symbol: m_eta_plus
+    description: Mass of the charged inert scalar.
+    range: model-dependent
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids:
+    - '2104_13401'
+  - name: dark fermion mass
+    symbol: M_f
+    description: Mass of the Z2-odd dark fermion entering the radiative solar neutrino mass loop; assumed
+      heavier than the dark scalars in the scalar-DM analysis.
+    range: model-dependent; examples include TeV scale
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids:
+    - '2104_13401'
+  - name: right-handed neutrino mass
+    symbol: M_N
+    description: Mass scale for the even right-handed neutrino generating the tree-level atmospheric neutrino
+      mass.
+    range: model-dependent
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids:
+    - '2104_13401'
+  - name: lambda_5
+    symbol: lambda_5
+    description: Scalar quartic that splits eta_R and eta_I and helps generate the solar neutrino mass;
+      lambda_5 < 0 makes eta_R the dark matter candidate.
+    range: < 0 for eta_R dark matter in this analysis
+    role: core
+    status: established
+    source_reference_ids:
+    - '2104_13401'
+  - name: Higgs portal coupling
+    symbol: lambda_345
+    description: Combination lambda_3 + lambda_4 + lambda_5 controlling Higgs-mediated eta_R-nucleon scattering.
+    range: scan-dependent
+    role: core
+    status: established
+    source_reference_ids:
+    - '2104_13401'
+production:
+  mechanisms:
+  - thermal freeze-out through annihilation and coannihilation
+  - coannihilation with eta_I and eta_plus
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - eta_R mass
+  - annihilation to fermions, gauge bosons, and Higgs bosons
+  - coannihilation with eta_I and eta_plus
+  - Higgs portal coupling lambda_345
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper computes the thermal relic component with micrOMEGAS and identifies parameter regions
+    where eta_R explains the total dark matter density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: Planck cold dark matter band
+    symbol: Omega_eta_R h^2
+    description: Three-sigma target band quoted in the paper for eta_R to explain all dark matter.
+    range:
+      min: '0.1126'
+      max: '0.1246'
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: 3 sigma Planck band quoted in the paper
+    role: derived
+    status: established
+    source_reference_ids:
+    - '2104_13401'
+  calculation_type: thermal
+  key_dependencies:
+  - m_eta_R
+  - lambda_345
+  - lambda_5 mass splitting
+  - gauge-boson annihilation channels
+  - coannihilation with eta_I and eta_plus
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak symmetry breaking with unbroken dark Z2 parity
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: none
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  f_of_p_or_q: not given; relic abundance calculated numerically with micrOMEGAS
+  average_momentum_relative_to_thermal: thermal cold relic
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: As a WIMP-scale thermal relic, eta_R is treated as cold dark matter in the paper.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: not discussed
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: v1
+  applies_to: model
+  condition: Dark Z2 parity must remain unbroken; the Z2-odd scalar doublet has no VEV.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - '2104_13401'
+- id: v2
+  applies_to: parameter
+  condition: The scalar-DM analysis assumes lambda_5 < 0 so eta_R is the lightest dark particle; lambda_5
+    > 0 would make eta_I the candidate.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2104_13401'
+- id: v3
+  applies_to: parameter
+  condition: 'Correct relic density appears in the paper in three eta_R mass regions: below 50 GeV, 70-100
+    GeV, and above 550 GeV.'
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2104_13401'
+- id: v4
+  applies_to: theory
+  condition: Vacuum stability and perturbativity are checked through RG evolution; quartic couplings must
+    remain bounded and perturbative.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2104_13401'
+assumptions:
+  global:
+  - id: a1
+    description: The dark fermion f is heavier than eta_R and eta_I in the scalar dark matter analysis.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2104_13401'
+  - id: a2
+    description: lambda_5 < 0 is chosen so eta_R, not eta_I, is the dark matter candidate.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2104_13401'
+  - id: a3
+    description: The dark matter abundance is the thermal component computed with micrOMEGAS.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2104_13401'
+  - id: a4
+    description: The dark Z2 parity remains exact under the parameter evolution considered.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2104_13401'
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that the model is implemented in SARAH and that micrOMEGAS-5.0.8 is used
+    for thermal relic abundance and dark-matter-nucleon scattering calculations.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 2104_13401_scoto_seesaw_scalar_wimp_v1
+  model_name: Scalar WIMP dark matter in the simplest scoto-seesaw model
+  model_family: scotogenic_scalar_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2104_13401'
+      title: 'The simplest scoto-seesaw model: WIMP dark matter phenomenology and Higgs vacuum stability'
+      authors: []
+      year: 2021
+      arxiv_id: '2104.13401'
+      doi: null
+      url: null
+      role: extension
+      notes: Only the run-local SQLite full text was used for this extraction.
+    - arxiv_id: '2104.13401'
+      authors:
+      - Mandal, Sanjoy
+      - Srivastava, Rahul
+      - Valle, Jose W. F.
+      doi: 10.1016/j.physletb.2021.136458
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2104.13401
+      role: original_model
+      title: 'The simplest scoto-seesaw model: WIMP dark matter phenomenology and Higgs vacuum stability'
+      url: https://arxiv.org/abs/2104.13401
+      year: 2021
+    constraint_papers:
+    - arxiv_id: '1910.08422'
+      authors:
+      - Avila, Ivania M.
+      - De Romeri, Valentina
+      - Duarte, Laura
+      - Valle, Jose W. F.
+      doi: 10.1140/epjc/s10052-020-08480-z
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1910.08422
+      role: constraint
+      title: Phenomenology of scotogenic scalar dark matter
+      url: https://arxiv.org/abs/1910.08422
+      year: 2020
+    - arxiv_id: '1807.06209'
+      authors:
+      - Planck Collaboration
+      - Aghanim, N.
+      - Akrami, Y.
+      - Ashdown, M.
+      - Aumont, J.
+      - Baccigalupi, C.
+      - Ballardini, M.
+      - Banday, A. J.
+      - et al.
+      doi: 10.1051/0004-6361/201833910
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1807.06209
+      role: constraint
+      title: Planck 2018 results. VI. Cosmological parameters
+      url: https://arxiv.org/abs/1807.06209
+      year: 2020
+    external_databases: []
+    review_papers:
+    - arxiv_id: '2104.07634'
+      authors:
+      - Billard, Julien
+      - Boulay, Mark
+      - Cebrian, Susana
+      - Covi, Laura
+      - Fiorillo, Giuliana
+      - Green, Anne
+      - Kopp, Joachim
+      - Majorovits, Bela
+      - et al.
+      doi: 10.1088/1361-6633/ac5754
+      notes: Related review/report full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2104.07634
+      role: review
+      title: Direct detection of dark matter-APPEC committee report
+      url: https://arxiv.org/abs/2104.07634
+      year: 2022
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0002
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2104_13401'
+      section: introduction
+      page: null
+      quote_or_summary: The scoto-seesaw combines a missing-partner type-I seesaw with a minimal dark
+        sector and has a viable WIMP dark matter candidate.
+    - reference_id: '2104_13401'
+      section: Yukawa/scalar sectors
+      page: null
+      quote_or_summary: The dark sector has one fermion f and one scalar doublet eta odd under dark Z2
+        parity; the scalar potential and Yukawa terms are given.
+    - reference_id: '2104_13401'
+      section: mass spectrum
+      page: null
+      quote_or_summary: Unbroken Z2 parity forbids Higgs-dark-doublet mixing and makes the lightest eta_R/eta_I
+        state a scalar dark matter candidate.
+    - reference_id: '2104_13401'
+      section: dark matter phenomenology
+      page: null
+      quote_or_summary: The analysis assumes scalar dark matter with lambda_5 < 0, so eta_R is the dark
+        matter candidate.
+    - reference_id: '2104_13401'
+      section: relic density
+      page: null
+      quote_or_summary: micrOMEGAS is used to compute thermal relic abundance, with Planck-compatible
+        regions identified in eta_R mass.
+    unresolved_items:
+    - The exact XENON1T likelihood or exclusion curve was not rerun.
+    - Mass-splitting thresholds for inelastic Z exchange were not digitized.
+    - Vacuum-stability details are retained as a theory filter rather than a recast likelihood.
+  evidence:
+    particle_content:
+    - reference_id: '2104_13401'
+      note: The Z2-odd dark sector consists of one fermion f and one scalar doublet eta; eta_R is assumed
+        to be the lightest dark particle.
+      confidence: high
+      section: Yukawa/scalar sectors and dark matter phenomenology
+      page: null
+    symmetries:
+    - reference_id: '2104_13401'
+      note: Dark Z2 parity is responsible for dark matter stability and must remain unbroken.
+      confidence: high
+      section: Yukawa/scalar sectors and mass spectrum
+      page: null
+    interactions:
+    - reference_id: '2104_13401'
+      note: Y_f L eta f, the inert-doublet scalar potential, Higgs portal lambda_345, and electroweak
+        gauge couplings set the dark matter interactions.
+      confidence: high
+      section: Yukawa/scalar sectors and direct detection
+      page: null
+    production_mechanism:
+    - reference_id: '2104_13401'
+      note: The relic abundance is determined by eta_R annihilation and coannihilation diagrams into SM
+        fermions, gauge bosons, and Higgs bosons.
+      confidence: high
+      section: relic density
+      page: null
+    cosmological_history:
+    - reference_id: '2104_13401'
+      note: The paper treats eta_R as a thermal WIMP and uses micrOMEGAS for the thermal relic component.
+      confidence: high
+      section: dark matter phenomenology
+      page: null
+    parameter_ranges:
+    - reference_id: '2104_13401'
+      note: Correct relic density is obtained for eta_R masses below 50 GeV, 70-100 GeV, and above 550
+        GeV.
+      confidence: high
+      section: relic density
+      page: null
+    validity_domain:
+    - reference_id: '2104_13401'
+      note: lambda_5 < 0 is assumed for eta_R dark matter; the opposite sign would select eta_I.
+      confidence: high
+      section: dark matter phenomenology
+      page: null
+    constraints:
+    - confidence: high
+      note: Planck 2018 reports Omega_c h^2 = 0.120 +/- 0.001 in the base cosmology.
+      page: null
+      reference_id: arxiv:1807.06209
+      section: Abstract
+    - confidence: medium
+      note: Related scotogenic scalar-DM text applies XENON1T SI elastic-scattering limits to nuclear
+        recoil searches.
+      page: null
+      reference_id: arxiv:1910.08422
+      section: Direct detection
+    - confidence: high
+      note: Primary paper reports two-loop RG vacuum-stability and dark-parity checks.
+      page: null
+      reference_id: arxiv:2104.13401
+      section: Vacuum stability
+    observables:
+    - confidence: high
+      note: Primary paper states SARAH plus micrOMEGAS calculation and identifies eta_R relic regions
+        below 50 GeV, 70-100 GeV, and above 550 GeV.
+      page: null
+      reference_id: arxiv:2104.13401
+      section: Dark matter
+    - confidence: high
+      note: Primary paper derives the Higgs-mediated SI recoil after lambda5 makes Z exchange inelastic.
+      page: null
+      reference_id: arxiv:2104.13401
+      section: Direct detection
+    routes:
+    - confidence: high
+      note: Primary paper describes SARAH implementation, micrOMEGAS relic/direct-detection calculation,
+        and theoretical filters.
+      page: null
+      reference_id: arxiv:2104.13401
+      section: Dark matter methods
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: high
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - parameter-scan dependence
+  - dark parity stability under RG evolution
+  - mass splitting needed to suppress Z-mediated scattering
+  validation_status: partially_validated
+  notes: The paper implements the model in SARAH and computes relic abundance with micrOMEGAS.
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not merge the eta_R card with the eta_I alternative; this extraction follows the paper
+      assumption lambda_5 < 0.
+    source_reference_ids:
+    - '2104_13401'
+  - id: w2
+    severity: medium
+    category: code_unvalidated
+    warning: The paper states SARAH and micrOMEGAS were used, but this batch did not inspect or run model
+      files.
+    source_reference_ids:
+    - '2104_13401'
+observables:
+- caveats:
+  - Coannihilation and resonance gaps require the full micrOMEGAs model.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - thermal Standard Model bath
+  id: obs_eta_r_freezeout_relic
+  key_quantities:
+  - description: Scalar DM mass.
+    name: eta_R mass
+    range: <50 GeV, 70-100 GeV, or >550 GeV for full relic in the primary scan
+    role: core
+    source_reference_ids:
+    - arxiv:2104.13401
+    status: established
+    symbol: m_eta_R
+    unit: GeV
+  - description: Combination lambda3 + lambda4 + lambda5 controlling Higgs-mediated annihilation and scattering.
+    name: Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2104.13401
+    status: inferred
+    symbol: lambda_345
+  - description: Planck-derived target band used in the scan.
+    name: cold dark matter density
+    range: 0.1126-0.1246
+    role: derived
+    source_reference_ids:
+    - arxiv:2104.13401
+    - arxiv:1807.06209
+    status: established
+    symbol: Omega h^2
+  linked_constraints:
+  - con_planck_eta_relic_band
+  linked_routes:
+  - route_scotoseesaw_wimp_scan
+  name: Thermal eta_R freeze-out abundance
+  notes: null
+  observability: high
+  predicted_effect: The inert scalar eta_R annihilates and coannihilates through gauge, Higgs, and dark-sector
+    interactions, with correct relic abundance in three mass regions.
+  redshift_range: freeze-out epoch to today
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2104.13401
+  - arxiv:1807.06209
+  subchannel: WIMP freeze-out and coannihilation
+- caveats:
+  - The XENON1T curve was not digitized or rerun.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - underground direct-detection targets
+  id: obs_eta_r_spin_independent_recoil
+  key_quantities:
+  - description: eta_I - eta_R splitting induced by lambda5, used to make Z exchange inelastic.
+    name: mass splitting
+    role: core
+    source_reference_ids:
+    - arxiv:2104.13401
+    status: inferred
+    symbol: Delta m_eta
+  - description: Spin-independent eta_R-nucleon cross section through Higgs exchange.
+    name: SI cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:2104.13401
+    - arxiv:1910.08422
+    status: inferred
+    symbol: sigma_SI
+  linked_constraints:
+  - con_xenon1t_eta_r_higgs_portal
+  linked_routes:
+  - route_scotoseesaw_wimp_scan
+  name: Higgs-mediated eta_R nucleon recoil
+  notes: null
+  observability: medium
+  predicted_effect: A nonzero lambda5 splits eta_I from eta_R and suppresses dangerous Z-mediated elastic
+    scattering; the remaining Higgs-portal SI recoil scales with lambda_345 squared.
+  redshift_range: z=0 halo scattering
+  relevance: high
+  scale_range: nuclear recoil energies
+  source_reference_ids:
+  - arxiv:2104.13401
+  - arxiv:1910.08422
+  subchannel: spin-independent nuclear recoil
+constraints:
+- allowed_regions:
+  - Primary scan uses 0.1126 <= Omega_eta_R h^2 <= 0.1246 for the full-DM band.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The relic calculation assumes standard WIMP thermal freeze-out.
+    id: standard-thermal-history
+    impact_if_violated: Nonstandard expansion or entropy injection would move the preferred mass/coupling
+      regions.
+    notes: null
+    scope: eta_R abundance scan
+    source_reference_ids:
+    - arxiv:2104.13401
+    status: assumed
+  benchmark_implications:
+  - Full-DM eta_R solutions appear below 50 GeV, from 70-100 GeV, and above 550 GeV in the scan.
+  caveats:
+  - No likelihood scan was rerun.
+  constrained_parameters:
+  - m_eta_R
+  - lambda_345
+  - coannihilation splittings
+  constraint_type: cosmological
+  data_release: Planck 2018 cosmological parameters and primary micrOMEGAs scan
+  excluded_regions:
+  - Parameter points above the 3 sigma band overproduce eta_R dark matter.
+  id: con_planck_eta_relic_band
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Planck relic-density target for scalar WIMP eta_R
+  notes: null
+  observable_channel: relic abundance
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - arxiv:2104.13401
+  - arxiv:1807.06209
+- allowed_regions:
+  - Nonzero lambda5 splitting avoids elastic Z exchange; surviving points must satisfy Higgs-mediated
+    SI limits.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The eta_I-eta_R splitting is large enough that Z-mediated scattering is kinematically
+      forbidden or inelastic.
+    id: inelastic-z-suppression
+    impact_if_violated: Elastic Z exchange would exceed direct-detection bounds for a hypercharged doublet.
+    notes: null
+    scope: direct detection
+    source_reference_ids:
+    - arxiv:2104.13401
+    status: assumed
+  benchmark_implications:
+  - Direct detection slices away part of the relic-compatible scalar WIMP parameter space.
+  caveats:
+  - Hadronic matrix element and local halo assumptions are inherited from the source calculation.
+  constrained_parameters:
+  - lambda_345
+  - Delta m_eta
+  - sigma_SI
+  - m_eta_R
+  constraint_type: direct_detection
+  data_release: XENON1T SI limit as used by the primary paper
+  excluded_regions:
+  - Large Higgs-portal couplings are excluded by XENON1T SI limits after the Z portal is made inelastic.
+  id: con_xenon1t_eta_r_higgs_portal
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: XENON1T limit on eta_R Higgs-portal recoil
+  notes: null
+  observable_channel: spin-independent nuclear recoil
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2104.13401
+  - arxiv:1910.08422
+- allowed_regions:
+  - The primary paper finds broad regions stable up to the Planck scale with robust dark parity under
+    RG evolution.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Vacuum stability is an additional viability filter beyond relic and direct-detection bounds.
+  caveats:
+  - This is a theory-consistency constraint, not an observational likelihood.
+  constrained_parameters:
+  - scalar quartics
+  - Yukawa couplings
+  - dark parity
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Perturbativity, unitarity, vacuum instability, or loss of dark parity reject scan points.
+  id: con_scotoseesaw_vacuum_stability
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Two-loop vacuum-stability and dark-parity consistency
+  notes: null
+  observable_channel: renormalization-group consistency
+  recasting_needed: not_applicable
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2104.13401
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Exact scan files are not bundled in this batch.
+    constraint_ids:
+    - con_planck_eta_relic_band
+    - con_xenon1t_eta_r_higgs_portal
+    - con_scotoseesaw_vacuum_stability
+    derived_quantities:
+    - Omega_eta_R h^2
+    - sigma_SI
+    - vacuum-stability scale
+    description: Implement the scoto-seesaw model and map scalar masses/couplings to relic, direct-detection,
+      and stability constraints.
+    forward_model_chain:
+    - inputs:
+      - Lagrangian parameters
+      notes: null
+      outputs:
+      - vertices
+      - mass matrices
+      - spectrum
+      step_id: s1
+      step_type: other
+      tool_or_code: SARAH
+      validity: Primary paper implemented the model in SARAH.
+    - inputs:
+      - spectrum
+      - couplings
+      notes: null
+      outputs:
+      - thermal relic density
+      - SI cross section
+      step_id: s2
+      step_type: likelihood
+      tool_or_code: micrOMEGAS-5.0.8
+      validity: Valid for standard thermal freeze-out.
+    - inputs:
+      - quartics
+      - Yukawas
+      notes: null
+      outputs:
+      - vacuum stability
+      - dark parity running
+      step_id: s3
+      step_type: validation
+      tool_or_code: two-loop RG/Vevacious-style stability checks
+      validity: Theory-consistency checks from primary analysis.
+    id: route_scotoseesaw_wimp_scan
+    input_parameters:
+    - m_eta_R
+    - m_eta_I
+    - m_eta_plus
+    - lambda_345
+    - lambda5
+    - dark fermion mass
+    likelihoods:
+    - Planck band only; XENON1T curve not included.
+    observable_ids:
+    - obs_eta_r_freezeout_relic
+    - obs_eta_r_spin_independent_recoil
+    required_code_resources:
+    - SARAH model files
+    - micrOMEGAS
+    - two-loop RGE solver
+    route_status: partially_implemented
+    source_model_features:
+    - Z2-odd inert scalar doublet
+    - missing-partner seesaw plus scotogenic loop
+    - eta_R scalar WIMP
+    validation_tests:
+    - recover three relic-compatible mass windows
+    - recover Z-inelastic direct-detection suppression

@@ -1,0 +1,393 @@
+_source:
+  shard: arXiv_src_1807_023_wds.tar
+  paper_id: '1807_07972'
+  source_member: 1807_07972.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: subcomponent_possible
+    mitigation: Track the relic fraction f_1 or require a point on the thermal target contour.
+    severity: medium
+    source_reference_ids:
+    - '1807_07972'
+    warning: Do not assume this benchmark always supplies all observed dark matter; the paper finds underproduction
+      in much of the collider-focused parameter space.
+  - category: notation_conflict
+    id: darkonium_not_stable_dm
+    mitigation: Use chi or chi_1 as the dark matter candidate and Upsilon_D as a bound-state phenomenological
+      feature.
+    severity: medium
+    source_reference_ids:
+    - '1807_07972'
+    warning: Darkonium is an unstable collider bound state, not the cosmological dark matter particle
+      itself.
+associated_code:
+  code_summary: The assigned text mentions simulations for collider efficiencies but no public model-specific
+    code release.
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: Anomaly-cancelling spectator fermions are assumed heavy enough not to affect the studied
+      tree-level collider and relic processes.
+    id: heavy_spectator_anomaly_cancellation
+    impact_if_violated: Additional light states could change production, decays, and cosmology.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1807_07972'
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: For relic-density estimates the paper assumes early thermal equilibrium between dark
+      matter and the Standard Model.
+    id: thermal_freezeout_history
+    impact_if_violated: The relic fraction and indirect signals would need a nonthermal calculation.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '1807_07972'
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - optional small Majorana splitting for direct-detection evasion
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - darkonium benchmark model
+  - gauged baryon-number Z' dark matter
+  family: self_interacting_hidden_sector_dark_matter
+  historical_origin_or_motivation: Motivated by LHC blind spots of mono-X searches when the mediator is
+    light and couples strongly to dark matter but weakly to quarks.
+  model_kind: simplified_model
+  name: Baryonic Z' fermion dark matter with darkonium
+  short_description: A Dirac fermion dark matter particle charged under a gauged baryon-number-like U(1)
+    interacts with quarks through a light Z' that also binds dark matter into spin-1 darkonium states.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - chi_1 chi_1 to Z' Z'
+  - chi_1 chi_1 to q qbar via off-shell Z'
+  cp_structure: unknown
+  dark_sector_couplings:
+  - Z' vector and axial-vector couplings to dark matter
+  - Yukawa potential from Z' exchange
+  decay_channels:
+  - Upsilon_D to q qbar
+  - Upsilon_D to two Z' bosons
+  - Upsilon_D to three Z' bosons
+  flavor_structure: universal quark coupling in the benchmark
+  interaction_operators:
+  - g_q qbar Z' q
+  - g_chi chi-bar gamma_mu chi Z'^mu
+  - g'_chi chi-bar gamma_mu gamma_5 chi Z'^mu
+  mediator_types:
+  - spin-1 Z' vector boson
+  portals:
+  - vector
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: strong
+    spin_dependence: unknown
+    velocity_dependence: strong
+  self_scattering_channels:
+  - Z'-mediated dark-matter self-interaction and bound-state formation
+  standard_model_targets:
+  - quarks
+  tree_or_loop_level: tree
+model_id: 1807_07972_baryonic_zprime_darkonium_v1
+parameters:
+  core:
+  - description: Mass of the fermion dark matter.
+    name: dark matter mass
+    range: Scanned against mediator mass; benchmark plots include M_chi of order hundreds of GeV.
+    role: core
+    status: inferred
+    symbol: M_chi
+    unit: GeV
+  - description: Mass of the vector mediator and dark force carrier.
+    name: Z' mediator mass
+    range: Bound-state region requires M_Z' smaller than an alpha_eff-scaled dark matter mass; benchmark
+      example uses 50 GeV.
+    role: core
+    status: inferred
+    symbol: M_Z'
+    unit: GeV
+  - description: Universal quark coupling in the benchmark.
+    name: Z' coupling to quarks
+    range: varied; smaller than common monojet benchmarks to evade dijet bounds
+    role: core
+    status: inferred
+    symbol: g_q
+    value: 0.1 benchmark
+  - description: Dark-sector coupling strength, alpha_chi = g_chi^2/(4 pi).
+    name: dark fine-structure coupling
+    range: kept below 1 for nonrelativistic bound-state calculations
+    role: core
+    status: inferred
+    symbol: alpha_chi
+    value: 0.5 benchmark
+  - description: Axial-vector coupling of dark matter to the mediator.
+    name: axial dark coupling
+    range: benchmark choice tied to M_Z'/M_chi
+    role: core
+    status: inferred
+    symbol: g'_chi
+  - description: Optional small Majorana mass splitting that suppresses direct detection while preserving
+      collider darkonium physics.
+    name: Majorana mass splitting
+    range: must be large enough to evade direct detection but small compared with Dirac mass and binding
+      energy
+    role: core
+    status: inferred
+    symbol: delta
+  derived:
+  - description: Condition for Yukawa bound states to exist.
+    name: darkonium binding condition
+    range: requires a light mediator relative to alpha_eff M_chi
+    role: core
+    status: inferred
+    symbol: M_Zprime / M_chi
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - spin-1 darkonium bound state Upsilon_D
+  - spin-0 darkonium state eta_D
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: Dirac fermion chi, or lighter Majorana state chi_1 when a small Majorana mass is included
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - heavier Majorana partner chi_2 in the split case
+  long_lived_particles:
+  - chi or chi_1 dark matter
+  mediators:
+  - light vector boson Z'
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  free_streaming_length: null
+  notes: The paper assumes ordinary halo velocities for direct detection and focuses on collider bound
+    states rather than primordial phase-space structure.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - annihilation cross sections
+  - dark matter mass
+  - mediator mass
+  - quark and dark-sector couplings
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out after early equilibrium with the Standard Model
+  - annihilation to Z'Z' when kinematically allowed
+  - annihilation to q qbar through off-shell Z'
+  nonthermal_momentum_distribution: unknown
+  notes: The paper compares the total annihilation rate with the thermal target and notes underproduction
+    in much of the collider-focused parameter space.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - Collider-focused parameter regions can underproduce the observed dark matter abundance and may describe
+    a subcomponent.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: The low-energy Lagrangian contains universal quark coupling g_q and vector/axial dark couplings
+        g_chi and gprime_chi to Z'.
+      page: null
+      reference_id: '1807_07972'
+      section: Model setup
+    parameter_ranges:
+    - confidence: medium
+      note: Benchmark values alpha_chi=0.5, g_q=0.1, and gprime_chi tied to M_Zprime/M_chi are used for
+        collider scans.
+      page: null
+      reference_id: '1807_07972'
+      section: Benchmark parameters
+    particle_content:
+    - confidence: high
+      note: Dirac fermion dark matter and a light Z' mediator are specified; a small Majorana mass splits
+        chi into chi_1 and chi_2.
+      page: null
+      reference_id: '1807_07972'
+      section: Model setup/Majorana mass discussion
+    production_mechanism:
+    - confidence: high
+      note: Relic abundance is estimated from thermal freeze-out with annihilation to Z'Z' and q qbar
+        channels.
+      page: null
+      reference_id: '1807_07972'
+      section: Thermal relic abundance
+    symmetries:
+    - confidence: medium
+      note: The benchmark is a gauged baryon-number-like U(1) with dark matter charged under the new gauge
+        symmetry.
+      page: null
+      reference_id: '1807_07972'
+      section: Model setup
+    validity_domain:
+    - confidence: high
+      note: Darkonium formation requires a light mediator and sufficiently strong dark coupling while
+        retaining nonrelativistic perturbative control.
+      page: null
+      reference_id: '1807_07972'
+      section: The Formation of Darkonium
+  extraction:
+    confidence: high
+    extracted_by: codex_batch-0004
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5.5 dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper studies a simple renormalizable model with Dirac fermion DM charged
+        under gauged baryon number and a Z' coupling to quarks.
+      reference_id: '1807_07972'
+      section: Introduction/model setup
+    - page: null
+      quote_or_summary: Z' exchange yields an attractive Yukawa potential and spin-1 darkonium bound states
+        when the mediator is light.
+      reference_id: '1807_07972'
+      section: The Formation of Darkonium
+    - page: null
+      quote_or_summary: The paper computes thermal freeze-out through Z'Z' and q qbar channels and discusses
+        full or fractional relic abundance.
+      reference_id: '1807_07972'
+      section: Thermal relic abundance
+    unresolved_items:
+    - The paper uses a simplified/anomalous low-energy current and only sketches heavy spectator completion.
+    - Exact title and author metadata were not available in the assigned SQLite text.
+  last_updated: '2026-05-31'
+  model_family: self_interacting_hidden_sector_dark_matter
+  model_id: 1807_07972_baryonic_zprime_darkonium_v1
+  model_name: Baryonic Z' fermion dark matter with darkonium
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1807.07972'
+      doi: null
+      notes: Assigned full text from run-local SQLite database.
+      reference_id: '1807_07972'
+      role: original_model
+      title: Darkonium searches in a baryonic Z' fermion dark-matter benchmark
+      url: null
+      year: 2018
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: either
+  key_dependencies:
+  - chi_1 chi_1 to Z'Z'
+  - chi_1 chi_1 to q qbar
+  - coannihilation with chi_2 in the split case
+  - Sommerfeld effects for a light mediator
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - UV completion of the baryonic gauge symmetry
+  - Sommerfeld and bound-state corrections
+  - thermal versus nonthermal relic history
+  notes: The paper provides analytic rates and collider projections, but this extraction is not human
+    reviewed.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    small_scale_power_effect: unknown
+    transfer_function_shape: cdm_like
+  nonlinear:
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: Dark matter stability is assumed through the dark-sector charge/new symmetry;
+    the benchmark is based on gauged baryon number with the dark matter charged under the new U(1).
+  symmetries:
+  - breaking: massive Z' mediator; anomaly cancellation by heavy spectators is mentioned
+    breaking_scale: null
+    exact_or_approximate: unknown
+    name: gauged baryon-number-like U(1)
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: 'yes'
+  notes: The text presents a low-energy effective Lagrangian with quark and dark-matter couplings to Z';
+    anomaly cancellation is deferred to heavy spectator fermions.
+  parent_frameworks:
+  - vector-mediated fermion dark matter
+  - gauged baryon-number dark sector
+  - darkonium bound states
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats:
+  - Relativistic or strongly coupled regions would need different treatment.
+  condition: Bound-state calculations assume alpha_chi below unity and a light Zprime that yields a nonrelativistic
+    Yukawa bound state.
+  extrapolation_risk: medium
+  id: nonrelativistic_darkonium
+  notes: null
+  source_reference_ids:
+  - '1807_07972'
+  status: assumed
+  valid_range: benchmark alpha_chi = 0.5; M_Zprime sufficiently below M_chi
+- applies_to: model
+  caveats: []
+  condition: The optional Majorana mass must be small enough not to spoil collider phenomenology but large
+    enough to suppress direct detection.
+  extrapolation_risk: medium
+  id: small_majorana_splitting
+  notes: null
+  source_reference_ids:
+  - '1807_07972'
+  status: inferred
+  valid_range: delta constrained between direct-detection and binding-energy considerations in the paper

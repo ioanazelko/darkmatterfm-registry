@@ -1,0 +1,612 @@
+_source:
+  shard: arXiv_src_2405_051_wds.tar
+  paper_id: '2405_06741'
+  source_member: 2405_06741.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2405_06741_gravity_reheating_qcd_axion_relic_v1
+identity:
+  name: Gravity-reheating QCD axion relic
+  family: axion_like_dark_matter
+  aliases:
+  - QCD axion relic from gravity-portal reheating
+  - gravitationally probed QCD axion DM
+  short_description: A QCD axion dark matter relic produced by misalignment during a reheating epoch governed
+    by gravitational interactions and probed through primordial gravitational-wave spectra.
+  historical_origin_or_motivation: The paper extends its gravity-portal GW-probe framework from RHN dark
+    matter to QCD axion relic production.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - QCD axion
+  - misalignment mechanism
+  - gravity-mediated reheating
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the zero-mode axion Lagrangian and temperature-dependent QCD axion mass in the
+    reheating setup.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion field
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - QCD axion
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Axion longevity follows from the Peccei-Quinn axion framework and small axion
+    mass.
+  symmetries:
+  - name: Peccei-Quinn shift symmetry
+    type: shift
+    exact_or_approximate: broken
+    breaking: QCD effects generate the axion mass
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - axion
+  - gravitational
+  standard_model_targets:
+  - QCD sector
+  dark_sector_couplings:
+  - temperature-dependent axion potential
+  - gravitationally governed reheating
+  mediator_types:
+  - gravity
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: axion decay constant
+    symbol: f_a
+    description: QCD axion decay constant probed in the paper's GW forecasts.
+    range: 1e9 GeV to 1e14 GeV for theta_i in [0.1, pi/3] and xi=1 in the ET example
+    unit: GeV
+    role: core
+    status: inferred
+  - name: initial misalignment angle
+    symbol: theta_i
+    description: Initial axion angle used in the misalignment relic calculation.
+    range: '[0.1, pi/3] in highlighted examples'
+    role: core
+    status: inferred
+  - name: zero-temperature axion mass
+    symbol: m_a
+    description: QCD axion mass related to the decay constant.
+    range: 5.7e-6 eV * (1e12 GeV / f_a)
+    unit: eV
+    role: core
+    status: inferred
+  - name: reheating temperature
+    symbol: T_rh
+    description: Reheating temperature entering the axion oscillation timing.
+    range: model-dependent
+    unit: GeV
+    role: core
+    status: inferred
+  - name: non-minimal coupling to gravity
+    symbol: xi
+    description: Coupling controlling the primordial GW signal and axion reach.
+    range: varied; xi=1 highlighted
+    role: core
+    status: inferred
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - misalignment mechanism during gravitationally governed reheating
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - f_a
+  - theta_i
+  - temperature-dependent axion mass
+  - T_rh
+  - non-minimal gravitational coupling
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper frames this as QCD axion relic production in the same gravity-portal/reheating scenario
+    used for GW detection forecasts.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - f_a
+  - theta_i
+  - T_osc
+  - T_rh
+  - QCD axion mass
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - axion oscillation may begin before or after reheating
+  - primordial GW spectrum constrains the reheating scenario
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - QCD crossover enters the temperature-dependent axion mass
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The relic is treated as coherent axion zero-mode oscillations rather than a particle distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: misalignment_reheating
+  applies_to: production
+  condition: Uses QCD axion misalignment with oscillation timing set relative to reheating.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: gw_probe_framework
+  applies_to: model
+  condition: Detector reach depends on the same primordial GW and non-minimal coupling assumptions used
+    elsewhere in the paper.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: qcd_axion_relation
+    description: The zero-temperature axion mass follows the QCD axion relation to f_a.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: coherent_zero_mode
+    description: The axion relic is calculated from the homogeneous zero mode and misalignment angle.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No axion-model-specific public code is identified in the extracted text.
+provenance:
+  model_id: 2405_06741_gravity_reheating_qcd_axion_relic_v1
+  model_name: Gravity-reheating QCD axion relic
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-06-01'
+  last_updated: '2026-06-01'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: 'Primordial Gravitational Waves as Probe of Dark Matter in Interferometer Missions: Fisher
+        Forecast and MCMC'
+      authors: []
+      year: 2024
+      arxiv_id: '2405.06741'
+      doi: null
+      url: null
+      role: extension
+      notes: Source is the assigned full text from the run SQLite database.
+    - arxiv_id: '2405.06741'
+      authors:
+      - Ghoshal, Anish
+      - Paul, Debarun
+      - Pal, Supratik
+      doi: 10.1007/JHEP12(2024)150
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2405.06741
+      role: original_model
+      title: 'Primordial gravitational waves as probe of dark matter in interferometer missions: Fisher
+        forecast and MCMC'
+      url: https://arxiv.org/abs/2405.06741
+      year: 2024
+    constraint_papers:
+    - arxiv_id: '0807.1726'
+      authors:
+      - Hertzberg, Mark P.
+      - Tegmark, Max
+      - Wilczek, Frank
+      doi: 10.1103/PhysRevD.78.083507
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:0807.1726
+      role: constraint
+      title: Axion cosmology and the energy scale of inflation
+      url: https://arxiv.org/abs/0807.1726
+      year: 2008
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extractor_name: Codex dark-matter model-card worker
+    extraction_date: '2026-06-01'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      page: null
+      quote_or_summary: The paper also explores QCD axion relic production through the gravity-portal
+        framework.
+    - reference_id: primary
+      section: Gravitational production of axions as dark matter
+      page: null
+      quote_or_summary: The paper writes the axion zero-mode Lagrangian and misalignment production during
+        reheating.
+    unresolved_items:
+    - No exact MCMC chains or detector likelihood files were available.
+    - The CMB isocurvature constraint is complementary and needs a model-specific recast.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The QCD axion is treated as the DM candidate with mass tied to f_a.
+      confidence: high
+      section: Gravitational production of axions as dark matter
+    symmetries:
+    - reference_id: primary
+      note: The axion field and QCD axion mass relation are used in the relic calculation.
+      confidence: medium
+      section: Axion production section
+    production_mechanism:
+    - reference_id: primary
+      note: The paper considers standard misalignment during a reheating epoch governed by gravitational
+        interaction.
+      confidence: high
+      section: Gravitational production of axions as dark matter
+    parameter_ranges:
+    - reference_id: primary
+      note: The highlighted detector reach spans f_a from 1e9 to 1e14 GeV for theta_i in [0.1, pi/3] at
+        xi=1.
+      confidence: medium
+      section: Abstract
+    cosmological_history:
+    - reference_id: primary
+      note: The oscillation temperature is treated separately for oscillations before or after reheating.
+      confidence: high
+      section: Axion production section
+    validity_domain:
+    - reference_id: primary
+      note: The axion reach is tied to the same gravitational-wave reheating framework and non-minimal
+        coupling assumptions.
+      confidence: medium
+      section: Results and conclusion
+    constraints:
+    - confidence: high
+      note: Primary paper gives the detector forecast for the axion decay-constant range.
+      page: null
+      reference_id: arxiv:2405.06741
+      section: Forecast results
+    - confidence: medium
+      note: Related source provides high-f_a CMB isocurvature example constraints.
+      page: null
+      reference_id: arxiv:0807.1726
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary paper states ET can probe f_a from 1e9 to 1e14 GeV for theta_i in [0.1, pi/3], xi=1,
+        SNR>10.
+      page: null
+      reference_id: arxiv:2405.06741
+      section: Abstract
+    - confidence: medium
+      note: Related axion-cosmology source explains that axion isocurvature grows with inflation scale
+        and axion fraction.
+      page: null
+      reference_id: arxiv:0807.1726
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper links reheating microphysics, axion relic abundance, and GW detector SNR.
+      page: null
+      reference_id: arxiv:2405.06741
+      section: Forecast methodology
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: production_variant
+    severity: low
+    category: other
+    warning: This is a QCD axion relic-production variant in a GW-probe framework, not a new axion particle
+      species.
+observables:
+- caveats:
+  - Forecast assumes the source inflation/reheating model and detector curves.
+  channel: gravitational_waves
+  effect_direction: shape_change
+  environments:
+  - Einstein Telescope
+  - BBO
+  - DECIGO
+  - LISA
+  id: obs_axion_reheating_gw_probe
+  key_quantities:
+  - description: Decay constant forecasted in the ET example.
+    name: axion decay constant
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 100000000000000.0
+      min: 1000000000.0
+      notes: For theta_i in [0.1, pi/3] and xi=1 in the source example.
+      unit: GeV
+    role: core
+    source_reference_ids:
+    - arxiv:2405.06741
+    status: inferred
+    symbol: f_a
+    unit: GeV
+  - description: Initial axion displacement used in examples.
+    name: initial misalignment angle
+    range: 0.1 to pi/3
+    role: core
+    source_reference_ids:
+    - arxiv:2405.06741
+    status: inferred
+    symbol: theta_i
+  - description: Increasing xi reduces the ET-probed f_a range in the source forecast.
+    name: non-minimal coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2405.06741
+    status: inferred
+    symbol: xi
+  linked_constraints:
+  - con_axion_et_fa_forecast
+  linked_routes:
+  - route_axion_reheating_to_gw_isocurvature
+  name: GW interferometer probe of gravity-reheating QCD axion relic
+  notes: null
+  observability: high
+  predicted_effect: The gravitationally governed reheating epoch that fixes the QCD axion relic also changes
+    the primordial GW spectrum, allowing interferometer forecasts of axion decay-constant ranges.
+  redshift_range: inflation/reheating through today
+  relevance: critical
+  scale_range: interferometer-frequency stochastic background
+  source_reference_ids:
+  - arxiv:2405.06741
+  subchannel: stochastic primordial tensor spectrum
+- caveats:
+  - Applies to axion cosmologies where PQ symmetry breaking and inflationary initial conditions match
+    the related source assumptions.
+  channel: cmb
+  effect_direction: enhancement
+  environments:
+  - cosmic microwave background
+  id: obs_axion_cmb_isocurvature
+  key_quantities:
+  - description: Controls axion abundance and isocurvature amplitude.
+    name: PQ scale / axion decay constant
+    role: core
+    source_reference_ids:
+    - arxiv:0807.1726
+    status: inferred
+    symbol: f_a
+  - description: Related axion-cosmology source gives an example bound at high f_a.
+    name: inflationary energy scale
+    range: for f_a=1e16 GeV, E_I above 3.8e14 GeV excluded at 95% in that source example
+    role: core
+    source_reference_ids:
+    - arxiv:0807.1726
+    status: inferred
+    symbol: E_I
+    unit: GeV
+  linked_constraints:
+  - con_axion_isocurvature_cmb
+  linked_routes:
+  - route_axion_reheating_to_gw_isocurvature
+  name: Axion inflationary isocurvature sensitivity
+  notes: null
+  observability: high
+  predicted_effect: For axions present during inflation, isocurvature fluctuations grow with the inflation
+    scale and the axion dark-matter fraction, making CMB isocurvature complementary to the GW reheating
+    probe.
+  redshift_range: CMB last scattering
+  relevance: high
+  scale_range: large angular scales
+  source_reference_ids:
+  - arxiv:0807.1726
+  subchannel: axion isocurvature
+constraints:
+- allowed_regions:
+  - ET can probe 1e9 GeV <= f_a <= 1e14 GeV for theta_i in [0.1, pi/3] and xi=1 with SNR > 10 in the highlighted
+    example.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The axion relic abundance is computed in the same gravity-governed reheating history
+      that sets the GW spectrum.
+    id: source-reheating-model
+    impact_if_violated: Changing reheating changes both abundance and spectral reach.
+    notes: null
+    scope: GW axion forecast
+    source_reference_ids:
+    - arxiv:2405.06741
+    status: assumed
+  benchmark_implications:
+  - High-scale axion relic production can be tested indirectly by primordial GW spectra.
+  caveats:
+  - Forecast, not observed exclusion.
+  constrained_parameters:
+  - f_a
+  - theta_i
+  - xi
+  - T_rh
+  constraint_type: astrophysical
+  data_release: Mock interferometer catalogs and detector sensitivity curves
+  excluded_regions:
+  - For larger non-minimal coupling xi, the source says the ET-probed f_a range decreases.
+  id: con_axion_et_fa_forecast
+  likelihood_available: partial
+  likelihood_reference: null
+  name: ET forecast for QCD axion decay constant through reheating GWs
+  notes: null
+  observable_channel: gravitational_waves
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2405.06741
+- allowed_regions:
+  - Lower inflation scale, smaller axion fraction, or different initial conditions relax the isocurvature
+    constraint.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: PQ symmetry is broken during inflation and axion isocurvature is not erased later.
+    id: pq-broken-before-inflation
+    impact_if_violated: Post-inflationary PQ breaking or dilution changes the isocurvature prediction.
+    notes: null
+    scope: axion isocurvature mapping
+    source_reference_ids:
+    - arxiv:0807.1726
+    status: assumed
+  benchmark_implications:
+  - CMB isocurvature is a complementary constraint on the high-scale axion parameter space.
+  caveats:
+  - Related bound is not a direct recast of the 2405 forecast model.
+  constrained_parameters:
+  - f_a
+  - E_I
+  - theta_i
+  - R_a
+  constraint_type: cosmological
+  data_release: CMB isocurvature constraints discussed in related source
+  excluded_regions:
+  - The related axion-cosmology paper gives an example where f_a=1e16 GeV excludes inflation energy scale
+    above 3.8e14 GeV at 95% confidence.
+  id: con_axion_isocurvature_cmb
+  likelihood_available: partial
+  likelihood_reference: null
+  name: CMB isocurvature bound on high-scale axion inflation
+  notes: null
+  observable_channel: cmb_isocurvature
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:0807.1726
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Isocurvature source is complementary and not a full model-specific update.
+    constraint_ids:
+    - con_axion_et_fa_forecast
+    - con_axion_isocurvature_cmb
+    derived_quantities:
+    - axion relic abundance
+    - GW spectral shape
+    - detector SNR
+    - isocurvature amplitude
+    description: Map QCD axion misalignment during gravitational reheating to GW forecast reach and CMB
+      isocurvature checks.
+    forward_model_chain:
+    - inputs:
+      - f_a
+      - theta_i
+      - T_rh
+      notes: null
+      outputs:
+      - Omega_a h^2
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Use source axion misalignment/reheating relation.
+    - inputs:
+      - GW spectrum
+      - detector curves
+      notes: null
+      outputs:
+      - ET/BBO/DECIGO SNR and parameter errors
+      step_id: s2
+      step_type: likelihood
+      tool_or_code: null
+      validity: Forecast-level detector treatment.
+    - inputs:
+      - f_a
+      - inflation scale
+      - axion fraction
+      notes: null
+      outputs:
+      - CMB isocurvature limit
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Uses related axion-cosmology mapping; requires recast for exact model.
+    id: route_axion_reheating_to_gw_isocurvature
+    input_parameters:
+    - f_a
+    - theta_i
+    - T_rh
+    - xi
+    - inflation scale
+    likelihoods:
+    - GW detector forecast likelihood
+    - CMB isocurvature likelihood
+    observable_ids:
+    - obs_axion_reheating_gw_probe
+    - obs_axion_cmb_isocurvature
+    required_code_resources:
+    - axion abundance calculator
+    - GW Fisher/MCMC forecast
+    - CMB isocurvature module
+    route_status: planned
+    source_model_features:
+    - QCD axion misalignment
+    - gravity-governed reheating
+    - primordial tensor spectrum
+    validation_tests:
+    - recover f_a 1e9-1e14 GeV ET example
+    - recover related high-f_a isocurvature example

@@ -1,0 +1,609 @@
+_source:
+  shard: data/astro-ph-00191.tar
+  paper_id: '2112_09337'
+  source_member: 2112_09337.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2112_09337_multi_scalar_field_dm_v1
+identity:
+  name: Multi Scalar Field Dark Matter
+  family: multi_component_ultralight_scalar_dark_matter
+  aliases:
+  - MSFDM
+  - multi-SFDM
+  short_description: A dark-matter model in which the dark matter is composed of multiple real, non-interacting
+    ultralight scalar fields with potentially different masses and potentials.
+  historical_origin_or_motivation: Motivated by scalar-field/fuzzy dark matter and by the possibility
+    that dark matter has multiple species or excitation states.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - scalar field dark matter
+  - fuzzy dark matter
+  - ultralight axion dark matter
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper gives background and perturbation equations for N real scalar fields with specified
+    potentials.
+particle_content:
+  dark_matter_candidate:
+    name: multiple real ultralight scalar fields
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Cosmological scalar fields are assumed stable/nondecaying on the timescales studied;
+    no interaction among fields is included.
+  symmetries:
+  - name: field-specific stability not specified
+    type: unknown
+    exact_or_approximate: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - metric perturbations
+  - cosmological fluids
+  mediator_types:
+  - gravity
+  dark_sector_couplings:
+  - no direct inter-field interactions in first approximation
+parameters:
+  core:
+  - name: number of scalar fields
+    symbol: N
+    description: General N-field equations; numerical focus on two fields.
+    role: core
+    status: inferred
+  - name: scalar masses
+    symbol: m_i
+    range: examples around 10^-22 to 10^-20 eV; constraints sampled over model-dependent ranges
+    unit: eV
+    role: core
+    status: inferred
+  - name: density fraction
+    symbol: R
+    description: Fractional contribution of a reference scalar field to present total dark matter.
+    role: core
+    status: inferred
+  - name: quadratic potential
+    symbol: V_i = 1/2 m_i^2 phi_i^2
+    role: core
+    status: inferred
+  - name: cosh-like potential
+    symbol: V_i = m_i^2 f^2 [1 + cosh(phi_i/f)]
+    role: core
+    status: inferred
+  - name: cosine-like potential
+    symbol: V_i = m_i^2 f^2 [cos(phi_i/f) - 1]
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - assumed pre-existing ultralight scalar fields
+  - late-time coherent oscillations that average like dust
+  thermal_equilibrium_with_standard_model: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  notes: The paper explicitly does not delve into the origin of the scalar fields.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: phenomenological
+  key_dependencies:
+  - m_i
+  - R
+  - potential choice
+  - field density parameters
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - multi-component scalar dark sector
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  notes: Perturbations are evolved as scalar-field/fluid variables rather than a particle phase-space
+    distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: not directly simulated; cosmological constraints use linear spectra
+    subhalo_mass_function_effect: not directly simulated
+    simulation_calibrated: partial
+validity_domain:
+- id: noninteracting_real_fields
+  applies_to: model
+  condition: Extraction applies to the paper's first approximation of real scalar fields with no mutual
+    interactions.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: linear_cosmology
+  applies_to: model
+  condition: Validated primarily through background and linear perturbation calculations, not nonlinear
+    galaxy simulations.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: fields_already_formed
+    description: The paper assumes the scalar fields are already formed and does not model their origin.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: flat_background
+    description: The analysis uses a flat universe with standard baryons, photons, neutrinos, dark energy
+      and scalar-field dark matter.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: 'yes'
+  code_summary: The paper states that a modified CLASS code able to handle multiple scalar fields is publicly
+    available.
+  primary_code_role: boltzmann_solver_patch
+  repositories:
+  - name: two_sfdm_class
+    resource_type: repository
+    availability: public
+    relationship_to_model: official_author_code
+    purpose:
+    - compute_matter_power_spectrum
+    - compute_transfer_function
+    url: https://github.com/losvaldote/two_sfdm_class
+    repository_url: https://github.com/losvaldote/two_sfdm_class
+    languages: []
+    dependencies:
+    - CLASS
+    citation_reference_ids:
+    - '2112_09337'
+    maintained: unknown
+    notes: URL appears in the assigned paper text.
+provenance:
+  model_id: 2112_09337_multi_scalar_field_dm_v1
+  model_name: 2112_09337_multi_scalar_field_dm_v1
+  model_family: multi_component_ultralight_scalar_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: '2112_09337'
+      title: Cosmological constraints on the Multi Scalar Field Dark Matter model
+      authors: []
+      year: 2021
+      arxiv_id: '2112.09337'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '2112.09337'
+      authors:
+      - L. O. Tellez-Tovar
+      - Tonatiuh Matos
+      - J. Alberto Vazquez
+      doi: 10.1103/PhysRevD.106.123501
+      notes: Primary assigned paper text resolved locally.
+      reference_id: arxiv:2112.09337
+      role: original_model
+      title: Cosmological constraints on the multiscalar field dark matter model
+      url: https://arxiv.org/abs/2112.09337
+      year: 2022
+    constraint_papers:
+    - arxiv_id: '1310.6061'
+      authors:
+      - Bohua Li
+      - Tanja Rindler-Daller
+      - Paul R. Shapiro
+      doi: null
+      notes: Related full text resolved locally and read within the per-paper cap.
+      reference_id: arxiv:1310.6061
+      role: constraint
+      title: Cosmological constraints on Bose-Einstein-condensed scalar field dark matter
+      url: https://arxiv.org/abs/1310.6061
+      year: 2014
+    - arxiv_id: '1807.06209'
+      authors:
+      - Planck Collaboration
+      doi: null
+      notes: Related full text resolved locally and read within the per-paper cap.
+      reference_id: arxiv:1807.06209
+      role: dataset
+      title: Planck 2018 results. VI. Cosmological parameters
+      url: https://arxiv.org/abs/1807.06209
+      year: 2020
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1510.07633'
+      authors:
+      - David J. E. Marsh
+      doi: null
+      notes: Related full text resolved locally and read within the per-paper cap.
+      reference_id: arxiv:1510.07633
+      role: review
+      title: Axion cosmology
+      url: https://arxiv.org/abs/1510.07633
+      year: 2016
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0226
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-28'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2112_09337'
+      section: paper text
+      page: null
+      quote_or_summary: A dark-matter model in which the dark matter is composed of multiple real, non-interacting
+        ultralight scalar fields with potentially different masses and potentials.
+    unresolved_items:
+    - Origin or formation mechanism of the scalar fields is not modeled.
+    - Nonlinear halo, satellite, and soliton-core predictions need separate simulations.
+    - The OCR text does not provide machine-readable likelihood chains.
+  evidence:
+    particle_content:
+    - reference_id: '2112_09337'
+      note: The abstract defines MSFDM as dark matter made of different ultralight scalar fields, real
+        and non-interacting as a first approximation.
+      confidence: medium
+      section: null
+      page: null
+    production_mechanism:
+    - reference_id: '2112_09337'
+      note: The introduction states the work assumes the fields are already formed and focuses on cosmological
+        implications.
+      confidence: medium
+      section: null
+      page: null
+    parameter_ranges:
+    - reference_id: '2112_09337'
+      note: The paper studies quadratic, cosh-like, and cosine-like potentials, focusing numerically on
+        two scalar fields.
+      confidence: medium
+      section: null
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper quotes 95 percent lower mass bounds and evidence caveats.
+      page: null
+      reference_id: arxiv:2112.09337
+      section: Constraints
+    observables:
+    - confidence: high
+      note: Primary paper derives multiscalar background/perturbation equations and shows matter-power
+        and CMB effects.
+      page: null
+      reference_id: arxiv:2112.09337
+      section: Numerical results
+    - confidence: medium
+      note: Planck 2018 provides the cosmological parameter data context used by the paper.
+      page: null
+      reference_id: arxiv:1807.06209
+      section: Cosmological parameters
+    routes:
+    - confidence: high
+      note: Primary paper documents the modified CLASS/MontePython workflow.
+      page: null
+      reference_id: arxiv:2112.09337
+      section: Numerical methods
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - origin of fields omitted
+  - potential combinations
+  - linear-only constraints
+  validation_status: partially_validated
+agent_failure_modes:
+  warnings:
+  - id: class_of_variants
+    severity: medium
+    category: assumption_mismatch
+    warning: The card summarizes the MSFDM class; individual potential combinations may need separate
+      cards for precision use.
+    source_reference_ids: []
+observables:
+- caveats:
+  - No nonlinear halo or subhalo likelihood was run in the assigned paper.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - linear cosmology
+  id: obs_mps_small_scale_cutoff
+  key_quantities:
+  - description: Masses of the scalar fields controlling onset of dust-like behavior.
+    name: scalar masses
+    role: core
+    status: inferred
+    symbol: m_i
+  - description: Present fraction of the reference scalar field in total dark matter.
+    name: density fraction
+    role: core
+    status: inferred
+    symbol: R
+  - description: Quadratic, cosine-like, or cosh-like scalar potentials.
+    name: potential choice
+    role: core
+    status: inferred
+    symbol: V_i
+  linked_constraints:
+  - con_two_field_mass_bounds
+  linked_routes:
+  - route_class_montepython_msf
+  name: Linear matter-power cutoff from multiscalar ultralight fields
+  notes: Primary paper compares the matter power spectrum for single- and two-field combinations.
+  observability: high
+  predicted_effect: Ultralight scalar-field pressure and oscillations suppress small-scale power; in two-field
+    examples the visible cutoff follows the lighter or dominant field and the density fraction R.
+  redshift_range: null
+  relevance: critical
+  scale_range: Linear CLASS matter-power modes; paper examples show cutoff for masses below about 1e-20
+    eV.
+  source_reference_ids:
+  - arxiv:2112.09337
+  subchannel: linear_matter_power_spectrum
+- caveats:
+  - Some cosine and multifield posteriors are multimodal or unconstrained, limiting evidence estimates.
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - cosmic microwave background
+  - large-scale structure
+  id: obs_cmb_bao_lya_posteriors
+  key_quantities:
+  - name: log10 scalar mass
+    role: core
+    status: inferred
+    symbol: log10(m_i/eV)
+  - name: self-interaction proxy
+    role: core
+    status: inferred
+    symbol: lambda_i
+  - name: Hubble constant
+    role: core
+    status: inferred
+    symbol: H0
+  linked_constraints:
+  - con_single_field_mass_bounds
+  - con_bayes_evidence_caveat
+  linked_routes:
+  - route_class_montepython_msf
+  name: CMB, BAO, BBN, Ly-alpha, and supernova posterior shifts
+  notes: The paper uses Planck-18 as part of its comparison/constraint data set.
+  observability: high
+  predicted_effect: The model can reproduce nearly CDM-like CMB spectra for suitable parameters while
+    combined cosmological data set lower bounds on scalar masses and penalize some potentials in Bayesian
+    evidence.
+  redshift_range: background to z approximately 1100 plus low-redshift distance probes
+  relevance: high
+  scale_range: CMB angular spectra plus BAO/SNe/Ly-alpha summary statistics
+  source_reference_ids:
+  - arxiv:2112.09337
+  - arxiv:1807.06209
+  subchannel: combined_cosmological_likelihoods
+constraints:
+- allowed_regions:
+  - Masses above the quoted lower bounds remain allowed by the paper's combined data set, subject to the
+    sampled priors.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: Mass bounds are conditional on the sampled potential, priors, and data compilation in
+      the paper.
+    id: single-field-prior-volume
+    impact_if_violated: Changing priors or Ly-alpha treatment can move the quoted 95 percent lower bound.
+    notes: null
+    scope: single-field cosmological fit
+    source_reference_ids:
+    - arxiv:2112.09337
+    status: assumed
+  benchmark_implications:
+  - The single-field benchmark recovers CDM-like common cosmological parameters when the scalar mass is
+    high enough.
+  caveats:
+  - The OCR text does not expose full covariance tables; use the paper likelihood/code for precision recasts.
+  constrained_parameters:
+  - log10(m/eV)
+  - lambda
+  constraint_type: cosmological
+  data_release: Planck 2018 plus BAO, BBN, Ly-alpha forest, and SNe data as used in the paper
+  excluded_regions:
+  - Single-field quadratic and cosh models with log10(m/eV) below about -21.9 are outside the quoted 95
+    percent lower bound; cosine models below about -21.8 are outside the quoted 95 percent lower bound.
+  id: con_single_field_mass_bounds
+  likelihood_available: partial
+  likelihood_reference: Modified MontePython likelihood stack in the primary paper
+  name: Single-field scalar mass lower bounds
+  notes: Primary paper quotes lower bounds for quadratic/cosh and cosine potentials.
+  observable_channel: CMB plus BAO/BBN/Ly-alpha/SNe
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2112.09337
+  - arxiv:1807.06209
+- allowed_regions:
+  - Example masses near 1e-22 eV and 1e-20 eV fall within the reported confidence regions when the density
+    fractions are adjusted.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The fit assumes real, spatially homogeneous scalar fields with no direct inter-field
+      interactions.
+    id: noninteracting-real-fields
+    impact_if_violated: Interactions or complex-field dynamics would alter perturbations and mass bounds.
+    notes: null
+    scope: model definition
+    source_reference_ids:
+    - arxiv:2112.09337
+    status: assumed
+  benchmark_implications:
+  - If one scalar dominates the dark matter density, the other density parameter is driven small because
+    the total dark matter abundance is fixed.
+  caveats:
+  - Evidence was not quoted for some multi-field/cosine cases because posteriors were not mono-modal or
+    parameters were unconstrained.
+  constrained_parameters:
+  - log10(m_1/eV)
+  - log10(m_2/eV)
+  - R
+  - Omega_i
+  constraint_type: cosmological
+  data_release: Planck 2018 plus BAO, BBN, Ly-alpha forest, and SNe data as used in the paper
+  excluded_regions:
+  - Two-field quadratic-quadratic and quadratic-cosine combinations below log10(m_1,2/eV) about -22.1
+    are disfavored at 95 percent in the paper; the cosine-cosine second field has a quoted lower bound
+    near -22.2.
+  id: con_two_field_mass_bounds
+  likelihood_available: partial
+  likelihood_reference: Modified MontePython chains and modified CLASS solver from the primary paper
+  name: Two-field mass and fraction constraints
+  notes: The primary paper gives two-field lower mass bounds and density-fraction behavior.
+  observable_channel: linear matter power and combined cosmology
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2112.09337
+- allowed_regions:
+  - Other combinations can be as preferred as CDM within the paper's evidence discussion.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: Bayesian evidence interpretation requires well-behaved posteriors.
+    id: posterior-modality
+    impact_if_violated: Multimodal or unconstrained parameters make the evidence unstable.
+    notes: null
+    scope: model selection
+    source_reference_ids:
+    - arxiv:2112.09337
+    status: assumed
+  benchmark_implications:
+  - Do not rank the whole MSFDM family by one potential choice without checking posterior modality.
+  caveats:
+  - The paper itself warns about taking Bayes factors carefully when parameters are unconstrained.
+  constrained_parameters:
+  - potential choice
+  - prior volume
+  constraint_type: numerical
+  data_release: null
+  excluded_regions:
+  - Some scalar potential choices are penalized relative to CDM in Bayes factor comparisons.
+  id: con_bayes_evidence_caveat
+  likelihood_available: partial
+  likelihood_reference: MCEvidence post-processing in the primary paper
+  name: Bayesian evidence caveat for potential choices
+  notes: Evidence is useful as a caveat, not as a universal exclusion.
+  observable_channel: Bayesian model comparison
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:2112.09337
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Implemented in the primary paper for linear cosmology; nonlinear structure recasting
+      remains open.
+    caveats:
+    - No nonlinear simulations or halo likelihoods are included.
+    constraint_ids:
+    - con_single_field_mass_bounds
+    - con_two_field_mass_bounds
+    - con_bayes_evidence_caveat
+    derived_quantities:
+    - CMB spectra
+    - linear matter power spectrum
+    - posterior samples
+    - Bayes factors
+    description: Compute multiscalar background and perturbations, pass spectra to a cosmological likelihood
+      stack, and infer mass/fraction bounds.
+    forward_model_chain:
+    - inputs:
+      - m_i
+      - R
+      - potential choice
+      notes: Official author code is linked in the model card.
+      outputs:
+      - C_l
+      - P(k)
+      step_id: solve_background_perturbations
+      step_type: boltzmann_solver
+      tool_or_code: modified CLASS
+      validity: Linear perturbation regime; paper code handles multiple scalar fields.
+    - inputs:
+      - C_l
+      - P(k)
+      - BAO/BBN/Ly-alpha/SNe likelihoods
+      notes: Chains checked with Gelman-Rubin in the paper.
+      outputs:
+      - posterior chains
+      - 95 percent bounds
+      step_id: sample_likelihoods
+      step_type: likelihood
+      tool_or_code: modified MontePython
+      validity: Depends on the paper data compilation and priors.
+    - inputs:
+      - posterior chains
+      notes: The paper omits evidence for some multimodal cases.
+      outputs:
+      - Bayes factors
+      step_id: compare_models
+      step_type: validation
+      tool_or_code: MCEvidence
+      validity: Only robust for sufficiently constrained, well-behaved posteriors.
+    id: route_class_montepython_msf
+    input_parameters:
+    - m_i
+    - R
+    - lambda_i
+    - Omega_b
+    - Omega_sfdm
+    - H0
+    likelihoods:
+    - Planck 2018
+    - BAO
+    - BBN
+    - Ly-alpha forest
+    - SNe
+    observable_ids:
+    - obs_mps_small_scale_cutoff
+    - obs_cmb_bao_lya_posteriors
+    required_code_resources:
+    - modified CLASS
+    - modified MontePython
+    - MCEvidence
+    route_status: implemented
+    source_model_features:
+    - N real scalar fields
+    - quadratic/cosine/cosh potentials
+    - no direct inter-field interactions
+    validation_tests:
+    - Recover CDM-like spectra in high-mass limits
+    - Check posterior convergence
+    - Compare against Planck 2018 baseline

@@ -1,0 +1,285 @@
+_source:
+  shard: arXiv_src_2009_079_wds.tar
+  paper_id: '2009_14591'
+  source_member: 2009_14591.json
+schema_version: model_only_v0
+model_id: 2009_14591_final_state_sommerfeld_wimp_freezeout_v1
+identity:
+  name: Final-state Sommerfeld WIMP freeze-out model
+  family: wimp_thermal_freeze_out
+  aliases:
+  - FSS WIMP freeze-out
+  - final-state Sommerfeld thermal relic model
+  short_description: A simplified WIMP thermal freeze-out model in which nearly degenerate annihilation
+    products feel a long-range Coulomb-like force, changing the annihilation rate and relic density through
+    a final-state Sommerfeld factor.
+  historical_origin_or_motivation: Motivated by extending Sommerfeld corrections from initial-state WIMP
+    pairs to nonrelativistic final-state annihilation products.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - WIMP thermal freeze-out
+  - Sommerfeld-enhanced annihilation
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper gives a proof-of-concept cross-section treatment rather than a full ultraviolet Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: WIMP dark matter particle
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - two nearly degenerate final-state particles
+  - possible coannihilator in corollary scenario
+  mediators:
+  - long-range mediator producing a Coulomb-like final-state potential
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: The central model assumes stable WIMP dark matter; the coannihilation corollary
+    mentions a shared discrete symmetry such as R parity or KK parity.
+  symmetries:
+  - name: unspecified WIMP stabilizing symmetry
+    type: discrete
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  - unknown
+  standard_model_targets:
+  - generic final-state particles, either Standard Model or BSM
+  dark_sector_couplings:
+  - Coulomb-like final-state potential with strength alpha_f
+  mediator_types:
+  - massless or long-range final-state mediator
+  interaction_operators:
+  - 2-to-2 s-wave annihilation with final-state Sommerfeld factor
+  annihilation_channels:
+  - DM DM -> final-state pair
+  decay_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m1
+    description: Mass of each incoming WIMP in the simplified annihilation process.
+    unit: mass
+    role: core
+    status: inferred
+    notes: Symbol from paper; numerical value not fixed.
+  - name: final-state particle mass
+    symbol: m2
+    description: Mass of each outgoing particle in the 2-to-2 process.
+    unit: mass
+    role: core
+    status: inferred
+    notes: The mass ratio z=m2/m1 controls whether final states are nonrelativistic.
+  - name: final-to-initial mass ratio
+    symbol: z
+    description: Ratio m2/m1.
+    role: core
+    status: inferred
+    notes: The paper discusses z close to one and gives z about 0.8 as an example where final states can
+      be nonrelativistic.
+  - name: final-state long-range coupling
+    symbol: alpha_f
+    description: Strength of the Coulomb-like final-state potential.
+    role: core
+    status: inferred
+    notes: Electroweak-sized values can give relic-density corrections beyond percent-level observational
+      accuracy.
+  - name: final-state decay-width ratio
+    symbol: Gamma2/m2
+    description: Controls suppression of FSS when final-state particles decay before the Sommerfeld effect
+      develops.
+    role: core
+    status: inferred
+    notes: Effects become significant around O(10^-1) and non-negligible around O(10^-2) in the paper
+      discussion.
+production:
+  mechanisms:
+  - thermal freeze-out with final-state Sommerfeld-corrected annihilation
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - thermally averaged annihilation cross section
+  - final-state Sommerfeld factor
+  - mass ratio z
+  - long-range coupling alpha_f
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The model is a correction to the WIMP thermal relic calculation, not a full production history
+    from inflation onward.
+relic_density:
+  full_or_subcomponent: unknown
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - s-wave annihilation coefficient
+  - Sommerfeld factor
+  - m2/m1
+  - alpha_f
+  - final-state lifetime
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: Incoming WIMPs are treated with a Maxwell-Boltzmann velocity distribution during freeze-out.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: fss_nonrelativistic_final_states
+  applies_to: model
+  condition: Final-state annihilation products must be nonrelativistic and feel a long-range force.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+- id: fss_lifetime_cutoff
+  applies_to: model
+  condition: If final-state particles decay before the Sommerfeld time scale, the FSS correction is suppressed.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: stable_wimp
+    description: The incoming dark matter particle is stable on cosmological timescales.
+    scope: global
+    status: assumed
+  - id: thermal_freezeout
+    description: The relic abundance is computed in a thermal freeze-out setup.
+    scope: production
+    status: assumed
+  - id: coulomb_final_state
+    description: The long-range force between final-state particles is approximated by a Coulomb-like
+      potential.
+    scope: theory
+    status: approximate
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  caveats: []
+provenance:
+  model_id: 2009_14591_final_state_sommerfeld_wimp_freezeout_v1
+  model_name: Final-state Sommerfeld WIMP freeze-out model
+  model_family: wimp_thermal_freeze_out
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2009.14591
+      title: Final-state Sommerfeld effect on dark matter relic abundance
+      year: 2020
+      arxiv_id: '2009.14591'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used for this extraction.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:2009.14591
+      section: abstract/introduction
+      page: null
+      quote_or_summary: Studies a final-state Sommerfeld effect on DM relic abundance in thermal freeze-out.
+    - reference_id: arxiv:2009.14591
+      section: FSS calculation
+      page: null
+      quote_or_summary: Assumes two incoming particles of mass m1 and two outgoing particles of mass m2
+        with a Coulomb-like potential.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2009.14591
+      note: The paper considers two WIMP dark matter particles annihilating into two equal-mass final-state
+        particles, with masses m1 and m2.
+      confidence: medium
+      section: final-state Sommerfeld calculation
+    interactions:
+    - reference_id: arxiv:2009.14591
+      note: The final-state particles interact through a Coulomb-like long-range potential V(r) = -alpha_f/r,
+        modifying the two-body wave function.
+      confidence: medium
+      section: final-state Sommerfeld calculation
+    production_mechanism:
+    - reference_id: arxiv:2009.14591
+      note: The relic density is treated in the thermal freeze-out scenario with thermally averaged s-wave
+        annihilation including the FSS factor.
+      confidence: medium
+      section: thermal freeze-out relic abundance
+    cosmological_history:
+    - reference_id: arxiv:2009.14591
+      note: The calculation assumes WIMP freeze-out in the early universe and studies corrections to the
+        relic abundance.
+      confidence: medium
+      section: introduction and relic calculation
+    parameter_ranges:
+    - reference_id: arxiv:2009.14591
+      note: The key parameters are the mass ratio z=m2/m1, the long-range coupling alpha_f, and a final-state
+        decay-width cutoff Gamma2/m2.
+      confidence: medium
+      section: FSS factor and decaying final states
+    validity_domain:
+    - reference_id: arxiv:2009.14591
+      note: The effect applies when annihilation products are nonrelativistic and subject to a long-range
+        force; decays can suppress it if the lifetime is short.
+      confidence: medium
+      section: final-state decay discussion
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - No full UV completion is specified.
+  - Relic impact depends strongly on the final-state lifetime and mass ratio.
+  validation_status: expert_judgment_only
+  notes: Accepted as a substantive simplified WIMP relic-density variant rather than a complete particle
+    model.
+agent_failure_modes:
+  warnings:
+  - id: do_not_treat_as_uv_model
+    severity: medium
+    category: assumption_mismatch
+    warning: This row is a simplified relic-density mechanism; do not infer a full particle spectrum or
+      UV mediator from it.
+    mitigation: Require a concrete BSM completion before using it for collider or direct-detection claims.

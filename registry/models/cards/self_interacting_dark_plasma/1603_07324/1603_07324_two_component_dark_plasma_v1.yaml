@@ -1,0 +1,339 @@
+_source:
+  shard: arXiv_src_1603_016_wds.tar
+  paper_id: '1603_07324'
+  source_member: 1603_07324.json
+schema_version: model_only_v0
+model_id: 1603_07324_two_component_dark_plasma_v1
+identity:
+  name: two-component dark plasma dark matter
+  family: self_interacting_dark_plasma
+  aliases:
+  - dark plasma component
+  - two-component dark matter with dark plasma
+  short_description: A two-component dark matter scenario with a mostly collisionless component plus a
+    10-40 percent interacting dark plasma subcomponent with long-range dark-photon self-interactions.
+  historical_origin_or_motivation: The paper studies whether a fluid-like interacting dark component can
+    reproduce both Bullet Cluster and Abell 520 mass distributions.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - self-interacting dark matter
+  - dark U(1) plasma
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper keeps the simulation generic but gives a minimal dark U(1) fermion-plus-dark-photon
+    Lagrangian as a concrete realization.
+particle_content:
+  dark_matter_candidate:
+    name: collisionless dark matter plus interacting dark-plasma component
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - vector-like dark fermions and antifermions in the minimal plasma realization
+  - predominant WIMP-like noninteracting component
+  mediators:
+  - dark photon
+  dark_radiation_species:
+  - dark photon
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - interacting dark-plasma fermions
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The minimal interacting component is charged under a dark U(1); stability of
+    the total multi-component dark matter sector is not fully specified in the paper.
+  symmetries:
+  - name: dark U(1)
+    type: gauge
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - none
+  standard_model_targets: []
+  dark_sector_couplings:
+  - long-range self-interactions mediated by a dark photon
+  - collective plasma effects and shock dissipation
+  mediator_types:
+  - massless or light dark photon in the minimal model
+  interaction_operators:
+  - dark U(1) gauge interaction of vector-like dark fermions
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: not_applicable
+  annihilation_channels:
+  - dark fermion annihilation to dark photons
+  decay_channels: []
+  self_scattering_channels:
+  - dark-plasma collective self-interactions
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark plasma mass fraction
+    symbol: f_DP
+    description: Mass fraction of the interacting plasma component in cluster simulations.
+    range: 0.10 to 0.40 scanned; at least about 0.25-0.30 favored for the A520 dark core
+    role: core
+    status: inferred
+  - name: dark fermion mass
+    symbol: m_D
+    description: Mass of the vector-like dark fermions in the minimal dark U(1) realization.
+    range: below about 1 TeV in the minimal setup discussed for the generic properties
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dark fine structure constant
+    symbol: alpha_D
+    description: Dark U(1) coupling strength.
+    value: approximately 1e-4*(m_D/GeV) for thermal contact with the visible sector in the minimal freeze-out
+      case
+    role: core
+    status: inferred
+  - name: artificial viscosity parameter
+    description: SPH artificial viscosity used to model dark plasma shock behavior in simulations.
+    role: computational
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out of dark fermions to dark photons
+  - dark freeze-out alternative
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - dark fermion mass
+  - dark fine structure constant
+  - dark-plasma fraction
+  - possible dark freeze-out history
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: The card describes the full two-component dark matter scenario; the interacting plasma is only
+    a subcomponent.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: interacting dark plasma fraction
+    symbol: f_DP
+    description: Fraction of total dark matter in the plasma subcomponent.
+    range: 0.10 to 0.40
+    role: core
+    status: scanned
+  calculation_type: mixed
+  key_dependencies:
+  - freeze-out to dark photons
+  - possible dark freeze-out
+  - plasma fraction
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - multi-component dark matter
+  - dark U(1) radiation in the minimal realization
+  dark_sector_temperature: null
+  delta_neff: null
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: unknown
+  notes: Cluster simulations initialize collisionless and plasma halos with NFW-like profiles; a cosmological
+    phase-space distribution is not derived.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    density_profile_effect: interacting plasma can remain near the collision center and form dark cores
+      in cluster mergers
+    subhalo_survival_effect: plasma component of a smaller subcluster can be partly absorbed by a larger
+      halo during core passage
+    simulation_calibrated: partial
+validity_domain:
+- id: fluid_approximation
+  applies_to: simulation
+  condition: Dark plasma can be modeled as a fluid when collective effects thermalize on timescales far
+    shorter than cluster collisions.
+  status: inferred
+  extrapolation_risk: medium
+- id: ineffective_radiative_cooling
+  applies_to: model
+  condition: Radiative cooling of the interacting component must be ineffective on astronomical scales.
+  status: assumed
+  extrapolation_risk: medium
+- id: plasma_fraction_cluster_fit
+  applies_to: parameter
+  condition: A520-like dark cores in the paper require roughly at least 25-30 percent dark-plasma fraction
+    in the scan.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: two_component_dm
+    description: Dark matter consists of a predominant collisionless component and an interacting dark-plasma
+      subcomponent.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+  - id: long_range_dark_force
+    description: The interacting subcomponent has long-range self-interactions mediated by a dark photon.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: nfw_initial_halos
+    description: Cluster simulations initialize the components with NFW-like halo profiles and hydrostatic
+      plasma support.
+    scope: structure_formation
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Cosmological simulations could change the initial structure.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses Gadget-2 N-body/SPH simulations for the dark plasma and collisionless components;
+    no packaged model code is identified in the extracted text.
+  primary_code_role: structure_formation_simulation
+provenance:
+  model_id: 1603_07324_two_component_dark_plasma_v1
+  model_name: two-component dark plasma dark matter
+  model_family: self_interacting_dark_plasma
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1603_07324'
+      title: Simulations of galaxy cluster collisions with a dark plasma component
+      authors:
+      - Christian Spethmann
+      - Hardi Veermae
+      - Tiit Sepp
+      - Matti Heikinheimo
+      - Boris Deshev
+      - Andi Hektor
+      - Martti Raidal
+      year: 2016
+      arxiv_id: '1603.07324'
+      doi: null
+      url: null
+      role: extension
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0010
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1603_07324'
+      section: Abstract
+      page: null
+      quote_or_summary: Defines the two-component scenario with 10-40 percent dark plasma and reports
+        cluster-collision simulations.
+    - reference_id: '1603_07324'
+      section: Dark Plasma
+      page: null
+      quote_or_summary: Lists generic dark-plasma properties and a minimal dark U(1) fermion model with
+        freeze-out logic.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1603_07324'
+      note: The simulation scenario assumes dark matter has a cold collisionless component and an interacting
+        dark-plasma subcomponent; a minimal realization uses vector-like dark fermions and antifermions.
+      confidence: high
+      section: Dark Plasma
+      page: null
+    symmetries:
+    - reference_id: '1603_07324'
+      note: The concrete minimal model is charged under a dark U(1) gauge group with a dark photon mediator.
+      confidence: medium
+      section: Dark Plasma
+      page: null
+    interactions:
+    - reference_id: '1603_07324'
+      note: Long-range dark-photon self-interactions make the interacting component behave as a plasma
+        unless the dark coupling is negligible.
+      confidence: high
+      section: Dark Plasma
+      page: null
+    production_mechanism:
+    - reference_id: '1603_07324'
+      note: The paper states that dark fermions can freeze out through annihilation to dark photons and
+        gives an alpha_D to mass relation for thermal contact with the visible sector; dark freeze-out
+        is also allowed.
+      confidence: medium
+      section: Dark Plasma
+      page: null
+    cosmological_history:
+    - reference_id: '1603_07324'
+      note: The model allows a 10-40 percent dark-plasma mass fraction in simulations, with the rest predominantly
+        noninteracting dark matter.
+      confidence: high
+      section: Abstract and Simulation
+      page: null
+    parameter_ranges:
+    - reference_id: '1603_07324'
+      note: The parameter scan varies the dark-plasma mass fraction and artificial viscosity; successful
+        A520-like dark cores require roughly at least 25-30 percent plasma fraction.
+      confidence: medium
+      section: Results
+      page: null
+    validity_domain:
+    - reference_id: '1603_07324'
+      note: Hydrodynamic treatment is motivated when collective plasma effects reach local thermal equilibrium
+        on timescales far shorter than cluster collisions and radiative cooling is ineffective.
+      confidence: medium
+      section: Dark Plasma
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The paper explicitly says the simulations are generic and do not require one unique microphysical
+    realization.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - generic plasma microphysics
+  - SPH artificial viscosity mapping to physical viscosity
+  - cluster initial conditions
+  validation_status: partially_validated
+agent_failure_modes:
+  warnings:
+  - id: generic_microphysics
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not infer a unique particle model from this entry; the paper intentionally treats a generic
+      class of dark-plasma realizations.
+    mitigation: Keep the minimal dark U(1) realization separate from the simulation-level two-component
+      assumptions.
+  - id: structure_initial_conditions
+    severity: medium
+    category: extrapolation
+    warning: The paper notes that cosmological simulations are needed to verify whether the assumed initial
+      dark-plasma halo structure arises from primordial perturbations.
+    mitigation: Avoid using the cluster-fit fraction as a universal cosmological prediction.

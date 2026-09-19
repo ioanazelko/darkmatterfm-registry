@@ -1,0 +1,802 @@
+_source:
+  shard: arXiv_src_1412_008_wds.tar
+  paper_id: '1412_3823'
+  source_member: 1412_3823.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1412_3823_higgs_portal_vector_dark_matter_u1_v1
+identity:
+  name: Higgs-portal vector dark matter with broken U(1)
+  family: higgs_portal_dark_matter
+  aliases:
+  - Higgs portal vector dark matter
+  - U(1) vector dark matter with scalar singlet
+  short_description: A renormalizable SM extension with a broken U(1) gauge symmetry, a complex scalar
+    singlet, and a stable vector boson dark matter candidate coupled through the Higgs portal.
+  historical_origin_or_motivation: Used to connect successful vector-DM phenomenology with a strongly
+    first-order electroweak phase transition.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Higgs portal dark matter
+  - spontaneously broken hidden U(1) gauge extension
+  - electroweak baryogenesis-motivated phase transition
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'no'
+  notes: The paper writes the kinetic terms and scalar potential for H and a U(1)-charged complex singlet
+    S.
+particle_content:
+  dark_matter_candidate:
+    name: V_mu
+    spin: '1'
+    statistics: vector
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - complex scalar singlet S
+  - CP-even scalar singlet-like state s
+  mediators:
+  - SM-like Higgs h
+  - scalar singlet s
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - V_mu
+  unstable_parent_particles:
+  - scalar singlet s
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z2 discrete flavor symmetry makes V_mu odd and all other fields even, stabilizing
+    the vector dark matter.
+  symmetries:
+  - name: hidden U(1)
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneously broken by complex scalar singlet S
+    breaking_scale:
+      name: singlet vacuum expectation value
+      symbol: v_s
+      description: VEV that gives V_mu its mass.
+      range:
+        min: 100
+        max: 2000
+        inclusive_min: true
+        inclusive_max: true
+        unit: GeV
+        notes: Range used in the scan.
+      unit: GeV
+      role: core
+      status: inferred
+  - name: Z2 flavor symmetry
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken for V_mu stability
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - Standard Model fermions and gauge bosons through scalar mixing
+  dark_sector_couplings:
+  - U(1) gauge coupling g_N
+  - Higgs-singlet quartic lambda_2
+  - singlet quartic lambda_1
+  mediator_types:
+  - scalar Higgs portal
+  - massive vector dark matter
+  interaction_operators:
+  - (H^dagger H)(S^dagger S)
+  - V_mu V^mu h/s through singlet breaking
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: mild
+    velocity_dependence: none
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - V V -> f f
+  - V V -> W+ W-
+  - V V -> Z Z
+  - V V -> h h
+  - V V -> h s
+  - V V -> s s
+  decay_channels: []
+  self_scattering_channels:
+  - vector self-interactions from hidden U(1) sector not detailed
+  cp_structure: CP-even scalar mixing
+  flavor_structure: SM fields carry no U(1) charge
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: vector dark matter mass
+    symbol: m_V
+    description: Mass induced by spontaneous breaking of the hidden U(1).
+    range: scanned; viable points near scalar-singlet resonance in one slice
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet scalar mass
+    symbol: m_s
+    description: Example scalar singlet mass used in direct-detection plot.
+    value: 320
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet VEV
+    symbol: v_s
+    description: Singlet vacuum expectation value.
+    range:
+      min: 100
+      max: 2000
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Range scanned for viable points.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet quartic
+    symbol: lambda_1
+    description: Singlet quartic coupling.
+    range:
+      min: 0
+      max: 2
+      inclusive_min: false
+      inclusive_max: false
+      unit: null
+      notes: Range scanned for viable points.
+    role: core
+    status: inferred
+  - name: Higgs portal quartic
+    symbol: lambda_2
+    description: Higgs-singlet quartic controlling scalar mixing and the phase transition.
+    role: core
+    status: inferred
+  - name: hidden gauge coupling
+    symbol: g_N
+    description: U(1) gauge coupling.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through Higgs-portal annihilation
+  - annihilation to SM particles and scalar final states
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - Higgs-portal annihilation cross sections
+  - scalar mixing
+  - m_V relative to W/h/s thresholds
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper computes annihilation channels and identifies points with correct relic density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: relic density target
+    symbol: Omega_h2
+    description: Observed cold dark matter density quoted in the paper.
+    value: 0.1186 +/- 0.0031
+    role: derived
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - m_V
+  - m_s
+  - v_s
+  - lambda_1
+  - lambda_2
+  - scalar mixing angle
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - strongly first-order electroweak phase transition enabled by Higgs-singlet interactions
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - hidden U(1) breaking
+  - electroweak phase transition studied with finite-temperature effective potential
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Thermal cold vector-DM behavior is implied; no distribution function is tabulated.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: CDM-like in the absence of specified dark-sector long-range effects
+    subhalo_mass_function_effect: CDM-like in the absence of specified dark-sector long-range effects
+    simulation_calibrated: 'no'
+validity_domain:
+- id: spontaneous_breaking
+  applies_to: model
+  condition: Requires hidden U(1) breaking by the scalar singlet, inducing the vector mass.
+  status: established
+  extrapolation_risk: low
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: thermal_relic_window
+  applies_to: parameter
+  condition: For m_V below m_W, annihilation is Yukawa suppressed and overproduces DM in the discussed
+    slice.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: phase_transition_region
+  applies_to: parameter
+  condition: Strong first-order EWPT requires suitable Higgs-portal and singlet-sector parameters.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: sm_neutral_under_u1
+    description: All SM fields carry no hidden U(1) charge.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: exact_z2
+    description: The Z2 flavor symmetry remains exact so V_mu is stable.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: thermal_relic
+    description: The relic-density calculation assumes the usual thermal annihilation setting.
+    scope: production
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public model code is identified in the assigned text.
+provenance:
+  model_id: 1412_3823_higgs_portal_vector_dark_matter_u1_v1
+  model_name: Higgs-portal vector dark matter with broken U(1)
+  model_family: higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: First order electroweak phase transition triggered by the Higgs portal vector dark matter
+      authors:
+      - Wei Chao
+      year: 2014
+      arxiv_id: '1412.3823'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run-local SQLite database.
+    - arxiv_id: '1412.3823'
+      authors:
+      - Chao, Wei
+      doi: 10.1103/PhysRevD.92.015025
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1412.3823
+      role: original_model
+      title: First order electroweak phase transition triggered by the Higgs portal vector dark matter
+      url: https://arxiv.org/abs/1412.3823
+      year: 2015
+    constraint_papers:
+    - arxiv_id: '1212.2131'
+      authors:
+      - Baek, Seungwon
+      - Ko, P.
+      - Park, Wan-Il
+      - Senaha, Eibun
+      doi: 10.1007/JHEP05(2013)036
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1212.2131
+      role: constraint
+      title: 'Higgs portal vector dark matter: revisited'
+      url: https://arxiv.org/abs/1212.2131
+      year: 2013
+    - arxiv_id: '2009.08635'
+      authors:
+      - Chiang, Cheng-Wei
+      - Huang, Da
+      - Lu, Bo-Qiang
+      doi: 10.1088/1475-7516/2021/01/035
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2009.08635
+      role: constraint
+      title: Electroweak phase transition confronted with dark matter detection constraints
+      url: https://arxiv.org/abs/2009.08635
+      year: 2021
+    - arxiv_id: '1601.06714'
+      authors:
+      - Chao, Wei
+      doi: 10.48550/arXiv.1601.06714
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1601.06714
+      role: constraint
+      title: Hiding Scalar Higgs Portal Dark Matter
+      url: https://arxiv.org/abs/1601.06714
+      year: 2016
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Model introduction
+      page: null
+      quote_or_summary: Defines a broken U(1) extension with V_mu stabilized by Z2 and a complex scalar
+        singlet.
+    - reference_id: paper
+      section: Dark matter phenomenology and EWPT
+      page: null
+      quote_or_summary: Computes annihilation channels/relic-density points and finite-temperature phase
+        transition behavior.
+    unresolved_items:
+    - Primary paper did not calculate a stochastic GW spectrum.
+    - Modern direct-detection limits should be recast for the vector-U(1) model.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The DM candidate is the hidden U(1) vector boson V_mu; a complex scalar singlet breaks the
+        gauge symmetry.
+      confidence: high
+      section: Model section
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: The model has hidden U(1) and a Z2 flavor symmetry under which V_mu is odd.
+      confidence: high
+      section: Model section
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The Lagrangian includes H and S kinetic terms and a Higgs-singlet quartic potential.
+      confidence: high
+      section: Model section
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The paper calculates vector-DM annihilation channels and identifies relic-density-compatible
+        points.
+      confidence: high
+      section: Dark matter phenomenology
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: The same Higgs-portal interaction is studied as a trigger for a strongly first-order electroweak
+        phase transition.
+      confidence: high
+      section: EWPT section
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: Example scans use v_s from 100 to 2000 GeV and lambda_1 from 0 to 2, with m_s=320 GeV in one
+        plot.
+      confidence: medium
+      section: Dark matter phenomenology
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: For m_V below m_W, annihilation to fermions is Yukawa-suppressed and overproduces DM in the
+        paper discussion.
+      confidence: medium
+      section: Dark matter phenomenology
+      page: null
+    constraints:
+    - confidence: high
+      note: Related UV-completion paper states bare vector Higgs-portal EFTs are not renormalizable/unitary
+        without the dark Higgs.
+      page: null
+      reference_id: arxiv:1212.2131
+      section: Vector dark matter discussion
+    - confidence: medium
+      note: Related analysis quotes LUX/PandaX-II/XENON1T pressure on singlet EWPT dark matter with SI
+        cross sections around 1e-45 to 1e-46 cm^2.
+      page: null
+      reference_id: arxiv:2009.08635
+      section: Updated constraints
+    observables:
+    - confidence: high
+      note: Primary paper states vector Higgs portal can satisfy LUX-era dark matter constraints while
+        generating a strongly first-order EWPT.
+      page: null
+      reference_id: arxiv:1412.3823
+      section: Introduction and dark matter phenomenology
+    - confidence: medium
+      note: Related singlet-portal analysis notes first-order EWPTs can source mHz stochastic GWs and
+        face direct-detection constraints.
+      page: null
+      reference_id: arxiv:2009.08635
+      section: Introduction
+    routes:
+    - confidence: high
+      note: Primary paper links vector-DM relic/direct-detection formulas to the same scalar portal that
+        controls EWPT strength.
+      page: null
+      reference_id: arxiv:1412.3823
+      section: Model, DM, and EWPT sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: high
+  theory_robustness: high
+  observational_robustness: medium
+  computational_robustness: unknown
+  constraint_robustness: medium
+  dominant_uncertainties:
+  - finite-temperature higher-order corrections left to future work
+  - viable region depends on scalar-sector scan choices
+  validation_status: expert_judgment_only
+  notes: The model is explicitly specified and the paper connects relic density with EWPT parameter space.
+agent_failure_modes:
+  warnings:
+  - id: ewpt_approximation
+    severity: medium
+    category: extrapolation
+    warning: The paper notes that higher-order thermal corrections are left to future work.
+    mitigation: Use the EWPT region as paper-level evidence, not as a final precision boundary.
+    source_reference_ids:
+    - paper
+  - id: resonance_region
+    severity: low
+    category: assumption_mismatch
+    warning: One discussed slice survives mainly near the scalar-singlet resonance.
+    mitigation: Do not generalize that slice to all parameter choices without scanning.
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - Current XENONnT/LZ-style updates require a fresh recast beyond the primary LUX-era comparison.
+  channel: direct_detection
+  effect_direction: null_signal
+  environments:
+  - direct-detection target nuclei
+  id: obs_vector_portal_direct_detection
+  key_quantities:
+  - description: Mass of the hidden U(1) gauge boson.
+    name: vector dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:1412.3823
+    status: inferred
+    symbol: m_V
+    unit: GeV
+  - description: Mixing between the SM Higgs and singlet scalar.
+    name: scalar mixing angle
+    role: core
+    source_reference_ids:
+    - arxiv:1412.3823
+    - arxiv:1212.2131
+    status: inferred
+    symbol: theta
+  - description: Hidden U(1)-breaking scale setting the vector mass.
+    name: singlet VEV
+    role: core
+    source_reference_ids:
+    - arxiv:1412.3823
+    status: inferred
+    symbol: v_s
+    unit: GeV
+  linked_constraints:
+  - con_lux_vector_portal
+  linked_routes:
+  - route_vector_portal_dm_ewpt
+  name: Vector Higgs-portal nuclear recoil
+  notes: null
+  observability: high
+  predicted_effect: The hidden U(1) vector scatters on nuclei through scalar mixing with the SM Higgs;
+    the primary paper finds strong LUX pressure but viable parameter space remains.
+  redshift_range: today
+  relevance: critical
+  scale_range: nuclear recoil momentum transfer
+  source_reference_ids:
+  - arxiv:1412.3823
+  - arxiv:1212.2131
+  subchannel: spin-independent Higgs-mediated scattering
+- caveats:
+  - The primary paper did not compute a GW spectrum; the GW target is inferred through the strong-EWPT
+    route and related singlet literature.
+  channel: gravitational_waves
+  effect_direction: enhancement
+  environments:
+  - early Universe
+  - space-based GW detectors
+  id: obs_vector_portal_strong_ewpt_gw
+  key_quantities:
+  - description: Gauge-invariant critical temperature used in the primary EWPT analysis.
+    name: critical temperature
+    role: derived
+    source_reference_ids:
+    - arxiv:1412.3823
+    status: inferred
+    symbol: T_C
+    unit: GeV
+  - description: Strength criterion for electroweak baryogenesis-style first-order transition.
+    name: order parameter
+    role: derived
+    source_reference_ids:
+    - arxiv:1412.3823
+    status: inferred
+    symbol: v(T_C)/T_C
+  - description: Higgs-singlet quartic that links vector-DM phenomenology and EWPT strength.
+    name: portal coupling
+    role: core
+    source_reference_ids:
+    - arxiv:1412.3823
+    status: inferred
+    symbol: lambda_2
+  linked_constraints:
+  - con_ewpt_direct_detection_tension
+  linked_routes:
+  - route_vector_portal_dm_ewpt
+  name: Strong electroweak phase-transition target
+  notes: null
+  observability: medium
+  predicted_effect: The same Higgs-portal scalar interaction that controls vector dark-matter phenomenology
+    can make the electroweak phase transition strongly first order; related singlet studies identify mHz
+    gravitational waves as a possible test of such first-order transitions.
+  redshift_range: electroweak epoch
+  relevance: high
+  scale_range: bubble scale and mHz GW frequencies after redshift
+  source_reference_ids:
+  - arxiv:1412.3823
+  - arxiv:2009.08635
+  subchannel: mHz stochastic background from first-order EWPT
+constraints:
+- allowed_regions:
+  - Primary paper reports remaining parameter space satisfying relic density, direct detection, and strong
+    first-order EWPT.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The vector particle is the dominant dark matter abundance when comparing to LUX.
+    id: single-component-vector-dm
+    impact_if_violated: Subcomponent abundance would rescale the scattering rate.
+    notes: null
+    scope: direct detection
+    source_reference_ids:
+    - arxiv:1412.3823
+    status: assumed
+  benchmark_implications:
+  - Direct-detection constraints are central to selecting viable EWPT-compatible benchmarks.
+  caveats:
+  - The LUX-era limit should be updated for modern direct-detection data.
+  constrained_parameters:
+  - m_V
+  - theta
+  - v_s
+  - m_s
+  constraint_type: direct_detection
+  data_release: LUX direct-detection limit as used in primary paper
+  excluded_regions:
+  - Large scalar mixing and Higgs-portal scattering rates are excluded by LUX-era limits in the primary
+    analysis.
+  id: con_lux_vector_portal
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: LUX-era direct-detection pressure on vector Higgs portal
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1412.3823
+- allowed_regions:
+  - The assigned model includes the hidden U(1) and singlet scalar needed for a renormalizable vector
+    portal.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The vector mass arises from spontaneous hidden U(1) breaking rather than a hard Proca
+      mass.
+    id: renormalizable-hidden-u1
+    impact_if_violated: A hard-mass EFT would misstate direct-detection and collider phenomenology.
+    notes: null
+    scope: theory consistency
+    source_reference_ids:
+    - arxiv:1212.2131
+    - arxiv:1412.3823
+    status: established
+  benchmark_implications:
+  - The dark Higgs affects both direct detection and Higgs phenomenology, so it cannot be integrated out
+    blindly.
+  caveats:
+  - This is a consistency requirement, not an experimental exclusion.
+  constrained_parameters:
+  - dark Higgs field
+  - U(1)_X breaking
+  - scalar mixing
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - A bare effective vector Higgs-portal model without the dark Higgs has unitarity/renormalizability
+    problems.
+  id: con_vector_portal_uv_completion
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Hidden U(1) dark-Higgs UV completion requirement
+  notes: null
+  observable_channel: model consistency
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - arxiv:1212.2131
+  - arxiv:1412.3823
+- allowed_regions:
+  - The primary vector model found viable older LUX-era parameter space; updated limits require a vector-specific
+    recast.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: The related scalar-singlet direct-detection tension is used only as an update target
+      for the vector U(1) portal.
+    id: singlet-portal-transfer
+    impact_if_violated: Vector-specific rates and branching ratios can shift exclusions.
+    notes: null
+    scope: related-model constraint transfer
+    source_reference_ids:
+    - arxiv:2009.08635
+    - arxiv:1412.3823
+    status: assumed
+  benchmark_implications:
+  - Viable EWPT benchmarks must suppress nuclear recoil while keeping the transition strong.
+  caveats:
+  - No modern vector-portal global fit was performed.
+  constrained_parameters:
+  - lambda_2
+  - theta
+  - sigma_SI
+  - v(T_C)/T_C
+  constraint_type: direct_detection
+  data_release: LUX, PandaX-II, XENON1T as discussed in related singlet analysis
+  excluded_regions:
+  - Related singlet analyses find type-II EWPT regions largely excluded by LUX, PandaX-II, and XENON1T
+    when SI cross sections exceed roughly 1e-45 to 1e-46 cm^2.
+  id: con_ewpt_direct_detection_tension
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: EWPT versus direct-detection tension in singlet portals
+  notes: null
+  observable_channel: direct_detection and gravitational_waves
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2009.08635
+  - arxiv:1412.3823
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Strong-EWPT gravitational-wave target is route-level until a spectrum is computed.
+    constraint_ids:
+    - con_lux_vector_portal
+    - con_vector_portal_uv_completion
+    - con_ewpt_direct_detection_tension
+    derived_quantities:
+    - Omega_V h^2
+    - sigma_SI
+    - T_C
+    - v(T_C)/T_C
+    - GW spectrum
+    description: Compute vector relic density, direct-detection rates, finite-temperature EWPT strength,
+      and optional GW spectrum in the UV-complete hidden U(1) model.
+    forward_model_chain:
+    - inputs:
+      - potential parameters
+      - v_s
+      - theta
+      notes: null
+      outputs:
+      - scalar masses
+      - vector mass
+      - couplings
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Uses the renormalizable hidden-U(1) potential.
+    - inputs:
+      - annihilation channels
+      - couplings
+      notes: null
+      outputs:
+      - relic density
+      - indirect yields
+      step_id: s2
+      step_type: other
+      tool_or_code: micrOMEGAs or equivalent
+      validity: Needed to reproduce the primary relic-density scan.
+    - inputs:
+      - sigma_SI
+      - m_V
+      notes: null
+      outputs:
+      - direct-detection exclusion
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: Requires current DD limit curve; primary used LUX.
+    - inputs:
+      - finite-temperature effective potential
+      notes: null
+      outputs:
+      - T_C
+      - v(T_C)/T_C
+      - nucleation quantities
+      step_id: s4
+      step_type: simulation
+      tool_or_code: CosmoTransitions or equivalent
+      validity: Primary used a gauge-independent EWPT treatment; GW spectrum not computed here.
+    id: route_vector_portal_dm_ewpt
+    input_parameters:
+    - m_V
+    - m_s
+    - theta
+    - v_s
+    - lambda_1
+    - lambda_2
+    likelihoods:
+    - direct-detection likelihood unavailable
+    - EWPT/GW likelihood unavailable
+    observable_ids:
+    - obs_vector_portal_direct_detection
+    - obs_vector_portal_strong_ewpt_gw
+    required_code_resources:
+    - spectrum/relic-density code
+    - finite-temperature potential solver
+    - GW spectrum calculator
+    route_status: planned
+    source_model_features:
+    - hidden U(1) gauge vector stabilized by Z2
+    - complex scalar singlet breaking U(1)
+    - Higgs portal scalar mixing
+    validation_tests:
+    - recover primary viable LUX-era EWPT points
+    - verify hidden-U(1) UV completion changes EFT predictions

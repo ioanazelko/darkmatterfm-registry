@@ -1,0 +1,657 @@
+_source:
+  shard: arXiv_src_1703_008_wds.tar
+  paper_id: '1703_03295'
+  source_member: 1703_03295.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1703_03295_tracker_attractor_scalar_dm_v1
+identity:
+  name: Tracker-potential scalar-field dark matter
+  family: scalar_field_attractor_dark_matter
+  aliases:
+  - tracker attractor dark matter
+  - fuzzy scalar-field dark matter
+  short_description: A nonthermal coherent scalar-field dark-matter model based on an attractor potential.
+    Symmetric tracker wings make this the paper's most robust attractor potential for scalar-field dark
+    matter.
+  historical_origin_or_motivation: The paper adapts inflationary attractor potentials to scalar-field
+    dark matter to reduce the initial-condition fine tuning of canonical fuzzy dark matter.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - conformal scalar-field attractor framework
+  - scalar-field dark matter
+  lagrangian_available: 'yes'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The extracted potential is V(phi)=V0 phi^(2n)/(1-phi^2/(6 alpha m_p^2))^n, with n=1 for dark
+    matter.
+particle_content:
+  dark_matter_candidate:
+    name: coherently oscillating scalar field phi
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - scalar field phi
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The field is assumed to couple only gravitationally to ordinary matter, making
+    the coherent condensate effectively long-lived.
+  symmetries:
+  - name: local conformal invariance
+    type: gauge
+    exact_or_approximate: broken
+    breaking: fixed by conformal gauge choice
+    breaking_scale: null
+  - name: O(1,1)-type scalar-field structure
+    type: global
+    exact_or_approximate: broken
+    breaking: deformed by the attractor potential
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - metric/gravity
+  dark_sector_couplings: []
+  mediator_types:
+  - graviton/effective metric coupling
+  interaction_operators:
+  - minimal gravitational coupling
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: potential height
+    symbol: V0
+    description: Overall scale of the attractor potential.
+    role: core
+    status: inferred
+  - name: geometric attractor parameter
+    symbol: alpha
+    description: Parameter inherited from the attractor construction.
+    role: core
+    status: inferred
+  - name: potential exponent
+    symbol: n
+    description: n=1 yields pressureless oscillations appropriate for dark matter.
+    value: 1
+    role: core
+    status: inferred
+  - name: scalar mass near minimum
+    symbol: m
+    description: Effective harmonic mass near the potential minimum.
+    range: ultralight examples such as 10^-22 eV are discussed
+    unit: eV
+    role: derived
+    status: inferred
+  - name: initial scalar density
+    symbol: rho_i
+    description: Initial scalar-field energy density controlling the present matter abundance.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - coherent scalar-field oscillations
+  - possible spectator field or incomplete post-preheating remnant
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - initial scalar-field energy density
+  - onset of oscillations when H drops below the scalar mass
+  - shape of attractor potential
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper does not give a particle freeze-out calculation; abundance is set by classical field
+    evolution and initial conditions.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: present matter density
+    symbol: Omega_0m
+    description: Examples target approximately the observed matter fraction.
+    value: '0.27'
+    role: cosmological
+    status: inferred
+  calculation_type: phenomenological
+  key_dependencies:
+  - V0
+  - alpha
+  - n
+  - m
+  - initial field density
+  - initial velocity
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - early overdamped scalar-field phase
+  - late coherent oscillations behaving as pressureless matter
+  phase_transitions: []
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  notes: The dark matter is modeled as a coherently oscillating classical scalar field rather than a particle
+    phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: suppression expected for ultralight/fuzzy behavior
+    simulation_calibrated: 'no'
+validity_domain:
+- id: pressureless_limit
+  applies_to: model
+  condition: The dark-matter interpretation requires n=1 so oscillations have averaged equation of state
+    w=0.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: late_harmonic_limit
+  applies_to: model
+  condition: Late-time structure calculations use the small-field harmonic behavior near the potential
+    minimum.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: initial_condition_branch
+  applies_to: cosmological_history
+  condition: The model uses the n=1 pressureless-oscillation limit and tracker initial conditions.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: gravity_only_coupling
+    description: The scalar field is assumed to interact with the rest of matter only via gravity.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: classical_field_evolution
+    description: The abundance calculation treats the dark matter as a classical homogeneous scalar field
+      plus perturbations.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated code or repository was identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 1703_03295_tracker_attractor_scalar_dm_v1
+  model_name: Tracker-potential scalar-field dark matter
+  model_family: scalar_field_attractor_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: 'Unknown title in extracted text: scalar-field attractors as dark matter and dark energy'
+      authors: []
+      year: 2017
+      arxiv_id: '1703.03295'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '1703.03295'
+      authors:
+      - Mishra, Swagat S.
+      - Sahni, Varun
+      - Shtanov, Yuri
+      doi: 10.1088/1475-7516/2017/06/045
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1703.03295
+      role: original_model
+      title: Sourcing dark matter and dark energy from α-attractors
+      url: https://arxiv.org/abs/1703.03295
+      year: 2017
+    constraint_papers:
+    - arxiv_id: astro-ph/0006024
+      authors:
+      - Matos, Tonatiuh
+      - Arturo Ureña-López, L.
+      doi: 10.1103/PhysRevD.63.063506
+      notes: Related local full text read for scalar dark matter plus quintessence cosmology context.
+      reference_id: arxiv:astro-ph/0006024
+      role: extension
+      title: Further analysis of a cosmological model with quintessence and scalar dark matter
+      url: https://arxiv.org/abs/astro-ph/0006024
+      year: 2001
+    - arxiv_id: '0806.0683'
+      authors:
+      - Matos, Tonatiuh
+      - Vázquez-González, Alberto
+      - Magaña, Juan
+      doi: 10.1111/j.1365-2966.2008.13957.x
+      notes: Related local full text read for phi-squared scalar-field dark matter context.
+      reference_id: arxiv:0806.0683
+      role: extension
+      title: φ<SUP>2</SUP> as dark matter
+      url: https://arxiv.org/abs/0806.0683
+      year: 2009
+    - arxiv_id: '1110.2684'
+      authors:
+      - Lora, V.
+      - Magaña, Juan
+      - Bernal, Argelia
+      - Sánchez-Salcedo, F. J.
+      - Grebel, E. K.
+      doi: 10.1088/1475-7516/2012/02/011
+      notes: Related local full text read for galactic-dynamics constraints on ultralight scalar dark
+        matter.
+      reference_id: arxiv:1110.2684
+      role: constraint
+      title: On the mass of ultra-light bosonic dark matter from galactic dynamics
+      url: https://arxiv.org/abs/1110.2684
+      year: 2012
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: introduction
+      page: null
+      quote_or_summary: The paper states that attractors can describe dark matter and perhaps dark energy.
+    - reference_id: paper
+      section: attractor Lagrangian
+      page: null
+      quote_or_summary: A conformal scalar-field Lagrangian is incorporated into the SM with gravity-only
+        dark-matter coupling.
+    - reference_id: paper
+      section: dark matter
+      page: null
+      quote_or_summary: The paper analyzes Tracker-potential scalar-field dark matter and its initial-condition
+        behavior.
+    unresolved_items:
+    - No perturbation likelihood or halo simulation was run for this scalar-field model.
+    - The tracker potential is not an inflationary attractor plateau, but the primary paper treats it
+      as especially useful for dark matter and dark energy.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The dark matter is a scalar field that interacts with the rest of matter only through gravity.
+      confidence: high
+      section: attractor Lagrangian
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: The starting Lagrangian is locally conformal and uses scalar fields with an O(1,1)-type structure
+        before gauge fixing.
+      confidence: medium
+      section: attractor Lagrangian
+      page: null
+    interactions:
+    - reference_id: paper
+      note: After gauge fixing, the scalar sector is coupled to the SM only gravitationally in the dark-matter
+        construction.
+      confidence: high
+      section: attractor Lagrangian
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The paper treats coherent scalar oscillations after an early overdamped phase, with possible
+        spectator or post-preheating origin.
+      confidence: medium
+      section: dark matter/summary
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: For n=1, oscillations about the potential minimum have averaged equation of state w=0 and
+        behave as dark matter.
+      confidence: high
+      section: attractor potentials
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: The paper discusses ultralight masses such as 10^-22 eV and relates initial field density
+        to the present matter density.
+      confidence: medium
+      section: dark matter
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The model uses the n=1 pressureless-oscillation limit and tracker initial conditions.
+      confidence: high
+      section: dark matter
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper discusses initial-condition fine tuning and viable abundance windows for attractor
+        scalar dark matter.
+      page: null
+      reference_id: arxiv:1703.03295
+      section: Initial conditions
+    - confidence: high
+      note: Related scalar-DM galactic-dynamics paper provides local-read context for ultralight scalar
+        mass tests.
+      page: null
+      reference_id: arxiv:1110.2684
+      section: Galactic dynamics discussion
+    observables:
+    - confidence: high
+      note: Primary paper gives E/tracker/T potentials and w=(n-1)/(n+1), implying w=0 for n=1.
+      page: null
+      reference_id: arxiv:1703.03295
+      section: Attractor potentials
+    - confidence: high
+      note: Primary text states that m about 10^-22 eV gives a few-kpc Jeans length and can address cusp/core
+        or substructure issues.
+      page: null
+      reference_id: arxiv:1703.03295
+      section: Jeans length discussion
+    routes:
+    - confidence: high
+      note: Primary paper connects attractor-potential parameters to background evolution and Jeans scale.
+      page: null
+      reference_id: arxiv:1703.03295
+      section: Dark matter from attractors
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  dominant_uncertainties:
+  - The title/authors were not recovered from the extracted text
+  - Production is phenomenological classical-field evolution, not a particle freeze-out calculation
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: 1703_03295_tracker_attractor_scalar_dm_v1_warning_1
+    severity: medium
+    category: invalid_mapping
+    warning: This is an attractor-potential dark-matter variant; do not map it to canonical fuzzy dark
+      matter outside the late harmonic regime.
+    mitigation: Check the original paper before using this extracted model card quantitatively.
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - Requires initial conditions that land on the viable dark-matter abundance trajectory.
+  - The tracker potential is not an inflationary attractor plateau, but the primary paper treats it as
+    especially useful for dark matter and dark energy.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - cosmological background
+  - linear perturbations
+  id: obs_tracker_pressureless_oscillation
+  key_quantities:
+  - description: Exponent controlling the averaged equation of state.
+    name: potential exponent
+    role: core
+    source_reference_ids:
+    - arxiv:1703.03295
+    status: inferred
+    symbol: n
+    value: 1
+  - description: Mass near the potential minimum.
+    name: effective scalar mass
+    range: examples around 10^-22 eV are discussed
+    role: core
+    source_reference_ids:
+    - arxiv:1703.03295
+    status: inferred
+    symbol: m
+    unit: eV
+  linked_constraints:
+  - con_tracker_initial_window
+  linked_routes:
+  - route_tracker_attractor_scalar
+  name: Tracker-potential attractor pressureless scalar oscillations
+  notes: null
+  observability: medium
+  predicted_effect: For n=1, the attractor potential oscillates about its minimum with time-averaged equation
+    of state w=0, so the homogeneous scalar behaves as pressureless dark matter after oscillations begin.
+  redshift_range: oscillation onset near z about 3e6 in 10^-22 eV examples through z=0
+  relevance: critical
+  scale_range: homogeneous background and linear perturbation scales
+  source_reference_ids:
+  - arxiv:1703.03295
+  - arxiv:astro-ph/0006024
+  - arxiv:0806.0683
+  subchannel: coherent scalar-field dark matter
+- caveats:
+  - Mass and self-interaction constraints depend on perturbation treatment and halo modeling.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - dwarf galaxies
+  - galactic cores
+  - linear matter power
+  id: obs_tracker_jeans_suppression
+  key_quantities:
+  - description: Ultralight mass controlling the Jeans length.
+    name: scalar mass
+    range: around 10^-22 eV examples; smaller masses are structure-problematic in primary text
+    role: core
+    source_reference_ids:
+    - arxiv:1703.03295
+    status: inferred
+    symbol: m
+    unit: eV
+  - description: Scale below which scalar-field pressure suppresses clustering.
+    name: Jeans length
+    range: few kiloparsec for m about 10^-22 eV in primary discussion
+    role: core
+    source_reference_ids:
+    - arxiv:1703.03295
+    status: inferred
+    symbol: lambda_J
+    unit: kpc
+  linked_constraints:
+  - con_tracker_structure_mass
+  linked_routes:
+  - route_tracker_attractor_scalar
+  name: Tracker-potential attractor Jeans-scale small-structure suppression
+  notes: null
+  observability: medium
+  predicted_effect: For ultralight masses near 10^-22 eV, the scalar-field Jeans length can be kiloparsec
+    scale, inhibiting small-scale clustering and connecting the model to fuzzy/scalar-dark-matter structure
+    tests.
+  redshift_range: matter era through z=0
+  relevance: high
+  scale_range: kiloparsec-scale Jeans length for ultralight examples
+  source_reference_ids:
+  - arxiv:1703.03295
+  - arxiv:1110.2684
+  subchannel: ultralight scalar Jeans scale
+constraints:
+- allowed_regions:
+  - Tracker-like attractor behavior broadens the initial-condition basin relative to the simple m^2 phi^2
+    model.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The scalar starts homogeneous enough for the background attractor analysis to apply.
+    id: homogeneous-initial-field
+    impact_if_violated: Large inhomogeneity would require perturbative or numerical treatment.
+    notes: null
+    scope: background evolution
+    source_reference_ids:
+    - arxiv:1703.03295
+    status: assumed
+  benchmark_implications:
+  - The model is viable only for initial scalar densities that reproduce Omega_m today.
+  caveats:
+  - No Monte Carlo scan of initial conditions was run.
+  constrained_parameters:
+  - V0
+  - alpha
+  - n
+  - rho_i
+  - m
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Initial densities outside the viable basin either underproduce dark matter or lead to unwanted scalar-field
+    acceleration.
+  id: con_tracker_initial_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Tracker-potential attractor relic-density initial-condition window
+  notes: null
+  observable_channel: background abundance
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1703.03295
+- allowed_regions:
+  - Larger masses become increasingly CDM-like; primary text notes m much larger can become indistinguishable
+    from SCDM.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: The attractor perturbations share the late-time Jeans behavior used to compare with fuzzy/scalar
+      dark matter.
+    id: fuzzy-dm-mapping
+    impact_if_violated: Different perturbation dynamics changes the small-scale bound.
+    notes: null
+    scope: structure recast
+    source_reference_ids:
+    - arxiv:1703.03295
+    - arxiv:1110.2684
+    status: assumed
+  benchmark_implications:
+  - The 10^-22 eV benchmark is a structure-sensitive target rather than a universal lower limit.
+  caveats:
+  - No halo or Lyman-alpha likelihood was rerun.
+  constrained_parameters:
+  - m
+  - lambda_J
+  - self-interaction
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Primary text cautions that masses smaller than about 10^-22 eV can be problematic for structure formation.
+  id: con_tracker_structure_mass
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Tracker-potential attractor ultralight-scalar structure lower-mass target
+  notes: null
+  observable_channel: galactic dynamics and small-scale structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1703.03295
+  - arxiv:1110.2684
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The tracker potential is not an inflationary attractor plateau, but the primary paper treats it
+      as especially useful for dark matter and dark energy.
+    - Dark-energy use of n<1/2 is separate from the n=1 dark-matter row.
+    constraint_ids:
+    - con_tracker_initial_window
+    - con_tracker_structure_mass
+    derived_quantities:
+    - equation of state
+    - oscillation redshift
+    - Jeans length
+    - Omega_m today
+    description: Map tracker-potential attractor attractor-potential parameters to scalar-field background
+      evolution, Jeans-scale suppression, and dark-matter abundance constraints.
+    forward_model_chain:
+    - inputs:
+      - potential
+      - n
+      notes: null
+      outputs:
+      - averaged equation of state w=(n-1)/(n+1)
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary attractor-potential result.
+    - inputs:
+      - V0
+      - alpha
+      - rho_i
+      - m
+      notes: null
+      outputs:
+      - background evolution
+      - Omega_m today
+      step_id: s2
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Primary numerical/background scan; reproduce with ODE solver.
+    - inputs:
+      - m
+      - Jeans length
+      - background history
+      notes: null
+      outputs:
+      - small-scale matter power
+      step_id: s3
+      step_type: transfer_function
+      tool_or_code: null
+      validity: Needs perturbation solver for constraints.
+    id: route_tracker_attractor_scalar
+    input_parameters:
+    - V0
+    - alpha
+    - n
+    - rho_i
+    - m
+    likelihoods:
+    - background abundance likelihood unavailable
+    - small-scale-structure likelihood unavailable
+    observable_ids:
+    - obs_tracker_pressureless_oscillation
+    - obs_tracker_jeans_suppression
+    required_code_resources:
+    - scalar-field background ODE solver
+    - linear perturbation/Jeans-scale solver
+    route_status: planned
+    source_model_features:
+    - alpha-attractor scalar potential
+    - Tracker-potential attractor
+    - n=1 pressureless oscillations
+    - ultralight scalar benchmark
+    validation_tests:
+    - recover w=0 for n=1
+    - recover kpc Jeans length for m about 10^-22 eV

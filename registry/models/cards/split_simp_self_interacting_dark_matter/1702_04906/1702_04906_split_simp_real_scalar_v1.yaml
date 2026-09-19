@@ -1,0 +1,780 @@
+_source:
+  shard: arXiv_src_1702_012_wds.tar
+  paper_id: '1702_04906'
+  source_member: 1702_04906.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1702_04906_split_simp_real_scalar_v1
+identity:
+  name: Real scalar split SIMP dark matter
+  family: split_simp_self_interacting_dark_matter
+  aliases:
+  - simply split SIMP
+  - inelastic self-interacting dark matter
+  short_description: A split SIMP model in which a mass-squared parameter splits a complex scalar into
+    two real scalar states; state 1 is stable, state 2 can be long-lived, and self-interaction is regulated
+    by mass splitting and the abundance ratio.
+  historical_origin_or_motivation: The paper introduces split self-interacting dark matter to regulate
+    halo self-scattering while retaining hidden-sector number-changing production or freeze-in.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - dark U(1) with a massive vector mediator
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The simple-model section gives a covariant-derivative Lagrangian in which a mass-squared parameter
+    splits a complex scalar into two real scalar states.
+particle_content:
+  dark_matter_candidate:
+    name: nearly degenerate real scalars phi_1 and phi_2
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - heavier split state
+  - dark photon V
+  mediators:
+  - dark photon V
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - state 2 is nearly degenerate and may be metastable
+  long_lived_particles:
+  - state 1
+  - state 2 for sufficiently small splitting or coupling
+  unstable_parent_particles:
+  - dark photon V
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A shared Z2 stabilizes the ground state; the heavier state may survive cosmologically
+    depending on its lifetime.
+  symmetries:
+  - name: dark U(1)
+    type: gauge
+    exact_or_approximate: broken
+    breaking: explicitly broken by the mass splitting
+    breaking_scale: null
+  - name: shared Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - electromagnetic current through kinetic mixing
+  dark_sector_couplings:
+  - off-diagonal coupling of states 1 and 2 to V
+  - dark gauge coupling g_V
+  mediator_types:
+  - vector
+  interaction_operators:
+  - kinetic mixing with hypercharge
+  - off-diagonal dark photon interaction
+  self_scattering_channels:
+  - 12 to 12
+  - 11 to 22 when kinematically allowed
+  annihilation_channels:
+  - 4-to-2 hidden-sector reactions
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: ground-state mass
+    symbol: m
+    description: Mass of state 1.
+    range: keV to GeV principal range discussed in the paper
+    unit: energy
+    role: core
+    status: inferred
+  - name: mass splitting
+    symbol: Delta m
+    description: Mass difference m_2 - m_1.
+    range: small compared with m
+    unit: energy
+    role: core
+    status: inferred
+  - name: dark photon mass
+    symbol: m_V
+    description: Mass of the vector mediator, with m_V > m_1 + m_2 imposed.
+    role: core
+    status: inferred
+  - name: dark gauge coupling
+    symbol: g_V
+    description: Gauge coupling controlling hidden-sector interactions.
+    role: core
+    status: inferred
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Effective coupling of V to the SM electromagnetic current.
+    role: core
+    status: inferred
+  - name: late abundance ratio
+    symbol: R_0
+    description: Ratio n_2/n_1 in the low-redshift universe.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - hidden-sector 4-to-2 SIMP freeze-out
+  - freeze-in through production of on-shell dark photons
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - number-changing 4-to-2 reactions
+  - dark-to-visible-sector temperature ratio
+  - freeze-in portal strength
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper treats both internally thermalized hidden-sector freeze-out and a freeze-in alternative
+    without SM thermalization.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - m
+  - Delta m
+  - m_V
+  - g_V
+  - epsilon
+  - dark-sector temperature
+  - state-2 lifetime
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - dark and visible sectors may have distinct temperatures
+  - the sectors are assumed not to thermalize with each other
+  dark_sector_temperature:
+    name: dark-sector temperature
+    symbol: T'
+    description: Temperature of the hidden sector.
+    role: cosmological
+    status: inferred
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: unknown
+  notes: The paper discusses coldness requirements and possible free-streaming issues rather than giving
+    a full distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: mass_splitting_small
+  applies_to: model
+  condition: The phenomenology assumes nearly degenerate states with a fine mass splitting.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: mediator_decay
+  applies_to: model
+  condition: The paper imposes m_V > m_1 + m_2 so V decays efficiently within the dark sector.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+- id: decoupled_sectors
+  applies_to: cosmological_history
+  condition: The dark and visible sectors do not reach kinetic equilibrium in the main scenario.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: perturbative_dark_coupling
+  applies_to: model
+  condition: Regions with g_V above the perturbative range are outside the paper's controlled approach.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: dominant_off_diagonal_interaction
+    description: Diagonal interactions are assumed negligible compared with vector-mediated off-diagonal
+      processes.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: hidden_sector_temperature
+    description: The relic-density calculation depends on a dark-sector temperature T' that can differ
+      from the SM temperature.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper says the models were implemented in CalcHEP and FeynArts for matrix elements;
+    no dedicated repository is provided in the text.
+  primary_code_role: compute_cross_sections
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 1702_04906_split_simp_real_scalar_v1
+  model_name: Real scalar split SIMP dark matter
+  model_family: split_simp_self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Simply split SIMPs
+      authors:
+      - Nicolas Bernal
+      - Xiaoyong Chu
+      - Josef Pradler
+      year: 2017
+      arxiv_id: '1702.04906'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '1702.04906'
+      authors:
+      - Bernal, Nicolás
+      - Chu, Xiaoyong
+      - Pradler, Josef
+      doi: 10.48550/arXiv.1702.04906
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1702.04906
+      role: original_model
+      title: Simply split SIMPs
+      url: https://arxiv.org/abs/1702.04906
+      year: 2017
+    constraint_papers:
+    - arxiv_id: '1201.5892'
+      authors:
+      - Vogelsberger, Mark
+      - Zavala, Jesus
+      - Loeb, Abraham
+      doi: 10.1111/j.1365-2966.2012.21182.x
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1201.5892
+      role: constraint
+      title: Subhaloes in self-interacting galactic dark matter haloes
+      url: https://arxiv.org/abs/1201.5892
+      year: 2012
+    - arxiv_id: '1108.5383'
+      authors:
+      - Essig, Rouven
+      - Mardon, Jeremy
+      - Volansky, Tomer
+      doi: 10.1103/PhysRevD.85.076007
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1108.5383
+      role: constraint
+      title: Direct detection of sub-GeV dark matter
+      url: https://arxiv.org/abs/1108.5383
+      year: 2012
+    - arxiv_id: '1412.8378'
+      authors:
+      - An, Haipeng
+      - Pospelov, Maxim
+      - Pradler, Josef
+      - Ritz, Adam
+      doi: 10.1016/j.physletb.2015.06.018
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1412.8378
+      role: constraint
+      title: Direct detection constraints on dark photon dark matter
+      url: https://arxiv.org/abs/1412.8378
+      year: 2015
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper studies split pseudo-Dirac fermion and real scalar SIMP variants.
+    - reference_id: paper
+      section: simple models
+      page: null
+      quote_or_summary: The Lagrangians, mass splitting, dark photon, and off-diagonal interactions are
+        defined.
+    - reference_id: paper
+      section: dark matter relic
+      page: null
+      quote_or_summary: The relic abundance is calculated for 4-to-2 reactions and discussed for freeze-in.
+    unresolved_items:
+    - No halo simulation, Lyman-alpha likelihood, or direct-detection detector response was run.
+    - The surviving excited-state fraction R_0 is benchmark dependent and controls both self-scattering
+      and direct-detection rates.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The model uses nearly degenerate real scalars phi_1 and phi_2 with a small mass splitting
+        and a dark photon mediator.
+      confidence: high
+      section: simple models
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: The ground state and heavier state share a common Z2 symmetry that stabilizes state 1.
+      confidence: high
+      section: introduction
+      page: null
+    interactions:
+    - reference_id: paper
+      note: Self-scattering proceeds through off-diagonal couplings to a vector particle V, called a dark
+        photon.
+      confidence: high
+      section: abstract/simple models
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The relic density is set by hidden-sector 4-to-2 reactions or alternatively by freeze-in.
+      confidence: high
+      section: abstract/relic abundance
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: The paper assumes dark and visible sectors with distinct temperatures and no thermalization
+        with the SM.
+      confidence: high
+      section: introduction/relic abundance
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: The paper focuses on finely split sub-GeV states, with a principal mass range from keV to
+        GeV.
+      confidence: medium
+      section: conclusions
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The setup imposes m_V greater than m_1 plus m_2 so the mediator decays efficiently within
+        the dark sector.
+      confidence: high
+      section: simple models
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper quotes dwarf-scale desired sigma/m, Bullet Cluster and cluster-collision bounds,
+        free-streaming around 100 kpc, and BBN Delta N_eff considerations.
+      page: null
+      reference_id: arxiv:1702.04906
+      section: Introduction and constraints
+    - confidence: medium
+      note: Related dark-photon direct-detection paper discusses kinetic mixing and direct-detection constraints
+        on light dark sectors.
+      page: null
+      reference_id: arxiv:1412.8378
+      section: Model discussion
+    observables:
+    - confidence: high
+      note: Primary paper introduces pseudo-Dirac and real-scalar split SIMPs, computes relic density
+        through 4-to-2 or freeze-in, and discusses self-scattering and exothermic direct detection.
+      page: null
+      reference_id: arxiv:1702.04906
+      section: Abstract and phenomenology
+    - confidence: medium
+      note: Related SIDM simulations show velocity-dependent self-interaction can alter subhalo inner
+        densities while avoiding some larger-scale constraints.
+      page: null
+      reference_id: arxiv:1201.5892
+      section: Abstract
+    - confidence: medium
+      note: Related sub-GeV direct-detection paper describes electron ionization signals for MeV-GeV dark
+        matter.
+      page: null
+      reference_id: arxiv:1108.5383
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper connects hidden-sector abundance, mass splitting, excited-state longevity, self-scattering,
+        free-streaming, and direct detection.
+      page: null
+      reference_id: arxiv:1702.04906
+      section: Model and implications
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  dominant_uncertainties:
+  - The paper studies both SIMP and freeze-in production branches
+  - Late state-2 abundance is lifetime-dependent
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: 1702_04906_split_simp_real_scalar_v1_warning_1
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not collapse the fermion and scalar split-SIMP variants; their 4-to-2 rates and abundance-ratio
+      behavior differ in the paper.
+    mitigation: Check the original paper before using this extracted model card quantitatively.
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - The desired dwarf-scale cross section and the cluster bound are velocity and population dependent.
+  channel: small_scale_structure
+  effect_direction: morphology_change
+  environments:
+  - dwarf galaxies
+  - Milky Way subhaloes
+  - galaxy clusters
+  id: obs_split_simp_self_scattering
+  key_quantities:
+  - description: Self-scattering strength relevant for halo cores.
+    name: transfer cross section per mass
+    range: 0.1 to 10 cm^2/g desired at dwarf scales; cluster limits below order 1 cm^2/g
+    role: derived
+    source_reference_ids:
+    - arxiv:1702.04906
+    - arxiv:1201.5892
+    status: inferred
+    symbol: sigma_over_m
+    unit: cm^2/g
+  - description: Splitting between state 2 and state 1.
+    name: mass splitting
+    range: small compared with m
+    role: core
+    source_reference_ids:
+    - arxiv:1702.04906
+    status: inferred
+    symbol: Delta m
+  - description: Late number-density ratio of excited to ground state.
+    name: late abundance ratio
+    role: derived
+    source_reference_ids:
+    - arxiv:1702.04906
+    status: inferred
+    symbol: R_0
+  - description: Mediator mass controlling velocity dependence.
+    name: dark photon mass
+    role: core
+    source_reference_ids:
+    - arxiv:1702.04906
+    - arxiv:1412.8378
+    status: inferred
+    symbol: m_V
+  linked_constraints:
+  - con_cluster_self_interaction
+  - con_free_streaming_neff
+  linked_routes:
+  - route_real_scalar_split_simp
+  name: Velocity- and splitting-regulated SIMP self-scattering
+  notes: null
+  observability: medium
+  predicted_effect: real-scalar split SIMP self-scattering is controlled by off-diagonal dark-photon interactions,
+    the small mass splitting, and the late excited-state abundance ratio, allowing large dwarf-scale self-interaction
+    while evading cluster constraints.
+  redshift_range: halo formation to today
+  relevance: critical
+  scale_range: dwarf to cluster velocities
+  source_reference_ids:
+  - arxiv:1702.04906
+  - arxiv:1201.5892
+  subchannel: self-interacting dark matter in dwarfs and clusters
+- caveats:
+  - Signal rate depends on the surviving excited-state fraction and kinetic mixing.
+  channel: direct_detection
+  effect_direction: spectral_line
+  environments:
+  - direct-detection detectors
+  id: obs_split_simp_exothermic_recoil
+  key_quantities:
+  - description: Energy released in exothermic down-scattering.
+    name: recoil energy
+    role: derived
+    source_reference_ids:
+    - arxiv:1702.04906
+    - arxiv:1108.5383
+    status: inferred
+    symbol: E_recoil
+  - description: Vector portal coupling of the dark photon to SM charge.
+    name: kinetic mixing
+    role: core
+    source_reference_ids:
+    - arxiv:1702.04906
+    - arxiv:1412.8378
+    status: inferred
+    symbol: epsilon
+  - description: SIMP ground-state mass.
+    name: ground-state mass
+    range: keV to GeV principal range discussed in the paper
+    role: core
+    source_reference_ids:
+    - arxiv:1702.04906
+    status: inferred
+    symbol: m
+  linked_constraints:
+  - con_subgev_direct_detection
+  linked_routes:
+  - route_real_scalar_split_simp
+  name: Exothermic down-scattering recoil line from the excited state
+  notes: null
+  observability: medium
+  predicted_effect: If the heavier real-scalar split SIMP state is cosmologically long-lived, down-scattering
+    2 + target -> 1 + target can deposit an approximately splitting-set recoil energy, giving a monochromatic-like
+    direct-detection target even for sub-GeV masses.
+  redshift_range: today
+  relevance: high
+  scale_range: detector thresholds from electron ionization to nuclear recoil
+  source_reference_ids:
+  - arxiv:1702.04906
+  - arxiv:1108.5383
+  - arxiv:1412.8378
+  subchannel: inelastic down-scattering on electrons or nuclei
+constraints:
+- allowed_regions:
+  - Dwarf-scale target region around 0.1-10 cm^2/g remains viable when scattering is velocity/splitting
+    regulated.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Cluster limits on sigma/m are recast to the model transfer cross section at cluster velocities.
+    id: velocity-dependent-recast
+    impact_if_violated: Inelastic thresholds and excited-state depletion can change the cluster effective
+      cross section.
+    notes: null
+    scope: SIDM cluster constraints
+    source_reference_ids:
+    - arxiv:1702.04906
+    - arxiv:1201.5892
+    status: assumed
+  benchmark_implications:
+  - Split SIMP models are designed to keep dwarf-scale self-interaction while suppressing cluster-scale
+    scattering.
+  caveats:
+  - The batch did not run halo simulations for this model.
+  constrained_parameters:
+  - sigma_over_m
+  - m_V
+  - g_V
+  - Delta m
+  - R_0
+  constraint_type: astrophysical
+  data_release: Bullet Cluster and cluster-collision constraints quoted by primary paper
+  excluded_regions:
+  - Primary paper quotes Bullet Cluster sigma/m < 1.25 cm^2/g at 68% CL and cluster-collision limits around
+    0.47-2 cm^2/g at 95% CL.
+  id: con_cluster_self_interaction
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Cluster and Bullet-Cluster self-interaction upper limits
+  notes: null
+  observable_channel: cluster collisions and halo shapes
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1702.04906
+  - arxiv:1201.5892
+- allowed_regions:
+  - For dark matter heavier than a few keV, the primary paper states the dark sector does not significantly
+    contribute to constrained extra radiation.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Hidden-sector temperature and entropy history determine both free streaming and Delta
+      N_eff.
+    id: thermal-history-recast
+    impact_if_violated: Nonstandard heating or late decays shift the free-streaming and radiation bounds.
+    notes: null
+    scope: cosmological recast
+    source_reference_ids:
+    - arxiv:1702.04906
+    status: assumed
+  benchmark_implications:
+  - Light split SIMP masses and hot hidden sectors require cosmological recasting.
+  caveats:
+  - No Lyman-alpha or BBN likelihood was evaluated.
+  constrained_parameters:
+  - lambda_FS
+  - Delta N_eff
+  - m
+  - dark-sector temperature
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Primary paper quotes a free-streaming limit around 100 kpc and notes dark radiation is constrained
+    by BBN light-element abundances.
+  id: con_free_streaming_neff
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Free-streaming and dark-radiation consistency
+  notes: null
+  observable_channel: Lyman-alpha/free-streaming and BBN N_eff
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1702.04906
+- allowed_regions:
+  - Small kinetic mixing, depleted excited-state abundance, or below-threshold recoils can evade current
+    searches.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: A nonzero excited-state population survives to today.
+    id: excited-fraction-present
+    impact_if_violated: If the excited state decays away, the exothermic recoil signal vanishes.
+    notes: null
+    scope: direct detection
+    source_reference_ids:
+    - arxiv:1702.04906
+    status: assumed
+  benchmark_implications:
+  - The long-lived excited state gives an unusual exothermic target for low-threshold detectors.
+  caveats:
+  - Detector response and bound-state effects were not computed.
+  constrained_parameters:
+  - epsilon
+  - m_V
+  - Delta m
+  - R_0
+  - m
+  constraint_type: direct_detection
+  data_release: sub-GeV electron-ionization proposals and dark-photon direct-detection constraints in
+    related papers
+  excluded_regions:
+  - Existing dark-photon and sub-GeV direct-detection limits constrain kinetic mixing and scattering rates
+    in parts of parameter space.
+  id: con_subgev_direct_detection
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Sub-GeV and dark-photon direct-detection reach
+  notes: null
+  observable_channel: electron/nuclear recoils
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1702.04906
+  - arxiv:1108.5383
+  - arxiv:1412.8378
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The same source paper supports both pseudo-Dirac and real-scalar variants; spin-dependent matrix
+      elements must be kept separate in implementation.
+    constraint_ids:
+    - con_cluster_self_interaction
+    - con_free_streaming_neff
+    - con_subgev_direct_detection
+    derived_quantities:
+    - 4-to-2 relic yield
+    - excited-state lifetime
+    - transfer cross section
+    - free-streaming length
+    - exothermic recoil energy
+    description: Route the real-scalar split SIMP split SIMP sector from hidden 4-to-2/freeze-in abundance
+      through self-scattering, free-streaming, and direct-detection signatures.
+    forward_model_chain:
+    - inputs:
+      - hidden-sector couplings
+      - m
+      - Delta m
+      notes: null
+      outputs:
+      - annihilation and 4-to-2 rates
+      - freeze-in yield
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Uses primary split-SIMP rate formulae.
+    - inputs:
+      - Delta m
+      - R_0
+      - m_V
+      - g_V
+      - velocity
+      notes: null
+      outputs:
+      - effective sigma/m at dwarf and cluster velocities
+      step_id: s2
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Must include inelastic thresholds and excited-state abundance.
+    - inputs:
+      - dark-sector temperature
+      - m
+      - self-scattering rate
+      notes: null
+      outputs:
+      - lambda_FS
+      - Delta N_eff
+      step_id: s3
+      step_type: data_transform
+      tool_or_code: null
+      validity: Primary estimates cosmological damping/radiation observables.
+    - inputs:
+      - epsilon
+      - m_V
+      - Delta m
+      - R_0
+      notes: null
+      outputs:
+      - direct-detection recoil spectrum
+      - cluster/free-streaming viability
+      step_id: s4
+      step_type: recasting
+      tool_or_code: null
+      validity: Low-threshold detector and halo recasts are required.
+    id: route_real_scalar_split_simp
+    input_parameters:
+    - m
+    - Delta m
+    - m_V
+    - g_V
+    - epsilon
+    - R_0
+    - dark-sector temperature
+    likelihoods:
+    - SIDM cluster bounds
+    - Lyman-alpha/free-streaming proxy
+    - sub-GeV direct-detection limits
+    observable_ids:
+    - obs_split_simp_self_scattering
+    - obs_split_simp_exothermic_recoil
+    required_code_resources:
+    - Boltzmann abundance solver
+    - SIDM transfer-cross-section calculator
+    - low-threshold detector recast
+    route_status: planned
+    source_model_features:
+    - real scalar pair split from a complex scalar
+    - off-diagonal vector mediator
+    - shared stabilizing Z2
+    - long-lived excited scalar state
+    validation_tests:
+    - recover 0.1-10 cm^2/g dwarf target
+    - recover Bullet Cluster upper bound
+    - recover 100 kpc free-streaming limit

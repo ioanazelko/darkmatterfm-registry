@@ -1,0 +1,836 @@
+_source:
+  shard: arXiv_src_2305_127_wds.tar
+  paper_id: '2305_16781'
+  source_member: 2305_16781.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2305_16781_electric_dipole_idm_v1
+identity:
+  name: Electric-dipole photon-coupled inelastic dark matter
+  family: inelastic_dark_matter
+  aliases:
+  - electric dipole moment
+  - photon-coupled iDM
+  - electromagnetic form-factor iDM
+  short_description: Fermionic inelastic dark matter with two split dark-sector states coupled to the
+    photon through the electric dipole moment operator.
+  historical_origin_or_motivation: The paper combines inelastic dark matter with electromagnetic form-factor
+    operators to study long-lived heavier-state signatures and thermal freeze-out.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - inelastic dark matter
+  - electromagnetic form-factor dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper describes the Lagrangian as an effective description valid below the electroweak breaking
+    scale and notes that a UV completion is generally required.
+particle_content:
+  dark_matter_candidate:
+    name: chi_0
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - chi_1, a heavier split dark fermion that can be long lived
+  mediators:
+  - photon through an effective electromagnetic form-factor operator
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - chi_1
+  long_lived_particles:
+  - chi_1 in the small-splitting regime
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Stability of the lighter state chi_0 is assumed in the inelastic dark-sector
+    setup; the paper does not specify a named stabilizing symmetry for chi_0.
+  symmetries:
+  - name: dark-sector fermion number or remnant stabilizing symmetry
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: The two states have a small mass splitting; the paper does not spell out the stabilizing
+      symmetry.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - photon
+  - electrons
+  - charged leptons
+  - hadrons through electromagnetic current
+  dark_sector_couplings:
+  - electric dipole coupling
+  mediator_types:
+  - photon
+  interaction_operators:
+  - (1/Lambda_E) chi_1 sigma^{mu nu} gamma^5 chi_0 F_{mu nu}
+  scattering:
+    elastic: 'no'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels:
+  - chi_0 chi_1 to Standard Model leptons and hadrons
+  - operator-dependent photon final states where allowed
+  decay_channels:
+  - chi_1 to chi_0 plus photon for the EDM/MDM two-body decay mode
+  self_scattering_channels: []
+  cp_structure: operator-dependent electromagnetic form factor
+  flavor_structure: electromagnetic coupling to charged Standard Model states
+  tree_or_loop_level: tree
+operators:
+  renormalizable_terms: []
+  eft_operators:
+  - (1/Lambda_E) chi_1 sigma^{mu nu} gamma^5 chi_0 F_{mu nu}
+  contact_or_light_mediator: light_mediator
+  coupling_types:
+  - electric dipole coupling
+parameters:
+  core:
+  - name: lighter dark fermion mass
+    symbol: m_chi0
+    description: Mass of the stable inelastic dark matter state chi_0.
+    value: null
+    range: paper discusses the MeV-GeV intensity-frontier regime; extracted text gives a representative
+      range written as 1 <= m_chi0 <= 10 with units partially lost by OCR
+    unit: null
+    scale: log
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2305_16781'
+    notes: The paper emphasizes sub-GeV to GeV masses and small momentum exchange for EFT validity.
+  - name: fractional mass splitting
+    symbol: Delta
+    description: (m_chi1 - m_chi0) / m_chi0.
+    value: null
+    range: benchmarks include 1e-3, 0.05, 0.2, and 1; successful thermal freeze-out requires sufficiently
+      small splitting, O(0.5) or below
+    unit: null
+    scale: log
+    role: core
+    status: established
+    source_reference_ids:
+    - '2305_16781'
+    notes: Small Delta makes chi_1 long lived and enables coannihilation-controlled relic abundance.
+  - name: electric dipole coupling
+    symbol: 1/Lambda_E
+    description: Effective coupling controlling the electric dipole moment interaction between chi_0,
+      chi_1, and the photon.
+    value: null
+    range: model-dependent sensitivity planes in the paper
+    unit: null
+    scale: log
+    role: core
+    status: established
+    source_reference_ids:
+    - '2305_16781'
+    notes: Mass-dimension -1 coupling in the paper's EFT Lagrangian.
+production:
+  mechanisms:
+  - thermal freeze-out of chi_0 controlled mainly by chi_0 chi_1 coannihilation into Standard Model states
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - coannihilation
+  - mass splitting Delta
+  - electric dipole coupling
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves Boltzmann equations for the comoving yields and identifies chi_0 chi_1 coannihilation
+    as dominant for successful freeze-out.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: target relic abundance
+    symbol: Omega_chi0 h^2
+    description: Relic density target for chi_0.
+    value: approximately 0.1 in the paper text
+    range: null
+    unit: null
+    role: derived
+    status: established
+    source_reference_ids:
+    - '2305_16781'
+    notes: Correct relic abundance is parameter dependent and tied to small mass splitting.
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi0
+  - Delta
+  - electric dipole coupling
+  - chi_0 chi_1 coannihilation cross section
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  f_of_p_or_q: not provided in the paper text used for extraction
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper focuses on relic yields and intensity-frontier signatures, not the late-time phase-space
+    distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: not discussed
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: unknown
+validity_domain:
+- id: eft_below_electroweak_scale
+  applies_to: EFT
+  condition: Effective photon form-factor description is used below the electroweak breaking scale and
+    at small momentum exchange.
+  valid_range: below electroweak scale; MeV-GeV, small momentum exchange regime emphasized in the paper
+  status: established
+  extrapolation_risk: high
+  caveats:
+  - UV completion is generally required outside the EFT domain.
+  source_reference_ids:
+  - '2305_16781'
+  notes: null
+- id: small_splitting_long_lived_regime
+  applies_to: parameter
+  condition: Long-lived chi_1 and successful freeze-out occur for sufficiently small mass splitting.
+  valid_range: Delta small; paper states correct relic density requires O(0.5) or smaller splitting
+  status: established
+  extrapolation_risk: medium
+  caveats:
+  - Large splitting can fail to reproduce the observed relic abundance in parts of parameter space.
+  source_reference_ids:
+  - '2305_16781'
+  notes: null
+assumptions:
+  global:
+  - id: two_state_fermionic_idm
+    description: The dark sector consists of two fermions chi_0 and chi_1 with a nonzero mass splitting.
+    scope: theory
+    status: established
+    impact_if_violated: The inelastic scattering, coannihilation, and long-lived-state phenomenology would
+      not apply.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2305_16781'
+    notes: null
+  - id: thermal_freezeout_history
+    description: The relic-density calculation assumes thermal freeze-out from the early-universe plasma.
+    scope: production
+    status: established
+    impact_if_violated: The relic-density target and coannihilation interpretation would change.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2305_16781'
+    notes: null
+associated_code:
+  has_associated_code: 'yes'
+  code_summary: The paper lists a GitHub repository for the photon-coupled long-lived-particle/iDM analysis.
+  primary_code_role: other
+  repositories:
+  - name: Looking_forward_to_photon_coupled_LLPs
+    resource_type: repository
+    availability: public
+    relationship_to_model: official_author_code
+    purpose:
+    - reproduce_figures
+    - compute_cross_sections
+    - other
+    url: https://github.com/krzysztofjjodlowski/Looking_forward_to_photon_coupled_LLPs
+    repository_url: https://github.com/krzysztofjjodlowski/Looking_forward_to_photon_coupled_LLPs
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: '2026-05-31'
+    maintained: unknown
+    dependencies: []
+    supported_parameters:
+    - m_chi0
+    - Delta
+    - 1/Lambda_E
+    supported_model_families:
+    - inelastic_dark_matter
+    supported_observables: []
+    inputs:
+    - model parameters
+    - detector choices
+    outputs:
+    - sensitivity curves
+    - event yields
+    validity_domain:
+    - photon-coupled iDM scenarios studied in the paper
+    citation_reference_ids:
+    - '2305_16781'
+    notes: Repository URL appears in the assigned paper text.
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs:
+  - m_chi0
+  - Delta
+  - 1/Lambda_E
+  expected_outputs:
+  - decay lengths
+  - production/scattering yields
+  - experiment sensitivity projections
+  supported_observable_channels: []
+  reproducibility:
+    reproducibility_level: unknown
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: Only repository presence was extracted from the paper text.
+  validation:
+    validation_status: unknown
+    benchmark_references:
+    - '2305_16781'
+    validation_notes: No independent code validation was performed in this extraction.
+  caveats: []
+provenance:
+  model_id: 2305_16781_electric_dipole_idm_v1
+  model_name: Electric-dipole photon-coupled inelastic dark matter
+  model_family: inelastic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2305_16781'
+      title: Looking forward to inelastic DM with electromagnetic form factors at FASER and beam dumps
+      authors:
+      - Krzysztof Jodlowski
+      year: 2023
+      arxiv_id: '2305.16781'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text from target_text.sqlite; paper studies photon-coupled inelastic dark matter
+        with electromagnetic form-factor operators.
+    - arxiv_id: '2305.16781'
+      authors:
+      - Jodłowski, Krzysztof
+      doi: 10.1103/PhysRevD.108.115025
+      notes: Assigned primary full text resolved locally and read first.
+      reference_id: arxiv:2305.16781
+      role: original_model
+      title: Looking forward to inelastic DM with electromagnetic form factors at FASER and beam dump
+        experiments
+      url: https://arxiv.org/abs/2305.16781
+      year: 2023
+    constraint_papers:
+    - arxiv_id: '1007.4200'
+      authors:
+      - Chang, Spencer
+      - Weiner, Neal
+      - Yavin, Itay
+      doi: 10.1103/PhysRevD.82.125011
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1007.4200
+      role: benchmark
+      title: Magnetic inelastic dark matter
+      url: https://arxiv.org/abs/1007.4200
+      year: 2010
+    - arxiv_id: '1206.2910'
+      authors:
+      - Weiner, Neal
+      - Yavin, Itay
+      doi: 10.1103/PhysRevD.86.075021
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1206.2910
+      role: benchmark
+      title: How dark are Majorana WIMPs? Signals from magnetic inelastic dark matter and Rayleigh dark
+        matter
+      url: https://arxiv.org/abs/1206.2910
+      year: 2012
+    - arxiv_id: '1211.0503'
+      authors:
+      - Ho, Chiu Man
+      - Scherrer, Robert J.
+      doi: 10.1016/j.physletb.2013.04.039
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1211.0503
+      role: benchmark
+      title: Anapole dark matter
+      url: https://arxiv.org/abs/1211.0503
+      year: 2013
+    external_databases:
+    - name: NASA ADS
+      note: Used for primary metadata, references, citations, and candidate triage only.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0005
+    extractor_name: Codex dark-matter extraction worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2305_16781'
+      section: models
+      page: null
+      quote_or_summary: Paper states it introduces iDM connections to a photon via dimension-five and
+        dimension-six operators and gives an effective Lagrangian.
+    - reference_id: '2305_16781'
+      section: relic density
+      page: null
+      quote_or_summary: Paper solves Boltzmann equations for chi_0 and chi_1 and identifies chi_0 chi_1
+        coannihilation as dominant for successful thermal freeze-out.
+    unresolved_items:
+    - Exact OCR rendering of some mass units and mathematical symbols is incomplete in the SQLite text.
+    - This row records projected/recast sensitivity, not a new observed exclusion.
+    - The EFT requires a UV completion outside the low-energy photon form-factor regime.
+    - No separate locally read electric-dipole benchmark paper was used beyond the primary iDM EFT treatment.
+  evidence:
+    particle_content:
+    - reference_id: '2305_16781'
+      note: The model section says the iDM sector is composed of two dark fermions chi_0 and chi_1 with
+        split masses.
+      confidence: high
+      section: models
+      page: null
+    interactions:
+    - reference_id: '2305_16781'
+      note: The effective Lagrangian includes the electric dipole moment photon form-factor operator for
+        chi_0-chi_1 interactions.
+      confidence: high
+      section: models
+      page: null
+    production_mechanism:
+    - reference_id: '2305_16781'
+      note: The relic-density section obtains chi_0 through thermal freeze-out and emphasizes chi_0 chi_1
+        coannihilation.
+      confidence: high
+      section: relic density
+      page: null
+    parameter_ranges:
+    - reference_id: '2305_16781'
+      note: The paper presents sensitivity and relic-density results in the m_chi0, coupling, and Delta
+        parameter planes, with Delta benchmarks including 1e-3, 0.05, 0.2, and 1.
+      confidence: medium
+      section: results
+      page: null
+    validity_domain:
+    - reference_id: '2305_16781'
+      note: The text states that the effective description is valid below the electroweak breaking scale
+        and generally requires UV completion.
+      confidence: high
+      section: models
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper presents operator-specific sensitivity regions and relic-density targets for
+        photon-coupled iDM.
+      page: null
+      reference_id: arxiv:2305.16781
+      section: Results
+    - confidence: medium
+      note: Related Majorana photon-coupled dark-matter paper contextualizes magnetic inelastic and Rayleigh-type
+        electromagnetic signals.
+      page: null
+      reference_id: arxiv:1206.2910
+      section: Model discussion
+    observables:
+    - confidence: high
+      note: Primary paper introduces photon-coupled iDM form factors, LLP decay lengths, thermal freeze-out,
+        and FASER/beam-dump signatures.
+      page: null
+      reference_id: arxiv:2305.16781
+      section: Models, relic density, and LLP signatures
+    - confidence: medium
+      note: Primary paper treats the electric dipole operator as one of the dimension-five photon form
+        factors.
+      page: null
+      reference_id: arxiv:2305.16781
+      section: Related model context
+    routes:
+    - confidence: high
+      note: Primary text identifies the chain from EFT operator to production, decay length, event signatures,
+        and thermal relic density.
+      page: null
+      reference_id: arxiv:2305.16781
+      section: Methodology
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - This extraction treats each electromagnetic form-factor operator as a substantive model variant.
+  related_entries: []
+  external_links:
+    public_codes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - EFT validity and UV completion
+  - OCR loss of some units in the source text
+  - parameter-dependent relic abundance
+  validation_status: expert_judgment_only
+  notes: The physics structure is explicit, but this row is machine extracted and not expert reviewed.
+agent_failure_modes:
+  warnings:
+  - id: do_not_overextend_eft
+    severity: high
+    category: extrapolation
+    warning: Do not use the photon form-factor EFT above its stated validity regime or as a UV-complete
+      model.
+    mitigation: Check the electroweak-scale and small-momentum-transfer assumptions before reuse.
+    source_reference_ids:
+    - '2305_16781'
+  - id: operator_variants_not_identical
+    severity: medium
+    category: notation_conflict
+    warning: EDM, MDM, anapole, and charge-radius variants have different operator dimensions and decay
+      modes.
+    mitigation: Keep operator labels and coupling dimensions attached to any downstream calculation.
+    source_reference_ids:
+    - '2305_16781'
+observables:
+- caveats:
+  - Sensitivity curves are projection/recast objects, not model-independent exclusions.
+  - The EFT requires a UV completion outside its validity regime.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - FASER
+  - beam-dump experiments
+  - electron-scattering detectors
+  id: obs_electric_dipole_llp_intensity_frontier
+  key_quantities:
+  - description: Stable iDM state mass.
+    name: lighter dark fermion mass
+    range: MeV-GeV regime in the primary study
+    role: core
+    scale: log
+    source_reference_ids:
+    - arxiv:2305.16781
+    status: inferred
+    symbol: m_chi0
+  - description: (m_chi1-m_chi0)/m_chi0.
+    name: fractional splitting
+    range: benchmarks include 1e-3, 0.05, 0.2, and 1
+    role: core
+    scale: log
+    source_reference_ids:
+    - arxiv:2305.16781
+    status: established
+    symbol: Delta
+  - description: Effective dimension-five electric dipole operator coupling.
+    name: electric dipole coupling
+    role: core
+    scale: log
+    source_reference_ids:
+    - arxiv:2305.16781
+    - arxiv:2305.16781
+    status: established
+    symbol: 1/Lambda_E
+  linked_constraints:
+  - con_electric_dipole_intensity_sensitivity
+  linked_routes:
+  - route_electric_dipole_form_factor_to_events
+  name: Electric Dipole iDM long-lived-particle signatures
+  notes: two-body chi_1 to chi_0 gamma decay can control the LLP signature
+  observability: medium
+  predicted_effect: Photon-coupled inelastic states can be produced at intensity-frontier experiments;
+    the excited state decay length and scattering/decay mode are controlled by 1/Lambda_E, the mass splitting
+    Delta, and m_chi0.
+  redshift_range: z=0 accelerator experiments
+  relevance: high
+  scale_range: MeV-GeV masses and small momentum exchange below the electroweak scale
+  source_reference_ids:
+  - arxiv:2305.16781
+  - arxiv:2305.16781
+  subchannel: FASER and beam-dump displaced decays and scattering
+- caveats:
+  - Thermal target depends on the EFT validity and on whether chi_0 makes all dark matter.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early-universe thermal plasma
+  id: obs_electric_dipole_thermal_coannihilation
+  key_quantities:
+  - description: Thermal relic target for the stable iDM state.
+    name: target relic abundance
+    role: derived
+    source_reference_ids:
+    - arxiv:2305.16781
+    status: established
+    symbol: Omega_chi0 h^2
+    value: approximately 0.1 in the primary text
+  - description: Effective chi_0 chi_1 annihilation/coannihilation rate.
+    name: coannihilation rate
+    role: derived
+    source_reference_ids:
+    - arxiv:2305.16781
+    status: inferred
+    symbol: <sigma v>_01
+  - description: Controls excited-state abundance during freeze-out and later decay length.
+    name: mass splitting
+    range: successful thermal freeze-out requires sufficiently small splitting, O(0.5) or below in the
+      primary row
+    role: core
+    scale: log
+    source_reference_ids:
+    - arxiv:2305.16781
+    status: inferred
+    symbol: Delta
+  linked_constraints:
+  - con_electric_dipole_thermal_relic_small_splitting
+  linked_routes:
+  - route_electric_dipole_coannihilation_relic
+  name: Electric Dipole iDM thermal coannihilation target
+  notes: null
+  observability: medium
+  predicted_effect: The stable chi_0 abundance is set mainly by chi_0 chi_1 coannihilation into electromagnetically
+    coupled Standard Model states, with successful freeze-out requiring sufficiently small splitting.
+  redshift_range: thermal freeze-out epoch
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - arxiv:2305.16781
+  - arxiv:1206.2910
+  - arxiv:2305.16781
+  subchannel: thermal relic density
+constraints:
+- allowed_regions:
+  - EFT parameter regions outside current/proposed detector reach or with decay lengths/production rates
+    outside acceptance.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The electromagnetic form-factor EFT is valid below the electroweak scale and at small
+      momentum exchange.
+    id: photon_form_factor_eft
+    impact_if_violated: Above the EFT domain, production and decay rates require a UV completion.
+    notes: null
+    scope: EFT validity
+    source_reference_ids:
+    - arxiv:2305.16781
+    status: assumed
+  benchmark_implications:
+  - Benchmark sensitivity must be read in the operator-specific plane because AM/CR and EDM/MDM have different
+    dimensions and decay modes.
+  caveats:
+  - Detector acceptances and secondary-production modeling are experiment specific.
+  constrained_parameters:
+  - m_chi0
+  - Delta
+  - 1/Lambda_E
+  - c_tau_chi1
+  constraint_type: laboratory
+  data_release: FASER and beam-dump configurations discussed in the primary paper
+  excluded_regions:
+  - No hard observed exclusion recorded here; primary paper presents projected and recast sensitivity
+    regions in operator-specific parameter planes.
+  id: con_electric_dipole_intensity_sensitivity
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Electric Dipole iDM intensity-frontier sensitivity
+  notes: null
+  observable_channel: long-lived-particle decays, secondary production, and electron scattering
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2305.16781
+  - arxiv:2305.16781
+- allowed_regions:
+  - Small-splitting regions with sufficient chi_0 chi_1 coannihilation can match the thermal relic target.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The stable chi_0 state is treated as a thermal relic that can account for all dark matter.
+    id: thermal_all_dm_iDM
+    impact_if_violated: Subcomponent or nonthermal histories would change the target coupling.
+    notes: null
+    scope: thermal relic calculation
+    source_reference_ids:
+    - arxiv:2305.16781
+    status: assumed
+  benchmark_implications:
+  - Relic-density curves should be overlaid with LLP reach for the same operator and Delta benchmark.
+  caveats:
+  - Boltzmann equations were not solved in this batch.
+  constrained_parameters:
+  - m_chi0
+  - Delta
+  - 1/Lambda_E
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Large mass splittings can make coannihilation inefficient and fail to reproduce the target relic abundance
+    in parts of parameter space.
+  id: con_electric_dipole_thermal_relic_small_splitting
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Electric Dipole iDM thermal-relic small-splitting requirement
+  notes: null
+  observable_channel: thermal relic abundance
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2305.16781
+  - arxiv:1206.2910
+  - arxiv:2305.16781
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Primary paper lists an author code repository, but this batch did not execute it.
+    caveats:
+    - Do not mix coupling dimensions across AM/CR and EDM/MDM variants.
+    constraint_ids:
+    - con_electric_dipole_intensity_sensitivity
+    derived_quantities:
+    - production rate
+    - c_tau_chi1
+    - visible branching fraction
+    - event yield
+    description: Map the dimension-five electric dipole operator from EFT parameters to production, chi_1
+      decay length, detector acceptance, and event yield in FASER/beam-dump style experiments.
+    forward_model_chain:
+    - inputs:
+      - m_chi0
+      - Delta
+      - 1/Lambda_E
+      notes: null
+      outputs:
+      - cross sections
+      - partial widths
+      step_id: eft_rates
+      step_type: analytic_formula
+      tool_or_code: photon-coupled iDM matrix elements
+      validity: Only below electroweak scale and small momentum transfer.
+    - inputs:
+      - rates
+      - decay length
+      - detector geometry
+      notes: null
+      outputs:
+      - expected events
+      - sensitivity curves
+      step_id: detector_yield
+      step_type: simulation
+      tool_or_code: Looking_forward_to_photon_coupled_LLPs repository or equivalent
+      validity: Requires experiment-specific fluxes and acceptances.
+    - inputs:
+      - expected events
+      notes: null
+      outputs:
+      - sensitivity contour
+      step_id: limit_projection
+      step_type: recasting
+      tool_or_code: null
+      validity: Projection/recast status depends on detector assumptions.
+    id: route_electric_dipole_form_factor_to_events
+    input_parameters:
+    - m_chi0
+    - Delta
+    - 1/Lambda_E
+    - detector geometry
+    - beam spectrum
+    likelihoods: []
+    observable_ids:
+    - obs_electric_dipole_llp_intensity_frontier
+    required_code_resources:
+    - https://github.com/krzysztofjjodlowski/Looking_forward_to_photon_coupled_LLPs
+    route_status: partially_implemented
+    source_model_features:
+    - two-state fermionic inelastic dark matter
+    - dimension-five electric dipole operator
+    - photon-mediated production and decay
+    validation_tests:
+    - reproduce the primary paper operator-specific sensitivity curves
+    - verify the correct two-body versus three-body decay mode for the operator
+  - agent_notes: The route is specified but not numerically rerun.
+    caveats:
+    - Subcomponent dark matter would rescale the target.
+    constraint_ids:
+    - con_electric_dipole_thermal_relic_small_splitting
+    derived_quantities:
+    - effective annihilation rate
+    - Omega_chi0 h^2
+    description: Solve coupled Boltzmann equations for chi_0 and chi_1 using the dimension-five electric
+      dipole operator to derive the thermal relic target.
+    forward_model_chain:
+    - inputs:
+      - m_chi0
+      - Delta
+      - 1/Lambda_E
+      notes: null
+      outputs:
+      - coannihilation cross sections
+      step_id: annihilation_rates
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: EFT validity and thresholds for hadronic final states must be handled.
+    - inputs:
+      - coannihilation cross sections
+      notes: null
+      outputs:
+      - Y_chi0
+      - Omega_chi0 h^2
+      step_id: boltzmann
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Assumes standard thermal history.
+    id: route_electric_dipole_coannihilation_relic
+    input_parameters:
+    - m_chi0
+    - Delta
+    - 1/Lambda_E
+    - SM electromagnetic final states
+    likelihoods: []
+    observable_ids:
+    - obs_electric_dipole_thermal_coannihilation
+    required_code_resources:
+    - Boltzmann solver or primary author workflow
+    route_status: planned
+    source_model_features:
+    - thermal iDM
+    - coannihilation
+    - dimension-five electric dipole operator
+    validation_tests:
+    - recover relic-density targets for Delta benchmarks in the primary paper

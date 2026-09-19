@@ -1,0 +1,263 @@
+_source:
+  shard: arXiv_src_1511_019_wds.tar
+  paper_id: '1511_08432'
+  source_member: 1511_08432.json
+schema_version: model_only_v0
+model_id: 1511_08432_sism_single_scalar_dm_v1
+identity:
+  name: Scale-invariant single scalar dark matter
+  family: scalar_higgs_portal_dark_matter
+  aliases:
+  - single scalar dark matter in SISM
+  short_description: A classically scale-invariant Standard Model extension with a light scalon mediator
+    and one Z2-stabilized real scalar WIMP produced by thermal freeze-out.
+  historical_origin_or_motivation: Motivated by avoiding the Higgs hierarchy problem through scale invariance
+    while adding a viable WIMP candidate.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - scale invariant standard model
+  - Gildener-Weinberg scalar sector
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes a massless-Higgs SM plus quartic potential V(H,s,phi_i) with the scalon s and
+    Z2-odd scalar dark matter.
+particle_content:
+  dark_matter_candidate:
+    name: phi_1 real singlet scalar
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - scalon s
+  - SM-like Higgs h through scalar mixing
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The dark scalar has zero vev and is protected by a Z2 parity, so it does not
+    decay to SM particles.
+  symmetries:
+  - name: Z2 dark parity
+    type: discrete
+    exact_or_approximate: exact
+  - name: classical scale invariance
+    type: global
+    exact_or_approximate: broken
+    breaking: radiative Coleman-Weinberg/Gildener-Weinberg breaking
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - quarks through Higgs-scalon mixing
+  dark_sector_couplings:
+  - s^2 phi_1^2 quartic
+  - h^2 phi_1^2 and h s phi_1^2 terms after symmetry breaking
+  mediator_types:
+  - scalon
+  - scalar Higgs portal
+  annihilation_channels:
+  - phi_1 phi_1 to SM states through scalar mediators
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: Higgs-scalon mixing quartic
+    symbol: lambda
+    description: Quartic coupling controlling the Higgs-scalon sector.
+    range: -0.128 < lambda < 0 after fixing m_h and v_H
+    role: core
+    status: inferred
+  - name: dark scalar-scalon quartic
+    symbol: lambda_1
+    description: Quartic coupling controlling the phi_1 mass and interactions.
+    range: lambda_1 > -1.65/lambda_H from positive scalon mass
+    role: core
+    status: inferred
+  - name: dark matter mass
+    symbol: m_phi1
+    description: Mass of the single scalar candidate.
+    range: viable relic/detection scan mainly above about 2 TeV for the single-component case
+    unit: GeV
+    role: core
+    status: inferred
+  - name: scalon mass
+    symbol: m_s
+    description: Radiatively generated mediator mass.
+    range: computed from the one-loop Gildener-Weinberg expression
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Boltzmann equation for phi_1 number density
+  - annihilation cross section into SM states
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper scans couplings and solves the freeze-out Boltzmann equation for the Planck/WMAP relic
+    density band.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - lambda
+  - lambda_1
+  - m_phi1
+  - m_s
+  - thermal annihilation cross section
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: WIMP-like freeze-out is assumed.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: sism_single_zero_vev
+  applies_to: model
+  condition: The dark scalar must keep zero vacuum expectation value and remain Z2 odd.
+  status: assumed
+  extrapolation_risk: high
+- id: sism_single_scan_region
+  applies_to: parameter
+  condition: Relic-density viable scan uses the scale-invariant relations among lambda, lambda_H, lambda_1,
+    m_s, and m_phi1.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: standard_freezeout_cosmology
+    description: Standard thermal freeze-out cosmology is used for the Boltzmann relic-density calculation.
+    scope: production
+    status: assumed
+  - id: radiative_scalon_mass
+    description: The radiatively generated nonzero scalon mass is required for viable dark matter phenomenology.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: The text reports micrOMEGAs calculations but no model-specific code release in the assigned
+    full text.
+provenance:
+  model_id: 1511_08432_sism_single_scalar_dm_v1
+  model_name: Scale-invariant single scalar dark matter
+  model_family: scalar_higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper_1511_08432
+      title: Scale invariant scalar dark matter in the Standard Model
+      authors: []
+      year: 2015
+      arxiv_id: '1511.08432'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker_batch-0019
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper_1511_08432
+      section: introduction/model
+      page: null
+      quote_or_summary: The paper introduces scalar dark matter extensions of the scale-invariant SM with
+        one or two additional scalars.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper_1511_08432
+      note: The paper adds one real scalar phi_1 beyond the Higgs h and scalon s as the single DM candidate.
+      confidence: medium
+      section: model
+      page: null
+    symmetries:
+    - reference_id: paper_1511_08432
+      note: The DM scalars have Z2 symmetry, zero vev, and are stable.
+      confidence: medium
+      section: model
+      page: null
+    interactions:
+    - reference_id: paper_1511_08432
+      note: The potential contains quartic Higgs-scalon and scalon-DM terms; scalar mixing gives the Higgs
+        portal to quarks.
+      confidence: medium
+      section: model
+      page: null
+    production_mechanism:
+    - reference_id: paper_1511_08432
+      note: The single scalar number density is evolved with the thermal freeze-out Boltzmann equation.
+      confidence: medium
+      section: Single Dark Matter
+      page: null
+    parameter_ranges:
+    - reference_id: paper_1511_08432
+      note: Fixing m_h and v_H gives -0.128 < lambda < 0 and a positivity bound on lambda_i.
+      confidence: medium
+      section: Single Dark Matter
+      page: null
+    validity_domain:
+    - reference_id: paper_1511_08432
+      note: The paper finds viable single-component points in the relic-density band, with masses mainly
+        above about 2 TeV.
+      confidence: medium
+      section: Single Dark Matter
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewed_by: null
+    expert_reviewer: null
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - narrow scale-invariant parameter space
+  - relic-density scan details are not reproduced here
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: sism_not_generic_higgs_portal
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat this as an unconstrained generic singlet-scalar portal model; scale invariance
+      ties the masses and couplings.
+    mitigation: Preserve the paper-specific SISM relations when using the card.

@@ -1,0 +1,648 @@
+_source:
+  shard: arXiv_src_2306_100_wds.tar
+  paper_id: '2306_13061'
+  source_member: 2306_13061.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2306_13061_low_reheating_higgs_portal_freeze_in_v1
+identity:
+  name: Low-reheating Higgs-portal freeze-in dark matter at stronger coupling
+  family: freeze_in_dark_matter
+  aliases:
+  - Boltzmann-suppressed Higgs-portal freeze-in
+  short_description: A real scalar Higgs-portal dark matter model produced by Boltzmann-suppressed freeze-in
+    after low reheating, allowing portal couplings much larger than in conventional freeze-in.
+  historical_origin_or_motivation: Addresses gravitational-production backgrounds and poor testability
+    of conventional freeze-in by lowering the reheating temperature.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - real scalar Higgs portal
+  - freeze-in dark matter
+  - low reheating cosmology
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The displayed potential is V(s) = 1/2 lambda_hs s^2 H^dagger H + 1/2 m_s^2 s^2.
+particle_content:
+  dark_matter_candidate:
+    name: real scalar s
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Standard Model Higgs boson
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - real scalar s
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The Higgs-portal scalar is treated as stable, consistent with an implicit even-parity
+    for s in the displayed potential.
+  symmetries:
+  - name: s parity
+    type: discrete
+    exact_or_approximate: unknown
+    breaking: not specified in the extracted text
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - vector bosons via Goldstone-equivalent Higgs degrees of freedom
+  - nucleons through Higgs exchange
+  dark_sector_couplings:
+  - lambda_hs s^2 H^dagger H
+  mediator_types:
+  - Standard Model Higgs
+  interaction_operators:
+  - s^2 H^dagger H
+  annihilation_channels:
+  - s s to Higgs-sector states after production if annihilation becomes efficient
+  decay_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_s
+    description: Real scalar dark matter mass, taken above the reheating temperature in the Boltzmann-suppressed
+      regime.
+    range: above T_R; examples include electroweak-to-TeV scales
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs portal coupling
+    symbol: lambda_hs
+    description: Coupling controlling freeze-in production and direct scattering.
+    range: can be much larger than conventional freeze-in, up to order one before thermalization limits
+    role: core
+    status: inferred
+  - name: reheating temperature
+    symbol: T_R
+    description: Maximum Standard Model bath temperature for freeze-in production.
+    range: low, with examples around 10 GeV and generally below m_s
+    unit: GeV
+    role: core
+    status: inferred
+  nuisance:
+  - name: effective Standard Model degrees of freedom
+    symbol: g_*
+    description: Used in analytic abundance estimates.
+    value: about 107
+    role: cosmological
+    status: inferred
+  derived:
+  - name: comoving abundance
+    symbol: Y
+    description: Dark matter abundance obtained by integrating the Boltzmann equation.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - Boltzmann-suppressed freeze-in from Higgs and vector-boson pair annihilation
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - m_s/T_R ratio
+  - lambda_hs
+  - initial negligible abundance
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The production mode is active for a short period near T_R and dark matter remains nonthermal
+    below the critical coupling.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed abundance
+    symbol: Y_obs
+    description: Observed dark matter abundance target used in the paper.
+    value: 4.4e-10 GeV / m_s
+    role: cosmological
+    status: inferred
+  calculation_type: nonthermal
+  key_dependencies:
+  - lambda_hs
+  - m_s/T_R
+  - low reheating history
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - low reheating temperature
+  - dilution of gravitationally produced relics
+  - possible matter-dominated expansion before reheating
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: low
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'no'
+  notes: The paper solves abundance with Boltzmann equations but does not provide a full momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: boltzmann_suppressed_regime
+  applies_to: production
+  condition: Dark matter mass must lie above the reheating temperature for the stronger-coupling freeze-in
+    behavior emphasized in the paper.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: no_initial_abundance
+  applies_to: cosmological_history
+  condition: The initial abundance before reheating is assumed negligible after dilution of gravitationally
+    produced relics.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+- id: no_thermalization_branch
+  applies_to: production
+  condition: Below the critical portal coupling the dark matter does not thermalize; the higher-coupling
+    branch approaches ordinary freeze-out behavior.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: low_reheating
+    description: The Standard Model bath reheats to a temperature well below the dark matter mass.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: higgs_bath_thermalized
+    description: Higgs-sector degrees of freedom are thermalized in the Standard Model bath at the relevant
+      temperatures.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: negligible_initial_dark_matter
+    description: Initial scalar abundance before reheating is negligible or diluted enough not to dominate
+      the final density.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper reports numerical Boltzmann-equation solutions but the assigned text does not
+    identify a dedicated public code release.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 2306_13061_low_reheating_higgs_portal_freeze_in_v1
+  model_name: Low-reheating Higgs-portal freeze-in dark matter at stronger coupling
+  model_family: freeze_in_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2306_13061'
+      title: Freeze-in at stronger coupling
+      year: 2023
+      arxiv_id: '2306.13061'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+      authors:
+      - Catarina Cosme
+      - Francesco Costa
+      - Oleg Lebedev
+    - arxiv_id: '2306.13061'
+      authors:
+      - Cosme, Catarina
+      - Costa, Francesco
+      - Lebedev, Oleg
+      doi: 10.1103/PhysRevD.109.075038
+      notes: Primary local full text supports low-reheating Higgs-portal freeze-in and direct-detection
+        constraints.
+      reference_id: src_2306_13061_primary
+      role: original_model
+      title: Freeze-in at stronger coupling
+      url: https://arxiv.org/abs/2306.13061
+      year: 2024
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used only for sanitized metadata discovery, references, and citations.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0007
+    extractor_name: Codex local extraction worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2306_13061'
+      section: Abstract
+      page: null
+      quote_or_summary: The paper studies freeze-in production at electroweak-scale temperatures when
+        dark matter is heavier than the reheating temperature.
+    - reference_id: '2306_13061'
+      section: Freeze-in dark matter model
+      page: null
+      quote_or_summary: A real scalar Higgs-portal model is used to show that Boltzmann-suppressed freeze-in
+        can require directly testable couplings.
+    unresolved_items:
+    - Exact LZ/XENONnT/DARWIN curves were not digitized.
+    - The full momentum distribution of the produced scalar DM is not supplied in the primary text.
+  evidence:
+    particle_content:
+    - reference_id: '2306_13061'
+      note: The model is a real scalar dark matter particle s with a Higgs-portal term lambda_hs s^2 H^dagger
+        H and mass m_s.
+      confidence: high
+      section: Freeze-in dark matter model
+      page: null
+    symmetries:
+    - reference_id: '2306_13061'
+      note: The scalar is treated as a stable dark matter particle with only even powers in the displayed
+        Higgs-portal potential.
+      confidence: medium
+      section: Freeze-in dark matter model
+      page: null
+    interactions:
+    - reference_id: '2306_13061'
+      note: The leading production process is Higgs/vector-boson pair annihilation into scalar pairs;
+        nucleon scattering is Higgs mediated.
+      confidence: high
+      section: Freeze-in dark matter model and direct detection
+      page: null
+    production_mechanism:
+    - reference_id: '2306_13061'
+      note: When m_s exceeds the reheating temperature, production is Boltzmann suppressed and larger
+        couplings can produce the observed abundance without thermalizing the dark sector.
+      confidence: high
+      section: Abstract and freeze-in calculation
+      page: null
+    cosmological_history:
+    - reference_id: '2306_13061'
+      note: Low reheating temperature dilutes gravitationally produced relics and permits electroweak-scale
+        freeze-in below m_s.
+      confidence: high
+      section: Gravitational production and low reheating
+      page: null
+    parameter_ranges:
+    - reference_id: '2306_13061'
+      note: The paper highlights electroweak-scale reheating, T_R around 10 GeV in examples, and direct-detection
+        sensitivity up to TeV-scale scalar masses.
+      confidence: medium
+      section: Parameter space
+      page: null
+    validity_domain:
+    - reference_id: '2306_13061'
+      note: The scenario assumes negligible initial dark matter abundance, T_R below m_s, and Higgs thermalization
+        in the Standard Model bath.
+      confidence: high
+      section: Freeze-in dark matter model
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text identifies LZ 2022 as the main constraint and quotes sensitivity to masses up
+        to about 2 TeV plus a 100 GeV benchmark bound.
+      page: null
+      reference_id: src_2306_13061_primary
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text states that low reheating Boltzmann-suppresses freeze-in and allows larger portal
+        couplings, opening direct detection.
+      page: null
+      reference_id: src_2306_13061_primary
+      section: null
+    routes:
+    - confidence: high
+      note: Primary text gives the Higgs-portal production/scattering equations and uses Boltzmann evolution
+        to draw abundance/direct-detection contours.
+      page: null
+      reference_id: src_2306_13061_primary
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: high
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - low reheating history
+  - initial gravitationally produced abundance
+  - transition to thermalized/freeze-out branch
+  validation_status: expert_judgment_only
+  notes: The analytic setup and production logic are explicit in the text.
+agent_failure_modes:
+  warnings:
+  - id: not_standard_feeble_freezein
+    severity: medium
+    category: assumption_mismatch
+    warning: The portal coupling can be much larger than in conventional freeze-in only because production
+      is Boltzmann suppressed by T_R < m_s.
+    source_reference_ids: []
+  - id: initial_abundance_dependency
+    severity: high
+    category: assumption_mismatch
+    warning: If gravitationally produced relics are not diluted, the predicted abundance changes substantially.
+    source_reference_ids: []
+observables:
+- caveats:
+  - The route assumes negligible initial DM abundance before reheating.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - low-temperature Standard Model thermal bath
+  id: obs_low_reheating_boltzmann_freezein
+  key_quantities:
+  - name: scalar dark matter mass
+    range: above T_R; electroweak-to-TeV examples
+    role: core
+    source_reference_ids:
+    - src_2306_13061_primary
+    status: inferred
+    symbol: m_s
+    unit: GeV
+  - name: reheating temperature
+    range: low, with examples around 10 GeV and generally below m_s
+    role: cosmological
+    source_reference_ids:
+    - src_2306_13061_primary
+    status: inferred
+    symbol: T_R
+    unit: GeV
+  - name: Higgs portal coupling
+    range: larger than conventional freeze-in, up to near thermalization limits
+    role: core
+    source_reference_ids:
+    - src_2306_13061_primary
+    status: inferred
+    symbol: lambda_hs
+  linked_constraints:
+  - constr_direct_detection_lz_higgs_portal
+  - constr_thermalization_branch
+  linked_routes:
+  - route_low_reheating_boltzmann_direct_detection
+  name: Boltzmann-suppressed freeze-in at low reheating temperature
+  notes: The primary text emphasizes that low reheating dilutes gravitationally produced relics and makes
+    direct detection possible for freeze-in.
+  observability: medium
+  predicted_effect: When the reheating temperature is below the scalar DM mass, production from Higgs/vector-boson
+    annihilation is Boltzmann suppressed; matching the observed relic density then permits much larger
+    Higgs-portal couplings than conventional freeze-in.
+  redshift_range: reheating through early radiation domination
+  relevance: critical
+  scale_range: homogeneous relic abundance
+  source_reference_ids:
+  - src_2306_13061_primary
+  subchannel: low-reheating nonthermal relic abundance
+- caveats:
+  - The primary text states LHC and indirect bounds are superseded by direct detection only in the region
+    of interest.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - underground direct-detection experiments
+  id: obs_higgs_mediated_direct_detection
+  key_quantities:
+  - description: Higgs-mediated cross section proportional to lambda_hs^2/m_s^2 in the heavy-DM approximation
+      quoted in the paper.
+    name: scalar-nucleon cross section
+    role: experimental
+    source_reference_ids:
+    - src_2306_13061_primary
+    status: approximate
+    symbol: sigma_sN
+  - name: nucleon form factor
+    role: nuisance
+    source_reference_ids:
+    - src_2306_13061_primary
+    status: assumed
+    symbol: f_N
+    value: about 0.3
+  - name: Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - src_2306_13061_primary
+    status: inferred
+    symbol: lambda_hs
+  linked_constraints:
+  - constr_direct_detection_lz_higgs_portal
+  linked_routes:
+  - route_low_reheating_boltzmann_direct_detection
+  name: Higgs-mediated direct-detection signal
+  notes: The primary paper quotes the Higgs-mediated cross section and compares it with LZ 2022 and future
+    experiments.
+  observability: high
+  predicted_effect: The same Higgs-portal coupling that controls Boltzmann-suppressed production mediates
+    scalar DM scattering on nucleons through Higgs exchange, bringing part of freeze-in parameter space
+    into reach of direct-detection experiments.
+  redshift_range: null
+  relevance: critical
+  scale_range: laboratory nuclear recoils for electroweak-to-TeV scalar DM masses
+  source_reference_ids:
+  - src_2306_13061_primary
+  subchannel: spin-independent scalar-nucleon scattering
+constraints:
+- allowed_regions:
+  - Parameter space below the LZ exclusion line remains viable in the paper figure; future XENONnT and
+    DARWIN probe much of the area above the neutrino background/fog line.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Scalar-nucleon scattering is mediated by Higgs exchange with f_N about 0.3.
+    id: assume_standard_higgs_portal_scattering
+    impact_if_violated: Different nucleon matrix elements or additional interactions shift sigma_sN.
+    notes: null
+    scope: direct-detection recast
+    source_reference_ids:
+    - src_2306_13061_primary
+    status: assumed
+  benchmark_implications:
+  - At m_s = 100 GeV the primary text quotes an LZ cross-section bound around 3e-47 cm^2, constraining
+    lambda_hs at about the 10^-2 level.
+  caveats:
+  - Direct-detection limits depend on the assumed local DM density and halo model, which are not varied
+    in the primary text.
+  constrained_parameters:
+  - lambda_hs
+  - m_s
+  - sigma_sN
+  constraint_type: direct_detection
+  data_release: LZ 2022; future projections for XENONnT and DARWIN as discussed in the primary paper
+  excluded_regions:
+  - The primary paper shades parameter space excluded by direct detection and states that LZ 2022 is already
+    sensitive to freeze-in DM masses up to about 2 TeV in the displayed low-reheating setup.
+  id: constr_direct_detection_lz_higgs_portal
+  likelihood_available: partial
+  likelihood_reference: LZ 2022 direct-detection limit; exact likelihood not packaged in this row.
+  name: LZ 2022 direct-detection bound on low-reheating Higgs-portal freeze-in
+  notes: This is the strongest experimental constraint identified by the primary paper in the model region
+    of interest.
+  observable_channel: spin-independent scalar-nucleon scattering
+  recasting_needed: 'yes'
+  robustness: high
+  source_reference_ids:
+  - src_2306_13061_primary
+- allowed_regions:
+  - Lower couplings follow the pure freeze-in scaling; larger couplings and lower masses develop a thermalized/freeze-out
+    branch.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The initial scalar abundance before reheating is negligible.
+    id: assume_negligible_initial_abundance
+    impact_if_violated: A nonzero initial abundance or gravitational production background changes the
+      relic-density contours.
+    notes: null
+    scope: Boltzmann abundance calculation
+    source_reference_ids:
+    - src_2306_13061_primary
+    status: assumed
+  benchmark_implications:
+  - Order-one-ish portal couplings are possible only before hitting thermalization and direct-detection
+    exclusions.
+  caveats:
+  - The paper solves number-density Boltzmann equations but does not provide a full momentum distribution.
+  constrained_parameters:
+  - lambda_hs
+  - m_s
+  - T_R
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Parameter regions where the dark matter thermalizes are no longer pure freeze-in and move onto a frozen-out
+    branch in the primary analysis.
+  id: constr_thermalization_branch
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Thermalization and freeze-out branch at larger coupling/lower mass
+  notes: Kept separate from the LZ constraint because it is a model-regime boundary rather than an experimental
+    exclusion.
+  observable_channel: Boltzmann evolution and relic-density branch structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2306_13061_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary paper supplies equations and qualitative contours; exact figure digitization
+      was not performed.
+    caveats:
+    - Local halo assumptions and neutrino-background treatment need specification for precision forecasts.
+    constraint_ids:
+    - constr_direct_detection_lz_higgs_portal
+    - constr_thermalization_branch
+    derived_quantities:
+    - Y
+    - Omega_DM h^2
+    - sigma_sN
+    - thermalization boundary
+    description: Solve scalar Higgs-portal production during low reheating with Boltzmann suppression,
+      then compute Higgs-mediated scalar-nucleon scattering and compare to LZ/future direct-detection
+      sensitivities.
+    forward_model_chain:
+    - inputs:
+      - m_s
+      - T_R
+      - lambda_hs
+      - g_*
+      notes: Compute Higgs/vector-boson annihilation into scalar pairs.
+      outputs:
+      - Boltzmann-suppressed production rate
+      step_id: step_freezein_rate
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Heavy-DM and low-reheating approximations as in the primary text.
+    - inputs:
+      - production rate
+      - cosmological expansion history
+      notes: Numerically solve abundance contours for fixed T_R.
+      outputs:
+      - Y
+      - Omega_DM h^2
+      - thermalization branch
+      step_id: step_boltzmann_abundance
+      step_type: boltzmann_solver
+      tool_or_code: number-density Boltzmann equation
+      validity: Valid when the assumed reheating history and negligible initial abundance hold.
+    - inputs:
+      - lambda_hs
+      - m_s
+      - f_N
+      notes: Compare with LZ 2022 and projected XENONnT/DARWIN sensitivity.
+      outputs:
+      - sigma_sN
+      - excluded/directly testable region
+      step_id: step_direct_detection
+      step_type: recasting
+      tool_or_code: Higgs-portal spin-independent scattering formula
+      validity: Uses standard Higgs-mediated scalar-nucleon scattering.
+    id: route_low_reheating_boltzmann_direct_detection
+    input_parameters:
+    - m_s
+    - T_R
+    - lambda_hs
+    - g_*
+    - f_N
+    likelihoods:
+    - LZ 2022 limit curve
+    observable_ids:
+    - obs_low_reheating_boltzmann_freezein
+    - obs_higgs_mediated_direct_detection
+    required_code_resources:
+    - Boltzmann abundance solver
+    - Higgs-portal direct-detection recast
+    route_status: planned
+    source_model_features:
+    - real scalar Higgs-portal DM
+    - T_R below m_s
+    - negligible initial abundance
+    - Boltzmann-suppressed production from Higgs/vector bosons
+    validation_tests:
+    - Recover conventional freeze-in coupling scale as T_R approaches or exceeds m_s.
+    - Check the quoted m_s=100 GeV LZ cross-section-to-lambda_hs implication.
+    - Verify the direct-detection excluded region matches the paper figure before digitization.

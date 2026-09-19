@@ -1,0 +1,762 @@
+_source:
+  shard: arXiv_src_2307_104_wds.tar
+  paper_id: '2307_14972'
+  source_member: 2307_14972.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: not_generic_wimp
+    mitigation: Carry the FN charge and flavon-portal assumptions into any downstream reasoning.
+    severity: medium
+    source_reference_ids:
+    - '2307.14972'
+    warning: Do not treat this as a generic WIMP; flavon couplings are tied to FN charges and v_phi.
+  - category: extrapolation
+    id: do_not_mix_freeze_in_window
+    mitigation: Use the separate freeze-in model-card row for feeble-coupling scenarios.
+    severity: medium
+    source_reference_ids:
+    - '2307.14972'
+    warning: The TeV-scale freeze-out parameter window should not be merged with the high-v_phi freeze-in
+      window.
+associated_code:
+  code_summary: The paper implements the model in MicrOMEGAs and MadDM for relic-abundance calculations
+    and compares with an own calculation; no public model files are specified in the assigned text.
+  has_associated_code: partial
+  primary_code_role: relic_density_calculation
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The extra Z_2 symmetry keeps N^1 stable and separates it from the heavier RHNs used for
+      neutrino masses.
+    id: z2_stabilizes_n1
+    impact_if_violated: N^1 would not be a stable dark matter candidate.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '2307.14972'
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: The freeze-out variant assumes the dark matter candidate was thermally populated and
+      later chemically decoupled.
+    id: thermal_freeze_out_history
+    impact_if_violated: The relic-density calculation would shift to the freeze-in or another nonthermal
+      regime.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '2307.14972'
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - spontaneous breaking of U(1)_FN
+  phase_transitions:
+  - Froggatt-Nielsen symmetry breaking by the flavon vev
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - FN flavon-portal RHN dark matter
+  - lightest RHN N^1 freeze-out scenario
+  family: freeze_out_dark_matter
+  historical_origin_or_motivation: Motivated by addressing SM flavor hierarchies, neutrino masses, and
+    dark matter in one economical effective setup.
+  model_kind: effective_field_theory
+  name: Froggatt-Nielsen flavon-portal right-handed-neutrino freeze-out dark matter
+  short_description: An effective Froggatt-Nielsen model where a Z_2-odd lightest right-handed neutrino
+    freezes out through scalar and pseudoscalar flavon portals.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - N^1 N^1 -> a a
+  - N^1 N^1 -> s a
+  - N^1 N^1 -> s s
+  - N^1 N^1 -> Standard Model fermion pairs
+  cp_structure: pseudoscalar portal emphasized; scalar flavon also present
+  dark_sector_couplings:
+  - N^1 N^1 s coupling set by the FN charge and v_phi
+  - N^1 N^1 a coupling set by the FN charge and v_phi
+  - flavon couplings to SM fermions fixed by FN charges and fermion masses
+  decay_channels: []
+  flavor_structure: Flavor couplings are controlled by chosen Froggatt-Nielsen charge assignments.
+  interaction_operators:
+  - higher-dimensional Froggatt-Nielsen Yukawa operators
+  - Majorana right-handed-neutrino mass operators involving the flavon
+  mediator_types:
+  - scalar flavon
+  - pseudoscalar flavon
+  portals:
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: both
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Standard Model fermions through Froggatt-Nielsen-suppressed flavon couplings
+  tree_or_loop_level: both
+model_id: 2307_14972_fn_rhn_flavon_freeze_out_v1
+parameters:
+  core:
+  - description: Mass of the Z_2-odd lightest right-handed neutrino.
+    name: dark matter mass
+    notes: null
+    range: TeV-scale examples; a 1 TeV benchmark is explicitly scanned.
+    role: core
+    source_reference_ids:
+    - '2307.14972'
+    status: inferred
+    symbol: m_N1
+    unit: GeV
+    value: null
+  - description: Mass of the pseudoscalar flavon mediator.
+    name: pseudoscalar flavon mass
+    notes: null
+    range: 100-800 GeV in one freeze-out scan.
+    role: core
+    source_reference_ids:
+    - '2307.14972'
+    status: inferred
+    symbol: m_a
+    unit: GeV
+    value: null
+  - description: Flavon vacuum expectation value controlling mediator couplings and relic abundance.
+    name: Froggatt-Nielsen breaking scale
+    notes: The observed relic is reached near v_phi = 1.2 TeV for the displayed 1 TeV N^1 benchmark.
+    range: 200 GeV to 2 TeV in a 1 TeV N^1 scan; broader TeV-scale values are discussed.
+    role: core
+    source_reference_ids:
+    - '2307.14972'
+    status: inferred
+    symbol: v_phi
+    unit: GeV
+    value: null
+  - description: Mass of the scalar component of the flavon.
+    name: scalar flavon mass
+    notes: null
+    range: set by the scalar quartic and v_phi; heavier than the pseudoscalar in the analysis.
+    role: core
+    source_reference_ids:
+    - '2307.14972'
+    status: inferred
+    symbol: m_s
+    unit: GeV
+    value: null
+  - description: Scalar potential coupling varied in freeze-out benchmark scans.
+    name: flavon quartic coupling
+    notes: null
+    range: 0.1, 0.3, 0.5, 1, 2, and 3 are used as reference cases.
+    role: core
+    source_reference_ids:
+    - '2307.14972'
+    status: inferred
+    symbol: lambda_phi
+    unit: null
+    value: null
+  derived: []
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - two heavier right-handed neutrinos N^2 and N^3 used for Type-I seesaw neutrino masses
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lightest right-handed neutrino N^1
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Z_2-odd lightest right-handed neutrino N^1
+  mediators:
+  - scalar flavon s
+  - pseudoscalar flavon a
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: unknown
+  distribution_type: thermal
+  free_streaming_length: null
+  notes: The paper focuses on relic abundance and direct-detection rates, not structure-formation phase-space
+    calculations.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - thermally averaged annihilation cross section
+  - m_N1
+  - m_a
+  - v_phi
+  - scalar flavon mass
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through N^1 annihilation into pseudoscalar/scalar flavons
+  - subleading annihilation into Standard Model fermion pairs
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper calculates the freeze-out temperature and relic density with the Boltzmann equation
+    and cross-checks MicrOMEGAs and MadDM against an own calculation.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - The extracted text garbles some order-of-magnitude units; only clearly supported benchmark ranges
+    are recorded.
+  - No public model implementation files are identified in the assigned text.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The freeze-out section solves the Boltzmann equation with thermally averaged annihilation
+        cross sections.
+      page: null
+      reference_id: '2307.14972'
+      section: Freeze-out scenario
+    interactions:
+    - confidence: high
+      note: The complex flavon decomposes into scalar s and pseudoscalar a mediators with couplings to
+        SM fermions and RHNs set by FN charges.
+      page: null
+      reference_id: '2307.14972'
+      section: Model section
+    parameter_ranges:
+    - confidence: high
+      note: A 1 TeV N^1 benchmark scans m_a from 100 to 800 GeV and v_phi from 200 GeV to 2 TeV, with
+        the observed relic reached near v_phi = 1.2 TeV.
+      page: null
+      reference_id: '2307.14972'
+      section: Freeze-out numerical scan
+    particle_content:
+    - confidence: high
+      note: The paper adds three right-handed neutrinos and identifies the lightest, N^1, as the dark
+        matter candidate.
+      page: null
+      reference_id: '2307.14972'
+      section: Abstract and model section
+    production_mechanism:
+    - confidence: high
+      note: For TeV-scale v_phi, N^1 freezes out through annihilation to flavon pairs and SM fermions.
+      page: null
+      reference_id: '2307.14972'
+      section: Freeze-out scenario
+    symmetries:
+    - confidence: high
+      note: The model invokes U(1)_FN and an extra Z_2 symmetry under which N^1 is odd.
+      page: null
+      reference_id: '2307.14972'
+      section: Model section
+    validity_domain:
+    - confidence: high
+      note: The low-energy FN description assumes heavy FN fields are integrated out and epsilon = v_phi/M
+        is identified with the Cabibbo angle.
+      page: null
+      reference_id: '2307.14972'
+      section: Model section
+    constraints:
+    - confidence: high
+      note: Primary paper quotes Omega h^2=0.120, v_phi*m_a bound, and direct-detection reach.
+      page: null
+      reference_id: arxiv:2307.14972
+      section: Constraints
+    observables:
+    - confidence: high
+      note: Primary paper gives the freeze-out benchmark, direct-detection estimates, and flavor constraints.
+      page: null
+      reference_id: arxiv:2307.14972
+      section: Freeze-out and detection
+    routes:
+    - confidence: high
+      note: Primary paper uses MadDM, micrOMEGAs, and analytic cross-checks.
+      page: null
+      reference_id: arxiv:2307.14972
+      section: Methods
+  external_links:
+    datasets: []
+    likelihoods: []
+    public_codes: []
+  extraction:
+    confidence: high
+    extracted_by: codex_batch-0012
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5.5 dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper introduces a complex flavon, three RHNs, and a Z_2-odd lightest RHN
+        dark matter candidate.
+      reference_id: '2307.14972'
+      section: Abstract/introduction
+    - page: null
+      quote_or_summary: The freeze-out relic density is computed from thermally averaged annihilation
+        cross sections and Boltzmann evolution.
+      reference_id: '2307.14972'
+      section: Freeze-out scenario
+    unresolved_items:
+    - The extracted text garbles some order-of-magnitude units; only clearly supported benchmark ranges
+      are recorded.
+    - No public model implementation files are identified in the assigned text.
+    - No flavor or direct-detection likelihood was rerun.
+  last_updated: '2026-05-31'
+  model_family: freeze_out_dark_matter
+  model_id: 2307_14972_fn_rhn_flavon_freeze_out_v1
+  model_name: Froggatt-Nielsen flavon-portal right-handed-neutrino freeze-out dark matter
+  related_entries: []
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    constraint_papers:
+    - arxiv_id: '2305.03167'
+      authors:
+      - Babu, K. S.
+      - Chakdar, Shreyashi
+      - Das, Nandini
+      - Ghosh, Dilip Kumar
+      - Ghosh, Purusottam
+      doi: 10.1007/JHEP07(2023)143
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2305.03167
+      role: constraint
+      title: FIMP dark matter from flavon portals
+      url: https://arxiv.org/abs/2305.03167
+      year: 2023
+    - arxiv_id: '2211.02057'
+      authors:
+      - Cheek, Andrew
+      - Osiński, Jacek K.
+      - Roszkowski, Leszek
+      - Trojanowski, Sebastian
+      doi: 10.1007/JHEP03(2023)149
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2211.02057
+      role: constraint
+      title: Dark matter production through a non-thermal flavon portal
+      url: https://arxiv.org/abs/2211.02057
+      year: 2023
+    - arxiv_id: '1706.07442'
+      authors:
+      - Bernal, Nicolás
+      - Heikinheimo, Matti
+      - Tenkanen, Tommi
+      - Tuominen, Kimmo
+      - Vaskonen, Ville
+      doi: 10.1142/S0217751X1730023X
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1706.07442
+      role: constraint
+      title: 'The dawn of FIMP Dark Matter: A review of models and constraints'
+      url: https://arxiv.org/abs/1706.07442
+      year: 2017
+    external_databases: []
+    primary_papers:
+    - arxiv_id: '2307.14972'
+      authors:
+      - Rusa Mandal
+      - Tom Tong
+      doi: null
+      notes: Assigned full text from the run-local SQLite database.
+      reference_id: '2307.14972'
+      role: original_model
+      title: Exploring Freeze-out and Freeze-in Dark Matter via Effective Froggatt-Nielsen Theory
+      url: null
+      year: 2023
+    - arxiv_id: '2307.14972'
+      authors:
+      - Mandal, Rusa
+      - Tong, Tom
+      doi: 10.1088/1475-7516/2023/11/074
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2307.14972
+      role: original_model
+      title: Exploring freeze-out and freeze-in dark matter via effective Froggatt-Nielsen theory
+      url: https://arxiv.org/abs/2307.14972
+      year: 2023
+    review_papers: []
+  status: machine_extracted
+  versioning:
+    change_log:
+    - change_type: added
+      changed_by: codex_batch-0012
+      date: '2026-05-31'
+      description: Initial machine extraction from assigned paper text.
+    current_version: 0.1.0
+    previous_versions: []
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_N1
+  - m_a
+  - v_phi
+  - lambda_phi
+  - annihilation channels
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    description: Observed relic abundance target used by the authors.
+    name: Planck dark matter relic abundance target
+    notes: null
+    range: null
+    role: derived
+    source_reference_ids:
+    - '2307.14972'
+    status: established
+    symbol: Omega h^2
+    unit: null
+    value: 0.120 +/- 0.001
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - exact FN charge assignments and O(1) coefficients
+  - garbled units in some extracted order-of-magnitude ranges
+  - absence of public model files
+  notes: Relic-density calculations are cross-checked with MicrOMEGAs, MadDM, and an own calculation according
+    to the paper.
+  observational_robustness: not_applicable
+  overall: medium
+  theory_robustness: medium
+  validation_status: partially_validated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: An extra Z_2 symmetry makes N^1 odd and stabilizes the lightest right-handed
+    neutrino.
+  symmetries:
+  - breaking: spontaneously broken by the complex flavon vacuum expectation value v_phi
+    breaking_scale:
+      description: Vacuum expectation value of the complex flavon field.
+      name: Froggatt-Nielsen breaking scale
+      notes: null
+      range: TeV-scale; a 200 GeV to 2 TeV scan is shown for a 1 TeV N^1 benchmark.
+      role: core
+      source_reference_ids:
+      - '2307.14972'
+      status: inferred
+      symbol: v_phi
+      unit: GeV
+      value: null
+    exact_or_approximate: broken
+    name: U(1)_FN Froggatt-Nielsen symmetry
+    type: global
+  - breaking: not discussed
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z_2
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff:
+    description: Scale associated with heavy Froggatt-Nielsen fields integrated out of the effective theory.
+    name: flavor dynamics cutoff
+    notes: The assigned text gives the effective operators but not a single numerical cutoff value.
+    range: M = v_phi / epsilon, with epsilon identified with the Cabibbo angle in the paper.
+    role: core
+    source_reference_ids:
+    - '2307.14972'
+    status: inferred
+    symbol: M
+    unit: GeV
+    value: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: 'yes'
+  notes: The paper writes a low-energy effective Lagrangian for a complex flavon singlet and three SM-gauge-singlet
+    right-handed neutrinos.
+  parent_frameworks:
+  - Froggatt-Nielsen flavor mechanism
+  - flavon portal dark matter
+  - Type-I seesaw with right-handed neutrinos
+  renormalizable: 'no'
+  theory_level: effective_field_theory
+validity_domain:
+- applies_to: model
+  caveats:
+  - The heavy FN-field completion is not specified in the assigned text.
+  condition: Use the low-energy Froggatt-Nielsen effective theory only below the heavy FN-field scale
+    M.
+  extrapolation_risk: medium
+  id: fn_effective_theory_below_cutoff
+  notes: null
+  source_reference_ids:
+  - '2307.14972'
+  status: assumed
+  valid_range: epsilon = v_phi/M is identified with the Cabibbo angle in the model setup.
+- applies_to: model
+  caveats:
+  - Flavor constraints restrict parts of the low-v_phi and low-mediator-mass region.
+  condition: Freeze-out interpretation assumes N^1 is in thermal contact through the flavon portal and
+    annihilates efficiently before decoupling.
+  extrapolation_risk: medium
+  id: freeze_out_thermal_window
+  notes: null
+  source_reference_ids:
+  - '2307.14972'
+  status: inferred
+  valid_range: TeV-scale v_phi; displayed scan has m_N1 = 1 TeV, m_a = 100-800 GeV, and v_phi = 200 GeV-2
+    TeV.
+observables:
+- caveats: []
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe thermal bath
+  id: obs_freezeout_relic
+  key_quantities:
+  - name: dark matter mass
+    range: 1 TeV benchmark
+    role: core
+    source_reference_ids:
+    - arxiv:2307.14972
+    status: inferred
+    symbol: m_N1
+    unit: TeV
+  - name: pseudoscalar flavon mass
+    range: 100-800
+    role: core
+    source_reference_ids:
+    - arxiv:2307.14972
+    status: inferred
+    symbol: m_a
+    unit: GeV
+  - name: FN scale
+    role: core
+    source_reference_ids:
+    - arxiv:2307.14972
+    status: inferred
+    symbol: v_phi
+    value: 1.2 TeV benchmark
+  linked_constraints:
+  - con_freezeout_planck
+  linked_routes:
+  - route_fn_freezeout
+  name: FN right-handed-neutrino freeze-out abundance
+  notes: null
+  observability: medium
+  predicted_effect: For m_N1=1 TeV and m_a=100-800 GeV, the source reaches Omega h^2=0.120 near v_phi=1.2
+    TeV, dominated by N1 N1 -> a a annihilation.
+  redshift_range: freeze-out epoch
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2307.14972
+  subchannel: thermal freeze-out
+- caveats: []
+  channel: precision_laboratory
+  effect_direction: rate_change
+  environments:
+  - B mesons
+  - direct-detection experiments
+  id: obs_flavor_direct
+  key_quantities:
+  - name: FN scale times pseudoscalar mass
+    range: allowed above about 1.8e5
+    role: core
+    source_reference_ids:
+    - arxiv:2307.14972
+    status: inferred
+    symbol: v_phi*m_a
+    unit: GeV^2
+  - name: spin-dependent cross section
+    range: about 1e-46 to 1e-47 cm^2 source estimate
+    role: core
+    source_reference_ids:
+    - arxiv:2307.14972
+    status: inferred
+    symbol: sigma_SD
+    unit: cm^2
+  linked_constraints:
+  - con_bmix
+  - con_direct_future
+  linked_routes:
+  - route_fn_freezeout
+  name: Flavor and direct-detection tests
+  notes: null
+  observability: high
+  predicted_effect: B-meson mixing excludes v_phi*m_a below about 1.8e5 GeV^2, while current spin-dependent
+    direct-detection bounds are far above the source estimate.
+  redshift_range: z=0 or source epoch
+  relevance: high
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2307.14972
+  subchannel: B mixing, lepton flavor, nuclear recoils
+constraints:
+- allowed_regions:
+  - m_N1=1 TeV benchmark reaches target near v_phi=1.2 TeV
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - N1 N1 -> a a contributes about 97 percent in the source benchmark
+  caveats: []
+  constrained_parameters:
+  - m_N1
+  - m_a
+  - v_phi
+  constraint_type: cosmological
+  data_release: Planck relic-density value quoted by source
+  excluded_regions:
+  - points away from the Omega h^2=0.120 band
+  id: con_freezeout_planck
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Planck relic-density target for FN freeze-out
+  notes: null
+  observable_channel: thermal relic abundance
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2307.14972
+- allowed_regions:
+  - v_phi*m_a > about 1.8e5 GeV^2 for m_a>m_b
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: Bound assumes the source FN charge assignment.
+    id: fn_charge_texture
+    impact_if_violated: null
+    notes: null
+    scope: flavor recast
+    source_reference_ids:
+    - arxiv:2307.14972
+    status: assumed
+  benchmark_implications:
+  - removes low-v_phi/low-m_a freeze-out region
+  caveats: []
+  constrained_parameters:
+  - v_phi
+  - m_a
+  constraint_type: laboratory
+  data_release: B_d and B_s mixing averages used by source
+  excluded_regions:
+  - v_phi*m_a < about 1.8e5 GeV^2
+  id: con_bmix
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: B-meson-mixing bound on v_phi*m_a
+  notes: null
+  observable_channel: flavor-changing neutral currents
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2307.14972
+- allowed_regions:
+  - current spin-dependent bounds do not constrain the quoted region; future upgrades may probe
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - direct detection is a future test in the source analysis
+  caveats: []
+  constrained_parameters:
+  - sigma_SD
+  - sigma_SI
+  constraint_type: direct_detection
+  data_release: XENON and LUX-ZEPLIN discussed by source
+  excluded_regions: []
+  id: con_direct_future
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Direct-detection reach for FN freeze-out
+  notes: null
+  observable_channel: nuclear recoils
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2307.14972
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Numerical likelihoods were not rerun.
+    constraint_ids:
+    - con_freezeout_planck
+    - con_bmix
+    - con_direct_future
+    derived_quantities:
+    - Omega h^2
+    - flavor amplitudes
+    - direct-detection cross sections
+    description: Compute FN freeze-out relic density and laboratory constraints.
+    forward_model_chain:
+    - inputs:
+      - FN charges
+      - v_phi
+      notes: null
+      outputs:
+      - flavon couplings
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: source texture
+    - inputs:
+      - model files
+      notes: null
+      outputs:
+      - relic abundance
+      step_id: s2
+      step_type: other
+      tool_or_code: MadDM/micrOMEGAs
+      validity: source cross-check, not rerun
+    - inputs:
+      - flavor couplings
+      - nuclear matrix elements
+      notes: null
+      outputs:
+      - B-mixing and direct-detection constraints
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: source-level recast
+    id: route_fn_freezeout
+    input_parameters:
+    - m_N1
+    - m_a
+    - v_phi
+    - lambda_phi
+    likelihoods:
+    - source likelihoods not rerun in this batch
+    observable_ids:
+    - obs_freezeout_relic
+    - obs_flavor_direct
+    required_code_resources:
+    - MadDM
+    - micrOMEGAs
+    - flavor likelihood inputs
+    route_status: planned
+    source_model_features:
+    - Z2-odd right-handed neutrino
+    - scalar/pseudoscalar flavons
+    - FN-suppressed couplings
+    validation_tests:
+    - recover v_phi=1.2 TeV benchmark
+    - recover v_phi*m_a bound

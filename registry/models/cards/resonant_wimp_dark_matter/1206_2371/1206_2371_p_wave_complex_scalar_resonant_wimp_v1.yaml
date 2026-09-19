@@ -1,0 +1,326 @@
+_source:
+  shard: arXiv_src_1206_004_wds.tar
+  paper_id: '1206_2371'
+  source_member: 1206_2371.json
+schema_version: model_only_v0
+model_id: 1206_2371_p_wave_complex_scalar_resonant_wimp_v1
+identity:
+  name: p-wave complex-scalar resonant WIMP model
+  family: resonant_wimp_dark_matter
+  aliases:
+  - p-wave WIMP-onium resonance
+  - 2p to 1s resonant WIMP capture model
+  short_description: A complex scalar WIMP model with two dark gauge bosons in which a near-threshold
+    2p resonance enhances annihilation at local-galaxy kinetic energies and decays to a 1s bound state
+    by emitting a light mediator.
+  historical_origin_or_motivation: Built as a proof-of-existence model for non-monotonic velocity-dependent
+    WIMP annihilation enhancement.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - complex scalar WIMP
+  - dark gauge boson mediator model
+  - WIMP-onium resonance
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes an effective dark gauge interaction for a complex scalar coupled to V1 and V2
+    and then studies the bound-state spectrum.
+particle_content:
+  dark_matter_candidate:
+    name: complex scalar WIMP chi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - WIMP-anti-WIMP 2p resonance
+  - WIMP-onium 1s bound state
+  mediators:
+  - dark gauge boson V1
+  - light dark gauge boson V2
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - 2p resonance
+  - 1s bound state
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The complex scalar WIMP is assumed stable under the dark-sector charge structure.
+  symmetries:
+  - name: dark gauge symmetry
+    type: gauge
+    exact_or_approximate: unknown
+    breaking: unknown
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - other
+  standard_model_targets:
+  - SM particles from light mediator decays
+  dark_sector_couplings:
+  - g1 coupling to V1
+  - g2 coupling to V2
+  mediator_types:
+  - dark vector boson
+  interaction_operators:
+  - covariant derivative coupling of complex scalar to V1 and V2
+  - Yukawa potential from V1 exchange
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: not_applicable
+  annihilation_channels:
+  - chi anti-chi -> V1 V1
+  - chi anti-chi -> 2p resonance -> 1s bound state + V2 -> light mediators -> SM
+  self_scattering_channels:
+  - Yukawa-potential bound-state formation
+  cp_structure: unknown
+  flavor_structure: unknown
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: WIMP mass
+    symbol: M_chi
+    description: Complex scalar WIMP mass in the reference example.
+    value: '1'
+    unit: TeV
+    role: core
+    status: assumed
+  - name: primary dark gauge coupling
+    symbol: alpha_1
+    description: Coupling to V1 fixed by thermal relic normalization in the example.
+    value: '0.025'
+    role: core
+    status: assumed
+  - name: secondary dark gauge coupling
+    symbol: alpha_2
+    description: Smaller coupling to V2 controlling the 2p to 1s transition width.
+    role: core
+    status: inferred
+    notes: The paper gives a scaling relation for alpha_2 after fixing the outgoing width.
+  - name: V1 mediator mass
+    symbol: m_V1
+    description: Mass producing a near-threshold 2p resonance in the example.
+    value: '3'
+    unit: GeV
+    role: core
+    status: assumed
+  - name: 2p resonance energy
+    symbol: E_R
+    description: Energy of the p-wave resonance above threshold.
+    value: '1'
+    unit: MeV
+    role: derived
+    status: assumed
+  - name: outgoing width
+    symbol: Gamma_out
+    description: Width needed for resonant enhancement through 2p to 1s plus V2.
+    value: about 1
+    unit: keV
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  - p-wave near-threshold resonant capture at late times
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - chi anti-chi annihilation into V1 V1
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper normalizes alpha_1 to the standard WIMP annihilation scale for M_chi near the TeV scale.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - M_chi
+  - alpha_1
+  - m_V1
+  - resonance energy
+  - Gamma_out
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late-time p-wave resonant annihilation peaked near MeV kinetic energy
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: The averaged annihilation rate is shown using Maxwellian distributions over kinetic energy.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: near_threshold_2p_resonance
+  applies_to: model
+  condition: The V1-mediated Yukawa potential must place the 2p resonance around the target MeV kinetic
+    energy.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - The paper quantifies fine tuning relative to the hydrogen-like 2p binding energy.
+- id: small_v2_coupling
+  applies_to: parameter
+  condition: The V2 coupling must be small enough to avoid a large low-velocity s-wave enhancement while
+    still allowing 2p to 1s decay.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - The preferred alpha_2 scales with WIMP mass in the paper.
+assumptions:
+  global:
+  - id: maxwellian_velocity_distribution
+    description: Velocity averages are illustrated using Maxwellian dark-matter kinetic-energy distributions.
+    scope: global
+    status: assumed
+    impact_if_violated: The model could peak at a different location or with different strength after
+      averaging.
+    can_be_relaxed: 'yes'
+  - id: light_mediator_cascade
+    description: The 1s bound state and light mediators are assumed to connect efficiently to final particles
+      relevant for indirect annihilation products.
+    scope: theory
+    status: assumed
+    impact_if_violated: The particle final-state phenomenology would change.
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public code is identified in the extracted text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  caveats: []
+provenance:
+  model_id: 1206_2371_p_wave_complex_scalar_resonant_wimp_v1
+  model_name: p-wave complex-scalar resonant WIMP model
+  model_family: resonant_wimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1206_2371'
+      title: Narrow near-threshold resonant WIMP annihilation prototype models
+      authors: []
+      year: 2012
+      arxiv_id: '1206.2371'
+      doi: null
+      url: null
+      role: original_model
+      notes: The title is described from the extracted text because the local full text starts at the
+        introduction.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0018
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1206_2371'
+      section: Introduction
+      page: null
+      quote_or_summary: The paper says it proposes two candidate models with narrow s- or p-wave resonances.
+    - reference_id: '1206_2371'
+      section: p-wave model section
+      page: null
+      quote_or_summary: The second model uses a complex scalar coupled to two gauge bosons V1 and V2.
+    unresolved_items:
+    - The extracted text does not contain a title or author header for this paper.
+    - The complete SM portal for mediator decay is not given in the extracted model section.
+  evidence:
+    particle_content:
+    - reference_id: '1206_2371'
+      note: The second prototype assumes a complex scalar dark matter particle interacting with two gauge
+        bosons.
+      confidence: high
+      section: p-wave model section
+    symmetries:
+    - reference_id: '1206_2371'
+      note: The model is written as a dark gauge interaction with gauge bosons V1 and V2.
+      confidence: medium
+      section: p-wave model section
+    interactions:
+    - reference_id: '1206_2371'
+      note: The mechanism uses a 2p WIMP-anti-WIMP resonance that decays to a 1s bound state by emitting
+        V2.
+      confidence: high
+      section: p-wave model section
+    production_mechanism:
+    - reference_id: '1206_2371'
+      note: The early-universe abundance is tied to annihilation into V1 V1 with a standard WIMP-scale
+        cross section.
+      confidence: high
+      section: p-wave model section
+    parameter_ranges:
+    - reference_id: '1206_2371'
+      note: A worked example uses M_chi around 1 TeV, alpha_1 = 0.025, m_V1 about 3 GeV, and E_R about
+        1 MeV.
+      confidence: high
+      section: p-wave model section
+    validity_domain:
+    - reference_id: '1206_2371'
+      note: The p-wave incoming width scales as E^(3/2), suppressing the resonant channel at very low
+        velocity.
+      confidence: high
+      section: p-wave model section
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - resonance placement
+  - bound-state width calculation
+  - velocity-distribution dependence
+  - mediator final states
+  validation_status: expert_judgment_only
+  notes: The p-wave mechanism is explicit but intentionally prototype-level.
+agent_failure_modes:
+  warnings:
+  - id: p_wave_resonance_tuning
+    severity: high
+    category: extrapolation
+    warning: The model depends on a near-threshold 2p resonance and a controlled 2p to 1s transition width.
+    mitigation: Recompute the spectrum and widths before using different masses or couplings.
+  - id: final_state_under_specified
+    severity: medium
+    category: other
+    warning: The model card source text does not fully specify the mediator decay final states.

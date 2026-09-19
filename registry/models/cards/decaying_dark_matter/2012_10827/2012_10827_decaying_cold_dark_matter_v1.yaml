@@ -1,0 +1,338 @@
+_source:
+  shard: arXiv_src_2012_068_wds.tar
+  paper_id: '2012_10827'
+  source_member: 2012_10827.json
+schema_version: model_only_v0
+model_id: 2012_10827_decaying_cold_dark_matter_v1
+identity:
+  name: Decaying cold dark matter with boosted daughter component
+  family: decaying_dark_matter
+  aliases:
+  - A -> B B decaying cold dark matter
+  - boosted daughter dark matter from parent decay
+  short_description: A cold parent dark matter particle A slowly decays into boosted daughter dark matter
+    particles B, which can elastically scatter on electrons.
+  historical_origin_or_motivation: Proposed to resolve the XENON1T electron recoil excess while staying
+    close to baseline cold dark matter cosmology.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - decaying dark matter
+  - boosted dark matter
+  - dark photon mediator example
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper defines the A -> B B decay kinematics and a dark-photon scattering example, but does
+    not provide a complete UV model for A production.
+particle_content:
+  dark_matter_candidate:
+    name: parent A and daughter B dark matter
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - dark photon mediator A prime in explicit scattering example
+  mediators:
+  - dark photon A prime in explicit example
+  unstable_parent_particles:
+  - A
+  long_lived_particles:
+  - A
+  - B
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Parent A is metastable with lifetime longer than the age of the Universe; B is
+    treated as a daughter dark matter state.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - unknown
+  standard_model_targets:
+  - electrons
+  dark_sector_couplings:
+  - A-B decay coupling
+  - B-electron coupling through mediator in the dark-photon example
+  mediator_types:
+  - dark photon A prime in explicit example
+  - unspecified A-B decay interaction
+  interaction_operators:
+  - A -> B B
+  - B e -> B e elastic scattering
+  annihilation_channels:
+  - B B -> e+ e- in the dark-photon example by crossing
+  scattering:
+    elastic: 'yes'
+    inelastic: 'no'
+    momentum_dependence: unknown
+    velocity_dependence: strong
+    spin_dependence: unknown
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: parent mass
+    symbol: m_A
+    description: Mass of the cold parent dark matter particle.
+    range: 10-200
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2012_10827'
+  - name: daughter mass
+    symbol: m_B
+    description: Mass of the daughter dark matter particle.
+    range: near m_A/2; examples below about 15 in dark-photon plot
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2012_10827'
+  - name: parent lifetime
+    symbol: tau_A
+    description: Lifetime of the parent A.
+    range: larger than the age of the Universe; benchmarks use 3 t0
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2012_10827'
+  - name: daughter velocity
+    symbol: beta_B
+    description: Velocity of B from A decay.
+    value: about 0.1 in benchmarks
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2012_10827'
+  - name: B-electron cross section
+    symbol: sigma_e
+    description: Cross section inferred from XENON1T excess in the model.
+    range: order 10^-45 to 10^-44
+    unit: cm^2
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2012_10827'
+  - name: dark photon mediator mass
+    symbol: m_Aprime
+    description: Mediator mass in the explicit dark-photon example.
+    value: '1'
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2012_10827'
+production:
+  mechanisms:
+  - late decay A -> B B
+  - parent A abundance from an unspecified dark-sector or Standard Model communication channel
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - parent abundance
+  - parent lifetime tau_A
+  - near-degenerate m_A and 2 m_B
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper explicitly assumes thermal production of B is subdominant relative to production from
+    A decay.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - rho_dm,0
+  - m_A
+  - m_B
+  - tau_A
+  - scale factor
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: unknown
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - late parent-to-daughter decay
+  - time-varying dark matter energy density
+  - near-degenerate m_A and 2 m_B
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: daughter velocity beta_B about 0.1 in benchmarks
+  notes: B has a boosted nonthermal population from A decay.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: near_degenerate_decay
+  applies_to: model
+  condition: The scenario requires m_A just above 2 m_B so beta_B is about 0.1 and cosmological density
+    changes stay small.
+  status: inferred
+  extrapolation_risk: high
+  source_reference_ids:
+  - '2012_10827'
+- id: long_parent_lifetime
+  applies_to: cosmological_history
+  condition: tau_A must be larger than the age of the Universe; benchmarks use tau_A=3 t0.
+  status: inferred
+  extrapolation_risk: high
+  source_reference_ids:
+  - '2012_10827'
+- id: subdominant_thermal_b
+  applies_to: production
+  condition: Thermal production of B is assumed subdominant compared with decay production.
+  status: assumed
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '2012_10827'
+assumptions:
+  global:
+  - id: parent_abundance_exists
+    description: A has a sufficient cold dark matter abundance generated by interactions not fully specified
+      in the model card.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2012_10827'
+  - id: dark_photon_example
+    description: The mediator for B-electron scattering can be represented by a dark photon in the explicit
+      example.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2012_10827'
+associated_code:
+  has_associated_code: unknown
+  code_summary: No paper-specific public code is identified in the assigned text.
+  primary_code_role: null
+provenance:
+  model_id: 2012_10827_decaying_cold_dark_matter_v1
+  model_name: null
+  model_family: decaying_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2012_10827'
+      title: Resolving XENON Excess With Decaying Cold Dark Matter
+      authors:
+      - Shuai Xu
+      - Sibo Zheng
+      year: 2020
+      arxiv_id: '2012.10827'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0003
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2012_10827'
+      section: Model setup
+      page: null
+      quote_or_summary: Proposes parent A decaying to daughter B B; derives B velocity and present number
+        density.
+    - reference_id: '2012_10827'
+      section: CMB and LSS discussion
+      page: null
+      quote_or_summary: Near m_A=2m_B degeneracy and long tau_A make density evolution close to baseline
+        CDM.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2012_10827'
+      note: The proposed scenario has a parent dark matter particle A decaying to daughter dark matter
+        particles B via A -> B B.
+      confidence: high
+      section: Model setup
+      page: null
+    interactions:
+    - reference_id: '2012_10827'
+      note: The daughter B elastically scatters on electrons; an explicit dark-photon example identifies
+        a vector mediator A prime with electron coupling.
+      confidence: medium
+      section: Signal and mediator discussion
+      page: null
+    production_mechanism:
+    - reference_id: '2012_10827'
+      note: B is produced by late A decay; the paper assumes thermal production of B is subdominant compared
+        with decay production.
+      confidence: high
+      section: Daughter production
+      page: null
+    cosmological_history:
+    - reference_id: '2012_10827'
+      note: The parent lifetime must exceed the age of the Universe, and the A/B mass degeneracy keeps
+        CMB and LSS density changes small.
+      confidence: high
+      section: CMB and LSS discussion
+      page: null
+    parameter_ranges:
+    - reference_id: '2012_10827'
+      note: Benchmarks use parent masses of order 10-200 MeV, beta_B about 0.1, and lifetime tau_A=3 t0.
+      confidence: medium
+      section: Benchmarks
+      page: null
+    relic_density:
+    - reference_id: '2012_10827'
+      note: The time-dependent density is rho_dm(t)=rho_dm,0 exp(-t/tau_A)+2m_B/m_A(1-exp(-t/tau_A))/a^3(t),
+        with small deviations from baseline CDM for near degeneracy.
+      confidence: medium
+      section: Cosmological density
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The paper does not specify a complete UV model or thermal production channel for parent A.
+robustness:
+  overall: medium
+  notes: Kinematics and cosmological scaling are explicit; microscopic completion and parent production
+    remain under-specified.
+agent_failure_modes:
+  warnings:
+  - id: parent_production_unspecified
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not infer a standard thermal relic production mechanism for A from this paper; it explicitly
+      leaves A communication/production open.
+    source_reference_ids:
+    - '2012_10827'

@@ -1,0 +1,267 @@
+_source:
+  shard: arXiv_src_1305_010_wds.tar
+  paper_id: '1305_6609'
+  source_member: 1305_6609.json
+schema_version: model_only_v0
+model_id: 1305_6609_scalar_mediator_dirac_fermion_dm_v1
+identity:
+  name: Light scalar-mediator Dirac fermion dark matter
+  family: scalar_mediator_wimp
+  aliases:
+  - CDMS scalar mediator simplified model
+  short_description: A simplified model with electroweak-singlet Dirac fermion dark matter of mass about
+    8.5 GeV interacting with quarks through a CP-even scalar mediator with minimal-flavor-violating couplings.
+  historical_origin_or_motivation: The paper examines particle theories capable of explaining the CDMS
+    silicon excess while surviving relic-density and collider considerations.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - WIMP simplified models
+  - scalar mediator portal
+  - minimal flavor violation
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper notes possible UV completion through a two-Higgs-doublet model plus singlet scalar,
+    but keeps the scalar potential details outside the main analysis.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - CP-even scalar messenger phi
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Dirac dark matter particle
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: A stable Dirac WIMP is assumed in the simplified model; the stabilizing symmetry
+    is not specified in the text.
+  symmetries:
+  - name: dark matter stability symmetry
+    type: unknown
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - quarks with minimal-flavor-violating Yukawa-scaled couplings
+  dark_sector_couplings:
+  - g_chi coupling between DM and scalar mediator
+  mediator_types:
+  - CP-even scalar
+  interaction_operators:
+  - g_chi phi chi chi
+  - g_d y_d phi d d
+  - g_u y_u phi u u
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: none
+    velocity_dependence: none
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - t-channel scalar-mediated annihilation when kinematically available
+  - s-channel annihilation to SM fermion pairs
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: CP-even scalar mediator; optional pseudoscalar extension mentioned but not included
+  flavor_structure: minimal flavor violation; separate up- and down-type Yukawa-scaled couplings
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass fixed by the CDMS signal region in the paper.
+    value: 8.5
+    unit: GeV
+    role: core
+    status: inferred
+  - name: scalar mediator mass
+    symbol: m_phi
+    description: Mediator mass varied in the phenomenological analysis.
+    range: varied; overlap emphasized for m_chi < m_phi < 2 m_chi
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dark matter mediator coupling
+    symbol: g_chi
+    description: Coupling of Dirac DM to scalar mediator.
+    range: O(0.1-1) for CDMS-motivated scattering
+    role: core
+    status: inferred
+  - name: down-type quark mediator coupling
+    symbol: g_d
+    description: MFV coupling coefficient for down-type quarks.
+    role: core
+    status: inferred
+  - name: up-type quark mediator coupling
+    symbol: g_u
+    description: MFV coupling coefficient for up-type quarks; IP and IV choices are studied.
+    value: 1.8 g_d or 1.015 g_d
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through scalar-mediated annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - g_chi
+  - g_d
+  - g_u
+  - m_phi
+  - annihilation resonance at m_phi near 2 m_chi
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: Thermal relic calculations assume only the simplified model processes at freezeout.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - t-channel scalar annihilation
+  - s-channel fermion final states
+  - mediator resonance
+  - isospin-preserving or isospin-violating coupling choice
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: v1
+  applies_to: model
+  condition: The relic-density calculation assumes the simplified model contains the only relevant freezeout
+    processes.
+  status: assumed
+- id: v2
+  applies_to: parameter
+  condition: The CDMS-motivated benchmark fixes m_chi near 8.5 GeV and studies scalar mediator masses
+    and MFV couplings.
+  status: inferred
+assumptions:
+  global:
+  - id: a1
+    description: The dark matter particle is stable on cosmological timescales.
+    scope: theory
+    status: assumed
+  - id: a2
+    description: Minimal flavor violation controls scalar couplings to quarks.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is identified; the relic-density calculation is described
+    phenomenologically.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine-extracted model-only card from one assigned paper.
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: assumption_mismatch
+    warning: The stabilizing symmetry and scalar potential are not fully specified; the paper treats the
+      construction as a simplified model.
+provenance:
+  model_id: 1305_6609_scalar_mediator_dirac_fermion_dm_v1
+  model_name: Light scalar-mediator Dirac fermion dark matter
+  model_family: scalar_mediator_wimp
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Particle Physics Implications and Constraints on Dark Matter Interpretations of the CDMS
+        Signal
+      year: 2013
+      arxiv_id: '1305.6609'
+      doi: null
+      url: null
+      role: original_model
+      authors:
+      - Randel C. Cotta
+      - Arvind Rajaraman
+      - Tim M. P. Tait
+      - Alexander M. Wijangco
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Model
+      page: null
+      quote_or_summary: Dirac fermion DM plus CP-even scalar messenger and MFV couplings.
+    - reference_id: primary
+      section: DM phenomenology
+      page: null
+      quote_or_summary: Thermal relic-density calculation and annihilation processes.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The paper states that the simplified model supplements the SM with a Dirac DM particle and
+        a CP-even scalar messenger.
+      confidence: high
+      section: Model section
+    interactions:
+    - reference_id: primary
+      note: The interaction Lagrangian couples the scalar to DM and to up- and down-type quarks with MFV
+        Yukawa scaling.
+      confidence: high
+      section: Model section
+    production_mechanism:
+    - reference_id: primary
+      note: Thermal relic density is computed from t-channel and s-channel annihilation processes in the
+        simplified model.
+      confidence: high
+      section: DM phenomenology
+    parameter_ranges:
+    - reference_id: primary
+      note: The DM mass is fixed near 8.5 GeV; two g_u/g_d choices define isospin-preserving and isospin-violating
+        cases.
+      confidence: high
+      section: Model section
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium

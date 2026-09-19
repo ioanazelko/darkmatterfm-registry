@@ -1,0 +1,306 @@
+_source:
+  shard: arXiv_src_0702_002_wds.tar
+  paper_id: hep-ph0702183
+  source_member: hep-ph0702183.json
+schema_version: model_only_v0
+model_id: hep-ph0702183_neutralino_dm_5d_sugra_kk_gravitino_decay_v1
+identity:
+  name: Neutralino dark matter from thermal production plus KK gravitino decay in 5D supergravity
+  family: neutralino_dark_matter
+  aliases:
+  - 5D supergravity neutralino dark matter with KK gravitino decays
+  short_description: A neutralino-LSP dark matter model in 5D SUGRA where the relic abundance combines
+    thermal neutralino production with nonthermal production from decays of KK gravitino modes.
+  historical_origin_or_motivation: Used to connect dark matter abundance to the size of an extra dimension
+    and reheating temperature.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - five-dimensional supergravity
+  - MSSM
+  - brane-world cosmology
+  lagrangian_available: partial
+  renormalizable: 'no'
+  embedded_in_larger_framework: 'yes'
+  notes: The model is compactified on S^1/Z_2 with gravity in the bulk and matter/gauge fields on tensionless
+    branes.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - KK gravitino modes
+  - MSSM superpartners
+  mediators:
+  - gravitino gravitational interactions
+  - MSSM weak interactions
+  unstable_parent_particles:
+  - KK gravitino modes
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R-parity conservation makes the lightest neutralino stable after gravitino decay
+    cascades.
+  symmetries:
+  - name: R-parity
+    type: discrete
+    exact_or_approximate: exact
+  - name: S^1/Z_2 orbifold parity
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - vector
+  - higgs
+  standard_model_targets:
+  - MSSM particles
+  - quarks
+  - gluons
+  - gauge bosons
+  dark_sector_couplings:
+  - gravitational KK gravitino couplings
+  - neutralino MSSM interactions
+  mediator_types:
+  - KK gravitino modes
+  - MSSM gauge and Higgs states
+  annihilation_channels:
+  - standard neutralino annihilation before freeze-out
+  decay_channels:
+  - KK gravitino -> MSSM superpartner + Standard Model particle -> neutralino cascade
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: compactification radius
+    symbol: R
+    description: Size of the fifth dimension constrained by the relic abundance.
+    unit: cm
+    role: core
+    status: inferred
+  - name: inverse compactification scale
+    symbol: R^-1
+    description: The paper checks KK gravitons are safe for R^-1 > 1 TeV.
+    range: '> 1 TeV for the stated KK-graviton safety check'
+    unit: GeV
+    role: core
+    status: inferred
+  - name: reheating temperature
+    symbol: T_R
+    description: Controls thermally produced gravitino abundance.
+    range: 10^5 GeV to 10^10 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: neutralino mass
+    symbol: m_lsp
+    description: Mass of the lightest neutralino used in freeze-out.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: gravitino mode abundance
+    symbol: Y_3/2^k
+    description: Mode abundance approximated as the zero-mode abundance for M^k < T_R and zero for M^k
+      > T_R.
+    role: core
+    status: approximate
+production:
+  mechanisms:
+  - thermal freeze-out of neutralinos
+  - nonthermal production from KK gravitino decays
+  thermal_equilibrium_with_standard_model: partial
+  abundance_set_by:
+  - neutralino freeze-out
+  - KK gravitino abundance
+  - number of KK modes below T_R
+  - extra-dimension size
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: Only KK gravitino modes decaying after neutralino decoupling add to the dark matter density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - thermal neutralino freeze-out
+  - KK gravitino decay abundance
+  - T_R
+  - R
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - extra dimension with KK gravitino tower
+  - pre-BBN gravitino decays
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: neutralino freeze-out temperature
+    symbol: T_f
+    description: Freeze-out temperature with x_f = m_lsp/T_f.
+    unit: GeV
+    role: core
+    status: inferred
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: mixed_cold_warm
+  distribution_function_available: unknown
+  notes: Thermal neutralinos are cold; nonthermal neutralinos from KK gravitino decays are not given as
+    an explicit distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: valid_5d_setup
+  applies_to: model
+  condition: Five-dimensional supergravity compactified on S^1/Z_2 with matter/gauge fields on branes
+    and gravity in the bulk.
+  status: assumed
+  extrapolation_risk: medium
+- id: valid_neutralino_lsp
+  applies_to: model
+  condition: R-parity is conserved and the lightest neutralino is the LSP/main dark matter component.
+  status: assumed
+  extrapolation_risk: high
+- id: valid_pre_bbn_decay
+  applies_to: cosmological_history
+  condition: The gravitino spectrum is heavy enough that relevant decays occur before BBN starts.
+  status: assumed
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: assume_one_lsp_per_gravitino
+    description: Each relevant gravitino decay cascade produces one neutralino LSP.
+    scope: production
+    status: assumed
+  - id: assume_no_entropy_increase
+    description: KK gravitino decays do not significantly increase entropy density.
+    scope: cosmological_history
+    status: assumed
+  - id: assume_radion_stabilized
+    description: The radion is stabilized so the classical Friedmann equation applies.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No dedicated code release is identified in the extracted text.
+  primary_code_role: null
+provenance:
+  model_id: hep-ph0702183_neutralino_dm_5d_sugra_kk_gravitino_decay_v1
+  model_name: Neutralino dark matter from thermal production plus KK gravitino decay in 5D supergravity
+  model_family: neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: hep-ph0702183
+      title: Constraints on the size of the extra dimension from Kaluza-Klein gravitino decay
+      authors:
+      - David Gherson
+      year: 2007
+      arxiv_id: hep-ph/0702183
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-30'
+    confidence: medium
+    source_chunks_or_sections:
+    - section: abstract/introduction
+      page: null
+      quote_or_summary: The paper assumes neutralino dark matter in 5D supergravity with KK gravitino
+        decays contributing nonthermal neutralinos.
+      reference_id: hep-ph0702183
+    - section: model discussion
+      page: null
+      quote_or_summary: Only gravitino modes decaying after neutralino thermal decoupling add to the relic
+        neutralino density.
+      reference_id: hep-ph0702183
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: hep-ph0702183
+      note: The paper supposes the lightest neutralino is the main dark matter component and the LSP.
+      confidence: high
+    symmetries:
+    - reference_id: hep-ph0702183
+      note: R-parity is conserved so gravitino decay cascades end in one LSP neutralino.
+      confidence: high
+    interactions:
+    - reference_id: hep-ph0702183
+      note: KK gravitino modes interact gravitationally with MSSM particles and decay to supersymmetric
+        plus Standard Model particles.
+      confidence: medium
+    production_mechanism:
+    - reference_id: hep-ph0702183
+      note: Neutralino abundance is the sum of thermal freeze-out and nonthermal neutralinos from KK gravitino
+        decays after neutralino decoupling.
+      confidence: high
+    cosmological_history:
+    - reference_id: hep-ph0702183
+      note: The gravitino zero mode is assumed heavy enough to decay before BBN; reheating temperature
+        controls gravitino abundance.
+      confidence: high
+    parameter_ranges:
+    - reference_id: hep-ph0702183
+      note: The paper studies reheating temperatures from 10^5 to 10^10 GeV and relates allowed extra-dimension
+        size to T_R.
+      confidence: high
+    validity_domain:
+    - reference_id: hep-ph0702183
+      note: The setup uses 5D supergravity compactified on S^1/Z_2 with matter/gauge fields on branes
+        and gravity in the bulk.
+      confidence: high
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Relic abundance depends on approximations for KK gravitino production and decay timing.
+  validation_status: expert_judgment_only
+  notes: Accepted as a constructed cosmological production model, although the paper frames results as
+    bounds on R and T_R.
+agent_failure_modes:
+  warnings:
+  - id: w_decay_timing
+    severity: high
+    category: assumption_mismatch
+    warning: Only KK gravitino modes decaying after neutralino decoupling contribute to nonthermal dark
+      matter.
+  - id: w_effective_5d
+    severity: medium
+    category: extrapolation
+    warning: The 5D compactified SUGRA setup is an effective framework with model-dependent high-scale
+      completion.

@@ -1,0 +1,594 @@
+_source:
+  shard: arXiv_src_1807_020_wds.tar
+  paper_id: '1807_07176'
+  source_member: 1807_07176.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1807_07176_qcd_axion_early_matter_domination_v1
+identity:
+  name: QCD axion dark matter with early matter domination
+  family: axion_like_dark_matter
+  aliases:
+  - early-matter-dominated axion cosmology
+  short_description: A cosmological-history variant of QCD axion dark matter in which a pre-BBN early
+    matter-dominated epoch alters the axion relic abundance, viable decay-constant range, and minicluster
+    formation.
+  historical_origin_or_motivation: Motivated by theoretical reasons for late-decaying massive particles
+    before nucleosynthesis and by the impact of such a history on axion abundance and small-scale structure.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  parent_frameworks:
+  - QCD axion dark matter
+  - early matter domination
+  embedded_in_larger_framework: 'yes'
+  notes: The paper develops the cosmological-history variant rather than a new axion microphysical Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - late-decaying matter component responsible for early matter domination
+  mediators: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Axion longevity follows from the Peccei-Quinn/shift-symmetry structure of the
+    QCD axion.
+  symmetries:
+  - name: Peccei-Quinn U(1)
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken before or after inflation depending on the scenario
+    breaking_scale:
+      name: axion decay constant
+      symbol: f_a
+      description: PQ breaking scale controlling mass and couplings.
+      range: modified relative to the standard 10^9-10^12 GeV axion window
+      unit: GeV
+      role: core
+      status: inferred
+  - name: axion shift symmetry
+    type: shift
+    exact_or_approximate: approximate
+    breaking: QCD effects generate the axion potential
+    breaking_scale: null
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  standard_model_targets:
+  - photons and other Standard Model particles through standard axion couplings
+  dark_sector_couplings: []
+  mediator_types: []
+  interaction_operators:
+  - axion effective couplings controlled by f_a
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: axion decay constant
+    symbol: f_a
+    description: Sets axion mass and couplings.
+    range: standard upper bounds are relaxed/modified by early matter domination
+    unit: GeV
+    role: core
+    status: inferred
+  - name: initial misalignment angle
+    symbol: theta_i
+    description: Initial axion field displacement.
+    role: core
+    status: inferred
+  - name: reheating temperature after early matter domination
+    symbol: T_R
+    description: Controls the duration and impact of early matter domination.
+    range: below 58 MeV gives homogenized-field minicluster formation in the paper result
+    unit: MeV
+    role: core
+    status: inferred
+  - name: axion minicluster mass scale
+    symbol: M_mc
+    description: Characteristic initial minicluster mass.
+    range: upper bound raised from 10^-10 to 10^-7 solar masses in the paper summary
+    unit: M_sun
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - misalignment production
+  - string/domain-wall decay contribution when PQ breaking occurs after inflation
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - f_a
+  - initial misalignment angle
+  - PQ breaking timing
+  - reheating temperature
+  - early matter dominated expansion rate
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The number of axions is approximately conserved after oscillations begin; early matter domination
+    changes the relic-density scaling.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: nonthermal
+  key_dependencies:
+  - misalignment abundance
+  - string/domain-wall contribution in post-inflation case
+  - entropy and expansion history during early matter domination
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: parameter_dependent
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - early matter domination prior to BBN
+  - late reheating
+  - modified growth of small-scale axion perturbations
+  phase_transitions:
+  - Peccei-Quinn symmetry breaking
+  - QCD axion mass turn-on
+  topological_defects:
+  - axion strings
+  - domain walls in post-inflation PQ breaking case
+  bbn_relevance: critical
+  cmb_relevance: low
+  isocurvature_perturbations: parameter_dependent
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  f_of_p_or_q: coherent axion field/misalignment treatment; higher-momentum modes possible from string
+    and wall decays
+  notes: The paper emphasizes cold axion behavior and minicluster-forming inhomogeneities rather than
+    a particle distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: enhanced_small_scale_power
+    small_scale_power_effect: enhancement
+  nonlinear:
+    halo_mass_function_effect: Potential formation of axion miniclusters in parameter ranges altered by
+      early matter domination.
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: not discussed for galaxy-scale halos
+validity_domain:
+- id: pre_bbn_emd
+  applies_to: cosmological_history
+  condition: Early matter domination must end with reheating consistent with nucleosynthesis.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: pq_timing_cases
+  applies_to: model
+  condition: Results depend on whether PQ symmetry breaks before or after inflation.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: early_matter_component
+    description: A massive component dominates the energy density before BBN and later reheats the universe.
+    scope: cosmological_history
+    status: assumed
+  - id: qcd_axion_framework
+    description: The axion mass and couplings are controlled by f_a as in QCD axion cosmology.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code was extracted from the assigned text.
+provenance:
+  model_id: 1807_07176_qcd_axion_early_matter_domination_v1
+  model_name: QCD axion dark matter with early matter domination
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Axion Cosmology with Early Matter Domination
+      authors: []
+      year: 2018
+      arxiv_id: '1807.07176'
+      doi: null
+      url: null
+      role: extension
+      notes: null
+    - arxiv_id: '1807.07176'
+      authors: []
+      doi: null
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1807.07176
+      role: original_model
+      title: Axion cosmology with early matter domination
+      url: https://arxiv.org/abs/1807.07176
+      year: 2018
+    constraint_papers:
+    - arxiv_id: '0807.1726'
+      authors: []
+      doi: null
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:0807.1726
+      role: constraint
+      title: Axion cosmology and the energy scale of inflation
+      url: https://arxiv.org/abs/0807.1726
+      year: 2008
+    - arxiv_id: '1911.09417'
+      authors: []
+      doi: null
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1911.09417
+      role: implementation
+      title: First simulations of axion minicluster halos
+      url: https://arxiv.org/abs/1911.09417
+      year: 2020
+    - arxiv_id: '2209.14307'
+      authors: []
+      doi: null
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2209.14307
+      role: extension
+      title: The interplay between the dark matter axion and primordial black holes
+      url: https://arxiv.org/abs/2209.14307
+      year: 2023
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_worker_batch-0014
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      page: null
+      quote_or_summary: Early matter domination quantitatively changes axion cosmology, preferred mass
+        ranges, and minicluster formation.
+    - reference_id: primary
+      section: Introduction
+      page: null
+      quote_or_summary: The QCD axion is identified as a well-motivated dark matter candidate produced
+        by misalignment.
+    - reference_id: primary
+      section: Axion relic density
+      page: null
+      quote_or_summary: Relic-density formulae are compared for PQ breaking before and after inflation.
+    unresolved_items:
+    - No nonlinear minicluster survival calculation was run.
+    - The exact BBN reheating lower bound was not recalculated.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The paper treats the QCD axion as a very light, long-lived, weakly coupled dark matter candidate
+        with mass and couplings set by f_a.
+      section: Introduction
+      confidence: high
+    symmetries:
+    - reference_id: primary
+      note: The axion is tied to Peccei-Quinn symmetry breaking; the paper distinguishes whether PQ breaking
+        occurs before or after inflation.
+      section: Axion cosmology
+      confidence: high
+    production_mechanism:
+    - reference_id: primary
+      note: Axion dark matter is produced by vacuum misalignment, with additional string/domain-wall decay
+        contributions in the post-inflation PQ-breaking case.
+      section: Axion relic density
+      confidence: high
+    cosmological_history:
+    - reference_id: primary
+      note: The paper replaces the standard pre-BBN radiation era with an early matter-dominated epoch,
+        changing the preferred axion mass/decay-constant range.
+      section: Introduction and early matter domination
+      confidence: high
+    parameter_ranges:
+    - reference_id: primary
+      note: For reheating temperature below 58 MeV, miniclusters can form even if the axion was homogenized
+        during inflation; standard axion-window bounds on f_a are modified.
+      section: Abstract/Introduction
+      confidence: high
+    validity_domain:
+    - reference_id: primary
+      note: The scenario concerns pre-BBN thermal history and requires reheating before nucleosynthesis.
+      section: Early matter domination
+      confidence: medium
+    constraints:
+    - confidence: high
+      note: Primary text states EMDE must end before BBN temperatures of order a few MeV.
+      page: null
+      reference_id: arxiv:1807.07176
+      section: Early matter domination
+    - confidence: high
+      note: Related axion-inflation paper links axion isocurvature amplitude to inflation scale and axion
+        DM fraction.
+      page: null
+      reference_id: arxiv:0807.1726
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary abstract states T_R below 58 MeV enables minicluster formation for a homogenized axion
+        field and raises the initial mass upper bound.
+      page: null
+      reference_id: arxiv:1807.07176
+      section: Abstract
+    - confidence: medium
+      note: Related simulations paper follows axion minicluster halo formation with N-body methods.
+      page: null
+      reference_id: arxiv:1911.09417
+      section: Introduction
+    routes:
+    - confidence: high
+      note: Primary text ties EMDE expansion, axion abundance, and small-scale minicluster formation.
+      page: null
+      reference_id: arxiv:1807.07176
+      section: Axion cosmology with EMDE
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Axion string/domain-wall contributions and pre-BBN thermal history are model dependent.
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: cosmology_variant_not_new_particle
+    severity: medium
+    category: assumption_mismatch
+    warning: This row is a cosmological-history variant of QCD axion dark matter, not a new axion particle
+      model.
+observables:
+- caveats:
+  - Present-day minicluster observables require nonlinear evolution and survival modeling.
+  channel: small_scale_structure
+  effect_direction: enhancement
+  environments:
+  - pre-BBN universe
+  - axion miniclusters
+  id: obs_axion_emd_miniclusters
+  key_quantities:
+  - description: Temperature ending the early matter-dominated epoch.
+    name: reheating temperature after early matter domination
+    range: below 58 MeV for homogenized-field minicluster formation in the primary result
+    role: core
+    source_reference_ids:
+    - arxiv:1807.07176
+    status: inferred
+    symbol: T_R
+    unit: MeV
+  - description: Typical initial axion minicluster mass scale.
+    name: initial minicluster mass upper bound
+    range: raised from about 1e-10 to 1e-7 solar masses in the primary summary
+    role: core
+    source_reference_ids:
+    - arxiv:1807.07176
+    status: inferred
+    symbol: M_mc
+    unit: M_sun
+  linked_constraints:
+  - con_emd_reheating_bbn
+  linked_routes:
+  - route_axion_emd_to_miniclusters
+  name: Early-matter-domination axion minicluster enhancement
+  notes: null
+  observability: medium
+  predicted_effect: An early matter dominated epoch enhances small-scale axion inhomogeneity and can form
+    miniclusters even for a homogenized pre-inflationary axion field.
+  redshift_range: pre-BBN through matter-radiation equality
+  relevance: critical
+  scale_range: sub-galactic axion minicluster scales
+  source_reference_ids:
+  - arxiv:1807.07176
+  - arxiv:1911.09417
+  subchannel: axion miniclusters
+- caveats:
+  - Constraint applies to pre-inflationary PQ breaking; post-inflationary strings/domain walls differ.
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - inflation
+  - cosmic microwave background
+  id: obs_axion_isocurvature_cmb
+  key_quantities:
+  - description: Controls axion isocurvature fluctuation amplitude.
+    name: inflationary Hubble scale
+    range: strongly bounded for large f_a
+    role: core
+    source_reference_ids:
+    - arxiv:1807.07176
+    - arxiv:0807.1726
+    status: inferred
+    symbol: H_I
+    unit: GeV
+  - description: Sets axion mass and abundance.
+    name: axion decay constant
+    range: model-dependent; primary EMD changes allowed range
+    role: core
+    source_reference_ids:
+    - arxiv:1807.07176
+    status: inferred
+    symbol: f_a
+    unit: GeV
+  linked_constraints:
+  - con_axion_isocurvature
+  linked_routes:
+  - route_axion_emd_to_miniclusters
+  name: Axion isocurvature in pre-inflationary PQ breaking
+  notes: null
+  observability: high
+  predicted_effect: If PQ symmetry is broken during inflation, axion field fluctuations source CMB isocurvature
+    whose amplitude grows with the inflation scale and axion DM fraction.
+  redshift_range: inflation imprint observed at recombination
+  relevance: high
+  scale_range: CMB pivot and large angular scales
+  source_reference_ids:
+  - arxiv:1807.07176
+  - arxiv:0807.1726
+  subchannel: isocurvature perturbations
+constraints:
+- allowed_regions:
+  - Primary minicluster enhancement window includes reheating below 58 MeV but still before the BBN floor.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The massive field causing EMDE decays before BBN.
+    id: pre_bbn_radiation_recovery
+    impact_if_violated: Late decay spoils light-element abundances.
+    notes: null
+    scope: thermal history
+    source_reference_ids:
+    - arxiv:1807.07176
+    status: assumed
+  benchmark_implications:
+  - T_R below 58 MeV is the primary threshold for minicluster formation from a previously homogenized
+    field.
+  caveats:
+  - The exact lower reheating bound depends on the BBN treatment.
+  constrained_parameters:
+  - T_R
+  - duration of EMDE
+  - f_a
+  - theta_i
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Early matter domination that fails to return the universe to radiation domination before temperatures
+    of order a few MeV is inconsistent with successful BBN.
+  id: con_emd_reheating_bbn
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Pre-BBN reheating consistency for early matter domination
+  notes: null
+  observable_channel: BBN and pre-BBN thermal history
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1807.07176
+  - arxiv:2209.14307
+- allowed_regions:
+  - Low inflation scale or post-inflation PQ breaking can evade the pre-inflation isocurvature limit.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The axion field is homogenized during inflation and carries quantum isocurvature fluctuations.
+    id: pq_broken_during_inflation
+    impact_if_violated: If PQ breaks after inflation, string/domain-wall production replaces this constraint.
+    notes: null
+    scope: isocurvature constraint
+    source_reference_ids:
+    - arxiv:1807.07176
+    - arxiv:0807.1726
+    status: assumed
+  benchmark_implications:
+  - Related axion-inflation analysis gives a tight inflation-scale bound for f_a near 1e16 GeV.
+  caveats:
+  - EMD changes abundance and therefore the mapping of f_a and theta_i to the isocurvature fraction.
+  constrained_parameters:
+  - H_I
+  - f_a
+  - theta_i
+  - Omega_a/Omega_DM
+  constraint_type: cosmological
+  data_release: CMB isocurvature constraints as cited by source papers
+  excluded_regions:
+  - High inflation scales with a large axion DM fraction are excluded by isocurvature bounds.
+  id: con_axion_isocurvature
+  likelihood_available: partial
+  likelihood_reference: null
+  name: CMB isocurvature bound on pre-inflationary axion scenarios
+  notes: null
+  observable_channel: CMB isocurvature
+  recasting_needed: 'yes'
+  robustness: high
+  source_reference_ids:
+  - arxiv:1807.07176
+  - arxiv:0807.1726
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Minicluster detectability depends on late-time survival and tidal disruption.
+    constraint_ids:
+    - con_emd_reheating_bbn
+    - con_axion_isocurvature
+    derived_quantities:
+    - Omega_a
+    - isocurvature fraction
+    - minicluster mass scale
+    - small-scale density contrast
+    description: Route QCD axion misalignment through an early matter dominated expansion history into
+      relic abundance, isocurvature, and minicluster observables.
+    forward_model_chain:
+    - inputs:
+      - f_a
+      - theta_i
+      - T_R
+      notes: Primary paper solves Boltzmann equations for the expansion history.
+      outputs:
+      - axion oscillation temperature
+      - diluted relic abundance
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for the EMDE setup in the primary paper.
+    - inputs:
+      - small-scale perturbations
+      - T_R
+      notes: Primary paper gives mass-scale estimates.
+      outputs:
+      - minicluster formation threshold
+      - M_mc
+      step_id: s2
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Approximate until nonlinear survival is simulated.
+    - inputs:
+      - H_I
+      - Omega_a/Omega_DM
+      notes: No CMB likelihood was rerun.
+      outputs:
+      - CMB isocurvature bound
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Applies to pre-inflationary PQ breaking.
+    id: route_axion_emd_to_miniclusters
+    input_parameters:
+    - f_a
+    - theta_i
+    - T_R
+    - PQ breaking timing
+    - inflation scale
+    likelihoods:
+    - BBN lower reheating likelihood not rerun
+    - CMB isocurvature likelihood not rerun
+    observable_ids:
+    - obs_axion_emd_miniclusters
+    - obs_axion_isocurvature_cmb
+    required_code_resources:
+    - EMDE Boltzmann/relic solver
+    - axion minicluster nonlinear simulations
+    - CMB isocurvature likelihood
+    route_status: planned
+    source_model_features:
+    - QCD axion
+    - pre-BBN early matter domination
+    - modified small-scale perturbation growth
+    validation_tests:
+    - recover T_R < 58 MeV minicluster threshold
+    - recover M_mc upper-bound shift to about 1e-7 M_sun

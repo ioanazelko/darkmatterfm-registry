@@ -1,0 +1,478 @@
+_source:
+  shard: arXiv_src_1002_004_wds.tar
+  paper_id: '1002_4624'
+  source_member: 1002_4624.json
+schema_version: model_only_v0
+model_id: 1002_4624_minimal_universal_extra_dimensions_lkp_v1
+identity:
+  name: Minimal universal extra dimensions LKP dark matter
+  family: kaluza_klein_dark_matter
+  aliases:
+  - MUED
+  - minimal UED
+  - LKP dark matter
+  short_description: A minimal universal-extra-dimension model implementation in which KK parity makes
+    the lightest level-1 Kaluza-Klein particle stable; the paper implements the MUED spectrum and interactions
+    for CalcHEP/CompHEP, including ingredients used for LKP relic-density calculations.
+  historical_origin_or_motivation: The paper motivates MUED as the simplest single flat universal extra
+    dimension scenario with collider, astroparticle, dark-matter and cosmological applications.
+  status: benchmark
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - five-dimensional universal extra dimensions
+  - minimal UED
+  - Standard Model in one flat S1/Z2 orbifold
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff:
+    name: cutoff scale
+    symbol: Lambda
+    description: High scale at which the Minimal UED boundary terms are set to vanish.
+    value: null
+    range: null
+    unit: null
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1002_4624'
+    notes: The implementation uses the cutoff through the usual Lambda R parameter.
+  embedded_in_larger_framework: 'yes'
+  notes: The five-dimensional UED Lagrangian is described as the Standard Model placed in one flat compact
+    extra dimension; the CalcHEP/CompHEP implementation includes level-1 and level-2 KK particles outside
+    the Higgs sector.
+particle_content:
+  dark_matter_candidate:
+    name: lightest Kaluza-Klein particle, approximately the level-1 KK photon
+    spin: '1'
+    statistics: vector
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - level-1 KK quarks and leptons
+  - level-1 KK gauge bosons
+  - level-2 KK particles outside the Higgs sector
+  mediators:
+  - KK gauge bosons
+  - KK fermions
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - near-degenerate level-1 KK modes before radiative mass splittings
+  long_lived_particles:
+  - lightest KK particle
+  unstable_parent_particles:
+  - heavier level-1 KK particles
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: KK parity from the symmetric orbifold fixed points stabilizes the lightest KK-odd
+    particle.
+  symmetries:
+  - name: KK parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: Boundary terms are assumed symmetric in Minimal UED; KK number can be broken by even units
+      but KK parity remains.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - Standard Model quarks
+  - Standard Model leptons
+  - gauge bosons
+  - Higgs sector
+  dark_sector_couplings:
+  - KK-number-conserving bulk interactions
+  - KK-number-violating but KK-parity-preserving loop-induced boundary interactions
+  mediator_types:
+  - Kaluza-Klein gauge bosons
+  - Kaluza-Klein fermions
+  interaction_operators:
+  - five-dimensional Standard Model gauge, Yukawa, and Higgs interactions after compactification
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels:
+  - level-1 KK particle annihilation and coannihilation channels implemented for cross-section calculations
+  decay_channels:
+  - heavier level-1 KK particles cascade to the LKP
+  self_scattering_channels: []
+  cp_structure: Standard Model-like unless modified by boundary terms; not detailed for dark matter in
+    this paper.
+  flavor_structure: Minimal UED with Standard Model flavor structure in the implementation.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: inverse compactification radius
+    symbol: R^-1
+    description: Sets the overall KK mass scale.
+    value: null
+    range: null
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids:
+    - '1002_4624'
+    notes: The paper gives R^-1 as one of the two MUED input parameters and illustrates spectra around
+      500 GeV.
+  - name: cutoff-radius product
+    symbol: Lambda R
+    description: Dimensionless cutoff parameter controlling radiative corrections from the high-scale
+      boundary condition.
+    value: null
+    range: null
+    unit: null
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1002_4624'
+    notes: The cutoff scale is the second MUED input parameter.
+  derived:
+  - name: one-loop corrected KK spectrum
+    symbol: null
+    description: Radiative corrections split the level-1 KK masses and identify the phenomenologically
+      relevant LKP.
+    value: null
+    range: null
+    unit: GeV
+    role: derived
+    status: established
+    source_reference_ids:
+    - '1002_4624'
+    notes: Computed automatically in the implementation.
+  - name: LKP identity
+    symbol: null
+    description: Usually approximately the KK photon for the illustrated parameter choices, with charged
+      KK Higgs possible at larger Higgs mass; the true KK graviton is noted as astrophysically separate.
+    value: approximately level-1 KK photon in the implementation examples
+    range: null
+    unit: null
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '1002_4624'
+    notes: The paper excludes the KK graviton from collider implementation relevance.
+production:
+  mechanisms:
+  - thermal freeze-out of the LKP with coannihilations among level-1 KK particles
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - LKP annihilation cross sections
+  - level-1 coannihilation cross sections
+  - KK mass splittings controlled by R^-1 and Lambda
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper focuses on implementing the model files, but explicitly connects the implementation
+    to micrOMEGAs relic-density calculations and notes cross-checks of level-1 coannihilation cross sections.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - R^-1
+  - Lambda R
+  - LKP identity
+  - level-1 mass splittings
+  - coannihilation channels
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  f_of_p_or_q: unknown
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: As a weak-scale LKP thermal relic, the paper treats the candidate as cold dark matter but does
+    not provide a phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: not_applicable
+      warning: No warm-dark-matter transfer-function mapping is provided.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: mued_boundary_condition
+  applies_to: model
+  condition: Minimal UED assumes all boundary terms vanish at a high scale and are regenerated radiatively
+    at lower scales.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Non-minimal boundary terms would change the spectrum and interactions.
+  source_reference_ids:
+  - '1002_4624'
+  notes: The paper's implementation is explicitly Minimal UED.
+- id: implementation_scope
+  applies_to: computation
+  condition: The CalcHEP/CompHEP files include all level-1 and level-2 KK particles outside the Higgs
+    sector.
+  status: established
+  extrapolation_risk: medium
+  caveats:
+  - The paper notes the implementation remains quite constrained and is not non-minimal UED.
+  source_reference_ids:
+  - '1002_4624'
+  notes: Relevant for using the paper as a computational model source.
+assumptions:
+  global:
+  - id: single_flat_extra_dimension
+    description: All Standard Model fields propagate in one flat compact extra dimension on S1/Z2.
+    scope: theory
+    status: assumed
+    impact_if_violated: The KK spectrum, KK parity structure, and LKP candidate would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '1002_4624'
+    notes: Two-dimensional or warped variants are outside the implemented model.
+  - id: kk_parity_conservation
+    description: The two orbifold fixed points are treated symmetrically so KK parity remains a symmetry.
+    scope: theory
+    status: assumed
+    impact_if_violated: The LKP would not be stable and the dark-matter interpretation would fail.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - '1002_4624'
+    notes: null
+associated_code:
+  has_associated_code: 'yes'
+  code_summary: The paper presents public CalcHEP/CompHEP model files for MUED and describes validation
+    against analytic results and other implementations.
+  primary_code_role: model_definition
+  packages_or_modules:
+  - name: MUED CalcHEP/CompHEP model files
+    resource_type: module
+    availability: public
+    relationship_to_model: official_author_code
+    purpose:
+    - define_lagrangian
+    - compute_cross_sections
+    - generate_benchmarks
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: '2026-05-31'
+    maintained: unknown
+    dependencies:
+    - CalcHEP
+    - CompHEP
+    supported_parameters:
+    - R^-1
+    - Lambda R
+    supported_model_families:
+    - minimal universal extra dimensions
+    supported_observables: []
+    inputs:
+    - MUED model parameters
+    outputs:
+    - matrix elements
+    - decay widths
+    - cross sections
+    validity_domain:
+    - Minimal UED implementation with level-1 and level-2 KK particles outside the Higgs sector
+    citation_reference_ids:
+    - '1002_4624'
+    notes: The paper says the files can be used for automated calculations and can interface to micrOMEGAs
+      for relic-density and detection-rate calculations.
+  expected_inputs:
+  - R^-1
+  - Lambda R
+  - Standard Model inputs
+  expected_outputs:
+  - KK mass spectrum
+  - decay widths
+  - cross sections
+  supported_observable_channels: []
+  reproducibility:
+    reproducibility_level: partial
+    has_tests: partial
+    has_examples: 'yes'
+    has_documentation: partial
+    pinned_dependencies: unknown
+    notes: The paper reports extensive cross-checks but the local text does not provide a repository URL.
+  validation:
+    validation_status: validated_against_paper
+    benchmark_references:
+    - '1002_4624'
+    validation_notes: Cross-checked against analytic results, other programs, decay widths, invariant
+      mass distributions, and coannihilation cross sections.
+  caveats:
+  - The implementation omits level-2 Higgs-sector particles and is not a non-minimal UED implementation.
+provenance:
+  model_id: 1002_4624_minimal_universal_extra_dimensions_lkp_v1
+  model_name: Minimal universal extra dimensions LKP dark matter
+  model_family: kaluza_klein_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1002_4624'
+      title: Minimal Universal Extra Dimensions in CalcHEP / CompHEP
+      authors:
+      - AseshKrishna Datta
+      - Kyoungchul Kong
+      - Konstantin T. Matchev
+      year: 2010
+      arxiv_id: '1002.4624'
+      doi: null
+      url: null
+      role: implementation
+      notes: Used as the source for the MUED implementation and paper-supported LKP dark matter content.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0007
+    extractor_name: Codex dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1002_4624'
+      section: abstract and introduction
+      page: null
+      quote_or_summary: Paper presents a CalcHEP/CompHEP implementation of MUED with one-loop spectrum,
+        KK interactions, and public files.
+    - reference_id: '1002_4624'
+      section: MUED review
+      page: null
+      quote_or_summary: KK parity is described as a Z2 symmetry; radiative corrections identify a phenomenological
+        LKP such as the KK photon.
+    - reference_id: '1002_4624'
+      section: validation/outlook
+      page: null
+      quote_or_summary: Implementation was checked against analytic results, other programs, and level-1
+        coannihilation cross sections.
+    unresolved_items:
+    - The text refers to external relic-density literature; relic abundance ranges are therefore left
+      parameter-dependent.
+  evidence:
+    particle_content:
+    - reference_id: '1002_4624'
+      note: The implementation includes level-1 and level-2 KK particles outside the Higgs sector and
+        identifies the LKP in the one-loop spectrum.
+      confidence: high
+      section: abstract and MUED review
+      page: null
+    symmetries:
+    - reference_id: '1002_4624'
+      note: The paper states that interchange symmetry of the two fixed points gives KK parity, a Lagrangian
+        symmetry under symmetric boundary treatment.
+      confidence: high
+      section: KK decomposition
+      page: null
+    interactions:
+    - reference_id: '1002_4624'
+      note: Bulk interactions conserve KK number and KK parity; loop-induced boundary interactions can
+        violate KK number by even units.
+      confidence: high
+      section: KK interactions
+      page: null
+    production_mechanism:
+    - reference_id: '1002_4624'
+      note: The paper connects the model files to micrOMEGAs relic-density calculations and reports coannihilation
+        cross-section validation.
+      confidence: medium
+      section: introduction and validation
+      page: null
+    parameter_ranges:
+    - reference_id: '1002_4624'
+      note: R^-1 and Lambda are the two MUED input parameters; an R^-1 = 500 GeV example spectrum is discussed.
+      confidence: high
+      section: abstract and KK mass spectrum
+      page: null
+    validity_domain:
+    - reference_id: '1002_4624'
+      note: The implementation is explicitly Minimal UED and assumes vanishing high-scale boundary terms.
+      confidence: high
+      section: KK mass spectrum
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - This paper is primarily an implementation paper rather than the original MUED proposal, so the row
+    treats it as a substantive model implementation source.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Relic-density details are referenced rather than derived in this paper.
+  - The true KK graviton LKP is noted but not implemented for collider relevance.
+  validation_status: partially_validated
+  notes: Good computational validation is reported; dark-matter abundance details are not fully extracted
+    from this paper.
+agent_failure_modes:
+  warnings:
+  - id: mued_not_original_model_paper
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat this row as the original proposal of Kaluza-Klein dark matter; it is extracted
+      from an implementation paper.
+    mitigation: Use the provenance role and evidence notes when deciding whether an original-model source
+      is required.
+    source_reference_ids:
+    - '1002_4624'
+  - id: mued_graviton_lkp_caveat
+    severity: medium
+    category: other
+    warning: The paper notes that the true LKP in the illustrated spectrum is the KK graviton, which is
+      not included in the collider implementation and has separate astrophysical implications.
+    mitigation: Check whether the intended phenomenology assumes KK photon LKP or graviton LKP before
+      use.
+    source_reference_ids:
+    - '1002_4624'

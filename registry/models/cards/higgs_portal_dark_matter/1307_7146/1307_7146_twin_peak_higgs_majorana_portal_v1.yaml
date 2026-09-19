@@ -1,0 +1,315 @@
+_source:
+  shard: arXiv_src_1307_012_wds.tar
+  paper_id: '1307_7146'
+  source_member: 1307_7146.json
+schema_version: model_only_v0
+model_id: 1307_7146_twin_peak_higgs_majorana_portal_v1
+identity:
+  name: Twin Peak Higgs singlet-portal Majorana dark matter
+  family: higgs_portal_dark_matter
+  aliases:
+  - Twin Peak Higgs
+  - near-degenerate singlet Higgs portal dark matter
+  short_description: A Higgs-portal dark-sector model in which a singlet scalar messenger is nearly degenerate
+    and strongly mixed with the 125 GeV Higgs, while singlet Majorana dark matter couples to the messenger.
+  historical_origin_or_motivation: Explains how a hidden dark sector tied to electroweak symmetry breaking
+    can evade Higgs-rate and direct-detection limits through scalar mass degeneracy.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Higgs portal
+  - singlet scalar extension
+  - hidden-sector electroweak symmetry breaking
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper leaves the full dark-sector dynamics unspecified but writes an effective scalar potential
+    and DM Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: singlet Majorana fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - singlet scalar messenger s
+  - two mixed scalar mass eigenstates S1 and S2
+  mediators:
+  - singlet-Higgs mixed scalars S1 and S2
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - nearly degenerate scalar states near 125 GeV
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Stable dark-sector particle; the exact stabilizing symmetry is not specified
+    in the effective treatment.
+  symmetries:
+  - name: dark-sector internal symmetry
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: unknown
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet H
+  - SM fermions and vector bosons through scalar mixing
+  dark_sector_couplings:
+  - y s chi chi
+  - lambda_sh s^2 h^2
+  mediator_types:
+  - singlet scalar messenger mixed with the Higgs
+  interaction_operators:
+  - lambda_sh s^2 h^2
+  - y s chi chi
+  annihilation_channels:
+  - chi chi to S_i S_j
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: portal coupling
+    symbol: lambda_sh
+    description: Higgs-singlet portal coupling
+    role: core
+    status: inferred
+  - name: singlet vacuum expectation value
+    symbol: v_s
+    description: Messenger-field VEV induced by dark-sector dynamics
+    value: O(10^4 GeV) for maximal mixing examples
+    unit: GeV
+    role: core
+    status: inferred
+  - name: scalar mass splitting
+    symbol: Delta m
+    description: Mass splitting between S1 and S2
+    range: small compared with m_H; examples use delta=0.1 so masses about 124.37 and 125.62 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: DM Yukawa coupling
+    symbol: y
+    description: Coupling of Majorana dark matter to the singlet scalar
+    range: roughly order one for correct relic density
+    role: core
+    status: inferred
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass |y v_s + M|
+    range: order 1 TeV in the relic-density discussion
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  - annihilation to mixed scalar pairs
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - DM Yukawa coupling y
+  - DM mass
+  - mixed scalar masses
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper computes the relic-density band in the two-parameter (m_chi, y) plane; annihilation
+    to SM states is suppressed by the same degeneracy that suppresses direct detection.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - y
+  - m_chi
+  - m_S1
+  - m_S2
+  - mixing angle
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - dark-sector dynamics generates the singlet scale
+  bbn_relevance: low
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: A standard relic-density calculation is used; no explicit phase-space distribution is provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: near_degenerate_scalars
+  applies_to: model
+  condition: Two scalar mass eigenstates are nearly degenerate around 125 GeV
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: large_mixing
+  applies_to: model
+  condition: The twin-peak case focuses on large, often maximal, Higgs-singlet mixing
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: no_light_dark_decay
+  applies_to: model
+  condition: The main inclusive-Higgs-rate statement assumes no dark-sector particles below the Higgs
+    decay threshold
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: singlet_only_portal
+    description: The dark sector and SM communicate only through the singlet messenger scalar that mixes
+      with the Higgs.
+    scope: theory
+    status: assumed
+    can_be_relaxed: 'yes'
+    impact_if_violated: Additional portals could remove the direct-detection cancellation.
+  - id: scalar_degeneracy
+    description: The Higgs-like scalar and singlet-like scalar are sufficiently degenerate to appear as
+      one LHC peak.
+    scope: theory
+    status: assumed
+    can_be_relaxed: 'yes'
+    impact_if_violated: The twin-peak phenomenology and direct-detection suppression would be weakened.
+  - id: stable_majorana
+    description: The singlet Majorana fermion is stable on cosmological timescales.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: It would not be the present dark matter.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code is identified in the assigned paper text.
+provenance:
+  model_id: 1307_7146_twin_peak_higgs_majorana_portal_v1
+  model_name: Twin Peak Higgs singlet-portal Majorana dark matter
+  model_family: higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Twin Peak Higgs
+      authors:
+      - Matti Heikinheimo
+      - Antonio Racioppi
+      - Martti Raidal
+      - Christian Spethmann
+      year: 2013
+      arxiv_id: '1307.7146'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from target_text.sqlite only.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0018
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Effective model
+      page: null
+      quote_or_summary: The paper defines a singlet scalar messenger mixed with the Higgs and studies
+        nearly degenerate scalar eigenstates.
+    - reference_id: primary
+      section: Dark matter detection
+      page: null
+      quote_or_summary: For the explicit dark matter calculation the field is a singlet Majorana fermion
+        with L_DM = chi(i d - M)chi + y s chi chi.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The paper restricts the dark matter field to a singlet Majorana fermion for the explicit calculation.
+      confidence: high
+      section: Dark matter detection section
+    symmetries:
+    - reference_id: primary
+      note: The dark sector is made of SM singlets with internal quantum numbers and gauge interactions;
+        stable particles communicate with the SM only via the portal.
+      confidence: medium
+      section: Introduction / dark sector setup
+    interactions:
+    - reference_id: primary
+      note: The SM Higgs doublet couples to a singlet scalar mediator through a Higgs portal term, and
+        the DM field couples to the singlet via y s chi chi.
+      confidence: high
+      section: Effective model / dark matter section
+    production_mechanism:
+    - reference_id: primary
+      note: The dominant annihilation for relic density is chi chi to S_i S_j through t/u-channel chi
+        exchange; annihilation to SM states is suppressed by scalar degeneracy.
+      confidence: high
+      section: Dark matter detection section
+    parameter_ranges:
+    - reference_id: primary
+      note: For the relic density, the paper finds y roughly order one and a DM mass around the TeV scale
+        requiring cancellation with y v_s.
+      confidence: medium
+      section: Relic-density discussion
+    validity_domain:
+    - reference_id: primary
+      note: The twin-peak scenario assumes two nearly degenerate scalar mass eigenstates near 125 GeV
+        with large or maximal mixing.
+      confidence: high
+      section: Effective model / scalar mixing
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - The UV dark sector and stabilizing symmetry are not fully specified in the paper.
+  - The near-degenerate scalar spectrum is tuned.
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: degeneracy_required
+    severity: medium
+    category: assumption_mismatch
+    warning: The direct-detection suppression and hidden twin-peak Higgs signal rely on near-degenerate
+      scalar masses.
+    mitigation: Check scalar mass splitting before applying the model.
+  - id: uv_unspecified
+    severity: low
+    category: other
+    warning: The internal dark-sector dynamics are intentionally left generic.

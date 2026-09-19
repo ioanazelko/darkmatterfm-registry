@@ -1,0 +1,347 @@
+_source:
+  shard: arXiv_src_1906_035_wds.tar
+  paper_id: '1906_11269'
+  source_member: 1906_11269.json
+schema_version: model_only_v0
+model_id: 1906_11269_one_loop_high_mass_idm_v1
+identity:
+  name: One-loop high-mass inert doublet dark matter
+  family: inert_doublet_dark_matter
+  aliases:
+  - IDM high-mass freeze-out benchmark
+  - one-loop renormalized IDM
+  short_description: A high-mass inert-doublet dark matter realization in which the H scalar is stabilized
+    by an unbroken Z_2 symmetry and its freeze-out relic density is evaluated with one-loop annihilation
+    and coannihilation corrections.
+  historical_origin_or_motivation: The paper substantially develops the IDM relic-density calculation
+    beyond leading order because the Planck relic density is percent-level precise.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Standard Model plus inert scalar doublet
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  notes: The paper gives the IDM Lagrangian, scalar potential, mass relations, and one-loop renormalization
+    choices for the high-mass freeze-out calculation.
+particle_content:
+  dark_matter_candidate:
+    name: H inert neutral scalar
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - A neutral inert scalar
+  - H+ charged inert scalar
+  mediators:
+  - SM Higgs boson
+  - W boson
+  - Z boson
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - A and H+ are nearly degenerate with H in the benchmark
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Exact unbroken Z_2 parity with the inert doublet odd and all SM fields even.
+  symmetries:
+  - name: Z_2 inert parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken
+    breaking_scale: null
+  - name: SM electroweak gauge symmetry
+    type: gauge
+    exact_or_approximate: broken
+    breaking: standard electroweak symmetry breaking
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - W bosons
+  - Z bosons
+  - SM Higgs boson
+  dark_sector_couplings:
+  - lambda_2 inert-sector quartic
+  - lambda_L and lambda_A Higgs-portal couplings
+  - lambda_3, lambda_4, lambda_5 scalar-potential couplings
+  mediator_types:
+  - SM Higgs boson
+  - electroweak gauge bosons
+  interaction_operators:
+  - '|Phi_1|^2 |Phi_2|^2'
+  - (Phi_2^dagger Phi_1)(Phi_1^dagger Phi_2)
+  - (Phi_1^dagger Phi_2)^2 + h.c.
+  annihilation_channels:
+  - HH -> W+ W-
+  - HH -> ZZ
+  - coannihilation with A and H+ into electroweak final states
+  self_scattering_channels:
+  - inert scalar quartic self-interactions controlled by lambda_2
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: DM scalar mass
+    symbol: M_H
+    description: Mass of the H inert neutral scalar used as the DM candidate.
+    value: 550
+    unit: GeV
+    role: core
+    status: established
+    notes: Benchmark value in the paper.
+  - name: neutral inert scalar mass
+    symbol: M_A
+    description: Mass of the A inert neutral scalar.
+    value: 551
+    unit: GeV
+    role: core
+    status: established
+    notes: Benchmark value in the paper.
+  - name: charged inert scalar mass
+    symbol: M_Hplus
+    description: Mass of the charged inert scalar.
+    value: 552
+    unit: GeV
+    role: core
+    status: established
+    notes: Benchmark value in the paper.
+  - name: Higgs portal coupling
+    symbol: lambda_L
+    description: Tree-level hHH portal coupling divided by v.
+    value: 0.0193
+    role: core
+    status: established
+    notes: Benchmark value in the paper.
+  - name: inert self-coupling
+    symbol: lambda_2
+    description: Quartic coupling solely within the dark scalar sector.
+    value: 0.01
+    role: core
+    status: established
+    notes: Benchmark input used for loop effects.
+  nuisance: []
+  derived:
+  - name: tree-level relic density
+    symbol: Omega h^2
+    description: Relic density calculated with tree-level cross sections for the benchmark.
+    value: 0.117
+    role: derived
+    status: established
+production:
+  mechanisms:
+  - thermal freeze-out
+  - annihilation to electroweak vector bosons
+  - coannihilation among H, A, and H+
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - one-loop corrected annihilation and coannihilation cross sections
+  - mass splittings among inert scalars
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The benchmark is selected to match the observed relic density at tree level, then one-loop corrections
+    are propagated into the freeze-out calculation.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: target relic density
+    symbol: Omega h^2
+    description: Planck relic-density target used by the paper.
+    value: 0.1197 +/- 0.0022
+    role: cosmological
+    status: established
+  calculation_type: thermal
+  key_dependencies:
+  - M_H
+  - M_A
+  - M_Hplus
+  - lambda_L
+  - lambda_2
+  - one-loop corrected cross sections
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: The freeze-out calculation uses thermal averaging through micrOMEGAs.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: high_mass_regime
+  applies_to: model
+  condition: The extracted benchmark is in the IDM high-mass regime with M_DM above about 500 GeV.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+- id: sommerfeld_scope
+  applies_to: model
+  condition: Very-high-mass nonperturbative electroweak Sommerfeld effects above the TeV scale are not
+    treated in this first paper.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+- id: near_degenerate_scalars
+  applies_to: model
+  condition: The relic-density benchmark relies on an almost degenerate inert scalar spectrum.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: standard_freezeout
+    description: Standard thermal freeze-out cosmology is assumed for the relic-density calculation.
+    scope: cosmological_history
+    status: assumed
+  - id: exact_z2
+    description: The inert Z_2 symmetry remains exact so the lightest inert scalar is stable.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports using micrOMEGAs, SloopS, LANHEP, FeynArts, FormCalc, and LoopTools
+    for the loop-corrected relic-density workflow; no standalone public model package is identified in
+    the extracted text.
+  primary_code_role: relic_density_calculation
+  caveats:
+  - Toolchain use is described, but a model-specific public repository is not identified in the paper
+    text.
+provenance:
+  model_id: 1906_11269_one_loop_high_mass_idm_v1
+  model_family: inert_doublet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: The inert doublet model at one-loop for high-mass freeze-out relic density
+      authors: []
+      year: 2019
+      arxiv_id: '1906.11269'
+      doi: null
+      url: null
+      role: extension
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0007
+    extractor_name: gpt-5.5_dark_matter_model_worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Introduction
+      page: null
+      quote_or_summary: The paper motivates a one-loop relic-density calculation for IDM freeze-out.
+    - reference_id: primary
+      section: Model outline
+      page: null
+      quote_or_summary: The paper defines the inert doublet, Z_2 symmetry, scalar potential, and H/A candidates.
+    - reference_id: primary
+      section: Benchmark scenario
+      page: null
+      quote_or_summary: The paper provides a high-mass benchmark with nearly degenerate inert scalars.
+    unresolved_items:
+    - The original paper is a substantial precision development of an existing IDM rather than the original
+      IDM proposal.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model adds an inert scalar doublet with neutral scalars H and A and charged scalar H+;
+        the paper chooses H as the dark matter candidate.
+      confidence: high
+      section: Model outline
+    symmetries:
+    - reference_id: primary
+      note: An unbroken Z_2 symmetry makes the added doublet odd and SM fields even, preventing inert-doublet
+        fermion couplings and stabilizing the lightest inert particle.
+      confidence: high
+      section: Model outline
+    interactions:
+    - reference_id: primary
+      note: The inert scalars couple to electroweak gauge bosons and through Higgs-portal scalar couplings;
+        annihilation to vector bosons is gauge and scalar-potential driven.
+      confidence: high
+      section: Model outline
+    production_mechanism:
+    - reference_id: primary
+      note: The paper computes freeze-out relic density by replacing micrOMEGAs tree-level annihilation
+        and coannihilation cross sections with one-loop corrected cross sections.
+      confidence: high
+      section: One-loop relic density calculation
+    parameter_ranges:
+    - reference_id: primary
+      note: 'Benchmark point: M_H=550 GeV, M_A=551 GeV, M_H+=552 GeV, lambda_L=0.0193 and tree-level relic
+        density 0.117.'
+      confidence: high
+      section: Benchmark scenario
+    validity_domain:
+    - reference_id: primary
+      note: This first paper focuses on the high-mass IDM regime near M_DM > 500 GeV and does not treat
+        very-high-mass nonperturbative electroweak Sommerfeld effects.
+      confidence: high
+      section: Introduction
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: high
+  computational_robustness: medium
+  dominant_uncertainties:
+  - scheme and scale dependence in one-loop relic-density correction
+  - neglected very-high-mass nonperturbative electroweak Sommerfeld effects
+  validation_status: partially_validated
+  notes: The model definition is clear; the extracted row is borderline because the paper develops precision
+    relic-density machinery for an existing model.
+agent_failure_modes:
+  warnings:
+  - id: existing_model_variant
+    severity: medium
+    category: other
+    warning: Do not treat this paper as the original IDM proposal; it is a one-loop high-mass relic-density
+      development.
+    mitigation: Keep provenance tied to this precision benchmark.
+  - id: no_constraints_block
+    severity: low
+    category: other
+    warning: The paper discusses experimental constraints, but this extraction intentionally omits constraints.
+    mitigation: Use only the model-card fields in this run.

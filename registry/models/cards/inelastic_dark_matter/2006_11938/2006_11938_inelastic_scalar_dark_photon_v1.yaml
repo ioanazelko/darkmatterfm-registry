@@ -1,0 +1,748 @@
+_source:
+  shard: arXiv_src_2006_043_wds.tar
+  paper_id: '2006_11938'
+  source_member: 2006_11938.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2006_11938_inelastic_scalar_dark_photon_v1
+identity:
+  name: Dark-photon-mediated inelastic scalar dark matter
+  family: inelastic_dark_matter
+  aliases:
+  - inelastic DM electron scattering model
+  - U(1)_D scalar inelastic dark matter
+  short_description: Two nearly degenerate scalar dark matter states interact with electrons through a
+    kinetically mixed massive dark photon; the heavier state down-scatters to the lighter state.
+  historical_origin_or_motivation: Proposed as a new cold-dark-matter interpretation of the XENON1T 2-3
+    keV electron-recoil excess.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - dark photon
+  - inelastic dark matter
+  - spontaneously broken U(1)_D
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper gives the dark scalar potential, the broken U(1)_D origin of the splitting, and the
+    dark-photon interaction terms relevant for scattering and freeze-out.
+particle_content:
+  dark_matter_candidate:
+    name: two scalar states phi1 and phi2
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - complex scalar charged under U(1)_D before splitting
+  mediators:
+  - massive dark photon A'
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - heavier state phi2
+  - lighter state phi1
+  long_lived_particles:
+  - phi2, with lifetime longer than relevant X-ray limits in the studied parameter space
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A discrete symmetry stabilizes the scalar dark matter states; U(1)_D breaking
+    generates the small splitting.
+  symmetries:
+  - name: U(1)_D
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneously broken, making A' massive
+    breaking_scale: null
+  - name: dark-sector discrete symmetry
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - electrons
+  - SM charged fermions
+  - electromagnetic current
+  dark_sector_couplings:
+  - off-diagonal A' phi1-phi2 derivative coupling
+  - kinetic mixing epsilon between dark photon and SM photon
+  mediator_types:
+  - massive dark photon
+  interaction_operators:
+  - g_D A'_mu (phi1 d_mu phi2 - phi2 d_mu phi1) + epsilon e A'_mu J_EM^mu
+  scattering:
+    elastic: 'no'
+    inelastic: 'yes'
+    momentum_dependence: mild
+    velocity_dependence: mild
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - complex scalar pair annihilation to SM fermion pairs through s-channel A'
+  - phi1 phi1 -> phi2 phi2 conversion
+  decay_channels:
+  - phi2 -> phi1 + three photons, highly suppressed
+  self_scattering_channels:
+  - phi1 phi1 -> phi2 phi2
+  cp_structure: unknown
+  flavor_structure: electromagnetic current coupling through kinetic mixing
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: lighter scalar mass
+    symbol: m1
+    description: Mass of phi1; the model focuses on masses above the MeV scale and often sub-GeV to GeV
+      values.
+    range: '> MeV, often sub-GeV to GeV'
+    unit: GeV
+    role: core
+    status: inferred
+  - name: heavier scalar mass
+    symbol: m2
+    description: Mass of phi2.
+    range: m1 + 2-3 keV
+    role: core
+    status: inferred
+  - name: mass splitting
+    symbol: delta
+    description: m2 - m1, transferred to the electron recoil.
+    range: 2-3
+    unit: keV
+    role: core
+    status: inferred
+  - name: dark photon mass
+    symbol: m_Aprime
+    description: Massive dark photon mediator mass.
+    range: model-dependent, with cases m greater or less than m_A'/2
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dark gauge coupling
+    symbol: g_D
+    description: Large coupling range where thermal abundance and XENON1T can both be matched in examples.
+    range: 1-1.5
+    role: core
+    status: inferred
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Kinetic mixing needed for electron scattering and thermal freeze-out.
+    range: fit-dependent
+    role: core
+    status: inferred
+  - name: excited fraction
+    symbol: Omega_phi2/Omega_DM
+    description: Fraction of the heavier state after conversion freeze-out.
+    value: approximately 0.04 times model-dependent factors
+    role: core
+    status: inferred
+    notes: Can be 1/2 if phi1 phi1 -> phi2 phi2 is ineffective when T_phi drops below the splitting.
+production:
+  mechanisms:
+  - thermal freeze-out through p-wave annihilation into SM fermions via s-channel A'
+  - late phi1-phi2 conversion freeze-out
+  - entropy production or an additional annihilation mode in some viable regions
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - p-wave annihilation through A'
+  - dark-sector conversion phi1 phi1 -> phi2 phi2
+  - possible entropy dilution
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper identifies regions where thermal freeze-out accounts for the abundance and others where
+    entropy production or a new annihilation channel is needed.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - p-wave annihilation rate
+  - m_A'/m resonance behavior
+  - g_D
+  - epsilon
+  - conversion freeze-out
+  - possible low reheating temperature
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: unknown
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - possible entropy production or matter-dominated freeze-out in part of parameter space
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: conversion freeze-out temperature
+    symbol: T_phi,FO
+    description: Temperature when phi1 phi1 -> phi2 phi2 freezes out.
+    range: model-dependent
+    role: core
+    status: inferred
+  phase_transitions:
+  - spontaneous U(1)_D breaking
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The cold components are thermally produced; the present-day electron recoil energy comes from
+    exothermic down-scattering, not a boosted velocity distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: unknown
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: small_splitting
+  applies_to: parameter
+  condition: delta=m2-m1 is much smaller than m1,m2 and is approximately 2-3 keV for XENON1T.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+  notes: null
+- id: p_wave_freezeout
+  applies_to: production
+  condition: Thermal relic calculation relies on p-wave annihilation to avoid CMB limits that exclude
+    s-wave thermal production at small masses.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+  notes: null
+- id: long_lived_phi2
+  applies_to: particle
+  condition: The heavier state decays mainly to phi1 plus three photons and is sufficiently long-lived
+    in the studied parameter space.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+  notes: null
+assumptions:
+  global:
+  - id: discrete_stability
+    description: An exact discrete symmetry stabilizes phi1 and phi2.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: small_delta
+    description: The 2-3 keV mass splitting is much smaller than the scalar masses.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: dark_photon_portal
+    description: Electron scattering and freeze-out are mediated by a kinetically mixed massive dark photon.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is identified in the assigned paper text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+operators:
+  renormalizable_terms:
+  - scalar potential m^2 |phi|^2 plus U(1)_D-breaking terms
+  - kinetic mixing epsilon e A'_mu J_EM^mu
+  eft_operators: []
+  contact_or_light_mediator: light_mediator
+  coupling_types:
+  - dark photon vector
+  - kinetic mixing
+  - p-wave annihilation
+provenance:
+  model_id: 2006_11938_inelastic_scalar_dark_photon_v1
+  model_name: Dark-photon-mediated inelastic scalar dark matter
+  model_family: inelastic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Inelastic Dark Matter Electron Scattering and the XENON1T Excess
+      authors:
+      - Keisuke Harigaya
+      - Yuichiro Nakai
+      - Motoo Suzuki
+      year: 2020
+      arxiv_id: '2006.11938'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run SQLite database.
+    - arxiv_id: '2006.11938'
+      authors: []
+      doi: null
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2006.11938
+      role: original_model
+      title: Inelastic dark matter electron scattering and the XENON1T excess
+      url: https://arxiv.org/abs/2006.11938
+      year: 2020
+    constraint_papers:
+    - arxiv_id: '2012.05891'
+      authors: []
+      doi: null
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2012.05891
+      role: constraint
+      title: GeV-scale inelastic dark matter with dark photon mediator via direct detection and cosmological
+        and laboratory constraints
+      url: https://arxiv.org/abs/2012.05891
+      year: 2021
+    - arxiv_id: '2006.14089'
+      authors: []
+      doi: null
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2006.14089
+      role: benchmark
+      title: 'Electric But Not Eclectic: Thermal Relic Dark Matter for the XENON1T Excess'
+      url: https://arxiv.org/abs/2006.14089
+      year: 2020
+    - arxiv_id: '2006.12461'
+      authors: []
+      doi: null
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2006.12461
+      role: benchmark
+      title: Explaining the XENON1T Excess with Luminous Dark Matter
+      url: https://arxiv.org/abs/2006.12461
+      year: 2020
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0004
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: opening summary
+      page: null
+      quote_or_summary: The paper proposes cold DM inelastic electron down-scattering through a massive
+        dark photon as an XENON1T explanation.
+    - reference_id: paper
+      section: model
+      page: null
+      quote_or_summary: It introduces two scalar states, U(1)_D breaking, a stabilizing discrete symmetry,
+        and kinetic mixing with the photon.
+    - reference_id: paper
+      section: freeze-out
+      page: null
+      quote_or_summary: It computes p-wave thermal freeze-out and the residual heavier-state abundance
+        after conversion freeze-out.
+    unresolved_items:
+    - No XENON1T likelihood or detector response was rerun.
+    - The excess may be a background; this row treats it as a phenomenological target only.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The model introduces two scalar states phi1 and phi2 with m1<m2 and a 2-3 keV splitting.
+      confidence: high
+      section: model
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: The states are embedded in a complex scalar charged under U(1)_D, with a discrete symmetry
+        imposed for stability.
+      confidence: high
+      section: model
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The interaction is mediated by a massive dark photon with kinetic mixing to the electromagnetic
+        current.
+      confidence: high
+      section: model
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The abundance is discussed through thermal freeze-out, p-wave annihilation to SM fermions,
+        and later phi1-phi2 conversion freeze-out.
+      confidence: high
+      section: freeze-out
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: The paper discusses entropy production or an added annihilation mode for parameter regions
+        where thermal freeze-out overproduces dark matter.
+      confidence: medium
+      section: relic abundance discussion
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: The splitting is 2-3 keV, viable examples use g_D around 1-1.5, and m>7 MeV is noted from
+        dark-radiation considerations.
+      confidence: high
+      section: model and constraints
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The heavier state lifetime is said to be sufficiently long and X-ray limits are negligible
+        in the studied space.
+      confidence: medium
+      section: constraints
+      page: null
+    constraints:
+    - confidence: high
+      note: Related full text discusses GeV-scale inelastic dark matter with direct-detection and cosmological/laboratory
+        constraints.
+      page: null
+      reference_id: arxiv:2012.05891
+      section: Constraints
+    - confidence: high
+      note: Primary paper surveys constraints on the dark-photon setup before fitting XENON1T.
+      page: null
+      reference_id: arxiv:2006.11938
+      section: Constraints
+    observables:
+    - confidence: high
+      note: Primary text states heavier DM down-scatters on electrons and transfers a 2-3 keV mass splitting
+        into the recoil.
+      page: null
+      reference_id: arxiv:2006.11938
+      section: Model and XENON1T discussion
+    - confidence: medium
+      note: Related paper describes thermal inelastic dark matter with a dark photon as a XENON1T excess
+        explanation.
+      page: null
+      reference_id: arxiv:2006.14089
+      section: Introduction
+    routes:
+    - confidence: high
+      note: Primary paper connects dark-photon parameters, thermal freeze-out, and xenon electron recoil
+        rates.
+      page: null
+      reference_id: arxiv:2006.11938
+      section: Model through XENON1T sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: unknown
+  constraint_robustness: medium
+  dominant_uncertainties:
+  - dark photon search coverage
+  - need for entropy production in part of parameter space
+  - precise heavier-state residual fraction
+  validation_status: expert_judgment_only
+  notes: The paper identifies viable parameter regions, but some regions need nonstandard abundance adjustment.
+agent_failure_modes:
+  warnings:
+  - id: thermal_only_overgeneralization
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not assume ordinary thermal freeze-out works everywhere; the paper notes overproduction
+      can require entropy production or extra annihilation modes.
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - The XENON1T excess may be background, so the signal region is not an established detection.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - liquid xenon detector
+  id: obs_inelastic_xenon_er
+  key_quantities:
+  - description: Energy released in down-scattering.
+    name: mass splitting
+    range: 2-3
+    role: core
+    source_reference_ids:
+    - arxiv:2006.11938
+    status: inferred
+    symbol: delta
+    unit: keV
+  - description: Mediator mass controlling the electron-scattering rate.
+    name: dark photon mass
+    range: model-dependent
+    role: core
+    source_reference_ids:
+    - arxiv:2006.11938
+    - arxiv:2012.05891
+    status: inferred
+    symbol: m_A'
+    unit: GeV
+  - description: Dark-photon coupling to the electromagnetic current.
+    name: kinetic mixing
+    range: fit-dependent
+    role: core
+    source_reference_ids:
+    - arxiv:2006.11938
+    - arxiv:2012.05891
+    status: inferred
+    symbol: epsilon
+  linked_constraints:
+  - con_xenon1t_signal_region
+  linked_routes:
+  - route_inelastic_dark_photon_detection
+  name: Inelastic electron-recoil excess target
+  notes: null
+  observability: high
+  predicted_effect: Heavier scalar dark matter down-scatters on xenon electrons into the lighter state,
+    converting a 2-3 keV splitting into electron recoil energy.
+  redshift_range: z=0 laboratory target
+  relevance: critical
+  scale_range: keV electron recoil energies
+  source_reference_ids:
+  - arxiv:2006.11938
+  - arxiv:2006.14089
+  subchannel: xenon electron recoils
+- caveats:
+  - Additional annihilation or entropy dilution is needed in parts of parameter space.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early universe
+  - Milky Way halo
+  id: obs_inelastic_excited_fraction
+  key_quantities:
+  - description: Fraction of the heavier scalar state today.
+    name: excited fraction
+    role: core
+    source_reference_ids:
+    - arxiv:2006.11938
+    status: inferred
+    symbol: Omega_phi2/Omega_DM
+    value: approximately 0.04 times model-dependent factors in the primary paper
+  - description: Dark-sector gauge coupling used in thermal examples.
+    name: dark gauge coupling
+    range: 1-1.5 in primary viable examples
+    role: core
+    source_reference_ids:
+    - arxiv:2006.11938
+    status: inferred
+    symbol: g_D
+  linked_constraints:
+  - con_dark_photon_lab_cosmo
+  linked_routes:
+  - route_inelastic_dark_photon_detection
+  name: Long-lived excited dark-matter fraction
+  notes: null
+  observability: medium
+  predicted_effect: Thermal freeze-out and late state-conversion freeze-out leave a nonzero heavier-state
+    fraction capable of present-day down-scattering.
+  redshift_range: thermal freeze-out to today
+  relevance: high
+  scale_range: sub-GeV to GeV dark-matter masses
+  source_reference_ids:
+  - arxiv:2006.11938
+  - arxiv:2012.05891
+  subchannel: thermal freeze-out and conversion freeze-out
+constraints:
+- allowed_regions:
+  - Primary paper identifies viable dark-photon-mediated inelastic scattering regions matching the XENON1T
+    2-3 keV excess.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The electronic recoil excess is treated as a possible dark-matter signal target.
+    id: xenon_excess_signal
+    impact_if_violated: If the excess is tritium or another background, the target region is not a DM
+      constraint.
+    notes: null
+    scope: direct-detection signal interpretation
+    source_reference_ids:
+    - arxiv:2006.11938
+    - arxiv:2006.14089
+    status: speculative
+  benchmark_implications:
+  - The recoil energy is set mainly by the splitting rather than halo kinetic energy.
+  caveats:
+  - Atomic ionization response and detector backgrounds were not recomputed.
+  constrained_parameters:
+  - delta
+  - m1
+  - m2
+  - m_A'
+  - epsilon
+  - g_D
+  - Omega_phi2/Omega_DM
+  constraint_type: direct_detection
+  data_release: XENON1T electronic recoil excess as used by the source papers
+  excluded_regions:
+  - Parameter points that fail to produce the 2-3 keV recoil spectrum or overproduce the total rate are
+    outside the primary signal fit.
+  id: con_xenon1t_signal_region
+  likelihood_available: partial
+  likelihood_reference: null
+  name: XENON1T electron-recoil signal-region fit
+  notes: null
+  observable_channel: electron recoil spectrum
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:2006.11938
+  - arxiv:2006.14089
+  - arxiv:2006.12461
+- allowed_regions:
+  - Related GeV-scale inelastic dark-matter analysis finds long excited-state lifetimes and viable regions
+    after laboratory and cosmological constraints.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The mediator couples through kinetic mixing and the dark sector has the two inelastic
+      states used in the source model.
+    id: minimal_dark_photon_portal
+    impact_if_violated: Extra decay channels or entropy production can move the viable region.
+    notes: null
+    scope: laboratory/cosmology recast
+    source_reference_ids:
+    - arxiv:2006.11938
+    - arxiv:2012.05891
+    status: assumed
+  benchmark_implications:
+  - A small mass splitting around 3 keV can make the radiative lifetime far longer than the age of the
+    Universe in related benchmarks.
+  caveats:
+  - This batch did not scan the full multi-parameter dark-photon space.
+  constrained_parameters:
+  - m_A'
+  - epsilon
+  - g_D
+  - delta
+  - excited-state lifetime
+  constraint_type: other
+  data_release: BaBar and other dark-photon searches plus CMB/X-ray lifetime constraints as cited by related
+    source
+  excluded_regions:
+  - Large visible-sector couplings can be constrained by dark-photon searches; too-short excited-state
+    lifetimes are excluded by cosmology and indirect signals.
+  id: con_dark_photon_lab_cosmo
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Dark-photon laboratory and cosmological viability bounds
+  notes: null
+  observable_channel: dark photon searches, lifetime, CMB/X-ray energy injection
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2006.11938
+  - arxiv:2012.05891
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The direct-detection target depends on interpreting an excess rather than a confirmed discovery.
+    constraint_ids:
+    - con_xenon1t_signal_region
+    - con_dark_photon_lab_cosmo
+    derived_quantities:
+    - electron recoil rate
+    - excited-state relic fraction
+    - excited-state lifetime
+    description: Map a two-state scalar dark sector with a kinetically mixed dark photon to xenon electron
+      recoils and thermal/cosmological viability checks.
+    forward_model_chain:
+    - inputs:
+      - m1
+      - m2
+      - delta
+      - m_A'
+      - epsilon
+      - g_D
+      notes: Atomic response is required for xenon rates.
+      outputs:
+      - matrix element
+      - electron recoil spectrum
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for the dark-photon-mediated inelastic setup.
+    - inputs:
+      - annihilation rate
+      - conversion rate
+      - dark temperature
+      notes: Primary paper treats freeze-out and conversion freeze-out.
+      outputs:
+      - relic density
+      - excited fraction
+      step_id: s2
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Thermal history can require extra depletion or entropy dilution.
+    - inputs:
+      - mediator parameters
+      - lifetime
+      notes: No full scan was run.
+      outputs:
+      - laboratory and cosmology exclusions
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Approximate in this batch.
+    id: route_inelastic_dark_photon_detection
+    input_parameters:
+    - m1
+    - m2
+    - delta
+    - m_A'
+    - epsilon
+    - g_D
+    - excited fraction
+    likelihoods:
+    - XENON1T spectral likelihood not rerun
+    - dark-photon search likelihoods not rerun
+    observable_ids:
+    - obs_inelastic_xenon_er
+    - obs_inelastic_excited_fraction
+    required_code_resources:
+    - xenon atomic ionization response
+    - thermal freeze-out solver
+    - dark-photon exclusion recast
+    route_status: planned
+    source_model_features:
+    - two nearly degenerate scalar states
+    - massive dark photon
+    - exothermic electron down-scattering
+    validation_tests:
+    - recover 2-3 keV recoil peak
+    - recover long excited-state lifetime regime

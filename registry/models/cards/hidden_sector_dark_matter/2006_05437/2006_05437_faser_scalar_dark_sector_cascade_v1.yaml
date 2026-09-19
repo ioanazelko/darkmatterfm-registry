@@ -1,0 +1,644 @@
+_source:
+  shard: arXiv_src_2006_019_wds.tar
+  paper_id: '2006_05437'
+  source_member: 2006_05437.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2006_05437_faser_scalar_dark_sector_cascade_v1
+identity:
+  name: FASER scalar dark-sector cascade model
+  family: hidden_sector_dark_matter
+  aliases:
+  - scalar X and Y FASER model
+  - scalar light dark-sector cascade model
+  short_description: A scalar light dark matter variant where stable scalar Y freezes out through annihilation
+    to neutral intermediates and appears in FASER as missing momentum in X cascade decays.
+  historical_origin_or_motivation: Developed as the scalar counterpart of the paper's FASER-testable light
+    dark-sector cascade models.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - light dark sector
+  - FASER long-lived particle scenario
+  lagrangian_available: partial
+  renormalizable: 'no'
+  embedded_in_larger_framework: unknown
+  notes: The scalar dark-sector couplings are renormalizable quartics, while the chosen X prime production
+    portal is an axion-like gluon operator.
+particle_content:
+  dark_matter_candidate:
+    name: Y
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - X
+  - neutral eta-like intermediate states
+  mediators:
+  - axion-like X prime
+  - neutral scalar intermediates
+  long_lived_particles:
+  - X
+  - neutral eta-like intermediates
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Residue exact Z2 symmetry stabilizes scalar Y after approximate Z2 x Z2 breaking.
+  symmetries:
+  - name: residue dark-sector Z2 stabilizing Y
+    type: discrete
+    exact_or_approximate: exact
+  - name: approximate Z2 x Z2 controlling scalar couplings
+    type: discrete
+    exact_or_approximate: approximate
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - gluons
+  - electrons
+  - positrons
+  - charged leptons
+  dark_sector_couplings:
+  - lambda_1 coupling for X decay
+  - lambda_2 coupling for X annihilation
+  - lambda_3 coupling for Y annihilation
+  mediator_types:
+  - axion-like pseudoscalar X prime
+  - neutral scalar intermediate
+  annihilation_channels:
+  - Y Y to neutral intermediate pair
+  - X X to neutral intermediate pair
+  decay_channels:
+  - X to Y plus two neutral intermediates
+  - neutral intermediates to charged lepton pairs
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_Y
+    description: Mass of stable scalar Y.
+    range: sub-10 GeV light dark matter regime
+    unit: GeV
+    role: core
+    status: assumed
+  - name: lambda_1
+    symbol: lambda_1
+    description: Small quartic coupling controlling displaced X decay.
+    value: about 8e-7 (GeV/m_X)(E_X/500 GeV)^1/2
+    role: core
+    status: inferred
+  - name: lambda_2
+    symbol: lambda_2
+    description: Quartic coupling enabling X X annihilation to neutral intermediates.
+    value: about 1e-4 m_X/GeV or larger
+    role: core
+    status: inferred
+  - name: lambda_3
+    symbol: lambda_3
+    description: Quartic coupling enabling Y Y annihilation for freeze-out.
+    value: about 1e-4 m_Y/GeV for 1 pb
+    role: core
+    status: inferred
+  - name: X lifetime benchmark
+    symbol: tau_X
+    description: Lifetime arranged so boosted X decays around the FASER baseline.
+    value: about 8e-4 s times benchmark factors
+    unit: s
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through scalar Y Y annihilation to neutral intermediates
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - lambda_3 annihilation cross section
+  - neutral intermediate equilibrium with the plasma
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The authors state that the scalar case has the standard freeze-out scenario for lambda_3 chosen
+    to give an annihilation rate near 1 pb.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - lambda_3
+  - m_Y
+  - lambda_1
+  - lambda_2
+  - m_X
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late but pre-BBN-safe X decay arranged through small lambda_1
+  bbn_relevance: medium
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Only freeze-out cross-section estimates are provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: Not studied in the paper; GeV scalar thermal relic is implicitly cold on
+      structure-formation scales.
+    subhalo_mass_function_effect: Not studied in the paper; GeV scalar thermal relic is implicitly cold
+      on structure-formation scales.
+    simulation_calibrated: 'no'
+validity_domain:
+- id: valid_faser_scalar_01
+  applies_to: model
+  condition: Applies to scalar X and Y with stable Y and a cascade X to Y plus neutral intermediates.
+  status: assumed
+  extrapolation_risk: medium
+- id: valid_faser_scalar_02
+  applies_to: parameter
+  condition: Requires lambda_1 much smaller than lambda_2 and lambda_3 to obtain displaced X decays while
+    keeping viable freeze-out.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: asm_faser_scalar_01
+    description: The residue Z2 symmetry remains exact and keeps Y stable.
+    scope: global
+    status: assumed
+  - id: asm_faser_scalar_02
+    description: Neutral intermediates remain sufficiently connected to the plasma for standard freeze-out
+      estimates.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code was identified in the assigned paper text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 2006_05437_faser_scalar_dark_sector_cascade_v1
+  model_name: FASER scalar dark-sector cascade model
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2006_05437'
+      title: Unravelling the richness of dark sector by FASER
+      authors:
+      - Pouya Bakhti
+      - Yasaman Farzan
+      - Silvia Pascoli
+      year: 2020
+      arxiv_id: '2006.05437'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+    - arxiv_id: '2006.05437'
+      authors:
+      - Bakhti, Pouya
+      - Farzan, Yasaman
+      - Pascoli, Silvia
+      doi: 10.1007/JHEP10(2020)008
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2006.05437
+      role: original_model
+      title: Unravelling the richness of dark sector by FASERnu
+      url: https://arxiv.org/abs/2006.05437
+      year: 2020
+    constraint_papers:
+    - arxiv_id: '1811.12522'
+      authors:
+      - FASER Collaboration
+      - Ariga, Akitaka
+      - Ariga, Tomoko
+      - Boyd, Jamie
+      - Cadoux, Franck
+      - Casper, David W.
+      - Favre, Yannick
+      - Feng, Jonathan L.
+      doi: 10.48550/arXiv.1811.12522
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1811.12522
+      role: implementation
+      title: FASER's Physics Reach for Long-Lived Particles
+      url: https://arxiv.org/abs/1811.12522
+      year: 2018
+    - arxiv_id: '1801.08947'
+      authors:
+      - Kling, Felix
+      - Trojanowski, Sebastian
+      doi: 10.1103/PhysRevD.97.095016
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1801.08947
+      role: implementation
+      title: Heavy neutral leptons at FASER
+      url: https://arxiv.org/abs/1801.08947
+      year: 2018
+    - arxiv_id: '1911.11346'
+      authors:
+      - Jodłowski, Krzysztof
+      - Kling, Felix
+      - Roszkowski, Leszek
+      - Trojanowski, Sebastian
+      doi: 10.1103/PhysRevD.101.095020
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1911.11346
+      role: implementation
+      title: Extending the reach of FASER, MATHUSLA, and SHiP towards smaller lifetimes using secondary
+        particle production
+      url: https://arxiv.org/abs/1911.11346
+      year: 2020
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0003
+    extractor_name: Codex GPT-5 dark-matter batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2006_05437'
+      section: Connection to dark matter
+      page: null
+      quote_or_summary: The scalar case is presented separately after the fermionic X/Y case and supplies
+        quartic couplings and freeze-out estimates.
+    - reference_id: '2006_05437'
+      section: Summary
+      page: null
+      quote_or_summary: The paper states that X and Y may be scalar or fermion and that Y is the dark
+        matter particle leaving missing transverse momentum.
+    unresolved_items:
+    - The text extraction drops Greek field names in the neutral intermediate sector.
+    - Scalar benchmark formulas are OCR-fragile in places; approximate coupling scalings are retained
+      with caveats.
+    - No detector or relic-density numerical likelihood was rerun.
+  evidence:
+    particle_content:
+    - reference_id: '2006_05437'
+      note: The scalar variant takes X and Y to be scalars, with Y stable and X decaying to Y plus neutral
+        intermediates.
+      confidence: high
+      section: Connection to dark matter
+    symmetries:
+    - reference_id: '2006_05437'
+      note: The residue exact Z2 symmetry stabilizes Y, while an approximate Z2 times Z2 structure explains
+        the small lambda_1 coupling and long X lifetime.
+      confidence: high
+      section: Connection to dark matter
+    interactions:
+    - reference_id: '2006_05437'
+      note: The scalar case uses quartic couplings lambda_1 Y X eta eta, lambda_2 X X eta eta, and lambda_3
+        Y Y eta eta in the extracted notation.
+      confidence: medium
+      section: Connection to dark matter
+    production_mechanism:
+    - reference_id: '2006_05437'
+      note: The authors set sigma(Y Y to eta eta) v about 1 pb, implying lambda_3 about 1e-4 m_Y/GeV for
+        standard freeze-out.
+      confidence: high
+      section: Connection to dark matter
+    parameter_ranges:
+    - reference_id: '2006_05437'
+      note: Representative lambda_1 is about 8e-7 times benchmark mass and energy factors; lambda_2 and
+        lambda_3 are larger than lambda_1.
+      confidence: medium
+      section: Connection to dark matter
+    validity_domain:
+    - reference_id: '2006_05437'
+      note: The variant is meant for light scalar dark matter in a FASER-testable cascade with missing
+        transverse momentum from Y.
+      confidence: high
+      section: Summary
+    constraints:
+    - confidence: high
+      note: Primary paper gives the FASER-testable lifetime interval 10^-10 s < tau_X < 10^-4 s and benchmark
+        couplings for fermion/scalar dark matter.
+      page: null
+      reference_id: arxiv:2006.05437
+      section: Connection to dark matter
+    - confidence: medium
+      note: Related lifetime-frontier paper motivates recasting FASER/MATHUSLA/SHiP reach at smaller lifetimes.
+      page: null
+      reference_id: arxiv:1911.11346
+      section: Lifetime reach
+    observables:
+    - confidence: high
+      note: Primary paper describes FASERnu/FASER signatures with two charged-lepton pairs plus missing
+        transverse momentum from X decays.
+      page: null
+      reference_id: arxiv:2006.05437
+      section: Model and signal
+    - confidence: medium
+      note: FASER physics-reach paper provides local full-text context for long-lived-particle acceptance
+        in the forward detector.
+      page: null
+      reference_id: arxiv:1811.12522
+      section: FASER reach
+    routes:
+    - confidence: high
+      note: Primary paper writes the production, decay-length, and event-number chain from IP production
+        to decays in the forward detector.
+      page: null
+      reference_id: arxiv:2006.05437
+      section: FASER event rate
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: low
+  dominant_uncertainties:
+  - field-name loss in text extraction
+  - hierarchical scalar couplings assumed
+  validation_status: expert_judgment_only
+  notes: The scalar variant is explicit enough for a candidate card but needs human review of notation.
+agent_failure_modes:
+  warnings:
+  - id: warn_faser_scalar_01
+    severity: medium
+    category: notation_conflict
+    warning: Greek scalar names are missing in the extracted text, making the neutral intermediate notation
+      ambiguous.
+    mitigation: Check against the source PDF before canonical registry publication.
+  - id: warn_faser_scalar_02
+    severity: medium
+    category: assumption_mismatch
+    warning: The freeze-out and displaced-decay picture depends on a hierarchy lambda_2, lambda_3 much
+      larger than lambda_1.
+    mitigation: Preserve this hierarchy in downstream scans.
+observables:
+- caveats:
+  - The sign/exponent in extracted scalar lifetime text is OCR-fragile, so benchmark values are retained
+    as approximate.
+  channel: collider
+  effect_direction: morphology_change
+  environments:
+  - FASERnu/FASER detector
+  - ATLAS forward line
+  id: obs_faser_scalar_cascade
+  key_quantities:
+  - description: Benchmark lifetime selected by the FASER baseline.
+    name: X lifetime
+    role: core
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: tau_X
+    unit: s
+    value: about 8e-4 times benchmark factors
+  - description: Distance from ATLAS IP used for the forward geometry.
+    name: detector distance
+    role: experimental
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: d
+    unit: m
+    value: 480
+  - description: Small coupling controlling X decay to the visible/dark final state.
+    name: lambda_1
+    role: core
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: lambda_1
+    value: about 8e-7 (GeV/m_X)(E_X/500 GeV)^1/2
+  linked_constraints:
+  - con_faser_lifetime_window_scalar
+  linked_routes:
+  - route_scalar_cascade_to_faser
+  name: FASER forward cascade with scalar dark matter
+  notes: null
+  observability: high
+  predicted_effect: Scalar Y dark matter with a long-lived scalar X can give the same forward multi-lepton
+    plus missing-momentum signature, with the lifetime controlled by small symmetry-breaking couplings.
+  redshift_range: LHC Run III forward events
+  relevance: critical
+  scale_range: 480 m baseline, highly forward production
+  source_reference_ids:
+  - arxiv:2006.05437
+  - arxiv:1811.12522
+  subchannel: scalar hidden-sector cascade
+- caveats:
+  - Scalar real/complex choices change annihilation channels and cancellations.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early universe
+  - hidden sector
+  id: obs_scalar_coupling_lifetime
+  key_quantities:
+  - description: Coupling keeping X pairs from late out-of-equilibrium problems.
+    name: lambda_2
+    range: greater than about 1e-4 m_X/GeV
+    role: core
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: lambda_2
+  - description: Coupling giving the pb-scale Y annihilation target.
+    name: lambda_3
+    role: core
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: lambda_3
+    value: about 1e-4 m_Y/GeV
+  - description: Scalar dark matter mass scale.
+    name: dark matter mass
+    range: sub-10 GeV light dark matter regime
+    role: core
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: m_Y
+    unit: GeV
+  linked_constraints:
+  - con_scalar_freezeout_couplings
+  linked_routes:
+  - route_scalar_cascade_to_faser
+  name: Scalar freeze-out and late-annihilation coupling target
+  notes: null
+  observability: medium
+  predicted_effect: The scalar benchmark uses lambda_3 for Y freeze-out and lambda_2 large enough to deplete
+    late X pairs, while lambda_1 remains tiny to keep X long-lived.
+  redshift_range: thermal freeze-out through late X decay
+  relevance: high
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2006.05437
+  subchannel: scalar annihilation and X depletion
+constraints:
+- allowed_regions:
+  - Primary benchmark targets an X lifetime compatible with a 480 m decay baseline and FASER reach.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The small lambda_1 coupling is protected by an approximate symmetry broken to the exact
+      dark-matter stabilizing symmetry.
+    id: approximate-z2-breaking
+    impact_if_violated: Without this hierarchy the long-lived cascade can disappear.
+    notes: null
+    scope: scalar cascade
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: assumed
+  benchmark_implications:
+  - Small lambda_1 is technically natural through the approximate symmetry discussed in the source.
+  caveats:
+  - Detector efficiency and scalar branching fractions were not simulated.
+  constrained_parameters:
+  - tau_X
+  - lambda_1
+  - m_X
+  - E_X
+  constraint_type: collider
+  data_release: FASER/FASERnu LHC Run III forward-detector geometry
+  excluded_regions:
+  - Too short a lifetime decays before the detector; too long a lifetime suppresses decays in the fiducial
+    volume.
+  id: con_faser_lifetime_window_scalar
+  likelihood_available: partial
+  likelihood_reference: null
+  name: FASER lifetime acceptance for scalar cascade
+  notes: null
+  observable_channel: FASER displaced vertices
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2006.05437
+  - arxiv:1811.12522
+  - arxiv:1911.11346
+- allowed_regions:
+  - lambda_3 about 1e-4 m_Y/GeV gives the freeze-out target; lambda_2 above about 1e-4 m_X/GeV can deplete
+    X pairs.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The hierarchy lambda_1 << lambda_2,lambda_3 is maintained by the approximate symmetry.
+    id: scalar-benchmark-hierarchy
+    impact_if_violated: A generic scalar potential would not preserve the FASER lifetime and relic targets.
+    notes: null
+    scope: scalar relic and lifetime
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: assumed
+  benchmark_implications:
+  - The scalar benchmark can be viable only where the tiny lifetime coupling coexists with adequate dark-sector
+    annihilation.
+  caveats:
+  - No Boltzmann relic-density calculation was rerun.
+  constrained_parameters:
+  - lambda_1
+  - lambda_2
+  - lambda_3
+  - m_X
+  - m_Y
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions: []
+  id: con_scalar_freezeout_couplings
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Scalar freeze-out and X-depletion coupling target
+  notes: null
+  observable_channel: thermal relic density
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2006.05437
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Scalar branching ratios and detector response are external.
+    constraint_ids:
+    - con_faser_lifetime_window_scalar
+    - con_scalar_freezeout_couplings
+    derived_quantities:
+    - Y annihilation cross section
+    - X depletion rate
+    - boosted decay length
+    - event yield
+    description: Propagate scalar hidden-sector couplings to freeze-out, X lifetime, and FASER displaced-event
+      observables.
+    forward_model_chain:
+    - inputs:
+      - lambda_3
+      - m_Y
+      notes: Use pb-scale freeze-out target.
+      outputs:
+      - Y annihilation cross section
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary scalar benchmark.
+    - inputs:
+      - lambda_1
+      - m_X
+      - E_X
+      notes: Use primary lifetime benchmark.
+      outputs:
+      - tau_X
+      - decay probability
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for the source scalar cascade.
+    - inputs:
+      - decay probability
+      - visible branching ratios
+      - detector geometry
+      notes: Not run in this batch.
+      outputs:
+      - FASER event count
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: Requires detector efficiency model.
+    id: route_scalar_cascade_to_faser
+    input_parameters:
+    - m_Y
+    - m_X
+    - lambda_1
+    - lambda_2
+    - lambda_3
+    - E_X
+    likelihoods:
+    - FASER event-count likelihood unavailable
+    observable_ids:
+    - obs_faser_scalar_cascade
+    - obs_scalar_coupling_lifetime
+    required_code_resources:
+    - forward-detector acceptance simulation
+    - thermal relic calculator
+    route_status: planned
+    source_model_features:
+    - scalar GeV-scale Y dark matter
+    - long-lived scalar X
+    - approximate symmetry protecting small lambda_1
+    validation_tests:
+    - recover scalar lambda benchmarks
+    - recover forward displaced-event window

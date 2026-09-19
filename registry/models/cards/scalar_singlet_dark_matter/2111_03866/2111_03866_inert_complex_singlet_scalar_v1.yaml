@@ -1,0 +1,652 @@
+_source:
+  shard: arXiv_src_2111_025_wds.tar
+  paper_id: '2111_03866'
+  source_member: 2111_03866.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: extrapolation
+    id: singlet_bounds_benchmark_dependent
+    mitigation: Track loop order, Higgs mass input, and Z2 assumptions.
+    severity: medium
+    source_reference_ids:
+    - '2111_03866'
+    warning: Do not reuse the quoted mass bound outside the perturbativity and thermal-resummation assumptions
+      used in the paper.
+associated_code:
+  caveats: []
+  code_summary: The paper uses CosmoTransition and BubbleProfiler for phase-transition and gravitational-wave
+    calculations; no model-specific repository is identified in the text.
+  containers_or_environments: []
+  expected_inputs:
+  - scalar potential parameters
+  expected_outputs:
+  - nucleation temperature
+  - phase-transition parameters
+  - gravitational-wave spectra
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: other
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references:
+    - '2111_03866'
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The singlet is initially in equilibrium with the Standard Model thermal bath and freezes
+      out as the universe expands.
+    id: thermal_freezeout
+    impact_if_violated: Relic-density conclusions would not apply.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '2111_03866'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The analysis keeps a Standard-Model-like Higgs boson near 125.5 GeV.
+    id: sm_like_higgs
+    impact_if_violated: Phase-transition and perturbativity benchmarks would shift.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '2111_03866'
+    status: assumed
+cosmological_history:
+  bbn_relevance: low
+  chemical_decoupling: null
+  cmb_relevance: low
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - strongly first-order electroweak phase transition in selected parameter regions
+  phase_transitions:
+  - first-order electroweak phase transition
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - inert singlet model
+  - complex singlet scalar dark matter
+  family: scalar_singlet_dark_matter
+  historical_origin_or_motivation: Used as a benchmark scalar extension that can provide dark matter and
+    support a first-order electroweak phase transition.
+  model_kind: complete_theory
+  name: Z2-odd inert complex singlet scalar dark matter
+  short_description: A complex scalar singlet odd under Z2 extends the Standard Model; its neutral component
+    is stable and thermally freezes out through Higgs-portal interactions.
+  status: benchmark
+interactions:
+  annihilation_channels:
+  - s-channel Higgs-mediated annihilation to Standard Model states
+  cp_structure: not discussed
+  dark_sector_couplings:
+  - lambda_hs Higgs-singlet portal
+  - lambda_s singlet quartic
+  decay_channels: []
+  flavor_structure: flavor-universal Higgs portal
+  interaction_operators:
+  - lambda_hs (H^dagger H)(S^* S)
+  - lambda_s |S^* S|^2
+  mediator_types:
+  - Higgs boson
+  portals:
+  - higgs
+  self_scattering_channels:
+  - singlet quartic self-interaction
+  standard_model_targets:
+  - Higgs doublet
+  - Standard Model thermal bath
+  tree_or_loop_level: tree
+model_id: 2111_03866_inert_complex_singlet_scalar_v1
+parameters:
+  core:
+  - name: singlet mass parameter
+    notes: Upper value quoted for first-order phase transition plus relic-compatible singlet parameter
+      space in the paper.
+    range: 0 to about 909
+    role: core
+    source_reference_ids:
+    - '2111_03866'
+    status: approximate
+    symbol: m_S
+    unit: GeV
+  - description: Quartic coupling between H^dagger H and S^*S.
+    name: Higgs-singlet portal coupling
+    role: core
+    source_reference_ids:
+    - '2111_03866'
+    status: inferred
+    symbol: lambda_hs
+  - description: Quartic singlet self coupling; often set to zero in scans to maximize the phase-transition
+      strength.
+    name: singlet self coupling
+    role: core
+    source_reference_ids:
+    - '2111_03866'
+    status: inferred
+    symbol: lambda_s
+  - name: Planck relic-density target
+    role: cosmological
+    source_reference_ids:
+    - '2111_03866'
+    status: established
+    symbol: Omega_DM h^2
+    value: 0.1199 +/- 0.0027
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: neutral component of complex singlet S
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Z2-odd singlet scalar
+  mediators:
+  - Standard Model Higgs boson
+  standard_model_extension: minimal
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: not provided
+  free_streaming_length: null
+  notes: Cold thermal relic behavior is assumed.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - Higgs-portal annihilation cross section
+  - singlet mass
+  - thermal freeze-out
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper states that much of the singlet parameter space can satisfy the observed relic abundance.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The paper ties the singlet parameter space to a strongly first-order electroweak phase transition
+        and resulting gravitational-wave calculation.
+      page: null
+      reference_id: '2111_03866'
+      section: Phase-transition/GW sections
+    interactions:
+    - confidence: high
+      note: The scalar potential includes the Higgs-singlet portal coupling lambda_hs (H^dagger H)(S^*S).
+      page: null
+      reference_id: '2111_03866'
+      section: Inert singlet model
+    parameter_ranges:
+    - confidence: medium
+      note: The paper finds singlet masses up to about 909 GeV can be compatible with first-order phase
+        transition and relic-density requirements in the discussed setup.
+      page: null
+      reference_id: '2111_03866'
+      section: Conclusion/relic discussion
+    particle_content:
+    - confidence: high
+      note: The minimal SM is extended by a complex singlet S odd under Z2; the neutral component is the
+        dark matter candidate.
+      page: null
+      reference_id: '2111_03866'
+      section: Inert singlet model
+    production_mechanism:
+    - confidence: high
+      note: The relic-density section assumes the Z2-odd particles are initially in thermal equilibrium
+        and freeze out as interaction rates fall below the expansion rate.
+      page: null
+      reference_id: '2111_03866'
+      section: Constraints from DM relic
+    symmetries:
+    - confidence: high
+      note: The SM Higgs is Z2 even while S is Z2 odd, making the singlet neutral component stable.
+      page: null
+      reference_id: '2111_03866'
+      section: Inert singlet model
+    validity_domain:
+    - confidence: medium
+      note: Perturbative unitarity at one and two loops and the Higgs mass bound are part of the model-domain
+        discussion.
+      page: null
+      reference_id: '2111_03866'
+      section: Perturbativity and relic sections
+    constraints:
+    - confidence: high
+      note: Primary paper contrasts singlet relic compatibility with triplet underabundance.
+      page: null
+      reference_id: arxiv:2111.03866
+      section: DM relic constraints
+    observables:
+    - confidence: high
+      note: Primary paper states the singlet can satisfy relic density while supporting first-order phase
+        transition, with an upper mass around 909 GeV.
+      page: null
+      reference_id: arxiv:2111.03866
+      section: Relic constraints/conclusion
+    - confidence: medium
+      note: Related scalar-singlet extension discusses joint dark matter, electroweak phase transition,
+        and GW motivation.
+      page: null
+      reference_id: arxiv:1811.09807
+      section: Introduction
+    - confidence: medium
+      note: Related inert triplet phase-transition paper provides additional GW/phase-transition context
+        for inert scalar extensions.
+      page: null
+      reference_id: arxiv:2103.00212
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper combines finite-temperature potential, relic-density, perturbativity, and GW
+        calculations.
+      page: null
+      reference_id: arxiv:2111.03866
+      section: Methods/results
+  extraction:
+    confidence: medium
+    extracted_by: codex-batch-0014
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper studies a Y=0 inert triplet extension and compares it with a Z2-odd
+        complex singlet extension under relic-density, unitarity, and phase-transition requirements.
+      reference_id: '2111_03866'
+      section: Introduction
+    - page: null
+      quote_or_summary: The SM is extended with a complex singlet S odd under Z2; the neutral component
+        is identified as the dark matter candidate and the scalar potential is given.
+      reference_id: '2111_03866'
+      section: Inert singlet model
+    - page: null
+      quote_or_summary: The SM is extended with a real SU(2) triplet T odd under Z2; T0 is the dark matter
+        candidate and the scalar potential is given.
+      reference_id: '2111_03866'
+      section: Inert triplet model
+    - page: null
+      quote_or_summary: The paper assumes thermal equilibrium, freeze-out, and the Planck relic-density
+        target while contrasting singlet viability with triplet underabundance in the first-order phase-transition
+        region.
+      reference_id: '2111_03866'
+      section: Constraints from DM relic
+    unresolved_items:
+    - The paper text available in SQLite did not expose a clear title or author block for this record.
+    - Higgs invisible-width and direct-detection contours were not digitized.
+    - GW detectability is benchmark-specific and was not recalculated.
+  last_updated: '2026-05-31'
+  model_family: scalar_singlet_dark_matter
+  model_id: 2111_03866_inert_complex_singlet_scalar_v1
+  model_name: Z2-odd inert complex singlet scalar dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: low
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2111.03866'
+      doi: null
+      notes: null
+      reference_id: '2111_03866'
+      role: extension
+      title: 'Unknown title: paper on inert singlet and inert triplet dark matter with first-order electroweak
+        phase transition'
+      url: null
+      year: 2021
+    - arxiv_id: '2111.03866'
+      authors:
+      - Bandyopadhyay, Priyotosh
+      - Jangid, Shilpa
+      doi: 10.48550/arXiv.2111.03866
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2111.03866
+      role: original_model
+      title: Discerning Singlet and Triplet scalars at the electroweak phase transition and Gravitational
+        Wave
+      url: https://arxiv.org/abs/2111.03866
+      year: 2021
+    constraint_papers:
+    - arxiv_id: '1702.02698'
+      authors:
+      - Chao, Wei
+      - Guo, Huai-Ke
+      - Shu, Jing
+      doi: 10.1088/1475-7516/2017/09/009
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1702.02698
+      role: constraint
+      title: Gravitational wave signals of electroweak phase transition triggered by dark matter
+      url: https://arxiv.org/abs/1702.02698
+      year: 2017
+    - arxiv_id: '1811.09807'
+      authors:
+      - Shajiee, Vahid Reza
+      - Tofighi, Ali
+      doi: 10.1140/epjc/s10052-019-6881-6
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1811.09807
+      role: constraint
+      title: Electroweak phase transition, gravitational waves and dark matter in two scalar singlet extension
+        of the standard model
+      url: https://arxiv.org/abs/1811.09807
+      year: 2019
+    - arxiv_id: '2103.00212'
+      authors:
+      - Kazemi, MJ.
+      - AbdusSalam, S. S.
+      doi: 10.1103/PhysRevD.103.075012
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2103.00212
+      role: constraint
+      title: Electroweak phase transition in an inert complex triplet model
+      url: https://arxiv.org/abs/2103.00212
+      year: 2021
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - lambda_hs
+  - m_S
+  - Higgs-mediated annihilation
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    name: target relic density
+    role: core
+    source_reference_ids:
+    - '2111_03866'
+    status: established
+    symbol: Omega_DM h^2
+    value: 0.1199 +/- 0.0027
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  notes: Core scalar potential, stability, and thermal relic logic are explicit; detailed numerical bounds
+    are benchmark-dependent.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: not discussed in the model paper
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: not discussed in the model paper
+symmetries:
+  stabilizing_mechanism: Exact Z2 parity with S odd and SM fields even stabilizes the singlet dark matter
+    component.
+  symmetries:
+  - breaking: unbroken in the inert vacuum
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z2 inert parity
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: The paper gives the renormalizable scalar potential and finite-temperature effective-potential
+    treatment.
+  parent_frameworks:
+  - Standard Model plus Z2-odd complex scalar singlet
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats:
+  - If Z2 is broken, the extracted dark-matter candidate is not stable.
+  condition: The Z2 symmetry remains unbroken so the singlet component is stable.
+  extrapolation_risk: high
+  id: exact_z2_inert_vacuum
+  notes: null
+  source_reference_ids:
+  - '2111_03866'
+  status: assumed
+  valid_range: null
+- applies_to: parameter
+  caveats:
+  - Mass and coupling bounds depend on loop order and thermal resummation.
+  condition: Quartic couplings remain perturbative under the one- and two-loop running considered in the
+    paper.
+  extrapolation_risk: medium
+  id: perturbative_scalar_couplings
+  notes: null
+  source_reference_ids:
+  - '2111_03866'
+  status: approximate
+  valid_range: scale-dependent perturbativity limits in the paper tables
+observables:
+- caveats:
+  - GW detectability is benchmark dependent.
+  channel: gravitational_waves
+  effect_direction: shape_change
+  environments:
+  - early-universe electroweak plasma
+  id: obs_complex_singlet_phase_transition_gw
+  key_quantities:
+  - name: singlet mass parameter
+    range: up to about 909 GeV in the source FOPT plus relic-compatible region
+    role: core
+    source_reference_ids:
+    - arxiv:2111.03866
+    status: inferred
+    symbol: m_S
+    unit: GeV
+  - description: Controls the thermal potential and Higgs-portal annihilation.
+    name: Higgs-singlet portal coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2111.03866
+    status: inferred
+    symbol: lambda_hs
+  linked_constraints:
+  - con_complex_singlet_relic_fopt_region
+  linked_routes:
+  - route_complex_singlet_phase_relic_gw
+  name: Complex singlet first-order phase-transition gravitational waves
+  notes: null
+  observability: medium
+  predicted_effect: The Z2-odd complex singlet can realize a strong first-order electroweak phase transition
+    and produce a stochastic GW spectrum through bubble collisions, sound waves, and turbulence.
+  redshift_range: electroweak epoch
+  relevance: high
+  scale_range: mHz to ground-based detector bands depending on benchmark
+  source_reference_ids:
+  - arxiv:2111.03866
+  - arxiv:1702.02698
+  - arxiv:1811.09807
+  - arxiv:2103.00212
+  subchannel: stochastic background from electroweak phase transition
+- caveats:
+  - Higgs invisible-width and portal-search limits were not separately recast.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early-universe thermal plasma
+  id: obs_complex_singlet_higgs_portal_relic
+  key_quantities:
+  - name: Planck relic target
+    role: cosmological
+    source_reference_ids:
+    - arxiv:2111.03866
+    status: established
+    symbol: Omega_DM h^2
+    value: 0.1199 +/- 0.0027
+  - name: singlet mass bound for FOPT
+    range: 0 to about 909 GeV
+    role: core
+    source_reference_ids:
+    - arxiv:2111.03866
+    status: inferred
+    symbol: m_S
+    unit: GeV
+  linked_constraints:
+  - con_complex_singlet_relic_fopt_region
+  linked_routes:
+  - route_complex_singlet_phase_relic_gw
+  name: Complex singlet Higgs-portal relic abundance
+  notes: null
+  observability: high
+  predicted_effect: The primary paper finds the complex singlet can satisfy the observed relic density
+    across much of the phase-transition-compatible parameter space, unlike the triplet case.
+  redshift_range: thermal freeze-out
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2111.03866
+  - arxiv:1811.09807
+  subchannel: thermal Higgs-portal freeze-out
+constraints:
+- allowed_regions:
+  - The source highlights singlet masses up to about 909 GeV as consistent with first-order phase transition,
+    Planck-scale perturbativity, Higgs mass, and relic density.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The singlet follows standard Higgs-portal thermal freeze-out.
+    id: standard-singlet-freezeout
+    impact_if_violated: Nonstandard cosmology or invisible-Higgs constraints can shift the viable region.
+    notes: null
+    scope: singlet relic density
+    source_reference_ids:
+    - arxiv:2111.03866
+    status: assumed
+  benchmark_implications:
+  - The singlet model can be a full dark matter candidate while retaining phase-transition/GW phenomenology.
+  caveats:
+  - Direct-detection and invisible-Higgs likelihoods were not extracted as numeric contours.
+  constrained_parameters:
+  - m_S
+  - lambda_hs
+  - Omega_DM h^2
+  constraint_type: cosmological
+  data_release: Planck relic target quoted in source
+  excluded_regions:
+  - Parameter points failing either Planck relic abundance or strong first-order phase-transition criteria
+    are outside the source viable region.
+  id: con_complex_singlet_relic_fopt_region
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Complex singlet relic-compatible first-order phase-transition region
+  notes: null
+  observable_channel: relic_density+electroweak_phase_transition
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2111.03866
+  - arxiv:1811.09807
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Detector curves were not digitized.
+    constraint_ids:
+    - con_complex_singlet_relic_fopt_region
+    derived_quantities:
+    - critical/nucleation temperature
+    - Omega_S h^2
+    - GW peak frequency/amplitude
+    description: Compute complex-singlet finite-temperature potential, Higgs-portal relic density, and
+      GW spectrum.
+    forward_model_chain:
+    - inputs:
+      - finite-temperature effective potential
+      notes: null
+      outputs:
+      - critical and nucleation temperatures
+      step_id: s1
+      step_type: simulation
+      tool_or_code: CosmoTransitions
+      validity: Primary implements the finite-temperature potential in CosmoTransitions.
+    - inputs:
+      - m_S
+      - lambda_hs
+      notes: null
+      outputs:
+      - thermal relic abundance
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Higgs-portal freeze-out.
+    - inputs:
+      - alpha
+      - beta/H_*
+      - T_n
+      - v_w
+      notes: null
+      outputs:
+      - GW spectrum
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Uses standard phase-transition GW formulae.
+    id: route_complex_singlet_phase_relic_gw
+    input_parameters:
+    - m_S
+    - lambda_hs
+    - lambda_s
+    - wall velocity
+    likelihoods:
+    - Planck relic target
+    - Higgs and perturbativity constraints
+    - GW detector sensitivity curves
+    observable_ids:
+    - obs_complex_singlet_phase_transition_gw
+    - obs_complex_singlet_higgs_portal_relic
+    required_code_resources:
+    - CosmoTransitions
+    - thermal relic solver
+    - GW spectrum calculator
+    route_status: planned
+    source_model_features:
+    - Z2-odd complex scalar singlet
+    - Higgs portal
+    - strong first-order electroweak phase transition
+    validation_tests:
+    - recover m_S~909 GeV upper region
+    - recover Planck relic target

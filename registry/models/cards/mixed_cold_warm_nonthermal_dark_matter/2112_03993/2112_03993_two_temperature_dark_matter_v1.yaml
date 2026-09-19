@@ -1,0 +1,838 @@
+_source:
+  shard: arXiv_src_2112_027_wds.tar
+  paper_id: '2112_03993'
+  source_member: 2112_03993.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2112_03993_two_temperature_dark_matter_v1
+identity:
+  name: Two temperature dark matter (2TDM)
+  family: mixed_cold_warm_nonthermal_dark_matter
+  aliases:
+  - 2TDM
+  - two-temperature dark matter framework
+  short_description: A phenomenological framework in which one dark matter particle species is produced
+    through two decay channels at different times, leaving two momentum-temperature subsets that together
+    make the observed dark matter abundance.
+  historical_origin_or_motivation: Designed to map non-thermal multi-channel dark matter production onto
+    structure-formation observables without committing to a specific dark-sector microphysics model.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - non-thermal dark matter production
+  - freeze-in or decay-produced warm dark matter
+  - mixed cold/warm dark matter phenomenology
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The paper defines a model-independent momentum-distribution parameterization rather than a complete
+    particle Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: single dark matter particle species X
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavy parent particles P producing X through decays
+  mediators:
+  - decaying parent particles P
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - two momentum-temperature subsets of the same dark matter species
+  long_lived_particles:
+  - dark matter particle X
+  unstable_parent_particles:
+  - parent particles P that decay to dark matter
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper assumes the produced particle species is dark matter; it does not specify
+    a stabilizing symmetry.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets:
+  - unknown
+  dark_sector_couplings:
+  - parent-particle decay width parameters C_Gamma,i
+  - couplings controlling whether parent particles thermalize, freeze out, or never thermalize
+  mediator_types:
+  - unstable heavy parent particles
+  interaction_operators:
+  - P -> X X decay modeled through momentum-distribution functions
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels:
+  - P -> X X
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: unknown
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: temperature ratio of the two dark matter subsets
+    symbol: eta = T_2/T_1
+    description: Ratio between the later/hotter subset temperature and the earlier/cooler subset temperature.
+    range: greater than 1; explored up to about 1000
+    role: core
+    status: inferred
+  - name: late-subset abundance fraction
+    symbol: A_2
+    description: Contribution of the later-produced subset to the total dark matter density.
+    range: 0 to 1; constrained cases down to about 0.01 are discussed
+    role: core
+    status: inferred
+  - name: early-subset abundance fraction
+    symbol: A_1
+    description: Contribution of the first subset, fixed so the total relic abundance is obtained.
+    value: 1 - A_2
+    role: core
+    status: inferred
+  - name: dark matter mass
+    symbol: m_DM
+    description: Mass parameter used in the structure-formation fits.
+    range: 20 to 500 in the paper text; the unit is not legible in the SQLite extraction
+    role: core
+    status: approximate
+  - name: parent particle mass
+    symbol: m_P
+    description: Mass of the heavy parent particle whose decays produce dark matter.
+    range: model dependent
+    role: core
+    status: inferred
+  - name: parent decay normalization
+    symbol: C_Gamma,i
+    description: Dimensionless parameter controlling each decay-produced momentum distribution.
+    range: model dependent
+    role: core
+    status: inferred
+  - name: dark matter internal degrees of freedom
+    symbol: g
+    description: Internal degrees of freedom entering the relic-density expression and N_eff scaling.
+    range: model dependent
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - two non-thermal production channels from parent-particle decays
+  - early decays of thermalized parents
+  - later decays of thermalized, frozen-out, or never-thermalized parents
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - A_1 + A_2 = 1
+  - temperature ratio eta
+  - parent decay widths
+  - parent thermal history
+  - dark matter mass
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper explicitly assumes the observed dark matter density is one particle species produced
+    in two modes with separate effective temperatures.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: total dark matter fraction
+    symbol: A_1 + A_2
+    description: The two subsets are normalized to the observed dark matter density.
+    value: '1'
+    role: core
+    status: inferred
+  calculation_type: nonthermal
+  key_dependencies:
+  - A_2
+  - eta = T_2/T_1
+  - m_DM
+  - parent decay widths
+  - g_*(T_prod)
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - two dark matter production epochs
+  - two-temperature non-thermal momentum distribution
+  - possible changes in entropic degrees of freedom during production
+  dark_sector_temperature:
+    name: reference dark matter temperature
+    symbol: T_1
+    description: Temperature of the lower-temperature subset used as reference.
+    range: model dependent
+    role: core
+    status: inferred
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - possible Standard Model entropy-degree changes during dark matter production
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: mixed_cold_warm
+  distribution_function_available: 'yes'
+  f_of_p_or_q: The model uses a summed distribution f_DM(x_1)=4 x_1 [C_Gamma,1 exp(-x_1)+ C_Gamma,2 exp(-x_1/eta)]
+    for the two-temperature decay example, with appendices for other parent histories.
+  average_momentum_relative_to_thermal: set by eta and by shifts from g_*(T) during production
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds:
+  - warm/hot subset affects Lyman-alpha flux power and Milky Way subhalo counts in the paper analysis
+  notes: The core object introduced by the paper is the non-thermal two-peak momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: mixed_cold_warm
+    small_scale_power_effect: suppression
+    thermal_wdm_mapping:
+      available: true
+      validity: approximate
+      warning: The paper maps the 2TDM transfer function to warm/mixed dark matter limits through fits,
+        not a universal exact mapping.
+  nonlinear:
+    halo_mass_function_effect: suppresses low-mass structure when the hot/warm subset is too large or
+      too hot
+    subhalo_mass_function_effect: reduces the predicted number of Milky Way subhalos relative to CDM
+    simulation_calibrated: partial
+validity_domain:
+- id: two-subset-parameterization
+  applies_to: model
+  condition: The dark matter abundance is well approximated as one particle species split into two production-temperature
+    subsets.
+  status: assumed
+  extrapolation_risk: medium
+- id: no-dark-sector-entropy-dilution
+  applies_to: cosmological_history
+  condition: The paper neglects entropy dilution in the dark sector after production.
+  status: assumed
+  extrapolation_risk: medium
+- id: decay-production-template
+  applies_to: production
+  condition: The analytic forms assume parent-particle decays P -> X X and specified parent thermal histories.
+  status: inferred
+  extrapolation_risk: medium
+- id: structure-fit-range
+  applies_to: parameters
+  condition: The fit is stated for dark matter masses between 20 and 500 in the paper text, with the unit
+    degraded in the SQLite extraction.
+  status: approximate
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: single-dm-species
+    description: The observed dark matter density is explained by one particle species, not separate cold
+      and warm particles.
+    scope: theory
+    status: assumed
+  - id: two-production-modes
+    description: Two different decay-production channels occur at separate times and can be assigned separate
+      intrinsic temperatures.
+    scope: production
+    status: assumed
+  - id: fixed-temperature-ratio
+    description: The temperature ratio between subsets is taken to remain constant after production aside
+      from the explicitly discussed g_*(T) shifts.
+    scope: cosmological_history
+    status: assumed
+  - id: model-independent-microphysics
+    description: The framework does not specify spin, symmetry, or a full Lagrangian for X and P.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that CLASS is used to compute the matter power spectrum from tabulated
+    2TDM momentum distributions; no model-specific public repository is identified in the assigned text.
+  primary_code_role: transfer_function
+  packages_or_modules:
+  - name: CLASS
+    resource_type: package
+    availability: public
+    relationship_to_model: used_by_paper
+    purpose: matter power spectrum calculation
+  expected_inputs:
+  - 2TDM momentum distribution table
+  - cosmological parameters
+  - m_DM
+  - eta
+  - A_2
+  expected_outputs:
+  - matter_power_spectrum
+  - transfer_function
+provenance:
+  model_id: 2112_03993_two_temperature_dark_matter_v1
+  model_name: Two temperature dark matter (2TDM)
+  model_family: mixed_cold_warm_nonthermal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2112.03993
+      title: Unknown title in assigned text
+      authors: []
+      year: 2021
+      arxiv_id: '2112.03993'
+      doi: null
+      url: null
+      role: original_model
+      notes: The assigned SQLite text starts with the abstract/introduction and identifies the introduced
+        framework as two temperature dark matter (2TDM); no title or author block is present in the text.
+    - reference_id: '2112_03993'
+      title: Probing non-thermal light DM with structure formation and N <SUB>eff</SUB>
+      authors:
+      - Baumholzer, Sven
+      - Schwaller, Pedro
+      year: 2022
+      arxiv_id: '2112.03993'
+      doi: 10.1088/1475-7516/2022/06/013
+      url: https://arxiv.org/abs/2112.03993
+      role: original_model
+      notes: Assigned primary paper read from the configured local SQLite full-text caches.
+    constraint_papers:
+    - reference_id: '2111_13137'
+      title: Warm dark matter constraints using Milky Way satellite observations and subhalo evolution
+        modeling
+      authors:
+      - Dekker, Ariane
+      - Ando, Shin'ichiro
+      - Correa, Camila A.
+      - Ng, Kenny C. Y.
+      year: 2022
+      arxiv_id: '2111.13137'
+      doi: 10.1103/PhysRevD.106.123026
+      url: https://arxiv.org/abs/2111.13137
+      role: constraint
+      notes: Related local text on Milky Way satellite constraints on warm dark matter.
+    - reference_id: '1702_01764'
+      title: New constraints on the free-streaming of warm dark matter from intermediate and small scale
+        Lyman-α forest data
+      authors:
+      - Iršič, Vid
+      - Viel, Matteo
+      - Haehnelt, Martin G.
+      - Bolton, James S.
+      - Cristiani, Stefano
+      - Becker, George D.
+      - D'Odorico, Valentina
+      - Cupani, Guido
+      - Kim, Tae-Sun
+      - Berg, Trystyn A. M.
+      - López, Sebastian
+      - Ellison, Sara
+      - Christensen, Lise
+      - Denney, Kelly D.
+      - Worseck, Gábor
+      year: 2017
+      arxiv_id: '1702.01764'
+      doi: 10.1103/PhysRevD.96.023522
+      url: https://arxiv.org/abs/1702.01764
+      role: constraint
+      notes: Related local text on Ly-alpha forest constraints on warm-dark-matter free streaming.
+    - reference_id: '2206_08188'
+      title: 'One likelihood to bind them all: Lyman-α constraints on non-standard dark matter'
+      authors:
+      - Hooper, Deanna C.
+      - Schöneberg, Nils
+      - Murgia, Riccardo
+      - Archidiacono, Maria
+      - Lesgourgues, Julien
+      - Viel, Matteo
+      year: 2022
+      arxiv_id: '2206.08188'
+      doi: 10.1088/1475-7516/2022/10/032
+      url: https://arxiv.org/abs/2206.08188
+      role: constraint
+      notes: Related local text on Ly-alpha likelihoods for non-standard dark matter.
+    review_papers: []
+    external_databases:
+    - name: NASA ADS
+      url: https://ui.adsabs.harvard.edu/
+      note: Used for primary, reference, and citation metadata discovery only.
+  extraction:
+    method: llm_assisted
+    extracted_by: batch-0018 dark-matter model extraction worker
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:2112.03993
+      section: abstract/introduction
+      page: null
+      quote_or_summary: Proposes a simple parametrization for non-thermal DM distributions and dubs it
+        two temperature dark matter.
+    - reference_id: arxiv:2112.03993
+      section: model setup
+      page: null
+      quote_or_summary: Assumes one particle species produced in two modes with temperatures T_1 and T_2
+        and abundance fractions A_1 and A_2.
+    - reference_id: arxiv:2112.03993
+      section: summary
+      page: null
+      quote_or_summary: States that 2TDM is parameterized by A_2 and the temperature ratio and is evaluated
+        with structure-formation calculations.
+    unresolved_items:
+    - The assigned text does not include a title or author block.
+    - The unit on the stated 20-500 dark matter mass range is not legible in the SQLite text.
+    - No Ly-alpha or satellite likelihood assets were rerun; recorded bounds are recast targets.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2112.03993
+      note: The setup uses a single dark matter species X and parent particles P that decay to X X; spin
+        and detailed charges are left model independent.
+      confidence: high
+      section: model setup
+    symmetries:
+    - reference_id: arxiv:2112.03993
+      note: No stabilizing symmetry is specified; stability is implicit in treating X as the dark matter
+        particle.
+      confidence: medium
+      section: model setup
+    interactions:
+    - reference_id: arxiv:2112.03993
+      note: Production is modeled through parent-particle decay widths and P -> X X decay distributions.
+      confidence: high
+      section: parametrization/modeling decays
+    production_mechanism:
+    - reference_id: arxiv:2112.03993
+      note: The paper assumes two production modes at separate times, with the later subset hotter and
+        possibly warm or hot.
+      confidence: high
+      section: model setup
+    cosmological_history:
+    - reference_id: arxiv:2112.03993
+      note: The analysis tracks different dark matter temperatures and discusses changes in g_*(T) during
+        production.
+      confidence: medium
+      section: going beyond thermal
+    parameter_ranges:
+    - reference_id: arxiv:2112.03993
+      note: The core 2TDM parameters are A_2 in [0,1] and eta=T_2/T_1>1; fit discussions explore eta up
+        to about 1000.
+      confidence: high
+      section: parametrization and summary
+    validity_domain:
+    - reference_id: arxiv:2112.03993
+      note: The framework is intended as a model-independent mapping for specific warm/non-thermal realizations,
+        not a full microphysical model.
+      confidence: medium
+      section: introduction and summary
+    observables:
+    - reference_id: '2112_03993'
+      note: Primary paper simulates matter power for DM with at least two temperatures and derives small-scale
+        suppression and Milky Way dwarf counts.
+      confidence: high
+      section: Abstract
+      page: null
+    - reference_id: '2112_03993'
+      note: Primary text explicitly combines Lyman-alpha, MW subhalo counts, and N_eff for 2TDM constraints.
+      confidence: high
+      section: Limits from structure formation
+      page: null
+    - reference_id: '2206_08188'
+      note: Related paper supports Ly-alpha as a small-scale-structure probe for non-standard dark matter.
+      confidence: high
+      section: Introduction
+      page: null
+    constraints:
+    - reference_id: '2112_03993'
+      note: Primary paper gives conservative and power-law thermal WDM reference masses of 3.5 and 5.3
+        keV and maps them to A_ref values.
+      confidence: high
+      section: Lyman-alpha forest
+      page: null
+    - reference_id: '2111_13137'
+      note: Related paper supports Milky Way satellites as complementary WDM constraints.
+      confidence: high
+      section: Introduction
+      page: null
+    - reference_id: '2112_03993'
+      note: Primary paper writes Delta N_eff in terms of model parameters and compares BBN/CMB limits.
+      confidence: high
+      section: N_eff bounds
+      page: null
+    routes:
+    - reference_id: '2112_03993'
+      note: Primary paper provides a two-component distribution and fitting procedure for nonthermal DM
+        distributions.
+      confidence: high
+      section: 2TDM parameterization
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - This is a phenomenological momentum-distribution model; particle spin, charges, and stabilizing symmetry
+    are not specified in the assigned text.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - The framework is intentionally model independent and leaves microphysics unspecified.
+  - The mass unit in the text extraction is degraded.
+  validation_status: expert_judgment_only
+  notes: The production and phase-space parameterization are directly supported; detailed BSM particle
+    content is unknown.
+agent_failure_modes:
+  warnings:
+  - id: phenomenological-not-uv-model
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat 2TDM as a UV-complete particle model; it is a model-independent phase-space
+      and production parameterization.
+    mitigation: Use a specific parent-particle realization before making particle-physics claims.
+    source_reference_ids:
+    - arxiv:2112.03993
+  - id: mass-unit-degraded
+    severity: medium
+    category: unit_convention
+    warning: The SQLite text drops the unit on the 20-500 dark matter mass range used in fits.
+    mitigation: Verify the original paper before using numerical mass limits.
+    source_reference_ids:
+    - arxiv:2112.03993
+observables:
+- id: obs_2tdm_matter_power_suppression
+  name: Two-temperature nonthermal matter-power suppression
+  channel: large_scale_structure
+  subchannel: nonthermal mixed-temperature transfer function
+  predicted_effect: A single dark-matter species produced in two temperature components has a nonthermal
+    distribution that suppresses small-scale matter power relative to CDM.
+  effect_direction: suppression
+  key_quantities:
+  - name: hot-component fraction
+    symbol: A_2
+    description: Fractional abundance in the hotter component.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2112_03993'
+  - name: temperature ratio
+    symbol: eta
+    description: Ratio of the two effective DM temperatures.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2112_03993'
+  - name: DM mass
+    symbol: m_DM
+    description: Mass entering N_eff and structure bounds.
+    unit: keV or model dependent
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2112_03993'
+  redshift_range: radiation era through low-redshift structure
+  scale_range: Lyman-alpha and subhalo scales
+  environments:
+  - linear matter power spectrum
+  - Lyman-alpha forest
+  observability: high
+  relevance: critical
+  linked_constraints:
+  - con_2tdm_lya_bound
+  - con_2tdm_satellite_bound
+  linked_routes:
+  - route_2tdm_structure_neff
+  caveats:
+  - Mapping to published WDM limits depends on transfer-function shape.
+  source_reference_ids:
+  - '2112_03993'
+  - '1702_01764'
+  - '2206_08188'
+  notes: null
+- id: obs_2tdm_mw_dwarfs
+  name: Milky Way dwarf-galaxy count response
+  channel: milky_way_satellites
+  subchannel: subhalo abundance
+  predicted_effect: The small-scale cutoff reduces the expected number of Milky Way satellite galaxies,
+    giving a complementary constraint to Ly-alpha.
+  effect_direction: suppression
+  key_quantities:
+  - name: satellite count
+    symbol: N_sat
+    description: Expected number of observable Milky Way satellites or subhalos.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2112_03993'
+    - '2111_13137'
+  - name: half-mode scale
+    symbol: k_hm
+    description: Cutoff scale used in WDM-like satellite recasts.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2111_13137'
+  redshift_range: z approximately 0 satellite population
+  scale_range: Milky Way subhalo mass scales
+  environments:
+  - Milky Way satellites
+  - subhalos
+  observability: high
+  relevance: high
+  linked_constraints:
+  - con_2tdm_satellite_bound
+  linked_routes:
+  - route_2tdm_structure_neff
+  caveats:
+  - Galaxy-halo connection and satellite completeness dominate systematics.
+  source_reference_ids:
+  - '2112_03993'
+  - '2111_13137'
+  notes: null
+- id: obs_2tdm_delta_neff
+  name: Relativistic-energy contribution from the hot component
+  channel: cosmology
+  subchannel: Delta N_eff at BBN/CMB
+  predicted_effect: The hotter nonthermal component contributes to N_eff before becoming nonrelativistic,
+    constraining m_DM and A_2.
+  effect_direction: enhancement
+  key_quantities:
+  - name: effective relativistic species
+    symbol: Delta N_eff
+    description: Extra radiation-like energy from the hot component.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2112_03993'
+  - name: hot-component fraction
+    symbol: A_2
+    description: Fractional abundance in the hotter population.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2112_03993'
+  redshift_range: BBN and recombination epochs
+  scale_range: homogeneous radiation density
+  environments:
+  - BBN
+  - CMB
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - con_2tdm_neff_bound
+  linked_routes:
+  - route_2tdm_structure_neff
+  caveats:
+  - Exact mapping depends on when the component becomes nonrelativistic.
+  source_reference_ids:
+  - '2112_03993'
+  notes: null
+constraints:
+- id: con_2tdm_lya_bound
+  name: Ly-alpha transfer-function bound for 2TDM
+  constraint_type: astrophysical
+  observable_channel: Lyman-alpha forest flux power
+  applies: recast_required
+  constrained_parameters:
+  - A_2
+  - eta
+  - m_DM
+  - T(k)
+  excluded_regions:
+  - 2TDM parameter points with stronger small-scale suppression than the thermal WDM reference are excluded
+    in the primary recast.
+  allowed_regions:
+  - Primary text maps conservative thermal WDM references to A_ref values; a full nonthermal likelihood
+    would refine the boundary.
+  benchmark_implications:
+  - The primary paper quotes thermal WDM reference masses 3.5 keV and 5.3 keV for conservative and power-law
+    IGM histories.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: Ly-alpha forest analyses cited by primary; related 1702.01764 and 2206.08188 local texts
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: thermal-wdm-reference-map
+    description: The 2TDM transfer-function suppression is compared to thermal-WDM reference bounds.
+    scope: Ly-alpha recast
+    status: assumed
+    impact_if_violated: Different cutoff shapes or IGM histories can move the exclusion.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - '2112_03993'
+    - '1702_01764'
+    notes: null
+  caveats:
+  - No Ly-alpha likelihood was evaluated in this batch.
+  source_reference_ids:
+  - '2112_03993'
+  - '1702_01764'
+  - '2206_08188'
+  notes: null
+- id: con_2tdm_satellite_bound
+  name: Milky Way satellite-count lower bound on small-scale power
+  constraint_type: astrophysical
+  observable_channel: Milky Way satellite galaxies
+  applies: recast_required
+  constrained_parameters:
+  - A_2
+  - eta
+  - m_DM
+  - N_sat
+  excluded_regions:
+  - Parameter points producing too few Milky Way dwarfs/subhalos are disfavored.
+  allowed_regions:
+  - Warmer/higher-A_2 components must leave enough subhalo abundance after satellite-completeness modeling.
+  benchmark_implications:
+  - Satellite observations provide a complementary constraint to Ly-alpha for nonthermal distributions.
+  likelihood_available: partial
+  likelihood_reference: null
+  data_release: Milky Way satellite constraints from primary and related satellite-analysis paper
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: satellite-completeness-model
+    description: The satellite count recast assumes a galaxy-halo connection and survey completeness model.
+    scope: satellite likelihood
+    status: assumed
+    impact_if_violated: Different completeness or subhalo evolution shifts the bound.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - '2112_03993'
+    - '2111_13137'
+    notes: null
+  caveats:
+  - The satellite likelihood assets were not run.
+  source_reference_ids:
+  - '2112_03993'
+  - '2111_13137'
+  notes: null
+- id: con_2tdm_neff_bound
+  name: BBN/CMB N_eff bound on hot 2TDM component
+  constraint_type: cosmological
+  observable_channel: BBN and CMB radiation density
+  applies: 'yes'
+  constrained_parameters:
+  - Delta N_eff
+  - A_2
+  - m_DM
+  - g_*
+  excluded_regions:
+  - Large hot-component fractions at low m_DM can exceed BBN or CMB Delta N_eff limits.
+  allowed_regions:
+  - Allowed regions require the hot component to become sufficiently nonrelativistic or remain small enough.
+  benchmark_implications:
+  - N_eff removes parts of parameter space even when small-scale structure is acceptable.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: BBN and CMB N_eff bounds as implemented in the primary paper
+  recasting_needed: partial
+  robustness: medium
+  assumptions:
+  - id: standard-radiation-history
+    description: The primary N_eff expression assumes the stated entropy-degree history and standard BBN/CMB
+      interpretation.
+    scope: radiation density
+    status: assumed
+    impact_if_violated: Nonstandard entropy injection changes the N_eff mapping.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2112_03993'
+    notes: null
+  caveats:
+  - No BBN or Planck likelihood was rerun.
+  source_reference_ids:
+  - '2112_03993'
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: route_2tdm_structure_neff
+    description: Construct the two-temperature momentum distribution, compute the transfer function, and
+      compare with Ly-alpha, satellites, and N_eff bounds.
+    source_model_features:
+    - one DM species produced in two decay channels
+    - two effective temperatures
+    - nonthermal mixed cold/warm distribution
+    input_parameters:
+    - A_1
+    - A_2
+    - eta
+    - m_DM
+    - parent decay histories
+    derived_quantities:
+    - f(p)
+    - T(k)
+    - N_sat
+    - Delta N_eff
+    forward_model_chain:
+    - step_id: distribution_builder
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - A_1
+      - A_2
+      - eta
+      outputs:
+      - two-component f(p)
+      validity: valid for the source 2TDM parameterization
+      notes: null
+    - step_id: linear_power
+      step_type: boltzmann_solver
+      tool_or_code: CLASS or equivalent
+      inputs:
+      - f(p)
+      - m_DM
+      - cosmology
+      outputs:
+      - matter power spectrum
+      - transfer function
+      validity: must support arbitrary nonthermal distribution
+      notes: null
+    - step_id: constraints
+      step_type: likelihood
+      tool_or_code: null
+      inputs:
+      - T(k)
+      - N_sat
+      - Delta N_eff
+      outputs:
+      - Ly-alpha/satellite/N_eff exclusions
+      validity: likelihoods not run here
+      notes: null
+    observable_ids:
+    - obs_2tdm_matter_power_suppression
+    - obs_2tdm_mw_dwarfs
+    - obs_2tdm_delta_neff
+    constraint_ids:
+    - con_2tdm_lya_bound
+    - con_2tdm_satellite_bound
+    - con_2tdm_neff_bound
+    likelihoods: []
+    required_code_resources:
+    - Boltzmann solver for arbitrary f(p)
+    - Ly-alpha likelihood
+    - satellite-completeness likelihood
+    validation_tests:
+    - recover primary A_ref thresholds
+    - recover N_eff curves
+    route_status: partially_implemented
+    agent_notes: null
+    caveats:
+    - Thermal-WDM equivalence is approximate for two-temperature spectra.

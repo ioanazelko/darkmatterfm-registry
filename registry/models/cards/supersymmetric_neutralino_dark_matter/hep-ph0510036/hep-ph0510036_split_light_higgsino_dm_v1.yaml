@@ -1,0 +1,291 @@
+_source:
+  shard: arXiv_src_0510_002_wds.tar
+  paper_id: hep-ph0510036
+  source_member: hep-ph0510036.json
+schema_version: model_only_v0
+model_id: hep-ph0510036_split_light_higgsino_dm_v1
+identity:
+  name: Split light Higgsino neutralino dark matter
+  family: supersymmetric_neutralino_dark_matter
+  aliases:
+  - Split Light Higgsino model
+  - split Higgsino neutralino dark matter
+  short_description: A split-supersymmetry variant in which the Higgsino mass scale is much lower than
+    scalar and gaugino SUSY scales, giving quasi-degenerate neutral Higgsino LSP dark matter with relic
+    abundance fixed in the high-symmetric phase.
+  historical_origin_or_motivation: The paper joins split-supersymmetry scale separation with the assumption
+    that dark matter is a neutralino LSP, using relic abundance to estimate the Higgsino mass.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - MSSM
+  - Split Supersymmetry
+  - SUSY SU(5)
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the light Higgsino electroweak interaction Lagrangian and a split scale hierarchy
+    M_SUSY approximately M_0 approximately M_1/2 much greater than the Higgsino mass.
+particle_content:
+  dark_matter_candidate:
+    name: Higgsino-like lightest neutralino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - W boson
+  - Z boson
+  - suppressed squark exchange
+  excited_or_degenerate_states:
+  - second neutral Higgsino
+  - quasi-degenerate chargino
+  long_lived_particles:
+  - charged Higgsino with lifetime about 0.4e-9 s in the benchmark
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Neutralino is assumed to be the LSP dark matter carrier; stability follows the
+    supersymmetric LSP setup used by the paper.
+  symmetries:
+  - name: R parity or LSP stability
+    type: discrete
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - other
+  standard_model_targets:
+  - W bosons
+  - Z bosons
+  - quarks
+  - leptons
+  - nucleons
+  dark_sector_couplings:
+  - Higgsino electroweak couplings
+  mediator_types:
+  - W boson
+  - Z boson
+  - heavy squarks
+  interaction_operators:
+  - neutralino-chargino recharging on nucleons in high-energy scattering
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_dependent
+  annihilation_channels:
+  - W+ W-
+  - Z0 Z0
+  - quark-antiquark pairs
+  - lepton-antilepton pairs
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: Higgsino mass
+    symbol: M_chi
+    description: Mass of the split neutralino dark matter carrier.
+    value: 2.9 +/- 0.5
+    unit: TeV
+    role: core
+    status: inferred
+    notes: The paper also summarizes this as about 3 TeV.
+  - name: SUSY-breaking scalar and gaugino scale
+    symbol: M_SUSY
+    description: Scale of heavy sleptons, squarks, and gauginos.
+    value: '> 1.4e4'
+    unit: GeV
+    role: core
+    status: inferred
+    notes: Above this value radiation corrections dominate chargino-neutralino mass splitting.
+  - name: chargino-neutralino mass splitting
+    symbol: Delta M
+    description: Radiative mass difference between chargino and neutralino.
+    value: about 360
+    unit: MeV
+    role: core
+    status: inferred
+  - name: annihilation start temperature
+    symbol: T0
+    description: Temperature at which irreversible neutralino annihilation starts.
+    value: M_chi / 3, about 1000 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: annihilation end temperature
+    symbol: T1
+    description: Temperature at which annihilation ends.
+    value: M_chi / 20, about 100 GeV
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal relic freeze-out via annihilation in the high-symmetric electroweak phase
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - high-symmetric-phase annihilation cross section
+  - Higgsino mass
+  - plasma statistical weight
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: Assuming all dark matter consists of split neutralinos, WMAP-era density fixes M_chi about 2.9
+    +/- 0.5 TeV.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - M_chi
+  - annihilation cross section
+  - high-symmetric phase degrees of freedom
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - neutralino relic abundance forms in the high-symmetric phase of the cosmological plasma
+  bbn_relevance: low
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: The paper solves number-density evolution for a thermal relic but does not give a detailed present-day
+    distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: all_dm_neutralino
+  applies_to: model
+  condition: The Higgsino mass estimate assumes the cosmological dark matter density is entirely made
+    of split neutralinos.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: high_symmetric_phase
+  applies_to: production
+  condition: The relic calculation is self-consistent only when annihilation occurs in the high-symmetric
+    phase, giving M_chi near 3 TeV.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: split_higgsino_hierarchy
+    description: Higgsino states remain light while scalar superpartners and gauginos are far heavier.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: neutralino_lsp_dm
+    description: Dark matter is composed of neutralino LSPs with Higgsino structure.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: If dark matter has additional components, the mass estimate changes.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public code or package is described for the model extraction.
+  primary_code_role: null
+provenance:
+  model_id: hep-ph0510036_split_light_higgsino_dm_v1
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Split Light Higgsino from Split Supersymmetry
+      year: 2005
+      arxiv_id: hep-ph/0510036
+      role: original_model
+      notes: Assigned full text in target_text.sqlite.
+      authors:
+      - G. M. Vereshkov
+      - V. I. Kuksa
+      - V. A. Beylin
+      - R. S. Pasechnik
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0012
+    extraction_date: '2026-05-30'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: The paper states that the model joins split supersymmetry with neutralino dark
+        matter and estimates a Higgsino mass near 3 TeV.
+    - reference_id: primary
+      section: Neutralino residual concentration
+      page: null
+      quote_or_summary: The relic density is derived from neutralino number-density evolution and high-symmetric-phase
+        annihilation.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The LSPs in the model have Higgsino structure and include quasi-degenerate neutralino and
+        chargino states.
+      confidence: high
+      section: Split Light Higgsino scenario
+    interactions:
+    - reference_id: primary
+      note: The paper lists electroweak Higgsino interactions and annihilation into W, Z, and fermion
+        channels.
+      confidence: medium
+      section: Detection and annihilation sections
+    production_mechanism:
+    - reference_id: primary
+      note: Residual neutralino concentration is formed in the high-symmetric phase of the cosmological
+        plasma.
+      confidence: high
+      section: Neutralino residual concentration
+    parameter_ranges:
+    - reference_id: primary
+      note: The dark matter density gives M_chi = 2.9 +/- 0.5 TeV, with chargino-neutralino splitting
+        about 360 MeV.
+      confidence: high
+      section: Neutralino residual concentration
+    validity_domain:
+    - reference_id: primary
+      note: The mass estimate assumes that dark matter consists of neutralinos only.
+      confidence: high
+      section: Neutralino residual concentration
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+  model_family: supersymmetric_neutralino_dark_matter
+  model_name: Split light Higgsino neutralino dark matter
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: low
+  dominant_uncertainties:
+  - The dark matter mass estimate depends on the assumption that all dark matter is split neutralinos.
+  - The paper does not provide a reusable code implementation.
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: all_dm_assumption
+    severity: high
+    category: assumption_mismatch
+    warning: The quoted 2.9 TeV mass should not be used if split neutralinos are only a subcomponent of
+      dark matter.

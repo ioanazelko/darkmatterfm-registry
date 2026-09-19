@@ -1,0 +1,298 @@
+_source:
+  shard: arXiv_src_2008_071_wds.tar
+  paper_id: '2008_12985'
+  source_member: 2008_12985.json
+schema_version: model_only_v0
+model_id: 2008_12985_pseudo_nambu_goldstone_scalar_dm_v1
+identity:
+  name: Pseudo-Nambu-Goldstone scalar dark matter from a complex singlet
+  family: pseudo_nambu_goldstone_dark_matter
+  aliases:
+  - pNG DM
+  - complex singlet pseudo-Goldstone dark matter
+  short_description: A complex scalar singlet extension of the Standard Model with a softly broken global
+    U(1), where the imaginary singlet component is a stable pseudo-Nambu-Goldstone dark matter particle.
+  historical_origin_or_motivation: The paper revisits electroweak corrections in an existing pNG dark
+    matter model whose tree-level dark-matter-nucleon scattering is velocity suppressed.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - complex scalar singlet extension of the Standard Model
+  - pseudo-Nambu-Goldstone dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'no'
+  notes: The paper gives the scalar potential for H and complex singlet S, including a dimension-two soft
+    U(1)-breaking term.
+particle_content:
+  dark_matter_candidate:
+    name: imaginary component of the complex singlet S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - extra CP-even scalar from the real part of S
+  mediators:
+  - SM-like Higgs boson
+  - non-SM CP-even scalar
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: DM charge conjugation S -> S* stabilizes the imaginary component; a global U(1)
+    is softly broken so the dark matter is pseudo-Nambu-Goldstone-like.
+  symmetries:
+  - name: dm_charge_conjugation_s_to_s_conjugate
+    type: discrete
+    exact_or_approximate: exact
+  - name: global_u1_on_s
+    type: global
+    exact_or_approximate: broken
+    breaking: soft dimension-two term proportional to the pseudo-Goldstone mass
+  - name: z2_s_to_minus_s
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs sector
+  - SM fermions
+  - gauge bosons
+  dark_sector_couplings:
+  - lambda_HS |H|^2 |S|^2
+  - singlet quartic lambda_S |S|^4
+  - soft U(1)-breaking singlet mass term
+  mediator_types:
+  - scalar Higgs mediators
+  annihilation_channels:
+  - standard WIMP annihilation through mixed CP-even scalars
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: spin_independent
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the pseudo-Nambu-Goldstone dark matter particle.
+    range:
+      min: 30
+      max: 1000
+      unit: GeV
+      notes: scan range quoted in the paper
+    unit: GeV
+    role: core
+    status: inferred
+  - name: non-SM scalar mass
+    symbol: m_H2
+    description: Mass of the extra CP-even scalar.
+    range:
+      min: 30
+      max: 1000
+      unit: GeV
+      notes: scan range quoted in the paper
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet vacuum expectation value
+    symbol: v_S
+    description: VEV of the real part of the singlet scalar.
+    range:
+      min: 1
+      max: 1000
+      unit: GeV
+      notes: scan range quoted in the paper
+    unit: GeV
+    role: core
+    status: inferred
+  - name: scalar mixing angle
+    symbol: alpha
+    description: Mixing angle between the SM-like neutral Higgs component and the real singlet component.
+    range: '[-pi/2, pi/2]'
+    role: core
+    status: inferred
+  - name: soft U(1)-breaking mass term
+    symbol: mu_soft^2
+    description: Dimension-two term that gives mass to the pseudo-Nambu-Goldstone boson.
+    range: model dependent
+    unit: GeV^2
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - standard thermal WIMP freeze-out
+  thermal_equilibrium_with_standard_model: 'yes'
+  abundance_set_by:
+  - annihilation through CP-even scalar mediators
+  - MicrOmegas relic-density calculation in the scan
+  can_produce_all_dark_matter: parameter_dependent
+  notes: The scan permits both dominant and subdominant dark matter, with relic density calculated in
+    the standard freeze-out mechanism.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_H2
+  - v_S
+  - alpha
+  - scalar potential couplings
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: The paper treats the candidate as WIMP-like cold dark matter produced by standard freeze-out.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: not discussed in the paper text
+    subhalo_mass_function_effect: not discussed in the paper text
+    simulation_calibrated: unknown
+validity_domain:
+- id: softly_broken_u1_limit
+  applies_to: model
+  condition: The pseudo-Nambu-Goldstone interpretation applies when the scalar potential has global U(1)
+    symmetry broken softly by the dimension-two term.
+  status: established
+  extrapolation_risk: low
+- id: paper_scan_domain
+  applies_to: parameter
+  condition: Numerical scan ranges include m_chi and the extra scalar mass from 30 to 1000 GeV, v_S from
+    1 to 1000 GeV, and alpha in [-pi/2, pi/2].
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: exact_dm_charge_conjugation
+    description: The charge-conjugation symmetry S -> S* is exact and stabilizes the imaginary singlet
+      component.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: standard_freezeout
+    description: Relic density is computed using standard thermal freeze-out.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+  - id: dominant_or_subcomponent_allowed
+    description: The paper allows the pNG candidate to account for all or only part of the observed dark
+      matter abundance.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that the relic density is calculated with MicrOmegas implemented in ScannerS;
+    no paper-specific public repository is identified in the extracted text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 2008_12985_pseudo_nambu_goldstone_scalar_dm_v1
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2008.12985
+      title: Electroweak Corrections in a Pseudo-Nambu Goldstone Dark Matter Model Revisited
+      year: 2020
+      arxiv_id: '2008.12985'
+      role: extension
+      authors:
+      - Seraina Glaus
+      - Margarete Muehlleitner
+      - Jonas Mueller
+      - Shruti Patel
+      - Tizian Roemer
+      - Rui Santos
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:2008.12985
+      section: model/renormalization/results
+      quote_or_summary: Complex singlet pNG DM model with softly broken U(1), Higgs portal, and standard-freeze-out
+        scan.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2008.12985
+      note: The paper studies a complex singlet extension where one component mixes with the SM-like Higgs
+        and the other is the pNG dark matter candidate.
+      confidence: high
+      section: model section
+    symmetries:
+    - reference_id: arxiv:2008.12985
+      note: The scalar potential is U(1) invariant apart from a soft dimension-two breaking term, and
+        DM charge conjugation stabilizes the imaginary part of S.
+      confidence: high
+      section: model section
+    interactions:
+    - reference_id: arxiv:2008.12985
+      note: The potential contains the Higgs-singlet portal lambda_HS |H|^2 |S|^2 and the paper discusses
+        tree-level suppression and one-loop electroweak scattering.
+      confidence: high
+      section: model and correction sections
+    production_mechanism:
+    - reference_id: arxiv:2008.12985
+      note: The relic density is calculated in the standard freeze-out mechanism with MicrOmegas/ScannerS
+        and can be full or subdominant.
+      confidence: medium
+      section: results section
+    parameter_ranges:
+    - reference_id: arxiv:2008.12985
+      note: The scan ranges m_chi, extra scalar mass, v_S, and alpha are given explicitly in the paper.
+      confidence: medium
+      section: scan setup
+    validity_domain:
+    - reference_id: arxiv:2008.12985
+      note: The paper revisits the model by defining a renormalization scheme and checking the one-loop
+        calculation in general R_xi gauge.
+      confidence: medium
+      section: renormalization/results sections
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - paper is a revisit of an existing model rather than the original proposal
+  - direct-detection corrections are outside this model-only extraction pass
+  validation_status: expert_judgment_only
+  notes: Accepted as a substantive model development because the paper presents the model, its renormalization,
+    and thermal relic scan.
+agent_failure_modes:
+  warnings:
+  - id: not_original_proposal
+    severity: medium
+    category: other
+    warning: This paper revisits and substantially develops an existing pNG dark matter model; do not
+      treat it as the first proposal.
+  - id: tree_level_scattering_suppressed
+    severity: medium
+    category: assumption_mismatch
+    warning: The pNG nature suppresses tree-level dark-matter-nucleon scattering; model users should not
+      apply a generic scalar-singlet scattering estimate.

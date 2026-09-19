@@ -1,0 +1,338 @@
+_source:
+  shard: data/astro-ph-00266.tar
+  paper_id: '2312_12408'
+  source_member: 2312_12408.json
+schema_version: model_only_v0
+model_id: 2312_12408_dark_second_force_cdm_v1
+validity_domain:
+- id: visible_sector_gr
+  applies_to: model
+  condition: Standard Model matter must remain uncoupled to the scalar so local GR, WEP, and fundamental-constant
+    constraints are evaded.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - primary
+- id: massless_scalar_v0
+  applies_to: theory
+  condition: The numerical model families analyzed assume V(phi)=0, making the scalar a dark-sector force
+    rather than dark energy.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+- id: background_and_perturbations_consistent
+  applies_to: computation
+  condition: The paper emphasizes that the same field theory must be used for both background and perturbation
+    calculations.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+assumptions:
+  global:
+  - id: dm_only_scalar_coupling
+    description: Only dark matter couples to the massless scalar through the conformal dark-sector metric.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+    impact_if_violated: Coupling Standard Model matter would trigger local gravity and BBN constraints
+      that the construction is designed to avoid.
+  - id: cold_dark_matter_fluid
+    description: The dark matter sector is modeled as cold pressureless matter in the numerical investigations.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper describes MCMC and cosmological computations but does not identify released
+    model-specific code in the assigned text.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  validation_status: expert_judgment_only
+  notes: The dark-sector action and cosmological behavior are explicit; microscopic DM identity is intentionally
+    generic.
+agent_failure_modes:
+  warnings:
+  - id: generic_dm_microphysics
+    severity: medium
+    category: invalid_mapping
+    warning: Do not infer a specific WIMP, axion, or sterile-neutrino candidate; the paper leaves dark
+      matter microphysics generic.
+    source_reference_ids:
+    - primary
+  - id: visible_sector_uncoupled
+    severity: high
+    category: assumption_mismatch
+    warning: Do not couple the scalar to Standard Model matter; evasion of local tests relies on SM transparency
+      to the scalar.
+    source_reference_ids:
+    - primary
+identity:
+  name: Scalar-coupled dark-second-force CDM
+  family: interacting_dark_sector_dark_matter
+  aliases:
+  - dark second force CDM
+  - massless scalar interaction in the dark matter sector
+  - scalar-tensor dark matter gravity model
+  short_description: A family of minimal CDM extensions in which dark matter alone couples to a massless
+    scalar through a conformal dark-sector metric, producing a long-range fifth force and modified dark-sector
+    density evolution around recombination.
+  historical_origin_or_motivation: Introduced to alleviate the Hubble tension while evading local gravity
+    and BBN constraints by leaving Standard Model matter in ordinary GR.
+  status: emerging
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - scalar-tensor gravity in the dark sector
+  - coupled dark matter cosmology
+  - minimal CDM extension
+  lagrangian_available: 'yes'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The action contains GR and Standard Model sectors plus a massless scalar and a dark matter matter
+    action coupled to g_tilde_mu_nu=A(phi)^2 g_mu_nu.
+particle_content:
+  dark_matter_candidate:
+    name: pressureless dark matter sector coupled to a massless scalar
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - massless scalar field mediating the dark second force
+  mediators:
+  - massless scalar field
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - cold dark matter species
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The cold dark matter species is assumed stable; the paper specifies its modified
+    gravitational coupling rather than a particle stabilizing symmetry.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - other
+  standard_model_targets:
+  - none directly; Standard Model matter remains coupled only to the GR metric
+  dark_sector_couplings:
+  - long-range scalar force acting only on dark matter
+  - conformal dark matter metric A(phi)^2 g_mu_nu
+  mediator_types:
+  - massless scalar mediator
+  - gravity
+  interaction_operators:
+  - S_D[L_D; A(phi)^2 g_mu_nu]
+  - V(phi)=0 with coupling functions A(phi)
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - dark matter fifth-force self-interaction mediated by the scalar
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: quadratic coupling coefficient
+    symbol: alpha
+    description: Parameter in A(phi)=1+alpha phi^2/2 for the minimal model family.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: quartic coupling coefficient
+    symbol: beta
+    description: Optional quartic coefficient in A(phi)=1+alpha phi^2/2+beta phi^4/4.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: initial scalar field value
+    symbol: phi_i
+    description: Attractor initial value varied in MCMC fits.
+    range: A'(phi_i)/phi_i in [0.2,1] and A(phi_i) in [1,1.1] in the paper priors
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: present dark matter density
+    symbol: Omega_D0
+    description: Present-day density parameter for the dark matter sector, lowered relative to LCDM in
+      best-fit models.
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - primary
+production:
+  mechanisms:
+  - phenomenological cold dark matter abundance with scalar-coupled density evolution
+  - energy transfer between dark matter and the massless scalar around equality/recombination
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - present-day dark matter density
+  - initial scalar field value
+  - coupling function A(phi)
+  - scalar field evolution
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: The paper does not derive microphysical freeze-out; it develops the field-theory and cosmological
+    density evolution of CDM coupled to a massless scalar.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - Omega_D0
+  - A(phi)
+  - scalar initial condition
+  - dark matter equation-of-state parameter
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - massless scalar coupled only to dark matter
+  - effective disappearance/transfer of part of dark matter around and after recombination
+  - dark-sector gravitational constant varies with A(phi)
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: high
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: 'no'
+  notes: The paper treats dark matter as an effective cold fluid/sector with modified conservation equations
+    rather than specifying a particle distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: scale_dependent_growth
+    small_scale_power_effect: mixed
+    impact_on_sigma8_s8: The paper studies matter power spectrum changes and states modes growth is almost
+      unaffected in best fits while the background shifts H0.
+  nonlinear:
+    halo_mass_function_effect: The scalar fifth force is proposed to affect dark matter haloes and dark-vs-baryon
+      distributions, but nonlinear calibration is left for future environments.
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+provenance:
+  model_id: 2312_12408_dark_second_force_cdm_v1
+  model_name: 'The Hubble tension as a window on the gravitation of the dark matter sector: exploration
+    of a family of models'
+  model_family: interacting_dark_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: 'The Hubble tension as a window on the gravitation of the dark matter sector: exploration
+        of a family of models'
+      authors:
+      - Jean-Philippe Uzan
+      - Cyril Pitrou
+      year: 2023
+      arxiv_id: '2312.12408'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+  extraction:
+    method: llm_assisted
+    extracted_by: gpt55_dark_matter_model_worker_batch_0140
+    extractor_name: Codex GPT-5.5 batch worker
+    extraction_date: '2026-05-28'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The text introduces a family of CDM extensions where dark matter experiences an
+        extra long-range scalar interaction.
+    - reference_id: primary
+      section: action and model definitions
+      page: null
+      quote_or_summary: The paper gives the action, dark-sector metric A(phi)^2 g_mu_nu, and quadratic/quartic
+        coupling families.
+    unresolved_items:
+    - The dark matter particle microphysics and early-universe freeze-out history are not specified.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The new degree of freedom is a massless scalar coupled only to the dark matter sector; the
+        dark matter species itself is left generic and cold.
+      confidence: high
+      section: action
+    interactions:
+    - reference_id: primary
+      note: Dark matter follows the conformally related metric A(phi)^2 g_mu_nu and feels a fifth force
+        proportional to gradients of the scalar.
+      confidence: high
+      section: gravitation of the DM sector
+    production_mechanism:
+    - reference_id: primary
+      note: 'The abundance logic is phenomenological: the model changes the redshift evolution of the
+        dark matter density through energy transfer to the scalar.'
+      confidence: medium
+      section: background equations
+    cosmological_history:
+    - reference_id: primary
+      note: The scalar is frozen deep in radiation domination and evolves naturally around equality/recombination,
+        leaving BBN and local tests unaffected by construction.
+      confidence: high
+      section: introduction/background
+    parameter_ranges:
+    - reference_id: primary
+      note: The text defines minimal, quartic, combined, exponential, and axion-inspired coupling functions,
+        with MCMC priors on A(phi_i) and A_prime(phi_i)/phi_i.
+      confidence: medium
+      section: model definitions/MCMC
+    validity_domain:
+    - reference_id: primary
+      note: Visible matter is kept transparent to the scalar interaction to avoid WEP, local GR, and BBN
+        constraints.
+      confidence: high
+      section: introduction
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Accepted as a dark-sector model rather than a particle-specific relic model; the paper supplies field-theory
+    and cosmological density-evolution logic.

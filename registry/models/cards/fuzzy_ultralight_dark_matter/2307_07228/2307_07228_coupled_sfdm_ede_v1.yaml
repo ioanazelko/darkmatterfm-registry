@@ -1,0 +1,636 @@
+_source:
+  shard: data/astro-ph-00248.tar
+  paper_id: '2307_07228'
+  source_member: 2307_07228.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2307_07228_coupled_sfdm_ede_v1
+identity:
+  name: Coupled scalar-field dark matter and early-dark-energy model
+  family: fuzzy_ultralight_dark_matter
+  aliases:
+  - CSF model
+  - coupled SFDM-EDE model
+  short_description: Cold dark matter is replaced by scalar-field dark matter whose mass depends exponentially
+    on an early-dark-energy scalar field, coupling the two scalar sectors to address H0 and S8 tensions.
+  historical_origin_or_motivation: Proposed to keep the Hubble-tension benefits of early dark energy while
+    reducing structure growth through scalar-field dark matter.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - scalar-field dark matter
+  - early dark energy
+  - Swampland Distance Conjecture inspired coupling
+  lagrangian_available: 'yes'
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives a two-scalar Lagrangian with an EDE potential and SFDM mass m_phi(phi_EDE)=m_0
+    exp(beta phi_EDE/M_pl).
+particle_content:
+  dark_matter_candidate:
+    name: scalar-field dark matter field
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - early-dark-energy scalar field
+  mediators:
+  - direct scalar-sector mass coupling
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - scalar-field dark matter condensate
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Cosmological stability is assumed for the SFDM condensate; no particle-decay
+    symmetry is specified.
+  symmetries:
+  - name: unknown SFDM stability symmetry
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: not specified
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - other
+  standard_model_targets:
+  - gravity
+  - cosmological expansion
+  dark_sector_couplings:
+  - EDE-dependent SFDM mass
+  - dimensionless coupling beta
+  mediator_types:
+  - coupled scalar fields
+  interaction_operators:
+  - SFDM mass term depending on the EDE scalar field
+  scattering:
+    elastic: not_applicable
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: present-day SFDM mass
+    symbol: m_0
+    role: core
+    status: inferred
+  - name: EDE-SFDM coupling
+    symbol: beta
+    role: core
+    status: inferred
+  - name: EDE axion decay constant
+    symbol: f_EDE
+    role: core
+    status: inferred
+  - name: EDE scalar mass scale
+    symbol: m_EDE
+    role: core
+    status: inferred
+  - name: initial EDE field ratio
+    symbol: theta_i
+    role: core
+    status: inferred
+  - name: SFDM density fraction today
+    symbol: Omega_sfdm
+    role: cosmological
+    status: inferred
+production:
+  mechanisms:
+  - field initial-condition evolution
+  - scalar field initially frozen then oscillating like cold dark matter
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - initial scalar-field amplitude
+  - present-day dark matter density
+  - SFDM mass
+  - EDE-SFDM coupling
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: The paper replaces CDM with SFDM and obtains the initial SFDM value by shooting to the current
+    dark-matter density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: phenomenological
+  key_dependencies:
+  - m_0
+  - beta
+  - initial SFDM amplitude
+  - EDE evolution
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - early dark energy scalar
+  - EDE-dependent scalar dark matter mass
+  - SFDM replacing CDM
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: high
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  f_of_p_or_q: classical homogeneous scalar-field evolution plus linear perturbations
+  notes: The paper evolves background and perturbation equations instead of a particle distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: linear_boltzmann_implementation
+  applies_to: computation
+  condition: The paper studies background and linear perturbations with modified CLASS, not nonlinear
+    simulations.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+- id: sfdm_mass_coupling
+  applies_to: model
+  condition: Applies to the exponential SFDM mass dependence inspired by the Swampland Distance Conjecture.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+assumptions:
+  global:
+  - id: sfdm_replaces_cdm
+    description: Cold dark matter is replaced by scalar-field dark matter in the cosmological fit.
+    scope: global
+    status: assumed
+  - id: ede_mass_coupling
+    description: The SFDM mass depends exponentially on the EDE scalar.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper says the public Boltzmann code CLASS was modified; no public model patch is
+    identified.
+  primary_code_role: boltzmann_solver_patch
+provenance:
+  model_id: 2307_07228_coupled_sfdm_ede_v1
+  model_name: Coupled scalar-field dark matter and early-dark-energy model
+  model_family: fuzzy_ultralight_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Alleviating Cosmological Tensions with a Coupled Scalar Fields Model
+      authors:
+      - Gang Liu
+      - Zhihuan Zhou
+      - Yuhao Mu
+      - Lixin Xu
+      year: 2023
+      arxiv_id: '2307.07228'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '2307.07228'
+      authors:
+      - Liu, Gang
+      - Zhou, Zhihuan
+      - Mu, Yuhao
+      - Xu, Lixin
+      doi: 10.1103/PhysRevD.108.083523
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2307.07228
+      role: original_model
+      title: Alleviating cosmological tensions with a coupled scalar fields model
+      url: https://arxiv.org/abs/2307.07228
+      year: 2023
+    constraint_papers:
+    - arxiv_id: '2308.07069'
+      authors:
+      - Liu, Gang
+      - Zhou, Zhihuan
+      - Mu, Yuhao
+      - Xu, Lixin
+      doi: 10.1093/mnras/stae661
+      notes: Related local full text read for coupled scalar-field/EDE extension.
+      reference_id: arxiv:2308.07069
+      role: extension
+      title: Kinetically coupled scalar fields model and cosmological tensions
+      url: https://arxiv.org/abs/2308.07069
+      year: 2024
+    - arxiv_id: '1811.04083'
+      authors:
+      - Poulin, Vivian
+      - Smith, Tristan L.
+      - Karwal, Tanvi
+      - Kamionkowski, Marc
+      doi: 10.1103/PhysRevLett.122.221301
+      notes: Related local full text read for early-dark-energy Hubble-tension benchmark.
+      reference_id: arxiv:1811.04083
+      role: benchmark
+      title: Early Dark Energy can Resolve the Hubble Tension
+      url: https://arxiv.org/abs/1811.04083
+      year: 2019
+    - arxiv_id: '1908.06995'
+      authors:
+      - Smith, Tristan L.
+      - Poulin, Vivian
+      - Amin, Mustafa A.
+      doi: 10.1103/PhysRevD.101.063523
+      notes: Related local full text read for oscillating-scalar-field EDE implementation context.
+      reference_id: arxiv:1908.06995
+      role: implementation
+      title: 'Oscillating scalar fields and the Hubble tension: A resolution with novel signatures'
+      url: https://arxiv.org/abs/1908.06995
+      year: 2020
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: gpt55_dark_matter_batch_worker_batch_0161
+    extractor_name: Codex
+    extraction_date: '2026-05-28'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper proposes a coupled scalar-fields model with EDE interacting with SFDM.
+    - reference_id: primary
+      section: model section
+      page: null
+      quote_or_summary: The text gives the Lagrangian, EDE potential, exponential SFDM mass, background
+        equations, and initial conditions.
+    unresolved_items:
+    - No Boltzmann solver or MCMC chains were run in this batch.
+    - The result should not be reported as resolving S8; it only mitigates the EDE-only value.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model contains an EDE scalar and an SFDM scalar, with CDM replaced by SFDM.
+      confidence: high
+      section: model section
+    symmetries:
+    - reference_id: primary
+      note: No stabilizing particle symmetry is specified; the scalar is treated as a stable cosmological
+        component.
+      confidence: medium
+      section: model section
+    interactions:
+    - reference_id: primary
+      note: The SFDM mass depends exponentially on the EDE scalar, coupling the two sectors.
+      confidence: high
+      section: model section
+    production_mechanism:
+    - reference_id: primary
+      note: The scalar fields are initially frozen by Hubble friction and the SFDM initial condition is
+        chosen to reproduce the present DM density.
+      confidence: high
+      section: initial conditions
+    cosmological_history:
+    - reference_id: primary
+      note: The paper evolves background and perturbation equations in modified CLASS with EDE and SFDM.
+      confidence: high
+      section: background/perturbation sections
+    parameter_ranges:
+    - reference_id: primary
+      note: Core parameters include m0, beta, EDE potential parameters, and the initial EDE angle.
+      confidence: medium
+      section: model/results
+    validity_domain:
+    - reference_id: primary
+      note: Results are based on linear Boltzmann calculations and cosmological-data fits, not nonlinear
+        simulations.
+      confidence: medium
+      section: results
+    constraints:
+    - confidence: high
+      note: Primary text lists Planck 2018, BAO, Pantheon, SH0ES, and DES-Y3 as the dataset combination
+        and states the residual S8 issue.
+      page: null
+      reference_id: arxiv:2307.07228
+      section: Data and results
+    - confidence: medium
+      note: Related coupled-scalar model discusses EDE/SFDM coupling as a response to Hubble and large-scale-structure
+        tensions.
+      page: null
+      reference_id: arxiv:2308.07069
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary abstract reports the joint-data best-fit H0=71.13 km/s/Mpc and S8=0.8256.
+      page: null
+      reference_id: arxiv:2307.07228
+      section: Abstract
+    - confidence: medium
+      note: Related EDE work motivates a pre-recombination EDE component as a way to raise CMB-inferred
+        H0.
+      page: null
+      reference_id: arxiv:1811.04083
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary source derives background and perturbation equations and performs an MCMC fit to cosmological
+        datasets.
+      page: null
+      reference_id: arxiv:2307.07228
+      section: Model and constraints sections
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats: []
+robustness:
+  overall: high
+  theory_robustness: high
+  observational_robustness: medium
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  notes: Machine extraction from assigned SQLite full text; human review still needed.
+agent_failure_modes:
+  warnings:
+  - id: phenomenological_sfdm_model
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat the coupled scalar-fields fit as a UV-complete particle model.
+    source_reference_ids:
+    - primary
+observables:
+- caveats:
+  - Tension relief depends on the full joint dataset and priors.
+  channel: cosmology
+  effect_direction: shape_change
+  environments:
+  - CMB
+  - BAO surveys
+  - type-Ia supernovae
+  - SH0ES distance ladder
+  id: obs_coupled_sfdm_h0_shift
+  key_quantities:
+  - name: Hubble constant
+    role: derived
+    source_reference_ids:
+    - arxiv:2307.07228
+    status: inferred
+    symbol: H_0
+    unit: km/s/Mpc
+    value: 71.13
+  - description: Fraction of total density at the EDE peak redshift z_c.
+    name: EDE peak fraction
+    role: core
+    source_reference_ids:
+    - arxiv:2307.07228
+    - arxiv:1811.04083
+    status: inferred
+    symbol: f_EDE
+  - description: Controls mass/coupling response of scalar-field dark matter to EDE.
+    name: EDE-SFDM coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2307.07228
+    - arxiv:2308.07069
+    status: inferred
+    symbol: beta
+  linked_constraints:
+  - con_joint_cosmology_coupled_sfdm_ede
+  linked_routes:
+  - route_coupled_sfdm_ede_boltzmann_mcmc
+  name: EDE/SFDM coupling shifts the inferred H0
+  notes: null
+  observability: high
+  predicted_effect: The EDE component reduces the sound horizon while the scalar-field dark-matter coupling
+    changes the background/perturbation evolution, yielding a primary best-fit H0=71.13 km/s/Mpc.
+  redshift_range: pre-recombination EDE peak through low-redshift distance ladder
+  relevance: critical
+  scale_range: CMB acoustic scale and background distances
+  source_reference_ids:
+  - arxiv:2307.07228
+  - arxiv:1811.04083
+  - arxiv:1908.06995
+  subchannel: CMB+BAO+SN+SH0ES background fit
+- caveats:
+  - Baryonic and nonlinear modeling are not assessed in this batch.
+  channel: large_scale_structure
+  effect_direction: shape_change
+  environments:
+  - DES-Y3 weak lensing
+  - large-scale structure
+  id: obs_coupled_sfdm_s8_response
+  key_quantities:
+  - name: clustering amplitude
+    role: derived
+    source_reference_ids:
+    - arxiv:2307.07228
+    status: inferred
+    symbol: S_8
+    value: 0.8256
+  - name: DES-Y3 comparison value
+    role: experimental
+    source_reference_ids:
+    - arxiv:2307.07228
+    status: established
+    symbol: S_8^DES
+    value: 0.776 +/- 0.017
+  linked_constraints:
+  - con_residual_s8_tension
+  linked_routes:
+  - route_coupled_sfdm_ede_boltzmann_mcmc
+  name: Residual S8 response of coupled EDE/SFDM
+  notes: null
+  observability: high
+  predicted_effect: The coupled model lowers the best-fit S8 relative to the source EDE-only comparison
+    but remains above the DES-Y3 value, so it mitigates but does not solve the S8 tension.
+  redshift_range: late-time structure formation
+  relevance: high
+  scale_range: weak-lensing and galaxy-clustering scales
+  source_reference_ids:
+  - arxiv:2307.07228
+  - arxiv:2308.07069
+  subchannel: weak-lensing clustering amplitude
+constraints:
+- allowed_regions:
+  - Primary best-fit gives H0=71.13 km/s/Mpc and S8=0.8256 for the full dataset combination.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The reported best fit depends on the source MCMC parameterization and priors.
+    id: source-mcmc-priors
+    impact_if_violated: Different priors or updated datasets can move H0 and S8.
+    notes: null
+    scope: cosmological parameter inference
+    source_reference_ids:
+    - arxiv:2307.07228
+    status: assumed
+  benchmark_implications:
+  - The model alleviates H0 tension relative to LambdaCDM but must be judged against the full cosmological
+    fit.
+  caveats:
+  - Likelihood chains were not rerun here.
+  constrained_parameters:
+  - beta
+  - f_EDE
+  - z_c
+  - m_0
+  - H_0
+  - S_8
+  constraint_type: cosmological
+  data_release: Planck 2018; BAO from 6dFGS/SDSS/BOSS; Pantheon; SH0ES; DES-Y3
+  excluded_regions:
+  - Parameter regions that fail the joint CMB/BAO/SN/SH0ES/DES-Y3 likelihood are outside the primary fit.
+  id: con_joint_cosmology_coupled_sfdm_ede
+  likelihood_available: partial
+  likelihood_reference: Planck 2018, BAO, Pantheon, SH0ES, and DES-Y3 likelihoods used by the source
+  name: Joint Planck+BAO+Pantheon+SH0ES+DES-Y3 fit to coupled SFDM/EDE
+  notes: null
+  observable_channel: CMB, distance ladder, BAO, supernovae, and weak lensing
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2307.07228
+- allowed_regions:
+  - S8=0.8256 is lower than the source EDE-only comparison but still high relative to DES-Y3.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The S8 comparison follows the source treatment of perturbations and data combination.
+    id: linear-to-nonlinear-growth-model
+    impact_if_violated: Nonlinear or baryonic modeling changes can shift S8 constraints.
+    notes: null
+    scope: large-scale-structure inference
+    source_reference_ids:
+    - arxiv:2307.07228
+    - arxiv:2308.07069
+    status: assumed
+  benchmark_implications:
+  - The model should be described as S8-mitigating, not S8-resolving.
+  caveats:
+  - No independent DES likelihood was run.
+  constrained_parameters:
+  - S_8
+  - beta
+  - matter perturbation growth
+  constraint_type: cosmological
+  data_release: DES-Y3
+  excluded_regions:
+  - The primary best fit does not reach the DES-Y3 central value S8=0.776.
+  id: con_residual_s8_tension
+  likelihood_available: partial
+  likelihood_reference: DES-Y3 weak lensing and galaxy clustering as used by the primary source
+  name: DES-Y3 residual S8 tension after coupled SFDM/EDE fit
+  notes: null
+  observable_channel: weak-lensing S8
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2307.07228
+  - arxiv:2308.07069
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Full parameter inference is outside this batch.
+    constraint_ids:
+    - con_joint_cosmology_coupled_sfdm_ede
+    - con_residual_s8_tension
+    derived_quantities:
+    - sound horizon
+    - CMB spectra
+    - matter power spectrum
+    - H_0
+    - S_8
+    description: Propagate coupled EDE and scalar-field dark matter through background/perturbation equations
+      and joint cosmological likelihoods.
+    forward_model_chain:
+    - inputs:
+      - beta
+      - EDE scalar
+      - m_0
+      notes: null
+      outputs:
+      - SFDM mass evolution
+      - background source terms
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Use the primary coupled scalar-field equations.
+    - inputs:
+      - background equations
+      - perturbation equations
+      notes: null
+      outputs:
+      - CMB spectra
+      - matter power
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: CLASS/CAMB-style EDE+SFDM modification
+      validity: Requires implementation of the source coupling.
+    - inputs:
+      - CMB spectra
+      - distances
+      - matter power
+      notes: null
+      outputs:
+      - posterior constraints
+      - best-fit H0 and S8
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: MCMC with Planck+BAO+Pantheon+SH0ES+DES-Y3
+      validity: Source route; not rerun in this batch.
+    id: route_coupled_sfdm_ede_boltzmann_mcmc
+    input_parameters:
+    - beta
+    - m_0
+    - f_EDE
+    - z_c
+    - theta_i
+    - standard cosmological parameters
+    likelihoods:
+    - Planck 2018
+    - BAO
+    - Pantheon
+    - SH0ES
+    - DES-Y3
+    observable_ids:
+    - obs_coupled_sfdm_h0_shift
+    - obs_coupled_sfdm_s8_response
+    required_code_resources:
+    - Boltzmann solver with coupled scalar-field dark sector
+    - MCMC sampler and public cosmology likelihoods
+    route_status: planned
+    source_model_features:
+    - EDE scalar near recombination
+    - scalar-field dark matter with EDE-dependent mass/coupling
+    - energy exchange between dark-sector scalars
+    validation_tests:
+    - recover H0=71.13 km/s/Mpc best fit
+    - recover S8=0.8256 best fit

@@ -1,0 +1,340 @@
+_source:
+  shard: arXiv_src_0710_002_wds.tar
+  paper_id: 0710_2578
+  source_member: 0710_2578.json
+schema_version: model_only_v0
+model_id: 0710_2578_cpv_mssm_light_neutralino_v1
+identity:
+  name: CP-violating MSSM light neutralino dark matter
+  family: supersymmetric_neutralino_dark_matter
+  aliases:
+  - CPX light neutralino
+  - relic neutralino in the MSSM with CP violation
+  short_description: A CP-violating MSSM scenario with a very light neutralino dark matter candidate whose
+    relic abundance is controlled by resonant annihilation through a light mixed-CP Higgs boson.
+  historical_origin_or_motivation: The paper revisits how light the MSSM Higgs and relic neutralino can
+    be when explicit CP violation and non-unified electroweak gaugino masses are allowed.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - MSSM with explicit CP violation
+  - CPX benchmark scenario
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The text describes CP-violating neutral Higgs mixing and the neutralino mixing basis; it relies
+    on the effective MSSM setup.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - light mixed-CP Higgs H1
+  - heavier MSSM Higgs states
+  - sfermions in the CPX spectrum
+  mediators:
+  - light Higgs H1
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - heavier neutralino states
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The relic neutralino interpretation assumes the lightest neutralino is stable,
+    as in R-parity conserving MSSM dark matter.
+  symmetries:
+  - name: R parity
+    type: discrete
+    exact_or_approximate: unknown
+  - name: explicit CP violation in soft terms
+    type: discrete
+    exact_or_approximate: broken
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Standard Model fermion final states through H1 decay
+  dark_sector_couplings:
+  - neutralino-H1 coupling from bino/higgsino mixing
+  mediator_types:
+  - light mixed-CP MSSM Higgs boson H1
+  annihilation_channels:
+  - neutralino pair annihilation through resonant H1 to Standard Model particles
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  cp_structure: explicit CP violation mixes CP-even and CP-odd neutral Higgs states
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: lightest neutralino mass
+    symbol: m_chi
+    description: Mass range that can satisfy the relic-density bound in the paper.
+    range:
+      min: '2.93'
+      max: '5'
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Expanded range after varying M_H1; one example gives 3.15-3.83 GeV.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: lightest Higgs mass
+    symbol: M_H1
+    description: Very light mixed-CP Higgs mass considered in the allowed LEP region.
+    range:
+      min: '7'
+      max: '10'
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Approximate range emphasized in the paper.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: bino mass parameter
+    symbol: M1
+    description: Varied independently of M2 after relaxing gaugino-mass unification.
+    role: core
+    status: inferred
+  - name: wino mass parameter
+    symbol: M2
+    description: Fixed for definiteness in the analysis.
+    value: '200'
+    unit: GeV
+    role: benchmark
+    status: inferred
+  - name: CP phases
+    symbol: Phi_A, Phi_3
+    description: CPX phases controlling Higgs-sector CP violation.
+    value: 90 degrees in the highlighted setup
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through resonant light-Higgs annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - M_H1/2 resonance condition
+  - neutralino mass
+  - bino-higgsino mixing
+  - CP-violating Higgs couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The acceptable abundance is reached near the H1 resonance; away from it the neutralino may be
+    subdominant or require nonthermal production.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - resonant H1 annihilation
+  - relaxed electroweak gaugino mass relation
+  - CPX Higgs spectrum
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: The paper uses thermal relic abundance calculations and Boltzmann thermal averaging around the
+    resonance.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: nonunified_gauginos
+  applies_to: model
+  condition: The usual GUT relation among electroweak gaugino masses must be relaxed, with |M1| much smaller
+    than |M2|.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: h1_resonance
+  applies_to: production
+  condition: The viable full-relic band requires m_chi close enough to M_H1/2 for resonant annihilation.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+- id: standard_cosmology
+  applies_to: cosmological_history
+  condition: The authors state the conclusions apply under standard early-Universe assumptions.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: neutralino_stability
+    description: The lightest neutralino is stable on cosmological timescales as a relic dark matter particle.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: If unstable, the relic neutralino model fails.
+  - id: relaxed_gaugino_unification
+    description: M1 and M2 are treated independently rather than imposing the GUT gaugino-mass relation.
+    scope: theory
+    status: assumed
+    can_be_relaxed: 'no'
+    impact_if_violated: Restoring the usual relation removes the very light neutralino regime.
+  - id: standard_early_universe
+    description: The relic-density calculation assumes standard reheating, Hubble expansion, and entropy
+      production.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: 'yes'
+    impact_if_violated: Nonstandard cosmology could change the mass lower bound.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that CPsuperH is used for MSSM Higgs-sector mass spectra and couplings.
+  primary_code_role: other
+provenance:
+  model_id: 0710_2578_cpv_mssm_light_neutralino_v1
+  model_name: CP-violating MSSM light neutralino dark matter
+  model_family: supersymmetric_neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: 0710_2578
+      title: Lightest Higgs Boson and Relic Neutralino in the MSSM with CP Violation
+      year: 2007
+      arxiv_id: '0710.2578'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+      authors:
+      - Stefano Scopel
+      - Jae Sik Lee
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0008
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: 0710_2578
+      section: opening summary
+      page: null
+      quote_or_summary: In CP-violating MSSM, H1 can be 7-10 GeV and a neutralino as light as 2.9 GeV
+        can be viable if gaugino unification is relaxed.
+    - reference_id: 0710_2578
+      section: relic density
+      page: null
+      quote_or_summary: The acceptable thermal relic range is set by resonant H1 annihilation and standard
+        cosmological assumptions.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: 0710_2578
+      note: The neutralino is the lowest-mass mixture of bino, wino, and two neutral higgsinos; the viable
+        light candidate is mostly bino in the CPX setup.
+      confidence: high
+      section: null
+      page: null
+    symmetries:
+    - reference_id: 0710_2578
+      note: The model is an MSSM relic neutralino scenario, implicitly relying on neutralino stability
+        as the lightest supersymmetric particle.
+      confidence: medium
+      section: null
+      page: null
+    interactions:
+    - reference_id: 0710_2578
+      note: CP-violating Higgs mixing permits a very light H1; light neutralinos annihilate resonantly
+        through H1 to Standard Model particles.
+      confidence: high
+      section: null
+      page: null
+    production_mechanism:
+    - reference_id: 0710_2578
+      note: The relic density is computed under standard assumptions and can be acceptable near m_chi
+        about M_H1/2.
+      confidence: high
+      section: null
+      page: null
+    cosmological_history:
+    - reference_id: 0710_2578
+      note: The paper explicitly states that conclusions hold under standard early-Universe assumptions
+        such as reheating, expansion budget, and entropy production.
+      confidence: high
+      section: null
+      page: null
+    parameter_ranges:
+    - reference_id: 0710_2578
+      note: The paper finds a neutralino mass range 3.15-3.83 GeV in one example and 2.93-5 GeV when varying
+        M_H1, with H1 in the 7-10 GeV range.
+      confidence: high
+      section: null
+      page: null
+    validity_domain:
+    - reference_id: 0710_2578
+      note: Viability depends on relaxing the usual GUT gaugino-mass relation and on resonance tuning
+        near H1.
+      confidence: high
+      section: null
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+robustness:
+  overall: high
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - resonance tuning
+  - CPX benchmark assumptions
+  - gaugino mass relation
+  validation_status: partially_validated
+  notes: The paper gives explicit parameter ranges and relic-density logic, but the viability is a tuned
+    benchmark variant.
+agent_failure_modes:
+  warnings:
+  - id: resonance_tuned
+    severity: medium
+    category: extrapolation
+    warning: The full relic-density interpretation is tied to a narrow H1 resonance and relaxed gaugino
+      unification.
+    mitigation: Do not generalize to ordinary MSSM neutralino parameter space.

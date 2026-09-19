@@ -1,0 +1,423 @@
+_source:
+  shard: arXiv_src_1906_001_wds.tar
+  paper_id: '1906_00014'
+  source_member: 1906_00014.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: subcomponent_not_full_dm
+    severity: high
+    source_reference_ids:
+    - '1906_00014'
+    warning: The extracted row should not be treated as a full dark matter model; the paper assumes about
+      ten percent of cosmological dark matter.
+  - category: other
+    id: ab_signal_not_model_requirement
+    severity: medium
+    source_reference_ids:
+    - '1906_00014'
+    warning: Aharonov-Bohm detectability depends on excited dipole states and detector assumptions; it
+      is not part of the core relic-density model.
+associated_code:
+  code_summary: No associated public code is identified in the assigned text.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: An asymmetric dark matter setup leaves stable flavour non-singlet monopole-antimonopole
+      remnants.
+    id: assume_asymmetric_flavour_relic
+    impact_if_violated: Without the flavour/asymmetry structure the monopoles could annihilate away.
+    scope: production
+    source_reference_ids:
+    - '1906_00014'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The dark confining transition occurs early enough to avoid problematic late visible photon
+      production in the scenario described.
+    id: assume_early_dark_confinement
+    impact_if_violated: Late de-excitation photons could be observationally problematic.
+    scope: cosmological_history
+    source_reference_ids:
+    - '1906_00014'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The dipoles are treated as about ten percent of cosmological dark matter.
+    id: assume_subcomponent_dm
+    impact_if_violated: Using the model as all of dark matter would change self-interaction implications.
+    scope: global
+    source_reference_ids:
+    - '1906_00014'
+    status: assumed
+cosmological_history:
+  bbn_relevance: low
+  chemical_decoupling:
+    description: Dark particles efficiently annihilate when the dark-sector temperature falls below their
+      mass.
+    name: annihilation freeze-out in dark sector
+    range: T_D below dark particle mass
+    role: cosmological
+    status: inferred
+    symbol: T_D
+  cmb_relevance: low
+  dark_sector_temperature:
+    description: Independent of the SM temperature when kinetic mixing is sufficiently small.
+    name: dark-sector temperature
+    role: cosmological
+    status: assumed
+    symbol: T_D
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - dark sector never thermalizes with SM plasma for small kinetic mixing
+  - dark confining transition
+  - dark photon emission/de-excitation history
+  phase_transitions:
+  - SU(2)_D breaking to U(1)_D
+  - dark photon mass generation and monopole confinement
+  standard_history_assumed: false
+  topological_defects:
+  - dark magnetic monopoles
+  - dark magnetic flux tubes
+identity:
+  aliases:
+  - Aharonov-Bohm dark monopole dark matter
+  - confined dark monopole dipole dark matter
+  family: hidden_sector_dark_matter
+  historical_origin_or_motivation: The paper proposes Aharonov-Bohm phase shifts as a detection handle
+    for dark monopole dipole dark matter.
+  model_kind: simplified_model
+  name: Dark monopole magnetic-dipole dark matter with Aharonov-Bohm coupling
+  short_description: A dark U(1)_D scenario in which confined dark monopole-antimonopole bound states
+    form magnetic dipoles that couple weakly to the visible photon through kinetic mixing below the dark-photon
+    mass.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - flavour-singlet monopole-antimonopole annihilation if not protected; flavour non-singlet pairs have
+    no annihilation decay channel
+  cp_structure: The text allows a CP-violating operator in the dark-sector mixing as an alternative realization.
+  dark_sector_couplings:
+  - dark magnetic charge
+  - dark photon mass
+  - dark-sector kinetic mixing
+  decay_channels:
+  - excited dipoles de-excite by emitting dark photons or, for final transitions, visible photons through
+    small mixing
+  flavor_structure: Multiple monopole flavours or fundamental monopole flavours are used so flavour non-singlet
+    bound states are stable.
+  interaction_operators:
+  - kinetic mixing between visible and dark U(1) field strengths
+  - CP-violating dark mixing option mapped by SL(2,Z)
+  mediator_types:
+  - massive dark photon
+  - visible photon through kinetic mixing
+  portals:
+  - vector
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: strong
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - dark dipole elastic self-scattering
+  - van der Waals-like dipole interactions
+  standard_model_targets:
+  - visible photon
+  - electromagnetic fields
+  tree_or_loop_level: unknown
+model_id: 1906_00014_dark_monopole_ab_dipole_dm_v1
+parameters:
+  core:
+  - description: Mass of each dark monopole; the paper discusses keV-scale masses for viable AB sensitivity.
+    name: monopole mass
+    range: keV scale in emphasized parameter region
+    role: core
+    status: inferred
+    symbol: M
+    unit: keV
+  - description: Mass from dark electric condensate, with m_D = e_D v_D.
+    name: dark photon mass
+    range: sub-eV to eV emphasized for larger AB effects
+    role: core
+    status: inferred
+    symbol: m_D
+    unit: eV
+  - description: VEV breaking SU(2)_D to U(1)_D and setting the monopole mass M about 4 pi v_T/e_D.
+    name: dark triplet vev
+    role: core
+    status: inferred
+    symbol: v_T
+  - description: VEV giving the dark photon a mass and confining monopoles.
+    name: dark doublet vev
+    role: core
+    status: inferred
+    symbol: v_D
+  - description: Small visible-dark photon kinetic mixing controlling the visible magnetic coupling.
+    name: kinetic mixing
+    role: core
+    status: inferred
+    symbol: epsilon
+  - description: Controls Coulombic bound states of monopole dipoles.
+    name: dark magnetic fine structure parameter
+    role: core
+    status: inferred
+    symbol: alpha_D
+  - description: Assumed fraction of cosmological dark matter in the monopole dipoles.
+    name: dark matter fraction
+    role: derived
+    status: inferred
+    symbol: f_dipole
+    value: about 0.1
+  derived:
+  - description: Flux-tube tension of order v_D^2 between confined monopoles.
+    name: string tension
+    role: derived
+    status: inferred
+    symbol: T_string
+    value: order v_D^2
+  - description: Typical dipole separation or bound-state size entering AB sensitivity.
+    name: bound-state size
+    role: derived
+    status: inferred
+    symbol: L
+particle_content:
+  additional_dark_sector_particles:
+  - dark photon
+  - dark Higgs or condensate fields
+  - multiple dark monopole flavours or dark electric charges
+  dark_matter_candidate:
+    elementary_or_composite: composite
+    name: confined dark monopole-antimonopole magnetic dipole
+    number_of_components: subcomponent
+    spin: unknown
+    statistics: unknown
+  dark_radiation_species:
+  - dark photons may be emitted during de-excitation
+  excited_or_degenerate_states:
+  - excited monopole-antimonopole bound states with dipole moment
+  long_lived_particles:
+  - flavour non-singlet monopole-antimonopole remnants
+  mediators:
+  - massive dark photon kinetically mixed with visible photon
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: unknown
+  f_of_p_or_q: No cosmological phase-space distribution is given in the extracted text.
+  free_streaming_length: null
+  notes: The paper focuses on bound-state sizes, excitation, and AB phase shifts rather than a distribution
+    function.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - dark-sector reheating production
+  - dark-sector annihilation efficiency
+  - flavour asymmetry
+  - assumed subcomponent fraction
+  can_produce_all_dark_matter: 'no'
+  depends_on_reheating_temperature: 'yes'
+  mechanisms:
+  - dark-sector production during reheating after inflation
+  - efficient annihilation as dark-sector temperature falls below particle masses
+  - asymmetric relic of opposite monopole flavours after charge neutrality
+  nonthermal_momentum_distribution: unknown
+  notes: The paper assumes the monopole dipoles make up about ten percent of cosmological dark matter,
+    partly to avoid self-interaction issues.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats:
+  - No constraints are emitted even though the paper discusses them, because this run is model-only.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: For sufficiently small kinetic mixing the dark photon never equilibrates with the SM plasma
+        and the dark sector has an independent temperature.
+      reference_id: '1906_00014'
+      section: cosmological history discussion
+    interactions:
+    - confidence: high
+      note: Visible coupling arises from kinetic mixing between visible and dark photons and is manifest
+        below the dark photon mass.
+      reference_id: '1906_00014'
+      section: abstract/introduction
+    parameter_ranges:
+    - confidence: medium
+      note: The paper highlights keV monopoles, eV-scale dark photons, and an assumed roughly ten percent
+        dark matter fraction for example sensitivity.
+      reference_id: '1906_00014'
+      section: constraints/sensitivity discussion
+    particle_content:
+    - confidence: high
+      note: The paper describes dark U(1)_D monopoles confined into monopole-antimonopole bound states
+        by dark magnetic flux tubes.
+      reference_id: '1906_00014'
+      section: abstract/introduction
+    production_mechanism:
+    - confidence: medium
+      note: The paper states dark particles can be produced by reheating after inflation and then annihilate
+        to leave flavour relic monopoles.
+      reference_id: '1906_00014'
+      section: cosmological history discussion
+    symmetries:
+    - confidence: high
+      note: A dark U(1)_D gauge sector, possible SU(2)_D breaking, and flavour non-singlet stability are
+        central to the scenario.
+      reference_id: '1906_00014'
+      section: introduction
+    validity_domain:
+    - confidence: medium
+      note: The AB effect requires confined monopole dipoles and excited states with nonzero magnetic
+        dipole moment.
+      reference_id: '1906_00014'
+      section: bound-state/sensitivity discussion
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0011
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Dark monopoles of U(1)_D get small magnetic couplings through kinetic mixing and
+        are bound by dark flux tubes.
+      reference_id: '1906_00014'
+      section: abstract
+    - page: null
+      quote_or_summary: A flavour non-singlet monopole-antimonopole pair is stable in the asymmetric setup.
+      reference_id: '1906_00014'
+      section: introduction
+    - page: null
+      quote_or_summary: The dark sector can be reheating-produced, separately thermalized, and leave a
+        relic of monopole flavours.
+      reference_id: '1906_00014'
+      section: cosmological discussion
+    unresolved_items:
+    - Relic-density treatment is phenomenological; the paper assumes an about-ten-percent subcomponent
+      rather than deriving a full abundance target.
+  last_updated: '2026-05-31'
+  model_family: hidden_sector_dark_matter
+  model_id: 1906_00014_dark_monopole_ab_dipole_dm_v1
+  model_name: Dark monopole magnetic-dipole dark matter with Aharonov-Bohm coupling
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1906.00014'
+      authors:
+      - John Terning
+      - Christopher B. Verhaaren
+      doi: null
+      notes: Only this assigned SQLite full text was used.
+      reference_id: '1906_00014'
+      role: original_model
+      title: Detecting Dark Matter with Aharonov-Bohm
+      url: null
+      year: 2019
+  status: machine_extracted
+relic_density:
+  calculation_type: phenomenological
+  full_or_subcomponent: subcomponent
+  key_dependencies:
+  - dark-sector temperature independent of SM
+  - reheating production
+  - annihilation below dark particle mass
+  - asymmetric flavour relic
+  overclosure_risk: unknown
+  requires_entropy_dilution: unknown
+  target_fraction:
+    description: Fraction assumed in the phenomenological estimates.
+    name: monopole dipole fraction
+    role: derived
+    status: inferred
+    symbol: f_dipole
+    value: about 0.1
+  tuning_assessment: unknown
+  underproduction_risk: unknown
+robustness:
+  computational_robustness: low
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - phenomenological relic fraction
+  - dark-sector thermal history
+  - flavour asymmetry and stability assumptions
+  - bound-state excitation modelling
+  notes: The scenario is explicit enough for a model card, but the abundance is assumed at the subcomponent
+    level.
+  observational_robustness: not_applicable
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: A flavour non-singlet monopole-antimonopole pair has no annihilation decay channel;
+    asymmetric dark matter charge neutrality leaves stable remnants.
+  symmetries:
+  - exact_or_approximate: exact
+    name: dark U(1)_D
+    type: gauge
+  - exact_or_approximate: unknown
+    name: dark monopole flavour non-singlet number
+    type: global
+  topological_defects_possible: 'yes'
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper gives a Zwanziger formalism for electric and magnetic charges and sketches a broken
+    SU(2)_D realization of dark monopoles and a massive dark photon.
+  parent_frameworks:
+  - dark U(1)_D gauge sector
+  - broken SU(2)_D example
+  - kinetically mixed dark photon
+  renormalizable: unknown
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  condition: The dark photon must remain out of equilibrium with the SM plasma so the dark-sector temperature
+    is independent.
+  extrapolation_risk: high
+  id: valid_small_kinetic_mixing
+  source_reference_ids:
+  - '1906_00014'
+  status: assumed
+- applies_to: model
+  condition: The authors assume the monopole dipoles make up about ten percent of cosmological dark matter
+    in the sensitivity estimates.
+  extrapolation_risk: medium
+  id: valid_subcomponent_fraction
+  source_reference_ids:
+  - '1906_00014'
+  status: assumed
+- applies_to: parameter
+  condition: The AB signal relies on monopoles confined by dark magnetic flux tubes below the dark-photon
+    mass scale.
+  extrapolation_risk: medium
+  id: valid_confined_monopole_regime
+  source_reference_ids:
+  - '1906_00014'
+  status: assumed

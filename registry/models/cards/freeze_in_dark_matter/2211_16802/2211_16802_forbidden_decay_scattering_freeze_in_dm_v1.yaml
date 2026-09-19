@@ -1,0 +1,253 @@
+_source:
+  shard: arXiv_src_2211_123_wds.tar
+  paper_id: '2211_16802'
+  source_member: 2211_16802.json
+schema_version: model_only_v0
+model_id: 2211_16802_forbidden_decay_scattering_freeze_in_dm_v1
+identity:
+  name: Freeze-in heavy fermion dark matter from plasma-induced forbidden decay and activated scattering
+  family: freeze_in_dark_matter
+  aliases:
+  - strong scattering from forbidden decay freeze-in
+  short_description: A generic freeze-in model where a nonthermal fermion dark matter candidate is produced
+    by finite-temperature forbidden scalar decays and same-coupling two-body scatterings.
+  historical_origin_or_motivation: Constructed to show that scattering activated by plasma-induced forbidden
+    decay can dominate freeze-in relic production.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - freeze-in dark matter
+  - finite-temperature field theory
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: Paper uses a Yukawa interaction between a light thermal scalar, light fermion, and nonthermal
+    fermion DM.
+particle_content:
+  dark_matter_candidate:
+    name: nonthermal fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - light thermal scalar phi
+  - light fermion psi
+  mediators:
+  - light scalar phi
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: unknown stability of the nonthermal fermion dark matter candidate
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  - unknown
+  standard_model_targets:
+  - thermal plasma species, possibly hidden-sector or SM depending on realization
+  dark_sector_couplings:
+  - Yukawa coupling y_chi for forbidden decay
+  - thermal coupling y_psi setting scalar thermal mass
+  mediator_types:
+  - scalar mediator
+  annihilation_channels:
+  - thermal scalar/fermion scattering into dark matter plus light fermion
+  decay_channels:
+  - finite-temperature scalar decay phi -> chi + psi when opened by thermal mass
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the heavy nonthermal fermion dark matter.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: scalar vacuum mass
+    symbol: m_phi
+    description: Scalar mass below the two-body threshold in vacuum.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dark matter Yukawa coupling
+    symbol: y_chi
+    description: Weak freeze-in coupling for forbidden decay.
+    role: core
+    status: inferred
+  - name: thermal Yukawa coupling
+    symbol: y_psi
+    description: Thermal-plasma coupling generating scalar thermal mass.
+    role: core
+    status: inferred
+  - name: thermal correction factor
+    symbol: alpha
+    description: Factor setting m_phi(T) proportional to T.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - freeze-in from plasma-induced forbidden scalar decay
+  - activated two-body scattering sharing the same coupling order
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - forbidden decay rate
+  - activated scattering rate
+  - thermal scalar mass
+  - y_chi
+  - y_psi
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: Scattering relic density can exceed the pure forbidden-decay contribution by orders of magnitude.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: nonthermal
+  key_dependencies:
+  - y_chi
+  - y_psi
+  - m_chi
+  - thermal mass threshold
+  - scattering-to-decay ratio
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - finite-temperature plasma effects
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: unknown
+  notes: Freeze-in nonthermal distribution from decays and scatterings.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: paper_scope
+  applies_to: model
+  condition: Use only in the simplified or scenario assumptions stated in the paper.
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - Machine extraction from paper text only.
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: freeze_in_coupling
+    description: The dark matter coupling must be weak enough that chi remains nonthermal.
+    scope: production
+    status: assumed
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - paper
+    notes: null
+  - id: thermal_mass_threshold
+    description: The scalar decay is forbidden in vacuum but opens at finite temperature due to plasma-induced
+      thermal mass.
+    scope: production
+    status: assumed
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - paper
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 2211_16802_forbidden_decay_scattering_freeze_in_dm_v1
+  model_name: Freeze-in heavy fermion dark matter from plasma-induced forbidden decay and activated scattering
+  model_family: freeze_in_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Strong scattering from decay for dark matter freeze-in
+      authors:
+      - Shao-Ping Li
+      year: 2022
+      arxiv_id: '2211.16802'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0003
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections: []
+    unresolved_items:
+    - No external sources used; unsupported fields set to unknown, not_applicable, null, or empty lists.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The illustrative setup has a nonthermal fermion DM candidate with a direct freeze-in channel
+        from scalar forbidden decay.
+      confidence: medium
+    interactions:
+    - reference_id: paper
+      note: A Yukawa interaction with a light scalar generates forbidden decay and associated scattering
+        channels.
+      confidence: medium
+    production_mechanism:
+    - reference_id: paper
+      note: Two-body scattering activated by finite-temperature forbidden decay can dominate over the
+        pure decay contribution.
+      confidence: medium
+    parameter_ranges:
+    - reference_id: paper
+      note: Relic density depends on y_chi, y_psi, masses, and the thermal correction factor alpha.
+      confidence: medium
+    validity_domain:
+    - reference_id: paper
+      note: Applies to renormalizable forbidden-decay scenarios with plasma-induced thermal masses; scalar
+        mediator case is the simplest example.
+      confidence: medium
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - Paper-specific assumptions and parameters require expert review.
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: w_unknown_fields
+    severity: medium
+    category: other
+    warning: Several model-card fields are only coarsely specified in the paper text and should not be
+      over-interpreted.
+    mitigation: Consult the paper before using this entry quantitatively.
+    source_reference_ids:
+    - paper

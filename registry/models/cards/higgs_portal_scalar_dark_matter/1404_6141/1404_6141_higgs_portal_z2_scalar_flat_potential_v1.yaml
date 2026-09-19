@@ -1,0 +1,308 @@
+_source:
+  shard: arXiv_src_1404_010_wds.tar
+  paper_id: '1404_6141'
+  source_member: 1404_6141.json
+schema_version: model_only_v0
+model_id: 1404_6141_higgs_portal_z2_scalar_flat_potential_v1
+identity:
+  name: Higgs portal Z2 scalar dark matter with flat-potential Higgs inflation
+  family: higgs_portal_scalar_dark_matter
+  aliases:
+  - Z2 scalar dark matter
+  - Higgs portal scalar dark matter
+  short_description: A real singlet scalar dark matter model stabilized by Z2 symmetry, analyzed in a
+    high-scale flat-Higgs-potential framework that predicts a bounded dark matter mass range.
+  historical_origin_or_motivation: Minimal Standard Model extension for dark matter combined with flat-potential
+    Higgs inflation or multiple point principle boundary conditions.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Higgs portal scalar dark matter
+  - flat-potential Higgs inflation
+  - multiple point principle boundary condition
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The particle model is renormalizable; the high-scale boundary condition is an added cosmological
+    framework.
+particle_content:
+  dark_matter_candidate:
+    name: real singlet scalar S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Standard Model Higgs boson
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Exact Z2 parity makes S odd while Standard Model fields are even, forbidding
+    S decay.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken in the model
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  dark_sector_couplings:
+  - lambda S^2 H^dagger H
+  - lambda_S S^4
+  mediator_types:
+  - Higgs boson
+  interaction_operators:
+  - renormalizable Higgs portal scalar operator
+  annihilation_channels:
+  - S S annihilation through Higgs portal interactions
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_DM
+    description: Physical scalar dark matter mass after electroweak symmetry breaking
+    range:
+      min: 400
+      max: 470
+      inclusive_min: false
+      inclusive_max: false
+      unit: GeV
+      notes: Range under the string-scale flatness condition; broader framework requires m_DM < 1000 GeV.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: portal coupling
+    symbol: lambda
+    description: Coefficient of S^2 H^dagger H controlling freeze-out and RG running
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: singlet self coupling
+    symbol: lambda_S
+    description: Scalar self coupling; relic abundance is stated to be independent of it.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: bare singlet mass
+    symbol: m_S
+    description: Mass parameter in the scalar potential
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  nuisance:
+  - name: top quark mass
+    symbol: M_t
+    description: Strongly correlated with the predicted dark matter mass in the framework.
+    unit: GeV
+    role: nuisance
+    status: inferred
+    source_reference_ids:
+    - paper
+  derived: []
+production:
+  mechanisms:
+  - thermal freeze-out through the Higgs portal
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - m_DM
+  - Higgs portal coupling lambda
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The assigned text states S participates in the SM thermal bath through the Higgs coupling and
+    freezes out.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_DM
+  - lambda
+  - Higgs mass
+  - two-loop RG running and high-scale flatness condition
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Thermal WIMP-like production is used, but no phase-space distribution function is tabulated.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: flat_potential_boundary
+  applies_to: model
+  condition: Mass prediction assumes the Higgs potential remains below the inflation energy up to about
+    10^17 GeV and may be flat near that scale.
+  valid_range: m_DM < 1000 GeV generally; 400 < m_DM < 470 GeV with string-scale flatness condition
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - Prediction depends on high-scale boundary assumptions and RG running.
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: z2_unbroken
+    description: The Z2 symmetry remains unbroken so the singlet scalar is stable.
+    scope: theory
+    status: assumed
+    impact_if_violated: The scalar would decay and would not be the dark matter candidate.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - paper
+    notes: null
+  - id: standard_thermal_history
+    description: The relic-density discussion assumes thermal contact with the Standard Model followed
+      by freeze-out.
+    scope: production
+    status: assumed
+    impact_if_violated: The relation between mass, portal coupling, and relic abundance would change.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code release is identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1404_6141_higgs_portal_z2_scalar_flat_potential_v1
+  model_name: Higgs portal Z2 scalar dark matter with flat-potential Higgs inflation
+  model_family: higgs_portal_scalar_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Predictions on mass of Higgs portal scalar dark matter from Higgs inflation and flat potential
+      authors:
+      - Yuta Hamada
+      - Hikaru Kawai
+      - Kin-ya Oda
+      year: 2014
+      arxiv_id: '1404.6141'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0012
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract
+      page: null
+      quote_or_summary: Higgs portal Z2 scalar dark matter is analyzed with two-loop RG equations and
+        a flat-potential Higgs-inflation framework.
+    - reference_id: paper
+      section: Z2 scalar model
+      page: null
+      quote_or_summary: Gauge-singlet real scalar S is odd under Z2; the Higgs portal coupling thermalizes
+        S and sets the relic abundance after freeze-out.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The model adds a gauge-singlet real scalar S to the Standard Model and treats S as the dark
+        matter particle.
+      confidence: high
+      section: Z2 scalar model
+    symmetries:
+    - reference_id: paper
+      note: A Z2 symmetry makes Standard Model fields even and S odd, prohibiting S decay to Standard
+        Model particles.
+      confidence: high
+      section: Z2 scalar model
+    interactions:
+    - reference_id: paper
+      note: The Lagrangian includes the Higgs portal term S^2 H^dagger H along with scalar mass and self-interaction
+        terms.
+      confidence: high
+      section: Z2 scalar model
+    production_mechanism:
+    - reference_id: paper
+      note: S is in the Standard Model thermal bath through the Higgs coupling; after freeze-out its abundance
+        is fixed by m_DM and the portal coupling.
+      confidence: high
+      section: Z2 scalar model
+    parameter_ranges:
+    - reference_id: paper
+      note: The paper finds m_DM < 1000 GeV in the flat-potential/Higgs-inflation framework, and 400 <
+        m_DM < 470 GeV under a string-scale flatness condition.
+      confidence: high
+      section: Abstract and constraints
+    validity_domain:
+    - reference_id: paper
+      note: The mass prediction is tied to two-loop running, a high cutoff near 10^17 GeV, and a flat
+        Higgs potential condition.
+      confidence: high
+      section: Flat potential Higgs inflation
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Machine extraction from text with TeX symbols partially stripped.
+  validation_status: expert_judgment_only
+  notes: Model-only extraction; search limits and observable forecasts were intentionally omitted.
+agent_failure_modes:
+  warnings:
+  - id: flat_potential_high_scale
+    severity: medium
+    category: assumption_mismatch
+    warning: The dark matter mass prediction is conditional on high-scale flat-potential or Higgs-inflation
+      assumptions.

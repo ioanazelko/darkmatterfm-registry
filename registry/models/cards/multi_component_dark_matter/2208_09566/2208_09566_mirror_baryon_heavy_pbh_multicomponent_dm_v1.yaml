@@ -1,0 +1,652 @@
+_source:
+  shard: arXiv_src_2208_064_wds.tar
+  paper_id: '2208_09566'
+  source_member: 2208_09566.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2208_09566_mirror_baryon_heavy_pbh_multicomponent_dm_v1
+identity:
+  name: Mirror baryon plus heavy primordial-black-hole multicomponent dark matter
+  family: multi_component_dark_matter
+  aliases: []
+  short_description: A mirror-sector dark matter scenario in which mirror baryons provide part of the
+    relic density and surviving heavy primordial black holes supply the additional gravitationally interacting
+    component.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - mirror matter
+  - primordial black holes
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The particle mirror sector is described by a copied SM gauge group; PBH abundance is parameterized
+    cosmologically rather than by a particle Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: mirror baryons plus primordial black holes
+    spin: mixed
+    statistics: macroscopic_object
+    elementary_or_composite: macroscopic
+    number_of_components: unknown
+  additional_dark_sector_particles:
+  - mirror-sector particles under G prime
+  mediators:
+  - gravity
+  dark_radiation_species:
+  - mirror radiation
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - heavy PBHs surviving today
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: PBHs are stable on cosmological timescales in the heavy-mass range; mirror baryons
+    are stable baryonic mirror-sector matter.
+  symmetries:
+  - name: mirror symmetry G prime copy of SM gauge group
+    type: gauge
+    exact_or_approximate: exact
+    breaking: unbroken mirror symmetry assumed at reheating
+    breaking_scale: null
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - ordinary matter gravitationally
+  dark_sector_couplings:
+  - mirror-sector gauge interactions
+  - gravity
+  mediator_types:
+  - graviton/effective gravity
+  interaction_operators: []
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - mirror baryon interactions in mirror sector
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: temperature ratio
+    symbol: x=T_prime/T
+    description: Mirror-to-ordinary sector radiation temperature ratio
+    range: x <= about 0.5 from radiation bounds
+    role: cosmological
+    status: inferred
+  - name: mirror baryon ratio
+    symbol: beta=Omega_b_prime/Omega_b
+    description: Mirror-to-ordinary baryon ratio used in analysis
+    range: 0.1 to 5 conservative range; all-mirror-DM endpoint 5.33 excluded
+    role: core
+    status: inferred
+  - name: initial PBH mass
+    symbol: M_PBH
+    description: Heavy PBH mass range emphasized for mirror baryons plus PBHs
+    range: 10^17 to 10^23 g
+    unit: g
+    role: core
+    status: inferred
+  - name: initial PBH density ratio
+    symbol: beta_PBH
+    description: Initial PBH density over radiation density at formation
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - mirror baryon relic component
+  - primordial black holes formed from early density perturbations
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - mirror baryon abundance ratio beta
+  - initial PBH density
+  - initial PBH mass
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: Total DM density is Omega_DM = Omega_b_prime + Omega_PBH in the heavy PBH case.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: total dark matter density
+    description: Mirror baryons plus PBHs sum to the observed DM density
+    value: Omega_DM = Omega_b_prime + Omega_PBH
+    role: derived
+    status: inferred
+  calculation_type: phenomenological
+  key_dependencies:
+  - beta
+  - M_PBH
+  - initial PBH density
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - mirror sector with different temperature
+  - radiation-era PBH formation
+  phase_transitions: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: not_applicable
+  distribution_function_available: not_applicable
+  notes: Macroscopic PBH component plus baryonic mirror matter; no single particle phase-space distribution
+    is specified.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: heavy_pbh_survival
+  applies_to: model
+  condition: Applies to PBHs with initial mass above about 10^15 g that survive to today.
+  status: inferred
+  extrapolation_risk: medium
+  source_reference_ids:
+  - paper
+- id: mirror_fraction_not_all
+  applies_to: model
+  condition: Paper excludes beta=0 and beta=Omega_DM/Omega_b=5.33, focusing on mirror matter that is present
+    but not all DM.
+  status: inferred
+  extrapolation_risk: medium
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: negligible_portals
+    description: Gauge kinetic mixing and Higgs portal interactions between ordinary and mirror sectors
+      are sufficiently negligible.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: monochromatic_pbh_mass
+    description: PBHs form with a monochromatic mass function for simplicity.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated code is identified in the extracted text.
+  primary_code_role: null
+provenance:
+  model_id: 2208_09566_mirror_baryon_heavy_pbh_multicomponent_dm_v1
+  model_name: Mirror baryon plus heavy primordial-black-hole multicomponent dark matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Primordial black holes and mirror dark matter
+      authors: []
+      year: 2022
+      arxiv_id: '2208.09566'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+    - arxiv_id: '2208.09566'
+      authors:
+      - Kitabayashi, Teruyuki
+      doi: 10.1142/S0217751X22501810
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2208.09566
+      role: original_model
+      title: Primordial black holes and mirror dark matter
+      url: https://arxiv.org/abs/2208.09566
+      year: 2022
+    constraint_papers:
+    - arxiv_id: '2004.14773'
+      authors:
+      - Baldes, Iason
+      - Decant, Quentin
+      - Hooper, Deanna C.
+      - Lopez-Honorez, Laura
+      doi: 10.1088/1475-7516/2020/08/045
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2004.14773
+      role: constraint
+      title: Non-cold dark matter from primordial black hole evaporation
+      url: https://arxiv.org/abs/2004.14773
+      year: 2020
+    - arxiv_id: '2002.12778'
+      authors:
+      - Carr, Bernard
+      - Kohri, Kazunori
+      - Sendouda, Yuuiti
+      - Yokoyama, Jun'ichi
+      doi: 10.1088/1361-6633/ac1e31
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2002.12778
+      role: constraint
+      title: Constraints on primordial black holes
+      url: https://arxiv.org/abs/2002.12778
+      year: 2021
+    external_databases: []
+    review_papers:
+    - arxiv_id: '2006.02838'
+      authors:
+      - Carr, Bernard
+      - Kühnel, Florian
+      doi: 10.1146/annurev-nucl-050520-125911
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2006.02838
+      role: review
+      title: 'Primordial Black Holes as Dark Matter: Recent Developments'
+      url: https://arxiv.org/abs/2006.02838
+      year: 2020
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: abstract/introduction and model sections
+    unresolved_items:
+    - No PBH external-constraint likelihood was run for the heavy-PBH mirror model.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: DM is modeled as mirror baryons plus heavy primordial black holes that survive today.
+      confidence: high
+      section: abstract and heavy PBH section
+    symmetries:
+    - reference_id: paper
+      note: Mirror sector is a copy of the SM gauge group under unbroken mirror symmetry G prime.
+      confidence: medium
+      section: mirror DM section
+    interactions:
+    - reference_id: paper
+      note: Mirror baryons and PBHs interact with the ordinary sector gravitationally, with gauge kinetic
+        and Higgs portals assumed negligible.
+      confidence: medium
+      section: introduction
+    production_mechanism:
+    - reference_id: paper
+      note: PBHs are assumed produced by large density perturbations during radiation domination with
+        a monochromatic mass function.
+      confidence: medium
+      section: heavy PBH section
+    cosmological_history:
+    - reference_id: paper
+      note: Model uses mirror-sector temperature ratio x and mirror-to-ordinary baryon ratio beta, with
+        BBN/recombination radiation bounds motivating x below about 0.5.
+      confidence: medium
+      section: mirror DM section
+    parameter_ranges:
+    - reference_id: paper
+      note: For mirror baryons plus PBHs, the initial PBH mass is estimated as 10^17 g to 10^23 g.
+      confidence: high
+      section: abstract
+    validity_domain:
+    - reference_id: paper
+      note: Heavy PBH case applies for M_PBH larger than about 10^15 g so PBHs survive to the present.
+      confidence: high
+      section: heavy PBH section
+    constraints:
+    - confidence: high
+      note: Primary text quotes x < 0.5, beta < 5.33, and adopts conservative 0.1 < beta < 5.
+      page: null
+      reference_id: arxiv:2208.09566
+      section: Mirror sector
+    - confidence: high
+      note: Primary text derives beta_PBH as a function of beta and M_PBH for heavy PBHs.
+      page: null
+      reference_id: arxiv:2208.09566
+      section: Heavy PBHs
+    - confidence: medium
+      note: Related local PBH-constraints text emphasizes caveats and external limits, including evaporation
+        assumptions.
+      page: null
+      reference_id: arxiv:2002.12778
+      section: Introduction
+    observables:
+    - confidence: high
+      note: Primary text states that if dark matter is mirror baryons plus PBHs, the initial PBH mass
+        is estimated as 10^17-10^23 g.
+      page: null
+      reference_id: arxiv:2208.09566
+      section: Abstract/summary
+    - confidence: medium
+      note: Related local PBH review summarizes mass windows where PBHs may contribute to dark matter.
+      page: null
+      reference_id: arxiv:2006.02838
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary text gives the heavy-PBH density-budget equations tying mirror baryons and surviving
+        PBHs.
+      page: null
+      reference_id: arxiv:2208.09566
+      section: Heavy PBHs
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: macroscopic_component
+    severity: medium
+    category: invalid_mapping
+    warning: Do not treat the PBH component as an elementary particle despite the model-card particle
+      fields.
+    mitigation: null
+    source_reference_ids:
+    - paper
+  - id: constraint_focused_paper
+    severity: medium
+    category: other
+    warning: The paper mainly derives PBH parameter constraints within a proposed mirror-DM scenario,
+      so extracted model details are high-level.
+    mitigation: null
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - External PBH constraints depend on mass function, clustering, and astrophysical assumptions.
+  channel: black_holes
+  effect_direction: model_dependent
+  environments:
+  - early universe
+  - PBH populations
+  id: obs_heavy_pbh_mirror_density
+  key_quantities:
+  - description: Surviving PBH mass in the heavy-PBH scenario.
+    name: initial PBH mass
+    range: primary estimate 10^17 g to 10^23 g when DM comprises mirror baryons and PBHs
+    role: core
+    source_reference_ids:
+    - arxiv:2208.09566
+    status: inferred
+    symbol: M_PBH
+    unit: g
+  - description: Initial PBH-to-radiation density ratio at formation.
+    name: initial PBH density
+    range: computed from M_PBH and beta in primary equations
+    role: core
+    source_reference_ids:
+    - arxiv:2208.09566
+    status: inferred
+    symbol: beta_PBH
+  - description: Mirror-to-ordinary baryon density ratio.
+    name: mirror baryon ratio
+    range: 0.1 to 5 conservative range
+    role: core
+    source_reference_ids:
+    - arxiv:2208.09566
+    status: inferred
+    symbol: beta
+  linked_constraints:
+  - con_heavy_pbh_mass_density
+  - con_mirror_neff_baryon_fraction
+  - con_external_pbh_mass_windows
+  linked_routes:
+  - route_heavy_pbh_mirror_density
+  name: Surviving heavy PBH plus mirror-baryon density budget
+  notes: null
+  observability: medium
+  predicted_effect: For PBHs heavier than the evaporation threshold, surviving PBHs can provide the non-mirror-baryon
+    dark-matter component, with initial density tied to beta and M_PBH.
+  redshift_range: radiation era formation to today
+  relevance: high
+  scale_range: cosmological PBH abundance and astrophysical lensing/accretion scales
+  source_reference_ids:
+  - arxiv:2208.09566
+  - arxiv:2006.02838
+  - arxiv:2002.12778
+  subchannel: PBH dark-matter fraction
+- caveats:
+  - The primary paper assumes the radiation bound is safely satisfied.
+  channel: cmb
+  effect_direction: enhancement
+  environments:
+  - BBN
+  - CMB
+  id: obs_mirror_baryon_neff_heavy_pbh
+  key_quantities:
+  - description: Mirror-to-ordinary-sector temperature ratio.
+    name: mirror temperature ratio
+    range: x < 0.5 assumed
+    role: core
+    source_reference_ids:
+    - arxiv:2208.09566
+    status: inferred
+    symbol: x
+  - description: Limit where mirror baryons alone make all dark matter.
+    name: all-mirror-baryon limit
+    role: core
+    source_reference_ids:
+    - arxiv:2208.09566
+    status: inferred
+    symbol: Omega_DM/Omega_b
+    value: '5.33'
+  linked_constraints:
+  - con_mirror_neff_baryon_fraction
+  linked_routes:
+  - route_heavy_pbh_mirror_density
+  name: Mirror-baryon radiation and density response
+  notes: null
+  observability: medium
+  predicted_effect: The heavy-PBH completion still requires the mirror sector to satisfy the same N_eff
+    temperature-ratio bound and beta not to saturate all of dark matter.
+  redshift_range: BBN through recombination
+  relevance: high
+  scale_range: homogeneous radiation density
+  source_reference_ids:
+  - arxiv:2208.09566
+  subchannel: N_eff and mirror-baryon fraction
+constraints:
+- allowed_regions:
+  - For 0.1 < beta < 5, the primary paper estimates 10^17 g < M_PBH < 10^23 g when PBHs supplement mirror
+    baryons.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: PBHs form with a monochromatic mass function and no angular momentum or electric charge.
+    id: monochromatic_nonspinning_pbh
+    impact_if_violated: Extended or spinning PBH populations alter abundance and constraint mappings.
+    scope: heavy-PBH abundance estimate
+    source_reference_ids:
+    - arxiv:2208.09566
+    status: assumed
+  benchmark_implications:
+  - The allowed heavy-PBH mass is tightly linked to the mirror-baryon share of the dark matter.
+  caveats:
+  - The paper notes extended mass functions would be more realistic.
+  constrained_parameters:
+  - M_PBH
+  - beta_PBH
+  - beta
+  constraint_type: astrophysical
+  data_release: primary-paper analytic PBH abundance relation
+  excluded_regions:
+  - beta = 5.33 corresponds to all DM in mirror baryons and is excluded by the premise; masses outside
+    the quoted 10^17-10^23 g estimate do not match the paper conclusion for mirror baryons plus PBHs.
+  id: con_heavy_pbh_mass_density
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Heavy-PBH mirror-DM mass and initial-density relation
+  notes: null
+  observable_channel: PBH_abundance
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2208.09566
+- allowed_regions:
+  - The primary analysis adopts conservative 0.1 < beta < 5 and assumes x < 0.5 so mirror radiation is
+    suppressed.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The mirror temperature ratio is kept below the N_eff bound throughout the analysis.
+    id: suppressed_mirror_radiation
+    impact_if_violated: Larger mirror radiation would invalidate the adopted PBH/mirror density budget.
+    scope: mirror-sector cosmology
+    source_reference_ids:
+    - arxiv:2208.09566
+    status: assumed
+  benchmark_implications:
+  - Both PBH-completion scenarios inherit the mirror-radiation and mirror-baryon-fraction requirements.
+  caveats:
+  - A full N_eff likelihood was not rerun.
+  constrained_parameters:
+  - x = T_prime/T
+  - beta = Omega_b_prime/Omega_b
+  constraint_type: cosmological
+  data_release: BBN/recombination N_eff and Planck density values as quoted in primary paper
+  excluded_regions:
+  - Mirror temperature ratios above about x = 0.5 are outside the assumed BBN/recombination safety condition;
+    beta = 5.33 would make all dark matter mirror baryons and is excluded by the paper premise.
+  id: con_mirror_neff_baryon_fraction
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Mirror-sector N_eff and mirror-baryon fraction bounds
+  notes: null
+  observable_channel: BBN_CMB_mirror_radiation
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2208.09566
+- allowed_regions:
+  - The primary 10^17-10^23 g estimate overlaps a commonly discussed surviving-PBH window but needs a
+    mass-function-specific recast.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: PBH review mass windows are treated as recast targets, not direct exclusions of the mirror/PBH
+      model.
+    id: review_window_transfer
+    impact_if_violated: Different mass functions and clustering can move constraints.
+    scope: PBH constraints
+    source_reference_ids:
+    - arxiv:2006.02838
+    - arxiv:2002.12778
+    status: assumed
+  benchmark_implications:
+  - The heavy-PBH component should be checked against lensing, evaporation, accretion, and dynamical PBH
+    constraints.
+  caveats:
+  - No PBH constraint likelihood was rerun.
+  constrained_parameters:
+  - M_PBH
+  - f_PBH
+  - mass function
+  constraint_type: astrophysical
+  data_release: related local PBH constraint reviews
+  excluded_regions:
+  - Related PBH reviews find only restricted mass windows for PBHs as dark matter and emphasize caveats
+    for evaporation and astrophysical limits.
+  id: con_external_pbh_mass_windows
+  likelihood_available: partial
+  likelihood_reference: null
+  name: External primordial-black-hole dark-matter mass-window constraints
+  notes: null
+  observable_channel: PBH_dark_matter_constraints
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2006.02838
+  - arxiv:2002.12778
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Astrophysical PBH constraints carry substantial mass-function caveats.
+    constraint_ids:
+    - con_heavy_pbh_mass_density
+    - con_mirror_neff_baryon_fraction
+    - con_external_pbh_mass_windows
+    derived_quantities:
+    - Omega_b_prime
+    - Omega_PBH
+    - f_PBH
+    - N_eff response
+    description: Map mirror baryon fraction and heavy PBH mass to surviving-PBH dark-matter abundance
+      and external PBH constraints.
+    forward_model_chain:
+    - inputs:
+      - beta
+      - Omega_DM
+      - Omega_b
+      notes: Subtract mirror baryons from total DM.
+      outputs:
+      - required Omega_PBH
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary-paper density-budget relation.
+    - inputs:
+      - M_PBH
+      - formation radiation density
+      notes: Use primary heavy-PBH equation.
+      outputs:
+      - beta_PBH
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Radiation-era monochromatic PBH formation.
+    - inputs:
+      - M_PBH
+      - f_PBH
+      - mass function
+      notes: Not run in this batch.
+      outputs:
+      - PBH external constraints
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires review-window and likelihood recast.
+    id: route_heavy_pbh_mirror_density
+    input_parameters:
+    - x
+    - beta
+    - M_PBH
+    - beta_PBH
+    likelihoods:
+    - PBH constraint likelihood not rerun
+    - N_eff likelihood not rerun
+    observable_ids:
+    - obs_heavy_pbh_mirror_density
+    - obs_mirror_baryon_neff_heavy_pbh
+    required_code_resources:
+    - PBH constraint compendium
+    - cosmology likelihood for N_eff
+    route_status: planned
+    source_model_features:
+    - mirror baryons
+    - surviving heavy PBHs
+    - monochromatic PBH formation
+    validation_tests:
+    - recover 10^17-10^23 g mass estimate
+    - recover beta range 0.1 to 5

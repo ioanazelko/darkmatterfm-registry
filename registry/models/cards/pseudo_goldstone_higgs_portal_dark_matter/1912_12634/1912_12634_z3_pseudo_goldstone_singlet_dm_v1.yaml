@@ -1,0 +1,655 @@
+_source:
+  shard: arXiv_src_1912_041_wds.tar
+  paper_id: '1912_12634'
+  source_member: 1912_12634.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1912_12634_z3_pseudo_goldstone_singlet_dm_v1
+identity:
+  name: Z_3 pseudo-Goldstone complex-singlet dark matter
+  family: pseudo_goldstone_higgs_portal_dark_matter
+  aliases:
+  - Z_3 complex singlet pseudo-Goldstone DM
+  short_description: A complex gauge-singlet scalar extension where a cubic term softly breaks a global
+    U(1) to Z_3, leaving an accidental Z_2 symmetry that stabilizes the imaginary pseudo-Goldstone component
+    as dark matter.
+  historical_origin_or_motivation: Studied to combine pseudo-Goldstone Higgs-portal dark matter with a
+    strong electroweak phase transition and gravitational-wave production.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Higgs-portal scalar dark matter
+  - complex singlet scalar extension
+  - softly broken global U(1) to Z_3
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'no'
+  notes: The assigned text writes the full renormalizable scalar potential and maps it to physical parameters
+    w, m_S, m_eta, and mixing angle.
+particle_content:
+  dark_matter_candidate:
+    name: imaginary component of S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - real singlet scalar component s
+  - heavy scalar S mixed with the SM-like Higgs H
+  mediators:
+  - SM-like Higgs H
+  - heavy scalar S
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - pseudo-Goldstone dark matter
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Hermiticity of the Z_3-invariant scalar potential implies an accidental Z_2 acting
+    on the imaginary component of S, stabilizing it.
+  symmetries:
+  - name: global U(1)
+    type: global
+    exact_or_approximate: broken
+    breaking: softly broken by the cubic S^3 + S*^3 term
+    breaking_scale: null
+  - name: Z_3
+    type: discrete
+    exact_or_approximate: exact
+    breaking: remnant of the softly broken U(1) in the tree-level potential
+    breaking_scale: null
+  - name: accidental Z_2 for Im(S)
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not broken in the model description for the imaginary component
+    breaking_scale: null
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - SM Higgs sector
+  - Standard Model particles through H and S mixing
+  dark_sector_couplings:
+  - Higgs portal coupling lambda_m |H|^2 |S|^2
+  - singlet quartic lambda_s |S|^4
+  - cubic soft-breaking coupling mu_3 S^3
+  mediator_types:
+  - SM-like Higgs scalar
+  - heavy singlet-like scalar
+  interaction_operators:
+  - '|H|^2 |S|^2'
+  - S^3 + S*^3
+  annihilation_channels:
+  - annihilation to SM particles mediated by H and S
+  decay_channels: []
+  self_scattering_channels: []
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: singlet vacuum expectation value
+    symbol: w
+    description: VEV of the real component of the complex singlet
+    range: sampled; examples around 1000 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: heavy scalar mass
+    symbol: m_S
+    description: Mass of the singlet-like scalar mixed with the SM Higgs
+    range: 150-2000 GeV in the scan; strong EWPT favors roughly 1-2 TeV in the main result
+    unit: GeV
+    role: core
+    status: inferred
+  - name: pseudo-Goldstone dark matter mass
+    symbol: m_eta
+    description: Mass of the imaginary component, with m_eta^2 = -3 mu_3 w
+    range: sample distributions peak around 200-400 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs-singlet mixing angle
+    symbol: theta
+    description: Mixing angle between h and s; strong EWPT requires sizable mixing in the two-step scenario
+    range: '|theta| greater than about 0.2 and collider bound about |theta| < 0.4'
+    role: core
+    status: inferred
+  - name: cubic soft-breaking coupling
+    symbol: mu_3
+    description: Cubic term that breaks global U(1) to Z_3 and sets the pseudo-Goldstone mass
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: dark matter relic fraction
+    symbol: f_X
+    description: Relic-density rescaling factor h^2_DM/0.1188 used for direct-detection comparisons
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - standard thermal freeze-out through annihilation to SM particles mediated by H and S
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - thermally averaged annihilation cross section
+  - m_eta
+  - m_S
+  - w
+  - H-S mixing angle
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves the Boltzmann equation numerically with MicrOMEGAs 5.0.4 and finds most strong-EWPT
+    sample points underproduce the observed dark matter.
+relic_density:
+  full_or_subcomponent: subcomponent
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_eta
+  - m_S
+  - w
+  - Higgs-singlet mixing angle
+  - annihilation through H and S resonances
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: 'yes'
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - two-step electroweak phase transition
+  - possible Z_3 domain-wall issue if the discrete symmetry is exact
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - (0,0) -> (0,w0(T)) -> (v(T),w(T)) two-step electroweak phase transition
+  topological_defects:
+  - domain walls may arise from discrete-symmetry breaking
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The relic-density treatment is a standard freeze-out calculation; no explicit phase-space distribution
+    is provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: two_step_ewpt_region
+  applies_to: model
+  condition: The main strong-EWPT results apply to the two-step phase-transition scenario and the scanned
+    ranges for w, m_S, m_eta, and theta.
+  status: inferred
+  extrapolation_risk: medium
+- id: subcomponent_region
+  applies_to: model
+  condition: For the sampled strong-EWPT points, the pseudo-Goldstone boson usually makes up only a small
+    fraction of total dark matter.
+  status: inferred
+  extrapolation_risk: medium
+- id: domain_wall_caveat
+  applies_to: cosmological_history
+  condition: Exact Z_3 breaking during the early universe can produce domain walls unless an additional
+    bias or approximate-symmetry mechanism is supplied.
+  status: inferred
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: accidental_z2_stability
+    description: The accidental Z_2 symmetry for the imaginary component remains exact enough to stabilize
+      the dark matter candidate.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: standard_freezeout_history
+    description: The relic-density calculation assumes standard thermal freeze-out.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+  - id: positive_w_negative_mu3
+    description: The singlet VEV is taken positive and mu_3 negative to avoid a tachyonic pseudo-Goldstone
+      mass.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses MicrOMEGAs 5.0.4 to compute relic density and direct-detection rates, but
+    no public model-specific code release is stated in the assigned text.
+provenance:
+  model_id: 1912_12634_z3_pseudo_goldstone_singlet_dm_v1
+  model_name: Z_3 pseudo-Goldstone complex-singlet dark matter
+  model_family: pseudo_goldstone_higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1912_12634'
+      title: Pseudo-Goldstone dark matter in a softly broken U(1) to Z_3 complex singlet model
+      year: 2019
+      arxiv_id: '1912.12634'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text for this batch.
+    - arxiv_id: '1912.12634'
+      authors:
+      - Chiang, Cheng-Wei
+      - Lu, Bo-Qiang
+      doi: 10.1007/JHEP07(2020)082
+      notes: Primary paper text resolved locally from the assigned GalaxyWiki text cache.
+      reference_id: paper
+      role: original_model
+      title: First-order electroweak phase transition in a complex singlet model with &Z;<SUB>3</SUB>
+        symmetry
+      url: https://arxiv.org/abs/1912.12634
+      year: 2020
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for sanitized metadata discovery of primary records, references, and citations.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: gpt-5.5-batch-0013
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1912_12634'
+      section: Model
+      page: null
+      quote_or_summary: The paper writes the complex singlet scalar potential with U(1) softly broken
+        to Z_3 and identifies Im(S) as pseudo-Goldstone dark matter stabilized by an accidental Z_2.
+    - reference_id: '1912_12634'
+      section: Dark matter relic density
+      page: null
+      quote_or_summary: The pseudo-Goldstone relic density is computed in the standard freeze-out scenario
+        with MicrOMEGAs 5.0.4.
+    - reference_id: '1912_12634'
+      section: Summary
+      page: null
+      quote_or_summary: The paper concludes that a small fraction of dark matter can be made of the pseudo-Goldstone
+        boson while satisfying its search constraints in the studied strong-EWPT region.
+    unresolved_items:
+    - No reusable gravitational-wave or direct-detection likelihood was built in this batch.
+    - The possible domain-wall issue from discrete-symmetry breaking is noted in the paper but not recast
+      as a structured constraint here.
+  evidence:
+    particle_content:
+    - reference_id: '1912_12634'
+      note: The imaginary component of the complex singlet is named as the pseudo-Goldstone dark matter
+        candidate.
+      confidence: high
+      section: Model
+      page: null
+    symmetries:
+    - reference_id: '1912_12634'
+      note: The cubic term breaks global U(1) to Z_3 and an accidental Z_2 stabilizes the imaginary component.
+      confidence: high
+      section: Model
+      page: null
+    interactions:
+    - reference_id: '1912_12634'
+      note: The scalar potential contains the Higgs portal, singlet quartic, and cubic soft-breaking terms;
+        annihilation is mediated by H and S.
+      confidence: high
+      section: Model / Dark matter relic density
+      page: null
+    production_mechanism:
+    - reference_id: '1912_12634'
+      note: The paper describes standard freeze-out and solves the Boltzmann equation for the pseudo-Goldstone
+        abundance.
+      confidence: high
+      section: Dark matter relic density
+      page: null
+    parameter_ranges:
+    - reference_id: '1912_12634'
+      note: The paper uses w, m_S, m_eta, and theta as input parameters and quotes strong-EWPT ranges.
+      confidence: high
+      section: Parameters / Scan results
+      page: null
+    cosmological_history:
+    - reference_id: '1912_12634'
+      note: The paper focuses on a two-step electroweak phase transition and notes possible Z_3 domain-wall
+        issues.
+      confidence: medium
+      section: EWPT / Model
+      page: null
+    validity_domain:
+    - reference_id: '1912_12634'
+      note: The strong-EWPT and subcomponent DM statements apply within the scanned parameter space.
+      confidence: medium
+      section: Scan results / Summary
+      page: null
+    constraints:
+    - confidence: medium
+      note: The paper applies collider/EW precision and LUX/PandaX-II/XENON1T direct-detection constraints.
+      page: null
+      reference_id: paper
+      section: Constraints and numerical-results sections
+    observables:
+    - confidence: high
+      note: The paper links strong two-step EWPTs to LISA/DECIGO/BBO gravitational waves and computes
+        relic-rescaled pseudo-Goldstone spin-independent scattering.
+      page: null
+      reference_id: paper
+      section: Abstract and phenomenology/results sections
+    routes:
+    - confidence: medium
+      note: The paper combines finite-temperature scalar-potential scans with MicrOMEGAs relic and scattering
+        calculations.
+      page: null
+      reference_id: paper
+      section: Model, scan, and phenomenology sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  dominant_uncertainties: []
+agent_failure_modes:
+  warnings:
+  - id: subcomponent_not_full_dm
+    severity: medium
+    category: other
+    warning: In the strong-EWPT region emphasized by the paper, the pseudo-Goldstone component is usually
+      underabundant and should not be assumed to make all dark matter.
+  - id: domain_wall_caveat
+    severity: medium
+    category: assumption_mismatch
+    warning: Exact discrete-symmetry cosmology may create domain walls; the paper notes bias/approximate-symmetry
+      mechanisms but does not build them into the extracted model card.
+observables:
+- caveats:
+  - The batch did not rerun the finite-temperature effective-potential scan or stochastic-GW spectrum
+    calculation.
+  channel: gravitational_waves
+  effect_direction: spectral_line
+  environments:
+  - early universe
+  - electroweak phase transition
+  id: first_order_ewpt_stochastic_gw
+  key_quantities:
+  - name: heavy singlet-like scalar mass
+    range:
+      max: 2
+      min: 1
+      notes: Primary-paper region emphasized for strong two-step transitions.
+      unit: TeV
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: m_S
+    unit: TeV
+  - name: Higgs-singlet mixing angle
+    range: '|theta| greater than about 0.2 in the strong-EWPT region, subject to collider limits'
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: theta
+  - description: Sphaleron washout criterion for a strong first-order EWPT
+    name: phase-transition strength
+    role: derived
+    source_reference_ids:
+    - paper
+    status: approximate
+    symbol: v_c/T_c
+    value: greater than about 1
+  - description: Quantities needed to compute the stochastic GW spectrum
+    name: inverse duration and latent heat
+    role: derived
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: beta/H, alpha
+  linked_constraints:
+  - collider_and_ew_precision_mixing_bounds
+  linked_routes:
+  - route_z3_pseudo_goldstone_to_gw_and_dd
+  name: Stochastic gravitational waves from a strong first-order electroweak phase transition
+  notes: null
+  observability: medium
+  predicted_effect: A two-step strong first-order electroweak phase transition in the Z3 complex-singlet
+    model can produce a stochastic gravitational-wave signal potentially testable by LISA, DECIGO, and
+    BBO.
+  redshift_range: electroweak epoch
+  relevance: high
+  scale_range: milli-Hz gravitational-wave frequencies for space interferometers
+  source_reference_ids:
+  - paper
+  subchannel: space-based interferometer stochastic background
+- caveats:
+  - Most strong-EWPT samples underproduce the observed dark matter, so direct-detection comparisons require
+    relic-fraction rescaling.
+  channel: direct_detection
+  effect_direction: suppression
+  environments:
+  - terrestrial direct-detection experiments
+  id: rescaled_suppressed_si_direct_detection
+  key_quantities:
+  - name: pseudo-Goldstone dark matter mass
+    range: sample points peak around a few hundred GeV
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: m_eta
+    unit: GeV
+  - description: Effective cross section used when the pseudo-Goldstone is a subcomponent
+    name: rescaled spin-independent cross section
+    role: derived
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: f_X sigma_SI
+  - description: h^2_DM/0.1188 used for direct-detection rescaling
+    name: dark matter relic fraction
+    role: derived
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: f_X
+  linked_constraints:
+  - direct_detection_relic_rescaled_limits
+  linked_routes:
+  - route_z3_pseudo_goldstone_to_gw_and_dd
+  name: Rescaled spin-independent direct-detection signal of pseudo-Goldstone dark matter
+  notes: null
+  observability: low
+  predicted_effect: The pseudo-Goldstone Higgs-portal structure suppresses zero-momentum nucleon scattering;
+    the paper compares the MicrOMEGAs cross section rescaled by the relic fraction to LUX, PandaX-II,
+    and XENON1T limits.
+  redshift_range: present day
+  relevance: critical
+  scale_range: electroweak-scale WIMP masses
+  source_reference_ids:
+  - paper
+  subchannel: spin-independent nucleon scattering
+constraints:
+- allowed_regions:
+  - The primary scan finds strong two-step EWPT examples around m_S of 1-2 TeV with |theta| above about
+    0.2 and within collider bounds.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The highlighted GW region assumes the two-step electroweak phase-transition history found
+      in the scan.
+    id: two_step_thermal_history
+    impact_if_violated: Changes the numerical exclusion or allowed benchmark region.
+    scope: finite-temperature scalar potential
+    source_reference_ids:
+    - paper
+    status: assumed
+  benchmark_implications:
+  - Viable gravitational-wave benchmarks require simultaneously strong EWPT, stable/perturbative potential,
+    and collider-safe mixing.
+  caveats:
+  - Gauge and thermal-resummation systematics were not reassessed in this batch.
+  constrained_parameters:
+  - m_S
+  - theta
+  - w
+  constraint_type: collider
+  data_release: LHC Higgs searches and electroweak precision observables as implemented in the primary
+    paper
+  excluded_regions:
+  - Large Higgs-singlet mixing outside collider and electroweak-precision limits is excluded.
+  id: collider_and_ew_precision_mixing_bounds
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Collider and electroweak-precision bounds on Higgs-singlet mixing
+  notes: null
+  observable_channel: Higgs searches and electroweak precision observables
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - paper
+- allowed_regions:
+  - Suppressed pseudo-Goldstone scattering and relic-fraction rescaling allow surviving strong-EWPT samples
+    in the paper.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Benchmarks should quote both the raw and f_X-rescaled cross section.
+  caveats:
+  - The primary text uses published exclusion curves rather than a public likelihood object.
+  constrained_parameters:
+  - m_eta
+  - theta
+  - m_S
+  - w
+  - f_X sigma_SI
+  constraint_type: direct_detection
+  data_release: LUX, PandaX-II, and XENON1T direct-detection limits cited by the primary paper
+  excluded_regions:
+  - Parameter points whose relic-rescaled spin-independent cross section lies above current upper bounds
+    are excluded.
+  id: direct_detection_relic_rescaled_limits
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: LUX, PandaX-II, and XENON1T limits on relic-rescaled spin-independent scattering
+  notes: null
+  observable_channel: spin-independent nuclear recoil
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - paper
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route is supported by the primary paper but was not numerically rerun in this batch.
+    caveats:
+    - OCR loses some symbols in equations; original PDF should be used for precision scans.
+    constraint_ids:
+    - collider_and_ew_precision_mixing_bounds
+    - direct_detection_relic_rescaled_limits
+    derived_quantities:
+    - finite-temperature effective potential
+    - v_c/T_c
+    - alpha
+    - beta/H
+    - relic density
+    - f_X sigma_SI
+    description: Map Z3 complex-singlet scalar parameters to electroweak phase-transition gravitational
+      waves and pseudo-Goldstone direct detection.
+    forward_model_chain:
+    - inputs:
+      - scalar potential parameters
+      notes: null
+      outputs:
+      - phase-transition history
+      - v_c/T_c
+      step_id: finite_temperature_scan
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Tree-level barrier and thermal corrections as in the primary scan.
+    - inputs:
+      - alpha
+      - beta/H
+      - transition temperature
+      notes: null
+      outputs:
+      - stochastic GW spectrum
+      step_id: gw_spectrum
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Space-interferometer forecast level; no detector likelihood included.
+    - inputs:
+      - m_eta
+      - m_S
+      - theta
+      - w
+      notes: null
+      outputs:
+      - h^2_DM
+      - sigma_SI
+      - f_X sigma_SI
+      step_id: relic_and_scattering
+      step_type: boltzmann_solver
+      tool_or_code: MicrOMEGAs
+      validity: Thermal freeze-out and direct-detection calculation used by the primary paper.
+    id: route_z3_pseudo_goldstone_to_gw_and_dd
+    input_parameters:
+    - w
+    - m_S
+    - m_eta
+    - theta
+    - mu_3
+    likelihoods:
+    - published LUX/PandaX-II/XENON1T upper limits
+    - LISA/DECIGO/BBO sensitivity curves
+    observable_ids:
+    - first_order_ewpt_stochastic_gw
+    - rescaled_suppressed_si_direct_detection
+    required_code_resources:
+    - finite-temperature effective-potential scanner
+    - MicrOMEGAs relic/direct-detection calculation
+    - stochastic phase-transition GW calculator
+    route_status: planned
+    source_model_features:
+    - complex singlet with softly broken U(1) to Z3
+    - accidental Z2-stabilized pseudo-Goldstone dark matter
+    - Higgs-singlet mixing
+    validation_tests:
+    - Recover the paper result that strong two-step EWPT points favor m_S around 1-2 TeV and |theta| above
+      about 0.2.
+    - Check that direct-detection comparisons use f_X rescaling.

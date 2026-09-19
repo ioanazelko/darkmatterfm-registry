@@ -1,0 +1,667 @@
+_source:
+  shard: arXiv_src_2111_025_wds.tar
+  paper_id: '2111_03866'
+  source_member: 2111_03866.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: triplet_underabundance_low_mass
+    mitigation: Treat it as a subcomponent unless additional fields or mechanisms are included.
+    severity: high
+    source_reference_ids:
+    - '2111_03866'
+    warning: The low-mass triplet region that gives a first-order phase transition is underabundant as
+      dark matter in the paper.
+associated_code:
+  caveats: []
+  code_summary: The paper uses CosmoTransition and BubbleProfiler for phase-transition and gravitational-wave
+    calculations; no model-specific repository is identified in the text.
+  containers_or_environments: []
+  expected_inputs:
+  - triplet scalar potential parameters
+  expected_outputs:
+  - nucleation temperature
+  - phase-transition parameters
+  - gravitational-wave spectra
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: other
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references:
+    - '2111_03866'
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The triplet is initially in thermal equilibrium with the Standard Model bath and freezes
+      out.
+    id: thermal_freezeout
+    impact_if_violated: Relic-density statements would not apply.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '2111_03866'
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: If the low-mass first-order phase-transition region is used, additional fields or mechanisms
+      are needed to supply the correct dark matter relic.
+    id: additional_fields_for_full_relic_low_mass
+    impact_if_violated: The low-mass triplet is only a subcomponent.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '2111_03866'
+    status: inferred
+cosmological_history:
+  bbn_relevance: low
+  chemical_decoupling: null
+  cmb_relevance: low
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - strongly first-order electroweak phase transition in low-mass triplet benchmarks
+  phase_transitions:
+  - first-order electroweak phase transition
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - inert triplet model
+  - Y=0 real triplet dark matter
+  family: electroweak_triplet_dark_matter
+  historical_origin_or_motivation: Studied as a scalar extension that can stabilize the electroweak vacuum
+    and support a first-order phase transition, then compared with relic-density requirements.
+  model_kind: complete_theory
+  name: Z2-odd Y=0 inert SU(2) triplet scalar dark matter
+  short_description: A real SU(2)L triplet with hypercharge zero is odd under Z2; its neutral component
+    T0 is the dark matter candidate and interacts through electroweak gauge and Higgs-portal couplings.
+  status: benchmark
+interactions:
+  annihilation_channels:
+  - T0 T0 to W+ W-
+  - coannihilation involving T+/- and T0 through W/Z
+  cp_structure: not discussed
+  dark_sector_couplings:
+  - lambda_ht Higgs-triplet portal
+  - lambda_t triplet quartic
+  - SU(2)L gauge interactions
+  decay_channels:
+  - charged triplet decays to neutral triplet through electroweak interactions
+  flavor_structure: electroweak gauge and Higgs portal, no new flavor structure discussed
+  interaction_operators:
+  - lambda_ht H^dagger H Tr(T^dagger T)
+  - lambda_t (Tr|T^dagger T|)^2
+  mediator_types:
+  - Higgs boson
+  - electroweak gauge bosons
+  portals:
+  - higgs
+  - vector
+  self_scattering_channels:
+  - triplet quartic self-interaction
+  standard_model_targets:
+  - Higgs doublet
+  - W bosons
+  - Z boson
+  - Standard Model thermal bath
+  tree_or_loop_level: tree
+model_id: 2111_03866_y0_inert_triplet_scalar_v1
+parameters:
+  core:
+  - name: triplet mass parameter
+    notes: The paper highlights tension between phase-transition and relic-density requirements.
+    range: less than about 320 in first-order phase-transition region; about 1176 needed for relic target
+    role: core
+    source_reference_ids:
+    - '2111_03866'
+    status: approximate
+    symbol: m_T
+    unit: GeV
+  - description: Quartic coupling H^dagger H Tr(T^dagger T).
+    name: Higgs-triplet portal coupling
+    role: core
+    source_reference_ids:
+    - '2111_03866'
+    status: inferred
+    symbol: lambda_ht
+  - description: Triplet quartic self coupling; scans often use zero to maximize transition strength.
+    name: triplet self coupling
+    role: core
+    source_reference_ids:
+    - '2111_03866'
+    status: inferred
+    symbol: lambda_t
+  - name: Planck relic-density target
+    role: cosmological
+    source_reference_ids:
+    - '2111_03866'
+    status: established
+    symbol: Omega_DM h^2
+    value: 0.1199 +/- 0.0027
+particle_content:
+  additional_dark_sector_particles:
+  - charged triplet components T+ and T-
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: neutral triplet component T0
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - nearly related charged triplet states
+  long_lived_particles:
+  - Z2-odd neutral triplet component
+  mediators:
+  - Standard Model Higgs boson
+  - W boson
+  - Z boson
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - charged triplet components
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: not provided
+  free_streaming_length: null
+  notes: Cold thermal relic behavior is assumed.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - electroweak annihilation into W bosons
+  - coannihilation with T+/-
+  - triplet mass
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out
+  - coannihilation with charged triplet states
+  nonthermal_momentum_distribution: 'no'
+  notes: The pure triplet reaches the observed relic abundance near the TeV scale, while the first-order
+    phase-transition region studied in the paper is underabundant.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The paper finds a first-order phase transition prefers low triplet masses, while the relic
+        abundance points to much heavier triplet masses.
+      page: null
+      reference_id: '2111_03866'
+      section: Conclusion/relic discussion
+    interactions:
+    - confidence: high
+      note: The triplet potential includes lambda_ht H^dagger H Tr(T^dagger T), and the triplet also has
+        electroweak gauge interactions.
+      page: null
+      reference_id: '2111_03866'
+      section: Inert triplet model
+    parameter_ranges:
+    - confidence: high
+      note: The paper quotes triplet masses below about 320 GeV for the first-order phase-transition region
+        but about 1176 GeV for the relic target.
+      page: null
+      reference_id: '2111_03866'
+      section: Constraints from DM relic and conclusion
+    particle_content:
+    - confidence: high
+      note: The paper extends the SM by a Y=0 real SU(2) triplet T with a neutral component T0 and charged
+        components T+/-; T0 is the dark matter candidate.
+      page: null
+      reference_id: '2111_03866'
+      section: Inert triplet model
+    production_mechanism:
+    - confidence: high
+      note: The relic section assumes thermal equilibrium followed by freeze-out; T0 annihilates mainly
+        to W+W- and coannihilates with charged triplet states.
+      page: null
+      reference_id: '2111_03866'
+      section: Constraints from DM relic
+    symmetries:
+    - confidence: high
+      note: The triplet is Z2 odd while the Higgs doublet is Z2 even, stabilizing the neutral component.
+      page: null
+      reference_id: '2111_03866'
+      section: Inert triplet model
+    validity_domain:
+    - confidence: high
+      note: The model is viable as a DM candidate, but the paper states the pure triplet cannot simultaneously
+        realize the desired phase transition and correct relic without additional fields.
+      page: null
+      reference_id: '2111_03866'
+      section: Conclusion
+    constraints:
+    - confidence: high
+      note: Primary paper explicitly identifies triplet underabundance below the phase-transition mass
+        bound.
+      page: null
+      reference_id: arxiv:2111.03866
+      section: Conclusion
+    observables:
+    - confidence: high
+      note: Primary paper states the triplet full relic mass near 1176 GeV conflicts with the lower mass
+        needed for first-order phase transition.
+      page: null
+      reference_id: arxiv:2111.03866
+      section: DM relic constraints
+    - confidence: high
+      note: Primary text describes GW production from bubble collisions, sound waves, and turbulence and
+        LISA/BBO/LIGO detectability.
+      page: null
+      reference_id: arxiv:2111.03866
+      section: Gravitational waves
+    - confidence: medium
+      note: Related paper connects dark-matter-triggered electroweak phase transitions to observable GW
+        signals.
+      page: null
+      reference_id: arxiv:1702.02698
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper uses finite-temperature potentials, relic-density checks, and GW formulae for
+        triplet benchmarks.
+      page: null
+      reference_id: arxiv:2111.03866
+      section: Methods/results
+  extraction:
+    confidence: medium
+    extracted_by: codex-batch-0014
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper studies a Y=0 inert triplet extension and compares it with a Z2-odd
+        complex singlet extension under relic-density, unitarity, and phase-transition requirements.
+      reference_id: '2111_03866'
+      section: Introduction
+    - page: null
+      quote_or_summary: The SM is extended with a complex singlet S odd under Z2; the neutral component
+        is identified as the dark matter candidate and the scalar potential is given.
+      reference_id: '2111_03866'
+      section: Inert singlet model
+    - page: null
+      quote_or_summary: The SM is extended with a real SU(2) triplet T odd under Z2; T0 is the dark matter
+        candidate and the scalar potential is given.
+      reference_id: '2111_03866'
+      section: Inert triplet model
+    - page: null
+      quote_or_summary: The paper assumes thermal equilibrium, freeze-out, and the Planck relic-density
+        target while contrasting singlet viability with triplet underabundance in the first-order phase-transition
+        region.
+      reference_id: '2111_03866'
+      section: Constraints from DM relic
+    unresolved_items:
+    - The paper text available in SQLite did not expose a clear title or author block for this record.
+    - No detector sensitivity curves were digitized.
+    - Triplet full-DM viability requires extra fields or a nonstandard history in the FOPT region.
+  last_updated: '2026-05-31'
+  model_family: electroweak_triplet_dark_matter
+  model_id: 2111_03866_y0_inert_triplet_scalar_v1
+  model_name: Z2-odd Y=0 inert SU(2) triplet scalar dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: low
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2111.03866'
+      doi: null
+      notes: null
+      reference_id: '2111_03866'
+      role: extension
+      title: 'Unknown title: paper on inert singlet and inert triplet dark matter with first-order electroweak
+        phase transition'
+      url: null
+      year: 2021
+    - arxiv_id: '2111.03866'
+      authors:
+      - Bandyopadhyay, Priyotosh
+      - Jangid, Shilpa
+      doi: 10.48550/arXiv.2111.03866
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2111.03866
+      role: original_model
+      title: Discerning Singlet and Triplet scalars at the electroweak phase transition and Gravitational
+        Wave
+      url: https://arxiv.org/abs/2111.03866
+      year: 2021
+    constraint_papers:
+    - arxiv_id: '1702.02698'
+      authors:
+      - Chao, Wei
+      - Guo, Huai-Ke
+      - Shu, Jing
+      doi: 10.1088/1475-7516/2017/09/009
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1702.02698
+      role: constraint
+      title: Gravitational wave signals of electroweak phase transition triggered by dark matter
+      url: https://arxiv.org/abs/1702.02698
+      year: 2017
+    - arxiv_id: '1811.09807'
+      authors:
+      - Shajiee, Vahid Reza
+      - Tofighi, Ali
+      doi: 10.1140/epjc/s10052-019-6881-6
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1811.09807
+      role: constraint
+      title: Electroweak phase transition, gravitational waves and dark matter in two scalar singlet extension
+        of the standard model
+      url: https://arxiv.org/abs/1811.09807
+      year: 2019
+    - arxiv_id: '2103.00212'
+      authors:
+      - Kazemi, MJ.
+      - AbdusSalam, S. S.
+      doi: 10.1103/PhysRevD.103.075012
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2103.00212
+      role: constraint
+      title: Electroweak phase transition in an inert complex triplet model
+      url: https://arxiv.org/abs/2103.00212
+      year: 2021
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: either
+  key_dependencies:
+  - m_T0
+  - W+W- annihilation
+  - T+/- T0 coannihilation
+  overclosure_risk: 'no'
+  requires_entropy_dilution: unknown
+  target_fraction:
+    name: target relic density
+    role: core
+    source_reference_ids:
+    - '2111_03866'
+    status: established
+    symbol: Omega_DM h^2
+    value: 0.1199 +/- 0.0027
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  notes: The model definition is explicit, but its full-DM interpretation is limited by the relic/phase-transition
+    mass tension emphasized by the paper.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: not discussed in the model paper
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: not discussed in the model paper
+symmetries:
+  stabilizing_mechanism: Exact Z2 parity with the triplet odd stabilizes T0.
+  symmetries:
+  - breaking: unbroken in the inert triplet vacuum
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z2 inert parity
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: The paper gives the scalar potential and thermal effective-potential terms for the inert triplet.
+  parent_frameworks:
+  - Standard Model plus Z2-odd real Y=0 SU(2)L triplet
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats:
+  - The paper says additional fields are needed for correct relic in the low-mass phase-transition region.
+  condition: Pure inert triplet simultaneously satisfies the desired first-order phase transition and
+    full relic abundance only if additional ingredients resolve the mass tension.
+  extrapolation_risk: high
+  id: triplet_relic_phase_transition_tension
+  notes: null
+  source_reference_ids:
+  - '2111_03866'
+  status: inferred
+  valid_range: first-order phase transition below roughly 320 GeV; full thermal relic around 1176 GeV
+    in the paper discussion
+- applies_to: model
+  caveats: []
+  condition: Z2 remains exact and triplet has no vacuum expectation value.
+  extrapolation_risk: high
+  id: exact_z2_inert_triplet
+  notes: null
+  source_reference_ids:
+  - '2111_03866'
+  status: assumed
+  valid_range: null
+observables:
+- caveats:
+  - Detectability depends on finite-temperature potential choices and wall velocity.
+  channel: gravitational_waves
+  effect_direction: shape_change
+  environments:
+  - early-universe electroweak plasma
+  id: obs_y0_triplet_phase_transition_gw
+  key_quantities:
+  - name: triplet mass parameter for FOPT
+    range: less than about 310-320 GeV in the source first-order phase-transition region
+    role: core
+    source_reference_ids:
+    - arxiv:2111.03866
+    status: inferred
+    symbol: m_T
+    unit: GeV
+  - description: Thermal parameter controlling peak amplitude/frequency.
+    name: inverse duration
+    role: derived
+    source_reference_ids:
+    - arxiv:2111.03866
+    status: inferred
+    symbol: beta/H_*
+  linked_constraints:
+  - con_y0_triplet_relic_phase_tension
+  linked_routes:
+  - route_y0_triplet_phase_relic_gw
+  name: Y=0 triplet electroweak phase-transition gravitational waves
+  notes: null
+  observability: medium
+  predicted_effect: The inert triplet can strengthen the electroweak phase transition; bubble collisions,
+    sound waves, and turbulence generate a stochastic GW spectrum potentially testable by LISA/BBO/LIGO-like
+    experiments in benchmark regions.
+  redshift_range: electroweak epoch
+  relevance: high
+  scale_range: mHz to ground-based detector bands depending on benchmark
+  source_reference_ids:
+  - arxiv:2111.03866
+  - arxiv:1702.02698
+  - arxiv:1811.09807
+  - arxiv:2103.00212
+  subchannel: stochastic background from bubble collisions/sound/turbulence
+- caveats:
+  - A subcomponent interpretation or extra fields are needed in the low-mass FOPT region.
+  channel: cosmology
+  effect_direction: suppression
+  environments:
+  - early-universe thermal plasma
+  id: obs_y0_triplet_relic_underabundance
+  key_quantities:
+  - name: full-relic triplet mass
+    role: core
+    source_reference_ids:
+    - arxiv:2111.03866
+    status: inferred
+    symbol: m_T0
+    unit: GeV
+    value: approximately 1176
+  - name: Planck relic target
+    role: cosmological
+    source_reference_ids:
+    - arxiv:2111.03866
+    status: established
+    symbol: Omega_DM h^2
+    value: 0.1199 +/- 0.0027
+  linked_constraints:
+  - con_y0_triplet_relic_phase_tension
+  linked_routes:
+  - route_y0_triplet_phase_relic_gw
+  name: Triplet relic-density tension with first-order phase transition
+  notes: null
+  observability: high
+  predicted_effect: The neutral triplet needs about 1176 GeV to saturate the observed relic density, but
+    the strong first-order phase-transition region has much lower triplet mass and therefore under-produces
+    dark matter.
+  redshift_range: thermal freeze-out
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2111.03866
+  subchannel: thermal relic abundance
+constraints:
+- allowed_regions:
+  - Triplet can be viable as a subcomponent or with additional fields while retaining first-order phase-transition/GW
+    phenomenology.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The neutral triplet has standard thermal freeze-out dominated by gauge annihilation/coannihilation.
+    id: standard-triplet-freezeout
+    impact_if_violated: Nonstandard cosmology or additional states can change the relic abundance.
+    notes: null
+    scope: triplet relic density
+    source_reference_ids:
+    - arxiv:2111.03866
+    status: assumed
+  benchmark_implications:
+  - The model card should not treat the low-mass triplet FOPT benchmark as all of dark matter without
+    extra ingredients.
+  caveats:
+  - Entropy dilution is noted as insufficient at the needed level in the source discussion.
+  constrained_parameters:
+  - m_T
+  - m_T0
+  - Omega_DM h^2
+  - lambda_ht
+  constraint_type: cosmological
+  data_release: Planck relic target quoted in source
+  excluded_regions:
+  - A lone triplet with m_T below about 320 GeV can support the phase transition but under-produces the
+    observed dark matter; the full-relic mass near 1.176 TeV is incompatible with the quoted first-order
+    phase-transition mass region.
+  id: con_y0_triplet_relic_phase_tension
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Y=0 triplet relic-density versus phase-transition tension
+  notes: null
+  observable_channel: relic_density+electroweak_phase_transition
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2111.03866
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Triplet-only full-DM and FOPT requirements conflict in the primary analysis.
+    constraint_ids:
+    - con_y0_triplet_relic_phase_tension
+    derived_quantities:
+    - critical/nucleation temperature
+    - Omega_T h^2
+    - GW peak frequency/amplitude
+    description: Compute the inert Y=0 triplet finite-temperature potential, relic density, and GW spectrum
+      to test phase-transition and dark-matter compatibility.
+    forward_model_chain:
+    - inputs:
+      - finite-temperature effective potential
+      notes: null
+      outputs:
+      - critical and nucleation temperatures
+      step_id: s1
+      step_type: simulation
+      tool_or_code: CosmoTransitions
+      validity: Primary implements the finite-temperature potential in CosmoTransitions.
+    - inputs:
+      - m_T0
+      - annihilation/coannihilation channels
+      notes: null
+      outputs:
+      - thermal relic abundance
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Standard triplet freeze-out estimate.
+    - inputs:
+      - alpha
+      - beta/H_*
+      - T_n
+      - v_w
+      notes: null
+      outputs:
+      - GW spectrum from envelope/sound/turbulence
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Uses standard phase-transition GW formulae.
+    id: route_y0_triplet_phase_relic_gw
+    input_parameters:
+    - m_T
+    - lambda_ht
+    - lambda_t
+    - wall velocity
+    likelihoods:
+    - Planck relic target
+    - GW detector sensitivity curves
+    observable_ids:
+    - obs_y0_triplet_phase_transition_gw
+    - obs_y0_triplet_relic_underabundance
+    required_code_resources:
+    - CosmoTransitions
+    - thermal relic solver
+    - GW spectrum calculator
+    route_status: planned
+    source_model_features:
+    - Z2-odd Y=0 SU(2)_L triplet
+    - neutral triplet dark matter
+    - electroweak first-order phase transition
+    validation_tests:
+    - recover m_T FOPT bound
+    - recover m_T0~1176 GeV relic requirement

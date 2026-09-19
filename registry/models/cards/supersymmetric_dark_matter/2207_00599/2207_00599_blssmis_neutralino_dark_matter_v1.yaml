@@ -1,0 +1,355 @@
+_source:
+  shard: arXiv_src_2207_005_wds.tar
+  paper_id: '2207_00599'
+  source_member: 2207_00599.json
+schema_version: model_only_v0
+model_id: 2207_00599_blssmis_neutralino_dark_matter_v1
+identity:
+  name: BLSSMIS neutralino dark matter
+  family: supersymmetric_dark_matter
+  aliases:
+  - B-L-SSM-IS neutralino dark matter
+  - BLSSMIS
+  short_description: A B-L extended supersymmetric Standard Model with inverse seesaw in which the neutralino
+    is the dark matter candidate; the paper develops viable neutralino regions and nonstandard neutrino
+    spectra from annihilation.
+  historical_origin_or_motivation: Combine supersymmetric WIMP dark matter with a U(1)_{B-L} inverse-seesaw
+    neutrino sector.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - supersymmetry
+  - B-L extended Standard Model
+  - inverse seesaw
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper describes the superpotential/Lagrangian ingredients and uses SARAH/SPheno/UFO model
+    files.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavy neutrinos
+  - sneutrinos
+  - extra Higgs singlets
+  - extended neutralino states
+  mediators:
+  - Z prime
+  - CP-even Higgs bosons
+  - CP-odd Higgs bosons
+  - heavy neutrinos
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Supersymmetric WIMP stability is assumed through R-parity conservation; the analysis
+    restricts to neutralino dark matter.
+  symmetries:
+  - name: U(1)_{B-L}
+    type: gauge
+    exact_or_approximate: broken
+    breaking: broken by singlet Higgs sector to give the Z prime mass
+  - name: R parity
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - higgs
+  - neutrino
+  standard_model_targets:
+  - neutrinos
+  - Higgs bosons
+  - Z boson
+  - W bosons
+  - Standard Model fermions through supersymmetric annihilation channels
+  dark_sector_couplings:
+  - B-L gauge coupling
+  - neutralino mixing with B-L bino and singlet-higgsino states
+  - inverse-seesaw neutrino Yukawa structure
+  mediator_types:
+  - Z prime
+  - Higgs bosons
+  - heavy neutrinos
+  annihilation_channels:
+  - neutralino annihilation to heavy plus light neutrino
+  - Higgs funnels
+  - chargino-mediated channels for wino/higgsino-like states
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: neutralino mass
+    symbol: M_chi10
+    description: Mass of the lightest neutralino.
+    role: core
+    status: inferred
+  - name: B-L gauge coupling
+    symbol: g_BL
+    description: Gauge coupling controlling B-L interactions and neutralino/Higgs mixing.
+    role: core
+    status: inferred
+  - name: neutralino composition
+    description: Fractions of bino, wino, higgsino, B-L bino, and B-L higgsino components.
+    role: core
+    status: inferred
+  - name: heavy neutrino mass
+    symbol: M_N
+    description: Mass of the heavy neutrino entering nonstandard neutrino-spectrum channels.
+    role: core
+    status: inferred
+  - name: relic density
+    symbol: Omega h^2
+    description: Computed relic abundance; scan targets values at or below about 0.12.
+    value: <= 0.12
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out of the lightest neutralino
+  - coannihilation/funnel annihilation depending on neutralino composition
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - annihilation cross sections
+  - neutralino composition
+  - Higgs/Z prime/heavy-neutrino spectrum
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: Micromegas is used to compute the neutralino relic density in scanned BLSSMIS parameter points.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: target relic abundance
+    symbol: Omega h^2
+    value: '0.12'
+    role: derived
+    status: assumed
+  calculation_type: thermal
+  key_dependencies:
+  - neutralino mass and composition
+  - B-L sector masses
+  - annihilation funnels
+  - heavy-neutrino final states
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - B-L symmetry breaking assumed in the model
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: thermal WIMP freeze-out distribution assumed
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: neutralino_only
+  applies_to: model
+  condition: The paper explicitly restricts the dark matter analysis to neutralino dark matter, not sneutrino
+    or heavy-neutrino dark matter.
+  status: inferred
+- id: scan_scope
+  applies_to: parameter
+  condition: Viability is based on scanned parameter points rather than exhaustive parameter-space coverage.
+  status: inferred
+assumptions:
+  global:
+  - id: r_parity
+    description: R-parity conservation makes the lightest neutralino stable.
+    scope: global
+    status: assumed
+  - id: standard_thermal_history
+    description: The relic-density calculation assumes standard thermal freeze-out.
+    scope: production
+    status: assumed
+  - id: neutralino_dm_focus
+    description: Sneutrino dark matter is excluded from this row because the paper states it only studies
+      neutralino dark matter.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: 'yes'
+  code_summary: The paper uses SARAH 4.14.3, SPheno 4.0.4, Micromegas 5.2.1, DDCalc, and a manually written
+    UFO for MadGraph; it references SARAH model files for B-L-SSM-IS.
+  primary_code_role: relic_density_calculation
+  packages_or_modules:
+  - name: SARAH
+    resource_type: package
+    availability: public
+    relationship_to_model: generates spectrum and model files
+    purpose:
+    - model_definition
+    - spectrum_generation
+  - name: SPheno
+    resource_type: package
+    availability: public
+    relationship_to_model: spectrum generator
+    purpose:
+    - spectrum_generation
+  - name: Micromegas
+    resource_type: package
+    availability: public
+    relationship_to_model: computes relic density and dark matter cross sections
+    purpose:
+    - relic_density_calculation
+  expected_inputs:
+  - BLSSMIS parameters
+  - neutralino-sector parameters
+  - B-L sector masses
+  expected_outputs:
+  - relic density
+  - annihilation channels
+  - cross sections
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: No independent code validation was extracted.
+provenance:
+  model_id: 2207_00599_blssmis_neutralino_dark_matter_v1
+  model_name: BLSSMIS neutralino dark matter with nonstandard neutrino spectra
+  model_family: supersymmetric_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2207_00599'
+      title: BLSSMIS neutralino dark matter with nonstandard neutrino spectra
+      year: 2022
+      arxiv_id: '2207.00599'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned SQLite full text only.
+  extraction:
+    method: llm_assisted
+    extracted_by: batch-0006
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2207_00599'
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper showcases the BLSSMIS as a supersymmetric model with dark matter annihilation
+        producing nonstandard neutrino spectra.
+    - reference_id: '2207_00599'
+      section: particle content
+      page: null
+      quote_or_summary: The BLSSMIS adds a Z prime, heavy neutrinos, sneutrinos, singlet Higgs states,
+        and extends neutralinos from four to seven.
+    - reference_id: '2207_00599'
+      section: scanning/relic density
+      page: null
+      quote_or_summary: The analysis focuses on neutralino dark matter and uses Micromegas to compute
+        relic density.
+    unresolved_items:
+    - The paper showcases and develops an existing BLSSMIS framework rather than claiming first invention
+      of the model.
+  evidence:
+    particle_content:
+    - reference_id: '2207_00599'
+      note: The paper identifies neutralino, sneutrino, and heavy neutrino as ab initio candidates, then
+        restricts to neutralino dark matter.
+      confidence: high
+      section: scanning
+    symmetries:
+    - reference_id: '2207_00599'
+      note: The model is based on a U(1)_{B-L} gauge group and supersymmetric R-parity WIMP stability.
+      confidence: medium
+      section: introduction
+    interactions:
+    - reference_id: '2207_00599'
+      note: Neutralino annihilation can involve B-L/Higgs mixing, Higgs funnels, and heavy-neutrino final
+        states.
+      confidence: medium
+      section: results
+    production_mechanism:
+    - reference_id: '2207_00599'
+      note: Relic density is computed for neutralino LSP points with Micromegas, targeting Omega h^2 at
+        or below 0.12.
+      confidence: high
+      section: scanning
+    parameter_ranges:
+    - reference_id: '2207_00599'
+      note: The paper scans BLSSMIS parameter ranges and neutralino compositions but the row does not
+        copy table-level ranges.
+      confidence: medium
+      section: scanning
+    validity_domain:
+    - reference_id: '2207_00599'
+      note: The authors state the scan is designed to find novel phenomenology rather than map all high-likelihood
+        regions.
+      confidence: high
+      section: scanning
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - scan coverage
+  - dependence on generated model files and spectrum calculation
+  - neutralino composition dependence
+  validation_status: partially_validated
+  notes: Accepted as a substantive dark matter model development focused on neutralino BLSSMIS phenomenology.
+agent_failure_modes:
+  warnings:
+  - id: existing_model_borderline
+    severity: medium
+    category: other
+    warning: The BLSSMIS existed before this paper; this row represents the paper-specific neutralino
+      dark matter development, not first model invention.
+  - id: scan_not_global
+    severity: medium
+    category: extrapolation
+    warning: The scanned points should not be interpreted as complete coverage of BLSSMIS parameter space.
+computational_representation:
+  analytic_formula_available: partial
+  boltzmann_solver_required: unknown
+  simulations_required: []
+  semi_analytic_model_available: partial
+  emulator_available: 'no'
+  public_codes:
+  - SARAH
+  - SPheno
+  - Micromegas
+  - DDCalc
+  - MadGraph/UFO
+  recasting_pipeline_available: partial
+  custom_requirements:
+  - SARAH B-L-SSM-IS model files and modified charge assignment for one version

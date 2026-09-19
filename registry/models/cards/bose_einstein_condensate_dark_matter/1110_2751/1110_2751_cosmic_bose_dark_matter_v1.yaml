@@ -1,0 +1,336 @@
+_source:
+  shard: data/astro-ph-00021.tar
+  paper_id: '1110_2751'
+  source_member: 1110_2751.json
+schema_version: model_only_v0
+model_id: 1110_2751_cosmic_bose_dark_matter_v1
+identity:
+  name: Cosmic Bose dark matter
+  family: bose_einstein_condensate_dark_matter
+  aliases:
+  - B-CDM/B-HDM
+  - bosonic cold and hot dark matter
+  short_description: Bosonic dark matter has a Bose-Einstein condensed cold component and a non-condensed
+    hot component, with temperature and mass constrained cosmologically.
+  historical_origin_or_motivation: The paper proposes that cold and hot dark matter could share a common
+    origin in a bosonic condensate with two components.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - Bose-Einstein condensate dark matter
+  - bosonic hot dark matter
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper parameterizes bosonic mass, temperature, and thermal history rather than specifying
+    a microscopic interaction model.
+particle_content:
+  dark_matter_candidate:
+    name: light bosons with condensed and non-condensed components
+    spin: 0 or unspecified boson
+    statistics: boson
+    elementary_or_composite: unknown
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - non-condensed bosonic hot component
+  - possible boson-antiboson gas variant
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - cosmic bosons
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Not specified; the bosonic species is treated as a stable cosmological dark matter
+    component.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets: []
+  dark_sector_couplings:
+  - possible boson self-interactions bounded by the diluteness approximation
+  mediator_types: []
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - boson self-scattering parameterized by a cross-section bound
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: boson mass
+    symbol: m
+    description: Mass of the bosonic dark matter particle.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: boson temperature today
+    symbol: T_b0
+    description: Present temperature of the bosonic hot component.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: thermal-history parameter
+    symbol: g_x
+    description: Free parameter encoding deviations of the boson temperature from the usual hot-dark-matter
+      temperature.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: critical condensation temperature
+    symbol: T_c
+    description: Condensation temperature required to exceed the bosonic hot-component temperature.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: self-scattering cross section
+    symbol: sigma_scatt
+    description: Self-interaction bound from the diluteness approximation.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+production:
+  mechanisms:
+  - Bose-Einstein condensation of a bosonic gas
+  - thermal decoupling setting the boson temperature
+  - non-condensed hot bosonic component
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - boson mass
+  - boson temperature
+  - critical condensation temperature
+  - thermal-history parameter g_x
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper tests whether bosonic cold and hot dark matter can share a condensate origin; it keeps
+    microscopic couplings phenomenological.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - m
+  - T_b0
+  - g_x
+  - critical condensation temperature
+  - boson-versus-boson-antiboson scenario
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - bosonic decoupling history parameterized by g_x
+  - Bose-Einstein condensation into a cold component
+  dark_sector_temperature:
+    name: boson temperature today
+    symbol: T_b0
+    description: Present-day boson temperature constrained in the paper.
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - primary
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - Bose-Einstein condensation
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: high
+phase_space:
+  distribution_type: mixed_cold_warm
+  distribution_function_available: approximate
+  f_of_p_or_q: Bose gas distribution treated phenomenologically
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The non-condensed component behaves as hot dark matter while the condensate supplies a cold component.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: mixed_cold_warm
+    small_scale_power_effect: mixed
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: condensation_temperature
+  applies_to: model
+  condition: The critical temperature of condensation must be larger than the bosonic hot-component temperature.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+  notes: null
+- id: diluteness_approximation
+  applies_to: interactions
+  condition: Self-interaction estimates rely on the diluteness approximation for condensed bosons.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+  notes: null
+assumptions:
+  global:
+  - id: common_bose_origin
+    description: Cold and hot dark matter arise from the same bosonic species and condensate framework.
+    scope: global
+    status: assumed
+    impact_if_violated: The linked CDM/HDM parameter interpretation would not apply.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - primary
+    notes: null
+  - id: phenomenological_gx
+    description: The thermal-history parameter g_x is treated as free rather than derived from a microscopic
+      coupling model.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: A UV model could impose a different relation between temperature and interactions.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - primary
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific associated code is identified in the assigned text.
+  primary_code_role: null
+provenance:
+  model_id: 1110_2751_cosmic_bose_dark_matter_v1
+  model_name: Cosmic Bose dark matter
+  model_family: bose_einstein_condensate_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Cosmic Bose dark matter
+      authors:
+      - Ivan Rodriguez-Montoya
+      - Abdel Perez-Lorenzana
+      - Eduard De La Cruz-Burelo
+      - Yannick Giraud-Heraud
+      - Tonatiuh Matos
+      year: 2011
+      arxiv_id: '1110.2751'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: gpt-5.5_dark_matter_batch_worker_batch-0184
+    extractor_name: Codex
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: opening abstract
+      page: null
+      quote_or_summary: The paper points out that CDM and HDM could share a common Bose-Einstein-condensate
+        origin.
+    - reference_id: primary
+      section: temperature parameterization
+      page: null
+      quote_or_summary: The text introduces g_x to parameterize boson temperature relative to the usual
+        HDM temperature.
+    unresolved_items:
+    - The assigned text does not specify a microscopic Lagrangian or stabilizing symmetry.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model is a gas of bosons or boson-antiboson pairs with condensed and hot components.
+      confidence: high
+      section: opening abstract
+    interactions:
+    - reference_id: primary
+      note: The text discusses a self-scattering bound from the diluteness approximation.
+      confidence: medium
+      section: model parameterization
+    production_mechanism:
+    - reference_id: primary
+      note: The cold component is a Bose-Einstein condensate and the hot component temperature is set
+        by decoupling history.
+      confidence: high
+      section: opening abstract
+    cosmological_history:
+    - reference_id: primary
+      note: Boson temperature is parameterized by g_x, reflecting relativistic degrees of freedom at decoupling.
+      confidence: high
+      section: temperature parameterization
+    parameter_ranges:
+    - reference_id: primary
+      note: The generic bosonic DM parameters are the mass m and factor g_x; posterior constraints are
+        reported later in the paper.
+      confidence: high
+      section: statistical analysis setup
+    validity_domain:
+    - reference_id: primary
+      note: The condensation critical temperature must exceed the HDM temperature.
+      confidence: high
+      section: opening abstract
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Accepted as a phenomenological bosonic dark-matter model with two discussed gas scenarios.
+robustness:
+  overall: low
+  theory_robustness: low
+  observational_robustness: medium
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  notes: The phenomenology is explicit, but microscopic particle interactions are left unspecified.
+agent_failure_modes:
+  warnings:
+  - id: phenomenological_temperature
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not infer specific boson interaction couplings from g_x; the paper treats g_x as free.
+    source_reference_ids:
+    - primary
+  - id: two_scenarios_combined
+    severity: low
+    category: other
+    warning: The card combines the boson-gas and boson-antiboson-gas scenarios; distinguish them before
+      precision use.
+    source_reference_ids:
+    - primary

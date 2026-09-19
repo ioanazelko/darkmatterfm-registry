@@ -1,0 +1,809 @@
+_source:
+  shard: arXiv_src_1709_018_wds.tar
+  paper_id: '1709_07001'
+  source_member: 1709_07001.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1709_07001_dirac_neutrino_portal_thermal_dm_v1
+identity:
+  name: Thermal dark matter through the Dirac neutrino portal
+  family: neutrino_portal_thermal_dark_matter
+  aliases:
+  - Dirac neutrino portal DM
+  - thermal neutrino-portal dark matter
+  short_description: A singlet Dirac fermion thermal relic annihilating directly to light SM neutrinos
+    through a Dirac or pseudo-Dirac sterile-neutrino mediator.
+  historical_origin_or_motivation: Analyzed as a predictive direct-annihilation neutrino-portal alternative
+    to vector and Higgs portal thermal relics.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - neutrino portal
+  - Dirac sterile neutrino mediator
+  - thermal relic dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The Lagrangian contains the dark fermion, complex scalar, Dirac sterile neutrino, neutrino Yukawa
+    couplings, and dark-sector Yukawa couplings y_L,y_R.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - complex scalar phi
+  mediators:
+  - Dirac or pseudo-Dirac sterile neutrino N / heavy state nu_4
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Global U(1)_D dark matter number stabilizes the lighter dark-sector particle;
+    the paper takes the fermion lighter for definiteness.
+  symmetries:
+  - name: U(1)_D dark matter number
+    type: global
+    exact_or_approximate: exact
+  - name: U(1)_L lepton number
+    type: global
+    exact_or_approximate: approximate
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - light SM flavor neutrinos
+  - Higgs doublet through L H N
+  dark_sector_couplings:
+  - y_L N_L chi_R phi
+  - y_R N_R chi_L phi
+  mediator_types:
+  - fermionic sterile-neutrino mediator
+  annihilation_channels:
+  - chi anti-chi -> light neutrinos
+  decay_channels:
+  - heavy sterile neutrino decays invisibly into dark-sector states
+  - dark scalar decays to chi plus light antineutrino
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    range: about 1 MeV to 1 TeV studied; BBN/CMB lower limit around 10 MeV noted
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dark scalar mass
+    symbol: m_phi
+    range: m_chi < m_phi in the fermionic-DM branch
+    unit: GeV
+    role: core
+    status: inferred
+  - name: sterile-neutrino mass
+    symbol: m_4
+    range: benchmark ratios m_chi:m_phi:m_4 = 1:3:10 or m_4 = 400 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: left dark Yukawa coupling
+    symbol: y_L
+    range: benchmark up to perturbative value about 4
+    role: core
+    status: inferred
+  - name: active-sterile mixing
+    symbol: U_alpha4
+    range: flavor-dependent free parameter in the phenomenology
+    role: core
+    status: inferred
+  - name: annihilation parameter
+    symbol: Y
+    description: Dimensionless combination y_L^4 |U_alpha4|^4 m_chi^4/m_phi^4 governing the thermal target.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out by direct annihilation to light neutrinos
+  - asymmetric abundance possible above the thermal target
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - thermally averaged annihilation cross section
+  - y_L
+  - active-sterile mixing
+  - m_chi/m_phi
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The canonical thermal target is v about 3e-26 cm^3/s, or about 1 pb.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_phi
+  - y_L
+  - U_alpha4
+  - Y
+  requires_entropy_dilution: 'no'
+  overclosure_risk: 'yes'
+  underproduction_risk: parameter_dependent
+  tuning_assessment: parameter_dependent
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - optional initial dark matter asymmetry
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: The relic is treated as thermal cold or light thermal dark matter depending on mass.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: small-scale cutoff mass from DM-neutrino interactions is estimated
+    subhalo_mass_function_effect: missing-satellite-scale effects discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: v_fermion_branch
+  applies_to: model
+  condition: Detailed study assumes m_chi < m_phi so the fermion is the dark matter candidate.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: v_direct_annihilation
+  applies_to: production
+  condition: Thermal target is for direct annihilation to SM neutrinos rather than secluded annihilation
+    to mediators.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: a_y_r_small
+    description: The analysis usually neglects y_R because it does not lead to the tree-level DM-SM interaction
+      for most masses.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: a_single_flavor
+    description: Many projections assume one active-sterile mixing angle dominates at a time.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is identified in the assigned paper text.
+  primary_code_role: null
+robustness:
+  overall: high
+  theory_robustness: high
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine extraction from assigned paper text; observables and constraints omitted by run profile.
+agent_failure_modes:
+  warnings:
+  - id: w_scalar_branch
+    severity: medium
+    category: assumption_mismatch
+    warning: If m_phi < m_chi, the scalar rather than the fermion would be stable; this row records the
+      paper's definite fermion-DM branch.
+    source_reference_ids:
+    - paper
+provenance:
+  model_id: 1709_07001_dirac_neutrino_portal_thermal_dm_v1
+  model_name: Thermal dark matter through the Dirac neutrino portal
+  model_family: neutrino_portal_thermal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Thermal Dark Matter Through the Dirac Neutrino Portal
+      authors:
+      - Brian Batell
+      - Tao Han
+      - David McKeen
+      - Barmak Shams Es Haghi
+      year: 2017
+      arxiv_id: '1709.07001'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned SQLite full text only; no external lookup used.
+    - arxiv_id: '1709.07001'
+      authors:
+      - Batell, Brian
+      - Han, Tao
+      - McKeen, David
+      - Haghi, Barmak Shams Es
+      doi: 10.1103/PhysRevD.97.075016
+      notes: Primary model-card paper.
+      reference_id: arxiv:1709.07001
+      role: original_model
+      title: Thermal dark matter through the Dirac neutrino portal
+      url: https://arxiv.org/abs/1709.07001
+      year: 2018
+    constraint_papers:
+    - arxiv_id: '2103.05648'
+      authors:
+      - Biswas, Anirban
+      - Borah, Debasish
+      - Nanda, Dibyendu
+      doi: 10.1088/1475-7516/2021/10/002
+      notes: Bounded related-paper read used for constraint or observable context.
+      reference_id: arxiv:2103.05648
+      role: constraint
+      title: Light Dirac neutrino portal dark matter with observable ∆N<SUB>eff</SUB>
+      url: https://arxiv.org/abs/2103.05648
+      year: 2021
+    - arxiv_id: '1909.11198'
+      authors:
+      - Bryman, D. A.
+      - Shrock, R.
+      doi: 10.1103/PhysRevD.100.073011
+      notes: Bounded related-paper read used for constraint or observable context.
+      reference_id: arxiv:1909.11198
+      role: constraint
+      title: Constraints on sterile neutrinos in the MeV to GeV mass range
+      url: https://arxiv.org/abs/1909.11198
+      year: 2019
+    - arxiv_id: '1806.08579'
+      authors:
+      - Becker, Mathias
+      doi: 10.1140/epjc/s10052-019-7095-7
+      notes: Bounded related-paper read used for constraint or observable context.
+      reference_id: arxiv:1806.08579
+      role: constraint
+      title: Dark matter from freeze-in via the neutrino portal
+      url: https://arxiv.org/abs/1806.08579
+      year: 2019
+    external_databases:
+    - name: NASA ADS
+      note: Used for sanitized metadata discovery, references, and citations.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0005
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract
+      page: null
+      quote_or_summary: Studies a simple model of thermal dark matter annihilating to SM neutrinos via
+        a Dirac sterile-neutrino mediator.
+    - reference_id: paper
+      section: Cosmology
+      page: null
+      quote_or_summary: Computes the annihilation cross section and defines the thermal relic target.
+    unresolved_items:
+    - A full global likelihood was not identified; constraints are routed as conservative overlays.
+    - Flavor structure and invisible branching assumptions must be specified for final rare-decay recasts.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The dark sector contains a Dirac fermion dark matter candidate, a complex scalar, and a Dirac
+        sterile-neutrino mediator N.
+      confidence: high
+      section: Model
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: Global U(1)_D stabilizes the dark matter; approximate U(1)_L permits large neutrino Yukawa
+        couplings without large light-neutrino masses.
+      confidence: high
+      section: Model
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The model couples dark matter to light SM neutrinos through active-sterile mixing of a Dirac
+        sterile neutrino.
+      confidence: high
+      section: Model
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The relic density is set by thermal freeze-out via annihilation into light neutrinos.
+      confidence: high
+      section: Cosmology
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: The paper studies the cosmologically viable mass range from about 1 MeV to 1 TeV and uses
+        Y to compare to the thermal target.
+      confidence: high
+      section: Introduction and cosmology
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: Below the thermal target the symmetric thermal relic would overclose, while above it an initial
+        asymmetry can also give the measured abundance.
+      confidence: high
+      section: Cosmology
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper quotes the about 15 GeV XENON1T/PandaX thermal-target exclusion, about 10 MeV
+        N_eff lower mass scale, E949/NA62 reach, and M_cut constraints.
+      page: null
+      reference_id: arxiv:1709.07001
+      section: Phenomenology sections
+    - confidence: medium
+      note: Related local text supports sterile-neutrino MeV-GeV constraint context.
+      page: null
+      reference_id: arxiv:1909.11198
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary paper identifies invisible sterile-neutrino decays, direct detection, N_eff/BBN, and
+        small-scale-structure signatures.
+      page: null
+      reference_id: arxiv:1709.07001
+      section: Abstract and phenomenology sections
+    routes:
+    - confidence: high
+      note: Routing follows the primary conservative overlay from the thermal target to laboratory, direct-detection,
+        cosmology, and structure probes.
+      page: null
+      reference_id: arxiv:1709.07001
+      section: Main text
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: high
+    reviewer_notes: []
+observables:
+- caveats:
+  - Limits depend on flavor structure and invisible branching fractions.
+  channel: precision_laboratory
+  effect_direction: rate_change
+  environments:
+  - kaon experiments
+  - tau decays
+  - LEP/electroweak precision tests
+  id: invisible_sterile_neutrino_decays
+  key_quantities:
+  - description: Mixing angle controlling production and weak decays of the sterile mediator.
+    name: active-sterile mixing
+    notes: null
+    role: core
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: assumed
+    symbol: U_alpha4
+  - description: Combination of couplings and masses used by the primary paper to compare constraints
+      with the relic target.
+    name: thermal target variable
+    notes: null
+    role: derived
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: inferred
+    symbol: Y
+  - description: Mediator mass entering rare-decay and collider kinematics.
+    name: sterile-neutrino mass
+    notes: null
+    role: core
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: assumed
+    symbol: m_4
+  linked_constraints:
+  - rare_decay_collider_mixing_bounds
+  linked_routes:
+  - thermal_target_to_multichannel_constraints
+  name: Sterile-neutrino mediator with mostly invisible decays
+  notes: null
+  observability: high
+  predicted_effect: A pseudo-Dirac sterile neutrino with sizable active-sterile mixing mediates neutrino-portal
+    annihilation and decays mainly invisibly into the dark sector.
+  redshift_range: laboratory today
+  relevance: high
+  scale_range: MeV to electroweak-scale mediator masses
+  source_reference_ids:
+  - arxiv:1709.07001
+  - arxiv:1909.11198
+  subchannel: rare meson/tau decays and electroweak precision
+- caveats:
+  - A dark-sector mass splitting can weaken or evade these elastic direct-detection limits.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - XENON1T
+  - PandaX-II
+  - SuperCDMS SNOLAB
+  id: dm_nucleon_direct_detection
+  key_quantities:
+  - description: Thermal relic dark matter mass.
+    name: DM mass
+    notes: null
+    range: about 10 MeV to O(100 GeV) in the primary model summary
+    role: core
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: assumed
+    symbol: m_chi
+    unit: GeV
+  - description: Effective spin-independent DM-nucleon cross section.
+    name: nucleon cross section
+    notes: null
+    role: derived
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: inferred
+    symbol: sigma_n
+  linked_constraints:
+  - xenon_pandax_high_mass_bound
+  linked_routes:
+  - thermal_target_to_multichannel_constraints
+  name: Spin-independent nuclear recoil through neutrino-portal mixing
+  notes: null
+  observability: high
+  predicted_effect: Mixing induces a Z-mediated spin-independent DM-nucleon interaction that is tested
+    by XENON1T and PandaX-II at high dark-matter masses.
+  redshift_range: z = 0
+  relevance: critical
+  scale_range: nuclear recoils in xenon detectors
+  source_reference_ids:
+  - arxiv:1709.07001
+  subchannel: spin-independent nuclear recoil
+- caveats:
+  - Special thermal histories can relax the simple lower bound.
+  channel: cmb
+  effect_direction: model_dependent
+  environments:
+  - BBN
+  - CMB
+  id: neff_bbn_cmb_light_dm
+  key_quantities:
+  - description: Approximate lower bound from BBN/CMB N_eff agreement in the primary paper.
+    name: lower DM mass scale
+    notes: null
+    role: experimental
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: approximate
+    symbol: m_chi
+    unit: MeV
+    value: about 10 MeV
+  linked_constraints:
+  - bbn_cmb_neff_lower_mass_bound
+  linked_routes:
+  - thermal_target_to_multichannel_constraints
+  name: Light neutrino-coupled DM contribution to N_eff and BBN/CMB consistency
+  notes: null
+  observability: high
+  predicted_effect: Dark matter in thermal equilibrium with neutrinos changes the inferred relativistic
+    degrees of freedom, yielding a lower mass bound near 10 MeV.
+  redshift_range: BBN through recombination
+  relevance: high
+  scale_range: cosmological background observables
+  source_reference_ids:
+  - arxiv:1709.07001
+  - arxiv:2103.05648
+  subchannel: N_eff and light-element consistency
+- caveats:
+  - Mapping M_cut to satellite counts or Lyman-alpha likelihoods is approximate.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - Milky Way satellites
+  - Lyman-alpha forest
+  - gravitational lensing
+  id: neutrino_coupled_small_scale_cutoff
+  key_quantities:
+  - description: Approximate mass below which structures form inefficiently.
+    name: cutoff halo mass
+    notes: null
+    range: about 1e7-1e9 M_sun for phenomenologically interesting values
+    role: derived
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: inferred
+    symbol: M_cut
+    unit: M_sun
+  linked_constraints:
+  - small_scale_structure_cutoff
+  linked_routes:
+  - thermal_target_to_multichannel_constraints
+  name: Small-scale-structure cutoff from DM-neutrino interactions
+  notes: null
+  observability: medium
+  predicted_effect: Dark-matter interactions with neutrinos delay small-scale structure growth and can
+    produce a cutoff mass relevant to missing-satellite phenomenology.
+  redshift_range: radiation era through late-time structure formation
+  relevance: medium
+  scale_range: dwarf-galaxy and Lyman-alpha forest scales
+  source_reference_ids:
+  - arxiv:1709.07001
+  subchannel: suppression of low-mass halo formation
+constraints:
+- allowed_regions:
+  - Sub-GeV to GeV masses remain target regions for SuperCDMS-like projections; elastic limits can weaken
+    if the DM obtains a mass splitting.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Direct-detection limits assume elastic spin-independent scattering without a protective
+      dark-sector mass splitting.
+    id: elastic_scattering
+    impact_if_violated: Inelastic splitting can suppress nuclear recoils.
+    notes: null
+    scope: direct detection
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: assumed
+  benchmark_implications:
+  - The thermal target is already constrained over much of the high-mass region.
+  caveats:
+  - The exact mass reach depends on the chosen mediator mass ratio and flavor mixing benchmark.
+  constrained_parameters:
+  - m_chi
+  - sigma_n
+  - U_alpha4
+  - Y
+  constraint_type: direct_detection
+  data_release: XENON1T and PandaX-II spin-independent searches
+  excluded_regions:
+  - The primary paper states that XENON1T and PandaX-II rule out the thermal DM benchmark for dark-matter
+    masses heavier than about 15 GeV in the elastic scenario.
+  id: xenon_pandax_high_mass_bound
+  likelihood_available: partial
+  likelihood_reference: XENON1T/PandaX-II limit curves as used by the primary paper
+  name: XENON1T/PandaX-II high-mass direct-detection bound
+  notes: null
+  observable_channel: spin-independent nuclear recoil
+  recasting_needed: 'yes'
+  robustness: high
+  source_reference_ids:
+  - arxiv:1709.07001
+- allowed_regions:
+  - Heavier thermal relic masses satisfy the simple N_eff/BBN floor, subject to other constraints.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The lower bound assumes standard neutrino thermal contact and no exotic entropy injection
+      that hides Delta N_eff.
+    id: standard_neutrino_thermal_history
+    impact_if_violated: Modified thermal histories can change the MeV floor.
+    notes: null
+    scope: cosmology
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: assumed
+  benchmark_implications:
+  - The viable thermal target begins above the MeV-scale cosmological floor unless the thermal history
+    is modified.
+  caveats:
+  - Use a Boltzmann/BBN calculation for final precision.
+  constrained_parameters:
+  - m_chi
+  - thermal contact with neutrinos
+  - annihilation temperature
+  constraint_type: cosmological
+  data_release: CMB and primordial light-element constraints as quoted by the primary paper
+  excluded_regions:
+  - The primary paper quotes an approximate lower bound m_chi around 10 MeV when light DM remains in thermal
+    equilibrium with neutrinos.
+  id: bbn_cmb_neff_lower_mass_bound
+  likelihood_available: partial
+  likelihood_reference: BBN/CMB N_eff likelihoods, not bundled in this batch
+  name: BBN/CMB N_eff lower mass bound
+  notes: null
+  observable_channel: N_eff and primordial light elements
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1709.07001
+  - arxiv:2103.05648
+- allowed_regions:
+  - NA62-like kaon samples can probe about an order of magnitude below E949 in optimistic systematics,
+    according to the primary paper.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The sterile mediator decays dominantly invisibly into the dark sector.
+    id: invisible_branching
+    impact_if_violated: Visible decay modes would trigger different searches and efficiencies.
+    notes: null
+    scope: laboratory recast
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: assumed
+  benchmark_implications:
+  - Invisible sterile-neutrino decays turn rare-decay missing-energy searches into key tests.
+  caveats:
+  - Flavor assumptions determine which rare-decay and oscillation bounds dominate.
+  constrained_parameters:
+  - U_e4
+  - U_mu4
+  - U_tau4
+  - m_4
+  - Y
+  - y_L
+  constraint_type: laboratory
+  data_release: E949, LEP/electroweak, meson/tau, and oscillation constraints as cited by the primary
+    paper
+  excluded_regions:
+  - E949 K+ -> pi+ + invisible constrains Y near the thermal target for some masses; LEP, electroweak
+    precision, meson/tau decays, and oscillation data bound active-sterile mixing.
+  id: rare_decay_collider_mixing_bounds
+  likelihood_available: approximate
+  likelihood_reference: E949 spectrum estimate and external mixing-limit compilations as used by the primary
+    paper
+  name: Rare-decay, collider, and electroweak mixing bounds
+  notes: null
+  observable_channel: rare meson/tau decays, LEP, electroweak precision, neutrino oscillations
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1709.07001
+  - arxiv:1909.11198
+- allowed_regions:
+  - M_cut around 1e7-1e9 M_sun is phenomenologically interesting for missing-satellite-scale suppression.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: M_cut is used as a heuristic proxy for the smallest bound structures.
+    id: heuristic_cutoff_mapping
+    impact_if_violated: A full transfer-function and hydrodynamic likelihood can shift the bound.
+    notes: null
+    scope: structure formation
+    source_reference_ids:
+    - arxiv:1709.07001
+    status: approximate
+  benchmark_implications:
+  - The same neutrino coupling that sets the thermal target can leave small-scale-structure signatures.
+  caveats:
+  - Detailed satellite and Lyman-alpha recasts are beyond this batch.
+  constrained_parameters:
+  - M_cut
+  - Y
+  - m_chi
+  - m_phi
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - The primary paper quotes an approximate upper bound M_cut around 1e9 M_sun from satellites, Lyman-alpha
+    forest, and lensing considerations.
+  id: small_scale_structure_cutoff
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Small-scale-structure cutoff bound
+  notes: null
+  observable_channel: Milky Way satellites, Lyman-alpha forest, gravitational lensing
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:1709.07001
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - No joint likelihood was available; the route is a conservative overlay of heterogeneous probes.
+    constraint_ids:
+    - xenon_pandax_high_mass_bound
+    - bbn_cmb_neff_lower_mass_bound
+    - rare_decay_collider_mixing_bounds
+    - small_scale_structure_cutoff
+    derived_quantities:
+    - thermal annihilation cross section
+    - sigma_n
+    - rare-decay branching ratios
+    - Delta N_eff response
+    - M_cut
+    description: Map the neutrino-portal thermal relic target into direct-detection, rare-decay/collider,
+      N_eff/BBN, and small-scale-structure observables.
+    forward_model_chain:
+    - inputs:
+      - masses
+      - y_L
+      - U_alpha4
+      notes: null
+      outputs:
+      - relic density and Y target
+      step_id: thermal_target
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: thermal freeze-out approximation
+    - inputs:
+      - Y
+      - m_chi
+      - mixing
+      notes: null
+      outputs:
+      - sigma_n
+      step_id: direct_detection
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: elastic limit unless mass splitting is added
+    - inputs:
+      - m_4
+      - U_alpha4
+      - invisible branching
+      notes: null
+      outputs:
+      - K/tau/meson missing-energy rates
+      step_id: rare_decay_rates
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: requires experiment-specific efficiencies
+    - inputs:
+      - m_chi
+      - thermal history
+      - DM-neutrino coupling
+      notes: null
+      outputs:
+      - N_eff floor
+      - M_cut
+      step_id: cosmology_structure
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: approximate without Boltzmann hierarchy/BBN code
+    - inputs:
+      - all derived observables
+      - limit curves
+      notes: null
+      outputs:
+      - viable thermal target
+      step_id: global_overlay
+      step_type: recasting
+      tool_or_code: null
+      validity: conservative overlay in primary paper, not a joint likelihood
+    id: thermal_target_to_multichannel_constraints
+    input_parameters:
+    - m_chi
+    - m_phi
+    - m_4
+    - y_L
+    - U_alpha4
+    - Y
+    - flavor mixing pattern
+    likelihoods:
+    - XENON/PandaX limit curves
+    - Planck/BBN N_eff likelihood
+    - rare-decay missing-energy spectra
+    observable_ids:
+    - invisible_sterile_neutrino_decays
+    - dm_nucleon_direct_detection
+    - neff_bbn_cmb_light_dm
+    - neutrino_coupled_small_scale_cutoff
+    required_code_resources:
+    - thermal relic solver
+    - direct-detection recast module
+    - rare-decay branching calculator
+    - linear-perturbation/BBN tools
+    route_status: planned
+    source_model_features:
+    - Dirac dark matter
+    - complex scalar partner
+    - pseudo-Dirac sterile-neutrino mediator
+    - approximate lepton number symmetry
+    validation_tests:
+    - reproduce primary paper Y versus m_chi overlays
+    - recover the quoted about 15 GeV direct-detection thermal-target exclusion
+    - recover the about 10 MeV N_eff lower bound

@@ -1,0 +1,618 @@
+_source:
+  shard: data/astro-ph-00241.tar
+  paper_id: '2305_10315'
+  source_member: 2305_10315.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2305_10315_decaying_wimp_wdm_v1
+identity:
+  name: Instantaneously decaying WIMP warm dark matter
+  family: decay_produced_warm_dark_matter
+  aliases: []
+  short_description: A WIMP parent freezes out and later decays into a lighter massive particle that behaves
+    as nonthermal warm-to-cold dark matter plus a massless radiation product.
+  historical_origin_or_motivation: Proposed as an extension of WIMP dark matter that can differ from CDM
+    on small scales while preserving large-scale successes.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  notes: Extracted only from the assigned paper text.
+  parent_frameworks:
+  - WIMP freeze-out
+  - decay-produced WDM
+  embedded_in_larger_framework: unknown
+particle_content:
+  dark_matter_candidate:
+    name: lighter WIMP decay product L
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavy parent WIMP H
+  - massless dark radiation product
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - heavy WIMP H
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: daughter particle is stable on cosmological timescales after decay of the heavier
+    WIMP parent
+  symmetries:
+  - name: parent-to-daughter stability structure
+    type: unknown
+    exact_or_approximate: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets: []
+  dark_sector_couplings:
+  - WIMP self-annihilation before freeze-out
+  - two-body decay m_H -> m_L + radiation
+  mediator_types:
+  - unknown decay mediator
+  interaction_operators:
+  - instantaneous decay m_H -> m_L + massless radiation at scale factor a_d
+  annihilation_channels:
+  - heavy WIMP self-annihilation before freeze-out
+  decay_channels:
+  - m_H -> m_L + radiation
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: parent WIMP mass
+    symbol: m_H
+    description: Mass of the nonrelativistic WIMP before decay.
+    role: core
+    status: inferred
+  - name: daughter mass
+    symbol: m_L
+    description: Mass of the lighter dark matter decay product.
+    role: core
+    status: inferred
+  - name: decay scale factor
+    symbol: a_d
+    description: Scale factor at which the decay is approximated as instantaneous.
+    role: core
+    status: inferred
+  - name: coldness parameter
+    symbol: gamma
+    description: Mass-to-momentum ratio m_L/q_L controlling free streaming.
+    value: 2 m_H m_L a_d/(m_H^2-m_L^2)
+    role: core
+    status: inferred
+  - name: self-annihilation cross-section
+    symbol: <sigma v>
+    description: Sets the frozen-out parent abundance before decay.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out of heavy WIMP parent
+  - post-freeze-out two-body decay into lighter dark matter plus radiation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - parent WIMP relic abundance
+  - mass ratio m_L/m_H
+  - decay scale factor a_d
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The daughter abundance equals the parent WIMP relic number density but its energy density is
+    reduced by m_L/m_H once nonrelativistic.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - parent freeze-out abundance
+  - m_L/m_H
+  - a_d
+  - coldness parameter gamma
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - post-freeze-out WIMP decay into dark matter and dark radiation
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: high
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: 'yes'
+  f_of_p_or_q: delta-function in q at a_d (m_H^2-m_L^2)/(2 m_H), normalized by relic abundance N
+  notes: The daughter WDM is explicitly nonthermal.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: suppressed small-scale collapsed fraction in warm cases
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: instantaneous_decay
+  applies_to: model
+  condition: Decay is approximated as instantaneous at a=a_d and treated separately from freeze-out.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: nonrelativistic_parent
+  applies_to: production
+  condition: Parent WIMPs are assumed highly nonrelativistic at decay.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: freezeout_then_decay
+    description: Freeze-out and decay are separated by requiring decay after freeze-out.
+    scope: production
+    status: assumed
+  - id: delta_function_parent_velocity
+    description: The parent WIMP velocity is neglected so daughter momenta form a delta-function distribution.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper describes incorporating the model into CLASS, but no public model-specific repository
+    is identified in the extracted text.
+  primary_code_role: boltzmann_solver_patch
+provenance:
+  model_id: 2305_10315_decaying_wimp_wdm_v1
+  model_name: Instantaneously decaying WIMP warm dark matter
+  model_family: decay_produced_warm_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: unknown
+      year: 2023
+      arxiv_id: '2305.10315'
+      doi: null
+      url: null
+      role: original_model
+    - arxiv_id: '2305.10315'
+      authors:
+      - Parichha, Abineet
+      - Sethi, Shiv
+      doi: 10.1088/1475-7516/2023/11/061
+      notes: Primary assigned paper; local full text resolved from completed_dark_matter_target.
+      reference_id: primary
+      role: original_model
+      title: WIMP decay as a possible Warm Dark Matter model
+      url: https://arxiv.org/abs/2305.10315
+      year: 2023
+    constraint_papers:
+    - arxiv_id: '1306.2314'
+      authors:
+      - Viel, Matteo
+      - Becker, George D.
+      - Bolton, James S.
+      - Haehnelt, Martin G.
+      doi: 10.1103/PhysRevD.88.043502
+      notes: ADS reference candidate rank 1; local related text was read.
+      reference_id: rel1
+      role: constraint
+      title: 'Warm dark matter as a solution to the small scale crisis: New constraints from high redshift
+        Lyman-α forest data'
+      url: https://arxiv.org/abs/1306.2314
+      year: 2013
+    - arxiv_id: '1512.03325'
+      authors:
+      - Sarkar, Abir
+      - Mondal, Rajesh
+      - Das, Subinoy
+      - Sethi, Shiv. K.
+      - Bharadwaj, Somnath
+      - Marsh, David J. E.
+      doi: 10.1088/1475-7516/2016/04/012
+      notes: ADS reference candidate rank 2; local related text was read.
+      reference_id: rel2
+      role: extension
+      title: The effects of the small-scale DM power on the cosmological neutral hydrogen (HI) distribution
+        at high redshifts
+      url: https://arxiv.org/abs/1512.03325
+      year: 2016
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1510.07633'
+      authors:
+      - Marsh, David J. E.
+      doi: 10.1016/j.physrep.2016.06.005
+      notes: ADS reference candidate rank 4; local related text was read.
+      reference_id: rel3
+      role: review
+      title: Axion cosmology
+      url: https://arxiv.org/abs/1510.07633
+      year: 2016
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0013
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-28'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: model/new parameters/conclusion
+      page: null
+      quote_or_summary: Heavy WIMP freezes out, then decays to nonthermal WDM plus massless radiation.
+    unresolved_items:
+    - No reusable CLASS/MontePython patch was located in the local text.
+    - Exact numerical exclusion contours would require reproducing the paper figures and likelihood configuration.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model contains a heavy WIMP parent m_H, a lighter massive daughter m_L, and massless radiation.
+      confidence: high
+      section: model section
+    production_mechanism:
+    - reference_id: primary
+      note: The WIMP freezes out first, then decays instantaneously after freeze-out into the daughter
+        WDM and radiation.
+      confidence: high
+      section: model section
+    cosmological_history:
+    - reference_id: primary
+      note: The paper evolves the process from WIMP freeze-out to decay products and implements the perturbations
+        in CLASS.
+      confidence: medium
+      section: introduction/model section
+    parameter_ranges:
+    - reference_id: primary
+      note: New parameters are a_d and m_L in addition to the parent mass and self-annihilation cross-section.
+      confidence: high
+      section: new parameters section
+    validity_domain:
+    - reference_id: primary
+      note: The instantaneous-decay approximation is noted as analytically tractable, with finite-lifetime
+        decay left as an extension.
+      confidence: medium
+      section: conclusion
+    constraints:
+    - confidence: high
+      note: Primary paper states the Planck/BBN extra-radiation bound and applies Planck/BOSS/DLA data.
+      page: null
+      reference_id: primary
+      section: null
+    - confidence: medium
+      note: Lyman-alpha forest related paper supplies an external WDM power-suppression benchmark.
+      page: null
+      reference_id: rel1
+      section: null
+    - confidence: medium
+      note: HI related paper supports the use of collapsed fraction as a small-scale-power diagnostic.
+      page: null
+      reference_id: rel2
+      section: null
+    observables:
+    - confidence: high
+      note: Primary paper defines the decay daughter as nonthermal WDM, introduces gamma, and compares
+        CMB/BAO plus DLA/HI collapsed fractions.
+      page: null
+      reference_id: primary
+      section: null
+    - confidence: medium
+      note: Related Lyman-alpha work constrains WDM-like linear power suppression.
+      page: null
+      reference_id: rel1
+      section: null
+    - confidence: medium
+      note: Related HI paper connects high-redshift collapsed fractions to small-scale DM power.
+      page: null
+      reference_id: rel2
+      section: null
+    routes:
+    - confidence: high
+      note: Primary paper describes the analytic decay distribution, CLASS modifications, and MontePython
+        data comparison.
+      page: null
+      reference_id: primary
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine-extracted candidate row; not human reviewed.
+agent_failure_modes:
+  warnings:
+  - id: instantaneous_decay_approximation
+    severity: medium
+    category: approximate_constraint
+    warning: The decay is approximated as instantaneous and not solved simultaneously with annihilation
+      in the Boltzmann system.
+    mitigation: Use the row as the paper-defined limiting scenario.
+  - id: unknown_microphysics
+    severity: medium
+    category: assumption_mismatch
+    warning: The decay mediator and microscopic interaction are not specified in the extracted text.
+    mitigation: Do not infer direct-detection or collider properties.
+observables:
+- caveats:
+  - Exact exclusions depend on the paper-specific CLASS/MontePython implementation and collapsed-fraction
+    modeling.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - linear cosmological perturbations
+  - high-redshift neutral hydrogen host halos
+  id: wdm_small_scale_power_suppression
+  key_quantities:
+  - description: Mass-to-comoving-momentum ratio m_L/q_L controlling the free-streaming scale.
+    name: coldness parameter
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: gamma
+    value: 2 m_H m_L a_d/(m_H^2-m_L^2)
+  - description: Inverse free-streaming length used to characterize the cutoff.
+    name: free-streaming wavenumber
+    role: derived
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: k_fs
+  linked_constraints:
+  - lyman_hi_wdm_power_constraints
+  linked_routes:
+  - decay_wimp_to_structure_route
+  name: Small-scale matter-power and collapsed-fraction suppression
+  notes: Primary paper explicitly compares Planck 2018 CMB, BOSS BAO, and SDSS DLA/HI collapsed fractions.
+  observability: high
+  predicted_effect: The daughter warm dark matter is born with a nonthermal momentum set by the two-body
+    WIMP decay. Its free streaming suppresses power below a scale controlled by the coldness parameter
+    gamma, reducing high-redshift collapsed fractions relative to CDM.
+  redshift_range: CMB/BAO at low redshift plus DLA/HI collapsed-fraction comparison over z approximately
+    2-5.
+  relevance: critical
+  scale_range: CMB/BAO tests k < 0.2 Mpc^-1; DLA collapsed fractions probe smaller halo scales with threshold
+    masses 1e10 and 5e10 solar masses.
+  source_reference_ids:
+  - primary
+  - rel1
+  - rel2
+  subchannel: linear matter power, halo collapsed fraction, DLA/HI abundance
+- caveats:
+  - Mapping to Delta N_eff is parameter dependent because WDM may become nonrelativistic.
+  channel: cmb
+  effect_direction: enhancement
+  environments:
+  - early universe
+  - CMB
+  id: dark_radiation_injection
+  key_quantities:
+  - description: Fraction of photon-plus-neutrino radiation contributed by the massless decay product.
+    name: dark-radiation energy fraction
+    role: derived
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: f_dr
+  - description: CMB/BBN observable constraining extra radiation.
+    name: effective relativistic degrees of freedom
+    role: cosmological
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: N_eff
+  linked_constraints:
+  - planck_bbn_dark_radiation
+  linked_routes:
+  - decay_wimp_to_structure_route
+  name: Additional dark radiation from WIMP decay
+  notes: The primary paper quotes Planck/BBN N_eff as the relevant bound on extra radiation.
+  observability: high
+  predicted_effect: The massless decay product contributes extra radiation energy, while the daughter
+    WDM also behaves radiatively before becoming nonrelativistic.
+  redshift_range: radiation era through recombination
+  relevance: high
+  scale_range: CMB background and perturbation observables
+  source_reference_ids:
+  - primary
+  subchannel: effective relativistic energy density
+constraints:
+- allowed_regions:
+  - Cold/late-acting choices with small dark-radiation fraction and acceptable CMB perturbations remain
+    viable.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Decay is approximated as instantaneous after WIMP freeze-out.
+    id: instantaneous_decay
+    impact_if_violated: A broad lifetime distribution would alter the radiation-injection history and
+      perturbations.
+    notes: null
+    scope: production and perturbation initial conditions
+    source_reference_ids:
+    - primary
+    status: assumed
+  benchmark_implications:
+  - The model must keep the massless decay product and any relativistic WDM contribution small enough
+    to satisfy N_eff constraints.
+  caveats:
+  - The paper-specific parameter gamma controls both dark-radiation and WDM perturbation effects.
+  constrained_parameters:
+  - f_dr
+  - gamma
+  - a_d
+  - m_L/m_H
+  constraint_type: cosmological
+  data_release: Planck 2018 plus BBN context
+  excluded_regions:
+  - Parameter choices injecting more than roughly 3 percent of the photon-plus-neutrino radiation density
+    are identified as disfavored by the primary paper.
+  id: planck_bbn_dark_radiation
+  likelihood_available: partial
+  likelihood_reference: Planck 2018 CMB likelihood as used through MontePython in the primary paper
+  name: Planck/BBN limit on extra radiation from the decay products
+  notes: Primary text quotes N_eff = 2.99 +/- 0.17 and interprets this as limiting additional radiation
+    injection to below about 3 percent.
+  observable_channel: cmb
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - primary
+- allowed_regions:
+  - Sufficiently cold daughter distributions that preserve DLA/HI collapsed fractions for the adopted
+    halo thresholds.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: DLA hosts are represented by threshold halo masses used in the paper.
+    id: halo_threshold_mapping
+    impact_if_violated: Changing the DLA host-mass mapping changes the collapsed-fraction limit.
+    notes: null
+    scope: astrophysical interpretation
+    source_reference_ids:
+    - primary
+    - rel2
+    status: assumed
+  benchmark_implications:
+  - DLA/HI data are most useful for the warmest decay products, complementing CMB/BAO large-scale tests.
+  caveats:
+  - The primary paper treats HI data as lower limits and does not provide a reusable public likelihood.
+  constrained_parameters:
+  - gamma
+  - k_fs
+  - matter power cutoff
+  - collapsed fraction
+  constraint_type: astrophysical
+  data_release: SDSS DLA/HI and high-redshift Lyman-alpha forest analyses
+  excluded_regions:
+  - Warm choices with too much small-scale power suppression can underproduce the observed lower limits
+    on neutral-hydrogen collapsed fraction.
+  - Thermal WDM-like cutoffs that deviate by more than about 10 percent from CDM near k = 10 h/Mpc are
+    disfavored by the related Lyman-alpha study.
+  id: lyman_hi_wdm_power_constraints
+  likelihood_available: partial
+  likelihood_reference: SDSS DLA/HI collapsed-fraction comparison in the primary paper; high-redshift
+    Lyman-alpha forest constraints in related literature
+  name: High-redshift Lyman-alpha/HI constraints on suppressed small-scale power
+  notes: Related Lyman-alpha and HI papers provide context for why small-scale suppression is tightly
+    constrained.
+  observable_channel: lyman_alpha
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - primary
+  - rel1
+  - rel2
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route is described in the paper, but no public model-specific code artifact was identified
+      in the local text.
+    caveats:
+    - Recasting DLA/HI constraints requires astrophysical host-mass assumptions.
+    constraint_ids:
+    - planck_bbn_dark_radiation
+    - lyman_hi_wdm_power_constraints
+    derived_quantities:
+    - daughter phase-space distribution
+    - dark-radiation fraction
+    - free-streaming length
+    - linear matter power spectrum
+    - halo collapsed fraction
+    description: Map WIMP freeze-out plus two-body decay parameters to nonthermal WDM/radiation perturbations
+      and compare with CMB, BAO, and small-scale collapsed-fraction data.
+    forward_model_chain:
+    - inputs:
+      - m_H
+      - m_L
+      - a_d
+      - parent abundance
+      notes: Use the primary paper kinematics for the delta-function daughter distribution.
+      outputs:
+      - f_0(q)
+      - gamma
+      - f_dr
+      step_id: distribution
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Parent nonrelativistic at decay; decay after freeze-out.
+    - inputs:
+      - f_0(q)
+      - f_dr
+      - cosmological parameters
+      notes: Primary paper describes integrating the momentum hierarchy efficiently.
+      outputs:
+      - CMB spectra
+      - matter power spectrum
+      step_id: boltzmann
+      step_type: boltzmann_solver
+      tool_or_code: modified CLASS
+      validity: Paper-specific CLASS modifications; no public patch identified.
+    - inputs:
+      - CMB spectra
+      - matter power spectrum
+      notes: Compare Planck/BOSS likelihoods and SDSS DLA/HI collapsed fractions.
+      outputs:
+      - posterior constraints
+      - DLA/HI consistency
+      step_id: likelihood
+      step_type: likelihood
+      tool_or_code: MontePython plus collapsed-fraction comparison
+      validity: Likelihood reuse would require reconstructing the exact implementation.
+    id: decay_wimp_to_structure_route
+    input_parameters:
+    - m_H
+    - m_L
+    - a_d
+    - <sigma v>
+    - gamma
+    likelihoods:
+    - Planck 2018 CMB
+    - BOSS BAO
+    - SDSS DLA/HI collapsed-fraction lower limits
+    observable_ids:
+    - wdm_small_scale_power_suppression
+    - dark_radiation_injection
+    required_code_resources:
+    - modified CLASS
+    - MontePython
+    - halo mass function/collapsed fraction calculator
+    route_status: partially_implemented
+    source_model_features:
+    - thermal WIMP parent freezes out
+    - instantaneous decay H -> L + radiation
+    - delta-function daughter momentum distribution
+    - additional massless radiation
+    validation_tests:
+    - Recover CDM limit as gamma -> infinity or tiny warm fraction.
+    - Check energy conservation across decay into WDM plus radiation.
+    - Compare matter-power cutoffs against thermal WDM reference transfer functions.

@@ -1,0 +1,368 @@
+_source:
+  shard: data/astro-ph-00037.tar
+  paper_id: '1401_1270'
+  source_member: 1401_1270.json
+schema_version: model_only_v0
+model_id: 1401_1270_viscous_unified_dark_fluid_cass_v1
+identity:
+  name: Viscous unified dark fluid with constant adiabatic sound speed
+  family: unified_dark_fluid
+  aliases:
+  - VUDF
+  - viscous unified dark fluid
+  - constant-adiabatic-sound-speed dark fluid
+  short_description: A phenomenological unified dark fluid whose pressure includes a bulk-viscosity term
+    and a constant adiabatic sound speed, intended to behave like cold dark matter at early times and
+    dark energy at late times.
+  historical_origin_or_motivation: The paper modifies a unified dark-fluid pressure relation to include
+    viscosity and tests nonlinear spherical top-hat collapse against CDM-like behavior.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - unified dark fluid cosmology
+  - bulk-viscous imperfect fluid
+  - spherical top-hat collapse
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: The model is specified by an effective pressure, density evolution, equation of state, and sound
+    speed rather than by a particle Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: viscous unified dark fluid
+    spin: not_applicable
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  - effective pressure and bulk viscosity
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: not_applicable; this is a phenomenological cosmic fluid rather than a particle
+    stabilized by a symmetry
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - unknown
+  standard_model_targets:
+  - baryons through gravitational collapse equations
+  dark_sector_couplings:
+  - bulk viscosity contribution to effective pressure
+  mediator_types:
+  - gravity
+  - hydrodynamical effective pressure
+  interaction_operators:
+  - p_d = alpha rho_d - zeta_0 rho_d - A
+  - rho_d(a) background density relation
+  - spherical top-hat collapse equations
+  scattering:
+    elastic: not_applicable
+    inelastic: not_applicable
+    momentum_dependence: not_applicable
+    velocity_dependence: not_applicable
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - effective viscous fluid self-pressure
+  cp_structure: not_applicable
+  flavor_structure: not_applicable
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: constant adiabatic sound speed
+    symbol: alpha
+    description: The model has c_s^2 = alpha.
+    range: 0 to 1
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: bulk viscosity coefficient
+    symbol: zeta_0
+    description: Dimensionless bulk-viscosity parameter varied in the collapse study.
+    range: 0 to 1; CDM-like collapse for zeta_0 less than about 1e-3
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: dark-fluid interpolation parameter
+    symbol: B_s
+    description: Parameter in the density evolution relation.
+    range: 0 to 1
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: dark fluid density fraction
+    symbol: Omega_d
+    description: Value used in the numerical collapse examples.
+    value: 0.956
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: baryon density fraction
+    symbol: Omega_b
+    description: Value used alongside the dark fluid in collapse calculations.
+    value: 0.044
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - paper
+production:
+  mechanisms:
+  - phenomenological background dark-fluid abundance
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - Omega_d
+  - B_s
+  - alpha
+  - zeta_0
+  - scale-factor density evolution
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: not_applicable
+  notes: No microphysical production mechanism is given; abundance is specified through the cosmological
+    fluid density evolution.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark fluid density fraction used in examples
+    symbol: Omega_d
+    value: 0.956
+    unit: null
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - paper
+  calculation_type: phenomenological
+  key_dependencies:
+  - Omega_d
+  - B_s
+  - alpha
+  - zeta_0
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - unified dark fluid replaces separate dark matter and dark energy behavior
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: not_applicable
+  distribution_function_available: not_applicable
+  notes: The paper models an effective fluid and density perturbations, not a particle phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: not calculated; spherical-collapse timing depends on alpha and zeta_0
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: top_hat
+  applies_to: model
+  condition: Nonlinear structure results are derived within a spherical top-hat collapse approximation.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+  notes: null
+- id: small_viscosity
+  applies_to: parameter
+  condition: Collapse curves are nearly CDM-like when zeta_0 is below about 1e-3 in the paper's examples.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+  notes: null
+- id: phenomenological_fluid
+  applies_to: model
+  condition: No particle content or microphysical production mechanism is supplied.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - paper
+  notes: null
+assumptions:
+  global:
+  - id: flat_frw
+    description: The background is a spatially flat FRW universe with baryons, radiation, and VUDF.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+  - id: top_hat_profile
+    description: Perturbations are treated as spherical top-hat regions with constant density inside the
+      perturbation.
+    scope: structure_formation
+    status: assumed
+    impact_if_violated: Non-spherical or fully hydrodynamic effects are outside the paper's calculation.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+associated_code:
+  has_associated_code: 'no'
+  code_summary: The paper mentions solving equations with Mathematica but provides no associated code
+    resource in the text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1401_1270_viscous_unified_dark_fluid_cass_v1
+  model_name: Viscous unified dark fluid with constant adiabatic sound speed
+  model_family: unified_dark_fluid
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Spherical top-hat Collapse of a Viscous Unified Dark Fluid
+      authors:
+      - Wei Li
+      - Lixin Xu
+      year: 2014
+      arxiv_id: '1401.1270'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch-0198
+    extractor_name: gpt55_model_card_worker
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract/Introduction
+      page: null
+      quote_or_summary: The paper defines VUDF as a fluid combining cold-DM and dark-energy behavior and
+        studies collapse.
+    - reference_id: paper
+      section: Basic equations
+      page: null
+      quote_or_summary: It writes pressure, density, equation-of-state, and sound-speed relations for
+        the VUDF.
+    - reference_id: paper
+      section: Perturbation evolution
+      page: null
+      quote_or_summary: It varies alpha and zeta_0 and compares collapse curves with CDM.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The effective candidate is a unified dark fluid rather than a particle; it behaves like cold
+        dark matter at early times and dark energy later.
+      confidence: medium
+      section: Introduction
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The model is governed by effective pressure with a bulk-viscosity coefficient and constant
+        adiabatic sound speed.
+      confidence: high
+      section: Basic equations
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The paper specifies the background density evolution and density fraction, but not a microphysical
+        origin for the fluid.
+      confidence: high
+      section: Basic equations
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: The Friedmann equation includes the VUDF density along with baryons and radiation in a flat
+        FRW universe.
+      confidence: high
+      section: Basic equations
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: Parameters B_s, alpha, and zeta_0 are stated to lie in 0 to 1; zeta_0 below about 1e-3 gives
+        collapse close to CDM in examples.
+      confidence: high
+      section: Results
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The authors explicitly use a spherical top-hat collapse framework instead of full hydrodynamical/N-body
+        simulations.
+      confidence: high
+      section: Introduction/Collapse equations
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: low
+    implementation_confidence: medium
+  caveats:
+  - 'Borderline acceptance: this is a unified dark-sector fluid/collapse model, not a BSM particle model,
+    but the paper constructs and analyzes a dark-matter-like fluid variant.'
+robustness:
+  overall: low
+  theory_robustness: low
+  observational_robustness: low
+  computational_robustness: medium
+  dominant_uncertainties:
+  - microphysical origin
+  - full perturbation and simulation behavior
+  - fit to current data not extracted in this pass
+  validation_status: expert_judgment_only
+  notes: Accepted as a phenomenological dark-fluid model card with explicit caveats.
+agent_failure_modes:
+  warnings:
+  - id: fluid_not_particle
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not map this entry onto a particle dark-matter candidate; the paper provides an effective
+      unified fluid model.
+    mitigation: Use phenomenological-fluid routing only.
+    source_reference_ids:
+    - paper

@@ -1,0 +1,635 @@
+_source:
+  shard: arXiv_src_1202_007_wds.tar
+  paper_id: '1202_5244'
+  source_member: 1202_5244.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1202_5244_cnmssm_singlino_stau_coannihilation_v1
+identity:
+  name: Constrained NMSSM singlino LSP with stau-NLSP coannihilation
+  family: singlino_neutralino_dark_matter
+  aliases:
+  - cNMSSM singlino LSP benchmark points
+  - fully constrained NMSSM with stau NLSP
+  short_description: A fully constrained NMSSM benchmark variant in which the singlino-like neutralino
+    LSP is a few GeV lighter than the lightest stau NLSP, giving WMAP-compatible dark matter along a near-unique
+    parameter line and producing tau-rich sparticle cascades.
+  historical_origin_or_motivation: The paper uses cNMSSM benchmark points to study how a singlino LSP
+    and stau NLSP alter LHC multilepton and tau search channels while maintaining a dark matter relic
+    density compatible with WMAP.
+  status: benchmark
+  model_kind: benchmark_mapping
+theory:
+  theory_level: benchmark_mapping
+  parent_frameworks:
+  - fully constrained NMSSM
+  - Next-to-Minimal Supersymmetric Standard Model
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The constrained variant sets singlet-specific soft terms equal to m0 and A0 at the GUT scale
+    and studies two cNMSSM benchmark points.
+particle_content:
+  dark_matter_candidate:
+    name: singlino-like neutralino chi_1^0
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - lightest stau NLSP
+  - singlet-like Higgs states
+  mediators:
+  - lightest stau co-annihilation partner
+  - bino-like neutralino in comparison cMSSM points
+  excited_or_degenerate_states:
+  - lightest stau a few GeV above chi_1^0
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R-parity conservation keeps the singlino-like neutralino as the LSP; the lightest
+    stau decays to tau plus chi_1^0.
+  symmetries:
+  - name: R-parity
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - tau leptons
+  - jets and leptons from sparticle cascades
+  dark_sector_couplings:
+  - weak singlino couplings
+  - stau-neutralino co-annihilation interactions
+  mediator_types:
+  - lightest stau NLSP
+  - supersymmetric cascade states
+  interaction_operators: []
+  annihilation_channels:
+  - stau co-annihilation region
+  decay_channels:
+  - stau_1 -> tau + chi_1^0
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: universal scalar mass
+    symbol: m_0
+    description: Set to zero for the cNMSSM benchmark line described in the paper.
+    value: 0
+    unit: GeV
+    role: benchmark
+    status: inferred
+  - name: universal gaugino mass
+    symbol: M_1/2
+    description: The paper states M_1/2 must exceed about 520 GeV from LEP Higgs-sector requirements.
+    range: '> 520 GeV'
+    unit: GeV
+    role: benchmark
+    status: inferred
+  - name: universal trilinear coupling
+    symbol: A_0
+    description: GUT-scale trilinear parameter on the cNMSSM line.
+    role: benchmark
+    status: inferred
+  - name: singlet coupling
+    symbol: lambda
+    description: The text describes a very small singlet coupling for the cNMSSM line; the extracted exponent
+      is ambiguous.
+    range: small
+    role: core
+    status: inferred
+  - name: stau-neutralino mass difference
+    symbol: m_stau1 - m_chi1^0
+    description: WMAP-compatible relic density requires chi_1^0 to be a few GeV lighter than the lightest
+      stau.
+    range: few GeV
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out with stau co-annihilation
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - small stau-neutralino mass splitting
+  - M_1/2 and A_0 along the cNMSSM line
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper states that WMAP compatibility requires the singlino-like chi_1^0 to be a few GeV lighter
+    than the lightest stau, defining a nearly unique line.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - stau-neutralino near-degeneracy
+  - M_1/2
+  - A_0
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: unknown
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The singlino-like neutralino LSP is a cold WIMP-like relic in the co-annihilation line.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: cnmssm_stau_coannihilation_line
+  applies_to: model
+  condition: Applies to cNMSSM points with m0=0, M_1/2 above the LEP-driven lower bound, and singlino
+    chi_1^0 a few GeV lighter than the lightest stau.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper_ref
+- id: tau_cascade_domain
+  applies_to: model
+  condition: Collider phenomenology assumes sparticle cascades pass through the lightest stau NLSP before
+    decaying to the singlino-like LSP.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper_ref
+assumptions:
+  global:
+  - id: fully_constrained_singlet_terms
+    description: The singlet-specific soft SUSY-breaking terms m_S, A_lambda, and A_kappa are tied to
+      m0 and A0 at the GUT scale.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: near_degenerate_stau_lsp
+    description: The singlino LSP lies only a few GeV below the lightest stau to obtain the WMAP-compatible
+      relic density.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+  - id: standard_freezeout
+    description: The cNMSSM relic-density statement is interpreted as standard thermal freeze-out with
+      co-annihilation.
+    scope: cosmological_history
+    status: inferred
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses NMSPEC/NMSSMTools 3.0.2, Prospino, MadGraph/MadEvent 5, Pythia 6.4, NMSDECAY,
+    Delphes, and FastJet for the cNMSSM benchmark study.
+  primary_code_role: collider_simulation
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  expected_inputs:
+  - cNMSSM benchmark parameters
+  expected_outputs:
+  - sparticle spectrum
+  - branching ratios
+  - simulated collider signatures
+  reproducibility:
+    reproducibility_level: partial
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: partial
+    notes: Toolchain is described, but no model-specific code release is stated.
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats: []
+provenance:
+  model_id: 1202_5244_cnmssm_singlino_stau_coannihilation_v1
+  model_name: Constrained NMSSM singlino LSP with stau-NLSP coannihilation
+  model_family: singlino_neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper_ref
+      title: unknown
+      authors:
+      - Debottam Das
+      - Ulrich Ellwanger
+      - Ana M. Teixeira
+      year: 2012
+      arxiv_id: '1202.5244'
+      doi: null
+      url: null
+      role: benchmark
+      notes: Extraction used only the assigned SQLite full text.
+    - arxiv_id: '1202.5244'
+      authors:
+      - Das, Debottam
+      - Ellwanger, Ulrich
+      - Teixeira, Ana M.
+      doi: 10.1007/JHEP04(2012)067
+      notes: Primary paper text resolved from local SQLite cache; ADS used only for metadata.
+      reference_id: '1202.5244'
+      role: original_model
+      title: Modified signals for supersymmetry in the NMSSM with a singlino-like LSP
+      url: https://arxiv.org/abs/1202.5244
+      year: 2012
+    constraint_papers: []
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1110.3726'
+      authors:
+      - Arbey, A.
+      - Battaglia, M.
+      - Mahmoudi, F.
+      doi: 10.1140/epjc/s10052-011-1847-3
+      notes: Related paper read locally for bounded context; structured claims in this row are supported
+        by the cited primary paper unless this reference is cited explicitly.
+      reference_id: '1110.3726'
+      role: extension
+      title: Implications of LHC searches on SUSY particle spectra. The pMSSM parameter space with neutralino
+        dark matter
+      url: https://arxiv.org/abs/1110.3726
+      year: 2012
+    - arxiv_id: '1011.0931'
+      authors:
+      - Ellwanger, Ulrich
+      - Florent, Alice
+      - Zerwas, Dirk
+      doi: 10.1007/JHEP01(2011)103
+      notes: Related paper read locally for bounded context; structured claims in this row are supported
+        by the cited primary paper unless this reference is cited explicitly.
+      reference_id: '1011.0931'
+      role: extension
+      title: Discovering the constrained NMSSM with tau leptons at the LHC
+      url: https://arxiv.org/abs/1011.0931
+      year: 2011
+    - arxiv_id: '1203.3446'
+      authors:
+      - Albornoz Vásquez, Daniel
+      - Bélanger, Geneviève
+      - Bœhm, Céline
+      - Da Silva, Jonathan
+      - Richardson, Peter
+      - Wymant, Chris
+      doi: 10.1103/PhysRevD.86.035023
+      notes: Related paper read locally for bounded context; structured claims in this row are supported
+        by the cited primary paper unless this reference is cited explicitly.
+      reference_id: '1203.3446'
+      role: extension
+      title: 125 GeV Higgs boson in the NMSSM in light of the LHC results and astrophysics constraints
+      url: https://arxiv.org/abs/1203.3446
+      year: 2012
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0012
+    extractor_name: Codex dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper_ref
+      section: cNMSSM benchmark discussion
+      page: null
+      quote_or_summary: The paper studies two cNMSSM points where chi_1^0 is singlino-like and the lightest
+        stau is the NLSP.
+    - reference_id: paper_ref
+      section: Relic-density discussion
+      page: null
+      quote_or_summary: WMAP-compatible relic density requires the singlino-like chi_1^0 to be a few GeV
+        lighter than the lightest stau, defining a nearly unique line.
+    unresolved_items:
+    - Updated Run-2/Run-3 collider likelihoods were not resolved; constraints are tied to the primary
+      paper's 7 TeV analyses.
+  evidence:
+    particle_content:
+    - reference_id: paper_ref
+      note: For cNMSSM points chi_1^0 is singlino-like and the lightest stau is the NLSP.
+      confidence: medium
+      section: cNMSSM benchmark discussion
+    symmetries:
+    - reference_id: paper_ref
+      note: R-parity conservation is used in the decay-chain discussion so the LSP remains at the end
+        of cascades.
+      confidence: medium
+      section: Introduction
+    interactions:
+    - reference_id: paper_ref
+      note: The stau NLSP decays to tau plus singlino-like chi_1^0, creating tau-rich cascades.
+      confidence: medium
+      section: cNMSSM benchmark discussion
+    production_mechanism:
+    - reference_id: paper_ref
+      note: A few-GeV stau-neutralino splitting is required for WMAP-compatible dark matter, indicating
+        a co-annihilation line.
+      confidence: medium
+      section: Relic-density discussion
+    parameter_ranges:
+    - reference_id: paper_ref
+      note: The cNMSSM line is described with m0=0, M_1/2 > 520 GeV, small singlet coupling, and chi_1^0
+        a few GeV below stau_1.
+      confidence: medium
+      section: cNMSSM benchmark discussion
+    validity_domain:
+    - reference_id: paper_ref
+      note: The benchmark is restricted by LEP Higgs-sector requirements and by the stau-neutralino near-degeneracy.
+      confidence: medium
+      section: cNMSSM benchmark discussion
+    constraints:
+    - confidence: high
+      note: Primary text compares ATLAS/CMS search efficiencies for cNMSSM-like cascades.
+      page: null
+      reference_id: '1202.5244'
+      section: null
+    - confidence: high
+      note: Primary text and model card identify stau coannihilation as the relic-density mechanism.
+      page: null
+      reference_id: '1202.5244'
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text states stau-mediated cascades can populate multilepton and two-tau channels.
+      page: null
+      reference_id: '1202.5244'
+      section: null
+    - confidence: high
+      note: Primary text states the singlino cascade reduces MET and adds jets or leptons.
+      page: null
+      reference_id: '1202.5244'
+      section: null
+    routes:
+    - confidence: medium
+      note: Route assembled from the paper's benchmark-line efficiency comparison and coannihilation interpretation.
+      page: null
+      reference_id: '1202.5244'
+      section: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The SQLite text did not expose a separate title line for this paper; the provenance title is kept
+    as unknown.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - near-degenerate stau-neutralino spectrum is required
+  - title is missing from the extracted text
+  - the paper focuses on collider signatures rather than a full relic-density derivation
+  validation_status: expert_judgment_only
+  notes: The cNMSSM dark matter mechanism is better specified than the generic sNMSSM lines because the
+    paper ties WMAP compatibility to the stau-neutralino mass gap.
+agent_failure_modes:
+  warnings:
+  - id: mass_gap_sensitive
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not apply the cNMSSM singlino-stau co-annihilation relic statement away from the few-GeV
+      stau-neutralino mass gap.
+    source_reference_ids:
+    - paper_ref
+    mitigation: Keep relic-density claims tied to the near-degenerate cNMSSM line.
+  - id: ambiguous_lambda_exponent
+    severity: low
+    category: notation_conflict
+    warning: The extracted text garbles the exponent for the small singlet coupling in the cNMSSM line.
+    source_reference_ids:
+    - paper_ref
+    mitigation: Use the qualitative small-lambda statement unless the original source is reviewed.
+observables:
+- caveats:
+  - Very soft taus from the final neutralino decay can fail object selections.
+  channel: collider
+  effect_direction: enhancement
+  environments:
+  - LHC 7 TeV searches
+  id: stau_rich_multilepton_tau_signals
+  key_quantities:
+  - description: Controls sparticle mass scale and benchmark reach.
+    name: gaugino mass parameter
+    role: core
+    source_reference_ids:
+    - '1202.5244'
+    status: inferred
+    symbol: M_1/2
+  - description: Controls tau softness and coannihilation.
+    name: stau-neutralino mass splitting
+    role: core
+    source_reference_ids:
+    - '1202.5244'
+    status: inferred
+  linked_constraints:
+  - lhc_7tev_cnmssm_search_recast
+  linked_routes:
+  - cnmssm_cascade_recast_route
+  name: Stau-mediated cNMSSM cascade signatures
+  notes: null
+  observability: medium
+  predicted_effect: In the fully constrained NMSSM, sparticle cascades via the lightest stau can produce
+    multilepton and two-tau search-channel cross sections that may be visible at the 7 TeV LHC.
+  redshift_range: null
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - '1202.5244'
+  subchannel: multilepton and ditau plus missing energy
+- caveats:
+  - Effect depends on the benchmark mass splitting and detector cuts.
+  channel: collider
+  effect_direction: shape_change
+  environments:
+  - ATLAS/CMS SUSY searches
+  id: soft_met_extra_objects_cascade
+  key_quantities:
+  - description: Controls visible cascade energy and MET reduction.
+    name: bino-singlino mass difference
+    role: core
+    source_reference_ids:
+    - '1202.5244'
+    status: inferred
+  - description: Set extra lepton/jet rates.
+    name: neutralino branching fractions
+    role: core
+    source_reference_ids:
+    - '1202.5244'
+    status: inferred
+  linked_constraints:
+  - lhc_7tev_cnmssm_search_recast
+  linked_routes:
+  - cnmssm_cascade_recast_route
+  name: Reduced missing energy with extra jets or leptons
+  notes: null
+  observability: medium
+  predicted_effect: The additional bino-to-singlino cascade reduces missing transverse energy relative
+    to MSSM-like cascades while adding jets or leptons.
+  redshift_range: null
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - '1202.5244'
+  subchannel: jets/leptons plus missing transverse momentum
+constraints:
+- allowed_regions:
+  - The paper finds cNMSSM multilepton and two-tau channels can be potentially visible while standard
+    jets+MET efficiencies are modified.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Do not apply cMSSM exclusions directly without recalculating efficiencies for singlino cascades.
+  caveats:
+  - Based on 7 TeV, 1/fb-era analyses; modern reinterpretation would need updated searches.
+  constrained_parameters:
+  - M_1/2
+  - cascade branching fractions
+  - selection efficiencies
+  constraint_type: collider
+  data_release: null
+  excluded_regions:
+  - Search channels can constrain low-M_1/2 cNMSSM benchmarks, but efficiencies differ from the MSSM due
+    to softened MET and extra visible objects.
+  id: lhc_7tev_cnmssm_search_recast
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: ATLAS/CMS 7 TeV SUSY search-efficiency recast
+  notes: Primary paper performs an efficiency comparison rather than packaging likelihoods.
+  observable_channel: jets, leptons, taus plus missing transverse momentum
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '1202.5244'
+- allowed_regions:
+  - The cNMSSM singlino LSP can obtain the observed relic density through near-degeneracy with the stau
+    NLSP.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Collider benchmark lines should preserve the small stau-neutralino splitting.
+  caveats:
+  - The primary paper focuses on collider efficiencies, not a full relic-density likelihood.
+  constrained_parameters:
+  - stau-LSP mass splitting
+  - M_1/2
+  - A_0
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Points outside the narrow coannihilation strip overproduce or underproduce neutralino dark matter
+    in standard cosmology.
+  id: stau_coannihilation_relic_band
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Stau-NLSP coannihilation relic-density band
+  notes: null
+  observable_channel: thermal relic density
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '1202.5244'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: A modern recast would need updated searches and an explicit simulation chain.
+    caveats: []
+    constraint_ids:
+    - lhc_7tev_cnmssm_search_recast
+    - stau_coannihilation_relic_band
+    derived_quantities:
+    - selection efficiencies
+    - visible tau/lepton rates
+    - relic-density coannihilation strip
+    description: Recast cNMSSM singlino/stau spectra into LHC search efficiencies and relic-density consistency.
+    forward_model_chain:
+    - inputs:
+      - cNMSSM parameters
+      notes: Tool names are inferred from common NMSSM workflow; primary paper does not make this output
+        a public code artifact.
+      outputs:
+      - sparticle spectrum
+      - branching ratios
+      step_id: spectrum_and_decays
+      step_type: other
+      tool_or_code: NMSSMTools/Pythia-style spectrum and decay chain
+      validity: Must reproduce benchmark spectra used in the paper.
+    - inputs:
+      - events
+      - ATLAS/CMS cuts
+      notes: Compare cNMSSM efficiencies with similar cMSSM points.
+      outputs:
+      - channel efficiencies
+      - effective lower bounds
+      step_id: detector_efficiency_recast
+      step_type: recasting
+      tool_or_code: null
+      validity: Valid for the 7 TeV analyses considered.
+    - inputs:
+      - mass splitting
+      - annihilation/coannihilation rates
+      notes: Not the main numerical focus of the collider paper.
+      outputs:
+      - Omega_chi h^2
+      step_id: coannihilation_check
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Needed for cosmological consistency.
+    id: cnmssm_cascade_recast_route
+    input_parameters:
+    - M_1/2
+    - m0
+    - A0
+    - stau-neutralino mass splitting
+    - branching fractions
+    likelihoods:
+    - ATLAS/CMS 7 TeV search selections
+    - WMAP/Planck relic-density target
+    observable_ids:
+    - stau_rich_multilepton_tau_signals
+    - soft_met_extra_objects_cascade
+    required_code_resources:
+    - event generator and detector recast workflow
+    - NMSSM spectrum calculator
+    route_status: planned
+    source_model_features:
+    - singlino LSP
+    - stau NLSP coannihilation
+    - bino-to-singlino cascade
+    validation_tests:
+    - recover paper's relative efficiency pattern
+    - check stau-LSP degeneracy

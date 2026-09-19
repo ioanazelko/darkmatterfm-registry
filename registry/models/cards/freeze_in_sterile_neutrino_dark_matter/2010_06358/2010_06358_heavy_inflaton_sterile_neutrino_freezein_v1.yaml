@@ -1,0 +1,301 @@
+_source:
+  shard: arXiv_src_2010_036_wds.tar
+  paper_id: '2010_06358'
+  source_member: 2010_06358.json
+schema_version: model_only_v0
+model_id: 2010_06358_heavy_inflaton_sterile_neutrino_freezein_v1
+identity:
+  name: Heavy scalar inflaton sterile-neutrino freeze-in dark matter
+  family: freeze_in_sterile_neutrino_dark_matter
+  aliases:
+  - heavy inflaton HNL dark matter
+  - inflaton-decay sterile-neutrino FIMP
+  short_description: A minimal SM extension with a quartic singlet scalar inflaton whose decays during
+    reheating freeze in a stable lightest sterile neutrino dark matter candidate with MeV-scale mass.
+  historical_origin_or_motivation: Motivated by connecting inflation, reheating, electroweak symmetry
+    breaking, and dark matter production in an inflaton-extended neutrino minimal Standard Model.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - scalar quartic inflation
+  - neutrino Minimal Standard Model
+  - freeze-in dark matter
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The assigned text gives the scalar potential and the inflaton-HNL Yukawa interaction; the gravitational
+    non-minimal coupling and cosmological reheating are part of the construction.
+particle_content:
+  dark_matter_candidate:
+    name: lightest sterile neutrino N1
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavier sterile neutrinos N2 and N3
+  mediators:
+  - singlet scalar inflaton X
+  long_lived_particles:
+  - lightest sterile neutrino N1
+  unstable_parent_particles:
+  - inflaton X
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The lightest sterile neutrino is assumed stable; active-sterile mixing is strongly
+    constrained and neglected in the production calculation.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - neutrino
+  standard_model_targets:
+  - Higgs doublet
+  dark_sector_couplings:
+  - inflaton-HNL Yukawa coupling f_I N_I^c N_I X
+  mediator_types:
+  - singlet scalar inflaton
+  interaction_operators:
+  - scalar potential V(X,H)
+  - inflaton decay X -> N_I N_I
+  - inflaton decay to Higgs bosons for reheating
+  annihilation_channels: []
+  decay_channels:
+  - inflaton -> sterile neutrino pair
+  - inflaton -> Higgs boson pair
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: inflaton mass
+    symbol: m_phi
+    description: Heavy inflaton mass in the open Higgs-decay channel.
+    range: 250-7600
+    unit: GeV
+    role: core
+    status: inferred
+  - name: sterile neutrino dark matter mass
+    symbol: m_N1
+    description: Mass of the lightest sterile neutrino fixed by the observed abundance.
+    range: O(1-10)
+    unit: MeV
+    role: core
+    status: inferred
+  - name: inflaton self-coupling
+    symbol: lambda
+    description: Quartic self-coupling compatible with CMB scalar perturbations.
+    range: O(10^-13-10^-9)
+    role: core
+    status: inferred
+  - name: inflaton-HNL Yukawa coupling
+    symbol: f_1
+    description: Yukawa coupling setting the N1 mass and freeze-in production from inflaton decay.
+    role: core
+    status: inferred
+  - name: average DM momentum over temperature
+    symbol: p_N/T
+    description: Nonthermal momentum scale at the end of reheating.
+    range: O(1-10)
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - freeze-in from inflaton decay during reheating
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - inflaton abundance during reheating
+  - inflaton decay width to sterile neutrinos
+  - Yukawa coupling f_1
+  - observed DM density
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper assumes N1 makes up the total DM density and solves Boltzmann equations for production
+    over the heavy-inflaton parameter space.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - inflaton decay width to N1
+  - inflaton-Higgs reheating rate
+  - inflaton mass
+  - Yukawa coupling f1
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - quartic scalar inflation
+  - turbulent preheating
+  - perturbative reheating from inflaton decay
+  dark_sector_temperature: null
+  delta_neff: null
+  bbn_relevance: medium
+  cmb_relevance: high
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: p_N/T = O(1-10) at the end of reheating
+  notes: The resulting sterile neutrinos are described as nonthermal but cold.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: not discussed; paper states Lyman-alpha free-streaming requirements are
+      satisfied
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: heavy_inflaton_window
+  applies_to: parameter
+  condition: Heavy inflaton mass lies in the window m_phi > 2 m_h and approximately 250-7600 GeV.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: sterile_neutrino_decoupled
+  applies_to: production
+  condition: Sterile neutrinos remain out of equilibrium and active-sterile oscillation production is
+    negligible.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: total_dm_assumption
+  applies_to: relic_density
+  condition: The lightest sterile neutrino N1 is assumed to account for the total dark matter density.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: scale_breaking_in_inflaton_sector
+    description: Massive parameters are assumed to enter only in inflaton operators.
+    scope: theory
+    status: assumed
+  - id: n1_total_dm
+    description: The lightest sterile neutrino N1 makes up the total dark matter energy density.
+    scope: production
+    status: assumed
+  - id: neglect_active_sterile_oscillations
+    description: Active-sterile mixing is small enough that production from oscillations can be neglected.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper reports numerical Boltzmann solutions but the assigned text does not identify
+    public code.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  caveats: []
+provenance:
+  model_id: 2010_06358_heavy_inflaton_sterile_neutrino_freezein_v1
+  model_name: Heavy scalar inflaton sterile-neutrino freeze-in dark matter
+  model_family: freeze_in_sterile_neutrino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2010.06358
+      title: Heavy Light Inflaton and Dark Matter Production
+      year: 2020
+      arxiv_id: '2010.06358'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used for this extraction.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: arxiv:2010.06358
+      section: abstract
+      page: null
+      quote_or_summary: Heavy neutral leptons with inflaton-induced Majorana masses allow cold DM with
+        O(1-10) MeV masses.
+    - reference_id: arxiv:2010.06358
+      section: dark matter production
+      page: null
+      quote_or_summary: All sterile neutrinos are produced by freeze-in from inflaton decay; N1 is stable
+        and makes up the total DM density.
+    - reference_id: arxiv:2010.06358
+      section: conclusion
+      page: null
+      quote_or_summary: The heavy-inflaton mass range is 250 to 7600 GeV and the resulting sterile neutrino
+        DM is cold.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2010.06358
+      note: The model extends the SM by a singlet scalar inflaton X and three HNLs; the lightest sterile
+        neutrino N1 is the stable DM candidate.
+      confidence: high
+      section: dark matter production
+    interactions:
+    - reference_id: arxiv:2010.06358
+      note: A Yukawa coupling f_I N_I^c N_I X gives HNL Majorana masses and enables inflaton decay to
+        sterile neutrinos; the scalar also couples to the Higgs sector.
+      confidence: medium
+      section: dark matter production
+    production_mechanism:
+    - reference_id: arxiv:2010.06358
+      note: Sterile neutrinos remain decoupled and are produced by freeze-in from inflaton decay during
+        reheating.
+      confidence: high
+      section: dark matter production
+    cosmological_history:
+    - reference_id: arxiv:2010.06358
+      note: The paper follows reheating after quartic scalar inflation, including nonthermal inflaton
+        distributions and Boltzmann equations for DM production.
+      confidence: medium
+      section: introduction/reheating
+    parameter_ranges:
+    - reference_id: arxiv:2010.06358
+      note: The heavy-inflaton window is about 250-7600 GeV and the DM mass is constrained to O(1-10)
+        MeV.
+      confidence: high
+      section: conclusion
+    validity_domain:
+    - reference_id: arxiv:2010.06358
+      note: The model assumes scale symmetry breaking only in the inflaton sector and neglects active-sterile
+        neutrino oscillation production because the mixing is strongly constrained.
+      confidence: medium
+      section: dark matter production
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - The stability mechanism is assumed rather than derived in detail.
+  - Results depend on the reheating treatment and inflaton parameter window.
+  validation_status: expert_judgment_only
+  notes: Accepted because the paper explicitly supplies particle content, interactions, production, and
+    relic-density logic.
+agent_failure_modes:
+  warnings:
+  - id: do_not_map_to_warm_keV_sterile_neutrino
+    severity: medium
+    category: invalid_mapping
+    warning: This model produces MeV sterile neutrinos from heavy inflaton decay and classifies them as
+      cold, unlike keV active-neutrino oscillation sterile-neutrino scenarios.
+    mitigation: Keep the inflaton-decay production history and MeV mass scale attached to the model.

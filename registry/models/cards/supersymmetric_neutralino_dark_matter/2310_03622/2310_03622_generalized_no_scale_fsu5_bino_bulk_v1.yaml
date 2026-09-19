@@ -1,0 +1,427 @@
+_source:
+  shard: arXiv_src_2310_028_wds.tar
+  paper_id: '2310_03622'
+  source_member: 2310_03622.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: do_not_generalize_all_susy_points
+    mitigation: Check that the point lies in the stated bulk regime.
+    severity: medium
+    source_reference_ids:
+    - '2310_03622'
+    warning: Do not treat arbitrary neutralino or no-scale SUSY points as this bulk model; the paper's
+      model relies on right-handed slepton bulk annihilation and R_l cuts.
+  - category: other
+    id: no_constraints_in_card
+    mitigation: null
+    severity: low
+    source_reference_ids:
+    - '2310_03622'
+    warning: Collider and direct-detection information in the paper was used only as context and is intentionally
+      not encoded as constraints in this model-only pass.
+associated_code:
+  caveats:
+  - The SuSpect revision is described as proprietary in the paper text.
+  code_summary: The numerical study uses MicrOMEGAs 2.1 with a proprietary SuSpect 2.34 revision for F-SU(5)
+    RGEs; no public model-code release is identified in the paper text.
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: relic_density_calculation
+  repositories: []
+  scripts: []
+  validation:
+    benchmark_references: []
+    validation_notes: The paper reports consistency checks between micrOMEGAs and an analytic Bino annihilation
+      formula.
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: R-parity is present so the neutralino LSP is stable.
+    id: r_parity
+    scope: theory
+    source_reference_ids:
+    - '2310_03622'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The relic density calculation uses standard thermal freeze-out as implemented in micrOMEGAs.
+    id: standard_freezeout
+    scope: production
+    source_reference_ids:
+    - '2310_03622'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The dark matter region is defined to avoid coannihilation and resonance mechanisms.
+    id: bulk_selection
+    scope: production
+    source_reference_ids:
+    - '2310_03622'
+    status: established
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions:
+  - GUT and electroweak symmetry breaking are part of the underlying F-SU(5)/SUSY framework
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - Generalized No-Scale F-SU(5)
+  - right-handed slepton bulk region
+  - Bino-like neutralino bulk dark matter
+  family: supersymmetric_neutralino_dark_matter
+  historical_origin_or_motivation: The paper motivates the model as a natural-SUSY and natural-dark-matter
+    solution to electroweak fine tuning and the Bino relic-density problem.
+  model_kind: complete_theory
+  name: Generalized No-Scale F-SU(5) right-handed slepton bulk neutralino dark matter
+  short_description: A generalized no-scale flipped SU(5) supersymmetric GUT scenario in which a light
+    Bino-like neutralino LSP obtains the observed dark matter abundance through bulk annihilation mediated
+    by light right-handed sleptons.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - Bino annihilation through light right-handed sleptons to leptons
+  cp_structure: unknown
+  dark_sector_couplings:
+  - neutralino-slepton-lepton couplings
+  - supersymmetric electroweak couplings
+  decay_channels: []
+  flavor_structure: right-handed slepton bulk; first/second generation and stau masses considered
+  interaction_operators: []
+  mediator_types:
+  - right-handed sleptons
+  - Z/Higgs resonances excluded from the bulk selection
+  portals:
+  - higgs
+  - vector
+  - other
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: mild
+  self_scattering_channels: []
+  standard_model_targets:
+  - charged leptons through slepton-mediated annihilation
+  - nuclei through spin-independent scattering calculations
+  tree_or_loop_level: both
+model_id: 2310_03622_generalized_no_scale_fsu5_bino_bulk_v1
+parameters:
+  core:
+  - description: Scanned generalized no-scale gaugino mass.
+    name: SU(5) gaugino mass
+    range:
+      max: 5000
+      min: 1200
+      notes: Scan range in the paper.
+      unit: GeV
+    role: core
+    source_reference_ids:
+    - '2310_03622'
+    status: inferred
+    symbol: M_5
+    unit: GeV
+  - description: Scanned to produce a light Bino.
+    name: U(1)_X gaugino mass
+    range:
+      max: 600
+      min: 100
+      notes: Scan range in the paper.
+      unit: GeV
+    role: core
+    source_reference_ids:
+    - '2310_03622'
+    status: inferred
+    symbol: M_1X
+    unit: GeV
+  - description: Universal flippon mass scale.
+    name: vector-like particle mass scale
+    range:
+      max: 10
+      min: 1
+      notes: Scan range in the paper.
+      unit: TeV
+    role: core
+    source_reference_ids:
+    - '2310_03622'
+    status: inferred
+    symbol: M_V
+    unit: TeV
+  - description: Ratio of Higgs vacuum expectation values.
+    name: tan beta
+    range:
+      max: 65
+      min: 2
+      notes: Scan range in the paper.
+      unit: null
+    role: core
+    source_reference_ids:
+    - '2310_03622'
+    status: inferred
+    symbol: tan_beta
+  - description: Approximate LSP mass where the F-SU(5) Bino can supply all dark matter in the bulk region.
+    name: Bino-like neutralino mass for saturated F-SU(5) bulk
+    role: core
+    source_reference_ids:
+    - '2310_03622'
+    status: inferred
+    symbol: m_chi10
+    unit: GeV
+    value: about 103 GeV
+  - description: Bulk-region discriminator; R greater than about 10 selects traditional annihilation rather
+      than coannihilation.
+    name: slepton-LSP mass splitting ratio
+    range: R_l = (m_slepton - m_chi10) / m_chi10; bulk criterion R_l > 10
+    role: core
+    source_reference_ids:
+    - '2310_03622'
+    status: inferred
+    symbol: R_l
+particle_content:
+  additional_dark_sector_particles:
+  - light right-handed sleptons including stau_1 and right-handed selectron/smuon
+  - MSSM superpartners
+  - TeV-scale vector-like flippons
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: Bino-like lightest neutralino chi_1^0
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - right-handed sleptons in bulk annihilation
+  - electroweak gauge and Higgs states outside the selected bulk regime
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: unknown
+  distribution_type: thermal
+  free_streaming_length: null
+  notes: As a WIMP-like neutralino freeze-out scenario, the dark matter is treated as cold.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - Bino mass
+  - right-handed slepton masses
+  - slepton-LSP mass splitting
+  - avoidance of coannihilation and resonance funnels
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through Bino annihilation in the right-handed slepton bulk region
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper identifies saturated, under-saturated, and over-saturated relic-density regions; the
+    model can match the Planck relic density in the bulk region.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - The card records the F-SU(5) proposal and its pMSSM cross-checks but does not attempt to encode collider
+    or direct-detection constraints.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The relic abundance is compared to the Planck 2018 cold dark matter range.
+      page: null
+      reference_id: '2310_03622'
+      section: Numerical procedure
+    interactions:
+    - confidence: medium
+      note: The bulk region is based on neutralino annihilation mediated by light right-handed sleptons
+        while resonance and coannihilation regimes are excluded.
+      page: null
+      reference_id: '2310_03622'
+      section: Numerical procedure
+    parameter_ranges:
+    - confidence: medium
+      note: The paper gives scan ranges for M_5, M_1X, tan beta, M_V, and identifies m_chi10 about 103
+        GeV for F-SU(5) saturated bulk dark matter.
+      page: null
+      reference_id: '2310_03622'
+      section: Generalized No-Scale SUGRA and numerical results
+    particle_content:
+    - confidence: medium
+      note: The paper requires a neutralino LSP and identifies a light Bino-like neutralino as the dark
+        matter candidate.
+      page: null
+      reference_id: '2310_03622'
+      section: Introduction and numerical procedure
+    production_mechanism:
+    - confidence: medium
+      note: The observed relic density is obtained through traditional annihilations in the right-handed
+        slepton bulk region.
+      page: null
+      reference_id: '2310_03622'
+      section: Numerical results
+    symmetries:
+    - confidence: medium
+      note: The model is an R-parity supersymmetric scenario, with the LSP neutralino serving as dark
+        matter.
+      page: null
+      reference_id: '2310_03622'
+      section: Introduction
+    validity_domain:
+    - confidence: medium
+      note: The paper imposes R_l greater than about 10 and removes funnel regions to define the bulk-annihilation
+        regime.
+      page: null
+      reference_id: '2310_03622'
+      section: Numerical procedure
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0015
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper proposes Generalized No-Scale Supergravity and a right-handed slepton
+        bulk region with natural dark matter.
+      reference_id: '2310_03622'
+      section: Abstract and introduction
+    - page: null
+      quote_or_summary: The relic density is computed with micrOMEGAs; the bulk region is selected to
+        avoid resonance and coannihilation.
+      reference_id: '2310_03622'
+      section: Numerical procedure and results
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: supersymmetric_neutralino_dark_matter
+  model_id: 2310_03622_generalized_no_scale_fsu5_bino_bulk_v1
+  model_name: Generalized No-Scale F-SU(5) right-handed slepton bulk neutralino dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2310.03622'
+      authors:
+      - Tianjun Li
+      - James A. Maxin
+      - Dimitri V. Nanopoulos
+      - Xiangwei Yin
+      doi: null
+      notes: The paper proposes Generalized No-Scale SUGRA in F-SU(5) and studies a light right-handed
+        slepton bulk region for neutralino dark matter.
+      reference_id: '2310_03622'
+      role: original_model
+      title: The Right-Handed Slepton Bulk Region for Dark Matter in Generalized No-scale F SU(5) with
+        Effective Super-Natural Supersymmetry
+      url: null
+      year: 2023
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - neutralino and right-handed slepton masses
+  - bulk annihilation cross section
+  - coannihilation and resonance cuts
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    name: Omega_DM h^2
+    notes: Planck 2018 five-sigma range used in the scan.
+    role: cosmological
+    source_reference_ids:
+    - '2310_03622'
+    status: assumed
+    unit: null
+    value: 0.114 to 0.126
+  tuning_assessment: mild_tuning
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - The bulk region depends on scan assumptions, proprietary RGE implementation, and avoiding coannihilation/resonance
+    regimes.
+  notes: The paper reports numerical consistency checks but this extraction did not independently reproduce
+    the scan.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: partially_validated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: R-parity in the supersymmetric model makes the lightest neutralino an LSP dark
+    matter candidate.
+  symmetries:
+  - exact_or_approximate: exact
+    name: R-parity
+    type: discrete
+  - breaking: GUT and electroweak symmetry breaking
+    exact_or_approximate: broken
+    name: flipped SU(5) x U(1)_X
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper specifies F-SU(5) field content, generalized no-scale boundary choices, and scan ranges
+    rather than a complete component-level Lagrangian.
+  parent_frameworks:
+  - Generalized No-Scale Supergravity
+  - Effective Super-Natural Supersymmetry
+  - flipped SU(5) x U(1)_X with vector-like flippons
+  renormalizable: unknown
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Right-handed slepton-LSP mass splitting ratio R_l is greater than about 10 so coannihilation
+    is negligible.
+  extrapolation_risk: medium
+  id: bulk_annihilation_regime
+  source_reference_ids:
+  - '2310_03622'
+  status: inferred
+- applies_to: model
+  caveats: []
+  condition: Z, Higgs, heavy-Higgs, and SM-Higgs resonances are excluded to isolate bulk annihilation.
+  extrapolation_risk: medium
+  id: resonance_funnels_excluded
+  source_reference_ids:
+  - '2310_03622'
+  status: established
+- applies_to: parameter
+  caveats: []
+  condition: Model statements are supported within the F-SU(5) and pMSSM scan ranges quoted in the paper.
+  extrapolation_risk: medium
+  id: scan_ranges
+  source_reference_ids:
+  - '2310_03622'
+  status: established

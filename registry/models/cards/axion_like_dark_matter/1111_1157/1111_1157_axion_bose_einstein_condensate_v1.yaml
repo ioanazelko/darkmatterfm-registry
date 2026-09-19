@@ -1,0 +1,336 @@
+_source:
+  shard: arXiv_src_1111_002_wds.tar
+  paper_id: '1111_1157'
+  source_member: 1111_1157.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: axion_bec_not_generic_cdm
+    mitigation: Check whether a downstream use assumes ordinary CDM phase-space behavior.
+    severity: medium
+    warning: Do not treat this row as generic collisionless CDM; its distinctive claims rely on BEC thermalization
+      and rethermalization.
+associated_code:
+  code_summary: The paper mentions numerical simulations of a toy oscillator system, but no associated
+    public code is identified in the assigned text.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: Axion number changing processes are negligible over the age of the universe.
+    id: axion_number_conserved
+    scope: theory
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Cold axion thermalization mostly occurs in the condensed regime rather than the particle
+      kinetic regime.
+    id: condensed_regime_thermalization
+    scope: production
+    status: inferred
+  - can_be_relaxed: unknown
+    description: Uncertainties from PQ symmetry breaking and inflation history are summarized by the abundance
+      factor X.
+    id: pq_history_encoded_by_x
+    scope: cosmological_history
+    status: assumed
+cosmological_history:
+  bbn_relevance: medium
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - late gravitational thermalization of cold axions
+  - possible thermal contact among axions, photons, and baryons
+  - net overall rotation before galactic infall
+  phase_transitions:
+  - QCD phase transition
+  - Peccei-Quinn symmetry breaking history
+  standard_history_assumed: false
+  topological_defects:
+  - axion strings
+  - domain walls
+identity:
+  aliases:
+  - axion BEC dark matter
+  - thermalized cold axion dark matter
+  family: axion_like_dark_matter
+  historical_origin_or_motivation: The paper revisits axion cosmology to distinguish axion dark matter
+    from ordinary cold dark matter through thermalization, rethermalization, and caustic-ring behavior.
+  model_kind: complete_theory
+  name: Cold axion Bose-Einstein condensate dark matter
+  short_description: Cold QCD axions form a degenerate Bose gas that thermalizes through gravitational
+    self-interactions and becomes a Bose-Einstein condensate near a photon temperature of about 500 eV.
+  status: speculative
+interactions:
+  dark_sector_couplings:
+  - axion self-interaction
+  - gravitational self-interaction
+  interaction_operators:
+  - axion number conserving self-interactions
+  - Newtonian gravitational energy-density coupling
+  mediator_types:
+  - gravity
+  - axion field
+  portals:
+  - axion
+  - gravitational
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: not_applicable
+    velocity_dependence: strong
+  standard_model_targets:
+  - photons
+  - baryons
+  - gravitational potential wells
+  tree_or_loop_level: unknown
+model_id: 1111_1157_axion_bose_einstein_condensate_v1
+parameters:
+  core:
+  - description: Controls the QCD production time, BEC temperature estimate, and relic density scaling.
+    name: axion decay constant
+    range: around 10^12 GeV in the paper scalings
+    role: core
+    status: inferred
+    symbol: f_a
+    unit: GeV
+  - description: Axion mass turns on during the QCD phase transition and is in the cold axion range discussed
+      by the paper.
+    name: axion mass
+    range: around 10^-5 eV for the mass range of interest
+    role: core
+    status: inferred
+    symbol: m
+    unit: eV
+  - description: Encodes vacuum realignment, strings, walls, or post-inflation misalignment uncertainty.
+    name: initial cold axion abundance factor
+    range: order 0.5 to 10 depending on PQ/inflation history
+    role: core
+    status: inferred
+    symbol: X
+  - description: Temperature where gravitational self-interactions thermalize cold axions.
+    name: BEC formation photon temperature
+    role: core
+    status: inferred
+    symbol: T_BEC
+    unit: eV
+    value: about 500 eV times X (f_a/10^12 GeV)^(1/2)
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: cold axion
+    number_of_components: single_component
+    spin: '0'
+    statistics: boson
+  dark_radiation_species:
+  - relativistic axions
+  excited_or_degenerate_states:
+  - macroscopically occupied axion quantum state
+  long_lived_particles:
+  - axion
+  mediators:
+  - gravity
+  - axion self-interaction
+  standard_model_extension: minimal
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: very cold; momentum of order 1/t_1 redshifts with a(t)^-1
+  distribution_function_available: approximate
+  distribution_type: field_like
+  free_streaming_length: null
+  notes: The BEC is treated as a highly occupied classical/quantum field in the condensed regime.
+  phase_space_bounds:
+  - large occupation number of order 10^61 in the paper scaling
+  velocity_dispersion_today:
+    description: Paper gives delta v(t) scaling for decoupled axions.
+    name: cold axion velocity dispersion
+    role: core
+    status: inferred
+    symbol: delta v
+    value: 1/(m t_1) a(t_1)/a(t)
+production:
+  abundance_set_by:
+  - PQ history
+  - misalignment angle
+  - axion decay constant
+  - QCD transition time
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - vacuum realignment
+  - string decay when PQ breaking is after inflation
+  - wall decay subdominant in the paper discussion
+  nonthermal_momentum_distribution: 'yes'
+  notes: Cold axions are produced when the axion mass turns on at the QCD phase transition, then later
+    thermalize gravitationally into a BEC.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  caveats:
+  - Machine extraction only; the paper substantially develops an existing axion dark matter candidate
+    rather than naming a new particle.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: Cold axions thermalize gravitationally near a photon temperature of about 500 eV and form
+        a BEC.
+      page: null
+      reference_id: '1111_1157'
+      section: Axion BEC formation
+    interactions:
+    - confidence: high
+      note: The paper derives thermalization from axion self-interactions and gravitational self-interactions
+        in the condensed regime.
+      page: null
+      reference_id: '1111_1157'
+      section: Thermalization
+    particle_content:
+    - confidence: high
+      note: The text identifies axions as cold dark matter candidates with mass around 10^-5 eV and treats
+        them as identical bosons.
+      page: null
+      reference_id: '1111_1157'
+      section: Introduction/QCD epoch
+    production_mechanism:
+    - confidence: high
+      note: Cold axions are produced when the axion mass turns on during the QCD phase transition, with
+        abundance depending on PQ and inflation history.
+      page: null
+      reference_id: '1111_1157'
+      section: QCD epoch
+    structure_formation:
+    - confidence: medium
+      note: Rethermalizing axions about to fall into galactic wells acquire net rotation, giving caustic-ring
+        inner halos rather than ordinary CDM caustics.
+      page: null
+      reference_id: '1111_1157'
+      section: Conclusions
+    validity_domain:
+    - confidence: medium
+      note: The Newtonian gravitational treatment is stated to be applicable only well within the horizon.
+      page: null
+      reference_id: '1111_1157'
+      section: Thermalization
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0008
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5 batch worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Axions thermalize through gravitational self-interactions and form a Bose-Einstein
+        condensate near 500 eV.
+      reference_id: '1111_1157'
+      section: Abstract
+    - page: null
+      quote_or_summary: The abundance is parameterized by f_a and X, depending on PQ/inflation history.
+      reference_id: '1111_1157'
+      section: QCD epoch
+    - page: null
+      quote_or_summary: The BEC variant behaves like CDM except during thermalization or rethermalization.
+      reference_id: '1111_1157'
+      section: Conclusions
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: axion_like_dark_matter
+  model_id: 1111_1157_axion_bose_einstein_condensate_v1
+  model_name: Cold axion Bose-Einstein condensate dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1111.1157'
+      authors:
+      - O. Erken
+      - P. Sikivie
+      - H. Tam
+      - Q. Yang
+      doi: null
+      notes: Only assigned SQLite full text was used.
+      reference_id: '1111_1157'
+      role: original_model
+      title: Cosmic axion thermalization
+      url: null
+      year: 2011
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: either
+  key_dependencies:
+  - f_a scaling
+  - abundance factor X
+  - whether inflation occurs before or after PQ symmetry breaking
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - PQ/inflation history encoded in X
+  - whether photons and baryons fully thermalize with axions
+  - interpretation of caustic-ring evidence
+  notes: Accepted as a substantive axion dark-matter cosmology variant.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: caustic-ring inner halo structure from rethermalized axions with net rotation
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: Axion number violating processes are stated to occur on time scales much longer
+    than the age of the universe in the relevant axion mass range.
+  symmetries:
+  - breaking: QCD phase transition turns on the axion mass.
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: Peccei-Quinn symmetry
+    type: global
+  topological_defects_possible: 'yes'
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper treats the axion field as coupled oscillators, includes axion self-interactions and
+    Newtonian gravitational self-interactions, and focuses on thermalization in the condensed regime.
+  parent_frameworks:
+  - Peccei-Quinn axion cosmology
+  - cold dark matter
+  renormalizable: not_applicable
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  condition: The gravitational self-interaction treatment neglects general relativistic corrections and
+    is stated to apply within the horizon.
+  extrapolation_risk: medium
+  id: newtonian_subhorizon
+  status: established
+- applies_to: parameter
+  condition: Axion number violation is neglected for the axion mass range around 10^-5 eV discussed in
+    the paper.
+  extrapolation_risk: medium
+  id: cold_axion_mass_range
+  status: inferred

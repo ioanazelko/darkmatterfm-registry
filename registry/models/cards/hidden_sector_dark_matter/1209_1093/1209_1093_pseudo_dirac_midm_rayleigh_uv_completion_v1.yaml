@@ -1,0 +1,306 @@
+_source:
+  shard: arXiv_src_1209_002_wds.tar
+  paper_id: '1209_1093'
+  source_member: 1209_1093.json
+schema_version: model_only_v0
+model_id: 1209_1093_pseudo_dirac_midm_rayleigh_uv_completion_v1
+identity:
+  name: Pseudo-Dirac Magnetic Inelastic Dark Matter with Rayleigh UV completion
+  family: hidden_sector_dark_matter
+  aliases:
+  - MiDM/RayDM hybrid
+  - pseudo-Dirac WIMP with charged messengers
+  short_description: A fermionic WIMP split into pseudo-Dirac states and coupled to photons and electroweak
+    gauge bosons through charged messenger loops, combining dipole-driven freezeout with Rayleigh-dominated
+    gamma-line annihilation.
+  historical_origin_or_motivation: Constructed to provide a renormalizable UV completion of magnetic inelastic
+    and Rayleigh dark matter explanations of a possible 130 GeV Fermi gamma-ray line.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Magnetic Inelastic Dark Matter
+  - Rayleigh dark matter
+  - renormalizable charged-messenger UV completion
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper gives a concrete renormalizable messenger model and computes one-loop form factors
+    including finite messenger-mass corrections.
+particle_content:
+  dark_matter_candidate:
+    name: pseudo-Dirac fermion WIMP
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - Majorana-split partner state
+  mediators:
+  - charged Dirac fermion messenger doublet
+  - charged scalar messenger doublet
+  excited_or_degenerate_states:
+  - pseudo-Dirac splitting from a Majorana mass term
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: WIMP stability is assumed in the renormalizable messenger setup; the paper does
+    not specify the stabilizing symmetry in the extracted text.
+  symmetries:
+  - name: unknown WIMP-stabilizing symmetry
+    type: unknown
+    exact_or_approximate: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - photon
+  - hypercharge gauge boson
+  - weak gauge bosons
+  - charged Standard Model fermions
+  dark_sector_couplings:
+  - Yukawa coupling between WIMP and charged messenger fields
+  mediator_types:
+  - charged scalar messenger
+  - charged fermion messenger
+  - electroweak gauge bosons
+  interaction_operators:
+  - dimension-5 magnetic dipole operator
+  - dimension-7 Rayleigh operators
+  annihilation_channels:
+  - fermion pairs through gamma/Z exchange at freezeout
+  - gamma gamma
+  - gamma Z
+  - ZZ
+  - WW
+  tree_or_loop_level: loop
+parameters:
+  core:
+  - name: WIMP mass
+    symbol: m_chi
+    description: Mass used for the gamma-line motivated WIMP.
+    value: about 130
+    unit: GeV
+    role: core
+    status: inferred
+  - name: messenger mass scale
+    symbol: M_mess
+    description: Mass of charged messenger states; finite 1/M_mess corrections are important.
+    range: not much heavier than the WIMP in the studied regime
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Yukawa coupling
+    symbol: lambda
+    description: Coupling between WIMP and messenger fields.
+    range: moderately strong in viable MiDM/RayDM hybrid points
+    role: core
+    status: inferred
+  - name: Majorana splitting
+    symbol: delta_m
+    description: Small splitting that makes the Dirac WIMP pseudo-Dirac.
+    range: paper-dependent
+    unit: unknown
+    role: core
+    status: inferred
+  - name: dipole strength
+    symbol: mu
+    description: Loop-generated magnetic dipole coefficient that controls pseudo-Dirac freezeout.
+    role: core
+    status: inferred
+  - name: Rayleigh scale
+    symbol: Lambda_R
+    description: Effective scale for dimension-7 Rayleigh interactions.
+    range: roughly 500-600 GeV in the effective-theory motivation
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freezeout through dipole-mediated annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - dipole annihilation into charged Standard Model fermions during freezeout
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper states freezeout is generally dominated by the dipole interaction for the pseudo-Dirac
+    state.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - WIMP mass
+  - messenger mass scale
+  - Yukawa coupling
+  - dipole form factor
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Cold WIMP phase-space behavior is implicit rather than calculated.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: not studied in the paper
+    subhalo_mass_function_effect: not studied in the paper
+    simulation_calibrated: 'no'
+validity_domain:
+- id: finite_messenger_mass
+  applies_to: interaction_operators
+  condition: Use the one-loop form factors when charged messengers are not much heavier than the WIMP.
+  status: established
+  extrapolation_risk: medium
+- id: gamma_line_motivation
+  applies_to: model
+  condition: Parameter choices are motivated by possible 111/130 GeV line features; the model definition
+    does not require those data to be correct.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: stable_wimp
+    description: The fermionic WIMP is stable on cosmological timescales.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: standard_freezeout
+    description: Relic abundance is treated with standard thermal freezeout for the pseudo-Dirac state.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 1209_1093_pseudo_dirac_midm_rayleigh_uv_completion_v1
+  model_name: UV Completions of Magnetic Inelastic Dark Matter and RayDM for the Fermi Line(s)
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: UV Completions of Magnetic Inelastic Dark Matter and RayDM for the Fermi Line(s)
+      authors:
+      - Neal Weiner
+      - Itay Yavin
+      year: 2012
+      arxiv_id: '1209.1093'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0019
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper gives a renormalizable charged-messenger UV completion of MiDM and RayDM.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The paper introduces a Dirac fermion WIMP, split by a Majorana mass, plus heavier charged
+        messenger Dirac fermion and charged scalar doublets.
+      confidence: high
+      section: model setup
+    interactions:
+    - reference_id: paper
+      note: Gauge invariance yields dimension-5 magnetic dipole and dimension-7 Rayleigh couplings to
+        electroweak gauge bosons through loops of charged messengers.
+      confidence: high
+      section: model setup
+    production_mechanism:
+    - reference_id: paper
+      note: For the pseudo-Dirac state, freezeout is described as dominated by the dipole annihilation
+        channel, while present-day line signatures are Rayleigh dominated.
+      confidence: high
+      section: abstract and annihilation discussion
+    parameter_ranges:
+    - reference_id: paper
+      note: The motivating line energy uses a WIMP mass near 130 GeV and messenger masses not far above
+        the WIMP scale.
+      confidence: medium
+      section: introduction and rates
+    validity_domain:
+    - reference_id: paper
+      note: The paper emphasizes including all one-loop 1/M_mess effects because messengers may not be
+        much heavier than dark matter.
+      confidence: high
+      section: form-factor discussion
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - Gamma-line motivation is historical to the paper and should not be treated as an established signal.
+robustness:
+  overall: medium
+  notes: Machine extraction from a single assigned paper.
+agent_failure_modes:
+  warnings:
+  - id: line_signal_dependence
+    severity: medium
+    category: assumption_mismatch
+    warning: The motivating Fermi-line feature is not part of the model definition and should not be treated
+      as confirmed evidence.
+  - id: finite_messenger_effects
+    severity: medium
+    category: extrapolation
+    warning: The effective dipole/Rayleigh operators can misestimate rates when messengers are near the
+      WIMP mass.
+operators:
+  renormalizable_terms:
+  - WIMP-messenger Yukawa coupling
+  - Dirac and Majorana WIMP mass terms
+  - charged messenger kinetic and mass terms
+  eft_operators:
+  - magnetic dipole operator
+  - Rayleigh operators
+  contact_or_light_mediator: light_mediator
+  coupling_types:
+  - Yukawa
+  - electroweak gauge
+mass_scales_and_hierarchies:
+  scales:
+  - name: WIMP mass
+    symbol: m_chi
+    value: about 130
+    unit: GeV
+    role: core
+    status: inferred
+  - name: messenger mass
+    symbol: M_mess
+    range: near electroweak scale
+    unit: GeV
+    role: core
+    status: inferred

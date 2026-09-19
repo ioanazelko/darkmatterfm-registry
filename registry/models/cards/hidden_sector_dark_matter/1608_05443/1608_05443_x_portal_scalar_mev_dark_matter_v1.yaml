@@ -1,0 +1,896 @@
+_source:
+  shard: arXiv_src_1608_013_wds.tar
+  paper_id: '1608_05443'
+  source_member: 1608_05443.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1608_05443_x_portal_scalar_mev_dark_matter_v1
+identity:
+  name: X-portal scalar MeV dark matter
+  family: hidden_sector_dark_matter
+  aliases:
+  - scalar DM coupled to the 16.7 MeV X boson
+  - teens MeV scalar DM
+  short_description: A complex scalar dark matter candidate with a new vector boson X mediating interactions
+    with Standard Model fermions; the paper derives a thermal p-wave annihilation window with m_X/2 <
+    m_DM < m_X.
+  historical_origin_or_motivation: Motivated by interpreting the anomalous 8Be transition as emission
+    of a 16.7 MeV vector boson that can mediate interactions between light dark matter and Standard Model
+    particles.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - X boson mediator suggested by the anomalous 8Be transition
+  lagrangian_available: partial
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The text gives effective X couplings to scalar DM and SM fermion currents, but does not define
+    a full ultraviolet completion.
+particle_content:
+  dark_matter_candidate:
+    name: scalar DM field phi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - vector boson X with m_X about 16.7 MeV
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - scalar DM field phi
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: unknown; the paper treats the scalar as the dark matter particle and requires
+    X not to decay invisibly into DM pairs.
+  symmetries:
+  - name: unknown dark-sector charge coupled to X
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: unknown
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - electrons
+  - u quarks
+  - d quarks
+  - SM fermions f
+  dark_sector_couplings:
+  - new DM-X charge e_D
+  - scalar DM current coupled to X
+  mediator_types:
+  - light vector boson X
+  interaction_operators:
+  - L_iS = - e_D X_mu J_DM^mu + e_D^2 X_mu X^mu phi* phi + e epsilon_f X_mu J_SM^mu
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: none
+    velocity_dependence: mild
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - phi phi* -> X* -> f fbar, dominated by e+ e- in the mass window
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: X couplings to first-generation fermions are specified from the 8Be-motivated scenario;
+    other flavor couplings are discussed only qualitatively.
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: scalar dark matter mass
+    symbol: m_phi
+    description: Allowed scalar DM mass window derived from m_X/2 < m_phi < m_X and N_eff/BBN considerations.
+    range:
+      min: 10.4
+      max: 16.7
+      inclusive_min: true
+      inclusive_max: false
+      unit: MeV
+      notes: Paper reports 10.4 < m_phi < 16.7 MeV for scalar DM.
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1608_05443'
+    notes: null
+  - name: X boson mass
+    symbol: m_X
+    description: Central mediator mass adopted from the 8Be anomaly interpretation.
+    value: 16.7
+    unit: MeV
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '1608_05443'
+    notes: The paper adopts m_X = 16.7 MeV.
+  - name: DM-X coupling combination
+    symbol: e_D^2 epsilon_e^2
+    description: Coupling combination fixed by the thermal annihilation cross section once the relic density
+      is imposed.
+    value: null
+    range: mass-dependent numerical curve in the paper
+    unit: null
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1608_05443'
+    notes: Numerical values are shown in the paper rather than tabulated in the extracted text.
+  nuisance: []
+  derived:
+  - name: p-wave coefficient
+    symbol: b
+    description: Coefficient in sigma_ann v = a + b v_r^2 with a = 0 for the scalar model.
+    value: null
+    range: computed from e_D, epsilon_f, m_phi, m_X, Gamma_X and final-state masses
+    unit: null
+    role: derived
+    status: established
+    source_reference_ids:
+    - '1608_05443'
+    notes: Used in thermal averaging sigma_ann v approximately 6 b / x.
+production:
+  mechanisms:
+  - thermal freeze-out through p-wave annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - p-wave annihilation phi phi* -> X* -> f fbar
+  - observed relic density used to fix the X-DM coupling
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper uses the standard freeze-out expression for x_f and Omega_DM h^2 and chooses the mass
+    window to close s-wave XX production.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter relic density
+    symbol: Omega_DM h^2
+    description: Observed relic density used to determine the X-DM coupling.
+    value: 0.1197 +/- 0.0042
+    unit: null
+    role: cosmological
+    status: assumed
+    source_reference_ids:
+    - '1608_05443'
+    notes: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_phi
+  - m_X
+  - Gamma_X
+  - e_D^2 epsilon_f^2
+  - freeze-out parameter x_f
+  - effective relativistic degrees of freedom g_*
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: freeze-out temperature ratio
+    symbol: x_f
+    description: x_f = m_phi / T_f solved from the standard freeze-out equation.
+    value: about 20 used for MeV DM discussion
+    unit: null
+    role: cosmological
+    status: approximate
+    source_reference_ids:
+    - '1608_05443'
+    notes: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  f_of_p_or_q: unknown
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Thermal freeze-out is assumed; no present-day phase-space distribution is provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: mass_window_scalar_x_portal
+  applies_to: model
+  condition: Scalar DM mass must lie between m_X/2 and m_X so that X does not decay dominantly invisibly
+    and the XX annihilation channel is kinematically closed.
+  valid_range:
+    min: 10.4
+    max: 16.7
+    inclusive_min: true
+    inclusive_max: false
+    unit: MeV
+    notes: Combines the kinematic upper bound with the N_eff lower bound quoted in the paper.
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - The result depends on the 8Be-motivated X boson interpretation and its adopted SM couplings.
+  source_reference_ids:
+  - '1608_05443'
+  notes: null
+- id: p_wave_freezeout_scalar
+  applies_to: production
+  condition: The accepted mass window closes the s-wave XX final state so the p-wave X-mediated f fbar
+    channel controls freeze-out.
+  valid_range: null
+  status: established
+  extrapolation_risk: medium
+  caveats:
+  - If additional annihilation modes exist, the relic-density calculation changes.
+  source_reference_ids:
+  - '1608_05443'
+  notes: null
+assumptions:
+  global:
+  - id: x_boson_8be_interpretation
+    description: The 8Be anomaly is interpreted as a new vector boson X with m_X about 16.7 MeV and the
+      SM couplings used in the paper.
+    scope: theory
+    status: assumed
+    impact_if_violated: The mediator identity, mass window, and coupling extraction would not apply.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1608_05443'
+    notes: null
+  - id: standard_thermal_history
+    description: The relic-density calculation assumes standard thermal freeze-out and uses standard effective
+      relativistic degrees of freedom.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The allowed coupling and abundance calculation could change.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1608_05443'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper presents analytic formulae and numerical curves; the assigned text does not
+    identify public model code.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  expected_inputs:
+  - m_phi
+  - m_X
+  - SM fermion couplings
+  - relic density target
+  expected_outputs:
+  - freeze-out annihilation coefficient
+  - DM-X coupling combination
+  - DM-electron scattering cross section
+  reproducibility:
+    reproducibility_level: approximate
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: Numerical values are in figures rather than machine-readable tables in the extracted text.
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats: []
+provenance:
+  model_id: 1608_05443_x_portal_scalar_mev_dark_matter_v1
+  model_name: X-portal scalar MeV dark matter
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1608_05443'
+      title: The new interaction suggested by the anomalous 8Be transition sets a rigorous constraint
+        on the mass range of dark matter
+      authors:
+      - Lian-Bao Jia
+      - Xue-Qian Li
+      year: 2016
+      arxiv_id: '1608.05443'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run SQLite database.
+    - arxiv_id: '1608.05443'
+      authors:
+      - Lian-Bao Jia
+      - Xue-Qian Li
+      doi: 10.1140/epjc/s10052-016-4561-3
+      notes: Primary full text read from the local production text cache.
+      reference_id: src_1608_05443_primary
+      role: original_model
+      title: The new interaction suggested by the anomalous 8Be transition sets a rigorous constraint
+        on the mass range of dark matter
+      url: https://arxiv.org/abs/1608.05443
+      year: 2016
+    constraint_papers:
+    - arxiv_id: '1804.07934'
+      authors:
+      - Lian-Bao Jia
+      doi: 10.1140/epjc/s10052-019-6594-0
+      notes: Related full text resolved locally; used for dark-photon portal resonance and 21-cm caveat
+        context.
+      reference_id: ads_1608_05443_06
+      role: extension
+      title: Dark photon portal dark matter with the 21-cm anomaly
+      url: https://arxiv.org/abs/1804.07934
+      year: 2019
+    - arxiv_id: '1609.07198'
+      authors:
+      - Chian-Shu Chen
+      - Guey-Lin Lin
+      - Yen-Hsun Lin
+      - Fanrong Xu
+      doi: 10.1142/S0217751X17501780
+      notes: Read via arXiv fallback after local resolution missed this candidate.
+      reference_id: web_1608_05443_01
+      role: constraint
+      title: The 17 MeV Anomaly in Beryllium Decays and U(1) Portal to Dark Matter
+      url: https://arxiv.org/abs/1609.07198
+      year: 2017
+    - arxiv_id: '1906.00559'
+      authors:
+      - Lian-Bao Jia
+      - Xu Liao
+      doi: 10.1103/PhysRevD.100.035012
+      notes: Read via arXiv fallback after local resolution missed this candidate; used for CMB/21-cm
+        annihilation caveats.
+      reference_id: web_1608_05443_02
+      role: constraint
+      title: Possible s-wave annihilation for MeV dark matter with the 21-cm absorption
+      url: https://arxiv.org/abs/1906.00559
+      year: 2019
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_worker_batch-0001
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1608_05443'
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: The paper reports a viable parameter space of 10.4-16.7 MeV for scalar DM coupled
+        through the 16.7 MeV X boson.
+    - reference_id: '1608_05443'
+      section: The couplings / DM annihilations / Scalar DM
+      page: null
+      quote_or_summary: The text gives an effective scalar DM-X interaction and derives p-wave annihilation
+        through an off-shell X at freeze-out.
+    unresolved_items:
+    - The stabilizing symmetry of the scalar DM is not specified in the extracted text.
+    - The ultraviolet completion of the X portal is not specified.
+    - The 8Be anomaly itself is treated only as the motivating mediator input, not as an established signal.
+    - Cosmic-dawn/21-cm statements are related-model caveats and require additional millicharged or resonant
+      assumptions before use.
+  evidence:
+    particle_content:
+    - reference_id: '1608_05443'
+      note: The paper concentrates on scalar and vector DM after stating that fermionic MeV DM gives s-wave
+        annihilation disfavored by CMB bounds.
+      confidence: high
+      section: Introduction
+      page: null
+    symmetries:
+    - reference_id: '1608_05443'
+      note: The text introduces a new charge e_D for the DM-X interaction but does not identify a stabilizing
+        symmetry.
+      confidence: medium
+      section: The couplings
+      page: null
+    interactions:
+    - reference_id: '1608_05443'
+      note: The scalar interaction is written with X_mu J_DM^mu and X_mu J_SM^mu currents, and X couples
+        to electrons and u,d quarks.
+      confidence: high
+      section: The couplings
+      page: null
+    production_mechanism:
+    - reference_id: '1608_05443'
+      note: For m_X/2 < m_phi < m_X, the paper says the s-channel phi phi* -> X* -> f fbar process dominates
+        freeze-out and has a = 0, p-wave behavior.
+      confidence: high
+      section: Scalar DM
+      page: null
+    cosmological_history:
+    - reference_id: '1608_05443'
+      note: The paper uses N_eff/BBN considerations after neutrino decoupling to set the scalar lower
+        mass bound.
+      confidence: high
+      section: DM mass with constraints of N_eff
+      page: null
+    parameter_ranges:
+    - reference_id: '1608_05443'
+      note: The scalar mass range is quoted as 10.4 < m_phi < 16.7 MeV, with m_X = 16.7 MeV adopted.
+      confidence: high
+      section: DM mass with constraints of N_eff
+      page: null
+    validity_domain:
+    - reference_id: '1608_05443'
+      note: The model requires m_DM < m_X to close the s-wave XX channel and m_DM > m_X/2 so X does not
+        decay directly into DM.
+      confidence: high
+      section: DM annihilations
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text applies CMB, BBN/N_eff, XENON10, and X-mass assumptions to define the allowed
+        scalar/vector windows.
+      page: null
+      reference_id: src_1608_05443_primary
+      section: Constraint discussion
+    - confidence: medium
+      note: Related local paper develops a dark-photon portal 21-cm variant and notes direct-detection
+        caveats for millicharged DM.
+      page: null
+      reference_id: ads_1608_05443_06
+      section: Abstract and conclusion
+    observables:
+    - confidence: high
+      note: Primary text gives the 10.4-16.7 MeV scalar mass window, p-wave freeze-out, BBN/N_eff caveats,
+        and electron-scattering discussion.
+      page: null
+      reference_id: src_1608_05443_primary
+      section: Abstract and phenomenology sections
+    - confidence: medium
+      note: arXiv fallback abstract reports U(1)-portal direct-search implications for MeV-scale DM-electron
+        scattering.
+      page: null
+      reference_id: web_1608_05443_01
+      section: Abstract
+    - confidence: medium
+      note: arXiv fallback abstract describes CMB and 21-cm constraints on MeV annihilation and resonant
+        suppression caveats.
+      page: null
+      reference_id: web_1608_05443_02
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Routes follow the paper's freeze-out, mass-window, and DM-electron scattering calculations.
+      page: null
+      reference_id: src_1608_05443_primary
+      section: Model and detection sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - This extraction records the paper's model assumptions only and does not evaluate the later status
+    of the 8Be anomaly interpretation.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - 8Be-motivated mediator interpretation
+  - unspecified DM stabilization mechanism
+  - coupling values shown as numerical curves rather than text tables
+  validation_status: expert_judgment_only
+  notes: The analytic freeze-out logic is clear, but several model-building details are left implicit.
+agent_failure_modes:
+  warnings:
+  - id: do_not_generalize_mass_window
+    severity: medium
+    category: extrapolation
+    warning: The quoted 10.4-16.7 MeV scalar mass window is conditional on the paper's X-boson interpretation
+      and thermal history.
+    mitigation: Keep the X mediator mass, couplings, and p-wave freeze-out assumptions attached to the
+      model entry.
+    source_reference_ids:
+    - '1608_05443'
+  - id: missing_stabilizing_symmetry
+    severity: medium
+    category: assumption_mismatch
+    warning: The assigned text does not specify the symmetry that stabilizes the scalar dark matter particle.
+    mitigation: Do not infer a Z2, gauge remnant, or other stabilizer unless another source is reviewed.
+    source_reference_ids:
+    - '1608_05443'
+observables:
+- caveats:
+  - The mass window is conditional on the X-boson interpretation of the anomaly and on the paper's coupling
+    choices.
+  channel: precision_laboratory
+  effect_direction: model_dependent
+  environments:
+  - 8Be nuclear transition
+  - MeV dark sector
+  id: scalar_obs_atomki_x_mass_window
+  key_quantities:
+  - description: Mediator mass adopted from the 8Be anomaly fit.
+    fiducial_value: 16.7
+    name: X-boson mass
+    role: core
+    source_reference_ids:
+    - src_1608_05443_primary
+    status: assumed
+    symbol: m_X
+    unit: MeV
+  - description: spin-0 dark matter mass window derived in the assigned paper.
+    name: scalar DM mass
+    range: 10.4-16.7 MeV
+    role: core
+    source_reference_ids:
+    - src_1608_05443_primary
+    status: assumed
+    symbol: m_phi
+    unit: MeV
+  linked_constraints:
+  - scalar_con_atomki_mass_window
+  linked_routes:
+  - scalar_route_xportal_relic_and_detection
+  name: Atomki X-boson mass window for MeV dark matter
+  notes: null
+  observability: medium
+  predicted_effect: Taking the 16.7 MeV X boson interpretation fixes the portal mediator scale and restricts
+    the thermal MeV dark matter window.
+  redshift_range: null
+  relevance: critical
+  scale_range: nuclear transition energy scale
+  source_reference_ids:
+  - src_1608_05443_primary
+  - web_1608_05443_01
+  subchannel: 8Be internal pair anomaly
+- caveats:
+  - Fermionic s-wave versions are explicitly disfavored in the primary text; this row is only for the
+    scalar/vector p-wave model card.
+  - Later 21-cm variants require extra millicharged/resonant assumptions not present in the primary mass-window
+    result.
+  channel: cmb
+  effect_direction: rate_change
+  environments:
+  - early universe plasma
+  - CMB recombination
+  id: scalar_obs_cmb_bbn_annihilation
+  key_quantities:
+  - description: The assigned scalar/vector candidates are treated as p-wave at freeze-out.
+    name: annihilation partial wave
+    role: derived
+    source_reference_ids:
+    - src_1608_05443_primary
+    status: inferred
+    symbol: sigma v
+    value: p-wave dominant
+  - description: Mass range constrained by BBN/N_eff and the X-mediator relation.
+    name: scalar DM mass
+    range: 10.4-16.7 MeV
+    role: core
+    source_reference_ids:
+    - src_1608_05443_primary
+    status: assumed
+    symbol: m_phi
+    unit: MeV
+  linked_constraints:
+  - scalar_con_cmb_bbn_mass_window
+  linked_routes:
+  - scalar_route_xportal_relic_and_detection
+  name: CMB and BBN response to MeV annihilation
+  notes: null
+  observability: high
+  predicted_effect: For MeV dark matter, annihilation to charged states can affect CMB energy injection
+    and BBN/N_eff; the assigned scalar/vector cases use p-wave freeze-out to avoid the s-wave CMB problem.
+  redshift_range: BBN through recombination and cosmic dawn for related 21-cm variants
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - src_1608_05443_primary
+  - web_1608_05443_02
+  - ads_1608_05443_06
+  subchannel: energy injection and N_eff
+- caveats:
+  - Detector thresholds and neutrino-electron backgrounds are important for sub-GeV electron recoils.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - direct-detection targets
+  - electron recoils
+  id: scalar_obs_electron_recoil
+  key_quantities:
+  - description: Electron recoil scattering through the X portal.
+    name: DM-electron scattering cross section
+    role: experimental
+    source_reference_ids:
+    - src_1608_05443_primary
+    - web_1608_05443_01
+    status: inferred
+    symbol: sigma_e
+  - description: Primary text treats the example scattering cross section as momentum independent.
+    name: DM form factor
+    role: experimental
+    source_reference_ids:
+    - src_1608_05443_primary
+    status: assumed
+    symbol: F_DM(q)
+    value: '1'
+  linked_constraints:
+  - scalar_con_xenon10_electron
+  linked_routes:
+  - scalar_route_electron_recoil_recast
+  name: MeV dark matter electron scattering
+  notes: null
+  observability: medium
+  predicted_effect: Nuclear recoils are insensitive for MeV masses, so the paper emphasizes DM-electron
+    scattering; XENON10 bounds still leave viable scalar/vector parameter space.
+  redshift_range: null
+  relevance: high
+  scale_range: electron ionization energies
+  source_reference_ids:
+  - src_1608_05443_primary
+  - web_1608_05443_01
+  subchannel: electron recoil
+constraints:
+- allowed_regions:
+  - 10.4-16.7 MeV is the quoted scalar DM mass interval in the primary text.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The 8Be anomaly is interpreted as a 16.7 MeV vector mediator X coupled to SM fermions
+      and dark matter.
+    id: assume_x_interpretation
+    impact_if_violated: If the anomaly is not an X boson, the quoted mass window loses its motivation.
+    notes: null
+    scope: laboratory
+    source_reference_ids:
+    - src_1608_05443_primary
+    - web_1608_05443_01
+    status: assumed
+  benchmark_implications:
+  - The window is not a general MeV-DM bound; it is tied to the 8Be-inspired X mediator.
+  caveats:
+  - Subsequent nuclear/beam-dump constraints must be checked in a dedicated X-boson model.
+  constrained_parameters:
+  - m_X
+  - m_phi
+  - X-SM fermion couplings
+  constraint_type: laboratory
+  data_release: Atomki 8Be transition fit as used in the primary paper
+  excluded_regions:
+  - Scalar DM masses outside 10.4-16.7 MeV do not satisfy the combined primary-paper requirements for
+    the adopted m_X=16.7 MeV setup.
+  id: scalar_con_atomki_mass_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Conditional 8Be/X portal mass window
+  notes: null
+  observable_channel: 8Be anomaly
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_1608_05443_primary
+  - web_1608_05443_01
+- allowed_regions:
+  - The primary scalar/vector p-wave scalar case has an allowed mass window 10.4-16.7 MeV.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The assigned scalar/vector candidate annihilates dominantly through p-wave freeze-out.
+    id: assume_p_wave_freezeout
+    impact_if_violated: An s-wave-dominated version faces much stronger CMB bounds.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - src_1608_05443_primary
+    - web_1608_05443_02
+    status: assumed
+  benchmark_implications:
+  - Related 21-cm work shows s-wave MeV annihilation needs resonant suppression at late times to avoid
+    CMB and cosmic-dawn heating constraints.
+  caveats:
+  - A full likelihood would require the exact annihilation branching fractions and thermal history.
+  constrained_parameters:
+  - m_phi
+  - sigma v
+  - annihilation final states
+  constraint_type: cosmological
+  data_release: Planck CMB energy injection, BBN/N_eff constraints, EDGES-style 21-cm caveats for related
+    variants
+  excluded_regions:
+  - Fermionic s-wave annihilation through X is disfavored by CMB energy-injection bounds in the primary
+    text.
+  - Too-light MeV candidates can alter BBN and recombination N_eff through dark-sector annihilations.
+  id: scalar_con_cmb_bbn_mass_window
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: CMB and BBN bounds on MeV annihilation
+  notes: null
+  observable_channel: CMB energy injection and N_eff
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1608_05443_primary
+  - web_1608_05443_02
+  - ads_1608_05443_06
+- allowed_regions:
+  - The primary text reports remaining scalar/vector parameter space after applying XENON10.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Related U(1)-portal work emphasizes future Si/Ge electron-threshold tests for MeV-scale DM.
+  caveats:
+  - Detector response and neutrino-electron backgrounds must be modeled for an actual limit.
+  constrained_parameters:
+  - sigma_e
+  - m_phi
+  - X-electron coupling
+  constraint_type: laboratory
+  data_release: XENON10 electron-scattering bound; future Si/Ge threshold concepts
+  excluded_regions:
+  - Part of the electron-scattering parameter space is bounded by XENON10.
+  id: scalar_con_xenon10_electron
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: XENON10 and future electron-recoil tests
+  notes: null
+  observable_channel: electron recoil
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1608_05443_primary
+  - web_1608_05443_01
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The paper provides analytic/numerical windows but not a reusable likelihood.
+    caveats:
+    - The 21-cm related papers are not automatically part of the primary benchmark.
+    constraint_ids:
+    - scalar_con_atomki_mass_window
+    - scalar_con_cmb_bbn_mass_window
+    derived_quantities:
+    - thermal relic abundance
+    - CMB energy-injection rate
+    - BBN/N_eff shift
+    - allowed MeV mass interval
+    description: Compute X-mediated freeze-out, BBN/CMB viability, and the conditional MeV mass window.
+    forward_model_chain:
+    - inputs:
+      - X-portal couplings
+      - m_X
+      - m_phi
+      notes: null
+      outputs:
+      - annihilation and scattering cross sections
+      step_id: step_cross_sections
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Simplified X-mediated model.
+    - inputs:
+      - annihilation cross section
+      - thermal history
+      notes: null
+      outputs:
+      - Omega_DM h^2
+      step_id: step_relic
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Standard thermal freeze-out with p-wave suppression.
+    - inputs:
+      - annihilation rate
+      - mass window
+      notes: null
+      outputs:
+      - CMB/BBN allowed region
+      step_id: step_cosmo_bounds
+      step_type: recasting
+      tool_or_code: null
+      validity: Needs external CMB/BBN likelihoods for production use.
+    id: scalar_route_xportal_relic_and_detection
+    input_parameters:
+    - m_X
+    - m_phi
+    - X-electron coupling
+    - X-quark couplings
+    - annihilation branching fractions
+    likelihoods:
+    - CMB energy-injection likelihood
+    - BBN/N_eff likelihood
+    observable_ids:
+    - scalar_obs_atomki_x_mass_window
+    - scalar_obs_cmb_bbn_annihilation
+    required_code_resources:
+    - thermal relic solver
+    - CMB/BBN recast inputs
+    route_status: planned
+    source_model_features:
+    - A 16.7 MeV vector mediator couples the dark candidate to SM fermions.
+    - The assigned scalar/vector candidate has p-wave-dominated freeze-out.
+    validation_tests:
+    - Recover stronger CMB exclusion for a forced s-wave fermion case.
+  - agent_notes: Only qualitative XENON10 consistency is claimed.
+    caveats:
+    - Low-threshold backgrounds control future reach.
+    constraint_ids:
+    - scalar_con_xenon10_electron
+    derived_quantities:
+    - electron recoil spectrum
+    - expected ionization counts
+    - excluded coupling region
+    description: Map X-portal couplings into electron-recoil rates and compare with XENON10 or threshold-detector
+      projections.
+    forward_model_chain:
+    - inputs:
+      - X-mediated matrix element
+      - atomic response
+      notes: null
+      outputs:
+      - differential electron recoil rate
+      step_id: step_electron_scattering
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Momentum-independent F_DM=1 benchmark in the primary text.
+    - inputs:
+      - recoil spectrum
+      - XENON10 exposure/threshold
+      notes: null
+      outputs:
+      - allowed/excluded cross section
+      step_id: step_detector_compare
+      step_type: likelihood
+      tool_or_code: null
+      validity: Requires experiment response data.
+    id: scalar_route_electron_recoil_recast
+    input_parameters:
+    - m_phi
+    - X-electron coupling
+    - local DM density
+    - electron ionization form factors
+    likelihoods:
+    - XENON10 electron-scattering likelihood
+    observable_ids:
+    - scalar_obs_electron_recoil
+    required_code_resources:
+    - atomic ionization form factors
+    - detector response
+    route_status: planned
+    source_model_features:
+    - MeV mass makes nuclear recoils ineffective.
+    - The mediator couples to electrons.
+    validation_tests:
+    - Check recoil spectrum vanishes below detector threshold.

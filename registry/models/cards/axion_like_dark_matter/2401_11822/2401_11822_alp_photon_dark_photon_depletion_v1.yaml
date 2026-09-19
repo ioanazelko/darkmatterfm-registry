@@ -1,0 +1,795 @@
+_source:
+  shard: arXiv_src_2401_087_wds.tar
+  paper_id: '2401_11822'
+  source_member: 2401_11822.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2401_11822_alp_photon_dark_photon_depletion_v1
+identity:
+  name: ALP dark matter with photon-dark-photon gauge-field depletion
+  family: axion_like_dark_matter
+  aliases:
+  - ALP magnetogenesis dark matter
+  - axion-photon-dark-photon coupled ALP dark matter
+  short_description: An axion-like-particle dark matter setup in which ALP oscillations resonantly source
+    photon and dark-photon gauge fields, depleting the ALP abundance while generating primordial magnetic
+    fields.
+  historical_origin_or_motivation: Motivated by relaxing ALP overabundance constraints and by extending
+    axion-dark-photon magnetogenesis simulations to earlier times and heavier ALPs.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - axion_like_particles
+  - dark_photon
+  - magnetogenesis
+  - misalignment_dark_matter
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes an ALP effective Lagrangian with photon, dark-photon, and mixed axion-gauge
+    topological couplings suppressed by f.
+particle_content:
+  dark_matter_candidate:
+    name: axion-like particle field
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - massless dark photon
+  mediators:
+  - photon
+  - dark photon
+  dark_radiation_species:
+  - dark photons sourced during ALP oscillations
+  excited_or_degenerate_states:
+  - inhomogeneous post-inflationary ALP field configurations
+  long_lived_particles:
+  - coherent ALP field
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The ALP is a pseudo Nambu-Goldstone boson of a broken Peccei-Quinn-like symmetry;
+    its cosmological lifetime is assumed long enough for dark matter.
+  symmetries:
+  - name: Peccei-Quinn-like shift symmetry
+    type: shift
+    exact_or_approximate: broken
+    breaking: ALP mass potential V(phi)=m_phi^2 f^2[1-cos(phi/f)]
+    breaking_scale: null
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  - vector
+  standard_model_targets:
+  - photons
+  - primordial plasma electromagnetic current
+  dark_sector_couplings:
+  - axion-dark-photon coupling
+  - axion-photon-dark-photon mixed coupling
+  mediator_types:
+  - photon
+  - dark photon
+  interaction_operators:
+  - (g_A/4f) phi F Ftilde
+  - (g_X/4f) phi X Xtilde
+  - (g_AX/2f) phi F Xtilde
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - classical resonant gauge-field production from ALP oscillations
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: ALP mass
+    symbol: m_phi
+    description: Mass in the cosine ALP potential.
+    range: heavier ALPs around 10^-10 to 10^-8 eV and ultralight examples around 10^-12 to 10^-11 eV are
+      discussed
+    unit: eV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2401_11822
+  - name: ALP decay constant
+    symbol: f
+    description: Decay constant suppressing the gauge-field couplings.
+    range: 10^11 to 10^16 GeV across the simulated scenarios
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2401_11822
+  - name: axion-photon coupling
+    symbol: g_A
+    description: Dimensionless ALP-photon coupling in the effective Lagrangian.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2401_11822
+  - name: axion-dark-photon coupling
+    symbol: g_X
+    description: Dimensionless ALP-dark-photon coupling used in the lattice simulations.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2401_11822
+  - name: mixed axion photon-dark-photon coupling
+    symbol: g_AX
+    description: Dimensionless mixed coupling; simulations often use g_X = g_AX.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2401_11822
+  - name: initial inhomogeneity parameter
+    symbol: epsilon
+    description: Ratio of initial axion energy density to m_phi^2 f^2 in the inhomogeneous-field simulations.
+    range: 10^4 to 10^6 examples discussed
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2401_11822
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - misalignment production
+  - post-inflationary inhomogeneous axion field from strings and domain walls
+  - resonant transfer of ALP energy to photon and dark-photon fields
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - f
+  - m_phi
+  - initial field amplitude or inhomogeneity
+  - g_X and g_AX gauge couplings
+  - reheating temperature relative to f
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: Gauge-field production depletes the ALP abundance; examples approach Omega_DM h^2=0.12 for selected
+    f or initial inhomogeneity values.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: dark matter relic density
+    symbol: Omega_DM h^2
+    description: Planck dark matter density used as a reference target.
+    value: '0.12'
+    role: cosmological
+    status: assumed
+    source_reference_ids:
+    - paper_2401_11822
+  calculation_type: nonthermal
+  key_dependencies:
+  - misalignment amplitude
+  - f
+  - m_phi
+  - g_X
+  - g_AX
+  - initial homogeneity versus inhomogeneity
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - PQ symmetry may or may not be restored after inflation
+  - initially homogeneous or inhomogeneous ALP fields
+  - strings and domain-wall-like initial configurations approximated in simulations
+  - gauge-field production during ALP oscillations
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - Peccei-Quinn symmetry breaking
+  topological_defects:
+  - strings and domain walls in post-inflationary scenarios
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper evolves classical ALP and gauge-field spectra on a lattice rather than a closed particle
+    distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    impact_on_sigma8_s8: The model can produce ultralight ALPs and inhomogeneous fields, but the paper
+      focuses on relic abundance and magnetic fields rather than matter transfer functions.
+  nonlinear:
+    halo_mass_function_effect: No halo or subhalo calculation is provided.
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: partial
+validity_domain:
+- id: effective_alp_lagrangian
+  applies_to: EFT
+  condition: The topological ALP-gauge couplings are treated as effective interactions with large dimensionless
+    couplings allowed in the cited setup.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The UV origin and cutoff of the large couplings are not resolved in the extracted text.
+  source_reference_ids:
+  - paper_2401_11822
+  notes: null
+- id: lattice_resolution
+  applies_to: computation
+  condition: Inhomogeneous post-inflationary simulations are qualitative because the available lattice
+    resolution is limited compared with dedicated axion-string simulations.
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - The paper says higher-resolution runs are needed to resolve spectra properly.
+  source_reference_ids:
+  - paper_2401_11822
+  notes: null
+assumptions:
+  global:
+  - id: long_lived_alp
+    description: The ALP is assumed stable or long-lived enough to constitute dark matter after gauge-field
+      depletion.
+    scope: theory
+    status: assumed
+    impact_if_violated: The remaining ALP abundance would not be a viable dark matter component.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper_2401_11822
+    notes: null
+  - id: initial_condition_branch
+    description: The analysis splits into homogeneous T_R < f and inhomogeneous T_R > f or f < H_I initial
+      axion configurations.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Gauge production, relic abundance, and magnetic-field outcomes change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper_2401_11822
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports a developed lattice simulation code and mentions LATTICEEASY-style initialization,
+    but no public model-specific repository is identified in the assigned text.
+  primary_code_role: other
+  repositories: []
+  packages_or_modules:
+  - name: LATTICEEASY-style initialization
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - other
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: '2026-06-01'
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families:
+    - axion-like particle lattice simulations
+    supported_observables: []
+    inputs:
+    - initial gauge-field spectra
+    outputs:
+    - field spectra
+    validity_domain: []
+    citation_reference_ids:
+    - paper_2401_11822
+    notes: The paper says its numerical initialization procedure follows LATTICEEASY; this is not a dedicated
+      release of the model code.
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs:
+  - ALP and gauge-field initial conditions
+  - couplings
+  - lattice size
+  expected_outputs:
+  - ALP relic density
+  - gauge-field spectra
+  - magnetic-field strength
+  caveats:
+  - No public repository for the simulations is named in the assigned text.
+provenance:
+  model_id: 2401_11822_alp_photon_dark_photon_depletion_v1
+  model_name: ALP dark matter with photon-dark-photon gauge-field depletion
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-06-01'
+  last_updated: '2026-06-01'
+  sources:
+    primary_papers:
+    - reference_id: paper_2401_11822
+      title: Unknown title; assigned text on ALP, photon, and dark-photon lattice magnetogenesis
+      authors: []
+      year: 2024
+      arxiv_id: '2401.11822'
+      doi: null
+      url: null
+      role: extension
+      notes: null
+    - arxiv_id: '2401.11822'
+      authors:
+      - Anzuini, Filippo
+      - Maggi, Angelo
+      doi: 10.1088/1475-7516/2024/08/011
+      notes: Primary assigned paper read locally.
+      reference_id: arxiv:2401.11822
+      role: original_model
+      title: 'Axions and primordial magnetogenesis: the role of initial axion inhomogeneities'
+      url: https://arxiv.org/abs/2401.11822
+      year: 2024
+    constraint_papers:
+    - arxiv_id: '1802.07269'
+      authors:
+      - Choi, Kiwoon
+      - Kim, Hyungjin
+      - Sekiguchi, Toyokazu
+      doi: 10.1103/PhysRevLett.121.031102
+      notes: Related full text resolved locally and read for coupling/magnetogenesis bounds.
+      reference_id: arxiv:1802.07269
+      role: constraint
+      title: Late-Time Magnetogenesis Driven by Axionlike Particle Dark Matter and a Dark Photon
+      url: https://arxiv.org/abs/1802.07269
+      year: 2018
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1510.07633'
+      authors:
+      - Marsh, David J. E.
+      doi: 10.1016/j.physrep.2016.06.005
+      notes: Related axion-cosmology review read locally.
+      reference_id: arxiv:1510.07633
+      role: review
+      title: Axion cosmology
+      url: https://arxiv.org/abs/1510.07633
+      year: 2016
+    - arxiv_id: '2012.11584'
+      authors:
+      - Ratzinger, Wolfram
+      - Schwaller, Pedro
+      - Stefanek, Benjamin
+      doi: 10.21468/SciPostPhys.11.1.001
+      notes: Related axion-dark-photon lattice study read locally.
+      reference_id: arxiv:2012.11584
+      role: extension
+      title: 'Gravitational waves from an axion-dark photon system: A lattice study'
+      url: https://arxiv.org/abs/2012.11584
+      year: 2021
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: Codex GPT-5 dark-matter extraction worker
+    extraction_date: '2026-06-01'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper_2401_11822
+      section: opening text
+      page: null
+      quote_or_summary: The paper studies ALPs coupled to Abelian gauge fields and how gauge-field production
+        depletes the ALP abundance.
+    - reference_id: paper_2401_11822
+      section: model section
+      page: null
+      quote_or_summary: The effective Lagrangian includes ALP, photon, and dark-photon kinetic terms and
+        topological couplings g_A, g_X, and g_AX.
+    - reference_id: paper_2401_11822
+      section: simulation results
+      page: null
+      quote_or_summary: The relic density approaches Omega_DM h^2=0.12 for selected f or inhomogeneity
+        values while gauge fields and magnetic fields are produced.
+    unresolved_items:
+    - Exact paper title and authors are not exposed in the assigned text.
+    - No public model-specific lattice code was identified.
+    - Magnetic-field observational constraints require spectrum-specific recasting.
+    - The UV completion and EFT cutoff for large effective couplings remain weakly specified.
+  evidence:
+    particle_content:
+    - reference_id: paper_2401_11822
+      note: The field content is an ALP, photons, and massless dark photons; the ALP is treated as the
+        dark matter candidate.
+      confidence: high
+      section: assigned text
+      page: null
+    symmetries:
+    - reference_id: paper_2401_11822
+      note: The ALP is described as a pseudo Nambu-Goldstone boson from U(1) Peccei-Quinn symmetry breaking.
+      confidence: high
+      section: assigned text
+      page: null
+    interactions:
+    - reference_id: paper_2401_11822
+      note: The Lagrangian contains phi F Ftilde, phi X Xtilde, and mixed phi F Xtilde couplings suppressed
+        by f.
+      confidence: high
+      section: assigned text
+      page: null
+    production_mechanism:
+    - reference_id: paper_2401_11822
+      note: Misalignment-like ALP oscillations source gauge fields and transfer energy out of the ALP
+        condensate.
+      confidence: high
+      section: assigned text
+      page: null
+    cosmological_history:
+    - reference_id: paper_2401_11822
+      note: The text separately treats T_R < f homogeneous and T_R > f inhomogeneous post-inflationary
+        axion configurations.
+      confidence: high
+      section: assigned text
+      page: null
+    parameter_ranges:
+    - reference_id: paper_2401_11822
+      note: The simulations scan f from 10^11 to 10^16 GeV and discuss ALP masses from about 10^-10 to
+        10^-8 eV plus ultralight examples.
+      confidence: medium
+      section: assigned text
+      page: null
+    validity_domain:
+    - reference_id: paper_2401_11822
+      note: The paper cautions that inhomogeneous-field results are qualitative at the used lattice resolutions.
+      confidence: medium
+      section: assigned text
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text identifies f about 10^15 GeV as compatible with Omega_DM h^2=0.12 in a benchmark
+        while neighboring f values under/overproduce.
+      page: null
+      reference_id: arxiv:2401.11822
+      section: Relic density
+    - confidence: high
+      note: Related text identifies photon-ALP conversion and CMB spectral distortion as leading coupling
+        constraints.
+      page: null
+      reference_id: arxiv:1802.07269
+      section: Constraints
+    observables:
+    - confidence: high
+      note: Primary text reports depletion of ALP abundance, B_0 trends, dark-photon radiation scaling,
+        and inhomogeneity effects.
+      page: null
+      reference_id: arxiv:2401.11822
+      section: Results
+    - confidence: high
+      note: Related text develops ALP dark matter plus dark photon magnetogenesis and names X-ray/CMB
+        bounds.
+      page: null
+      reference_id: arxiv:1802.07269
+      section: Phenomenology
+    - confidence: medium
+      note: Related lattice study connects axion-dark-photon production to gravitational-wave detector
+        bands.
+      page: null
+      reference_id: arxiv:2012.11584
+      section: Results
+    routes:
+    - confidence: high
+      note: Primary paper uses lattice simulations to map couplings and initial conditions to energy densities
+        and B_0.
+      page: null
+      reference_id: arxiv:2401.11822
+      section: Numerical setup
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The database text omits a title and author block; title and authors are therefore not reconstructed
+    from outside sources.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - large effective couplings
+  - lattice resolution for inhomogeneous initial conditions
+  - UV origin of dark-photon sector
+  - initial-condition dependence
+  validation_status: partially_validated
+  notes: The paper performs lattice simulations but flags some qualitative limitations.
+agent_failure_modes:
+  warnings:
+  - id: initial_conditions_matter
+    severity: high
+    category: assumption_mismatch
+    warning: Homogeneous and inhomogeneous initial ALP configurations give different gauge-production
+      efficiency and relic abundance.
+    mitigation: Carry the T_R versus f assumption with any use of this card.
+    source_reference_ids:
+    - paper_2401_11822
+  - id: resolution_limited_inhomogeneous_runs
+    severity: medium
+    category: code_unvalidated
+    warning: The inhomogeneous lattice runs are explicitly described as qualitative at the available resolution.
+    mitigation: Treat spectra and relic-density outcomes from those runs as approximate.
+    source_reference_ids:
+    - paper_2401_11822
+observables:
+- caveats:
+  - Magnetic-field correlation lengths and spectra depend on lattice resolution and initial inhomogeneity
+    assumptions.
+  channel: cosmology
+  effect_direction: enhancement
+  environments:
+  - primordial plasma
+  - intergalactic magnetic-field seeds
+  id: obs_alp_primordial_magnetic_seed
+  key_quantities:
+  - description: Field strength reported from lattice spectra.
+    name: magnetic field redshifted to today
+    role: derived
+    source_reference_ids:
+    - arxiv:2401.11822
+    status: inferred
+    symbol: B_0
+  - description: Controls abundance and coupling suppression.
+    name: ALP decay constant
+    range: 10^11-10^16 GeV across primary simulations
+    role: core
+    source_reference_ids:
+    - arxiv:2401.11822
+    status: inferred
+    symbol: f
+    unit: GeV
+  - description: Large dimensionless couplings used to source gauge fields.
+    name: dark/mixed gauge couplings
+    range: examples include g_X=g_AX=60 and 80
+    role: core
+    source_reference_ids:
+    - arxiv:2401.11822
+    status: inferred
+    symbol: g_X, g_AX
+  linked_constraints:
+  - con_alp_relic_magnetogenesis_window
+  - con_alp_photon_mixing_bounds
+  linked_routes:
+  - route_alp_lattice_to_observables
+  name: Primordial magnetic-field seed from ALP gauge production
+  notes: null
+  observability: medium
+  predicted_effect: Resonant dark-photon production and mixed photon-dark-photon coupling transfer ALP
+    energy into ordinary magnetic fields while depleting the ALP abundance.
+  redshift_range: radiation era after ALP oscillation onset to today-redshifted field estimates
+  relevance: critical
+  scale_range: primary heavier-ALP examples have short magnetic correlation lengths around 1-10 pc; ultralight
+    examples can reach about 0.1 kpc
+  source_reference_ids:
+  - arxiv:2401.11822
+  - arxiv:1802.07269
+  subchannel: primordial magnetic fields
+- caveats:
+  - The assigned paper does not compute a gravitational-wave likelihood; this is a route suggested by
+    related lattice work.
+  channel: gravitational_waves
+  effect_direction: enhancement
+  environments:
+  - early Universe gauge-field production
+  id: obs_alp_dark_radiation_gw
+  key_quantities:
+  - description: Scales like radiation after production.
+    name: dark photon energy density
+    role: derived
+    source_reference_ids:
+    - arxiv:2401.11822
+    status: inferred
+    symbol: rho_X
+  - description: Sets the oscillation epoch and gravitational-wave frequency scale.
+    name: ALP mass
+    range: 10^-12-10^-8 eV examples discussed across primary and related work
+    role: core
+    source_reference_ids:
+    - arxiv:2401.11822
+    - arxiv:2012.11584
+    status: inferred
+    symbol: m_phi
+    unit: eV
+  linked_constraints:
+  - con_alp_photon_mixing_bounds
+  linked_routes:
+  - route_alp_lattice_to_observables
+  name: Dark-radiation and gravitational-wave signatures of axion-dark-photon dynamics
+  notes: null
+  observability: medium
+  predicted_effect: Gauge-field production leaves a dark-photon radiation component and, in related axion-dark-photon
+    lattice studies, can source chiral gravitational waves across detector bands.
+  redshift_range: post-oscillation radiation era through present-day stochastic-background mapping
+  relevance: high
+  scale_range: frequency band is model- and mass-dependent
+  source_reference_ids:
+  - arxiv:2401.11822
+  - arxiv:2012.11584
+  subchannel: axion-dark-photon sourced stochastic background
+constraints:
+- allowed_regions:
+  - Homogeneous examples around f approximately 10^15 GeV can approach Omega_DM h^2=0.12 while producing
+    a sizable B_0.
+  - Inhomogeneous epsilon around 10^4-10^6 can boost ordinary electromagnetic production but requires
+    resolution-qualified interpretation.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Classical lattice simulations capture the gauge-field backreaction relevant to abundance
+      depletion.
+    id: lattice_captures_backreaction
+    impact_if_violated: Relic abundance and B_0 windows could shift with higher-resolution string-network
+      initial conditions.
+    scope: numerical simulation
+    source_reference_ids:
+    - arxiv:2401.11822
+    status: assumed
+  benchmark_implications:
+  - The model can be either all of the dark matter or a subcomponent depending on gauge depletion and
+    initial conditions.
+  caveats:
+  - No matter-power or magnetic-field observational likelihood is run in the primary paper.
+  constrained_parameters:
+  - f
+  - m_phi
+  - g_X
+  - g_AX
+  - epsilon
+  - initial_condition_branch
+  constraint_type: cosmological
+  data_release: Planck dark matter density used as target
+  excluded_regions:
+  - Primary homogeneous examples with f near 10^16 GeV remain overabundant even when magnetic production
+    is largest.
+  - Primary examples with f near 10^14 GeV can underproduce the ALP dark matter abundance.
+  id: con_alp_relic_magnetogenesis_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Relic-density consistency of ALP depletion magnetogenesis
+  notes: null
+  observable_channel: relic_density+magnetogenesis
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2401.11822
+- allowed_regions:
+  - Primary heavy-ALP lattice benchmarks require a dedicated spectrum-dependent recast before applying
+    those ultralight bounds directly.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Bounds derived for late-time ultralight magnetogenesis can be used only after mapping
+      the primary paper spectra and masses.
+    id: spectrum_mapping_to_bounds
+    impact_if_violated: A direct application could overstate or understate the viable coupling range.
+    scope: constraint recast
+    source_reference_ids:
+    - arxiv:1802.07269
+    status: assumed
+  benchmark_implications:
+  - Large effective couplings that efficiently deplete ALPs must be checked against photon-mixing observables.
+  caveats:
+  - ADS metadata alone was not used; claim is based on local related full text.
+  constrained_parameters:
+  - g_A/f
+  - g_AX/f
+  - dark-photon background
+  - magnetic spectrum
+  constraint_type: astrophysical
+  data_release: X-ray and CMB spectral-distortion constraints cited in related magnetogenesis work
+  excluded_regions:
+  - Related late-time magnetogenesis work identifies X-ray photon-ALP conversion and CMB spectral distortions
+    as leading bounds for ultralight ALP-photon/dark-photon mixing.
+  id: con_alp_photon_mixing_bounds
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Photon-mixing and CMB spectral-distortion bounds on axion gauge couplings
+  notes: null
+  observable_channel: xray+cmb_spectral_distortions
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1802.07269
+  - arxiv:1510.07633
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - No public model-specific lattice repository was identified.
+    constraint_ids:
+    - con_alp_relic_magnetogenesis_window
+    - con_alp_photon_mixing_bounds
+    derived_quantities:
+    - rho_a
+    - rho_X
+    - rho_A
+    - Omega_a h^2
+    - B_0
+    - magnetic correlation length
+    - stochastic GW spectrum
+    description: Map ALP mass, decay constant, gauge couplings, and initial homogeneity to relic density,
+      magnetic spectra, dark radiation, and possible gravitational-wave observables.
+    forward_model_chain:
+    - inputs:
+      - ALP/gauge initial conditions
+      - couplings
+      notes: Primary paper performs this step.
+      outputs:
+      - field spectra
+      - energy densities
+      step_id: s1
+      step_type: simulation
+      tool_or_code: classical lattice field solver
+      validity: Valid within lattice resolution and EFT coupling assumptions.
+    - inputs:
+      - field spectra
+      - scale factor
+      notes: Used for relic and magnetogenesis summaries.
+      outputs:
+      - Omega_a h^2
+      - B_0
+      - correlation length
+      step_id: s2
+      step_type: data_transform
+      tool_or_code: null
+      validity: Requires redshifting and plasma conductivity assumptions.
+    - inputs:
+      - Omega_a h^2
+      - B_0
+      - gauge spectra
+      notes: Related papers define constraints to recast.
+      outputs:
+      - relic-density target
+      - photon-mixing/CMB recast
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: Planned; no likelihood run in this batch.
+    id: route_alp_lattice_to_observables
+    input_parameters:
+    - m_phi
+    - f
+    - g_A
+    - g_X
+    - g_AX
+    - epsilon
+    - initial field spectrum
+    likelihoods:
+    - Planck relic-density target only
+    - CMB spectral-distortion recast unavailable
+    observable_ids:
+    - obs_alp_primordial_magnetic_seed
+    - obs_alp_dark_radiation_gw
+    required_code_resources:
+    - model-specific lattice output
+    - photon-mixing/CMB spectral-distortion recast
+    route_status: planned
+    source_model_features:
+    - cosine ALP potential
+    - photon, dark-photon, and mixed topological couplings
+    - homogeneous or inhomogeneous initial ALP field
+    validation_tests:
+    - recover Omega_a h^2 near 0.12 for f about 10^15 GeV benchmark
+    - recover B_0 trend with g_X=g_AX

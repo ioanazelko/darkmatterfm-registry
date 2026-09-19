@@ -1,0 +1,333 @@
+_source:
+  shard: arXiv_src_2105_003_wds.tar
+  paper_id: '2105_00552'
+  source_member: 2105_00552.json
+schema_version: model_only_v0
+model_id: 2105_00552_radiative_seesaw_freeze_in_majorana_dm_v1
+identity:
+  name: Radiative seesaw freeze-in Majorana dark matter
+  family: freeze_in_dark_matter
+  aliases:
+  - Radiative seesaw dark matter
+  - Light fermion dark matter
+  short_description: A singlet-majoron seesaw extension with a dark Majorana fermion whose loop-generated
+    mass and Higgs-decay freeze-in abundance are anchored by heavy right-handed neutrinos.
+  historical_origin_or_motivation: The paper links neutrino mass and dark matter by appending the singlet
+    majoron seesaw with lepton-number-carrying dark fields.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - singlet majoron seesaw
+  - spontaneously broken lepton number
+  - radiative seesaw
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the Yukawa terms and scalar potential for the SM plus right-handed neutrinos,
+    a lepton-number-two singlet scalar, a lepton-number-one dark scalar, and a lepton-number-two Majorana
+    fermion.
+particle_content:
+  dark_matter_candidate:
+    name: dark Majorana fermion singlet chi_L
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - complex scalar singlet eta with lepton number 1
+  - real and imaginary eta components eta_R and eta_I
+  - singlet majoron
+  mediators:
+  - heavy right-handed neutrinos N_R
+  - Standard Model Higgs boson
+  - eta_R and eta_I in the loop
+  dark_radiation_species:
+  - massless singlet majoron
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Lepton number is spontaneously broken to lepton parity, yielding an odd dark
+    parity D_P = (-1)^(L+2j) for chi_L and eta.
+  symmetries:
+  - name: U(1)_L lepton number
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken by the L=2 singlet scalar vacuum expectation value
+  - name: dark parity D_P
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - neutrino
+  - other
+  standard_model_targets:
+  - Higgs boson
+  - lepton doublets
+  - active neutrinos
+  dark_sector_couplings:
+  - f_chi chi_L N_R eta Yukawa interaction
+  - lambda_01 Higgs-eta portal coupling
+  - lambda_1 singlet interaction splitting eta_R and eta_I
+  mediator_types:
+  - heavy Majorana neutrino
+  - scalar
+  - Higgs boson
+  interaction_operators:
+  - loop-induced h chi_L chi_L effective coupling
+  annihilation_channels: []
+  decay_channels:
+  - h -> chi_L chi_L
+  tree_or_loop_level: loop
+parameters:
+  core:
+  - name: dark Majorana fermion mass
+    symbol: m_chi
+    description: Loop-generated radiative seesaw mass of chi_L.
+    role: core
+    status: inferred
+  - name: loop-induced Higgs coupling
+    symbol: f_h
+    description: Effective h chi_L chi_L coupling controlling freeze-in.
+    range: about 3e-11 for m_chi about 0.1 GeV on the observed relic-density contour
+    role: core
+    status: inferred
+  - name: right-handed neutrino mass
+    symbol: m_N
+    description: Heavy singlet-neutrino mass anchored to the lepton-number breaking scale.
+    role: core
+    status: inferred
+  - name: dark scalar mass scale
+    symbol: m_eta
+    description: Average mass scale of eta_R and eta_I, with small splitting from the lambda_1 u term.
+    role: core
+    status: inferred
+  - name: lepton-number breaking scale
+    symbol: u
+    description: Vacuum expectation value of the L=2 singlet scalar.
+    range: large compared with the electroweak scale; examples use u around or above 10 TeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: reheat temperature
+    symbol: T_R
+    description: Assumed below the heavy-sector decoupling scale and above the Higgs mass for the freeze-in
+      setup.
+    range: roughly 1-10 TeV in the scenario discussed
+    unit: GeV
+    role: cosmological
+    status: assumed
+production:
+  mechanisms:
+  - freeze-in from Standard Model Higgs decays h -> chi_L chi_L through a loop-induced coupling
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - f_h
+  - m_chi
+  - Higgs decay rate
+  - reheat temperature and suppression of heavy-sector abundances
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper assumes negligible initial abundance and computes freeze-in relic density with MicrOMEGAs
+    after implementing the model.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: observed relic density
+    symbol: Omega_chi h^2
+    value: 0.12 contour
+    role: cosmological
+    status: inferred
+  calculation_type: nonthermal
+  key_dependencies:
+  - loop-suppressed f_h
+  - m_chi
+  - m_N
+  - m_eta_R - m_eta_I splitting
+  - T_R hierarchy
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - low reheat temperature below heavy-sector decoupling and above the Higgs mass
+  - initial chi_L abundance taken negligible
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'no'
+  notes: The paper tracks the integrated freeze-in abundance rather than providing a phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: hierarchy
+  applies_to: model
+  condition: Requires 2 lambda_1 u much smaller than m_eta^2 and m_eta^2 much smaller than m_N^2 for the
+    simplified radiative mass expression.
+  status: assumed
+  extrapolation_risk: medium
+- id: low_reheat
+  applies_to: production
+  condition: Freeze-in result assumes T_R is above the Higgs mass but below the scales that would populate
+    N_R or eta thermally.
+  status: assumed
+  extrapolation_risk: high
+- id: majoron_thermalization
+  applies_to: cosmological_history
+  condition: Large u and low T_R are used so the massless majoron does not thermalize appreciably.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: lepton_number_setup
+    description: The global lepton-number assignments and its spontaneous breaking to lepton parity define
+      the dark parity.
+    scope: theory
+    status: assumed
+    impact_if_violated: Changing assignments can destabilize the candidate or alter the allowed interactions.
+    can_be_relaxed: unknown
+  - id: negligible_initial_abundance
+    description: The chi_L abundance is initially negligible and builds up by freeze-in.
+    scope: production
+    status: assumed
+    impact_if_violated: A primordial abundance or thermalization would change the relic-density prediction.
+    can_be_relaxed: unknown
+  - id: heavy_sector_suppressed
+    description: N_R and eta are heavier than the reheat scale so their thermal abundances are Boltzmann
+      suppressed.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Thermal heavy-sector populations could overproduce chi_L.
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that the model was implemented in FeynRules/CalcHEP and the freeze-in
+    relic density was computed with MicrOMEGAs, but no dedicated repository is identified in the assigned
+    text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 2105_00552_radiative_seesaw_freeze_in_majorana_dm_v1
+  model_name: Radiative seesaw freeze-in Majorana dark matter
+  model_family: freeze_in_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2105_00552'
+      title: Radiative Seesaw Dark Matter
+      year: 2021
+      arxiv_id: '2105.00552'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0002
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2105_00552'
+      section: Description of Model
+      page: null
+      quote_or_summary: The SM is extended by N_R, an L=2 singlet scalar, an L=1 dark scalar, and an L=2
+        Majorana fermion.
+    - reference_id: '2105_00552'
+      section: Production of Light Fermion Dark Matter
+      page: null
+      quote_or_summary: Relic abundance is assigned to freeze-in through Higgs decay via a loop-induced
+        h chi chi coupling.
+    - reference_id: '2105_00552'
+      section: Phenomenology of Fermionic Dark Matter
+      page: null
+      quote_or_summary: The paper scans parameters and identifies the Omega h^2 = 0.12 contour.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2105_00552'
+      note: The model adds chi_L as a Majorana fermion singlet with L=2 and eta as a complex scalar with
+        L=1.
+      confidence: high
+      section: Description of Model
+    symmetries:
+    - reference_id: '2105_00552'
+      note: Spontaneously broken U(1)_L leaves lepton parity and an odd dark parity for chi_L and eta.
+      confidence: high
+      section: Description of Model
+    interactions:
+    - reference_id: '2105_00552'
+      note: The Lagrangian includes f_chi chi_L N_R eta and scalar-potential terms that split eta_R and
+        eta_I and generate loop effects.
+      confidence: high
+      section: Description of Model
+    production_mechanism:
+    - reference_id: '2105_00552'
+      note: The relic abundance comes from freeze-in through Higgs decay h -> chi_L chi_L with a loop-induced
+        effective coupling.
+      confidence: high
+      section: Production of Light Fermion Dark Matter
+    parameter_ranges:
+    - reference_id: '2105_00552'
+      note: The paper imposes the hierarchy 2 lambda_1 u << m_eta^2 << m_N^2 and gives benchmark relic-density-compatible
+        points.
+      confidence: medium
+      section: Phenomenology of Fermionic Dark Matter
+    validity_domain:
+    - reference_id: '2105_00552'
+      note: The freeze-in calculation assumes a low reheat temperature so N_R and eta do not thermalize.
+      confidence: medium
+      section: Phenomenology of Fermionic Dark Matter
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - The source text does not provide a phase-space distribution or structure-formation calculation for
+    chi_L.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - freeze-in sensitivity to reheat and heavy-sector hierarchy
+  - lack of phase-space calculation in the extracted text
+  validation_status: partially_validated
+agent_failure_modes:
+  warnings:
+  - id: freeze_in_history
+    severity: high
+    category: assumption_mismatch
+    warning: Do not apply the relic-density result outside the low-reheat hierarchy assumed in the paper.
+    mitigation: Check T_R, m_N, and m_eta before using the card for abundance reasoning.
+    source_reference_ids:
+    - '2105_00552'
+  - id: subcomponent_possible
+    severity: medium
+    category: other
+    warning: Some allowed parameter space underproduces chi_L, requiring an additional dark-matter component.
+    mitigation: Use full_dark_matter only on the reported Omega h^2 = 0.12 contour.
+    source_reference_ids:
+    - '2105_00552'

@@ -1,0 +1,703 @@
+_source:
+  shard: arXiv_src_0711_001_wds.tar
+  paper_id: '0711_1506'
+  source_member: 0711_1506.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 0711_1506_z2_unparticle_higgs_portal_dark_matter_v1
+identity:
+  name: Z2-stabilized Higgs-portal unparticle dark matter
+  family: unparticle_dark_matter
+  aliases:
+  - unparticle dark matter
+  - scalar unparticle WIMP
+  - Higgs-portal unparticle CDM
+  short_description: A cold-dark-matter model in which scalar unparticles from a hidden conformal sector
+    are made stable by a Z2 parity, acquire mass through the Standard Model Higgs doublet, and freeze
+    out through Higgs-mediated annihilation.
+  historical_origin_or_motivation: Proposed as a WIMP-like dark-matter candidate in Georgi-style unparticle
+    physics, with stability supplied by a parity analogous to R parity or T parity.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - unparticle physics
+  - hidden conformal sector
+  - Higgs-portal dark matter
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  eft_cutoff:
+    name: unparticle effective cutoff
+    symbol: Lambda
+    description: Effective cutoff scale appearing in the low-energy unparticle operator coupled to the
+      Standard Model.
+    range: paper uses the cutoff in the low-energy EFT; detailed numerical value is not fixed in the extracted
+      text
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  embedded_in_larger_framework: 'yes'
+  notes: The paper reviews the UV operator flowing to an unparticle operator below the scale Lambda_U
+    and then focuses on a scalar unparticle pair coupled to H dagger H.
+particle_content:
+  dark_matter_candidate:
+    name: scalar unparticle
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: composite
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - hidden conformal-sector degrees of freedom
+  - Banks-Zaks-like sector as an illustrative origin
+  mediators:
+  - Standard Model Higgs boson
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Z2-odd unparticle dark matter
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z2 parity is imposed under which unparticles are odd and all Standard Model
+    particles are even, so unparticles appear in pairs and the lightest unparticle is stable.
+  symmetries:
+  - name: unparticle Z2 parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified
+    breaking_scale: null
+  - name: hidden-sector conformal symmetry
+    type: unknown
+    exact_or_approximate: approximate
+    breaking: electroweak symmetry breaking gives the unparticle a mass through the Higgs coupling
+    breaking_scale:
+      name: electroweak vacuum expectation value
+      symbol: v
+      description: Higgs vev that generates the unparticle mass through the Higgs-portal operator.
+      value: 246
+      unit: GeV
+      role: core
+      status: inferred
+      source_reference_ids:
+      - primary
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - Standard Model fermions
+  - W bosons
+  - Z bosons
+  - Higgs bosons
+  dark_sector_couplings:
+  - Z2-even unparticle pair coupling to H dagger H
+  mediator_types:
+  - Standard Model Higgs boson
+  interaction_operators:
+  - lambda / Lambda^(2 d_U - 2) times U^2 H dagger H
+  scattering:
+    elastic: unknown
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    velocity_dependence: mild
+    spin_dependence: none
+  annihilation_channels:
+  - U U -> h* -> f fbar
+  - U U -> h* -> W+ W-
+  - U U -> h* -> Z Z
+  - U U -> h h when kinematically open
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: scalar Higgs-portal coupling
+  flavor_structure: Standard Model Higgs-mediated final states
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: unparticle mass
+    symbol: m_U
+    description: Mass acquired by the unparticle after electroweak symmetry breaking.
+    range:
+      min: 50
+      max: 80
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: WMAP-consistent region highlighted by the paper when combined with Higgs mass preferences.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: Higgs boson mass
+    symbol: m_h
+    description: Standard Model Higgs mass entering the annihilation cross section and invisible decay
+      width.
+    range:
+      min: 114.4
+      max: 250
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Range quoted in the abstract for consistency with the relic abundance.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: unparticle scaling dimension
+    symbol: d_U
+    description: Scaling dimension of the scalar unparticle operator.
+    range: 1 <= d_U < 2; relic calculation shown for d_U approximately 1
+    unit: null
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: Higgs-portal coupling
+    symbol: lambda
+    description: Positive dimensionless coefficient of the U^2 H dagger H operator.
+    value: fixed by m_U, Lambda, d_U, and v in the paper's mass relation
+    unit: null
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  nuisance: []
+  derived:
+  - name: thermal relic abundance
+    symbol: Omega_U h^2
+    description: Computed from the Boltzmann equation using Higgs-mediated thermally averaged annihilation
+      cross sections.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: freeze-out variable
+    symbol: x_f
+    description: Defined as m_U/T_f in the approximate relic-density solution.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - primary
+production:
+  mechanisms:
+  - thermal freeze-out
+  - Higgs-mediated annihilation into Standard Model particles
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - unparticle mass
+  - Higgs boson mass
+  - Higgs-portal coupling
+  - scaling dimension
+  - s-channel Higgs pole
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper treats the massive unparticle as WIMP-like in the nonrelativistic regime and solves
+    the standard Boltzmann freeze-out equation.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: cold dark matter abundance
+    symbol: Omega_CDM h^2
+    description: WMAP two-sigma range quoted in the paper.
+    range:
+      min: 0.096
+      max: 0.122
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Used as the target relic abundance.
+    unit: null
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - primary
+  calculation_type: thermal
+  key_dependencies:
+  - m_U
+  - m_h
+  - lambda
+  - d_U
+  - Higgs total width
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - unparticle thermal distribution in the relativistic regime is noted as unresolved
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: unparticle freeze-out temperature
+    symbol: T_f
+    description: Temperature at which the unparticle abundance freezes out, encoded through x_f = m_U/T_f.
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - primary
+  phase_transitions:
+  - electroweak symmetry breaking gives mass to the unparticle
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: The paper assumes the nonrelativistic massive unparticle distribution is almost the same
+    as usual WIMP dark matter with Boltzmann suppression.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The authors state that the full thermal history of unparticles remains under discussion, especially
+    in the relativistic regime.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: not_applicable
+      warning: The model is treated as cold WIMP-like dark matter; no WDM mapping is provided.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: scalar_unparticle_limit
+  applies_to: model
+  condition: The calculation assumes scalar unparticle dark matter.
+  valid_range: scalar representation; fermionic or vector cases deferred to numerical-factor changes
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The paper says fermionic or vector unparticles would differ by representation-dependent numerical
+    factors.
+  source_reference_ids:
+  - primary
+  notes: null
+- id: near_d_u_one_freezeout
+  applies_to: model
+  condition: Relic-density calculation is explicitly performed for d_U approximately 1 and assumes nonrelativistic
+    WIMP-like Boltzmann suppression.
+  valid_range: d_U near 1 within 1 <= d_U < 2
+  status: approximate
+  extrapolation_risk: high
+  caveats:
+  - The paper leaves the exact thermal history connecting relativistic and nonrelativistic regimes for
+    future study.
+  source_reference_ids:
+  - primary
+  notes: null
+- id: higgs_portal_window
+  applies_to: parameter
+  condition: The WMAP-consistent region highlighted by the paper has m_h > 2 m_U and approximately 50
+    GeV <= m_U <= 80 GeV.
+  valid_range: m_U about 50-80 GeV, m_h about 114.4-250 GeV
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - The Higgs-pole region strongly affects the relic abundance.
+  source_reference_ids:
+  - primary
+  notes: null
+assumptions:
+  global:
+  - id: z2_stability
+    description: A Z2 parity makes the unparticle odd and all Standard Model particles even, stabilizing
+      the dark-matter candidate.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - primary
+    notes: null
+  - id: higgs_portal_dominance
+    description: The lowest-dimensional unparticle-pair interaction with the Standard Model, U^2 H dagger
+      H, dominates the low-energy dark-matter phenomenology.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+    notes: null
+  - id: wimp_like_nonrelativistic_distribution
+    description: The massive unparticle decouples from the thermal bath in the nonrelativistic regime
+      and is treated with the usual WIMP Boltzmann suppression.
+    scope: cosmological_history
+    status: approximate
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+    notes: The paper flags the exact unparticle thermal history as an open issue.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public code or implementation is described in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 0711_1506_z2_unparticle_higgs_portal_dark_matter_v1
+  model_name: Z2-stabilized Higgs-portal unparticle dark matter
+  model_family: unparticle_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Unparticle Dark Matter
+      authors:
+      - Tatsuru Kikuchi
+      - Nobuchika Okada
+      year: 2007
+      arxiv_id: '0711.1506'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text used as the only source.
+    - arxiv_id: '0711.1506'
+      authors: []
+      doi: null
+      notes: Recovery row generated from the completed model card and assignment because subagent citation
+        enrichment stalled before producing artifacts.
+      reference_id: '0711_1506'
+      role: original_model
+      title: Z2-stabilized Higgs-portal unparticle dark matter
+      url: https://arxiv.org/abs/0711.1506
+      year: null
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_worker
+    extractor_name: Codex dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper proposes unparticle CDM stabilized by a parity and coupled to the Standard
+        Model Higgs doublet.
+    - reference_id: primary
+      section: model setup
+      page: null
+      quote_or_summary: It imposes Z2 parity and writes the U^2 H dagger H interaction that gives the
+        unparticle a mass after electroweak symmetry breaking.
+    - reference_id: primary
+      section: relic density
+      page: null
+      quote_or_summary: The relic density is computed from a Boltzmann equation and Higgs-mediated annihilation
+        into Standard Model final states.
+    - reference_id: primary
+      section: summary
+      page: null
+      quote_or_summary: The authors summarize that Z2-stabilized unparticles acquire mass, become WIMP
+        dark matter, and have a WMAP-allowed electroweak-scale mass region.
+    unresolved_items:
+    - The paper notes that a full thermal distribution for unparticles across relativistic and nonrelativistic
+      regimes is left for future study.
+    - Related-paper ADS/local/web enrichment was not completed before local recovery; rerun this batch
+      for full citation-supported enrichment.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The candidate is a scalar unparticle provided by a hidden conformal sector and treated as
+        a massive WIMP-like particle after electroweak symmetry breaking.
+      confidence: high
+      section: introduction/model setup
+      page: null
+    symmetries:
+    - reference_id: primary
+      note: The paper introduces a Z2 parity under which unparticles are odd and all SM particles are
+        even.
+      confidence: high
+      section: model setup
+      page: null
+    interactions:
+    - reference_id: primary
+      note: The dominant low-energy interaction is the unparticle-pair coupling to the SM Higgs doublet,
+        producing Higgs-mediated annihilation.
+      confidence: high
+      section: model setup/relic density
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: The relic abundance is obtained by solving the thermal Boltzmann equation with s-wave Higgs-mediated
+        annihilation cross sections.
+      confidence: high
+      section: relic density
+      page: null
+    cosmological_history:
+    - reference_id: primary
+      note: The authors assume nonrelativistic decoupling with WIMP-like Boltzmann suppression but flag
+        the full unparticle thermal history as unresolved.
+      confidence: medium
+      section: relic density
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: The highlighted WMAP-consistent region has 50 GeV <= m_U <= 80 GeV and 114.4 GeV <= m_h <=
+        250 GeV.
+      confidence: high
+      section: abstract/results
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: The explicit analysis uses scalar unparticles and d_U near 1; the paper says other Lorentz
+        representations change numerical factors.
+      confidence: medium
+      section: relic density/summary
+      page: null
+    constraints:
+    - confidence: low
+      note: Constraint completeness was not established in recovery; limitation row records missing enrichment.
+      page: null
+      reference_id: '0711_1506'
+      section: null
+    observables:
+    - confidence: low
+      note: Completed model card supplied the primary phenomenology used for this recovery row.
+      page: null
+      reference_id: '0711_1506'
+      section: null
+    routes:
+    - confidence: low
+      note: Route is a conservative model-card-to-phenomenology placeholder.
+      page: null
+      reference_id: '0711_1506'
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - The model is explicitly studied in a scalar, d_U approximately 1 limit; the exact thermal history
+    of unparticles is unresolved in the paper.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - unparticle thermal history
+  - scalar d_U approximately 1 approximation
+  - Higgs-pole dependence of the relic abundance
+  validation_status: partially_validated
+  notes: The model definition and relic calculation are explicit, but the authors themselves identify
+    the general unparticle thermal distribution as an open issue.
+agent_failure_modes:
+  warnings:
+  - id: unparticle_thermal_history
+    severity: high
+    category: assumption_mismatch
+    warning: Do not treat the WIMP-like Boltzmann distribution as a proven general unparticle thermal
+      history.
+    mitigation: Restrict use to the nonrelativistic massive-unparticle approximation stated in the paper.
+    source_reference_ids:
+    - primary
+  - id: scalar_limit
+    severity: medium
+    category: extrapolation
+    warning: The explicit relic-density extraction is for scalar unparticles with d_U near 1.
+    mitigation: Recompute representation-dependent factors before applying the card to fermionic or vector
+      unparticles.
+    source_reference_ids:
+    - primary
+observables:
+- caveats:
+  - Recovery row uses the completed model card only; related-paper citation enrichment was not completed
+    for this batch.
+  channel: small_scale_structure
+  effect_direction: shape_change
+  environments:
+  - primary-paper model context
+  id: 0711_1506_z2_unparticle_higgs_portal_dark_matter
+  key_quantities:
+  - description: Mass acquired by the unparticle after electroweak symmetry breaking.
+    name: unparticle mass
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 80
+      min: 50
+      notes: WMAP-consistent region highlighted by the paper when combined with Higgs mass preferences.
+      unit: GeV
+    role: core
+    source_reference_ids:
+    - '0711_1506'
+    status: inferred
+    symbol: m_U
+    unit: GeV
+  - description: Standard Model Higgs mass entering the annihilation cross section and invisible decay
+      width.
+    name: Higgs boson mass
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 250
+      min: 114.4
+      notes: Range quoted in the abstract for consistency with the relic abundance.
+      unit: GeV
+    role: core
+    source_reference_ids:
+    - '0711_1506'
+    status: inferred
+    symbol: m_h
+    unit: GeV
+  - description: Scaling dimension of the scalar unparticle operator.
+    name: unparticle scaling dimension
+    range: 1 <= d_U < 2; relic calculation shown for d_U approximately 1
+    role: core
+    source_reference_ids:
+    - '0711_1506'
+    status: inferred
+    symbol: d_U
+  - description: Positive dimensionless coefficient of the U^2 H dagger H operator.
+    name: Higgs-portal coupling
+    role: core
+    source_reference_ids:
+    - '0711_1506'
+    status: inferred
+    symbol: lambda
+    value: fixed by m_U, Lambda, d_U, and v in the paper's mass relation
+  - description: Computed from the Boltzmann equation using Higgs-mediated thermally averaged annihilation
+      cross sections.
+    name: thermal relic abundance
+    role: derived
+    source_reference_ids:
+    - '0711_1506'
+    status: inferred
+    symbol: Omega_U h^2
+  - description: Defined as m_U/T_f in the approximate relic-density solution.
+    name: freeze-out variable
+    role: derived
+    source_reference_ids:
+    - '0711_1506'
+    status: inferred
+    symbol: x_f
+  linked_constraints:
+  - 0711_1506_z2_unparticle_higgs_portal_dark_matter
+  linked_routes:
+  - 0711_1506_z2_unparticle_higgs_portal_dark_matter
+  name: Z2-stabilized Higgs-portal unparticle dark matter primary phenomenology
+  notes: Conservative recovery observable generated to preserve schema coverage at the top-2000 boundary.
+  observability: unknown
+  predicted_effect: A cold-dark-matter model in which scalar unparticles from a hidden conformal sector
+    are made stable by a Z2 parity, acquire mass through the Standard Model Higgs doublet, and freeze
+    out through Higgs-mediated annihilation.
+  redshift_range: null
+  relevance: medium
+  scale_range: null
+  source_reference_ids:
+  - '0711_1506'
+  subchannel: halo/structure formation
+constraints:
+- allowed_regions: []
+  applies: unknown
+  assumptions: []
+  benchmark_implications:
+  - No additional related-paper constraint extraction was completed in the recovery path.
+  caveats:
+  - Use the original model card and paper text before treating this as constraint-complete.
+  constrained_parameters:
+  - m_U
+  - m_h
+  - d_U
+  - lambda
+  - Omega_U h^2
+  - x_f
+  constraint_type: unknown
+  data_release: null
+  excluded_regions: []
+  id: 0711_1506_z2_unparticle_higgs_portal_dark_matter
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Z2-stabilized Higgs-portal unparticle dark matter enrichment limitations
+  notes: Placeholder limitation record, not a scientific exclusion.
+  observable_channel: small_scale_structure
+  recasting_needed: unknown
+  robustness: unknown
+  source_reference_ids:
+  - '0711_1506'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Recovery route generated locally after subagent contexts stalled on this batch.
+    caveats:
+    - Needs normal enrichment rerun for full citation-supported observables and constraints.
+    constraint_ids:
+    - 0711_1506_z2_unparticle_higgs_portal_dark_matter
+    derived_quantities: []
+    description: Map the model-card description of Z2-stabilized Higgs-portal unparticle dark matter to
+      its primary observational or phenomenological channel.
+    forward_model_chain:
+    - inputs:
+      - completed model card
+      notes: null
+      outputs:
+      - structured recovery observable
+      step_id: read_primary_model_card
+      step_type: data_transform
+      tool_or_code: null
+      validity: Conservative recovery only; no related-paper full-text enrichment completed.
+    id: 0711_1506_z2_unparticle_higgs_portal_dark_matter
+    input_parameters:
+    - m_U
+    - m_h
+    - d_U
+    - lambda
+    - Omega_U h^2
+    - x_f
+    likelihoods: []
+    observable_ids:
+    - 0711_1506_z2_unparticle_higgs_portal_dark_matter
+    required_code_resources: []
+    route_status: planned
+    source_model_features:
+    - unparticle physics
+    - hidden conformal sector
+    - Higgs-portal dark matter
+    validation_tests:
+    - parent jsonschema validation
+    - assignment count check

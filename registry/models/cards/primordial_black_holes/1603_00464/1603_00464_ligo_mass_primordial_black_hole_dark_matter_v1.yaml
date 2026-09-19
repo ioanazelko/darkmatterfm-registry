@@ -1,0 +1,741 @@
+_source:
+  shard: arXiv_src_1603_001_wds.tar
+  paper_id: '1603_00464'
+  source_member: 1603_00464.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1603_00464_ligo_mass_primordial_black_hole_dark_matter_v1
+identity:
+  name: LIGO-mass primordial black hole dark matter
+  family: primordial_black_holes
+  aliases:
+  - 30 solar mass PBH dark matter
+  - GW150914 PBH dark matter scenario
+  short_description: A phenomenological dark matter scenario in which roughly 20-100 solar-mass primordial
+    black holes, with a fiducial 30 solar-mass population, make all or part of the dark matter and produce
+    LIGO-rate mergers through gravitational capture in halos.
+  historical_origin_or_motivation: The paper asks whether GW150914-like black holes could be primordial
+    black-hole dark matter in the remaining tens-of-solar-masses mass window.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - primordial_black_hole_dark_matter
+  - cold_dark_matter_halo_model
+  lagrangian_available: not_applicable
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper does not derive PBH formation microphysics; it develops the halo merger-rate phenomenology
+    for PBH dark matter.
+particle_content:
+  dark_matter_candidate:
+    name: primordial black hole
+    spin: unknown
+    statistics: black_hole
+    elementary_or_composite: macroscopic
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravitational interaction
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - primordial black holes
+  unstable_parent_particles: []
+  standard_model_extension: none
+symmetries:
+  stabilizing_mechanism: Not a particle-stabilizing symmetry; PBHs are macroscopic compact objects stable
+    on the timescales considered.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets: []
+  dark_sector_couplings:
+  - gravitational two-body capture and merger in dark matter halos
+  mediator_types:
+  - graviton
+  interaction_operators: []
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - PBH-PBH gravitational capture with gravitational-wave energy loss
+  cp_structure: not_applicable
+  flavor_structure: not_applicable
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: PBH mass
+    symbol: M_pbh
+    description: Mass range where PBHs may constitute dark matter, with fiducial LIGO-mass PBHs.
+    fiducial_value: 30
+    range:
+      min: 20
+      max: 100
+      inclusive_min: true
+      inclusive_max: true
+      unit: M_sun
+      notes: Paper highlights a 20-100 solar-mass window and a 30 solar-mass example.
+    unit: M_sun
+    role: core
+    status: inferred
+    source_reference_ids:
+    - 1603_00464:abstract
+  - name: PBH dark matter fraction
+    symbol: f_pbh
+    description: Fraction of dark matter in PBHs; the main scenario sets f_pbh=1 and also discusses fractional
+      PBH dark matter.
+    range:
+      min: 0
+      max: 1
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Paper discusses rates scaling for f_pbh less than one.
+    role: core
+    status: assumed
+    source_reference_ids:
+    - 1603_00464:fractional_dm
+  - name: minimum halo mass cutoff
+    symbol: M_c
+    description: Low-mass halo cutoff used to avoid evaporated halos in the merger-rate calculation.
+    fiducial_value: 400
+    unit: M_sun
+    role: astrophysical
+    status: assumed
+    source_reference_ids:
+    - 1603_00464:halo_rate
+  - name: PBH merger rate density
+    symbol: V
+    description: Estimated local merger-rate density for 30 solar-mass PBH dark matter in canonical halo
+      models.
+    value: about 2 Gpc^-3 yr^-1 for M_c=400 M_sun, with model-dependent variation
+    unit: Gpc^-3 yr^-1
+    role: derived
+    status: approximate
+    source_reference_ids:
+    - 1603_00464:halo_rate
+  nuisance:
+  - name: halo mass function
+    symbol: dn/dM
+    description: Press-Schechter, Tinker, and Jenkins mass functions are used/extrapolated in the rate
+      estimate.
+    role: astrophysical
+    status: assumed
+    source_reference_ids:
+    - 1603_00464:halo_rate
+  derived: []
+production:
+  mechanisms:
+  - primordial black-hole formation in the early universe; abundance treated phenomenologically in this
+    paper
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - assumed PBH fraction f_pbh
+  - PBH mass function around tens of solar masses
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper develops the consequences if PBHs constitute all or a fraction of dark matter; it does
+    not calculate their primordial formation abundance.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: PBH dark matter fraction
+    symbol: f_pbh
+    description: Fraction of dark matter in PBHs.
+    range:
+      min: 0
+      max: 1
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: f_pbh=1 is the main all-DM scenario.
+    role: core
+    status: assumed
+    source_reference_ids:
+    - 1603_00464:fractional_dm
+  calculation_type: phenomenological
+  key_dependencies:
+  - PBH mass window
+  - PBH abundance fraction
+  - microlensing/wide-binary/CMB-related allowed window discussed qualitatively
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - primordial black-hole formation before late-time halo merger phenomenology
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: not_applicable
+  distribution_function_available: approximate
+  f_of_p_or_q: Halo velocities are approximated with a Maxwell-Boltzmann-like distribution cut off at
+    the virial velocity.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today:
+    name: halo velocity dispersion
+    symbol: v_dm
+    description: One-dimensional halo velocity dispersion used for merger-rate averaging.
+    unit: km s^-1
+    role: astrophysical
+    status: assumed
+    source_reference_ids:
+    - 1603_00464:halo_rate
+  phase_space_bounds:
+  - PBHs are distributed in galactic halos using NFW density profiles and halo mass functions.
+  notes: The model is macroscopic PBH dark matter; phase space refers to halo distribution, not particle
+    momenta.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: enhancement
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: not_applicable
+      warning: No thermal-WDM mapping supplied by the paper.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: PBH discreteness and low-mass halo abundance affect the merger-rate estimate.
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: partial
+validity_domain:
+- id: mass_window
+  applies_to: parameter
+  condition: The paper focuses on PBHs in the approximate 20-100 M_sun window, especially 30 M_sun.
+  status: inferred
+  extrapolation_risk: medium
+  source_reference_ids:
+  - 1603_00464:abstract
+- id: halo_rate_model
+  applies_to: model
+  condition: Merger-rate estimates depend on extrapolated low-mass halo mass functions, concentration-mass
+    relations, and velocity distributions.
+  status: approximate
+  extrapolation_risk: high
+  source_reference_ids:
+  - 1603_00464:halo_rate
+assumptions:
+  global:
+  - id: pbh_abundance_assumed
+    description: PBHs are assumed to make all or a specified fraction of dark matter rather than having
+      their abundance derived.
+    scope: production
+    status: assumed
+    impact_if_violated: The relic-density interpretation fails if PBH formation cannot yield the assumed
+      f_pbh.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - 1603_00464:fractional_dm
+  - id: late_halo_capture
+    description: Observable binaries form by gravitational capture inside halos at z=0 in the main calculation.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Early-universe binary formation would change the merger-rate calculation.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - 1603_00464:halo_rate
+  computation_specific: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific software repository is described in the assigned paper text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  reproducibility:
+    reproducibility_level: unknown
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: null
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats: []
+provenance:
+  model_id: 1603_00464_ligo_mass_primordial_black_hole_dark_matter_v1
+  model_name: LIGO-mass primordial black hole dark matter
+  model_family: primordial_black_holes
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1603_00464'
+      title: Did LIGO detect dark matter?
+      year: 2016
+      arxiv_id: '1603.00464'
+      doi: null
+      url: null
+      role: extension
+      notes: Primary assigned paper text from run SQLite database.
+    - arxiv_id: '1603.00464'
+      authors:
+      - Bird, Simeon
+      - Cholis, Ilias
+      - Munoz, Julian B.
+      - Ali-Haimoud, Yacine
+      - Kamionkowski, Marc
+      - Kovetz, Ely D.
+      - Raccanelli, Alvise
+      - Riess, Adam G.
+      doi: 10.1103/PhysRevLett.116.201301
+      notes: null
+      reference_id: src_1603_00464_primary
+      role: original_model
+      title: Did LIGO Detect Dark Matter?
+      url: https://arxiv.org/abs/1603.00464
+      year: 2016
+    constraint_papers:
+    - arxiv_id: '1612.05644'
+      authors:
+      - Ali-Haimoud, Yacine
+      - Kamionkowski, Marc
+      doi: 10.1103/PhysRevD.95.043534
+      notes: null
+      reference_id: src_1612_05644
+      role: constraint
+      title: Cosmic microwave background limits on accreting primordial black holes
+      url: https://arxiv.org/abs/1612.05644
+      year: 2017
+    - arxiv_id: '1603.08338'
+      authors:
+      - Sasaki, Misao
+      - Suyama, Teruaki
+      - Tanaka, Takahiro
+      - Yokoyama, Shuichiro
+      doi: 10.1103/PhysRevLett.117.061101
+      notes: null
+      reference_id: src_1603_08338
+      role: extension
+      title: Primordial Black Hole Scenario for the Gravitational-Wave Event GW150914
+      url: https://arxiv.org/abs/1603.08338
+      year: 2016
+    external_databases: []
+    review_papers:
+    - arxiv_id: '2007.10722'
+      authors:
+      - Green, Anne M.
+      - Kavanagh, Bradley J.
+      doi: 10.1088/1361-6471/abc534
+      notes: null
+      reference_id: src_2007_10722
+      role: review
+      title: Primordial black holes as a dark matter candidate
+      url: https://arxiv.org/abs/2007.10722
+      year: 2021
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0009
+    extractor_name: dark_matter_model_gpt55_rolling_worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: 1603_00464:abstract
+      section: abstract/introduction
+      page: null
+      quote_or_summary: Paper considers 20-100 solar-mass PBHs as dark matter and asks whether GW150914
+        could be a PBH-DM merger.
+    - reference_id: 1603_00464:halo_rate
+      section: merger-rate calculation
+      page: null
+      quote_or_summary: PBH binaries form by gravitational capture in galactic halos; merger rates are
+        computed with halo profiles, mass functions, and velocity distributions.
+    - reference_id: 1603_00464:fractional_dm
+      section: discussion
+      page: null
+      quote_or_summary: The paper discusses PBHs making only a fraction f_pbh of dark matter and how event
+        rates scale.
+    unresolved_items:
+    - PBH formation mechanism and primordial mass function are not derived in this paper.
+    - A modern recast should update PBH constraints using current microlensing, CMB-accretion, and gravitational-wave
+      population likelihoods.
+  evidence:
+    particle_content:
+    - reference_id: 1603_00464:abstract
+      note: The candidate is a primordial black hole in the 20-100 M_sun window, with 30 M_sun emphasized.
+      confidence: high
+    interactions:
+    - reference_id: 1603_00464:halo_rate
+      note: Binary formation occurs through gravitational-wave energy loss during close PBH encounters
+        in halos.
+      confidence: high
+    production_mechanism:
+    - reference_id: 1603_00464:fractional_dm
+      note: The paper assumes PBHs constitute all or part of dark matter; it does not derive their early-universe
+        production.
+      confidence: medium
+    cosmological_history:
+    - reference_id: 1603_00464:halo_rate
+      note: The main calculation forms binaries inside halos at z=0 rather than from primordial binaries.
+      confidence: medium
+    parameter_ranges:
+    - reference_id: 1603_00464:abstract
+      note: The emphasized PBH mass window is 20-100 M_sun, with fiducial 30 M_sun PBHs.
+      confidence: high
+    validity_domain:
+    - reference_id: 1603_00464:halo_rate
+      note: The authors stress uncertainties from small-scale halo phase-space structure and mass-function
+        extrapolation.
+      confidence: high
+    constraints:
+    - confidence: high
+      note: Primary paper summarizes microlensing, wide-binary, and uncertain CMB constraints on the LIGO-mass
+        window.
+      page: null
+      reference_id: src_1603_00464_primary
+      section: introduction
+    - confidence: medium
+      note: Related local text was resolved for CMB limits on accreting PBHs.
+      page: null
+      reference_id: src_1612_05644
+      section: null
+    - confidence: medium
+      note: Related review text was resolved for PBH dark-matter context.
+      page: null
+      reference_id: src_2007_10722
+      section: null
+    observables:
+    - confidence: high
+      note: Primary paper states the 20-100 M_sun PBH window, LIGO-rate overlap, counterpart absence,
+        and population discriminants.
+      page: null
+      reference_id: src_1603_00464_primary
+      section: abstract/introduction
+    routes:
+    - confidence: high
+      note: Primary paper provides the capture-rate and halo-integration route.
+      page: null
+      reference_id: src_1603_00464_primary
+      section: rate calculation
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - This is a phenomenological PBH-DM scenario and merger-rate development, not a PBH formation model.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: low
+  dominant_uncertainties:
+  - Small-scale halo phase-space distribution
+  - PBH abundance fraction
+  - PBH formation history and mass function
+  validation_status: expert_judgment_only
+  notes: The paper gives detailed rate estimates but highlights astrophysical extrapolation uncertainties.
+agent_failure_modes:
+  warnings:
+  - id: formation_not_derived
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not use this card as evidence for a derived PBH formation abundance; the paper assumes
+      PBHs make all or part of dark matter.
+    mitigation: Separate PBH formation modeling is required before using f_pbh as predicted.
+    source_reference_ids:
+    - 1603_00464:fractional_dm
+observables:
+- caveats:
+  - Rate is sensitive to poorly known small-scale halo phase-space structure.
+  channel: gravitational_waves
+  effect_direction: rate_change
+  environments:
+  - dark matter halos
+  - subhalos
+  id: pbh_ligo_merger_rate
+  key_quantities:
+  - description: Mass of the primordial black holes in the LIGO-mass window.
+    name: PBH mass
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 100
+      min: 20
+      notes: Primary paper emphasizes a 20-100 solar-mass window.
+      unit: M_sun
+    role: core
+    source_reference_ids:
+    - src_1603_00464_primary
+    status: inferred
+    symbol: M_pbh
+    unit: M_sun
+  - description: Fraction of the dark matter in PBHs.
+    name: PBH dark matter fraction
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 1
+      min: 0
+      notes: Merger rates scale with the PBH abundance.
+      unit: null
+    role: core
+    source_reference_ids:
+    - src_1603_00464_primary
+    status: assumed
+    symbol: f_pbh
+  - description: Local PBH merger-rate density compared with the GW150914 inferred rate.
+    name: Merger-rate density
+    role: derived
+    source_reference_ids:
+    - src_1603_00464_primary
+    status: approximate
+    symbol: R
+    unit: Gpc^-3 yr^-1
+    value: overlaps 2-53 Gpc^-3 yr^-1 within halo-model uncertainties
+  linked_constraints:
+  - pbh_mass_window_constraints
+  linked_routes:
+  - route_pbh_halo_mergers
+  name: LIGO-band primordial black-hole merger rate
+  notes: The observable is the population rate and distribution, not electromagnetic emission.
+  observability: high
+  predicted_effect: Tens-of-solar-mass PBHs in dark-matter halos can become bound through gravitational-wave
+    energy loss and merge at rates that can overlap the GW150914 inferred range.
+  redshift_range: local halo calculation, primarily z=0
+  relevance: critical
+  scale_range: galactic halos and low-mass subhalos
+  source_reference_ids:
+  - src_1603_00464_primary
+  subchannel: compact-binary coalescence
+- caveats:
+  - Population tests require enough detected events and astrophysical-binary foreground modeling.
+  channel: gravitational_waves
+  effect_direction: morphology_change
+  environments:
+  - dark matter halos
+  - compact-binary catalogs
+  id: pbh_population_discriminants
+  key_quantities:
+  - description: Relative spatial distribution of PBH mergers compared with luminous stellar-origin binaries.
+    name: PBH spatial bias
+    role: astrophysical
+    source_reference_ids:
+    - src_1603_00464_primary
+    status: inferred
+    symbol: b_pbh
+    value: tracks dark matter halos
+  - description: Expected non-gravitational counterpart signal.
+    name: Counterpart expectation
+    role: derived
+    source_reference_ids:
+    - src_1603_00464_primary
+    status: inferred
+    value: none in optical or neutrinos
+  linked_constraints:
+  - pbh_population_tests
+  linked_routes:
+  - route_pbh_halo_mergers
+  name: Population-level PBH merger discriminants
+  notes: null
+  observability: medium
+  predicted_effect: PBH mergers should trace dark matter more closely than luminous matter, lack optical
+    or neutrino counterparts, and may differ through mass spectrum, high eccentricities, and a stochastic
+    gravitational-wave background.
+  redshift_range: local to cosmological merger populations
+  relevance: high
+  scale_range: host halos and gravitational-wave detector population catalogs
+  source_reference_ids:
+  - src_1603_00464_primary
+  subchannel: mass spectrum, eccentricity, stochastic background, counterpart absence
+constraints:
+- allowed_regions:
+  - A phenomenological 20-100 M_sun PBH window is treated as viable enough to test with LIGO-rate observables
+    in the primary paper.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: CMB accretion limits depend on gas accretion, luminosity conversion, feedback, and deposition
+      modeling.
+    id: pbh_accretion_modeling
+    impact_if_violated: Overly aggressive accretion assumptions can overstate exclusion of the benchmark
+      window.
+    notes: null
+    scope: CMB exclusion of the LIGO-mass PBH window
+    source_reference_ids:
+    - src_1603_00464_primary
+    - src_1612_05644
+    status: approximate
+  benchmark_implications:
+  - A 30 M_sun PBH all-DM benchmark can be compared with LIGO merger rates.
+  caveats:
+  - The primary paper treats CMB exclusions as uncertain rather than definitive.
+  constrained_parameters:
+  - M_pbh
+  - f_pbh
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - PBH masses below the tens-of-solar-mass window are constrained by microlensing surveys.
+  - Masses above the window are constrained by wide-binary disruption arguments.
+  - CMB accretion constraints can challenge the 20-100 M_sun window but depend on difficult accretion,
+    luminosity, feedback, and energy-deposition modeling.
+  id: pbh_mass_window_constraints
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: PBH dark-matter mass-window constraints
+  notes: null
+  observable_channel: microlensing, wide binaries, and CMB accretion constraints
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1603_00464_primary
+  - src_1612_05644
+- allowed_regions:
+  - Dark-matter-tracing spatial distribution, no optical/neutrino counterparts, and compatible stochastic
+    background/mass-spectrum statistics.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Astrophysical binary black-hole populations must be modeled when using population statistics
+      as a PBH test.
+    id: astrophysical_binary_foregrounds
+    impact_if_violated: Foreground mismodeling can mimic or hide PBH-like population signatures.
+    notes: null
+    scope: gravitational-wave population inference
+    source_reference_ids:
+    - src_1603_00464_primary
+    status: unknown
+  benchmark_implications:
+  - Future gravitational-wave catalogs can distinguish PBH dark matter from conventional astrophysical
+    binaries.
+  caveats:
+  - This is a population-level diagnostic rather than a single-event exclusion.
+  constrained_parameters:
+  - M_pbh
+  - f_pbh
+  - PBH merger-rate density
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - A population with luminous-matter spatial bias, expected electromagnetic counterparts, or inconsistent
+    mass/eccentricity distributions would disfavor the PBH interpretation.
+  id: pbh_population_tests
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: PBH versus stellar-origin binary population tests
+  notes: null
+  observable_channel: gravitational-wave event populations
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1603_00464_primary
+  - src_2007_10722
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary paper gives an analytic/semi-analytic route; modern catalog use requires
+      recasting.
+    caveats:
+    - Small-scale halo substructure dominates the uncertainty.
+    constraint_ids:
+    - pbh_mass_window_constraints
+    - pbh_population_tests
+    derived_quantities:
+    - capture cross section
+    - halo merger rate
+    - cosmic merger-rate density
+    - population spatial bias
+    description: Compute gravitational-capture PBH binary formation in dark-matter halos and compare the
+      resulting merger-rate density and population signatures with gravitational-wave catalogs.
+    forward_model_chain:
+    - inputs:
+      - M_pbh
+      - relative velocity
+      notes: Primary paper gives the gravitational capture scaling.
+      outputs:
+      - PBH-PBH capture cross section
+      step_id: capture_cross_section
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: valid for close hyperbolic encounters where gravitational-wave losses bind the pair
+    - inputs:
+      - halo density profile
+      - velocity dispersion
+      - halo mass function
+      notes: Integrate the rate over NFW-like halos and halo mass functions.
+      outputs:
+      - local merger-rate density
+      step_id: halo_rate_integral
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: limited by small-scale halo phase-space uncertainties
+    - inputs:
+      - merger-rate density
+      - mass spectrum
+      - counterpart assumptions
+      notes: Compare to LIGO/Virgo/KAGRA rate and population information.
+      outputs:
+      - compatibility with GW event population
+      step_id: catalog_comparison
+      step_type: likelihood
+      tool_or_code: null
+      validity: planned; requires gravitational-wave catalog likelihoods
+    id: route_pbh_halo_mergers
+    input_parameters:
+    - M_pbh
+    - f_pbh
+    - halo mass function
+    - halo concentration relation
+    - minimum halo mass cutoff
+    likelihoods:
+    - gravitational-wave population likelihood needed for a modern recast
+    observable_ids:
+    - pbh_ligo_merger_rate
+    - pbh_population_discriminants
+    required_code_resources:
+    - halo mass function and concentration model
+    - compact-binary population inference tools
+    route_status: planned
+    source_model_features:
+    - PBHs are the dark matter or a subcomponent
+    - two-body gravitational capture by gravitational-wave energy loss
+    - halo density and velocity distributions
+    validation_tests:
+    - Recover the primary paper order-of-magnitude rate estimates for a 30 M_sun benchmark.
+    - Check sensitivity to the low-mass halo cutoff.

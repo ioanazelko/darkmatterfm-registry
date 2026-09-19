@@ -1,0 +1,898 @@
+_source:
+  shard: arXiv_src_2204_079_wds.tar
+  paper_id: '2204_11551'
+  source_member: 2204_11551.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2204_11551_leptophilic_u1_self_interacting_dm_v1
+identity:
+  name: Leptophilic U(1)_L self-interacting Dirac dark matter
+  family: self_interacting_dark_matter
+  aliases:
+  - leptophilic SIDM with light Z' mediator
+  - U(1)_L SIDM
+  short_description: An anomaly-free leptophilic U(1)_L extension in which new chiral fermions yield a
+    stable Dirac dark matter candidate and a light Z' mediator drives velocity-dependent self-interactions;
+    annihilation through the mediator supplies the relic-density logic.
+  historical_origin_or_motivation: The paper proposes the construction as a minimal leptophilic framework
+    that can realize self-interacting dark matter while addressing small-scale structure issues.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - self-interacting dark matter
+  - leptophilic U(1) gauge extension
+  - light-mediator dark matter
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The text gives a hidden-sector Z' portal setup, then proposes an anomaly-free U(1)_L extension
+    with extra fermions, a singlet scalar S, gauge interactions, and mass matrices. Some equation symbols
+    are degraded in the assigned extraction.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutral Dirac fermion from the exotic fermion sector
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - new chiral/exotic fermions introduced for anomaly cancellation
+  - gauge singlet scalar S
+  mediators:
+  - leptophilic Z' gauge boson
+  - singlet scalar S in the scalar-portal option
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - lightest neutral Dirac fermion dark matter
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: U(1)_L charge assignments of the exotic fermions forbid decay of the lightest
+    neutral component; the singlet scalar S breaks the leptophilic gauge symmetry and gives masses to
+    the new states.
+  symmetries:
+  - name: U(1)_L
+    type: gauge
+    exact_or_approximate: broken
+    breaking: Spontaneous breaking by the gauge-singlet scalar S; the residual charge structure stabilizes
+      the lightest neutral exotic fermion in the paper text.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - other
+  standard_model_targets:
+  - SM lepton current
+  - electrons
+  - neutrinos
+  - electroweak gauge bosons through exotic fermion charges
+  dark_sector_couplings:
+  - Z' coupling to Dirac dark matter
+  - Z' coupling to the SM leptophilic current
+  - possible scalar S-mediated self-interactions
+  mediator_types:
+  - light vector Z'
+  - singlet scalar S
+  interaction_operators:
+  - vector coupling of dark matter to Z'
+  - leptophilic gauge coupling of Z' to SM leptons
+  - kinetic mixing term in the generic hidden-sector realization
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels:
+  - dark matter annihilation to SM fermion or lepton pairs through the mediator
+  decay_channels: []
+  self_scattering_channels:
+  - dark matter self-scattering through light Z' exchange
+  - possible S-mediated self-scattering
+  cp_structure: unknown
+  flavor_structure: 'Leptophilic: quarks are uncharged under U(1)_L while known SM leptons carry charge
+    +1; the paper allows separate effective couplings to the SM leptophilic current and to dark matter.'
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_DM
+    description: Mass of the self-interacting dark matter fermion.
+    range:
+      min: 0.1
+      max: 500
+      inclusive_min: false
+      inclusive_max: false
+      unit: GeV
+      notes: Range quoted from the paper summary of the m_DM, m_Zprime plane.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Z' mediator mass
+    symbol: m_Zprime
+    description: Mass of the light vector mediator responsible for self-interactions.
+    range: 0.1 MeV < m_Zprime < 0.5 GeV
+    unit: null
+    role: core
+    status: inferred
+  - name: dark-sector gauge coupling
+    symbol: g_chi
+    description: Coupling of the Z' mediator to the dark matter candidate.
+    value: null
+    unit: null
+    role: core
+    status: unknown
+  - name: leptophilic gauge coupling
+    symbol: g_L
+    description: Coupling of Z' to the SM U(1)_L lepton current.
+    value: null
+    unit: null
+    role: core
+    status: unknown
+  - name: kinetic mixing parameter
+    symbol: epsilon
+    description: Kinetic mixing between the hidden/vector mediator and SM hypercharge in the generic portal
+      discussion.
+    value: null
+    unit: null
+    role: core
+    status: unknown
+  - name: target transfer cross-section per mass
+    symbol: sigma_T/m_DM
+    description: Self-interaction strength targeted for dwarf-scale small-structure phenomenology.
+    range:
+      min: 0.1
+      max: 10
+      inclusive_min: false
+      inclusive_max: false
+      unit: cm^2/g
+      notes: Quoted as the desired range for solving small-scale issues.
+    unit: cm^2/g
+    role: derived
+    status: inferred
+  nuisance:
+  - name: relative dark matter velocity
+    symbol: v
+    description: Velocity entering the velocity-dependent transfer cross-section and Sommerfeld enhancement.
+    value: null
+    unit: null
+    role: astrophysical
+    status: inferred
+  derived:
+  - name: Sommerfeld enhancement factor
+    symbol: S
+    description: Enhancement of scattering and annihilation rates from repeated light-mediator exchange.
+    value: null
+    unit: null
+    role: derived
+    status: inferred
+  - name: relic abundance
+    symbol: Omega_DM h^2
+    description: Relic abundance computed with a Boltzmann-equation treatment including Sommerfeld effects.
+    value: observed dark matter abundance can be obtained in viable parameter space
+    unit: null
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal annihilation/freeze-out through a light leptophilic mediator
+  - annihilation of dark matter to SM fermion or lepton pairs through the mediator
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - dark matter mass
+  - mediator mass
+  - dark-sector coupling
+  - leptophilic or kinetic-mixing coupling to SM fermions
+  - Sommerfeld enhancement of annihilation
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper studies the Boltzmann evolution and Sommerfeld effects on relic density, but the final
+    leptophilic U(1)_L model phenomenology is described as future work.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: target relic abundance
+    symbol: Omega_DM h^2
+    description: Observed cosmological dark matter abundance used as the target for viable SIDM parameter
+      space.
+    value: observed dark matter abundance
+    unit: null
+    role: derived
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - m_DM
+  - m_Zprime
+  - dark-sector coupling
+  - coupling of the mediator to SM leptons or fermions
+  - Sommerfeld enhancement
+  - annihilation channel to SM fermions
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late-time velocity-dependent dark matter self-interactions mediated by a light vector
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - spontaneous breaking of U(1)_L by the singlet scalar S
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  f_of_p_or_q: not provided in the assigned text
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper focuses on velocity-dependent self-scattering and relic abundance rather than an explicit
+    phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The model is not presented as warm dark matter and no WDM transfer-function mapping is
+        supplied.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: The model is intended to alter inner halo structure through elastic self-scattering,
+      addressing core-cusp and related small-scale issues.
+    subhalo_mass_function_effect: The paper discusses small-scale SIDM motivation but does not provide
+      a calibrated subhalo mass-function prediction.
+    simulation_calibrated: 'no'
+validity_domain:
+- id: light_mediator_sidm_regime
+  applies_to: parameter
+  condition: Velocity-dependent SIDM regime with 0.1 GeV < m_DM < 500 GeV and 0.1 MeV < m_Zprime < 0.5
+    GeV in the paper summary.
+  status: approximate
+  extrapolation_risk: medium
+  caveats:
+  - Ranges are inferred from the approximate Hulthen/Yukawa transfer-cross-section analysis.
+  source_reference_ids:
+  - arxiv:2204.11551
+  notes: null
+- id: leptophilic_model_scope
+  applies_to: model
+  condition: An anomaly-free U(1)_L extension is proposed with exotic fermions and singlet scalar S, but
+    the authors state that a detailed leptophilic SIDM study is left for future work.
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - Do not treat the extracted row as a fully scanned model implementation.
+  source_reference_ids:
+  - arxiv:2204.11551
+  notes: null
+- id: sommerfeld_boltzmann_treatment
+  applies_to: production
+  condition: Relic-density evolution is studied with Boltzmann equations and Sommerfeld enhancement in
+    the light-mediator regime.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Exact coupling notation is degraded in the assigned text.
+  source_reference_ids:
+  - arxiv:2204.11551
+  notes: null
+assumptions:
+  global:
+  - id: light_zprime_mediator
+    description: Dark matter self-interactions are mediated by a light Z' producing a Yukawa/Hulthen-like
+      potential.
+    scope: theory
+    status: assumed
+    impact_if_violated: The velocity-dependent self-interaction cross-section and small-scale structure
+      motivation would not apply.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - arxiv:2204.11551
+    notes: null
+  - id: u1l_charge_stability
+    description: The lightest neutral exotic fermion is stable because the lepton-charge assignments forbid
+      its decay.
+    scope: theory
+    status: inferred
+    impact_if_violated: The candidate would not be a viable long-lived dark matter particle.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - arxiv:2204.11551
+    notes: null
+  - id: thermal_relic_boltzmann
+    description: The abundance discussion uses thermal annihilation/Boltzmann evolution with Sommerfeld
+      effects rather than a nonthermal production history.
+    scope: production
+    status: assumed
+    impact_if_violated: The relic-density parameter region would change.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - arxiv:2204.11551
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper says relic-density and annihilation calculations were performed numerically
+    in Mathematica, but no public model code is identified in the assigned text.
+  primary_code_role: unknown
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs:
+  - m_DM
+  - m_Zprime
+  - dark-sector coupling
+  - leptophilic coupling
+  - relative velocity
+  expected_outputs:
+  - transfer cross-section
+  - Sommerfeld enhancement
+  - relic density
+  reproducibility:
+    reproducibility_level: unknown
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: null
+  validation:
+    validation_status: unknown
+    benchmark_references:
+    - arxiv:2204.11551
+    validation_notes: No public validation artifact is described in the assigned text.
+  caveats:
+  - Numerical implementation details are not sufficient for reproduction from the assigned text alone.
+provenance:
+  model_id: 2204_11551_leptophilic_u1_self_interacting_dm_v1
+  model_name: Leptophilic U(1)_L self-interacting Dirac dark matter
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2204.11551
+      title: Numerically analyzing self-interacting dark matter
+      authors:
+      - Utkarsh Patel
+      - Sudhanwa Patra
+      year: 2022
+      arxiv_id: '2204.11551'
+      doi: null
+      url: null
+      role: original_model
+      notes: The model-card row is based only on the assigned full text, especially the proposed anomaly-free
+        leptophilic U(1)_L extension and SIDM relic-density discussion.
+    - arxiv_id: '2204.11551'
+      authors:
+      - Patel, Utkarsh
+      - Patra, Sudhanwa
+      doi: 10.48550/arXiv.2204.11551
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2204.11551
+      role: original_model
+      title: Numerically analyzing self-interacting dark matter
+      url: https://arxiv.org/abs/2204.11551
+      year: 2022
+    constraint_papers:
+    - arxiv_id: '1211.6426'
+      authors:
+      - Zavala, J.
+      - Vogelsberger, M.
+      - Walker, M. G.
+      doi: 10.1093/mnrasl/sls053
+      notes: Related local full text on dwarf-spheroidal SIDM viability and halo constraints.
+      reference_id: arxiv:1211.6426
+      role: constraint
+      title: Constraining self-interacting dark matter with the Milky way's dwarf  spheroidals.
+      url: https://arxiv.org/abs/1211.6426
+      year: 2013
+    - arxiv_id: '1011.6374'
+      authors:
+      - Loeb, Abraham
+      - Weiner, Neal
+      doi: 10.1103/PhysRevLett.106.171302
+      notes: Related local full text on Yukawa-potential dark matter cores in dwarf galaxies.
+      reference_id: arxiv:1011.6374
+      role: benchmark
+      title: Cores in Dwarf Galaxies from Dark Matter with a Yukawa Potential
+      url: https://arxiv.org/abs/1011.6374
+      year: 2011
+    - arxiv_id: '1510.08063'
+      authors:
+      - Bernal, Nicolás
+      - Chu, Xiaoyong
+      - Garcia-Cely, Camilo
+      - Hambye, Thomas
+      - Zaldivar, Bryan
+      doi: 10.1088/1475-7516/2016/03/018
+      notes: Related local full text on production regimes for self-interacting dark matter with light
+        mediators.
+      reference_id: arxiv:1510.08063
+      role: extension
+      title: Production regimes for Self-Interacting Dark Matter
+      url: https://arxiv.org/abs/1510.08063
+      year: 2016
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_worker
+    extractor_name: dark-matter model-card extraction worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:2204.11551
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: The paper states that it provides a minimal anomaly-free leptophilic SM extension
+        incorporating SIDM and a mediator candidate.
+    - reference_id: arxiv:2204.11551
+      section: SIDM setup
+      page: null
+      quote_or_summary: A hidden-sector Z' portal is used for DM self-interactions; annihilation to SM
+        fermions is tied to the relic-density discussion.
+    - reference_id: arxiv:2204.11551
+      section: Leptophilic model appendix
+      page: null
+      quote_or_summary: The U(1)_L extension adds exotic fermions for anomaly cancellation and identifies
+        the lightest neutral Dirac fermion as the SIDM candidate.
+    unresolved_items:
+    - The authors leave a detailed leptophilic SIDM model study for future work.
+    - Some mathematical symbols are degraded in the assigned text extraction.
+    - The detailed leptophilic SIDM model study is deferred by the authors.
+    - No Mathematica notebook, Boltzmann calculation, halo simulation, or likelihood recast was available
+      in this batch.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2204.11551
+      note: The text says the introduced chiral fermions cancel anomalies and give two Dirac fermions,
+        with the lightest one a stable dark matter candidate.
+      confidence: high
+      section: Leptophilic model discussion
+      page: null
+    symmetries:
+    - reference_id: arxiv:2204.11551
+      note: The gauge group is U(1)_L; quarks have zero lepton charge and SM leptons have charge +1, while
+        the exotic charges forbid lightest-state decay.
+      confidence: medium
+      section: Appendix model construction
+      page: null
+    interactions:
+    - reference_id: arxiv:2204.11551
+      note: The text identifies a Z' mediator coupled to dark matter and to leptons, generating light-mediator
+        SIDM and possible scalar-portal self-interactions through S.
+      confidence: high
+      section: SIDM setup and U(1)_L extension
+      page: null
+    production_mechanism:
+    - reference_id: arxiv:2204.11551
+      note: The paper links correct relic density to dark matter annihilation into SM fermions and studies
+        Boltzmann evolution with Sommerfeld effects.
+      confidence: medium
+      section: Relic density discussion
+      page: null
+    cosmological_history:
+    - reference_id: arxiv:2204.11551
+      note: No nonstandard cosmological history is specified beyond standard thermal relic evolution with
+        light-mediator effects.
+      confidence: medium
+      section: Relic density discussion
+      page: null
+    parameter_ranges:
+    - reference_id: arxiv:2204.11551
+      note: The summary quotes 0.1 GeV < m_DM < 500 GeV and 0.1 MeV < m_Zprime < 0.5 GeV, with sigma_T/m_DM
+        around 0.1-10 cm^2/g as the SIDM target.
+      confidence: high
+      section: Summary
+      page: null
+    validity_domain:
+    - reference_id: arxiv:2204.11551
+      note: The paper says the detailed leptophilic model application to SIDM is deferred, so the row
+        is a candidate-level extraction.
+      confidence: high
+      section: Summary and appendix
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text quotes the 0.1-10 cm^2/g target, Bullet Cluster and cluster-merger upper bounds,
+        and the 0.1 GeV-500 GeV, 0.1 MeV-0.5 GeV mass window.
+      page: null
+      reference_id: arxiv:2204.11551
+      section: SIDM cross-section and summary
+    - confidence: medium
+      note: Related production-regime paper connects light mediators, relic density, BBN/CMB, and direct-detection
+        constraints.
+      page: null
+      reference_id: arxiv:1510.08063
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary text reports a light-mediator SIDM setup, Hulthen/Yukawa transfer cross section, Sommerfeld-enhanced
+        Boltzmann evolution, and a leptophilic U(1)_L realization.
+      page: null
+      reference_id: arxiv:2204.11551
+      section: Abstract and SIDM setup
+    - confidence: medium
+      note: Related Yukawa-potential paper motivates velocity-dependent scattering that affects dwarfs
+        without over-affecting clusters.
+      page: null
+      reference_id: arxiv:1011.6374
+      section: Abstract
+    routes:
+    - confidence: high
+      note: The primary paper outlines the Hulthen cross-section calculation and Boltzmann/Sommerfeld
+        relic-density workflow.
+      page: null
+      reference_id: arxiv:2204.11551
+      section: Methods
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Candidate extraction only; not expert reviewed.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - detailed leptophilic SIDM phenomenology is left for future work
+  - equation symbols are degraded in the full-text extraction
+  - parameter ranges combine numerical Yukawa/Hulthen SIDM analysis with the proposed U(1)_L framework
+  validation_status: expert_judgment_only
+  notes: Accepted because the paper explicitly proposes an anomaly-free leptophilic U(1)_L framework containing
+    a stable Dirac SIDM candidate and discusses relic-density logic.
+agent_failure_modes:
+  warnings:
+  - id: do_not_treat_as_full_scan
+    severity: medium
+    category: extrapolation
+    warning: The authors state that a detailed leptophilic SIDM study is left for future work, so this
+      row should not be used as a complete parameter-space scan.
+    mitigation: Use it as a candidate model description and recheck the original equations before quantitative
+      work.
+    source_reference_ids:
+    - arxiv:2204.11551
+  - id: symbols_degraded
+    severity: medium
+    category: notation_conflict
+    warning: The local text extraction loses some symbols in the Lagrangian and mass matrices.
+    mitigation: Verify exact charges, fields, and couplings against the paper source before canonicalizing
+      notation.
+    source_reference_ids:
+    - arxiv:2204.11551
+  - id: avoid_constraint_reuse
+    severity: low
+    category: approximate_constraint
+    warning: The extracted parameter ranges are tied to approximate SIDM target regions and should not
+      be interpreted as final exclusion contours.
+    mitigation: Keep constraints and observational limits separate from this model-card candidate.
+    source_reference_ids:
+    - arxiv:2204.11551
+observables:
+- caveats:
+  - Astrophysical constraints are velocity and halo-model dependent.
+  channel: small_scale_structure
+  effect_direction: morphology_change
+  environments:
+  - dwarf galaxies
+  - Milky Way satellites
+  - cluster mergers
+  - elliptical galaxies
+  id: obs_leptophilic_sidm_transfer_cross_section
+  key_quantities:
+  - description: Self-scattering strength used for small-scale-structure targets.
+    name: transfer cross section per mass
+    range:
+      inclusive_max: false
+      inclusive_min: false
+      max: 10
+      min: 0.1
+      notes: Primary target range for small-scale issues.
+      unit: cm^2/g
+    role: core
+    source_reference_ids:
+    - arxiv:2204.11551
+    - arxiv:1211.6426
+    - arxiv:1011.6374
+    status: inferred
+    symbol: sigma_T/m_DM
+    unit: cm^2/g
+  - description: Dirac dark matter mass.
+    name: dark matter mass
+    range:
+      inclusive_max: false
+      inclusive_min: false
+      max: 500
+      min: 0.1
+      notes: Primary m_DM range from the paper summary.
+      unit: GeV
+    role: core
+    source_reference_ids:
+    - arxiv:2204.11551
+    status: inferred
+    symbol: m_DM
+    unit: GeV
+  - description: Light leptophilic mediator mass.
+    name: mediator mass
+    range: 0.1 MeV < m_Zprime < 0.5 GeV
+    role: core
+    source_reference_ids:
+    - arxiv:2204.11551
+    status: inferred
+    symbol: m_Zprime
+  linked_constraints:
+  - con_leptophilic_sidm_halo_cross_section
+  linked_routes:
+  - route_leptophilic_sidm_halo_relic
+  name: Velocity-dependent SIDM transfer cross section
+  notes: null
+  observability: high
+  predicted_effect: A light leptophilic Z prime mediator yields Yukawa/Hulthen-enhanced self-scattering,
+    targeting large dwarf-scale transfer cross sections while allowing smaller cluster-scale effects.
+  redshift_range: low-redshift halo evolution
+  relevance: critical
+  scale_range: dwarf galaxies through galaxy clusters
+  source_reference_ids:
+  - arxiv:2204.11551
+  - arxiv:1211.6426
+  - arxiv:1011.6374
+  subchannel: dwarf-to-cluster halo structure
+- caveats:
+  - The primary text says the detailed leptophilic model study is left for future work.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early-universe plasma
+  - dark sector
+  - leptonic final states
+  id: obs_leptophilic_sidm_sommerfeld_relic
+  key_quantities:
+  - description: Coupling of DM to the light mediator.
+    name: dark-sector coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2204.11551
+    status: inferred
+    symbol: g_chi
+  - description: Mediator coupling to leptons in the U(1)_L model.
+    name: leptophilic gauge coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2204.11551
+    status: inferred
+    symbol: g_L
+  - description: Enhancement factor for annihilation in the light-mediator regime.
+    name: Sommerfeld factor
+    role: derived
+    source_reference_ids:
+    - arxiv:2204.11551
+    - arxiv:1510.08063
+    status: inferred
+    symbol: S
+  linked_constraints:
+  - con_leptophilic_sidm_mass_plane_relic
+  linked_routes:
+  - route_leptophilic_sidm_halo_relic
+  name: Sommerfeld-modified light-mediator relic abundance
+  notes: null
+  observability: medium
+  predicted_effect: The paper solves Boltzmann evolution with Sommerfeld enhancement for a light-mediator
+    SIDM setup, linking the allowed mass plane to the relic density.
+  redshift_range: thermal freeze-out through late-time annihilation
+  relevance: high
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2204.11551
+  - arxiv:1510.08063
+  subchannel: thermal relic with light mediator
+constraints:
+- allowed_regions:
+  - The primary target range is 0.1 < sigma_T/m_DM < 10 cm^2/g at dwarf scales, realized in parts of 0.1
+    GeV < m_DM < 500 GeV and 0.1 MeV < m_Zprime < 0.5 GeV.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The Hulthen potential approximation captures the Yukawa-mediated transfer cross section
+      across the relevant velocity range.
+    id: velocity-dependent-yukawa-scattering
+    impact_if_violated: A different potential or resonance treatment changes the allowed mass/coupling
+      bands.
+    notes: null
+    scope: SIDM halo recast
+    source_reference_ids:
+    - arxiv:2204.11551
+    - arxiv:1011.6374
+    status: assumed
+  benchmark_implications:
+  - Velocity dependence from a light mediator is needed to reconcile dwarf-scale cores with cluster limits.
+  caveats:
+  - No halo simulation or velocity-dependent likelihood was rerun.
+  constrained_parameters:
+  - sigma_T/m_DM
+  - m_DM
+  - m_Zprime
+  - relative_velocity
+  constraint_type: astrophysical
+  data_release: Bullet Cluster, cluster mergers, dwarf-galaxy and halo-shape constraints cited by the
+    source and related SIDM papers
+  excluded_regions:
+  - The primary text quotes Bullet Cluster sigma_T/m_DM < 1.25 cm^2/g at 68 percent CL and another cluster-merger
+    bound below 0.47 cm^2/g at 95 percent CL.
+  - Models with too little dwarf-scale scattering fail to address core-cusp and related small-scale tensions.
+  id: con_leptophilic_sidm_halo_cross_section
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Dwarf/cluster SIDM transfer-cross-section target and upper bounds
+  notes: null
+  observable_channel: dwarf_galaxies+clusters
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2204.11551
+  - arxiv:1211.6426
+  - arxiv:1011.6374
+- allowed_regions:
+  - The primary paper reports 0.1 GeV < m_DM < 500 GeV and 0.1 MeV < m_Zprime < 0.5 GeV for the SIDM target
+    range.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The abundance is computed with thermal Boltzmann evolution including Sommerfeld enhancement
+      in the light-mediator regime.
+    id: thermal-boltzmann-sommerfeld
+    impact_if_violated: Nonthermal production or a colder dark sector changes the mass-plane interpretation.
+    notes: null
+    scope: relic density
+    source_reference_ids:
+    - arxiv:2204.11551
+    - arxiv:1510.08063
+    status: assumed
+  benchmark_implications:
+  - Relic-density and halo-scattering requirements should be solved together because both depend on the
+    light mediator.
+  caveats:
+  - The batch did not reproduce the Mathematica calculation or public code.
+  constrained_parameters:
+  - m_DM
+  - m_Zprime
+  - g_chi
+  - g_L
+  - Sommerfeld factor
+  constraint_type: cosmological
+  data_release: Planck relic-density target and laboratory/cosmology constraints cited by the related
+    production-regime literature
+  excluded_regions:
+  - Mass/coupling regions that do not reproduce the relic abundance after Sommerfeld-corrected Boltzmann
+    evolution are outside the primary target.
+  - Laboratory, CMB, BBN, and direct-detection constraints can further restrict light-mediator production
+    regimes and require a dedicated recast.
+  id: con_leptophilic_sidm_mass_plane_relic
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Relic-density/Sommerfeld consistency of the light-mediator mass plane
+  notes: null
+  observable_channel: relic_density
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2204.11551
+  - arxiv:1510.08063
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route records the natural computational chain; the primary numerical implementation
+      is not public in the local text.
+    caveats:
+    - The detailed leptophilic model application is explicitly deferred by the authors.
+    constraint_ids:
+    - con_leptophilic_sidm_halo_cross_section
+    - con_leptophilic_sidm_mass_plane_relic
+    derived_quantities:
+    - sigma_T/m_DM(v)
+    - Sommerfeld factor
+    - Omega_DM h^2
+    - halo core response
+    description: Map leptophilic U(1)_L dark-matter and mediator parameters to velocity-dependent self-scattering,
+      Sommerfeld-corrected relic density, and halo/cluster constraints.
+    forward_model_chain:
+    - inputs:
+      - m_DM
+      - m_Zprime
+      - g_chi
+      - relative velocity
+      notes: null
+      outputs:
+      - sigma_T/m_DM(v)
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: Hulthen approximation
+      validity: Approximation to Yukawa potential used by the primary text.
+    - inputs:
+      - annihilation rates
+      - Sommerfeld factor
+      - thermal history
+      notes: null
+      outputs:
+      - Omega_DM h^2
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Primary says numerical Boltzmann evolution was studied; code not provided.
+    - inputs:
+      - sigma_T/m_DM(v)
+      - halo velocities
+      notes: null
+      outputs:
+      - dwarf and cluster allowed region
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires halo-model dependent recast.
+    - inputs:
+      - Omega_DM h^2
+      - sigma_T/m_DM(v)
+      notes: null
+      outputs:
+      - joint relic and structure constraints
+      step_id: s4
+      step_type: likelihood
+      tool_or_code: null
+      validity: No likelihood assets available in this batch.
+    id: route_leptophilic_sidm_halo_relic
+    input_parameters:
+    - m_DM
+    - m_Zprime
+    - g_chi
+    - g_L
+    - relative velocity
+    - thermal history
+    likelihoods:
+    - Planck relic-density target
+    - Bullet Cluster/cluster merger bounds
+    - dwarf-galaxy core targets
+    observable_ids:
+    - obs_leptophilic_sidm_transfer_cross_section
+    - obs_leptophilic_sidm_sommerfeld_relic
+    required_code_resources:
+    - velocity-dependent SIDM cross-section solver
+    - Boltzmann relic-density solver with Sommerfeld enhancement
+    - halo/cluster likelihood recast
+    route_status: planned
+    source_model_features:
+    - Dirac dark matter stabilized by U(1)_L charge assignments
+    - light leptophilic Z prime mediator
+    - Yukawa/Hulthen self-interaction potential
+    - Sommerfeld-enhanced annihilation
+    validation_tests:
+    - recover 0.1-10 cm^2/g target range
+    - recover primary m_DM and m_Zprime mass window

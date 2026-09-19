@@ -1,0 +1,277 @@
+_source:
+  shard: arXiv_src_1406_012_wds.tar
+  paper_id: '1406_6556'
+  source_member: 1406_6556.json
+schema_version: model_only_v0
+model_id: 1406_6556_23_inverse_seesaw_sterile_neutrino_wdm_v1
+identity:
+  name: (2,3) inverse seesaw sterile-neutrino warm dark matter
+  family: sterile_neutrino_dark_matter
+  aliases:
+  - (2,3) ISS WDM
+  - minimal inverse seesaw sterile WDM
+  short_description: A minimal inverse-seesaw model in which the lightest sterile state at keV masses
+    is warm dark matter, produced by active-sterile transitions and, in some spectra, by decays of heavy
+    pseudo-Dirac neutrinos.
+  historical_origin_or_motivation: Motivated by simultaneously addressing neutrino masses and dark matter,
+    including possible relevance to a 3.5 keV photon line.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - inverse seesaw
+  - sterile neutrino dark matter
+  - low-scale seesaw
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The text writes the inverse-seesaw mass Lagrangian and the neutrino mass matrix for SM active
+    states, two right-handed neutrinos, and three sterile fermions.
+particle_content:
+  dark_matter_candidate:
+    name: lightest sterile neutrino state
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: subcomponent
+  additional_dark_sector_particles:
+  - two right-handed neutrinos
+  - three sterile fermionic states total
+  - heavy pseudo-Dirac neutrino pairs
+  mediators:
+  - SM Higgs via Yukawa interactions
+  - weak gauge bosons through active-sterile mixing
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: long lifetime from tiny active-sterile mixing and keV sterile-neutrino mass
+  symmetries:
+  - name: approximate lepton number
+    type: global
+    exact_or_approximate: broken
+    breaking: small Majorana mass terms in the inverse seesaw matrix
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  - higgs
+  standard_model_targets:
+  - active neutrinos
+  - SM Higgs doublet
+  - weak electroweak sector via mixing
+  dark_sector_couplings:
+  - Yukawa coupling between lepton doublets, Higgs, and right-handed neutrinos
+  - sterile-right-handed neutrino mass mixing
+  - active-sterile mixing
+  mediator_types:
+  - heavy pseudo-Dirac neutrinos
+  - SM Higgs
+  - weak gauge bosons through mixing
+  decay_channels:
+  - sterile neutrino -> active neutrino + photon is discussed as an indirect-detection possibility
+  - heavy pseudo-Dirac neutrino -> dark matter + SM states
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: sterile-neutrino dark matter mass
+    symbol: m_s
+    description: Mass of the lightest sterile state.
+    range: keV scale; examples include around 2-7.1 keV
+    unit: keV
+    role: core
+    status: inferred
+  - name: active-sterile mixing angle
+    symbol: sin^2(2 theta)
+    description: Effective mixing controlling DW production and radiative decay.
+    range: model-dependent; 7 x 10^-11 example for 3.5 keV line
+    role: core
+    status: inferred
+  - name: pseudo-Dirac neutrino masses
+    symbol: M_R
+    description: Heavy inverse-seesaw neutrino pair masses.
+    range: moderately light 1-10 GeV or heavy 130 GeV-1 TeV regimes discussed
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Yukawa couplings
+    symbol: Y
+    description: Neutrino Yukawa couplings to the Higgs in the ISS mass matrix.
+    role: core
+    status: inferred
+  - name: lepton-number-violating mass
+    symbol: mu
+    description: Small Majorana mass term setting sterile masses and active neutrino masses.
+    unit: energy
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - Dodelson-Widrow active-sterile oscillation production
+  - freeze-in from heavy pseudo-Dirac neutrino decays
+  - entropy dilution from lighter pseudo-Dirac neutrino decays in some spectra
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - active-sterile mixing
+  - sterile mass
+  - heavy pseudo-Dirac spectrum
+  - Yukawa couplings
+  - entropy injection
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: DW production alone is generally partial; heavy pseudo-Dirac decays can produce the correct abundance
+    in restricted regimes.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - sterile-neutrino mass
+  - mixing angle
+  - pseudo-Dirac decay rates
+  - entropy dilution factor
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - possible entropy injection from pseudo-Dirac neutrino decays
+  - freeze-in production from heavy-neutrino decays
+  bbn_relevance: medium
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: mixed_cold_warm
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: DW warm component plus colder freeze-in component from heavy decays
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: mixed_cold_warm
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: possible warm-DM suppression; not simulated in the paper
+    simulation_calibrated: 'no'
+validity_domain:
+- id: minimal_iss_partial_abundance
+  applies_to: model
+  condition: DW production in the minimal (2,3) ISS is typically a subcomponent unless heavy pseudo-Dirac
+    decays are efficient.
+  status: inferred
+  extrapolation_risk: medium
+- id: mixed_distribution_limits
+  applies_to: model
+  condition: Structure-formation mappings for mixed DW plus decay-produced distributions require dedicated
+    simulations.
+  status: inferred
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: keV_lightest_sterile
+    description: The lightest sterile state lies at keV mass and is sufficiently long-lived.
+    scope: theory
+    status: assumed
+  - id: thermal_heavy_states
+    description: Heavy pseudo-Dirac neutrinos are treated as thermally populated during freeze-in calculations
+      where used.
+    scope: production
+    status: assumed
+  - id: minimal_23_content
+    description: The field content is the minimal two right-handed plus three sterile inverse-seesaw realization.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code is identified in the assigned paper text.
+provenance:
+  model_id: 1406_6556_23_inverse_seesaw_sterile_neutrino_wdm_v1
+  model_name: (2,3) inverse seesaw sterile-neutrino warm dark matter
+  model_family: sterile_neutrino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:1406.6556
+      title: Minimal inverse seesaw warm dark matter in the (2,3) ISS realisation
+      year: 2014
+      arxiv_id: '1406.6556'
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0007
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections: []
+    unresolved_items:
+    - Exact paper title was not present in the SQLite full-text header; source title is descriptive from
+      assigned text.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:1406.6556
+      note: The (2,3) ISS extends the SM by two right-handed neutrinos and three sterile states; the lightest
+        sterile state can be a keV WDM candidate.
+      confidence: high
+    symmetries:
+    - reference_id: arxiv:1406.6556
+      note: The inverse seesaw mass matrix contains small lepton-number-violating Majorana entries that
+        control active neutrino masses and sterile-state masses.
+      confidence: medium
+    interactions:
+    - reference_id: arxiv:1406.6556
+      note: The Dirac mass arises from Yukawa couplings to the SM Higgs; sterile production depends on
+        active-sterile mixing and heavy pseudo-Dirac neutrino decays.
+      confidence: medium
+    production_mechanism:
+    - reference_id: arxiv:1406.6556
+      note: The paper analyzes Dodelson-Widrow production through active-sterile transitions and freeze-in
+        production from heavy pseudo-Dirac neutrino decays.
+      confidence: high
+    cosmological_history:
+    - reference_id: arxiv:1406.6556
+      note: Moderately light pseudo-Dirac neutrinos can inject entropy, while heavier pseudo-Dirac pairs
+        around 130 GeV-1 TeV can produce the correct DM abundance through decays.
+      confidence: medium
+    parameter_ranges:
+    - reference_id: arxiv:1406.6556
+      note: The WDM mass is around the keV scale; the 3.5 keV line example uses m_s about 7.1 keV and
+        sin^2(2 theta) about 7 x 10^-11.
+      confidence: medium
+    validity_domain:
+    - reference_id: arxiv:1406.6556
+      note: The minimal (2,3) ISS alone gives at most a partial DM abundance in much of parameter space,
+        with full abundance only in specific heavy pseudo-Dirac decay regimes.
+      confidence: medium
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Structure formation limits for mixed production
+  - Parameter dependence of full relic abundance
+  - Indirect decay rate interpretation not encoded here
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: not_always_full_dm
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not assume the minimal (2,3) ISS sterile state is all of DM outside the heavy-decay parameter
+      regimes.

@@ -1,0 +1,350 @@
+_source:
+  shard: arXiv_src_1408_008_wds.tar
+  paper_id: '1408_4387'
+  source_member: 1408_4387.json
+schema_version: model_only_v0
+model_id: 1408_4387_out_of_equilibrium_bounce_dm_v1
+identity:
+  name: Out-of-equilibrium bounce-produced dark matter
+  family: nonstandard_cosmology_dark_matter
+  aliases:
+  - bounce-produced dark matter
+  - out-of-chemical-equilibrium dark matter in a bouncing universe
+  short_description: A phenomenological dark-matter production scenario in which particles are thermally
+    created out of chemical equilibrium during both pre-bounce contraction and post-bounce expansion.
+  historical_origin_or_motivation: Use dark matter relic abundance to probe a bouncing cosmology rather
+    than a standard hot big bang history.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - bouncing cosmology
+  - out-of-chemical-equilibrium dark matter production
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper specifies Boltzmann evolution and the cosmic history but intentionally does not specify
+    a particle Lagrangian or explicit bounce dynamics.
+particle_content:
+  dark_matter_candidate:
+    name: generic dark matter particle chi
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: unknown
+  additional_dark_sector_particles: []
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: The paper assumes dark matter particles remain after out-of-equilibrium production;
+    the stabilizing symmetry is not specified.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets:
+  - thermal radiation background plasma
+  dark_sector_couplings: []
+  mediator_types:
+  - unspecified annihilation interaction
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels:
+  - dark matter pair annihilation and inverse production encoded by thermal average <sigma v>
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the generic dark matter particle.
+    range: Illustrative range 0.1 to 1 TeV used in the paper figures.
+    unit: GeV
+    role: core
+    status: inferred
+    notes: Paper uses x=m_chi/T.
+  - name: thermal averaged annihilation cross section
+    symbol: <sigma v>
+    description: Controls out-of-equilibrium production and relic abundance.
+    range: Below weak-scale cross section, approximately < 1e-9 GeV^-2 in an illustrative scan.
+    unit: GeV^-2
+    role: core
+    status: inferred
+  - name: bounce transition temperature
+    symbol: T_b
+    description: Temperature at which the radiation-dominated contraction/expansion connects to nonstandard
+      bounce physics.
+    range: A few GeV to about 100 GeV in the illustrative mass/cross-section range.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dimensionless bounce inverse temperature
+    symbol: x_b
+    description: Defined as m_chi/T_b and used in relic-abundance solutions.
+    role: core
+    status: inferred
+  - name: relativistic degrees of freedom
+    symbol: g_* and h_*
+    description: Energy and entropy relativistic degrees of freedom, approximated as h_* ~= g_*.
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - thermal production from background plasma during pre-bounce contraction
+  - thermal production from background plasma during post-bounce expansion
+  - out-of-chemical-equilibrium production
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - annihilation cross section <sigma v>
+  - dark matter mass
+  - bounce temperature T_b
+  - radiation-dominated contraction and expansion history
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: Kinetic equilibrium is preserved, but chemical equilibrium is never attained; relic abundance
+    is proportional to <sigma v> in this regime.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed relic abundance
+    symbol: Omega_chi h^2
+    description: The paper tunes T_b to reproduce the observed present relic abundance.
+    value: about 0.1
+    role: derived
+    status: inferred
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_chi
+  - <sigma v>
+  - T_b
+  - x_b
+  - radiation degrees of freedom
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - pre-bounce radiation-dominated contraction
+  - short nonstandard bounce phase
+  - post-bounce radiation-dominated expansion
+  - entropy conserved through bounce
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - transition at T_b into nonstandard bounce physics
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Kinetic equilibrium is assumed, while chemical equilibrium is absent.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: v1_out_of_equilibrium
+  applies_to: production
+  condition: Actual abundance remains much smaller than equilibrium abundance, allowing the Y^2 term in
+    the Boltzmann equation to be neglected.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: v2_short_bounce
+  applies_to: cosmological_history
+  condition: The bounce duration is much shorter than the dark matter reaction time, so comoving dark
+    matter number does not change through the bounce.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: v3_entropy_conservation
+  applies_to: cosmological_history
+  condition: Entropy is conserved through the bounce and h_* is approximated by g_* during the relevant
+    phases.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: v4_bbn_temperature
+  applies_to: parameter
+  condition: The inferred bounce temperature should not fall below the energy scale of Big Bang nucleosynthesis.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: a1_generic_particle
+    description: The dark matter particle is treated generically; no spin, mediator, or Lagrangian is
+      specified.
+    scope: theory
+    status: assumed
+    impact_if_violated: Cannot map to a concrete BSM particle model without extra assumptions.
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: a2_kinetic_equilibrium
+    description: Dark matter remains in kinetic equilibrium with the radiation bath while out of chemical
+      equilibrium.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: a3_fast_entropy_conserving_bounce
+    description: The bounce is fast and entropy-conserving, with no significant dark matter production
+      or annihilation during phase III.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: a4_equal_bounce_temperatures
+    description: The pre-bounce and post-bounce transition temperatures are approximated as equal, T_b^+
+      ~= T_b^- = T_b.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 1408_4387_out_of_equilibrium_bounce_dm_v1
+  model_name: Out-of-equilibrium bounce-produced dark matter
+  model_family: nonstandard_cosmology_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1408_4387'
+      title: unknown
+      authors: []
+      year: 2014
+      arxiv_id: '1408.4387'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0015
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1408_4387'
+      section: introduction
+      page: null
+      quote_or_summary: The paper says it discusses dark matter thermal production extended beyond the
+        big bang in a bouncing universe.
+    - reference_id: '1408_4387'
+      section: basic scenario
+      page: null
+      quote_or_summary: It assumes out-of-chemical-equilibrium production with kinetic equilibrium preserved
+        and uses a Boltzmann equation for Y.
+    - reference_id: '1408_4387'
+      section: conclusion
+      page: null
+      quote_or_summary: The conclusion states dark matter is produced in both contraction and expansion
+        and T_b can be constrained by relic abundance.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1408_4387'
+      note: The candidate is a generic dark matter particle with mass m_chi; examples such as neutralino
+        or Kaluza-Klein particle are only illustrative.
+      confidence: medium
+      section: illustrative cases
+      page: null
+    production_mechanism:
+    - reference_id: '1408_4387'
+      note: Production occurs from the thermal plasma in pre-bounce contraction and post-bounce expansion
+        while chemical equilibrium is never reached.
+      confidence: high
+      section: basic scenario
+      page: null
+    cosmological_history:
+    - reference_id: '1408_4387'
+      note: 'The model has three phases: pre-bounce contraction, short bounce, and post-bounce expansion,
+        with entropy conserved through the bounce.'
+      confidence: high
+      section: basic scenario
+      page: null
+    parameter_ranges:
+    - reference_id: '1408_4387'
+      note: Illustrative scans use m_chi from 0.1 to 1 TeV, cross section below about 1e-9 GeV^-2, and
+        infer T_b of a few to about 100 GeV.
+      confidence: medium
+      section: illustrative cases
+      page: null
+    validity_domain:
+    - reference_id: '1408_4387'
+      note: The analysis requires Y << Y_eq, a very small cross section, and a bounce too short to change
+        comoving dark matter number.
+      confidence: high
+      section: basic scenario
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - No explicit particle model, mediator, or bounce dynamics is specified.
+robustness:
+  overall: low
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - generic particle identity
+  - unspecified bounce dynamics
+  - validity of out-of-equilibrium approximation
+  validation_status: expert_judgment_only
+  notes: Useful as a production-history model card, not as a concrete particle model.
+agent_failure_modes:
+  warnings:
+  - id: w1_generic_not_uv_complete
+    severity: high
+    category: assumption_mismatch
+    warning: Do not treat this entry as a specified UV-complete particle model; the paper only defines
+      a generic dark matter particle and production history.
+    mitigation: Require a separate particle model before computing detection rates or detailed interactions.
+    source_reference_ids:
+    - '1408_4387'
+  - id: w2_bounce_assumptions
+    severity: medium
+    category: extrapolation
+    warning: Relic-density results rely on a fast entropy-conserving bounce and Y << Y_eq.
+    mitigation: Check these assumptions before applying the abundance formulae to another bounce scenario.
+    source_reference_ids:
+    - '1408_4387'

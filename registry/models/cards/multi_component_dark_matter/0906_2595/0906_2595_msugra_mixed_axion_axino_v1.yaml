@@ -1,0 +1,749 @@
+_source:
+  shard: arXiv_src_0906_003_wds.tar
+  paper_id: 0906_2595
+  source_member: 0906_2595.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 0906_2595_msugra_mixed_axion_axino_v1
+identity:
+  name: mSUGRA mixed axion/axino dark matter
+  family: multi_component_dark_matter
+  aliases:
+  - mixed axion/axino CDM in mSUGRA
+  - PQ-extended mSUGRA axion-axino dark matter
+  short_description: A PQ-extended mSUGRA setup in which dark matter is predominantly axion cold dark
+    matter with smaller thermal and nonthermal axino components from the supersymmetric axion multiplet.
+  historical_origin_or_motivation: The paper combines the Peccei-Quinn solution to the strong CP problem
+    with mSUGRA and asks where viable reheating, baryogenesis and mixed axion/axino dark matter can coexist.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - mSUGRA
+  - CMSSM
+  - Peccei-Quinn supersymmetry
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper uses mSUGRA as a template and adds the supersymmetric axion multiplet; full PQ-sector
+    microphysics is not uniquely specified.
+particle_content:
+  dark_matter_candidate:
+    name: axion plus axino
+    spin: axion 0; axino 1/2
+    statistics: unknown
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - saxion
+  mediators:
+  - Peccei-Quinn sector
+  - neutralino NLSP
+  unstable_parent_particles:
+  - lightest neutralino NLSP
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The axion is protected by the PQ mechanism; the axino LSP is stable under R-parity
+    in the mSUGRA setup.
+  symmetries:
+  - name: Peccei-Quinn symmetry
+    type: global
+    exact_or_approximate: broken
+    breaking: PQ breaking scale f_a/N
+  - name: R-parity
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - axion
+  - other
+  standard_model_targets:
+  - QCD sector
+  - MSSM neutralino sector
+  dark_sector_couplings:
+  - PQ interactions producing axions and axinos
+  - neutralino to axino decay
+  mediator_types:
+  - axion supermultiplet
+  - neutralino NLSP
+  decay_channels:
+  - neutralino to axino plus photon or other Standard Model products
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: universal scalar mass
+    symbol: m0
+    description: mSUGRA scalar soft mass input.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: unified gaugino mass
+    symbol: m1/2
+    description: mSUGRA gaugino soft mass input.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: trilinear soft term
+    symbol: A0
+    description: mSUGRA trilinear input.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: tan beta
+    symbol: tan beta
+    description: mSUGRA Higgs vev ratio.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: PQ breaking scale
+    symbol: f_a/N
+    description: Preferred scale for mainly axion CDM in the paper.
+    range: 10^11-10^12
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: axino mass
+    symbol: m_axino
+    description: Favored value quoted for the axino admixture.
+    value: about 100
+    unit: keV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: reheating temperature
+    symbol: T_R
+    description: Reheating temperature needed to sustain at least nonthermal leptogenesis.
+    range: '>= 10^6'
+    unit: GeV
+    role: cosmological
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - axion vacuum misalignment
+  - thermal axino production
+  - nonthermal axino production from neutralino NLSP decay
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - f_a/N
+  - axino mass
+  - reheating temperature
+  - neutralino NLSP abundance
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The preferred composition is mainly axion cold dark matter with small thermal axino and warm
+    nonthermal axino components.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - axion misalignment abundance
+  - thermal axino abundance
+  - neutralino NLSP decay abundance
+  - T_R
+  - f_a/N
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - neutralino NLSP decays to axino
+  - high reheating temperature for baryogenesis
+  bbn_relevance: medium
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: mixed_cold_warm
+  distribution_function_available: 'no'
+  notes: The paper distinguishes mainly cold axions from warm axinos produced by neutralino decays.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: mixed_cold_warm
+    small_scale_power_effect: mixed
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: neutralino_nlsp
+  applies_to: model
+  condition: The extraction applies to the paper's stated neutralino-NLSP mSUGRA case, not stau-NLSP variants
+    treated elsewhere.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: pq_scale
+  applies_to: model
+  condition: The preferred mixed dark matter solution uses f_a/N around 10^11-10^12 GeV and an axino mass
+    near 100 keV.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: msugra_template
+    description: The model is interpreted within the mSUGRA/CMSSM parameterization used by the paper.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: pq_solution
+    description: A Peccei-Quinn solution to the strong CP problem is present and supplies the axion supermultiplet.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: neutralino_nlsp
+    description: The lightest neutralino is the NLSP in the considered case.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that Isasugra/Isajet is used for mSUGRA spectra; no dedicated public
+    mixed axion/axino package is described.
+  primary_code_role: model_definition
+provenance:
+  model_id: 0906_2595_msugra_mixed_axion_axino_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: 0906_2595
+      title: mSUGRA with mixed axion/axino dark matter
+      year: 2009
+      arxiv_id: '0906.2595'
+      doi: null
+      url: null
+      role: extension
+      notes: Only the assigned SQLite full text was used for extraction.
+    - arxiv_id: '0906.2595'
+      authors:
+      - Baer, Howard
+      - Box, Andrew D.
+      - Summy, Heaya
+      doi: 10.1088/1126-6708/2009/08/080
+      notes: Primary paper full text resolved and read locally.
+      reference_id: src_0906_primary
+      role: original_model
+      title: Mainly axion cold dark matter in the minimal supergravity model
+      url: https://arxiv.org/abs/0906.2595
+      year: 2009
+    constraint_papers:
+    - arxiv_id: '1012.3769'
+      authors:
+      - Baer, Howard
+      - Kraml, Sabine
+      - Lessa, Andre
+      doi: null
+      notes: Local related text read; reheating/leptogenesis context.
+      reference_id: src_0906_leptogenesis
+      role: extension
+      title: Thermal leptogenesis and the gravitino problem in the Asaka-Yanagida axion/axino dark matter
+        scenario
+      url: https://arxiv.org/abs/1012.3769
+      year: 2011
+    - arxiv_id: '1103.5413'
+      authors:
+      - Baer, Howard
+      - Lessa, Andre
+      - Rajagopalan, Shibi
+      doi: null
+      notes: Local related text read; mixed axion/neutralino comparison.
+      reference_id: src_0906_axion_neutralino
+      role: extension
+      title: Mixed axion/neutralino cold dark matter in supersymmetric models
+      url: https://arxiv.org/abs/1103.5413
+      year: 2011
+    - arxiv_id: '1110.2491'
+      authors:
+      - Baer, Howard
+      - Lessa, Andre
+      - Sreethawong, Warintorn
+      doi: null
+      notes: Local related text read; coupled Boltzmann production context.
+      reference_id: src_0906_boltzmann
+      role: implementation
+      title: Coupled Boltzmann calculation of mixed axion/neutralino cold dark matter production in the
+        early universe
+      url: https://arxiv.org/abs/1110.2491
+      year: 2012
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: Codex batch-0002 dark-matter extraction worker
+    extractor_name: gpt-5.5 dark-matter model-card pass
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: 0906_2595
+      section: introduction and production discussion
+      page: null
+      quote_or_summary: The paper investigates PQ-extended mSUGRA with mainly axion CDM plus thermal and
+        decay-produced axinos.
+    unresolved_items:
+    - No updated Planck, LHC Run 2, ADMX, or WIMP-search recast was performed.
+    - Saxion cosmology is not structured beyond noting later coupled-Boltzmann context.
+  evidence:
+    particle_content:
+    - reference_id: 0906_2595
+      note: The paper invokes the axion supermultiplet containing axion, saxion and axino; the axino can
+        be the LSP.
+      confidence: medium
+      section: introduction
+      page: null
+    symmetries:
+    - reference_id: 0906_2595
+      note: The model combines supersymmetry with the Peccei-Quinn solution to the strong CP problem.
+      confidence: medium
+      section: introduction
+      page: null
+    interactions:
+    - reference_id: 0906_2595
+      note: Neutralino-to-axino decay and thermal axino scattering/decay processes set part of the abundance.
+      confidence: medium
+      section: axino production
+      page: null
+    production_mechanism:
+    - reference_id: 0906_2595
+      note: The dark matter is mainly axion CDM with thermally produced axinos and warm axinos from neutralino
+        decays.
+      confidence: medium
+      section: introduction
+      page: null
+    cosmological_history:
+    - reference_id: 0906_2595
+      note: The analysis is guided by reheating temperatures high enough for baryogenesis, including T_R
+        >= 10^6 GeV.
+      confidence: medium
+      section: introduction
+      page: null
+    parameter_ranges:
+    - reference_id: 0906_2595
+      note: The preferred PQ breaking scale is f_a/N of order 10^11-10^12 GeV and the favored axino mass
+        is about 100 keV.
+      confidence: medium
+      section: introduction
+      page: null
+    validity_domain:
+    - reference_id: 0906_2595
+      note: The paper restricts to mSUGRA/CMSSM with neutralino NLSP and examines mixed axion/axino cold
+        and warm dark matter.
+      confidence: medium
+      section: model setup
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text gives BBN/gravitino reheating assumptions and WMAP component-sum condition.
+      page: null
+      reference_id: src_0906_primary
+      section: gravitino and relic sections
+    - confidence: medium
+      note: Local related text read for leptogenesis and gravitino-problem context.
+      page: null
+      reference_id: src_0906_leptogenesis
+      section: introduction
+    observables:
+    - confidence: high
+      note: Primary text gives WMAP target, component relic accounting, warm axino caveat, collider region,
+        and axion/WIMP search expectation.
+      page: null
+      reference_id: src_0906_primary
+      section: relic and conclusions sections
+    - confidence: medium
+      note: Local related text read for coupled Boltzmann mixed axion/neutralino production context.
+      page: null
+      reference_id: src_0906_boltzmann
+      section: introduction
+    routes:
+    - confidence: high
+      note: Primary paper names Isasugra/Isajet/IsaReD and gives component relic formulas.
+      page: null
+      reference_id: src_0906_primary
+      section: parameter-space section
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - PQ-sector details and axino mass are model dependent
+  validation_status: expert_judgment_only
+  notes: The title was not preserved at the start of the SQLite text; model name is taken from the paper's
+    stated setup.
+agent_failure_modes:
+  warnings:
+  - id: multi_component
+    severity: medium
+    category: other
+    warning: The dark matter is multi-component; treating the axino alone as all of dark matter would
+      contradict the paper's preferred mainly-axion composition.
+    source_reference_ids: []
+    mitigation: Preserve the axion-dominated composition when using the card.
+observables:
+- caveats:
+  - Axion misalignment abundance has order-unity uncertainty.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early_universe
+  id: mixed_relic_density_accounting
+  key_quantities:
+  - name: total dark matter density
+    symbol: Omega_CDM h^2
+    value: 0.110 +/- 0.006 WMAP5 target
+  - name: Peccei-Quinn scale
+    range: order 10^11-10^12 GeV favored
+    symbol: f_a/N
+    unit: GeV
+  - name: reheat temperature
+    range: 10^6-10^8 GeV target
+    symbol: T_R
+    unit: GeV
+  linked_constraints:
+  - wmap_relic_sum_constraint
+  - warm_axino_fraction_constraint
+  linked_routes:
+  - mixed_axion_axino_relic_route
+  name: Three-component axion/axino relic accounting
+  notes: Primary paper provides the component sum and benchmark regions.
+  observability: high
+  predicted_effect: The CDM abundance is saturated by vacuum-misalignment axions, thermally produced axinos,
+    and nonthermally produced axinos from neutralino decay.
+  redshift_range: post-inflation through today
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - src_0906_primary
+  - src_0906_boltzmann
+  subchannel: relic density
+- caveats:
+  - No transfer-function calculation in primary paper.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - large-scale structure
+  id: warm_axino_fraction
+  key_quantities:
+  - name: thermally produced axino fraction
+    symbol: Omega_axino^TP h^2
+  - name: axino mass threshold
+    symbol: m_axino
+    unit: keV
+    value: about 100 keV cold/warm dividing scale
+  linked_constraints:
+  - warm_axino_fraction_constraint
+  linked_routes:
+  - mixed_axion_axino_relic_route
+  name: Warm axino subcomponent in mainly axion CDM
+  notes: Primary-paper inference from axino mass and fractional abundance.
+  observability: medium
+  predicted_effect: Low axino masses below about 100 keV make thermally produced axinos warm; viable high-reheating
+    regions are mainly axion dominated so the warm fraction is small.
+  redshift_range: structure formation era
+  relevance: medium
+  scale_range: free-streaming scale not numerically extracted
+  source_reference_ids:
+  - src_0906_primary
+  subchannel: warm subcomponent free streaming
+- caveats:
+  - Modern LHC exclusions are not recast.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - LHC
+  id: gluino_rich_lhc_topology
+  key_quantities:
+  - name: unified scalar mass
+    range: about 800-2000 GeV favored
+    symbol: m_0
+    unit: GeV
+  - name: unified gaugino mass
+    range: about 150-400 GeV favored
+    symbol: m_1/2
+    unit: GeV
+  linked_constraints: []
+  linked_routes:
+  - collider_spectrum_route
+  name: Gluino-rich collider spectrum in high-reheating mSUGRA regions
+  notes: Primary-paper collider consequence.
+  observability: medium
+  predicted_effect: Mainly axion CDM with T_R >= 10^6 GeV favors heavy squarks/sleptons and gluino pair
+    production followed by three-body decays to charginos and neutralinos.
+  redshift_range: null
+  relevance: medium
+  scale_range: LHC energies
+  source_reference_ids:
+  - src_0906_primary
+  subchannel: SUSY cascade signatures
+- caveats:
+  - Axion rates are model dependent.
+  channel: direct_detection
+  effect_direction: model_dependent
+  environments:
+  - ADMX
+  - WIMP direct detection
+  - WIMP indirect detection
+  id: axion_search_over_wimp_null
+  key_quantities:
+  - name: axion fraction
+    symbol: Omega_a/Omega_DM
+  - name: neutralino/axino fraction
+    symbol: Omega_susy/Omega_DM
+  linked_constraints:
+  - wmap_relic_sum_constraint
+  linked_routes:
+  - mixed_axion_axino_relic_route
+  name: Axion searches favored over WIMP direct/indirect signals
+  notes: Primary-paper qualitative detection expectation.
+  observability: medium
+  predicted_effect: In mainly axion CDM regions, WIMP direct/indirect searches are expected to be null
+    while ADMX-like axion searches may see a signal.
+  redshift_range: null
+  relevance: medium
+  scale_range: local halo axion field and WIMP channels
+  source_reference_ids:
+  - src_0906_primary
+  subchannel: ADMX-style axion haloscope versus WIMP searches
+constraints:
+- allowed_regions:
+  - Component sum near 0.11; mainly axion CDM favored at f_a/N of order 10^11-10^12 GeV.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: unknown
+    description: Axion misalignment is taken at the central estimate unless varied by quoted uncertainty.
+    id: misalignment_angle
+    impact_if_violated: Constraint can move substantially.
+    notes: null
+    scope: axion relic calculation
+    source_reference_ids:
+    - src_0906_primary
+    status: assumed
+  benchmark_implications:
+  - Regions excluded under neutralino-only CDM can become viable.
+  caveats:
+  - Primary predates Planck and LHC Run 2 constraints.
+  constrained_parameters:
+  - Omega_a h^2
+  - Omega_axino^TP h^2
+  - Omega_axino^NTP h^2
+  - f_a/N
+  - m_axino
+  - T_R
+  constraint_type: cosmological
+  data_release: WMAP5
+  excluded_regions:
+  - Component sums that overclose or underproduce the WMAP5 CDM density.
+  id: wmap_relic_sum_constraint
+  likelihood_available: approximate
+  likelihood_reference: WMAP5 central value and uncertainty as quoted
+  name: WMAP relic-density sum for axion plus axino components
+  notes: Relic target copied from primary paper.
+  observable_channel: Omega_CDM h^2
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - src_0906_primary
+- allowed_regions:
+  - Assuming m_3/2 > 5 TeV allows T_R up to 10^9 GeV in the primary discussion; T_R around 10^6-10^8 GeV
+    supports nonthermal/Affleck-Dine leptogenesis.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: unknown
+    description: Primary analysis assumes heavy gravitinos when allowing high reheating.
+    id: heavy_gravitino
+    impact_if_violated: Constraint can move substantially.
+    notes: null
+    scope: early-universe cosmology
+    source_reference_ids:
+    - src_0906_primary
+    - src_0906_leptogenesis
+    status: assumed
+  benchmark_implications:
+  - High-reheating shifts preferred mSUGRA spectra away from neutralino-CDM-favored regions.
+  caveats:
+  - Saxion cosmology and updated BBN limits not structured.
+  constrained_parameters:
+  - T_R
+  - m_3/2
+  - m_0
+  - axino abundance
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - For weak-scale gravitinos, high T_R can overproduce gravitinos whose late decays disrupt BBN.
+  id: gravitino_bbn_reheat_constraint
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: BBN/gravitino constraint on reheating
+  notes: Related local text read for leptogenesis/gravitino context.
+  observable_channel: late gravitino decay and baryogenesis
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_0906_primary
+  - src_0906_leptogenesis
+- allowed_regions:
+  - Mainly axion CDM can tolerate a small warm axino fraction.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: unknown
+    description: Warm-component limits are weakened when axinos are only a small fraction of total DM.
+    id: fractional_warm_component
+    impact_if_violated: Constraint can move substantially.
+    notes: null
+    scope: structure formation
+    source_reference_ids:
+    - src_0906_primary
+    status: assumed
+  benchmark_implications:
+  - The warm temperature matters less when axions dominate.
+  caveats:
+  - No mixed-DM transfer function extracted.
+  constrained_parameters:
+  - m_axino
+  - Omega_axino^TP/Omega_DM
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Bulk thermally produced axino DM with m_axino below about 100 keV is treated as warm and in tension
+    with large-scale structure needs.
+  id: warm_axino_fraction_constraint
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Warm-axino structure constraint
+  notes: Primary-paper qualitative LSS condition.
+  observable_channel: large-scale structure/free streaming
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - src_0906_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Primary paper used named SUSY tools, but no batch-local code was supplied.
+    caveats:
+    - Modern cosmology/collider constraints need update.
+    constraint_ids:
+    - wmap_relic_sum_constraint
+    - gravitino_bbn_reheat_constraint
+    - warm_axino_fraction_constraint
+    derived_quantities:
+    - Omega_a h^2
+    - Omega_axino^TP h^2
+    - Omega_axino^NTP h^2
+    - neutralino lifetime
+    description: Compute the mSUGRA spectrum and axion/axino relic components, then require their sum
+      to match WMAP and reheating constraints.
+    forward_model_chain:
+    - inputs:
+      - mSUGRA inputs
+      notes: Generate masses and neutralino freeze-out abundance.
+      outputs:
+      - sparticle spectrum
+      - neutralino relic density
+      step_id: spectrum
+      step_type: other
+      tool_or_code: Isasugra/Isajet
+      validity: Tool named in primary paper.
+    - inputs:
+      - f_a/N
+      - m_axino
+      - T_R
+      - neutralino abundance
+      notes: Sum axion misalignment, thermal axino, and neutralino-decay axino components.
+      outputs:
+      - component relic densities
+      step_id: component_relics
+      step_type: analytic_formula
+      tool_or_code: IsaReD plus axion/axino formulas
+      validity: Primary formulas; related work uses coupled Boltzmann equations.
+    id: mixed_axion_axino_relic_route
+    input_parameters:
+    - m_0
+    - m_1/2
+    - A_0
+    - tan beta
+    - sign mu
+    - f_a/N
+    - m_axino
+    - T_R
+    likelihoods:
+    - WMAP relic-density Gaussian
+    - BBN/gravitino constraint grid
+    observable_ids:
+    - mixed_relic_density_accounting
+    - warm_axino_fraction
+    - axion_search_over_wimp_null
+    required_code_resources:
+    - Isajet/Isasugra
+    - IsaReD
+    - coupled Boltzmann code for follow-up
+    route_status: partially_implemented
+    source_model_features:
+    - mSUGRA spectrum
+    - PQ axion supermultiplet
+    - neutralino NLSP decay to axino
+    validation_tests:
+    - Reproduce benchmark high-T_R regions and Omega h^2 near 0.11.
+  - agent_notes: Included because collider topology is a primary-paper observable consequence.
+    caveats:
+    - The 2009 collider prediction is not a current exclusion statement.
+    constraint_ids: []
+    derived_quantities:
+    - gluino mass
+    - chargino/neutralino branching patterns
+    description: Translate cosmology-favored mSUGRA regions into collider cascades.
+    forward_model_chain:
+    - inputs:
+      - sparticle spectrum
+      notes: Simulate gluino pair production and three-body decays.
+      outputs:
+      - gluino production and decay channels
+      step_id: spectrum_to_cascades
+      step_type: other
+      tool_or_code: SUSY event generator
+      validity: Primary paper gives qualitative benchmark decay patterns.
+    id: collider_spectrum_route
+    input_parameters:
+    - m_0
+    - m_1/2
+    - tan beta
+    likelihoods:
+    - LHC SUSY searches
+    observable_ids:
+    - gluino_rich_lhc_topology
+    required_code_resources:
+    - modern SUSY event generator and detector recast
+    route_status: planned
+    source_model_features:
+    - heavy scalar masses
+    - lighter gluino/gaugino sector
+    validation_tests:
+    - Recover benchmark-dominant gluino-pair topology before current exclusions.

@@ -1,0 +1,319 @@
+_source:
+  shard: arXiv_src_2112_083_wds.tar
+  paper_id: '2112_12608'
+  source_member: 2112_12608.json
+schema_version: model_only_v0
+model_id: 2112_12608_melting_domain_wall_scalar_dm_v1
+identity:
+  name: Melting dark domain-wall scalar dark matter
+  family: scalar_field_dark_matter
+  aliases:
+  - dark domain wall scalar dark matter
+  - melting domain wall dark matter
+  short_description: A real scalar singlet with thermally induced Z2 breaking forms domain walls whose
+    tension decreases with expansion; the same field can provide dark matter through phase-transition
+    or freeze-in production.
+  historical_origin_or_motivation: Motivated by harmless domain walls with decreasing tension and by gravitational-wave
+    signals correlated with feebly coupled scalar dark matter.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - real scalar singlet with Z2 symmetry
+  - thermal portal scalar multiplet
+  - Einstein gravity with non-minimal scalar coupling
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The displayed Lagrangian contains scalar kinetic terms, non-minimal Ricci coupling, a portal
+    to a thermal scalar multiplet, and quartic self-interaction; low-temperature mass terms are added
+    for dark matter phenomenology.
+particle_content:
+  dark_matter_candidate:
+    name: real scalar singlet phi
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - thermal scalar multiplet eta
+  mediators:
+  - scalar portal interaction
+  - domain wall network
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The scalar is protected by a discrete Z2 symmetry, though the paper notes stability
+    can require couplings only to heavier species after spontaneous breaking.
+  symmetries:
+  - name: phi -> -phi Z2
+    type: discrete
+    exact_or_approximate: broken
+    breaking: spontaneously broken by thermally induced vacuum expectation value; restored or dissolved
+      in some histories
+    breaking_scale: null
+  - name: classical scale invariance at high temperature
+    type: approximate
+    exact_or_approximate: approximate
+    breaking: broken by gravity and low-temperature mass terms
+    breaking_scale: null
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - other
+  - gravitational
+  standard_model_targets:
+  - thermal scalar multiplet
+  - possibly the Higgs field in a special case
+  dark_sector_couplings:
+  - g^2 phi^2 eta^2 scalar portal
+  - lambda phi^4 self-interaction
+  - xi R phi^2 non-minimal gravity coupling
+  mediator_types:
+  - scalar multiplet eta
+  - domain walls
+  - gravity
+  interaction_operators:
+  - g^2 phi^2 eta^2
+  - lambda phi^4
+  - xi R phi^2
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: scalar self-coupling
+    symbol: lambda
+    description: Quartic self-coupling of the domain-wall scalar.
+    role: core
+    status: unknown
+  - name: portal coupling
+    symbol: g
+    description: Scalar portal coupling to the thermal multiplet; GW-relevant cases use very small values.
+    range: very feeble, with examples around 10^-8
+    role: core
+    status: inferred
+  - name: non-minimal curvature coupling
+    symbol: xi
+    description: Coupling of the scalar to the Ricci scalar.
+    role: core
+    status: assumed
+  - name: dark matter scalar mass
+    symbol: M or m_phi
+    description: Low-temperature mass scale relevant for dark matter oscillations.
+    range: light scalar masses in the eV to sub-eV examples
+    unit: eV
+    role: core
+    status: inferred
+  - name: dark matter onset temperature
+    symbol: T_dm
+    description: Temperature at which scalar oscillations begin to feed dark matter.
+    range: roughly 70 eV to 5 keV in a GW-relevant example
+    unit: eV-keV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - second-order phase-transition misalignment-like production
+  - inverse phase-transition production
+  - freeze-in from portal scatterings
+  - freeze-out discussed but disfavored for GW visibility
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - portal coupling g
+  - self-coupling lambda
+  - phase-transition temperature
+  - scalar mass
+  - initial oscillation amplitude
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The phase-transition mechanisms can achieve the right abundance while remaining compatible with
+    potentially observable gravitational waves.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter abundance
+    symbol: Omega_DM h^2
+    value: observed abundance can be achieved in phase-transition scenarios
+    role: cosmological
+    status: inferred
+  calculation_type: mixed
+  key_dependencies:
+  - phase-transition dynamics
+  - scalar oscillation energy density
+  - portal coupling
+  - scalar mass
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - thermally induced spontaneous Z2 breaking
+  - melting domain walls with decreasing tension
+  - possible inverse phase transition
+  phase_transitions:
+  - second-order phase transition forming domain walls
+  - inverse phase transition dissolving domain walls in one scenario
+  topological_defects:
+  - domain walls with temperature-dependent tension
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  notes: The dark matter abundance is treated as coherent scalar oscillations rather than a thermal particle
+    distribution in the main phase-transition mechanisms.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: melting_wall_regime
+  applies_to: model
+  condition: The harmless-wall scenario requires wall tension to decrease with expansion and avoid wall
+    domination.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Constant-tension walls would face the usual overclosure problem.
+- id: feeble_coupling_gw_regime
+  applies_to: parameter
+  condition: Observable GW examples favor very small portal coupling and tiny scalar self-interaction.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Conventional freeze-out/freeze-in can move the peak GW frequency beyond planned searches.
+assumptions:
+  global:
+  - id: thermal_scalar_multiplet
+    description: A scalar multiplet eta is in equilibrium with the primordial plasma and induces the thermal
+      Z2 breaking.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+  - id: scalar_stability
+    description: The dark matter scalar does not efficiently decay into lighter species after production.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Efficient decay would erase the scalar dark matter abundance.
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 2112_12608_melting_domain_wall_scalar_dm_v1
+  model_name: Melting dark domain-wall scalar dark matter
+  model_family: scalar_field_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Gravitational shine of dark domain walls
+      authors:
+      - E. Babichev
+      - D. Gorbunov
+      - S. Ramazanov
+      - A. Vikman
+      year: 2021
+      arxiv_id: '2112.12608'
+      role: original_model
+      notes: Only the assigned local full text was used for this extraction.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract
+      quote_or_summary: The abstract identifies the dark domain-wall setup, scalar dark matter possibility,
+        and production mechanisms.
+    - reference_id: primary
+      section: model and dark matter production sections
+      quote_or_summary: The paper writes the scalar Lagrangian, explains Z2 wall formation, and discusses
+        phase-transition and freeze-in production.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model uses a real scalar singlet that forms domain walls and can later play the role of
+        dark matter.
+      confidence: medium
+      section: abstract and model section
+    symmetries:
+    - reference_id: primary
+      note: A real singlet scalar has a discrete Z2 symmetry that is spontaneously broken by thermal effects,
+        producing domain walls.
+      confidence: medium
+      section: introduction
+    interactions:
+    - reference_id: primary
+      note: The scalar couples through a portal g^2 phi^2 eta^2 to a thermal scalar multiplet and may
+        also have a non-minimal Ricci coupling.
+      confidence: medium
+      section: model section
+    production_mechanism:
+    - reference_id: primary
+      note: Dark matter can be produced by oscillations after a second-order phase transition, by inverse
+        phase transition, or by freeze-in.
+      confidence: medium
+      section: dark matter production sections
+    cosmological_history:
+    - reference_id: primary
+      note: The domain-wall tension decreases with temperature, so the walls melt or dissolve instead
+        of dominating the Universe.
+      confidence: medium
+      section: introduction
+    parameter_ranges:
+    - reference_id: primary
+      note: The text emphasizes very small portal coupling, tiny self-interaction, low onset temperatures
+        around eV-keV in the GW-relevant region, and light scalar masses.
+      confidence: medium
+      section: dark matter production sections
+    validity_domain:
+    - reference_id: primary
+      note: Conventional freeze-out/freeze-in are said to push the GW frequency high; phase-transition
+        production is compatible with observable GWs.
+      confidence: medium
+      section: abstract and conclusions
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: low
+  dominant_uncertainties:
+  - Domain-wall network dynamics estimated preliminarily
+  - Scalar stability after Z2 breaking
+  - Phase-transition abundance details
+  validation_status: expert_judgment_only
+  notes: The model content is explicit, but GW and abundance estimates are preliminary.
+agent_failure_modes:
+  warnings:
+  - id: domain_wall_history_sensitive
+    severity: high
+    category: assumption_mismatch
+    warning: The model should not be mapped to constant-tension domain walls; the decreasing tension is
+      central.
+  - id: stability_after_z2_breaking
+    severity: medium
+    category: other
+    warning: Check scalar decay channels before assuming the field remains dark matter.

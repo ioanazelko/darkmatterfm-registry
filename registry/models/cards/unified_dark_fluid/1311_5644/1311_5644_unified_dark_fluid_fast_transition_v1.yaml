@@ -1,0 +1,314 @@
+_source:
+  shard: data/astro-ph-00036.tar
+  paper_id: '1311_5644'
+  source_member: 1311_5644.json
+schema_version: model_only_v0
+model_id: 1311_5644_unified_dark_fluid_fast_transition_v1
+identity:
+  name: Unified dark fluid with fast transition and entropic perturbations
+  family: unified_dark_fluid
+  aliases:
+  - UDF with fast transition
+  - entropic-perturbation unified dark fluid
+  short_description: A phenomenological unified dark-sector fluid whose equation of state interpolates
+    between an early dark-matter-like era and a late dark-energy-like era, with entropic perturbations
+    parameterized by an effective sound speed.
+  historical_origin_or_motivation: Motivated by unified dark fluid attempts to address dark matter and
+    dark energy with a single component while testing fast equation-of-state transitions.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - unified_dark_fluid_cosmology
+  - generalized_dark_matter_perturbations
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper specifies background and perturbation equations, not a microscopic action.
+particle_content:
+  dark_matter_candidate:
+    name: unified dark fluid effective component
+    spin: not_applicable
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: not_applicable for a phenomenological fluid component
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - cosmological expansion
+  - metric perturbations
+  dark_sector_couplings:
+  - effective sound speed for entropic perturbations
+  mediator_types: []
+  interaction_operators: []
+  scattering:
+    elastic: not_applicable
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: not_applicable
+  flavor_structure: not_applicable
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: transition scale factor
+    symbol: a_t
+    description: Scale factor at the equation-of-state transition.
+    role: core
+    status: inferred
+    notes: Fit quoted in the paper gives a_t about 0.674.
+  - name: transition rapidity
+    symbol: beta
+    description: Controls how fast the equation of state transitions.
+    role: core
+    status: inferred
+    notes: Smaller beta corresponds to faster transition; fit quoted near 0.249.
+  - name: effective sound speed
+    symbol: c_s,eff^2
+    description: Rest-frame effective sound speed used for entropic perturbations.
+    range:
+      min: 0
+      max: 1
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: The paper takes c_s,eff^2 as a free parameter in [0,1] and finds small values favored.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - phenomenological background energy-density evolution from UDF equation of state
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Friedmann equation with UDF energy density
+  - cosmological parameter fit
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: This is not a particle-production calculation; the UDF is fit as the dark sector.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - equation of state w_u(a)
+  - a_t
+  - beta
+  - effective sound speed
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - single fluid unifies dark matter and dark energy
+  - entropic perturbations
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - fast or slow effective equation-of-state transition
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: high
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: not_applicable
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Fluid perturbations are described by sound speeds rather than a particle phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: phenomenological_fluid_scope
+  applies_to: model
+  condition: Use only as a phenomenological unified dark-sector fluid, not as a microscopic particle model.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+- id: small_sound_speed
+  applies_to: parameter
+  condition: Viability relies on small effective sound speed to keep Jeans scale behavior acceptable.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: single_unified_dark_sector
+    description: The dark matter and dark energy components are represented by one effective fluid.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: adiabatic_initial_conditions
+    description: The numerical fitting assumes adiabatic initial conditions and zero shear perturbation.
+    scope: computation
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code release is identified in the assigned paper text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1311_5644_unified_dark_fluid_fast_transition_v1
+  model_name: Unified dark fluid with fast transition and entropic perturbations
+  model_family: unified_dark_fluid
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:1311.5644
+      title: 'Unified Dark Fluid with Fast Transition: Including Entropic Perturbations'
+      authors:
+      - Weiqiang Yang
+      - Lixin Xu
+      year: 2013
+      arxiv_id: '1311.5644'
+      doi: null
+      url: null
+      role: original_model
+      notes: Bibliographic fields are populated only from the assigned paper text and local paper id.
+  extraction:
+    method: llm_assisted
+    extracted_by: dark-matter model-card worker batch-0345
+    extractor_name: codex
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:1311.5644
+      section: abstract
+      page: null
+      quote_or_summary: Investigates a unified dark fluid with fast transition and entropic perturbations.
+    - reference_id: arxiv:1311.5644
+      section: model
+      page: null
+      quote_or_summary: Introduces a hyperbolic-tangent equation of state and an effective sound-speed
+        parameter.
+    unresolved_items:
+    - No microscopic dark-sector particle content or production mechanism is given; the entry is a phenomenological
+      fluid model.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:1311.5644
+      note: The dark sector is modeled as a single unified dark fluid that behaves like cold dark matter
+        at early times and dark energy at late times.
+      confidence: medium
+      section: model/results
+      page: null
+    interactions:
+    - reference_id: arxiv:1311.5644
+      note: Perturbations are described with an effective sound speed and entropic perturbations; no microscopic
+        particle interaction is specified.
+      confidence: medium
+      section: perturbations
+      page: null
+    production_mechanism:
+    - reference_id: arxiv:1311.5644
+      note: The abundance is set phenomenologically by the Friedmann equation and the UDF energy-density
+        evolution from its equation of state.
+      confidence: medium
+      section: model
+      page: null
+    cosmological_history:
+    - reference_id: arxiv:1311.5644
+      note: The equation of state is a hyperbolic-tangent transition with parameters a_t and beta; fits
+        favor slow transition and small effective sound speed.
+      confidence: medium
+      section: constraints/results
+      page: null
+    parameter_ranges:
+    - reference_id: arxiv:1311.5644
+      note: Core parameters include transition scale factor a_t, transition rapidity beta, and effective
+        sound speed c_s,eff^2 in [0,1].
+      confidence: medium
+      section: model/fit
+      page: null
+    validity_domain:
+    - reference_id: arxiv:1311.5644
+      note: The paper treats this as a phenomenological UDF model and finds observations do not favor
+        the fast-transition regime.
+      confidence: medium
+      section: conclusion
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: low
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - No microscopic particle model is specified.
+  - Observations in the paper do not favor the nominal fast-transition behavior.
+  validation_status: expert_judgment_only
+  notes: Accepted as a phenomenological dark-matter/dark-energy fluid model rather than a BSM particle
+    theory.
+agent_failure_modes:
+  warnings:
+  - id: phenomenological_not_particle
+    severity: high
+    category: assumption_mismatch
+    warning: Do not treat this entry as a particle dark matter model with annihilation, decay, or detector
+      rates.
+    source_reference_ids: []
+    mitigation: Use only for background/perturbation-level unified-fluid reasoning.
+  - id: fast_transition_disfavored
+    severity: medium
+    category: disputed_claim
+    warning: The paper finds cosmic observations do not favor the fast-transition phenomenon in this UDF
+      parameterization.
+    source_reference_ids: []
+    mitigation: Surface this caveat whenever using the fast-transition label.

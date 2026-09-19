@@ -1,0 +1,350 @@
+_source:
+  shard: arXiv_src_1305_005_wds.tar
+  paper_id: '1305_3214'
+  source_member: 1305_3214.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: do_not_treat_as_full_dm
+    mitigation: Model downstream abundance as a subcomponent unless an additional component is supplied
+      separately.
+    severity: high
+    source_reference_ids:
+    - '1305_3214'
+    warning: Scenario II only requires the neutralino abundance to be below the observed dark matter density.
+associated_code:
+  code_summary: The paper uses adapted NMSSMTools with micrOMEGAs and rescales direct-detection rates
+    by the neutralino relic fraction in Scenario II.
+  has_associated_code: partial
+assumptions:
+  global:
+  - can_be_relaxed: 'no'
+    description: R parity is conserved so that the neutralino LSP is stable.
+    id: r_parity_conserved_subcomponent
+    impact_if_violated: The neutralino subcomponent would not be stable.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1305_3214'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Additional dark matter beyond the neutralino supplies the rest of the observed abundance.
+    id: unspecified_additional_dark_matter
+    impact_if_violated: The scenario would underproduce the total dark matter density.
+    notes: The paper does not construct the additional component.
+    scope: production
+    source_reference_ids:
+    - '1305_3214'
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - Scenario II EWSUSY neutralino
+  - multi-component EWSUSY LSP
+  family: supersymmetric_wimp_dark_matter
+  historical_origin_or_motivation: Designed to retain electroweak SUSY explanations of the muon anomalous
+    magnetic moment and Higgs data while relaxing the full neutralino relic-density requirement.
+  model_kind: complete_theory
+  name: EWSUSY NMSSM neutralino dark matter subcomponent
+  short_description: An R-parity-conserving EWSUSY NMSSM variant where the lightest neutralino is stable
+    but need only be a subcomponent of multi-component dark matter.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - annihilation to Standard Model particles through higgsino/gaugino/Higgs interactions
+  cp_structure: NMSSM CP-even and CP-odd Higgs sector
+  dark_sector_couplings:
+  - lambda S H_u H_d
+  - kappa S^3
+  - neutralino gaugino-higgsino-singlino mixing
+  decay_channels: []
+  flavor_structure: GmSUGRA-inspired soft terms with light electroweak sleptons
+  interaction_operators:
+  - NMSSM superpotential W = lambda S H_u H_d + kappa S^3/3
+  mediator_types:
+  - Higgs bosons
+  - Z boson
+  - electroweak superpartners
+  portals:
+  - higgs
+  - vector
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Standard Model fermions
+  - gauge bosons
+  - nucleons
+  tree_or_loop_level: both
+model_id: 1305_3214_ewsusy_nmssm_neutralino_subcomponent_v1
+parameters:
+  core:
+  - description: Scenario I viable strip quoted for the lightest neutralino.
+    name: LSP neutralino mass
+    range: 60-120 GeV for the Scenario II 1-sigma region
+    role: core
+    status: inferred
+    symbol: m_chi10
+    unit: GeV
+  - description: Small mu_eff is preferred in the EWSUSY scans.
+    name: effective higgsino mass parameter
+    range: about 100-300 GeV
+    role: core
+    status: inferred
+    symbol: mu_eff
+    unit: GeV
+  - description: Input coupling in the NMSSM Higgs superpotential.
+    name: NMSSM lambda coupling
+    range: 0-0.7
+    role: core
+    status: inferred
+    symbol: lambda
+  - description: Ratio of Higgs vacuum expectation values scanned in the paper.
+    name: tan beta
+    range: 1-60
+    role: core
+    status: inferred
+    symbol: tan_beta
+  - description: Electroweak slepton soft masses kept light in the scan.
+    name: slepton soft masses
+    range: 0-800 GeV
+    role: core
+    status: inferred
+    symbol: M_L,M_E
+    unit: GeV
+  derived:
+  - description: Computed with micrOMEGAs in NMSSMTools and required to match WMAP in Scenario I.
+    name: neutralino relic density
+    range: WMAP dark matter range used in the chi-square analysis
+    role: derived
+    status: inferred
+    symbol: Omega_chi h^2
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - singlet superfield S
+  - light sleptons
+  - sneutrinos
+  - electroweak gauginos and higgsinos
+  - unspecified additional dark matter component
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lightest neutralino with higgsino and singlino components
+    number_of_components: subcomponent
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - additional neutralinos
+  - charginos
+  - sleptons
+  long_lived_particles:
+  - R-parity-stable lightest neutralino
+  mediators:
+  - CP-even and CP-odd Higgs bosons
+  - Z boson
+  - sleptons
+  - electroweakinos
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: thermal
+  f_of_p_or_q: unknown
+  free_streaming_length: null
+  notes: Weak-scale neutralino dark matter is treated as cold; no phase-space distribution is provided.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - neutralino mass
+  - higgsino and singlino fractions
+  - annihilation cross sections into Standard Model particles
+  can_produce_all_dark_matter: 'no'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out of an R-parity-stable neutralino LSP as a dark matter subcomponent
+  nonthermal_momentum_distribution: 'no'
+  notes: Scenario II assumes multi-component dark matter and only requires the neutralino relic density
+    to lie below the observed density.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: medium
+      note: The LSP neutralino is expanded in bino, wino, higgsino, and singlino gauge eigenstates.
+      page: null
+      reference_id: '1305_3214'
+      section: Lightest Supersymmetric Particle
+    parameter_ranges:
+    - confidence: high
+      note: The Scenario II 1-sigma region maps to a wider LSP mass range from 60 GeV to 120 GeV.
+      page: null
+      reference_id: '1305_3214'
+      section: Lightest Supersymmetric Particle
+    particle_content:
+    - confidence: high
+      note: Scenario II keeps the R-parity-stable LSP neutralino but treats it as part of multi-component
+        dark matter.
+      page: null
+      reference_id: '1305_3214'
+      section: Setup
+    production_mechanism:
+    - confidence: high
+      note: The neutralino relic density may be very small because of the large higgsino component.
+      page: null
+      reference_id: '1305_3214'
+      section: Lightest Supersymmetric Particle
+    relic_density:
+    - confidence: high
+      note: Scenario II uses the upper bound Omega h^2 < 0.136 instead of requiring the neutralino to
+        saturate the relic density.
+      page: null
+      reference_id: '1305_3214'
+      section: Setup
+    symmetries:
+    - confidence: high
+      note: Scenario II is listed as R-parity conservation and multi-component dark matter.
+      page: null
+      reference_id: '1305_3214'
+      section: Abstract/Setup
+    validity_domain:
+    - confidence: medium
+      note: Direct-detection rates are rescaled by the neutralino relic fraction for the multi-component
+        scenario.
+      page: null
+      reference_id: '1305_3214'
+      section: Setup
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch-0016
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5 dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections: []
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: supersymmetric_wimp_dark_matter
+  model_id: 1305_3214_ewsusy_nmssm_neutralino_subcomponent_v1
+  model_name: EWSUSY NMSSM neutralino dark matter subcomponent
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1305.3214'
+      authors:
+      - Taoli Cheng
+      - Tianjun Li
+      doi: null
+      notes: Assigned full text from the run-local SQLite database.
+      reference_id: '1305_3214'
+      role: original_model
+      title: Electroweak Supersymmetry (EWSUSY) in the NMSSM
+      url: null
+      year: 2013
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: subcomponent
+  key_dependencies:
+  - higgsino fraction
+  - neutralino annihilation cross section
+  - upper bound Omega h^2 < 0.136
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: 'no'
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - unspecified additional dark matter component
+  - scan assumptions
+  - neutralino relic fraction
+  notes: The non-neutralino component of the multi-component scenario is not specified in the paper text.
+  observational_robustness: low
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: R parity conservation makes the lightest neutralino stable in Scenarios I and
+    II.
+  symmetries:
+  - breaking: not broken in Scenarios I and II
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: R parity
+    type: discrete
+  - breaking: not detailed in the assigned text
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z3 NMSSM symmetry
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper gives the NMSSM Higgs-sector superpotential and soft terms and scans GmSUGRA-inspired
+    electroweak SUSY spectra.
+  parent_frameworks:
+  - NMSSM
+  - electroweak supersymmetry
+  - generalized minimal supergravity
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats:
+  - The paper does not specify the additional dark matter component.
+  condition: Scenario II assumes multi-component dark matter and applies only an upper bound to the neutralino
+    relic density.
+  extrapolation_risk: medium
+  id: scenario_ii_upper_relic_bound
+  notes: null
+  source_reference_ids:
+  - '1305_3214'
+  status: inferred
+  valid_range: Omega_chi h^2 < 0.136; LSP mass around 60-120 GeV in the paper 1-sigma region

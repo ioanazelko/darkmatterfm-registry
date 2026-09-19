@@ -1,0 +1,360 @@
+_source:
+  shard: arXiv_src_2008_016_wds.tar
+  paper_id: '2008_02994'
+  source_member: 2008_02994.json
+schema_version: model_only_v0
+model_id: 2008_02994_gravity_portal_scalar_singlet_v1
+identity:
+  name: Gravity-portal scalar singlet dark matter
+  family: gravity_portal_scalar_dark_matter
+  aliases:
+  - purely gravitational scalar dark matter
+  - Breit-Wigner gravity-portal scalar dark matter
+  short_description: A scalar singlet dark matter model where nonminimal Ricci-scalar operators connect
+    the dark scalar to a leptophilic SU(2) scalar doublet and to the Higgs sector, enabling annihilation
+    through gravity-portal interactions.
+  historical_origin_or_motivation: Motivated by gravitational evidence for dark matter and by lepton excesses
+    in cosmic-ray data; the model assumes dark matter couples to visible fields only through nonminimal
+    gravitational operators plus a leptophilic scalar mediator.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - effective field theory of gravity
+  - scalar singlet dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff:
+    name: reduced Planck scale
+    symbol: Mbar_P
+    description: Gravity EFT cutoff scale
+    value: 2.435e18
+    unit: GeV
+    role: core
+    status: assumed
+  embedded_in_larger_framework: unknown
+  notes: The paper treats general relativity as a low-energy EFT and writes Jordan- and Einstein-frame
+    actions with nonminimal Ricci-scalar couplings.
+particle_content:
+  dark_matter_candidate:
+    name: real scalar singlet
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - leptophilic SU(2) scalar doublet mediator with charged, CP-even and CP-odd components
+  mediators:
+  - CP-even neutral component of the leptophilic scalar doublet
+  - Standard Model Higgs boson through gravity-portal operators
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The assigned text assumes the dimension-three Ricci operator that would induce
+    scalar dark matter decay is absent; no explicit stabilizing symmetry is stated.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - higgs
+  - other
+  standard_model_targets:
+  - charged leptons
+  - Standard Model Higgs bosons
+  - electroweak gauge bosons through the scalar doublet kinetic term
+  dark_sector_couplings:
+  - nonminimal Ricci coupling of the singlet scalar
+  - nonminimal Ricci coupling mixing Higgs and leptophilic scalar doublet
+  - leptophilic Yukawa couplings of the scalar doublet
+  mediator_types:
+  - scalar mediator
+  - gravity-portal effective operator
+  interaction_operators:
+  - xi_phi phi^2 R
+  - xi_eta (H^dagger eta + h.c.) R
+  - xi_h H^dagger H R
+  annihilation_channels:
+  - phi phi -> h h
+  - phi phi -> e+ e-
+  - phi phi -> mu+ mu-
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_phi
+    description: Scalar singlet mass
+    value: '1500'
+    unit: GeV
+    role: core
+    status: assumed
+    notes: Benchmark used for the DAMPE fit.
+  - name: scalar mediator mass
+    symbol: m_eta
+    description: CP-even scalar mediator mass
+    value: 2 m_phi + delta
+    unit: GeV
+    role: core
+    status: assumed
+    notes: Benchmark takes delta = 0.01 GeV.
+  - name: dark scalar Ricci coupling
+    symbol: xi_phi
+    description: Nonminimal phi^2 R coupling
+    role: core
+    status: inferred
+  - name: Higgs-mediator Ricci coupling
+    symbol: xi_eta
+    description: Nonminimal (H eta) R coupling
+    role: core
+    status: inferred
+  - name: leptophilic mediator couplings
+    symbol: lambda_e, lambda_mu
+    description: Couplings of the scalar doublet mediator to electron and muon sectors
+    role: core
+    status: inferred
+  derived:
+  - name: thermal averaged annihilation cross section
+    symbol: <sigma v>
+    description: Temperature-dependent annihilation cross section enhanced near the Breit-Wigner resonance
+    role: derived
+    status: approximate
+production:
+  mechanisms:
+  - thermal freeze-out with gravity-portal annihilation
+  - Breit-Wigner enhanced late-time annihilation near m_eta approximately 2 m_phi
+  thermal_equilibrium_with_standard_model: partial
+  abundance_set_by:
+  - phi phi -> h h gravity-portal annihilation at freeze-out
+  - subdominant leptonic channels controlled by resonance parameters
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves the abundance with a temperature-dependent annihilation cross section and shows
+    a benchmark that reaches the observed relic density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter density
+    symbol: Omega_DM h^2
+    description: Observed relic abundance target used by the paper
+    value: correct observed relic density
+    role: cosmological
+    status: assumed
+  calculation_type: thermal
+  key_dependencies:
+  - m_phi
+  - m_eta - 2 m_phi
+  - xi_phi xi_eta lambda_l
+  - phi phi -> h h rate
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - Breit-Wigner resonance causes the annihilation cross section to vary with cosmic temperature after
+    freeze-out
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: null
+  notes: The relic calculation is framed as thermal freeze-out of a massive scalar singlet.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: gravity_eft_validity
+  applies_to: EFT
+  condition: Energies remain below the reduced Planck scale and perturbative unitarity bounds on nonminimal
+    couplings are respected.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Large nonminimal couplings are allowed only within the EFT and unitarity estimates used in the paper.
+  source_reference_ids:
+  - primary
+- id: resonant_annihilation_regime
+  applies_to: parameter
+  condition: The scalar mediator mass is close to twice the dark matter mass for Breit-Wigner enhancement.
+  status: assumed
+  valid_range: m_eta approximately 2 m_phi with benchmark delta = 0.01 GeV
+  extrapolation_risk: high
+  caveats:
+  - Late-time annihilation depends sensitively on the resonance offset.
+  source_reference_ids:
+  - primary
+assumptions:
+  global:
+  - id: absent_decay_operator
+    description: The dimension-three gravity-portal operator that would induce dark matter decay is absent.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+    impact_if_violated: If present, the scalar may decay and fail to be stable dark matter.
+  - id: near_resonance
+    description: The mediator mass lies close to twice the dark matter mass for the Breit-Wigner mechanism.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+    impact_if_violated: Without the resonance the late-time lepton signal and relic-density relation change.
+  - id: nearby_subhalo_for_dampe
+    description: The DAMPE fit assumes a nearby dark matter subhalo.
+    scope: other
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+    impact_if_violated: The cosmic-ray interpretation is not a generic prediction of the particle model.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is described in the assigned text.
+provenance:
+  model_id: 2008_02994_gravity_portal_scalar_singlet_v1
+  model_name: Gravity-portal scalar singlet dark matter
+  model_family: gravity_portal_scalar_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Scalar dark matter annihilation through a gravity portal with a leptophilic scalar doublet
+      year: 2020
+      arxiv_id: '2008.02994'
+      role: original_model
+      notes: Assigned SQLite full text for this batch.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0013
+    extractor_name: gpt-5.5-dark-matter-model-card-worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: model introduction
+      quote_or_summary: The paper introduces scalar dark matter annihilating through a gravity portal
+        with a leptophilic SU(2) scalar doublet mediator.
+    - reference_id: primary
+      section: relic abundance constraints
+      quote_or_summary: The paper solves for the scalar-singlet abundance with a temperature-dependent
+        annihilation cross section and identifies allowed parameter space.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model contains a scalar singlet dark matter particle and a leptophilic SU(2) scalar doublet
+        mediator.
+      confidence: high
+      section: The effective field theory treatment of quantum gravity
+    interactions:
+    - reference_id: primary
+      note: The Jordan-frame action contains nonminimal Ricci couplings for the scalar singlet, Higgs,
+        and leptophilic doublet, leading to gravity-portal annihilation.
+      confidence: high
+      section: Annihilation of DM through a gravity portal
+    production_mechanism:
+    - reference_id: primary
+      note: The text discusses thermal freeze-out, Breit-Wigner enhancement, phi phi -> h h, and leptonic
+        annihilation channels.
+      confidence: high
+      section: Breit-Wigner resonance and relic abundance
+    parameter_ranges:
+    - reference_id: primary
+      note: A benchmark fixes m_phi = 1500 GeV and m_eta = 2 m_phi + 0.01 GeV for the DAMPE-motivated
+        fit.
+      confidence: medium
+      section: Fitting DAMPE with leptons from dark matter
+    validity_domain:
+    - reference_id: primary
+      note: The paper derives perturbative unitarity bounds on the nonminimal gravity-portal couplings.
+      confidence: medium
+      section: Bounds on coupling constants
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - The paper does not state an explicit stabilizing symmetry for the scalar; stability is tied to the
+    assumed absence of the decay-inducing Ricci operator.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: low
+  computational_robustness: medium
+  dominant_uncertainties:
+  - large nonminimal couplings in an EFT
+  - near-resonance tuning
+  - subhalo assumption for cosmic-ray fit
+  validation_status: expert_judgment_only
+  notes: Model construction and relic logic are explicit, while phenomenological interpretation depends
+    on astrophysical assumptions.
+agent_failure_modes:
+  warnings:
+  - id: no_explicit_symmetry
+    severity: high
+    category: assumption_mismatch
+    warning: The assigned text does not provide an explicit symmetry stabilizing the scalar dark matter;
+      it assumes the dangerous dimension-three Ricci operator is absent.
+    source_reference_ids:
+    - primary
+    mitigation: Treat stability as an assumption, not a derived consequence.
+  - id: eft_large_couplings
+    severity: medium
+    category: extrapolation
+    warning: The gravity-portal couplings can be very large and are bounded only by the paper's EFT unitarity
+      estimates.
+    source_reference_ids:
+    - primary
+  - id: resonance_sensitive
+    severity: medium
+    category: extrapolation
+    warning: Relic abundance and late-time annihilation are sensitive to the mediator mass being close
+      to twice the dark matter mass.
+    source_reference_ids:
+    - primary
+operators:
+  renormalizable_terms:
+  - leptophilic scalar-doublet Yukawa interactions
+  eft_operators:
+  - xi_phi phi^2 R
+  - xi_eta (H^dagger eta + h.c.) R
+  - xi_h H^dagger H R
+  contact_or_light_mediator: light_mediator
+  coupling_types:
+  - nonminimal gravitational
+  - scalar
+  - leptophilic
+mass_scales_and_hierarchies:
+  scales:
+  - name: reduced Planck scale
+    symbol: Mbar_P
+    value: 2.435e18
+    unit: GeV
+    role: core
+    status: assumed
+  - name: benchmark dark matter mass
+    symbol: m_phi
+    value: 1500
+    unit: GeV
+    role: benchmark
+    status: assumed
+  hierarchy_questions:
+  - question: How close is the mediator to the two-particle threshold?
+    answer: The resonance benchmark takes m_eta = 2 m_phi + 0.01 GeV.
+    status: assumed

@@ -1,0 +1,307 @@
+_source:
+  shard: arXiv_src_1812_033_wds.tar
+  paper_id: '1812_11154'
+  source_member: 1812_11154.json
+schema_version: model_only_v0
+model_id: 1812_11154_decaying_majoron_neutrino_dm_v1
+identity:
+  name: Late-decaying Majoron dark matter
+  family: majoron_dark_matter
+  aliases:
+  - secondary cosmic neutrino background from Majoron decay
+  short_description: A Majoron from approximate lepton-number breaking forms all or part of dark matter
+    and decays at late times into neutrinos.
+  historical_origin_or_motivation: Motivated by connecting neutrino mass generation, Majoron pseudo-Goldstone
+    dynamics, and a secondary cosmic neutrino background.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - Majoron model
+  - global lepton-number symmetry breaking
+  - neutrino mass models
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes leading Majoron-neutrino couplings for Dirac and Majorana neutrinos and uses
+    them to compute Majoron decay widths.
+particle_content:
+  dark_matter_candidate:
+    name: Majoron J
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: unknown
+  additional_dark_sector_particles: []
+  mediators:
+  - Majoron-neutrino coupling
+  dark_radiation_species:
+  - neutrinos from Majoron decay
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Majoron
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The Majoron is long-lived because its neutrino couplings are suppressed by the
+    lepton-number breaking scale; approximate symmetry breaking gives it a small mass.
+  symmetries:
+  - name: global lepton number
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken, with explicit approximate breaking giving the Majoron a mass
+    breaking_scale:
+      name: Majoron decay constant
+      description: Scale f of lepton-number breaking
+      value: order 10^6
+      unit: GeV
+      role: core
+      status: inferred
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - neutrinos
+  - leptons through higher-energy operators
+  dark_sector_couplings:
+  - Majoron coupling to neutrino mass eigenstates proportional to neutrino mass divided by f
+  mediator_types:
+  - pseudo-Nambu-Goldstone boson
+  interaction_operators:
+  - i m_nu J nu n / f for Dirac neutrinos
+  - i m_nu J nu nu / f for Majorana neutrinos
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels:
+  - J -> neutrino neutrino
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: Majoron mass
+    description: Mass of the decaying Majoron considered for neutrino-capture signals.
+    range: eV scale; benchmark values 1 eV and 4 eV
+    unit: eV
+    role: core
+    status: inferred
+  - name: Majoron lifetime
+    description: Late-decay lifetime.
+    range: order age of the universe; benchmark values 10 Gyr and 100 Gyr
+    unit: Gyr
+    role: core
+    status: inferred
+  - name: fractional dark matter abundance F
+    description: Initial Majoron energy density as a fraction of all dark matter.
+    range: 0.05 for the 10 Gyr benchmark; 1 for the 100 Gyr benchmark
+    role: core
+    status: inferred
+  - name: Majoron decay constant f
+    description: Lepton-number breaking scale implied by eV Majoron masses and cosmological lifetimes.
+    value: order 10^6
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal relic Majorons
+  - nonthermal misalignment production
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Majoron initial abundance
+  - lifetime
+  - mass
+  - fractional abundance F
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper allows Majorons to be all of the dark matter for sufficiently long lifetimes or a decaying
+    subcomponent for shorter lifetimes.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - Majoron mass
+  - lifetime
+  - initial abundance fraction F
+  - thermal or misalignment production history
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late Majoron decays to neutrinos after cosmic neutrino decoupling
+  - possible dark-matter subcomponent decay before today
+  bbn_relevance: low
+  cmb_relevance: high
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: unknown
+  notes: The Majoron phase-space distribution is not specified; the paper focuses on decay products.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: validity_1
+  applies_to: model
+  condition: Majoron decays must occur at late times, after cosmic neutrinos decouple and at temperatures
+    below the Majoron mass.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: validity_2
+  applies_to: parameter
+  condition: Benchmarks use eV-scale Majoron masses with lifetimes of 10-100 Gyr and fractional abundance
+    F from 0.05 to 1.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: assumption_1
+    description: Majoron-neutrino couplings are controlled by the nonlinearly realized lepton-number symmetry
+      and scale with neutrino mass over f.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: assumption_2
+    description: Late Majoron decays create a neutrino population distinct from the primary cosmic neutrino
+      background.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 1812_11154_decaying_majoron_neutrino_dm_v1
+  model_name: Late-decaying Majoron dark matter
+  model_family: majoron_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper_1812_11154
+      title: Detecting a Secondary Cosmic Neutrino Background from Majoron Decays in Neutrino Capture
+        Experiments
+      authors:
+      - Zackaria Chacko
+      - Peizhi Du
+      - Michael Geller
+      year: 2018
+      arxiv_id: '1812.11154'
+      doi: null
+      url: null
+      role: extension
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch-0018
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper_1812_11154
+      section: introduction/Majoron model
+      page: null
+      quote_or_summary: The paper introduces the Majoron model used for late decays and computes neutrino
+        fluxes from a Majoron dark-matter population.
+    unresolved_items:
+    - The paper treats both Dirac and Majorana neutrino cases; this card keeps them as variants of the
+      same model family.
+  evidence:
+    particle_content:
+    - reference_id: paper_1812_11154
+      note: The Majoron is described as the pseudo-Nambu-Goldstone boson of broken lepton number and can
+        constitute some or all observed dark matter for sufficiently long lifetimes.
+      confidence: medium
+      section: introduction
+      page: null
+    symmetries:
+    - reference_id: paper_1812_11154
+      note: Extensions based on the Majoron framework incorporate global lepton number, broken to generate
+        neutrino masses.
+      confidence: medium
+      section: introduction
+      page: null
+    interactions:
+    - reference_id: paper_1812_11154
+      note: The leading Majoron-neutrino couplings are proportional to neutrino mass divided by the decay
+        constant f.
+      confidence: medium
+      section: Majoron model
+      page: null
+    production_mechanism:
+    - reference_id: paper_1812_11154
+      note: The required Majoron population may survive as thermal relics or arise nonthermally through
+        misalignment.
+      confidence: medium
+      section: introduction
+      page: null
+    cosmological_history:
+    - reference_id: paper_1812_11154
+      note: The paper focuses on late decays after cosmic neutrino decoupling and derives neutrino number
+        densities from Majoron decay.
+      confidence: medium
+      section: cosmological setup
+      page: null
+    parameter_ranges:
+    - reference_id: paper_1812_11154
+      note: Benchmark points include m_J=1 eV, lifetime 10 Gyr, F=0.05 and m_J=4 eV, lifetime 100 Gyr,
+        F=1.
+      confidence: medium
+      section: benchmark points
+      page: null
+    validity_domain:
+    - reference_id: paper_1812_11154
+      note: The eV-mass, f around 10^6 GeV benchmarks are stated to be safe from the current bounds considered
+        in the paper.
+      confidence: medium
+      section: Majoron model
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - Observable signal calculations are intentionally not extracted into observable or constraint blocks
+    for this model-only pass.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  dominant_uncertainties:
+  - neutrino nature
+  - initial Majoron abundance
+  - late-decay cosmology
+  notes: The effective couplings and benchmark logic are clear, but the UV completion is not specified.
+agent_failure_modes:
+  warnings:
+  - id: warning_1
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not collapse the subcomponent benchmark and full-dark-matter benchmark into one fixed
+      relic fraction.
+    mitigation: Track F and lifetime separately.

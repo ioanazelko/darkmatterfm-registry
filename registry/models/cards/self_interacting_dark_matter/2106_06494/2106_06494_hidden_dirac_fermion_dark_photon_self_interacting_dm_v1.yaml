@@ -1,0 +1,773 @@
+_source:
+  shard: arXiv_src_2106_040_wds.tar
+  paper_id: '2106_06494'
+  source_member: 2106_06494.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: w1
+    mitigation: Select the model_id matching the intended dark matter candidate.
+    severity: medium
+    source_reference_ids: []
+    warning: Do not merge this row with the paper's dark-photon-as-DM scenario; here the dark fermion
+      D is the dark matter and the dark photon is a mediator.
+  - category: extrapolation
+    id: w2
+    mitigation: Check the hidden-sector benchmark before using cross-section behavior.
+    severity: medium
+    source_reference_ids: []
+    warning: Self-interaction behavior depends on the mediator-to-DM mass hierarchy and benchmark couplings.
+associated_code:
+  code_summary: No model-specific public code release for the freeze-in/self-interaction calculation is
+    identified in the extracted text.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: Dark matter is constituted by D and anti-D dark fermions.
+    id: a1
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Dark photons mediate self-interactions but decay before BBN and do not contribute to
+      the relic density.
+    id: a2
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The visible and hidden sectors can reside in different heat baths during freeze-in.
+    id: a3
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: high
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature:
+    description: Temperature of the U(1)_X hidden sector.
+    name: hidden-sector temperature
+    range: evolved relative to visible-sector temperature
+    role: cosmological
+    source_reference_ids: []
+    status: inferred
+    symbol: T_h
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - hidden sector can be colder than the visible sector
+  - coupled multi-temperature entropy and energy evolution
+  phase_transitions: []
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - one-hidden-sector dark fermion dark matter
+  - dark photon mediated SIDM
+  family: self_interacting_dark_matter
+  historical_origin_or_motivation: Motivated by fitting velocity-dependent self-interaction cross sections
+    from dwarf-galaxy to cluster scales while retaining relic-density calculability in a hidden sector.
+  model_kind: simplified_model
+  name: Hidden-sector Dirac fermion self-interacting dark matter with dark photon mediator
+  short_description: A U(1)_X hidden-sector model where Dirac fermions D and anti-D constitute dark matter,
+    are produced through freeze-in in a multi-temperature cosmology, and self-interact through an unstable
+    dark photon mediator.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  dark_sector_couplings:
+  - g_X D gamma^mu D C_mu
+  decay_channels:
+  - dark photon mediator decays before BBN
+  interaction_operators:
+  - dark fermion vector current coupled to U(1)_X gauge field
+  - kinetic mixing between hidden U(1)_X and hypercharge
+  mediator_types:
+  - light dark photon
+  portals:
+  - vector
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    spin_dependence: unknown
+    velocity_dependence: strong
+  self_scattering_channels:
+  - D D -> D D
+  - D anti-D -> D anti-D
+  - anti-D anti-D -> anti-D anti-D through dark photon exchange
+  standard_model_targets:
+  - SM hypercharge field through kinetic mixing
+  - visible sector through feeble vector mixing
+  tree_or_loop_level: tree
+model_id: 2106_06494_hidden_dirac_fermion_dark_photon_self_interacting_dm_v1
+parameters:
+  core:
+  - description: Mass of the Dirac dark matter fermion.
+    name: dark fermion mass
+    range: benchmark-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_D
+  - description: Mediator mass assumed much smaller than the dark fermion mass for the self-interaction
+      fit.
+    name: dark photon mass
+    range: m_C << m_D
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_C
+  - description: Hidden U(1)_X gauge coupling controlling self-interactions.
+    name: dark gauge coupling
+    range: benchmark-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: g_X
+  - description: Feeble mixing between hidden U(1)_X and SM hypercharge.
+    name: kinetic mixing
+    range: small enough for freeze-in and multi-temperature evolution
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: epsilon
+  - description: Temperature ratio evolved by the coupled entropy/energy equations.
+    name: hidden-to-visible temperature ratio
+    range: model-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: T_h/T
+particle_content:
+  additional_dark_sector_particles:
+  - dark photon C
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: dark Dirac fermion D and anti-D
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - dark photon mediator
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - dark photon mediator decaying before BBN
+phase_space:
+  distribution_function_available: unknown
+  distribution_type: nonthermal
+  free_streaming_length: null
+  notes: Freeze-in production is stated, but no explicit momentum distribution is extracted.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - feeble kinetic mixing
+  - hidden-sector temperature evolution
+  - dark fermion mass and dark photon coupling
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - freeze-in production of D and anti-D through feeble visible-hidden couplings
+  - multi-temperature hidden-sector evolution
+  nonthermal_momentum_distribution: unknown
+  notes: The paper states that freeze-in can generate D and anti-D in sufficient amounts to saturate the
+    dark matter relic density.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: Visible and hidden sectors are evolved with different temperatures in the coupled cosmology.
+      page: null
+      reference_id: '2106_06494'
+      section: Multi-temperature formalism
+    interactions:
+    - confidence: high
+      note: D and anti-D self-interact through dark photon exchange; the mediator is assumed much lighter
+        than D.
+      page: null
+      reference_id: '2106_06494'
+      section: Dark force section
+    particle_content:
+    - confidence: high
+      note: The one-hidden-sector model contains a U(1)_X gauge field C and a Dirac fermion D charged
+        under U(1)_X.
+      page: null
+      reference_id: '2106_06494'
+      section: Hidden-sector evolution
+    production_mechanism:
+    - confidence: high
+      note: The text states D and anti-D are produced by freeze-in and can saturate the relic density.
+      page: null
+      reference_id: '2106_06494'
+      section: Dark force section
+    symmetries:
+    - confidence: high
+      note: The relevant hidden sector is a U(1)_X gauge sector with kinetic and Stueckelberg mixing.
+      page: null
+      reference_id: '2106_06494'
+      section: Hidden-sector formalism
+    validity_domain:
+    - confidence: medium
+      note: The self-interaction fit is tied to dwarf-galaxy-to-cluster velocity scales and benchmark
+        choices.
+      page: null
+      reference_id: '2106_06494'
+      section: Dark force section
+    observables:
+    - reference_id: arxiv:2106.06494
+      note: Primary text motivates SIDM with velocity-dependent cross sections from dwarf galaxies to
+        clusters and discusses dark photon exchange.
+      confidence: high
+      section: Introduction
+      page: null
+    - reference_id: arxiv:1508.03339
+      note: Related SIDM paper gives a preferred velocity-dependent range from about 2 cm^2/g on galaxy
+        scales to about 0.1 cm^2/g on cluster scales.
+      confidence: high
+      section: Abstract
+      page: null
+    - reference_id: arxiv:2106.06494
+      note: Primary text discusses direct-detection tests including XENON1T and hidden-sector Delta N_eff
+        from BBN/CMB/BAO.
+      confidence: high
+      section: Future directions/BBN
+      page: null
+    constraints:
+    - reference_id: arxiv:2104.14724
+      note: PandaX-II related paper reports no significant excess and constrains light-mediator SIDM couplings
+        with 132 tonne-days.
+      confidence: high
+      section: Abstract
+      page: null
+    - reference_id: arxiv:2106.06494
+      note: Primary text gives the Delta N_eff dependence on hidden-sector temperature and relativistic
+        degrees of freedom.
+      confidence: high
+      section: BBN section
+      page: null
+    routes:
+    - reference_id: arxiv:2106.06494
+      note: Primary paper provides the multi-temperature hidden-sector formalism needed for the freeze-in/SIDM
+        route.
+      confidence: high
+      section: Formalism sections
+      page: null
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0010
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper uses a one-hidden-sector model with dark fermion DM and a dark photon
+        mediator to fit velocity-dependent self-interactions.
+      reference_id: '2106_06494'
+      section: Dark force section
+    - page: null
+      quote_or_summary: The paper evolves hidden and visible sector temperatures rather than assuming
+        a single heat bath.
+      reference_id: '2106_06494'
+      section: Hidden-sector evolution section
+    unresolved_items:
+    - No SIDM halo simulation, detector response, or BBN/CMB likelihood was rerun.
+    - Freeze-in momentum-distribution information remains unresolved.
+  last_updated: '2026-05-31'
+  model_family: self_interacting_dark_matter
+  model_id: 2106_06494_hidden_dirac_fermion_dark_photon_self_interacting_dm_v1
+  model_name: Hidden-sector Dirac fermion self-interacting dark matter with dark photon mediator
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: medium
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2106.06494'
+      authors:
+      - Amin Aboubrahim
+      - Wan-Zhe Feng
+      - Pran Nath
+      - Zhu-Yao Wang
+      doi: null
+      notes: null
+      reference_id: '2106_06494'
+      role: original_model
+      title: Hidden sectors and a multi-temperature universe
+      url: null
+      year: 2021
+    - reference_id: arxiv:2106.06494
+      title: Hidden sectors and a multi-temperature universe
+      authors:
+      - Aboubrahim, Amin
+      - Feng, Wan-Zhe
+      - Nath, Pran
+      - Wang, Zhu-Yao
+      year: 2021
+      arxiv_id: '2106.06494'
+      doi: 10.48550/arXiv.2106.06494
+      url: https://arxiv.org/abs/2106.06494
+      role: original_model
+      notes: Primary assigned paper read from local SQLite full text.
+    constraint_papers:
+    - reference_id: arxiv:2008.00529
+      title: Self-interacting hidden sector dark matter, small scale galaxy structure anomalies, and a
+        dark force
+      authors:
+      - Aboubrahim, Amin
+      - Feng, Wan-Zhe
+      - Nath, Pran
+      - Wang, Zhu-Yao
+      year: 2021
+      arxiv_id: '2008.00529'
+      doi: 10.1103/PhysRevD.103.075014
+      url: https://arxiv.org/abs/2008.00529
+      role: constraint
+      notes: Related full text resolved locally and read for bounded enrichment.
+    - reference_id: arxiv:1508.03339
+      title: 'Dark Matter Halos as Particle Colliders: Unified Solution to Small-Scale Structure Puzzles
+        from Dwarfs to Clusters'
+      authors:
+      - Kaplinghat, Manoj
+      - Tulin, Sean
+      - Yu, Hai-Bo
+      year: 2016
+      arxiv_id: '1508.03339'
+      doi: 10.1103/PhysRevLett.116.041302
+      url: https://arxiv.org/abs/1508.03339
+      role: constraint
+      notes: Related full text resolved locally and read for bounded enrichment.
+    - reference_id: arxiv:2104.14724
+      title: Constraining self-interacting dark matter with the full dataset of PandaX-II
+      authors:
+      - Yang, Jijun
+      - Abdukerim, Abdusalam
+      - Chen, Wei
+      - Chen, Xun
+      - Chen, Yunhua
+      - Cheng, Chen
+      - Cui, Xiangyi
+      - Fan, Yingjie
+      - Fang, Deqing
+      - Fu, Changbo
+      - Fu, Mengting
+      - Geng, Lisheng
+      year: 2021
+      arxiv_id: '2104.14724'
+      doi: 10.1007/s11433-021-1740-2
+      url: https://arxiv.org/abs/2104.14724
+      role: constraint
+      notes: Related full text resolved locally and read for bounded enrichment.
+    review_papers: []
+    external_databases: []
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_D
+  - m_C
+  - g_X
+  - kinetic mixing
+  - hidden-sector temperature
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - benchmark masses and couplings not fully encoded
+  - freeze-in momentum distribution not provided
+  - self-interaction fit is phenomenological
+  notes: The paper gives explicit model ingredients and relic logic, but detailed benchmark tables are
+    not reconstructed here.
+  observational_robustness: not_applicable
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: self-interactions are intended to alter small-scale halo dynamics
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: The dark fermion is charged under the hidden U(1)_X; the text treats D and anti-D
+    as stable dark matter.
+  symmetries:
+  - breaking: dark photon mass introduced through Stueckelberg mixing
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: U(1)_X
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: 'yes'
+  notes: The paper gives a one-hidden-sector Lagrangian with a U(1)_X gauge field C, Dirac fermion D,
+    kinetic mixing, and Stueckelberg mass mixing.
+  parent_frameworks:
+  - hidden U(1)_X sector
+  - multi-temperature hidden-sector cosmology
+  - self-interacting dark matter
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Applies to the one-hidden-sector U(1)_X model with Dirac fermion dark matter and dark photon
+    mediator.
+  extrapolation_risk: medium
+  id: v1
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: self_interaction
+  caveats: []
+  condition: The velocity-dependent fit assumes the mediator mass is much smaller than the dark fermion
+    mass.
+  extrapolation_risk: medium
+  id: v2
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+observables:
+- id: obs_2106_dirac_sidm_dwarf_cluster
+  name: Velocity-dependent self-interaction across dwarfs to clusters
+  channel: small_scale_structure
+  subchannel: SIDM halo cores and cluster limits
+  predicted_effect: Dark photon exchange gives a velocity-dependent self-interaction cross section intended
+    to be O(1) cm^2/g at dwarf scales and smaller at cluster scales.
+  effect_direction: model_dependent
+  key_quantities:
+  - name: self-interaction cross section per mass
+    symbol: sigma/m
+    description: Velocity-dependent SIDM target from dwarf to cluster systems.
+    range: about O(1) cm^2/g at dwarf scales and about 0.1 cm^2/g at cluster scales in related SIDM fits
+    unit: cm^2/g
+    role: derived
+    status: approximate
+    source_reference_ids:
+    - arxiv:2106.06494
+    - arxiv:1508.03339
+  - name: dark photon mass
+    symbol: m_C
+    description: Light mediator mass controls the transfer cross section.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:2106.06494
+  redshift_range: z~0 halo observations
+  scale_range: dwarf galaxies to clusters
+  environments:
+  - dwarf galaxies
+  - low-surface-brightness galaxies
+  - clusters
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - con_2106_dirac_sidm_fit
+  linked_routes:
+  - route_2106_dirac_multitemp_sidm
+  caveats:
+  - Baryonic feedback can mimic some small-scale effects.
+  source_reference_ids:
+  - arxiv:2106.06494
+  - arxiv:2008.00529
+  - arxiv:1508.03339
+  notes: null
+- id: obs_2106_dirac_subgev_direct_detection
+  name: Sub-GeV hidden-sector direct-detection signal
+  channel: direct_detection
+  subchannel: electron recoil or light-mediator nuclear recoil
+  predicted_effect: Feeble visible-hidden mixing permits direct-detection tests such as XENON1T electron
+    recoils or PandaX-II light-mediator searches, depending on the benchmark.
+  effect_direction: null_signal
+  key_quantities:
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Visible-hidden mixing controlling laboratory signals.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:2106.06494
+  - name: dark fermion mass
+    symbol: m_D
+    description: Sub-GeV to GeV hidden fermion benchmarks are discussed qualitatively.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:2106.06494
+  redshift_range: null
+  scale_range: laboratory recoil energies
+  environments:
+  - XENON1T/XENONnT
+  - PandaX-II
+  observability: medium
+  relevance: medium
+  linked_constraints:
+  - con_2106_dirac_direct_detection
+  linked_routes:
+  - route_2106_dirac_multitemp_sidm
+  caveats:
+  - Detector response and inelastic electron-scattering details require a dedicated recast.
+  source_reference_ids:
+  - arxiv:2106.06494
+  - arxiv:2104.14724
+  notes: null
+- id: obs_2106_dirac_neff_temperature
+  name: Hidden-sector temperature contribution to N_eff
+  channel: cmb
+  subchannel: BBN/CMB radiation density
+  predicted_effect: A hidden sector at a temperature different from the visible bath contributes to Delta
+    N_eff; a sufficiently cold or feebly coupled hidden sector can satisfy BBN/CMB/BAO bounds.
+  effect_direction: enhancement
+  key_quantities:
+  - name: hidden-to-visible temperature ratio
+    symbol: T_h/T
+    description: Temperature ratio entering Delta N_eff.
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - arxiv:2106.06494
+  - name: extra relativistic bosonic degrees
+    symbol: n_b
+    description: Counts hidden relativistic degrees of freedom in the source formula.
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - arxiv:2106.06494
+  redshift_range: BBN through recombination
+  scale_range: null
+  environments:
+  - early Universe radiation bath
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - con_2106_dirac_neff
+  linked_routes:
+  - route_2106_dirac_multitemp_sidm
+  caveats:
+  - Requires tracking hidden-sector entropy and decoupling history.
+  source_reference_ids:
+  - arxiv:2106.06494
+  notes: null
+constraints:
+- id: con_2106_dirac_sidm_fit
+  name: Dwarf-to-cluster SIDM transfer-cross-section target
+  constraint_type: astrophysical
+  observable_channel: small_scale_structure/SIDM
+  applies: parameter_dependent
+  constrained_parameters:
+  - sigma/m
+  - m_C
+  - g_X
+  - m_D
+  excluded_regions:
+  - Cross sections too large at cluster velocities or too small at dwarf velocities fail the SIDM target.
+  allowed_regions:
+  - Velocity-dependent mediator models can interpolate between dwarf-scale O(1) cm^2/g and smaller cluster-scale
+    cross sections.
+  benchmark_implications:
+  - This is the core observational motivation for the hidden Dirac fermion model.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: Astrophysical SIDM fits from related literature
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: halo-model-2106-dirac
+    description: SIDM halo inferences are mapped to a particle transfer cross section.
+    scope: small-scale structure
+    status: assumed
+    impact_if_violated: Different halo modeling or baryons shift the preferred cross section.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - arxiv:1508.03339
+  caveats:
+  - No simulation or halo fit was rerun.
+  source_reference_ids:
+  - arxiv:2106.06494
+  - arxiv:2008.00529
+  - arxiv:1508.03339
+  notes: null
+- id: con_2106_dirac_direct_detection
+  name: Light-mediator direct-detection bounds
+  constraint_type: direct_detection
+  observable_channel: electron/nuclear recoil
+  applies: recast_required
+  constrained_parameters:
+  - epsilon
+  - m_C
+  - m_D
+  - dark-matter-nucleon coupling
+  excluded_regions:
+  - PandaX-II finds no significant excess for light-mediator SIDM and constrains dark-matter-nucleon coupling
+    strength.
+  allowed_regions:
+  - Small visible-hidden mixing can keep freeze-in benchmarks below current direct-detection limits.
+  benchmark_implications:
+  - Direct searches complement SIDM and cosmological constraints.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: PandaX-II full dataset, XENON1T/XENONnT discussion
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: full-local-density-2106-dirac
+    description: The hidden Dirac fermion supplies the local density used for direct-detection normalization.
+    scope: direct detection
+    status: assumed
+    impact_if_violated: Subcomponent abundance weakens recoil limits.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - arxiv:2106.06494
+  caveats:
+  - XENON electron-recoil recast was not executed.
+  source_reference_ids:
+  - arxiv:2106.06494
+  - arxiv:2104.14724
+  notes: null
+- id: con_2106_dirac_neff
+  name: BBN/CMB Delta N_eff bound on hidden temperatures
+  constraint_type: cosmological
+  observable_channel: BBN/CMB radiation density
+  applies: 'yes'
+  constrained_parameters:
+  - T_h/T
+  - n_b
+  - hidden relativistic degrees
+  excluded_regions:
+  - Hidden sectors that are too hot or too populated overproduce Delta N_eff.
+  allowed_regions:
+  - Feebly coupled colder hidden sectors can remain consistent with BBN, CMB, and BAO limits.
+  benchmark_implications:
+  - Multi-temperature evolution is required rather than assuming one thermal bath.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: BBN/CMB/BAO Delta N_eff bound quoted in primary paper
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: separate-temperature-2106
+    description: Visible and hidden sectors can have different temperatures during BBN.
+    scope: cosmology
+    status: assumed
+    impact_if_violated: A single-temperature treatment would overstate or misstate Delta N_eff.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - arxiv:2106.06494
+  caveats:
+  - No BBN/CMB likelihood was rerun.
+  source_reference_ids:
+  - arxiv:2106.06494
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: route_2106_dirac_multitemp_sidm
+    description: Track a hidden Dirac fermion through freeze-in, multi-temperature cosmology, SIDM transfer
+      scattering, and laboratory/cosmological constraints.
+    source_model_features:
+    - dark Dirac fermion D
+    - light dark photon mediator
+    - multi-temperature hidden sector
+    input_parameters:
+    - m_D
+    - m_C
+    - g_X
+    - epsilon
+    - T_h/T
+    derived_quantities:
+    - freeze-in yield
+    - sigma_T/m_D(v)
+    - Delta N_eff
+    - direct-detection rate
+    forward_model_chain:
+    - step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: null
+      inputs:
+      - epsilon
+      - hidden temperature
+      - m_D
+      - m_C
+      outputs:
+      - freeze-in abundance
+      validity: Requires coupled visible/hidden temperature evolution.
+      notes: Use source formalism for multi-temperature sectors.
+    - step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - m_D
+      - m_C
+      - g_X
+      - velocity
+      outputs:
+      - transfer cross section
+      validity: Valid for light-mediator SIDM in the relevant scattering regime.
+      notes: Compare dwarfs through clusters.
+    - step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      inputs:
+      - epsilon
+      - mediator couplings
+      outputs:
+      - direct-detection limits
+      - Delta N_eff bounds
+      validity: Requires detector and cosmology likelihoods.
+      notes: No likelihood rerun in this batch.
+    observable_ids:
+    - obs_2106_dirac_sidm_dwarf_cluster
+    - obs_2106_dirac_subgev_direct_detection
+    - obs_2106_dirac_neff_temperature
+    constraint_ids:
+    - con_2106_dirac_sidm_fit
+    - con_2106_dirac_direct_detection
+    - con_2106_dirac_neff
+    likelihoods:
+    - SIDM target bands only
+    - direct-detection likelihood unavailable
+    - BBN/CMB likelihood unavailable
+    required_code_resources:
+    - multi-temperature Boltzmann solver
+    - SIDM scattering calculator
+    - direct-detection recast tables
+    validation_tests:
+    - recover dwarf-to-cluster velocity dependence
+    - recover Delta N_eff formula
+    route_status: planned
+    agent_notes: Planned route; source paper gives formalism and examples but not reusable code.
+    caveats:
+    - Freeze-in momentum distribution was not extracted.

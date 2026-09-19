@@ -1,0 +1,287 @@
+_source:
+  shard: arXiv_src_1808_006_wds.tar
+  paper_id: '1808_01879'
+  source_member: 1808_01879.json
+schema_version: model_only_v0
+model_id: 1808_01879_axion_minicluster_modified_cosmology_v1
+identity:
+  name: QCD axion minicluster model in modified cosmological histories
+  family: axion_like_dark_matter
+  aliases:
+  - post-inflationary axion minicluster NSC scenario
+  short_description: QCD axion dark matter with post-inflation PQ breaking, where non-standard pre-BBN
+    expansion histories alter axion minicluster mass, radius, and encounter phenomenology.
+  historical_origin_or_motivation: Study how axion miniclusters change if axion oscillations begin during
+    non-standard cosmological histories.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - QCD axion
+  - Peccei-Quinn symmetry
+  - non-standard pre-BBN cosmology
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: The paper uses the QCD axion potential and parameterizes modified expansion histories rather
+    than specifying a full UV cosmology.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - extra cosmological component phi controlling the non-standard expansion history
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - decaying early matter or kination field in selected scenarios
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Axion is cosmologically long-lived due to the PQ mechanism and very weak couplings;
+    post-inflation PQ breaking sets initial inhomogeneities.
+  symmetries:
+  - name: U(1)_PQ
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneous breaking after inflation
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  standard_model_targets:
+  - QCD topological susceptibility
+  - photons through axion electrodynamics, as noted generally
+  dark_sector_couplings:
+  - axion potential from QCD susceptibility
+  mediator_types:
+  - none for minicluster gravitational evolution
+  interaction_operators: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: axion decay constant
+    symbol: f_A
+    description: Scale suppressing axion mass and couplings
+    range: phenomenology requires f_A above about 1e7 GeV in the text
+    unit: GeV
+    role: core
+    status: inferred
+  - name: axion mass
+    symbol: m_A
+    description: Temperature-dependent QCD axion mass entering the oscillation condition
+    role: core
+    status: inferred
+  - name: initial misalignment angle
+    symbol: theta_i
+    description: Initial axion field angle used in the misalignment abundance
+    role: core
+    status: inferred
+  - name: reheating or transition temperature
+    symbol: T_RH
+    description: Temperature ending the non-standard cosmological phase
+    range: examples use values around MeV to GeV before standard cosmology
+    unit: GeV
+    role: core
+    status: inferred
+  - name: equation-of-state parameter
+    symbol: w_phi
+    description: Equation of state of the dominant extra component in the modified history
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - misalignment after PQ breaking
+  - string and domain-wall contributions parameterized
+  - modified expansion before BBN changes onset of oscillations
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - axion oscillation temperature
+  - axion decay constant
+  - misalignment angle
+  - non-standard expansion history
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper fixes the axion relic abundance to the present CDM abundance in parts of the minicluster
+    analysis.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_A(T)
+  - f_A
+  - theta_i
+  - scale-factor dilution
+  - string/domain-wall contribution factor
+  - modified H(T)
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - early matter decay domination
+  - early kination domination
+  - kination decay
+  - PQ symmetry breaking after inflation and not restored
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - PQ symmetry breaking
+  - QCD-triggered axion oscillation onset
+  topological_defects:
+  - axion strings
+  - domain walls
+  - axion miniclusters
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: low
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  notes: The paper treats axions as a cold oscillating field with inhomogeneities that seed miniclusters.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: axion minicluster masses and radii can change by many orders of magnitude
+      in modified cosmologies
+    simulation_calibrated: partial
+validity_domain:
+- id: post_inflation_pq
+  applies_to: model
+  condition: PQ symmetry breaking occurs after inflation and is never restored.
+  status: inferred
+  extrapolation_risk: high
+- id: pre_bbn_nsc
+  applies_to: cosmological_history
+  condition: Modified expansion history must end before standard cosmology/BBN is required.
+  status: inferred
+  extrapolation_risk: medium
+- id: minicluster_scale
+  applies_to: structure_formation
+  condition: Minicluster size is tied to the horizon scale near axion oscillation onset, with order-one
+    uncertainty parameters.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: pq_after_inflation
+    description: PQ symmetry breaks after inflation, producing spatial axion-field variations.
+    scope: global
+    status: assumed
+    impact_if_violated: If PQ breaking occurs before inflation, the minicluster initial conditions differ.
+  - id: parameterized_nsc
+    description: The extra early component can be represented by an equation of state and decay/transition
+      parameters.
+    scope: cosmological_history
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public code is identified in the assigned text.
+provenance:
+  model_id: 1808_01879_axion_minicluster_modified_cosmology_v1
+  model_name: QCD axion minicluster model in modified cosmological histories
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1808_01879'
+      title: Axion Miniclusters in Modified Cosmological Histories
+      authors:
+      - Luca Visinelli
+      - Javier Redondo
+      year: 2018
+      arxiv_id: '1808.01879'
+      doi: null
+      url: null
+      role: extension
+      notes: Extracted from assigned SQLite full text only.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0007
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1808_01879'
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: Post-inflation PQ breaking yields axion overdensities; the paper studies miniclusters
+        in alternative cosmological histories.
+    - reference_id: '1808_01879'
+      section: Parametrising a cosmological model
+      page: null
+      quote_or_summary: A non-standard cosmology contains radiation plus an extra component with equation
+        of state and decay parameters.
+    - reference_id: '1808_01879'
+      section: Examples of modified cosmologies
+      page: null
+      quote_or_summary: The paper treats early matter decay domination, early kination, and kination decay
+        scenarios.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1808_01879'
+      note: The dark matter field is the QCD axion associated with PQ symmetry breaking after inflation.
+      confidence: medium
+      section: Introduction
+    symmetries:
+    - reference_id: '1808_01879'
+      note: The axion is described as the pseudo-Goldstone boson of spontaneous Peccei-Quinn U(1) breaking.
+      confidence: medium
+      section: Introduction
+    production_mechanism:
+    - reference_id: '1808_01879'
+      note: Misalignment abundance is reviewed, with possible string and domain-wall contributions parameterized.
+      confidence: medium
+      section: Appendix Production mechanisms
+    cosmological_history:
+    - reference_id: '1808_01879'
+      note: 'The model variants use non-standard pre-BBN histories: matter decay domination, kination,
+        and kination decay.'
+      confidence: medium
+      section: Parametrising a cosmological model
+    validity_domain:
+    - reference_id: '1808_01879'
+      note: The minicluster analysis assumes PQ breaking after inflation and modified expansion near the
+        axion-oscillation temperature.
+      confidence: medium
+      section: Abstract
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  dominant_uncertainties:
+  - machine extraction from converted full text; symbolic notation may be lossy
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: nsc_not_uv_complete
+    severity: medium
+    category: assumption_mismatch
+    warning: The modified cosmological histories are parameterized and not unique UV completions.
+  - id: minicluster_not_particle_model
+    severity: medium
+    category: other
+    warning: This card represents a substantive cosmological variant of axion dark matter, not a new axion
+      particle model.

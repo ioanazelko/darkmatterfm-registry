@@ -1,0 +1,473 @@
+_source:
+  shard: arXiv_src_2109_061_wds.tar
+  paper_id: '2109_10357'
+  source_member: 2109_10357.json
+schema_version: model_only_v0
+model_id: 2109_10357_flavoured_majorana_dmfv_v1
+identity:
+  name: Flavoured Majorana dark matter in Dark Minimal Flavour Violation
+  family: flavoured_dark_matter
+  aliases:
+  - Majorana DMFV model
+  - flavoured Majorana dark matter with scalar mediator
+  short_description: A simplified DMFV model with a Majorana dark-matter flavour triplet, a colored scalar
+    mediator, and a complex coupling matrix to right-handed up-type quarks as the only new source of flavour
+    and CP violation.
+  historical_origin_or_motivation: The paper extends prior Dirac DMFV simplified models by realizing the
+    dark flavour triplet as Majorana fermions transforming under O(3), changing relic, flavour, collider,
+    and direct-detection phenomenology.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Dark Minimal Flavour Violation
+  - flavoured dark matter
+  - WIMP dark matter
+  - Majorana fermion dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper presents the simplified Lagrangian, DMFV flavour structure, mass splitting, relic-density
+    formulae, and collider/flavour/direct-detection phenomenology for the Majorana case.
+particle_content:
+  dark_matter_candidate:
+    name: lightest Majorana dark flavour state chi_3
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavier Majorana dark flavour states chi_1 and chi_2
+  mediators:
+  - colored scalar mediator phi coupling chi_j to right-handed up-type quarks
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - dark flavour triplet components with DMFV-induced mass splittings
+  long_lived_particles: []
+  unstable_parent_particles:
+  - colored scalar mediator phi
+  - heavier dark flavours that decay to the lightest state
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z_2 symmetry charges only the new particles chi and phi, forbidding decay to
+    only SM particles; the lightest dark flavour is stable when m_chi < m_phi.
+  symmetries:
+  - name: Z_2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: Unbroken in the simplified model.
+    breaking_scale: null
+  - name: O(3)_chi dark flavour symmetry
+    type: global
+    exact_or_approximate: broken
+    breaking: Broken only by the DM-quark coupling matrix under the DMFV ansatz.
+    breaking_scale: null
+  - name: SM quark flavour symmetry extended by DMFV
+    type: global
+    exact_or_approximate: broken
+    breaking: Broken by SM Yukawa couplings and the new lambda coupling matrix.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  - higgs
+  standard_model_targets:
+  - right-handed up quark
+  - right-handed charm quark
+  - right-handed top quark
+  - SM Higgs doublet
+  dark_sector_couplings:
+  - complex 3x3 coupling matrix lambda between chi_j, u_Ri, and phi
+  - Higgs-portal quartic lambda_H phi^dagger phi H^dagger H, neglected in most of the analysis
+  - scalar self-coupling lambda_phi
+  mediator_types:
+  - colored scalar boson phi
+  interaction_operators:
+  - lambda_ij u_Ri chi_j phi + h.c.
+  - lambda_H phi^dagger phi H^dagger H
+  - lambda_phi (phi^dagger phi)^2
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: both
+  annihilation_channels:
+  - chi_i chi_j annihilation to up-type quark pairs through t- and u-channel phi exchange
+  - top final states when kinematically allowed
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: The complex lambda matrix supplies a new CP-violating source in the DMFV framework.
+  flavor_structure: The lambda matrix is the only new source of flavour and CP violation beyond SM Yukawa
+    couplings; it is parametrized by mixing angles, phases, and positive diagonal D_i entries.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: lightest dark fermion mass
+    symbol: m_chi3
+    description: Mass of the third and lightest dark generation arranged after diagonalizing the Majorana
+      mass matrix.
+    range: m_chi3 < m_phi; numerical scans consider weak-scale to TeV-scale masses
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2109_10357'
+  - name: colored scalar mediator mass
+    symbol: m_phi
+    description: Mass of the scalar mediator carrying color and hypercharge.
+    range: weak-scale to TeV-scale scan parameter; must exceed m_chi for stable chi dark matter
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2109_10357'
+  - name: DM-quark coupling matrix
+    symbol: lambda
+    description: General complex 3x3 coupling between the dark flavour triplet, right-handed up-type quarks,
+      and phi; sole new source of flavour and CP violation in DMFV.
+    range: '15 physical parameters after flavour rotations: theta_ij, phi_ij, delta_ij, phases phi_i,
+      and positive D_i'
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2109_10357'
+  - name: positive diagonal lambda parameters
+    symbol: D_i
+    description: Positive diagonal entries in the coupling parametrization; the numerical analysis restricts
+      D_i values and often uses an upper value around 2.
+    range: D_i > 0; analysis examples use D_i up to 2
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '2109_10357'
+  - name: DMFV mass-correction coefficient
+    symbol: eta
+    description: Expansion parameter controlling lambda-induced Majorana dark-flavour mass splittings;
+      chosen negative so corrections reduce the mass relative to m_chi.
+    range: eta < 0
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '2109_10357'
+  - name: thermal relic annihilation target
+    symbol: <sigma v>
+    description: Effective annihilation cross section used in the relic-abundance analysis for single-particle
+      freeze-out.
+    value: '2.2e-26'
+    unit: cm^3/s
+    role: derived
+    status: assumed
+    source_reference_ids:
+    - '2109_10357'
+  nuisance:
+  - name: top quark mass
+    symbol: m_t
+    description: Top mass used in the relic abundance calculation.
+    value: 173.5
+    unit: GeV
+    role: nuisance
+    status: assumed
+    source_reference_ids:
+    - '2109_10357'
+  - name: Higgs portal coupling to phi
+    symbol: lambda_H
+    description: Quartic coupling of phi to the SM Higgs; noted as loop-relevant but neglected in the
+      main analysis.
+    range: neglected in the paper analysis
+    role: nuisance
+    status: assumed
+    source_reference_ids:
+    - '2109_10357'
+production:
+  mechanisms:
+  - thermal freeze-out of Majorana dark flavour states
+  - quasi-degenerate freeze-out benchmark with all three flavours present
+  - single-flavour freeze-out benchmark dominated by the lightest state
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - m_chi3
+  - m_phi
+  - lambda matrix entries
+  - DMFV-induced mass splittings
+  - annihilation to up-type quarks through phi exchange
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper assumes the lightest dark flavour constitutes the observed DM and studies relic abundance
+    through thermal freeze-out with QDF and SFF benchmark approximations.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - annihilation cross section to up-type quarks
+  - Majorana t/u channel interference
+  - mass hierarchy among dark flavours
+  - colored scalar mediator mass
+  - lambda coupling matrix
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  f_of_p_or_q: not provided
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The dark matter is treated as a weak-scale thermal relic; no explicit phase-space distribution
+    is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: invalid
+      warning: This is a weak-scale Majorana WIMP-like model, not a thermal warm-dark-matter mapping.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed; expected CDM-like for weak-scale thermal dark matter
+    subhalo_mass_function_effect: not discussed; expected CDM-like for weak-scale thermal dark matter
+    simulation_calibrated: 'no'
+validity_domain:
+- id: z2_stable_hierarchy
+  applies_to: model
+  condition: The lightest dark flavour is stable only with unbroken Z_2 and m_chi < m_phi.
+  valid_range: m_chi3 < m_phi
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - If phi is lighter or Z_2 is broken, chi_3 is not the stable DM candidate.
+  source_reference_ids:
+  - '2109_10357'
+  notes: null
+- id: dmfv_flavour_assumption
+  applies_to: theory
+  condition: The lambda coupling matrix is the only new source of flavour and CP violation beyond SM Yukawa
+    couplings.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - Additional flavour-breaking spurions would change flavour constraints and parameter counting.
+  source_reference_ids:
+  - '2109_10357'
+  notes: null
+- id: freezeout_benchmark_approximations
+  applies_to: production
+  condition: The relic-density analysis uses QDF and SFF benchmark approximations rather than a full coupled
+    three-flavour Boltzmann solution.
+  valid_range: small splittings for QDF or sufficiently large splittings for SFF
+  status: approximate
+  extrapolation_risk: medium
+  caveats:
+  - The paper says a full coupled Boltzmann solution is left for future work.
+  source_reference_ids:
+  - '2109_10357'
+  notes: null
+assumptions:
+  global:
+  - id: unbroken_z2
+    description: Only chi and phi are odd under an imposed Z_2 symmetry.
+    scope: theory
+    status: assumed
+    impact_if_violated: The dark fermion can decay to SM final states and no longer serves as dark matter.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - '2109_10357'
+    notes: null
+  - id: lambda_only_new_flavour_source
+    description: DMFV assumes lambda is the only new flavour and CP-violating source beyond the SM Yukawas.
+    scope: theory
+    status: assumed
+    impact_if_violated: The paper parameter counting and flavour phenomenology no longer apply.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2109_10357'
+    notes: null
+  - id: thermal_freezeout
+    description: The observed DM abundance is produced by thermal freeze-out through annihilation into
+      SM quarks.
+    scope: production
+    status: assumed
+    impact_if_violated: The relic-density constraints and viable parameter regions would change.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2109_10357'
+    notes: null
+  - id: neglected_scalar_quartics
+    description: The main analysis neglects the impact of lambda_H and lambda_phi to focus on the lambda
+      flavour structure.
+    scope: theory
+    status: assumed
+    impact_if_violated: Higgs-loop effects and scalar-sector phenomenology could alter parts of the analysis.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2109_10357'
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that the simplified model is implemented in FeynRules and leading-order
+    signal cross sections are calculated using MadGraph 5; no public model repository is extracted.
+  primary_code_role: collider_simulation
+provenance:
+  model_id: 2109_10357_flavoured_majorana_dmfv_v1
+  model_name: Flavoured Majorana dark matter in Dark Minimal Flavour Violation
+  model_family: flavoured_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2109_10357'
+      title: Tasting Flavoured Majorana Dark Matter
+      authors:
+      - Harun Acaroglu
+      - Monika Blanke
+      year: 2021
+      arxiv_id: '2109.10357'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text for this batch.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0013
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2109_10357'
+      section: Abstract
+      page: null
+      quote_or_summary: The abstract describes a simplified model of flavoured Majorana DM in DMFV with
+        a dark flavour triplet and scalar mediator.
+    - reference_id: '2109_10357'
+      section: A Simplified DMFV Model
+      page: null
+      quote_or_summary: The model section gives the Lagrangian, O(3) dark flavour symmetry, lambda coupling
+        to right-handed up quarks, and lightest-generation DM assumption.
+    - reference_id: '2109_10357'
+      section: Relic abundance
+      page: null
+      quote_or_summary: The relic section studies thermal freeze-out with quasi-degenerate and single-flavour
+        benchmark scenarios.
+    unresolved_items:
+    - The paper scans parameter regions rather than defining one fixed benchmark point.
+    - Constraints and collider signatures are discussed in the source but intentionally not extracted
+      as constraints in this model-only run.
+  evidence:
+    particle_content:
+    - reference_id: '2109_10357'
+      note: The model extends the SM by a Majorana dark flavour triplet and a colored scalar mediator;
+        the lightest dark generation is the DM candidate.
+      confidence: high
+      section: Abstract/Model
+      page: null
+    symmetries:
+    - reference_id: '2109_10357'
+      note: The Majorana triplet transforms under O(3)_chi; an imposed Z_2 under which only chi and phi
+        are charged stabilizes the lightest state.
+      confidence: high
+      section: Mass spectrum and stability
+      page: null
+    interactions:
+    - reference_id: '2109_10357'
+      note: The Lagrangian couples chi_j to right-handed up-type quarks through phi with a complex 3x3
+        lambda matrix.
+      confidence: high
+      section: A Simplified DMFV Model
+      page: null
+    production_mechanism:
+    - reference_id: '2109_10357'
+      note: The paper assumes thermal freeze-out and gives QDF and SFF benchmark scenarios for the three
+        dark flavours.
+      confidence: high
+      section: Dark Matter Annihilation and Freeze-Out Scenarios
+      page: null
+    cosmological_history:
+    - reference_id: '2109_10357'
+      note: Relic abundance is computed in a standard thermal freeze-out setup; no nonstandard cosmological
+        history is introduced.
+      confidence: medium
+      section: Relic abundance
+      page: null
+    parameter_ranges:
+    - reference_id: '2109_10357'
+      note: The physical lambda parametrization contains mixing angles, phases, and positive D_i; the
+        relic analysis uses <sigma v> = 2.2e-26 cm^3/s within 10 percent.
+      confidence: medium
+      section: Coupling parametrization/relic abundance
+      page: null
+    validity_domain:
+    - reference_id: '2109_10357'
+      note: The DM interpretation requires m_chi < m_phi, unbroken Z_2, DMFV flavour assumptions, and
+        validity of the QDF/SFF freeze-out approximation.
+      confidence: high
+      section: Model/stability/relic abundance
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - simplified-model UV completion unspecified
+  - QDF/SFF freeze-out approximation
+  - parameter-space viability depends on omitted constraints
+  - no public model implementation extracted
+  validation_status: partially_validated
+  notes: The paper provides enough Lagrangian and relic-density logic for a model card; constraints are
+    intentionally omitted by the run.
+agent_failure_modes:
+  warnings:
+  - id: majorana_not_dirac_dmfv
+    severity: medium
+    category: notation_conflict
+    warning: Do not substitute the previously studied Dirac DMFV model; this row is specifically the Majorana
+      O(3)_chi realization.
+    mitigation: Keep the Majorana t/u-channel annihilation structure and imposed Z_2 stability condition.
+    source_reference_ids:
+    - '2109_10357'
+  - id: constraints_omitted_by_run
+    severity: medium
+    category: other
+    warning: The paper analyzes collider, flavour, direct-detection, and relic constraints, but this extraction
+      intentionally omits constraints.
+    mitigation: Do not infer allowed parameter space from this model card alone.
+    source_reference_ids:
+    - '2109_10357'

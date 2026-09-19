@@ -1,0 +1,640 @@
+_source:
+  shard: arXiv_src_2310_051_wds.tar
+  paper_id: '2310_06611'
+  source_member: 2310_06611.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2310_06611_mev_scalar_pseudoscalar_portal_v1
+identity:
+  name: MeV complex-scalar thermal dark matter with pseudoscalar lepton portal
+  family: thermal_relic_dark_matter
+  aliases:
+  - s-wave MeV complex scalar DM with mixed electron/neutrino annihilation
+  short_description: A MeV-scale complex scalar thermal relic whose s-wave annihilation to electrons and
+    active neutrinos is mediated by a heavy real pseudoscalar A, with branching ratios used in a three-sector
+    freeze-out calculation.
+  historical_origin_or_motivation: Introduced as a concrete particle-physics realization for calculating
+    minimal cosmologically compatible thermal DM masses below tens of MeV.
+  status: benchmark
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - pseudoscalar portal to a dark sector
+  - MeV thermal relic dark matter
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes renormalizable interactions of a complex scalar DM field with a real heavy pseudoscalar
+    mediator coupled to charged leptons and neutrinos.
+particle_content:
+  dark_matter_candidate:
+    name: complex scalar chi
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - heavy real pseudoscalar A
+  dark_radiation_species: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The complex scalar is treated as stable DM; the assigned text does not specify
+    the stabilizing symmetry.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  - other
+  standard_model_targets:
+  - charged leptons
+  - active neutrinos
+  dark_sector_couplings:
+  - trilinear A chi* chi coupling
+  - pseudoscalar A l gamma5 l couplings
+  mediator_types:
+  - heavy pseudoscalar
+  interaction_operators:
+  - -i y_l A l gamma5 l
+  - -mu_A A chi* chi
+  - low-energy i y_l chi* chi l gamma5 l / Lambda
+  annihilation_channels:
+  - chi chi* -> e+ e-
+  - chi chi* -> active neutrinos
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: mild
+    velocity_dependence: mild
+    spin_dependence: unknown
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: DM mass
+    symbol: m_chi
+    description: MeV-scale complex scalar mass in the thermal freeze-out calculation.
+    range: below tens of MeV; paper studies roughly 1-20 MeV and derives minimum masses by branching ratio
+    unit: MeV
+    role: core
+    status: inferred
+  - name: pseudoscalar mediator mass
+    symbol: m_A
+    description: Heavy mediator mass entering the low-energy operator.
+    range: heavy compared with MeV-scale processes
+    role: core
+    status: assumed
+  - name: effective portal scale
+    symbol: Lambda
+    description: Defined by mediator parameters in the low-energy dimension-five operator.
+    range: Lambda = m_A^2 / mu_A in the text notation
+    role: core
+    status: inferred
+  - name: lepton couplings
+    symbol: y_l
+    description: Couplings of A to charged leptons and neutrinos.
+    range: Branching-ratio dependent
+    role: core
+    status: inferred
+  - name: annihilation branching ratio
+    symbol: Br_EM:Br_nu
+    description: Ratio of annihilation into electrons/photons versus neutrinos.
+    range: Scanned from neutrino-dominated to EM-dominated values, including 10^4 and 10^-4 examples.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out during neutrino decoupling and electron-positron annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - s-wave annihilation cross section
+  - electron/neutrino branching ratio
+  - three-sector heat transfer
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves coupled number and energy evolution for the EM, neutrino, and DM sectors to
+    obtain the thermal cross section.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - Br_EM
+  - Br_nu
+  - thermal averaged annihilation cross section
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - three-sector thermal history with separate photon, neutrino, and DM temperatures
+  dark_sector_temperature: null
+  delta_neff: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: The paper assumes equilibrium distribution functions in the collision-integral treatment and
+    tracks sector temperatures.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: heavy-mediator-domain
+  applies_to: EFT
+  condition: Low-energy description assumes the pseudoscalar mediator is heavy relative to the MeV-scale
+    freeze-out processes.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: three-sector-domain
+  applies_to: cosmological_history
+  condition: The calculation is tailored to freeze-out near neutrino decoupling and electron-positron
+    annihilation.
+  status: established
+  extrapolation_risk: low
+  caveats: []
+assumptions:
+  global:
+  - id: majorana-neutrinos-for-pseudoscalar
+    description: The text assumes SM neutrinos are Majorana for the pseudoscalar interactions.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: branching-ratio-parameterization
+    description: Different y_nu/y_e choices are represented through annihilation branching ratios into
+      neutrinos and the EM sector.
+    scope: production
+    status: inferred
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper mentions numerical calculations but the assigned text does not identify a public
+    repository.
+provenance:
+  model_id: 2310_06611_mev_scalar_pseudoscalar_portal_v1
+  model_name: MeV complex-scalar thermal dark matter with pseudoscalar lepton portal
+  model_family: thermal_relic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2310_06611'
+      title: On the minimal mass of thermal dark matter and the viability of millicharged particles affecting
+        cosmology
+      authors:
+      - Xiaoyong Chu
+      - Josef Pradler
+      year: 2023
+      arxiv_id: '2310.06611'
+      doi: null
+      url: null
+      role: benchmark
+      notes: Assigned full text from run SQLite database.
+    - reference_id: paper
+      title: Minimal mass of thermal dark matter and the viability of millicharged particles affecting
+        21-cm cosmology
+      authors:
+      - Chu, Xiaoyong
+      - Pradler, Josef
+      year: 2024
+      arxiv_id: '2310.06611'
+      doi: 10.1103/PhysRevD.109.103510
+      url: https://arxiv.org/abs/2310.06611
+      role: original_model
+      notes: Assigned primary paper; local full text resolved and read first.
+    constraint_papers:
+    - reference_id: rel_mev_bbn_cmb_1910_01649
+      title: Refined bounds on MeV-scale thermal dark sectors from BBN and the CMB
+      authors:
+      - Sabti, Nashwan
+      - Alvey, James
+      - Escudero, Miguel
+      - Fairbairn, Malcolm
+      - Blas, Diego
+      year: 2020
+      arxiv_id: '1910.01649'
+      doi: 10.1088/1475-7516/2020/01/004
+      url: https://arxiv.org/abs/1910.01649
+      role: constraint
+      notes: Related paper read through local cache or bounded arXiv fallback.
+    - reference_id: rel_mev_decoupling_2205_05714
+      title: 'Toward a full description of MeV dark matter decoupling: A self-consistent determination
+        of relic abundance and N<SUB>eff</SUB>'
+      authors:
+      - Chu, Xiaoyong
+      - Kuo, Jui-Lin
+      - Pradler, Josef
+      year: 2022
+      arxiv_id: '2205.05714'
+      doi: 10.1103/PhysRevD.106.055022
+      url: https://arxiv.org/abs/2205.05714
+      role: implementation
+      notes: Related paper read through local cache or bounded arXiv fallback.
+    review_papers: []
+    external_databases:
+    - name: NASA ADS
+      url: https://ui.adsabs.harvard.edu/
+      note: Used for metadata discovery and candidate ranking only, not as standalone scientific evidence.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex-batch-0012
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2310_06611'
+      section: Models and existing constraints
+      page: null
+      quote_or_summary: A simple s-wave complex-scalar realization uses a real heavy pseudoscalar mediator
+        A.
+    unresolved_items:
+    - Exact numerical mass floors should be read from the primary figures/tables before downstream numerical
+      use.
+    - Laboratory constraints on the heavy pseudoscalar mediator were not fully recast.
+  evidence:
+    particle_content:
+    - reference_id: '2310_06611'
+      note: The paper considers a MeV complex scalar DM benchmark and then writes a pseudoscalar-mediated
+        realization.
+      confidence: medium
+      section: Models and existing constraints
+    interactions:
+    - reference_id: '2310_06611'
+      note: The interaction terms include a heavy pseudoscalar A coupled to leptons and to chi* chi, giving
+        annihilation into e+e- and neutrinos.
+      confidence: medium
+      section: Models and existing constraints
+    production_mechanism:
+    - reference_id: '2310_06611'
+      note: Thermal freeze-out is solved in a coupled EM-neutrino-DM three-sector system.
+      confidence: medium
+      section: Thermal cross section section
+    parameter_ranges:
+    - reference_id: '2310_06611'
+      note: Masses below tens of MeV and multiple EM/neutrino branching ratios are used to determine minimum
+        cosmologically compatible masses.
+      confidence: medium
+      section: Results summary
+    validity_domain:
+    - reference_id: '2310_06611'
+      note: The low-energy operator is described after integrating out a heavy pseudoscalar mediator.
+      confidence: medium
+      section: Models and existing constraints
+    observables:
+    - reference_id: paper
+      note: Primary paper defines the scalar portal benchmark and three-sector thermal-history observable.
+      confidence: high
+      section: Scalar model and thermal calculation
+      page: null
+    - reference_id: rel_mev_decoupling_2205_05714
+      note: Related local text supports the need for self-consistent MeV freeze-out and N_eff calculation.
+      confidence: medium
+      section: MeV decoupling
+      page: null
+    constraints:
+    - reference_id: paper
+      note: Primary paper determines minimal masses compatible with CMB/BBN for mixed branchings.
+      confidence: high
+      section: Results
+      page: null
+    - reference_id: rel_mev_bbn_cmb_1910_01649
+      note: Related local text supplies refined BBN/CMB thermal-dark-sector bounds.
+      confidence: medium
+      section: BBN/CMB bounds
+      page: null
+    routes:
+    - reference_id: paper
+      note: Route follows the primary three-sector abundance and energy-transfer calculation.
+      confidence: high
+      section: Methods
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Accepted as a benchmark/simplified model; the paper also studies related spin and velocity-dependence
+    variants.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  validation_status: expert_judgment_only
+  notes: The model is concrete enough for a benchmark row, but several quantities are scanned phenomenologically
+    through branching ratios.
+agent_failure_modes:
+  warnings:
+  - id: benchmark-not-unique
+    severity: medium
+    category: other
+    warning: Do not treat this row as the only model in the paper; it is the explicitly detailed complex-scalar
+      benchmark among several thermal variants.
+    source_reference_ids:
+    - '2310_06611'
+observables:
+- id: three_sector_neff_bbn
+  name: N_eff and BBN from three-sector freeze-out
+  channel: cmb
+  subchannel: MeV thermal relic during neutrino decoupling
+  predicted_effect: The MeV complex scalar freezes out while photons/electrons and neutrinos exchange
+    heat; branching into electrons versus neutrinos changes N_eff and BBN-sensitive thermal history.
+  effect_direction: shape_change
+  key_quantities:
+  - name: dark matter mass
+    symbol: m_chi
+    description: MeV-scale complex scalar mass.
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: electromagnetic branching ratio
+    symbol: BR_EM
+    description: Annihilation fraction into e+e- or photons.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: neutrino branching ratio
+    symbol: BR_nu
+    description: Annihilation fraction into active neutrinos.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: thermally averaged annihilation cross section
+    symbol: sigma_v
+    description: s-wave annihilation cross section setting relic abundance.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  redshift_range: T ~ MeV during neutrino decoupling and e+e- annihilation
+  scale_range: homogeneous thermal history and CMB/BBN observables
+  environments:
+  - electromagnetic plasma
+  - neutrino bath
+  - MeV dark matter
+  observability: high
+  relevance: high
+  linked_constraints:
+  - cmb_neff_mass_floor
+  linked_routes:
+  - route_three_sector_boltzmann
+  caveats:
+  - Requires coupled number and energy evolution; instantaneous decoupling approximations are insufficient.
+  source_reference_ids:
+  - paper
+  - rel_mev_decoupling_2205_05714
+  - rel_mev_bbn_cmb_1910_01649
+  notes: null
+- id: late_swave_energy_injection
+  name: Late s-wave energy injection to the CMB
+  channel: cmb
+  subchannel: annihilation energy injection
+  predicted_effect: An s-wave electron final state can inject electromagnetic energy at late times, making
+    the electron branching ratio relevant for CMB anisotropy constraints.
+  effect_direction: rate_change
+  key_quantities:
+  - name: s-wave electron annihilation cross section
+    symbol: sigma_v_e
+    description: Late-time annihilation rate into e+e-.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: energy deposition efficiency
+    symbol: f_eff
+    description: Efficiency for electromagnetic energy deposition into the plasma.
+    role: nuisance
+    status: inferred
+    source_reference_ids:
+    - paper
+  redshift_range: recombination and later
+  scale_range: CMB anisotropy damping/ionization history
+  environments:
+  - CMB plasma
+  - residual annihilating scalar DM
+  observability: medium
+  relevance: medium
+  linked_constraints:
+  - cmb_annihilation_energy_injection
+  linked_routes:
+  - route_three_sector_boltzmann
+  caveats:
+  - The primary focus is thermal-history mass bounds; a full p_ann likelihood was not run.
+  source_reference_ids:
+  - paper
+  notes: null
+constraints:
+- id: cmb_neff_mass_floor
+  name: CMB/BBN lower mass floor for MeV thermal dark matter
+  constraint_type: cosmological
+  observable_channel: N_eff and light-element abundances
+  applies: 'yes'
+  constrained_parameters:
+  - m_chi
+  - BR_EM
+  - BR_nu
+  - sigma_v
+  excluded_regions: []
+  allowed_regions:
+  - Allowed regions require branchings and masses compatible with CMB N_eff and BBN while giving the relic
+    abundance.
+  benchmark_implications:
+  - Sets the minimal viable thermal mass for the scalar benchmark.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: Planck CMB and BBN observables as used by primary and related MeV thermal-DM analyses
+  recasting_needed: partial
+  robustness: high
+  assumptions:
+  - id: thermal_equilibrium
+    description: The scalar was in thermal contact with the SM sectors before freeze-out.
+    scope: thermal relic calculation
+    status: assumed
+    impact_if_violated: A nonthermal history invalidates the mass-floor calculation.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - paper
+    notes: null
+  caveats:
+  - Exact numerical bounds should be taken from the primary figures/tables, not reconstructed from this
+    row.
+  source_reference_ids:
+  - paper
+  - rel_mev_bbn_cmb_1910_01649
+  - rel_mev_decoupling_2205_05714
+  notes: null
+- id: cmb_annihilation_energy_injection
+  name: CMB energy-injection bound on electromagnetic s-wave annihilation
+  constraint_type: cosmological
+  observable_channel: CMB anisotropy energy injection
+  applies: parameter_dependent
+  constrained_parameters:
+  - sigma_v_e
+  - BR_EM
+  - m_chi
+  excluded_regions: []
+  allowed_regions: []
+  benchmark_implications:
+  - Large late-time electromagnetic s-wave annihilation is constrained; neutrino branching changes the
+    thermal target but does not by itself deposit EM energy.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: CMB anisotropy energy-injection constraints cited qualitatively
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: symmetric_relic
+    description: A residual symmetric population remains to annihilate at recombination.
+    scope: energy-injection recast
+    status: assumed
+    impact_if_violated: Asymmetric or depleted scenarios weaken the constraint.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - paper
+    notes: null
+  caveats:
+  - No Planck p_ann likelihood was run here.
+  source_reference_ids:
+  - paper
+  notes: null
+- id: pseudoscalar_lepton_portal_laboratory
+  name: Laboratory constraints on pseudoscalar lepton portal
+  constraint_type: laboratory
+  observable_channel: charged lepton and neutrino portal searches
+  applies: recast_required
+  constrained_parameters:
+  - y_e
+  - y_nu
+  - m_A
+  - mu_A
+  excluded_regions: []
+  allowed_regions: []
+  benchmark_implications:
+  - Mediator couplings chosen for freeze-out may need checks against laboratory and astrophysical pseudoscalar
+    limits.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: low
+  assumptions:
+  - id: heavy_mediator_eft
+    description: The mediator is heavy enough for the low-energy operator used in the primary scalar benchmark.
+    scope: portal recast
+    status: assumed
+    impact_if_violated: Light mediators require a different search and freeze-out treatment.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - paper
+    notes: null
+  caveats:
+  - The bounded pass did not identify or run a dedicated mediator search likelihood.
+  source_reference_ids:
+  - paper
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: route_three_sector_boltzmann
+    description: Compute scalar thermal freeze-out together with EM and neutrino sector temperatures and
+      compare CMB/BBN constraints.
+    source_model_features:
+    - complex scalar MeV thermal relic
+    - heavy pseudoscalar mediator
+    - mixed e+e- and neutrino final states
+    input_parameters:
+    - m_chi
+    - BR_EM
+    - BR_nu
+    - sigma_v
+    - elastic scattering rates
+    - initial sector temperatures
+    derived_quantities:
+    - Omega_chi h^2
+    - T_nu/T_gamma
+    - N_eff
+    - BBN-relevant expansion history
+    - CMB energy-injection parameter
+    forward_model_chain:
+    - step_id: interaction_rates
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - m_chi
+      - mu_A
+      - m_A
+      - y_e
+      - y_nu
+      outputs:
+      - annihilation and scattering rates
+      validity: Primary gives low-energy pseudoscalar operators.
+      notes: null
+    - step_id: sector_evolution
+      step_type: boltzmann_solver
+      tool_or_code: null
+      inputs:
+      - rates
+      - Friedmann equation
+      - sector energy densities
+      outputs:
+      - yield
+      - sector temperatures
+      validity: Needs coupled number and energy evolution.
+      notes: null
+    - step_id: cosmo_likelihood
+      step_type: likelihood
+      tool_or_code: null
+      inputs:
+      - N_eff
+      - light-element abundances
+      - Omega_chi h^2
+      outputs:
+      - allowed mass/branching region
+      validity: Likelihood not run in this batch.
+      notes: null
+    observable_ids:
+    - three_sector_neff_bbn
+    - late_swave_energy_injection
+    constraint_ids:
+    - cmb_neff_mass_floor
+    - cmb_annihilation_energy_injection
+    - pseudoscalar_lepton_portal_laboratory
+    likelihoods:
+    - CMB N_eff likelihood
+    - BBN light-element likelihood
+    - CMB energy-injection likelihood
+    required_code_resources:
+    - three-sector Boltzmann solver
+    - BBN/CMB likelihood tables
+    validation_tests:
+    - reproduce primary thermal cross-section curves
+    - check pure-electron and pure-neutrino branching limits
+    route_status: planned
+    agent_notes: This is the natural production route for the scalar benchmark.
+    caveats:
+    - Mediator-specific lab constraints remain under-specified.

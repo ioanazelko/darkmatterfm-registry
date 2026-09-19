@@ -1,0 +1,386 @@
+_source:
+  shard: arXiv_src_1611_009_wds.tar
+  paper_id: '1611_04322'
+  source_member: 1611_04322.json
+schema_version: model_only_v0
+model_id: 1611_04322_singlino_vectorlike_fn_susy_dm_v1
+identity:
+  name: Singlino dark matter in a Froggatt-Nielsen vector-like generation SUSY model
+  family: supersymmetric_singlino_dark_matter
+  aliases:
+  - singlino LSP dark matter with vector-like generations
+  - Froggatt-Nielsen singlet-superfield dark matter
+  short_description: A supersymmetric MSSM extension with vector-like generation multiplets and a Standard
+    Model singlet superfield whose fermion component is an R-parity-stabilized singlino dark matter candidate.
+  historical_origin_or_motivation: Motivated by simultaneously explaining the Higgs mass, the muon anomalous
+    magnetic moment, flavor texture, and the observed thermal relic abundance.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - MSSM with vector-like generations
+  - Froggatt-Nielsen flavor symmetry
+  lagrangian_available: partial
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the superpotential for MSSM fields, vector-like generations, a singlet, and a
+    U(1) Froggatt-Nielsen flavor construction.
+particle_content:
+  dark_matter_candidate:
+    name: singlino fermion component of the singlet superfield
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - scalar component of the singlet superfield
+  - vector-like quark and lepton superfields
+  mediators:
+  - sfermions exchanged in singlino annihilation
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - R-parity-stabilized singlino LSP
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R parity is imposed, making the singlino the lightest supersymmetric particle
+    and allowing it to be dark matter.
+  symmetries:
+  - name: R parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified; imposed for dark matter stability
+    breaking_scale: null
+  - name: Froggatt-Nielsen U(1)
+    type: global
+    exact_or_approximate: broken
+    breaking: broken by a singlet field vev to generate flavor hierarchies
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - Standard Model quarks and leptons lighter than the freeze-out temperature
+  dark_sector_couplings:
+  - singlet cubic coupling y
+  - Yukawa couplings between vector-like generations and the singlet
+  mediator_types:
+  - sfermions
+  - vector-like generation superpartners
+  interaction_operators:
+  - singlet cubic term y Phi^3
+  - singlet-vector-like generation Yukawa terms
+  - t-channel and u-channel sfermion exchange for singlino annihilation
+  annihilation_channels:
+  - singlino pair annihilation into Standard Model fermion pairs through sfermion exchange
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: singlino mass
+    symbol: m_singlino
+    description: Mass of the singlino dark matter particle, set by the singlet vev and cubic coupling.
+    value: around 100 GeV for y of order 10^-2 and V of a few TeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet vev
+    symbol: V
+    description: Vacuum expectation value of the scalar component of the singlet field; gives masses to
+      vector-like generations.
+    value: a few TeV
+    unit: TeV
+    role: core
+    status: inferred
+  - name: singlet cubic coupling
+    symbol: y
+    description: Coupling of the singlet cubic term that sets the singlino mass through m_singlino = y
+      V.
+    value: O(10^-2) at low energy
+    role: core
+    status: inferred
+  - name: freeze-out parameter
+    symbol: x_F
+    description: Ratio m_singlino / T_F used for the thermal relic estimate.
+    value: 20
+    role: derived
+    status: assumed
+  - name: universal gaugino mass
+    symbol: m_1/2
+    description: One of the three numerical scan parameters used together with m_0 and y.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: universal scalar mass
+    symbol: m_0
+    description: One of the three numerical scan parameters used together with m_1/2 and y.
+    unit: GeV
+    role: core
+    status: inferred
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - thermal freeze-out of singlino pair annihilation into Standard Model fermions through sfermion exchange
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - singlino mass
+  - sfermion masses and mixings
+  - Yukawa couplings from the vector-like/Froggatt-Nielsen structure
+  - p-wave dominated annihilation coefficient
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper gives an analytic freeze-out estimate and scans regions where the observed abundance,
+    Higgs mass, and muon g-2 can be explained simultaneously.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed dark matter abundance
+    symbol: Omega_DM h^2
+    description: Observed abundance quoted in the text.
+    value: 0.1198 +/- 0.0015
+    role: cosmological
+    status: established
+  calculation_type: thermal
+  key_dependencies:
+  - thermal averaged annihilation cross section a + b/x_F
+  - sfermion exchange diagrams
+  - singlino mass
+  - freeze-out parameter x_F
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: singlino freeze-out temperature
+    symbol: T_F
+    description: Freeze-out temperature in the analytic abundance estimate.
+    value: m_singlino / 20
+    unit: GeV
+    role: derived
+    status: assumed
+  phase_transitions:
+  - Froggatt-Nielsen U(1) breaking by singlet vev
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  phase_space_bounds: []
+  notes: The singlino is a roughly 100 GeV thermal relic and is treated as cold dark matter.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: singlino_lsp
+  applies_to: model
+  condition: The singlino is lighter than bino-like and Higgsino-like neutralinos, making it the LSP.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1611_04322'
+- id: r_parity_stability
+  applies_to: model
+  condition: R parity is imposed so the LSP singlino is stable.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - '1611_04322'
+- id: minimal_singlino_sector
+  applies_to: interaction
+  condition: The paper focuses on the singlet cubic term and a minimal singlino that does not couple directly
+    to the Higgs sector.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1611_04322'
+assumptions:
+  global:
+  - id: r_parity_exact
+    description: R parity is exact enough to stabilize the singlino LSP.
+    scope: theory
+    status: assumed
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - '1611_04322'
+    notes: null
+  - id: standard_freezeout
+    description: The relic-density estimate assumes standard thermal freeze-out with x_F = 20.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1611_04322'
+    notes: null
+  - id: fn_charge_assignment
+    description: The selected Froggatt-Nielsen charge assignment reproduces realistic fermion masses and
+      mixings in the model scan.
+    scope: theory
+    status: inferred
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '1611_04322'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code resource is identified in the assigned paper text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1611_04322_singlino_vectorlike_fn_susy_dm_v1
+  model_name: Singlino dark matter in a Froggatt-Nielsen vector-like generation SUSY model
+  model_family: supersymmetric_singlino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1611_04322'
+      title: unknown
+      authors: []
+      year: 2016
+      arxiv_id: '1611.04322'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from the run SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1611_04322'
+      section: null
+      page: null
+      quote_or_summary: The paper introduces a SUSY model with vector-like generations, a singlet superfield,
+        and Froggatt-Nielsen flavor symmetry.
+    - reference_id: '1611_04322'
+      section: null
+      page: null
+      quote_or_summary: It identifies the singlet fermion component, the singlino, as the R-parity-stabilized
+        LSP dark matter candidate.
+    - reference_id: '1611_04322'
+      section: null
+      page: null
+      quote_or_summary: It computes a thermal relic abundance from singlino pair annihilation into SM
+        fermions via sfermion exchange.
+    unresolved_items:
+    - The paper title is not explicit in the assigned extracted text; source title is therefore left as
+      unknown.
+  evidence:
+    particle_content:
+    - reference_id: '1611_04322'
+      note: The text calls the superpartner of the singlet scalar field the singlino and identifies it
+        as the LSP dark matter candidate.
+      confidence: high
+      section: null
+      page: null
+    symmetries:
+    - reference_id: '1611_04322'
+      note: R parity is imposed to make the singlino LSP a dark matter candidate; a Froggatt-Nielsen U(1)
+        sets flavor structure.
+      confidence: high
+      section: null
+      page: null
+    interactions:
+    - reference_id: '1611_04322'
+      note: The superpotential includes singlet couplings to vector-like generations and a cubic singlet
+        term setting the singlino mass.
+      confidence: high
+      section: null
+      page: null
+    production_mechanism:
+    - reference_id: '1611_04322'
+      note: The thermal abundance is determined by singlino pair annihilation into SM fermions through
+        exchanged sfermions.
+      confidence: high
+      section: null
+      page: null
+    parameter_ranges:
+    - reference_id: '1611_04322'
+      note: The text states y runs to O(10^-2), V is a few TeV, and m_singlino is around 100 GeV.
+      confidence: medium
+      section: null
+      page: null
+    validity_domain:
+    - reference_id: '1611_04322'
+      note: The minimal singlino model assumes no direct Higgs-sector coupling and relies on the singlino
+        being lighter than other neutralinos.
+      confidence: medium
+      section: null
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - The extraction preserves the paper-specific charge assignment and minimal singlino assumptions without
+    reconstructing omitted O(1) coefficients.
+  - Higher-order corrections to the Higgs-sector fit are noted but not model-carded.
+  validation_status: expert_judgment_only
+  notes: The dark matter identity, stabilization, and thermal relic calculation are explicit in the paper
+    text.
+agent_failure_modes:
+  warnings:
+  - id: requires_r_parity
+    severity: high
+    category: assumption_mismatch
+    warning: Do not use the singlino as stable dark matter if R parity is absent or broken.
+    source_reference_ids:
+    - '1611_04322'
+  - id: minimal_singlino_not_higgs_portal
+    severity: medium
+    category: invalid_mapping
+    warning: The paper focuses on a minimal singlino that does not directly couple to the Higgs sector;
+      do not recast it as a generic Higgs-portal singlino without extra assumptions.
+    source_reference_ids:
+    - '1611_04322'

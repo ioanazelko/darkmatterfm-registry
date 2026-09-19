@@ -1,0 +1,642 @@
+_source:
+  shard: arXiv_src_1007_002_wds.tar
+  paper_id: '1007_1672'
+  source_member: 1007_1672.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1007_1672_wimp_dark_matter_inflation_v1
+identity:
+  name: WIMP dark matter inflation with a singlet scalar inflaton
+  family: scalar_singlet_wimp_inflation
+  aliases:
+  - WIMP dark matter inflation
+  - singlet scalar inflaton dark matter
+  short_description: A Standard Model singlet scalar with a quartic non-minimal inflation potential also
+    serves as a stable scalar WIMP dark matter particle.
+  historical_origin_or_motivation: The paper merges non-minimal quartic inflation with singlet-scalar
+    WIMP dark matter so the inflaton and dark matter are one particle.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Standard Model plus real singlet scalar
+  - non-minimal quartic inflation
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  embedded_in_larger_framework: 'no'
+  notes: The Jordan-frame action contains scalar mass/quartic terms, a Higgs portal, and a non-minimal
+    curvature coupling.
+particle_content:
+  dark_matter_candidate:
+    name: SM-singlet scalar inflaton phi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Standard Model Higgs doublet
+  - curvature scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: An unbroken Z_2 parity makes the singlet scalar odd while Standard Model fields
+    are even.
+  symmetries:
+  - name: Z_2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken in the model
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - gravitational
+  standard_model_targets:
+  - Standard Model Higgs doublet H
+  - curvature scalar R
+  dark_sector_couplings:
+  - g^2 phi^2 |H|^2
+  - xi phi^2 R
+  - quartic phi^4 self-coupling
+  mediator_types:
+  - Higgs portal
+  - non-minimal gravitational coupling
+  interaction_operators:
+  - phi^2 |H|^2
+  - phi^2 R
+  scattering:
+    elastic: 'yes'
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - annihilation through the Higgs portal
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: singlet scalar mass
+    symbol: m_phi
+    description: Mass of the scalar that is both inflaton and WIMP.
+    value: around 1 TeV or less
+    unit: GeV-TeV
+    role: core
+    status: inferred
+  - name: Higgs portal coupling
+    symbol: g^2
+    description: Coupling in g^2 phi^2 |H|^2; WMAP relic density motivates order 0.1 for TeV WIMP mass.
+    value: O(0.1)
+    role: core
+    status: inferred
+  - name: non-minimal gravitational coupling
+    symbol: xi
+    description: Coupling multiplying phi^2 R in the inflationary action.
+    value: model-dependent
+    role: core
+    status: inferred
+  - name: scalar quartic coupling
+    symbol: lambda_phi
+    description: Quartic coupling controlling the inflationary potential.
+    value: model-dependent
+    role: core
+    status: inferred
+  derived:
+  - name: tensor-to-scalar ratio
+    symbol: r
+    description: Inflation prediction quoted by the paper.
+    range:
+      min: '0.003'
+      max: '0.007'
+      unit: null
+      notes: Approximate range stated in the abstract.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal WIMP relic after inflation
+  - preheating via Higgs portal followed by radiation domination
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Higgs portal annihilation strength
+  - post-inflation reheating/preheating history
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper states that the WIMP relic abundance generated after inflation can match observations.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_phi
+  - g^2 Higgs portal coupling
+  - preheating efficiency
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - inflation driven by the dark matter scalar
+  - preheating after inflaton oscillations
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The late relic is treated as a cold WIMP.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: wimp_inflation_parameter_region
+  applies_to: model
+  condition: TeV-scale singlet scalar with an exact Z_2, Higgs portal coupling supporting the relic density,
+    and non-minimal quartic inflation compatible with WMAP-era inflation targets.
+  status: speculative
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: exact_z2
+    description: The Z_2 parity remains unbroken so the scalar is stable.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: post_inflation_wimp_history
+    description: After inflation the system reheats/preheats into a radiation dominated universe in which
+      the scalar relic abundance is set consistently.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code is described in the assigned paper text.
+provenance:
+  model_id: 1007_1672_wimp_dark_matter_inflation_v1
+  model_name: WIMP dark matter inflation with a singlet scalar inflaton
+  model_family: scalar_singlet_wimp_inflation
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arXiv:1007.1672
+      title: WIMP Dark Matter Inflation with Observable Gravity Waves
+      authors:
+      - Nobuchika Okada
+      - Qaisar Shafi
+      year: 2010
+      arxiv_id: '1007.1672'
+      doi: null
+      url: null
+      role: original_model
+      notes: Primary assigned paper text in target_text.sqlite.
+    - arxiv_id: '1007.1672'
+      authors:
+      - Nobuchika Okada
+      - Qaisar Shafi
+      doi: 10.1103/PhysRevD.84.043533
+      notes: Primary paper text read locally from completed_dark_matter_target.
+      reference_id: src_primary
+      role: original_model
+      title: WIMP dark matter inflation with observable gravity waves
+      url: https://arxiv.org/abs/1007.1672
+      year: 2011
+    constraint_papers:
+    - arxiv_id: '1001.4538'
+      authors:
+      - E. Komatsu
+      - K. M. Smith
+      doi: 10.1088/0067-0049/192/2/18
+      notes: Local full text resolved and read for WMAP cosmological-parameter context.
+      reference_id: src_wmap7
+      role: constraint
+      title: 'Seven-year Wilkinson Microwave Anisotropy Probe Observations: Cosmological Interpretation'
+      url: https://arxiv.org/abs/1001.4538
+      year: 2011
+    - arxiv_id: '0912.3592'
+      authors:
+      - CDMS II Collaboration
+      - Z. Ahmed
+      - D. S. Akerib
+      - S. Arrenberg
+      doi: 10.1126/science.1186112
+      notes: arXiv fallback abstract page read for direct-detection context.
+      reference_id: src_cdms2
+      role: constraint
+      title: Dark Matter Search Results from the CDMS II Experiment
+      url: https://arxiv.org/abs/0912.3592
+      year: 2010
+    - arxiv_id: '1005.0380'
+      authors:
+      - E. Aprile
+      - K. Arisaka
+      - F. Arneodo
+      - A. Askin
+      doi: 10.1103/PhysRevLett.105.131302
+      notes: arXiv fallback abstract page read for direct-detection context.
+      reference_id: src_xenon100
+      role: constraint
+      title: First Dark Matter Results from the XENON100 Experiment
+      url: https://arxiv.org/abs/1005.0380
+      year: 2010
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex batch-0014
+    extractor_name: Codex GPT-5 dark-matter model worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: arXiv:1007.1672
+      section: abstract and model setup
+      page: null
+      quote_or_summary: The paper presents a quartic-inflation SM singlet that is also a TeV-scale scalar
+        WIMP.
+    unresolved_items:
+    - A modern CMB/direct-detection recast was not attempted; WMAP/CDMS/XENON100 are recorded as historical
+      constraints.
+  evidence:
+    particle_content:
+    - reference_id: arXiv:1007.1672
+      note: The abstract and setup identify an SM singlet inflaton with mass around a TeV or less as the
+        WIMP.
+      confidence: high
+      section: abstract
+      page: null
+    symmetries:
+    - reference_id: arXiv:1007.1672
+      note: The paper states that an unbroken Z_2 parity makes the scalar absolutely stable.
+      confidence: high
+      section: abstract/model setup
+      page: null
+    interactions:
+    - reference_id: arXiv:1007.1672
+      note: The Jordan-frame action includes g^2 phi^2 |H|^2 and xi phi^2 R.
+      confidence: high
+      section: model setup
+      page: null
+    production_mechanism:
+    - reference_id: arXiv:1007.1672
+      note: The relic abundance arises after inflation during preheating and radiation domination, with
+        Higgs-portal coupling controlling WIMP abundance.
+      confidence: high
+      section: introduction/model setup
+      page: null
+    parameter_ranges:
+    - reference_id: arXiv:1007.1672
+      note: The text uses m_phi about 1 TeV and g^2 about 0.1 as reference values for the relic-density
+        discussion.
+      confidence: medium
+      section: model setup
+      page: null
+    validity_domain:
+    - reference_id: arXiv:1007.1672
+      note: The paper emphasizes compatibility with WMAP-era inflation and relic-density requirements
+        in a restricted parameter region.
+      confidence: medium
+      section: summary
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper ties WMAP abundance/inflation constraints to the portal coupling and effective
+        quartic coupling.
+      page: null
+      reference_id: src_primary
+      section: null
+    - confidence: medium
+      note: CDMS-II arXiv fallback page was read for direct-detection context.
+      page: null
+      reference_id: src_cdms2
+      section: null
+    - confidence: medium
+      note: XENON100 arXiv fallback page was read for direct-detection context.
+      page: null
+      reference_id: src_xenon100
+      section: null
+    observables:
+    - confidence: high
+      note: Primary paper states the WIMP relic abundance, portal coupling scale, tensor-to-scalar range,
+        and direct-detection motivation.
+      page: null
+      reference_id: src_primary
+      section: null
+    - confidence: medium
+      note: WMAP local full text was read as related cosmological context.
+      page: null
+      reference_id: src_wmap7
+      section: null
+    routes:
+    - confidence: high
+      note: Primary paper describes inflation, reheating/thermalization, freeze-out, and direct-detection
+        implications.
+      page: null
+      reference_id: src_primary
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - non-minimal inflation naturalness/cutoff treatment
+  - portal coupling and scalar mass choices
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: inflation_observables_not_extracted
+    severity: medium
+    category: other
+    warning: This run omits observables and constraints, so inflationary predictions are only noted as
+      model context.
+    mitigation: Use the original paper before routing to CMB observables.
+  - id: scalar_symbol_stripped
+    severity: low
+    category: notation_conflict
+    warning: The source text has stripped math symbols; phi is used as a readable placeholder for the
+      singlet scalar.
+    mitigation: Check the TeX source for exact notation if needed.
+observables:
+- caveats:
+  - Relic-density statement uses estimates cited by the primary paper rather than a reproduced likelihood.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments: []
+  id: thermal_wimp_relic_density
+  key_quantities:
+  - name: Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: g^2
+    value: ~0.1
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: m_phi
+    unit: GeV
+    value: around 1 TeV or less
+  - name: cold dark matter density
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: established
+    symbol: Omega_CDM h^2
+    value: 0.1131 +/- 0.0034
+  linked_constraints:
+  - wmap_relic_inflation_constraint
+  linked_routes:
+  - route_inflaton_wimp_freezeout
+  name: Thermal singlet-scalar WIMP relic density
+  notes: null
+  observability: medium
+  predicted_effect: A stable Z2-odd singlet scalar with Higgs portal coupling g^2 around 0.1 and mass
+    around 1 TeV can reproduce the WMAP cold-dark-matter abundance quoted by the paper.
+  redshift_range: thermal freeze-out after reheating
+  relevance: critical
+  scale_range: particle mass near electroweak-TeV scale
+  source_reference_ids:
+  - src_primary
+  - src_wmap7
+  subchannel: thermal freeze-out
+- caveats:
+  - Modern CMB limits supersede WMAP-era forecasts and require an updated recast.
+  channel: cmb
+  effect_direction: enhancement
+  environments: []
+  id: inflationary_tensor_signal
+  key_quantities:
+  - name: tensor-to-scalar ratio
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: r
+    value: 0.003-0.007
+  - name: scalar spectral index
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: n_s
+    value: WMAP-compatible narrow range
+  linked_constraints:
+  - wmap_relic_inflation_constraint
+  linked_routes:
+  - route_inflaton_wimp_freezeout
+  name: Observable inflationary tensor-to-scalar ratio
+  notes: null
+  observability: medium
+  predicted_effect: The same scalar is the inflaton in non-minimal quartic inflation; the paper estimates
+    r between 0.003 and 0.007 with n_s inside WMAP one-sigma bounds.
+  redshift_range: recombination and primordial inflation
+  relevance: high
+  scale_range: CMB pivot scales
+  source_reference_ids:
+  - src_primary
+  - src_wmap7
+  subchannel: primordial B-mode / tensor-to-scalar ratio
+- caveats:
+  - The primary paper does not provide a reusable direct-detection likelihood.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments: []
+  id: direct_detection_higgs_portal
+  key_quantities:
+  - name: portal interaction
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    value: g^2 phi^2 |H|^2
+  - name: target mass scale
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: m_phi
+    unit: GeV
+    value: m_h/2 to 1 TeV class
+  linked_constraints:
+  - direct_detection_searches
+  linked_routes:
+  - route_inflaton_wimp_freezeout
+  name: Spin-independent Higgs-portal direct-detection signal
+  notes: null
+  observability: medium
+  predicted_effect: The portal interaction that fixes the WIMP relic density also implies a spin-independent
+    direct-detection target region explored by CDMS-II, XENON100, and later experiments.
+  redshift_range: today
+  relevance: high
+  scale_range: laboratory nuclear recoil energies
+  source_reference_ids:
+  - src_primary
+  - src_cdms2
+  - src_xenon100
+  subchannel: nuclear recoils from scalar Higgs portal
+constraints:
+- allowed_regions:
+  - Non-minimal singlet-scalar quartic inflation with WIMP relic density is presented as WMAP-compatible.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - The WIMP abundance pushes g^2 to order 0.1 and the effective quartic coupling to order 1e-3.
+  caveats:
+  - WMAP-era values should be updated against Planck/ACT/BICEP-era constraints before precision use.
+  constrained_parameters:
+  - Omega_CDM h^2
+  - n_s
+  - r
+  - g^2
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Minimal quartic inflation without the non-minimal gravitational coupling is stated to lie outside
+    WMAP two-sigma bounds.
+  id: wmap_relic_inflation_constraint
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: WMAP relic-density and inflation compatibility
+  notes: null
+  observable_channel: cmb
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_primary
+  - src_wmap7
+- allowed_regions:
+  - The paper highlights the g^2 ~ 0.1, m_phi ~ 1 TeV region as testable.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Direct detection is a primary route to falsifying the WIMP interpretation.
+  caveats:
+  - The paper predates current direct-detection limits, so the viable region likely needs a modern recast.
+  constrained_parameters:
+  - g^2
+  - m_phi
+  - spin-independent cross section
+  constraint_type: direct_detection
+  data_release: null
+  excluded_regions:
+  - Portal-coupling and mass regions with nuclear-recoil rates above contemporary limits.
+  id: direct_detection_searches
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: CDMS-II and XENON100 Higgs-portal searches
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_primary
+  - src_cdms2
+  - src_xenon100
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary paper provides equations and forecasts, but no public likelihood or code
+      was identified.
+    caveats:
+    - Direct detection and CMB constraints are historically dated.
+    constraint_ids:
+    - wmap_relic_inflation_constraint
+    - direct_detection_searches
+    derived_quantities:
+    - n_s
+    - r
+    - Omega_CDM h^2
+    - spin-independent cross section
+    description: Combine non-minimal quartic inflation with Higgs-portal WIMP freeze-out and direct detection.
+    forward_model_chain:
+    - inputs:
+      - lambda_eff
+      - xi
+      - N_e
+      notes: null
+      outputs:
+      - n_s
+      - r
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: non-minimal quartic inflation slow-roll formulas
+      validity: valid for the inflationary setup in the paper
+    - inputs:
+      - g^2
+      - m_phi
+      - reheating temperature
+      notes: null
+      outputs:
+      - Omega_CDM h^2
+      step_id: s2
+      step_type: semi_analytic_model
+      tool_or_code: thermal freeze-out estimate
+      validity: requires thermalization after preheating
+    - inputs:
+      - g^2
+      - m_phi
+      - nucleon matrix elements
+      notes: null
+      outputs:
+      - excluded portal region
+      step_id: s3
+      step_type: recasting
+      tool_or_code: direct-detection limit comparison
+      validity: must be updated with modern limits
+    id: route_inflaton_wimp_freezeout
+    input_parameters:
+    - lambda_eff
+    - xi
+    - g^2
+    - m_phi
+    - reheating temperature
+    likelihoods: []
+    observable_ids:
+    - thermal_wimp_relic_density
+    - inflationary_tensor_signal
+    - direct_detection_higgs_portal
+    required_code_resources: []
+    route_status: partially_implemented
+    source_model_features:
+    - Z2-stable singlet scalar
+    - non-minimal gravitational coupling
+    - quartic inflaton potential
+    - Higgs portal interaction
+    validation_tests:
+    - Recover r = 0.003-0.007 and Omega_CDM h^2 quoted by the paper

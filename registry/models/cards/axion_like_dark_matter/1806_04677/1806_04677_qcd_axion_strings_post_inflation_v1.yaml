@@ -1,0 +1,643 @@
+_source:
+  shard: arXiv_src_1806_013_wds.tar
+  paper_id: '1806_04677'
+  source_member: 1806_04677.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1806_04677_qcd_axion_strings_post_inflation_v1
+identity:
+  name: Post-inflationary QCD axion dark matter from string-network radiation
+  family: axion_like_dark_matter
+  aliases:
+  - QCD axion from strings
+  - post-inflationary PQ axion scenario
+  short_description: QCD axion dark matter scenario with Peccei-Quinn symmetry restored after inflation,
+    where axion strings reach an attractor solution and radiate axions whose spectrum controls the relic
+    abundance.
+  historical_origin_or_motivation: The paper substantially develops the relic-abundance calculation for
+    QCD axion dark matter from strings by numerically studying the string attractor and emission spectrum.
+  status: canonical
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Peccei-Quinn solution to the strong CP problem
+  - complex scalar U(1)_PQ model
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The simulated UV theory is a complex scalar with U(1)_PQ invariant Lagrangian and Mexican-hat
+    potential.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - radial mode of the PQ field
+  - axion strings
+  - domain walls for N_W=1 at QCD crossover
+  mediators: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Axion longevity follows from the approximate PQ shift symmetry and weak coupling.
+  symmetries:
+  - name: U(1)_PQ
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken after inflation; QCD effects later generate axion potential
+  - name: domain wall number N_W=1
+    type: discrete
+    exact_or_approximate: broken
+    breaking: domain walls are unstable and decay
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  standard_model_targets:
+  - QCD topological term
+  - gluons
+  dark_sector_couplings:
+  - axion self/interactions from PQ scalar dynamics
+  mediator_types:
+  - axion
+  interaction_operators:
+  - complex PQ scalar kinetic and potential terms
+  - QCD-generated axion potential at late times
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: axion decay constant
+    symbol: f_a
+    description: PQ breaking scale for N_W=1.
+    role: core
+    status: inferred
+  - name: radial mode mass
+    symbol: m_r
+    description: Mass setting the string core scale in simulations.
+    role: core
+    status: inferred
+  - name: domain wall number
+    symbol: N_W
+    description: Set to 1 in the analysis to avoid stable domain walls.
+    value: 1
+    role: core
+    status: assumed
+  - name: string length parameter
+    symbol: xi
+    description: Average string length per Hubble volume used to characterize the network.
+    role: core
+    status: inferred
+  - name: emission spectrum slope
+    symbol: q
+    description: Power-law behavior of the emitted axion spectrum that strongly affects relic abundance
+      extrapolation.
+    role: core
+    status: inferred
+  - name: axion number density from misalignment
+    symbol: n_a^mis
+    description: Reference misalignment contribution used for comparison.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - misalignment production
+  - axion radiation from post-inflationary string network
+  - domain-wall decay contribution for N_W=1
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - PQ scale f_a
+  - string-network scaling solution
+  - axion emission spectrum
+  - domain wall number
+  - QCD crossover dynamics
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper stresses that the string-emitted axion spectrum can change the relic abundance by orders
+    of magnitude when extrapolated to physical scale separation.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: nonthermal
+  key_dependencies:
+  - f_a
+  - m_r/H scale separation
+  - string emission spectrum q
+  - misalignment angle/statistics
+  - domain wall decay
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: unknown
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: post_inflationary_pq
+  applies_to: cosmological_history
+  condition: Applies when PQ symmetry is restored after inflation and strings form in the early universe.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: domain_wall_number_one
+  applies_to: model
+  condition: The paper sets N_W=1 so domain walls are unstable; N_W>1 is not viable without additional
+    ingredients.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+- id: large_log_extrapolation
+  applies_to: calculation
+  condition: Physical QCD axion predictions require extrapolating simulations to much larger m_r/H scale
+    separations.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+assumptions:
+  global:
+  - id: pq_restored_after_inflation
+    description: The Peccei-Quinn symmetry is restored after inflation, producing a string network.
+    scope: cosmological_history
+    status: assumed
+  - id: radiation_dominated_background
+    description: The simulated universe expands as radiation dominated during the early string evolution.
+    scope: cosmological_history
+    status: assumed
+  - id: nw_equals_one
+    description: The domain wall number is set to one to avoid stable domain walls.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 1806_04677_qcd_axion_strings_post_inflation_v1
+  model_name: null
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: 'Axions from Strings: the Attractive Solution'
+      authors: []
+      year: 2018
+      arxiv_id: '1806.04677'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '1806.04677'
+      authors:
+      - Gorghetto, Marco
+      - Hardy, Edward
+      - Villadoro, Giovanni
+      doi: 10.1007/JHEP07(2018)151
+      notes: Primary assigned paper text resolved from the local SQLite full-text cache.
+      reference_id: '1806.04677'
+      role: original_model
+      title: 'Axions from strings: the attractive solution'
+      url: https://arxiv.org/abs/1806.04677
+      year: 2018
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0002
+    extractor_name: gpt-5.5 dark-matter model worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      page: null
+      quote_or_summary: The paper studies axion strings after PQ restoration, establishes an attractor
+        solution, and analyzes axion radiation spectra.
+    - reference_id: primary
+      section: Introduction
+      page: null
+      quote_or_summary: QCD axion can make up the full measured dark matter abundance; production depends
+        on cosmological history.
+    - reference_id: primary
+      section: Spectrum
+      page: null
+      quote_or_summary: Extrapolation of string-produced axions controls whether strings are negligible
+        or dominate over misalignment.
+    unresolved_items:
+    - The physical axion mass target remains sensitive to the large-log extrapolation of the string emission
+      spectrum.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The candidate is the QCD axion produced by PQ symmetry breaking and string dynamics.
+      confidence: high
+      section: Introduction
+    symmetries:
+    - reference_id: primary
+      note: The simulated model has a U(1)_PQ invariant complex scalar Lagrangian.
+      confidence: high
+      section: Simulation model
+    production_mechanism:
+    - reference_id: primary
+      note: Axions are produced by misalignment, string-network radiation, and later domain-wall decay
+        for N_W=1.
+      confidence: high
+      section: Introduction
+    cosmological_history:
+    - reference_id: primary
+      note: The scenario assumes PQ symmetry restored after inflation and a radiation-dominated early
+        evolution.
+      confidence: high
+      section: Introduction
+    parameter_ranges:
+    - reference_id: primary
+      note: The key extrapolation parameter is the scale separation log(m_r/H), with physical values far
+        beyond direct simulations.
+      confidence: medium
+      section: Spectrum
+    validity_domain:
+    - reference_id: primary
+      note: The authors warn that N_W>1 gives stable domain walls unless extra breaking or gauging is
+        introduced.
+      confidence: high
+      section: Introduction
+    constraints:
+    - confidence: high
+      note: The primary text sets N_W = 1 and states that N_W > 1 domain walls are generically not viable
+        without extra ingredients.
+      page: null
+      reference_id: '1806.04677'
+      section: Introduction
+    - confidence: high
+      note: The simulation-to-physical extrapolation is explicitly identified as the dominant uncertainty
+        for relic abundance.
+      page: null
+      reference_id: '1806.04677'
+      section: Abstract
+    observables:
+    - confidence: high
+      note: The primary text states that post-inflationary PQ breaking makes the axion relic abundance
+        calculable from the mass, but sensitive to string radiation.
+      page: null
+      reference_id: '1806.04677'
+      section: Abstract and introduction
+    - confidence: high
+      note: The paper identifies the axion string radiation spectrum as central to the final number density.
+      page: null
+      reference_id: '1806.04677'
+      section: Abstract
+    routes:
+    - confidence: high
+      note: 'The route mirrors the paper sequence: simulate strings, extrapolate the spectrum, then infer
+        relic abundance and mass target.'
+      page: null
+      reference_id: '1806.04677'
+      section: Simulation and spectrum sections
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - Accepted as a substantial development of an existing QCD-axion dark matter scenario rather than a
+    wholly new named model.
+robustness:
+  overall: medium
+agent_failure_modes:
+  warnings:
+  - id: large_log_extrapolation
+    severity: high
+    category: extrapolation
+    warning: Relic abundance conclusions are highly sensitive to extrapolating the axion emission spectrum
+      to physical scale separations.
+  - id: domain_wall_number
+    severity: high
+    category: assumption_mismatch
+    warning: The viable post-inflationary interpretation assumes domain wall number N_W=1.
+operators:
+  renormalizable_terms:
+  - '|partial phi|^2 - V(phi) for the PQ scalar'
+  eft_operators:
+  - QCD axion coupling generated by PQ anomaly
+  contact_or_light_mediator: not_applicable
+  coupling_types:
+  - axion-gluon anomaly coupling
+observables:
+- caveats:
+  - The physical prediction depends on extrapolating simulations over a much larger logarithmic scale
+    separation.
+  channel: cosmology
+  effect_direction: rate_change
+  environments: []
+  id: post_inflation_axion_relic_mass
+  key_quantities:
+  - description: Mass fixed by the full-DM relic target in the post-inflationary scenario.
+    name: axion mass
+    role: core
+    source_reference_ids:
+    - '1806.04677'
+    status: inferred
+    symbol: m_a
+  - name: axion decay constant
+    role: core
+    source_reference_ids:
+    - '1806.04677'
+    status: assumed
+    symbol: f_a
+  - name: string spectrum shape
+    role: derived
+    source_reference_ids:
+    - '1806.04677'
+    status: approximate
+    symbol: q
+  linked_constraints:
+  - full_dm_relic_abundance
+  - domain_wall_number_viability
+  linked_routes:
+  - string_network_relic_route
+  name: Post-inflationary axion relic-abundance mass prediction
+  notes: The paper stresses that small logarithmic changes in the spectrum can strongly affect the relic
+    abundance.
+  observability: medium
+  predicted_effect: If PQ breaking occurs after inflation and standard cosmology holds, the relic abundance
+    is calculable in terms of the axion mass and the string/domain-wall contribution.
+  redshift_range: null
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - '1806.04677'
+  subchannel: null
+- caveats:
+  - Simulation-accessible scale separations are far from the physical QCD axion hierarchy.
+  channel: cosmology
+  effect_direction: shape_change
+  environments:
+  - early universe after PQ breaking
+  id: axion_string_radiation_spectrum
+  key_quantities:
+  - name: string-core to Hubble scale ratio
+    role: computational
+    source_reference_ids:
+    - '1806.04677'
+    status: approximate
+    symbol: m_r/H
+  - name: average strings per Hubble patch
+    role: derived
+    source_reference_ids:
+    - '1806.04677'
+    status: inferred
+    symbol: xi
+  linked_constraints:
+  - large_log_simulation_extrapolation
+  linked_routes:
+  - string_network_relic_route
+  name: Axion radiation spectrum from strings
+  notes: null
+  observability: not_applicable
+  predicted_effect: The string network emits axions with a momentum spectrum whose shape determines whether
+    strings contribute negligibly or dominantly to the final number density.
+  redshift_range: null
+  relevance: high
+  scale_range: Hubble scale to string-core scale in the simulations
+  source_reference_ids:
+  - '1806.04677'
+  subchannel: null
+- caveats:
+  - The primary paper does not provide a detector likelihood; it motivates the target through relic production.
+  channel: precision_laboratory
+  effect_direction: model_dependent
+  environments: []
+  id: axion_search_mass_couplings
+  key_quantities:
+  - name: axion mass
+    role: core
+    source_reference_ids:
+    - '1806.04677'
+    status: inferred
+    symbol: m_a
+  - name: axion couplings
+    role: derived
+    source_reference_ids:
+    - '1806.04677'
+    status: unknown
+    symbol: g_a
+  linked_constraints:
+  - full_dm_relic_abundance
+  linked_routes:
+  - string_network_relic_route
+  name: Axion search mass and coupling target
+  notes: null
+  observability: medium
+  predicted_effect: A full-DM QCD axion prediction would set a target mass and associated couplings for
+    laboratory axion searches.
+  redshift_range: null
+  relevance: medium
+  scale_range: null
+  source_reference_ids:
+  - '1806.04677'
+  subchannel: null
+constraints:
+- allowed_regions:
+  - Post-inflationary PQ histories whose combined misalignment, string, and domain-wall axion abundance
+    matches the observed dark matter density.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: unknown
+    description: PQ symmetry is broken after inflation or restored during reheating, producing random
+      initial angles and strings.
+    id: post_inflation_pq
+    impact_if_violated: A pre-inflationary PQ history has different isocurvature and abundance logic.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids:
+    - '1806.04677'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The relic calculation assumes the standard cosmological history through the QCD crossover.
+    id: standard_cosmology
+    impact_if_violated: Nonstandard expansion or entropy injection would shift the mass-abundance relation.
+    notes: null
+    scope: cosmology
+    source_reference_ids:
+    - '1806.04677'
+    status: assumed
+  benchmark_implications:
+  - The target axion mass is not robust until the string emission spectrum is extrapolated reliably.
+  caveats:
+  - The relic-density prediction is dominated by a difficult string-spectrum extrapolation.
+  constrained_parameters:
+  - m_a
+  - f_a
+  - string spectrum q
+  - misalignment statistics
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions: []
+  id: full_dm_relic_abundance
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Full dark-matter abundance fixes the QCD axion target
+  notes: null
+  observable_channel: cosmology
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '1806.04677'
+- allowed_regions:
+  - N_W = 1, where domain walls decay and destroy the string network.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The paper sets N_W = 1 so that domain walls are automatically unstable.
+    id: nw_equals_one
+    impact_if_violated: Stable domain walls would overclose or otherwise spoil the cosmology.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1806.04677'
+    status: assumed
+  benchmark_implications: []
+  caveats:
+  - Additional model building can evade the simple N_W > 1 statement but may reintroduce strong-CP concerns.
+  constrained_parameters:
+  - N_W
+  - f_a
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - N_W > 1 gives generically stable domain walls and is not phenomenologically viable without additional
+    explicit breaking or gauging.
+  id: domain_wall_number_viability
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Domain wall number one viability condition
+  notes: null
+  observable_channel: topological_defects
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - '1806.04677'
+- allowed_regions:
+  - Simulation results are used only after extrapolating toward the physical QCD axion hierarchy.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: unknown
+    description: The attractor solution and radiation spectrum measured at accessible scale separations
+      are assumed to extrapolate to the physical regime.
+    id: attractor_extrapolates
+    impact_if_violated: Failure of this extrapolation changes the relic axion number density.
+    notes: null
+    scope: simulation
+    source_reference_ids:
+    - '1806.04677'
+    status: assumed
+  benchmark_implications: []
+  caveats:
+  - This is a computational validity constraint, not an observational exclusion.
+  constrained_parameters:
+  - m_r/H
+  - spectrum shape q
+  constraint_type: numerical
+  data_release: null
+  excluded_regions: []
+  id: large_log_simulation_extrapolation
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Large-log simulation extrapolation limit
+  notes: null
+  observable_channel: cosmology
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '1806.04677'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary paper implements simulations, but a reusable production route would need
+      source code and cleaned numerical outputs.
+    caveats:
+    - Domain-wall decay and the physical logarithm are not directly simulated at the final hierarchy.
+    constraint_ids:
+    - full_dm_relic_abundance
+    - domain_wall_number_viability
+    - large_log_simulation_extrapolation
+    derived_quantities:
+    - string density xi
+    - axion momentum spectrum
+    - comoving axion number
+    - Omega_a h2
+    description: Simulate the post-inflationary axion string network, extrapolate the emission spectrum,
+      add misalignment and domain-wall decay, and compare to the observed dark matter abundance.
+    forward_model_chain:
+    - inputs:
+      - PQ scalar field initial conditions
+      - m_r/H
+      notes: null
+      outputs:
+      - string density
+      - radiation spectrum
+      step_id: network_simulation
+      step_type: simulation
+      tool_or_code: lattice field simulation described in the paper
+      validity: Validated within the simulated scale separation.
+    - inputs:
+      - simulated spectrum
+      notes: null
+      outputs:
+      - physical-regime spectrum estimate
+      step_id: large_log_extrapolation
+      step_type: data_transform
+      tool_or_code: null
+      validity: Dominant uncertainty highlighted by the primary paper.
+    - inputs:
+      - Omega_a h2
+      notes: null
+      outputs:
+      - target m_a or f_a
+      step_id: abundance_match
+      step_type: likelihood
+      tool_or_code: null
+      validity: Relic-density matching without a released likelihood.
+    id: string_network_relic_route
+    input_parameters:
+    - m_a
+    - f_a
+    - m_r/H
+    - initial angle distribution
+    - N_W
+    likelihoods:
+    - observed dark matter abundance
+    observable_ids:
+    - post_inflation_axion_relic_mass
+    - axion_string_radiation_spectrum
+    - axion_search_mass_couplings
+    required_code_resources: []
+    route_status: partially_implemented
+    source_model_features:
+    - U(1)_PQ breaking after inflation
+    - axion strings
+    - N_W = 1 domain walls
+    validation_tests:
+    - Reproduce the paper conclusion that spectrum-shape corrections can qualitatively alter the string
+      contribution.

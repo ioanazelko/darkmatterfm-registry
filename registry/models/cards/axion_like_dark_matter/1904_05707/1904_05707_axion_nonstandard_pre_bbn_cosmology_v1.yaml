@@ -1,0 +1,300 @@
+_source:
+  shard: arXiv_src_1904_018_wds.tar
+  paper_id: '1904_05707'
+  source_member: 1904_05707.json
+schema_version: model_only_v0
+model_id: 1904_05707_axion_nonstandard_pre_bbn_cosmology_v1
+identity:
+  name: Axion dark matter in a non-standard pre-BBN cosmology
+  family: axion_like_dark_matter
+  aliases:
+  - cold axion dark matter with non-standard cosmology
+  - QCD axion CDM with early non-standard expansion
+  short_description: A paper-local axion dark matter scenario in which the axion is assumed to be all
+    cold dark matter while the pre-BBN expansion history is varied, changing the axion mass window and
+    relic abundance from misalignment and axionic strings.
+  historical_origin_or_motivation: The paper extends axion dark matter calculations to a wider set of
+    non-standard cosmologies before primordial nucleosynthesis and includes axionic-string contributions.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - Peccei-Quinn axion
+  - non-standard pre-BBN cosmology
+  - axionic string network
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper uses the PQ axion setup and parameterizes the early cosmology by an effective equation
+    of state and reheating temperature.
+particle_content:
+  dark_matter_candidate:
+    name: cold axion
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - axionic string network
+  - effective non-standard cosmological fluid
+  mediators:
+  - axion field
+  dark_radiation_species: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The axion is treated as a long-lived cold dark matter field from the PQ mechanism.
+  symmetries:
+  - name: U(1)_PQ
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken at f_A and explicitly affected by QCD
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  standard_model_targets:
+  - QCD sector
+  dark_sector_couplings:
+  - axion coupling set by f_A
+  - axionic string decay into axions
+  mediator_types:
+  - axion_field
+  - global_strings
+  interaction_operators:
+  - Peccei-Quinn axion coupling to QCD topological term
+  annihilation_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: axion mass
+    symbol: m_A
+    description: Solved numerically to obtain the observed cold dark matter abundance for a chosen cosmological
+      history.
+    role: core
+    status: inferred
+  - name: PQ scale
+    symbol: f_A
+    description: Peccei-Quinn symmetry-breaking scale related to the axion mass.
+    role: core
+    status: inferred
+  - name: initial misalignment angle
+    symbol: theta_i
+    description: Initial axion field angle; examples fix theta_i = pi/3.
+    value: pi/3 in displayed examples
+    role: core
+    status: inferred
+  - name: effective equation of state
+    symbol: w_eff
+    description: Equation of state for the extra pre-BBN energy component.
+    role: core
+    status: inferred
+  - name: reheating temperature
+    symbol: T_RH
+    description: Temperature at which the cosmology transitions to the standard CDM model before BBN.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - vacuum_realignment
+  - axionic_string_decay
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - misalignment angle
+  - axion mass
+  - PQ scale
+  - pre-BBN expansion history
+  - axionic string decay contribution
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper assumes the cold axion is the CDM particle and solves for the axion mass that yields
+    the observed abundance in each non-standard cosmology.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - theta_i
+  - m_A
+  - f_A
+  - w_eff
+  - T_RH
+  - string-network contribution
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - early matter domination
+  - kination-like expansion
+  - generic pre-BBN fluid with effective equation of state
+  - transition to standard cosmology at T_RH
+  dark_sector_temperature: null
+  delta_neff: null
+  phase_transitions:
+  - Peccei-Quinn symmetry breaking
+  - onset of axion oscillations
+  topological_defects:
+  - axionic global strings
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  notes: The abundance is computed from field misalignment and string-network decay rather than a thermal
+    distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: pre_bbn_transition
+  applies_to: cosmological_history
+  condition: The non-standard cosmology must transition to the standard CDM/radiation history by a reheating
+    temperature compatible with successful BBN.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: all_cold_axion_dm
+  applies_to: relic_density
+  condition: The card applies to parameter points where cold axions saturate the observed CDM abundance.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: axion_is_cdm
+    description: The axion is assumed to be the dark matter and to account for the present cold dark matter
+      abundance.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: pre_bbn_nsc
+    description: Before BBN the universe may contain an additional component parameterized by w_eff and
+      T_RH.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: The text describes numerical coupled-equation calculations but no model-specific code
+    release is identified.
+provenance:
+  model_id: 1904_05707_axion_nonstandard_pre_bbn_cosmology_v1
+  model_name: Axion dark matter in a non-standard pre-BBN cosmology
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Probing the Early Universe with Axion Physics and Gravitational Waves
+      authors:
+      - Nicklas Ramberg
+      - Luca Visinelli
+      year: 2019
+      arxiv_id: '1904.05707'
+      doi: null
+      url: null
+      role: extension
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0004
+    extractor_name: gpt-5.5_dark_matter_model_worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper assumes the axion is dark matter and studies non-standard pre-BBN cosmologies.
+    - reference_id: primary
+      section: axion misalignment/strings
+      page: null
+      quote_or_summary: The axion abundance is computed from vacuum realignment and optional axionic-string
+        contributions using coupled kinetic equations.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The dark matter candidate is the cold axion; the paper also includes axionic strings as a
+        production contribution.
+      confidence: high
+      section: abstract/introduction
+    symmetries:
+    - reference_id: primary
+      note: The axion originates from spontaneous breaking of a global U(1)_PQ symmetry in the Peccei-Quinn
+        model.
+      confidence: medium
+      section: axion theory
+    interactions:
+    - reference_id: primary
+      note: The model is framed as invisible/QCD axion physics; specific detector couplings are not extracted
+        in this model-only pass.
+      confidence: medium
+      section: axion theory
+    production_mechanism:
+    - reference_id: primary
+      note: The present axion density is produced by vacuum realignment alone or by realignment plus axionic
+        string decay.
+      confidence: high
+      section: abstract
+    cosmological_history:
+    - reference_id: primary
+      note: The paper parameterizes non-standard cosmologies by w_eff and T_RH before returning to the
+        standard CDM model before BBN.
+      confidence: high
+      section: non-standard cosmology
+    parameter_ranges:
+    - reference_id: primary
+      note: The numerical scan solves for m_A as a function of w_eff, T_RH, theta_i, and string contribution.
+      confidence: medium
+      section: axion misalignment
+    validity_domain:
+    - reference_id: primary
+      note: The scenario assumes cold axions saturate the CDM abundance and that the non-standard era
+        ends before BBN.
+      confidence: medium
+      section: introduction
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - pre-BBN expansion history
+  - axionic-string contribution
+  - initial misalignment angle
+  validation_status: expert_judgment_only
+  notes: Accepted as a substantive paper-local axion dark matter cosmology variant, not a new axion particle
+    model.
+agent_failure_modes:
+  warnings:
+  - id: not_new_axion_particle
+    severity: medium
+    category: assumption_mismatch
+    warning: This card represents the paper's non-standard-cosmology axion DM variant; it should not be
+      read as a new UV axion construction.
+    mitigation: Keep the pre-BBN cosmology assumptions attached to the card.

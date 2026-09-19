@@ -1,0 +1,409 @@
+_source:
+  shard: arXiv_src_2405_062_wds.tar
+  paper_id: '2405_08081'
+  source_member: 2405_08081.json
+schema_version: model_only_v0
+model_id: 2405_08081_not_so_inelastic_dm_v1
+identity:
+  name: Not-so-inelastic dark matter (niDM)
+  family: inelastic_dark_matter
+  aliases:
+  - niDM
+  - not-so-inelastic DM
+  short_description: A U(1) prime dark-photon model with two Majorana dark fermions whose elastic coupling
+    is controlled by a left-right Yukawa/Majorana asymmetry parameter, interpolating between inelastic
+    DM and Majorana DM.
+  historical_origin_or_motivation: Motivated by relaxing the usual m_L = m_R assumption in inelastic dark
+    matter while preserving attractive relic-density and experimental features.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - inelastic_dark_matter
+  - majorana_dark_matter
+  - dark_photon_model
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper presents a gauge-invariant anomaly-free U(1) prime extension with fermions, a singlet
+    scalar, a dark photon, kinetic mixing, and a Higgs portal term.
+particle_content:
+  dark_matter_candidate:
+    name: lighter Majorana state chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - excited Majorana state chi_star
+  - dark photon A_prime
+  - SM-singlet scalar S
+  mediators:
+  - dark photon A_prime
+  - SM-singlet scalar S
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - chi_star
+  long_lived_particles:
+  - chi_star may be long-lived on detector scales depending on parameters
+  unstable_parent_particles:
+  - dark photon A_prime
+  - excited state chi_star
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The lighter Majorana state is treated as the stable DM particle; the exact low-energy
+    stabilizing remnant is not explicitly named in the local text.
+  symmetries:
+  - name: U(1)'
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneously broken by the singlet scalar S acquiring a vev
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - higgs
+  standard_model_targets:
+  - electrically charged SM fermions through dark-photon kinetic mixing
+  - SM Higgs through the scalar portal term (assumed decoupled for phenomenology)
+  dark_sector_couplings:
+  - diagonal elastic A_prime couplings
+  - off-diagonal inelastic A_prime coupling between chi and chi_star
+  - Yukawa couplings y_L and y_R to S
+  mediator_types:
+  - dark photon A_prime
+  - SM-singlet scalar S
+  interaction_operators:
+  - kinetic mixing between U(1) prime and hypercharge
+  - Yukawa Majorana mass terms from S
+  - Dirac mass term between chiral dark fermions
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels:
+  - chi chi and chi chi_star annihilation through A_prime to SM fermions
+  - elastic and inelastic annihilation contributions in freeze-out
+  decay_channels:
+  - chi_star decays to chi plus SM fermions through off-shell A_prime
+  - A_prime decays to dark fermion pairs when kinematically allowed
+  self_scattering_channels: []
+  cp_structure: CP-conserving benchmark; complex phase would change the inelastic channel to p-wave
+  flavor_structure: two chiral dark fermions with equal U(1) prime charge
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: DM mass
+    symbol: m_chi
+    description: Mass of the lighter Majorana DM state.
+    range: benchmark windows around 200-500 MeV and 3-8 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: excited-state mass splitting
+    symbol: Delta_m
+    description: Relative mass splitting (m_chi_star - m_chi)/m_chi.
+    role: core
+    status: inferred
+  - name: left-right asymmetry
+    symbol: Delta_y
+    description: Parameter characterising the difference between m_L and m_R or y_R and y_L; Delta_y ->
+      0 recovers iDM.
+    role: core
+    status: inferred
+  - name: dark photon mass
+    symbol: m_A_prime
+    description: Dark photon mass; benchmark m_A_prime = 3 m_chi.
+    value: 3 m_chi benchmark
+    role: core
+    status: assumed
+  - name: dark fine structure constant
+    symbol: alpha_prime
+    description: Dark U(1) prime coupling alpha_prime = g_prime^2/(4 pi); benchmark alpha_prime=0.5.
+    value: 0.5
+    role: core
+    status: assumed
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Kinetic mixing controlling coupling of A_prime to SM fermions and fixed by relic-density
+      requirement along benchmark curves.
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: elastic fine-structure constant
+    symbol: alpha_el_prime
+    description: Diagonal elastic coupling strength after rotating to the mass basis.
+    role: derived
+    status: inferred
+  - name: inelastic fine-structure constant
+    symbol: alpha_inel_prime
+    description: Off-diagonal inelastic coupling strength after rotating to the mass basis.
+    role: derived
+    status: inferred
+  - name: inelastic relic fraction
+    symbol: f_iDM
+    description: Relative contribution of inelastic interactions to the relic abundance integral.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through dark-photon-mediated annihilation
+  - elastic annihilation of Majorana ground states
+  - inelastic coannihilation involving the excited state when not Boltzmann suppressed
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - velocity-averaged annihilation cross section
+  - kinetic mixing epsilon
+  - left-right asymmetry Delta_y
+  - mass splitting Delta_m
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper computes epsilon values required to reproduce the observed DM abundance and identifies
+    allowed thermal freeze-out windows.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_A_prime
+  - alpha_prime
+  - epsilon
+  - Delta_y
+  - Delta_m
+  - Boltzmann suppression of chi_star
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - U(1)' spontaneous breaking by singlet scalar vev
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The model is treated as thermally produced cold particle dark matter.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: benchmark_dark_photon_mass
+  applies_to: parameter
+  condition: Most plots use m_A_prime = 3 m_chi and alpha_prime = 0.5.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: no_dark_photon_pair_annihilation
+  applies_to: model
+  condition: The present work only considers m_A_prime > m_chi so pure dark-sector annihilation to A_prime
+    A_prime is forbidden.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: decoupled_scalar_sector
+  applies_to: model
+  condition: The scalar sector is assumed to decouple from phenomenology through sufficiently small Higgs
+    portal coupling and/or heavy radial mode.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: photon_portal_limit
+  applies_to: model
+  condition: For m_A_prime much smaller than m_Z, only the photon portal is relevant.
+  status: assumed
+  extrapolation_risk: low
+  caveats: []
+assumptions:
+  global:
+  - id: cp_conservation
+    description: The benchmark sets the complex phase in the Dirac mass to zero, corresponding to CP conservation
+      in the dark sector.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: equal_dark_charges
+    description: The chiral fermions carry the same U(1) prime charge, making the extension anomaly-free
+      in the setup.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: scalar_sector_decoupled
+    description: The singlet scalar sector is assumed not to drive the studied phenomenology.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: thermal_freezeout_target
+    description: Kinetic mixing is chosen so the thermal freeze-out calculation reproduces the observed
+      DM abundance.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+  computation_specific: []
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses public tools such as DirectDM and DDCalc for mapping/scattering analyses;
+    no official standalone niDM model code is identified.
+  primary_code_role: recasting_pipeline
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  expected_inputs:
+  - model_parameters
+  expected_outputs:
+  - effective_interaction_coefficients
+  reproducibility:
+    reproducibility_level: unknown
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats:
+  - The referenced tools are for phenomenological analyses, not necessarily an official implementation
+    of the model definition.
+provenance:
+  model_id: 2405_08081_not_so_inelastic_dm_v1
+  model_name: Not-so-inelastic dark matter (niDM)
+  model_family: inelastic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-06-01'
+  last_updated: '2026-06-01'
+  sources:
+    primary_papers:
+    - reference_id: '2405_08081'
+      title: Paper 2405.08081 (title not available in local text; introduces not-so-inelastic DM)
+      year: 2024
+      arxiv_id: '2405.08081'
+      doi: null
+      url: null
+      role: original_model
+      notes: Extracted only from the assigned SQLite full text.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0003
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-06-01'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2405_08081'
+      section: introduction
+      page: null
+      quote_or_summary: The paper says it proposes a new model called not-so-inelastic DM with a new Delta_y
+        parameter.
+    - reference_id: '2405_08081'
+      section: model setup
+      page: null
+      quote_or_summary: The paper introduces a U(1) prime dark sector, two chiral fermions, a singlet
+        scalar, and a dark photon.
+    - reference_id: '2405_08081'
+      section: relic density
+      page: null
+      quote_or_summary: The relic density calculation includes elastic and inelastic annihilation contributions.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2405_08081'
+      note: The paper introduces two chiral fermions that become two Majorana states; the lighter state
+        is the DM particle and the heavier state is the excited DM state.
+      confidence: high
+      section: model setup
+    symmetries:
+    - reference_id: '2405_08081'
+      note: The dark sector contains a spontaneously broken U(1) prime gauge symmetry and a singlet scalar
+        S that gives masses to A prime and the dark fermions.
+      confidence: high
+      section: model setup
+    interactions:
+    - reference_id: '2405_08081'
+      note: Rotating to mass eigenstates gives diagonal and off-diagonal couplings to A prime, with kinetic
+        mixing connecting A prime to SM charged fermions.
+      confidence: high
+      section: model setup
+    production_mechanism:
+    - reference_id: '2405_08081'
+      note: The relic abundance is set by thermal freeze-out with both elastic and inelastic annihilation
+        contributions, controlled by delta_y and delta_m.
+      confidence: high
+      section: relic density
+    cosmological_history:
+    - reference_id: '2405_08081'
+      note: The paper computes kinetic mixing values required to reproduce the observed DM abundance in
+        a standard freeze-out calculation.
+      confidence: high
+      section: relic density
+    parameter_ranges:
+    - reference_id: '2405_08081'
+      note: Benchmarks include alpha prime = 0.5 and m_A prime = 3 m_chi, with interesting DM mass windows
+        around 200-500 MeV and 3-8 GeV.
+      confidence: high
+      section: model setup/conclusions
+    validity_domain:
+    - reference_id: '2405_08081'
+      note: The benchmark assumes CP conservation, a decoupled scalar sector, m_A prime above the dark
+        matter mass, and a photon portal when m_A prime is much smaller than m_Z.
+      confidence: medium
+      section: model setup
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - The source title is not present in the local extracted text.
+robustness:
+  overall: medium
+  theory_robustness: high
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - benchmark-dependent allowed regions
+  - scalar-sector decoupling assumption
+  validation_status: expert_judgment_only
+  notes: The model definition is explicit, but this row omits constraints by run instruction.
+agent_failure_modes:
+  warnings:
+  - id: not_standard_idm_limit
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not assume the elastic coupling vanishes as in traditional iDM; niDM is defined by nonzero
+      left-right asymmetry and relevant elastic annihilation.
+  - id: benchmark_dependent
+    severity: medium
+    category: extrapolation
+    warning: Mass windows and kinetic mixing values are benchmark dependent.
+    mitigation: Use the full model equations before extrapolating outside the stated parameter ranges.

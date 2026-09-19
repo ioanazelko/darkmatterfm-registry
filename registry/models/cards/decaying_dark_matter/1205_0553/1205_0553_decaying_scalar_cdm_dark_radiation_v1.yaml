@@ -1,0 +1,617 @@
+_source:
+  shard: arXiv_src_1205_001_wds.tar
+  paper_id: '1205_0553'
+  source_member: 1205_0553.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1205_0553_decaying_scalar_cdm_dark_radiation_v1
+identity:
+  name: Decaying scalar CDM to dark radiation
+  family: decaying_dark_matter
+  aliases:
+  - dark matter decaying into dark radiation
+  - DDM dark radiation scenario
+  short_description: A phenomenological cold-dark-matter scenario in which a small fraction of a coherently
+    oscillating scalar CDM component is converted into nearly massless dark radiation after BBN and before
+    decoupling.
+  historical_origin_or_motivation: Motivated by a possible mismatch between the radiation content inferred
+    at BBN and at the CMB epoch.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - interacting dark sector
+  - decaying dark matter cosmology
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper first uses covariant energy-transfer equations and then gives a scalar-field plus dark-fermion
+    realization; it is not a full UV completion.
+particle_content:
+  dark_matter_candidate:
+    name: coherently oscillating scalar CDM field
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - nearly massless dark fermion dark radiation
+  mediators: []
+  dark_radiation_species:
+  - nearly massless dark fermion
+  unstable_parent_particles:
+  - scalar CDM field
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The scalar is assumed to be sufficiently long lived to act as CDM while only
+    a small fraction converts into dark radiation; no exact stabilizing symmetry is specified.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets: []
+  dark_sector_couplings:
+  - Yukawa-type coupling between scalar CDM and dark fermion
+  mediator_types: []
+  interaction_operators:
+  - schematic scalar-fermion Yukawa coupling
+  decay_channels:
+  - scalar CDM -> dark fermion dark radiation pairs
+parameters:
+  core:
+  - name: dark matter to dark radiation conversion fraction
+    symbol: alpha
+    description: Small dimensionless fraction relating the dark-radiation and dark-matter densities in
+      the weak-coupling limit.
+    role: core
+    status: inferred
+    notes: The paper treats alpha as the parameter constrained by CMB data and approximately rho_dark/rho_DM.
+  - name: scalar CDM mass
+    symbol: m_phi
+    description: Mass of the coherently oscillating scalar field.
+    role: core
+    status: unknown
+    notes: The paper notes the mass does not enter the perturbation analysis directly.
+  - name: dark fermion Yukawa coupling
+    symbol: lambda
+    description: Coupling controlling parametric production of dark fermions from the scalar CDM background.
+    role: core
+    status: unknown
+  - name: resonance parameter
+    symbol: q
+    description: Parameter governing parametric fermion production from the oscillating scalar.
+    role: derived
+    status: inferred
+    notes: Production requires q(z) greater than one in the example discussed.
+production:
+  mechanisms:
+  - coherent scalar-field CDM oscillations
+  - parametric decay into dark fermion radiation
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - initial scalar CDM abundance
+  - small dark-sector conversion fraction
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The model assumes a CDM component and computes how a fraction is converted into dark radiation
+    rather than deriving the initial CDM abundance from first principles.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - alpha
+  - initial CDM density
+  - scalar oscillation history
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late dark-radiation production from CDM between BBN and decoupling
+  dark_sector_temperature: null
+  delta_neff:
+    name: extra effective radiation
+    symbol: Delta N_eff
+    description: Effective radiation increment generated near decoupling.
+    role: derived
+    status: inferred
+    notes: Computed from the modified expansion rate rather than inserted as a free thermal species.
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  notes: The perturbation treatment uses a Boltzmann hierarchy for the massless decay product and a modified
+    CDM background distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: The paper suggests reduced dark matter in galaxies and clusters could affect
+      small-scale structure, left for future work.
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: small_alpha_limit
+  applies_to: model
+  condition: Weak coupling alpha much smaller than one so rho_dark/rho_DM is approximately constant.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Large conversion fractions are outside the simple analytic scaling.
+- id: coherent_oscillation_before_mre
+  applies_to: production
+  condition: The scalar must begin coherent oscillation before matter-radiation equality to behave as
+    CDM.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - The scalar mass is not fixed by the perturbation analysis.
+- id: parametric_production_regime
+  applies_to: production
+  condition: The resonance parameter q(z) remains greater than one over the epoch of interest.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The detailed particle model is only sketched.
+assumptions:
+  global:
+  - id: flat_background_cosmology
+    description: The cosmological fits impose a flat background model with standard baryons, photons,
+      neutrinos, and dark energy plus the interacting dark sector.
+    scope: global
+    status: assumed
+    impact_if_violated: The derived expansion-rate interpretation of Delta N_eff would change.
+    can_be_relaxed: 'yes'
+  - id: negligible_early_dark_radiation
+    description: The radiation-like integration constant is neglected so the dark-radiation density is
+      sourced primarily by CDM conversion.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: There would be an additional primordial radiation component.
+    can_be_relaxed: 'yes'
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that the equations were implemented in a modified CAMB and used with
+    COSMOMC, but no public release is identified in the text.
+  primary_code_role: boltzmann_solver_patch
+  packages_or_modules: []
+  repositories: []
+  notebooks: []
+  scripts: []
+  expected_inputs:
+  - cosmological parameters
+  - dark matter decay fraction alpha
+  expected_outputs:
+  - CMB temperature power spectrum
+  - parameter estimates
+  reproducibility:
+    reproducibility_level: partial
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: Only the use of modified CAMB/COSMOMC is described.
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats:
+  - No code repository is given in the extracted paper text.
+provenance:
+  model_id: 1205_0553_decaying_scalar_cdm_dark_radiation_v1
+  model_name: Decaying scalar CDM to dark radiation
+  model_family: decaying_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1205_0553'
+      title: Origin of N_eff as a Result of an Interaction between Dark Radiation and Dark Matter
+      authors:
+      - Ole Eggers Bjaelde
+      - Subinoy Das
+      - Adam Moss
+      year: 2012
+      arxiv_id: '1205.0553'
+      doi: null
+      url: null
+      role: original_model
+      notes: The paper explicitly says the specific particle realization is phenomenological and the numerical
+        results are more general.
+    - reference_id: src_primary
+      title: Origin of ∆Neff as a result of an interaction between dark radiation and dark matter
+      authors:
+      - Eggers Bjaelde, Ole
+      - Das, Subinoy
+      - Moss, Adam
+      year: 2012
+      arxiv_id: '1205.0553'
+      doi: 10.1088/1475-7516/2012/10/017
+      url: https://arxiv.org/abs/1205.0553
+      role: original_model
+      notes: Primary paper full text resolved locally; ADS metadata used for bibliographic fields.
+    constraint_papers: []
+    review_papers: []
+    external_databases: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0018
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1205_0553'
+      section: Introduction
+      page: null
+      quote_or_summary: The paper proposes dark matter interacting with and producing dark radiation after
+        BBN.
+    - reference_id: '1205_0553'
+      section: Background evolution
+      page: null
+      quote_or_summary: Continuity equations transfer energy from dark matter to radiation with Q proportional
+        to the CDM density.
+    - reference_id: '1205_0553'
+      section: Origin/model section
+      page: null
+      quote_or_summary: A coherently oscillating scalar CDM field couples to a nearly massless dark fermion.
+    unresolved_items:
+    - The exact UV completion and stabilizing symmetry of the scalar CDM field are not specified.
+    - The text conversion removes the symbol for alpha in several equations; the bound is stored as the
+      phenomenological decay constant / converted fraction described by the prose.
+    - Modern Planck/ACT/SPT likelihoods were not recast in this batch.
+  evidence:
+    particle_content:
+    - reference_id: '1205_0553'
+      note: The paper gives a phenomenological example with a coherently oscillating scalar field as CDM
+        and a nearly massless dark fermion as dark radiation.
+      confidence: high
+      section: Origin/model section
+    interactions:
+    - reference_id: '1205_0553'
+      note: The scalar CDM has a Yukawa-type coupling to the dark fermion and can parametrically produce
+        dark radiation.
+      confidence: high
+      section: Origin/model section
+    production_mechanism:
+    - reference_id: '1205_0553'
+      note: Background equations use energy transfer from dark matter to dark radiation with rate proportional
+        to the Hubble rate.
+      confidence: high
+      section: Background evolution
+    cosmological_history:
+    - reference_id: '1205_0553'
+      note: Dark radiation is designed to be small during BBN and to grow near matter-radiation equality
+        and photon decoupling.
+      confidence: high
+      section: Introduction and conclusion
+    parameter_ranges:
+    - reference_id: '1205_0553'
+      note: The coupling fraction alpha is treated as small and approximately equal to rho_dark/rho_DM
+        in the weak-coupling limit.
+      confidence: medium
+      section: Background evolution
+    validity_domain:
+    - reference_id: '1205_0553'
+      note: The specific scalar example assumes q(z) greater than one for parametric production and coherent
+        oscillation before matter-radiation equality.
+      confidence: medium
+      section: Origin/model section
+    observables:
+    - reference_id: src_primary
+      note: Introduction and background sections describe dark radiation produced by a fraction of CDM
+        after BBN and before decoupling, giving Delta N_eff around unity near decoupling.
+      confidence: high
+      section: introduction/background
+      page: null
+    - reference_id: src_primary
+      note: Perturbation discussion states the DDM model suppresses the first peak and reduces small-scale
+        CMB power relative to comparison models.
+      confidence: high
+      section: perturbations/CosmoMC
+      page: null
+    constraints:
+    - reference_id: src_primary
+      note: CosmoMC results paragraph reports no preference for non-zero alpha and 2-sigma upper limits
+        alpha < 0.027 and alpha < 0.028.
+      confidence: high
+      section: CosmoMC results
+      page: null
+    - reference_id: src_primary
+      note: Specific scalar-origin section imposes coherent oscillation before matter-radiation equality,
+        using T_osc around 100 eV to avoid matter-power constraints.
+      confidence: medium
+      section: origin of interaction
+      page: null
+    routes:
+    - reference_id: src_primary
+      note: Paper lays out background equations, Boltzmann hierarchy, and CosmoMC analysis pipeline.
+      confidence: high
+      section: methods
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - phenomenological interaction rate
+  - unspecified scalar origin
+  - late-time structure effects left for future work
+  validation_status: expert_judgment_only
+  notes: The background and perturbation system is explicit, but the particle model is not a complete
+    UV theory.
+agent_failure_modes:
+  warnings:
+  - id: phenomenological_not_uv_complete
+    severity: medium
+    category: other
+    warning: Do not treat the energy-transfer ansatz as a unique microscopic decay law.
+    mitigation: Keep alpha and the scalar-fermion realization tied to the paper assumptions.
+  - id: initial_abundance_not_derived
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper assumes a CDM abundance and studies conversion to dark radiation; it does not derive
+      the initial scalar abundance.
+observables:
+- id: late_delta_neff_growth
+  name: Late growth of effective dark radiation
+  channel: cmb
+  subchannel: effective N_eff between BBN and recombination
+  predicted_effect: A fraction of cold dark matter converts into dark radiation after BBN, making Delta
+    N_eff near BBN small while allowing an order-unity increase around photon decoupling.
+  effect_direction: enhancement
+  key_quantities:
+  - name: decay constant / converted fraction
+    symbol: alpha
+    description: Phenomenological constant in Gamma = alpha H; for small alpha the dark-radiation to dark-matter
+      ratio is approximately alpha.
+    range:
+      min: 0
+      max: 0.028
+      inclusive_min: true
+      inclusive_max: false
+      unit: null
+      notes: 2-sigma upper limit from WMAP+SPT; WMAP+ACT gives 0.027.
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: effective radiation increase
+    symbol: Delta N_eff
+    description: Model-independent expansion-rate proxy for additional radiation at decoupling.
+    value: order unity
+    status: approximate
+    source_reference_ids:
+    - src_primary
+  redshift_range: after BBN and before photon decoupling
+  scale_range: CMB background expansion history
+  environments:
+  - homogeneous cosmological background
+  observability: medium
+  relevance: critical
+  linked_constraints:
+  - wmap_act_spt_alpha_bound
+  linked_routes:
+  - route_ddm_to_cmb
+  caveats:
+  - The definition of N_eff is model-independent because neither component redshifts in the standard way.
+  source_reference_ids:
+  - src_primary
+  notes: 'This is the central observable of the paper: time-dependent dark radiation sourced by CDM.'
+- id: cmb_temperature_shape
+  name: CMB temperature power-spectrum shape from decaying dark matter
+  channel: cmb
+  subchannel: acoustic peaks and damping tail
+  predicted_effect: Compared with simply adding extra relativistic species, the decaying-DM scenario suppresses
+    the first acoustic peak and reduces small-scale damping-tail power because the background and perturbation
+    evolution differ.
+  effect_direction: shape_change
+  key_quantities:
+  - name: CMB first peak response
+    description: Suppression of the first acoustic peak is highlighted as a distinctive shape effect.
+    value: suppression
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: small-scale temperature power
+    description: Reduced damping-tail power is reported for both extra species and the DDM model.
+    value: reduced
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  redshift_range: recombination era
+  scale_range: CMB multipoles probed by WMAP7 plus ACT/SPT
+  environments:
+  - CMB sky
+  observability: high
+  relevance: high
+  linked_constraints:
+  - wmap_act_spt_alpha_bound
+  linked_routes:
+  - route_ddm_to_cmb
+  caveats:
+  - Foreground marginalization for ACT/SPT small-scale spectra is part of the constraint.
+  source_reference_ids:
+  - src_primary
+  notes: The shape information explains why the paper finds no preference for non-zero alpha despite motivation
+    from high N_eff estimates.
+constraints:
+- id: wmap_act_spt_alpha_bound
+  name: WMAP7 plus ACT/SPT upper bound on decaying-DM fraction
+  constraint_type: cosmological
+  observable_channel: CMB temperature anisotropies
+  applies: 'yes'
+  constrained_parameters:
+  - alpha
+  - rho_dark/rho_DM
+  - Delta N_eff
+  excluded_regions:
+  - alpha >= 0.027 for WMAP+ACT and alpha >= 0.028 for WMAP+SPT at the quoted 2-sigma upper limits.
+  allowed_regions:
+  - alpha < 0.027 from WMAP+ACT; alpha < 0.028 from WMAP+SPT.
+  benchmark_implications:
+  - Only a few-percent conversion fraction is allowed by the CMB datasets analyzed.
+  likelihood_available: partial
+  likelihood_reference: CosmoMC likelihoods for WMAP7, ACT 2008, and SPT 2008/2009 are used in the paper
+    but not bundled here.
+  data_release: WMAP7 + ACT 148 GHz 2008; WMAP7 + SPT 150 GHz 2008/2009
+  recasting_needed: 'no'
+  robustness: high
+  assumptions:
+  - id: flat_lcdm_extension
+    description: The fit assumes spatial flatness and varies seven cosmological parameters plus alpha
+      and foregrounds.
+    scope: CosmoMC parameter estimation
+    status: assumed
+    impact_if_violated: Relaxing cosmological assumptions could broaden or shift the alpha constraint.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - src_primary
+    notes: null
+  caveats:
+  - The paper does not combine ACT and SPT because their observed fields slightly overlap.
+  source_reference_ids:
+  - src_primary
+  notes: Primary text gives 2-sigma upper limits of alpha < 0.027 and alpha < 0.028.
+- id: matter_power_oscillation_condition
+  name: Scalar-CDM oscillation before matter-radiation equality
+  constraint_type: cosmological
+  observable_channel: linear matter power and coherent scalar behavior
+  applies: parameter_dependent
+  constrained_parameters:
+  - m_phi
+  - T_osc
+  - Yukawa coupling
+  - resonance parameter q
+  excluded_regions:
+  - Scalar dark matter beginning coherent oscillations too late would suppress small-scale linear matter
+    power.
+  allowed_regions:
+  - Example estimate uses T_osc around 100 eV so oscillations begin before matter-radiation equality;
+    m_phi must exceed H(T_osc).
+  benchmark_implications:
+  - Phenomenological scalar examples must satisfy both the CMB alpha bound and this matter-power timing
+    condition.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: Lyman-alpha and SDSS matter-power constraints cited in primary paper
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: quadratic_scalar_potential
+    description: The scalar is approximated near the minimum by V = 1/2 m_phi^2 phi^2.
+    scope: specific particle model
+    status: assumed
+    impact_if_violated: A different potential changes the mapping between alpha and particle parameters.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - src_primary
+    notes: null
+  caveats:
+  - The paper provides an illustrative scalar model; the main CMB bound is model-independent within the
+    alpha-H coupling form.
+  source_reference_ids:
+  - src_primary
+  notes: Primary text states oscillation near T_osc ~100 eV keeps the model away from Lyman-alpha/SDSS
+    matter-power conflict.
+theory_to_observable_routing:
+  routes:
+  - id: route_ddm_to_cmb
+    description: Route decaying scalar CDM to CMB constraints by solving coupled background and perturbation
+      equations and fitting with CosmoMC.
+    source_model_features:
+    - CDM energy transfer Q to dark radiation
+    - Gamma = alpha H phenomenology
+    - dark radiation treated as massless daughter species
+    input_parameters:
+    - alpha
+    - omega_b h^2
+    - omega_dm h^2
+    - H0
+    - tau
+    - A_s
+    - n_s
+    - foreground nuisance parameters
+    derived_quantities:
+    - Delta N_eff(a)
+    - CMB TT spectrum
+    - alpha posterior
+    forward_model_chain:
+    - step_id: background
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - Gamma = alpha H
+      - rho_DM
+      - rho_dark
+      outputs:
+      - rho_DM(a)
+      - rho_dark(a)
+      - Delta N_eff(a)
+      validity: valid for the phenomenological energy-transfer law
+      notes: For small alpha, rho_dark/rho_DM is approximately alpha.
+    - step_id: perturbations
+      step_type: boltzmann_solver
+      tool_or_code: modified CAMB/CosmoMC as described in paper
+      inputs:
+      - background evolution
+      - Boltzmann hierarchy for decay products
+      outputs:
+      - CMB spectra
+      - parameter posterior
+      validity: valid for the paper assumptions
+      notes: The paper derives perturbation equations for massive parent and massless decay products.
+    - step_id: likelihood
+      step_type: likelihood
+      tool_or_code: WMAP7/ACT/SPT likelihood packages
+      inputs:
+      - CMB spectra
+      - foreground templates
+      outputs:
+      - alpha upper limit
+      validity: dataset-specific
+      notes: ACT and SPT are analyzed separately.
+    observable_ids:
+    - late_delta_neff_growth
+    - cmb_temperature_shape
+    constraint_ids:
+    - wmap_act_spt_alpha_bound
+    - matter_power_oscillation_condition
+    likelihoods:
+    - WMAP7 likelihood
+    - ACT/SPT high-ell likelihoods
+    required_code_resources:
+    - CAMB/CosmoMC implementation of interacting dark matter and dark radiation
+    validation_tests:
+    - Reproduce alpha < 0.027 and alpha < 0.028 upper limits.
+    - Check Delta N_eff(a) is near zero at BBN and order unity near decoupling for sample alpha.
+    route_status: planned
+    agent_notes: The route is explicit in the paper but code was not recovered in this batch.
+    caveats:
+    - Planck-era datasets supersede WMAP7/ACT/SPT and would need a fresh analysis.

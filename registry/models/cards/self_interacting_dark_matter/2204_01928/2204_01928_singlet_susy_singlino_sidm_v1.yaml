@@ -1,0 +1,853 @@
+_source:
+  shard: arXiv_src_2204_014_wds.tar
+  paper_id: '2204_01928'
+  source_member: 2204_01928.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2204_01928_singlet_susy_singlino_sidm_v1
+identity:
+  name: Singlet-SUSY singlino self-interacting dark matter
+  family: self_interacting_dark_matter
+  aliases:
+  - self-interacting singlino dark matter
+  - singlet extension of MSSM quasi dark sector
+  - soft-breaking Wess-Zumino singlet SIDM
+  short_description: A tiny-coupled singlet superfield extension of the MSSM in which a Majorana singlino
+    is the dark matter, annihilates to singlet scalars for thermal relic abundance, and self-scatters
+    through a light singlet scalar mediator.
+  historical_origin_or_motivation: The paper motivates the construction as a SUSY realization of self-interacting
+    dark matter that can address small-scale structure issues while also allowing a singlet-sector first-order
+    phase transition with gravitational waves.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - minimal supersymmetric standard model extended by a singlet superfield
+  - soft-breaking Wess-Zumino singlet sector
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the singlet superpotential, soft-breaking terms, scalar potential, mass relations,
+    Feynman rules, annihilation amplitudes, and finite-temperature potential, while treating the coupling
+    to the MSSM sector as tiny.
+particle_content:
+  dark_matter_candidate:
+    name: singlino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - singlet superfield S
+  - CP-even singlet scalar H
+  - CP-odd singlet pseudoscalar A
+  mediators:
+  - light CP-even singlet scalar H
+  - singlet pseudoscalar A
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - singlino
+  unstable_parent_particles:
+  - CP-even singlet scalar H
+  - CP-odd singlet pseudoscalar A
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper treats the singlino as the dark matter in a quasi-dark singlet SUSY
+    sector with tiny coupling to MSSM doublets; the exact stabilizing symmetry is not specified in the
+    extracted text.
+  symmetries:
+  - name: supersymmetry
+    type: unknown
+    exact_or_approximate: broken
+    breaking: soft-breaking singlet terms are included in the scalar potential
+    breaking_scale: null
+  - name: CP conservation assumption
+    type: unknown
+    exact_or_approximate: exact
+    breaking: not considered; the FOPT analysis assumes only the real part of S obtains a background value
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - MSSM Higgs doublets
+  - nucleons through suppressed mixing
+  dark_sector_couplings:
+  - singlet superpotential self-coupling
+  - soft trilinear singlet coupling A_k
+  - singlino-scalar Yukawa interactions from the singlet superfield
+  - singlet scalar self-couplings
+  mediator_types:
+  - singlet scalar
+  - singlet pseudoscalar
+  interaction_operators:
+  - singlino singlino annihilation to HH, AA, and HA final states
+  - singlino self-scattering through light singlet scalar exchange
+  - singlet scalar cubic and quartic self-interactions
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels:
+  - singlino singlino -> H H
+  - singlino singlino -> A A
+  - singlino singlino -> H A
+  decay_channels: []
+  self_scattering_channels:
+  - singlino singlino elastic scattering via light singlet scalar exchange
+  cp_structure: CP-conserving singlet background assumed in the phase-transition calculation.
+  flavor_structure: No Standard Model flavor structure is specified because the singlet sector is taken
+    to have tiny coupling to the MSSM sector.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: singlino dark matter mass
+    symbol: m_chi
+    description: Majorana singlino mass scanned for the SIDM relic-density and self-interaction study.
+    range: 1e-6 to 1e4
+    unit: GeV
+    scale: log
+    role: core
+    status: inferred
+    notes: The surviving FOPT plus SIDM region highlighted in the paper has singlino dark matter lighter
+      than 1 MeV.
+  - name: CP-even singlet scalar mass
+    symbol: m_H
+    description: Mass of the scalar mediator and phase-transition background excitation.
+    range: 1e-6 to 1e4
+    unit: GeV
+    scale: log
+    role: core
+    status: inferred
+    notes: The surviving FOPT plus SIDM region has the dark scalar lighter than about 100 keV.
+  - name: CP-odd singlet pseudoscalar mass
+    symbol: m_A
+    description: Mass of the singlet pseudoscalar appearing in the annihilation final states and loop
+      corrections.
+    range: 1e-6 to 1e4
+    unit: GeV
+    scale: log
+    role: core
+    status: inferred
+  - name: dimensionless singlet coupling
+    symbol: lambda_or_alpha
+    description: Dimensionless coupling strength used in the physical-parameter description of the singlet
+      potential.
+    range: 1e-6 to 1
+    unit: null
+    scale: log
+    role: core
+    status: inferred
+  - name: soft trilinear singlet parameter
+    symbol: A_k
+    description: Soft trilinear parameter used as a physical input for the scalar potential.
+    range: -1e5 to 0
+    unit: GeV
+    scale: linear
+    role: core
+    status: inferred
+  - name: singlet vacuum expectation value
+    symbol: v_s
+    description: Singlet VEV varied in the first-order phase-transition scan.
+    range: 1e-6 to 1e4
+    unit: GeV
+    scale: log
+    role: core
+    status: assumed
+  - name: self-interaction cross section per mass target
+    symbol: sigma_over_m_chi
+    description: SIDM range used by the paper for small-scale structure phenomenology at characteristic
+      velocity 200 km/s.
+    range: 0.1 to 10
+    unit: cm^2/g
+    scale: log
+    role: derived
+    status: assumed
+production:
+  mechanisms:
+  - thermal freeze-out through singlino annihilation to singlet scalars
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - singlino annihilation amplitudes to HH, AA, and HA
+  - singlet scalar and pseudoscalar masses
+  - dimensionless singlet coupling
+  - dark-sector temperature ratio
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper assumes instant freeze-out and selects parameter points with favorable relic density
+    while keeping the singlet sector only tiny-coupled to the MSSM sector.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - annihilation cross sections into singlet scalars
+  - singlino mass
+  - singlet scalar masses
+  - singlet self-couplings
+  - dark-sector temperature
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - quasi-decoupled singlet dark sector
+  - low-temperature first-order phase transition in the singlet scalar background
+  - dark-sector temperature ratio chosen below the Standard Model temperature
+  dark_sector_temperature:
+    name: dark-sector to Standard Model temperature ratio
+    symbol: T_f/T_SM
+    description: Temperature ratio chosen for the dark sector in the paper's numerical discussion.
+    value: 0.47
+    unit: null
+    role: cosmological
+    status: assumed
+  delta_neff:
+    name: extra effective neutrino species from the SUSY dark sector
+    symbol: Delta N_eff
+    description: The paper states that Delta N_eff below 0.5 is used in the study.
+    range: < 0.5
+    unit: null
+    role: cosmological
+    status: assumed
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - first-order phase transition of the CP-even singlet background field
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The relic abundance is treated using a freeze-out calculation; no explicit present-day phase-space
+    distribution is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: not discussed in the assigned text
+  nonlinear:
+    halo_mass_function_effect: The model is motivated by small-scale structure issues through SIDM, but
+      no calibrated halo-mass-function prediction is provided.
+    subhalo_mass_function_effect: The paper names missing-satellites and too-big-to-fail problems as SIDM
+      motivations, but does not provide a calibrated subhalo prediction.
+    simulation_calibrated: 'no'
+validity_domain:
+- id: tiny_mssm_coupling
+  applies_to: model
+  condition: The singlet sector is only tiny-coupled to the MSSM sector and behaves as a quasi dark sector.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - Larger doublet-singlet couplings would change direct coupling to ordinary matter and phase-transition
+    behavior.
+  source_reference_ids:
+  - paper_2204_01928
+- id: light_singlet_scalar_sidm_region
+  applies_to: parameter
+  condition: The combined FOPT plus SIDM region highlighted by the paper has singlino mass below 1 MeV
+    and dark scalar mass below about 100 keV.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - The broader scan includes much wider mass ranges before imposing the combined requirements.
+  source_reference_ids:
+  - paper_2204_01928
+- id: cp_conserving_phase_transition
+  applies_to: model
+  condition: The phase-transition calculation assumes CP conservation and uses only the CP-even background
+    field.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Allowing CP-odd backgrounds would require a different finite-temperature analysis.
+  source_reference_ids:
+  - paper_2204_01928
+- id: dark_sector_temperature_choice
+  applies_to: cosmological_history
+  condition: The numerical discussion uses Delta N_eff < 0.5 and T_f/T_SM = 0.47 for the dark sector.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The paper states that the dark-sector temperature after reheating is not known.
+  source_reference_ids:
+  - paper_2204_01928
+assumptions:
+  global:
+  - id: quasi_dark_singlet_sector
+    description: The coupling between the singlet sector and the MSSM sector is tiny, so the singlet sector
+      acts as a quasi dark sector.
+    scope: theory
+    status: assumed
+    impact_if_violated: The singlino's direct interactions with ordinary matter and the phase-transition
+      dynamics could change.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper_2204_01928
+  - id: instant_freeze_out
+    description: The relic calculation adopts an instant freeze-out approximation using WIMP-like annihilation
+      cross sections within the singlet sector.
+    scope: production
+    status: assumed
+    impact_if_violated: The relic abundance would require solving a more detailed thermal history.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper_2204_01928
+  - id: cp_even_background_only
+    description: The first-order phase transition is computed under CP conservation with only the real
+      part of the singlet field taking a background value.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The scalar potential trajectory and gravitational-wave parameters could differ.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper_2204_01928
+associated_code:
+  has_associated_code: partial
+  code_summary: The assigned text states that the public package cosmoTransition is used to calculate
+    the bounce solution and nucleation temperature; no model-specific released code is identified.
+  primary_code_role: other
+  repositories: []
+  packages_or_modules:
+  - name: cosmoTransition
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - other
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families: []
+    supported_observables: []
+    inputs:
+    - finite-temperature effective potential
+    outputs:
+    - bounce solution
+    - nucleation temperature
+    validity_domain: []
+    citation_reference_ids:
+    - paper_2204_01928
+    notes: Used in the paper for first-order phase-transition calculations.
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs:
+  - singlet-sector scalar potential
+  - finite-temperature effective potential
+  - model parameters
+  expected_outputs:
+  - bounce solution
+  - nucleation temperature
+  - phase-transition quantities
+  caveats:
+  - No official model-specific repository is identified in the assigned text.
+provenance:
+  model_id: 2204_01928_singlet_susy_singlino_sidm_v1
+  model_name: Singlet-SUSY singlino self-interacting dark matter
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper_2204_01928
+      title: Cosmological phase transitions, gravitational waves and self-interacting dark matter in the
+        singlet extension of MSSM
+      authors:
+      - Wenyu Wang
+      - Ke-Pan Xie
+      - Wu-Long Xu
+      - Jin Min Yang
+      year: 2022
+      arxiv_id: '2204.01928'
+      doi: null
+      url: null
+      role: original_model
+      notes: Text source is the assigned SQLite extraction only.
+    - arxiv_id: '2204.01928'
+      authors:
+      - Wenyu Wang
+      - Ke-Pan Xie
+      - Wu-Long Xu
+      - Jin Min Yang
+      doi: 10.1140/epjc/s10052-022-11077-3
+      notes: Primary local full text used for singlet-SUSY SIDM, relic-density, FOPT, and gravitational-wave
+        reach.
+      reference_id: '2204_01928'
+      role: original_model
+      title: Cosmological phase transitions, gravitational waves and self-interacting dark matter in the
+        singlet extension of MSSM
+      url: https://arxiv.org/abs/2204.01928
+      year: 2022
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0017_dark_matter_model_worker
+    extractor_name: GPT-5.5 rolling batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper_2204_01928
+      section: Abstract and Introduction
+      page: null
+      quote_or_summary: The paper describes a tiny-coupled singlet extension of the MSSM as a quasi dark
+        sector with self-interacting singlino dark matter.
+    - reference_id: paper_2204_01928
+      section: Singlet SUSY model
+      page: null
+      quote_or_summary: The text gives the singlet superpotential, soft terms, scalar potential, singlino
+        and singlet-scalar masses, and annihilation channels.
+    - reference_id: paper_2204_01928
+      section: Numerical results
+      page: null
+      quote_or_summary: The scan combines relic density, SIDM self-scattering, first-order phase transition,
+        and a dark-sector temperature choice.
+    unresolved_items:
+    - The extracted text does not state the exact stabilizing symmetry for singlino dark matter.
+    - Some mathematical symbols lose subscripts or signs in the SQLite text, so parameter symbols are
+      normalized descriptively.
+    - No reusable scan code, likelihood, or detector-forecast table was located in the bounded run.
+    - Direct-detection suppression is qualitative in the primary text and not structured as an exclusion
+      curve.
+  evidence:
+    particle_content:
+    - reference_id: paper_2204_01928
+      note: The singlet superfield S contains a Majorana singlino plus CP-even and CP-odd singlet scalars.
+      confidence: high
+      section: Singlet SUSY model
+    symmetries:
+    - reference_id: paper_2204_01928
+      note: The model includes soft SUSY-breaking singlet terms and assumes CP conservation for the phase-transition
+        analysis.
+      confidence: high
+      section: Singlet SUSY model; First-order phase transition
+    interactions:
+    - reference_id: paper_2204_01928
+      note: The paper states that singlino self-interaction is mediated by a light scalar and that annihilation
+        to scalars proceeds through t, u, and s channels.
+      confidence: high
+      section: Singlet SUSY model
+    production_mechanism:
+    - reference_id: paper_2204_01928
+      note: The singlino annihilates to singlet bosons to give the correct relic abundance; the numerical
+        study assumes instant freeze-out.
+      confidence: high
+      section: Singlet SUSY model; Numerical results
+    cosmological_history:
+    - reference_id: paper_2204_01928
+      note: The combined SIDM and FOPT region uses a low-temperature singlet-sector phase transition,
+        Delta N_eff below 0.5, and T_f/T_SM = 0.47.
+      confidence: medium
+      section: Numerical results
+    parameter_ranges:
+    - reference_id: paper_2204_01928
+      note: The scan varies singlino and scalar masses, coupling, A_k, and v_s; the surviving region has
+        singlino mass below 1 MeV and scalar mass below about 100 keV.
+      confidence: high
+      section: Numerical results
+    validity_domain:
+    - reference_id: paper_2204_01928
+      note: The authors emphasize tiny coupling to the MSSM sector and an unknown post-reheating dark-sector
+        temperature.
+      confidence: high
+      section: Introduction; Numerical results
+    constraints:
+    - confidence: high
+      note: Primary text gives the relic-density interval, sigma/m target, surviving m_chi/m_H ranges,
+        Delta N_eff/T ratio, and LISA/TianQin/Taiji forecast statement.
+      page: null
+      reference_id: '2204_01928'
+      section: primary text constraints/results
+    observables:
+    - confidence: high
+      note: Primary text links singlino self-interaction, first-order phase transition, GW forecasts,
+        and suppressed direct detection.
+      page: null
+      reference_id: '2204_01928'
+      section: primary text abstract/results
+    routes:
+    - confidence: medium
+      note: Primary results outline a numerical scan over singlet-SUSY physical parameters, FOPT selection,
+        and GW SNR calculation.
+      page: null
+      reference_id: '2204_01928'
+      section: primary text methods/results
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - exact singlino stabilizing symmetry not explicit in extracted text
+  - dark-sector temperature after reheating is unknown
+  - combined SIDM and FOPT region requires very light dark matter and mediator masses
+  - some equation symbols are degraded in the SQLite text
+  validation_status: expert_judgment_only
+  notes: The card records the model-building and relic-density content only; numerical reuse should verify
+    formulas against the original source.
+agent_failure_modes:
+  warnings:
+  - id: singlet_sidm_symbol_loss
+    severity: medium
+    category: notation_conflict
+    warning: Several extracted equations lose subscripts or minus signs, especially in scan ranges and
+      coupling symbols.
+    mitigation: Use the descriptive parameter names and verify exact formulas before numerical calculations.
+    source_reference_ids:
+    - paper_2204_01928
+  - id: singlet_sidm_temperature_assumption
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper states that the dark-sector temperature after reheating is unknown, while the numerical
+      example chooses T_f/T_SM = 0.47.
+    mitigation: Track the temperature-ratio assumption when applying the relic-density and phase-transition
+      results.
+    source_reference_ids:
+    - paper_2204_01928
+  - id: singlet_sidm_light_mass_region
+    severity: medium
+    category: extrapolation
+    warning: The combined FOPT plus SIDM region highlighted by the paper is in a very light sub-MeV mass
+      regime.
+    mitigation: Do not extrapolate the gravitational-wave or self-interaction conclusions across the broader
+      preliminary scan without rechecking the calculation.
+    source_reference_ids:
+    - paper_2204_01928
+observables:
+- caveats:
+  - Astrophysical SIDM target range is adopted rather than fit with a likelihood in the paper.
+  channel: small_scale_structure
+  effect_direction: morphology_change
+  environments:
+  - small-scale structure
+  - galactic halos
+  id: obs_2204_sidm_halo
+  key_quantities:
+  - description: SIDM mass in the scan; FOPT-overlap region is below MeV.
+    name: singlino dark matter mass
+    range: 1e-6 to 1e4 GeV scan; surviving FOPT+SIDM region below 1 MeV
+    role: core
+    source_reference_ids:
+    - '2204_01928'
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+  - description: Target SIDM range used for small-scale anomalies.
+    name: self-interaction cross section per mass
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: '10'
+      min: '0.1'
+      notes: At characteristic velocity 200 km/s.
+      unit: cm^2/g
+    role: derived
+    source_reference_ids:
+    - '2204_01928'
+    status: assumed
+    symbol: sigma/m_chi
+    unit: cm^2/g
+  linked_constraints:
+  - con_2204_relic_sidm_fopt_overlap
+  linked_routes:
+  - route_2204_sidm_fopt_gw_scan
+  name: Singlino self-interaction for small-scale structure
+  notes: Primary text uses the 0.1-10 cm^2/g target range to select SIDM-compatible points.
+  observability: medium
+  predicted_effect: Light singlet-scalar exchange can give singlino self-interaction cross section per
+    mass in the 0.1-10 cm^2/g target range at characteristic velocity 200 km/s.
+  redshift_range: low redshift
+  relevance: high
+  scale_range: dwarf/galaxy halo velocities around 200 km/s
+  source_reference_ids:
+  - '2204_01928'
+  subchannel: velocity-scale SIDM cross section
+- caveats:
+  - Detectability is parameter-dependent and forecast-based.
+  channel: gravitational_waves
+  effect_direction: spectral_line
+  environments:
+  - dark sector thermal plasma
+  - space-based GW detectors
+  id: obs_2204_phase_transition_gw
+  key_quantities:
+  - description: Finite-temperature scan parameter controlling FOPT.
+    name: singlet VEV
+    range: 1e-6 to 1e4 GeV
+    role: core
+    source_reference_ids:
+    - '2204_01928'
+    status: assumed
+    symbol: v_s
+    unit: GeV
+  - description: CP-even scalar mass; surviving FOPT+SIDM region is below about 100 keV.
+    name: dark scalar mass
+    range: surviving region below about 100 keV
+    role: core
+    source_reference_ids:
+    - '2204_01928'
+    status: inferred
+    symbol: m_H
+    unit: keV
+  linked_constraints:
+  - con_2204_gw_sensitivity
+  linked_routes:
+  - route_2204_sidm_fopt_gw_scan
+  name: Stochastic gravitational waves from dark first-order phase transition
+  notes: Primary abstract/results state that the FOPT+SIDM parameter space may be partially covered by
+    LISA/TianQin/Taiji.
+  observability: medium
+  predicted_effect: A low-temperature first-order phase transition in the singlet scalar background can
+    source a stochastic gravitational-wave signal potentially visible at LISA, TianQin, and Taiji.
+  redshift_range: phase-transition epoch
+  relevance: high
+  scale_range: mHz space-interferometer frequencies
+  source_reference_ids:
+  - '2204_01928'
+  subchannel: space-based interferometer band
+- caveats:
+  - The paper gives a qualitative escape-from-direct-detection statement, not a recast.
+  channel: direct_detection
+  effect_direction: null_signal
+  environments:
+  - direct-detection experiments
+  id: obs_2204_suppressed_direct_detection
+  key_quantities:
+  - description: Coupling between singlet sector and MSSM Higgs/doublet sector.
+    name: singlet-doublet coupling
+    role: core
+    source_reference_ids:
+    - '2204_01928'
+    status: assumed
+    symbol: mixing
+    value: tiny by scenario assumption
+  linked_constraints: []
+  linked_routes:
+  - route_2204_sidm_fopt_gw_scan
+  name: Suppressed direct-detection signal from tiny MSSM mixing
+  notes: Primary introduction highlights suppressed direct detection as a feature of the tiny-coupling
+    scenario.
+  observability: low
+  predicted_effect: Tiny coupling between the singlet quasi-dark sector and MSSM doublets suppresses ordinary
+    direct-detection signals.
+  redshift_range: present day
+  relevance: medium
+  scale_range: laboratory recoil searches
+  source_reference_ids:
+  - '2204_01928'
+  subchannel: Higgs/doublet portal recoil
+constraints:
+- allowed_regions:
+  - Intersection points with singlino mass below 1 MeV and dark scalar below about 100 keV.
+  - Dark-sector temperature ratio T_f/T_SM = 0.47 and Delta N_eff < 0.5 are used in the numerical discussion.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The dark-sector temperature is chosen as T_f/T_SM = 0.47 with Delta N_eff < 0.5.
+    id: assump_2204_dark_temp
+    impact_if_violated: Changing dark-sector temperature changes relic density, Delta N_eff, and GW signal
+      mapping.
+    scope: cosmological thermal history
+    source_reference_ids:
+    - '2204_01928'
+    status: assumed
+  - can_be_relaxed: partial
+    description: Singlet-sector coupling to the MSSM sector is tiny.
+    id: assump_2204_tiny_mssm_coupling
+    impact_if_violated: Larger mixing would alter direct detection and thermal contact with the SM.
+    scope: model setup
+    source_reference_ids:
+    - '2204_01928'
+    status: assumed
+  benchmark_implications:
+  - The viable FOPT+SIDM region is a light singlino/dark-scalar corner of the singlet-MSSM parameter space.
+  caveats:
+  - The paper uses scan criteria rather than a released likelihood.
+  - SIDM target interval is phenomenological.
+  constrained_parameters:
+  - m_chi
+  - m_H
+  - m_A
+  - lambda_or_alpha
+  - A_k
+  - v_s
+  - sigma/m_chi
+  - T_f/T_SM
+  constraint_type: numerical
+  data_release: Numerical scan in the primary paper
+  excluded_regions:
+  - Points outside the favorable relic-density interval 0.107 < Omega h^2 < 0.131.
+  - Points outside sigma/m_chi = 0.1-10 cm^2/g at v = 200 km/s.
+  - FOPT+SIDM overlap requires very light dark matter; heavier points do not sit in the highlighted intersection
+    region.
+  id: con_2204_relic_sidm_fopt_overlap
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Numerical overlap of relic density, SIDM target, and first-order phase transition
+  notes: Constraint records the surviving numerical intersection reported in the primary results.
+  observable_channel: relic abundance, self-scattering, and FOPT
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '2204_01928'
+- allowed_regions:
+  - Future LISA, TianQin, and Taiji sensitivity can partially cover the FOPT+SIDM parameter space according
+    to the paper.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The standard phase-transition GW calculation and detector sensitivity curves apply to
+      the low-temperature singlet transition.
+    id: assump_2204_fopt_signal
+    impact_if_violated: Different bubble-wall dynamics or dark-sector thermodynamics could shift the signal.
+    scope: GW forecast
+    source_reference_ids:
+    - '2204_01928'
+    status: assumed
+  benchmark_implications:
+  - GW astronomy is a proposed probe rather than a present exclusion.
+  caveats:
+  - Forecast-only; no current detector exclusion.
+  constrained_parameters:
+  - FOPT strength
+  - transition temperature
+  - bubble-wall/input parameter h
+  - m_chi
+  - m_H
+  constraint_type: astrophysical
+  data_release: Detector sensitivity projections used by the primary paper
+  excluded_regions: []
+  id: con_2204_gw_sensitivity
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Forecast coverage by LISA, TianQin, and Taiji
+  notes: Primary text reports SNR projections for LISA, TianQin, and Taiji.
+  observable_channel: stochastic gravitational-wave signal
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '2204_01928'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route is clear from the numerical study, but no code was resolved during the bounded
+      pass.
+    caveats:
+    - Relic-density treatment and SIDM target are approximate/phenomenological.
+    constraint_ids:
+    - con_2204_relic_sidm_fopt_overlap
+    - con_2204_gw_sensitivity
+    derived_quantities:
+    - Omega h^2
+    - sigma/m_chi
+    - FOPT order parameters
+    - GW spectrum and SNR
+    description: Scan singlet-SUSY physical parameters, select relic-density and SIDM-compatible points,
+      test for a first-order phase transition, and compute gravitational-wave SNR forecasts.
+    forward_model_chain:
+    - inputs:
+      - masses
+      - couplings
+      - dark-sector temperature
+      notes: Evaluate singlino annihilation to singlet scalars.
+      outputs:
+      - annihilation cross sections
+      - relic density estimate
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: instant freeze-out and hidden-sector assumptions of the primary paper
+    - inputs:
+      - m_chi
+      - m_H
+      - couplings
+      - velocity
+      notes: Calculate singlino self-scattering through light scalar exchange.
+      outputs:
+      - sigma/m_chi
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: SIDM target at v = 200 km/s
+    - inputs:
+      - finite-temperature potential
+      - v_s
+      notes: Identify first-order phase transitions and forecast GW signals.
+      outputs:
+      - FOPT points
+      - GW spectrum
+      step_id: s3
+      step_type: simulation
+      tool_or_code: null
+      validity: thermal effective-potential treatment in primary paper
+    id: route_2204_sidm_fopt_gw_scan
+    input_parameters:
+    - m_chi
+    - m_H
+    - m_A
+    - lambda_or_alpha
+    - A_k
+    - v_s
+    - T_f/T_SM
+    likelihoods: []
+    observable_ids:
+    - obs_2204_sidm_halo
+    - obs_2204_phase_transition_gw
+    - obs_2204_suppressed_direct_detection
+    required_code_resources:
+    - finite-temperature potential solver
+    - phase-transition GW calculator
+    - SIDM/relic-density scan scripts
+    route_status: planned
+    source_model_features:
+    - singlet superfield quasi-dark sector
+    - Majorana singlino DM
+    - light singlet scalar mediator
+    - tiny MSSM-sector coupling
+    validation_tests:
+    - Recover surviving m_chi < 1 MeV and m_H < 100 keV region.
+    - Reproduce LISA/TianQin/Taiji SNR contours qualitatively.

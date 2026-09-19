@@ -1,0 +1,786 @@
+_source:
+  shard: arXiv_src_2308_003_wds.tar
+  paper_id: '2308_00309'
+  source_member: 2308_00309.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2308_00309_fermionic_scalar_portal_absorption_dm_v1
+identity:
+  name: Fermionic scalar-portal absorption dark matter
+  family: scalar_portal_dark_matter
+  aliases:
+  - UV completion of scalar fermionic absorption operator
+  - keV Dirac fermion absorption dark matter
+  short_description: A UV-complete scalar-portal model with keV-scale Dirac fermion dark matter, a sterile
+    neutrino, and a light Higgs-mixed scalar mediator producing fermionic dark matter absorption on electrons.
+  historical_origin_or_motivation: Constructed as the first UV completion of the scalar effective operator
+    for fermionic dark matter absorption.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - scalar portal
+  - fermionic absorption dark matter
+  - Dirac neutrino mass with sterile neutrino
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes a renormalizable Lagrangian with Dirac dark matter, sterile neutrino, and a
+    real singlet scalar mixed with the Higgs.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - right-handed sterile neutrino nu_R
+  - light real scalar mediator phi
+  mediators:
+  - light scalar phi mixed with Higgs
+  - SM Higgs h
+  dark_radiation_species:
+  - sterile neutrino nu_R in the dark sector
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Dirac fermion dark matter
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: No exact stabilizing symmetry; a softly broken Z_2 naturally suppresses dark
+    matter decay, and viable regions require cosmological longevity.
+  symmetries:
+  - name: U(1) lepton number
+    type: global
+    exact_or_approximate: exact
+    breaking: not broken in the model Lagrangian as stated
+    breaking_scale: null
+  - name: Z_2 on chi and phi
+    type: discrete
+    exact_or_approximate: broken
+    breaking: softly broken by selected scalar and mass terms
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - neutrino
+  standard_model_targets:
+  - electrons
+  - SM fermions through Higgs-scalar mixing
+  dark_sector_couplings:
+  - y_chi phi chi_L chi_R
+  - sterile-neutrino coupling y_nu H L nu_R
+  - chi-nu_R mixing mass M_chinu
+  mediator_types:
+  - scalar
+  interaction_operators:
+  - dimension-6 scalar absorption operator (chi P_R nu)(e e)
+  - renormalizable Higgs-singlet scalar mixing terms
+  scattering:
+    elastic: unknown
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - dark-sector number-changing and annihilation processes controlling freeze-out
+  decay_channels:
+  - radiative dark matter decay is possible and constrained; suppressed by the softly broken Z_2
+  self_scattering_channels:
+  - dark-sector interactions through the scalar mediator
+  cp_structure: Couplings and masses are taken real without loss of generality.
+  flavor_structure: The paper uses one electron-neutrino generation for concreteness.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the Dirac fermion dark matter.
+    range:
+      min: 4
+      max: 15
+      unit: keV
+      inclusive_min: true
+      inclusive_max: true
+      notes: Relevant direct-detection range emphasized in the text.
+    unit: keV
+    role: core
+    status: inferred
+  - name: scalar mediator mass
+    symbol: m_phi
+    description: Mass of the light Higgs-mixed scalar mediator.
+    range: must exceed m_chi for dark matter stability in the considered region
+    unit: GeV
+    role: core
+    status: inferred
+  - name: scalar mixing angle
+    symbol: theta
+    description: Mixing between the real singlet scalar and the SM Higgs.
+    range: stellar and SN1987A bounds constrain theta^2; examples discuss theta^2 around 10^-14 and below
+    role: core
+    status: inferred
+  - name: dark-sector Yukawa coupling
+    symbol: y_chi
+    description: Coupling between scalar mediator and Dirac dark matter.
+    range: direct-detection regions require roughly y_chi >= 10^-2
+    role: core
+    status: inferred
+  - name: dark-to-SM temperature ratio
+    symbol: T_D/T_SM
+    description: Dark-sector temperature relative to the SM bath at freeze-out.
+    range:
+      min: 0.08
+      max: 0.4
+      unit: null
+      inclusive_min: true
+      inclusive_max: true
+      notes: Range stated for obtaining observed relic abundance with N_eff bound.
+    role: core
+    status: inferred
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - freeze-in population from the SM bath
+  - internal dark-sector thermalisation
+  - freeze-out within the dark sector
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - dark-sector temperature
+  - y_chi coupling
+  - freeze-out of chi in the dark sector
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper shows the observed relic abundance can be obtained by dark-sector freeze-out after
+    freeze-in population.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed dark matter abundance
+    symbol: Omega_chi h^2
+    description: The model is solved for the observed present-day dark matter abundance.
+    value: observed abundance
+    unit: null
+    role: derived
+    status: inferred
+  calculation_type: mixed
+  key_dependencies:
+  - T_D/T_SM
+  - y_chi
+  - m_chi
+  - m_phi
+  - scalar mixing theta
+  - reheat temperature
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - dark sector never equilibrates with SM bath
+  - dark sector can self-thermalise after freeze-in
+  dark_sector_temperature:
+    name: dark-sector temperature ratio
+    symbol: T_D/T_SM
+    description: Temperature ratio constrained by N_eff and relic abundance.
+    range:
+      min: 0.08
+      max: 0.4
+      unit: null
+      inclusive_min: true
+      inclusive_max: true
+    unit: null
+    role: cosmological
+    status: inferred
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: unknown
+  notes: Initial population arises from freeze-in, followed by dark-sector thermalisation and freeze-out.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: keV_absorption_regime
+  applies_to: model
+  condition: Applies to sufficiently light fermionic dark matter where absorption can deposit the rest-mass
+    energy in a detector.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Direct detection signal is suppressed in the parameter region yielding the correct relic abundance.
+  source_reference_ids: []
+  notes: null
+- id: no_sm_dark_equilibrium
+  applies_to: cosmological_history
+  condition: The dark sector must not equilibrate with the SM bath to satisfy BBN and CMB N_eff limits.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: single_neutrino_generation
+    description: The model analysis uses one electron-neutrino generation for concreteness.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: 'yes'
+    source_reference_ids: []
+  - id: dark_sector_temperature_free
+    description: The dark-sector temperature is treated as a free parameter after freeze-in and self-thermalisation.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports using micrOMEGAS-v5.3 for freeze-in population estimates; no public
+    model repository was identified in the assigned text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 2308_00309_fermionic_scalar_portal_absorption_dm_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2308_00309'
+      title: Absorption of Fermionic Dark Matter via the Scalar Portal
+      authors: []
+      year: 2023
+      arxiv_id: '2308.00309'
+      doi: null
+      url: null
+      role: original_model
+      notes: Primary assigned paper text in target_text.sqlite.
+    - reference_id: arxiv:2308.00309
+      title: Absorption of fermionic dark matter via the scalar portal
+      authors:
+      - Cox, Peter
+      - Dolan, Matthew J.
+      - Wood, Joshua
+      year: 2024
+      arxiv_id: '2308.00309'
+      doi: 10.1103/PhysRevD.109.095013
+      url: https://arxiv.org/abs/2308.00309
+      role: original_model
+      notes: Primary assigned paper read from local SQLite full text.
+    constraint_papers:
+    - reference_id: arxiv:2206.02339
+      title: Search for Light Fermionic Dark Matter Absorption on Electrons in PandaX-4T
+      authors:
+      - Zhang, Dan
+      - Abdukerim, Abdusalam
+      - Bo, Zihao
+      - Chen, Wei
+      - Chen, Xun
+      - Chen, Yunhua
+      - Cheng, Chen
+      - Cheng, Zhaokan
+      year: 2022
+      arxiv_id: '2206.02339'
+      doi: 10.1103/PhysRevLett.129.161804
+      url: https://arxiv.org/abs/2206.02339
+      role: constraint
+      notes: 'Related local full text read: PandaX-4T search for fermionic absorption on electrons.'
+    - reference_id: arxiv:2011.01940
+      title: Absorption of sub-MeV fermionic dark matter by electron targets
+      authors:
+      - Dror, Jeff A.
+      - Elor, Gilly
+      - McGehee, Robert
+      - Yu, Tien-Tien
+      year: 2021
+      arxiv_id: '2011.01940'
+      doi: 10.1103/PhysRevD.103.035001
+      url: https://arxiv.org/abs/2011.01940
+      role: benchmark
+      notes: 'Related local full text read: sub-MeV fermionic dark matter absorption by electron targets.'
+    - reference_id: arxiv:1711.11038
+      title: 'Freezing in, heating up, and freezing out: predictive nonthermal dark matter and low-mass
+        direct detection'
+      authors:
+      - Krnjaic, Gordan
+      year: 2018
+      arxiv_id: '1711.11038'
+      doi: 10.1007/JHEP10(2018)136
+      url: https://arxiv.org/abs/1711.11038
+      role: extension
+      notes: 'Related local full text read: freeze-in, hidden-sector thermalisation, and scalar-mediator
+        constraints.'
+    review_papers: []
+    external_databases: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: Codex dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections: []
+    unresolved_items:
+    - The exact mass-basis notation is simplified in this extraction because some symbols are lost in
+      the plaintext conversion.
+    - No detector-level XLZD likelihood was extracted.
+    - Modern post-2024 absorption searches were not included beyond ADS metadata.
+    - Nonminimal histories that restore detectability were not structured.
+  evidence:
+    particle_content:
+    - reference_id: '2308_00309'
+      note: The model contains Dirac fermion dark matter, a right-handed sterile neutrino, and a scalar
+        mediator that mixes with the Higgs.
+      confidence: high
+      section: Introduction/model
+      page: null
+    symmetries:
+    - reference_id: '2308_00309'
+      note: A U(1) lepton-number symmetry enforces Dirac fermions and a softly broken Z_2 suppresses the
+        dark matter decay.
+      confidence: high
+      section: Model
+      page: null
+    interactions:
+    - reference_id: '2308_00309'
+      note: The light scalar mediator mixes with the Higgs and generates the scalar absorption operator
+        after integrating out the mediator.
+      confidence: high
+      section: Model
+      page: null
+    production_mechanism:
+    - reference_id: '2308_00309'
+      note: The dark sector is populated by freeze-in from the SM bath, self-thermalises, and the relic
+        abundance is set by freeze-out in the dark sector.
+      confidence: high
+      section: Production of dark matter
+      page: null
+    parameter_ranges:
+    - reference_id: '2308_00309'
+      note: The direct-detection discussion focuses on keV-scale fermionic dark matter, with examples
+        around 4-15 keV and dark-sector Yukawa couplings near 10^-2 or larger.
+      confidence: medium
+      section: Phenomenology/production
+      page: null
+    validity_domain:
+    - reference_id: '2308_00309'
+      note: The paper restricts the dark sector from equilibrating with the SM bath to satisfy BBN and
+        CMB limits on relativistic degrees of freedom.
+      confidence: medium
+      section: Production of dark matter
+      page: null
+    observables:
+    - reference_id: arxiv:2308.00309
+      note: Primary paper defines the scalar UV completion, absorption rate, XLZD projection, and dark-sector
+        freeze-out history.
+      confidence: high
+      section: Abstract and direct detection/production sections
+      page: null
+    - reference_id: arxiv:2206.02339
+      note: Related text supports the PandaX-4T fermionic absorption search context.
+      confidence: medium
+      section: Abstract
+      page: null
+    - reference_id: arxiv:2011.01940
+      note: Related text supports the electron-target absorption signal formulation.
+      confidence: medium
+      section: Introduction
+      page: null
+    constraints:
+    - reference_id: arxiv:2308.00309
+      note: Primary paper gives X-ray, mediator, N_eff, and relic-vs-direct-detection constraints.
+      confidence: high
+      section: Phenomenology and production sections
+      page: null
+    - reference_id: arxiv:1711.11038
+      note: Related scalar-mediator freeze-in text supports hidden-sector thermalisation caveats.
+      confidence: medium
+      section: Abstract
+      page: null
+    routes:
+    - reference_id: arxiv:2308.00309
+      note: Primary text links UV parameters to sigma_e, radiative decays, mediator limits, and micrOMEGAS
+        freeze-out.
+      confidence: high
+      section: Direct detection and production sections
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+  caveats: []
+  related_entries: []
+  external_links: {}
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: The model Lagrangian and cosmological history are explicit, but the viable direct-detection and
+    relic-density regions are in tension in the minimal model.
+agent_failure_modes:
+  warnings:
+  - id: signal_relic_tension
+    severity: medium
+    category: other
+    warning: The paper finds that the absorption signal is highly suppressed where this minimal model
+      yields the correct relic abundance.
+    mitigation: null
+    source_reference_ids: []
+observables:
+- id: obs_scalar_portal_absorption
+  name: Fermionic dark matter absorption on atomic electrons
+  channel: direct_detection
+  subchannel: xenon electron ionization
+  predicted_effect: KeV-scale Dirac fermion dark matter can be absorbed by bound electrons through a scalar
+    operator, depositing roughly the rest-mass energy in xenon time-projection chambers.
+  effect_direction: spectral_line
+  key_quantities:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass setting the absorbed energy.
+    range:
+      min: 4
+      max: 15
+      inclusive_min: true
+      inclusive_max: true
+      unit: keV
+      notes: Primary direct-detection region after X-ray considerations.
+    unit: keV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:2308.00309
+    - arxiv:2011.01940
+  - name: effective absorption cross section
+    symbol: sigma_e
+    description: Cross section compared to xenon projections.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - arxiv:2308.00309
+    - arxiv:2206.02339
+  - name: scalar mixing angle
+    symbol: theta
+    description: Higgs-singlet scalar mixing.
+    range: theta^2 below or around 1e-14 in relevant constrained regions
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:2308.00309
+  redshift_range: z=0 detector exposures
+  scale_range: keV electron recoil/ionization energies
+  environments:
+  - XENON/LZ/PandaX-style xenon TPCs
+  - XLZD projection
+  observability: high
+  relevance: critical
+  linked_constraints:
+  - con_scalar_absorption_xray
+  - con_scalar_mediator_bounds
+  linked_routes:
+  - route_scalar_portal_absorption
+  caveats:
+  - The full-relic minimal model suppresses the detectable signal after the relic constraint is imposed.
+  source_reference_ids:
+  - arxiv:2308.00309
+  - arxiv:2206.02339
+  - arxiv:2011.01940
+  notes: null
+- id: obs_scalar_dark_freezeout
+  name: Freeze-in, self-thermalisation, and dark-sector freeze-out
+  channel: cosmology
+  subchannel: secluded dark-sector freeze-out
+  predicted_effect: An initial freeze-in population can self-thermalise in the dark sector and freeze
+    out to the observed relic abundance, with T_D/T_SM bounded by N_eff.
+  effect_direction: rate_change
+  key_quantities:
+  - name: dark-to-SM temperature ratio
+    symbol: T_D/T_SM
+    description: Temperature ratio at freeze-out.
+    range:
+      min: 0.08
+      max: 0.4
+      inclusive_min: true
+      inclusive_max: true
+      notes: Upper limit from N_eff; lower bound from obtaining the observed abundance.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:2308.00309
+  - name: dark-sector Yukawa
+    symbol: y_chi
+    description: Coupling controlling dark-sector annihilations.
+    value: 2e-4 to 5e-4 for the m_phi=200 keV relic example; direct-detection regions prefer larger coupling
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:2308.00309
+  - name: mediator mass
+    symbol: m_phi
+    description: Light scalar mediator mass.
+    range: m_phi > m_chi for stability in the considered region
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:2308.00309
+  redshift_range: freeze-in through matter domination
+  scale_range: null
+  environments:
+  - early universe
+  - secluded dark sector
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - con_scalar_relic_absorption_tension
+  linked_routes:
+  - route_scalar_portal_absorption
+  caveats:
+  - Relic abundance can be correct, but then XLZD-accessible regions are excluded or too small in the
+    minimal setup.
+  source_reference_ids:
+  - arxiv:2308.00309
+  - arxiv:1711.11038
+  notes: null
+constraints:
+- id: con_scalar_absorption_xray
+  name: X-ray decay bound on fermionic absorption parameter space
+  constraint_type: indirect_detection
+  observable_channel: diffuse X-ray decay searches
+  applies: 'yes'
+  constrained_parameters:
+  - m_chi
+  - sigma_e
+  - theta
+  - y_chi
+  excluded_regions:
+  - Visible decays exclude much of the absorption parameter space for m_chi above about 15 keV.
+  allowed_regions:
+  - Given X-ray bounds, the primary paper finds XLZD adds new sensitivity mainly for m_chi below about
+    15 keV.
+  benchmark_implications:
+  - The benchmark m_chi=10 keV case remains the direct-detection focus.
+  likelihood_available: partial
+  likelihood_reference: null
+  data_release: Diffuse X-ray measurements compiled in the primary paper
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: single-electron-operator
+    description: The scalar EFT/UV mapping controls both absorption and visible radiative decay.
+    scope: direct and indirect detection
+    status: assumed
+    impact_if_violated: Additional decay channels or symmetries could alter the X-ray relation.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - arxiv:2308.00309
+    - arxiv:2011.01940
+    notes: null
+  caveats: []
+  source_reference_ids:
+  - arxiv:2308.00309
+  - arxiv:2011.01940
+  notes: null
+- id: con_scalar_mediator_bounds
+  name: HB-star, SN1987A, and meson constraints on the scalar mediator
+  constraint_type: astrophysical
+  observable_channel: stellar cooling, supernova, invisible meson decays
+  applies: parameter_dependent
+  constrained_parameters:
+  - m_phi
+  - theta
+  - m_chi
+  excluded_regions:
+  - SN1987A excludes theta^2 around and above 1e-14 for m_phi below about 300 MeV; HB stars dominate for
+    m_phi below about 70 keV; m_phi<m_chi is excluded by dark matter instability.
+  allowed_regions:
+  - New XLZD-accessible space is pushed to small theta^2 regions not already excluded by mediator searches.
+  benchmark_implications:
+  - Mediator searches are central to whether absorption can be observed.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: escaping-mediator
+    description: Scalar or decay products escape stellar/SN media as assumed in the primary mediator bounds.
+    scope: astrophysical cooling
+    status: assumed
+    impact_if_violated: Trapping or altered branching fractions would move the bounds.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - arxiv:2308.00309
+    notes: null
+  caveats: []
+  source_reference_ids:
+  - arxiv:2308.00309
+  notes: null
+- id: con_scalar_relic_absorption_tension
+  name: Relic-density versus absorption-signal tension
+  constraint_type: cosmological
+  observable_channel: dark-sector freeze-out and direct detection
+  applies: 'yes'
+  constrained_parameters:
+  - T_D/T_SM
+  - y_chi
+  - m_phi
+  - theta
+  excluded_regions:
+  - For the y_chi range that yields the observed abundance in the minimal model, the XLZD sensitivity
+    lies in parameter space already excluded by SN1987A or underpredicts the relic density.
+  allowed_regions:
+  - The correct relic abundance is possible through dark-sector freeze-out, but not simultaneously with
+    an unconstrained next-generation absorption signal in the minimal model.
+  benchmark_implications:
+  - A full-DM interpretation is far harder to observe than the EFT-only signal would suggest.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: high
+  assumptions:
+  - id: minimal-thermal-history
+    description: The dark sector is populated by freeze-in and then evolves with separately conserved
+      entropy after SM freeze-in ends.
+    scope: early universe
+    status: assumed
+    impact_if_violated: Additional production or dilution could change the relic/direct-detection relation.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - arxiv:2308.00309
+    - arxiv:1711.11038
+    notes: null
+  caveats: []
+  source_reference_ids:
+  - arxiv:2308.00309
+  - arxiv:1711.11038
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: route_scalar_portal_absorption
+    description: Translate scalar-portal UV parameters to absorption rates, decay limits, mediator bounds,
+      and secluded freeze-out abundance.
+    source_model_features:
+    - Dirac keV fermion
+    - sterile-neutrino partner
+    - light Higgs-mixed scalar mediator
+    input_parameters:
+    - m_chi
+    - m_phi
+    - theta
+    - y_chi
+    - T_D/T_SM
+    - sigma_e
+    derived_quantities:
+    - electron absorption rate
+    - radiative decay width
+    - mediator cooling limits
+    - Omega_chi h^2
+    forward_model_chain:
+    - step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - m_chi
+      - m_phi
+      - theta
+      - y_chi
+      outputs:
+      - sigma_e
+      - E_absorption
+      validity: Valid for m_chi below mediator scale and xenon electron absorption.
+      notes: null
+    - step_id: s2
+      step_type: recasting
+      tool_or_code: null
+      inputs:
+      - sigma_e
+      - m_chi
+      outputs:
+      - XENON/LZ/PandaX/XLZD event reach
+      validity: Requires detector efficiency and electron response.
+      notes: null
+    - step_id: s3
+      step_type: boltzmann_solver
+      tool_or_code: micrOMEGAS
+      inputs:
+      - T_D/T_SM
+      - y_chi
+      - m_phi
+      - m_chi
+      outputs:
+      - freeze-out abundance
+      validity: Primary paper used micrOMEGAS for annihilation rates.
+      notes: null
+    - step_id: s4
+      step_type: recasting
+      tool_or_code: null
+      inputs:
+      - theta
+      - m_phi
+      - decay widths
+      outputs:
+      - X-ray, HB, SN1987A, meson bounds
+      validity: Combine visible decay and mediator constraints.
+      notes: null
+    observable_ids:
+    - obs_scalar_portal_absorption
+    - obs_scalar_dark_freezeout
+    constraint_ids:
+    - con_scalar_absorption_xray
+    - con_scalar_mediator_bounds
+    - con_scalar_relic_absorption_tension
+    likelihoods:
+    - XLZD projection
+    - PandaX-4T absorption search
+    - diffuse X-ray limits
+    - N_eff bound
+    - SN1987A/HB cooling
+    required_code_resources:
+    - xenon absorption response tables
+    - micrOMEGAS model
+    - stellar cooling recast
+    validation_tests:
+    - recover m_chi<15 keV XLZD window
+    - recover T_D/T_SM=0.08-0.4 relic interval
+    - verify no unconstrained full-relic XLZD reach
+    route_status: planned
+    agent_notes: null
+    caveats: []

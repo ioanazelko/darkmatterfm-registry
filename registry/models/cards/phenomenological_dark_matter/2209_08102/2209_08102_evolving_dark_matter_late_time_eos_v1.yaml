@@ -1,0 +1,276 @@
+_source:
+  shard: data/astro-ph-00217.tar
+  paper_id: '2209_08102'
+  source_member: 2209_08102.json
+schema_version: model_only_v0
+model_id: 2209_08102_evolving_dark_matter_late_time_eos_v1
+identity:
+  name: Evolving dark matter with late-time negative equation of state
+  family: phenomenological_dark_matter
+  aliases: []
+  short_description: A generalized dark matter phenomenology where the dark matter equation of state is
+    zero at early times but becomes negative and time-varying at late times, changing the matter density
+    evolution and growth.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - generalised dark matter
+  - interacting dark energy phenomenology
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: The model is defined through rho_dm(a), W(a), and a piecewise late-time w_dm(a), with null sound
+    speed and viscosity.
+particle_content:
+  dark_matter_candidate:
+    name: effective evolving dark matter fluid
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - effective dark energy interaction or unstable-dark-matter decay channel
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Dark matter is effectively long-lived; late-time negative pressure may encode
+    interaction or decay.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - dark energy sector
+  - gravitational potentials
+  dark_sector_couplings:
+  - late-time equation-of-state function w_dm(a)
+  mediator_types:
+  - effective dark-sector interaction
+  interaction_operators:
+  - rho_dm(a)=rho_dm,0 a^-3 W(a)
+  - piecewise linear w_dm(a)
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: present-day dark matter equation of state
+    symbol: w_dm,0
+    description: Current value of the dark matter equation of state.
+    range: supplementary plots vary roughly -1 to 0.3
+    role: core
+    status: speculative
+    source_reference_ids: []
+  - name: EoS activation scale factor
+    symbol: a_nz
+    description: Scale factor at which w_dm becomes nonzero.
+    value: 0.5 fixed in main analysis
+    role: core
+    status: assumed
+    source_reference_ids: []
+  - name: initial dark matter density
+    symbol: Omega_dm^init h^2
+    description: Early-time dark matter density fixed to Planck-like value before late-time EoS change.
+    value: 0.1202 in the illustrative setup
+    role: core
+    status: assumed
+    source_reference_ids: []
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - phenomenological late-time density evolution from generalized dark matter continuity equation
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - initial dark matter density
+  - w_dm,0
+  - a_nz
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: The model preserves early-time dark matter density and changes late-time evolution.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - Omega_dm^init
+  - w_dm,0
+  - a_nz
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - late-time transition to nonzero dark matter equation of state
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: medium
+phase_space:
+  distribution_type: not_applicable
+  distribution_function_available: not_applicable
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: unknown
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: scale_dependent_growth
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: late_time_transition
+  applies_to: model
+  condition: The main analysis fixes a_nz = 0.5 so the dark matter EoS changes only at z about 1.
+  valid_range: null
+  status: speculative
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: zero_early_eos
+    description: The dark matter equation of state is assumed effectively zero at early times to satisfy
+      CMB constraints.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: unknown
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+  - id: null_sound_speed_viscosity
+    description: The generalized dark matter component has null sound speed and viscosity.
+    scope: theory
+    status: assumed
+    impact_if_violated: unknown
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports modifications to CLASS and uses Cobaya for MCMC; no associated public
+    model code is identified in the assigned text.
+  primary_code_role: boltzmann_solver_patch
+provenance:
+  model_id: 2209_08102_evolving_dark_matter_late_time_eos_v1
+  model_name: Evolving dark matter with late-time negative equation of state
+  model_family: phenomenological_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: '2209_08102'
+      title: A dark matter solution to the H_0 and S_8 tensions, and the integrated Sachs-Wolfe void anomaly
+      authors: []
+      year: 2022
+      arxiv_id: '2209.08102'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_gpt5_dark_matter_batch_worker
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-28'
+    confidence: high
+    source_chunks_or_sections: []
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2209_08102'
+      note: The effective dark matter candidate is a generalized dark matter component with null sound
+        speed and viscosity but a nonzero late-time equation of state.
+      confidence: high
+      section: model section
+      page: null
+    interactions:
+    - reference_id: '2209_08102'
+      note: The paper notes this phenomenology is equivalent to interacting dark energy models or unstable
+        dark matter with very long half-lives.
+      confidence: medium
+      section: model section
+      page: null
+    production_mechanism:
+    - reference_id: '2209_08102'
+      note: The abundance follows rho_dm(a)=rho_dm,0 a^-3 W(a), with W(a) set by the integral of w_dm(a).
+      confidence: high
+      section: model section
+      page: null
+    cosmological_history:
+    - reference_id: '2209_08102'
+      note: The equation of state is fixed to zero at early times and becomes nonzero only after a_nz,
+        set to 0.5 in the analysis.
+      confidence: high
+      section: model section
+      page: null
+    parameter_ranges:
+    - reference_id: '2209_08102'
+      note: The model introduces w_dm,0 and a_nz; the supplementary material varies w_dm,0 between about
+        -1 and 0.3 and a_nz between 0.2 and 0.9.
+      confidence: medium
+      section: supplemental material
+      page: null
+    validity_domain:
+    - reference_id: '2209_08102'
+      note: The paper fixes early-universe physical densities to Planck values and changes late-time dark
+        matter evolution.
+      confidence: medium
+      section: model section
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine extraction from paper text only; constraints intentionally omitted for this run.
+agent_failure_modes:
+  warnings:
+  - id: 2209_effective_not_microphysical
+    severity: medium
+    category: invalid_mapping
+    warning: The paper frames eDM as a phenomenological capture of possible dark matter-dark energy interaction
+      or unstable-DM physics, not a particle-level UV model.
+    mitigation: Use as a late-time fluid parameterization unless a microphysical completion is supplied.
+    source_reference_ids: []

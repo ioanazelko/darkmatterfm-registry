@@ -1,0 +1,276 @@
+_source:
+  shard: arXiv_src_1307_014_wds.tar
+  paper_id: '1307_8120'
+  source_member: 1307_8120.json
+schema_version: model_only_v0
+model_id: 1307_8120_dirac_fermion_effective_wimp_v1
+identity:
+  name: Dirac fermion effective WIMP
+  family: effective_wimp_dark_matter
+  aliases:
+  - effective WIMP model
+  short_description: A simplified thermal WIMP model with Dirac fermion chi, a colored quark partner Q,
+    and a cubic renormalizable coupling to quarks.
+  historical_origin_or_motivation: Motivated by the WIMP miracle and by comparing collider and direct-detection
+    searches in minimal renormalizable dark matter models.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - effective WIMP simplified models
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: Appendix B summarizes the Dirac dark matter annihilation and scattering formulae with scalar
+    quark partners.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - complex scalar quark partner Q
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Dirac fermion chi
+  unstable_parent_particles:
+  - complex scalar quark partner Q
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z2 parity under which the dark matter and quark partner are odd; stability
+    requires the dark matter to be lighter than Q.
+  symmetries:
+  - name: Z2 parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - left-handed quarks; the paper focuses on colored quark interactions
+  dark_sector_couplings:
+  - dimensionless cubic coupling lambda between dark matter, q, and Q
+  mediator_types:
+  - complex scalar quark partner Q
+  interaction_operators:
+  - lambda q Q chi, with spin-dependent field contractions
+  annihilation_channels:
+  - dark matter pair annihilation to q q through Q exchange
+  decay_channels:
+  - Q decays to q plus dark matter when kinematically allowed
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the singlet dark matter particle.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: quark partner mass
+    symbol: m_Q
+    description: Mass of the colored partner field, assumed heavier than the dark matter.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: cubic coupling
+    symbol: lambda
+    description: Dimensionless renormalizable q-Q-chi coupling fixed by relic abundance for a given mass
+      pair.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through annihilation to quark pairs via partner exchange
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - thermally averaged annihilation cross section
+  - m_chi
+  - m_Q
+  - lambda fixed by relic abundance
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper assumes the dark matter is entirely composed of the particle in the model.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed thermal dark matter abundance
+    description: The model is normalized to the observed non-baryonic matter abundance.
+    value: Omega h^2 = 0.1199 +/- 0.0027
+    role: derived
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_Q
+  - lambda
+  - quark flavor coupled to dark matter
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: Standard weak-scale thermal freeze-out is assumed.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: not studied in the paper
+    subhalo_mass_function_effect: not studied in the paper
+    simulation_calibrated: 'no'
+validity_domain:
+- id: minimal_colored_partner_setup
+  applies_to: model
+  condition: Requires singlet dark matter, a colored quark partner with m_Q > m_chi, and a dominant electroweak-gauge-invariant
+    cubic coupling to one quark multiplet.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: observed_relic_normalization
+    description: The coupling lambda is chosen so the thermal relic abundance equals the observed dark
+      matter abundance.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports MadGraph and FeynRules model-file use for collider rates; no public
+    code release is stated.
+  primary_code_role: collider_simulation
+provenance:
+  model_id: 1307_8120_dirac_fermion_effective_wimp_v1
+  model_name: Dirac fermion effective WIMP
+  model_family: effective_wimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1307_8120'
+      title: Effective WIMPs
+      authors:
+      - Spencer Chang
+      - Ralph Edezhath
+      - Jeffrey Hutchinson
+      - Markus Luty
+      year: 2013
+      arxiv_id: '1307.8120'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text used as the only source.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_worker_batch-0007
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1307_8120'
+      section: Abstract
+      page: null
+      quote_or_summary: The paper defines minimal thermal WIMP models with singlet dark matter and partner
+        fields.
+    - reference_id: '1307_8120'
+      section: Model definition
+      page: null
+      quote_or_summary: Dark matter has spin 0, 1/2, or 1 and may or may not be its own antiparticle.
+    - reference_id: '1307_8120'
+      section: Relic abundance
+      page: null
+      quote_or_summary: The correct thermal relic abundance fixes the cubic coupling for each model.
+    - reference_id: '1307_8120'
+      section: Appendix B
+      page: null
+      quote_or_summary: Appendix B lists annihilation and direct-detection formulae for the different
+        spin/self-conjugacy variants.
+    unresolved_items: []
+  evidence:
+    symmetries:
+    - reference_id: '1307_8120'
+      note: A Z2 symmetry makes the dark matter and partner fields odd, stabilizing the dark matter when
+        m_Q > m_chi.
+      confidence: high
+      section: Introduction/model definition
+      page: null
+    interactions:
+    - reference_id: '1307_8120'
+      note: The model class uses cubic renormalizable couplings between a Standard Model quark, a quark
+        partner Q, and the singlet dark matter particle.
+      confidence: high
+      section: Model definition
+      page: null
+    production_mechanism:
+    - reference_id: '1307_8120'
+      note: The dark matter is assumed to have been in thermal equilibrium and freezes out through chi
+        chi to q q annihilation via partner exchange.
+      confidence: high
+      section: Relic abundance
+      page: null
+    parameter_ranges:
+    - reference_id: '1307_8120'
+      note: 'Each model has three parameters: m_chi, m_Q, and the cubic coupling lambda; imposing the
+        observed relic abundance leaves a two-dimensional mass plane.'
+      confidence: high
+      section: Model definition
+      page: null
+    validity_domain:
+    - reference_id: '1307_8120'
+      note: The paper assumes singlet dark matter, colored quark partners, electroweak-gauge-invariant
+        couplings, and m_Q > m_chi.
+      confidence: high
+      section: Model definition
+      page: null
+    particle_content:
+    - reference_id: '1307_8120'
+      note: The variant uses Dirac fermion chi and complex scalar quark partner Q.
+      confidence: high
+      section: Model table and Appendix B
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: high
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Simplified-model assumptions omit possible additional UV states.
+  - Flavor structure is treated with simplifying degeneracy assumptions.
+  validation_status: partially_validated
+  notes: Model-only extraction records the minimal thermal setup and omits search limits.
+agent_failure_modes:
+  warnings:
+  - id: minimality_assumptions
+    severity: medium
+    category: assumption_mismatch
+    warning: The effective-WIMP interpretation assumes only a singlet dark matter particle and quark partner
+      fields are relevant at the weak scale.
+    mitigation: Do not map this card onto a larger UV model without checking additional states and couplings.

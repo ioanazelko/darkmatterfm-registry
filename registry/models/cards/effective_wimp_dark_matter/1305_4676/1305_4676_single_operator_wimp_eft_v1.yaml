@@ -1,0 +1,559 @@
+_source:
+  shard: arXiv_src_1305_007_wds.tar
+  paper_id: '1305_4676'
+  source_member: 1305_4676.json
+schema_version: model_only_v0
+model_id: 1305_4676_single_operator_wimp_eft_v1
+identity:
+  name: Single-dominant-operator WIMP effective theory for kinetic decoupling
+  family: effective_wimp_dark_matter
+  aliases:
+  - parity-conserving WIMP effective operators
+  - single-operator EFT dark matter benchmarks
+  short_description: A paper-local effective-field-theory class in which a Dirac WIMP is the only kinematically
+    relevant new particle and one parity-conserving contact operator dominates its interactions with Standard
+    Model fermions.
+  historical_origin_or_motivation: Used to connect WIMP kinetic decoupling, protohalo cutoff scales, collider/direct-search
+    complementarity, and thermal relic density within a common effective-operator setup.
+  status: benchmark
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - WIMP dark matter
+  - contact-operator effective theory
+  lagrangian_available: partial
+  renormalizable: 'no'
+  eft_cutoff:
+    name: dominant operator suppression scale
+    symbol: Lambda_I
+    description: Suppression scale for the active EFT operator O_I.
+    role: core
+    status: assumed
+  embedded_in_larger_framework: 'yes'
+  notes: The text treats complete heavy-mediator models as mapping onto the operators after integrating
+    out additional heavy fields; collider use is explicitly cautioned when momentum transfer is high.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac WIMP chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - integrated-out heavy mediator represented by contact operators
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The effective operators contain at least two dark matter fields, which the paper
+    states is required to ensure stability; no explicit stabilizing symmetry is named.
+  symmetries:
+  - name: implicit dark matter number or parity
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: unknown
+    breaking_scale: null
+  - name: Standard Model gauge symmetry
+    type: gauge
+    exact_or_approximate: exact
+    breaking: electroweak symmetry breaking as in the SM
+    breaking_scale: null
+  - name: parity conservation in selected operators
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unknown
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - quarks
+  - leptons
+  - pions after QCD confinement for quark couplings
+  dark_sector_couplings: []
+  mediator_types:
+  - contact operator
+  - integrated-out heavy mediator
+  interaction_operators:
+  - O_S = (m_f/Lambda_S^3) (chi_bar chi)(f_bar f)
+  - O_P = (m_f/Lambda_P^3) (chi_bar gamma5 chi)(f_bar gamma5 f)
+  - O_V = (1/Lambda_V^2) (chi_bar gamma_mu chi)(f_bar gamma^mu f)
+  - O_A = (1/Lambda_A^2) (chi_bar gamma_mu gamma5 chi)(f_bar gamma^mu gamma5 f)
+  - O_T = (m_f/Lambda_T^3) (chi_bar sigma_mu_nu chi)(f_bar sigma^mu_nu f)
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: mild
+    velocity_dependence: unknown
+    spin_dependence: both
+  annihilation_channels:
+  - chi chi annihilation to Standard Model fermion pairs through the same dominant operator
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: scalar, pseudoscalar, vector, axial-vector, and tensor operator choices are considered
+    separately.
+  flavor_structure: The paper considers lepton-only, quark-only, and universal fermion coupling patterns;
+    chirality-violating operators are proportional to fermion mass.
+  tree_or_loop_level: both
+operators:
+  renormalizable_terms: []
+  eft_operators:
+  - scalar fermion contact operator O_S
+  - pseudoscalar fermion contact operator O_P
+  - vector fermion contact operator O_V
+  - axial-vector fermion contact operator O_A
+  - mass-suppressed tensor fermion contact operator O_T
+  contact_or_light_mediator: contact
+  coupling_types:
+  - scalar
+  - pseudoscalar
+  - vector
+  - axial_vector
+  - tensor
+parameters:
+  core:
+  - name: WIMP mass
+    symbol: m_chi
+    description: Mass of the Dirac WIMP used in kinetic-decoupling and relic-density calculations.
+    role: core
+    status: assumed
+  - name: scalar operator scale
+    symbol: Lambda_S
+    description: Suppression scale for O_S.
+    role: core
+    status: assumed
+  - name: pseudoscalar operator scale
+    symbol: Lambda_P
+    description: Suppression scale for O_P.
+    role: core
+    status: assumed
+  - name: vector operator scale
+    symbol: Lambda_V
+    description: Suppression scale for O_V.
+    role: core
+    status: assumed
+  - name: axial-vector operator scale
+    symbol: Lambda_A
+    description: Suppression scale for O_A.
+    role: core
+    status: assumed
+  - name: tensor operator scale
+    symbol: Lambda_T
+    description: Suppression scale for O_T.
+    role: core
+    status: assumed
+  - name: fermion coupling pattern
+    description: 'Categorical choice: lepton-only, quark-only, or universal couplings to SM fermions.'
+    value: lepton_only/quark_only/universal
+    role: core
+    status: assumed
+  nuisance: []
+  derived:
+  - name: kinetic decoupling temperature
+    symbol: T_kd
+    description: Temperature at which elastic scattering no longer keeps WIMPs in kinetic equilibrium.
+    unit: MeV-GeV
+    role: derived
+    status: inferred
+  - name: protohalo cutoff mass
+    symbol: M_cut
+    description: Small-scale cutoff mass inferred from kinetic decoupling.
+    unit: solar_mass
+    role: derived
+    status: inferred
+  - name: thermal relic density
+    symbol: Omega_chi h^2
+    description: Relic density calculated assuming the same operator controls early- and late-universe
+      interactions.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through pair annihilation mediated by the dominant EFT operator
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - chemical freeze-out
+  - dominant EFT annihilation operator
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper calculates relic density under the strong assumption that one operator dominates both
+    early- and late-universe interactions.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - WIMP mass
+  - dominant suppression scale
+  - operator Lorentz structure
+  - SM fermion coupling pattern
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling:
+    name: kinetic decoupling temperature
+    symbol: T_kd
+    description: Computed from the Boltzmann equation using elastic WIMP-SM scattering amplitudes.
+    unit: MeV-GeV
+    role: derived
+    status: inferred
+  chemical_decoupling:
+    name: chemical freeze-out
+    description: Thermal freeze-out sets the WIMP relic abundance in the paper assumption.
+    role: cosmological
+    status: assumed
+  phase_transitions:
+  - QCD confinement changes quark scattering into pion and loop-mediated treatments when T_kd is low.
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: The paper evolves a WIMP phase-space density f(p) through a Boltzmann equation for the
+    effective WIMP temperature.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The model is cold WIMP-like; kinetic decoupling controls the small-scale cutoff.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper discusses WIMP kinetic-decoupling cutoffs rather than a thermal WDM mapping.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: Smallest protohalo mass cutoff estimated from T_kd; typical viable cutoffs
+      are very small in the paper analysis.
+    subhalo_mass_function_effect: Potential substructure boost factors are noted because protohalos are
+      tiny.
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: The paper finds WIMP EFT cutoffs unlikely to affect small-scale-structure
+      issues at visible dwarf-galaxy scales.
+    simulation_calibrated: 'no'
+validity_domain:
+- id: single_operator_dominance
+  applies_to: model
+  condition: Only one EFT operator dominates all relevant dark matter interactions.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - Multiple active operators or interference would alter the mapping.
+  source_reference_ids:
+  - '1305_4676'
+  notes: null
+- id: contact_operator_regime
+  applies_to: EFT
+  condition: Momentum transfer is below the heavy mediator scale so the contact operator approximation
+    is reliable.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - The paper explicitly cautions that LHC pair-production kinematics can violate this assumption.
+  source_reference_ids:
+  - '1305_4676'
+  notes: null
+- id: standard_thermal_freezeout
+  applies_to: production
+  condition: The same dominant operator sets the thermal relic density and late-time scattering/annihilation.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Coannihilation, resonances, thresholds, or temperature-suppressed operators are neglected.
+  source_reference_ids:
+  - '1305_4676'
+  notes: null
+assumptions:
+  global:
+  - id: only_light_new_particle
+    description: The WIMP is the only new field light enough to be kinematically relevant.
+    scope: theory
+    status: assumed
+    impact_if_violated: Additional states could change relic density, scattering, and kinetic decoupling.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '1305_4676'
+    notes: null
+  - id: single_operator_controls_observables
+    description: One selected operator dominates the interactions being studied while all other operators
+      are suppressed.
+    scope: theory
+    status: assumed
+    impact_if_violated: Interference or alternate operators would alter the predicted cross sections and
+      cutoffs.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '1305_4676'
+    notes: null
+  - id: standard_wimp_thermal_history
+    description: The WIMP abundance is computed from standard thermal chemical freeze-out.
+    scope: production
+    status: assumed
+    impact_if_violated: Relic-density conclusions and accepted parameter regions could change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '1305_4676'
+    notes: null
+  constraint_specific: []
+  computation_specific: []
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses a kinetic-decoupling routine integrated into DarkSUSY and micrOMEGAs for
+    most relic-density calculations; no model-specific public repository is identified.
+  primary_code_role: relic_density_calculation
+  repositories: []
+  packages_or_modules:
+  - name: DarkSUSY kinetic-decoupling routine
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - solve_boltzmann_equations
+    - compute_transfer_function
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families: []
+    supported_observables: []
+    inputs: []
+    outputs: []
+    validity_domain: []
+    citation_reference_ids:
+    - '1305_4676'
+    notes: Used for the WIMP kinetic-temperature evolution and kinetic-decoupling calculation.
+  - name: micrOMEGAs
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - compute_relic_density
+    - compute_cross_sections
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families: []
+    supported_observables: []
+    inputs: []
+    outputs: []
+    validity_domain: []
+    citation_reference_ids:
+    - '1305_4676'
+    notes: Used for relic-density calculations except for the tensor case, which the paper treats analytically.
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs:
+  - WIMP mass
+  - operator suppression scale
+  - operator type
+  - SM fermion coupling pattern
+  expected_outputs:
+  - kinetic decoupling temperature
+  - protohalo cutoff mass
+  - thermal relic density
+  supported_observable_channels: []
+  reproducibility:
+    reproducibility_level: partial
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: 'no'
+    notes: null
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats:
+  - No run-local code artifacts are included with the paper text.
+provenance:
+  model_id: 1305_4676_single_operator_wimp_eft_v1
+  model_name: Single-dominant-operator WIMP effective theory for kinetic decoupling
+  model_family: effective_wimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1305_4676'
+      title: Kinetic Decoupling and Small-Scale Structure in Effective Theories of Dark Matter
+      authors:
+      - Jonathan M. Cornell
+      - Stefano Profumo
+      - William Shepherd
+      year: 2013
+      arxiv_id: '1305.4676'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text from run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0009
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1305_4676'
+      section: effective-operator framework
+      page: null
+      quote_or_summary: The paper defines a single-dominant-operator WIMP EFT and lists scalar, pseudoscalar,
+        vector, axial-vector, and tensor fermion operators.
+    - reference_id: '1305_4676'
+      section: kinetic decoupling
+      page: null
+      quote_or_summary: The paper evolves a WIMP phase-space distribution to compute kinetic decoupling
+        and protohalo cutoff scales.
+    unresolved_items:
+    - The paper is an EFT benchmark class, not a UV-complete model; this card intentionally groups the
+      five operator variants.
+  evidence:
+    particle_content:
+    - reference_id: '1305_4676'
+      note: The appendix describes the operators as interactions between a Standard Model fermion and
+        a Dirac fermion dark matter particle.
+      confidence: high
+      section: appendix matrix elements
+      page: null
+    symmetries:
+    - reference_id: '1305_4676'
+      note: The EFT framework requires at least two dark matter particles in the operator to ensure stability
+        and respects SM gauge symmetries.
+      confidence: high
+      section: effective-operator framework
+      page: null
+    interactions:
+    - reference_id: '1305_4676'
+      note: The paper lists O_S, O_P, O_V, O_A, and O_T and studies lepton-only, quark-only, and universal
+        coupling choices.
+      confidence: high
+      section: operators
+      page: null
+    production_mechanism:
+    - reference_id: '1305_4676'
+      note: The relic density is calculated assuming the same dominant operator controls early-universe
+        annihilation and late-time interactions.
+      confidence: high
+      section: operators
+      page: null
+    cosmological_history:
+    - reference_id: '1305_4676'
+      note: Kinetic decoupling is computed with a Boltzmann equation for WIMP scattering on the SM thermal
+        bath, with special treatment around QCD confinement.
+      confidence: high
+      section: kinetic decoupling
+      page: null
+    parameter_ranges:
+    - reference_id: '1305_4676'
+      note: Core parameters are the WIMP mass, the operator suppression scale Lambda_I, and the SM fermion
+        coupling pattern.
+      confidence: medium
+      section: operators/results
+      page: null
+    validity_domain:
+    - reference_id: '1305_4676'
+      note: The text warns that contact-operator collider bounds require caution when pair-production
+        energies exceed the EFT regime.
+      confidence: high
+      section: effective-operator framework
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - This is a paper-local EFT benchmark card; it should not be promoted to a unique UV-complete dark matter
+    model.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - EFT validity at high momentum transfer
+  - single-operator dominance
+  - neglect of coannihilation or resonant thermal effects
+  validation_status: partially_validated
+  notes: The calculations are internally developed in the paper, but the model card is intentionally coarse-grained
+    over multiple operator variants.
+agent_failure_modes:
+  warnings:
+  - id: do_not_treat_as_uv_complete
+    severity: high
+    category: invalid_mapping
+    warning: The card is an EFT benchmark class with integrated-out mediators, not a UV-complete particle
+      model.
+    mitigation: Require a separate UV completion before using it as a complete model.
+    source_reference_ids:
+    - '1305_4676'
+  - id: single_operator_assumption_warning
+    severity: medium
+    category: assumption_mismatch
+    warning: The relic and kinetic-decoupling results assume one operator dominates all relevant interactions.
+    mitigation: Track the active operator and coupling pattern explicitly.
+    source_reference_ids:
+    - '1305_4676'
+  - id: collider_eft_extrapolation
+    severity: medium
+    category: extrapolation
+    warning: Collider applications can leave the contact-operator regime when energies are large compared
+      with the mediator scale.
+    mitigation: Avoid extrapolating collider statements without checking EFT validity.
+    source_reference_ids:
+    - '1305_4676'

@@ -1,0 +1,709 @@
+_source:
+  shard: arXiv_src_1804_005_wds.tar
+  paper_id: '1804_01879'
+  source_member: 1804_01879.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: notation_conflict
+    id: s3_candidate_choice
+    mitigation: Preserve the lightest-Z2-odd-neutral-state wording unless a benchmark specifies the scalar
+      or pseudoscalar.
+    severity: medium
+    warning: The paper mainly shows h_a^n relic-density results but notes similar conclusions for h_a^p.
+associated_code:
+  caveats:
+  - No repository URL was extracted from the assigned text.
+  code_summary: The paper states that SARAH model files are available from the SARAH model database and
+    uses micrOMEGAS for relic density.
+  has_associated_code: partial
+  packages_or_modules:
+  - archive_url: null
+    availability: public
+    citation_reference_ids:
+    - primary
+    commit: null
+    dependencies: []
+    documentation_url: null
+    doi: null
+    inputs: []
+    languages: []
+    last_checked: '2026-05-31'
+    license: null
+    maintained: unknown
+    name: micrOMEGAS
+    notes: Used by the authors for the relic-density calculation.
+    outputs: []
+    purpose:
+    - compute_relic_density
+    relationship_to_model: related_but_not_model_specific
+    repository_url: null
+    resource_type: package
+    supported_model_families: []
+    supported_observables: []
+    supported_parameters: []
+    url: null
+    validity_domain: []
+    version: null
+  primary_code_role: relic_density_calculation
+assumptions:
+  global:
+  - description: No additional CP violation beyond the Standard Model is assumed.
+    id: cp_conserving_scalar_sector
+    scope: theory
+    status: assumed
+  - description: Relic-density scan uses tree-level model quantities.
+    id: tree_level_relic_scan
+    scope: computation
+    status: assumed
+cosmological_history:
+  bbn_relevance: low
+  cmb_relevance: low
+  isocurvature_perturbations: unknown
+  nonstandard_features: []
+  phase_transitions:
+  - electroweak symmetry breaking with v_a=0
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases: []
+  family: scalar_dark_matter
+  historical_origin_or_motivation: unknown
+  model_kind: complete_theory
+  name: S3 symmetric inert dark scalar
+  short_description: An S3-symmetric four-Higgs-doublet extension in which the antisymmetric scalar doublet
+    is inert and its lightest Z2-odd neutral component is a dark scalar candidate.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - Standard Model final states through scalar and gauge interactions
+  dark_sector_couplings:
+  - quartic scalar couplings involving the inert doublet
+  decay_channels: []
+  interaction_operators:
+  - S3-invariant scalar potential terms
+  - Z2-even inert-scalar interactions
+  mediator_types:
+  - scalar
+  - electroweak gauge boson
+  portals:
+  - higgs
+  - vector
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: mild
+    spin_dependence: spin_independent
+    velocity_dependence: mild
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs-sector scalars
+  - W bosons
+  - Z bosons
+  - Standard Model fermions through Higgs mixing
+  tree_or_loop_level: tree
+model_id: 1804_01879_s3_inert_dark_scalar_v1
+parameters:
+  core:
+  - name: dark scalar mass
+    notes: The scan shown for h_a^n uses this mass range; similar conclusions are reported for h_a^p.
+    range: 10 to 5000
+    role: core
+    status: inferred
+    symbol: M_h_a
+    unit: GeV
+  - name: quartic scalar couplings
+    range: absolute value less than 4
+    role: core
+    status: assumed
+    symbol: lambda_i
+  - name: electroweak vev
+    role: core
+    status: inferred
+    symbol: v
+    unit: GeV
+    value: 246
+  - name: inert vev
+    notes: Required to preserve the Z2 symmetry.
+    role: core
+    status: inferred
+    symbol: v_a
+    unit: GeV
+    value: 0
+particle_content:
+  additional_dark_sector_particles:
+  - charged inert scalar h_a^+
+  - second neutral inert scalar
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lightest Z2-odd neutral scalar h_a^n or h_a^p
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - other components of the inert SU(2) doublet
+  long_lived_particles:
+  - lightest Z2-odd neutral scalar
+  mediators:
+  - CP-even Higgs scalars
+  - electroweak gauge bosons
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: Cold thermal relic scalar in the viable WIMP regions.
+production:
+  abundance_set_by:
+  - annihilation cross section
+  - dark scalar mass
+  - scalar potential couplings
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out
+  nonthermal_momentum_distribution: 'no'
+  notes: Relic density is computed for physically allowed parameter points using micrOMEGAS.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: medium
+      note: The S3-invariant scalar potential and electroweak doublet nature set scalar and gauge interactions.
+      reference_id: primary
+      section: The scalar sector
+    parameter_ranges:
+    - confidence: medium
+      note: The h_a^n scan uses masses from 10 to 5000 GeV and restricts quartic couplings by perturbativity.
+      reference_id: primary
+      section: Phenomenological scan
+    particle_content:
+    - confidence: high
+      note: The fourth Higgs doublet is assigned to the antisymmetric S3 singlet and provides neutral
+        dark scalar candidates.
+      reference_id: primary
+      section: The scalar sector
+    production_mechanism:
+    - confidence: high
+      note: The paper computes relic density and annihilation cross section for the lightest Z2-odd neutral
+        scalar.
+      reference_id: primary
+      section: Phenomenological scan
+    symmetries:
+    - confidence: high
+      note: The imposed Z2 symmetry ensures stability of the potential dark matter candidates.
+      reference_id: primary
+      section: The scalar sector
+    validity_domain:
+    - confidence: medium
+      note: The paper explicitly limits calculations to tree-level quantities.
+      reference_id: primary
+      section: Introduction
+    constraints:
+    - confidence: high
+      note: Primary workflow applies unitarity, finite-energy scalar scattering, HiggsBounds, and micrOMEGAs.
+      page: null
+      reference_id: arxiv:1804.01879
+      section: Parameter scan
+    - confidence: high
+      note: Related i2HDM analysis combines perturbativity, unitarity, electroweak precision, Higgs, relic-density,
+        LUX, and LHC constraints.
+      page: null
+      reference_id: arxiv:1612.00511
+      section: Abstract/scan
+    observables:
+    - confidence: high
+      note: Primary paper reports S3 scan with Planck-compatible low-mass region, underabundance above
+        about 80 GeV, and near-Planck abundance around 5 TeV.
+      page: null
+      reference_id: arxiv:1804.01879
+      section: Abstract/results
+    - confidence: high
+      note: Related inert-doublet paper shows WW* annihilation changes relic-density and direct-detection
+        phenomenology.
+      page: null
+      reference_id: arxiv:1003.3125
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper explicitly generates SLHA files with SARAH/SPheno, filters with HiggsBounds,
+        and computes relic density with micrOMEGAs.
+      page: null
+      reference_id: arxiv:1804.01879
+      section: Scan setup
+  extraction:
+    confidence: high
+    extracted_by: batch-0013 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper extends the S3-3H model to a 4HDM with an inert doublet for dark matter
+        candidates.
+      reference_id: primary
+      section: Abstract/Introduction
+    - page: null
+      quote_or_summary: A Z2 symmetry makes the a-indexed scalar odd and v_a=0 preserves it.
+      reference_id: primary
+      section: The scalar sector
+    unresolved_items:
+    - No S3-specific direct-detection likelihood or collider recast was rerun.
+    - Loop corrections to the S3 scalar scan were outside the primary paper scope.
+  last_updated: '2026-05-31'
+  model_family: scalar_dark_matter
+  model_id: 1804_01879_s3_inert_dark_scalar_v1
+  model_name: S3 symmetric inert dark scalar
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: medium
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1804.01879'
+      authors:
+      - C. Espinoza
+      - E. A. Garces
+      - M. Mondragon
+      - H. Reyes-Gonzalez
+      doi: null
+      notes: Assigned paper text from run-local SQLite database.
+      reference_id: primary
+      role: original_model
+      title: The S3 Symmetric Model with a Dark Scalar
+      url: null
+      year: 2018
+    - arxiv_id: '1804.01879'
+      authors:
+      - Espinoza, C.
+      - Garcés, E. A.
+      - Mondragón, M.
+      - Reyes-González, H.
+      doi: 10.1016/j.physletb.2018.11.028
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1804.01879
+      role: original_model
+      title: The S3 symmetric model with a dark scalar
+      url: https://arxiv.org/abs/1804.01879
+      year: 2019
+    constraint_papers:
+    - arxiv_id: '1612.00511'
+      authors:
+      - Belyaev, Alexander
+      - Cacciapaglia, Giacomo
+      - Ivanov, Igor P.
+      - Rojas-Abatte, Felipe
+      - Thomas, Marc
+      doi: 10.1103/PhysRevD.97.035011
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1612.00511
+      role: constraint
+      title: Anatomy of the inert two-Higgs-doublet model in the light of the LHC and non-LHC dark matter
+        searches
+      url: https://arxiv.org/abs/1612.00511
+      year: 2018
+    - arxiv_id: '1003.3125'
+      authors:
+      - Lopez Honorez, Laura
+      - Yaguna, Carlos E.
+      doi: 10.1007/JHEP09(2010)046
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1003.3125
+      role: constraint
+      title: The inert doublet model of dark matter revisited
+      url: https://arxiv.org/abs/1003.3125
+      year: 2010
+    - arxiv_id: hep-ph/0612275
+      authors:
+      - Lopez Honorez, Laura
+      - Nezri, Emmanuel
+      - Oliver, Josep F.
+      - Tytgat, Michel H. G.
+      doi: 10.1088/1475-7516/2007/02/028
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:hep-ph/0612275
+      role: constraint
+      title: 'The inert doublet model: an archetype for dark matter'
+      url: https://arxiv.org/abs/hep-ph/0612275
+      year: 2007
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: either
+  key_dependencies:
+  - dark scalar mass
+  - quartic couplings
+  - mass splittings
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  dominant_uncertainties:
+  - loop corrections not included
+  - Yukawa-sector simplifications
+  - candidate could be scalar or pseudoscalar neutral state
+  overall: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: CDM-like in the paper's WIMP regime
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: CDM-like
+symmetries:
+  stabilizing_mechanism: An imposed Z2 symmetry makes fields with subindex a odd and all other fields
+    even; v_a=0 preserves the Z2 and stabilizes the lightest odd neutral scalar.
+  symmetries:
+  - exact_or_approximate: exact
+    name: S3
+    type: discrete
+  - breaking: unbroken by setting the inert vev v_a to zero
+    exact_or_approximate: exact
+    name: Z2
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: Populated only from the assigned paper text.
+  parent_frameworks:
+  - S3 symmetric multi-Higgs-doublet model
+  - inert doublet dark matter
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The inert doublet vev must remain zero so the Z2 symmetry is not broken.
+  extrapolation_risk: high
+  id: z2_preserved
+  status: assumed
+- applies_to: computation
+  caveats: []
+  condition: The paper limits the analysis to tree-level quantities and on-shell quartic-coupling approximations.
+  extrapolation_risk: medium
+  id: tree_level_scan
+  status: approximate
+observables:
+- caveats:
+  - The primary scan allows the inert scalar to be a subcomponent when below Planck.
+  - Loop corrections are outside the primary paper scope.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - thermal Standard Model bath
+  id: obs_s3_inert_thermal_relic
+  key_quantities:
+  - description: Mass of the lightest inert neutral scalar candidate.
+    name: dark scalar mass
+    range: 10 to 5000
+    role: core
+    source_reference_ids:
+    - arxiv:1804.01879
+    status: inferred
+    symbol: M_h_a
+    unit: GeV
+  - description: Quartic combination controlling annihilation and Higgs exchange.
+    name: effective Higgs-portal coupling
+    role: core
+    source_reference_ids:
+    - arxiv:1804.01879
+    - arxiv:hep-ph/0612275
+    status: inferred
+    symbol: lambda_eff
+  - description: Observed dark-matter abundance target or upper bound.
+    name: relic abundance
+    role: derived
+    source_reference_ids:
+    - arxiv:1804.01879
+    - arxiv:1612.00511
+    status: inferred
+    symbol: Omega h^2
+    value: about 0.12
+  linked_constraints:
+  - con_planck_relic_s3_inert
+  linked_routes:
+  - route_s3_scan_to_relic_collider_dd
+  name: Thermal relic density of the S3 inert scalar
+  notes: null
+  observability: high
+  predicted_effect: The lightest Z2-odd neutral inert scalar freezes out thermally; the primary scan finds
+    a low-mass Planck-compatible region, underabundance above about 80 GeV, and values near the Planck
+    abundance for masses around 5 TeV.
+  redshift_range: freeze-out epoch to today
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:1804.01879
+  - arxiv:1612.00511
+  - arxiv:hep-ph/0612275
+  subchannel: thermal freeze-out
+- caveats:
+  - Direct-detection limits are taken from inert-doublet context and require an S3-specific recast.
+  - Primary paper used tree-level quantities.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - LHC Higgs searches
+  - direct-detection experiments
+  id: obs_s3_higgs_and_direct_searches
+  key_quantities:
+  - description: Quartic couplings constrained by perturbativity/unitarity and Higgs phenomenology.
+    name: quartic scalar couplings
+    range: absolute value below about 4 in the source scan
+    role: core
+    source_reference_ids:
+    - arxiv:1804.01879
+    status: inferred
+    symbol: lambda_i
+  - description: Higgs-mediated nuclear scattering target for inert-doublet recasts.
+    name: spin-independent cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:1612.00511
+    - arxiv:1003.3125
+    status: inferred
+    symbol: sigma_SI
+  - description: Mass splittings entering LEP, LHC, and coannihilation constraints.
+    name: charged/inert scalar mass splittings
+    role: core
+    source_reference_ids:
+    - arxiv:1804.01879
+    - arxiv:1003.3125
+    status: inferred
+    symbol: Delta M
+  linked_constraints:
+  - con_higgsbounds_unitarity_s3
+  - con_idm_direct_detection_recast
+  linked_routes:
+  - route_s3_scan_to_relic_collider_dd
+  name: Higgs-search and Higgs-portal direct-detection signatures
+  notes: null
+  observability: medium
+  predicted_effect: Extra inert scalars modify Higgs-search acceptances and can produce direct-detection
+    and collider signatures analogous to inert-doublet dark matter.
+  redshift_range: z=0 laboratory searches
+  relevance: high
+  scale_range: electroweak to TeV mass scales
+  source_reference_ids:
+  - arxiv:1804.01879
+  - arxiv:1612.00511
+  - arxiv:1003.3125
+  subchannel: Higgs searches plus missing-energy/topology constraints
+constraints:
+- allowed_regions:
+  - Accepted points pass SARAH/SPheno generation, HiggsBounds filtering, and micrOMEGAs relic-density
+    calculation.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: Primary scan uses tree-level quantities and on-shell quartic approximations.
+    id: tree-level-scalar-scan
+    impact_if_violated: Loop corrections could move accepted points near boundaries.
+    notes: null
+    scope: S3 scalar-sector scan
+    source_reference_ids:
+    - arxiv:1804.01879
+    status: assumed
+  benchmark_implications:
+  - Higgs-search limits severely restrict the S3 scalar parameter space before relic-density evaluation.
+  caveats:
+  - Higher-order corrections were left for future work by the primary authors.
+  constrained_parameters:
+  - lambda_i
+  - scalar masses
+  - mixing angles
+  constraint_type: theoretical
+  data_release: HiggsBounds/Higgs search limits as implemented by primary paper
+  excluded_regions:
+  - Points failing stability, tree-level unitarity, finite-energy scalar scattering, or HiggsBounds experimental
+    searches are rejected.
+  id: con_higgsbounds_unitarity_s3
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Tree-level stability, unitarity, and Higgs-search filter
+  notes: null
+  observable_channel: collider Higgs searches
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1804.01879
+- allowed_regions:
+  - Primary scan finds a low-mass Planck-compatible region and heavy masses around 5 TeV approaching the
+    Planck value; many masses above about 80 GeV are underabundant.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Relic density is computed with standard thermal freeze-out in micrOMEGAs.
+    id: standard-thermal-history
+    impact_if_violated: Nonstandard cosmology would change the relic target mapping.
+    notes: null
+    scope: cosmological history
+    source_reference_ids:
+    - arxiv:1804.01879
+    - arxiv:hep-ph/0612275
+    status: assumed
+  benchmark_implications:
+  - The S3 inert scalar may require additional dark-sector components where it underproduces the observed
+    abundance.
+  caveats:
+  - No likelihood scan beyond the source parameter scan was rerun.
+  constrained_parameters:
+  - M_h_a
+  - lambda_eff
+  - mass splittings
+  constraint_type: cosmological
+  data_release: Planck dark-matter abundance as used by source
+  excluded_regions:
+  - Overabundant points are outside the Planck relic-density upper bound.
+  id: con_planck_relic_s3_inert
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Planck relic-density target for S3 inert scalar freeze-out
+  notes: null
+  observable_channel: thermal relic density
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1804.01879
+  - arxiv:hep-ph/0612275
+- allowed_regions:
+  - S3 accepted points require a dedicated mapping of the inert-doublet Higgs-portal coupling and mass
+    spectrum before applying these limits.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: The S3 inert neutral scalar has Higgs-portal and inert-doublet-like electroweak interactions,
+      but the full multiplet spectrum differs.
+    id: s3-to-idm-higgs-portal-map
+    impact_if_violated: A different scalar spectrum changes coannihilation and direct-detection rates.
+    notes: null
+    scope: direct-detection recast
+    source_reference_ids:
+    - arxiv:1804.01879
+    - arxiv:1612.00511
+    - arxiv:1003.3125
+    status: assumed
+  benchmark_implications:
+  - Direct detection and collider searches are complementary to relic-density filtering.
+  caveats:
+  - Use only as a recast target, not a direct exclusion on the S3 model.
+  constrained_parameters:
+  - lambda_eff
+  - M_h_a
+  - Delta M
+  - sigma_SI
+  constraint_type: direct_detection
+  data_release: LUX and LHC/inert-doublet search combinations in related literature
+  excluded_regions:
+  - Related inert-doublet analyses show LUX/direct-detection and LHC/Higgs constraints exclude substantial
+    Higgs-portal parameter space.
+  id: con_idm_direct_detection_recast
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Inert-doublet direct-detection and LHC complementarity recast
+  notes: null
+  observable_channel: spin-independent nuclear recoil and LHC missing energy
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1612.00511
+  - arxiv:1003.3125
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Direct-detection recast was not performed in this batch.
+    constraint_ids:
+    - con_higgsbounds_unitarity_s3
+    - con_planck_relic_s3_inert
+    - con_idm_direct_detection_recast
+    derived_quantities:
+    - annihilation cross sections
+    - Omega h^2
+    - Higgs-search exclusions
+    - sigma_SI
+    description: Scan S3 scalar parameters through theoretical filters, Higgs searches, relic density,
+      and inert-doublet direct-detection recasts.
+    forward_model_chain:
+    - inputs:
+      - scalar potential
+      - masses
+      - quartic couplings
+      notes: null
+      outputs:
+      - SLHA spectrum
+      - couplings
+      step_id: s1
+      step_type: other
+      tool_or_code: SARAH/SPheno
+      validity: Matches the primary scan workflow.
+    - inputs:
+      - SLHA spectrum
+      notes: null
+      outputs:
+      - Higgs-search pass/fail
+      step_id: s2
+      step_type: validation
+      tool_or_code: HiggsBounds
+      validity: Primary paper used HiggsBounds as an experimental filter.
+    - inputs:
+      - accepted spectrum
+      notes: null
+      outputs:
+      - relic density
+      - annihilation cross section
+      step_id: s3
+      step_type: other
+      tool_or_code: micrOMEGAs
+      validity: Standard thermal relic calculation.
+    - inputs:
+      - Higgs-portal coupling
+      - mass splittings
+      notes: null
+      outputs:
+      - direct-detection and LHC recast targets
+      step_id: s4
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires S3-specific mapping from inert-doublet literature.
+    id: route_s3_scan_to_relic_collider_dd
+    input_parameters:
+    - M_h_a
+    - lambda_i
+    - scalar mass splittings
+    - mixing angles
+    likelihoods:
+    - Planck relic abundance target
+    - HiggsBounds search database
+    - direct-detection likelihood not included
+    observable_ids:
+    - obs_s3_inert_thermal_relic
+    - obs_s3_higgs_and_direct_searches
+    required_code_resources:
+    - SARAH/SPheno model files
+    - HiggsBounds
+    - micrOMEGAs
+    route_status: partially_implemented
+    source_model_features:
+    - S3 four-Higgs-doublet scalar sector
+    - antisymmetric inert doublet
+    - Z2-stable neutral scalar
+    validation_tests:
+    - reproduce accepted-point relic-density bands
+    - recover HiggsBounds filtering before relic calculation

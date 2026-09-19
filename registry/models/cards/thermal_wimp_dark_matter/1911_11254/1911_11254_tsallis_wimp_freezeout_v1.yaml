@@ -1,0 +1,649 @@
+_source:
+  shard: arXiv_src_1911_036_wds.tar
+  paper_id: '1911_11254'
+  source_member: 1911_11254.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: toy_history
+    mitigation: null
+    severity: high
+    source_reference_ids: []
+    warning: Do not interpret q evolution as a UV-complete cosmology; the paper explicitly remains agnostic
+      about its origin.
+associated_code:
+  code_summary: No dedicated associated code is identified in the extracted paper text.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - description: The WIMP is stable or metastable on cosmological time scales.
+    id: wimp_stability
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - description: The collision term is generalized consistently with the Tsallis phase-space distributions.
+    id: molecular_chaos_generalization
+    scope: production
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling:
+    description: Freeze-out in x=m_chi/T; typical values around 20-30 are discussed.
+    name: chemical freeze-out
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: x_f
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - Tsallis generalized thermodynamics with q0 > 1 in the early Universe
+  - q relaxes to 1 as the Universe expands and cools
+  phase_transitions: []
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - WIMP freeze-out with Tsallis statistics
+  family: thermal_wimp_dark_matter
+  historical_origin_or_motivation: Motivated by testing how small departures from Boltzmann-Gibbs thermodynamics
+    affect the thermal WIMP relic target.
+  model_kind: phenomenological_parameterization
+  name: Tsallis-statistics WIMP freeze-out
+  short_description: Phenomenological thermal WIMP dark matter framework where early-Universe Tsallis
+    statistics modify phase-space distributions and the freeze-out target annihilation cross section.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - generic WIMP annihilation into Standard Model particles
+  cp_structure: unknown
+  dark_sector_couplings: []
+  decay_channels: []
+  flavor_structure: unknown
+  interaction_operators: []
+  mediator_types:
+  - unknown
+  portals:
+  - unknown
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Standard Model particles in WIMP annihilation final states
+  tree_or_loop_level: unknown
+model_id: 1911_11254_tsallis_wimp_freezeout_v1
+parameters:
+  core:
+  - description: Generalized-statistics parameter; q=1 recovers standard thermodynamics.
+    name: Tsallis parameter
+    range: q0 in [1, 1.05] in the toy model
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: q
+  - description: Initial value of q while the WIMP is in the thermal bath.
+    name: initial Tsallis parameter
+    range:
+      max: 1.05
+      min: 1
+      notes: Range stated for the toy model.
+      unit: null
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: q0
+  - description: Benchmark dark matter masses used in numerical freeze-out solutions.
+    name: WIMP mass
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+    value: 100 GeV example; several benchmark masses
+  - description: Thermally averaged cross section adjusted to reproduce the observed abundance.
+    name: annihilation cross section
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: <sigma v>
+    unit: cm^3/s
+    value: 2.2-2.6e-26 cm^3/s at q0=1; about 3e-34 cm^3/s for q0=1.05 and 100 GeV WIMP
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: unknown
+    name: WIMP
+    number_of_components: single_component
+    spin: unknown
+    statistics: unknown
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - unknown
+  standard_model_extension: unknown
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: modified by q-dependent high-energy tails
+  distribution_function_available: 'yes'
+  distribution_type: nonthermal
+  f_of_p_or_q: Tsallis q-deformed phase-space distributions derived in the paper.
+  notes: Distribution is a generalized equilibrium form rather than standard Bose-Einstein or Fermi-Dirac.
+production:
+  abundance_set_by:
+  - q history
+  - WIMP mass
+  - annihilation cross section
+  - generalized collision term
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out with Tsallis generalized statistics
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The WIMP is initially part of the thermal bath while q differs from 1, then q relaxes to 1 after
+    freeze-out.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The paper remains agnostic about the microscopic origin of q != 1 and assumes q relaxes to
+        1 after freeze-out.
+      page: null
+      reference_id: '1911_11254'
+      section: Introduction
+    parameter_ranges:
+    - confidence: high
+      note: The toy model considers q0 in the range 1 to 1.05 and gives a 100 GeV WIMP example.
+      page: null
+      reference_id: '1911_11254'
+      section: Introduction
+    particle_content:
+    - confidence: medium
+      note: The effective dark matter candidate is a weakly interacting massive particle; no spin or mediator
+        is specified.
+      page: null
+      reference_id: '1911_11254'
+      section: Abstract
+    production_mechanism:
+    - confidence: high
+      note: The model modifies thermal freeze-out using Tsallis phase-space distributions and a generalized
+        Boltzmann equation.
+      page: null
+      reference_id: '1911_11254'
+      section: Abstract
+    relic_density_logic:
+    - confidence: high
+      note: The target annihilation cross section needed for the observed abundance is computed as a function
+        of q0 and benchmark WIMP mass.
+      page: null
+      reference_id: '1911_11254'
+      section: Abstract
+    constraints:
+    - confidence: high
+      note: Primary paper matches the observed relic abundance with q-dependent target cross sections.
+      page: null
+      reference_id: arxiv:1911.11254
+      section: Results
+    - confidence: medium
+      note: Related dwarf-galaxy analysis provides indirect-detection context but not a Tsallis-specific
+        likelihood.
+      page: null
+      reference_id: arxiv:1601.06590
+      section: Introduction
+    observables:
+    - confidence: high
+      note: Primary paper reports the q-dependent target cross-section drop and indirect-detection motivation.
+      page: null
+      reference_id: arxiv:1911.11254
+      section: Results
+    - confidence: high
+      note: Related WIMP abundance paper gives the canonical thermal cross-section benchmark above 10
+        GeV.
+      page: null
+      reference_id: arxiv:1204.3622
+      section: Results
+    routes:
+    - confidence: high
+      note: Primary paper derives Tsallis distributions and solves the modified Boltzmann equation.
+      page: null
+      reference_id: arxiv:1911.11254
+      section: Methods
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0007
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper studies WIMP thermal relic freeze-out in generalized Tsallis statistics
+        with parameter q.
+      reference_id: '1911_11254'
+      section: Abstract
+    - page: null
+      quote_or_summary: A toy history is defined with q0 > 1 while DM is in the thermal bath and q relaxing
+        to 1 after freeze-out.
+      reference_id: '1911_11254'
+      section: Introduction
+    - page: null
+      quote_or_summary: The generalized Boltzmann equation is solved numerically for benchmark DM masses
+        to find target annihilation cross sections.
+      reference_id: '1911_11254'
+      section: Boltzmann equation / results
+    unresolved_items:
+    - No particle-specific annihilation final state or indirect-detection spectrum is specified by the
+      primary model.
+    - N_eff effects of nonstandard q evolution are mentioned by the primary paper but not calculated.
+  last_updated: '2026-05-31'
+  model_family: thermal_wimp_dark_matter
+  model_id: 1911_11254_tsallis_wimp_freezeout_v1
+  model_name: Tsallis-statistics WIMP freeze-out
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1911.11254'
+      authors:
+      - Thomas D. Rueter
+      - Thomas G. Rizzo
+      - JoAnne L. Hewett
+      doi: null
+      notes: null
+      reference_id: '1911_11254'
+      role: original_model
+      title: Dark Matter Freeze Out With Tsallis Statistics in the Early Universe
+      url: null
+      year: 2019
+    - arxiv_id: '1911.11254'
+      authors:
+      - Rueter, Thomas D.
+      - Rizzo, Thomas G.
+      - Hewett, JoAnne L.
+      doi: 10.48550/arXiv.1911.11254
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1911.11254
+      role: original_model
+      title: Dark Matter Freeze Out with Tsallis Statistics in the Early Universe
+      url: https://arxiv.org/abs/1911.11254
+      year: 2019
+    constraint_papers:
+    - arxiv_id: '1204.3622'
+      authors:
+      - Steigman, Gary
+      - Dasgupta, Basudeb
+      - Beacom, John F.
+      doi: 10.1103/PhysRevD.86.023506
+      notes: Related full text resolved locally and read for canonical WIMP abundance benchmark.
+      reference_id: arxiv:1204.3622
+      role: benchmark
+      title: Precise relic WIMP abundance and its impact on searches for dark matter annihilation
+      url: https://arxiv.org/abs/1204.3622
+      year: 2012
+    - arxiv_id: '1601.06590'
+      authors:
+      - MAGIC Collaboration
+      doi: 10.1088/1475-7516/2016/02/039
+      notes: Related full text resolved locally and read for indirect-detection context.
+      reference_id: arxiv:1601.06590
+      role: constraint
+      title: Limits to dark matter annihilation cross-section from a combined analysis of MAGIC and Fermi-LAT
+        observations of dwarf satellite galaxies
+      url: https://arxiv.org/abs/1601.06590
+      year: 2016
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1703.07364'
+      authors:
+      - Arcadi, Giorgio
+      - Dutra, Maíra
+      - Ghosh, Pradipta
+      - Lindner, Manfred
+      - Mambrini, Yann
+      - Pierre, Mathias
+      - Profumo, Stefano
+      - Queiroz, Farinaldo S.
+      doi: 10.1140/epjc/s10052-018-5662-y
+      notes: Related full text resolved locally and read for WIMP-search context.
+      reference_id: arxiv:1703.07364
+      role: review
+      title: The waning of the WIMP? A review of models, searches, and constraints
+      url: https://arxiv.org/abs/1703.07364
+      year: 2018
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - q0
+  - q relaxation history
+  - benchmark WIMP mass
+  - modified phase-space distributions
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - No microscopic source of q != 1 is specified.
+  - No concrete WIMP mediator or spin assignment is given.
+  notes: Well supported as a phenomenological freeze-out model; not a complete particle theory.
+  overall: medium
+  theory_robustness: low
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: Dark matter stability or metastability on cosmological time scales is assumed,
+    but no stabilizing symmetry is specified.
+  symmetries: []
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: not_applicable
+  notes: No microscopic particle Lagrangian for the WIMP or for the origin of q evolution is specified.
+  parent_frameworks:
+  - thermal WIMP freeze-out
+  - Tsallis statistics
+  renormalizable: not_applicable
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: cosmological_history
+  caveats:
+  - The source of q evolution is not modeled.
+  condition: q0 > 1 while DM freezes out and q relaxes to 1 afterward.
+  extrapolation_risk: high
+  id: toy_q_history
+  source_reference_ids: []
+  status: assumed
+- applies_to: model
+  caveats:
+  - No mediator, spin, or stabilizing symmetry is specified.
+  condition: The particle model is represented only by a WIMP mass and annihilation cross section.
+  extrapolation_risk: medium
+  id: generic_wimp
+  source_reference_ids: []
+  status: assumed
+observables:
+- caveats:
+  - The result depends on the chosen q evolution and collision-term prescription.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early-universe thermal bath
+  id: obs_tsallis_relic_cross_section_shift
+  key_quantities:
+  - description: Initial non-extensivity parameter in the toy evolution.
+    name: initial Tsallis parameter
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 1.05
+      min: 1
+      notes: Toy range studied by the primary paper.
+      unit: null
+    role: core
+    source_reference_ids:
+    - arxiv:1911.11254
+    status: inferred
+    symbol: q0
+  - description: Target s-wave annihilation cross section.
+    name: annihilation cross section
+    range: 2.2-2.6e-26 cm^3/s at q0=1; about 3e-34 cm^3/s for q0=1.05 and 100 GeV WIMP
+    role: core
+    source_reference_ids:
+    - arxiv:1911.11254
+    - arxiv:1204.3622
+    status: inferred
+    symbol: <sigma v>
+    unit: cm^3/s
+  - description: Observed abundance target used for freeze-out matching.
+    name: relic abundance
+    role: core
+    source_reference_ids:
+    - arxiv:1911.11254
+    status: inferred
+    symbol: Omega_chi h^2
+    value: 0.1200 +/- 0.0012
+  linked_constraints:
+  - con_planck_relic_abundance_tsallis_target
+  linked_routes:
+  - route_tsallis_boltzmann_to_searches
+  name: Tsallis-driven shift of the WIMP relic cross-section target
+  notes: null
+  observability: medium
+  predicted_effect: For q0>1, the target s-wave annihilation cross section needed to match the observed
+    relic density drops by many orders of magnitude relative to the canonical q=1 WIMP value.
+  redshift_range: radiation era around WIMP freeze-out
+  relevance: critical
+  scale_range: x_f=m_chi/T about 20-30 in the primary calculation
+  source_reference_ids:
+  - arxiv:1911.11254
+  - arxiv:1204.3622
+  subchannel: thermal freeze-out relic abundance
+- caveats:
+  - Indirect-detection fluxes also depend on annihilation channel and J-factor assumptions not specified
+    by the Tsallis thermodynamics paper.
+  channel: indirect_detection
+  effect_direction: null_signal
+  environments:
+  - dwarf spheroidal galaxies
+  - gamma-ray telescopes
+  id: obs_tsallis_indirect_null_signal
+  key_quantities:
+  - description: Indirect-detection flux normalization for s-wave annihilation.
+    name: annihilation cross section
+    range: below canonical thermal target for q0>1 benchmarks
+    role: core
+    source_reference_ids:
+    - arxiv:1911.11254
+    - arxiv:1601.06590
+    status: inferred
+    symbol: <sigma v>
+    unit: cm^3/s
+  linked_constraints:
+  - con_indirect_detection_sensitivity_gap
+  linked_routes:
+  - route_tsallis_boltzmann_to_searches
+  name: Lower indirect-detection annihilation target
+  notes: null
+  observability: medium
+  predicted_effect: Because q0>1 can make the relic target cross section far below the standard thermal
+    WIMP value, null indirect-detection results become easier to accommodate and searches must reach lower
+    rates.
+  redshift_range: z=0 astrophysical targets
+  relevance: high
+  scale_range: dwarf-spheroidal gamma-ray observations
+  source_reference_ids:
+  - arxiv:1911.11254
+  - arxiv:1601.06590
+  - arxiv:1703.07364
+  subchannel: gamma rays from dwarf spheroidal galaxies
+constraints:
+- allowed_regions:
+  - q0 in [1,1.05] with target <sigma v> curves matching Omega h^2=0.1200 +/- 0.0012 in the primary toy
+    model.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The Tsallis parameter relaxes toward q=1 according to the toy prescription used in the
+      paper.
+    id: tsallis-q-relaxation
+    impact_if_violated: Different relaxation histories can change the target cross section.
+    notes: null
+    scope: freeze-out Boltzmann solution
+    source_reference_ids:
+    - arxiv:1911.11254
+    status: assumed
+  benchmark_implications:
+  - At q0=1.05 and m_chi=100 GeV, the primary paper gives a target around 3e-34 cm^3/s.
+  caveats:
+  - No full particle model for the annihilation final states is specified.
+  constrained_parameters:
+  - q0
+  - <sigma v>
+  - m_chi
+  constraint_type: cosmological
+  data_release: Planck-era relic-density target as quoted by the primary paper.
+  excluded_regions:
+  - For a fixed m_chi and q evolution, cross sections away from the primary target curves over- or under-produce
+    the observed relic abundance.
+  id: con_planck_relic_abundance_tsallis_target
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Relic-density matching condition under Tsallis freeze-out
+  notes: null
+  observable_channel: thermal relic abundance
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1911.11254
+  - arxiv:1204.3622
+- allowed_regions:
+  - q0>1 benchmarks with target rates below present sensitivity remain viable unless a specific particle
+    model adds other signals.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Indirect searches assume annihilation to visible channels with standard astrophysical
+      J-factors.
+    id: s-wave-visible-final-states
+    impact_if_violated: Hidden or velocity-suppressed channels weaken the mapping.
+    notes: null
+    scope: gamma-ray recast
+    source_reference_ids:
+    - arxiv:1601.06590
+    status: assumed
+  benchmark_implications:
+  - The primary q0=1.05 benchmarks motivate searches at cross sections well below the canonical 2e-26
+    cm^3/s scale.
+  caveats:
+  - The Tsallis paper does not define annihilation final states or a gamma-ray spectrum.
+  constrained_parameters:
+  - <sigma v>
+  - annihilation channel
+  - m_chi
+  constraint_type: astrophysical
+  data_release: MAGIC/Fermi-LAT dwarf-spheroidal combined analysis used as related context.
+  excluded_regions:
+  - Standard dwarf-galaxy searches constrain cross sections near the usual thermal-WIMP target for favorable
+    channels, not the much lower q0>1 targets highlighted by the primary paper.
+  id: con_indirect_detection_sensitivity_gap
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Indirect-detection sensitivity gap for q>1 targets
+  notes: null
+  observable_channel: indirect_detection
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:1911.11254
+  - arxiv:1601.06590
+  - arxiv:1703.07364
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The structured route is a target for future implementation; only source-paper values
+      were recorded here.
+    caveats:
+    - N_eff and other cosmological probes of q evolution were mentioned but not calculated.
+    constraint_ids:
+    - con_planck_relic_abundance_tsallis_target
+    - con_indirect_detection_sensitivity_gap
+    derived_quantities:
+    - freeze-out x_f
+    - Y_infinity
+    - Omega_chi h^2
+    - present-day annihilation rate
+    description: Compute Tsallis-modified freeze-out target cross sections and map them to relic-density
+      and indirect-search observables.
+    forward_model_chain:
+    - inputs:
+      - q0
+      - temperature
+      - particle energy
+      notes: null
+      outputs:
+      - Tsallis phase-space distributions
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Thermodynamically consistent prescription used by the primary paper.
+    - inputs:
+      - Tsallis distributions
+      - <sigma v>
+      - H(T)
+      notes: No integrator was run in this batch.
+      outputs:
+      - Y(x)
+      - x_f
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: custom freeze-out integrator
+      validity: Radiation-era WIMP freeze-out.
+    - inputs:
+      - <sigma v>
+      - annihilation channel
+      - J factors
+      notes: Primary paper only motivates lower-rate searches.
+      outputs:
+      - gamma-ray search target
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires a concrete final-state model.
+    id: route_tsallis_boltzmann_to_searches
+    input_parameters:
+    - q0
+    - q(x)
+    - m_chi
+    - <sigma v>
+    - degrees of freedom
+    likelihoods:
+    - relic abundance target only
+    - indirect-detection likelihood requires model-specific final states
+    observable_ids:
+    - obs_tsallis_relic_cross_section_shift
+    - obs_tsallis_indirect_null_signal
+    required_code_resources:
+    - Tsallis freeze-out solver
+    - indirect-detection flux/likelihood recast
+    route_status: planned
+    source_model_features:
+    - non-extensive Tsallis phase-space distributions
+    - q relaxation to standard statistics
+    - thermal WIMP freeze-out
+    validation_tests:
+    - recover q0=1 canonical 2.2-2.6e-26 cm^3/s target
+    - recover q0=1.05 100 GeV target near 3e-34 cm^3/s

@@ -1,0 +1,281 @@
+_source:
+  shard: arXiv_src_0610_002_wds.tar
+  paper_id: hep-th0610129
+  source_member: hep-th0610129.json
+schema_version: model_only_v0
+model_id: hep-th0610129_large_volume_iib_neutralino_lsp_v1
+identity:
+  name: Large-volume IIB neutralino LSP dark matter
+  family: string_motivated_neutralino_dark_matter
+  aliases:
+  - large-volume IIB flux neutralino LSP
+  - IIB soft-term neutralino dark matter
+  short_description: A string-motivated MSSM spectrum from large-volume type IIB flux compactification
+    soft terms, with a neutralino LSP relic-density calculation used to identify viable dark-matter regions.
+  historical_origin_or_motivation: The paper derives chiral-matter soft terms in large-volume and KKLT-like
+    IIB compactifications and runs the resulting MSSM spectra to collider and relic-density tests.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - type IIB flux compactification
+  - large-volume moduli stabilization
+  - MSSM below the string scale
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The assigned text gives the N=1 supergravity data and derived soft terms rather than a full explicit
+    low-energy Lagrangian for every MSSM interaction.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - possible axions
+  - possible large-volume modulus
+  mediators:
+  - MSSM Higgs and electroweak superpartners
+  excited_or_degenerate_states:
+  - stau LSP regions are identified as excluded without R-parity violation
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Neutralino stability is treated through the usual R-parity-conserving MSSM logic;
+    charged stau LSP regions would require R-parity violation and are not neutralino dark matter.
+  symmetries:
+  - name: R-parity
+    type: discrete
+    exact_or_approximate: unknown
+    breaking: Not specified for the neutralino-LSP region.
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  - other
+  standard_model_targets:
+  - Standard Model fermions through MSSM annihilation channels
+  dark_sector_couplings:
+  - MSSM neutralino couplings fixed by the derived soft spectrum
+  mediator_types:
+  - Higgs bosons
+  - electroweak gauge bosons
+  - sleptons and other superpartners
+  annihilation_channels:
+  - thermal neutralino annihilation channels computed with micrOmegas
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: Calabi-Yau volume
+    symbol: V
+    description: Large compactification volume setting the string and gravitino scales.
+    range: V about 10^15 in string units for TeV-scale soft terms
+    role: core
+    status: inferred
+  - name: flux superpotential
+    symbol: W_0
+    description: Flux-induced superpotential; generic O(1) in large-volume limit and fine-tuned small
+      in the KKLT limit.
+    range: O(1) large-volume; about 10^-13 in KKLT-like example
+    role: core
+    status: inferred
+  - name: string scale
+    symbol: m_s
+    description: Intermediate string scale in the generic large-volume example.
+    range: about 10^11 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: gaugino mass scale
+    symbol: M
+    description: Soft gaugino mass scanned in the phenomenological analysis.
+    role: core
+    status: assumed
+  - name: Higgsino mass parameter
+    symbol: mu
+    description: Weak-scale MSSM parameter scanned with the gaugino mass scale.
+    role: core
+    status: assumed
+  - name: neutralino relic density
+    symbol: Omega_chi h^2
+    description: Neutralino contribution compared with the WMAP range.
+    range: 0.085 < Omega h^2 < 0.125 used as the two-sigma WMAP target
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal neutralino freeze-out in the MSSM spectrum
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - neutralino annihilation cross sections computed from the derived spectrum
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The lower WMAP bound is described as optional because axions or the volume modulus could also
+    contribute to dark matter.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: thermal
+  key_dependencies:
+  - soft terms from moduli stabilization
+  - gaugino mass
+  - mu parameter
+  - neutralino versus stau LSP identity
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - possible additional axion or volume-modulus dark-matter component
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: No explicit distribution function is provided in the assigned text.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: lv_iib_mssm_spectrum
+  applies_to: model
+  condition: Assumes the MSSM is the only charged matter content below the string scale and uses dilute-flux
+    leading-order soft terms.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: neutralino_lsp_region
+  applies_to: parameter
+  condition: The model-card row applies to the restricted positive-mu region with a neutralino LSP satisfying
+    the imposed relic-density and collider constraints.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: mssm_below_string
+    description: Only MSSM charged matter is kept below the string scale for RG running.
+    scope: global
+    status: assumed
+    can_be_relaxed: 'yes'
+    impact_if_violated: Extra states could shift the spectrum and relic density.
+  - id: r_parity_neutralino
+    description: The neutralino-LSP interpretation assumes the usual stable neutralino; stau-LSP regions
+      require different R-parity-violating treatment.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Without a stable neutral LSP this is not a neutralino dark-matter model.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses SoftSUSY2.0 and micrOmegas1.3 for spectrum and relic-density calculations;
+    no model-specific public code release is identified in the assigned text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: hep-th0610129_large_volume_iib_neutralino_lsp_v1
+  model_name: Large-volume IIB neutralino LSP dark matter
+  model_family: string_motivated_neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: hep-th0610129
+      title: unknown
+      authors: []
+      year: 2006
+      arxiv_id: null
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch-0010
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: hep-th0610129
+      section: Introduction and soft-term setup
+      page: null
+      quote_or_summary: Paper applies chiral matter metrics to soft terms in large-volume IIB compactifications.
+    - reference_id: hep-th0610129
+      section: RG running / phenomenology
+      page: null
+      quote_or_summary: Neutralino relic density is computed with micrOmegas and compared with the WMAP
+        range.
+    unresolved_items:
+    - The assigned text does not expose a reliable title or author block for this paper.
+    - The dark-matter interpretation is borderline because relic density is used as a phenomenological
+      constraint rather than the sole motivation of the paper.
+  evidence:
+    particle_content:
+    - reference_id: hep-th0610129
+      note: The viable region is described as having a neutralino LSP; stau LSP regions are separately
+        flagged as problematic.
+      confidence: medium
+      section: RG running / phenomenology
+      page: null
+    production_mechanism:
+    - reference_id: hep-th0610129
+      note: The relic-density treatment uses the standard thermal neutralino calculation in micrOmegas.
+      confidence: medium
+      section: RG running / phenomenology
+      page: null
+    parameter_ranges:
+    - reference_id: hep-th0610129
+      note: The text gives V about 10^15, m_s about 10^11 GeV, and WMAP 0.085 < Omega h^2 < 0.125 as reference
+        scales.
+      confidence: medium
+      section: Large-volume setup and phenomenology
+      page: null
+    validity_domain:
+    - reference_id: hep-th0610129
+      note: The phenomenology assumes only MSSM charged matter below the string scale and notes possible
+        dilute-flux uncertainties.
+      confidence: medium
+      section: Phenomenology caveats
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - leading-order dilute-flux soft terms
+  - possible non-MSSM states below the string scale
+  - neutralino may be only a subcomponent
+  validation_status: expert_judgment_only
+  notes: Accepted as a model-card candidate because the paper derives a BSM spectrum and computes the
+    neutralino relic contribution.
+agent_failure_modes:
+  warnings:
+  - id: borderline_dm_focus
+    severity: medium
+    category: other
+    warning: Do not treat this as a dedicated neutralino model paper; the assigned text primarily develops
+      IIB soft terms and uses relic density as one phenomenological test.

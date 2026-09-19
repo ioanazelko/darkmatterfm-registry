@@ -1,0 +1,830 @@
+_source:
+  shard: arXiv_src_2311_039_wds.tar
+  paper_id: '2311_05125'
+  source_member: 2311_05125.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2311_05125_ewsb_higgs_portal_alp_dm_v1
+identity:
+  name: Electroweak-symmetry-breaking Higgs-portal axion-like particle dark matter
+  family: axion_like_dark_matter
+  aliases:
+  - EWSB-modified ALP dark matter
+  - Higgs-portal mass-shift ALP dark matter
+  short_description: An axion-like particle dark matter model in which a dimension-6 Higgs-portal, shift-symmetry-breaking
+    operator adds to the ALP mass after electroweak symmetry breaking and modifies misalignment relic-density
+    parameter space.
+  historical_origin_or_motivation: The paper proposes using the electroweak symmetry breaking phase to
+    modify the ALP potential without moving its minimum, broadening relic-satisfied ALP parameter space.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - axion-like particle dark matter
+  - spontaneously broken global U(1)
+  - Higgs-portal effective operator
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff:
+    name: cutoff scale
+    symbol: Lambda
+    description: Cutoff of the dimension-6 Higgs-portal operator, with Lambda larger than f_a.
+    unit: GeV
+    role: core
+    status: assumed
+  embedded_in_larger_framework: unknown
+  notes: The model includes a global U(1)-breaking complex scalar and a dimension-6 shift-symmetry-breaking
+    operator involving the SM Higgs doublet.
+particle_content:
+  dark_matter_candidate:
+    name: axion-like particle a
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - radial mode of the global U(1)-breaking complex scalar, integrated out in the low-energy description
+  mediators:
+  - SM Higgs doublet through a higher-dimensional portal
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The ALP is a pseudo Nambu-Goldstone boson of a spontaneously broken global U(1);
+    approximate shift symmetry and suppressed interactions make it cosmologically stable in the paper
+    setup.
+  symmetries:
+  - name: global U(1)
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken during inflation and explicitly broken by nonperturbative effects plus
+      the Higgs-portal term
+    breaking_scale:
+      name: ALP decay constant
+      symbol: f_a
+      description: Scale of spontaneous global symmetry breaking.
+      unit: GeV
+      role: core
+      status: unknown
+  - name: ALP shift symmetry
+    type: shift
+    exact_or_approximate: broken
+    breaking: dimension-6 Higgs-portal term and nonperturbative ALP mass
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - axion
+  standard_model_targets:
+  - SM Higgs doublet
+  dark_sector_couplings:
+  - dimension-6 shift-symmetry-breaking Higgs portal
+  - generic derivative ALP couplings suppressed by f_a
+  mediator_types:
+  - Higgs portal effective operator
+  interaction_operators:
+  - V1 proportional to |H|^4 Phi^2 exp(i phase) / Lambda^2 plus h.c.
+  - post-EWSB ALP potential with m_a^2 = m_a0^2 + v^4/Lambda^2
+  scattering:
+    elastic: unknown
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+parameters:
+  core:
+  - name: ALP final mass
+    symbol: m_a
+    description: Effective ALP mass after electroweak symmetry breaking.
+    range: model-dependent; examples discuss keV-GeV opening and much broader ranges in figures
+    unit: GeV
+    role: core
+    status: inferred
+  - name: pre-EWSB ALP mass
+    symbol: m_a0
+    description: ALP mass contribution before electroweak symmetry breaking, attributed to nonperturbative
+      dynamics.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: EWSB-induced mass contribution
+    symbol: m_aE
+    description: Mass contribution generated after the Higgs gets a vacuum expectation value.
+    value: v^2/Lambda at leading relation
+    unit: GeV
+    role: core
+    status: inferred
+  - name: ALP decay constant
+    symbol: f_a
+    description: Scale of spontaneous global U(1) breaking.
+    unit: GeV
+    role: core
+    status: unknown
+  - name: Higgs-portal cutoff
+    symbol: Lambda
+    description: Cutoff scale of the dimension-6 operator, assumed larger than f_a and bounded above by
+      the Planck scale in scans.
+    unit: GeV
+    role: core
+    status: assumed
+  - name: initial misalignment angle
+    symbol: theta_I
+    description: Initial homogeneous ALP field displacement divided by f_a.
+    value: O(1) in relic estimates
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - nonthermal misalignment production
+  - change in oscillation frequency at electroweak symmetry breaking due to the induced mass term
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - initial misalignment angle
+  - f_a
+  - m_a0
+  - m_aE from the Higgs portal
+  - whether the standard oscillation onset is before or after EWSB
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper assumes ALPs can constitute all of cold dark matter and computes relic-satisfied parameter
+    space for two oscillation-onset cases.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter relic fraction
+    symbol: Omega_a/Omega_CDM
+    description: The text states the scenario considers ALP contributing entirely to CDM for isocurvature
+      estimates.
+    value: 1
+    role: core
+    status: assumed
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_a0
+  - m_aE
+  - f_a
+  - Lambda
+  - theta_I
+  - EWSB temperature
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - ALP mass changes across electroweak symmetry breaking while the potential minimum remains unchanged
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak symmetry breaking at about 150 GeV is central to the mass shift
+  topological_defects: []
+  isocurvature_perturbations: 'yes'
+  bbn_relevance: low
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  f_of_p_or_q: homogeneous misalignment field evolution, not a particle distribution function
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Once oscillating, the ALP field redshifts as ordinary matter according to the text.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: not discussed
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: unknown
+validity_domain:
+- id: v1
+  applies_to: EFT
+  condition: The dimension-6 Higgs-portal description assumes Lambda > f_a and an explicit breaking scale
+    not exceeding the Planck scale in the scans.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2311_05125'
+- id: v2
+  applies_to: cosmological_history
+  condition: The global U(1) symmetry is presumed broken during inflation so the ALP field is homogeneous
+    for misalignment production.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2311_05125'
+- id: v3
+  applies_to: model
+  condition: The Higgs-portal term changes the ALP mass after EWSB without shifting the ALP potential
+    minimum.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2311_05125'
+assumptions:
+  global:
+  - id: a1
+    description: The ALP is stable over cosmological timescales.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2311_05125'
+    impact_if_violated: A shorter lifetime would invalidate the all-CDM relic interpretation.
+  - id: a2
+    description: The initial misalignment angle is nonzero and treated as order one in the relic estimates.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2311_05125'
+    impact_if_violated: Relic density scales with the initial displacement.
+  - id: a3
+    description: The EWSB-induced mass term is turned on when the Higgs obtains its vacuum expectation
+      value.
+    scope: cosmological_history
+    status: inferred
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2311_05125'
+    impact_if_violated: A different finite-temperature Higgs history would change the oscillation timing.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code was identified from the assigned text.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - allowed mass ranges are figure-dependent in the converted text
+  - EFT cutoff and UV origin are assumed rather than built explicitly
+  validation_status: expert_judgment_only
+  notes: The core model and mass-shift mechanism are explicit in the text.
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not apply the standard ALP mass-decay-constant relic relation without accounting for the
+      EWSB-induced mass contribution.
+    source_reference_ids:
+    - '2311_05125'
+    mitigation: Use m_a^2 = m_a0^2 + v^4/Lambda^2 and the paper's oscillation-onset cases.
+provenance:
+  model_id: 2311_05125_ewsb_higgs_portal_alp_dm_v1
+  model_name: Electroweak-symmetry-breaking Higgs-portal axion-like particle dark matter
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2311_05125'
+      title: Effects of Electroweak Symmetry Breaking on Axion Like Particles as Dark Matter
+      year: 2023
+      arxiv_id: '2311.05125'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+    - reference_id: paper
+      title: Effects of electroweak symmetry breaking on axionlike particles as dark matter
+      authors:
+      - Manna, Soumen Kumar
+      - Sil, Arunansu
+      year: 2024
+      arxiv_id: '2311.05125'
+      doi: 10.1103/PhysRevD.109.095036
+      url: https://arxiv.org/abs/2311.05125
+      role: original_model
+      notes: Assigned primary paper; local full text resolved and read first.
+    constraint_papers:
+    - reference_id: rel_iso_0904_0647
+      title: Isocurvature forecast in the anthropic axion window
+      authors:
+      - Hamann, J.
+      - Hannestad, S.
+      - Raffelt, G. G.
+      - Wong, Y. Y. Y.
+      year: 2009
+      arxiv_id: '0904.0647'
+      doi: 10.1088/1475-7516/2009/06/022
+      url: https://arxiv.org/abs/0904.0647
+      role: constraint
+      notes: Related paper read through local cache or bounded arXiv fallback.
+    review_papers:
+    - reference_id: rel_wispy_1201_5902
+      title: WISPy cold dark matter
+      authors:
+      - Arias, Paola
+      - Cadamuro, Davide
+      - Goodsell, Mark
+      - Jaeckel, Joerg
+      - Redondo, Javier
+      - Ringwald, Andreas
+      year: 2012
+      arxiv_id: '1201.5902'
+      doi: 10.1088/1475-7516/2012/06/013
+      url: https://arxiv.org/abs/1201.5902
+      role: review
+      notes: Related paper read through local cache or bounded arXiv fallback.
+    - reference_id: rel_axion_review_2403_17697
+      title: Cosmology of axion dark matter
+      authors:
+      - O'Hare, Ciaran A. J.
+      year: 2024
+      arxiv_id: '2403.17697'
+      doi: 10.48550/arXiv.2403.17697
+      url: https://arxiv.org/abs/2403.17697
+      role: review
+      notes: Related paper read through local cache or bounded arXiv fallback.
+    external_databases:
+    - name: NASA ADS
+      url: https://ui.adsabs.harvard.edu/
+      note: Used for metadata discovery and candidate ranking only, not as standalone scientific evidence.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2311_05125'
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The work studies EWSB through a higher-order Higgs portal interaction on ALP dark
+        matter evolution.
+    - reference_id: '2311_05125'
+      section: modified scenario
+      page: null
+      quote_or_summary: After EWSB the ALP mass receives a new contribution, m_a^2 = m_a0^2 + v^4/Lambda^2.
+    unresolved_items:
+    - No UV completion of the dimension-6 Higgs-portal operator was identified.
+    - Photon-coupling constraints are conditional because the assigned model does not uniquely fix ALP
+      couplings to photons.
+  evidence:
+    particle_content:
+    - reference_id: '2311_05125'
+      note: The paper identifies ALPs as pseudo Nambu-Goldstone bosons and promising dark matter candidates.
+      confidence: high
+      section: abstract/introduction
+    symmetries:
+    - reference_id: '2311_05125'
+      note: The ALP arises from spontaneous breaking of a global U(1), with an explicit higher-order shift-symmetry-breaking
+        Higgs portal term.
+      confidence: high
+      section: modified scenario
+    interactions:
+    - reference_id: '2311_05125'
+      note: A dimension-6 term involving |H|^4 and the global-symmetry-breaking field is introduced; after
+        EWSB it gives m_a^2 = m_a0^2 + v^4/Lambda^2.
+      confidence: high
+      section: modified scenario
+    production_mechanism:
+    - reference_id: '2311_05125'
+      note: ALP dark matter is produced by misalignment, with the oscillation frequency modified after
+        EWSB.
+      confidence: high
+      section: standard ALP cosmology and modified scenario
+    cosmological_history:
+    - reference_id: '2311_05125'
+      note: The paper separates cases where the conventional oscillation starts before or at/after the
+        electroweak symmetry breaking temperature.
+      confidence: high
+      section: modified scenario
+    parameter_ranges:
+    - reference_id: '2311_05125'
+      note: The text states that the EWSB effect can open otherwise restricted keV-GeV ALP mass ranges
+        and sets a minimum mass contribution around v^2/M_Pl.
+      confidence: medium
+      section: parameter-space discussion
+    validity_domain:
+    - reference_id: '2311_05125'
+      note: The scenario assumes Lambda greater than f_a and a Higgs portal that does not change the ALP
+        potential minimum.
+      confidence: high
+      section: modified scenario
+    observables:
+    - reference_id: paper
+      note: Primary paper introduces the EWSB-induced ALP mass shift and relic-density contour changes.
+      confidence: high
+      section: Model and observations
+      page: null
+    - reference_id: rel_wispy_1201_5902
+      note: Related review/local text supports standard ALP misalignment and isocurvature context.
+      confidence: medium
+      section: WISPy cold dark matter
+      page: null
+    - reference_id: rel_axion_review_2403_17697
+      note: Related review/local text supports generic axion-DM phenomenology and search context.
+      confidence: medium
+      section: Review sections
+      page: null
+    constraints:
+    - reference_id: paper
+      note: Primary paper discusses relic-density, stability, photon-coupling, and isocurvature constraints.
+      confidence: high
+      section: Constraints
+      page: null
+    - reference_id: rel_iso_0904_0647
+      note: Related local text supports isocurvature forecast context.
+      confidence: medium
+      section: Isocurvature forecast
+      page: null
+    routes:
+    - reference_id: paper
+      note: Route follows the primary EWSB-modified ALP equation-of-motion and contour workflow.
+      confidence: high
+      section: Model calculation
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+observables:
+- id: ewsb_shifted_misalignment_relic_contours
+  name: EWSB-shifted ALP misalignment relic contours
+  channel: cosmology
+  subchannel: nonthermal misalignment relic density
+  predicted_effect: A dimension-6 Higgs-portal contribution to the ALP mass switches on after electroweak
+    symmetry breaking, changing the oscillation frequency and broadening the relic-density-satisfied region
+    in the m_a and f_a plane.
+  effect_direction: shape_change
+  key_quantities:
+  - name: zero-temperature ALP mass before EWSB
+    symbol: m_a0
+    description: Baseline ALP mass before the Higgs-induced contribution.
+    unit: eV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: EWSB-induced ALP mass
+    symbol: m_aE
+    description: Mass contribution generated by the Higgs portal after EWSB.
+    unit: eV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: ALP decay constant
+    symbol: f_a
+    description: Global-symmetry breaking scale controlling misalignment abundance.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+    - rel_wispy_1201_5902
+  - name: initial misalignment angle
+    symbol: theta_I
+    description: Initial ALP field displacement in units of f_a.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+    - rel_wispy_1201_5902
+  redshift_range: oscillation onset before or after electroweak symmetry breaking
+  scale_range: homogeneous cosmological abundance
+  environments:
+  - early-universe ALP condensate
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - relic_density_contour
+  linked_routes:
+  - route_ewsb_modified_misalignment
+  caveats:
+  - Only the effective operator is specified; UV completion and generic ALP couplings remain model-dependent.
+  source_reference_ids:
+  - paper
+  - rel_wispy_1201_5902
+  notes: null
+- id: alp_cdm_isocurvature
+  name: ALP cold-dark-matter isocurvature
+  channel: cmb
+  subchannel: inflationary isocurvature perturbations
+  predicted_effect: If the ALP field exists during inflation and makes all of CDM, quantum fluctuations
+    in the misalignment angle generate CDM isocurvature perturbations constrained by CMB anisotropies.
+  effect_direction: shape_change
+  key_quantities:
+  - name: inflationary Hubble scale
+    symbol: H_inf
+    description: Controls ALP field fluctuations during inflation.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+    - rel_iso_0904_0647
+  - name: isocurvature fraction
+    symbol: beta_iso
+    description: CMB isocurvature amplitude fraction.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - paper
+    - rel_iso_0904_0647
+  redshift_range: inflationary initial conditions; observed at recombination
+  scale_range: CMB pivot-scale anisotropy
+  environments:
+  - inflationary ALP condensate
+  - CMB
+  observability: high
+  relevance: high
+  linked_constraints:
+  - planck_isocurvature_bound
+  linked_routes:
+  - route_ewsb_modified_misalignment
+  caveats:
+  - Constraint applies only under pre-inflationary symmetry breaking assumptions.
+  source_reference_ids:
+  - paper
+  - rel_iso_0904_0647
+  - rel_axion_review_2403_17697
+  notes: null
+- id: alp_photon_decay_and_searches
+  name: ALP photon coupling decay/search signatures
+  channel: indirect_detection
+  subchannel: photon decay and laboratory ALP searches
+  predicted_effect: Generic ALP-photon couplings can cause decays or enable light-shining-through-wall
+    and haloscope searches; the primary paper overlays such constraints as external ALP-search context.
+  effect_direction: rate_change
+  key_quantities:
+  - name: ALP-photon coupling
+    symbol: g_a_gamma
+    description: Effective photon coupling used in external ALP constraints.
+    unit: GeV^-1
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+    - rel_axion_review_2403_17697
+  - name: ALP lifetime
+    symbol: tau_a
+    description: Lifetime for photon decay channels.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - paper
+  redshift_range: late universe and laboratory searches
+  scale_range: ALP mass/coupling plane
+  environments:
+  - cosmic ALP population
+  - laboratory magnets
+  observability: medium
+  relevance: medium
+  linked_constraints:
+  - alp_lifetime_photon_coupling
+  linked_routes:
+  - route_alp_search_overlay
+  caveats:
+  - The assigned model centers on a Higgs portal; photon couplings are external/phenomenological inputs.
+  source_reference_ids:
+  - paper
+  - rel_axion_review_2403_17697
+  notes: null
+constraints:
+- id: relic_density_contour
+  name: Observed dark-matter abundance contour
+  constraint_type: cosmological
+  observable_channel: ALP relic density
+  applies: 'yes'
+  constrained_parameters:
+  - m_a0
+  - m_aE
+  - f_a
+  - theta_I
+  - Lambda
+  excluded_regions: []
+  allowed_regions:
+  - Curves in the primary paper identify parameter combinations where ALPs can make all cold dark matter.
+  benchmark_implications:
+  - Defines the target region for the model rather than an exclusion by itself.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: Planck-like Omega_CDM target cited through the primary analysis
+  recasting_needed: 'no'
+  robustness: medium
+  assumptions:
+  - id: all_cdm
+    description: The ALP accounts for all of cold dark matter when applying the displayed target contours.
+    scope: relic-density calculation
+    status: assumed
+    impact_if_violated: If ALP is a subcomponent, the contour and isocurvature mapping shift.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - paper
+    notes: null
+  caveats:
+  - Misalignment angle choices and oscillation-onset case matter.
+  source_reference_ids:
+  - paper
+  notes: null
+- id: planck_isocurvature_bound
+  name: Planck CDM isocurvature bound
+  constraint_type: cosmological
+  observable_channel: CMB anisotropy isocurvature
+  applies: parameter_dependent
+  constrained_parameters:
+  - H_inf
+  - f_a
+  - theta_I
+  - Omega_a/Omega_CDM
+  excluded_regions: []
+  allowed_regions: []
+  benchmark_implications:
+  - High inflationary Hubble scales are restricted when the ALP field is present during inflation and
+    supplies CDM.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: Planck isocurvature constraints as cited in the primary and related papers
+  recasting_needed: 'yes'
+  robustness: high
+  assumptions:
+  - id: pq_broken_during_inflation
+    description: The ALP symmetry is broken during inflation and not restored later.
+    scope: isocurvature bound
+    status: assumed
+    impact_if_violated: If the symmetry breaks after inflation, the quoted isocurvature route is not applicable.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - paper
+    - rel_iso_0904_0647
+    notes: null
+  caveats:
+  - Use as a conditional constraint, not a universal ALP-DM exclusion.
+  source_reference_ids:
+  - paper
+  - rel_iso_0904_0647
+  - rel_wispy_1201_5902
+  notes: null
+- id: alp_lifetime_photon_coupling
+  name: ALP lifetime and photon-search bounds
+  constraint_type: cosmological
+  observable_channel: ALP decays and photon coupling searches
+  applies: parameter_dependent
+  constrained_parameters:
+  - m_a
+  - g_a_gamma
+  excluded_regions: []
+  allowed_regions:
+  - Viable dark matter requires lifetimes longer than the age of the Universe when photon decays are present.
+  benchmark_implications:
+  - Constrains generic ALP couplings overlaid on the Higgs-portal mass-shift model.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: AxionLimits-style compiled constraints referenced by the primary paper
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: photon_coupling_present
+    description: The ALP has a photon coupling of the size being overlaid.
+    scope: external ALP constraints
+    status: assumed
+    impact_if_violated: If photon coupling is absent or much smaller, photon-search bounds do not apply.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - paper
+    notes: null
+  caveats:
+  - The primary operator is Higgs-portal; photon-coupling constraints are ancillary.
+  source_reference_ids:
+  - paper
+  - rel_axion_review_2403_17697
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: route_ewsb_modified_misalignment
+    description: Solve ALP evolution with an EWSB-induced mass term and compare relic density and isocurvature
+      constraints.
+    source_model_features:
+    - dimension-6 Higgs-portal mass term
+    - nonthermal ALP misalignment
+    - ALP as all CDM
+    input_parameters:
+    - m_a0
+    - m_aE
+    - f_a
+    - Lambda
+    - theta_I
+    - T_EW
+    - H_inf
+    derived_quantities:
+    - oscillation temperature
+    - Omega_a h^2
+    - beta_iso
+    - allowed m_a-f_a contour
+    forward_model_chain:
+    - step_id: mass_history
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - m_a0
+      - m_aE
+      - T_EW
+      outputs:
+      - time-dependent ALP mass
+      validity: Effective step/transition approximation follows primary setup.
+      notes: null
+    - step_id: field_evolution
+      step_type: boltzmann_solver
+      tool_or_code: null
+      inputs:
+      - ALP equation of motion
+      - initial misalignment
+      outputs:
+      - ALP number density
+      - relic abundance
+      validity: Needs numerical EOM for precision near EWSB.
+      notes: null
+    - step_id: isocurvature_overlay
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - H_inf
+      - f_a
+      - theta_I
+      - Omega_a/Omega_CDM
+      outputs:
+      - isocurvature fraction
+      validity: Conditional on pre-inflationary symmetry breaking.
+      notes: null
+    observable_ids:
+    - ewsb_shifted_misalignment_relic_contours
+    - alp_cdm_isocurvature
+    constraint_ids:
+    - relic_density_contour
+    - planck_isocurvature_bound
+    likelihoods:
+    - Omega_CDM target
+    - Planck isocurvature likelihood
+    required_code_resources:
+    - ALP misalignment EOM solver
+    - CMB isocurvature constraint overlay
+    validation_tests:
+    - recover primary-paper case A/B relic contours
+    - check standard misalignment limit as m_aE -> 0
+    route_status: planned
+    agent_notes: The primary paper supplies formulas and contours; no executable code was found in the
+      batch input.
+    caveats:
+    - UV completion of the higher-dimensional operator is unresolved.
+  - id: route_alp_search_overlay
+    description: Overlay generic ALP photon-coupling searches on the mass-shift relic parameter space.
+    source_model_features:
+    - ALP photon coupling as optional phenomenological input
+    - EWSB-modified mass relation
+    input_parameters:
+    - m_a
+    - g_a_gamma
+    - tau_a
+    derived_quantities:
+    - decay rate
+    - search-exclusion overlay
+    forward_model_chain:
+    - step_id: coupling_overlay
+      step_type: data_transform
+      tool_or_code: null
+      inputs:
+      - m_a
+      - g_a_gamma
+      - external exclusion curves
+      outputs:
+      - excluded/allowed overlay
+      validity: Requires external data tables not bundled here.
+      notes: null
+    observable_ids:
+    - alp_photon_decay_and_searches
+    constraint_ids:
+    - alp_lifetime_photon_coupling
+    likelihoods:
+    - AxionLimits-style compiled bounds
+    required_code_resources:
+    - ALP constraint database tables
+    validation_tests:
+    - verify lifetime boundary against primary formula
+    route_status: planned
+    agent_notes: Useful only if a photon coupling is specified.
+    caveats:
+    - Not a constraint from the Higgs portal alone.

@@ -1,0 +1,470 @@
+_source:
+  shard: arXiv_src_1307_012_wds.tar
+  paper_id: '1307_6878'
+  source_member: 1307_6878.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: do_not_assume_light_sterile_dark_sector
+    mitigation: Keep the Z2-stable WIMP, heavy vector-like lepton, and heavy Majorana neutrino assumptions
+      explicit.
+    severity: medium
+    source_reference_ids:
+    - '1307_6878'
+    warning: This B-L-violating model is presented specifically as a BarDaMA variant without a light stable
+      sterile dark-sector particle and without Z4.
+  - category: assumption_mismatch
+    id: do_not_drop_decay_hierarchy
+    mitigation: Check the decay-dominance inequality before using the model for parameter inference.
+    severity: high
+    source_reference_ids:
+    - '1307_6878'
+    warning: The model relies on the L-violating H N decay of the vector-like lepton dominating over the
+      H e_R mode.
+associated_code:
+  caveats: []
+  code_summary: The paper solves Boltzmann equations and gives benchmark evolutions, but no model-specific
+    public code is identified in the assigned text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: 'no'
+    description: The imposed Z2 symmetry remains exact and only the WIMP is charged under it.
+    id: z2_stable_majorana_wimp
+    impact_if_violated: The WIMP would not be stable dark matter.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1307_6878'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The decay of the vector-like lepton into H N dominates over H e_R so the generated asymmetry
+      is not erased.
+    id: dominant_l_violating_vectorlike_decay
+    impact_if_violated: The BarDaMA leptogenesis mechanism would fail.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '1307_6878'
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: At least two heavy Majorana neutrinos can be included to satisfy neutrino oscillation
+      requirements and generate light neutrino masses.
+    id: low_scale_seesaw_available
+    impact_if_violated: The neutrino-mass motivation would be incomplete, though the dark matter stability
+      assumption is separate.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1307_6878'
+    status: inferred
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - B-L-violating heavy Majorana neutrino sector
+  - lepton asymmetry generated during WIMP freeze-out
+  - electroweak sphalerons convert part of the lepton asymmetry to baryon asymmetry
+  phase_transitions:
+  - electroweak sphaleron freeze-out
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - BarDaMA leptogenesis model
+  - WIMPy leptogenesis with heavy Majorana neutrinos
+  family: wimpy_leptogenesis_dark_matter
+  historical_origin_or_motivation: Motivated by showing that baryogenesis from dark matter annihilation
+    can work with B-L violation, no light sterile dark-sector particle, and only a Z2 dark matter symmetry.
+  model_kind: simplified_model
+  name: B-L-violating BarDaMA Majorana WIMP with vector-like leptons and heavy Majorana neutrinos
+  short_description: A Z2-stable Standard-Model singlet Majorana WIMP whose CP-violating annihilations
+    into a SM lepton doublet and a heavy vector-like antilepton set the thermal relic abundance and generate
+    a lepton asymmetry, with heavy Majorana neutrinos providing B-L violation and a TeV-scale seesaw link.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - chi chi to SM lepton doublet plus heavy vector-like antilepton
+  - CP-conjugate annihilation channel
+  cp_structure: CP asymmetry in DM annihilation is proportional to the relative phase of the S1 and S2
+    lepton couplings.
+  dark_sector_couplings:
+  - chi chi S_i pseudoscalar couplings
+  - S_i Psi lepton couplings
+  - vector-like lepton Yukawa couplings to H e_R and H N_i
+  decay_channels:
+  - vector-like lepton to Higgs plus heavy Majorana neutrino
+  - subdominant vector-like lepton to Higgs plus right-handed charged lepton
+  flavor_structure: The vector-like lepton is taken to couple to one SM lepton flavor in the Boltzmann-equation
+    treatment.
+  interaction_operators:
+  - i lambda_chi_i chi chi S_i gamma5
+  - i lambda_L_i Psi S_i L
+  - lambda_e Psi H e_R
+  - lambda_N_i Psi H N_i
+  - Majorana mass matrix for N_i
+  mediator_types:
+  - pseudoscalar singlet mediators
+  - vector-like lepton
+  - heavy Majorana neutrino
+  portals:
+  - neutrino
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - SM lepton doublet
+  - right-handed charged lepton
+  - Higgs doublet
+  - heavy singlet neutrino
+  tree_or_loop_level: both
+model_id: 1307_6878_bl_violating_bardama_vectorlike_lepton_wimp_v1
+parameters:
+  core:
+  - description: Mass setting the thermal freeze-out and baryogenesis scale.
+    name: WIMP mass
+    range: above the sphaleron conversion scale; WIMPy baryogenesis unitarity bound below about 340 TeV
+    role: core
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+  - description: Masses of the two singlet mediators needed for CP-violating annihilation.
+    name: pseudoscalar mediator masses
+    range: TeV-scale, benchmark values given in the paper table but not visible in the extracted text
+    role: core
+    status: inferred
+    symbol: m_S1,m_S2
+    unit: GeV
+  - description: Mass of the exotic lepton doublet produced in WIMP annihilation.
+    name: vector-like lepton mass
+    range: TeV scale in the paper discussion
+    role: core
+    status: inferred
+    symbol: m_Psi
+    unit: GeV
+  - description: Singlet neutrino mass matrix scale used for B-L violation and seesaw neutrino masses.
+    name: heavy Majorana neutrino mass
+    range: around TeV scale in the paper discussion
+    role: core
+    status: inferred
+    symbol: m_N
+    unit: GeV
+  - description: Couplings controlling CP-violating WIMP annihilation to lepton plus vector-like lepton.
+    name: lepton coupling to pseudoscalars
+    range: model-dependent complex values
+    role: core
+    status: inferred
+    symbol: lambda_L_i
+  - description: Yukawa coupling for vector-like lepton decay to H N_i; must dominate over the L-conserving
+      H e_R mode.
+    name: L-violating decay Yukawa
+    range: satisfies decay dominance inequality in the paper
+    role: core
+    status: inferred
+    symbol: lambda_N_i
+  - description: Yukawa coupling for light neutrino masses in a vanilla TeV-scale seesaw.
+    name: ordinary seesaw Yukawa
+    range: about 1e-6 times sqrt(m_N/1 TeV) in the paper discussion
+    role: derived
+    status: inferred
+    symbol: y_N
+  derived: []
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - pseudoscalar singlets S1 and S2
+  - heavy vector-like lepton doublet Psi
+  - heavy singlet Majorana neutrinos N_i
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: Standard-Model singlet Majorana WIMP chi
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - heavy charged lepton state
+  - heavy neutral lepton states
+  long_lived_particles:
+  - Z2-stable Majorana WIMP chi
+  mediators:
+  - pseudoscalar singlets S1 and S2
+  - heavy vector-like lepton doublet
+  - heavy Majorana neutrinos
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - heavy vector-like lepton Psi
+  - heavy singlet Majorana neutrinos N_i
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: thermal
+  f_of_p_or_q: unknown
+  free_streaming_length: null
+  notes: No explicit phase-space distribution is given; the WIMP is heavy and treated as cold.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - chi chi annihilation through S1 and S2
+  - CP asymmetry in lepton/vector-like-lepton final states
+  - L-violating vector-like lepton decay through heavy Majorana neutrinos
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out of Majorana WIMP annihilations
+  - WIMPy leptogenesis from dark matter annihilation
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves Boltzmann equations for benchmark parameters and relates the baryon asymmetry
+    to the B-L_SM asymmetry before sphaleron freeze-out.
+  thermal_equilibrium_with_hidden_sector: partial
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - Model is an illustrative BarDaMA leptogenesis construction, not a full scan.
+  - The local text stripped some symbol names, so descriptive field labels are used.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: For z below sphaleron freeze-out, Y_B is related to Y_B-L_SM by 28/79; afterward it remains
+        constant.
+      page: null
+      reference_id: '1307_6878'
+      section: Numerical results
+    interactions:
+    - confidence: high
+      note: The displayed Lagrangian contains chi chi S_i, S_i Psi lepton, Psi H e_R, Psi H N_i, and Majorana
+        N_i mass terms.
+      page: null
+      reference_id: '1307_6878'
+      section: Lagrangian and parameters
+    parameter_ranges:
+    - confidence: high
+      note: The paper discusses TeV-scale vector-like leptons and heavy singlet neutrinos, and quotes
+        suppressed seesaw Yukawa values for vanilla TeV-scale seesaw.
+      page: null
+      reference_id: '1307_6878'
+      section: Experimental constraints and neutrino masses
+    particle_content:
+    - confidence: high
+      note: The paper states that chi and S1/S2 are replicas of the previous model, adds a heavy vector-like
+        lepton doublet, and introduces singlet heavy neutrinos N_i.
+      page: null
+      reference_id: '1307_6878'
+      section: Lagrangian and parameters
+    production_mechanism:
+    - confidence: high
+      note: CP-violating WIMP annihilation generates a lepton-sector asymmetry, and sphalerons convert
+        it to baryon number.
+      page: null
+      reference_id: '1307_6878'
+      section: Numerical results
+    relic_density:
+    - confidence: high
+      note: The same WIMP freeze-out annihilation interaction is used to set the relic abundance while
+        producing the asymmetry.
+      page: null
+      reference_id: '1307_6878'
+      section: Conclusion
+    symmetries:
+    - confidence: high
+      note: Only the DM is charged under Z2; heavy Majorana neutrinos violate B-L in the leptogenesis
+        model.
+      page: null
+      reference_id: '1307_6878'
+      section: B-L violating model setup
+    validity_domain:
+    - confidence: high
+      note: The L-conserving H e_R decay channel must be subdominant to the L-violating H N decay channel.
+      page: null
+      reference_id: '1307_6878'
+      section: Lagrangian and parameters
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch-0017
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5 dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Paper focuses on WIMP annihilation into a SM particle plus a heavy exotic field
+        to suppress washout.
+      reference_id: '1307_6878'
+      section: BarDaMA with massive annihilation products
+    - page: null
+      quote_or_summary: Paper lists particle content, stabilizing Z2, and the Lagrangian for the concrete
+        model.
+      reference_id: '1307_6878'
+      section: Lagrangian and parameters
+    unresolved_items:
+    - Exact benchmark table values were not present in the extracted local text.
+  last_updated: '2026-05-31'
+  model_family: wimpy_leptogenesis_dark_matter
+  model_id: 1307_6878_bl_violating_bardama_vectorlike_lepton_wimp_v1
+  model_name: B-L-violating BarDaMA Majorana WIMP with vector-like leptons and heavy Majorana neutrinos
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1307.6878'
+      authors: []
+      doi: null
+      notes: Header title and authors were not present in the assigned text; title is a descriptive inference
+        from the local paper text.
+      reference_id: '1307_6878'
+      role: original_model
+      title: B-L-violating baryogenesis from dark matter annihilation with vector-like leptons and heavy
+        Majorana neutrinos
+      url: null
+      year: 2013
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - pseudoscalar mediator masses and couplings
+  - vector-like lepton mass
+  - L-violating decay rate
+  - heavy Majorana neutrino mass
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - dominance of L-violating decay
+  - heavy neutrino flavor structure
+  - electroweak sphaleron conversion details
+  - lack of parameter scan
+  notes: The paper demonstrates one benchmark evolution and discusses consistency conditions for the vector-like
+    lepton and heavy-neutrino sector.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: A Z2 symmetry under which only the WIMP is charged makes the dark matter stable;
+    B-L is violated by the heavy Majorana neutrino sector.
+  symmetries:
+  - breaking: not broken in the model
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z2 dark matter parity
+    type: discrete
+  - breaking: violated by heavy Majorana neutrino mass and L-violating vector-like lepton decay
+    breaking_scale:
+      name: heavy Majorana neutrino mass scale
+      range: TeV scale in the paper discussion
+      role: core
+      status: inferred
+      symbol: m_N
+      unit: GeV
+    exact_or_approximate: broken
+    name: B-L
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: 'yes'
+  notes: The Lagrangian extends the BarDaMA scalar-mediator setup with a vector-like lepton doublet and
+    singlet heavy Majorana neutrinos.
+  parent_frameworks:
+  - WIMPy leptogenesis
+  - Baryogenesis from Dark Matter Annihilation
+  - low-scale type-I seesaw
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats:
+  - Exact benchmark couplings are not visible in the extracted table.
+  condition: The vector-like lepton L-conserving decay H e_R must be subdominant to the L-violating decay
+    H N.
+  extrapolation_risk: high
+  id: l_violating_decay_dominance
+  notes: null
+  source_reference_ids:
+  - '1307_6878'
+  status: inferred
+  valid_range: lambda_e less than about 0.2 times lambda_N times the kinematic factor quoted in the paper
+- applies_to: model
+  caveats: []
+  condition: Heavy singlet Majorana neutrinos must be present to provide B-L violation and can also generate
+    light neutrino masses.
+  extrapolation_risk: medium
+  id: heavy_majorana_neutrino_seesaw_scale
+  notes: null
+  source_reference_ids:
+  - '1307_6878'
+  status: inferred
+  valid_range: TeV-scale m_N with suppressed vanilla seesaw Yukawa, or pseudo-Dirac enhancement option
+- applies_to: cosmological_history
+  caveats:
+  - The paper notes electroweak crossover details induce order-10-percent corrections.
+  condition: The generated B-L_SM asymmetry is converted by sphalerons with Y_B = 28/79 Y_B-L_SM before
+    sphaleron freeze-out.
+  extrapolation_risk: medium
+  id: sphaleron_conversion
+  notes: null
+  source_reference_ids:
+  - '1307_6878'
+  status: inferred
+  valid_range: temperatures near the electroweak sphaleron epoch

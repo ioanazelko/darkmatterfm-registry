@@ -1,0 +1,655 @@
+_source:
+  shard: arXiv_src_1411_002_wds.tar
+  paper_id: '1411_1071'
+  source_member: 1411_1071.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: asymmetry_origin_unspecified
+    mitigation: Treat the asymmetry as a phenomenological input unless another source supplies it.
+    severity: medium
+    source_reference_ids: []
+    warning: Do not infer a specific baryogenesis or dark-asymmetry mechanism from this paper.
+associated_code:
+  code_summary: No public model code is identified in the paper text used for extraction.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: A high-scale mechanism may generate an X versus anti-X asymmetry, but the paper does
+      not specify that ultraviolet source.
+    id: primordial_asymmetry_optional
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: medium
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling:
+    description: Late DM-neutrino kinetic decoupling scale relevant to missing satellites
+    name: kinetic decoupling temperature
+    role: cosmological
+    status: inferred
+    symbol: T_kd
+    unit: keV
+    value: order 0.1
+  nonstandard_features:
+  - post-BBN recoupling of secluded and active neutrinos
+  - large relic secluded-neutrino population
+  phase_transitions:
+  - U(1)_X breaking by h_X vacuum expectation value
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - secluded neutrinophilic DM
+  - S nu DM
+  family: neutrino_portal_self_interacting_dark_matter
+  historical_origin_or_motivation: Designed to combine velocity-dependent self-interactions with late
+    neutrino scattering that can affect small-scale structure.
+  model_kind: complete_theory
+  name: Neutrino portal secluded dark matter
+  short_description: Dirac dark matter X charged under a new U(1)_X interacts with a secluded SM-singlet
+    neutrino through a light vector mediator; active-sector access occurs through neutrino mixing.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - X anti-X to vector mediators
+  - X anti-X to secluded neutrinos
+  dark_sector_couplings:
+  - g_nu coupling of secluded neutrino to new gauge boson
+  - g_X coupling of X to new gauge boson
+  - active-secluded neutrino mixing
+  interaction_operators:
+  - g_nu nu_s gamma^mu nu_s phi_mu
+  - g_X X gamma^mu X phi_mu
+  - y (L H)(h_X nu_s)
+  mediator_types:
+  - light vector mediator
+  - secluded neutrino
+  portals:
+  - neutrino
+  - vector
+  self_scattering_channels:
+  - X-X scattering through light mediator
+  standard_model_targets:
+  - active neutrinos
+  tree_or_loop_level: tree
+model_id: 1411_1071_neutrino_portal_secluded_dm_v1
+parameters:
+  core:
+  - description: Dirac dark matter mass
+    name: dark matter mass
+    notes: Exact scan range not fully reconstructed from extracted text.
+    range: studied over low to high masses; text explicitly discusses m_X > m_phi and examples above 10
+      GeV
+    role: core
+    status: inferred
+    symbol: m_X
+    unit: GeV
+  - description: Mass of the new U(1)_X vector mediator
+    name: vector mediator mass
+    range: order MeV
+    role: core
+    status: inferred
+    symbol: m_phi
+    unit: MeV
+  - description: Coupling of X to the U(1)_X vector mediator
+    name: dark gauge coupling
+    role: core
+    status: inferred
+    symbol: g_X
+  - description: Coupling of nu_s to the new vector mediator
+    name: secluded neutrino coupling
+    role: core
+    status: inferred
+    symbol: g_nu
+  - description: Active/secluded neutrino mixing used for recoupling
+    name: active-secluded mixing angle
+    role: core
+    status: inferred
+    symbol: theta_s
+    value: '0.1'
+  - description: Mass splitting used as a guide from neutrino anomalies
+    name: sterile-active mass splitting
+    role: core
+    status: inferred
+    symbol: Delta m^2
+    unit: eV^2
+    value: '1'
+particle_content:
+  additional_dark_sector_particles:
+  - secluded SM-singlet neutrino nu_s
+  - U(1)_X-charged Higgs h_X
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: X
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species:
+  - relic secluded neutrino population
+  mediators:
+  - light U(1)_X vector mediator
+  standard_model_extension: substantial
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: The dark matter relic is treated thermally, with an optional primordial asymmetry.
+production:
+  abundance_set_by:
+  - X anti-X annihilation cross section
+  - possible primordial particle-antiparticle asymmetry
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - symmetric thermal freeze-out
+  - asymmetric thermal relic
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves coupled Boltzmann equations and allows a nonzero X versus anti-X asymmetry.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: Active and secluded neutrinos recouple after BBN, yielding a relic secluded-neutrino population.
+      page: null
+      reference_id: '1411_1071'
+      section: cosmology
+    interactions:
+    - confidence: high
+      note: The text gives gauge couplings of X and nu_s to the new boson and a neutrino-mixing operator.
+      page: null
+      reference_id: '1411_1071'
+      section: model
+    particle_content:
+    - confidence: high
+      note: DM is a Dirac fermion X; the secluded sector includes a SM-singlet neutrino and h_X.
+      page: null
+      reference_id: '1411_1071'
+      section: model
+    production_mechanism:
+    - confidence: high
+      note: The paper solves coupled Boltzmann equations for symmetric and asymmetric thermal relic abundance.
+      page: null
+      reference_id: '1411_1071'
+      section: relic abundance
+    symmetries:
+    - confidence: high
+      note: X and nu_s are charged under a new U(1)_X gauge interaction, broken by h_X.
+      page: null
+      reference_id: '1411_1071'
+      section: model
+    validity_domain:
+    - confidence: medium
+      note: The desired self-scattering behavior uses an order-MeV light mediator and velocity dependence.
+      page: null
+      reference_id: '1411_1071'
+      section: self-interactions
+    constraints:
+    - confidence: high
+      note: Primary full text states the O(0.1 keV) kinetic-decoupling target, dwarf self-interaction
+        window, and IceCube exclusions/projections.
+      page: null
+      reference_id: src_1411_1071_primary
+      section: null
+    observables:
+    - confidence: high
+      note: Primary full text links MeV mediator neutrino-DM interactions to dwarf-scale structure and
+        IceCube optical-depth effects.
+      page: null
+      reference_id: src_1411_1071_primary
+      section: null
+    routes:
+    - confidence: medium
+      note: Primary full text organizes the calculations into relic abundance, self-interaction, kinetic
+        decoupling, and IceCube sections.
+      page: null
+      reference_id: src_1411_1071_primary
+      section: null
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0004
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Paper introduces a simple neutrinophilic DM model with X and secluded neutrino
+        charged under U(1).
+      reference_id: '1411_1071'
+      section: abstract/introduction/model
+    unresolved_items:
+    - No public likelihood for the IceCube optical-depth test was resolved in the local related-text pass.
+    - CMB free-streaming impact is flagged qualitatively and left unrouted to a concrete likelihood.
+  last_updated: '2026-05-31'
+  model_family: neutrino_portal_self_interacting_dark_matter
+  model_id: 1411_1071_neutrino_portal_secluded_dm_v1
+  model_name: Neutrino portal secluded dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1411.1071'
+      authors:
+      - John F. Cherry
+      - Alexander Friedland
+      - Ian M. Shoemaker
+      doi: null
+      notes: null
+      reference_id: '1411_1071'
+      role: original_model
+      title: 'Neutrino Portal Dark Matter: From Dwarf Galaxies to IceCube'
+      url: null
+      year: 2014
+    - arxiv_id: '1411.1071'
+      authors:
+      - Cherry, John F.
+      - Friedland, Alexander
+      - Shoemaker, Ian M.
+      doi: 10.48550/arXiv.1411.1071
+      notes: Primary paper full text resolved from local cache; ADS used for metadata.
+      reference_id: src_1411_1071_primary
+      role: original_model
+      title: 'Neutrino Portal Dark Matter: From Dwarf Galaxies to IceCube'
+      url: https://arxiv.org/abs/1411.1071
+      year: 2014
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: mixed
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - annihilation cross section
+  - dark matter mass
+  - mediator mass
+  - primordial asymmetry
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - unspecified high-scale origin of any primordial asymmetry
+  - parameter-dependent structure-formation impact
+  notes: null
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    impact_on_sigma8_s8: late kinetic decoupling delays the smallest protohalos
+    small_scale_power_effect: suppression
+    transfer_function_shape: smooth_cutoff
+  nonlinear:
+    halo_mass_function_effect: self-interactions can alter dwarf-galaxy central densities
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: late neutrino scattering can suppress small subhalo formation
+symmetries:
+  stabilizing_mechanism: The paper assumes non-self-conjugate Dirac dark matter charged under U(1)_X;
+    the detailed stabilizing symmetry is not separately specified.
+  symmetries:
+  - breaking: broken by h_X vacuum expectation value
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: U(1)_X
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper writes the secluded-sector gauge coupling and a mixing operator involving L H, h_X,
+    and nu_s; it also notes a seesaw-like ultraviolet completion.
+  parent_frameworks:
+  - new U(1)_X gauge interaction
+  - neutrino portal
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Self-interaction phenomenology assumes an order-MeV force carrier and m_X larger than the
+    mediator in the quoted annihilation formulas.
+  extrapolation_risk: medium
+  id: light_mediator_regime
+  notes: null
+  source_reference_ids: []
+  status: inferred
+observables:
+- caveats:
+  - Astrophysical mapping from cutoff mass to satellite counts requires simulations.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - Milky Way satellites
+  - dwarf galaxies
+  id: obs_late_kinetic_decoupling
+  key_quantities:
+  - name: kinetic decoupling temperature
+    range: order 0.1
+    role: derived
+    source_reference_ids:
+    - src_1411_1071_primary
+    status: inferred
+    symbol: T_KD
+    unit: keV
+  - name: DM mass
+    role: core
+    source_reference_ids:
+    - src_1411_1071_primary
+    status: inferred
+    symbol: m_X
+  linked_constraints:
+  - con_kinetic_decoupling_target
+  linked_routes:
+  - route_neutrino_portal_structure_icecube
+  name: Late neutrino-DM kinetic decoupling
+  notes: Primary text identifies O(0.1 keV) kinetic decoupling as relevant to missing satellites.
+  observability: medium
+  predicted_effect: Efficient DM scattering with neutrinos delays kinetic decoupling to about 0.1 keV,
+    suppressing the smallest protohalos and targeting missing-satellite scales.
+  redshift_range: post-neutrino-decoupling
+  relevance: critical
+  scale_range: protohalo to dwarf-galaxy scales
+  source_reference_ids:
+  - src_1411_1071_primary
+  subchannel: protohalo cutoff and dwarf-scale structure
+- caveats:
+  - OCR around units is imperfect; values are recorded as qualitative target ranges from the primary text.
+  channel: dwarf_galaxies
+  effect_direction: morphology_change
+  environments:
+  - dwarf galaxies
+  - clusters
+  id: obs_self_interacting_dwarfs
+  key_quantities:
+  - name: self-interaction per mass
+    range: 1 to 10
+    role: derived
+    source_reference_ids:
+    - src_1411_1071_primary
+    status: inferred
+    symbol: sigma_XX/m_X
+    unit: cm^2 g^-1 at dwarf velocities
+  - name: mediator mass
+    range: order MeV
+    role: core
+    source_reference_ids:
+    - src_1411_1071_primary
+    status: inferred
+    symbol: m_phi
+    unit: MeV
+  linked_constraints:
+  - con_self_interaction_window
+  linked_routes:
+  - route_neutrino_portal_structure_icecube
+  name: Velocity-dependent self-interaction effects
+  notes: Primary paper discusses 1-10 cm^2/g at dwarf scales and velocity dependence to evade larger-scale
+    limits.
+  observability: medium
+  predicted_effect: A light MeV-scale mediator gives velocity-dependent DM self-scattering, targeting
+    dwarf-scale cores while avoiding stronger cluster and Milky Way ellipticity constraints.
+  redshift_range: z = 0
+  relevance: high
+  scale_range: dwarf-galaxy velocities around 10 km/s
+  source_reference_ids:
+  - src_1411_1071_primary
+  subchannel: cusp-core and too-big-to-fail
+- caveats:
+  - Requires source distribution assumptions and IceCube exposure modeling.
+  channel: indirect_detection
+  effect_direction: shape_change
+  environments:
+  - cosmological neutrino propagation
+  - IceCube
+  id: obs_icecube_absorption
+  key_quantities:
+  - name: mediator mass
+    role: core
+    source_reference_ids:
+    - src_1411_1071_primary
+    status: inferred
+    symbol: m_phi
+  - name: neutrino coupling
+    role: core
+    source_reference_ids:
+    - src_1411_1071_primary
+    status: inferred
+    symbol: g_nu
+  - name: sterile-active mixing angle
+    role: core
+    source_reference_ids:
+    - src_1411_1071_primary
+    status: inferred
+    symbol: theta_s
+  linked_constraints:
+  - con_icecube_uhe_neutrinos
+  linked_routes:
+  - route_neutrino_portal_structure_icecube
+  name: IceCube high-energy neutrino absorption
+  notes: Primary text says some parameter ranges are already ruled out by existing IceCube data.
+  observability: medium
+  predicted_effect: The relic secluded-neutrino population modifies the optical depth of high-energy neutrinos,
+    leading to possible spectral absorption features or correlations with nearby sources.
+  redshift_range: 0 < z < about 0.7 for example horizons
+  relevance: high
+  scale_range: IceCube TeV-PeV neutrino energies
+  source_reference_ids:
+  - src_1411_1071_primary
+  subchannel: ultra-high-energy neutrino optical depth
+- caveats:
+  - Primary paper flags this as an implication rather than performing a CMB likelihood analysis.
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - CMB
+  id: obs_cmb_neutrino_free_streaming
+  key_quantities:
+  - name: neutrino self-interaction coupling
+    role: core
+    source_reference_ids:
+    - src_1411_1071_primary
+    status: inferred
+    symbol: g_nu
+  linked_constraints: []
+  linked_routes:
+  - route_neutrino_portal_structure_icecube
+  name: Delayed neutrino free streaming
+  notes: CMB effect is noted qualitatively in the discussion.
+  observability: unknown
+  predicted_effect: The same neutrino self-interactions may delay the onset of neutrino free streaming
+    and alter CMB anisotropies.
+  redshift_range: recombination-era sensitivity
+  relevance: medium
+  scale_range: CMB angular scales
+  source_reference_ids:
+  - src_1411_1071_primary
+  subchannel: neutrino self-interactions
+constraints:
+- allowed_regions:
+  - T_KD of order 0.1 keV is the target scale for damping structure relevant to missing satellites.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Models that cannot delay kinetic decoupling to this scale lose the intended small-scale-structure
+    motivation.
+  caveats:
+  - Satellite-count interpretation is astrophysics-dependent.
+  constrained_parameters:
+  - T_KD
+  - m_X
+  - m_phi
+  - g_X
+  - g_nu
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions: []
+  id: con_kinetic_decoupling_target
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Kinetic-decoupling target for missing satellites
+  notes: The target is derived from structure-formation motivation in the primary paper.
+  observable_channel: small-scale structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1411_1071_primary
+- allowed_regions:
+  - Dwarf-scale sigma_XX/m_X around 1-10 cm^2/g is identified as useful for cusp-core and too-big-to-fail
+    tensions.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Requires a light mediator to make the cross section velocity dependent.
+  caveats:
+  - Primary-paper unit OCR is imperfect; qualitative range and velocity dependence are robust.
+  constrained_parameters:
+  - sigma_XX/m_X
+  - m_phi
+  - g_X
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Velocity-independent large self-scattering is constrained by clusters and Milky Way ellipticity.
+  id: con_self_interaction_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Velocity-dependent self-interaction window
+  notes: Primary paper discusses the target dwarf-scale self-scattering window and larger-scale limits.
+  observable_channel: dwarf and cluster dynamics
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1411_1071_primary
+- allowed_regions:
+  - Future confirmation could appear as spectral absorption features or correlations with nearby sources.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - IceCube provides a distinctive test of the neutrino-portal sector.
+  caveats:
+  - Exact constraint depends on assumed source spectrum and redshift distribution.
+  constrained_parameters:
+  - m_phi
+  - g_nu
+  - theta_s
+  - source redshift distribution
+  constraint_type: astrophysical
+  data_release: IceCube data as discussed in primary paper
+  excluded_regions:
+  - Some parameter ranges with large absorption are already ruled out by existing IceCube data.
+  id: con_icecube_uhe_neutrinos
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: IceCube high-energy neutrino optical-depth constraint
+  notes: Primary text discusses absorbed versus non-absorbed expectations and 3 sigma discrepancy projections.
+  observable_channel: ultra-high-energy neutrino propagation
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1411_1071_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route is high value because one parameter set links dwarfs and IceCube.
+    caveats:
+    - CMB effect is only qualitatively noted in the primary paper.
+    constraint_ids:
+    - con_kinetic_decoupling_target
+    - con_self_interaction_window
+    - con_icecube_uhe_neutrinos
+    derived_quantities:
+    - T_KD
+    - protohalo cutoff mass
+    - sigma_XX/m_X
+    - neutrino optical depth
+    description: Propagate secluded-neutrino portal parameters to small-scale structure and IceCube optical-depth
+      observables.
+    forward_model_chain:
+    - inputs:
+      - g_X
+      - g_nu
+      - theta_s
+      - m_phi
+      notes: null
+      outputs:
+      - secluded neutrino temperature
+      - T_KD
+      step_id: thermal_history
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Requires recoupling calculation from the primary paper.
+    - inputs:
+      - T_KD
+      - sigma_XX/m_X
+      notes: null
+      outputs:
+      - small-scale cutoff
+      - dwarf-core target
+      step_id: halo_response
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Needs simulation calibration for precision.
+    - inputs:
+      - relic neutrino density
+      - m_phi
+      - g_nu
+      - source redshift
+      notes: null
+      outputs:
+      - IceCube optical depth
+      - absorbed spectrum
+      step_id: uhe_neutrino_transport
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Primary paper provides the phenomenological setup.
+    id: route_neutrino_portal_structure_icecube
+    input_parameters:
+    - m_X
+    - m_phi
+    - g_X
+    - g_nu
+    - theta_s
+    - Delta m^2
+    likelihoods:
+    - IceCube spectral/anisotropy likelihood would be needed for recast
+    observable_ids:
+    - obs_late_kinetic_decoupling
+    - obs_self_interacting_dwarfs
+    - obs_icecube_absorption
+    - obs_cmb_neutrino_free_streaming
+    required_code_resources:
+    - Boltzmann solver for hidden-sector recoupling
+    - neutrino transport code
+    - halo-model calibration
+    route_status: planned
+    source_model_features:
+    - Dirac DM charged under U(1)_X
+    - MeV-scale vector mediator
+    - sterile-active neutrino mixing
+    validation_tests:
+    - Reproduce paper parameter-space plots for T_KD and IceCube reach

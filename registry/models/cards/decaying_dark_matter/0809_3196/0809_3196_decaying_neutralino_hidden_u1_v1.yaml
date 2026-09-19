@@ -1,0 +1,258 @@
+_source:
+  shard: arXiv_src_0809_003_wds.tar
+  paper_id: 0809_3196
+  source_member: 0809_3196.json
+schema_version: model_only_v0
+model_id: 0809_3196_decaying_neutralino_hidden_u1_v1
+identity:
+  name: Small-mixing decaying neutralino dark matter
+  family: decaying_dark_matter
+  aliases:
+  - unstable neutralino NLSP dark matter
+  - decaying bino dark matter with hidden gaugino final state
+  short_description: A hidden-U(1)-extended SUSY variant in which anomalously small kinetic mixing makes
+    an otherwise unstable neutralino long-lived enough to be a decaying dark matter candidate.
+  historical_origin_or_motivation: The paper studies the very-small-mixing limit where the neutralino
+    lifetime can exceed the age of the Universe.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: This is the anomalously small kinetic-mixing variant of the same hidden U(1) setup.
+  parent_frameworks:
+  - MSSM extension
+  - hidden-sector supersymmetry
+  - kinetic mixing
+particle_content:
+  dark_matter_candidate:
+    name: long-lived neutralino, taken for definiteness as a pure bino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - hidden U(1) gaugino
+  mediators:
+  - Z boson
+  - photon
+  - Higgs boson
+  - hidden gaugino final state
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - neutralino
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The neutralino is not absolutely stable; its lifetime is made cosmologically
+    long by anomalously small kinetic mixing.
+  symmetries:
+  - name: suppressed kinetic mixing
+    type: approximate
+    exact_or_approximate: approximate
+  - name: unbroken hidden U(1)
+    type: gauge
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - higgs
+  standard_model_targets:
+  - Z boson
+  - photon
+  - Higgs boson
+  - fermion pairs
+  dark_sector_couplings:
+  - neutralino decay to hidden gaugino through suppressed mixing
+  mediator_types:
+  - electroweak bosons
+  - hidden gaugino
+  decay_channels:
+  - bino to Z plus hidden gaugino
+  - bino to photon plus hidden gaugino
+  - bino to Higgs plus hidden gaugino
+  - bino to fermion-antifermion plus hidden gaugino
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: kinetic mixing parameter
+    symbol: chi
+    range: around 10^-16 for the anomalously small-mixing case
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: neutralino lifetime
+    symbol: tau_chi
+    range: larger than the age of the Universe in the viable decaying-DM regime
+    unit: s
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: neutralino mass
+    symbol: M_B
+    role: core
+    status: unknown
+    source_reference_ids: []
+  - name: hidden gaugino mass
+    symbol: M_X
+    role: core
+    status: unknown
+    source_reference_ids: []
+production:
+  mechanisms:
+  - standard neutralino freeze-out relic abundance, with subsequent extremely slow decay to hidden-sector
+    and Standard Model particles
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'no'
+  abundance_set_by:
+  - neutralino freeze-out abundance
+  - suppressed kinetic-mixing decay lifetime
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper contrasts this with standard neutralino dark matter because the neutralino is unstable
+    but very long lived.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - neutralino freeze-out
+  - kinetic mixing small enough for cosmological lifetime
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late neutralino decays into hidden gaugino plus Standard Model particles
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The paper treats the neutralino as a WIMP-like relic; no distribution function is extracted.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: unknown
+validity_domain:
+- id: cosmologically-long-lived
+  applies_to: model
+  condition: Requires anomalously small kinetic mixing so that the neutralino lifetime exceeds the age
+    of the Universe.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: tiny-mixing
+    description: The kinetic mixing is anomalously small, around 10^-16.
+    scope: global
+    status: assumed
+    source_reference_ids: []
+  - id: neutralino-pure-bino
+    description: For definiteness the paper treats the neutralino dark matter particle as a pure bino.
+    scope: theory
+    status: assumed
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+robustness:
+  overall: low
+  theory_robustness: medium
+  observational_robustness: low
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - anomalously small kinetic mixing
+  - decay-lifetime constraints
+  validation_status: expert_judgment_only
+  notes: This row captures a substantive small-mixing variant; it is more tuned and more constrained than
+    the main hidden-gaugino scenario.
+agent_failure_modes:
+  warnings:
+  - id: not-stable-neutralino
+    severity: high
+    category: assumption_mismatch
+    warning: This is not an absolutely stable neutralino model; it is viable only when the decay lifetime
+      is cosmologically long.
+    mitigation: Carry the hidden-gaugino decay channels and tiny kinetic mixing with any downstream use.
+    source_reference_ids:
+    - paper:0809.3196
+provenance:
+  model_id: 0809_3196_decaying_neutralino_hidden_u1_v1
+  model_name: Anomalously small-mixing neutralino decaying dark matter in a hidden U(1) extension
+  model_family: decaying_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: paper:0809.3196
+      title: Anomalously small-mixing neutralino decaying dark matter in a hidden U(1) extension
+      year: 2008
+      arxiv_id: '0809.3196'
+      role: extension
+      notes: Information extracted only from the assigned full text in the run SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0008
+    extractor_name: Codex
+    extraction_date: '2026-05-30'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper:0809.3196
+      section: section 6
+      quote_or_summary: Very small kinetic mixing makes the neutralino long-lived and decaying into hidden
+        gaugino plus Standard Model particles.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper:0809.3196
+      note: The paper states that for anomalously small mixing the neutralino becomes a decaying dark
+        matter candidate.
+      confidence: medium
+      section: abstract and section 6
+    interactions:
+    - reference_id: paper:0809.3196
+      note: The neutralino dark matter particle is described as decaying into hidden gaugino plus Z, photon,
+        Higgs, or fermion-pair final states.
+      confidence: medium
+      section: section 6
+    production_mechanism:
+    - reference_id: paper:0809.3196
+      note: The variant is contrasted with standard neutralino dark matter but keeps the neutralino relic
+        as the dark matter candidate while allowing very slow decays.
+      confidence: medium
+      section: section 6
+    parameter_ranges:
+    - reference_id: paper:0809.3196
+      note: The anomalously small mixing case is described with mixing around 10^-16.
+      confidence: medium
+      section: abstract
+    validity_domain:
+    - reference_id: paper:0809.3196
+      note: The neutralino lifetime must be larger than the age of the Universe to constitute viable dark
+        matter.
+      confidence: medium
+      section: section 6
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - The paper treats this as a variant rather than the main hidden-gaugino LSP scenario.

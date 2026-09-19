@@ -1,0 +1,312 @@
+_source:
+  shard: arXiv_src_1309_006_wds.tar
+  paper_id: '1309_3970'
+  source_member: 1309_3970.json
+schema_version: model_only_v0
+model_id: 1309_3970_baryonic_dark_matter_v1
+identity:
+  name: Baryonic Dark Matter
+  family: gauged_baryon_number_fermion_dark_matter
+  aliases:
+  - U(1)_B baryonic dark matter
+  short_description: A low-scale gauged-baryon-number extension of the Standard Model where a SM-singlet
+    Dirac fermion with baryon number is stable and annihilates through a leptophobic Z_B gauge boson.
+  historical_origin_or_motivation: Motivated by linking dark matter stability to spontaneous baryon-number
+    breaking without imposing an extra discrete symmetry.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - SU(3)_C x SU(2)_L x U(1)_Y x U(1)_B
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives anomaly-canceling fermions, the S_B scalar, Yukawa interactions, and the Z_B
+    interaction relevant for dark matter.
+particle_content:
+  dark_matter_candidate:
+    name: SM-singlet baryonic Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - vector-like anomaly-canceling fermions
+  - baryon-breaking scalar S_B
+  mediators:
+  - leptophobic baryon gauge boson Z_B
+  - baryon-breaking scalar S_B
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Stability follows from spontaneous breaking of local baryon number rather than
+    an imposed extra discrete symmetry.
+  symmetries:
+  - name: U(1)_B
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneously broken by S_B with baryon number -3
+    breaking_scale:
+      name: baryon-breaking vev
+      symbol: v_B
+      description: Vacuum expectation value of S_B
+      unit: GeV
+      role: core
+      status: unknown
+      source_reference_ids: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - quarks
+  - nucleons
+  dark_sector_couplings:
+  - g_B baryon gauge coupling
+  - dark-matter baryon charges B_1 and B_2
+  mediator_types:
+  - leptophobic vector gauge boson Z_B
+  interaction_operators:
+  - g_B chi_bar gamma_mu Z_B^mu (B_2 P_L + B_1 P_R) chi
+  annihilation_channels:
+  - chi chi_bar -> q q_bar through Z_B
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: M_chi
+    description: Mass of the baryonic Dirac fermion
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: baryon gauge boson mass
+    symbol: M_ZB
+    description: Mass of the leptophobic U(1)_B gauge boson
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: baryon gauge coupling
+    symbol: g_B
+    description: Gauge coupling for U(1)_B
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: dark matter baryon charge sum
+    symbol: B
+    description: B_1 + B_2 controls cross sections
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: perturbative mass relation
+    symbol: M_chi < 2 M_ZB/(3 g_B)
+    description: Upper relation from perturbativity of the Yukawa coupling lambda_3
+    role: derived
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - thermal freeze-out
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - annihilation to Standard Model quarks through Z_B
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper explicitly assumes thermal relic dark matter for this analysis.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - M_chi
+  - M_ZB
+  - g_B
+  - B
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - spontaneous U(1)_B breaking
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Cold WIMP-like thermal relic.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: low-scale-u1b
+  applies_to: theory
+  condition: Assumes an anomaly-free low-scale U(1)_B extension with the stated vector-like fermion content
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: neglected-mixings
+  applies_to: model
+  condition: Kinetic mixing with U(1)_Y and scalar mixing with the SM Higgs are neglected in the paper's
+    main analysis
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: thermal-relic
+    description: The baryonic fermion abundance is set by standard thermal freeze-out.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: no-extra-discrete
+    description: No additional imposed dark parity is used beyond the consequence of baryon-number breaking.
+    scope: theory
+    status: inferred
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public model code is identified in the extracted text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1309_3970_baryonic_dark_matter_v1
+  model_name: Baryonic Dark Matter
+  model_family: gauged_baryon_number_fermion_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Baryonic Dark Matter
+      year: 2013
+      arxiv_id: '1309.3970'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: gpt-5.5-rolling-batch-subagent
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      page: null
+      quote_or_summary: The paper names the scenario Baryonic Dark Matter and says the cold dark matter
+        is a fermionic field with baryon number.
+    - reference_id: primary
+      section: Theoretical framework
+      page: null
+      quote_or_summary: The paper lists the U(1)_B gauge group, S_B, anomaly-canceling fermions, and four
+        model parameters.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The cold dark matter candidate is taken to be the SM-singlet Dirac fermion chi = chi_L + chi_R
+        carrying baryon number.
+      confidence: high
+      section: Theoretical framework
+      page: null
+    symmetries:
+    - reference_id: primary
+      note: The model gauges baryon number U(1)_B and breaks it spontaneously with S_B; the paper states
+        the dark matter stability is a natural consequence of this breaking.
+      confidence: high
+      section: Abstract and theoretical framework
+      page: null
+    interactions:
+    - reference_id: primary
+      note: The dark matter couples to the leptophobic baryon gauge boson Z_B, which also couples to Standard
+        Model quarks.
+      confidence: high
+      section: Theoretical framework
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: The paper assumes the dark matter is a thermal relic and calculates annihilation to Standard
+        Model quarks through Z_B.
+      confidence: high
+      section: Relic density section
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: 'The model is summarized as having four free parameters: M_chi, M_ZB, g_B, and B = B_1 + B_2.'
+      confidence: high
+      section: Theoretical framework
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: The extraction omits kinetic mixing and Higgs mixing because the paper neglects them for the
+        numerical discussion.
+      confidence: medium
+      section: Theoretical framework
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats: []
+  related_entries: []
+  external_links: {}
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  dominant_uncertainties:
+  - neglected kinetic and scalar mixing
+  - collider realization of leptophobic Z_B
+  notes: The model card records the paper's simplified U(1)_B dark matter setup.
+agent_failure_modes:
+  warnings:
+  - id: mixing-neglected
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper neglects kinetic and scalar mixing in the main dark matter analysis; downstream
+      use should not assume those effects are included.
+    mitigation: null
+    source_reference_ids: []

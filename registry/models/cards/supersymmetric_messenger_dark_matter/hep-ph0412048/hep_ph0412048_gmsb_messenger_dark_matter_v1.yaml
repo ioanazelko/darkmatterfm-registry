@@ -1,0 +1,793 @@
+_source:
+  shard: arXiv_src_0412_001_wds.tar
+  paper_id: hep-ph0412048
+  source_member: hep-ph0412048.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: charged_messenger_viability
+    mitigation: Check the charged-neutral splitting and charged-state lifetime before using the model.
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: The neutral messenger must be the lightest messenger state and charged messenger decays must
+      be cosmologically harmless.
+  - category: notation_conflict
+    id: not_generic_neutralino
+    mitigation: Keep the messenger-sector scalar identity explicit.
+    severity: low
+    source_reference_ids:
+    - primary
+    warning: The paper contrasts this candidate with neutralino dark matter; do not map the messenger
+      scalar to an MSSM neutralino.
+associated_code:
+  caveats:
+  - Code resources are not model-specific releases.
+  code_summary: The paper states that gamma-ray spectra were generated with PYTHIA as implemented in DarkSusy;
+    no dedicated public implementation of the messenger model is stated.
+  containers_or_environments: []
+  expected_inputs:
+  - messenger mass
+  - annihilation final-state assumptions
+  expected_outputs:
+  - gamma-ray spectrum
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules:
+  - archive_url: null
+    availability: public
+    citation_reference_ids:
+    - primary
+    commit: null
+    dependencies: []
+    documentation_url: null
+    doi: null
+    inputs: []
+    languages: []
+    last_checked: '2026-05-30'
+    license: null
+    maintained: unknown
+    name: PYTHIA/DarkSusy usage as stated in the paper
+    notes: Recorded only because the assigned paper text says these tools were used.
+    outputs:
+    - gamma-ray spectrum
+    purpose:
+    - compute_decay_rates
+    - other
+    relationship_to_model: related_but_not_model_specific
+    repository_url: null
+    resource_type: package
+    supported_model_families:
+    - generic WIMP spectra
+    supported_observables: []
+    supported_parameters: []
+    url: null
+    validity_domain: []
+    version: null
+  primary_code_role: indirect_detection_signal
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: No model-specific code release is described.
+    pinned_dependencies: unknown
+    reproducibility_level: partial
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references:
+    - primary
+    validation_notes: The extraction did not verify the spectrum calculation.
+    validation_status: unvalidated
+assumptions:
+  computation_specific: []
+  global:
+  - can_be_relaxed: unknown
+    description: A standard thermal freeze-out calculation applies to the neutral messenger abundance.
+    id: standard_freezeout
+    impact_if_violated: Relic-density estimates would change in nonstandard cosmologies.
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Non-minimal GMSB sectors with additional stable states are not included.
+    id: simple_gmsb_sector
+    impact_if_violated: Additional stable states could make the model multi-component.
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The lightest messenger state is electrically neutral.
+    id: neutral_messenger_lsp
+    impact_if_violated: A charged lightest messenger state is cosmologically unacceptable.
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: medium
+  chemical_decoupling:
+    name: chemical freeze-out temperature
+    role: cosmological
+    status: inferred
+    symbol: T_FO
+    value: m_phi0/20
+  cmb_relevance: low
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - messenger dark matter
+  - GMSB messenger dark matter
+  family: supersymmetric_messenger_dark_matter
+  historical_origin_or_motivation: Proposed as an alternative to too-light neutralino dark matter for
+    explaining multi-TeV gamma rays from the Galactic Center while retaining a thermal relic abundance.
+  model_kind: complete_theory
+  name: GMSB messenger-sector scalar dark matter
+  short_description: A gauge-mediated supersymmetry-breaking model in which the neutral lightest messenger
+    scalar is stable and can be a 20-30 TeV thermal dark matter particle.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - phi0 phi0 -> N N
+  - phi0 phi0 -> H_u H_d
+  - phi0 phi0 -> H+ H- when charged Higgs final states are available
+  cp_structure: unknown
+  dark_sector_couplings:
+  - lambda_S
+  - lambda_N
+  - eta_S
+  - eta_N
+  - k
+  decay_channels: []
+  flavor_structure: gauge-mediated flavor safety is part of the motivation
+  interaction_operators:
+  - S phi phi
+  - N phi phi
+  - S H_u H_d
+  - N H_u H_d
+  - N^3
+  mediator_types:
+  - Higgs singlet
+  - Higgs doublet
+  portals:
+  - higgs
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: not_applicable
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs doublets
+  - Standard Model gauge sector through messenger charges
+  tree_or_loop_level: both
+model_id: hep_ph0412048_gmsb_messenger_dark_matter_v1
+parameters:
+  core:
+  - description: Mass of the neutral lightest messenger scalar
+    name: neutral messenger scalar mass
+    notes: The paper emphasizes 20-30 TeV for the HESS-motivated spectrum.
+    range: 13-30
+    role: core
+    status: inferred
+    symbol: m_phi0
+    unit: TeV
+  - description: Messenger-sector mass scale used in the charged-neutral splitting examples
+    name: messenger scale
+    range: 50-150
+    role: core
+    status: inferred
+    symbol: M
+    unit: TeV
+  - description: Controls the messenger scalar splitting
+    name: supersymmetry-breaking ratio
+    range: 0.93-0.96 in example points
+    role: core
+    status: inferred
+    symbol: F/M^2
+  - description: Large spurion value enhancing the relevant annihilation vertices
+    name: spurion vacuum expectation value
+    role: core
+    status: inferred
+    symbol: <S>
+    unit: TeV
+    value: about 100
+  - description: Dimensionless couplings expected to be order one
+    name: singlet and messenger couplings
+    role: core
+    status: inferred
+    symbol: lambda_S, lambda_N, eta_S, eta_N, k
+    value: O(1)
+  derived:
+  - description: Iterative solution gives approximately m_phi0/20
+    name: freeze-out temperature
+    role: derived
+    status: inferred
+    symbol: T_FO
+    value: m_phi0/20
+  - description: Cross section required for Omega_DM h^2 about 0.1
+    name: target annihilation cross section
+    role: derived
+    status: inferred
+    symbol: <sigma v>
+    unit: cm^3/s
+    value: '1.3e-26'
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - charged messenger scalar phi+
+  - color-charged messenger scalars
+  - singlet N
+  - spurion S
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: neutral lightest messenger scalar phi0
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - charged messenger state phi+
+  long_lived_particles:
+  - charged messenger state phi+ before decay
+  mediators:
+  - Higgs singlet N
+  - Higgs doublets H_u and H_d
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: not provided
+  free_streaming_length: null
+  notes: Heavy thermal relic, treated as cold dark matter.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - annihilation cross sections to NN and H_u H_d
+  - neutral messenger mass
+  - order-one singlet and messenger couplings
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through annihilation into singlet and Higgs-sector final states
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper treats the messenger state as the major component of the dark matter and computes a
+    standard thermal relic abundance.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - Gamma-ray fitting aspects were not encoded as observables or constraints in this model-only extraction.
+  created_at: '2026-05-30'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The paper assumes a standard freeze-out history and discusses charged messenger decays in
+        relation to BBN energy injection.
+      page: null
+      reference_id: primary
+      section: cosmology
+    interactions:
+    - confidence: medium
+      note: The superpotential couples messenger fields to the spurion S, singlet N, and Higgs doublets;
+        annihilation proceeds to NN and H_u H_d.
+      page: null
+      reference_id: primary
+      section: superpotential and annihilation
+    parameter_ranges:
+    - confidence: high
+      note: A physically relevant neutral messenger mass range of roughly 13-30 TeV is stated, with 20-30
+        TeV emphasized for the HESS-motivated spectrum.
+      page: null
+      reference_id: primary
+      section: parameter discussion
+    particle_content:
+    - confidence: high
+      note: The paper identifies the lightest neutral messenger scalar as the dark matter candidate, with
+        charged and color states split above it.
+      page: null
+      reference_id: primary
+      section: model construction
+    production_mechanism:
+    - confidence: high
+      note: The relic abundance is computed from thermal freeze-out with T_FO about m_phi0/20 and a required
+        annihilation cross section near 1.3e-26 cm^3/s.
+      page: null
+      reference_id: primary
+      section: relic-density calculation
+    symmetries:
+    - confidence: medium
+      note: Stability is tied to the lightest messenger state in simple GMSB models where the supersymmetry-breaking
+        sector contains only Standard-Model singlets.
+      page: null
+      reference_id: primary
+      section: model construction
+    validity_domain:
+    - confidence: medium
+      note: The neutral messenger must be the lightest messenger state, and the charged-neutral mass splitting
+        must avoid problematic long-lived charged relics.
+      page: null
+      reference_id: primary
+      section: model construction
+    constraints:
+    - confidence: high
+      note: Primary text gives a 13-30 TeV physically relevant messenger mass range from charged-messenger
+        splitting and BBN considerations.
+      page: null
+      reference_id: arxiv:hep-ph/0412048
+      section: Messenger dark matter model
+    - confidence: high
+      note: Primary text notes a simple gauge-only candidate is excluded by direct detection and too light
+        for the HESS photons.
+      page: null
+      reference_id: arxiv:hep-ph/0412048
+      section: Model motivation
+    observables:
+    - confidence: high
+      note: Primary text states HESS observed gamma rays from the Galactic center extending to at least
+        10 TeV and proposes messenger dark matter as a source.
+      page: null
+      reference_id: arxiv:hep-ph/0412048
+      section: Introduction
+    - confidence: high
+      note: Primary text states a 20-30 TeV messenger state can provide the thermal relic density and
+        generate the HESS spectrum.
+      page: null
+      reference_id: arxiv:hep-ph/0412048
+      section: Abstract/Introduction
+    routes:
+    - confidence: high
+      note: Primary text links the extended messenger potential, enhanced annihilation couplings, relic
+        density, and Galactic-center gamma-ray spectrum.
+      page: null
+      reference_id: arxiv:hep-ph/0412048
+      section: Messenger annihilation
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0014
+    extraction_date: '2026-05-30'
+    extractor_name: codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Stable messenger particles are proposed as alternative dark matter candidates
+        with 20-30 TeV masses.
+      reference_id: primary
+      section: abstract/introduction
+    - page: null
+      quote_or_summary: The superpotential and messenger scalar spectrum identify the neutral lightest
+        messenger as the candidate.
+      reference_id: primary
+      section: model construction
+    - page: null
+      quote_or_summary: Thermal freeze-out and annihilation cross sections are used to match Omega_DM
+        h^2 near 0.1.
+      reference_id: primary
+      section: relic-density calculation
+    unresolved_items:
+    - The HESS Galactic-center dark-matter interpretation is source-era and not a current exclusion/claim
+      without modern background modeling.
+    - No current direct-detection or collider limits on heavy messenger states were recast.
+    - Halo-profile and boost assumptions for the gamma-ray flux remain unresolved.
+  last_updated: '2026-05-30'
+  model_family: supersymmetric_messenger_dark_matter
+  model_id: hep_ph0412048_gmsb_messenger_dark_matter_v1
+  model_name: GMSB messenger-sector scalar dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: hep-ph/0412048
+      authors:
+      - Dan Hooper
+      - John March-Russell
+      doi: null
+      notes: Only the assigned SQLite full text was used.
+      reference_id: primary
+      role: original_model
+      title: Gauge Mediated Supersymmetry Breaking and Multi-TeV Gamma-Rays from the Galactic Center
+      url: null
+      year: 2004
+    - arxiv_id: hep-ph/0412048
+      authors:
+      - Hooper, Dan
+      - March-Russell, John
+      doi: 10.1016/j.physletb.2004.12.046
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:hep-ph/0412048
+      role: original_model
+      title: Gauge mediated supersymmetry breaking and multi-TeV gamma-rays from the galactic center
+      url: https://arxiv.org/abs/hep-ph/0412048
+      year: 2005
+    constraint_papers: []
+    external_databases: []
+    review_papers:
+    - arxiv_id: astro-ph/0501555
+      authors:
+      - Bertone, Gianfranco
+      - Merritt, David
+      doi: 10.1103/PhysRevD.72.103502
+      notes: Related full text resolved locally and read for bounded enrichment context.
+      reference_id: arxiv:astro-ph/0501555
+      role: review
+      title: Time-dependent models for dark matter at the galactic center
+      url: https://arxiv.org/abs/astro-ph/0501555
+      year: 2005
+    - arxiv_id: astro-ph/0603540
+      authors:
+      - Zaharijas, Gabrijela
+      - Hooper, Dan
+      doi: 10.1103/PhysRevD.73.103501
+      notes: Related full text resolved locally and read for bounded enrichment context.
+      reference_id: arxiv:astro-ph/0603540
+      role: review
+      title: Challenges in detecting gamma-rays from dark matter annihilations in the galactic center
+      url: https://arxiv.org/abs/astro-ph/0603540
+      year: 2006
+    - arxiv_id: astro-ph/0410359
+      authors:
+      - Bergström, Lars
+      - Bringmann, Torsten
+      - Eriksson, Martin
+      - Gustafsson, Michael
+      doi: 10.1103/PhysRevLett.94.131301
+      notes: Related full text resolved locally and read for bounded enrichment context.
+      reference_id: arxiv:astro-ph/0410359
+      role: review
+      title: Gamma Rays from Kaluza-Klein Dark Matter
+      url: https://arxiv.org/abs/astro-ph/0410359
+      year: 2005
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_phi0
+  - <sigma v>
+  - couplings lambda_S, lambda_N, eta_S, eta_N, k
+  - spurion vev S
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    name: target relic density
+    role: cosmological
+    status: inferred
+    symbol: Omega_DM h^2
+    value: about 0.1
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  notes: null
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: not developed in the paper
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: not developed in the paper
+symmetries:
+  stabilizing_mechanism: The lightest messenger particle is stable in the simple GMSB setup discussed;
+    viability requires the electrically neutral messenger scalar to be the lightest messenger state.
+  symmetries:
+  - breaking: not specified in the assigned text
+    breaking_scale: null
+    exact_or_approximate: unknown
+    name: messenger-sector stability
+    type: unknown
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper gives the messenger-sector superpotential and annihilation cross sections, but not
+    a full UV completion of the supersymmetry-breaking sector.
+  parent_frameworks:
+  - gauge_mediated_supersymmetry_breaking
+  - NMSSM-like singlet extension
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The neutral messenger scalar is lighter than charged and colored messenger states.
+  extrapolation_risk: high
+  id: neutral_lightest_messenger
+  source_reference_ids: []
+  status: assumed
+- applies_to: cosmological_history
+  caveats: []
+  condition: The charged messenger state decays without leaving excluded quasi-stable charged relics.
+  extrapolation_risk: medium
+  id: charged_state_decay
+  source_reference_ids: []
+  status: inferred
+- applies_to: parameter
+  caveats: []
+  condition: The singlet and messenger couplings are order one and the spurion vev is around 100 TeV.
+  extrapolation_risk: medium
+  id: order_one_couplings
+  source_reference_ids: []
+  status: assumed
+observables:
+- caveats:
+  - The HESS interpretation is source-era and astrophysical backgrounds were not recast.
+  channel: indirect_detection
+  effect_direction: shape_change
+  environments:
+  - Galactic center dark-matter halo
+  id: obs_gmsb_messenger_hess_gamma_rays
+  key_quantities:
+  - name: neutral messenger scalar mass
+    range: 20-30
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0412048
+    status: inferred
+    symbol: m_phi0
+    unit: TeV
+  - name: observed HESS photon energies
+    range: 250 GeV to at least 10 TeV
+    role: experimental
+    source_reference_ids:
+    - arxiv:hep-ph/0412048
+    status: inferred
+    symbol: E_gamma
+  - name: annihilation final states
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0412048
+    status: inferred
+    value: singlet and Higgs-sector final states plus cascade products
+  linked_constraints:
+  - con_gmsb_hess_mass_spectrum
+  linked_routes:
+  - route_gmsb_messenger_relic_and_gamma
+  name: Multi-TeV Galactic-center gamma rays from messenger annihilation
+  notes: null
+  observability: medium
+  predicted_effect: Annihilation of the neutral lightest messenger scalar can generate a very-high-energy
+    gamma-ray spectrum extending to the HESS multi-TeV range.
+  redshift_range: z=0 Galactic center
+  relevance: high
+  scale_range: TeV gamma-ray energies
+  source_reference_ids:
+  - arxiv:hep-ph/0412048
+  subchannel: Galactic center TeV gamma rays
+- caveats:
+  - Relic abundance depends on the extended singlet/messenger couplings and the charged-neutral messenger
+    splitting.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe plasma
+  id: obs_gmsb_messenger_thermal_relic
+  key_quantities:
+  - name: messenger scale
+    range: 50-150
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0412048
+    status: inferred
+    symbol: M
+    unit: TeV
+  - name: supersymmetry-breaking ratio
+    range: 0.93-0.96 in examples
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0412048
+    status: inferred
+    symbol: F/M^2
+  - name: physically relevant messenger DM mass
+    range: 13-30
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0412048
+    status: inferred
+    symbol: m_phi0
+    unit: TeV
+  linked_constraints:
+  - con_gmsb_relic_mass_and_bbn_splitting
+  linked_routes:
+  - route_gmsb_messenger_relic_and_gamma
+  name: Thermal relic density of a heavy messenger scalar
+  notes: null
+  observability: medium
+  predicted_effect: The extended GMSB messenger sector gives a neutral stable scalar with an annihilation
+    cross section large enough for a 20-30 TeV thermal relic.
+  redshift_range: thermal freeze-out epoch
+  relevance: high
+  scale_range: 13-30 TeV messenger masses
+  source_reference_ids:
+  - arxiv:hep-ph/0412048
+  subchannel: thermal freeze-out
+constraints:
+- allowed_regions:
+  - A 20-30 TeV messenger state can generate the HESS-like spectrum and thermal relic abundance in the
+    source model.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The very-high-energy Galactic-center emission is interpreted as dark-matter annihilation
+      rather than astrophysical emission.
+    id: galactic-center-dm-origin
+    impact_if_violated: Astrophysical sources would remove this as evidence for messenger dark matter.
+    scope: indirect-detection interpretation
+    source_reference_ids:
+    - arxiv:hep-ph/0412048
+    status: assumed
+  benchmark_implications:
+  - The dark-matter mass must be in the multi-TeV range to match the source HESS interpretation.
+  caveats:
+  - No modern HESS/Fermi/CTA likelihood or Galactic-center background model was applied.
+  constrained_parameters:
+  - m_phi0
+  - annihilation cross section
+  - halo profile
+  - annihilation channel
+  constraint_type: indirect_detection
+  data_release: HESS Galactic-center spectrum summarized by the primary paper
+  excluded_regions:
+  - Standard lighter neutralino-like candidates cannot explain photons extending to at least 10 TeV in
+    the source discussion.
+  id: con_gmsb_hess_mass_spectrum
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: HESS Galactic-center spectrum as a heavy-DM mass target
+  notes: null
+  observable_channel: TeV gamma rays
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:hep-ph/0412048
+- allowed_regions:
+  - The source identifies a physically relevant 13-30 TeV neutral messenger mass range, with 20-30 TeV
+    giving the desired thermal relic and gamma-ray spectrum.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The source assumes standard thermal freeze-out and that charged messenger decays occur
+      early enough to avoid BBN photodisintegration limits.
+    id: standard-freezeout-and-bbn
+    impact_if_violated: Nonstandard cosmology or long-lived charged messengers would change the mass window.
+    scope: messenger relic cosmology
+    source_reference_ids:
+    - arxiv:hep-ph/0412048
+    status: assumed
+  benchmark_implications:
+  - Example messenger scales M=50 and 150 TeV require F/M^2 around 0.93 and 0.96 respectively, giving
+    m_phi0 about 13 and 30 TeV.
+  caveats:
+  - The batch did not recompute the relic abundance or charged relic decay constraints.
+  constrained_parameters:
+  - m_phi0
+  - M
+  - F/M^2
+  - charged-neutral messenger splitting
+  - annihilation couplings
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - A simple gauge-only sneutrino-like messenger candidate is too light for HESS and excluded by direct
+    detection; too-small charged-neutral splitting risks quasi-stable charged relics.
+  id: con_gmsb_relic_mass_and_bbn_splitting
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Relic-density and charged-messenger splitting window
+  notes: null
+  observable_channel: dark matter abundance and BBN
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0412048
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The source-era HESS dark-matter interpretation is weak evidence without a modern astrophysical recast.
+    constraint_ids:
+    - con_gmsb_hess_mass_spectrum
+    - con_gmsb_relic_mass_and_bbn_splitting
+    derived_quantities:
+    - thermal relic density
+    - annihilation spectrum
+    - charged-neutral splitting
+    - Galactic-center gamma-ray flux
+    description: Map the extended GMSB messenger-sector parameters to thermal relic abundance, charged-messenger
+      viability, and Galactic-center gamma-ray spectra.
+    forward_model_chain:
+    - inputs:
+      - messenger potential couplings
+      - S vev
+      - m_phi0
+      notes: null
+      outputs:
+      - annihilation cross sections
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for the source extended messenger-sector potential.
+    - inputs:
+      - annihilation cross sections
+      - m_phi0
+      notes: null
+      outputs:
+      - thermal relic density
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: A dedicated relic calculation would be needed for a current recast.
+    - inputs:
+      - annihilation channels
+      - halo profile
+      notes: null
+      outputs:
+      - gamma-ray spectrum and flux
+      step_id: s3
+      step_type: simulation
+      tool_or_code: null
+      validity: Requires particle showering and Galactic-center astrophysical assumptions.
+    id: route_gmsb_messenger_relic_and_gamma
+    input_parameters:
+    - m_phi0
+    - M
+    - F/M^2
+    - lambda_S
+    - lambda_N
+    - eta_S
+    - eta_N
+    - k
+    - halo profile
+    likelihoods:
+    - HESS likelihood unavailable
+    - thermal relic likelihood unavailable
+    - BBN charged relic likelihood unavailable
+    observable_ids:
+    - obs_gmsb_messenger_hess_gamma_rays
+    - obs_gmsb_messenger_thermal_relic
+    required_code_resources:
+    - messenger annihilation calculator
+    - thermal relic solver
+    - gamma-ray spectrum and halo-profile recast
+    route_status: planned
+    source_model_features:
+    - neutral lightest messenger scalar
+    - extended NMSSM-like singlet couplings
+    - gauge-mediated supersymmetry breaking
+    - multi-TeV annihilating dark matter
+    validation_tests:
+    - recover 13-30 TeV physically relevant messenger mass range
+    - recover 20-30 TeV HESS/relic target window
+    - test sensitivity to Galactic-center halo profile

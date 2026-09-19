@@ -1,0 +1,359 @@
+_source:
+  shard: arXiv_src_2112_095_wds.tar
+  paper_id: '2112_14668'
+  source_member: 2112_14668.json
+schema_version: model_only_v0
+model_id: 2112_14668_gravitational_fermion_dm_v1
+identity:
+  name: Gravitationally produced fermion dark matter from inflaton reheating
+  family: gravitational_production_dark_matter
+  aliases:
+  - fermionic gravitational dark matter
+  - inflaton-produced fermion DM
+  short_description: A fermion dark matter variant produced gravitationally during reheating by inflaton
+    zero-mode annihilation through an s-channel graviton, with relic abundance, phase-space distribution,
+    and free-streaming length analyzed in the paper.
+  historical_origin_or_motivation: Explores the minimal gravitational dark matter scenario in which the
+    dark matter mass and spin are the only dark-sector inputs beyond the inflationary reheating history.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - gravitational dark matter
+  - inflaton reheating
+  - s-channel graviton exchange
+  - alpha-attractor inflation benchmarks
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the universal gravitational coupling of the inflaton and dark matter energy-momentum
+    tensors to the metric perturbation and gives spin-dependent production widths.
+particle_content:
+  dark_matter_candidate:
+    name: fermion gravitationally produced dark matter
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - s-channel graviton / tensor metric perturbation
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - fermion dark matter particle
+  unstable_parent_particles:
+  - inflaton zero modes during reheating
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The dark matter particle is assumed stable; the paper does not specify a stabilizing
+    symmetry beyond the gravitational-production setup.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - inflaton sector
+  - radiation bath production is checked and treated as suppressed in the main analysis
+  dark_sector_couplings:
+  - universal energy-momentum tensor coupling suppressed by the Planck mass
+  mediator_types:
+  - s-channel graviton
+  interaction_operators:
+  - h_mu_nu T_phi^{mu nu}/(2 M_p) + h_mu_nu T_DM^{mu nu}/(2 M_p)
+  annihilation_channels:
+  - 'inflaton zero modes annihilate to fermion dark matter pairs: phi phi -> f f'
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_Y
+    description: Mass of the fermion gravitational dark matter particle.
+    range: 10^4 to 10^13 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: reheating temperature
+    symbol: T_re
+    description: Temperature controlling the abundance and allowed mass through the reheating dynamics.
+    range: model-dependent; scanned with inflationary constraints
+    unit: GeV
+    role: core
+    status: inferred
+  - name: inflaton equation of state
+    symbol: omega
+    description: Effective equation-of-state parameter during reheating.
+    range: 0 to 1 in the paper scans
+    role: core
+    status: inferred
+  - name: scalar spectral index
+    symbol: n_s
+    description: Inflationary observable used with the reheating model to relate dark matter mass and
+      abundance.
+    range: Planck and BICEP/Keck allowed range
+    role: core
+    status: inferred
+  - name: inflaton mass scale
+    symbol: m_phi
+    description: Effective inflaton mass entering the gravitational production widths.
+    range: set by the inflation model
+    role: core
+    status: inferred
+  - name: free-streaming length
+    symbol: lambda_fs
+    description: Comoving free-streaming scale of the gravitationally produced dark matter.
+    range: computed as a function of dark matter mass and reheating history
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - nonthermal gravitational production from inflaton zero-mode annihilation during reheating through
+    s-channel graviton exchange
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - dark matter mass
+  - spin-dependent gravitational production width
+  - reheating temperature
+  - inflaton equation of state
+  - scalar spectral index
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper argues that gravitational production from the radiation bath is suppressed for the
+    main parameter range and focuses on production from inflaton zero modes.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: present dark matter abundance
+    symbol: Omega_Y h^2
+    value: observed dark matter abundance
+    role: derived
+    status: inferred
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_Y
+  - T_re
+  - n_s
+  - omega
+  - spin-dependent production width
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - inflaton reheating era as the production epoch
+  - nonthermal momentum distribution from gravitational production
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'yes'
+  f_of_p_or_q: f_Y
+  average_momentum_relative_to_thermal: null
+  free_streaming_length:
+    name: free-streaming length
+    symbol: lambda_fs
+    range: computed in the paper for reheating-era production
+    role: derived
+    status: inferred
+  notes: The fermion distribution f_Y has a primary production peak and, for omega > 5/9, an additional
+    peak near inflaton-fermion mass equality.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: unknown
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: small-scale structure formation during reheating depends on lambda_fs <
+      lambda_re
+    subhalo_mass_function_effect: not discussed in the paper
+    simulation_calibrated: 'no'
+validity_domain:
+- id: inflaton-dominated-production
+  applies_to: production
+  condition: Inflaton zero-mode gravitational production must dominate over radiation-bath production
+    in the parameter region used for the model card.
+  status: inferred
+  extrapolation_risk: medium
+- id: inflationary-reheating-consistency
+  applies_to: cosmological_history
+  condition: The reheating temperature, equation of state, and spectral index must be consistent with
+    the inflation model and Planck/BICEP/Keck ranges used in the paper.
+  status: inferred
+  extrapolation_risk: medium
+- id: free-streaming-small-scale-condition
+  applies_to: structure_formation
+  condition: Formation of reheating-era small-scale dark matter structures requires lambda_fs < lambda_re.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: gravity-only-production
+    description: Dark matter is produced through gravitational interactions during reheating, with other
+      internal dark-sector couplings ignored.
+    scope: production
+    status: assumed
+  - id: stable-dm-particle
+    description: The produced dark matter particle is stable on cosmological timescales.
+    scope: theory
+    status: assumed
+  - id: radiation-production-subdominant
+    description: Production from the radiation bath is neglected in the main analysis after being checked
+      to be suppressed over the relevant reheating range.
+    scope: production
+    status: inferred
+  - id: single-component-dm
+    description: The fermion species is treated as the single dark matter component.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text reports numerical analyses of Boltzmann equations, phase-space distributions,
+    and free-streaming lengths but does not identify a public code release.
+  primary_code_role: null
+provenance:
+  model_id: 2112_14668_gravitational_fermion_dm_v1
+  model_name: Gravitationally produced fermion dark matter from inflaton reheating
+  model_family: gravitational_production_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2112.14668
+      title: 'Gravitational dark matter: free streaming and phase space distribution'
+      year: 2021
+      arxiv_id: '2112.14668'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+  extraction:
+    method: llm_assisted
+    extracted_by: batch-0017 dark-matter model extraction worker
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: arxiv:2112.14668
+      section: abstract
+      page: null
+      quote_or_summary: The paper studies gravitational dark matter produced from the decaying inflaton
+        during reheating and derives spin-dependent mass ranges.
+    - reference_id: arxiv:2112.14668
+      section: production framework
+      page: null
+      quote_or_summary: The gravitational interaction is represented by energy-momentum tensor couplings
+        and inflaton-zero-mode annihilation to scalar, fermion, or vector dark matter.
+    - reference_id: arxiv:2112.14668
+      section: phase-space and free-streaming sections
+      page: null
+      quote_or_summary: The paper analyzes f_Y, free-streaming length, and the condition for small-scale
+        structure formation during reheating.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2112.14668
+      note: The paper treats S, f, and X as scalar, fermionic, and vector dark matter species; this row
+        records the fermion variant.
+      confidence: high
+      section: production framework
+    interactions:
+    - reference_id: arxiv:2112.14668
+      note: The interaction Lagrangian couples inflaton and dark matter energy-momentum tensors to the
+        tensor metric perturbation with Planck suppression.
+      confidence: high
+      section: production framework
+    production_mechanism:
+    - reference_id: arxiv:2112.14668
+      note: Production is dominated by inflaton zero-mode annihilation through s-channel graviton exchange;
+        radiation-bath production is suppressed in the main range.
+      confidence: high
+      section: production framework
+    cosmological_history:
+    - reference_id: arxiv:2112.14668
+      note: The abundance is tied to reheating temperature, inflaton equation of state, and inflationary
+        spectral index.
+      confidence: high
+      section: relic-density discussion
+    phase_space:
+    - reference_id: arxiv:2112.14668
+      note: The paper computes f_Y and free-streaming length for gravitationally produced dark matter.
+        The text notes an extra fermionic phase-space peak near m_Y = m_phi for omega > 5/9.
+      confidence: medium
+      section: phase-space and free-streaming discussion
+    parameter_ranges:
+    - reference_id: arxiv:2112.14668
+      note: The assigned text gives the fermion mass range as 10^4 to 10^13 GeV.
+      confidence: high
+      section: mass-range discussion
+    validity_domain:
+    - reference_id: arxiv:2112.14668
+      note: The small-scale structure discussion hinges on lambda_fs being less than the reheating horizon
+        scale lambda_re.
+      confidence: medium
+      section: free-streaming discussion
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - The three spin cases are split into separate rows because the paper gives different production widths,
+    mass ranges, and phase-space behavior.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Results depend on reheating dynamics and inflation model parameters.
+  - The stabilizing symmetry of the dark matter particle is not specified in the assigned text.
+  validation_status: expert_judgment_only
+  notes: Core production, abundance, and phase-space logic are directly supported; microscopic stability
+    is left unspecified.
+agent_failure_modes:
+  warnings:
+  - id: spin-variant-split
+    severity: low
+    category: other
+    warning: This row is one spin variant of a shared gravitational-production framework; compare with
+      the scalar, fermion, and vector sibling rows before deduplicating.
+    source_reference_ids:
+    - arxiv:2112.14668
+  - id: stability-unspecified
+    severity: medium
+    category: assumption_mismatch
+    warning: The assigned text assumes the produced dark matter is stable but does not identify a stabilizing
+      symmetry.
+    source_reference_ids:
+    - arxiv:2112.14668
+    mitigation: Verify stability in a model-specific completion before using decay or lifetime claims.
+  - id: radiation-production-caveat
+    severity: low
+    category: extrapolation
+    warning: Radiation-bath gravitational production is treated as suppressed for the main parameter range
+      and is not developed as the primary mechanism here.
+    source_reference_ids:
+    - arxiv:2112.14668

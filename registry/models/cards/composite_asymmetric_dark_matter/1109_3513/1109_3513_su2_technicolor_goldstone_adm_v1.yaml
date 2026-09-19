@@ -1,0 +1,409 @@
+_source:
+  shard: arXiv_src_1109_005_wds.tar
+  paper_id: '1109_3513'
+  source_member: 1109_3513.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: spectrum_not_relic
+    mitigation: Use the entry for model identity and particle content; leave abundance details unknown
+      unless another source supports them.
+    severity: medium
+    source_reference_ids: []
+    warning: Do not infer a complete relic-density calculation from this lattice spectrum paper.
+associated_code:
+  code_summary: The paper states lattice ensembles were generated with HMC as implemented in the HiRep
+    code; no repository URL is given in the assigned text.
+  has_associated_code: partial
+  packages_or_modules:
+  - archive_url: null
+    availability: unknown
+    citation_reference_ids:
+    - '1109_3513'
+    commit: null
+    dependencies: []
+    documentation_url: null
+    doi: null
+    inputs:
+    - lattice gauge action
+    - fermion masses
+    languages: []
+    last_checked: '2026-05-31'
+    license: null
+    maintained: unknown
+    name: HiRep
+    notes: Mentioned as simulation code in the paper.
+    outputs:
+    - Goldstone and technihadron spectrum
+    purpose:
+    - run_simulations
+    relationship_to_model: related_but_not_model_specific
+    repository_url: null
+    resource_type: package
+    supported_model_families:
+    - SU(2) gauge theory with fundamental fermions
+    supported_observables: []
+    supported_parameters: []
+    url: null
+    validity_domain: []
+    version: null
+  primary_code_role: structure_formation_simulation
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The strong SU(2) dynamics breaks global SU(4) to Sp(4), yielding five Goldstones.
+    id: su4_to_sp4_breaking
+    scope: theory
+    source_reference_ids: []
+    status: established
+  - can_be_relaxed: unknown
+    description: The relic density is controlled by a technibaryon/dark matter asymmetry.
+    id: technibaryon_asymmetry
+    impact_if_violated: Without an asymmetry calculation the abundance is not fixed.
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Additional realistic interactions can generate masses without spoiling the candidate.
+    id: realistic_extension_stabilizes_vacuum
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - possible electroweak-scale asymmetric dark matter genesis
+  - nonzero matter density regime relevant to technibaryon asymmetry
+  phase_transitions:
+  - electroweak phase transition in realistic extension remains future work
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - light asymmetric dark matter on the lattice
+  - SU(2) technicolor complex Goldstone dark matter
+  - technibaryon Goldstone dark matter
+  family: composite_asymmetric_dark_matter
+  historical_origin_or_motivation: The paper studies a technicolor template for composite light asymmetric
+    or mixed dark matter motivated by few-GeV direct-detection hints.
+  model_kind: complete_theory
+  name: SU(2) technicolor Goldstone asymmetric dark matter
+  short_description: An SU(2) technicolor theory with two Dirac techniquark flavors yields five Goldstone
+    bosons; the uneaten complex scalar diquark/technibaryon is the light asymmetric dark-matter candidate.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - asymmetric scenario assumes antiparticle component annihilates away
+  cp_structure: not discussed
+  dark_sector_couplings:
+  - SU(2) technicolor gauge coupling
+  - techniquark mass term
+  - Goldstone effective couplings
+  decay_channels: []
+  flavor_structure: two fundamental techniquark flavors U and D
+  interaction_operators:
+  - -1/4 F_mu_nu^a F^{a mu nu}
+  - Ubar(i slash D - m)U
+  - Dbar(i slash D - m)D
+  - Goldstone matrix G effective Lagrangian
+  mediator_types:
+  - technicolor gauge interactions
+  - electroweak gauge interactions in realistic extension
+  portals:
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - electroweak gauge bosons in the full technicolor extension
+  tree_or_loop_level: unknown
+model_id: 1109_3513_su2_technicolor_goldstone_adm_v1
+parameters:
+  core:
+  - description: Gauge group of the strongly coupled sector.
+    name: technicolor gauge group
+    role: core
+    status: established
+    symbol: SU(2)_TC
+    value: SU(2)
+  - description: Two mass-degenerate fundamental Dirac flavors U and D.
+    name: number of Dirac techniquark flavors
+    role: core
+    status: established
+    symbol: N_f
+    value: 2
+  - description: Common bare mass used in the lattice simulations, extrapolated toward m=0.
+    name: techniquark bare mass
+    role: core
+    status: established
+    symbol: m
+  - description: Motivated light WIMP/Goldstone mass scale.
+    name: dark matter mass target
+    range: order a few
+    role: core
+    status: inferred
+    symbol: m_DM
+    unit: GeV
+  - description: Scale used to compare the Goldstone and heavier technihadron spectrum.
+    name: Goldstone decay constant
+    role: core
+    status: inferred
+    symbol: F_G
+particle_content:
+  additional_dark_sector_particles:
+  - U techniquark
+  - D techniquark
+  - pseudoscalar Goldstones pi+, pi-, pi0
+  - spin-one and spin-zero isovector technihadrons
+  dark_matter_candidate:
+    elementary_or_composite: composite
+    name: complex scalar Goldstone technibaryon
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - Goldstone antiparticle technibaryon
+  - heavier technihadron spectrum
+  long_lived_particles:
+  - complex Goldstone technibaryon
+  mediators:
+  - SU(2) technicolor gauge bosons
+  - electroweak gauge bosons in the realistic extension
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: unknown
+  f_of_p_or_q: not given
+  free_streaming_length: null
+  notes: No phase-space distribution is extracted from the lattice study.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - technibaryon asymmetry
+  - annihilation of antiparticle component
+  - realistic electroweak-scale genesis left for future work
+  can_produce_all_dark_matter: unknown
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - asymmetric dark matter with antiparticle annihilated away
+  - mixed asymmetric plus thermally produced symmetric component possible
+  nonthermal_momentum_distribution: unknown
+  notes: The paper validates the composite candidate and Goldstone spectrum; it does not compute a full
+    relic abundance.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: unknown
+provenance:
+  caveats:
+  - The paper validates the lattice spectrum for a known/composite ADM template; it does not provide a
+    full relic-density computation.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: Future work is needed for electroweak phase transition and baryon/asymmetric DM genesis at
+        the electroweak scale.
+      page: null
+      reference_id: '1109_3513'
+      section: Discussion
+    interactions:
+    - confidence: high
+      note: The lattice Lagrangian contains SU(2) gauge fields and U,D techniquarks; electroweak interactions
+        are omitted from the simulation.
+      page: null
+      reference_id: '1109_3513'
+      section: Lagrangian
+    parameter_ranges:
+    - confidence: medium
+      note: The motivated light WIMP mass is of order a few GeV; lattice simulations add explicit techniquark
+        masses and extrapolate toward m=0.
+      page: null
+      reference_id: '1109_3513'
+      section: Introduction and lattice setup
+    particle_content:
+    - confidence: high
+      note: The paper identifies the uneaten complex Goldstone, a techni-diquark/technibaryon, as the
+        light asymmetric dark-matter particle.
+      page: null
+      reference_id: '1109_3513'
+      section: Introduction
+    production_mechanism:
+    - confidence: medium
+      note: The paper frames the candidate as asymmetric or mixed dark matter, where the antiparticle
+        is annihilated away and a few-GeV mass can relate baryogenesis and dark matter production.
+      page: null
+      reference_id: '1109_3513'
+      section: Introduction
+    symmetries:
+    - confidence: high
+      note: The SU(2) gauge theory with two Dirac flavors has global SU(4) expected to break to Sp(4),
+        producing five Goldstones.
+      page: null
+      reference_id: '1109_3513'
+      section: Model setup
+    validity_domain:
+    - confidence: medium
+      note: The paper validates the Goldstone spectrum in the absence of electroweak interactions and
+        notes realistic four-fermion interactions remain to be investigated.
+      page: null
+      reference_id: '1109_3513'
+      section: Discussion
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0006
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5.5 dark-matter model-card rolling batch worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The text identifies the uneaten complex Goldstone/technibaryon as the light asymmetric
+        dark-matter candidate.
+      reference_id: '1109_3513'
+      section: Introduction
+    - page: null
+      quote_or_summary: The SU(2) gauge theory with U,D techniquarks has SU(4) -> Sp(4) breaking and five
+        Goldstones.
+      reference_id: '1109_3513'
+      section: Lagrangian and symmetry
+    - page: null
+      quote_or_summary: Lattice simulations verify the pseudo-Goldstone state and heavier non-Goldstone
+        spectrum.
+      reference_id: '1109_3513'
+      section: Discussion
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: composite_asymmetric_dark_matter
+  model_id: 1109_3513_su2_technicolor_goldstone_adm_v1
+  model_name: SU(2) technicolor Goldstone asymmetric dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1109.3513'
+      authors:
+      - Randy Lewis
+      - Claudio Pica
+      - Francesco Sannino
+      doi: null
+      notes: Assigned SQLite full text was the only source used.
+      reference_id: '1109_3513'
+      role: extension
+      title: 'Light Asymmetric Dark Matter on the Lattice: SU(2) Technicolor with Two Fundamental Flavors'
+      url: null
+      year: 2011
+  status: machine_extracted
+relic_density:
+  calculation_type: phenomenological
+  full_or_subcomponent: either
+  key_dependencies:
+  - technibaryon asymmetry
+  - Goldstone mass generated by realistic interactions
+  - annihilation of the antiparticle component
+  overclosure_risk: unknown
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: unknown
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - realistic electroweak interactions omitted from lattice simulation
+  - relic genesis not computed
+  - dark matter mass generation left to extensions
+  notes: The Goldstone spectrum is lattice-supported, while cosmological production is not fully implemented
+    in this paper.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: partially_validated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    half_mode_mass: null
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: not discussed
+symmetries:
+  stabilizing_mechanism: A nearly conserved Abelian technibaryon number/asymmetry is required for asymmetric
+    dark matter; the complex Goldstone remains after three Goldstones are eaten by SM gauge bosons.
+  symmetries:
+  - breaking: confining strong dynamics
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: SU(2) technicolor
+    type: gauge
+  - breaking: spontaneously breaks to Sp(4)
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: SU(4) chiral symmetry
+    type: global
+  - breaking: realistic interactions not fully specified in the lattice study
+    breaking_scale: null
+    exact_or_approximate: approximate
+    name: technibaryon number
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: 'yes'
+  notes: The simulated theory is SU(2) gauge theory with two fundamental Dirac flavors; electroweak interactions
+    and realistic mass-generating interactions are omitted in the lattice study.
+  parent_frameworks:
+  - SU(2) technicolor
+  - composite dark matter
+  - asymmetric dark matter
+  - Ultra Minimal Walking Technicolor template without adjoint fermion
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The lattice simulations omit electroweak interactions and add explicit techniquark masses
+    for practicality.
+  extrapolation_risk: medium
+  id: electroweak_omitted_lattice
+  source_reference_ids: []
+  status: established
+- applies_to: model
+  caveats: []
+  condition: Four-fermion/realistic interactions are needed to give masses to SM fermions and the otherwise
+    massless dark matter candidate.
+  extrapolation_risk: high
+  id: realistic_mass_generation_needed
+  source_reference_ids: []
+  status: established
+- applies_to: EFT
+  caveats: []
+  condition: The low-energy effective theory keeps the five Goldstones after heavier technihadrons are
+    integrated out.
+  extrapolation_risk: medium
+  id: goldstone_effective_theory
+  source_reference_ids: []
+  status: inferred

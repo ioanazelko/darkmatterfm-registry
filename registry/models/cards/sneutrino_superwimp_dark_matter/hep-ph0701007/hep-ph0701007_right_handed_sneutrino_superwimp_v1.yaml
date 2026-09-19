@@ -1,0 +1,573 @@
+_source:
+  shard: arXiv_src_0701_002_wds.tar
+  paper_id: hep-ph0701007
+  source_member: hep-ph0701007.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: hep-ph0701007_right_handed_sneutrino_superwimp_v1
+identity:
+  name: Right-handed sneutrino superWIMP from late neutralino decay
+  family: sneutrino_superwimp_dark_matter
+  aliases:
+  - right-handed sneutrino late-decay dark matter
+  - sneutrino superWIMP
+  short_description: A superWIMP dark matter scenario in which thermally produced neutralino NLSPs decay
+    late into right-handed sneutrino LSPs and neutrinos.
+  historical_origin_or_motivation: Proposed as an alternative to gravitino and KK-graviton late-decay
+    candidates for addressing small-scale structure problems.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - MSSM with right-handed sneutrinos
+  - superWIMP dark matter
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the sneutrino mass matrix and neutralino-sneutrino-neutrino decay-rate dependence.
+particle_content:
+  dark_matter_candidate:
+    name: right-handed sneutrino
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - right-handed neutrino supermultiplet
+  mediators:
+  - tiny neutrino Yukawa coupling
+  unstable_parent_particles:
+  - lightest neutralino NLSP
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The right-handed sneutrino is the LSP in a supersymmetric spectrum, with lepton-number
+    conserving neutralino decays feeding it.
+  symmetries:
+  - name: R-parity
+    type: discrete
+    exact_or_approximate: exact
+  - name: lepton number
+    type: global
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - neutrinos
+  - neutralino NLSP
+  dark_sector_couplings:
+  - right-handed sneutrino-neutrino-neutralino Yukawa coupling
+  mediator_types:
+  - neutralino NLSP
+  decay_channels:
+  - chi_1^0 -> right-handed sneutrino + neutrino
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: right-handed sneutrino mass
+    symbol: M_N
+    description: Mass of the sneutrino LSP.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: neutralino NLSP mass
+    symbol: M_chi
+    description: Mass of the long-lived thermal relic neutralino.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: fractional mass splitting
+    symbol: Delta
+    description: Mother-daughter mass splitting controlling free streaming and lifetime.
+    range: percent level or smaller for the strongest small-scale role
+    role: core
+    status: inferred
+  - name: Dirac neutrino mass term
+    symbol: m_nu
+    description: Controls the neutrino Yukawa coupling; small subdominant values are favored for the small-scale
+      application.
+    range: below the oscillation-scale Dirac-only value in the viable small-scale region
+    unit: eV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - late decay of thermal relic neutralino NLSPs
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - would-be neutralino relic density
+  - sneutrino-to-neutralino mass ratio
+  - neutralino lifetime
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The setup assumes negligible sneutrino abundance before NLSP decay.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - neutralino thermal relic density
+  - mass ratio M_N/M_chi
+  - decay lifetime
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late NLSP decay into superWIMP dark matter
+  - nonthermal daughter velocities
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: approximate
+  free_streaming_length:
+    name: free-streaming length
+    symbol: lambda_FS
+    description: Scale below which primordial perturbations are erased.
+    unit: Mpc
+    role: core
+    status: inferred
+  notes: The paper maps lifetime and mass splitting to phase-space density and free-streaming length.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: reduced small-scale halo/subhalo power is possible in the intended regime
+    subhalo_mass_function_effect: can reduce substructure abundance in tuned late-decay regions
+    simulation_calibrated: partial
+validity_domain:
+- id: valid_lsp_nlsp
+  applies_to: model
+  condition: One right-handed sneutrino is the LSP and the lightest neutralino is the long-lived NLSP.
+  status: assumed
+  extrapolation_risk: high
+- id: valid_small_dirac_mass
+  applies_to: parameter
+  condition: The small-scale solution requires a Dirac neutrino mass contribution smaller than the full
+    neutrino mass scale.
+  status: inferred
+  extrapolation_risk: medium
+- id: valid_small_splitting
+  applies_to: parameter
+  condition: Percent-level or smaller mass splitting is needed for the tuned small-scale region.
+  status: inferred
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: assume_negligible_initial_sneutrino
+    description: Right-handed sneutrinos are negligible before neutralino decays.
+    scope: production
+    status: assumed
+  - id: assume_thermal_neutralino_parent
+    description: The neutralino parent is thermally produced and would have a standard relic density if
+      stable.
+    scope: production
+    status: assumed
+  - id: assume_lepton_number_decay
+    description: The dominant two-body decay emits a neutrino rather than electromagnetically active or
+      hadronic products.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No dedicated code release is identified in the extracted text.
+  primary_code_role: null
+provenance:
+  model_id: hep-ph0701007_right_handed_sneutrino_superwimp_v1
+  model_name: Right-handed sneutrino superWIMP from late neutralino decay
+  model_family: sneutrino_superwimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: hep-ph0701007
+      title: Dark matter from late decays and the small-scale structure problems
+      authors:
+      - Francesca Borzumati
+      - Torsten Bringmann
+      - Piero Ullio
+      year: 2007
+      arxiv_id: hep-ph/0701007
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+    - arxiv_id: hep-ph/0701007
+      authors:
+      - Borzumati, Francesca
+      - Bringmann, Torsten
+      - Ullio, Piero
+      doi: 10.1103/PhysRevD.77.063514
+      notes: Primary paper text resolved locally; ADS used for sanitized bibliographic metadata.
+      reference_id: primary
+      role: original_model
+      title: Dark matter from late decays and the small-scale structure problems
+      url: https://arxiv.org/abs/hep-ph/0701007
+      year: 2008
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for metadata and reference/citation discovery only; ADS metadata alone was not used as
+        scientific evidence.
+      url: https://ui.adsabs.harvard.edu
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-30'
+    confidence: high
+    source_chunks_or_sections:
+    - section: abstract
+      page: null
+      quote_or_summary: The authors propose right-handed sneutrinos as viable dark matter candidates from
+        late decays.
+      reference_id: hep-ph0701007
+    - section: model discussion
+      page: null
+      quote_or_summary: They assume a right-handed sneutrino LSP and a lightest neutralino NLSP, with
+        chi_1^0 -> sneutrino + neutrino.
+      reference_id: hep-ph0701007
+    unresolved_items:
+    - Primary-paper figure regions were not digitized; numerical exclusions are qualitative.
+    - Related local reads were logged for discovery context only.
+  evidence:
+    particle_content:
+    - reference_id: hep-ph0701007
+      note: The paper proposes right-handed sneutrinos as alternatives and supposes one right-handed sneutrino
+        is the LSP while the lightest neutralino is the NLSP.
+      confidence: high
+    symmetries:
+    - reference_id: hep-ph0701007
+      note: The setup uses supersymmetry with an LSP/NLSP hierarchy and lepton-number conserving two-body
+        decays.
+      confidence: medium
+    interactions:
+    - reference_id: hep-ph0701007
+      note: The neutralino-sneutrino-neutrino coupling is controlled by the small neutrino Yukawa coupling.
+      confidence: high
+    production_mechanism:
+    - reference_id: hep-ph0701007
+      note: Dark matter is generated in late decays of long-lived thermal relic neutralinos into right-handed
+        sneutrinos plus neutrinos.
+      confidence: high
+    cosmological_history:
+    - reference_id: hep-ph0701007
+      note: The late-decay daughter can reduce phase-space density and free-stream on small scales.
+      confidence: medium
+    parameter_ranges:
+    - reference_id: hep-ph0701007
+      note: Relevant parameters include the neutralino and sneutrino masses, their fractional splitting,
+        and the Dirac neutrino mass/Yukawa coupling.
+      confidence: high
+    validity_domain:
+    - reference_id: hep-ph0701007
+      note: The small-scale role requires a subdominant Dirac neutrino mass term and small mass splitting,
+        at the percent level or smaller.
+      confidence: medium
+    constraints:
+    - confidence: medium
+      note: 'Primary paper text supports constraint: Lyman-alpha and WDM-like free-streaming bound'
+      page: null
+      reference_id: primary
+      section: null
+    - confidence: medium
+      note: 'Primary paper text supports constraint: CMB/LSS bound on relativistic energy released in
+        late decay'
+      page: null
+      reference_id: primary
+      section: null
+    observables:
+    - confidence: medium
+      note: 'Primary paper text supports observable: Nonthermal free-streaming cutoff in small-scale structure'
+      page: null
+      reference_id: primary
+      section: null
+    - confidence: medium
+      note: 'Primary paper text supports observable: Reduced primordial phase-space density'
+      page: null
+      reference_id: primary
+      section: null
+    routes:
+    - confidence: medium
+      note: 'Primary paper text supports route: Map neutralino NLSP decay kinematics into a nonthermal
+        right-handed sneutrino velocity distribution, free-streaming scale, matter-power cutoff, and CMB/LSS
+        checks.'
+      page: null
+      reference_id: primary
+      section: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Requires small Yukawa/Dirac-mass contribution and tuned mass splitting for the small-scale application.
+  validation_status: expert_judgment_only
+  notes: The model is explicit enough for a model card but has tuned regions.
+agent_failure_modes:
+  warnings:
+  - id: w_mass_splitting
+    severity: high
+    category: assumption_mismatch
+    warning: The small-scale interpretation depends strongly on the neutralino-sneutrino mass splitting.
+  - id: w_dirac_mass
+    severity: medium
+    category: assumption_mismatch
+    warning: The Dirac neutrino mass contribution must be subdominant in the relevant region.
+observables:
+- caveats: []
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - Milky Way satellites
+  - Lyman-alpha forest
+  - small halos
+  id: free_streaming_power_cutoff
+  key_quantities:
+  - description: Comoving scale below which perturbations are erased.
+    name: free-streaming length
+    range: phenomenologically interesting around 0.3 Mpc; WDM-like upper comparison around 0.5 Mpc
+    role: derived
+    source_reference_ids:
+    - primary
+    status: approximate
+    symbol: lambda_FS
+    unit: Mpc
+  - description: Decay epoch of the metastable parent.
+    name: parent lifetime
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: tau
+    unit: s
+  - description: Controls daughter momentum.
+    name: fractional mass splitting
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: Delta
+  linked_constraints:
+  - lyman_alpha_free_streaming
+  - relativistic_energy_injection
+  linked_routes:
+  - late_decay_transfer_route
+  name: Nonthermal free-streaming cutoff in small-scale structure
+  notes: Primary text defines lambda_FS and links it to erased primordial perturbations.
+  observability: medium
+  predicted_effect: Late two-body decays of the neutralino NLSP produce right-handed sneutrino dark matter
+    with daughter velocities that erase primordial perturbations below a free-streaming scale.
+  redshift_range: from decay epoch to today
+  relevance: high
+  scale_range: sub-Mpc to Mpc comoving scales
+  source_reference_ids:
+  - primary
+  subchannel: free_streaming_matter_power
+- caveats:
+  - Viable small-scale effects require tuned lifetime, mass splitting, and neutrino-sector parameters.
+  channel: dwarf_galaxies
+  effect_direction: shape_change
+  environments:
+  - dwarf galaxies
+  - satellite halos
+  id: primordial_phase_space_shift
+  key_quantities:
+  - description: Phase-space density variable used to summarize small-scale structure requirements.
+    name: primordial phase-space density
+    role: derived
+    source_reference_ids:
+    - primary
+    status: approximate
+    symbol: Q_p
+  - description: Mass of the right-handed sneutrino daughter.
+    name: daughter mass
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: M_X
+    unit: GeV
+  linked_constraints:
+  - lyman_alpha_free_streaming
+  linked_routes:
+  - late_decay_transfer_route
+  name: Reduced primordial phase-space density
+  notes: null
+  observability: medium
+  predicted_effect: The nonthermal momentum inherited by right-handed sneutrino changes primordial phase-space
+    density and can soften small-halo central structure in tuned late-decay regions.
+  redshift_range: post-decay halo formation
+  relevance: medium
+  scale_range: dwarf-galaxy halo scales
+  source_reference_ids:
+  - primary
+  subchannel: phase_space_density
+constraints:
+- allowed_regions:
+  - Sub-Mpc free-streaming windows can address satellite-scale power while staying below the quoted ceiling.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The nonthermal daughter distribution is mapped approximately onto WDM-style free-streaming
+      constraints.
+    id: wdm_mapping
+    impact_if_violated: A dedicated transfer-function likelihood could shift the boundary.
+    scope: matter-power comparison
+    source_reference_ids:
+    - primary
+    status: assumed
+  benchmark_implications:
+  - right-handed sneutrino benchmarks need small splittings and decay epochs that give nonthermal but
+    not too-hot daughters.
+  caveats: []
+  constrained_parameters:
+  - lambda_FS
+  - tau
+  - Delta
+  - M_X
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Scenarios with too-large free-streaming scales are disfavored by the paper's WDM-like comparison.
+  id: lyman_alpha_free_streaming
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Lyman-alpha and WDM-like free-streaming bound
+  notes: The primary paper quotes about 0.3 Mpc as useful for satellites and about 0.5 Mpc as an upper
+    comparison.
+  observable_channel: lyman_alpha/small_scale_structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - primary
+- allowed_regions:
+  - Small enough light-species energy release remains viable.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The comparison assumes the standard cosmological background used in the primary paper.
+    id: standard_background
+    impact_if_violated: Nonstandard expansion or radiation could alter the mapping.
+    scope: CMB/LSS interpretation
+    source_reference_ids:
+    - primary
+    status: assumed
+  benchmark_implications:
+  - right-handed sneutrino models must keep neutrino or other light-species energy injection compatible
+    with CMB/LSS limits.
+  caveats: []
+  constrained_parameters:
+  - tau
+  - Delta
+  - relativistic energy fraction
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Late decays with too much energy in light species are constrained by ISW and effective-neutrino bounds.
+  id: relativistic_energy_injection
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: CMB/LSS bound on relativistic energy released in late decay
+  notes: null
+  observable_channel: cmb/large_scale_structure
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Structured fields remain qualitative where the source only provides plots or approximate
+      comparisons.
+    caveats: []
+    constraint_ids:
+    - lyman_alpha_free_streaming
+    - relativistic_energy_injection
+    derived_quantities:
+    - daughter velocity
+    - lambda_FS
+    - Q_p
+    - suppressed transfer function
+    description: Map neutralino NLSP decay kinematics into a nonthermal right-handed sneutrino velocity
+      distribution, free-streaming scale, matter-power cutoff, and CMB/LSS checks.
+    forward_model_chain:
+    - inputs:
+      - M_X
+      - M_Y
+      - tau
+      notes: Primary paper gives the relevant small-splitting scaling.
+      outputs:
+      - daughter momentum
+      - v_X(a)
+      step_id: decay_kinematics
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: two-body small-splitting decay
+    - inputs:
+      - v_X(a)
+      - decay scale factor
+      notes: Use the primary-paper definition of lambda_FS.
+      outputs:
+      - lambda_FS
+      step_id: free_streaming
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: standard expansion history
+    - inputs:
+      - transfer-function shape
+      - relativistic energy release
+      notes: Primary paper gives qualitative and figure-level bounds.
+      outputs:
+      - Lyman-alpha and CMB/LSS consistency
+      step_id: likelihood_check
+      step_type: likelihood
+      tool_or_code: null
+      validity: recast required
+    id: late_decay_transfer_route
+    input_parameters:
+    - tau
+    - Delta
+    - M_X
+    - M_Y
+    - effective decay coupling
+    likelihoods:
+    - Lyman-alpha WDM-style bound
+    - CMB/LSS relativistic-energy bound
+    observable_ids:
+    - free_streaming_power_cutoff
+    - primordial_phase_space_shift
+    required_code_resources:
+    - Boltzmann solver or transfer-function emulator
+    route_status: planned
+    source_model_features:
+    - right-handed sneutrino
+    - neutralino NLSP
+    - two-body late decay
+    validation_tests:
+    - Recover the paper lambda_FS and Q_p benchmark regions.

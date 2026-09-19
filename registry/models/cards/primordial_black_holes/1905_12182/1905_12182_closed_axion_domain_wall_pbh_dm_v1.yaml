@@ -1,0 +1,354 @@
+_source:
+  shard: arXiv_src_1905_036_wds.tar
+  paper_id: '1905_12182'
+  source_member: 1905_12182.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: pbh_fraction_not_full_dm
+    mitigation: Track target_fraction and do not silently promote to all of dark matter.
+    severity: medium
+    source_reference_ids: []
+    warning: The extracted text supports a subcomponent-level PBH abundance in the benchmark discussion,
+      not a guaranteed full-DM model.
+  - category: approximate_constraint
+    id: extended_mass_function
+    mitigation: Use the mass distribution, not only the mean mass, in precision work.
+    severity: medium
+    source_reference_ids: []
+    warning: The paper's PBH mass function is narrow but not exactly monochromatic.
+associated_code:
+  code_summary: The assigned text does not identify public code for the numerical wall-collapse calculation.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The initial size distribution of closed N_DW = 1 axion walls is estimated using percolation
+      theory.
+    id: closed_wall_percolation
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The PBH mass is estimated as the energy initially stored in the closed wall when collapse
+      begins.
+    id: wall_energy_to_pbh_mass
+    scope: production
+    source_reference_ids: []
+    status: approximate
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - post-inflationary PQ breaking
+  - axion string-wall network
+  - closed axion domain walls near the QCD epoch
+  phase_transitions:
+  - PQ symmetry breaking
+  - QCD axion mass turn-on near T_1 around 1 GeV
+  standard_history_assumed: true
+  topological_defects:
+  - axion strings
+  - closed axion domain walls
+  - string-wall network
+identity:
+  aliases:
+  - closed axion domain wall PBHs
+  - QCD axion domain-wall PBH dark matter
+  family: primordial_black_holes
+  historical_origin_or_motivation: The paper develops PBH formation from closed axion walls initially
+    present with the main string-wall network, avoiding dependence on late network fragmentation.
+  model_kind: complete_theory
+  name: Sublunar-mass PBH dark matter from closed axion domain walls
+  short_description: A post-inflationary QCD axion scenario where initially formed closed N_DW = 1 axion
+    domain walls collapse near the QCD epoch into sublunar-mass primordial black holes that can contribute
+    to dark matter.
+  status: speculative
+interactions:
+  dark_sector_couplings:
+  - axion potential V_a
+  - domain-wall tension sigma approximately 8 f_a^2 m_a
+  interaction_operators: []
+  mediator_types:
+  - axion domain wall
+  - gravity
+  portals:
+  - gravitational
+  - axion
+  self_scattering_channels: []
+  standard_model_targets: []
+  tree_or_loop_level: not_applicable
+model_id: 1905_12182_closed_axion_domain_wall_pbh_dm_v1
+parameters:
+  core:
+  - description: Sets wall tension and the preferred PBH mass scale.
+    name: axion decay constant
+    range: around 1e9
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: f_a
+    unit: GeV
+  - description: The paper maps the classical axion mass window to f_a.
+    name: zero-temperature axion mass
+    range: 1e-6-1e-2
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_a,0
+    unit: eV
+  - description: The analysis focuses on N_DW = 1.
+    name: domain wall number
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: N_DW
+    value: 1
+  - description: Dimensionless initial size used in the percolation distribution and PBH formation criterion.
+    name: initial closed-wall size
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: r_1
+  - description: Estimated from the energy stored in the closed wall when collapse begins.
+    name: PBH mass
+    range: 1e20-1e22
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: M_PBH
+    unit: g
+particle_content:
+  additional_dark_sector_particles:
+  - QCD axion
+  dark_matter_candidate:
+    elementary_or_composite: macroscopic
+    name: primordial black holes from closed axion domain walls
+    number_of_components: subcomponent
+    spin: unknown
+    statistics: black_hole
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - sublunar-mass primordial black holes
+  mediators:
+  - gravity
+  - axion field/domain wall tension
+  standard_model_extension: minimal
+  unstable_parent_particles:
+  - closed axion domain walls
+phase_space:
+  distribution_function_available: not_applicable
+  distribution_type: not_applicable
+  notes: The model is described by a PBH mass distribution rather than a particle momentum distribution.
+production:
+  abundance_set_by:
+  - percolation size distribution of closed walls
+  - collapse criterion R_s/R > 1
+  - formation efficiency of closed axion domain walls
+  can_produce_all_dark_matter: unknown
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - collapse of closed N_DW = 1 axion domain walls into primordial black holes
+  nonthermal_momentum_distribution: 'yes'
+  notes: The text says the PBH abundance could reach about the percent level of dark matter and depends
+    sensitively on closed-wall formation efficiency.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The scenario is explicitly post-inflationary PQ breaking, with axion strings and domain walls
+        forming near the QCD scale.
+      page: null
+      reference_id: primary
+      section: introduction
+    interactions:
+    - confidence: medium
+      note: Closed wall collapse is governed by the axion Lagrangian with a temperature-dependent QCD
+        axion potential and wall tension.
+      page: null
+      reference_id: primary
+      section: collapse
+    parameter_ranges:
+    - confidence: high
+      note: The preferred range is f_a around 10^9 GeV, giving PBH masses about 10^20-10^22 g.
+      page: null
+      reference_id: primary
+      section: abstract/introduction
+    particle_content:
+    - confidence: high
+      note: The model's dark matter candidate is sublunar-mass primordial black holes formed from collapsing
+        closed axion domain walls.
+      page: null
+      reference_id: primary
+      section: abstract/introduction
+    production_mechanism:
+    - confidence: high
+      note: Closed axion domain walls initially formed near T_1 collapse once wall tension overcomes expansion;
+        sufficiently compact walls form PBHs.
+      page: null
+      reference_id: primary
+      section: collapse
+    symmetries:
+    - confidence: high
+      note: The construction uses QCD axion Peccei-Quinn symmetry breaking after inflation and focuses
+        on N_DW = 1 domain walls.
+      page: null
+      reference_id: primary
+      section: introduction and axion wall formation
+    validity_domain:
+    - confidence: high
+      note: The paper restricts the calculation to N_DW = 1 closed axion walls initially formed at T_1
+        with size distribution estimated by percolation theory.
+      page: null
+      reference_id: primary
+      section: introduction and size distribution
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0019
+    extraction_date: '2026-05-31'
+    extractor_name: dark_matter_model_gpt55_rolling_batch_worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Closed QCD axion domain walls collapse into PBHs with masses around 10^20-10^22
+        g.
+      reference_id: primary
+      section: abstract
+    - page: null
+      quote_or_summary: The paper derives a collapse criterion from wall energy and Schwarzschild radius.
+      reference_id: primary
+      section: collapse
+    - page: null
+      quote_or_summary: PBH abundance is calculated from the wall size distribution and formation efficiency.
+      reference_id: primary
+      section: dark matter abundance
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: primordial_black_holes
+  model_id: 1905_12182_closed_axion_domain_wall_pbh_dm_v1
+  model_name: Sublunar-mass PBH dark matter from closed axion domain walls
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: high
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1905.12182'
+      authors:
+      - Shuailiang Ge
+      doi: null
+      notes: Only the assigned SQLite full text was used.
+      reference_id: primary
+      role: original_model
+      title: Sublunar-Mass Primordial Black Holes from Closed Axion Domain Walls
+      url: null
+      year: 2019
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: subcomponent
+  key_dependencies:
+  - f_a
+  - closed-wall formation efficiency
+  - percolation size distribution
+  - minimum wall radius for collapse
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    name: PBH fraction of dark matter
+    range: up to about 1 percent in the paper's benchmark discussion
+    status: inferred
+    symbol: Omega_PBH/Omega_DM
+    unit: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  dominant_uncertainties:
+  - Closed-wall formation efficiency
+  - spherical-collapse approximation
+  - mapping an extended mass function to monochromatic PBH bounds
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: PBHs are macroscopic gravitational objects; the parent wall network comes from
+    post-inflationary PQ symmetry breaking with N_DW = 1.
+  symmetries:
+  - breaking: spontaneously broken at T_PQ approximately f_a
+    breaking_scale:
+      name: axion decay constant
+      range: around 1e9
+      status: inferred
+      symbol: f_a
+      unit: GeV
+    exact_or_approximate: broken
+    name: Peccei-Quinn symmetry
+    type: global
+  - exact_or_approximate: unknown
+    name: N_DW = 1 axion domain-wall structure
+    type: unknown
+  topological_defects_possible: 'yes'
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper writes the axion effective potential and collapse equation of motion for spherical
+    closed walls.
+  parent_frameworks:
+  - QCD axion
+  - post-inflationary Peccei-Quinn symmetry breaking
+  - primordial black hole dark matter
+  renormalizable: unknown
+  theory_level: uv_complete
+validity_domain:
+- applies_to: cosmological_history
+  caveats: []
+  condition: PQ symmetry is broken after inflation so axion strings and domain walls form near the QCD
+    scale.
+  extrapolation_risk: medium
+  id: post_inflationary_pq
+  source_reference_ids: []
+  status: assumed
+- applies_to: model
+  caveats: []
+  condition: The calculation focuses on N_DW = 1 closed axion domain walls.
+  extrapolation_risk: medium
+  id: domain_wall_number_one
+  source_reference_ids: []
+  status: assumed
+- applies_to: production
+  caveats: []
+  condition: The collapse calculation approximates closed walls as nearly spherical and initially at rest.
+  extrapolation_risk: medium
+  id: spherical_wall_collapse
+  source_reference_ids: []
+  status: approximate
+- applies_to: relic_density
+  caveats: []
+  condition: The paper treats its PBH mass distribution as narrow enough for rough comparison to monochromatic
+    PBH limits.
+  extrapolation_risk: medium
+  id: narrow_mass_function_approximation
+  source_reference_ids: []
+  status: approximate

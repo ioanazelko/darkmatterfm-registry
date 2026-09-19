@@ -1,0 +1,819 @@
+_source:
+  shard: arXiv_src_1407_009_wds.tar
+  paper_id: '1407_4749'
+  source_member: 1407_4749.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: soft_breaking_stability
+    mitigation: null
+    severity: medium
+    source_reference_ids:
+    - paper
+    warning: Because Scenario 2 includes soft breaking of the residual Z2 degeneracy, check the exact
+      stabilizing remnant before using this row for precision model reasoning.
+associated_code:
+  code_summary: The paper states that model interactions were implemented in CalcHEP and relic abundance
+    was computed with MicrOMEGAs; no custom repository is identified.
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules:
+  - availability: public
+    name: MicrOMEGAs
+    purpose:
+    - compute_relic_density
+    - solve_boltzmann_equations
+    relationship_to_model: related_but_not_model_specific
+    resource_type: package
+  - availability: public
+    name: CalcHEP
+    purpose:
+    - define_lagrangian
+    - compute_cross_sections
+    relationship_to_model: related_but_not_model_specific
+    resource_type: package
+  primary_code_role: relic_density_calculation
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The S3 three-Higgs-doublet vacuum alignment leaves the extra doublets inert.
+    id: s3_inert_alignment
+    scope: global
+    source_reference_ids:
+    - paper
+    status: assumed
+  - can_be_relaxed: unknown
+    description: H2^0 is the lightest relevant inert state and its decays are kinematically or symmetry
+      forbidden in the benchmark.
+    id: h2_stability
+    scope: theory
+    source_reference_ids:
+    - paper
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The abundance is computed using standard thermal freeze-out Boltzmann evolution.
+    id: thermal_freezeout
+    scope: production
+    source_reference_ids:
+    - paper
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling:
+    description: Boltzmann equation uses y = m_H2^0/T.
+    name: freeze-out variable
+    role: core
+    status: inferred
+    symbol: y
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - Scenario 2 nondegenerate H2^0 dark matter
+  family: inert_doublet_dark_matter
+  historical_origin_or_motivation: unknown
+  model_kind: complete_theory
+  name: S3 three-Higgs-doublet model with softly split H2^0 inert scalar dark matter
+  short_description: Three-Higgs-doublet S3 model variant where soft breaking of the residual Z2 splits
+    the inert-sector masses and H2^0 alone accounts for the dark matter relic density.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - H2^0 H2^0 to b bbar
+  - H2^0 H2^0 to gauge boson pairs
+  - H2^0 H2^0 to tau pairs
+  cp_structure: unknown
+  dark_sector_couplings:
+  - scalar quartic couplings
+  - soft non-diagonal quadratic terms in inert sector
+  decay_channels: []
+  flavor_structure: unknown
+  interaction_operators: []
+  mediator_types:
+  - Higgs boson
+  - W boson
+  - Z boson
+  portals:
+  - higgs
+  - vector
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs boson
+  - electroweak gauge bosons
+  - b quarks
+  - tau leptons
+  tree_or_loop_level: tree
+model_id: 1407_4749_s3_inert_doublet_split_h2_dm_v1
+parameters:
+  core:
+  - description: Lightest nondegenerate inert scalar mass.
+    name: H2^0 mass
+    range: benchmark sets in Table 1
+    role: core
+    status: inferred
+    symbol: m_H2
+    unit: GeV
+  - description: Non-diagonal quadratic inert-sector terms split the degenerate masses.
+    name: soft splitting parameter
+    range: benchmark-dependent
+    role: core
+    status: inferred
+    symbol: mu_12^2
+  - description: Quartic couplings controlling inert scalar masses and annihilations.
+    name: scalar quartic couplings
+    range: benchmark-dependent
+    role: core
+    status: inferred
+    symbol: lambda_i
+  derived: []
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - H3^0
+  - A2
+  - A3
+  - charged inert scalars h2+ and h3+
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: H2^0 CP-even inert neutral scalar
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - Standard Model-like Higgs boson
+  - electroweak gauge bosons
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: approximate
+  distribution_type: thermal
+  f_of_p_or_q: unknown
+  free_streaming_length: null
+  notes: Thermal freeze-out abundance computed from a Boltzmann equation.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - H2^0 annihilation cross section
+  - soft mass splitting
+  - scalar quartic couplings
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out of H2^0 inert scalar dark matter
+  nonthermal_momentum_distribution: unknown
+  notes: The paper states that in Scenario 2, H2^0 accounts for all of Omega_DM h^2.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    parameter_ranges:
+    - confidence: medium
+      note: The model uses benchmark parameter choices for Scenario 2a/2b/2c in Table 1.
+      page: null
+      reference_id: paper
+      section: results section
+    particle_content:
+    - confidence: high
+      note: In Scenario 2, H2^0 is identified as the only dark matter candidate.
+      page: null
+      reference_id: paper
+      section: model/results section
+    production_mechanism:
+    - confidence: high
+      note: The paper solves a thermal Boltzmann equation with MicrOMEGAs for H2^0 abundance.
+      page: null
+      reference_id: paper
+      section: DM abundance section
+    symmetries:
+    - confidence: high
+      note: The S3 three-Higgs-doublet construction has two inert doublets; Scenario 2 softly breaks the
+        residual Z2 degeneracy with non-diagonal quadratic terms.
+      page: null
+      reference_id: paper
+      section: model section
+    validity_domain:
+    - confidence: high
+      note: The authors explicitly contrast Scenario 2 with the mass-degenerate Scenario 1.
+      page: null
+      reference_id: paper
+      section: model section
+    constraints:
+    - confidence: high
+      note: Primary paper quotes Omega_DM h^2=0.1196 +/- 0.0031 as the target and reports scenario-level
+        annihilation fractions.
+      page: null
+      reference_id: arxiv:1407.4749
+      section: Introduction/numerical results
+    - confidence: medium
+      note: Related LUX paper provides the direct-detection null result used for source-paper comparisons.
+      page: null
+      reference_id: arxiv:1310.8214
+      section: Results
+    observables:
+    - confidence: high
+      note: Primary paper describes Scenario 2 as nondegenerate, with H2^0 accounting for all dark matter
+        and MicrOMEGAs solving the Boltzmann equation.
+      page: null
+      reference_id: arxiv:1407.4749
+      section: Relic density analysis
+    - confidence: high
+      note: Primary text states the benchmark direct-detection amplitudes agree with CoGeNT, DAMA, LUX,
+        and XENON100 and discusses XENON1T reach.
+      page: null
+      reference_id: arxiv:1407.4749
+      section: Numerical results
+    routes:
+    - confidence: high
+      note: Primary paper links S3 inert scalar masses/couplings to relic density and direct-detection
+        outputs through CalcHEP and MicrOMEGAs.
+      page: null
+      reference_id: arxiv:1407.4749
+      section: Dark matter analysis
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0019
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Scenario 2 adds soft non-diagonal inert-sector terms that split the masses.
+      reference_id: paper
+      section: model section
+    - page: null
+      quote_or_summary: Paper states that in Scenario 2, H2^0 accounts for all Omega_DM h^2.
+      reference_id: paper
+      section: dark matter calculation
+    unresolved_items:
+    - The Table 1 benchmark grid was not digitized into a reusable likelihood.
+    - Direct-detection and Higgs invisible limits require a modern recast before precision exclusion claims.
+  last_updated: '2026-05-31'
+  model_family: inert_doublet_dark_matter
+  model_id: 1407_4749_s3_inert_doublet_split_h2_dm_v1
+  model_name: S3 three-Higgs-doublet model with softly split H2^0 inert scalar dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1407.4749'
+      authors: []
+      doi: null
+      notes: null
+      reference_id: paper
+      role: extension
+      title: unknown
+      url: null
+      year: 2014
+    - arxiv_id: '1407.4749'
+      authors:
+      - Fortes, E. C. F. S.
+      - Machado, A. C. B.
+      - Montaño, J.
+      - Pleitez, V.
+      doi: 10.48550/arXiv.1407.4749
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1407.4749
+      role: original_model
+      title: Scalar Dark Matter Candidates in Two Inert Higgs Doublet Model
+      url: https://arxiv.org/abs/1407.4749
+      year: 2014
+    constraint_papers:
+    - arxiv_id: '1310.8214'
+      authors:
+      - Akerib, D. S.
+      - Araújo, H. M.
+      - Bai, X.
+      - Bailey, A. J.
+      - Balajthy, J.
+      - Bedikian, S.
+      - Bernard, E.
+      - Bernstein, A.
+      - Bolozdynya, A.
+      - Bradley, A.
+      - Byram, D.
+      - Cahn, S. B.
+      - Carmona-Benitez, M. C.
+      - Chan, C.
+      - Chapman, J. J.
+      - Chiller, A. A.
+      - Chiller, C.
+      - Clark, K.
+      - Coffey, T.
+      - Currie, A.
+      - Curioni, A.
+      - Dazeley, S.
+      - de Viveiros, L.
+      - Dobi, A.
+      - Dobson, J.
+      - Dragowsky, E. M.
+      - Druszkiewicz, E.
+      - Edwards, B.
+      - Faham, C. H.
+      - Fiorucci, S.
+      - Flores, C.
+      - Gaitskell, R. J.
+      - Gehman, V. M.
+      - Ghag, C.
+      - Gibson, K. R.
+      - Gilchriese, M. G. D.
+      - Hall, C.
+      - Hanhardt, M.
+      - Hertel, S. A.
+      - Horn, M.
+      - Huang, D. Q.
+      - Ihm, M.
+      - Jacobsen, R. G.
+      - Kastens, L.
+      - Kazkaz, K.
+      - Knoche, R.
+      - Kyre, S.
+      - Lander, R.
+      - Larsen, N. A.
+      - Lee, C.
+      - Leonard, D. S.
+      - Lesko, K. T.
+      - Lindote, A.
+      - Lopes, M. I.
+      - Lyashenko, A.
+      - Malling, D. C.
+      - Mannino, R.
+      - McKinsey, D. N.
+      - Mei, D.-M.
+      - Mock, J.
+      - Moongweluwan, M.
+      - Morad, J.
+      - Morii, M.
+      - Murphy, A. St. J.
+      - Nehrkorn, C.
+      - Nelson, H.
+      - Neves, F.
+      - Nikkel, J. A.
+      - Ott, R. A.
+      - Pangilinan, M.
+      - Parker, P. D.
+      - Pease, E. K.
+      - Pech, K.
+      - Phelps, P.
+      - Reichhart, L.
+      - Shutt, T.
+      - Silva, C.
+      - Skulski, W.
+      - Sofka, C. J.
+      - Solovov, V. N.
+      - Sorensen, P.
+      - Stiegler, T.
+      - O'Sullivan, K.
+      - Sumner, T. J.
+      - Svoboda, R.
+      - Sweany, M.
+      - Szydagis, M.
+      - Taylor, D.
+      - Tennyson, B.
+      - Tiedt, D. R.
+      - Tripathi, M.
+      - Uvarov, S.
+      - Verbus, J. R.
+      - Walsh, N.
+      - Webb, R.
+      - White, J. T.
+      - White, D.
+      - Witherell, M. S.
+      - Wlasenko, M.
+      - Wolfs, F. L. H.
+      - Woods, M.
+      - Zhang, C.
+      - LUX Collaboration
+      doi: 10.1103/PhysRevLett.112.091303
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1310.8214
+      role: constraint
+      title: First Results from the LUX Dark Matter Experiment at the Sanford Underground Research Facility
+      url: https://arxiv.org/abs/1310.8214
+      year: 2014
+    external_databases: []
+    review_papers:
+    - arxiv_id: hep-ph/0612275
+      authors:
+      - Lopez Honorez, Laura
+      - Nezri, Emmanuel
+      - Oliver, Josep F.
+      - Tytgat, Michel H. G.
+      doi: 10.1088/1475-7516/2007/02/028
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:hep-ph/0612275
+      role: review
+      title: 'The inert doublet model: an archetype for dark matter'
+      url: https://arxiv.org/abs/hep-ph/0612275
+      year: 2007
+    - arxiv_id: '1003.3125'
+      authors:
+      - Lopez Honorez, Laura
+      - Yaguna, Carlos E.
+      doi: 10.1007/JHEP09(2010)046
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1003.3125
+      role: review
+      title: The inert doublet model of dark matter revisited
+      url: https://arxiv.org/abs/1003.3125
+      year: 2010
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - H2^0 mass
+  - annihilation cross sections
+  - inert-sector mass splitting
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Title/authors were not present in the extracted text, so source title is left unknown.
+  - The residual stabilizing symmetry after soft terms is less explicitly captured than the mass spectrum
+    and relic logic.
+  notes: Accepted as a substantive nondegenerate dark matter variant developed in the paper.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: unknown
+  validation_status: unvalidated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: Not studied; inert scalar dark matter treated as CDM-like.
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: Not studied; inert scalar dark matter treated as CDM-like.
+symmetries:
+  stabilizing_mechanism: The S3 inert-doublet vacuum alignment keeps H2^0 from coupling to fermions; soft
+    inert-sector terms break residual degeneracy while leaving a light neutral inert scalar as the stable
+    dark matter candidate in the studied benchmarks.
+  symmetries:
+  - breaking: soft non-diagonal inert-sector quadratic terms break the residual degeneracy
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: S3
+    type: discrete
+  - breaking: soft terms split masses in Scenario 2
+    breaking_scale: null
+    exact_or_approximate: unknown
+    name: inert parity remnant
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: This row covers the paper's soft-term nondegenerate inert-scalar scenario.
+  parent_frameworks:
+  - three Higgs doublet model
+  - S3 flavor symmetry
+  - inert doublet dark matter
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Applies to the paper's Scenario 2, where non-diagonal quadratic terms split the inert scalar
+    masses and H2^0 is the single dark matter candidate.
+  extrapolation_risk: unknown
+  id: scenario_2_soft_split
+  source_reference_ids:
+  - paper
+  status: inferred
+observables:
+- caveats:
+  - Only benchmark points were tabulated; no likelihood grid was reconstructed.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early-universe thermal plasma
+  id: obs_split_h2_thermal_relic
+  key_quantities:
+  - description: Lightest split inert neutral scalar mass.
+    name: H2^0 mass
+    range: Scenario 2a/2b/2c benchmarks in Table 1
+    role: core
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: inferred
+    symbol: m_H2
+    unit: GeV
+  - description: Thermal average entering the Boltzmann equation.
+    name: annihilation cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: inferred
+    symbol: <sigma_ann v>
+  linked_constraints:
+  - con_split_h2_relic_density
+  linked_routes:
+  - route_split_h2_freezeout_detection
+  name: Softly split H2 thermal relic abundance
+  notes: null
+  observability: high
+  predicted_effect: H2^0 is treated as the only dark matter species in Scenario 2 and its abundance is
+    obtained by integrating the standard freeze-out Boltzmann equation with MicrOMEGAs.
+  redshift_range: freeze-out through today
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:1407.4749
+  - arxiv:1003.3125
+  subchannel: thermal freeze-out abundance
+- caveats:
+  - Detector likelihoods were not digitized; this row preserves the source-paper comparison.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - terrestrial direct-detection detectors
+  id: obs_split_h2_si_scattering
+  key_quantities:
+  - description: Cold dark-matter-nucleon amplitude used in the source comparison.
+    name: spin-independent cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:1407.4749
+    - arxiv:1310.8214
+    status: inferred
+    symbol: sigma_SI
+  - description: Scalar coupling combination controlling the scattering and Higgs width.
+    name: quartic Higgs-portal combination
+    role: core
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: inferred
+    symbol: lambda
+  linked_constraints:
+  - con_split_h2_direct_detection
+  linked_routes:
+  - route_split_h2_freezeout_detection
+  name: Spin-independent H2-nucleon scattering
+  notes: null
+  observability: high
+  predicted_effect: The scalar portal produces spin-independent elastic scattering; the paper compares
+    benchmark amplitudes with CoGeNT, DAMA, LUX, XENON100, and XENON1T projections.
+  redshift_range: today
+  relevance: high
+  scale_range: nuclear recoil energies
+  source_reference_ids:
+  - arxiv:1407.4749
+  - arxiv:1310.8214
+  subchannel: elastic nuclear recoil
+- caveats:
+  - Only the quoted benchmark value is captured.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - collider Higgs decays
+  id: obs_split_h2_higgs_invisible
+  key_quantities:
+  - description: Scenario-dependent invisible Higgs branching ratio.
+    name: invisible branching fraction
+    role: derived
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: inferred
+    symbol: Br(h -> H2 H2)
+    value: about 5e-4 in Scenario 2b
+  linked_constraints:
+  - con_split_h2_higgs_width
+  linked_routes:
+  - route_split_h2_freezeout_detection
+  name: Suppressed Higgs invisible decay in split benchmarks
+  notes: null
+  observability: medium
+  predicted_effect: The split Scenario 2 benchmarks can make h -> H2^0 H2^0 negligible; the paper quotes
+    about 5e-4 branching in Scenario 2b.
+  redshift_range: not_applicable
+  relevance: medium
+  scale_range: LHC Higgs mass scale
+  source_reference_ids:
+  - arxiv:1407.4749
+  subchannel: Higgs invisible width
+constraints:
+- allowed_regions:
+  - Scenario 2 benchmark points selected to account for all of Omega_DM h^2.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The source uses standard thermal freeze-out with y=m_H2/T.
+    id: standard_freezeout
+    impact_if_violated: Nonstandard expansion or entropy injection changes the abundance.
+    notes: null
+    scope: cosmological history
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: assumed
+  benchmark_implications:
+  - Scenario 2a/2b mainly annihilate to b bbar with smaller gauge/gamma channels; Scenario 2c is dominated
+    by W+W-.
+  caveats:
+  - MicrOMEGAs inputs were not regenerated.
+  constrained_parameters:
+  - m_H2
+  - <sigma_ann v>
+  - lambda_i
+  constraint_type: cosmological
+  data_release: Planck-era relic density quoted in the source text
+  excluded_regions:
+  - Benchmarks that do not reproduce Omega_DM h^2 about 0.1196 +/- 0.0031 miss the source target.
+  id: con_split_h2_relic_density
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Observed relic-density target for split H2
+  notes: null
+  observable_channel: relic_density
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - arxiv:1407.4749
+- allowed_regions:
+  - The source states all discussed scenarios are in agreement with CoGeNT, DAMA, LUX, and XENON100, with
+    2b/2c near XENON1T reach.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The scalar-nucleon matrix element and local halo normalization match the curves used
+      in the paper.
+    id: standard_si_normalization
+    impact_if_violated: Changing either shifts sigma_SI limits.
+    notes: null
+    scope: direct detection recast
+    source_reference_ids:
+    - arxiv:1407.4749
+    - arxiv:1310.8214
+    status: assumed
+  benchmark_implications:
+  - Scenario 2b and 2c are highlighted as matching future XENON1T sensitivity.
+  caveats:
+  - Direct-detection curves are read from the paper comparison, not digitized.
+  constrained_parameters:
+  - sigma_SI
+  - m_H2
+  - lambda
+  constraint_type: direct_detection
+  data_release: LUX first results and XENON100/XENON1T curves as used by the source
+  excluded_regions:
+  - Parameter choices above the LUX/XENON100 exclusion curves are not viable.
+  id: con_split_h2_direct_detection
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: LUX/XENON spin-independent comparison for split H2
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1407.4749
+  - arxiv:1310.8214
+- allowed_regions:
+  - Scenario 2b has negligible invisible Higgs branching in the source benchmark.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The invisible channel is kinematically open only for light enough H2.
+    id: higgs_channel_open
+    impact_if_violated: Closed channels remove this observable.
+    notes: null
+    scope: collider phenomenology
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: assumed
+  benchmark_implications:
+  - Split benchmarks can evade invisible-width pressure while preserving direct-detection reach.
+  caveats:
+  - No LHC Higgs invisible likelihood was applied.
+  constrained_parameters:
+  - Br(h -> H2 H2)
+  - lambda
+  constraint_type: collider
+  data_release: null
+  excluded_regions:
+  - Large h -> inert-scalar invisible branching would require collider-width recasting.
+  id: con_split_h2_higgs_width
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Invisible Higgs-width consistency for split H2
+  notes: null
+  observable_channel: higgs_invisible
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1407.4749
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The batch did not rerun the numerical model files.
+    constraint_ids:
+    - con_split_h2_relic_density
+    - con_split_h2_direct_detection
+    - con_split_h2_higgs_width
+    derived_quantities:
+    - Omega_H2 h^2
+    - sigma_SI
+    - Br(h -> H2 H2)
+    - annihilation branching fractions
+    description: Map the softly split S3 inert scalar benchmark to relic density, direct detection, and
+      invisible-Higgs observables.
+    forward_model_chain:
+    - inputs:
+      - S3 vacuum alignment
+      - soft terms
+      notes: Check that H2^0 remains the lightest inert state.
+      outputs:
+      - stable lightest inert scalar
+      step_id: s1
+      step_type: validation
+      tool_or_code: null
+      validity: Requires the residual stabilizing symmetry used in the source.
+    - inputs:
+      - masses
+      - quartic couplings
+      notes: Source used CalcHEP plus MicrOMEGAs.
+      outputs:
+      - Omega_H2 h^2
+      - annihilation fractions
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: CalcHEP/MicrOMEGAs
+      validity: Standard radiation-dominated freeze-out.
+    - inputs:
+      - sigma_SI
+      - Br(h -> H2 H2)
+      notes: Only source-level comparisons captured.
+      outputs:
+      - direct-detection and Higgs-width constraints
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires detector/Higgs likelihoods for precision use.
+    id: route_split_h2_freezeout_detection
+    input_parameters:
+    - m_H2
+    - mu_12^2
+    - lambda_i
+    - scalar mass splittings
+    likelihoods:
+    - relic-density target
+    - LUX/XENON direct-detection curves
+    - Higgs invisible-width limit
+    observable_ids:
+    - obs_split_h2_thermal_relic
+    - obs_split_h2_si_scattering
+    - obs_split_h2_higgs_invisible
+    required_code_resources:
+    - CalcHEP model implementation
+    - MicrOMEGAs relic-density run
+    - direct-detection recast
+    route_status: planned
+    source_model_features:
+    - S3 three-Higgs-doublet model
+    - soft split inert sector
+    - single H2^0 dark matter candidate
+    validation_tests:
+    - recover Omega_DM h^2 about 0.1196
+    - recover source scenario branching fractions
+    - place benchmark sigma_SI below LUX/XENON100 curves

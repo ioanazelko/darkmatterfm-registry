@@ -1,0 +1,283 @@
+_source:
+  shard: arXiv_src_2009_025_wds.tar
+  paper_id: '2009_04444'
+  source_member: 2009_04444.json
+schema_version: model_only_v0
+model_id: 2009_04444_dark_photon_inelastic_dm_v1
+identity:
+  name: Dark-photon-mediated inelastic dark matter for stellar cooling and XENON
+  family: inelastic_dark_matter
+  aliases:
+  - dark photon inelastic DM
+  - pseudo-Dirac Majorana inelastic dark matter
+  short_description: A novel inelastic dark matter scenario with two MeV-scale Majorana states forming
+    a pseudo-Dirac pair and a dark photon mediator coupling to electrons, proposed to connect white-dwarf
+    cooling and XENON1T electron recoils.
+  historical_origin_or_motivation: Proposed as a joint explanation of the white dwarf luminosity-function
+    cooling excess and XENON1T low-energy electron recoil excess.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - inelastic dark matter
+  - dark photon mediator
+  - pseudo-Dirac fermion dark sector
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper gives effective A-prime couplings to electrons and off-diagonal chi_1-chi_2 currents,
+    but states that it does not specify a concrete relic-abundance model.
+particle_content:
+  dark_matter_candidate:
+    name: lighter Majorana fermion chi_1
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavier Majorana fermion chi_2
+  mediators:
+  - dark photon A prime
+  excited_or_degenerate_states:
+  - chi_2 with keV-scale mass splitting above chi_1
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper assumes the lighter state chi_1 constitutes the halo dark matter; the
+    exact stabilizing symmetry is not specified in the extracted text.
+  symmetries:
+  - name: dark_photon_gauge_symmetry
+    type: gauge
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - electrons
+  - photons through kinetic mixing
+  dark_sector_couplings:
+  - epsilon e A prime_mu e gamma^mu e
+  - i g_chi/2 A prime_mu chi_2 gamma^mu chi_1 plus Hermitian conjugate
+  mediator_types:
+  - dark photon vector mediator
+  interaction_operators:
+  - off-diagonal inelastic dark-photon current
+  - kinetic mixing induced electron coupling
+  scattering:
+    elastic: unknown
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  decay_channels:
+  - chi_2 to A prime plus chi_1 when m_Aprime < Delta m
+  - dark photon absorption on electrons
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: lighter dark matter mass
+    symbol: m_chi1
+    description: Mass of the halo dark matter state chi_1.
+    range: MeV scale; example best fit 2.38 MeV in one scenario
+    unit: MeV
+    role: core
+    status: inferred
+  - name: mass splitting
+    symbol: Delta m
+    description: Mass gap m_chi2 - m_chi1.
+    value: about 3 keV in the XENON recoil-peak scenario
+    unit: keV
+    role: core
+    status: inferred
+  - name: dark photon mass
+    symbol: m_Aprime
+    description: Mass of the vector mediator.
+    range: keV to MeV regimes discussed; sub-GeV in the model description
+    unit: keV/MeV
+    role: core
+    status: inferred
+  - name: electron coupling or kinetic mixing
+    symbol: epsilon
+    description: Effective A-prime coupling to electrons, possibly from kinetic mixing.
+    range: scenario dependent
+    role: core
+    status: inferred
+  - name: dark-sector coupling
+    symbol: g_chi
+    description: Off-diagonal dark photon coupling between chi_1 and chi_2.
+    range: scenario dependent
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - nonthermal production of relic chi_1 allowed by assumption
+  - solar upscattering chi_1 e -> chi_2 e for phenomenology
+  - thermal solar dark-photon production for signals
+  thermal_equilibrium_with_standard_model: unknown
+  abundance_set_by:
+  - not calculated from thermal freeze-out
+  - nonthermal production left unspecified
+  can_produce_all_dark_matter: unknown
+  nonthermal_momentum_distribution: unknown
+  notes: The paper explicitly does not estimate relic abundance from thermal freeze-out and allows nonthermal
+    production to be determinative.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: nonthermal
+  key_dependencies:
+  - unspecified nonthermal production
+  - assumption that the halo is composed primarily or entirely of chi_1
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - unspecified nonthermal dark matter production
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: unknown
+  notes: The cosmological distribution is not derived; the phenomenology assumes a local chi_1 halo population.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed in the paper text
+    subhalo_mass_function_effect: not discussed in the paper text
+    simulation_calibrated: unknown
+validity_domain:
+- id: simplified_nonthermal_relic
+  applies_to: model
+  condition: The model card is valid only as a simplified scenario because the paper leaves the relic-production
+    mechanism unspecified.
+  status: assumed
+  extrapolation_risk: high
+- id: inelastic_mass_splitting
+  applies_to: parameter
+  condition: The XENON recoil-peak discussion relies on a keV-scale chi_2 - chi_1 splitting, with Delta
+    m around 3 keV in the examples.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: halo_chi1
+    description: The lighter state chi_1 makes up the dark matter halo.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+  - id: nonthermal_relic
+    description: A nonthermal mechanism sets the relic abundance; thermal freeze-out is not modeled.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+  - id: electron_coupled_dark_photon
+    description: The dark photon has an effective electron coupling, possibly through kinetic mixing.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: The extracted text does not identify a public model-specific code release.
+  primary_code_role: null
+provenance:
+  model_id: 2009_04444_dark_photon_inelastic_dm_v1
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2009.04444
+      title: Stellar cooling, inelastic dark matter, and XENON
+      year: 2020
+      arxiv_id: '2009.04444'
+      role: original_model
+      authors:
+      - Wai-Yee Keung
+      - Danny Marfatia
+      - Po-Yan Tseng
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:2009.04444
+      section: model/conclusion
+      quote_or_summary: Dark-photon-mediated inelastic DM with chi_1 halo, chi_2 excited state, A-prime
+        mediator, and nonthermal relic assumption.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2009.04444
+      note: The paper proposes two MeV-scale relic Majorana fermions chi_1 and chi_2 forming a pseudo-Dirac
+        pair with a keV mass gap.
+      confidence: high
+      section: model section
+    symmetries:
+    - reference_id: arxiv:2009.04444
+      note: A dark photon A prime mediates the interaction; the text does not specify the stabilizing
+        symmetry for chi_1.
+      confidence: medium
+      section: model section
+    interactions:
+    - reference_id: arxiv:2009.04444
+      note: The effective interactions couple A prime to electrons and off-diagonally to chi_1 and chi_2.
+      confidence: high
+      section: model section
+    production_mechanism:
+    - reference_id: arxiv:2009.04444
+      note: The paper explicitly avoids a thermal freeze-out relic calculation and allows nonthermal production
+        to determine the abundance.
+      confidence: high
+      section: solar upscattering discussion
+    cosmological_history:
+    - reference_id: arxiv:2009.04444
+      note: The entire or primary halo is assumed to be chi_1 while chi_2 and A prime are produced in
+        the Sun for the signal mechanism.
+      confidence: medium
+      section: introduction and conclusion
+    parameter_ranges:
+    - reference_id: arxiv:2009.04444
+      note: The paper discusses MeV-scale chi_1, Delta m around 3 keV, and dark photon masses in keV-to-MeV
+        regimes.
+      confidence: medium
+      section: model/results sections
+    validity_domain:
+    - reference_id: arxiv:2009.04444
+      note: The model is explicitly a scenario without a concrete relic-abundance completion, limiting
+        the extraction to a simplified model.
+      confidence: high
+      section: solar upscattering discussion
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: low
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - no concrete relic-abundance model in the paper
+  - stabilizing symmetry not specified in assigned text
+  - parameter regions are scenario dependent
+  validation_status: expert_judgment_only
+  notes: Model identity is clear, but relic-density completion is deliberately left open by the authors.
+agent_failure_modes:
+  warnings:
+  - id: no_thermal_relic_completion
+    severity: high
+    category: assumption_mismatch
+    warning: Do not infer a thermal freeze-out abundance; the paper explicitly leaves relic production
+      to an unspecified nonthermal mechanism.
+  - id: stabilization_unspecified
+    severity: medium
+    category: other
+    warning: The assigned text does not state the exact symmetry that stabilizes chi_1.

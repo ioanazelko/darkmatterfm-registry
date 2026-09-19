@@ -1,0 +1,343 @@
+_source:
+  shard: arXiv_src_1008_004_wds.tar
+  paper_id: '1008_2858'
+  source_member: 1008_2858.json
+schema_version: model_only_v0
+model_id: 1008_2858_gravitino_stau_nlsp_dark_component_v1
+identity:
+  name: Gravitino dark matter with stau NLSP and pre-BBN dark-density expansion
+  family: gravitino_dark_matter
+  aliases:
+  - CMSSM gravitino LSP with dark component
+  - non-standard cosmology gravitino dark matter
+  short_description: A CMSSM gravitino LSP dark-matter scenario with a long-lived stau NLSP and an added
+    pre-BBN dark-density component that modifies the Hubble rate, suppressing thermal gravitino production
+    while enhancing NLSP freeze-out abundance.
+  historical_origin_or_motivation: The paper seeks to reconcile gravitino dark matter, lithium-problem
+    BBN effects, higher reheating temperatures, and lighter collider-accessible spectra.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - CMSSM
+  - supergravity gravitino LSP
+  - non-standard pre-BBN cosmology
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The particle model is CMSSM with R-parity and gravitino LSP; the cosmology is parameterized by
+    an added dark density rho_D(T).
+particle_content:
+  dark_matter_candidate:
+    name: gravitino LSP
+    spin: 3/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - pre-BBN dark density component (phenomenological fluid)
+  mediators:
+  - Planck-suppressed supergravity interactions
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - stau NLSP with detector-stable/BBN-scale lifetime
+  unstable_parent_particles:
+  - stau NLSP
+  - other supersymmetric particles decaying through cascades
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R-parity conservation makes the gravitino LSP stable.
+  symmetries:
+  - name: R parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken in the scenario
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - supersymmetric plasma during reheating
+  - stau NLSP decays during/after BBN
+  dark_sector_couplings:
+  - Planck-suppressed gravitino interactions
+  - modified Hubble expansion from rho_D
+  mediator_types:
+  - supergravity interaction
+  - phenomenological dark fluid
+  interaction_operators: []
+  decay_channels:
+  - stau NLSP to gravitino plus tau
+  - SUSY cascades to NLSP then gravitino
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: gravitino mass
+    symbol: m_3/2
+    range: examples include 1 GeV to 100 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: gaugino mass at GUT scale
+    symbol: m_1/2
+    range: 100-6000 GeV scan
+    unit: GeV
+    role: core
+    status: inferred
+  - name: scalar mass at GUT scale
+    symbol: m_0
+    range: 10-2000 GeV scan
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dark-density normalization
+    symbol: kappa_D
+    range: 0 < kappa_D < 1 at T_BBN
+    role: core
+    status: inferred
+  - name: dark-density temperature exponent
+    symbol: n_D
+    range: 4-8
+    role: core
+    status: inferred
+  - name: reheating temperature
+    symbol: T_R
+    range: can reach 10^9-10^11 GeV in examples with dark component
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal production during reheating
+  - nonthermal production from NLSP decays
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - reheating temperature
+  - gaugino masses
+  - gravitino mass
+  - stau NLSP freeze-out abundance
+  - pre-BBN dark-density contribution to Hubble rate
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: Thermal production is reduced by the faster expansion; nonthermal production grows because earlier
+    stau freeze-out leaves a larger NLSP abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: WMAP dark matter density
+    symbol: Omega_DM h^2
+    value: 0.1099 +/- 0.0124
+    role: core
+    status: inferred
+  calculation_type: mixed
+  key_dependencies:
+  - T_R
+  - m_3/2
+  - m_1/2
+  - m_0
+  - kappa_D
+  - n_D
+  - stau yield
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - pre-BBN dark density rho_D(T)
+  - faster pre-BBN expansion
+  - early NLSP freeze-out
+  - BBN-era stau decays
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: critical
+  cmb_relevance: medium
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'no'
+  notes: Final abundance is a mixed thermal plus NLSP-decay population; no full momentum distribution
+    is provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: radiation_dominated_by_bbn
+  applies_to: cosmological_history
+  condition: The dark component must be negligible by BBN; the paper restricts kappa_D < 1 at T_BBN.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: stau_nlsp_focus
+  applies_to: particle_content
+  condition: The paper focuses on the stau NLSP branch of CMSSM parameter space.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: r_parity_conserved
+  applies_to: symmetry
+  condition: Gravitino stability requires R-parity conservation.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+assumptions:
+  global:
+  - id: cmssm_boundary_conditions
+    description: CMSSM parameters use universal m_1/2 and m_0 at the GUT scale with A_0=0 and positive
+      mu in the scan.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: pre_bbn_dark_fluid
+    description: A phenomenological dark-density component modifies the pre-BBN Hubble rate.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+  - id: stau_decay_affects_bbn
+    description: Long-lived stau decays during BBN are used in the lithium-problem discussion.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that NLSP yield is computed with a modified MicrOMEGAs 2.2 and SuSpect
+    2.41 setup; no public repository is identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1008_2858_gravitino_stau_nlsp_dark_component_v1
+  model_name: Gravitino dark matter with stau NLSP and pre-BBN dark-density expansion
+  model_family: gravitino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1008_2858'
+      title: unknown
+      authors: []
+      year: 2010
+      arxiv_id: '1008.2858'
+      doi: null
+      url: null
+      role: extension
+      notes: Extracted only from the assigned full text in target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0003
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1008_2858'
+      section: intro/model
+      page: null
+      quote_or_summary: Paper considers CMSSM scenarios with stau NLSP, gravitino LSP, and a non-standard
+        pre-BBN expansion rate from a dark component.
+    - reference_id: '1008_2858'
+      section: thermal and nonthermal production
+      page: null
+      quote_or_summary: Thermal gravitino production and nonthermal NLSP decay production are calculated
+        with modified Hubble expansion.
+    - reference_id: '1008_2858'
+      section: BBN/collider discussion
+      page: null
+      quote_or_summary: The dark component allows higher reheating temperature and lighter stau spectra
+        for lithium-problem scenarios.
+    unresolved_items:
+    - The assigned text does not expose a source-document title.
+  evidence:
+    particle_content:
+    - reference_id: '1008_2858'
+      note: The LSP is the gravitino and the NLSP is mainly a long-lived stau in the considered CMSSM
+        branch.
+      confidence: high
+      section: intro/model
+    symmetries:
+    - reference_id: '1008_2858'
+      note: R-parity conservation is assumed so the LSP is stable.
+      confidence: medium
+      section: intro
+    interactions:
+    - reference_id: '1008_2858'
+      note: Gravitino interactions are Planck suppressed; stau NLSP decays feed nonthermal gravitino production.
+      confidence: medium
+      section: intro/NTP
+    production_mechanism:
+    - reference_id: '1008_2858'
+      note: The total relic density is the sum of thermal production during reheating and nonthermal production
+        from NLSP decays.
+      confidence: high
+      section: TP/NTP
+    cosmological_history:
+    - reference_id: '1008_2858'
+      note: The dark component rho_D(T) modifies H(T) before BBN and is required to become negligible
+        by BBN.
+      confidence: high
+      section: model
+    parameter_ranges:
+    - reference_id: '1008_2858'
+      note: The scan uses m_1/2 from 100-6000 GeV, m_0 from 10-2000 GeV, 0<kappa_D<1, and 4<=n_D<=8.
+      confidence: medium
+      section: model/scan
+    validity_domain:
+    - reference_id: '1008_2858'
+      note: The paper explicitly focuses on the stau NLSP case and requires radiation domination for BBN.
+      confidence: medium
+      section: model/NTP
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - The dark component is phenomenological rather than a specified microphysical sector.
+  - BBN and collider conclusions depend on the chosen CMSSM branch.
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: dark_component_not_dm_candidate
+    severity: medium
+    category: notation_conflict
+    warning: The paper calls the pre-BBN fluid a dark component, but the dark-matter candidate in this
+      row is the gravitino.
+    mitigation: Keep particle_content.dark_matter_candidate as the gravitino.
+  - id: nonstandard_cosmology_required
+    severity: medium
+    category: assumption_mismatch
+    warning: Using this card in standard cosmology would miss the key suppression/enhancement effects
+      from the modified Hubble rate.

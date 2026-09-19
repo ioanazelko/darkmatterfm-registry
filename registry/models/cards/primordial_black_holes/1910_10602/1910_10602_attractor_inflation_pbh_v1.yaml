@@ -1,0 +1,682 @@
+_source:
+  shard: data/astro-ph-00127.tar
+  paper_id: '1910_10602'
+  source_member: 1910_10602.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1910_10602_attractor_inflation_pbh_v1
+identity:
+  name: Superconformal attractor inflation primordial-black-hole dark matter
+  family: primordial_black_holes
+  aliases:
+  - inflationary-attractor PBH dark matter
+  short_description: A single-field superconformal inflationary-attractor setup with a tuned plateau that
+    amplifies small-scale curvature perturbations and produces asteroid-mass primordial black holes as
+    a dark matter subcomponent.
+  historical_origin_or_motivation: Motivated by weakly constrained PBH mass windows and by inflationary
+    ultra-slow-roll mechanisms for enhancing the curvature power spectrum.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - superconformal inflationary attractors
+  - deformed Starobinsky-like potential
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives a scalar potential embedded through an attractor framework and evolves perturbations
+    with the Mukhanov-Sasaki equation.
+particle_content:
+  dark_matter_candidate:
+    name: primordial black holes
+    spin: macroscopic black hole
+    statistics: black_hole
+    elementary_or_composite: macroscopic
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  - inflaton perturbations
+  standard_model_extension: none
+symmetries:
+  stabilizing_mechanism: Macroscopic black holes are stable on cosmological timescales in the quoted mass
+    window.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - radiation plasma through gravitational collapse
+  dark_sector_couplings: []
+  mediator_types:
+  - inflaton
+  - gravity
+  interaction_operators: []
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: curvature power-spectrum peak scale
+    symbol: k_peak
+    description: Scale at which the curvature perturbation is enhanced.
+    value: about 10^14
+    unit: Mpc^-1
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: PBH mass window
+    symbol: M_PBH
+    description: Mass range produced by the parameter sets.
+    value: 10^16 to 10^18
+    unit: g
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: PBH dark matter fraction
+    symbol: f_PBH
+    description: The paper finds the model can produce PBHs comprising more than 20 percent of dark matter.
+    value: greater than 0.2 in studied runs
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: plateau-deformation/fine-tuning parameters
+    symbol: a1, a3, delta
+    description: Potential parameters tuned to create a local plateau/minimum and ultra-slow-roll phase.
+    value: model dependent
+    role: core
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - collapse of enhanced primordial curvature perturbations after inflation during radiation domination
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - inflationary potential parameters
+  - curvature power spectrum amplitude
+  - collapse threshold
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: 'no'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The studied parameter sets produce a sizeable but not complete PBH dark matter fraction.
+relic_density:
+  full_or_subcomponent: subcomponent
+  target_fraction:
+    name: PBH fraction of dark matter
+    symbol: f_PBH
+    value: more than 20 percent in studied parameter sets
+  calculation_type: nonthermal
+  key_dependencies:
+  - Mukhanov-Sasaki power spectrum
+  - Press-Schechter abundance estimate
+  - collapse threshold
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - inflationary ultra-slow-roll plateau
+  - enhanced small-scale curvature perturbations
+  phase_transitions: []
+  bbn_relevance: medium
+  cmb_relevance: high
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: approximate
+  f_of_p_or_q: PBH extended mass function estimated from curvature perturbations
+  notes: The relevant distribution is a PBH mass function, not a particle momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: enhanced_small_scale_power
+    small_scale_power_effect: enhancement
+  nonlinear:
+    halo_mass_function_effect: not simulated; PBHs behave as compact cold matter after formation
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: mass_window
+  applies_to: model
+  condition: Applies to PBHs around 10^16 g to 10^18 g produced by k_peak near 10^14 Mpc^-1.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: gaussian_statistics
+  applies_to: abundance
+  condition: PBH abundance is calculated assuming Gaussian primordial fluctuations.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: gaussian_perturbations
+    description: The PBH mass fraction is estimated with Gaussian statistics for the primordial perturbations.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    impact_if_violated: Non-Gaussian tails could substantially change the PBH abundance.
+  - id: classical_inflaton_trajectory
+    description: Quantum diffusion during ultra-slow roll is neglected in the main calculation.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    impact_if_violated: Including diffusion may overproduce PBHs.
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text describes numerical solutions but does not identify a public associated
+    code.
+provenance:
+  model_id: 1910_10602_attractor_inflation_pbh_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: '1910_10602'
+      title: Primordial black hole formation in inflationary attractor models
+      authors: []
+      year: 2019
+      arxiv_id: '1910.10602'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned batch paper used as the sole source for this model-card candidate.
+    - arxiv_id: '1910.10602'
+      authors:
+      - Mahbub, Rafid
+      doi: 10.1103/PhysRevD.101.023533
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1910.10602
+      role: original_model
+      title: Primordial black hole formation in inflationary alpha-attractor models
+      url: https://arxiv.org/abs/1910.10602
+      year: 2020
+    constraint_papers:
+    - arxiv_id: '2306.17822'
+      authors:
+      - Cai, Yi-Fu
+      - He, Xin-Chen
+      - Ma, Chao
+      - Yan, Shu-Fan
+      - Yuan, Chen
+      - Zhou, Tao
+      doi: 10.1016/j.scib.2023.08.001
+      notes: Related local full text read as scalar-induced-GW constraint context.
+      reference_id: arxiv:2306.17822
+      role: constraint
+      title: Limits on scalar-induced gravitational waves from the stochastic background by pulsar timing
+        array observations
+      url: https://arxiv.org/abs/2306.17822
+      year: 2023
+    - arxiv_id: '2211.03523'
+      authors:
+      - Fu, Chengjie
+      - Wu, Puxun
+      - Yu, Hongwei
+      doi: 10.1088/1475-7516/2023/06/012
+      notes: Related local full text read as PBH/induced-GW inflation context.
+      reference_id: arxiv:2211.03523
+      role: constraint
+      title: Primordial black holes and induced gravitational waves from double-pole inflation
+      url: https://arxiv.org/abs/2211.03523
+      year: 2023
+    - arxiv_id: '2107.07620'
+      authors:
+      - Teimoori, Zeinab
+      - Rezazadeh, Kazem
+      - Rasheed, Mariwan Ahmed
+      - Karami, Kayoomars
+      doi: null
+      notes: Bounded arXiv fallback abstract page read because fewer than three related texts resolved
+        locally.
+      reference_id: arxiv:2107.07620
+      role: constraint
+      title: Mechanism of primordial black holes production and secondary gravitational waves in alpha-attractor
+        Galileon inflationary scenario
+      url: https://arxiv.org/abs/2107.07620
+      year: 2021
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0232_llm_assisted
+    extractor_name: codex
+    extraction_date: '2026-05-28'
+    confidence: high
+    source_chunks_or_sections: []
+    unresolved_items:
+    - PBH abundance constraints were not updated for extended mass functions or modern PBH compilations.
+    - The induced-GW spectrum is based on source approximations; no exact kernel calculation or detector
+      likelihood was run.
+  evidence:
+    particle_content:
+    - reference_id: '1910_10602'
+      note: The dark matter candidate is primordial black holes formed from enhanced curvature perturbations
+        rather than a particle species.
+      confidence: high
+      section: introduction
+    production_mechanism:
+    - reference_id: '1910_10602'
+      note: The paper constructs a superconformal inflationary-attractor potential with an ultra-slow-roll
+        plateau; modes peaking near k about 10^14 Mpc^-1 collapse after inflation into PBHs.
+      confidence: high
+      section: abstract/introduction
+    parameter_ranges:
+    - reference_id: '1910_10602'
+      note: The resulting PBH masses lie in the 10^16 g to 10^18 g window and mass distributions are centered
+        around 10^17 g.
+      confidence: high
+      section: abstract/conclusion
+    cosmological_history:
+    - reference_id: '1910_10602'
+      note: The reheating period is checked and the relevant PBH-forming scales are shown not to re-enter
+        during reheating.
+      confidence: medium
+      section: conclusion
+    validity_domain:
+    - reference_id: '1910_10602'
+      note: The paper notes high fine-tuning, Gaussian-statistics assumptions, and possible overproduction
+        when non-Gaussianity or quantum diffusion are included.
+      confidence: high
+      section: conclusion
+    constraints:
+    - confidence: high
+      note: Primary text reviews mass-dependent PBH constraints and notes weak windows where PBHs can
+        be about 10-20% of dark matter.
+      page: null
+      reference_id: arxiv:1910.10602
+      section: PBH constraints discussion
+    - confidence: medium
+      note: Fallback arXiv page describes alpha-attractor PBH production and secondary gravitational waves
+        with PBH fractions tied to dark matter.
+      page: null
+      reference_id: arxiv:2107.07620
+      section: arXiv abstract
+    observables:
+    - confidence: high
+      note: Primary abstract states P_R peaks at 1e14 Mpc^-1 and produces PBHs in the 1e16-1e18 g window.
+      page: null
+      reference_id: arxiv:1910.10602
+      section: Abstract
+    - confidence: medium
+      note: Primary GW section computes the energy density of second-order GWs and places the spectrum
+        within ALIA/DECIGO sensitivities.
+      page: null
+      reference_id: arxiv:1910.10602
+      section: Second order gravitational waves
+    - confidence: medium
+      note: Primary text discusses Planck 2018 n_s constraints and why model n_s values are lower than
+        the simple attractor estimate.
+      page: null
+      reference_id: arxiv:1910.10602
+      section: Planck comparison
+    routes:
+    - confidence: high
+      note: Primary source solves the Mukhanov-Sasaki equation and then applies Press-Schechter-style
+        PBH abundance and induced-GW calculations.
+      page: null
+      reference_id: arxiv:1910.10602
+      section: Methods/results
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - fine-tuning
+  - collapse threshold
+  - non-Gaussianity
+  - quantum diffusion
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: fine_tuned_usr
+    severity: high
+    category: extrapolation
+    warning: The required PBH abundance depends on a highly tuned ultra-slow-roll region and is sensitive
+      to non-Gaussianity and quantum diffusion.
+    source_reference_ids: []
+observables:
+- caveats:
+  - The potential parameters are carefully fine-tuned and PBH fraction is constraint-window dependent.
+  channel: black_holes
+  effect_direction: enhancement
+  environments:
+  - early universe
+  - asteroid-mass PBH window
+  id: obs_attractor_pbh_mass_fraction
+  key_quantities:
+  - description: Scale where the source reports the curvature power spectrum peak.
+    name: curvature peak scale
+    role: derived
+    source_reference_ids:
+    - arxiv:1910.10602
+    status: inferred
+    symbol: k_peak
+    unit: Mpc^-1
+    value: 1e14
+  - description: Mass range produced by the source benchmark.
+    name: PBH mass window
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 1e18
+      min: 1e16
+      notes: Primary source abstract.
+      unit: g
+    role: derived
+    source_reference_ids:
+    - arxiv:1910.10602
+    status: inferred
+    symbol: M_PBH
+  - description: Integrated fraction over the dark-matter density.
+    name: PBH dark matter fraction
+    range: parameter dependent; source discussion notes weak windows can reach about 10% or 10-20%
+    role: derived
+    source_reference_ids:
+    - arxiv:1910.10602
+    status: inferred
+    symbol: f_PBH
+  linked_constraints:
+  - con_pbh_fraction_constraints
+  linked_routes:
+  - route_attractor_pbh_sigw
+  name: PBH mass fraction from alpha-attractor ultra-slow-roll peak
+  notes: null
+  observability: medium
+  predicted_effect: A fine-tuned plateau in the superconformal attractor potential creates an ultra-slow-roll
+    phase, enhances P_R near k~1e14 Mpc^-1, and produces PBHs in the 1e16-1e18 g mass window.
+  redshift_range: radiation era after inflation
+  relevance: critical
+  scale_range: k around 1e14 Mpc^-1; masses 1e16-1e18 g
+  source_reference_ids:
+  - arxiv:1910.10602
+  subchannel: PBH mass function
+- caveats:
+  - Primary source notes simplified expressions for the GW spectrum and suggests comparison with more
+    exact formulas.
+  channel: gravitational_waves
+  effect_direction: spectral_line
+  environments:
+  - future space-based gravitational-wave detectors
+  id: obs_attractor_secondary_gw
+  key_quantities:
+  - description: Fractional energy density of induced gravitational waves.
+    name: GW density spectrum
+    range: computed from P_R^2 in the source approximation
+    role: derived
+    source_reference_ids:
+    - arxiv:1910.10602
+    status: inferred
+    symbol: Omega_GW
+  - description: Primary source highlights ALIA and DECIGO sensitivity.
+    name: detector band
+    role: experimental
+    source_reference_ids:
+    - arxiv:1910.10602
+    status: inferred
+    value: decihertz/future interferometer band
+  linked_constraints:
+  - con_induced_gw_sensitivity
+  linked_routes:
+  - route_attractor_pbh_sigw
+  name: Secondary gravitational waves from enhanced curvature perturbations
+  notes: null
+  observability: medium
+  predicted_effect: The same curvature enhancement sources a second-order gravitational-wave spectrum,
+    with the source placing the spectrum in the sensitivity range of future detectors such as ALIA and
+    DECIGO.
+  redshift_range: today
+  relevance: high
+  scale_range: frequency set by enhanced small-scale modes
+  source_reference_ids:
+  - arxiv:1910.10602
+  - arxiv:2107.07620
+  subchannel: second-order induced gravitational waves
+- caveats:
+  - The source reports tension/low n_s behavior but no full CMB likelihood recast.
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - cosmic microwave background
+  id: obs_attractor_cmb_tension
+  key_quantities:
+  - description: Primary source states the calculated values are rather low compared with the simple n_s=1-2/N
+      expectation.
+    name: scalar spectral index
+    range: near but somewhat low relative to Planck-preferred values
+    role: derived
+    source_reference_ids:
+    - arxiv:1910.10602
+    status: inferred
+    symbol: n_s
+  - description: Observable inflation e-folds used in source parameter sets.
+    name: observable e-folds
+    range: about 50-51 in examples
+    role: core
+    source_reference_ids:
+    - arxiv:1910.10602
+    status: inferred
+    symbol: N
+  linked_constraints:
+  - con_planck_spectral_index_attractor
+  linked_routes:
+  - route_attractor_pbh_sigw
+  name: CMB scalar-index pressure from tuned attractor model
+  notes: null
+  observability: medium
+  predicted_effect: The model must keep large-scale inflation observables compatible with Planck while
+    the post-peak e-folds/secondary stage can lower n_s relative to the simple attractor estimate.
+  redshift_range: CMB last scattering
+  relevance: medium
+  scale_range: CMB pivot scales
+  source_reference_ids:
+  - arxiv:1910.10602
+  subchannel: large-scale scalar spectral index
+constraints:
+- allowed_regions:
+  - The source highlights weakly constrained windows around 1e17-1e21 g where PBHs could contribute around
+    10-20% of dark matter, with uncertainties.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: PBH bounds are interpreted for a narrow/source-like mass function.
+    id: monochromatic-or-narrow-pbh-mass-function
+    impact_if_violated: Extended mass functions alter the effective bound.
+    notes: null
+    scope: PBH fraction comparison
+    source_reference_ids:
+    - arxiv:1910.10602
+    status: assumed
+  benchmark_implications:
+  - The benchmark 1e16-1e18 g region is viable only after checking mass-window constraints and evaporation/accretion
+    effects.
+  caveats:
+  - No updated PBH constraint compilation was rerun.
+  constrained_parameters:
+  - M_PBH
+  - f_PBH
+  constraint_type: astrophysical
+  data_release: PBH constraint summary in primary source
+  excluded_regions:
+  - PBHs cannot constitute all dark matter over a broad mass range; evaporation gamma rays, CMB accretion,
+    femtolensing, compact-object capture, and stellar survival constrain different windows.
+  id: con_pbh_fraction_constraints
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: PBH dark-matter fraction constraints in asteroid-mass windows
+  notes: null
+  observable_channel: black_holes
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1910.10602
+- allowed_regions:
+  - Primary approximation places the induced GW spectrum within ALIA/DECIGO sensitivities.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The simplified induced-GW expressions used in the source are adequate for signal estimates.
+    id: second-order-gw-approximation
+    impact_if_violated: Exact kernels, reheating, or non-Gaussianity can shift amplitude/frequency.
+    notes: null
+    scope: GW spectrum forecast
+    source_reference_ids:
+    - arxiv:1910.10602
+    - arxiv:2107.07620
+    status: assumed
+  benchmark_implications:
+  - The GW signal is a future-test route rather than an existing exclusion.
+  caveats:
+  - No GW detector likelihood or exact convolution was computed.
+  constrained_parameters:
+  - P_R(k)
+  - Omega_GW(f)
+  constraint_type: theoretical
+  data_release: Primary induced-GW calculation plus arXiv fallback related alpha-attractor SIGW source
+  excluded_regions:
+  - Signals below planned detector sensitivity or modified by exact kernel calculations would not be observable
+    as claimed.
+  id: con_induced_gw_sensitivity
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Induced-GW detectability and formula uncertainty
+  notes: null
+  observable_channel: gravitational_waves
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:1910.10602
+  - arxiv:2107.07620
+- allowed_regions:
+  - The source discusses how n_s is somewhat low but can be interpreted using N_peak because post-peak
+    e-folds act like a secondary inflationary stage.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Large-scale CMB consistency is a required filter before PBH/GW phenomenology.
+  caveats:
+  - No Planck likelihood was rerun.
+  constrained_parameters:
+  - n_s
+  - N
+  - alpha-attractor potential parameters
+  constraint_type: cosmological
+  data_release: Planck 2018 bounds quoted by primary source
+  excluded_regions:
+  - Parameter sets with scalar spectral index outside Planck-compatible ranges are disfavored.
+  id: con_planck_spectral_index_attractor
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Planck scalar-index consistency
+  notes: null
+  observable_channel: cmb
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1910.10602
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Fine tuning and perturbation-theory validity should be audited before using the route predictively.
+    constraint_ids:
+    - con_pbh_fraction_constraints
+    - con_induced_gw_sensitivity
+    - con_planck_spectral_index_attractor
+    derived_quantities:
+    - P_R(k)
+    - M_PBH(k)
+    - f_PBH
+    - Omega_GW(f)
+    - n_s
+    description: Map fine-tuned alpha-attractor potential through Mukhanov-Sasaki curvature power to PBH
+      fraction and second-order gravitational waves.
+    forward_model_chain:
+    - inputs:
+      - potential parameters
+      notes: null
+      outputs:
+      - background evolution
+      - ultra-slow-roll phase
+      step_id: s1
+      step_type: simulation
+      tool_or_code: null
+      validity: Requires avoiding excessive e-folds on the plateau.
+    - inputs:
+      - background evolution
+      - Bunch-Davies initial conditions
+      notes: null
+      outputs:
+      - curvature power spectrum
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: Mukhanov-Sasaki equation solver
+      validity: Primary source numerically solves MS equation.
+    - inputs:
+      - P_R(k)
+      - collapse threshold
+      notes: null
+      outputs:
+      - PBH formation fraction
+      - f_PBH
+      step_id: s3
+      step_type: semi_analytic_model
+      tool_or_code: Press-Schechter formalism
+      validity: Sensitive to threshold and evaporation/accretion assumptions.
+    - inputs:
+      - P_R(k)
+      notes: null
+      outputs:
+      - second-order GW spectrum
+      step_id: s4
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Source flags simplified formula uncertainty.
+    id: route_attractor_pbh_sigw
+    input_parameters:
+    - potential fine-tuning parameters
+    - N
+    - collapse threshold
+    - reheating assumptions
+    likelihoods:
+    - PBH abundance likelihood unavailable
+    - GW detector likelihood unavailable
+    - Planck likelihood unavailable
+    observable_ids:
+    - obs_attractor_pbh_mass_fraction
+    - obs_attractor_secondary_gw
+    - obs_attractor_cmb_tension
+    required_code_resources:
+    - Mukhanov-Sasaki solver
+    - PBH mass-function code
+    - induced-GW convolution code
+    route_status: planned
+    source_model_features:
+    - superconformal alpha-attractor potential
+    - ultra-slow-roll plateau
+    - enhanced curvature perturbation
+    validation_tests:
+    - recover k_peak~1e14 Mpc^-1
+    - recover M_PBH=1e16-1e18 g
+    - recover source f_PBH curve

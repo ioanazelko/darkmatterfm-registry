@@ -1,0 +1,745 @@
+_source:
+  shard: arXiv_src_2308_037_wds.tar
+  paper_id: '2308_04955'
+  source_member: 2308_04955.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: sadm_existing_model_boundary
+    mitigation: Use the provenance source role before treating this as an original model definition.
+    severity: medium
+    source_reference_ids: []
+    warning: This row treats the paper as a substantive cosmological development of SADM, not as the first
+      proposal of SADM.
+associated_code:
+  code_summary: The paper uses RECFAST and modified CLASS/MontePython for cosmological evolution; no dedicated
+    released model code is specified.
+  has_associated_code: partial
+  primary_code_role: boltzmann_solver_patch
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The dark matter is a single species stabilized by Z3 symmetry.
+    id: single_component_z3_sadm
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The 21-cm calculation uses a phenomenological energy-injection prescription.
+    id: phenomenological_heat_injection
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - semi-annihilation energy injection into the intergalactic medium
+  - optional excess radio background in 21-cm analysis
+  phase_transitions: []
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - SADM
+  - Z3 symmetric semi-annihilating dark matter
+  family: semi_annihilating_dark_matter
+  historical_origin_or_motivation: Used in the paper to explore Z3-symmetric DM imprints on the global
+    21-cm signal.
+  model_kind: phenomenological_parameterization
+  name: Z3 semi-annihilating dark matter for global 21-cm cosmology
+  short_description: A single-component Z3-stabilized dark matter scenario where DM + DM -> DM + SM semi-annihilation
+    affects relic abundance and heat exchange with the standard sector.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - DM DM -> DM SM
+  dark_sector_couplings:
+  - DM + DM -> DM + SM semi-annihilation
+  decay_channels: []
+  interaction_operators:
+  - phenomenological semi-annihilation channel
+  mediator_types:
+  - unknown
+  portals:
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - generic Standard Model species
+  tree_or_loop_level: unknown
+model_id: 2308_04955_z3_semi_annihilating_dark_matter_v1
+parameters:
+  core:
+  - description: Mass of the Z3-stabilized DM particle; 50 and 100 GeV are used as benchmarks.
+    name: dark matter mass
+    range: benchmark values 50 and 100
+    role: core
+    status: inferred
+    symbol: M_DM
+    unit: GeV
+  - description: Velocity-weighted semi-annihilation cross section used for relic abundance and heating.
+    name: semi-annihilation cross section
+    role: core
+    status: assumed
+    symbol: <sigma v>_SADM
+    unit: cm^3/s
+    value: 3e-26
+  - description: Fraction of semi-annihilation energy injected into the standard sector.
+    name: standard-sector energy transfer fraction
+    range:
+      inclusive_max: false
+      inclusive_min: false
+      max: 1
+      min: 0
+      notes: Paper states 0 < f < 1.
+      unit: null
+    role: core
+    status: assumed
+    symbol: f
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: unknown
+    name: Z3-stabilized DM particle
+    number_of_components: single_component
+    spin: unknown
+    statistics: unknown
+  mediators: []
+  standard_model_extension: substantial
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: The paper treats SADM as effectively CDM-like for perturbations at high redshift.
+production:
+  abundance_set_by:
+  - DM + DM -> DM + SM semi-annihilation Boltzmann evolution
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal semi-annihilation
+  - DM-SM heat exchange during Cosmic Dawn
+  nonthermal_momentum_distribution: unknown
+  notes: The paper states that a thermal average near 1e-26 cm^3/s satisfies relic abundance if the class
+    spans all DM.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  caveats:
+  - 'Borderline acceptance: the paper develops cosmological signatures of an existing SADM class rather
+    than claiming first proposal.'
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The paper models energy injection into the standard sector and studies Cosmic Dawn and Dark
+        Ages implications.
+      page: null
+      reference_id: '2308_04955'
+      section: SADM and heating of the gas
+    interactions:
+    - confidence: high
+      note: The SADM process is written schematically as DM + DM -> DM + SM.
+      page: null
+      reference_id: '2308_04955'
+      section: Semi-annihilating dark matter
+    parameter_ranges:
+    - confidence: medium
+      note: The semi-annihilation thermal average is taken around 3e-26 cm^3/s, with benchmark DM masses
+        50 and 100 GeV for 21-cm plots.
+      page: null
+      reference_id: '2308_04955'
+      section: SADM and heating of the gas
+    particle_content:
+    - confidence: medium
+      note: The model is described as a single-component DM species in a Z3-symmetric framework.
+      page: null
+      reference_id: '2308_04955'
+      section: Semi-annihilating dark matter
+    production_mechanism:
+    - confidence: medium
+      note: The number density is evolved with a Boltzmann equation for semi-annihilation.
+      page: null
+      reference_id: '2308_04955'
+      section: Semi-annihilating dark matter
+    symmetries:
+    - confidence: high
+      note: The paper states that the DM-SM interactions preserve an additional Z3 symmetry that stabilizes
+        DM.
+      page: null
+      reference_id: '2308_04955'
+      section: Model
+    validity_domain:
+    - confidence: medium
+      note: The implementation is a phenomenological single-component Z3 SADM model used for 21-cm cosmology.
+      page: null
+      reference_id: '2308_04955'
+      section: Conclusion
+    constraints:
+    - confidence: high
+      note: Primary-paper text supports constraint con_edges_sadm_radio_background.
+      page: null
+      reference_id: src_2308_04955_primary
+      section: model, phenomenology, or constraints section
+    - confidence: high
+      note: Primary-paper text supports constraint con_sadm_energy_fraction.
+      page: null
+      reference_id: src_2308_04955_primary
+      section: model, phenomenology, or constraints section
+    - confidence: high
+      note: Primary-paper text supports constraint con_planck_bao_sadm_consistency.
+      page: null
+      reference_id: src_2308_04955_primary
+      section: model, phenomenology, or constraints section
+    - confidence: high
+      note: Primary-paper text supports constraint con_dark_ages_sadm_future_probe.
+      page: null
+      reference_id: src_2308_04955_primary
+      section: model, phenomenology, or constraints section
+    observables:
+    - confidence: high
+      note: Primary-paper text supports observable obs_sadm_global_21cm_with_radio_background.
+      page: null
+      reference_id: src_2308_04955_primary
+      section: abstract/body/conclusion
+    - confidence: high
+      note: Primary-paper text supports observable obs_sadm_dark_ages_second_trough.
+      page: null
+      reference_id: src_2308_04955_primary
+      section: abstract/body/conclusion
+    - confidence: high
+      note: Primary-paper text supports observable obs_sadm_cmb_bao_consistency.
+      page: null
+      reference_id: src_2308_04955_primary
+      section: abstract/body/conclusion
+    routes:
+    - confidence: high
+      note: Primary-paper text describes the modeling chain for route route_sadm_to_21cm_cmb_bao.
+      page: null
+      reference_id: src_2308_04955_primary
+      section: analysis workflow
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0011
+    extraction_date: '2026-05-31'
+    extractor_name: Codex dark-matter batch worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Defines Z3-stabilized SADM and uses a Boltzmann equation for DM abundance and
+        heat exchange.
+      reference_id: '2308_04955'
+      section: Model and SADM sections
+    unresolved_items:
+    - The excess radio background required by SADM is not derived from the dark-matter model itself.
+    - No public RECFAST/CLASS patches, MontePython chains, or EDGES/SARAS joint likelihood were extracted.
+  last_updated: '2026-05-31'
+  model_family: semi_annihilating_dark_matter
+  model_id: 2308_04955_z3_semi_annihilating_dark_matter_v1
+  model_name: Z3 semi-annihilating dark matter for global 21-cm cosmology
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes:
+    - 'Borderline acceptance: the paper develops cosmological signatures of an existing SADM class rather
+      than claiming first proposal.'
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2308.04955'
+      authors:
+      - Debarun Paul
+      - Antara Dey
+      - Amit Dutta Banik
+      - Supratik Pal
+      doi: null
+      notes: Assigned paper text from run-local SQLite database.
+      reference_id: '2308_04955'
+      role: extension
+      title: Confronting global 21-cm signal with Z3 symmetric dark matter models
+      url: null
+      year: 2023
+    - arxiv_id: '2308.04955'
+      authors:
+      - Paul, Debarun
+      - Dey, Antara
+      - Dutta Banik, Amit
+      - Pal, Supratik
+      doi: 10.1088/1475-7516/2023/11/015
+      notes: Primary paper text resolved locally and used as the support for structured enrichment claims.
+      reference_id: src_2308_04955_primary
+      role: original_model
+      title: Confronting global 21-cm signal with &Z;<SUB>3</SUB> symmetric dark matter models
+      url: https://arxiv.org/abs/2308.04955
+      year: 2023
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for primary metadata and bounded reference/citation discovery; metadata alone was not
+        used as scientific evidence.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - M_DM
+  - <sigma v>_SADM
+  - energy transfer fraction f
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - phenomenological heat-transfer treatment
+  - lack of microscopic particle content in assigned text
+  notes: Model-card details are limited to the phenomenological SADM implementation in the paper.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    small_scale_power_effect: unknown
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: An additional Z3 symmetry stabilizes the single DM species.
+  symmetries:
+  - breaking: unknown
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z3
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: 'no'
+  notes: The paper specifies the semi-annihilation channel and Boltzmann evolution rather than a full
+    microscopic Lagrangian.
+  parent_frameworks:
+  - Z3 symmetric dark matter
+  renormalizable: unknown
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Applies to a single-component Z3 SADM scenario with phenomenological heat injection used
+    in 21-cm evolution.
+  extrapolation_risk: medium
+  id: phenomenological_sadm_21cm
+  notes: null
+  source_reference_ids: []
+  status: assumed
+observables:
+- caveats:
+  - Requires excess radio background; without it the SADM heating trend alone does not explain EDGES in
+    the paper.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - EDGES
+  - ARCADE-2-inspired radio-background model
+  id: obs_sadm_global_21cm_with_radio_background
+  key_quantities:
+  - description: Velocity-weighted semi-annihilation cross section used in the 21-cm calculation.
+    name: semi-annihilation cross section
+    role: core
+    scale: log
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: inferred
+    symbol: <sigma v>_SADM
+    unit: cm^3/s
+    value: 3e-26
+  - description: Fraction of the available semi-annihilation energy transferred to the standard sector.
+    name: energy-transfer fraction
+    range:
+      inclusive_max: false
+      inclusive_min: false
+      max: 1
+      min: 0
+      notes: Primary paper states 0<f<1.
+      unit: null
+    role: core
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: inferred
+    symbol: f
+  - description: Benchmark masses used in EDGES-motivated plots.
+    name: dark matter mass
+    role: core
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: inferred
+    symbol: M_DM
+    unit: GeV
+    value: 50 and 100
+  - description: Free excess-radio parameter used to deepen the absorption signal.
+    name: radio-background normalization
+    role: astrophysical
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: inferred
+    symbol: A_r
+  linked_constraints:
+  - con_edges_sadm_radio_background
+  - con_sadm_energy_fraction
+  linked_routes:
+  - route_sadm_to_21cm_cmb_bao
+  name: Semi-annihilating dark matter effect on the EDGES global 21-cm trough
+  notes: null
+  observability: medium
+  predicted_effect: Z3 semi-annihilation DM + DM -> DM + SM injects energy into the standard sector; in
+    the paper it can address the EDGES trough only with an added excess radio background.
+  redshift_range: Cosmic Dawn, z around 17
+  relevance: high
+  scale_range: global sky-averaged 21-cm monopole
+  source_reference_ids:
+  - src_2308_04955_primary
+  subchannel: Cosmic Dawn global 21-cm absorption with excess radio background
+- caveats:
+  - A rigorous Dark Ages forecast is left for future work.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - LuSEE Night
+  - DAPPER
+  - PRATUSH
+  id: obs_sadm_dark_ages_second_trough
+  key_quantities:
+  - description: Controls semi-annihilation heat exchange in the Dark Ages plot.
+    name: energy-transfer fraction
+    role: core
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: inferred
+    symbol: f
+  - description: Dark Ages redshift emphasized by the paper.
+    name: redshift of second trough
+    role: experimental
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: inferred
+    symbol: z
+    value: around 85
+  linked_constraints:
+  - con_dark_ages_sadm_future_probe
+  linked_routes:
+  - route_sadm_to_21cm_cmb_bao
+  name: Dark-Ages brightness-temperature imprint of semi-annihilation
+  notes: null
+  observability: medium
+  predicted_effect: With the excess radio component turned off at high redshift, varying the semi-annihilation
+    energy fraction changes the second-trough brightness-temperature profile around z~85.
+  redshift_range: Dark Ages, z around 85
+  relevance: medium
+  scale_range: global 21-cm signal before major astrophysical effects
+  source_reference_ids:
+  - src_2308_04955_primary
+  subchannel: Dark Ages global 21-cm signal
+- caveats:
+  - No chain files or covariance matrices were extracted.
+  channel: cmb
+  effect_direction: null_signal
+  environments:
+  - Planck 2018
+  - BAO datasets
+  id: obs_sadm_cmb_bao_consistency
+  key_quantities:
+  - description: CLASS-level interaction parameter in the MCMC analysis.
+    name: dimensionless interaction parameter
+    role: core
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: inferred
+    symbol: sigma_int
+  - description: Semi-annihilation heat-exchange parameter.
+    name: energy-transfer fraction
+    role: core
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: inferred
+    symbol: f
+  linked_constraints:
+  - con_planck_bao_sadm_consistency
+  linked_routes:
+  - route_sadm_to_21cm_cmb_bao
+  name: CMB and BAO consistency of SADM perturbations
+  notes: null
+  observability: high
+  predicted_effect: The paper checks the model against Planck 2018 and Planck 2018+BAO using modified
+    CLASS and MontePython and finds no significant conflict with standard six-parameter Lambda CDM values.
+  redshift_range: CMB last scattering and late-time BAO
+  relevance: medium
+  scale_range: CMB TT spectra and BAO distances
+  source_reference_ids:
+  - src_2308_04955_primary
+  subchannel: Planck 2018 and BAO power-spectrum consistency
+constraints:
+- allowed_regions:
+  - The paper can reconcile SADM with the EDGES trough when an excess radio background is added on top
+    of the CMB.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: An astrophysical or phenomenological excess radio background is present and can be parameterized
+      by the model used in the paper.
+    id: assume_excess_radio_background
+    impact_if_violated: Without the radio excess, SADM does not by itself produce the EDGES-depth absorption
+      in the paper analysis.
+    notes: null
+    scope: Cosmic Dawn radiation background
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: assumed
+  benchmark_implications:
+  - SADM is less standalone than Co-SIMP for EDGES because it needs additional radio-background modeling.
+  caveats:
+  - EDGES is disputed by SARAS 3 and the radio background origin is external to the dark-matter model.
+  constrained_parameters:
+  - <sigma v>_SADM
+  - f
+  - M_DM
+  - radio-background amplitude
+  constraint_type: cosmological
+  data_release: EDGES and ARCADE-2-inspired radio-background model
+  excluded_regions: []
+  id: con_edges_sadm_radio_background
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: EDGES compatibility of SADM requires an excess radio background
+  notes: null
+  observable_channel: global 21-cm absorption
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2308_04955_primary
+- allowed_regions:
+  - The paper uses 0<f<1, with f=1 corresponding to the standard two-to-two annihilation energy-transfer
+    limit.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The semi-annihilation energy transferred to the standard sector is captured by a single
+      fractional parameter f.
+    id: assume_energy_deposition_parameterization
+    impact_if_violated: A spectrum-dependent deposition calculation could replace this simple parameterization.
+    notes: null
+    scope: energy deposition
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: assumed
+  benchmark_implications:
+  - The 21-cm thermal history is sensitive to f and M_DM through the energy-injection rate.
+  caveats:
+  - No detailed deposition efficiency table is included.
+  constrained_parameters:
+  - f
+  - <sigma v>_SADM
+  - M_DM
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - f outside the physical interval 0<f<1.
+  id: con_sadm_energy_fraction
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Semi-annihilation energy-transfer fraction range
+  notes: null
+  observable_channel: semi-annihilation energy injection
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - src_2308_04955_primary
+- allowed_regions:
+  - The paper reports standard six parameters close to Lambda CDM values and no contradiction with Planck
+    2018 or Planck 2018+BAO.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The modified CLASS equations used by the paper adequately represent SADM perturbations
+      at CMB and BAO scales.
+    id: assume_modified_class_sadm
+    impact_if_violated: Implementation differences could shift posterior constraints.
+    notes: null
+    scope: linear perturbation calculation
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: assumed
+  benchmark_implications:
+  - Current CMB/BAO data are not the dominant discriminator for the EDGES-motivated SADM parameter region.
+  caveats:
+  - MCMC chains and exact posterior tables were not extracted.
+  constrained_parameters:
+  - sigma_int
+  - f
+  - standard cosmological parameters
+  constraint_type: cosmological
+  data_release: Planck 2018 and Planck 2018+BAO
+  excluded_regions: []
+  id: con_planck_bao_sadm_consistency
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Planck 2018 and BAO consistency check for SADM perturbations
+  notes: null
+  observable_channel: CMB and BAO datasets
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_2308_04955_primary
+- allowed_regions:
+  - The paper identifies model-dependent deviations around z~85 as possible future discriminants.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Forthcoming Dark Ages experiments can resolve the brightness-temperature differences
+      predicted by the model.
+    id: assume_dark_ages_sadm_sensitivity
+    impact_if_violated: If not, the Dark Ages imprint remains qualitative.
+    notes: null
+    scope: future 21-cm observations
+    source_reference_ids:
+    - src_2308_04955_primary
+    status: assumed
+  benchmark_implications:
+  - Future Dark Ages probes could distinguish SADM from both Lambda CDM and Co-SIMP if sensitivity is
+    sufficient.
+  caveats:
+  - No quantitative forecast is encoded.
+  constrained_parameters:
+  - f
+  - <sigma v>_SADM
+  - M_DM
+  - instrument sensitivity
+  constraint_type: astrophysical
+  data_release: future Dark Ages experiments
+  excluded_regions: []
+  id: con_dark_ages_sadm_future_probe
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Future Dark-Ages 21-cm discrimination for SADM
+  notes: null
+  observable_channel: Dark Ages global 21-cm signal
+  recasting_needed: 'yes'
+  robustness: unknown
+  source_reference_ids:
+  - src_2308_04955_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route is code-oriented because the primary paper explicitly modifies RECFAST/CLASS/MontePython,
+      but those modifications were not available in the assignment.
+    caveats:
+    - Radio-background modeling is external to the Z3 SADM particle process.
+    constraint_ids:
+    - con_edges_sadm_radio_background
+    - con_sadm_energy_fraction
+    - con_planck_bao_sadm_consistency
+    - con_dark_ages_sadm_future_probe
+    derived_quantities:
+    - energy-injection rate
+    - gas temperature
+    - spin temperature
+    - T_21(z)
+    - CMB spectra
+    - posterior distributions
+    description: Propagate Z3 semi-annihilation energy injection and optional radio background through
+      global 21-cm and CMB/BAO consistency calculations.
+    forward_model_chain:
+    - inputs:
+      - <sigma v>_SADM
+      - f
+      - M_DM
+      - rho_DM
+      notes: null
+      outputs:
+      - dE/dVdt
+      step_id: sadm_energy_injection
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Energy-injection parameterization quoted in the primary paper.
+    - inputs:
+      - energy injection
+      - radio-background model
+      - astrophysical parameters
+      notes: null
+      outputs:
+      - T_21(z)
+      step_id: global_21cm_history
+      step_type: semi_analytic_model
+      tool_or_code: RECFAST
+      validity: RECFAST-like implementation used for Cosmic Dawn plots.
+    - inputs:
+      - SADM thermal history
+      - z around 85
+      notes: null
+      outputs:
+      - second-trough brightness temperature
+      step_id: dark_ages_signal
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Radio background turned off in the Dark Ages illustration.
+    - inputs:
+      - sigma_int
+      - f
+      - cosmological parameters
+      notes: null
+      outputs:
+      - CMB spectra
+      - matter power spectrum
+      step_id: cmb_bao_check
+      step_type: boltzmann_solver
+      tool_or_code: CLASS/MontePython
+      validity: Modified CLASS and MontePython consistency workflow.
+    id: route_sadm_to_21cm_cmb_bao
+    input_parameters:
+    - <sigma v>_SADM
+    - f
+    - M_DM
+    - radio-background parameters
+    - sigma_int
+    likelihoods: []
+    observable_ids:
+    - obs_sadm_global_21cm_with_radio_background
+    - obs_sadm_dark_ages_second_trough
+    - obs_sadm_cmb_bao_consistency
+    required_code_resources:
+    - RECFAST modifications
+    - CLASS perturbation implementation
+    - MontePython likelihood workflow
+    - radio-background model
+    route_status: planned
+    source_model_features:
+    - Z3-stabilized semi-annihilation
+    - DM + DM -> DM + SM energy injection
+    - phenomenological excess radio background
+    validation_tests:
+    - Reproduce the EDGES-motivated SADM curves for M_DM=50 and 100 GeV and the Planck/BAO consistency
+      check.

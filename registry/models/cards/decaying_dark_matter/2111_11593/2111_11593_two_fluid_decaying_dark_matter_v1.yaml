@@ -1,0 +1,382 @@
+_source:
+  shard: data/astro-ph-00189.tar
+  paper_id: '2111_11593'
+  source_member: 2111_11593.json
+agent_failure_modes:
+  warnings:
+  - category: extrapolation
+    id: phenomenological_not_lagrangian
+    mitigation: null
+    severity: high
+    source_reference_ids: []
+    warning: Do not infer a microscopic mediator, spin, or particle decay channel beyond the two-fluid
+      transfer model.
+  - category: extrapolation
+    id: velocity_breakdown
+    mitigation: null
+    severity: high
+    source_reference_ids: []
+    warning: The hydrodynamical framework can fail for injection velocities that are too large.
+associated_code:
+  caveats: []
+  code_summary: No model-specific public code is specified in the assigned paper text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  computation_specific: []
+  global:
+  - can_be_relaxed: unknown
+    description: The parent dark matter is a pressureless comoving dust fluid at the initial time.
+    id: parent_dust_fluid
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The decay product is modeled as another dark dust fluid rather than Standard Model particles.
+    id: daughter_dark_fluid
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Baryonic matter is disregarded for the void model because the targeted environments are
+      baryon-poor.
+    id: baryons_neglected
+    impact_if_violated: null
+    notes: null
+    scope: structure_formation
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Relative velocities are assumed small enough that pressure and pressure gradients can
+      be neglected.
+    id: small_relative_velocity
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: not_applicable
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - late-time decay of cold dark matter
+  - non-comoving daughter dark dust
+  - void evolution with effective heat flux
+  phase_transitions: []
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - covariant two-fluid DDM void model
+  family: decaying_dark_matter
+  historical_origin_or_motivation: Developed to test whether decaying dark matter can leave identifiable
+    imprints in cosmic void density profiles.
+  model_kind: phenomenological_parameterization
+  name: Two-fluid decaying dark matter with non-comoving daughter dust
+  short_description: A phenomenological decaying dark matter model where a comoving cold dark dust parent
+    decays into a non-comoving massive daughter dark dust fluid with injection velocity.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: unknown
+  dark_sector_couplings:
+  - one-way parent-to-daughter energy-momentum transfer
+  decay_channels:
+  - parent dark dust -> non-comoving daughter dark dust
+  flavor_structure: not_applicable
+  interaction_operators:
+  - phenomenological transfer term I_(1)^a proportional to the parent density and injection-velocity vector
+  mediator_types: []
+  portals:
+  - none
+  self_scattering_channels: []
+  standard_model_targets: []
+  tree_or_loop_level: not_applicable
+model_id: 2111_11593_two_fluid_decaying_dark_matter_v1
+parameters:
+  core:
+  - description: Exponential decay rate for transfer from the parent to daughter dark fluid.
+    name: decay_rate
+    notes: null
+    range: lifetime between one and a few times the age of the Universe explored
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: null
+    unit: null
+    value: null
+  - description: Average initial velocity of daughter particles relative to the decaying parent fluid.
+    name: injection_velocity
+    notes: null
+    range: small nonrelativistic velocities; examples include v_i up to 7 km/s before present-day breakdown
+      and 18 km/s failure cases
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: v_i
+    unit: km/s
+    value: null
+  - description: Initial last-scattering redshift used for the model evolution.
+    name: initial_redshift
+    notes: null
+    range: null
+    role: cosmological
+    source_reference_ids: []
+    status: assumed
+    symbol: z_CMB
+    unit: null
+    value: 1090
+  derived:
+  - description: Heat/momentum flow induced in the observer frame by the non-comoving daughter fluid.
+    name: effective_heat_flux
+    notes: null
+    range: null
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: Q
+    unit: null
+    value: null
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - non-comoving massive daughter dark fluid
+  dark_matter_candidate:
+    elementary_or_composite: unknown
+    name: unstable cold dark dust parent plus massive daughter dark dust
+    number_of_components: multi_component
+    spin: unknown
+    statistics: unknown
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - daughter dark dust fluid
+  mediators: []
+  standard_model_extension: unknown
+  unstable_parent_particles:
+  - long-lived parent dark matter dust component
+phase_space:
+  average_momentum_relative_to_thermal: nonrelativistic injection velocity parameter v_i
+  distribution_function_available: 'no'
+  distribution_type: decay_produced
+  free_streaming_length: null
+  notes: The paper parameterizes daughter motion by an average injection/kick velocity rather than a distribution
+    function.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - initial CMB-era dark matter density
+  - decay rate
+  - injection velocity
+  can_produce_all_dark_matter: unknown
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - assumed primordial cold dark matter abundance
+  - late-time exponential decay into dark daughter fluid
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper assumes the dark matter density at last scattering rather than deriving particle production.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  created_at: '2026-05-28'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The model is CDM-like at early times but modified at late times by decay with lifetime of
+        order the age of the Universe or longer.
+      page: null
+      reference_id: primary
+      section: Introduction
+    interactions:
+    - confidence: high
+      note: The decay is represented by one-way energy-momentum transfer between the two dust fluids.
+      page: null
+      reference_id: primary
+      section: 1+3 covariant framework
+    parameter_ranges:
+    - confidence: high
+      note: The model is parameterized by decay rate/lifetime and injection velocity v_i; explored lifetimes
+        are one to a few times the Universe age with small nonrelativistic velocities.
+      page: null
+      reference_id: primary
+      section: Methods/results
+    particle_content:
+    - confidence: high
+      note: 'The model uses two dust components: a long-lived comoving parent dark matter fluid and a
+        secondary non-comoving dark fluid produced by decay.'
+      page: null
+      reference_id: primary
+      section: 1+3 covariant framework
+    production_mechanism:
+    - confidence: medium
+      note: The paper assumes a single comoving dust fluid at the CMB and then evolves exponential decay
+        into the daughter component.
+      page: null
+      reference_id: primary
+      section: Initial conditions
+    validity_domain:
+    - confidence: high
+      note: The framework assumes small relative velocities; the paper reports breakdown for sufficiently
+        large v_i in some examples.
+      page: null
+      reference_id: primary
+      section: Limitations
+  extraction:
+    confidence: medium
+    extracted_by: Codex batch-0145
+    extraction_date: '2026-05-28'
+    extractor_name: GPT-5 Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper develops a covariant hydrodynamical model in which dark matter decays
+        between two dark dust components.
+      reference_id: primary
+      section: Abstract/introduction
+    - page: null
+      quote_or_summary: The model has a parent comoving dust fluid and a non-comoving daughter dark fluid
+        with injection velocity v_i.
+      reference_id: primary
+      section: 1+3 covariant framework
+    unresolved_items:
+    - No particle Lagrangian, spin, microscopic mediator, or early-Universe production mechanism is specified.
+  last_updated: '2026-05-28'
+  model_family: decaying_dark_matter
+  model_id: 2111_11593_two_fluid_decaying_dark_matter_v1
+  model_name: Two-fluid decaying dark matter with non-comoving daughter dust
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2111.11593'
+      authors:
+      - Earl Lester
+      - Krzysztof Bolejko
+      doi: null
+      notes: Primary assigned paper developing the two-fluid decaying-dark-matter void framework.
+      reference_id: primary
+      role: original_model
+      title: Imprints of decaying dark matter on cosmic voids
+      url: null
+      year: 2021
+  status: machine_extracted
+relic_density:
+  calculation_type: phenomenological
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - initial dark dust density
+  - decay rate
+  - daughter injection velocity
+  overclosure_risk: unknown
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: unknown
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - small-velocity approximation
+  - degeneracy between decay rate and injection velocity
+  - absence of microscopic particle model
+  notes: Accepted as a substantial phenomenological dark matter model development, not as a UV-complete
+    BSM particle theory.
+  observational_robustness: unknown
+  overall: low
+  theory_robustness: medium
+  validation_status: partially_validated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    core_or_cusp_effect: unknown
+    density_profile_effect: S-type voids can develop an additional ditch-like underdensity near the void
+      edge; R-type voids show much weaker changes.
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: 'not_applicable: the parent dark matter component is explicitly unstable'
+  symmetries: []
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'no'
+  notes: The paper provides a hydrodynamical energy-momentum-transfer model, not a particle Lagrangian.
+  parent_frameworks:
+  - cold dark matter
+  - decaying dark matter
+  - 1+3 covariant hydrodynamics
+  renormalizable: not_applicable
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: model
+  caveats:
+  - The paper reports breakdown when injection velocity is too large.
+  condition: The two-fluid hydrodynamical approximation assumes small relative velocities of daughter
+    and parent fluids.
+  extrapolation_risk: high
+  id: small_velocity_limit
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: The paper applies the model to baryon-poor cosmic voids and neglects baryonic matter.
+  extrapolation_risk: medium
+  id: void_environment
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: Decay is modeled as one-way exponential energy-density transfer, not a specified particle
+    interaction.
+  extrapolation_risk: medium
+  id: phenomenological_decay
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null

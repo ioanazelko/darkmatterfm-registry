@@ -1,0 +1,354 @@
+_source:
+  shard: arXiv_src_2012_056_wds.tar
+  paper_id: '2012_09022'
+  source_member: 2012_09022.json
+schema_version: model_only_v0
+model_id: 2012_09022_scalar_singlet_colourful_mediators_v1
+identity:
+  name: Scalar singlet dark matter with colourful mediators
+  family: scalar_singlet_with_colored_mediators
+  aliases:
+  - toy model with baryonic coupling and colourful mediators
+  short_description: A Z2-odd scalar singlet S dark matter model with color-triplet scalar mediators Q_E
+    and Q_O, designed to test unitarity, vacuum stability, and thermal relic bounds.
+  historical_origin_or_motivation: The paper introduces the toy model to demonstrate new perturbative
+    unitarity routines for colored scalar states and to bound thermal relic dark matter masses.
+  status: benchmark
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - renormalizable scalar extension of the Standard Model
+  - SARAH model implementation
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  notes: The paper writes the most general Lagrangian for the CP-symmetric hidden sector under the chosen
+    field content and Z2 parity.
+particle_content:
+  dark_matter_candidate:
+    name: scalar singlet S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - Q_E color-triplet scalar mediator, Z2 even
+  - Q_O color-triplet scalar mediator, Z2 odd
+  mediators:
+  - Q_E
+  - Q_O
+  - Higgs boson through optional portal coupling
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - Q_E decays to top-bottom quark pairs
+  - Q_O decays to S plus Q_E when kinematically allowed
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The dark matter scalar S is odd under a Z2 symmetry; Q_O is also Z2 odd and Q_E
+    is Z2 even.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified
+    breaking_scale: null
+  - name: baryon_number
+    type: global
+    exact_or_approximate: exact
+    breaking: perturbatively respected in the model
+    breaking_scale: null
+  - name: CP
+    type: global
+    exact_or_approximate: exact
+    breaking: hidden sector respects CP in the written Lagrangian
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - top quarks
+  - bottom quarks
+  - Higgs doublet
+  dark_sector_couplings:
+  - trilinear kappa S Q_E Q_O*
+  - quartic S^2 Q_E^2 and S^2 Q_O^2 couplings
+  - Y_Q baryonic coupling to SM quark doublets
+  mediator_types:
+  - color-triplet scalar mediator
+  interaction_operators:
+  - S Q_E Q_O*
+  - Q_E q_i q_j
+  - S^2 |H|^2
+  - S^2 |Q_E|^2
+  - S^2 |Q_O|^2
+  scattering:
+    elastic: unknown
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels:
+  - S S -> Q_E Q_E* through Q_O exchange
+  - S S annihilation through scalar quartics
+  decay_channels:
+  - Q_E -> t b
+  - Q_O -> S Q_E
+  self_scattering_channels:
+  - S quartic self-interaction
+  cp_structure: CP-symmetric hidden sector
+  flavor_structure: benchmark takes Y_Q^33 = 1 and other baryonic couplings zero
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: singlet dark matter mass
+    symbol: m_S
+    range: up to about 47
+    unit: TeV
+    role: core
+    status: inferred
+    notes: Largest accepted scan point has m_S = 47.354 TeV.
+  - name: odd mediator mass
+    symbol: m_O
+    description: Mass of Z2-odd colored scalar mediator Q_O.
+    role: core
+    status: inferred
+  - name: even mediator mass
+    symbol: m_E
+    description: Mass of Z2-even colored scalar mediator Q_E.
+    role: core
+    status: inferred
+  - name: trilinear scalar coupling
+    symbol: kappa
+    description: Controls s/t/u-channel dark matter annihilation and dominates unitarity/vacuum-stability
+      interplay.
+    role: core
+    status: inferred
+  - name: mediator quartics
+    symbol: lambda_5, lambda_6
+    description: Quartic self-couplings of Q_E and Q_O; scan imposes lambda_5=lambda_6=4 lambda_S.
+    role: core
+    status: assumed
+  - name: baryonic coupling
+    symbol: Y_Q^33
+    value: 1
+    role: core
+    status: inferred
+    notes: Benchmark choice with decays to third-generation quarks.
+production:
+  mechanisms:
+  - thermal freeze-out
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - annihilation to colored scalar mediators
+  - trilinear coupling kappa
+  - scalar masses
+  - quartic couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The scan requires relic density not to exceed the Planck value; the heaviest point has h^2 approximately
+    0.122.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_S
+  - m_O
+  - m_E
+  - kappa
+  - lambda_5
+  - lambda_6
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Thermal relic calculation performed with micrOMEGAs.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: mass_hierarchy
+  applies_to: particle_content
+  condition: The scan focuses on m_O > m_S > m_E.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Other hierarchies are not the target of the reported maximum-mass scan.
+  source_reference_ids:
+  - '2012_09022'
+  notes: null
+- id: perturbative_unitarity_and_vacuum_stability
+  applies_to: model
+  condition: Accepted parameter points must pass finite-momentum perturbative unitarity and color-preserving
+    vacuum stability cuts.
+  status: established
+  extrapolation_risk: medium
+  caveats:
+  - Tree-level perturbativity is used as a validity criterion.
+  source_reference_ids:
+  - '2012_09022'
+  notes: null
+assumptions:
+  global:
+  - id: small_higgs_portal
+    description: The analysis focuses on mediator-driven annihilation and takes the Higgs portal small.
+    scope: theory
+    status: assumed
+    impact_if_violated: Higgs-portal phenomenology and direct detection would become more important.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2012_09022'
+    notes: null
+  - id: third_generation_baryonic_coupling
+    description: The benchmark takes the mediator baryonic coupling primarily to the third quark generation.
+    scope: theory
+    status: assumed
+    impact_if_violated: Collider decay modes and flavor structure would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2012_09022'
+    notes: null
+associated_code:
+  has_associated_code: 'yes'
+  code_summary: The paper states that the model was implemented in SARAH and that the relevant model-file
+    parts are listed; SPheno, micrOMEGAs, HOM4PS2, and a Python vacuum-stability code are used.
+  primary_code_role: model_definition
+provenance:
+  model_id: 2012_09022_scalar_singlet_colourful_mediators_v1
+  model_name: Scalar singlet dark matter with colourful mediators
+  model_family: scalar_singlet_with_colored_mediators
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2012_09022'
+      title: unknown
+      authors: []
+      year: 2020
+      arxiv_id: '2012.09022'
+      doi: null
+      url: null
+      role: original_model
+      notes: Title/authors were not reliably available in the assigned SQLite text extraction.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: gpt-5.5-dark-matter-model-batch-worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2012_09022'
+      section: Model
+      page: null
+      quote_or_summary: The paper introduces a Z2 scalar singlet S and color-triplet scalar mediators
+        Q_E and Q_O with a written Lagrangian.
+    - reference_id: '2012_09022'
+      section: Results
+      page: null
+      quote_or_summary: The scan combines relic-density, unitarity, and vacuum-stability cuts, finding
+        a maximum singlet mass around 47 TeV.
+    - reference_id: '2012_09022'
+      section: Appendix
+      page: null
+      quote_or_summary: Relevant SARAH model-file terms are listed for the introduced model.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2012_09022'
+      note: The model contains scalar singlet S plus Q_E and Q_O color-triplet scalar mediators.
+      confidence: high
+      section: Model
+      page: null
+    symmetries:
+    - reference_id: '2012_09022'
+      note: S and Q_O are Z2 odd while Q_E is Z2 even; the hidden sector respects CP symmetry.
+      confidence: high
+      section: Model
+      page: null
+    interactions:
+    - reference_id: '2012_09022'
+      note: The Lagrangian includes kappa S Q_E Q_O*, Y_Q Q_E q q, Higgs portal, and scalar quartic terms.
+      confidence: high
+      section: Model
+      page: null
+    production_mechanism:
+    - reference_id: '2012_09022'
+      note: micrOMEGAs is used to calculate thermal relic density, with Planck abundance imposed as an
+        upper bound.
+      confidence: high
+      section: Results
+      page: null
+    parameter_ranges:
+    - reference_id: '2012_09022'
+      note: The scan explores m_S up to O(300) TeV but valid points cut off at about 47 TeV.
+      confidence: high
+      section: Results
+      page: null
+    validity_domain:
+    - reference_id: '2012_09022'
+      note: The model validity analysis imposes finite-momentum unitarity and vacuum-stability constraints.
+      confidence: high
+      section: Results
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: high
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - limited benchmark scan assumptions
+  - tree-level vacuum stability and unitarity treatment
+  - low-mass collider bounds not reanalyzed
+  validation_status: partially_validated
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: benchmark_scan_limited
+    severity: medium
+    category: extrapolation
+    warning: The extracted model is a toy benchmark with simplifying scan assumptions rather than a fully
+      explored parameter space.
+    source_reference_ids: []

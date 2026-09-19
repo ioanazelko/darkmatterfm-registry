@@ -1,0 +1,729 @@
+_source:
+  shard: arXiv_src_1312_006_wds.tar
+  paper_id: '1312_3578'
+  source_member: 1312_3578.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1312_3578_long_lived_pgb_majorana_dark_matter_v1
+identity:
+  name: Broken U(1) Majorana dark matter with long-lived PGB scenario
+  family: pseudo_goldstone_mediated_dark_matter
+  aliases:
+  - pseudo-Goldstone boson dark matter annihilation model
+  - chiral fermion U(1)_DM dark sector
+  short_description: The pseudo-Goldstone boson lifetime is much longer than the age of the Universe,
+    so PGBs may contribute to the radiation density while Majorana dark matter annihilates into PGBs to
+    set the relic abundance.
+  historical_origin_or_motivation: The paper modifies a spontaneously broken global U(1) dark sector so
+    that a chiral fermion becomes a stable Majorana dark matter particle and annihilates into Goldstone
+    or pseudo-Goldstone bosons.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Standard Model plus singlet dark sector
+  - spontaneously broken global U(1)_DM
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The interaction Lagrangian extends the SM by a complex scalar and a chiral fermion, both SM singlets
+    charged under U(1)_DM.
+particle_content:
+  dark_matter_candidate:
+    name: Majorana fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - complex scalar Phi
+  - CP-even scalar rho
+  - Goldstone or pseudo-Goldstone boson eta
+  mediators:
+  - CP-even scalars h and rho
+  - Goldstone or pseudo-Goldstone boson eta
+  dark_radiation_species:
+  - eta in the long-lived PGB scenario
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Spontaneous breaking of global U(1)_DM by a scalar of charge 2 leaves a remnant
+    Z_2 symmetry; the Majorana fermion is odd and stable.
+  symmetries:
+  - name: U(1)_DM
+    type: global
+    exact_or_approximate: exact
+    breaking: spontaneously broken by the complex scalar vacuum expectation value; explicitly weakly broken
+      for the pseudo-Goldstone case
+    breaking_scale:
+      name: dark scalar vev
+      symbol: v_phi
+      description: Scale of spontaneous U(1)_DM breaking
+      unit: GeV
+      role: core
+      status: inferred
+  - name: remnant Z_2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken stabilizing remnant
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - Higgs doublet
+  - photons through an effective PGB coupling in the nearly exact case
+  dark_sector_couplings:
+  - Yukawa coupling f between Phi and the chiral fermion
+  - Higgs-portal scalar mixing angle theta
+  - effective eta F F dual coupling for PGB decay when U(1)_DM is nearly exact
+  mediator_types:
+  - scalar
+  - pseudoscalar
+  interaction_operators:
+  - H^dagger H Phi^dagger Phi
+  - (f/2) chi_L chi_L Phi
+  - g_eta gamma gamma eta F_mu nu tilde F^mu nu
+  annihilation_channels:
+  - chi chi -> eta eta
+  - chi chi -> eta rho
+  - chi chi -> rho rho
+  - resonant annihilation through CP-even scalars
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: M_chi
+    description: Majorana fermion mass M_chi = f v_phi
+    range: 1 GeV to 1 TeV in the scan
+    unit: GeV
+    role: core
+    status: inferred
+  - name: CP-even scalar mass
+    symbol: m_rho
+    description: Mass of the additional CP-even scalar
+    range: 200 MeV to 1 TeV in the scan
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Yukawa coupling
+    symbol: f
+    description: Dark-sector Yukawa coupling
+    range: 10^-2 to 4 in the scan
+    role: core
+    status: inferred
+  - name: scalar mixing angle
+    symbol: theta
+    description: Mixing angle between the SM Higgs and the dark CP-even scalar
+    range: bounded by invisible Higgs width
+    role: core
+    status: inferred
+  - name: PGB mass
+    symbol: m_eta
+    description: Pseudo-Goldstone mass, assumed much smaller than v_phi in the nearly exact symmetry case
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - thermal freeze-out through dark-sector annihilation into Goldstone or pseudo-Goldstone bosons
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - annihilation into eta eta
+  - annihilation into eta rho
+  - scalar thresholds and resonances
+  - Yukawa coupling f
+  - M_chi and m_rho
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper scans parameter points and retains those with Omega_DM h^2 matching the observed value
+    within 3 sigma.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - M_chi
+  - m_rho
+  - f
+  - theta
+  - threshold ratio m_rho/M_chi
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - PGB lifetime much longer than the age of the Universe; possible dark-radiation contribution.
+  dark_sector_temperature: null
+  delta_neff:
+    name: PGB radiation contribution
+    symbol: Delta N_eff
+    description: Possible contribution in the long-lived PGB scenario
+    role: core
+    status: inferred
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: thermal freeze-out
+    symbol: T_f
+    description: Typical freeze-out temperature T about M_chi/20
+    value: M_chi/20
+    unit: GeV
+    role: derived
+    status: inferred
+  phase_transitions:
+  - spontaneous breaking of global U(1)_DM
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  notes: The relic abundance is treated with thermal WIMP freeze-out calculations.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: perturbative_couplings
+  applies_to: parameter
+  condition: The scan keeps quartic couplings below 4 pi to ensure perturbativity.
+  status: inferred
+  extrapolation_risk: medium
+- id: light_pgb
+  applies_to: model
+  condition: For nearly exact U(1)_DM, the pseudo-Goldstone mass is assumed much smaller than the spontaneous-breaking
+    scale.
+  status: assumed
+  extrapolation_risk: medium
+- id: pgb_lifetime_window
+  applies_to: model
+  condition: PGB lifetime much longer than the age of the Universe; possible dark-radiation contribution.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: singlet_dark_sector
+    description: The new chiral fermion and complex scalar are Standard Model singlets.
+    scope: global
+    status: assumed
+  - id: remnant_z2
+    description: The remnant Z_2 after U(1)_DM breaking remains exact and stabilizes chi.
+    scope: global
+    status: assumed
+  - id: thermal_relic
+    description: The observed abundance is obtained by thermal production through dark-sector annihilation.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that the model was implemented with FeynRules and the relic density was
+    calculated using micrOMEGAs 3.1; no repository URL is given in the assigned text.
+  primary_code_role: relic_density_calculation
+  packages_or_modules:
+  - name: FeynRules implementation of the dark-sector model
+    resource_type: module
+    availability: unknown
+    relationship_to_model: unknown
+    purpose:
+    - define_lagrangian
+    url: null
+    repository_url: null
+    documentation_url: null
+    notes: Mentioned as the model implementation used for micrOMEGAs calculations.
+  - name: micrOMEGAs 3.1
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - compute_relic_density
+    url: null
+    repository_url: null
+    documentation_url: null
+    version: '3.1'
+    notes: Used by the authors for the relic density scan.
+provenance:
+  model_id: 1312_3578_long_lived_pgb_majorana_dark_matter_v1
+  model_name: Broken U(1) Majorana dark matter with long-lived PGB scenario
+  model_family: pseudo_goldstone_mediated_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1312_3578'
+      title: Cosmological and astrophysical signatures of dark matter annihilations into pseudo-Goldstone
+        bosons
+      authors:
+      - Camilo Garcia-Cely
+      - Alejandro Ibarra
+      - Emiliano Molinaro
+      year: 2013
+      arxiv_id: '1312.3578'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '1312.3578'
+      authors:
+      - Garcia-Cely, Camilo
+      - Ibarra, Alejandro
+      - Molinaro, Emiliano
+      doi: 10.1088/1475-7516/2014/02/032
+      notes: Primary paper text resolved from the configured local text databases; ADS used only for metadata
+        discovery.
+      reference_id: paper
+      role: original_model
+      title: Cosmological and astrophysical signatures of dark matter annihilations into pseudo-Goldstone
+        bosons
+      url: https://arxiv.org/abs/1312.3578
+      year: 2014
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for sanitized metadata discovery, references, and citations; not used as scientific evidence
+        for structured claims.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extractor_name: GPT-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1312_3578'
+      section: Abstract and Introduction
+      page: null
+      quote_or_summary: The paper investigates a chiral-fermion dark matter model charged under spontaneously
+        broken global U(1), yielding a PGB and two PGB-lifetime scenarios.
+    - reference_id: '1312_3578'
+      section: Model and production sections
+      page: null
+      quote_or_summary: The text gives the SM plus singlet scalar/fermion Lagrangian, remnant Z_2 stability,
+        and thermal relic calculations with micrOMEGAs.
+    unresolved_items:
+    - Updated post-Planck N_eff combinations and detailed BBN likelihoods were not imported.
+    - Long-lived-PGB viability depends on the assumed decoupling epoch and lifetime window.
+  evidence:
+    particle_content:
+    - reference_id: '1312_3578'
+      note: The model extends the SM with one complex scalar Phi and one chiral fermion chi_L, both SM
+        singlets charged under U(1)_DM.
+      confidence: high
+      section: Model
+    symmetries:
+    - reference_id: '1312_3578'
+      note: A scalar of charge 2 spontaneously breaks U(1)_DM and leaves a remnant Z_2 that stabilizes
+        the Majorana fermion.
+      confidence: high
+      section: Model
+    interactions:
+    - reference_id: '1312_3578'
+      note: The Lagrangian includes Higgs-portal scalar terms and a Yukawa coupling f chi_L chi_L Phi;
+        the PGB may couple to photons through an effective operator.
+      confidence: high
+      section: Model
+    production_mechanism:
+    - reference_id: '1312_3578'
+      note: The relic abundance is determined mainly by annihilations into Goldstone/PGB final states,
+        with thresholds and resonances discussed.
+      confidence: high
+      section: Thermal production
+    parameter_ranges:
+    - reference_id: '1312_3578'
+      note: The scan varies m_rho from 200 MeV to 1 TeV, M_chi from 1 GeV to 1 TeV, f from 10^-2 to 4,
+        and theta below the Higgs invisible-width bound.
+      confidence: high
+      section: Thermal production
+    cosmological_history:
+    - reference_id: '1312_3578'
+      note: PGB lifetime much longer than the age of the Universe; possible dark-radiation contribution.
+      confidence: high
+      section: PGB scenarios
+    validity_domain:
+    - reference_id: '1312_3578'
+      note: The paper requires perturbative quartics and treats exact or nearly exact U(1)_DM cases separately.
+      confidence: medium
+      section: Model
+    constraints:
+    - confidence: high
+      note: Primary local text quotes the Planck-era N_eff comparison, relic-density selection, and direct/Higgs
+        mass-regime constraints.
+      page: null
+      reference_id: paper
+      section: null
+    observables:
+    - confidence: high
+      note: Primary local text identifies the long-lived PGB dark-radiation branch, the Delta N_eff example,
+        thermal relic selection, and portal constraints.
+      page: null
+      reference_id: paper
+      section: null
+    routes:
+    - confidence: medium
+      note: Routes follow the paper N_eff formula, micrOMEGAs thermal scan, and scalar-mixing direct/Higgs
+        bound comparison.
+      page: null
+      reference_id: paper
+      section: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - The two output rows separate lifetime windows of the same underlying dark-sector model because the
+    paper treats them as distinct scenarios with different cosmological behavior.
+robustness:
+  overall: high
+  theory_robustness: high
+  computational_robustness: medium
+  dominant_uncertainties:
+  - PGB lifetime and decay coupling
+  - scalar mixing bounds
+  - threshold and resonance regions
+  validation_status: partially_validated
+  notes: The assigned text provides a Lagrangian, symmetry structure, scan ranges, and relic-density computation
+    method.
+agent_failure_modes:
+  warnings:
+  - id: lifetime_variant
+    severity: medium
+    category: other
+    warning: Keep the long-lived and short-lived PGB variants distinct; their cosmological assumptions
+      differ.
+  - id: signature_not_card
+    severity: medium
+    category: other
+    warning: Do not populate observable or constraint fields from the gamma-ray, Higgs-width, or direct-search
+      discussions in this model-only pass.
+observables:
+- caveats:
+  - Depends on PGB decoupling epoch and thermal history.
+  channel: cmb
+  effect_direction: enhancement
+  environments:
+  - CMB
+  id: dark_radiation_neff_from_long_lived_pgb
+  key_quantities:
+  - name: effective neutrino number shift
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: Delta N_eff
+    value: about 0.39 in the illustrated decoupling case
+  - name: PGB decoupling temperature
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: T_phi^d
+  - name: PGB lifetime
+    range: longer than about 1e20 years in the viable window
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: tau_phi
+  linked_constraints:
+  - neff_constraint
+  linked_routes:
+  - long_lived_neff_route
+  name: Dark-radiation contribution to N_eff from long-lived PGBs
+  notes: null
+  observability: high
+  predicted_effect: If the PGB is very long lived, it can survive to recombination as dark radiation;
+    the paper gives Delta N_eff about 0.39 for decoupling just before muon annihilation.
+  redshift_range: recombination
+  relevance: critical
+  scale_range: CMB angular anisotropies
+  source_reference_ids:
+  - paper
+  subchannel: effective number of relativistic species
+- caveats:
+  - Thermal selection is shared with the short-lived branch.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - thermal plasma
+  id: long_lived_thermal_relic
+  key_quantities:
+  - name: Majorana dark matter mass
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: M_chi
+  - name: PGB mass
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: m_phi
+  - name: dark Yukawa coupling
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: f
+  linked_constraints:
+  - thermal_relic_selection
+  linked_routes:
+  - pgb_relic_route
+  name: Thermal relic abundance in the long-lived-PGB branch
+  notes: null
+  observability: medium
+  predicted_effect: The Majorana dark matter relic abundance is selected by annihilation into scalar/PGB-sector
+    final states before applying dark-radiation and portal constraints.
+  redshift_range: early universe freeze-out
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - paper
+  subchannel: thermal freeze-out
+- caveats: []
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - direct-detection detectors
+  - LHC Higgs measurements
+  id: long_lived_direct_detection
+  key_quantities:
+  - name: coupling-mixing product
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: f sin(2 theta)
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: M_chi
+  - name: scalar masses
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: m_h, m_rho
+  linked_constraints:
+  - direct_higgs_constraint
+  linked_routes:
+  - pgb_direct_higgs_route
+  name: Scalar-mixing direct detection and invisible-Higgs constraints
+  notes: null
+  observability: medium
+  predicted_effect: The scalar-mixing portal is constrained by direct detection for lower dark-matter
+    masses and invisible Higgs decays for higher masses, independent of the PGB lifetime branch.
+  redshift_range: z = 0
+  relevance: high
+  scale_range: nuclear recoil and Higgs decay phase space
+  source_reference_ids:
+  - paper
+  subchannel: spin-independent nuclear recoil
+constraints:
+- allowed_regions:
+  - The illustrated Delta N_eff about 0.39 is described as consistent within 1 sigma with the Planck+WMAP9+high-l
+    central value quoted in the paper.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Long-lived-PGB viability requires an allowed decoupling history.
+  caveats: []
+  constrained_parameters:
+  - Delta N_eff
+  - T_phi^d
+  - tau_phi
+  constraint_type: cosmological
+  data_release: Planck+WMAP9+high-l N_eff input quoted in the primary paper
+  excluded_regions:
+  - Thermal histories producing too-large radiation energy density are disfavored by BBN/CMB observations.
+  id: neff_constraint
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: CMB/Planck-era constraint on long-lived-PGB dark radiation
+  notes: null
+  observable_channel: N_eff
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - paper
+- allowed_regions:
+  - The paper selects scan points matching Omega_DM h^2 = 0.1199 +/- 0.0027 within 3 sigma.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Thermal relic selection fixes the coupling scale before applying N_eff and portal bounds.
+  caveats: []
+  constrained_parameters:
+  - f
+  - M_chi
+  - m_phi
+  - m_rho
+  constraint_type: cosmological
+  data_release: Planck-era relic density quoted in the primary paper
+  excluded_regions: []
+  id: thermal_relic_selection
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Thermal relic-density selection
+  notes: null
+  observable_channel: dark matter relic abundance
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - paper
+- allowed_regions:
+  - Allowed points respect both direct-detection and invisible-Higgs limits for the chosen scalar spectrum.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Bounds restrict the scalar-mixing portal shared by long- and short-lived PGB branches.
+  caveats: []
+  constrained_parameters:
+  - f sin(2 theta)
+  - M_chi
+  - m_phi
+  - m_rho
+  constraint_type: direct_detection
+  data_release: LUX and Higgs invisible-width inputs as used in the primary paper
+  excluded_regions:
+  - Below about 10 GeV the paper says direct detection sets the stronger bound; above about 100 GeV invisible
+    Higgs decays dominate the displayed bound.
+  id: direct_higgs_constraint
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Direct-detection and invisible-Higgs constraints on scalar mixing
+  notes: null
+  observable_channel: nuclear recoil plus Higgs invisible width
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - paper
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats: []
+    constraint_ids:
+    - neff_constraint
+    derived_quantities:
+    - Delta N_eff
+    description: Compute the PGB dark-radiation contribution to N_eff from its decoupling epoch.
+    forward_model_chain:
+    - inputs:
+      - relativistic degrees of freedom
+      notes: Paper example gives about 0.39 for decoupling just before muon annihilation.
+      outputs:
+      - Delta N_eff
+      step_id: entropy_ratio
+      step_type: analytic_formula
+      tool_or_code: paper N_eff formula
+      validity: Assumes PGB remains relativistic and long lived through recombination.
+    id: long_lived_neff_route
+    input_parameters:
+    - T_phi^d
+    - g_star at decoupling
+    - T_nu^d
+    likelihoods: []
+    observable_ids:
+    - dark_radiation_neff_from_long_lived_pgb
+    required_code_resources:
+    - cosmological N_eff calculator
+    route_status: planned
+    source_model_features:
+    - long-lived PGB
+    - thermal dark radiation
+    validation_tests:
+    - Recover Delta N_eff about 0.39 for the paper decoupling example.
+  - agent_notes: null
+    caveats: []
+    constraint_ids:
+    - thermal_relic_selection
+    derived_quantities:
+    - Omega_chi h^2
+    description: Select thermal relic points from annihilation into PGB-sector states.
+    forward_model_chain:
+    - inputs:
+      - model implementation
+      - annihilation channels
+      notes: Only 3 sigma relic-compatible points are kept in the scan.
+      outputs:
+      - Omega h^2
+      step_id: freezeout
+      step_type: boltzmann_solver
+      tool_or_code: micrOMEGAs/FeynRules implementation
+      validity: Paper used FeynRules and micrOMEGAs 3.1.
+    id: pgb_relic_route
+    input_parameters:
+    - M_chi
+    - m_phi
+    - m_rho
+    - f
+    likelihoods: []
+    observable_ids:
+    - long_lived_thermal_relic
+    required_code_resources:
+    - FeynRules model
+    - micrOMEGAs relic calculation
+    route_status: planned
+    source_model_features:
+    - Majorana dark matter
+    - pseudo-Goldstone boson
+    - CP-even scalar
+    validation_tests:
+    - Reproduce the quoted Omega_DM h^2 = 0.1199 +/- 0.0027 selection.
+  - agent_notes: null
+    caveats: []
+    constraint_ids:
+    - direct_higgs_constraint
+    derived_quantities:
+    - sigma_N
+    - invisible Higgs width
+    description: Compare the scalar-mixing portal to direct-detection and invisible-Higgs bounds.
+    forward_model_chain:
+    - inputs:
+      - coupling product
+      - masses
+      notes: Low and high dark-matter mass regimes are constrained by different observables.
+      outputs:
+      - upper bounds
+      step_id: portal_bounds
+      step_type: analytic_formula
+      tool_or_code: paper direct-detection and Higgs-width formulas
+      validity: Paper-level formulas; no external likelihood.
+    id: pgb_direct_higgs_route
+    input_parameters:
+    - f sin(2 theta)
+    - M_chi
+    - m_phi
+    - m_rho
+    likelihoods: []
+    observable_ids:
+    - long_lived_direct_detection
+    required_code_resources:
+    - direct-detection curves
+    - Higgs invisible-width limit
+    route_status: planned
+    source_model_features:
+    - scalar mixing
+    - Higgs portal to Majorana dark matter
+    validation_tests:
+    - Reproduce the low-mass direct-detection and high-mass Higgs-invisible dominance described in the
+      paper.

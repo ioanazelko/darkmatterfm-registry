@@ -1,0 +1,641 @@
+_source:
+  shard: arXiv_src_1501_004_wds.tar
+  paper_id: '1501_01973'
+  source_member: 1501_01973.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: goldstone_radiation_relevance
+    mitigation: Preserve the global U(1)_DM-breaking origin when comparing models.
+    severity: medium
+    source_reference_ids: []
+    warning: The massless Goldstone boson and scalar mixing are integral to the model; do not map this
+      directly to a minimal Z3 scalar model without them.
+associated_code:
+  code_summary: The paper states that the model was implemented in FeynRules with CalcHEP and MicrOMEGAs
+    used for phenomenological studies; no public repository is identified in the text.
+  has_associated_code: partial
+  packages_or_modules:
+  - availability: unknown
+    name: FeynRules/CalcHEP/MicrOMEGAs implementation
+    notes: Mentioned in the paper text without a public link in the assigned source.
+    purpose:
+    - define_lagrangian
+    - compute_relic_density
+    relationship_to_model: official_author_code
+    resource_type: module
+  primary_code_role: model_definition
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The relic-density Boltzmann equation assumes no asymmetry between X and anti-X.
+    id: no_dm_asymmetry
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The phenomenological analysis requires scalar couplings in the perturbative regime at
+      the electroweak scale.
+    id: perturbative_couplings
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling:
+    description: Freeze-out governed by selected number-changing processes
+    name: chemical freeze-out
+    role: cosmological
+    status: inferred
+    symbol: T_f
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - massless Goldstone boson affects radiation content
+  phase_transitions:
+  - spontaneous breaking of global U(1)_DM to Z3
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - Z3 scalar dark matter from global U(1)_DM breaking
+  family: scalar_higgs_portal_dark_matter
+  historical_origin_or_motivation: Constructed to realize stable scalar dark matter, a Goldstone boson,
+    Higgs mixing, and WIMP/SIMP relic-density mechanisms from a continuous symmetry remnant.
+  model_kind: complete_theory
+  name: Global U(1)_DM-remnant Z3 scalar WIMP
+  short_description: A scalar extension of the Standard Model with complex singlets phi_X and X; spontaneous
+    global U(1)_DM breaking leaves a remnant Z3 symmetry stabilizing the complex scalar X.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - self-annihilation
+  - semi-annihilation
+  dark_sector_couplings:
+  - X-Higgs portal coupling
+  - X-phi_X coupling
+  - cubic X^3 phi_X* term
+  - Goldstone interactions
+  interaction_operators:
+  - X* X H†H
+  - X* X phi_X* phi_X
+  - X^3 phi_X* + h.c.
+  mediator_types:
+  - mixed scalar h/rho
+  - Goldstone boson
+  portals:
+  - higgs
+  - other
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs doublet
+  - Standard Model particles through scalar mixing
+  tree_or_loop_level: tree
+model_id: 1501_01973_u1dm_z3_scalar_wimp_v1
+parameters:
+  core:
+  - description: Mass of the complex scalar X
+    name: dark matter mass
+    range: model-dependent WIMP regime
+    role: core
+    status: inferred
+    symbol: m_X
+    unit: unknown
+  - description: Vacuum expectation value of phi_X
+    name: global symmetry breaking scale
+    range: model-dependent
+    role: core
+    status: inferred
+    symbol: v_phi
+  - description: Mixing angle between h and rho
+    name: Higgs-scalar mixing angle
+    role: core
+    status: inferred
+    symbol: theta
+  - description: Coupling of X to H†H
+    name: Higgs portal coupling
+    role: core
+    status: inferred
+    symbol: lambda_HX
+  - description: Coupling of X to phi_X* phi_X
+    name: dark scalar coupling
+    role: core
+    status: inferred
+    symbol: lambda_phiX
+  - description: Coupling producing X^3 phi_X* and number-changing processes
+    name: cubic dark coupling
+    role: core
+    status: inferred
+    symbol: lambda_3
+particle_content:
+  additional_dark_sector_particles:
+  - complex scalar phi_X
+  - Goldstone boson from global U(1)_DM breaking
+  - mixed scalar rho
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: X
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species:
+  - Goldstone boson
+  mediators:
+  - SM-like Higgs h
+  - new scalar rho
+  - Goldstone boson
+  standard_model_extension: substantial
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: Relic abundance is computed with Boltzmann equations for X and anti-X.
+production:
+  abundance_set_by:
+  - self-annihilation
+  - semi-annihilation
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - self-annihilation
+  - semi-annihilation
+  nonthermal_momentum_distribution: 'no'
+  notes: The WIMP-like regimes use self-annihilation and semi-annihilation through scalar and Goldstone/Higgs
+    portals.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The paper includes a Goldstone boson and discusses radiation-content bounds before recombination.
+      page: null
+      reference_id: '1501_01973'
+      section: constraints discussion
+    interactions:
+    - confidence: high
+      note: The scalar potential contains Higgs portal, X-phi_X, and X^3 phi_X* terms.
+      page: null
+      reference_id: '1501_01973'
+      section: model
+    parameter_ranges:
+    - confidence: medium
+      note: 'Variant mass regime: model-dependent WIMP regime.'
+      page: null
+      reference_id: '1501_01973'
+      section: abstract/results
+    particle_content:
+    - confidence: high
+      note: The model adds two complex SM-singlet scalars phi_X and X; X is the stable DM particle.
+      page: null
+      reference_id: '1501_01973'
+      section: model
+    production_mechanism:
+    - confidence: high
+      note: The relic density in this variant is governed by self-annihilation, semi-annihilation.
+      page: null
+      reference_id: '1501_01973'
+      section: relic abundance
+    symmetries:
+    - confidence: high
+      note: A global U(1)_DM with charges 3 and 1 breaks to a remnant symmetry that stabilizes X.
+      page: null
+      reference_id: '1501_01973'
+      section: model
+    validity_domain:
+    - confidence: medium
+      note: The remnant-symmetry vacuum and perturbative scalar couplings are part of the model setup.
+      page: null
+      reference_id: '1501_01973'
+      section: model
+    constraints:
+    - confidence: high
+      note: Primary paper compares GeV-scale WIMP-like scenarios with LUX, Higgs, relic-density, and N_eff
+        constraints.
+      page: null
+      reference_id: src_primary
+      section: null
+    - confidence: medium
+      note: LUX arXiv fallback page was read for direct-detection context.
+      page: null
+      reference_id: src_lux
+      section: null
+    observables:
+    - confidence: high
+      note: Primary paper states WIMP-like self/semi-annihilation freeze-out, direct-detection formula,
+        Higgs-property effects, and N_eff constraints.
+      page: null
+      reference_id: src_primary
+      section: null
+    routes:
+    - confidence: high
+      note: Primary paper describes the FeynRules to CalcHEP/MicrOMEGAs workflow and the direct-detection
+        recast path.
+      page: null
+      reference_id: src_primary
+      section: null
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0004
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Paper proposes a scalar SM extension with global U(1)_DM breaking to a stabilizing
+        remnant symmetry.
+      reference_id: '1501_01973'
+      section: abstract/model/relic abundance
+    unresolved_items:
+    - Modern direct-detection and Higgs-combination likelihoods were not evaluated; historical LUX/Higgs
+      constraints are recorded.
+  last_updated: '2026-05-31'
+  model_family: scalar_higgs_portal_dark_matter
+  model_id: 1501_01973_u1dm_z3_scalar_wimp_v1
+  model_name: Global U(1)_DM-remnant Z3 scalar WIMP
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1501.01973'
+      authors:
+      - Nicolas Bernal
+      - Camilo Garcia-Cely
+      - Rogerio Rosenfeld
+      doi: null
+      notes: null
+      reference_id: '1501_01973'
+      role: original_model
+      title: WIMP and SIMP Dark Matter from the Spontaneous Breaking of a Global Group
+      url: null
+      year: 2015
+    - arxiv_id: '1501.01973'
+      authors:
+      - Nicolas Bernal
+      - Camilo Garcia-Cely
+      - Rogerio Rosenfeld
+      doi: 10.1088/1475-7516/2015/04/012
+      notes: Primary paper text read locally from hep_ph_dark_matter_model_lexical.
+      reference_id: src_primary
+      role: original_model
+      title: WIMP and SIMP dark matter from the spontaneous breaking of a global group
+      url: https://arxiv.org/abs/1501.01973
+      year: 2015
+    constraint_papers:
+    - arxiv_id: '1502.01589'
+      authors:
+      - Planck Collaboration
+      - P. A. R. Ade
+      - N. Aghanim
+      - M. Arnaud
+      doi: 10.1051/0004-6361/201525830
+      notes: arXiv fallback abstract page read for Planck N_eff/cosmology context.
+      reference_id: src_planck2015
+      role: constraint
+      title: Planck 2015 results. XIII. Cosmological parameters
+      url: https://arxiv.org/abs/1502.01589
+      year: 2016
+    - arxiv_id: '1310.8214'
+      authors:
+      - D. S. Akerib
+      - H. M. Araujo
+      - X. Bai
+      - A. J. Bailey
+      doi: 10.1103/PhysRevLett.112.091303
+      notes: arXiv fallback abstract page read for direct-detection context.
+      reference_id: src_lux
+      role: constraint
+      title: First Results from the LUX Dark Matter Experiment at the Sanford Underground Research Facility
+      url: https://arxiv.org/abs/1310.8214
+      year: 2014
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_X
+  - scalar portal couplings
+  - Higgs-rho mixing
+  - Goldstone sector
+  - self- and semi-annihilation cross sections
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - portal-coupling choices
+  - Goldstone-sector cosmology
+  - perturbativity of scalar couplings
+  notes: null
+  overall: medium
+  theory_robustness: medium
+  validation_status: partially_validated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    impact_on_sigma8_s8: not discussed in extracted model text
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: A remnant Z3 symmetry after spontaneous global U(1)_DM breaking forbids X decay.
+  symmetries:
+  - breaking: phi_X obtains a nonzero vacuum expectation value
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: global U(1)_DM
+    type: global
+  - breaking: unbroken remnant acting on X
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z3 remnant
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: 'no'
+  lagrangian_available: 'yes'
+  notes: The paper writes the most general renormalizable scalar potential for H, phi_X, and X with global
+    U(1)_DM charges 0, 3, and 1.
+  parent_frameworks:
+  - scalar extension of the Standard Model
+  - global U(1)_DM broken to Z3
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Requires the vacuum with <X> = 0 and <phi_X> nonzero so U(1)_DM leaves the stabilizing remnant
+    symmetry.
+  extrapolation_risk: medium
+  id: z3_remnant_scalar_model
+  notes: null
+  source_reference_ids: []
+  status: inferred
+observables:
+- caveats:
+  - Dominant channel must be separated from the SIMP 3-to-2 regime.
+  channel: cosmology
+  effect_direction: rate_change
+  environments: []
+  id: wimp_self_or_semi_annihilation_relic_density
+  key_quantities:
+  - name: freeze-out variable
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: x_f
+    value: ~25
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: m_X
+    unit: GeV
+    value: GeV range for self-/semi-annihilation scenarios
+  linked_constraints:
+  - wimp_relic_higgs_neff_constraint
+  linked_routes:
+  - route_z3_wimp_freezeout_direct_detection
+  name: WIMP-like self- or semi-annihilation relic density
+  notes: null
+  observability: medium
+  predicted_effect: When self-annihilation or semi-annihilation dominates, the Z3 scalar behaves as a
+    WIMP-like thermal relic, with freeze-out around x = m_X/T near 25 and GeV-scale masses to maintain
+    the required thermal contact.
+  redshift_range: thermal freeze-out
+  relevance: critical
+  scale_range: GeV-scale particle physics
+  source_reference_ids:
+  - src_primary
+  subchannel: GeV-scale thermal freeze-out
+- caveats:
+  - The formula depends on scalar mixing and nucleon matrix elements.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments: []
+  id: z3_scalar_direct_detection
+  key_quantities:
+  - name: spin-independent cross section
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: sigma_XN
+    unit: cm^2
+    value: formula in primary paper using f_N ~= 0.27
+  - name: nucleon matrix element
+    role: nuisance
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: f_N
+    value: ~0.27
+  linked_constraints:
+  - lux_direct_detection_bound
+  linked_routes:
+  - route_z3_wimp_freezeout_direct_detection
+  name: Spin-independent scalar direct detection through h/phi exchange
+  notes: null
+  observability: medium
+  predicted_effect: The complex scalar scatters on nuclei through t-channel exchange of the SM-like Higgs
+    and the new scalar, producing a spin-independent signal constrained by LUX for GeV-scale dark matter.
+  redshift_range: today
+  relevance: high
+  scale_range: laboratory nuclear recoil energies
+  source_reference_ids:
+  - src_primary
+  - src_lux
+  subchannel: nuclear recoils
+- caveats:
+  - Collider constraints are not reduced to a likelihood in the extracted text.
+  channel: collider
+  effect_direction: rate_change
+  environments: []
+  id: higgs_mixing_and_invisible_width
+  key_quantities:
+  - name: scalar mixing angle
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    symbol: theta
+  - name: Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: inferred
+  linked_constraints:
+  - wimp_relic_higgs_neff_constraint
+  linked_routes:
+  - route_z3_wimp_freezeout_direct_detection
+  name: Higgs-property and invisible-width effects
+  notes: null
+  observability: medium
+  predicted_effect: The scalar extension modifies Higgs properties through mixing with the new scalar
+    and can be constrained by measured Higgs properties and invisible-width searches.
+  redshift_range: LHC era
+  relevance: medium
+  scale_range: Higgs mass scale
+  source_reference_ids:
+  - src_primary
+  subchannel: Higgs portal scalar mixing
+constraints:
+- allowed_regions:
+  - Lower-rate or more weakly mixed regions can evade the historical LUX bound.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Direct detection continues closing WIMP parameter space in this model.
+  caveats:
+  - The LUX bound is historical and should be updated to current xenon limits.
+  constrained_parameters:
+  - sigma_XN
+  - m_X
+  - scalar mixing
+  - portal couplings
+  constraint_type: direct_detection
+  data_release: null
+  excluded_regions:
+  - GeV-scale scalar parameter points with sigma_XN above LUX upper limits.
+  id: lux_direct_detection_bound
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: LUX spin-independent direct-detection bound
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_primary
+  - src_lux
+- allowed_regions:
+  - The paper identifies allowed WIMP-like self- and semi-annihilation regions in the GeV mass range.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Viable WIMP benchmarks must satisfy relic density while avoiding Higgs, N_eff, and direct-detection
+    bounds.
+  caveats:
+  - Requires a multi-observable scan rather than a single cut.
+  constrained_parameters:
+  - m_X
+  - self-annihilation rate
+  - semi-annihilation rate
+  - Higgs mixing
+  - N_eff
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Points failing relic density, Higgs-property, direct-detection, or Goldstone dark-radiation constraints.
+  id: wimp_relic_higgs_neff_constraint
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Combined relic-density, Higgs, and N_eff constraints
+  notes: null
+  observable_channel: cosmology/direct_detection/collider
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_primary
+  - src_planck2015
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary paper supplies formulas and tool names but no linked code artifact in the
+      local row.
+    caveats:
+    - Separate WIMP-like self/semi-annihilation from SIMP 3-to-2 freeze-out when recasting.
+    constraint_ids:
+    - lux_direct_detection_bound
+    - wimp_relic_higgs_neff_constraint
+    derived_quantities:
+    - Omega_X h^2
+    - sigma_XN
+    - Higgs signal-strength/invisible-width shifts
+    - N_eff
+    description: Compute WIMP-like freeze-out and laboratory constraints for the remnant-Z3 scalar.
+    forward_model_chain:
+    - inputs:
+      - annihilation and semi-annihilation matrix elements
+      notes: null
+      outputs:
+      - thermal relic density
+      step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: MicrOMEGAs/CalcHEP workflow reported by primary paper
+      validity: implemented by authors, files not located
+    - inputs:
+      - scalar masses
+      - mixing
+      - f_N
+      notes: null
+      outputs:
+      - sigma_XN
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: spin-independent scattering formula
+      validity: tree-level h/phi exchange
+    - inputs:
+      - sigma_XN
+      - Higgs mixing
+      - Goldstone decoupling
+      notes: null
+      outputs:
+      - allowed WIMP-like regions
+      step_id: s3
+      step_type: recasting
+      tool_or_code: LUX, Higgs-property, and N_eff comparison
+      validity: historical constraints need modern update
+    id: route_z3_wimp_freezeout_direct_detection
+    input_parameters:
+    - m_X
+    - Higgs portal
+    - Goldstone portal
+    - scalar mixing angle
+    - self- and semi-annihilation cross sections
+    likelihoods: []
+    observable_ids:
+    - wimp_self_or_semi_annihilation_relic_density
+    - z3_scalar_direct_detection
+    - higgs_mixing_and_invisible_width
+    required_code_resources:
+    - FeynRules model implementation noted by primary paper
+    - CalcHEP
+    - MicrOMEGAs
+    route_status: partially_implemented
+    source_model_features:
+    - global U(1)_DM broken to remnant Z3
+    - complex scalar X
+    - Higgs portal
+    - semi-annihilation allowed by Z3
+    validation_tests:
+    - Recover x_f around 25 in self-annihilation regime
+    - Check sigma_XN against LUX curve

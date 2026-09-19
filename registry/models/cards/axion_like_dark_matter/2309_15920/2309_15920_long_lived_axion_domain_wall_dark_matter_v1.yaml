@@ -1,0 +1,897 @@
+_source:
+  shard: arXiv_src_2309_118_wds.tar
+  paper_id: '2309_15920'
+  source_member: 2309_15920.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2309_15920_long_lived_axion_domain_wall_dark_matter_v1
+identity:
+  name: Long-lived axion domain wall dark matter
+  family: axion_like_dark_matter
+  aliases:
+  - metastable axion domain-wall dark matter
+  - N_DW=2 biased ALP dark matter
+  short_description: An axion or axion-like dark matter scenario in which a biased N_DW=2 domain-wall
+    network is long lived, enters scaling, collapses before cosmological limits, and produces the relic
+    axion abundance through domain-wall decay.
+  historical_origin_or_motivation: The paper updates simulations and analytic modeling of long-lived axion
+    domain walls to clarify their contribution to QCD axion and ALP dark matter abundance.
+  status: emerging
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - Peccei_Quinn_axion_models
+  - axion_like_particle_dark_matter
+  - topological_defect_cosmology
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff:
+    name: axion decay constant
+    symbol: f_a
+    description: Symmetry-breaking scale and effective-theory scale after the radial mode is integrated
+      out.
+    range: model-dependent
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2309_15920'
+  embedded_in_larger_framework: 'yes'
+  notes: The effective model integrates out the radial mode and studies the axion field with a biased
+    periodic potential in a radiation-dominated universe.
+particle_content:
+  dark_matter_candidate:
+    name: axion or axion-like particle a
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - integrated-out radial mode of the complex PQ field
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - axion field a
+  unstable_parent_particles:
+  - metastable axion domain walls
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Approximate PQ/shift symmetry makes the axion long-lived; a small explicit bias
+    breaks the degeneracy among N_DW = 2 vacua so the domain walls collapse before cosmological limits.
+  symmetries:
+  - name: global U(1) PQ symmetry
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken at f_a
+    breaking_scale:
+      name: PQ breaking scale
+      symbol: f_a
+      description: Scale where the radial mode gets a VEV.
+      range: model-dependent
+      unit: GeV
+      role: core
+      status: inferred
+      source_reference_ids:
+      - '2309_15920'
+  - name: axion shift symmetry
+    type: shift
+    exact_or_approximate: approximate
+    breaking: broken by the axion potential and a small bias term
+    breaking_scale: null
+  - name: domain wall number N_DW = 2
+    type: discrete
+    exact_or_approximate: broken
+    breaking: small bias parameter creates true and false vacua and drives wall collapse
+    breaking_scale: null
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  - gravitational
+  standard_model_targets:
+  - QCD sector in QCD axion applications
+  - gravity
+  dark_sector_couplings:
+  - biased axion potential
+  - domain-wall self-chopping and collapse
+  - axion radiation from domain-wall surface fluctuations
+  mediator_types:
+  - axion field
+  - domain walls
+  interaction_operators:
+  - effective axion Lagrangian L = |d a|^2 - V(a)
+  - biased periodic axion potential with N_DW = 2
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - nonlinear axion field dynamics in the biased potential
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: axion_mass
+    symbol: m_a
+    description: Mass of the axion or ALP.
+    range:
+      min: 1e-6
+      max: '1'
+      inclusive_min: true
+      inclusive_max: true
+      unit: eV
+      notes: Range quoted for the QCD benchmark figure; simulations also test normalized masses.
+    unit: eV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2309_15920'
+  - name: axion_decay_constant
+    symbol: f_a
+    description: PQ symmetry-breaking scale and axion decay constant.
+    range: model-dependent
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2309_15920'
+  - name: domain_wall_number
+    symbol: N_DW
+    description: Number of axion domain walls in the benchmark model.
+    value: 2
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2309_15920'
+  - name: bias_parameter
+    symbol: epsilon
+    description: Small explicit bias in the axion potential that makes walls collapse.
+    range: simulation benchmarks use O(1e-3); relic-density extrapolations emphasize about 1e-4 to 1e-3,
+      with scaling failure above about 5e-3
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2309_15920'
+  - name: domain_wall_surface_tension
+    symbol: sigma_DW
+    description: Surface tension of the axion domain wall.
+    value: sigma_DW = kappa_DW m_a f_a^2 / N_DW^2 with kappa_DW = 8 for the benchmark potential
+    unit: energy/area
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2309_15920'
+  - name: domain_wall_phase_transition_scale
+    symbol: Lambda
+    description: Scale used in QCD axion benchmark examples.
+    value: 400 MeV for Lambda_QCD benchmark
+    unit: MeV
+    role: core
+    status: assumed
+    source_reference_ids:
+    - '2309_15920'
+production:
+  mechanisms:
+  - nonthermal axion production from collapse and decay of long-lived domain walls
+  - possible cosmic-string contribution in the QCD string-wall application
+  - misalignment contribution neglected where domain-wall production dominates
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - domain-wall decay time
+  - bias parameter epsilon
+  - axion mass m_a
+  - decay constant f_a
+  - phase transition scale Lambda
+  - domain-wall surface tension
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper fits the DW-produced relic abundance and identifies parameter regions matching Omega_a
+    h^2 near 0.12.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: target axion relic density
+    symbol: Omega_a h^2
+    description: Observed axion dark matter relic abundance target.
+    value: '0.12'
+    role: cosmological
+    status: assumed
+    source_reference_ids:
+    - '2309_15920'
+  calculation_type: nonthermal
+  key_dependencies:
+  - Omega_a^DW scaling with m_a, Lambda, and epsilon
+  - domain-wall energy loss into two axion spectral components
+  - wall scaling before decay
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - PQ symmetry breaking
+  - axion domain-wall formation
+  - metastable domain-wall network entering scaling
+  - domain-wall collapse before BBN in the viable region
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - PQ symmetry breaking
+  - axion mass turn-on and domain-wall formation
+  topological_defects:
+  - axion domain walls
+  - cosmic strings in QCD string-wall applications
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: medium
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: approximate
+  f_of_p_or_q: The simulation analyzes an axion kinetic spectrum with components near k ~ m_a and k ~
+    3.68 m_a.
+  average_momentum_relative_to_thermal: nonthermal spectrum from domain-wall decay
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper derives spectra of axions emitted by the domain-wall network but does not provide a
+    full late-time transfer-function calculation.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper does not provide a thermal warm-dark-matter mapping.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: partial
+validity_domain:
+- id: ndw2_biased_potential
+  applies_to: model
+  condition: The simulated benchmark uses a biased N_DW = 2 axion potential with one true and one false
+    vacuum.
+  status: assumed
+  valid_range: N_DW = 2 benchmark
+  extrapolation_risk: high
+  caveats:
+  - N_DW > 2 and full complex-field simulations are left for future work.
+  source_reference_ids:
+  - '2309_15920'
+- id: scaling_before_decay
+  applies_to: model
+  condition: The wall network must have enough time to enter the scaling regime before decay.
+  status: inferred
+  valid_range: The paper flags epsilon above about 5e-3 as too large for scaling before decay.
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '2309_15920'
+- id: constant_wall_thickness_application
+  applies_to: model
+  condition: Applying the simulation to QCD or ALP models requires the wall thickness to be approximately
+    constant over the relevant time window.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Time-dependent QCD wall thickness is not directly simulated.
+  source_reference_ids:
+  - '2309_15920'
+- id: string_wall_approximation
+  applies_to: model
+  condition: QCD string-wall applications require domain-wall tension to dominate over string effects
+    before the scaling regime.
+  status: inferred
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '2309_15920'
+assumptions:
+  global:
+  - id: radial_mode_integrated_out
+    description: The radial mode of the complex PQ field is integrated out of the effective axion dynamics.
+    scope: theory
+    status: assumed
+    impact_if_violated: The simulation would not capture radial-mode dynamics if they matter.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2309_15920'
+  - id: radiation_dominated_background
+    description: The domain-wall simulation is run in a radiation-dominated FLRW background.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Different expansion histories could change wall evolution and relic abundance.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2309_15920'
+  - id: unbiased_initial_condition
+    description: The benchmark simulation starts from an unbiased random assignment of the two vacua.
+    scope: global
+    status: assumed
+    impact_if_violated: Strongly biased initial conditions could change early wall evolution before scaling.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2309_15920'
+  - id: domain_wall_dominates_misalignment
+    description: The relic-density estimate neglects misalignment where the domain-wall contribution dominates.
+    scope: production
+    status: assumed
+    impact_if_violated: Total abundance would differ where misalignment is not negligible.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2309_15920'
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper reports 3D lattice simulations performed on UCR HPCC, but the assigned text
+    does not identify a public code release.
+  primary_code_role: structure_formation_simulation
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 2309_15920_long_lived_axion_domain_wall_dark_matter_v1
+  model_name: Long-lived axion domain wall dark matter
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2309_15920'
+      title: Dynamics of Long-lived Axion Domain Walls and Its Cosmological Implications
+      authors:
+      - Chia-Feng Chang
+      - Yanou Cui
+      year: 2023
+      arxiv_id: '2309.15920'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned paper text used as the sole source.
+    - arxiv_id: '2309.15920'
+      authors:
+      - Chia-Feng Chang
+      - Yanou Cui
+      doi: 10.1088/1475-7516/2025/06/027
+      notes: Primary paper text resolved locally; ADS used for bibliographic metadata.
+      reference_id: src_2309_15920
+      role: original_model
+      title: Dynamics of long-lived (axionic) domain walls and its cosmological implications
+      url: https://arxiv.org/abs/2309.15920
+      year: 2025
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used only for sanitized metadata discovery, references, and citations; not used alone for
+        scientific claims.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: GPT-5.5 dark-matter model-card extraction worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2309_15920'
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper derives the contribution of long-lived axion domain walls to axion dark
+        matter density for QCD axions and ALPs.
+    - reference_id: '2309_15920'
+      section: axion model and simulation setup
+      page: null
+      quote_or_summary: The benchmark is an N_DW = 2 biased axion potential with the radial mode integrated
+        out.
+    - reference_id: '2309_15920'
+      section: cosmological implication
+      page: null
+      quote_or_summary: The domain-wall contribution to relic axions is fitted and matched to the observed
+        DM abundance in viable parameter space.
+    unresolved_items:
+    - The simulation code is not identified as public in the converted text.
+    - No public simulation code was identified in the local text.
+    - N_DW > 2 and full string-wall dynamics require future work/recasting.
+    - Domain-wall GW and minihalo observables need dedicated likelihood or simulation outputs.
+  evidence:
+    particle_content:
+    - reference_id: '2309_15920'
+      note: The paper treats the axion as the angular mode of a complex scalar field and studies QCD axions
+        and general ALPs as dark matter candidates.
+      confidence: high
+      section: introduction/model setup
+      page: null
+    symmetries:
+    - reference_id: '2309_15920'
+      note: The benchmark has a global U(1) broken at f_a, a later axion mass term, N_DW = 2, and a small
+        bias term that makes the walls metastable.
+      confidence: high
+      section: axion model
+      page: null
+    interactions:
+    - reference_id: '2309_15920'
+      note: After integrating out the radial mode, the effective axion Lagrangian is kinetic energy minus
+        a biased periodic potential.
+      confidence: high
+      section: axion model
+      page: null
+    production_mechanism:
+    - reference_id: '2309_15920'
+      note: The paper derives the relic axion abundance from long-lived domain-wall decay and finds the
+        wall contribution dominates misalignment in the parameter space of interest.
+      confidence: high
+      section: cosmological implication
+      page: null
+    cosmological_history:
+    - reference_id: '2309_15920'
+      note: Domain walls form when the axion gets a mass and collapse before BBN for viable biased-wall
+        parameter space.
+      confidence: high
+      section: introduction/cosmological implication
+      page: null
+    parameter_ranges:
+    - reference_id: '2309_15920'
+      note: The benchmark uses N_DW = 2, considers bias values around 1e-4 to 1e-3 after extrapolation,
+        and shows examples for 1e-6 eV < m_a < 1 eV with Lambda_QCD = 400 MeV.
+      confidence: medium
+      section: cosmological implication
+      page: null
+    validity_domain:
+    - reference_id: '2309_15920'
+      note: Applicability requires the wall network to enter a scaling regime before decay and wall properties
+        similar to the simulation, including N_DW = 2 and approximately constant wall thickness.
+      confidence: high
+      section: application to other models
+      page: null
+    constraints:
+    - confidence: medium
+      note: Primary text gives relic-density, BBN collapse, and simulation-validity constraints for biased
+        long-lived walls.
+      page: null
+      reference_id: src_2309_15920
+      section: primary paper text
+    observables:
+    - confidence: high
+      note: Primary text discusses DW-produced relic density, GW signals, and axion minihalo implications.
+      page: null
+      reference_id: src_2309_15920
+      section: primary paper text
+    routes:
+    - confidence: medium
+      note: Primary text describes the simulation-to-abundance route and motivates GW routing from wall
+        collapse.
+      page: null
+      reference_id: src_2309_15920
+      section: primary paper text
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The accepted row records the N_DW = 2 biased-wall benchmark and its stated QCD/ALP applicability conditions.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - extrapolation from simulation-scale bias to smaller bias
+  - validity of constant wall thickness for QCD applications
+  - neglect or treatment of cosmic strings in some regimes
+  - future work needed for N_DW > 2
+  validation_status: expert_judgment_only
+  notes: The paper substantially develops the domain-wall production component of axion/ALP dark matter;
+    final use should track the benchmark assumptions.
+agent_failure_modes:
+  warnings:
+  - id: do_not_generalize_to_all_axions
+    severity: high
+    category: assumption_mismatch
+    warning: The extraction applies to the paper benchmark and stated QCD/ALP applicability conditions,
+      not to all axion dark matter models.
+    mitigation: Check N_DW, bias, wall-thickness, and string-wall conditions before reuse.
+    source_reference_ids:
+    - '2309_15920'
+  - id: simulation_extrapolation
+    severity: medium
+    category: extrapolation
+    warning: The relic-density formula extrapolates simulation results to smaller bias and wider mass
+      ranges.
+    mitigation: Treat numerical abundance predictions as model-specific and simulation-dependent.
+    source_reference_ids:
+    - '2309_15920'
+observables:
+- caveats:
+  - Simulation results are extrapolated to smaller biases and broader mass ranges.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early universe axion field
+  id: dw-produced-axion-density
+  key_quantities:
+  - name: axion mass
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: '1'
+      min: 1e-6
+      notes: QCD benchmark figure range in primary paper.
+      unit: eV
+    role: core
+    source_reference_ids:
+    - src_2309_15920
+    status: inferred
+    symbol: m_a
+    unit: eV
+  - name: bias parameter
+    range: about 1e-4 to 1e-3 emphasized for relic-density extrapolations
+    role: core
+    source_reference_ids:
+    - src_2309_15920
+    status: inferred
+    symbol: epsilon
+  - name: domain-wall number
+    role: core
+    source_reference_ids:
+    - src_2309_15920
+    status: assumed
+    symbol: N_DW
+    value: 2
+  linked_constraints:
+  - dw-relic-density-window
+  - dw-bbn-collapse
+  linked_routes:
+  - biased-wall-to-relic
+  name: Axion dark matter abundance from long-lived domain-wall collapse
+  notes: null
+  observability: not_applicable
+  predicted_effect: A biased N_DW=2 domain-wall network enters scaling and decays, producing a nonthermal
+    axion spectrum that can match Omega_a h^2 near 0.12.
+  redshift_range: after axion mass turn-on, before BBN for viable walls
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - src_2309_15920
+  subchannel: nonthermal topological-defect production
+- caveats:
+  - The primary paper flags GW signals but does not provide a full detector likelihood.
+  channel: gravitational_waves
+  effect_direction: enhancement
+  environments:
+  - PTA searches
+  - CMB/GW constraints
+  - future interferometers
+  id: dw-gravitational-waves
+  key_quantities:
+  - description: sigma_DW proportional to m_a f_a^2/N_DW^2 in the benchmark.
+    name: domain-wall surface tension
+    role: derived
+    source_reference_ids:
+    - src_2309_15920
+    status: inferred
+    symbol: sigma_DW
+  - name: decay time
+    role: derived
+    source_reference_ids:
+    - src_2309_15920
+    status: inferred
+    symbol: t_decay
+  linked_constraints:
+  - dw-bbn-collapse
+  - dw-scaling-validity
+  linked_routes:
+  - wall-collapse-to-gw
+  name: Gravitational waves from collapsing long-lived domain walls
+  notes: null
+  observability: medium
+  predicted_effect: The wall network collapse can source a stochastic gravitational-wave background, with
+    amplitude and peak scale tied to wall tension and decay time.
+  redshift_range: domain-wall lifetime redshifted to today
+  relevance: high
+  scale_range: PTA to interferometer bands depending on wall scale
+  source_reference_ids:
+  - src_2309_15920
+  subchannel: domain-wall network collapse
+- caveats:
+  - The paper mentions this as an implication; it does not compute a halo mass function.
+  channel: small_scale_structure
+  effect_direction: morphology_change
+  environments:
+  - axion minihalos
+  - small-scale axion density field
+  id: axion-minihalo-overdensities
+  key_quantities:
+  - description: Simulation identifies spectral components near k approximately m_a and a higher-k component.
+    name: axion spectrum peak
+    role: derived
+    source_reference_ids:
+    - src_2309_15920
+    status: inferred
+    symbol: k/m_a
+  linked_constraints:
+  - dw-relic-density-window
+  linked_routes:
+  - biased-wall-to-relic
+  name: Axion minihalo seeds from domain-wall decay overdensities
+  notes: null
+  observability: low
+  predicted_effect: Domain-wall decay can leave overdense axion regions that may seed axion minihalos
+    and other small-scale structure signatures.
+  redshift_range: post-domain-wall decay to late structure formation
+  relevance: medium
+  scale_range: model-dependent small scales
+  source_reference_ids:
+  - src_2309_15920
+  subchannel: minihalo formation
+constraints:
+- allowed_regions:
+  - The paper identifies QCD axion and ALP regions where the DW contribution can reach Omega_a h^2 around
+    0.12.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Misalignment is neglected where the domain-wall contribution dominates the abundance.
+    id: domain-wall-dominates
+    impact_if_violated: Total abundance changes where misalignment is comparable.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - src_2309_15920
+    status: assumed
+  benchmark_implications:
+  - Domain-wall production can dominate over misalignment in the parameter region of interest.
+  caveats:
+  - Relic formula extrapolates finite-lattice simulations.
+  constrained_parameters:
+  - m_a
+  - f_a
+  - epsilon
+  - Lambda
+  - sigma_DW
+  constraint_type: cosmological
+  data_release: observed Omega_DM target
+  excluded_regions:
+  - Regions overproducing axions through wall decay exceed the observed dark matter abundance; underproducing
+    regions cannot make all DM without another component.
+  id: dw-relic-density-window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Domain-wall axion relic-density target
+  notes: null
+  observable_channel: dark matter abundance
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_2309_15920
+- allowed_regions:
+  - A small explicit bias can make N_DW>1 walls collapse before BBN in viable regions.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The simulation and cosmological estimates assume radiation domination during wall evolution.
+    id: radiation-dominated-background
+    impact_if_violated: A different expansion history changes decay timing and abundance.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids:
+    - src_2309_15920
+    status: assumed
+  benchmark_implications:
+  - The bias cannot be arbitrarily small for cosmological safety.
+  caveats:
+  - The primary paper does not provide a public BBN likelihood; it uses timing/energy-density consistency.
+  constrained_parameters:
+  - epsilon
+  - t_decay
+  - sigma_DW
+  constraint_type: cosmological
+  data_release: BBN timing/energy-density consistency
+  excluded_regions:
+  - Walls that live too long or dominate the energy density before collapse are cosmologically excluded.
+  id: dw-bbn-collapse
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Domain walls must collapse before BBN / avoid domination
+  notes: null
+  observable_channel: BBN and expansion history
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - src_2309_15920
+- allowed_regions:
+  - Bias values around 1e-4 to 1e-3 are emphasized for extrapolated relic-density applications.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The benchmark network has N_DW=2 with a biased potential and integrated-out radial mode.
+    id: ndw2-benchmark
+    impact_if_violated: N_DW>2 or full string-wall simulations may change the dynamics.
+    notes: null
+    scope: simulation
+    source_reference_ids:
+    - src_2309_15920
+    status: assumed
+  benchmark_implications:
+  - Use outside the N_DW=2, approximately constant-wall-thickness benchmark requires caution.
+  caveats:
+  - Time-dependent QCD wall thickness and cosmic strings are not fully simulated in the benchmark.
+  constrained_parameters:
+  - epsilon
+  - N_DW
+  - wall thickness
+  - lattice size
+  constraint_type: numerical
+  data_release: 3D lattice simulations in the primary paper
+  excluded_regions:
+  - The paper flags epsilon above about 5e-3 as too large for the network to enter scaling before decay.
+  id: dw-scaling-validity
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Wall-network scaling before decay
+  notes: null
+  observable_channel: simulation validity
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2309_15920
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Primary paper implements the simulation analysis, but no public reusable code was identified
+      in the text.
+    caveats:
+    - Finite lattice and wall-thickness effects remain important.
+    constraint_ids:
+    - dw-relic-density-window
+    - dw-scaling-validity
+    derived_quantities:
+    - t_decay
+    - axion spectrum
+    - Omega_a h^2
+    description: Use biased-domain-wall simulations to infer axion relic abundance and spectra.
+    forward_model_chain:
+    - inputs:
+      - biased potential
+      - initial vacua
+      - radiation expansion
+      notes: Track scaling and collapse.
+      outputs:
+      - wall area
+      - velocity
+      - decay time
+      step_id: wall-evolution
+      step_type: simulation
+      tool_or_code: 3D lattice simulation
+      validity: Validated for finite lattice, N_DW=2 benchmark.
+    - inputs:
+      - axion field snapshots
+      notes: Separate wall and free-axion energy.
+      outputs:
+      - free axion spectrum
+      step_id: spectrum-extraction
+      step_type: data_transform
+      tool_or_code: null
+      validity: Masking and resolution choices affect high-k tail.
+    - inputs:
+      - spectrum
+      - m_a
+      - f_a
+      - epsilon
+      notes: Fit relic-density formula and compare to 0.12.
+      outputs:
+      - Omega_a h^2
+      step_id: abundance-fit
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Extrapolated to target model ranges.
+    id: biased-wall-to-relic
+    input_parameters:
+    - m_a
+    - f_a
+    - epsilon
+    - Lambda
+    - N_DW
+    likelihoods:
+    - dark matter abundance target
+    observable_ids:
+    - dw-produced-axion-density
+    - axion-minihalo-overdensities
+    required_code_resources:
+    - domain-wall lattice simulation
+    - spectrum analysis/masking pipeline
+    route_status: partially_implemented
+    source_model_features:
+    - N_DW=2 biased axion potential
+    - scaling wall network
+    - wall decay to axions
+    validation_tests:
+    - Recover the paper's spectral components and relic-density benchmark contours.
+  - agent_notes: Related arXiv fallback papers were read for context, but structured claims here use the
+      primary paper.
+    caveats:
+    - GW detector reach is not a primary-paper likelihood table.
+    constraint_ids:
+    - dw-bbn-collapse
+    - dw-scaling-validity
+    derived_quantities:
+    - Omega_GW(f)
+    - peak frequency
+    description: Map wall tension and decay time to a gravitational-wave background.
+    forward_model_chain:
+    - inputs:
+      - axion field evolution
+      notes: Extract GW source term.
+      outputs:
+      - anisotropic stress
+      step_id: stress-energy
+      step_type: simulation
+      tool_or_code: null
+      validity: Requires simulation output or calibrated wall model.
+    - inputs:
+      - sigma_DW
+      - t_decay
+      - anisotropic stress
+      notes: Compute stochastic background.
+      outputs:
+      - Omega_GW(f)
+      step_id: gw-spectrum
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Detector comparison needs calibrated spectrum.
+    - inputs:
+      - Omega_GW(f)
+      - t_decay
+      notes: Compare to cosmological and GW limits.
+      outputs:
+      - BBN/PTA/CMB consistency
+      step_id: constraint-map
+      step_type: likelihood
+      tool_or_code: null
+      validity: Approximate without public likelihoods.
+    id: wall-collapse-to-gw
+    input_parameters:
+    - sigma_DW
+    - t_decay
+    - epsilon
+    - m_a
+    - f_a
+    likelihoods:
+    - BBN timing bound
+    - GW background searches
+    observable_ids:
+    - dw-gravitational-waves
+    required_code_resources:
+    - GW spectrum calculator
+    route_status: planned
+    source_model_features:
+    - long-lived biased domain walls
+    - collapse before BBN
+    - axion field stress energy
+    validation_tests:
+    - Check wall collapse before BBN and scaling before decay.

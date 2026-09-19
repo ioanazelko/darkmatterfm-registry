@@ -1,0 +1,752 @@
+_source:
+  shard: arXiv_src_2310_044_wds.tar
+  paper_id: '2310_05676'
+  source_member: 2310_05676.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2310_05676_lsidm_vectorlike_fermion_v1
+identity:
+  name: Light Self-Interacting Dark Matter (LSIDM) model
+  family: self_interacting_dark_matter
+  aliases:
+  - LSIDM
+  - light thermal self-interacting dark matter in non-standard cosmology
+  short_description: A GeV-scale secluded WIMP/SIDM model with a vector-like fermion N charged under an
+    extra dark Abelian gauge symmetry, annihilating through dark gauge interactions into a light Z' mediator
+    and singlet scalar while Z' can decay mainly to active neutrinos.
+  historical_origin_or_motivation: Built to obtain a common parameter region for thermal relic abundance
+    and self-interaction strength for light SIDM, using fast non-standard expansion to compensate underabundance.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - 2HDM plus singlet scalar with extra U(1)_H
+  - secluded WIMP self-interacting dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives a renormalizable LSIDM Lagrangian before electroweak and dark symmetry breaking,
+    including scalar potential, fermion mixing, and gauge interactions.
+particle_content:
+  dark_matter_candidate:
+    name: vector-like fermion N
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - two Weyl/chiral fermions used for neutrino mixing and anomaly cancellation
+  - complex SM singlet scalar
+  - additional scalar doublet
+  mediators:
+  - light dark gauge boson Z'
+  - light neutral CP-even scalar
+  dark_radiation_species: []
+  long_lived_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The U(1)_H charge assignment is chosen so that N is stable and behaves as thermally
+    produced DM.
+  symmetries:
+  - name: U(1)_H
+    type: gauge
+    exact_or_approximate: broken
+    breaking: Dark symmetry breaking occurs when the singlet and doublet scalar fields develop VEVs.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - higgs
+  standard_model_targets:
+  - active neutrinos
+  - charged leptons through kinetic mixing
+  - Higgs/scalar sector
+  dark_sector_couplings:
+  - dark gauge coupling of N to Z'
+  - N pair-annihilation into light dark gauge boson and singlet scalar
+  - Z' coupling to active neutrinos through mixing with new chiral fermion
+  mediator_types:
+  - dark vector boson Z'
+  - light scalar
+  interaction_operators:
+  - renormalizable U(1)_H gauge interactions
+  - Yukawa term mixing the new fermion with active neutrinos after scalar-doublet VEV
+  self_scattering_channels:
+  - N self-interaction mediated by light Z'
+  annihilation_channels:
+  - N N annihilation into Z' and light scalar final states
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: DM mass
+    symbol: m_N
+    description: GeV-scale vector-like fermion mass.
+    range: GeV scale; light thermal DM region below O(10) GeV is emphasized.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dark gauge boson mass
+    symbol: m_Zprime
+    description: Light vector mediator mass for self-interactions.
+    range: MeV scale in the SIDM motivation; benchmark values are scanned in the paper.
+    unit: MeV
+    role: core
+    status: inferred
+  - name: dark gauge coupling
+    symbol: g_D
+    description: Gauge coupling controlling annihilation and self-interaction.
+    range: Determined by relic-density and self-interaction requirements.
+    role: core
+    status: inferred
+  - name: self-interaction per mass
+    symbol: sigma_SI_over_m_DM
+    description: Target SIDM cross-section-to-mass ratio.
+    value: O(1)
+    unit: cm^2/g
+    role: core
+    status: inferred
+  - name: fast-expansion index
+    symbol: n
+    description: Exponent for the non-standard energy density redshifting faster than radiation.
+    range: n > 0
+    role: core
+    status: assumed
+  - name: radiation-equality temperature
+    symbol: T_r
+    description: Temperature where the non-standard component equals radiation density.
+    range: Chosen above BBN-safe values in the paper scans.
+    unit: GeV
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - thermal freeze-out in a fast-expanding non-standard cosmology
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - N annihilation through dark gauge interaction
+  - Hubble rate enhanced by non-standard component
+  - dark gauge coupling and mediator masses
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The faster expansion causes earlier freeze-out and increases the thermal relic abundance to overlap
+    with the self-interaction target region.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_N
+  - m_Zprime
+  - g_D
+  - n
+  - T_r
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - energy density redshifting as a^-(4+n)
+  - faster-than-radiation expansion during DM freeze-out
+  - radiation domination restored by BBN
+  dark_sector_temperature: null
+  delta_neff: null
+  phase_transitions:
+  - dark symmetry breaking by singlet/doublet scalar VEVs
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: The paper uses Boltzmann evolution for thermal freeze-out.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    density_profile_effect: self-interactions are intended to address small-scale halo issues such as
+      core-cusp and too-big-to-fail
+    simulation_calibrated: unknown
+validity_domain:
+- id: sidm-light-mediator-domain
+  applies_to: model
+  condition: Applies to m_N heavier than the light Z' mediator so vector-mediated self-interactions are
+    enhanced.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: fast-expansion-domain
+  applies_to: cosmological_history
+  condition: Requires the non-standard component to dominate before BBN and radiation to dominate by BBN.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+assumptions:
+  global:
+  - id: radiation-by-bbn
+    description: The universe must become radiation dominated by BBN while being faster expanding during
+      DM freeze-out.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: BBN conflict or a different expansion history would change the allowed relic-density
+      region.
+  - id: neutrino-dominant-zprime-decay
+    description: The Z' produced by s-wave DM annihilation can decay mostly into active neutrinos through
+      the introduced fermion/scalar mixing.
+    scope: production
+    status: inferred
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text presents calculations and plots but does not identify a public model-code
+    repository.
+provenance:
+  model_id: 2310_05676_lsidm_vectorlike_fermion_v1
+  model_name: Light Self-Interacting Dark Matter (LSIDM) model
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2310_05676'
+      title: Light Thermal Self-Interacting Dark Matter in the Shadow of Non-Standard Cosmology
+      authors:
+      - Shu Yu Ho
+      - Pyungwon Ko
+      - Dibyendu Nanda
+      year: 2023
+      arxiv_id: '2310.05676'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run SQLite database.
+    - arxiv_id: '2310.05676'
+      authors:
+      - Ho, Shu-Yu
+      - Ko, Pyungwon
+      - Nanda, Dibyendu
+      doi: 10.1088/1475-7516/2024/04/055
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2310.05676
+      role: original_model
+      title: Light thermal self-interacting dark matter in the shadow of non-standard cosmology
+      url: https://arxiv.org/abs/2310.05676
+      year: 2024
+    constraint_papers:
+    - arxiv_id: '1508.03339'
+      authors:
+      - Kaplinghat, Manoj
+      - Tulin, Sean
+      - Yu, Hai-Bo
+      doi: 10.1103/PhysRevLett.116.041302
+      notes: Related local full text read for SIDM halo target context.
+      reference_id: arxiv:1508.03339
+      role: constraint
+      title: 'Dark Matter Halos as Particle Colliders: Unified Solution to Small-Scale Structure Puzzles
+        from Dwarfs to Clusters'
+      url: https://arxiv.org/abs/1508.03339
+      year: 2016
+    external_databases: []
+    review_papers:
+    - arxiv_id: '2211.15703'
+      authors:
+      - Borah, Debasish
+      - Mahapatra, Satyabrata
+      - Sahu, Narendra
+      doi: 10.1103/PhysRevD.108.L091702
+      notes: Related local full text read for light thermal SIDM detection-neutrino context.
+      reference_id: arxiv:2211.15703
+      role: extension
+      title: New realization of light thermal self-interacting dark matter and detection prospects
+      url: https://arxiv.org/abs/2211.15703
+      year: 2023
+    - arxiv_id: '2203.05579'
+      authors:
+      - Herms, Johannes
+      - Jana, Sudip
+      - Vishnu P., K.
+      - Saad, Shaikh
+      doi: 10.1103/PhysRevLett.129.091803
+      notes: Related local full text read for minimal light thermal DM model context.
+      reference_id: arxiv:2203.05579
+      role: extension
+      title: Minimal Realization of Light Thermal Dark Matter
+      url: https://arxiv.org/abs/2203.05579
+      year: 2022
+  extraction:
+    method: llm_assisted
+    extracted_by: codex-batch-0012
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2310_05676'
+      section: Abstract/model setup
+      page: null
+      quote_or_summary: Constructs a GeV-scale self-interacting DM model with vector-like fermion N and
+        light Z' mediator.
+    unresolved_items:
+    - No modified-expansion relic solver, SIDM halo likelihood, or CMB energy-injection likelihood was
+      rerun.
+    - Active-neutrino final states still need a dedicated precision cosmology treatment.
+  evidence:
+    particle_content:
+    - reference_id: '2310_05676'
+      note: The paper introduces N, two Weyl/chiral fermions, a singlet scalar, a doublet scalar, and
+        a massive dark gauge boson Z'.
+      confidence: high
+      section: Model setup
+    symmetries:
+    - reference_id: '2310_05676'
+      note: It enlarges the SM gauge symmetry with a dark Abelian U(1)_H and chooses charges so N is stable.
+      confidence: high
+      section: Model setup
+    interactions:
+    - reference_id: '2310_05676'
+      note: N pair-annihilates through the dark gauge coupling and Z' mediates self-interaction; Z' can
+        decay into active neutrinos through mixing.
+      confidence: high
+      section: Model setup and relic-density sections
+    production_mechanism:
+    - reference_id: '2310_05676'
+      note: The relic abundance is computed from a Boltzmann equation for thermal freeze-out, with faster
+        expansion used to enhance the abundance.
+      confidence: high
+      section: Relic abundance and self-interaction
+    cosmological_history:
+    - reference_id: '2310_05676'
+      note: The non-standard component redshifts faster than radiation with exponent n>0 and modifies
+        H during freeze-out.
+      confidence: high
+      section: Fast expansion universe
+    parameter_ranges:
+    - reference_id: '2310_05676'
+      note: The paper targets GeV-scale DM, MeV-scale light mediators, and sigma_SI/m_DM of order 1 cm^2/g.
+      confidence: medium
+      section: Introduction and numerical results
+    constraints:
+    - confidence: high
+      note: Primary text gives the BBN-safe T_r condition and CMB annihilation-rate caveat for light s-wave
+        DM.
+      page: null
+      reference_id: arxiv:2310.05676
+      section: Non-standard cosmology/model setup
+    - confidence: medium
+      note: Related local text supports velocity-dependent SIDM as a dwarf-to-cluster small-scale-structure
+        target.
+      page: null
+      reference_id: arxiv:1508.03339
+      section: SIDM halo phenomenology
+    observables:
+    - confidence: high
+      note: Primary paper presents GeV thermal SIDM, MeV mediator, non-standard expansion, and neutrino
+        mediator decays.
+      page: null
+      reference_id: arxiv:2310.05676
+      section: Abstract/model
+    - confidence: high
+      note: Primary text quotes O(1) cm^2/g as the SIDM cross-section-per-mass target and derives the
+        fast-expansion setup.
+      page: null
+      reference_id: arxiv:2310.05676
+      section: Introduction/non-standard cosmology
+    routes:
+    - confidence: high
+      note: Primary paper links dark gauge annihilation, modified Hubble expansion, self scattering, and
+        Zprime neutrino decays in one parameter scan.
+      page: null
+      reference_id: arxiv:2310.05676
+      section: Relic abundance and self interaction
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - Some mathematical field symbols are degraded in the plain text; names were kept only where explicit,
+    such as N, Z', U(1)_H, and LSIDM.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  validation_status: expert_judgment_only
+  notes: The paper supplies a detailed renormalizable setup and Boltzmann calculation, but this is still
+    a speculative non-standard-cosmology model.
+agent_failure_modes:
+  warnings:
+  - id: field-symbol-loss
+    severity: medium
+    category: notation_conflict
+    warning: The extracted plain text loses several scalar and Weyl-fermion symbols; avoid reconstructing
+      exact charge tables from this row alone.
+    source_reference_ids:
+    - '2310_05676'
+observables:
+- caveats:
+  - Exact allowed band is velocity dependent and requires solving the light-mediator scattering problem.
+  channel: small_scale_structure
+  effect_direction: rate_change
+  environments:
+  - dwarf galaxies
+  - low-surface-brightness galaxies
+  - clusters
+  id: obs_lsidm_self_interaction
+  key_quantities:
+  - description: SIDM target strength quoted by primary paper.
+    name: self-interaction per mass
+    notes: null
+    role: core
+    source_reference_ids:
+    - arxiv:2310.05676
+    - arxiv:1508.03339
+    status: inferred
+    symbol: sigma_SI/m_DM
+    unit: cm^2/g
+    value: O(1)
+  - description: GeV-scale secluded WIMP mass.
+    name: dark matter mass
+    notes: null
+    range: O(1-10) GeV emphasized
+    role: core
+    source_reference_ids:
+    - arxiv:2310.05676
+    status: inferred
+    symbol: m_N
+    unit: GeV
+  - description: Light mediator mass producing strong self interaction.
+    name: dark gauge boson mass
+    notes: null
+    range: MeV scale
+    role: core
+    source_reference_ids:
+    - arxiv:2310.05676
+    status: inferred
+    symbol: m_Zprime
+    unit: MeV
+  linked_constraints:
+  - con_sidm_cross_section_target
+  linked_routes:
+  - route_lsidm_fast_expansion_neutrino_portal
+  name: Velocity-dependent light-mediator self interaction
+  notes: null
+  observability: medium
+  predicted_effect: A GeV-scale vectorlike fermion interacting through a MeV-scale Zprime can obtain sigma_SI/m_DM
+    of order 1 cm^2/g, targeting dwarf-to-cluster small-scale structure tensions.
+  redshift_range: late-time halos
+  relevance: critical
+  scale_range: dwarf to cluster halo scales
+  source_reference_ids:
+  - arxiv:2310.05676
+  - arxiv:1508.03339
+  subchannel: SIDM transfer cross section
+- caveats:
+  - T_r is not the reheating temperature; the primary paper distinguishes the two.
+  channel: cosmology
+  effect_direction: enhancement
+  environments:
+  - early universe
+  id: obs_fast_expansion_relic_boost
+  key_quantities:
+  - description: Power by which the extra species redshifts faster than radiation.
+    name: fast-expansion index
+    notes: null
+    range: n > 0; n=2 often used for kination-like examples
+    role: core
+    source_reference_ids:
+    - arxiv:2310.05676
+    status: inferred
+    symbol: n
+  - description: Temperature below which radiation again dominates; must be above the BBN-safe bound.
+    name: radiation-equality temperature
+    notes: null
+    range: T_r > (15.4)^(1/n) MeV; about 4 MeV for n=2
+    role: core
+    source_reference_ids:
+    - arxiv:2310.05676
+    status: inferred
+    symbol: T_r
+    unit: MeV
+  - description: Thermal LSIDM abundance in the modified expansion history.
+    name: relic abundance
+    notes: null
+    role: core
+    source_reference_ids:
+    - arxiv:2310.05676
+    status: inferred
+    symbol: Omega_N h^2
+  linked_constraints:
+  - con_bbn_tr_fast_expansion
+  linked_routes:
+  - route_lsidm_fast_expansion_neutrino_portal
+  name: Fast pre-BBN expansion boosts thermal relic abundance
+  notes: null
+  observability: medium
+  predicted_effect: A component redshifting faster than radiation increases H during freeze-out, causing
+    earlier decoupling and enhancing the otherwise underabundant light SIDM relic density.
+  redshift_range: freeze-out before BBN
+  relevance: critical
+  scale_range: homogeneous expansion
+  source_reference_ids:
+  - arxiv:2310.05676
+  subchannel: non-standard expansion before BBN
+- caveats:
+  - Neutrino final states still require a dedicated CMB/Neff treatment for precision limits.
+  channel: cmb
+  effect_direction: suppression
+  environments:
+  - CMB
+  - dark sector
+  id: obs_zprime_neutrino_decay_cmb
+  key_quantities:
+  - description: CMB energy-injection bound quoted by primary paper.
+    name: annihilation rate at recombination
+    notes: null
+    range: approximately below 4.1e-28 cm^3 s^-1 times m_DM/GeV divided by f_eff
+    role: core
+    source_reference_ids:
+    - arxiv:2310.05676
+    status: inferred
+    symbol: sigma_ann v_rel
+    unit: cm^3 s^-1
+  - description: Controls Zprime coupling to active neutrinos after symmetry breaking.
+    name: neutrino mixing parameter
+    notes: null
+    role: core
+    source_reference_ids:
+    - arxiv:2310.05676
+    status: inferred
+    symbol: theta_psi
+  linked_constraints:
+  - con_cmb_swave_light_dm
+  linked_routes:
+  - route_lsidm_fast_expansion_neutrino_portal
+  name: Dark gauge boson decay mainly to active neutrinos
+  notes: null
+  observability: medium
+  predicted_effect: The model introduces extra fermions and a scalar doublet so the Zprime produced in
+    s-wave annihilation decays mostly to active neutrinos, reducing visible electromagnetic energy injection
+    during recombination.
+  redshift_range: recombination
+  relevance: high
+  scale_range: CMB anisotropy multipoles
+  source_reference_ids:
+  - arxiv:2310.05676
+  - arxiv:2211.15703
+  - arxiv:2203.05579
+  subchannel: visible-energy injection from light DM annihilation
+constraints:
+- allowed_regions:
+  - Order-1 cm^2/g self interaction at dwarf-galaxy velocities with weaker cluster-scale scattering.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The MeV-scale mediator gives a velocity-dependent self-interaction rather than a constant
+      hard-sphere cross section.
+    id: light_mediator_velocity_dependence
+    impact_if_violated: Cluster constraints and dwarf targets cannot be compared with one velocity-independent
+      number.
+    notes: null
+    scope: SIDM phenomenology
+    source_reference_ids:
+    - arxiv:2310.05676
+    - arxiv:1508.03339
+    status: assumed
+  benchmark_implications:
+  - The same dark gauge coupling must satisfy relic abundance and SIDM strength.
+  caveats:
+  - No halo simulation likelihood was run.
+  constrained_parameters:
+  - sigma_SI/m_DM
+  - m_N
+  - m_Zprime
+  - g_D
+  constraint_type: astrophysical
+  data_release: SIDM small-scale-structure target literature cited by primary paper
+  excluded_regions:
+  - Velocity-dependent cross sections inconsistent with cluster-scale halo constraints are excluded.
+  - Too-small self interaction fails to address the small-scale targets motivating the model.
+  id: con_sidm_cross_section_target
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: SIDM target/limit from halo phenomenology
+  notes: null
+  observable_channel: small_scale_structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2310.05676
+  - arxiv:1508.03339
+- allowed_regions:
+  - Fast expansion ending early enough that radiation domination is restored before BBN.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The extra redshifting component is subdominant by BBN.
+    id: radiation_dominated_by_bbn
+    impact_if_violated: Late domination would alter light-element yields.
+    notes: null
+    scope: cosmological history
+    source_reference_ids:
+    - arxiv:2310.05676
+    status: assumed
+  benchmark_implications:
+  - Only pre-BBN freeze-out can be safely modified by the fast-expansion component.
+  caveats:
+  - No BBN network was evaluated.
+  constrained_parameters:
+  - T_r
+  - n
+  constraint_type: cosmological
+  data_release: BBN consistency condition quoted by primary paper
+  excluded_regions:
+  - T_r too close to the BBN temperature is excluded; primary paper uses T_r > (15.4)^(1/n) MeV and about
+    4 MeV for n=2.
+  id: con_bbn_tr_fast_expansion
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN lower bound on radiation-domination temperature
+  notes: null
+  observable_channel: BBN
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2310.05676
+- allowed_regions:
+  - Suppressed kinetic mixing and dominant Zprime decay to active neutrinos can evade the visible-channel
+    CMB bound in the primary model.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Zprime decays dominantly to active neutrinos rather than electromagnetically visible
+      final states.
+    id: neutrino_decay_reduces_visible_energy
+    impact_if_violated: Visible decays would restore the strong low-mass CMB exclusion.
+    notes: null
+    scope: CMB energy injection
+    source_reference_ids:
+    - arxiv:2310.05676
+    status: assumed
+  benchmark_implications:
+  - The scalar doublet and Weyl fermions are not ornamental; they provide the neutrino decay route for
+    Zprime.
+  caveats:
+  - A neutrino-specific CMB/Neff likelihood was not run.
+  constrained_parameters:
+  - sigma_ann v_rel
+  - f_eff
+  - m_N
+  - Zprime branching ratios
+  constraint_type: cosmological
+  data_release: Planck/CMB energy-injection bound quoted by primary paper
+  excluded_regions:
+  - Light s-wave annihilation with visible mediator decays above the quoted CMB energy-injection rate
+    is excluded.
+  id: con_cmb_swave_light_dm
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: CMB bound on s-wave light-DM annihilation to visible final states
+  notes: null
+  observable_channel: cmb
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2310.05676
+  - arxiv:2211.15703
+  - arxiv:2203.05579
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The relic-density enhancement depends on the assumed fast-expansion history.
+    constraint_ids:
+    - con_sidm_cross_section_target
+    - con_bbn_tr_fast_expansion
+    - con_cmb_swave_light_dm
+    derived_quantities:
+    - Omega_N h^2
+    - sigma_SI/m_N
+    - Zprime branching ratios
+    - CMB energy-injection efficiency
+    description: Combine LSIDM relic freeze-out, fast expansion, self-interaction scattering, and neutrino-dominated
+      mediator decays.
+    forward_model_chain:
+    - inputs:
+      - m_N
+      - m_Zprime
+      - g_D
+      notes: null
+      outputs:
+      - annihilation cross sections
+      - self-scattering rate
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary tree-level dark gauge processes.
+    - inputs:
+      - annihilation cross sections
+      - n
+      - T_r
+      notes: null
+      outputs:
+      - thermal relic abundance
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Requires modified Hubble rate before BBN.
+    - inputs:
+      - Zprime branching ratios
+      - sigma_ann v_rel
+      notes: null
+      outputs:
+      - CMB visible-energy constraint
+      - Neff check
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Needs final-state-specific CMB treatment.
+    id: route_lsidm_fast_expansion_neutrino_portal
+    input_parameters:
+    - m_N
+    - m_Zprime
+    - g_D
+    - n
+    - T_r
+    - theta_psi
+    likelihoods:
+    - Planck CMB energy-injection likelihood not included
+    - BBN likelihood not included
+    - SIDM halo likelihood not included
+    observable_ids:
+    - obs_lsidm_self_interaction
+    - obs_fast_expansion_relic_boost
+    - obs_zprime_neutrino_decay_cmb
+    required_code_resources:
+    - modified-expansion Boltzmann solver
+    - light-mediator SIDM scattering solver
+    - CMB energy-injection recast
+    route_status: planned
+    source_model_features:
+    - vectorlike fermion N dark matter
+    - MeV-scale Zprime mediator
+    - singlet scalar annihilation channel
+    - non-standard pre-BBN expansion
+    - Zprime decay to active neutrinos
+    validation_tests:
+    - recover T_r > (15.4)^(1/n) MeV
+    - recover O(1) cm^2/g SIDM target

@@ -1,0 +1,331 @@
+_source:
+  shard: arXiv_src_1911_017_wds.tar
+  paper_id: '1911_05515'
+  source_member: 1911_05515.json
+agent_failure_modes:
+  warnings:
+  - category: other
+    id: framework_not_single_point
+    mitigation: null
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: Do not treat this row as a single benchmark point; the paper catalogs many Z_N charge assignments
+      and mass-stability regions.
+  - category: extrapolation
+    id: relic_not_scanned
+    mitigation: null
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: Do not infer that every listed Z_N scenario saturates the observed abundance; the paper explicitly
+      leaves detailed relic-density studies for future work.
+associated_code:
+  code_summary: No model-specific public code is identified in the extracted paper text.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The new dark matter fields are Standard Model singlet scalars with distinct nontrivial
+      Z_N charges.
+    id: sm_singlet_scalars
+    impact_if_violated: null
+    notes: null
+    scope: global
+    source_reference_ids:
+    - primary
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The model card reflects the paper's stability and process analysis; a detailed relic-density
+      and experimental-limit scan is not supplied.
+    id: no_complete_relic_scan
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids:
+    - primary
+    status: established
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - Z_N scalar multi-component dark matter
+  family: multi_component_dark_matter
+  historical_origin_or_motivation: The paper motivates a single Z_N symmetry as a simple way to stabilize
+    several dark matter particles and as a possible remnant of a broken gauge symmetry.
+  model_kind: simplified_model
+  name: Multi-component scalar dark matter from a Z_N symmetry
+  short_description: Standard Model extensions with several SM-singlet scalar fields carrying nontrivial
+    Z_N charges; mass relations and the unbroken Z_N symmetry determine which scalar species are stable
+    dark matter components.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - phi_i phi_i to Standard Model particles through the Higgs portal
+  - semi-annihilation channels among dark scalars when allowed
+  cp_structure: unknown
+  dark_sector_couplings:
+  - Z_N-invariant scalar cubic and quartic interactions among phi_i fields
+  decay_channels: []
+  flavor_structure: unknown
+  interaction_operators:
+  - '|H|^2 |phi_i|^2'
+  - phi_i phi_j phi_k terms allowed by Z_N
+  - quartic scalar conversion terms allowed by Z_N
+  mediator_types:
+  - Higgs boson
+  portals:
+  - higgs
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - dark matter conversion processes among scalar components
+  standard_model_targets:
+  - Higgs doublet
+  tree_or_loop_level: tree
+model_id: 1911_05515_multicomponent_zn_scalar_dark_matter_v1
+parameters:
+  core:
+  - description: Order of the stabilizing Z_N symmetry considered up to N=10.
+    name: discrete symmetry order
+    range: N >= 4, with examples through N <= 10
+    role: core
+    status: established
+    symbol: N
+  - description: Number of distinct SM-singlet scalars carrying different Z_N charges.
+    name: number of charged scalar fields
+    range: 1 to N/2; stable components up to five in the analyzed cases
+    role: core
+    status: established
+    symbol: k
+  - description: Masses of the Z_N-charged scalar fields; stability regions depend on their relations.
+    name: dark scalar masses
+    range: model-dependent
+    role: core
+    status: established
+    symbol: M_i
+    unit: mass
+  - description: Couplings connecting each dark scalar to the Higgs doublet.
+    name: Higgs portal couplings
+    range: model-dependent
+    role: core
+    status: inferred
+    symbol: lambda_Si
+  - description: Z_N-allowed cubic, quartic, and in some cases higher scalar couplings controlling conversion
+      and semi-annihilation.
+    name: dark scalar interaction couplings
+    range: model-dependent
+    role: core
+    status: inferred
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: SM-singlet scalar fields phi_i charged under Z_N
+    number_of_components: multi_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - Higgs boson
+  standard_model_extension: minimal
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: Cold scalar dark matter components are implicitly considered; no distribution function is tabulated.
+production:
+  abundance_set_by:
+  - scalar masses
+  - Higgs portal couplings
+  - Z_N-allowed dark scalar interactions
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through Higgs portal annihilation
+  - dark matter conversion among scalar species
+  - semi-annihilation among scalar species
+  nonthermal_momentum_distribution: unknown
+  notes: The paper discusses generic freeze-out, conversion, and semi-annihilation features but does not
+    perform a complete relic-density scan.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: unknown
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: The text discusses Higgs portal annihilation, scalar conversion terms, and semi-annihilation
+        processes induced by Z_N-allowed interactions.
+      page: null
+      reference_id: primary
+      section: Discussion
+    parameter_ranges:
+    - confidence: high
+      note: The systematic analysis covers N up to 10 and derives mass-relation stability regions with
+        up to five stable dark matter particles.
+      page: null
+      reference_id: primary
+      section: Results and conclusions
+    particle_content:
+    - confidence: high
+      note: The setup extends the SM by complex SM-singlet scalar fields with nontrivial Z_N charges;
+        for even N one stable component may be real.
+      page: null
+      reference_id: primary
+      section: Basic setup
+    production_mechanism:
+    - confidence: medium
+      note: The relic-density discussion identifies standard freeze-out, conversion, and semi-annihilation
+        as relevant processes, while leaving detailed relic scans to future work.
+      page: null
+      reference_id: primary
+      section: Discussion
+    symmetries:
+    - confidence: high
+      note: The paper states that a single Z_N symmetry can stabilize several dark matter particles and
+        may arise as a remnant of a broken gauge symmetry.
+      page: null
+      reference_id: primary
+      section: Introduction
+    validity_domain:
+    - confidence: high
+      note: Stability requires an unbroken Z_N and, in most cases, specific inequalities among the scalar
+        masses.
+      page: null
+      reference_id: primary
+      section: Results
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0018
+    extraction_date: '2026-05-31'
+    extractor_name: Codex dark-matter model-card worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Paper systematically studies multi-component dark matter from Z_N symmetries with
+        scalar fields and stability regions for N <= 10.
+      reference_id: primary
+      section: Abstract and setup
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: multi_component_dark_matter
+  model_id: 1911_05515_multicomponent_zn_scalar_dark_matter_v1
+  model_name: Multi-component scalar dark matter from a Z_N symmetry
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1911.05515'
+      authors: []
+      doi: null
+      notes: null
+      reference_id: primary
+      role: original_model
+      title: 'Multi-component scalar dark matter from a Z_N symmetry: a systematic analysis'
+      url: null
+      year: 2019
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: either
+  key_dependencies:
+  - M_i mass relations
+  - Higgs portal couplings
+  - dark conversion and semi-annihilation terms
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Relic-density viability is discussed generically rather than computed for each Z_N scenario.
+  - Many charge assignments are model variants; this row summarizes the common Z_N scalar framework.
+  notes: Machine-extracted model-only card; constraints and observables intentionally omitted for this
+    run.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: An unbroken discrete Z_N charge assignment, together with kinematic mass relations,
+    stabilizes multiple scalar components.
+  symmetries:
+  - breaking: kept unbroken by requiring no scalar-field vacuum expectation value
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z_N
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper catalogs Z_N-invariant scalar interactions and stability conditions for N up to 10;
+    detailed relic-density calculations are left for future work.
+  parent_frameworks:
+  - Standard Model plus SM-singlet scalars
+  - discrete Z_N symmetry
+  renormalizable: unknown
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The Z_N symmetry remains unbroken and the scalar fields do not acquire vacuum expectation
+    values.
+  extrapolation_risk: unknown
+  id: zn_unbroken
+  notes: null
+  source_reference_ids:
+  - primary
+  status: inferred
+  valid_range: null
+- applies_to: parameter
+  caveats: []
+  condition: The number of stable dark matter components depends on kinematic mass inequalities derived
+    for each Z_N charge assignment.
+  extrapolation_risk: medium
+  id: mass_stability_regions
+  notes: null
+  source_reference_ids:
+  - primary
+  status: inferred
+  valid_range: null

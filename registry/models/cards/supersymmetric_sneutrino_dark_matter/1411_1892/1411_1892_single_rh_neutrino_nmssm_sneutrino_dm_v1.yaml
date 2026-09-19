@@ -1,0 +1,416 @@
+_source:
+  shard: arXiv_src_1411_004_wds.tar
+  paper_id: '1411_1892'
+  source_member: 1411_1892.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: requires_r_parity_lsp
+    mitigation: Check the SUSY spectrum before treating this model as a viable dark matter point.
+    severity: high
+    source_reference_ids:
+    - '1411_1892'
+    warning: The dark matter interpretation requires the R-parity-odd right-handed sneutrino to be the
+      LSP.
+  - category: code_unvalidated
+    id: private_model_file_risk
+    mitigation: Reimplement or obtain the model files before reproducing relic-density claims.
+    severity: medium
+    source_reference_ids:
+    - '1411_1892'
+    warning: The relic-density calculation depends on modified MicroOMEGAS/NMSSMTools files not provided
+      in the assigned text.
+associated_code:
+  caveats:
+  - The modified model files are described but not identified as a public release in the assigned text.
+  code_summary: The paper says MicroOMEGAS model files inside NMSSMTools were modified for the right-handed
+    sneutrino relic-density calculation; no public release is specified.
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules:
+  - archive_url: null
+    availability: public
+    citation_reference_ids:
+    - '1411_1892'
+    commit: null
+    dependencies: []
+    documentation_url: null
+    doi: null
+    inputs:
+    - NMSSM spectrum
+    - right-handed sneutrino vertices
+    languages: []
+    last_checked: null
+    license: null
+    maintained: unknown
+    name: MicroOMEGAS inside NMSSMTools
+    notes: null
+    outputs:
+    - dark matter relic density
+    purpose:
+    - compute_relic_density
+    relationship_to_model: wrapper_around_public_tool
+    repository_url: null
+    resource_type: package
+    supported_model_families:
+    - NMSSM
+    supported_observables: []
+    supported_parameters:
+    - lambda_N
+    - y_N
+    - A_N
+    - A_yN
+    - sneutrino masses
+    url: null
+    validity_domain:
+    - author-modified model files; no public validation details in assigned text
+    version: null
+  primary_code_role: relic_density_calculation
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: 'no'
+    description: R-parity is conserved so that the scalar right-handed neutrino can be a stable LSP dark
+      matter candidate.
+    id: r_parity_conserved
+    impact_if_violated: The sneutrino candidate would generally decay and the model would not contain
+      this dark matter candidate.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1411_1892'
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: Only one right-handed neutrino superfield is added to the NMSSM.
+    id: single_right_handed_neutrino
+    impact_if_violated: The neutrino-mass and sneutrino-sector structure would differ from the paper's
+      construction.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1411_1892'
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - right-handed sneutrino NMSSM dark matter
+  - one right-handed neutrino NMSSM
+  family: supersymmetric_sneutrino_dark_matter
+  historical_origin_or_motivation: Introduced to generate the complete light-neutrino mass spectrum with
+    one right-handed neutrino while retaining an R-parity dark matter candidate.
+  model_kind: complete_theory
+  name: Single-right-handed-neutrino NMSSM sneutrino dark matter
+  short_description: A Z3 NMSSM extension with one right-handed neutrino superfield whose R-parity-odd
+    right-handed sneutrino can be the dark matter candidate.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - Higgs-mediated channels computed in modified MicroOMEGAS/NMSSMTools
+  cp_structure: real and imaginary sneutrino components are split after S gets a vev
+  dark_sector_couplings:
+  - lambda_N S N N
+  - y_N H_u L N
+  - lambda S H_u H_d
+  - kappa S^3
+  decay_channels: []
+  flavor_structure: one right-handed neutrino couples through y_Ni to lepton flavors
+  interaction_operators:
+  - W_part = lambda_N S N N + y_N H_u L N + lambda S H_u H_d + kappa S^3
+  - soft terms include lambda_N A_N S N N and y_N A_yN H_u L N
+  mediator_types:
+  - singlet Higgs
+  - Higgs bosons
+  - neutralinos
+  portals:
+  - higgs
+  - neutrino
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs doublet H_u
+  - lepton doublet L
+  tree_or_loop_level: both
+model_id: 1411_1892_single_rh_neutrino_nmssm_sneutrino_dm_v1
+operators:
+  contact_or_light_mediator: light_mediator
+  coupling_types:
+  - Higgs portal
+  - neutrino Yukawa
+  - supersymmetric soft terms
+  eft_operators: []
+  renormalizable_terms:
+  - lambda_N S N N
+  - y_N H_u L N
+  - lambda S H_u H_d
+  - kappa S^3
+parameters:
+  core:
+  - description: Coupling in S N N.
+    name: singlet-right-handed-neutrino coupling
+    role: core
+    status: inferred
+    symbol: lambda_N
+  - description: Coupling in H_u L N; described as very small in the TeV seesaw setup.
+    name: neutrino Yukawa coupling
+    role: core
+    status: inferred
+    symbol: y_N
+    value: about 10^-6 to 10^-8 in qualitative discussion
+  - description: Soft mass parameter for the scalar N sector.
+    name: right-handed sneutrino soft mass
+    role: core
+    status: inferred
+    symbol: M_N
+  - description: Soft trilinear coefficient for S N N.
+    name: trilinear soft term
+    role: core
+    status: inferred
+    symbol: A_N
+  - description: Soft trilinear coefficient for H_u L N; large values can enhance one-loop neutrino masses.
+    name: neutrino-sector trilinear soft term
+    role: core
+    status: inferred
+    symbol: A_yN
+    value: order 10^2 TeV discussed for loop effects
+  - description: Vacuum expectation value of the NMSSM singlet S.
+    name: singlet vev
+    role: core
+    status: inferred
+    symbol: v_s
+particle_content:
+  additional_dark_sector_particles:
+  - right-handed neutrino superfield N
+  - fermionic right-handed neutrino
+  - NMSSM singlet Higgs superfield S
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: right-handed sneutrino scalar N
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - real and imaginary sneutrino components N_R and N_I
+  long_lived_particles:
+  - right-handed sneutrino LSP
+  mediators:
+  - singlet Higgs
+  - CP-even Higgs bosons
+  - CP-odd Higgs bosons
+  - neutralinos
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: unknown
+  distribution_type: unknown
+  free_streaming_length: null
+  notes: No phase-space distribution was extracted from the assigned paper text.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - right-handed sneutrino mass
+  - lambda_N
+  - Higgs-sector mixing
+  - neutralino/sneutrino spectrum
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal relic density computed with modified MicroOMEGAS/NMSSMTools
+  - Higgs- and neutralino-mediated sneutrino annihilation/coannihilation channels
+  nonthermal_momentum_distribution: unknown
+  notes: The assigned text states that right-handed scalar-neutrino effects were included when calculating
+    the dark matter relic density.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: unknown
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: The superpotential includes lambda_N S N N and y_N H_u L N, linking the right-handed neutrino/sneutrino
+        to the singlet Higgs and lepton-Higgs sector.
+      page: null
+      reference_id: '1411_1892'
+      section: Superpotential
+    parameter_ranges:
+    - confidence: medium
+      note: The scan includes y_N, lambda_N, A_N, A_yN, sneutrino soft masses, and NMSSM parameters; y_N
+        is described as very small in TeV seesaw scenarios.
+      page: null
+      reference_id: '1411_1892'
+      section: Parameter scan
+    particle_content:
+    - confidence: high
+      note: The model extends the NMSSM by one right-handed neutrino superfield N; the scalar partner
+        of N is used as the dark matter candidate.
+      page: null
+      reference_id: '1411_1892'
+      section: Model setup
+    production_mechanism:
+    - confidence: medium
+      note: The paper modifies MicroOMEGAS/NMSSMTools to include right-handed scalar-neutrino effects
+        in the dark matter relic density calculation.
+      page: null
+      reference_id: '1411_1892'
+      section: Parameter scan
+    symmetries:
+    - confidence: high
+      note: The paper imposes a global Z3 symmetry and keeps R-parity conservation; the right-handed scalar
+        neutrino candidate is R-parity odd.
+      page: null
+      reference_id: '1411_1892'
+      section: Model setup
+    validity_domain:
+    - confidence: high
+      note: The model is built to generate the complete light-neutrino spectrum from one right-handed
+        neutrino using tree-level seesaw plus one-loop corrections.
+      page: null
+      reference_id: '1411_1892'
+      section: Introduction/Conclusion
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0000
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5.5 dark-matter model-card worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: NMSSM is extended by one single right-handed neutrino superfield, with relevant
+        phenomenology discussed.
+      reference_id: '1411_1892'
+      section: Introduction
+    - page: null
+      quote_or_summary: The paper assumes only the R-parity-odd right-handed scalar N can be the dark
+        matter candidate and modifies MicroOMEGAS model files.
+      reference_id: '1411_1892'
+      section: Parameter scan/Appendix
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: supersymmetric_sneutrino_dark_matter
+  model_id: 1411_1892_single_rh_neutrino_nmssm_sneutrino_dm_v1
+  model_name: Single-right-handed-neutrino NMSSM sneutrino dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: high
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1411.1892'
+      authors:
+      - Yi-Lei Tang
+      doi: null
+      notes: Extracted only from the assigned full text in the run SQLite database.
+      reference_id: '1411_1892'
+      role: original_model
+      title: One Right-handed Neutrino to Generate Complete Neutrino Mass Spectrum in the Framework of
+        NMSSM
+      url: null
+      year: 2014
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: unknown
+  key_dependencies:
+  - lambda_N
+  - y_N
+  - A_N
+  - A_yN
+  - sneutrino masses
+  - Higgs-sector spectrum
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Machine extraction from paper text only; fields outside the model-only profile were intentionally
+    omitted.
+  notes: The model construction and candidate identity are explicit; public reproducibility of the modified
+    relic-density implementation is unclear from the paper text.
+  observational_robustness: unknown
+  overall: low
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: unknown
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No thermal-WDM mapping was provided in the paper.
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: R-parity conservation makes the R-parity-odd right-handed sneutrino stable when
+    it is the LSP.
+  symmetries:
+  - breaking: not specified in extracted text
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z3
+    type: discrete
+  - breaking: unbroken
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: R-parity
+    type: discrete
+  - breaking: lambda_N S N N and soft terms generate lepton-number-violating effects
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: lepton number
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper lists the relevant superpotential and soft SUSY-breaking terms for the singlet and
+    right-handed-neutrino sector.
+  parent_frameworks:
+  - NMSSM
+  - TeV-scale seesaw
+  - supersymmetry
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats:
+  - Neutrino mass generation and dark matter relic density depend on the scanned SUSY spectrum and modified
+    MicroOMEGAS implementation.
+  condition: The paper's construction assumes a TeV-scale seesaw NMSSM with one right-handed neutrino
+    and parameter points passing the authors' phenomenological scan.
+  extrapolation_risk: medium
+  id: tev_seesaw_nmssm_parameter_scan
+  notes: null
+  source_reference_ids:
+  - '1411_1892'
+  status: established

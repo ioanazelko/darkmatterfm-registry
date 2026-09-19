@@ -1,0 +1,349 @@
+_source:
+  shard: arXiv_src_1611_015_wds.tar
+  paper_id: '1611_06746'
+  source_member: 1611_06746.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: component_collapse_risk
+    severity: medium
+    warning: Do not collapse the two DM components into one unless one component fraction is negligible
+      for the chosen parameters.
+  - category: extrapolation
+    id: forbidden_channel_threshold_risk
+    severity: medium
+    warning: Forbidden-channel relic logic depends on final-state masses being above the lighter DM mass
+      but thermally accessible.
+associated_code:
+  caveats: []
+  code_summary: No associated public model code is specified in the extracted paper text.
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The residual Z4 symmetry after U(1)_D breaking is exact enough to stabilize the dark
+      states.
+    id: residual_z4_exact
+    impact_if_violated: Breaking the remnant symmetry would spoil stability.
+    scope: theory
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The relic-density computation assumes a large hierarchy so the two Boltzmann equations
+      are almost decoupled.
+    id: large_mass_hierarchy
+    impact_if_violated: Conversion or semi-annihilation could matter without this hierarchy.
+    scope: production
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The text states thermalization with SM particles is realized by scalar-potential couplings
+      rather than tiny kinetic mixing.
+    id: scalar_portal_thermalization
+    scope: cosmological_history
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  nonstandard_features:
+  - two-component freeze-out with effectively decoupled Boltzmann equations
+  - forbidden annihilation channels for the lighter component
+  standard_history_assumed: true
+identity:
+  aliases:
+  - hidden U(1)_D two-component dark matter
+  - residual Z4 forbidden-channel dark matter
+  family: multi_component_dark_matter
+  historical_origin_or_motivation: The paper motivates the construction as a UV hidden-gauge realization
+    of two-component dark matter with a light self-interacting component for small-scale CDM issues.
+  model_kind: complete_theory
+  name: Hidden U(1)_D residual Z4 two-component dark matter
+  short_description: A hidden U(1)_D gauge model broken to residual Z4, with two scalar dark matter components
+    whose relic densities arise from forbidden channels and thermal freeze-out.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - s_I s_I forbidden annihilation into Z prime or dark Higgs final states
+  - heavier scalar annihilation into Z prime gauge bosons
+  dark_sector_couplings:
+  - U(1)_D gauge coupling g_D
+  - scalar quartic and cubic couplings in the hidden potential
+  - Higgs portal couplings
+  interaction_operators:
+  - kinetic mixing between U(1)_Y and U(1)_D
+  - renormalizable hidden scalar potential terms
+  mediator_types:
+  - light vector mediator
+  - scalar mediator
+  portals:
+  - vector
+  - higgs
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    spin_dependence: not_applicable
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - light s_I self-interaction through hidden-sector mediators
+  standard_model_targets:
+  - Standard Model particles through kinetic mixing and scalar mixing
+  - electrons in possible inelastic scattering
+  tree_or_loop_level: tree
+model_id: 1611_06746_hidden_u1d_z4_two_component_dm_v1
+parameters:
+  core:
+  - description: Mass of the lighter CP-odd scalar component.
+    name: light dark matter mass
+    range: 1 MeV to O(100) MeV in the favored self-interacting regime
+    role: core
+    status: established
+    symbol: m_sI
+    unit: MeV
+  - description: Mass of the heavier hidden scalar component.
+    name: heavier dark matter mass
+    range: above about 1 GeV in model discussion; indirect-detection considerations push it above electroweak
+      scale
+    role: core
+    status: established
+    symbol: m_phi
+    unit: GeV
+  - description: Gauge coupling of U(1)_D.
+    name: dark gauge coupling
+    role: core
+    status: established
+    symbol: g_D
+  - description: Kinetic mixing between U(1)_Y and U(1)_D.
+    name: kinetic mixing
+    role: core
+    status: established
+    symbol: epsilon
+  - description: Mass generated when U(1)_D is spontaneously broken.
+    name: dark vector mass
+    role: core
+    status: established
+    symbol: m_Zprime
+  - description: Hierarchy m_sI approximately m_sR below m_Zprime and m_H, which are below m_phi in the
+      two-component regime.
+    name: mass hierarchy
+    range: m_sI (m_sR) < m_Zprime, m_H < m_phi
+    role: core
+    status: assumed
+particle_content:
+  additional_dark_sector_particles:
+  - U(1)_D-breaking complex scalar
+  - CP-even partner s_R
+  - dark Higgs H
+  - Z prime gauge boson
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: s_I plus heavier hidden scalar phi
+    number_of_components: multi_component
+    spin: '0'
+    statistics: boson
+  excited_or_degenerate_states:
+  - s_R nearly degenerate with s_I before the small splitting is included
+  mediators:
+  - Z prime gauge boson
+  - dark Higgs H
+  - SM-like Higgs through scalar mixing
+  standard_model_extension: substantial
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: Both relic components are treated with thermal Boltzmann equations.
+production:
+  abundance_set_by:
+  - forbidden annihilation couplings of s_I
+  - heavier scalar annihilation into Z prime bosons
+  - large mass hierarchy allowing decoupled Boltzmann equations
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - forbidden-channel thermal freeze-out for the lighter component
+  - normal thermal freeze-out for the heavier component
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper requires both components to contribute appreciably rather than reducing to an effectively
+    one-component model.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The paper solves effectively decoupled Boltzmann equations for a large mass hierarchy and
+        asks both DM components to contribute non-negligibly.
+      reference_id: '1611.06746'
+      section: Relic Density
+    interactions:
+    - confidence: high
+      note: Interactions with the SM proceed through U(1) kinetic mixing and Higgs/scalar-potential couplings;
+        dark-sector interactions involve Z prime and dark Higgs exchange.
+      reference_id: '1611.06746'
+      section: Model details
+    parameter_ranges:
+    - confidence: medium
+      note: The text highlights a typical light component mass of 1 MeV to O(100) MeV and a heavier component
+        above GeV/electroweak scales depending on constraints.
+      reference_id: '1611.06746'
+      section: Model details and conclusion
+    particle_content:
+    - confidence: high
+      note: The model adds a U(1)_D-breaking complex scalar and two inert complex scalars; the two DM
+        components are s_I and a heavier hidden scalar under the stated hierarchy.
+      reference_id: '1611.06746'
+      section: Model details
+    production_mechanism:
+    - confidence: high
+      note: The lighter component relic density is set by forbidden annihilation channels, while the heavier
+        component is produced by normal thermal freeze-out.
+      reference_id: '1611.06746'
+      section: Abstract and Relic Density
+    symmetries:
+    - confidence: high
+      note: The hidden U(1)_D is spontaneously broken to a remnant Z4 symmetry, which forbids the decay
+        of the hidden scalar and can stabilize two states.
+      reference_id: '1611.06746'
+      section: Model details
+    validity_domain:
+    - confidence: high
+      note: The two-component treatment assumes the decay of s_I is kinematically forbidden and m_sI much
+        lighter than the heavier component.
+      reference_id: '1611.06746'
+      section: Model details
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0017_dark_matter_worker
+    extraction_date: '2026-05-31'
+    extractor_name: codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Hidden U(1)_D breaks to residual Z4; lighter and heavier components have forbidden-channel
+        and normal freeze-out relic densities.
+      reference_id: '1611.06746'
+      section: Abstract
+    - page: null
+      quote_or_summary: Adds a U(1)_D-breaking scalar and two inert complex scalars with kinetic mixing
+        and a renormalizable scalar potential.
+      reference_id: '1611.06746'
+      section: Model details
+    - page: null
+      quote_or_summary: Large hierarchy makes the two Boltzmann equations nearly decoupled.
+      reference_id: '1611.06746'
+      section: Relic Density
+    unresolved_items:
+    - Exact title was not present in the parsed text header; source title uses abstract wording.
+  last_updated: '2026-05-31'
+  model_family: multi_component_dark_matter
+  model_id: 1611_06746_hidden_u1d_z4_two_component_dm_v1
+  model_name: Hidden U(1)_D residual Z4 two-component dark matter
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: medium
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1611.06746'
+      authors:
+      - Mayumi Aoki
+      - Takashi Toma
+      doi: null
+      notes: The parsed text does not expose a separate title line; this title is taken from the paper
+        abstract wording.
+      reference_id: '1611.06746'
+      role: original_model
+      title: Two-component dark matter based on a hidden U(1)_D symmetry
+      url: null
+      year: 2016
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - forbidden-channel thresholds
+  - g_D
+  - hidden scalar masses
+  - kinetic and scalar mixing
+  - component mass hierarchy
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    name: minimum fraction per component
+    role: derived
+    unit: null
+    value: larger than 10% for each component in the paper criterion
+  tuning_assessment: mild_tuning
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Large mass hierarchy is tuned within the model.
+  - Neglected semi-annihilation/conversion processes could matter outside the assumed parameter region.
+  notes: The model construction and relic logic are explicit; observational constraints are intentionally
+    omitted.
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    core_or_cusp_effect: The lighter component can have large self-interaction, proposed as relevant to
+      small-scale CDM problems.
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: The hidden U(1)_D is spontaneously broken by a scalar VEV to a residual Z4; the
+    remnant symmetry and mass hierarchy forbid decays of the dark matter components.
+  symmetries:
+  - breaking: spontaneously broken by hidden scalar vacuum expectation value
+    exact_or_approximate: broken
+    name: U(1)_D
+    type: gauge
+  - breaking: residual remnant after U(1)_D breaking
+    exact_or_approximate: exact
+    name: Z4
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: 'no'
+  lagrangian_available: 'yes'
+  notes: The paper specifies kinetic terms, U(1)_D charges, kinetic mixing, and a full renormalizable
+    scalar potential for the hidden scalars.
+  parent_frameworks:
+  - hidden U(1)_D gauge extension of the Standard Model
+  - multi-component scalar dark matter
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  condition: Two-component treatment assumes m_sI approximately m_sR below m_Zprime and m_H, with those
+    below the heavier scalar component.
+  extrapolation_risk: high
+  id: two_component_mass_hierarchy
+  status: assumed
+- applies_to: production
+  condition: Lighter-component relic density uses forbidden channels into heavier hidden final states.
+  extrapolation_risk: medium
+  id: forbidden_channel_thresholds
+  status: established
+- applies_to: production
+  condition: Semi-annihilation and conversion processes are neglected by assuming small relevant scalar
+    couplings.
+  extrapolation_risk: medium
+  id: small_semiannihilation_couplings
+  status: assumed

@@ -1,0 +1,348 @@
+_source:
+  shard: arXiv_src_1812_002_wds.tar
+  paper_id: '1812_00637'
+  source_member: 1812_00637.json
+schema_version: model_only_v0
+model_id: 1812_00637_large_n_type_i_sterile_neutrino_fimp_v1
+identity:
+  name: Large-N type-I sterile-neutrino FIMP dark matter
+  family: freeze_in_dark_matter
+  aliases:
+  - large N sterile-neutrino freeze-in model
+  - type-I seesaw FIMP benchmark
+  short_description: A benchmark with N copies of a scalar doublet and right-handed neutrino dark matter,
+    using large-N scaling to make the Yukawa coupling feeble enough for freeze-in while addressing neutrino
+    mass.
+  historical_origin_or_motivation: Proposed to relate the tiny FIMP coupling, neutrino mass scale, and
+    scalar hierarchy through large-N perturbative scaling.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - large N theories
+  - type-I seesaw
+  - sterile neutrino dark matter
+  - freeze-in dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper says the large-N limit is put in by hand and no UV completion is supplied; a benchmark
+    Lagrangian is given for the N-sector.
+particle_content:
+  dark_matter_candidate:
+    name: sterile right-handed neutrino N
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - N copies of a scalar SU(2)_L doublet eta
+  mediators:
+  - eta scalar doublet through neutrino-portal Yukawa interactions
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - charged component of eta in the benchmark doublet
+  long_lived_particles:
+  - charged eta component can be long-lived when the Yukawa coupling is tiny
+  unstable_parent_particles:
+  - eta scalar doublet states in freeze-in production
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The text does not give a protecting symmetry for the type-I benchmark; dark-matter
+    viability relies on extremely feeble coupling and model-dependent longevity.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - SM lepton doublets
+  - electroweak scalar-doublet sector
+  dark_sector_couplings:
+  - Yukawa coupling y_ij L_i eta N_j
+  - quartic self-couplings of the N scalar copies scaled with N
+  mediator_types:
+  - scalar doublet
+  interaction_operators:
+  - y_ij L_i eta N_j
+  - Majorana mass term M_N N_j N_j
+  - sum over N scalar mass and quartic terms
+  annihilation_channels: []
+  decay_channels:
+  - eta to N plus lepton in the freeze-in sector
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: number of scalar copies
+    symbol: N
+    description: Large multiplicity controlling perturbative scaling and relic abundance.
+    range: N = 6.6e12 m_N/m_eta for h^2 = 0.12 in the paper notation
+    role: core
+    status: inferred
+  - name: Yukawa coupling scaling
+    symbol: y
+    description: Scaling required in the type-I benchmark to obtain a large-N suppressed neutrino mass
+      while maintaining freeze-in.
+    value: 1/N^(3/2)
+    role: core
+    status: inferred
+  - name: sterile-neutrino dark matter mass
+    symbol: m_N
+    range:
+      min: '10'
+      max: null
+      unit: keV
+      notes: A lower value is quoted from the free-streaming estimate; larger values are scanned in the
+        paper figures.
+    role: core
+    status: inferred
+  - name: scalar-doublet mass
+    symbol: m_eta
+    description: Mass scale of the N copied scalar doublets that produce N through freeze-in.
+    role: core
+    status: inferred
+  - name: light neutrino mass target
+    symbol: m_nu
+    range:
+      min: '0.01'
+      max: '0.1'
+      unit: eV
+      notes: Target interval used for neutrino oscillation compatibility.
+    role: derived
+    status: inferred
+  nuisance: []
+  derived:
+  - name: freeze-in relic abundance relation
+    symbol: Omega h^2
+    description: Paper expression after solving the Boltzmann equation, in its notation.
+    value: 1.09e27 g_eta/(g_s sqrt(g_rho)) m_N N m_eta^2
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - freeze-in from decays or scatterings of particles in the Standard Model thermal bath
+  - out-of-equilibrium production through eta-lepton-N Yukawa interactions
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - Yukawa coupling y
+  - number of scalar copies N
+  - sterile-neutrino mass m_N
+  - scalar-doublet mass m_eta
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper fixes N as a function of m_N and m_eta by imposing h^2 about 0.12.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - N
+  - m_N
+  - m_eta
+  - g_eta
+  - g_s
+  - g_rho
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - very large number of scalar degrees of freedom
+  - freeze-in rather than thermal freeze-out
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: 'no'
+  f_of_p_or_q: not provided; free-streaming length is estimated parametrically
+  average_momentum_relative_to_thermal: null
+  free_streaming_length:
+    name: free-streaming length
+    symbol: lambda_FS
+    value: 0.047 Mpc (10 keV / m_N)
+    unit: Mpc
+    role: derived
+    status: inferred
+  velocity_dispersion_today: null
+  phase_space_bounds:
+  - The paper uses m_N greater than about 10 keV from its free-streaming estimate.
+  notes: The distribution is nonthermal because the sterile neutrino never equilibrates with the SM bath.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper only quotes a free-streaming estimate, not a thermal-WDM mapping.
+  nonlinear:
+    halo_mass_function_effect: not discussed in the paper
+    subhalo_mass_function_effect: not discussed in the paper
+    simulation_calibrated: unknown
+validity_domain:
+- id: vd_type_i_large_n_benchmark
+  applies_to: model
+  condition: Benchmark assumes N scalar copies and y scaling as 1/N^(3/2) rather than the minimal 1/sqrt(N)
+    scaling.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - The paper itself notes the required type-I scaling is less natural than the radiative variant.
+  source_reference_ids:
+  - paper
+  notes: null
+assumptions:
+  global:
+  - id: a_large_n_put_in_by_hand
+    description: The large-N sector is assumed as a benchmark source of tiny couplings rather than derived
+      from a UV completion.
+    scope: theory
+    status: assumed
+    impact_if_violated: The naturalness motivation and perturbative scaling would be unsupported.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+  - id: a_fimp_out_of_equilibrium
+    description: The sterile neutrino remains out of thermal equilibrium throughout production.
+    scope: production
+    status: assumed
+    impact_if_violated: The relic-density calculation would no longer be freeze-in.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+  - id: a_long_lived_n
+    description: The sterile neutrino is sufficiently long-lived to be dark matter despite the type-I
+      mixing structure.
+    scope: theory
+    status: unknown
+    impact_if_violated: Fast decays would invalidate the dark-matter interpretation.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated code was identified in the assigned paper text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  caveats: []
+provenance:
+  model_id: 1812_00637_large_n_type_i_sterile_neutrino_fimp_v1
+  model_name: Large-N type-I sterile-neutrino FIMP dark matter
+  model_family: freeze_in_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Consistent origin of neutrino mass and freeze-in dark matter in large N theories
+      authors:
+      - Zhi-Long Han
+      - Bin Zhu
+      - Ligong Bian
+      - Ran Ding
+      year: 2018
+      arxiv_id: '1812.00637'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0009
+    extractor_name: gpt-5.5-codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: model and neutrino/FIMP discussion
+      page: null
+      quote_or_summary: The benchmark N-sector Lagrangian combines N scalar doublets, right-handed neutrinos,
+        and freeze-in relic-density logic.
+    unresolved_items:
+    - No explicit stabilizing symmetry is specified for the type-I sterile-neutrino benchmark.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The paper gives an N-sector Lagrangian with L_i, N_j, and N scalar doublets eta.
+      confidence: high
+    interactions:
+    - reference_id: paper
+      note: The displayed interaction is a neutrino-portal Yukawa y_ij L_i eta N_j plus a Majorana mass
+        for N.
+      confidence: high
+    production_mechanism:
+    - reference_id: paper
+      note: The FIMP abundance is computed from a Boltzmann equation and fixed by h^2 about 0.12.
+      confidence: high
+    parameter_ranges:
+    - reference_id: paper
+      note: The type-I benchmark needs y scaling as 1/N^(3/2), N = 6.6e12 m_N/m_eta, and m_N above about
+        10 keV.
+      confidence: medium
+    phase_space:
+    - reference_id: paper
+      note: The paper estimates lambda_FS = 0.047 Mpc (10 keV/m_N).
+      confidence: medium
+    validity_domain:
+    - reference_id: paper
+      note: The text says no UV completion is provided and the benchmark uses an imposed large-N limit.
+      confidence: high
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: low
+  theory_robustness: low
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - stability of N in the type-I benchmark
+  - imposed large-N scaling
+  validation_status: expert_judgment_only
+  notes: Machine extraction from one paper; no external validation performed.
+agent_failure_modes:
+  warnings:
+  - id: w_type_i_stability_unclear
+    severity: high
+    category: assumption_mismatch
+    warning: Do not treat the type-I benchmark as automatically stable dark matter; the paper discusses
+      N decays/mixing and does not give an explicit stabilizing symmetry.
+    mitigation: Require human review before using this row as a viable stable-DM model.
+    source_reference_ids:
+    - paper
+  - id: w_constraints_not_extracted
+    severity: medium
+    category: other
+    warning: The paper discusses phenomenological exclusions, but this run intentionally omits constraints.
+    mitigation: Consult the source paper separately for viability constraints.
+    source_reference_ids:
+    - paper

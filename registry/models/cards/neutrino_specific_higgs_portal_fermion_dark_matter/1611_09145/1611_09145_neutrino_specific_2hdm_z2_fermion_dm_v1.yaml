@@ -1,0 +1,459 @@
+_source:
+  shard: arXiv_src_1611_021_wds.tar
+  paper_id: '1611_09145'
+  source_member: 1611_09145.json
+schema_version: model_only_v0
+model_id: 1611_09145_neutrino_specific_2hdm_z2_fermion_dm_v1
+identity:
+  name: Neutrino-specific two-Higgs-doublet model with Z2-odd Majorana fermion dark matter
+  family: neutrino_specific_higgs_portal_fermion_dark_matter
+  aliases:
+  - neutrino-specific THDM dark matter
+  - U(1)_X remnant Z2 fermion dark matter
+  short_description: A neutrino-specific two-Higgs-doublet extension with a singlet scalar S that breaks
+    global U(1)_X to a remnant Z2, stabilizing the lighter Majorana fermion psi_minus as dark matter.
+  historical_origin_or_motivation: Extends a Dirac-neutrino-specific two-Higgs-doublet model so the same
+    U(1)_X symmetry that forbids Majorana masses also leaves a dark-matter-stabilizing Z2 remnant.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - neutrino-specific two-Higgs-doublet model
+  - global U(1)_X extension with singlet-scalar breaking
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the U(1)_X-invariant scalar potential, Yukawa interactions, singlet-fermion mass
+    terms, scalar spectrum, and dark-sector interactions.
+particle_content:
+  dark_matter_candidate:
+    name: psi_minus Majorana fermion
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavier Majorana fermion psi_plus
+  - singlet scalar S
+  - physical Goldstone boson a
+  - singlet-like CP-even scalar H_3
+  mediators:
+  - Goldstone boson a
+  - CP-even scalars H_i
+  - neutrino-specific Higgs-doublet states
+  dark_radiation_species:
+  - massless Goldstone boson a
+  excited_or_degenerate_states:
+  - psi_plus
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The singlet scalar S spontaneously breaks global U(1)_X to a remnant Z2 under
+    which only the new fermion is odd, stabilizing psi_minus.
+  symmetries:
+  - name: global U(1)_X
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken by the VEV of S
+    breaking_scale:
+      name: singlet VEV
+      symbol: v_S
+      description: U(1)_X breaking scale used in the dark-sector analysis.
+      value: 1000
+      unit: GeV
+      role: core
+      status: assumed
+  - name: remnant Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken remnant in the model assumptions
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - Higgs doublets
+  - Standard Model fermions
+  - W bosons
+  - Z boson
+  dark_sector_couplings:
+  - Yukawa coupling f between psi and S
+  - scalar portal couplings lambda_1S and lambda_2S
+  - singlet self-coupling lambda_S
+  mediator_types:
+  - Goldstone boson
+  - CP-even scalar mediator
+  - neutrino-specific Higgs states
+  interaction_operators:
+  - S psi psi Majorana mass term
+  - Phi_1 Phi_2 S scalar mixing term
+  - lambda_iS Phi_i^dagger Phi_i S^dagger S
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - psi_minus psi_minus to a a
+  - psi_minus psi_minus to H_3 a a
+  - psi_minus psi_minus to H_3 H_3
+  - s-channel scalar annihilation to Standard Model fermions, W+W-, ZZ, or extra Higgs states
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_minus
+    description: Mass of the stable psi_minus Majorana fermion.
+    range:
+      min: 50
+      max: 1100
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Common scan range across relic-density scenarios.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet-like scalar mass
+    symbol: m_H3
+    description: Mass of the H_3 scalar participating in annihilation and resonance regimes.
+    range:
+      min: 30
+      max: 2200
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Common scan range.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet VEV
+    symbol: v_S
+    description: VEV of S that breaks U(1)_X and sets dark-sector couplings.
+    value: 1000
+    unit: GeV
+    role: core
+    status: assumed
+  - name: fermion-singlet Yukawa coupling
+    symbol: f
+    description: Coupling controlling psi_plus/psi_minus masses and dark annihilation.
+    range: 0.01-4 depending on scenario
+    role: core
+    status: inferred
+  - name: neutrinophilic VEV
+    symbol: v_1
+    description: Small VEV generating Dirac neutrino masses.
+    value: order eV
+    unit: eV
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: Majorana mass splitting
+    symbol: m_plus - m_minus
+    description: Mass splitting induced by f v_S between psi_plus and psi_minus.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through Goldstone/scalar channels
+  - resonant s-channel scalar annihilation in selected scenarios
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - m_minus
+  - m_H3
+  - f
+  - lambda_1S
+  - lambda_2S
+  - lambda_SS
+  - resonance condition m_H3 about 2 m_minus
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper numerically solves the Boltzmann equation with micrOMEGAs and searches for 0.11 < Omega
+    h^2 < 0.13.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: thermal relic density target
+    symbol: Omega h^2
+    description: Relic-density interval used in the paper.
+    range:
+      min: 0.11
+      max: 0.13
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: null
+    role: core
+    status: assumed
+  calculation_type: thermal
+  key_dependencies:
+  - annihilation into a a and H_3 final states
+  - scalar resonance m_H3 about 2 m_minus
+  - dark Yukawa and scalar portal couplings
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - massless Goldstone boson from U(1)_X breaking can contribute to N_eff in some parameter choices
+  dark_sector_temperature: null
+  delta_neff:
+    name: Goldstone contribution to effective neutrino number
+    symbol: Delta N_eff
+    description: Example contribution quoted for selected scalar parameters.
+    value: about 0.39 for a benchmark choice
+    role: core
+    status: approximate
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - spontaneous U(1)_X breaking by S
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: GeV-scale thermal relic treated as cold dark matter for structure formation.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed; expected CDM-like for a GeV-scale thermal relic
+    subhalo_mass_function_effect: not discussed; expected CDM-like for a GeV-scale thermal relic
+    simulation_calibrated: 'no'
+validity_domain:
+- id: exact_remnant_z2_needed
+  applies_to: model
+  condition: psi_minus stability requires the remnant Z2 to survive possible global-symmetry-breaking
+    effects.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: relic_scenarios_scan_ranges
+  applies_to: parameter
+  condition: The relic-density statements are tied to the four coupling scenarios and scan ranges listed
+    in the paper.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: global_u1_planck_suppression
+  applies_to: theory
+  condition: The paper notes Planck-scale breaking of a global U(1)_X could destabilize the dark matter
+    unless suppressed or embedded in a gauge symmetry.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+assumptions:
+  global:
+  - id: remnant_z2_exact
+    description: The remnant Z2 from U(1)_X breaking is exact enough to stabilize psi_minus.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: standard_freezeout_history
+    description: The relic-density calculation assumes a standard thermal freeze-out history solved with
+      the implemented annihilation channels.
+    scope: production
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: scenario_coupling_hierarchies
+    description: The four relic-density scenarios set selected scalar couplings small or dominant to isolate
+      annihilation regimes.
+    scope: production
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that micrOMEGAs 4.3.1 was used to solve the Boltzmann equation for relic
+    density; no public model files are identified in the text.
+  packages_or_modules:
+  - name: micrOMEGAs 4.3.1
+    resource_type: package
+    availability: unknown
+    relationship_to_model: wrapper_around_public_tool
+    purpose:
+    - compute_relic_density
+    - solve_boltzmann_equations
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: 4.3.1
+    commit: null
+    last_checked: '2026-05-31'
+    maintained: unknown
+    dependencies: []
+    supported_parameters:
+    - m_minus
+    - m_H3
+    - f
+    - lambda_1S
+    - lambda_2S
+    - lambda_SS
+    supported_model_families:
+    - neutrino_specific_higgs_portal_fermion_dark_matter
+    inputs:
+    - model parameters
+    - annihilation interactions
+    outputs:
+    - thermal relic density
+    validity_domain: []
+    citation_reference_ids:
+    - arxiv:1611.09145
+    notes: Use is reported for the relic-density scan.
+provenance:
+  model_id: 1611_09145_neutrino_specific_2hdm_z2_fermion_dm_v1
+  model_name: Neutrino-specific two-Higgs-doublet model with Z2-odd Majorana fermion dark matter
+  model_family: neutrino_specific_higgs_portal_fermion_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:1611.09145
+      title: Dark matter physics in neutrino specific two Higgs doublet model
+      authors:
+      - Seungwon Baek
+      - Takaaki Nomura
+      year: 2016
+      arxiv_id: '1611.09145'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0019_worker
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: arxiv:1611.09145
+      section: Abstract
+      page: null
+      quote_or_summary: The paper says U(1)_X breaks to Z2 and stabilizes the lightest Z2-odd fermion.
+    - reference_id: arxiv:1611.09145
+      section: Model setup
+      page: null
+      quote_or_summary: The scalar potential, Yukawa terms, singlet scalar S, and Z2-odd fermion content
+        are specified.
+    - reference_id: arxiv:1611.09145
+      section: Dark sector / relic density
+      page: null
+      quote_or_summary: psi_minus is identified as the stable Majorana dark matter candidate and relic
+        density is computed through Goldstone and scalar channels.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: arxiv:1611.09145
+      note: The stable candidate is psi_minus, the lighter Majorana state formed from the new Z2-odd fermion.
+      confidence: medium
+      section: Dark sector
+      page: null
+    symmetries:
+    - reference_id: arxiv:1611.09145
+      note: A new singlet scalar S spontaneously breaks global U(1)_X to a remnant Z2 that stabilizes
+        the new fermion.
+      confidence: medium
+      section: Model setup
+      page: null
+    interactions:
+    - reference_id: arxiv:1611.09145
+      note: The dark-sector Lagrangian contains f psi psi S interactions, Goldstone coupling, and scalar
+        portal terms that drive annihilation.
+      confidence: medium
+      section: Dark sector
+      page: null
+    production_mechanism:
+    - reference_id: arxiv:1611.09145
+      note: Relic density is estimated by solving the Boltzmann equation and scanning annihilation scenarios
+        including aa, H3, and scalar-resonance channels.
+      confidence: medium
+      section: Relic density
+      page: null
+    parameter_ranges:
+    - reference_id: arxiv:1611.09145
+      note: The scan uses m_minus from 50 to 1100 GeV, m_H3 from 30 to 2200 GeV, v_S = 1000 GeV, and scenario-dependent
+        f and scalar couplings.
+      confidence: medium
+      section: Relic density
+      page: null
+    validity_domain:
+    - reference_id: arxiv:1611.09145
+      note: The text warns that Planck-scale breaking of global U(1)_X could destabilize the dark matter
+        unless suppressed or avoided.
+      confidence: medium
+      section: Model setup
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+  caveats:
+  - The model uses a global U(1)_X; the paper itself flags Planck-scale symmetry breaking as a possible
+    dark-matter-stability issue.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - global-symmetry stability against Planck-suppressed operators
+  - scenario-dependent scalar coupling choices
+  validation_status: partially_validated
+  notes: The model and relic computation are explicit, but several phenomenological scenarios and stability
+    assumptions are required.
+agent_failure_modes:
+  warnings:
+  - id: global_symmetry_stability
+    severity: high
+    category: assumption_mismatch
+    warning: Do not assume psi_minus is stable if the remnant Z2 is spoiled by global U(1)_X breaking
+      effects.
+    mitigation: Carry the paper's exact-remnant-Z2 assumption in downstream use.
+    source_reference_ids: []
+  - id: scenario_dependence
+    severity: medium
+    category: extrapolation
+    warning: Relic-density viability depends on the four coupling scenarios and resonance regimes scanned
+      in the paper.
+    mitigation: Avoid generalizing the allowed ranges beyond the scan without reanalysis.
+    source_reference_ids: []

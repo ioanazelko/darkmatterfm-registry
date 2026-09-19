@@ -1,0 +1,831 @@
+_source:
+  shard: arXiv_src_2205_066_wds.tar
+  paper_id: '2205_10149'
+  source_member: 2205_10149.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2205_10149_resonance_enhanced_light_scalar_dm_v1
+identity:
+  name: Resonance-enhanced light singlet scalar dark matter
+  family: self_interacting_dark_matter
+  aliases:
+  - light scalar dark matter with light scalar mediator
+  - Breit-Wigner scalar SIDM
+  short_description: A minimal renormalizable singlet-scalar dark matter model with a real singlet scalar
+    mediator, using near-resonant annihilation and self-scattering to obtain thermal relic abundance and
+    small-scale structure effects.
+  historical_origin_or_motivation: The paper motivates the model as a light thermal dark matter scenario
+    that may evade CMB limits while addressing core-cusp and diversity issues through velocity-dependent
+    self-scattering.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - singlet scalar dark matter
+  - Higgs portal
+  - self-interacting dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes a minimal renormalizable Lagrangian with the SM, a real singlet scalar dark
+    matter field, and a real singlet scalar mediator that mixes with the Higgs.
+particle_content:
+  dark_matter_candidate:
+    name: real singlet scalar dark matter field
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - real singlet scalar mediator
+  mediators:
+  - light scalar mediator mixed with the SM Higgs
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - scalar mediator can be long-lived in parts of parameter space
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: An unbroken discrete Z2 symmetry makes the scalar dark matter stable; the dark
+    matter is odd and other fields are even.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - SM fermions
+  - W bosons
+  - Z bosons
+  - Higgs sector
+  dark_sector_couplings:
+  - scalar dark matter couplings to h and the light scalar mediator
+  - quartic scalar interactions among dark matter, Higgs, and mediator fields
+  mediator_types:
+  - light real scalar mediator
+  interaction_operators:
+  - renormalizable scalar potential terms
+  - Higgs-mediator mixing terms
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: strong
+    spin_dependence: not_applicable
+  annihilation_channels:
+  - dark matter annihilation to Standard Model final states through the scalar mediator near resonance
+  decay_channels:
+  - mediator decays to SM particles through Higgs mixing
+  - mediator decay to dark matter pairs when kinematically allowed
+  self_scattering_channels:
+  - scalar dark matter self-scattering through the same resonant scalar interaction
+  cp_structure: scalar interactions; detailed CP structure not emphasized in the assigned text
+  flavor_structure: mediator couples to SM states through Higgs mixing
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the real singlet scalar dark matter candidate.
+    range: surviving region highlighted as about 0.3-2 GeV
+    unit: GeV
+    role: core
+    status: inferred
+    notes: Paper focuses on light O(1 GeV) thermal dark matter.
+  - name: mediator mass
+    symbol: m_phi
+    description: Mass of the light scalar mediator.
+    range: near the resonance condition m_chi approximately m_phi/2
+    unit: GeV
+    role: core
+    status: inferred
+    notes: The analysis uses v_R as an input to encode the near-resonant mass relation.
+  - name: resonance velocity
+    symbol: v_R
+    description: Velocity parameter setting the Breit-Wigner resonance position.
+    value: O(100) km/s
+    unit: km/s
+    role: core
+    status: inferred
+    notes: Favored by self-scattering fits in the paper.
+  - name: Higgs-mediator mixing angle
+    symbol: theta
+    description: Mixing angle between the SM Higgs and the singlet scalar mediator.
+    range: model-dependent; relic fit gives roughly 10^-3 to 10^-5 in examples discussed
+    role: core
+    status: inferred
+    notes: Text states the relic abundance condition fixes theta to appropriate values depending on mediator
+      mass.
+  - name: dark matter mediator coupling parameter
+    symbol: alpha
+    description: Parameter alpha = (C_phi/m_phi)^2/(64 pi) used instead of the original coupling.
+    role: core
+    status: inferred
+    notes: One of the physical inputs used for the likelihood analysis.
+  - name: direct-detection/Higgs couplings
+    symbol: C_h, C_hphi
+    description: Scalar couplings controlling direct detection and Higgs decay to mediator pairs.
+    role: core
+    status: inferred
+    notes: Paper uses physical couplings rather than original Lagrangian parameters.
+production:
+  mechanisms:
+  - thermal freeze-out
+  - Breit-Wigner resonant annihilation into Standard Model final states
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - resonant annihilation cross section
+  - early kinetic decoupling treatment
+  - Higgs-mediator mixing angle
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper computes thermal relic abundance including early kinetic decoupling, using the DRAKE
+    code and a Maxwell-Boltzmann dark matter distribution during freeze-out.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed dark matter abundance
+    symbol: Omega_DM h^2
+    value: '0.12'
+    role: cosmological
+    status: assumed
+  calculation_type: thermal
+  key_dependencies:
+  - annihilation resonance position
+  - mediator width
+  - mixing angle
+  - early kinetic decoupling
+  - QCD-era relativistic degrees of freedom
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - early kinetic decoupling is included in the relic-density computation
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling:
+    name: early kinetic decoupling
+    description: Included in thermal relic abundance calculation
+    value: included
+    status: inferred
+  chemical_decoupling:
+    name: thermal freeze-out
+    description: Chemical decoupling sets the relic abundance
+    value: freeze-out
+    status: inferred
+  phase_transitions:
+  - QCD phase transition uncertainty affects relic abundance at relevant freeze-out temperatures
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: Paper uses a Maxwell velocity distribution for resonance-averaged annihilation and Maxwell-Boltzmann
+    during freeze-out.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: No full phase-space distribution is tabulated; velocity averaging is analytic/numerical for the
+    resonance calculation.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: invalid
+      warning: The model is self-interacting scalar DM, not thermal warm DM.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: Not specified as a mass-function change; nonlinear impact is through self-scattering
+      and halo-core thermalization.
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: Designed to address core-cusp and diversity issues through velocity-dependent
+      self-scattering.
+    core_or_cusp_effect: Can produce shallower cores via SIDM thermalization in inner halo regions.
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: Potentially relevant through galactic-scale self-scattering; not computed
+      as a population prediction.
+    simulation_calibrated: partial
+validity_domain:
+- id: near_resonance
+  applies_to: model
+  condition: Analysis focuses on m_chi near m_phi/2, encoded by v_R, so off-resonance scalar singlet regions
+    are not the extracted model.
+  status: inferred
+  extrapolation_risk: high
+- id: light_mass_window
+  applies_to: parameter
+  condition: Paper highlights an uncharted scalar dark matter mass window around 0.3-2 GeV after its combined
+    analysis.
+  status: inferred
+  extrapolation_risk: medium
+- id: minimal_scalar_setup
+  applies_to: model
+  condition: Use only the paper's minimal singlet scalar dark matter plus singlet scalar mediator setup
+    with Higgs mixing.
+  status: established
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: z2_stability
+    description: The dark matter scalar is stabilized by an exact unbroken Z2 symmetry.
+    scope: theory
+    status: established
+    can_be_relaxed: unknown
+    impact_if_violated: The candidate would decay if the stabilizing symmetry were broken.
+  - id: thermal_history
+    description: A standard thermal history with freeze-out is assumed for the relic-density calculation.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Relic-density conclusions would change under nonstandard cosmology.
+  - id: self_scattering_target
+    description: The model is selected to match velocity-dependent self-scattering favored by small-scale
+      structure issues.
+    scope: structure_formation
+    status: inferred
+    can_be_relaxed: 'yes'
+    impact_if_violated: The model would lose its small-scale-structure motivation if the target is not
+      applicable.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that DRAKE is used for relic abundance with early kinetic decoupling
+    and HDECAY for mediator widths; no dedicated public model package is identified in the assigned text.
+  primary_code_role: relic_density_calculation
+  packages_or_modules:
+  - name: DRAKE
+    resource_type: package
+    availability: unknown
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - compute_relic_density
+    url: null
+    repository_url: null
+  - name: HDECAY
+    resource_type: package
+    availability: unknown
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - compute_decay_rates
+    url: null
+    repository_url: null
+  reproducibility:
+    reproducibility_level: partial
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: Assigned text names codes but does not provide a complete execution environment.
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: No local validation of the named external codes was performed.
+provenance:
+  model_id: 2205_10149_resonance_enhanced_light_scalar_dm_v1
+  model_name: Resonance-enhanced light singlet scalar dark matter
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper:2205.10149
+      title: A Global Analysis of Resonance-enhanced Light Scalar Dark Matter
+      year: 2022
+      arxiv_id: '2205.10149'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned paper for batch-0016.
+    - arxiv_id: '2205.10149'
+      authors: []
+      doi: null
+      notes: Primary paper full text resolved locally and used for structured claims.
+      reference_id: src_2205_10149_primary
+      role: original_model
+      title: A global analysis of resonance-enhanced light scalar dark matter
+      url: https://arxiv.org/abs/2205.10149
+      year: 2023
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for sanitized metadata, references, and citations.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper:2205.10149
+      section: abstract/introduction
+      page: null
+      quote_or_summary: Paper studies a minimal light scalar DM model with a light scalar mediator, thermal
+        relic abundance, and self-scattering.
+    - reference_id: paper:2205.10149
+      section: model
+      page: null
+      quote_or_summary: A renormalizable Lagrangian is written for the SM plus singlet scalar DM and singlet
+        scalar mediator with Z2 stability.
+    unresolved_items:
+    - Exact symbolic field names are degraded in extracted text; descriptive names are used.
+    - No observables or constraints fields were extracted for this run profile.
+    - DRAKE/global-likelihood machinery was not imported.
+    - The future MeV gamma-ray statement is primary-paper based and should be updated with current instrument
+      forecasts.
+  evidence:
+    particle_content:
+    - reference_id: paper:2205.10149
+      note: Text identifies a real singlet scalar dark matter field and a real singlet scalar mediator
+        in the minimal Lagrangian.
+      confidence: high
+      section: model
+    symmetries:
+    - reference_id: paper:2205.10149
+      note: Text states an unbroken Z2 symmetry makes the dark matter stable, with the DM field odd and
+        other fields even.
+      confidence: high
+      section: model
+    interactions:
+    - reference_id: paper:2205.10149
+      note: Text gives scalar interactions after electroweak symmetry breaking, Higgs-mediator mixing,
+        mediator decays, annihilation, and self-scattering formulae.
+      confidence: high
+      section: model/phenomenology
+    production_mechanism:
+    - reference_id: paper:2205.10149
+      note: Text analyzes thermal relic abundance from Breit-Wigner resonant annihilation and includes
+        early kinetic decoupling.
+      confidence: high
+      section: relic abundance
+    cosmological_history:
+    - reference_id: paper:2205.10149
+      note: Text assumes thermal freeze-out and discusses early kinetic decoupling plus BBN/CMB relevance
+        for light thermal DM.
+      confidence: medium
+      section: introduction/relic abundance
+    parameter_ranges:
+    - reference_id: paper:2205.10149
+      note: Text highlights a surviving scalar-DM mass range of about 0.3-2 GeV and uses v_R near 100
+        km/s for the resonance.
+      confidence: medium
+      section: results
+    validity_domain:
+    - reference_id: paper:2205.10149
+      note: The analysis is explicitly focused on the near-resonant region m_chi approximately m_phi/2
+        rather than generic scalar singlet DM.
+      confidence: high
+      section: model parameters
+    constraints:
+    - confidence: high
+      note: 'Supports constraint ids: con_sidm_relic_selfscatter, con_planck_cmb_annihilation, con_detection_portal_searches'
+      page: null
+      reference_id: src_2205_10149_primary
+      section: phenomenology/constraints/results
+    observables:
+    - confidence: high
+      note: 'Supports observable ids: obs_resonant_self_scattering, obs_cmb_energy_injection, obs_mev_gamma_indirect,
+        obs_scalar_portal_direct_collider'
+      page: null
+      reference_id: src_2205_10149_primary
+      section: abstract/model/results
+    routes:
+    - confidence: medium
+      note: 'Motivates route ids: route_global_resonant_scalar, route_mev_gamma_forecast'
+      page: null
+      reference_id: src_2205_10149_primary
+      section: model/phenomenology
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - QCD-era degrees of freedom in relic-density calculation
+  - near-resonance parameter sensitivity
+  - degraded symbols in source text
+  validation_status: expert_judgment_only
+  notes: The paper gives a detailed model and calculation, but this extraction is machine-generated and
+    does not reproduce the numerical likelihood analysis.
+agent_failure_modes:
+  warnings:
+  - id: do_not_generalize_scalar_singlet
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat this row as generic scalar singlet dark matter; it is the near-resonant light-scalar-mediator
+      regime analyzed in the paper.
+  - id: no_routes_in_profile
+    severity: low
+    category: other
+    warning: Observables, constraints, and theory-to-observable routing were intentionally omitted by
+      the run profile.
+observables:
+- caveats: []
+  channel: small_scale_structure
+  effect_direction: morphology_change
+  environments:
+  - cosmological and astrophysical systems
+  id: obs_resonant_self_scattering
+  key_quantities:
+  - name: dark matter mass
+    range: 0.3-2
+    role: core
+    source_reference_ids:
+    - src_2205_10149_primary
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+  - name: mediator mass
+    range: less than about 10 GeV in the narrow-resonance discussion
+    role: core
+    source_reference_ids:
+    - src_2205_10149_primary
+    status: inferred
+    symbol: m_phi
+    unit: GeV
+  - name: self-scattering cross section per mass
+    range: around 0.1 in a highlighted resonance condition
+    role: derived
+    source_reference_ids:
+    - src_2205_10149_primary
+    status: inferred
+    symbol: sigma_self/m
+    unit: cm^2/g
+  linked_constraints:
+  - con_sidm_relic_selfscatter
+  linked_routes:
+  - route_global_resonant_scalar
+  name: Breit-Wigner resonant self-scattering for small-scale structure
+  notes: null
+  observability: medium
+  predicted_effect: A light scalar dark matter model uses Breit-Wigner resonances in annihilation and
+    self-scattering; the paper finds an unexcluded 0.3-2 GeV mass region compatible with relic, self-scattering,
+    and CMB requirements.
+  redshift_range: model-dependent
+  relevance: critical
+  scale_range: model-dependent
+  source_reference_ids:
+  - src_2205_10149_primary
+  subchannel: SIDM core-cusp and diversity phenomenology
+- caveats: []
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - cosmological and astrophysical systems
+  id: obs_cmb_energy_injection
+  key_quantities:
+  - name: annihilation efficiency weighted rate
+    range: less than 4.1e-28 at 95 percent CL in the paper likelihood
+    role: derived
+    source_reference_ids:
+    - src_2205_10149_primary
+    status: established
+    symbol: f_eff sigma_v / m_chi
+    unit: cm^3/s/GeV
+  - name: annihilation cross section
+    role: derived
+    source_reference_ids:
+    - src_2205_10149_primary
+    status: inferred
+    symbol: sigma_v
+    unit: cm^3/s
+  linked_constraints:
+  - con_planck_cmb_annihilation
+  linked_routes:
+  - route_global_resonant_scalar
+  name: CMB energy injection from resonant annihilation
+  notes: null
+  observability: high
+  predicted_effect: The same resonance-enhanced annihilation that sets relic abundance and indirect signals
+    is constrained at recombination by Planck energy-injection limits.
+  redshift_range: model-dependent
+  relevance: critical
+  scale_range: model-dependent
+  source_reference_ids:
+  - src_2205_10149_primary
+  subchannel: Planck annihilation bound
+- caveats: []
+  channel: indirect_detection
+  effect_direction: enhancement
+  environments:
+  - COSI
+  - GECCO
+  - galactic and extragalactic gamma-ray targets
+  id: obs_mev_gamma_indirect
+  key_quantities:
+  - name: dark matter mass
+    range: 0.3-2
+    role: core
+    source_reference_ids:
+    - src_2205_10149_primary
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+  - name: late-time annihilation signal
+    role: derived
+    source_reference_ids:
+    - src_2205_10149_primary
+    status: inferred
+    symbol: sigma_v_today
+    unit: cm^3/s
+  linked_constraints:
+  - con_detection_portal_searches
+  linked_routes:
+  - route_mev_gamma_forecast
+  name: MeV gamma-ray tests of surviving light scalar dark matter
+  notes: null
+  observability: high
+  predicted_effect: The primary paper identifies the 0.3-2 GeV surviving region as efficiently testable
+    by near-future MeV gamma-ray observations such as COSI and GECCO.
+  redshift_range: model-dependent
+  relevance: high
+  scale_range: model-dependent
+  source_reference_ids:
+  - src_2205_10149_primary
+  subchannel: MeV gamma-ray continuum
+- caveats: []
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - direct-detection experiments
+  - colliders
+  - meson decay searches
+  id: obs_scalar_portal_direct_collider
+  key_quantities:
+  - name: mixing angle squared
+    role: core
+    source_reference_ids:
+    - src_2205_10149_primary
+    status: inferred
+    symbol: theta^2
+  - name: scalar-DM-Higgs coupling
+    role: core
+    source_reference_ids:
+    - src_2205_10149_primary
+    status: inferred
+    symbol: C_chi h
+    unit: GeV
+  - name: spin-independent cross section
+    role: derived
+    source_reference_ids:
+    - src_2205_10149_primary
+    status: inferred
+    symbol: sigma_SI
+    unit: cm^2
+  linked_constraints:
+  - con_detection_portal_searches
+  linked_routes:
+  - route_global_resonant_scalar
+  name: Scalar-portal direct and collider searches
+  notes: null
+  observability: medium
+  predicted_effect: Direct detection, meson/collider production, and Higgs-portal mixing constrain the
+    scalar mediator portal, although the main surviving 0.3-2 GeV region remains below present sensitivity
+    in the paper analysis.
+  redshift_range: model-dependent
+  relevance: medium
+  scale_range: model-dependent
+  source_reference_ids:
+  - src_2205_10149_primary
+  subchannel: Higgs/mediator exchange and scalar mixing
+constraints:
+- allowed_regions:
+  - The paper finds a 0.3-2 GeV light scalar DM region surviving its combined analysis.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Early kinetic decoupling must be included when reproducing the relic abundance.
+  caveats: []
+  constrained_parameters:
+  - m_chi
+  - m_phi
+  - sigma_self/m
+  - mixing angle
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Parameter points failing either the thermal relic abundance or the self-scattering condition for core-cusp/diversity
+    targets.
+  id: con_sidm_relic_selfscatter
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Joint relic-density and self-scattering condition
+  notes: null
+  observable_channel: small-scale structure and abundance
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - src_2205_10149_primary
+- allowed_regions:
+  - Resonant regions that satisfy the paper CMB likelihood contribution.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - CMB and indirect-detection constraints are tied through the resonance-enhanced annihilation rate.
+  caveats: []
+  constrained_parameters:
+  - f_eff
+  - sigma_v
+  - m_chi
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Regions where f_eff(m_chi) sigma_v / m_chi exceeds 4.1e-28 cm^3/s/GeV at 95 percent CL under the paper
+    treatment.
+  id: con_planck_cmb_annihilation
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Planck CMB annihilation limit
+  notes: null
+  observable_channel: recombination energy injection
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - src_2205_10149_primary
+- allowed_regions:
+  - The primary paper states the 0.3-2 GeV region remains uncharted but testable by near-future MeV gamma-ray
+    observations.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Forecasts require instrument-specific gamma-ray likelihoods.
+  caveats: []
+  constrained_parameters:
+  - theta
+  - C_chi h
+  - sigma_SI
+  - sigma_v_today
+  constraint_type: other
+  data_release: null
+  excluded_regions:
+  - Portal mixing or annihilation rates excluded by present collider, direct-detection, or indirect-detection
+    limits in the paper analysis.
+  id: con_detection_portal_searches
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Collider, direct, and indirect searches for the scalar portal
+  notes: null
+  observable_channel: collider, direct detection, and MeV gamma rays
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2205_10149_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Primary paper cites DRAKE; code was not run in this bounded pass.
+    caveats: []
+    constraint_ids:
+    - con_sidm_relic_selfscatter
+    - con_planck_cmb_annihilation
+    - con_detection_portal_searches
+    derived_quantities:
+    - Omega_chi h2
+    - sigma_self/m
+    - CMB likelihood contribution
+    - sigma_SI
+    description: Reproduce the global resonance-enhanced light scalar dark matter analysis.
+    forward_model_chain:
+    - inputs:
+      - m_chi
+      - m_phi
+      - couplings
+      notes: Use DRAKE-like treatment for early kinetic decoupling.
+      outputs:
+      - Omega_chi h2
+      step_id: relic
+      step_type: boltzmann_solver
+      tool_or_code: DRAKE or equivalent
+      validity: primary-paper assumptions
+    - inputs:
+      - m_chi
+      - m_phi
+      - couplings
+      notes: Compute self-scattering resonance condition.
+      outputs:
+      - sigma_self/m
+      - resonance velocity
+      step_id: selfscatter
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: primary-paper assumptions
+    - inputs:
+      - Omega_chi h2
+      - sigma_self/m
+      - CMB term
+      - search limits
+      notes: No external likelihood grids were imported here.
+      outputs:
+      - allowed_or_excluded_regions
+      step_id: combine
+      step_type: likelihood
+      tool_or_code: null
+      validity: primary-paper assumptions
+    id: route_global_resonant_scalar
+    input_parameters:
+    - m_chi
+    - m_phi
+    - theta
+    - C_chi h
+    - self-couplings
+    likelihoods:
+    - paper CMB likelihood approximation
+    observable_ids:
+    - obs_resonant_self_scattering
+    - obs_cmb_energy_injection
+    - obs_scalar_portal_direct_collider
+    required_code_resources:
+    - DRAKE or Boltzmann solver
+    - self-scattering calculator
+    - CMB and search likelihoods
+    route_status: planned
+    source_model_features:
+    - singlet scalar dark matter
+    - light scalar mediator
+    - Breit-Wigner resonance
+    validation_tests:
+    - recover 0.3-2 GeV surviving region
+  - agent_notes: Web fallback related paper was read only for context.
+    caveats: []
+    constraint_ids:
+    - con_detection_portal_searches
+    derived_quantities:
+    - gamma-ray flux
+    - instrument sensitivity comparison
+    description: Forecast MeV gamma-ray sensitivity for the surviving resonant scalar region.
+    forward_model_chain:
+    - inputs:
+      - m_chi
+      - sigma_v_today
+      - branching fractions
+      - J factor
+      notes: Use standard annihilation flux mapping.
+      outputs:
+      - MeV gamma-ray flux
+      step_id: flux
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: primary-paper assumptions
+    - inputs:
+      - MeV gamma-ray flux
+      notes: Requires instrument response and astrophysical target assumptions.
+      outputs:
+      - COSI_GECCO_testability
+      step_id: forecast
+      step_type: recasting
+      tool_or_code: null
+      validity: primary-paper assumptions
+    id: route_mev_gamma_forecast
+    input_parameters:
+    - m_chi
+    - sigma_v_today
+    - branching fractions
+    - target density profile
+    likelihoods: []
+    observable_ids:
+    - obs_mev_gamma_indirect
+    required_code_resources:
+    - COSI/GECCO response models
+    - gamma-ray background model
+    route_status: planned
+    source_model_features:
+    - resonant late-time annihilation
+    - MeV final-state photons
+    validation_tests:
+    - recover paper claim that surviving region is efficiently testable

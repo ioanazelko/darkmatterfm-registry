@@ -1,0 +1,433 @@
+_source:
+  shard: arXiv_src_1708_006_wds.tar
+  paper_id: '1708_02253'
+  source_member: 1708_02253.json
+schema_version: model_only_v0
+model_id: 1708_02253_softly_broken_higgs_portal_wimp_v1
+identity:
+  name: Softly broken U(1) Higgs-portal scalar WIMP
+  family: higgs_portal_dark_matter
+  aliases:
+  - pseudo-Goldstone Higgs-portal dark matter
+  - complex scalar Higgs portal with direct-detection cancellation
+  short_description: A Higgs-portal model with a complex scalar singlet whose imaginary component is WIMP
+    dark matter and whose tree-level nucleon scattering cancels at zero momentum transfer.
+  historical_origin_or_motivation: Introduced to keep electroweak-scale WIMP dark matter compatible with
+    direct-detection bounds without tuned parameter choices.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Higgs portal
+  - scalar singlet dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper presents a renormalizable complex-scalar potential with a softly broken global U(1),
+    while noting that the scenario is expected to be a low-energy limit of a more fundamental theory.
+particle_content:
+  dark_matter_candidate:
+    name: imaginary component eta of the complex scalar S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - real CP-even singlet scalar s mixed with the Higgs
+  mediators:
+  - SM-like Higgs h_1
+  - heavy Higgs-like scalar h_2
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - eta dark matter
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: A CP-like symmetry S -> S* remains unbroken after the soft U(1)-breaking mass
+    term, making the imaginary component stable.
+  symmetries:
+  - name: global U(1) of S
+    type: global
+    exact_or_approximate: broken
+    breaking: soft mass term for S
+    breaking_scale: null
+  - name: CP-like S to S* symmetry
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken by the real singlet vev
+    breaking_scale: null
+  - name: Z2 subgroup forbidding linear S term
+    type: discrete
+    exact_or_approximate: exact
+    breaking: assumed unbroken in spurion formalism
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Standard Model fermions through Higgs mixing
+  - Higgs boson sector
+  dark_sector_couplings:
+  - quartic Higgs-portal coupling |H|^2 |S|^2
+  - self-coupling |S|^4
+  - soft U(1)-breaking scalar mass term
+  mediator_types:
+  - CP-even scalar h_1
+  - CP-even scalar h_2
+  interaction_operators:
+  - V includes |H|^2 |S|^2 and a soft S^2 + h.c. term
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - b bbar for light eta
+  - W+ W-
+  - Z Z
+  - h_1 h_1
+  - h_2 h_2 when open
+  decay_channels: []
+  self_scattering_channels:
+  - scalar self-interactions through the singlet potential
+  cp_structure: CP-like symmetry stabilizes the imaginary scalar component.
+  flavor_structure: Higgs-portal couplings to SM fermions are proportional to fermion masses through Higgs
+    mixing.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_eta
+    description: Mass of the imaginary scalar component.
+    range: Allowed examples span roughly 60 GeV to 10 TeV depending on h_2 mass and mixing.
+    unit: GeV
+    role: core
+    status: inferred
+    notes: The paper writes the pseudoscalar mass using rendered eta notation.
+  - name: heavy scalar mass
+    symbol: m_h2
+    description: Mass of the singlet-like CP-even scalar mediator.
+    range: Benchmark values 300 GeV and 1000 GeV are used in the numerical scan.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet vev
+    symbol: v_s
+    description: Vacuum expectation value of the real part of S.
+    range: Scanned through v/v_s in parameter-space figures.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs-singlet mixing angle
+    symbol: theta
+    description: Mixing angle between the SM Higgs and singlet scalar.
+    value: 0.1 benchmark in scans
+    role: core
+    status: inferred
+  - name: soft U(1)-breaking mass parameter
+    symbol: mu_S
+    description: Mass parameter setting the imaginary scalar mass in the minimal potential.
+    range: Model-dependent.
+    unit: GeV
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: loop-suppressed nucleon cross section
+    symbol: sigma_N
+    description: Direct-detection cross section after the tree-level zero-momentum cancellation.
+    range: Paper estimates values near 10^-49 cm^2 for a TeV-scale benchmark.
+    unit: cm^2
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out WIMP annihilation through Higgs-portal scalars
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - annihilation through h_1 and h_2 mediated channels
+  - resonant annihilation near m_h1/2 and m_h2/2
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The scan imposes the Planck relic abundance and identifies parameter curves yielding the correct
+    abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: Planck relic abundance target
+    symbol: Omega h^2
+    description: Relic density imposed in the numerical analysis.
+    value: 0.1197 +/- 0.0022 at 3 sigma
+    role: cosmological
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - m_eta
+  - m_h2
+  - theta
+  - v_s
+  - annihilation thresholds and resonances
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: chemical freeze-out
+    symbol: T_fo
+    description: Thermal freeze-out is used implicitly through the WIMP relic calculation.
+    range: not specified
+    unit: GeV
+    role: cosmological
+    status: inferred
+  phase_transitions:
+  - electroweak and singlet symmetry breaking in the scalar potential
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  f_of_p_or_q: not provided
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The model is treated as electroweak-scale WIMP dark matter; no explicit late-time phase-space
+    function is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper does not provide a structure-formation mapping.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: zero_momentum_cancellation
+  applies_to: model
+  condition: The tree-level direct-detection cancellation is derived for zero momentum transfer and a
+    potential where U(1) is broken only by a mass term.
+  valid_range: null
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: loop_and_high_momentum_limit
+  applies_to: model
+  condition: The cancellation does not apply to loop corrections or large-momentum annihilation processes.
+  valid_range: null
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: low_energy_completion
+  applies_to: model
+  condition: The model is presented as a low-energy limit; higher-dimensional U(1)-breaking terms and
+    the origin of soft breaking are not explained in the model itself.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: spurion_suppression
+    description: Higher-dimensional U(1)-breaking operators are neglected or treated as spurion-suppressed.
+    scope: theory
+    status: assumed
+    impact_if_violated: Unsuppressed operators can spoil the cancellation or destabilize dark matter.
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+  - id: real_s_vev
+    description: The singlet vacuum expectation value is real so the CP-like symmetry remains unbroken.
+    scope: theory
+    status: assumed
+    impact_if_violated: If broken, the imaginary component need not be stable.
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+  - id: thermal_relic_target
+    description: The viable scan follows points reproducing the Planck relic abundance.
+    scope: production
+    status: assumed
+    impact_if_violated: Subcomponent interpretations would change the relic-density status.
+    can_be_relaxed: 'yes'
+    source_reference_ids: []
+    notes: null
+  constraint_specific: []
+  computation_specific: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper uses Micromegas for numerical constraints, but no model-specific public implementation
+    or repository is stated in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  reproducibility:
+    reproducibility_level: unknown
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: null
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats: []
+provenance:
+  model_id: 1708_02253_softly_broken_higgs_portal_wimp_v1
+  model_name: Softly broken U(1) Higgs-portal scalar WIMP
+  model_family: higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1708_02253'
+      title: A cancellation mechanism for dark matter-nucleon interaction
+      authors: []
+      year: 2017
+      arxiv_id: '1708.02253'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0002
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1708_02253'
+      section: abstract and model setup
+      page: null
+      quote_or_summary: Considers a complex scalar Higgs portal where the imaginary part is WIMP dark
+        matter.
+    - reference_id: '1708_02253'
+      section: spectrum and direct detection
+      page: null
+      quote_or_summary: Derives cancellation of h_1 and h_2 exchange contributions at zero momentum transfer.
+    unresolved_items:
+    - The rendered text obscures some Greek symbols; ASCII names eta, theta, and mu_S are used for clarity.
+  evidence:
+    particle_content:
+    - reference_id: '1708_02253'
+      note: The paper supplements the Standard Model with a complex scalar S and identifies its imaginary
+        component as WIMP dark matter.
+      confidence: high
+      section: null
+      page: null
+    symmetries:
+    - reference_id: '1708_02253'
+      note: The global U(1) of S is softly broken by a mass term, leaving a CP-like S -> S* symmetry that
+        stabilizes the imaginary component.
+      confidence: high
+      section: null
+      page: null
+    interactions:
+    - reference_id: '1708_02253'
+      note: The potential contains the Higgs-portal |H|^2 |S|^2 term, and h_1/h_2 exchange mediates interactions
+        with SM matter.
+      confidence: high
+      section: null
+      page: null
+    production_mechanism:
+    - reference_id: '1708_02253'
+      note: The numerical analysis imposes the Planck relic abundance and discusses resonant and threshold
+        annihilation channels.
+      confidence: high
+      section: null
+      page: null
+    cosmological_history:
+    - reference_id: '1708_02253'
+      note: The model is treated as a standard WIMP thermal relic in the Micromegas scan.
+      confidence: medium
+      section: null
+      page: null
+    parameter_ranges:
+    - reference_id: '1708_02253'
+      note: The text states that dark matter masses from roughly 60 GeV to 10 TeV are allowed depending
+        on h_2 mass and mixing.
+      confidence: high
+      section: null
+      page: null
+    validity_domain:
+    - reference_id: '1708_02253'
+      note: The direct-detection cancellation is explicitly tied to zero momentum transfer and to U(1)
+        breaking only through the mass term.
+      confidence: high
+      section: null
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes:
+    - Machine extraction only; no external model-name canonicalization was used.
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Do not interpret the tree-level cancellation as removing loop-level or collider/annihilation interactions.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: The symmetry and cancellation mechanism are explicit, while the UV origin of symmetry breaking
+    is left open.
+agent_failure_modes:
+  warnings:
+  - id: zero_momentum_only
+    severity: high
+    category: extrapolation
+    warning: The direct-detection cancellation is a zero-momentum tree-level statement and should not
+      be applied to annihilation, collider production, or loop amplitudes.
+    mitigation: Check the momentum regime and loop order before using the cancellation.
+    source_reference_ids: []
+  - id: uv_completion_missing
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper notes that the scenario is expected to be a low-energy limit and does not explain
+      all higher-dimensional terms or the origin of explicit symmetry breaking.
+    mitigation: Keep UV-completion assumptions separate from this extracted card.
+    source_reference_ids: []

@@ -1,0 +1,339 @@
+_source:
+  shard: arXiv_src_1303_002_wds.tar
+  paper_id: '1303_1087'
+  source_member: 1303_1087.json
+schema_version: model_only_v0
+model_id: 1303_1087_mfv_scalar_flavoured_dark_matter_v1
+identity:
+  name: Minimal-flavour-violation scalar flavoured dark matter
+  family: flavored_dark_matter
+  aliases:
+  - MFV scalar triplet dark matter
+  - scalar flavoured dark matter
+  short_description: A Standard-Model-singlet scalar dark matter multiplet whose triplet representation
+    under the quark flavour group stabilizes it and fixes Higgs-portal plus dimension-six quark interactions.
+  historical_origin_or_motivation: Motivated by deriving dark-matter stability from the Minimal Flavour
+    Violation framework rather than imposing an ad hoc Z2 symmetry.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - Minimal Flavour Violation
+  - Higgs portal dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff:
+    name: dark-matter flavour scale
+    symbol: Lambda_DM
+    description: Mass scale suppressing dimension-six dark-matter flavour operators.
+    range: greater than the S component masses
+    role: core
+    status: inferred
+  embedded_in_larger_framework: 'yes'
+  notes: The low-energy Lagrangian contains the Standard Model, kinetic terms for S, a scalar potential
+    V(S,H), pure-flavour effective terms, and dark-matter flavour operators.
+particle_content:
+  dark_matter_candidate:
+    name: Scalar flavour triplet S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - three flavour components S_1, S_2, S_3
+  mediators:
+  - Higgs boson
+  - heavy messengers integrated out into dimension-six operators
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - flavour components split by Yukawa spurion terms
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The flavour representation under G_f prevents single-S operators that would induce
+    decay into Standard Model particles.
+  symmetries:
+  - name: G_f = SU(3)_Q_L x SU(3)_u_R x SU(3)_d_R
+    type: global
+    exact_or_approximate: broken
+    breaking: broken only by Standard Model Yukawa spurions in the MFV ansatz
+    breaking_scale: null
+  - name: MFV spurion structure
+    type: approximate
+    exact_or_approximate: approximate
+    breaking: Yukawa insertions set masses and effective couplings
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - Higgs boson
+  - quarks
+  dark_sector_couplings:
+  - Higgs portal couplings lambda_i
+  - dimension-six quark operators O1 through O5
+  mediator_types:
+  - scalar
+  - heavy vector, scalar, or fermion messengers integrated out in the EFT
+  interaction_operators:
+  - Higgs portal S_i^* S_i H^dagger H
+  - O1-O3 vector-like quark operators
+  - O4-O5 scalar quark operators with Higgs insertion
+  annihilation_channels:
+  - S_i^* S_i to quark pairs
+  - coannihilation between nearby flavour components
+  - Higgs-mediated Standard Model final states
+  self_scattering_channels: []
+  cp_structure: MFV ansatz uses real coefficients so flavour and CP violation come from Yukawa spurions.
+  flavor_structure: Triplet under one SU(3) factor of the quark flavour group; explicit scan focuses on
+    S(3,1,1).
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter component masses
+    symbol: m_Si
+    description: Masses m_S1, m_S2, m_S3 generated from MFV spurion terms.
+    range: GeV to TeV ranges scanned; viable regions include below 10 GeV and above m_h/2
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs portal couplings
+    symbol: lambda_i
+    description: Trilinear Higgs couplings lambda_i after flavour and electroweak symmetry breaking.
+    range: perturbative and bounded-from-below ranges used in scans
+    role: core
+    status: inferred
+  - name: dark-matter flavour scale
+    symbol: Lambda_DM
+    description: Effective scale suppressing dimension-six quark operators.
+    range: larger than m_S1, m_S2, and m_S3
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dimension-six Wilson coefficients
+    symbol: c_a
+    description: Real MFV coefficients multiplying O1 through O5.
+    range: order-one coefficients in the paper analysis
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  - coannihilation in near-degenerate flavour-component regimes
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Higgs portal annihilation
+  - dimension-six quark annihilation
+  - coannihilation for O4 and O5 regimes
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper uses the total dark matter abundance to select viable parameter space and treats the
+    scalar multiplet as the dark sector.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: relic abundance target
+    symbol: Omega_DM h^2
+    description: The scan imposes the observed dark matter abundance window.
+    range:
+      min: 0.09
+      max: 0.13
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Window stated in the paper scan.
+    role: derived
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - m_Si
+  - lambda_i
+  - Lambda_DM
+  - dimension-six operator choice
+  - coannihilation mass splittings
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The paper uses abundance-level Boltzmann freeze-out calculations, not a phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: not discussed in the paper
+    subhalo_mass_function_effect: not discussed in the paper
+    simulation_calibrated: unknown
+validity_domain:
+- id: eft_mass_hierarchy
+  applies_to: EFT
+  condition: The dark-matter component masses must lie below the messenger scale Lambda_DM.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+- id: mfv_spurion_truncation
+  applies_to: model
+  condition: The extraction follows the paper truncation to leading powers of Yukawa spurions.
+  status: approximate
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: scalar_triplet_focus
+  applies_to: model
+  condition: The numerical analysis focuses on S(3,1,1), while the authors state analogous conclusions
+    for triplets under other SU(3) factors after operator modifications.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: mfv_only_flavour_breaking
+    description: All flavour and CP violation beyond the Standard Model is assumed to be controlled by
+      the Standard Model Yukawa spurions.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+  - id: thermal_relic
+    description: The dark matter abundance is computed as a thermal relic with possible coannihilation
+      among components.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 1303_1087_mfv_scalar_flavoured_dark_matter_v1
+  model_name: Minimal-flavour-violation scalar flavoured dark matter
+  model_family: flavored_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Dark matter within the minimal flavour violation ansatz
+      year: 2013
+      arxiv_id: '1303.1087'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the run-local SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0003
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract
+      page: null
+      quote_or_summary: The paper considers scalar dark-matter candidates carrying flavour quantum numbers,
+        with Higgs-portal and dimension-six quark interactions.
+    - reference_id: primary
+      section: model setup
+      page: null
+      quote_or_summary: For definiteness the paper studies scalar S in the (3,1,1) representation of the
+        flavour group, neutral under the Standard Model gauge group.
+    - reference_id: primary
+      section: analytical insights/conclusion
+      page: null
+      quote_or_summary: The paper analyzes five dimension-six quark operators and identifies viable freeze-out
+        regimes, including coannihilation-driven light candidates.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model takes a scalar dark-matter field S, neutral under Standard Model gauge interactions,
+        transforming as a triplet under one SU(3) factor of the quark flavour group.
+      confidence: high
+      section: model setup
+      page: null
+    symmetries:
+    - reference_id: primary
+      note: The MFV flavour representation is chosen so that no operator with a single dark-matter field
+        and quarks can be constructed, preventing decay into Standard Model particles.
+      confidence: high
+      section: model setup
+      page: null
+    interactions:
+    - reference_id: primary
+      note: The dark matter couples to the Standard Model through a renormalizable Higgs portal and through
+        dimension-six quark operators built from Yukawa spurions.
+      confidence: high
+      section: abstract/model setup
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: The paper imposes the relic abundance using Boltzmann freeze-out relations and MicrOMEGAs
+        scans, including coannihilation regimes for some operators.
+      confidence: medium
+      section: constraints and analytical insights
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: The paper studies masses below 10 GeV, above the Higgs resonance, and above the top mass,
+        with the effective scale required above the dark-matter component masses.
+      confidence: medium
+      section: numerical analysis/conclusion
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: The effective theory is used only when the dark-matter mass is lighter than the messenger
+        particles, summarized by Lambda_DM greater than the S component masses.
+      confidence: high
+      section: model setup/constraints
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - machine extraction from converted full text; notation was partially stripped
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: operator_variants
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper studies several dimension-six operator choices; this card records the shared MFV
+      scalar dark matter framework rather than separate operator-by-operator cards.
+    source_reference_ids:
+    - primary
+    mitigation: Split into operator-specific variants if a downstream task needs collider or annihilation-channel
+      specialization.

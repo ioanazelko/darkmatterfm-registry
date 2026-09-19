@@ -1,0 +1,697 @@
+_source:
+  shard: arXiv_src_1512_012_wds.tar
+  paper_id: '1512_05369'
+  source_member: 1512_05369.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1512_05369_dw_modified_sterile_neutrino_dm_v1
+identity:
+  name: Sterile neutrino dark matter with Dodelson-Widrow modification of a non-trivial initial abundance
+  family: sterile_neutrino_dark_matter
+  aliases:
+  - DW-modified sterile neutrino dark matter
+  - sterile neutrino DM from scalar decay plus DW
+  short_description: A keV sterile-neutrino dark matter scenario in which Dodelson-Widrow active-sterile
+    conversion acts on an arbitrary pre-existing sterile-neutrino abundance, with scalar decay treated
+    as a concrete example.
+  historical_origin_or_motivation: Motivated by combining unavoidable active-sterile mixing production
+    with another sterile-neutrino production mechanism in a physically consistent way.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - right-handed neutrino singlet extension of the SM
+  - Dodelson-Widrow freeze-in
+  - Higgs-coupled singlet scalar decay example
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The DW setup is written with one right-handed fermion singlet N_1, Majorana mass M_1, and Yukawa
+    couplings recast as active-sterile mixing angles.
+particle_content:
+  dark_matter_candidate:
+    name: N_1 sterile neutrino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - real SM-singlet scalar parent in the scalar-decay mapping
+  mediators:
+  - active-sterile mixing with SM weak processes
+  - Higgs-coupled singlet scalar in the mapped decay example
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - N_1 sterile neutrino
+  unstable_parent_particles:
+  - real SM-singlet scalar in the example mapping
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The sterile neutrino is cosmologically long-lived because active-sterile mixing
+    is very small; an exact symmetry setting the mixing to zero is explicitly not assumed.
+  symmetries: []
+  topological_defects_possible: not_applicable
+interactions:
+  portals:
+  - neutrino
+  - higgs
+  standard_model_targets:
+  - active neutrinos
+  - weak bosons and charged leptons in active-sterile conversion
+  - Higgs sector for the singlet-scalar decay example
+  dark_sector_couplings:
+  - Majorana mass M_1
+  - Yukawa couplings y_alpha or mixing angles theta_alpha
+  - singlet scalar-Higgs coupling in the mapped example
+  mediator_types:
+  - active-sterile mixing
+  - real singlet scalar parent
+  annihilation_channels: []
+  decay_channels:
+  - very suppressed sterile-neutrino decay through active mixing
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: sterile neutrino Majorana mass
+    symbol: M_1
+    description: Mass of the keV sterile-neutrino dark matter candidate.
+    range: few keV scale discussed for non-cold sterile-neutrino DM
+    unit: keV
+    role: core
+    status: inferred
+  - name: active-sterile mixing angles
+    symbol: theta_e, theta_mu, theta_tau
+    description: Small mixings driving DW production from active neutrinos.
+    range: small enough that y_alpha v_EW / M_1 << 1; bounded in the text by X-ray non-observation
+    role: core
+    status: inferred
+  - name: initial sterile-neutrino distribution
+    symbol: f_ini(p)
+    description: Arbitrary pre-existing momentum distribution before DW production becomes efficient.
+    range: arbitrary input distribution in the semi-analytic solution
+    role: core
+    status: inferred
+  - name: sterile-neutrino momentum distribution
+    symbol: f_N(p,T)
+    description: Distribution evolved by the Boltzmann equation including DW gain and loss terms.
+    range: semi-analytic function of M_1, theta_alpha, p, and T
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - Dodelson-Widrow freeze-in from active-sterile conversion
+  - pre-existing abundance from an unspecified earlier mechanism
+  - real SM-singlet scalar decay example
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - Boltzmann equation for f_N(p,T)
+  - initial distribution f_ini
+  - active-sterile mixing angles
+  - scalar decay parameters in the mapped example
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper emphasizes that pure DW is excluded as the sole source, but DW is unavoidable unless
+    mixing is exactly zero and can modify any preceding production spectrum.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: mixed
+  key_dependencies:
+  - M_1
+  - theta_e
+  - theta_mu
+  - theta_tau
+  - f_ini(p)
+  - scalar-decay contribution
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - arbitrary sterile-neutrino initial abundance before DW conversion becomes efficient
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: mixed_cold_warm
+  distribution_function_available: 'yes'
+  f_of_p_or_q: Semi-analytic f_N(p,T) including redshift, DW gain, DW loss, and f_ini(p).
+  notes: The paper studies how DW modifies scalar-decay sterile-neutrino spectra.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'no'
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: suppressed small-scale abundance is discussed qualitatively
+    subhalo_mass_function_effect: suppressed small-scale abundance is discussed qualitatively
+    simulation_calibrated: unknown
+validity_domain:
+- id: small_mixing_limit
+  applies_to: parameter
+  condition: The theta_alpha = y_alpha v_EW/M_1 parametrization assumes y_alpha v_EW/M_1 << 1.
+  status: assumed
+  extrapolation_risk: medium
+- id: pure_dw_not_complete
+  applies_to: model
+  condition: Pure DW production is treated as excluded as the only source of sterile-neutrino DM; the
+    accepted model is the combined/nontrivial-initial-abundance variant.
+  status: inferred
+  extrapolation_risk: high
+- id: standard_frw_boltzmann
+  applies_to: cosmological_history
+  condition: The derivation uses homogeneous isotropic FRW evolution and entropy/redshift relations.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: one_rh_neutrino_for_dw
+    description: The main DW derivation uses n_R=1 for simplicity while noting that realistic neutrino
+      masses require at least two singlets.
+    scope: theory
+    status: Additional singlets could change model embedding but not the extracted DW mechanism.
+  - id: initial_distribution_oblivion
+    description: The later DW evolution depends on the initial distribution but not on the detailed mechanism
+      that created it.
+    scope: production
+    status: assumed
+  - id: scalar_decay_as_example
+    description: The real singlet scalar decay case is used as a concrete mapping of the general formalism.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code release is identified in the assigned text.
+provenance:
+  model_id: 1512_05369_dw_modified_sterile_neutrino_dm_v1
+  model_name: Sterile neutrino dark matter with Dodelson-Widrow modification of a non-trivial initial
+    abundance
+  model_family: sterile_neutrino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper_1512_05369
+      title: Dodelson-Widrow Production of Sterile Neutrino Dark Matter with Non-Trivial Initial Abundance
+      authors:
+      - Alexander Merle
+      - Aurel Schneider
+      - Maximilian Totzauer
+      year: 2015
+      arxiv_id: '1512.05369'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '1512.05369'
+      authors:
+      - Merle, Alexander
+      - Schneider, Aurel
+      - Totzauer, Maximilian
+      doi: 10.1088/1475-7516/2016/04/003
+      notes: Primary paper full text resolved in the configured local text database.
+      reference_id: '1512_05369'
+      role: original_model
+      title: Dodelson-Widrow production of sterile neutrino Dark Matter with non-trivial initial abundance
+      url: https://arxiv.org/abs/1512.05369
+      year: 2016
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker_batch-0019
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper_1512_05369
+      section: abstract
+      page: null
+      quote_or_summary: The paper presents a semi-analytic DW treatment for arbitrary initial sterile-neutrino
+        abundance and maps it to scalar decay.
+    unresolved_items:
+    - Numerical X-ray and Lyman-alpha likelihoods are not packaged in the local text.
+    - Bounds depend on assumptions about the coldness of the non-DW dark-matter remainder and X-ray systematics.
+  evidence:
+    particle_content:
+    - reference_id: paper_1512_05369
+      note: The setup extends the SM by a right-handed fermion singlet N_1 with Majorana mass M_1.
+      confidence: medium
+      section: Boltzmann/DW setup
+      page: null
+    interactions:
+    - reference_id: paper_1512_05369
+      note: DW production is driven by small active-sterile mixing angles theta_e, theta_mu, theta_tau.
+      confidence: medium
+      section: Boltzmann/DW setup
+      page: null
+    production_mechanism:
+    - reference_id: paper_1512_05369
+      note: The paper derives a semi-analytic DW solution acting on an arbitrary initial sterile-neutrino
+        abundance.
+      confidence: medium
+      section: abstract/DW solution
+      page: null
+    cosmological_history:
+    - reference_id: paper_1512_05369
+      note: The Boltzmann equation is written for a homogeneous isotropic FRW Universe with temperature
+        as the time variable.
+      confidence: medium
+      section: Boltzmann equation
+      page: null
+    parameter_ranges:
+    - reference_id: paper_1512_05369
+      note: The paper focuses on keV sterile-neutrino masses and small mixings constrained by X-ray non-observation.
+      confidence: medium
+      section: introduction/DW setup
+      page: null
+    validity_domain:
+    - reference_id: paper_1512_05369
+      note: Pure DW is described as excluded as the sole mechanism, motivating combined production with
+        another initial abundance.
+      confidence: medium
+      section: introduction
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text states pure DW cannot satisfy relic, structure, and X-ray constraints simultaneously
+        and quantifies allowed DW subfractions under mixed-DM assumptions.
+      page: null
+      reference_id: '1512_05369'
+      section: introduction, numerical analysis, structure-formation sections
+    observables:
+    - confidence: high
+      note: Primary text derives a DW Boltzmann solution for arbitrary initial abundance and studies momentum
+        distributions, structure formation, and X-ray consequences.
+      page: null
+      reference_id: '1512_05369'
+      section: abstract, DW solution, structure-formation sections
+    routes:
+    - confidence: high
+      note: Route is the paper's workflow from distribution solution to relic abundance, transfer/subhalo
+        constraints, and X-ray mixing bounds.
+      page: null
+      reference_id: '1512_05369'
+      section: DW formal solution and constraint sections
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewed_by: null
+    expert_reviewer: null
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - mapping to concrete pre-DW production mechanisms
+  - structure-formation impact depends on the full momentum distribution
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: do_not_count_pure_dw_as_viable_full_dm
+    severity: high
+    category: invalid_mapping
+    warning: The paper states pure DW cannot simultaneously satisfy relic, structure-formation, and X-ray
+      requirements as all DM.
+    mitigation: Use this row for DW-modified nontrivial-initial-abundance scenarios, not pure DW alone.
+  - id: spectra_not_simple_sum
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper cautions that adding independent spectra can be inaccurate because DW evolution
+      includes a loss term.
+    mitigation: Use the semi-analytic distribution logic when combining mechanisms.
+observables:
+- caveats:
+  - The DW modification is typically small under X-ray and abundance bounds, but the formal solution is
+    general.
+  channel: cosmology
+  effect_direction: shape_change
+  environments:
+  - early_universe
+  id: obs_1512_05369_dw_modified_distribution
+  key_quantities:
+  - description: keV-scale sterile-neutrino dark-matter mass.
+    name: sterile neutrino Majorana mass
+    role: core
+    source_reference_ids:
+    - '1512_05369'
+    status: established
+    symbol: M_1
+    unit: keV
+  - description: Small mixings controlling DW active-to-sterile conversion and radiative decay constraints.
+    name: active-sterile mixing angles
+    role: core
+    source_reference_ids:
+    - '1512_05369'
+    status: established
+    symbol: theta_e, theta_mu, theta_tau
+  - description: Arbitrary pre-existing distribution before DW conversion becomes efficient.
+    name: initial sterile-neutrino distribution
+    role: core
+    source_reference_ids:
+    - '1512_05369'
+    status: established
+    symbol: f_ini(p)
+  - description: Momentum distribution after DW gain and loss terms are applied.
+    name: final momentum distribution
+    role: core
+    source_reference_ids:
+    - '1512_05369'
+    status: established
+    symbol: f_N(p,T)
+  linked_constraints: []
+  linked_routes:
+  - route_1512_05369_distribution_to_constraints
+  name: DW-modified sterile-neutrino momentum distribution
+  notes: Primary paper derives a formal solution for arbitrary initial abundance.
+  observability: medium
+  predicted_effect: The semi-analytic Boltzmann solution maps any initial distribution into a damped/redshifted
+    component plus an unavoidable DW contribution when active-sterile mixing is nonzero.
+  redshift_range: temperatures relevant for DW production before late cosmological structure formation
+  relevance: critical
+  scale_range: comoving momentum distribution
+  source_reference_ids:
+  - '1512_05369'
+  subchannel: phase-space distribution
+- caveats:
+  - Constraints depend on the coldness of any non-DW component and on the transfer-function calculation.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - milky_way_satellites
+  - lyman_alpha_forest
+  id: obs_1512_05369_structure_suppression
+  key_quantities:
+  - description: keV-scale sterile-neutrino dark-matter mass.
+    name: sterile neutrino Majorana mass
+    role: core
+    source_reference_ids:
+    - '1512_05369'
+    status: established
+    symbol: M_1
+    unit: keV
+  - description: Arbitrary pre-existing distribution before DW conversion becomes efficient.
+    name: initial sterile-neutrino distribution
+    role: core
+    source_reference_ids:
+    - '1512_05369'
+    status: established
+    symbol: f_ini(p)
+  - description: Fraction of the total dark matter budget contributed by the DW-produced component.
+    name: DW fraction
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 1
+      min: 0
+      notes: null
+      unit: null
+    role: core
+    source_reference_ids:
+    - '1512_05369'
+    status: established
+    symbol: Omega_DW/Omega_DM
+  linked_constraints:
+  - con_1512_05369_dw_fraction_structure
+  linked_routes:
+  - route_1512_05369_distribution_to_constraints
+  name: Structure suppression from noncold sterile-neutrino spectra
+  notes: Primary paper discusses Lyman-alpha and dwarf-galaxy/satellite constraints on the DW fraction.
+  observability: high
+  predicted_effect: The sterile-neutrino momentum distribution suppresses small-scale structure; the paper
+    evaluates beyond simple free-streaming estimates using power spectra and satellite-subhalo counts.
+  redshift_range: matter domination and halo formation
+  relevance: high
+  scale_range: Milky Way subhalo and Lyman-alpha sensitive scales
+  source_reference_ids:
+  - '1512_05369'
+  subchannel: linear power and subhalo abundance
+- caveats:
+  - Astrophysical uncertainties in X-ray intensity enter the mixing-angle bound.
+  channel: indirect_detection
+  effect_direction: null_signal
+  environments:
+  - galaxy_clusters
+  - dwarf_galaxies
+  - xray_sky
+  id: obs_1512_05369_xray_decay_null
+  key_quantities:
+  - description: keV-scale sterile-neutrino dark-matter mass.
+    name: sterile neutrino Majorana mass
+    role: core
+    source_reference_ids:
+    - '1512_05369'
+    status: established
+    symbol: M_1
+    unit: keV
+  - description: Small mixings controlling DW active-to-sterile conversion and radiative decay constraints.
+    name: active-sterile mixing angles
+    role: core
+    source_reference_ids:
+    - '1512_05369'
+    status: established
+    symbol: theta_e, theta_mu, theta_tau
+  linked_constraints:
+  - con_1512_05369_xray_mixing
+  linked_routes:
+  - route_1512_05369_distribution_to_constraints
+  name: X-ray non-observation of radiative sterile-neutrino decay
+  notes: Primary paper uses X-ray bounds to cap the mixing and the DW modification.
+  observability: high
+  predicted_effect: Active-sterile mixing that drives DW production also induces radiative decays, so
+    X-ray non-observation limits the mixing angles and thus the allowed DW modification.
+  redshift_range: null
+  relevance: critical
+  scale_range: keV X-ray line energies set by sterile-neutrino mass
+  source_reference_ids:
+  - '1512_05369'
+  subchannel: x-ray line searches
+constraints:
+- allowed_regions:
+  - Subdominant DW components or spectra from other production mechanisms can remain viable if the total
+    distribution and mixing obey structure and X-ray limits.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The semi-analytic DW treatment assumes the standard thermal history relevant for active-neutrino
+      conversion unless another initial abundance is supplied.
+    id: assump_1512_05369_standard_cosmology
+    impact_if_violated: A nonstandard expansion or entropy history would change the mapping from mixing
+      to abundance.
+    notes: null
+    scope: dw_boltzmann_solution
+    source_reference_ids:
+    - '1512_05369'
+    status: assumed
+  benchmark_implications:
+  - The model should be treated as DW acting on a pre-existing abundance rather than pure DW supplying
+    all dark matter.
+  caveats:
+  - Numerical limits depend on the adopted X-ray data set and structure-formation method.
+  constrained_parameters:
+  - M_1
+  - theta_e
+  - theta_mu
+  - theta_tau
+  - Omega_DW/Omega_DM
+  constraint_type: cosmological
+  data_release: Combination of relic abundance, structure-formation, and X-ray bounds summarized in the
+    primary paper
+  excluded_regions:
+  - Dominant pure-DW sterile-neutrino dark matter cannot simultaneously satisfy the relic abundance, structure-formation,
+    and X-ray bounds discussed in the primary paper.
+  id: con_1512_05369_dw_full_dm_exclusion
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Pure Dodelson-Widrow full-DM scenario is excluded
+  notes: This is the central motivation for treating DW as a modification of another production channel.
+  observable_channel: combined relic abundance, structure formation, and x-ray
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - '1512_05369'
+- allowed_regions:
+  - A sufficiently small DW fraction is allowed, especially when the remaining dark matter component is
+    colder.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The limiting mixed-DM estimate treats the non-DW remainder as perfectly cold.
+    id: assump_1512_05369_cold_remainder
+    impact_if_violated: If the remainder is lukewarm, the bound on the DW fraction strengthens.
+    notes: null
+    scope: structure_fraction_bound
+    source_reference_ids:
+    - '1512_05369'
+    status: assumed
+  benchmark_implications:
+  - Scalar-decay sterile-neutrino spectra are only mildly altered by the allowed DW component in the paper's
+    examples.
+  caveats:
+  - The paper uses an approximate subhalo-abundance method rather than a full hydrodynamic likelihood.
+  constrained_parameters:
+  - M_1
+  - Omega_DW/Omega_DM
+  - f_N(p)
+  constraint_type: astrophysical
+  data_release: Lyman-alpha forest and Milky Way satellite/subhalo-count constraints as discussed in the
+    primary paper
+  excluded_regions:
+  - Too large a warm DW-produced fraction suppresses subhalo abundance below the satellite-count/Lyman-alpha
+    allowed range.
+  id: con_1512_05369_dw_fraction_structure
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Maximum allowed DW fraction from structure formation
+  notes: Use for qualitative/recast guidance unless reproducing the transfer-function calculation.
+  observable_channel: lyman_alpha_and_milky_way_satellites
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '1512_05369'
+- allowed_regions:
+  - Small mixings allowed by X-ray non-observation imply only percent-level or smaller damping of a pre-existing
+    spectrum in most of the parameter range discussed.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: X-ray bounds depend on the astrophysical signal-intensity modeling adopted by the primary
+      paper.
+    id: assump_1512_05369_xray_systematics
+    impact_if_violated: Relaxed X-ray limits can enlarge the allowed DW modification.
+    notes: null
+    scope: xray_mixing_bound
+    source_reference_ids:
+    - '1512_05369'
+    status: assumed
+  benchmark_implications:
+  - The DW component can often be approximated as added to the pre-existing spectrum under current X-ray
+    bounds.
+  caveats:
+  - No machine-readable X-ray likelihood is included.
+  constrained_parameters:
+  - M_1
+  - theta_e
+  - theta_mu
+  - theta_tau
+  constraint_type: indirect_detection
+  data_release: X-ray non-observation bounds used in the primary paper
+  excluded_regions:
+  - Mixing angles large enough to overproduce DW sterile neutrinos or produce detectable radiative-decay
+    X-rays are excluded.
+  id: con_1512_05369_xray_mixing
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: X-ray bound on active-sterile mixing
+  notes: Primary paper compares current and relaxed X-ray-limit scenarios.
+  observable_channel: x_ray
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '1512_05369'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The paper supplies the semi-analytic machinery and example recasts, but not a packaged
+      likelihood.
+    caveats:
+    - Nonstandard histories and alternate X-ray analyses require separate treatment.
+    constraint_ids:
+    - con_1512_05369_dw_full_dm_exclusion
+    - con_1512_05369_dw_fraction_structure
+    - con_1512_05369_xray_mixing
+    derived_quantities:
+    - f_N(p,T)
+    - Omega_N
+    - linear P(k)
+    - subhalo count
+    - x-ray decay rate
+    description: Propagate an arbitrary initial sterile-neutrino spectrum through DW conversion, then
+      evaluate abundance, structure, and X-ray constraints.
+    forward_model_chain:
+    - inputs:
+      - DW Boltzmann equation
+      - f_ini(p)
+      notes: Apply damping and DW source terms to the initial distribution.
+      outputs:
+      - formal solution for f_N
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Assumes the DW collision term and standard active-neutrino bath.
+    - inputs:
+      - f_N(p)
+      - M_1
+      notes: Compute abundance and moments.
+      outputs:
+      - Omega_N
+      - average momentum
+      step_id: s2
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Distribution-level calculation.
+    - inputs:
+      - f_N(p)
+      - cosmological parameters
+      notes: Map the spectrum into structure suppression.
+      outputs:
+      - linear matter power spectrum
+      step_id: s3
+      step_type: transfer_function
+      tool_or_code: null
+      validity: Requires a Boltzmann/transfer calculation for precise bounds.
+    - inputs:
+      - linear power spectrum
+      notes: Compare expected subhalos to Milky Way satellites and Lyman-alpha constraints.
+      outputs:
+      - subhalo abundance
+      - Lyman-alpha-style bound
+      step_id: s4
+      step_type: recasting
+      tool_or_code: null
+      validity: Approximate method in the primary paper.
+    - inputs:
+      - M_1
+      - mixing angles
+      notes: Apply radiative-decay X-ray non-observation bounds.
+      outputs:
+      - x-ray exclusion
+      step_id: s5
+      step_type: likelihood
+      tool_or_code: null
+      validity: No public likelihood in primary text.
+    id: route_1512_05369_distribution_to_constraints
+    input_parameters:
+    - M_1
+    - theta_e
+    - theta_mu
+    - theta_tau
+    - f_ini(p)
+    - cosmological temperature history
+    likelihoods:
+    - not provided
+    observable_ids:
+    - obs_1512_05369_dw_modified_distribution
+    - obs_1512_05369_structure_suppression
+    - obs_1512_05369_xray_decay_null
+    required_code_resources:
+    - Boltzmann/transfer solver and X-ray likelihood needed for full recast
+    route_status: partially_implemented
+    source_model_features:
+    - keV sterile neutrino
+    - active-sterile conversion
+    - arbitrary pre-existing abundance
+    validation_tests:
+    - recover pure DW for f_ini=0
+    - verify consistency relation for changing initial temperature
+    - compare satellite-count estimate with published mixed-DM limits

@@ -1,0 +1,280 @@
+_source:
+  shard: arXiv_src_1109_006_wds.tar
+  paper_id: '1109_4872'
+  source_member: 1109_4872.json
+schema_version: model_only_v0
+model_id: 1109_4872_secluded_higgs_portal_wimp_v1
+identity:
+  name: Secluded Higgs-portal WIMP
+  family: secluded_dark_matter
+  aliases:
+  - secluded WIMP with Higgs-portal mediator
+  short_description: A WIMP N heavier than a scalar mediator S, annihilating mainly as N N -> S S while
+    the Higgs can decay into S S independently of the relic-density coupling.
+  historical_origin_or_motivation: Used as a Higgs-portal example where the direct scattering rate can
+    be very small while Higgs decays to dark mediators remain sizable.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Higgs portal dark matter
+  - secluded WIMP models
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper writes L = H^dagger H (A S + lambda S^2) + S N N and requires m_N > m_S.
+particle_content:
+  dark_matter_candidate:
+    name: secluded WIMP N
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - lighter scalar mediator S
+  mediators:
+  - scalar mediator S
+  - Higgs boson
+  long_lived_particles:
+  - S can be long-lived enough to escape the detector in part of parameter space
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: unknown; the text treats N as the stable WIMP but does not state a stabilizing
+    symmetry in this section.
+  symmetries:
+  - name: dark-sector stabilizing symmetry
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: not specified in the paper section
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs boson
+  - Standard Model decay products of S
+  dark_sector_couplings:
+  - H^dagger H (A S + lambda S^2)
+  - S N N
+  mediator_types:
+  - scalar dark mediator
+  - Higgs boson
+  interaction_operators:
+  - L = H^dagger H (A S + lambda S^2) + S N N
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - N N -> S S
+  decay_channels:
+  - S decays on-shell to Standard Model states
+  - h -> S S
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_N
+    range: greater than m_S
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_1109_4872
+  - name: mediator mass
+    symbol: m_S
+    range: below m_N
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_1109_4872
+  - name: dark Yukawa coupling
+    symbol: lambda_N
+    range: fixed by lambda_N^4 / m_N^2 of order pb for thermal WIMP annihilation
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_1109_4872
+  - name: Higgs-mediator portal coupling
+    symbol: lambda
+    range: can make h -> S S sizable without fixing the abundance
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_1109_4872
+  - name: linear portal coefficient
+    symbol: A
+    range: can be small, e.g. A/v around 10^-3 to suppress scattering in the paper estimate
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_1109_4872
+production:
+  mechanisms:
+  - thermal secluded annihilation N N -> S S
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - lambda_N
+  - m_N
+  - m_S
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The WIMP relic abundance is set by annihilation to on-shell S mediators, while h -> S S is controlled
+    by a separate portal coupling.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - lambda_N
+  - m_N
+  - m_S
+  - portal couplings A and lambda for visibility rather than abundance
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - secluded dark-sector annihilation before mediator decay to the Standard Model
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The text discusses thermal WIMP annihilation but no explicit distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed in the paper text
+    subhalo_mass_function_effect: not discussed in the paper text
+    simulation_calibrated: unknown
+validity_domain:
+- id: validity_1109_4872_secluded_1
+  applies_to: model
+  condition: Requires m_N > m_S so N N annihilation proceeds to two on-shell S mediators.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper_1109_4872
+- id: validity_1109_4872_secluded_2
+  applies_to: phenomenology
+  condition: Higgs decays can be invisible if S exits the detector or buried if S decays inside the detector.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper_1109_4872
+assumptions:
+  global:
+  - id: assumption_1109_4872_secluded_1
+    description: N is cosmologically stable.
+    scope: theory
+    status: inferred
+  - id: assumption_1109_4872_secluded_2
+    description: The hidden mediator S decays on-shell to Standard Model particles after WIMP annihilation.
+    scope: production
+    status: inferred
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned paper text does not identify associated model code.
+provenance:
+  model_id: 1109_4872_secluded_higgs_portal_wimp_v1
+  model_name: Secluded Higgs-portal WIMP
+  model_family: secluded_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper_1109_4872
+      title: 'Higgs decays to dark matter: beyond the minimal model'
+      role: original_model
+      year: 2011
+      arxiv_id: '1109.4872'
+      doi: null
+      url: null
+      notes: The paper surveys multiple simple Higgs-portal variants beyond the minimal scalar model.
+      authors:
+      - Maxim Pospelov
+      - Adam Ritz
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0013
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper_1109_4872
+      section: Secluded WIMPs
+      page: null
+      quote_or_summary: The secluded regime uses L = H^dagger H (A S + lambda S^2) + S N N and requires
+        m_N > m_S.
+    - reference_id: paper_1109_4872
+      section: Secluded WIMPs
+      page: null
+      quote_or_summary: N is a thermal WIMP with abundance set by N N -> S S; h -> S S can still be sizable.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper_1109_4872
+      note: The model contains WIMP N and a lighter scalar mediator S.
+      confidence: high
+      section: Secluded WIMPs
+      page: null
+    interactions:
+    - reference_id: paper_1109_4872
+      note: The Lagrangian includes both the Higgs portal to S and the S N N coupling.
+      confidence: high
+      section: Secluded WIMPs
+      page: null
+    production_mechanism:
+    - reference_id: paper_1109_4872
+      note: The relic density is set by N N annihilation into S S with lambda_N^4/m_N^2 of order pb.
+      confidence: high
+      section: Secluded WIMPs
+      page: null
+    parameter_ranges:
+    - reference_id: paper_1109_4872
+      note: The paper requires m_N > m_S and notes small A/v can suppress scattering.
+      confidence: medium
+      section: Secluded WIMPs
+      page: null
+    validity_domain:
+    - reference_id: paper_1109_4872
+      note: The scenario separates the abundance-setting coupling from the h -> S S width.
+      confidence: high
+      section: Secluded WIMPs
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: high
+    reviewer_notes: []
+robustness:
+  overall: medium
+  dominant_uncertainties:
+  - The stabilizing symmetry and detailed S lifetime are not specified in the compact model discussion.
+  notes: The secluded annihilation and mediator logic are explicit.
+agent_failure_modes:
+  warnings:
+  - id: warn_1109_4872_secluded_1
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not assume S is detector-stable; the paper allows invisible and buried Higgs-decay regimes
+      depending on the mediator lifetime.

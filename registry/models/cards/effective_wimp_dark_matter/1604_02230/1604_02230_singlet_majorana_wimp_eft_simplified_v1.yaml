@@ -1,0 +1,930 @@
+_source:
+  shard: arXiv_src_1604_005_wds.tar
+  paper_id: '1604_02230'
+  source_member: 1604_02230.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1604_02230_singlet_majorana_wimp_eft_simplified_v1
+identity:
+  name: Singlet-like Majorana WIMP EFT with simplified mediators
+  family: effective_wimp_dark_matter
+  aliases:
+  - singlet-like Majorana fermion dark matter
+  - Majorana WIMP EFT supplemented by simplified models
+  short_description: A gauge-singlet Majorana fermion WIMP stabilized by a Z_2 symmetry, described by
+    the complete set of SM-gauge-invariant operators up to dimension six and matched to heavy-mediator
+    simplified models.
+  historical_origin_or_motivation: The paper proposes a program combining EFT for low-energy WIMP processes
+    with simplified models for collider production.
+  status: benchmark
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - WIMP effective field theory
+  - heavy-mediator simplified models
+  - Z_2-stabilized singlet fermion dark matter
+  lagrangian_available: 'yes'
+  renormalizable: not_applicable
+  eft_cutoff:
+    name: EFT suppression scale
+    symbol: Lambda
+    description: Lowest suppression scale for the effective operators and proxy for heavy mediator masses.
+    range: Lambda greater than Max[3 m_DM, 0.3 TeV] in the analysis domain
+    unit: GeV
+    role: core
+    status: assumed
+  embedded_in_larger_framework: 'yes'
+  notes: The EFT Lagrangian contains a Majorana mass term plus higher-dimensional operators; simplified
+    models introduce Z_2-even or Z_2-odd heavy mediators matched at tree level.
+particle_content:
+  dark_matter_candidate:
+    name: singlet-like Majorana fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - Z_2-even or Z_2-odd heavy mediators used in simplified completions
+  - possible Z_2-odd electroweak doublet fermion in operator completions
+  mediators:
+  - heavy vector mediator for four-Fermi operators
+  - heavy scalar mediator for Higgs bilinear operators
+  - heavy Dirac fermion mediator for Z_2-odd completions
+  - colored or electroweak mediators depending on the matched SM operator
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - heavy simplified-model mediators
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: A postulated Z_2 symmetry makes the Majorana dark matter odd while Standard Model
+    fields are even.
+  symmetries:
+  - name: Z_2 dark parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not broken in the EFT description
+    breaking_scale: null
+  - name: Standard Model gauge symmetry
+    type: gauge
+    exact_or_approximate: exact
+    breaking: electroweak symmetry breaking enters after the gauge-invariant operator basis is defined
+    breaking_scale:
+      name: electroweak scale
+      symbol: v
+      description: Standard Model Higgs vacuum expectation value scale.
+      value: 246
+      unit: GeV
+      role: core
+      status: established
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  - other
+  standard_model_targets:
+  - Higgs doublet
+  - SM quarks
+  - SM leptons
+  - electroweak gauge currents
+  dark_sector_couplings:
+  - Wilson coefficients c_a or alpha_a of dimension-five and dimension-six operators
+  - renormalizable couplings d in simplified mediator completions
+  mediator_types:
+  - vector
+  - scalar
+  - Dirac fermion
+  - colored scalar or vector depending on the t-channel completion
+  interaction_operators:
+  - Majorana bilinears coupled to SM fermion currents
+  - scalar and pseudoscalar Higgs-portal operators
+  - Higgs-current operator
+  - operators equivalent to anapole-type interactions by equations of motion
+  annihilation_channels:
+  - SM fermion pairs
+  - Higgs or electroweak final states depending on active operators
+  - Z or Higgs pole regions in special mass ranges
+  decay_channels:
+  - heavy mediators decay to dark matter plus SM states in simplified models
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: mild
+    velocity_dependence: mild
+    spin_dependence: both
+operators:
+  renormalizable_terms:
+  - Majorana kinetic and mass terms for chi
+  - renormalizable mediator vertices in simplified completions
+  eft_operators:
+  - SM-gauge-invariant dimension-five and dimension-six operators coupling Majorana chi to the Higgs doublet
+    and SM fermion currents
+  - CP-violating pseudoscalar Higgs operator O_PS is included in the basis
+  contact_or_light_mediator: contact
+  coupling_types:
+  - Wilson coefficients c_a
+  - rescaled coefficients alpha_a
+  - mediator couplings d
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_DM
+    description: Physical mass of the singlet-like Majorana WIMP.
+    range: greater than about 20 GeV in the broadly allowed region; pole regions treated separately
+    unit: GeV
+    role: core
+    status: inferred
+  - name: EFT suppression scale
+    symbol: Lambda
+    description: Common low suppression scale used to parameterize operator strengths and heavy mediator
+      masses.
+    range: few hundred GeV to about 3 TeV in the paper summary; analysis domain Lambda > Max[3 m_DM, 0.3
+      TeV]
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Wilson coefficients
+    symbol: c_a
+    description: Dimensionless coefficients of the effective operators.
+    range: '|c_a| less than 1 for weakly interacting UV theories'
+    role: core
+    status: assumed
+  - name: rescaled operator coefficients
+    symbol: alpha_a
+    description: Coefficients used after rewriting the EFT with the lowest suppression scale.
+    role: core
+    status: inferred
+  - name: mediator masses
+    symbol: M_med
+    description: Simplified model mediator masses identified with the relevant suppression scales in tree-level
+      matching.
+    range: heavy compared with the dark matter mass and electroweak scale
+    unit: GeV
+    role: core
+    status: assumed
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - thermal freeze-out of the WIMP through EFT interactions
+  - possible additional nonthermal contribution if thermal abundance is below the observed value
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - annihilation cross sections controlled by operator coefficients and Lambda
+  - Z and Higgs pole effects in special mass regions
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The likelihood treats the observed relic abundance as an upper bound while also stating that
+    the single species is assumed to make up the entire relic abundance; underabundant points require
+    extra nonthermal production not described by the EFT.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_DM
+  - Lambda
+  - Wilson coefficients for the nine EFT parameters
+  - Z and Higgs resonance regions
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - additional nonthermal production may be needed for thermally underabundant points, but is not modeled
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak symmetry breaking
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Heavy WIMP; no explicit momentum distribution is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: not discussed; WIMP is treated as cold dark matter
+    subhalo_mass_function_effect: not discussed; WIMP is treated as cold dark matter
+    simulation_calibrated: 'no'
+validity_domain:
+- id: eft_validity
+  applies_to: EFT
+  condition: Low-energy processes are described by the EFT when mediator masses or suppression scales
+    are well above the momentum transfer and the dark matter mass.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1604_02230'
+- id: collider_matching
+  applies_to: collider simplified model
+  condition: Collider production should be computed in the matched simplified models rather than with
+    a truncated EFT when subprocess energies approach the suppression scale.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - '1604_02230'
+- id: weak_coupling
+  applies_to: model
+  condition: The mapping assumes weakly interacting UV theories with coefficients of order unity or less.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1604_02230'
+assumptions:
+  global:
+  - id: z2_stability
+    description: The Z_2 symmetry is exact and chi is odd while all Standard Model fields are even.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1604_02230'
+  - id: heavy_mediator_matching
+    description: Each effective operator can be matched to a heavy simplified mediator at tree level in
+      the large-mediator-mass limit.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1604_02230'
+  - id: thermal_initial_condition
+    description: The relic computation assumes an initial thermal-equilibrium abundance for dark matter.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1604_02230'
+associated_code:
+  has_associated_code: 'yes'
+  code_summary: The paper states that the relic abundance is computed with micrOMEGAs using CalcHEP model
+    files generated by FeynRules; no repository is identified in the assigned text.
+  primary_code_role: relic_density_calculation
+  repositories: []
+  packages_or_modules:
+  - name: micrOMEGAs
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - compute_relic_density
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies: []
+    supported_parameters:
+    - EFT operator coefficients
+    - dark matter mass
+    supported_model_families:
+    - singlet-like Majorana fermion WIMP EFT
+    inputs:
+    - CalcHEP model files
+    outputs:
+    - thermal relic abundance
+    validity_domain: []
+    citation_reference_ids:
+    - '1604_02230'
+    notes: Mentioned as the relic-density calculator in the paper.
+  - name: FeynRules/CalcHEP model files
+    resource_type: module
+    availability: unknown
+    relationship_to_model: benchmark_or_tutorial
+    purpose:
+    - define_lagrangian
+    - compute_relic_density
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies:
+    - FeynRules
+    - CalcHEP
+    supported_parameters:
+    - EFT and simplified-model parameters
+    supported_model_families:
+    - singlet-like Majorana fermion WIMP EFT
+    inputs:
+    - model Lagrangian
+    outputs:
+    - CalcHEP model files
+    validity_domain: []
+    citation_reference_ids:
+    - '1604_02230'
+    notes: The assigned text does not identify a public release.
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs:
+  - m_DM
+  - Lambda
+  - operator coefficients
+  expected_outputs:
+  - thermal relic abundance
+  reproducibility:
+    reproducibility_level: partial
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: Tools are named but no model-file release is identified in the text.
+  validation:
+    validation_status: unknown
+    benchmark_references:
+    - '1604_02230'
+    validation_notes: The paper uses these tools in its analysis but the extraction did not find standalone
+      validation material.
+  caveats:
+  - No public repository or archive was identified in the assigned text.
+provenance:
+  model_id: 1604_02230_singlet_majorana_wimp_eft_simplified_v1
+  model_name: Singlet-like Majorana WIMP EFT with simplified mediators
+  model_family: effective_wimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1604_02230'
+      title: 'Effective Theory of WIMP Dark Matter supplemented by Simplified Models: Singlet-like Majorana
+        fermion case'
+      authors:
+      - Shigeki Matsumoto
+      - Satyanarayan Mukhopadhyay
+      - Yue-Lin Sming Tsai
+      year: 2016
+      arxiv_id: '1604.02230'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+    - arxiv_id: '1604.02230'
+      authors:
+      - Matsumoto, Shigeki
+      - Mukhopadhyay, Satyanarayan
+      - Tsai, Yue-Lin Sming
+      doi: 10.1103/PhysRevD.94.065034
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1604.02230
+      role: original_model
+      title: 'Effective theory of WIMP dark matter supplemented by simplified models: Singlet-like Majorana
+        fermion case'
+      url: https://arxiv.org/abs/1604.02230
+      year: 2016
+    constraint_papers:
+    - arxiv_id: '1910.14317'
+      authors:
+      - Cao, Junjie
+      - Meng, Lei
+      - Yue, Yuanfang
+      - Zhou, Haijing
+      - Zhu, Pengxuan
+      doi: 10.1103/PhysRevD.101.075003
+      notes: Related full text resolved locally and read within the three-text cap.
+      reference_id: arxiv:1910.14317
+      role: constraint
+      title: Suppressing the scattering of WIMP dark matter and nucleons in supersymmetric theories
+      url: https://arxiv.org/abs/1910.14317
+      year: 2020
+    - arxiv_id: '2001.03011'
+      authors:
+      - Habermehl, Moritz
+      - Berggren, Mikael
+      - List, Jenny
+      doi: 10.1103/PhysRevD.101.075053
+      notes: Related full text resolved locally and read within the three-text cap.
+      reference_id: arxiv:2001.03011
+      role: constraint
+      title: WIMP dark matter at the International Linear Collider
+      url: https://arxiv.org/abs/2001.03011
+      year: 2020
+    - arxiv_id: '1607.06396'
+      authors:
+      - Klasen, M.
+      - Kovařík, K.
+      - Steppeler, P.
+      doi: 10.1103/PhysRevD.94.095002
+      notes: Related full text resolved locally and read within the three-text cap.
+      reference_id: arxiv:1607.06396
+      role: implementation
+      title: SUSY-QCD corrections for direct detection of neutralino dark matter and correlations with
+        relic density
+      url: https://arxiv.org/abs/1607.06396
+      year: 2016
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0017
+    extractor_name: Codex GPT-5 dark-matter batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1604_02230'
+      section: abstract
+      page: null
+      quote_or_summary: The paper enumerates simplified models matching a complete gauge-invariant EFT
+        for singlet-like Majorana fermion dark matter.
+    - reference_id: '1604_02230'
+      section: EFT section
+      page: null
+      quote_or_summary: The EFT assumes a Z_2-stabilized singlet Majorana field and operators up to dimension
+        six.
+    - reference_id: '1604_02230'
+      section: simplified models section
+      page: null
+      quote_or_summary: Each operator is matched to Z_2-even or Z_2-odd heavy mediator completions.
+    unresolved_items:
+    - No new likelihoods were rerun; constraints are taken from the primary paper's global analysis.
+    - Indirect-detection limits were not promoted to structured constraints because the local primary
+      excerpts did not give a comparably specific bound.
+  evidence:
+    particle_content:
+    - reference_id: '1604_02230'
+      note: The low-energy degrees of freedom are the Standard Model fields and a singlet Majorana dark
+        matter field chi.
+      confidence: medium
+      section: EFT section
+    symmetries:
+    - reference_id: '1604_02230'
+      note: The operator basis respects SM gauge symmetry and an additional Z_2 under which chi is odd
+        and SM fields are even.
+      confidence: medium
+      section: EFT section
+    interactions:
+    - reference_id: '1604_02230'
+      note: The paper lists dimension-five and dimension-six EFT interactions and then constructs simplified
+        mediator completions that match them.
+      confidence: medium
+      section: EFT and simplified models sections
+    production_mechanism:
+    - reference_id: '1604_02230'
+      note: The relic calculation assumes thermal-equilibrium initial abundance and computes the thermal
+        abundance from all EFT interactions.
+      confidence: medium
+      section: relic abundance discussion
+    parameter_ranges:
+    - reference_id: '1604_02230'
+      note: The summary reports allowed suppression scales from a few hundred GeV to around 3 TeV, with
+        special Z and Higgs pole regions.
+      confidence: medium
+      section: abstract and summary
+    validity_domain:
+    - reference_id: '1604_02230'
+      note: The EFT is used for nonrelativistic processes, while collider production is treated with matched
+        simplified models to avoid EFT breakdown.
+      confidence: medium
+      section: introduction and simplified models sections
+    constraints:
+    - confidence: high
+      note: Primary text gives the Planck relic-density likelihood with Omega_DM h^2 about 0.1198 and
+        a 2.5 percent theory uncertainty.
+      page: null
+      reference_id: arxiv:1604.02230
+      section: Constraints from DM cosmology
+    - confidence: high
+      note: Primary text uses LUX for SI, PICO-2L for SD-proton, and XENON100 for SD-neutron limits.
+      page: null
+      reference_id: arxiv:1604.02230
+      section: Direct detection constraints
+    - confidence: high
+      note: Primary text reports 95 percent allowed Lambda values of a few hundred GeV up to about 3 TeV
+        in the valid non-pole region.
+      page: null
+      reference_id: arxiv:1604.02230
+      section: Profile likelihood results
+    observables:
+    - confidence: high
+      note: Primary text states the three key observables are relic density, present-day annihilation,
+        and elastic nuclear scattering, and it computes annihilation/recoil rates from the EFT.
+      page: null
+      reference_id: arxiv:1604.02230
+      section: Introduction
+    - confidence: high
+      note: Primary text states simplified models are used for LEP, LHC, and future lepton-collider production
+        rates.
+      page: null
+      reference_id: arxiv:1604.02230
+      section: Introduction
+    routes:
+    - confidence: high
+      note: Primary paper links EFT coefficients to micrOMEGAs relic calculations, direct-detection rates,
+        and simplified-model collider rates in a profile likelihood.
+      page: null
+      reference_id: arxiv:1604.02230
+      section: Likelihood setup
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+  caveats:
+  - This row groups the paper's complete singlet-Majorana EFT and its matched simplified-model completions
+    into one framework-level model card rather than one row per operator.
+robustness:
+  overall: high
+  theory_robustness: high
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - validity of heavy-mediator matching for collider kinematics
+  - operator-by-operator UV completion assumptions
+  - underabundant thermal points require extra nonthermal production
+  validation_status: partially_validated
+  notes: The paper provides explicit matching and a likelihood analysis, but the extraction is model-card-level
+    only.
+agent_failure_modes:
+  warnings:
+  - id: eft_collider_breakdown
+    severity: high
+    category: invalid_mapping
+    warning: Do not use the contact EFT directly for collider events whose subprocess energy approaches
+      the suppression scale; use the matched simplified-model picture.
+    source_reference_ids:
+    - '1604_02230'
+  - id: framework_grouping
+    severity: medium
+    category: other
+    warning: This card summarizes a framework with several operator-level simplified completions, so downstream
+      use may require selecting a specific operator or mediator.
+    source_reference_ids:
+    - '1604_02230'
+observables:
+- caveats:
+  - The analysis treats special Z and Higgs pole regions separately.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early universe plasma
+  id: obs_majorana_wimp_thermal_relic
+  key_quantities:
+  - name: dark matter mass
+    range: greater than about 20 GeV outside pole regions
+    role: core
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: inferred
+    symbol: m_DM
+    unit: GeV
+  - name: EFT suppression scale
+    range: few hundred GeV to about 3 TeV in allowed regions
+    role: core
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: inferred
+    symbol: Lambda
+    unit: GeV
+  - name: Wilson coefficients
+    range: weakly interacting values of order one or below
+    role: core
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: inferred
+    symbol: c_a
+  linked_constraints:
+  - con_planck_majorana_wimp_relic
+  linked_routes:
+  - route_majorana_eft_global_likelihood
+  name: Majorana WIMP thermal relic abundance
+  notes: null
+  observability: high
+  predicted_effect: The EFT operators set the annihilation cross section and therefore the thermal relic
+    density compared with the Planck value Omega_DM h^2 about 0.1198.
+  redshift_range: thermal freeze-out epoch
+  relevance: critical
+  scale_range: annihilation energies near m_DM
+  source_reference_ids:
+  - arxiv:1604.02230
+  subchannel: thermal freeze-out
+- caveats:
+  - Hadronic matrix elements, local density, and velocity assumptions enter the likelihood.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - terrestrial direct-detection targets
+  id: obs_majorana_wimp_nuclear_recoil
+  key_quantities:
+  - name: spin-independent cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: inferred
+    symbol: sigma_SI
+  - name: spin-dependent proton cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: inferred
+    symbol: sigma_SDp
+  - name: spin-dependent neutron cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: inferred
+    symbol: sigma_SDn
+  linked_constraints:
+  - con_lux_pico_xenon100_majorana_wimp
+  linked_routes:
+  - route_majorana_eft_global_likelihood
+  name: Spin-independent and spin-dependent nuclear recoil rates
+  notes: null
+  observability: high
+  predicted_effect: Low-energy EFT operators predict SI and SD recoil rates tested against LUX, PICO-2L,
+    and XENON100 limits.
+  redshift_range: z=0
+  relevance: critical
+  scale_range: nonrelativistic halo recoil momenta
+  source_reference_ids:
+  - arxiv:1604.02230
+  subchannel: SI and SD WIMP-nucleon scattering
+- caveats:
+  - Collider production is evaluated in simplified models because the EFT can fail at relativistic subprocess
+    energies.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - LEP
+  - LHC
+  - future lepton colliders
+  id: obs_majorana_wimp_collider_missing_energy
+  key_quantities:
+  - name: mediator mass
+    range: large-mediator matching regime
+    role: core
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: inferred
+    symbol: M_med
+    unit: GeV
+  - name: EFT validity ratio
+    range: analysis requires Lambda safely above the hard scale
+    role: core
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: inferred
+    symbol: Lambda/m_DM
+  linked_constraints:
+  - con_lep_lhc_majorana_simplified_models
+  linked_routes:
+  - route_majorana_eft_global_likelihood
+  name: Collider missing-energy production through simplified mediators
+  notes: null
+  observability: medium
+  predicted_effect: The simplified models matched to the EFT predict WIMP pair production with visible
+    recoil objects at LEP, LHC, and future e+e- colliders.
+  redshift_range: not_applicable
+  relevance: high
+  scale_range: collider center-of-mass energies
+  source_reference_ids:
+  - arxiv:1604.02230
+  - arxiv:2001.03011
+  subchannel: LEP, LHC, and future lepton colliders
+constraints:
+- allowed_regions:
+  - Profile-likelihood regions with m_DM above about 20 GeV and Lambda from a few hundred GeV up to about
+    3 TeV outside special poles.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The relic-density calculation assumes an initial thermal equilibrium WIMP abundance.
+    id: thermal-initial-condition
+    impact_if_violated: null
+    notes: null
+    scope: freeze-out calculation
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: assumed
+  benchmark_implications:
+  - The upper contour of allowed Lambda is mostly fixed by the relic abundance requirement.
+  caveats:
+  - Underabundant points require extra production if the WIMP is all of DM.
+  constrained_parameters:
+  - m_DM
+  - Lambda
+  - c_a
+  - Omega_DM h^2
+  constraint_type: cosmological
+  data_release: Planck relic-density value used by the source
+  excluded_regions:
+  - Low annihilation-rate regions overproduce the observed Omega_DM h^2 unless pole or nonthermal assumptions
+    are invoked.
+  id: con_planck_majorana_wimp_relic
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Planck relic-density likelihood for Majorana WIMP EFT
+  notes: null
+  observable_channel: thermal relic density
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - arxiv:1604.02230
+- allowed_regions:
+  - Surviving regions include systematic allowances from nuclear matrix elements and local halo inputs.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The source likelihood follows experiment-provided local-density and velocity assumptions
+      with added theory uncertainty.
+    id: standard-local-halo
+    impact_if_violated: Different halo inputs shift cross-section limits.
+    notes: null
+    scope: direct detection rates
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: assumed
+  benchmark_implications:
+  - Future XENON1T/LZ-scale experiments were projected to cover much of the remaining non-pole parameter
+    space.
+  caveats:
+  - The batch did not rerun direct-detection likelihood tables.
+  constrained_parameters:
+  - sigma_SI
+  - sigma_SDp
+  - sigma_SDn
+  - m_DM
+  constraint_type: direct_detection
+  data_release: LUX, PICO-2L, and XENON100 limits as implemented by the source
+  excluded_regions:
+  - Operator choices predicting recoil rates above the LUX SI, PICO-2L SD-proton, or XENON100 SD-neutron
+    limits are penalized in the profile likelihood.
+  id: con_lux_pico_xenon100_majorana_wimp
+  likelihood_available: partial
+  likelihood_reference: null
+  name: LUX/PICO-2L/XENON100 recoil limits
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1604.02230
+  - arxiv:1910.14317
+  - arxiv:1607.06396
+- allowed_regions:
+  - Most current non-pole surviving regions remain testable by ton-scale direct detection or future e+e-
+    colliders, except some Z-pole and kinematic-edge regions.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The simplified mediator model is matched to the EFT in the large mediator mass limit.
+    id: large-mediator-matching
+    impact_if_violated: Light mediators require a model-specific analysis.
+    notes: null
+    scope: collider-to-EFT mapping
+    source_reference_ids:
+    - arxiv:1604.02230
+    status: assumed
+  benchmark_implications:
+  - The source uses simplified models for collider production to avoid invalid EFT extrapolation at high
+    energy.
+  caveats:
+  - The source ran separate s-channel and t-channel mediator likelihoods.
+  constrained_parameters:
+  - M_med
+  - Lambda
+  - mediator couplings
+  - m_DM
+  constraint_type: collider
+  data_release: LEP and LHC searches collected by the source
+  excluded_regions:
+  - Mediator setups failing LEP/LHC missing-energy or direct mediator constraints are removed in the source
+    likelihood.
+  id: con_lep_lhc_majorana_simplified_models
+  likelihood_available: partial
+  likelihood_reference: null
+  name: LEP/LHC simplified-model collider constraints
+  notes: null
+  observable_channel: missing energy
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1604.02230
+  - arxiv:2001.03011
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - A current direct-detection or LHC recast would require updated likelihood assets.
+    constraint_ids:
+    - con_planck_majorana_wimp_relic
+    - con_lux_pico_xenon100_majorana_wimp
+    - con_lep_lhc_majorana_simplified_models
+    derived_quantities:
+    - Omega_DM h^2
+    - sigma_SI
+    - sigma_SDp
+    - sigma_SDn
+    - collider production rates
+    description: Map Majorana WIMP EFT coefficients to freeze-out, direct detection, and collider observables
+      through matched simplified models.
+    forward_model_chain:
+    - inputs:
+      - EFT coefficients
+      notes: null
+      outputs:
+      - annihilation and scattering amplitudes
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Low-energy EFT regime.
+    - inputs:
+      - EFT model files
+      notes: null
+      outputs:
+      - Omega_DM h^2
+      step_id: s2
+      step_type: other
+      tool_or_code: micrOMEGAs/CalcHEP/FeynRules
+      validity: Source uses micrOMEGAs/CalcHEP generated by FeynRules.
+    - inputs:
+      - EFT coefficients
+      - simplified mediator model
+      notes: null
+      outputs:
+      - LEP/LHC production rates
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Required for collider validity.
+    - inputs:
+      - cosmology
+      - direct detection
+      - collider rates
+      notes: null
+      outputs:
+      - profile likelihood
+      step_id: s4
+      step_type: likelihood
+      tool_or_code: null
+      validity: Source uses MultiNest.
+    id: route_majorana_eft_global_likelihood
+    input_parameters:
+    - m_DM
+    - Lambda
+    - c_a
+    - mediator masses and couplings
+    likelihoods:
+    - Planck relic density
+    - LUX/PICO/XENON100 recoil limits
+    - LEP/LHC missing-energy searches
+    observable_ids:
+    - obs_majorana_wimp_thermal_relic
+    - obs_majorana_wimp_nuclear_recoil
+    - obs_majorana_wimp_collider_missing_energy
+    required_code_resources:
+    - FeynRules model files
+    - micrOMEGAs
+    - CalcHEP
+    - MultiNest
+    - collider recast machinery
+    route_status: partially_implemented
+    source_model_features:
+    - Z2-stabilized singlet-like Majorana fermion
+    - dimension-six SM-gauge-invariant EFT
+    - heavy simplified mediators
+    validation_tests:
+    - recover Lambda allowed range of a few hundred GeV to about 3 TeV
+    - recover the low-mass exclusion outside pole regions

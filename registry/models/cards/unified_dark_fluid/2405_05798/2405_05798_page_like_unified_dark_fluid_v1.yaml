@@ -1,0 +1,288 @@
+_source:
+  shard: data/astro-ph-00283.tar
+  paper_id: '2405_05798'
+  source_member: 2405_05798.json
+agent_failure_modes:
+  warnings:
+  - category: disputed_claim
+    id: data_favors_lcdm
+    mitigation: Do not infer observational viability from this model card alone.
+    severity: medium
+    source_reference_ids: []
+    warning: The paper reports Bayesian evidence strongly favoring LCDM over PUDF for the tested data
+      combination; this model-only row does not encode constraints.
+  - category: assumption_mismatch
+    id: fluid_not_particle
+    mitigation: Use only where effective dark-fluid models are in scope.
+    severity: medium
+    source_reference_ids: []
+    warning: PUDF is a phenomenological unified dark fluid rather than a microscopic particle dark matter
+      model.
+associated_code:
+  code_summary: The paper says the authors modified the public CLASS package for PUDF perturbation calculations;
+    no repository is identified in the extracted text.
+  has_associated_code: partial
+  primary_code_role: boltzmann_solver_patch
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The model assumes a flat homogeneous isotropic universe with baryons, unified dark fluid,
+      and radiation.
+    id: flat_frw_components
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The paper sets dark-fluid shear perturbation to zero.
+    id: non_viscous_dark_fluid
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Perturbation calculations use adiabatic initial conditions.
+    id: adiabatic_initial_conditions
+    scope: computation
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: medium
+  cmb_relevance: high
+  nonstandard_features:
+  - unified dark matter-dark energy component
+  - PAge approximation extended to the radiation-dominated era
+  standard_history_assumed: true
+identity:
+  aliases: []
+  family: unified_dark_fluid
+  historical_origin_or_motivation: unknown
+  model_kind: phenomenological_parameterization
+  name: PAge-like Unified Dark Fluid
+  short_description: A phenomenological unified dark fluid based on the PAge approximation, intended to
+    behave like dark matter at early times and drive late cosmic acceleration.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  dark_sector_couplings:
+  - entropy perturbation enabling zero effective sound speed
+  - non-viscous unified dark fluid perturbations
+  decay_channels: []
+  interaction_operators: []
+  mediator_types:
+  - effective cosmological fluid
+  portals:
+  - gravitational
+  self_scattering_channels: []
+  standard_model_targets:
+  - cosmological expansion and perturbations through gravity
+  tree_or_loop_level: not_applicable
+model_id: 2405_05798_page_like_unified_dark_fluid_v1
+parameters:
+  core:
+  - description: Defined as H_PAge(a=1) times t_PAge(a=1).
+    name: PAge age parameter
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: p_age
+  - description: Phenomenological parameter describing deviations from a purely matter-dominated universe.
+    name: PAge deviation parameter
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: eta
+  - description: Set to zero so the unified dark fluid can form structures on small scales.
+    name: effective sound speed squared
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: c_s_eff^2
+    value: 0
+  - description: Derived from the dark-fluid continuity equation and PAge density evolution.
+    name: dark-fluid equation of state
+    role: core
+    source_reference_ids: []
+    status: derived
+    symbol: w_d
+  - description: Free cosmological parameter in data fits.
+    name: baryon density
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: Omega_b h^2
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: unknown
+    name: PAge-like unified dark fluid
+    number_of_components: single_component
+    spin: not_applicable
+    statistics: unknown
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators: []
+  standard_model_extension: unknown
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: not_applicable
+  distribution_type: not_applicable
+  notes: The model is an effective cosmological fluid, not a particle phase-space distribution.
+production:
+  abundance_set_by:
+  - PAge expansion history
+  - continuity equation for the unified dark fluid
+  - fluid perturbation prescription
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - phenomenological continuity-equation evolution of a unified dark fluid
+  nonthermal_momentum_distribution: not_applicable
+  notes: The model replaces separate dark matter and dark energy with a single effective component.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: unknown
+provenance:
+  caveats:
+  - Machine-extracted model-only row; observables, constraints, and theory-to-observable routes were intentionally
+    omitted for this run.
+  created_at: '2026-05-28'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The model includes baryons, unified dark fluid, and radiation, extending PAge to the radiation-dominated
+        era.
+      page: null
+      reference_id: '2405_05798'
+      section: null
+    interactions:
+    - confidence: medium
+      note: The model evolves through FRW gravity and linear perturbation equations, with entropy perturbation
+        used to define an effective sound speed.
+      page: null
+      reference_id: '2405_05798'
+      section: null
+    parameter_ranges:
+    - confidence: high
+      note: Core phenomenological parameters are p_age and eta, with c_s_eff^2 set to zero in perturbations.
+      page: null
+      reference_id: '2405_05798'
+      section: null
+    particle_content:
+    - confidence: high
+      note: The paper introduces a PAge-like Unified Dark Fluid that unifies dark matter and dark energy
+        into a single component.
+      page: null
+      reference_id: '2405_05798'
+      section: null
+    production_mechanism:
+    - confidence: high
+      note: The unified dark fluid density is set by the PAge approximation and the continuity equation
+        rather than a particle relic process.
+      page: null
+      reference_id: '2405_05798'
+      section: null
+  extraction:
+    confidence: high
+    extracted_by: dark_matter_model_gpt55_batch_worker_batch-0331
+    extraction_date: '2026-05-28'
+    extractor_name: gpt-5.5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Compact evidence snippets are recorded in provenance.evidence.
+      reference_id: '2405_05798'
+      section: abstract/introduction/model text
+    unresolved_items: []
+  last_updated: '2026-05-28'
+  model_family: unified_dark_fluid
+  model_id: 2405_05798_page_like_unified_dark_fluid_v1
+  model_name: PAge-like Unified Dark Fluid
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: high
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2405.05798'
+      authors:
+      - Junchao Wang
+      - Zhiqi Huang
+      - Yanhong Yao
+      - Jianqi Liu
+      - Lu Huang
+      - Yan Su
+      notes: Primary assigned paper text from run SQLite database.
+      reference_id: '2405_05798'
+      role: original_model
+      title: A PAge-like Unified Dark Fluid Model
+      year: 2024
+  status: machine_extracted
+relic_density:
+  calculation_type: phenomenological
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - p_age
+  - eta
+  - H0
+  - baryon density
+  - effective sound speed
+  overclosure_risk: unknown
+  requires_entropy_dilution: not_applicable
+  tuning_assessment: unknown
+  underproduction_risk: unknown
+robustness:
+  computational_robustness: unknown
+  dominant_uncertainties: []
+  notes: Robustness reflects extraction confidence from the assigned text only, not an external literature
+    judgment.
+  observational_robustness: unknown
+  overall: low
+  theory_robustness: low
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    small_scale_power_effect: unknown
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: not_applicable; clustering behavior is imposed through effective sound speed
+    and fluid perturbations
+  symmetries: []
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: unknown
+  lagrangian_available: not_applicable
+  notes: The paper supplies background and perturbation equations but no microscopic Lagrangian or particle
+    production mechanism.
+  parent_frameworks: []
+  renormalizable: not_applicable
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: linear perturbations
+  caveats: []
+  condition: The paper sets c_s_eff^2 = 0 to allow the fluid to cluster on small scales.
+  extrapolation_risk: medium
+  id: zero_effective_sound_speed
+  notes: null
+  source_reference_ids: []
+  status: assumed
+- applies_to: background evolution
+  caveats: []
+  condition: The PAge approximation is used for the combined baryon plus unified dark fluid density and
+    extended to radiation domination.
+  extrapolation_risk: medium
+  id: phenomenological_page_mapping
+  notes: null
+  source_reference_ids: []
+  status: assumed

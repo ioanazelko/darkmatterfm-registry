@@ -1,0 +1,392 @@
+_source:
+  shard: arXiv_src_0902_001_wds.tar
+  paper_id: 0902_0628
+  source_member: 0902_0628.json
+schema_version: model_only_v0
+model_id: 0902_0628_o_n_scalar_singlet_higgs_portal_dark_matter_v1
+identity:
+  name: O(N) real scalar singlet Higgs-portal dark matter
+  family: scalar_singlet_dark_matter
+  aliases:
+  - real gauge-singlet scalar dark matter
+  - O(N_s) scalar singlet dark matter
+  short_description: A Standard Model extension by several real gauge-singlet scalars stabilized by Z2/O(N)
+    symmetry, with Higgs-portal annihilation setting a cold dark matter abundance.
+  historical_origin_or_motivation: Introduced as an economical way to soften the little hierarchy problem
+    while also supplying realistic dark matter candidates and neutrino-sector structure.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - Standard Model plus real scalar gauge singlets
+  - Higgs-portal dark matter
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff:
+    name: low-energy cutoff
+    symbol: Lambda
+    range: paper states validity up to roughly 5-10 in its extracted units
+    role: core
+    status: inferred
+  embedded_in_larger_framework: unknown
+  notes: The paper gives the scalar potential and treats the renormalizable singlet extension as an effective
+    low-energy theory without specifying the UV completion.
+particle_content:
+  dark_matter_candidate:
+    name: real gauge-singlet scalars phi_i
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Standard Model Higgs boson
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - degenerate singlet scalars in the O(N_s) limit
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Independent Z2 symmetries phi_i -> -phi_i prevent singlet decay; the numerical
+    simplification uses an O(N_s) symmetric limit with equal singlet parameters.
+  symmetries:
+  - name: Z2_i singlet parities
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not broken in the model
+  - name: O(N_s) singlet symmetry
+    type: global
+    exact_or_approximate: approximate
+    breaking: used as a simplifying equal-parameter limit
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs boson pairs
+  - Standard Model final states through an s-channel Higgs
+  dark_sector_couplings:
+  - singlet quartic self-coupling
+  - Higgs-portal |H|^2 phi_i^2 coupling
+  mediator_types:
+  - Higgs scalar
+  interaction_operators:
+  - '|H|^2 sum_i phi_i^2'
+  - phi_i^2 phi_j^2
+  scattering:
+    elastic: unknown
+    inelastic: 'no'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - phi_i phi_i -> h h
+  - phi_i phi_i -> Standard Model final states via Higgs exchange
+  decay_channels: []
+  self_scattering_channels:
+  - phi_i phi_i self-interactions through singlet quartic terms
+  cp_structure: unknown
+  flavor_structure: flavor universal singlet sector in the O(N_s) limit
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: number of singlets
+    symbol: N_s
+    range: one or several; examples discuss N_s = 6
+    role: core
+    status: inferred
+  - name: singlet scalar mass
+    symbol: m_phi
+    range: paper states a 1-3 range for the new scalar mass; local text extraction omits the unit
+    role: core
+    status: inferred
+  - name: Higgs-portal coupling
+    symbol: lambda_Hphi
+    value: fixed against relic abundance and hierarchy-softening requirement
+    role: core
+    status: inferred
+  - name: singlet quartic coupling
+    symbol: lambda_phi
+    range: subject to positivity/stability discussion in the paper
+    role: core
+    status: inferred
+  - name: target abundance
+    symbol: Omega_DM h^2
+    value: 0.106 +/- 0.008
+    role: derived
+    status: inferred
+  - name: freeze-out variable
+    symbol: x_f
+    range:
+      min: 12
+      max: 50
+      unit: null
+      notes: Range quoted for the parameters of interest.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through Higgs-portal annihilation to Standard Model final states
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - thermally averaged singlet annihilation cross section
+  - singlet mass
+  - Higgs-portal coupling
+  - number of singlets
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper computes freeze-out and uses the observed Omega_DM h^2 value to relate the singlet
+    mass and Higgs-portal coupling.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: total singlet relic density
+    symbol: Omega_DM h^2
+    value: 0.106 +/- 0.008
+    role: derived
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - Higgs-portal annihilation cross section
+  - singlet mass
+  - number of equally abundant singlets
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: chemical freeze-out
+    symbol: x_f
+    range:
+      min: 12
+      max: 50
+      unit: null
+      notes: m/T_f range quoted by the paper
+    role: derived
+    status: inferred
+  phase_transitions:
+  - electroweak symmetry breaking sets the Higgs vev entering the singlet mass
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper identifies the parameter range as cold dark matter but does not provide a distribution
+    function.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: 0902_0628_effective_cutoff
+  applies_to: model
+  condition: Use as a low-energy theory below the unspecified UV completion scale.
+  valid_range: roughly 5-10 in the extracted paper units
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - The UV completion is not specified.
+  source_reference_ids:
+  - 0902_0628
+  notes: null
+- id: 0902_0628_o_n_limit
+  applies_to: model
+  condition: Equal singlet masses and couplings are assumed for the O(N_s) numerical simplification.
+  valid_range: small deviations are stated not to change results qualitatively
+  status: inferred
+  extrapolation_risk: low
+  caveats: []
+  source_reference_ids:
+  - 0902_0628
+  notes: null
+assumptions:
+  global:
+  - id: 0902_0628_z2_stability
+    description: Each real singlet is odd under a stabilizing Z2 parity so decays to Higgs pairs are forbidden.
+    scope: theory
+    status: assumed
+    impact_if_violated: Without the parity, the singlets need not be stable dark matter.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - 0902_0628
+    notes: null
+  - id: 0902_0628_equal_abundance
+    description: All singlets are taken to be equally abundant for the relic-density estimate.
+    scope: production
+    status: assumed
+    impact_if_violated: The total relic density relation would change if components had different abundances.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - 0902_0628
+    notes: null
+  - id: 0902_0628_standard_freezeout
+    description: The relic-density estimate assumes the standard thermal freeze-out calculation quoted
+      in the paper.
+    scope: production
+    status: assumed
+    impact_if_violated: Nonstandard expansion or entropy injection would alter the abundance.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - 0902_0628
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific associated code is identified in the assigned paper text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 0902_0628_o_n_scalar_singlet_higgs_portal_dark_matter_v1
+  model_name: O(N) real scalar singlet Higgs-portal dark matter
+  model_family: scalar_singlet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: 0902_0628
+      title: 'Pragmatic approach to the little hierarchy problem: the case for Dark Matter and neutrino
+        physics'
+      authors:
+      - Bohdan Grzadkowski
+      - Jose Wudka
+      year: 2009
+      arxiv_id: '0902.0628'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from the run SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: GPT-5.5 dark-matter batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: 0902_0628
+      section: opening summary
+      page: null
+      quote_or_summary: The paper says real scalar gauge singlets can ameliorate the little hierarchy
+        problem and provide realistic dark matter candidates.
+    - reference_id: 0902_0628
+      section: scalar potential
+      page: null
+      quote_or_summary: It gives a scalar potential with Z2_i symmetries and an O(N_s) equal-parameter
+        limit.
+    - reference_id: 0902_0628
+      section: Dark matter
+      page: null
+      quote_or_summary: It computes singlet annihilation, freeze-out, and the total Omega_DM h^2 target.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: 0902_0628
+      note: Introduces several real scalar fields neutral under the Standard Model gauge group and identifies
+        them as dark matter candidates.
+      confidence: high
+      section: opening and potential setup
+      page: null
+    symmetries:
+    - reference_id: 0902_0628
+      note: States independent Z2_i symmetries phi_i -> -phi_i and then uses an O(N_s) symmetric equal-parameter
+        limit.
+      confidence: high
+      section: scalar potential
+      page: null
+    interactions:
+    - reference_id: 0902_0628
+      note: The scalar potential contains the Higgs-portal |H|^2 phi_i^2 interaction and singlet quartics.
+      confidence: high
+      section: scalar potential
+      page: null
+    production_mechanism:
+    - reference_id: 0902_0628
+      note: The dark matter section gives thermally averaged annihilation to SM final states and a freeze-out
+        temperature range.
+      confidence: high
+      section: Dark matter
+      page: null
+    cosmological_history:
+    - reference_id: 0902_0628
+      note: The paper uses a standard cold thermal relic calculation for the present singlet density.
+      confidence: medium
+      section: Dark matter
+      page: null
+    parameter_ranges:
+    - reference_id: 0902_0628
+      note: Quotes x_f = 12-50, Omega_DM h^2 = 0.106 +/- 0.008, and a 1-3 mass range for the new scalars
+        in the extracted text.
+      confidence: medium
+      section: Dark matter
+      page: null
+    validity_domain:
+    - reference_id: 0902_0628
+      note: States the renormalizable extension is understood as an effective low-energy theory valid
+        up to an unspecified cutoff.
+      confidence: medium
+      section: model setup
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: low
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - UV completion unspecified
+  - mass-unit text extraction ambiguity
+  - equal-abundance simplification for multiple singlets
+  validation_status: expert_judgment_only
+  notes: Core model and relic calculation are explicit, but the high-energy completion is intentionally
+    left open.
+agent_failure_modes:
+  warnings:
+  - id: 0902_0628_unit_ambiguity
+    severity: medium
+    category: unit_convention
+    warning: The local extracted text drops units in several quoted TeV-scale ranges.
+    mitigation: Use the paper PDF or source TeX before relying on exact mass/cutoff units.
+    source_reference_ids:
+    - 0902_0628
+  - id: 0902_0628_not_single_only
+    severity: low
+    category: assumption_mismatch
+    warning: The paper discusses several real singlets and an O(N_s) limit, not only the single-singlet
+      benchmark.
+    mitigation: Preserve the multiplicity parameter when comparing relic-density results.
+    source_reference_ids:
+    - 0902_0628

@@ -1,0 +1,522 @@
+_source:
+  shard: arXiv_src_1908_003_wds.tar
+  paper_id: '1908_00829'
+  source_member: 1908_00829.json
+schema_version: model_only_v0
+model_id: 1908_00829_extended_inert_doublet_singlet_dm_v1
+identity:
+  name: Singlet-extended inert doublet dark matter model
+  family: inert_doublet_dark_matter
+  aliases:
+  - extended inert doublet model with real singlet
+  - extended IDM
+  short_description: A renormalizable scalar dark-matter model extending the Standard Model by a Z2-odd
+    inert doublet and a Z2-even real singlet, with the neutral inert scalar H_0 as thermal dark matter
+    and singlet-Higgs mixing enabling strong first-order electroweak phase transitions.
+  historical_origin_or_motivation: The paper uses a singlet extension of the inert doublet model to obtain
+    viable H_0 dark matter and gravitational-wave-producing electroweak phase transitions.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - inert doublet model
+  - real singlet scalar extension of the Standard Model
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  notes: The paper gives the tree-level scalar potential and derives scalar masses/mixing for the SM Higgs,
+    inert doublet, and real singlet.
+particle_content:
+  dark_matter_candidate:
+    name: H_0
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - A_0 neutral inert scalar
+  - H^+ charged inert scalar
+  - real singlet scalar s / physical scalar h_2
+  mediators:
+  - SM-like scalar h_1
+  - singlet-mixed scalar h_2
+  - electroweak gauge bosons
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - A_0
+  - H^+
+  long_lived_particles:
+  - H_0
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Exact Z2 parity makes the inert doublet odd and all SM plus singlet fields even,
+    stabilizing the lightest inert state.
+  symmetries:
+  - name: Z2 inert parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken for the inert doublet; the inert doublet has no VEV
+    breaking_scale: null
+  topological_defects_possible: 'no'
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - Higgs sector
+  - W bosons
+  - Z bosons
+  - top quarks
+  dark_sector_couplings:
+  - lambda_3, lambda_4, lambda_5 Higgs-inert interactions
+  - singlet-inert couplings
+  - singlet-Higgs mixing
+  mediator_types:
+  - scalar h_1
+  - scalar h_2
+  - electroweak gauge bosons
+  interaction_operators:
+  - renormalizable scalar potential terms involving Phi_H, Phi_I, and S
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - H_0 H_0 -> W^+ W^-
+  - H_0 H_0 -> Z Z
+  - H_0 H_0 -> h_1 h_1
+  - H_0 H_0 -> t tbar
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: CP-even singlet/Higgs mixing; H_0 and A_0 are neutral inert scalars.
+  flavor_structure: no direct inert-doublet Yukawa coupling to fermions stated
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_H0
+    range: GeV-TeV scale in viable examples
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: The paper states H_0 can be viable with mass of order GeV-TeV.
+  - name: SM-like Higgs mass
+    symbol: m_h1
+    value: '125.09'
+    unit: GeV
+    role: benchmark
+    status: assumed
+    source_reference_ids: []
+  - name: second scalar mass
+    symbol: m_h2
+    range: lighter or heavier than m_h1
+    unit: GeV
+    role: core
+    status: assumed
+    source_reference_ids: []
+  - name: singlet vacuum expectation value
+    symbol: v_s
+    value: unknown
+    unit: GeV
+    role: core
+    status: unknown
+    source_reference_ids: []
+  - name: scalar mixing angle
+    symbol: alpha
+    value: varied subject to collider bounds
+    role: core
+    status: assumed
+    source_reference_ids: []
+  - name: inert mass splitting/control coupling
+    symbol: lambda_5
+    value: <0
+    role: core
+    status: assumed
+    source_reference_ids: []
+    notes: The paper chooses lambda_5 < 0 so H_0 is the lightest stable particle.
+  - name: Higgs-inert portal combination
+    symbol: lambda_L
+    description: lambda_3 + lambda_4 + lambda_5
+    value: model-dependent
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: Planck relic target
+    symbol: Omega_DM h^2
+    range:
+      min: 0.1172
+      max: 0.1226
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Planck range quoted by the paper.
+    role: derived
+    status: assumed
+    source_reference_ids: []
+production:
+  mechanisms:
+  - thermal freeze-out through H_0 annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - thermal averaged H_0 annihilation cross section
+  - scalar masses
+  - Higgs/singlet portal couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves the Boltzmann equation and uses micrOMEGAs after implementing the extended IDM
+    in FeynRules.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: target relic density
+    symbol: Omega_DM h^2
+    range:
+      min: 0.1172
+      max: 0.1226
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Planck observational limit quoted in the paper.
+    role: derived
+    status: assumed
+    source_reference_ids: []
+  calculation_type: thermal
+  key_dependencies:
+  - H_0 annihilation cross section
+  - m_H0
+  - m_h1
+  - m_h2
+  - lambda_L
+  - singlet-Higgs mixing
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - strong first-order electroweak phase transition in selected benchmark regions
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: freeze-out temperature
+    symbol: T_F
+    value: computed in relic-density integral
+    role: derived
+    status: inferred
+    source_reference_ids: []
+  phase_transitions:
+  - electroweak phase transition can be first order in the extended scalar sector
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: thermal freeze-out distribution not explicitly tabulated
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Thermal WIMP-like scalar dark matter; the paper focuses on relic abundance rather than phase-space
+    distributions.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: z2_unbroken
+  applies_to: model
+  condition: The inert doublet remains Z2 odd and has no vacuum expectation value.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: h0_lightest
+  applies_to: particle_content
+  condition: lambda_5 is chosen below zero so H_0 is the lightest stable inert particle.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: perturbative_stable_parameter_space
+  applies_to: parameter
+  condition: Quartic couplings obey vacuum-stability conditions and remain below 4 for perturbativity.
+  valid_range: null
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: thermal_freezeout_calculation
+  applies_to: production
+  condition: Relic density calculation assumes standard thermal freeze-out and solves the Boltzmann equation
+    for H_0.
+  valid_range: null
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: exact_z2
+    description: The Z2 parity remains exact so the lightest inert scalar is stable.
+    scope: theory
+    status: assumed
+    impact_if_violated: Dark matter would decay if the symmetry is broken.
+    can_be_relaxed: 'no'
+    source_reference_ids: []
+    notes: null
+  - id: inert_doublet_no_vev
+    description: The inert doublet does not acquire a vacuum expectation value.
+    scope: theory
+    status: assumed
+    impact_if_violated: A VEV would alter stability and scalar mixing.
+    can_be_relaxed: 'no'
+    source_reference_ids: []
+    notes: null
+  - id: h0_lightest_lip
+    description: H_0 is the lightest inert particle, obtained by taking lambda_5 < 0.
+    scope: particle_content
+    status: assumed
+    impact_if_violated: Another inert particle could become the dark matter candidate.
+    can_be_relaxed: 'yes'
+    source_reference_ids: []
+    notes: null
+  - id: standard_thermal_history
+    description: The relic abundance is computed in a standard thermal freeze-out history.
+    scope: production
+    status: assumed
+    impact_if_violated: Nonstandard expansion or entropy injection would change the abundance.
+    can_be_relaxed: 'yes'
+    source_reference_ids: []
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper says the model is implemented in FeynRules and micrOMEGAs is used for relic-density
+    computations; no author repository is identified in the assigned text.
+  primary_code_role: relic_density_calculation
+  repositories: []
+  packages_or_modules:
+  - name: FeynRules
+    resource_type: package
+    availability: public
+    relationship_to_model: wrapper_around_public_tool
+    purpose:
+    - define_lagrangian
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families:
+    - extended inert doublet model as implemented by authors
+    supported_observables: []
+    inputs:
+    - scalar potential parameters
+    outputs:
+    - model files for downstream calculations
+    validity_domain: []
+    citation_reference_ids:
+    - '1908_00829'
+    notes: Mentioned in the assigned text; no URL checked.
+  - name: micrOMEGAs
+    resource_type: package
+    availability: public
+    relationship_to_model: wrapper_around_public_tool
+    purpose:
+    - compute_relic_density
+    - compute_cross_sections
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families:
+    - extended inert doublet model as implemented through model files
+    supported_observables: []
+    inputs:
+    - model file
+    - dark matter mass and couplings
+    outputs:
+    - relic density
+    - scattering cross sections
+    validity_domain: []
+    citation_reference_ids:
+    - '1908_00829'
+    notes: Used by the paper for relic density; no external lookup performed.
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs:
+  - scalar masses
+  - mixing angle
+  - quartic couplings
+  expected_outputs:
+  - relic_density
+  - cross_sections
+  supported_observable_channels: []
+  caveats:
+  - No author-maintained model repository is identified from the assigned text.
+provenance:
+  model_id: 1908_00829_extended_inert_doublet_singlet_dm_v1
+  model_name: Singlet-extended inert doublet dark matter model
+  model_family: inert_doublet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1908_00829'
+      title: Gravitational wave signatures from an extended inert doublet dark matter model
+      authors: []
+      year: 2019
+      arxiv_id: '1908.00829'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_worker_batch-0009
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - section: Abstract
+      page: null
+      quote_or_summary: The paper describes an inert SU(2) doublet stabilized by Z2 and extended by a
+        real singlet; the lightest inert particle is dark matter.
+      reference_id: '1908_00829'
+    - section: Section 2
+      page: null
+      quote_or_summary: The scalar potential, field content, scalar masses, and h-s mixing are written
+        explicitly.
+      reference_id: '1908_00829'
+    - section: Relic Density
+      page: null
+      quote_or_summary: The H_0 abundance is computed from the Boltzmann equation using thermal annihilation
+        cross sections.
+      reference_id: '1908_00829'
+    unresolved_items:
+    - The supplied text does not expose a clean author list in the title block.
+  evidence:
+    particle_content:
+    - reference_id: '1908_00829'
+      note: The model extends the SM by a Z2-odd inert SU(2) scalar doublet and a Z2-even real singlet;
+        H_0 is chosen as the lightest stable inert particle.
+      confidence: high
+      section: Section 2
+    symmetries:
+    - reference_id: '1908_00829'
+      note: A discrete Z2 symmetry makes the inert doublet odd while the SM and singlet are even, stabilizing
+        the lightest inert particle.
+      confidence: high
+      section: Abstract / Section 2
+    interactions:
+    - reference_id: '1908_00829'
+      note: The scalar potential includes Higgs-doublet, inert-doublet, and singlet interactions; the
+        singlet mixes with the SM Higgs to form h_1 and h_2.
+      confidence: high
+      section: Section 2
+    production_mechanism:
+    - reference_id: '1908_00829'
+      note: The relic density is calculated from the Boltzmann equation using the thermal annihilation
+        cross section of H_0.
+      confidence: high
+      section: Relic Density
+    cosmological_history:
+    - reference_id: '1908_00829'
+      note: The paper studies a strong first-order electroweak phase transition induced by the scalar
+        extension, alongside thermal dark matter freeze-out.
+      confidence: medium
+      section: Introduction / Effective Potential
+    parameter_ranges:
+    - reference_id: '1908_00829'
+      note: The paper varies H_0 from GeV to TeV scales and discusses benchmark points satisfying theoretical,
+        collider, relic-density, and direct-detection requirements.
+      confidence: medium
+      section: Constraining the parameter space
+    validity_domain:
+    - reference_id: '1908_00829'
+      note: The parameter space is restricted by vacuum stability, perturbativity, collider bounds, Planck
+        relic density, and direct-search bounds before benchmark GW calculations.
+      confidence: high
+      section: Sections 3-4
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes:
+    - Machine extracted from the assigned full text only; not externally verified.
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - machine extraction only
+  - model viability is parameter dependent
+  - author code availability unknown from assigned text
+  validation_status: partially_validated
+  notes: Accepted because the paper explicitly constructs the scalar model, identifies H_0 as DM, and
+    gives thermal relic-density logic.
+agent_failure_modes:
+  warnings:
+  - id: parameter_dependent_viability
+    severity: medium
+    category: extrapolation
+    warning: Do not treat all extended-IDM parameter points as viable; the paper filters parameter space
+      using stability, perturbativity, relic density, and direct-search requirements.
+    mitigation: null
+    source_reference_ids: []
+  - id: gw_phase_transition_not_universal
+    severity: medium
+    category: assumption_mismatch
+    warning: The first-order phase transition and gravitational-wave behavior are benchmark dependent,
+      not a generic prediction of every parameter point.
+    mitigation: null
+    source_reference_ids: []

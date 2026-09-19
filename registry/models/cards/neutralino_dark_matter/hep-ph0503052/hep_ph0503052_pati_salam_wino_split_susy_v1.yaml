@@ -1,0 +1,797 @@
+_source:
+  shard: arXiv_src_0503_001_wds.tar
+  paper_id: hep-ph0503052
+  source_member: hep-ph0503052.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: implicit_wino_stability
+    mitigation: Verify the LSP-stability assumption before using the model card.
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: The extraction assumes the Wino-like neutralino is stable, but the paper does not spell out
+      the stabilizing parity.
+  - category: approximate_constraint
+    id: thermal_wino_boundary
+    mitigation: Recompute the Wino relic density for precise parameter scans.
+    severity: low
+    source_reference_ids:
+    - primary
+    warning: The Wino relic mass range is quoted in the paper as a typical split-SUSY condition, not derived
+      in detail there.
+associated_code:
+  caveats: []
+  code_summary: No dedicated code release is stated in the assigned text; relic-density conditions are
+    quoted from split-SUSY studies.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  computation_specific: []
+  global:
+  - can_be_relaxed: unknown
+    description: Sfermions are heavy while the Wino-like electroweakino remains near the TeV scale.
+    id: split_susy_spectrum
+    impact_if_violated: The Wino relic-density interpretation changes outside the split-SUSY spectrum.
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The Goldstino contribution from partial-unification breaking dominates the relevant gaugino
+      masses.
+    id: partial_unification_goldstino
+    impact_if_violated: The predicted Wino-light hierarchy would be altered.
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The Wino-like neutralino is the stable LSP and constitutes the dark matter.
+    id: wino_lsp
+    impact_if_violated: A charged or non-Wino LSP would invalidate this card.
+    scope: production
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: low
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - split-SUSY heavy scalar sector
+  - very heavy gluino and Bino in the partial-unification hierarchy
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - G_422 split-SUSY Wino dark matter
+  - Pati-Salam split-SUSY neutralino dark matter
+  family: neutralino_dark_matter
+  historical_origin_or_motivation: Developed to show how different unified gauge groups predict distinct
+    split-SUSY gaugino spectra while retaining neutralino dark matter and gauge coupling unification.
+  model_kind: complete_theory
+  name: Pati-Salam Goldstino split-SUSY Wino dark matter
+  short_description: A split-supersymmetry partial-unification model in which Goldstino contributions
+    make Bino and gluino heavy while a Wino-like neutralino remains light enough to be the dark matter
+    candidate.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - thermal Wino annihilation and coannihilation through electroweak interactions
+  cp_structure: unknown
+  dark_sector_couplings:
+  - Wino electroweak interactions
+  - neutralino-chargino coannihilation
+  decay_channels: []
+  flavor_structure: heavy sfermions suppress FCNC problems
+  interaction_operators: []
+  mediator_types:
+  - W boson
+  - Z boson
+  - Higgs boson
+  portals:
+  - vector
+  - higgs
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - electroweak gauge sector
+  - Higgs sector
+  tree_or_loop_level: both
+model_id: hep_ph0503052_pati_salam_wino_split_susy_v1
+parameters:
+  core:
+  - description: Thermal Wino dark matter mass scale
+    name: Wino soft mass
+    range: 2-2.5
+    role: core
+    status: inferred
+    symbol: M2
+    unit: TeV
+  - description: Heavy in the G_422 Goldstino hierarchy
+    name: Bino soft mass
+    role: core
+    status: inferred
+    symbol: M1
+    unit: GeV
+    value: about 1e7
+  - description: Heavy in the G_422 Goldstino hierarchy
+    name: gluino soft mass
+    role: core
+    status: inferred
+    symbol: M3
+    unit: GeV
+    value: about 1e8
+  - description: Illustrative heavy Higgsino mass in the hierarchy
+    name: Higgsino mass
+    role: core
+    status: inferred
+    symbol: mu
+    unit: GeV
+    value: about 1e4
+  - description: Can remain large because the gluino is made heavy
+    name: split-SUSY scalar scale
+    role: core
+    status: inferred
+    symbol: m_SUSY
+    unit: GeV
+    value: about 1e9
+  derived:
+  - description: The G_422 broken generators contribute to Bino and gluino masses but not the Wino mass
+    name: gaugino hierarchy
+    role: derived
+    status: inferred
+    symbol: M2 << M1, M3
+    value: Wino light, Bino/gluino heavy
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - nearly degenerate charged Wino
+  - heavy Bino
+  - heavy gluino
+  - Higgsinos
+  - heavy squarks and sleptons
+  - Goldstinos from broken partial-unification generators
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: Wino-like lightest neutralino
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - charged Wino
+  long_lived_particles:
+  - gluino if not made sufficiently heavy
+  mediators:
+  - electroweak gauge bosons
+  - Higgs bosons
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - gluino
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: not provided
+  free_streaming_length: null
+  notes: TeV-scale Wino neutralino is treated as cold dark matter.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - M2
+  - Wino electroweak annihilation
+  - chargino-neutralino coannihilation
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal Wino freeze-out with electroweak annihilation and coannihilation
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper states that WMAP data is satisfied by Wino dark matter in this partial-unification
+    scenario.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - The stabilizing parity for the neutralino is implicit rather than spelled out in the assigned text.
+  created_at: '2026-05-30'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The heavy gluino in the G_422 scenario can be harmless even when the split-SUSY scalar scale
+        is large.
+      page: null
+      reference_id: primary
+      section: partial unification
+    interactions:
+    - confidence: medium
+      note: The Wino thermal relic condition is listed as M2 about 2-2.5 TeV with M2 smaller than M1 and
+        mu.
+      page: null
+      reference_id: primary
+      section: dark matter condition
+    parameter_ranges:
+    - confidence: high
+      note: The paper gives an illustrative hierarchy M3 about 1e8 GeV, M1 about 1e7 GeV, mu about 1e4
+        GeV, and M2 at the TeV scale.
+      page: null
+      reference_id: primary
+      section: partial unification
+    particle_content:
+    - confidence: high
+      note: In the G_422 partial-unification case, only the Wino mass can remain light among the three
+        gauginos, making a Wino-like LSP the dark matter candidate.
+      page: null
+      reference_id: primary
+      section: partial unification
+    production_mechanism:
+    - confidence: high
+      note: The paper states that the WMAP data is satisfied by Wino dark matter in the G_422 scenario.
+      page: null
+      reference_id: primary
+      section: conclusion
+    symmetries:
+    - confidence: medium
+      note: The same split-SUSY and Goldstino-loop logic is used, with the broken generators determining
+        which gauginos receive large masses.
+      page: null
+      reference_id: primary
+      section: partial unification
+    validity_domain:
+    - confidence: medium
+      note: The G_422 broken-generator content contributes to gluino and Bino masses but not Wino mass,
+        so the Wino can be light.
+      page: null
+      reference_id: primary
+      section: partial unification
+    constraints:
+    - confidence: high
+      note: Primary paper quotes WMAP 0.094 < Omega_DM h^2 < 0.129 and summarizes Wino, Bino, and Higgsino
+        relic surfaces.
+      page: null
+      reference_id: arxiv:hep-ph/0503052
+      section: Neutralino dark matter condition
+    - confidence: medium
+      note: Related split-SUSY source states that Wino dark matter can yield monochromatic photons, antiprotons,
+        and positrons while direct detection can be tiny when Higgsinos are very heavy.
+      page: null
+      reference_id: arxiv:hep-ph/0501265
+      section: Signals
+    - confidence: medium
+      note: Primary paper discusses choosing m_SUSY and gaugino masses so the gluino does not create a
+        cosmological problem.
+      page: null
+      reference_id: arxiv:hep-ph/0503052
+      section: Introduction and unification discussion
+    observables:
+    - confidence: high
+      note: Primary paper says Wino dark matter requires M2 about 2-2.5 TeV with M2 < M1 and that Pati-Salam
+        can make the gluino very heavy while preserving unification.
+      page: null
+      reference_id: arxiv:hep-ph/0503052
+      section: Neutralino dark matter and Pati-Salam discussion
+    - confidence: medium
+      note: Related split-SUSY paper identifies Wino dark matter, monochromatic photon signals, and suppressed
+        direct detection for very heavy Higgsinos.
+      page: null
+      reference_id: arxiv:hep-ph/0501265
+      section: Dark matter signals
+    routes:
+    - confidence: high
+      note: Primary paper compares unified-model gaugino spectra and links Pati-Salam mass ratios to neutralino
+        dark matter and gluino cosmology.
+      page: null
+      reference_id: arxiv:hep-ph/0503052
+      section: Model comparison
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0014
+    extraction_date: '2026-05-30'
+    extractor_name: codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper lists Wino dark matter with M2 around 2-2.5 TeV as a WMAP-compatible
+        split-SUSY solution.
+      reference_id: primary
+      section: dark matter condition
+    - page: null
+      quote_or_summary: In G_422, Goldstino contributions make Bino and gluino heavy while Wino can remain
+        light.
+      reference_id: primary
+      section: partial unification
+    - page: null
+      quote_or_summary: The WMAP data is stated to be satisfied by Wino dark matter in this scenario.
+      reference_id: primary
+      section: conclusion
+    unresolved_items:
+    - Sommerfeld-enhanced Wino relic density and present-day annihilation were not recalculated.
+    - Modern gamma-ray, cosmic-ray, and long-lived gluino constraints were not applied.
+  last_updated: '2026-05-30'
+  model_family: neutralino_dark_matter
+  model_id: hep_ph0503052_pati_salam_wino_split_susy_v1
+  model_name: Pati-Salam Goldstino split-SUSY Wino dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: hep-ph/0503052
+      authors:
+      - Bhaskar Dutta
+      - Yukihiro Mimura
+      doi: null
+      notes: Only the assigned SQLite full text was used.
+      reference_id: primary
+      role: original_model
+      title: Split Supersymmetry in Unified Models
+      url: null
+      year: 2005
+    - arxiv_id: hep-ph/0503052
+      authors:
+      - Dutta, Bhaskar
+      - Mimura, Yukihiro
+      doi: null
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:hep-ph/0503052
+      role: original_model
+      title: Split supersymmetry in unified models
+      url: https://arxiv.org/abs/hep-ph/0503052
+      year: 2005
+    constraint_papers:
+    - arxiv_id: hep-ph/0412058
+      authors:
+      - Masiero, A.
+      - Profumo, S.
+      - Ullio, P.
+      doi: 10.1016/j.nuclphysb.2005.01.028
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:hep-ph/0412058
+      role: constraint
+      title: Neutralino dark matter detection in split supersymmetry scenarios
+      url: https://arxiv.org/abs/hep-ph/0412058
+      year: 2005
+    - arxiv_id: hep-ph/0501265
+      authors:
+      - Cheung, Kingman
+      - Chiang, Cheng-Wei
+      doi: 10.1103/PhysRevD.71.095003
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:hep-ph/0501265
+      role: constraint
+      title: Splitting split supersymmetry
+      url: https://arxiv.org/abs/hep-ph/0501265
+      year: 2005
+    - arxiv_id: hep-ph/0408296
+      authors:
+      - Gupta, Sudhir Kumar
+      - Konar, Partha
+      - Mukhopadhyaya, Biswarup
+      doi: 10.1016/j.physletb.2004.12.014
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:hep-ph/0408296
+      role: other
+      title: R-parity violation in split supersymmetry
+      url: https://arxiv.org/abs/hep-ph/0408296
+      year: 2005
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - M2
+  - Wino annihilation
+  - chargino coannihilation
+  - mass hierarchy relative to Bino and Higgsino
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    name: WMAP dark matter relic density
+    range: 0.094-0.129
+    role: cosmological
+    status: inferred
+    symbol: Omega_DM h^2
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  notes: null
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: not developed in the paper
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: not developed in the paper
+symmetries:
+  stabilizing_mechanism: The paper treats the Wino-like neutralino LSP as dark matter; the explicit stabilizing
+    parity is not specified in the assigned text.
+  symmetries:
+  - breaking: R-breaking effects enter through unified-symmetry breaking and Goldstino mass terms
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: R symmetry controlling gaugino masses
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper specifies the broken-generator content and resulting gaugino hierarchy rather than
+    a full component Lagrangian.
+  parent_frameworks:
+  - split supersymmetry
+  - Pati-Salam SU(4)c x SU(2)L x SU(2)R unification
+  - Goldstino loop gaugino masses
+  renormalizable: unknown
+  theory_level: uv_complete
+validity_domain:
+- applies_to: theory
+  caveats: []
+  condition: G_422 broken generators give large Bino and gluino masses while leaving the Wino light.
+  extrapolation_risk: medium
+  id: g422_hierarchy
+  source_reference_ids: []
+  status: inferred
+- applies_to: parameter
+  caveats: []
+  condition: The Wino mass lies in the thermal relic range quoted by the paper.
+  extrapolation_risk: medium
+  id: thermal_wino_mass
+  source_reference_ids: []
+  status: assumed
+- applies_to: cosmological_history
+  caveats: []
+  condition: The gluino is heavy enough to avoid the long-lived gluino cosmological problem.
+  extrapolation_risk: medium
+  id: heavy_gluino_cosmology
+  source_reference_ids: []
+  status: inferred
+observables:
+- caveats:
+  - Sommerfeld effects for multi-TeV Winos were not included in the primary-era summary.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early-universe plasma
+  id: obs_pati_salam_wino_relic
+  key_quantities:
+  - description: Weak-scale Wino mass parameter.
+    name: Wino mass
+    range: 2-2.5 TeV for pure Wino thermal relic in the source summary
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0503052
+    status: inferred
+    symbol: M2
+    unit: TeV
+  - description: Weak-scale Bino mass parameter.
+    name: Bino mass
+    range: above M2 in the Wino-like case
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0503052
+    - arxiv:hep-ph/0501265
+    status: inferred
+    symbol: M1
+    unit: GeV
+  - description: Weak-scale gluino mass parameter.
+    name: gluino mass
+    range: can be very heavy in Pati-Salam while maintaining unification
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0503052
+    status: inferred
+    symbol: M3
+    unit: GeV
+  linked_constraints:
+  - con_pati_salam_wmap_wino
+  - con_wino_indirect_detection
+  linked_routes:
+  - route_pati_salam_wino_to_observables
+  name: Pati-Salam Wino-like thermal relic
+  notes: null
+  observability: high
+  predicted_effect: In the Pati-Salam unified setup, Goldstino contributions can make the Wino the lightest
+    neutralino while the gluino is heavy; a pure thermal Wino target is around M2 = 2-2.5 TeV in the source
+    discussion.
+  redshift_range: thermal freeze-out through today
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:hep-ph/0503052
+  - arxiv:hep-ph/0501265
+  subchannel: split-SUSY Wino freeze-out
+- caveats:
+  - Current gamma-line and cosmic-ray bounds need a modern Sommerfeld-aware recast.
+  channel: indirect_detection
+  effect_direction: spectral_line
+  environments:
+  - Milky Way halo
+  - cosmic-ray propagation volume
+  id: obs_wino_indirect_line_and_antimatter
+  key_quantities:
+  - description: Loop-induced Wino annihilation to monochromatic photons.
+    name: gamma-line annihilation rate
+    range: model dependent
+    role: derived
+    source_reference_ids:
+    - arxiv:hep-ph/0501265
+    status: inferred
+  - description: Controls Higgsino admixture and direct-detection coupling.
+    name: Higgsino mass parameter
+    range: very heavy in the related split-split scenario
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0501265
+    status: inferred
+    symbol: mu
+    unit: GeV
+  linked_constraints:
+  - con_wino_indirect_detection
+  linked_routes:
+  - route_pati_salam_wino_to_observables
+  name: Wino indirect-detection targets
+  notes: null
+  observability: medium
+  predicted_effect: Wino-like split-SUSY dark matter can have strong annihilation signals, including monochromatic
+    photons and antimatter channels, while direct detection can be very small when Higgsinos and squarks
+    are heavy.
+  redshift_range: today
+  relevance: high
+  scale_range: Galactic-halo annihilation scales
+  source_reference_ids:
+  - arxiv:hep-ph/0501265
+  subchannel: gamma line, positrons, and antiprotons
+constraints:
+- allowed_regions:
+  - Source identifies Wino dark matter at M2 about 2-2.5 TeV with M2 < M1 as a WMAP-compatible surface.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The Wino is a standard thermal relic and provides all dark matter.
+    id: pure-wino-thermal
+    impact_if_violated: Nonthermal Wino production or subcomponent dark matter changes the mass target.
+    notes: null
+    scope: relic-density target
+    source_reference_ids:
+    - arxiv:hep-ph/0503052
+    status: assumed
+  benchmark_implications:
+  - Assigned Pati-Salam row should be treated as full thermal dark matter only near the multi-TeV Wino
+    target or with modified composition/history.
+  caveats:
+  - Sommerfeld-corrected modern relic mass was not recalculated.
+  constrained_parameters:
+  - Omega_DM h^2
+  - M2
+  - M1
+  - mu
+  constraint_type: cosmological
+  data_release: WMAP range quoted by primary source
+  excluded_regions:
+  - Sub-TeV pure Wino thermal relics underproduce the full dark matter abundance; Bino-like states without
+    mixing can overclose.
+  id: con_pati_salam_wmap_wino
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: WMAP relic target for Wino-like split-SUSY dark matter
+  notes: null
+  observable_channel: thermal relic density
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - arxiv:hep-ph/0503052
+  - arxiv:hep-ph/0501265
+- allowed_regions:
+  - Related split-SUSY source highlights monochromatic photons and antimatter as interesting Wino signals.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Indirect limits are interpreted with an assumed Galactic dark-matter halo profile.
+    id: standard-halo-profile
+    impact_if_violated: Cored profiles or subcomponent abundance alter the limits.
+    notes: null
+    scope: indirect recast
+    source_reference_ids:
+    - arxiv:hep-ph/0501265
+    status: assumed
+  benchmark_implications:
+  - Pati-Salam Wino benchmarks need current line/continuum/antimatter likelihoods and halo assumptions.
+  caveats:
+  - No Sommerfeld-enhanced annihilation or propagation calculation was run.
+  constrained_parameters:
+  - M2
+  - <sigma v>
+  - halo profile
+  - Sommerfeld enhancement
+  constraint_type: indirect_detection
+  data_release: Indirect-detection channels discussed in related split-SUSY source
+  excluded_regions:
+  - Large Wino annihilation rates are constrained by gamma-ray line, antiproton, positron, and continuum
+    searches.
+  id: con_wino_indirect_detection
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Indirect-detection recast for Wino annihilation
+  notes: null
+  observable_channel: gamma lines and antimatter
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0501265
+- allowed_regions:
+  - Primary paper notes Pati-Salam can make the gluino very heavy while maintaining gauge coupling unification.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Gluino decays are controlled by heavy-scalar split-SUSY operators.
+    id: split-susy-gluino-lifetime
+    impact_if_violated: Additional decay channels or R-parity violation change the bound.
+    notes: null
+    scope: gluino cosmology
+    source_reference_ids:
+    - arxiv:hep-ph/0503052
+    - arxiv:hep-ph/0408296
+    status: assumed
+  benchmark_implications:
+  - The model needs m_SUSY and M3 choices that avoid long-lived gluino cosmology.
+  caveats:
+  - No gluino lifetime calculation was performed.
+  constrained_parameters:
+  - M3
+  - m_SUSY
+  - gluino lifetime
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Long-lived gluinos can create cosmological problems if the scalar scale and gluino mass produce too-long
+    lifetimes.
+  id: con_pati_salam_gluino_cosmology
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Gluino cosmology and unification condition
+  notes: null
+  observable_channel: long-lived gluino and gauge unification
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0503052
+  - arxiv:hep-ph/0408296
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Current Wino limits are highly halo-profile and Sommerfeld dependent.
+    constraint_ids:
+    - con_pati_salam_wmap_wino
+    - con_wino_indirect_detection
+    - con_pati_salam_gluino_cosmology
+    derived_quantities:
+    - Wino relic density
+    - chargino-neutralino splitting
+    - annihilation spectra
+    - gluino lifetime
+    description: Map Pati-Salam Goldstino gaugino masses to Wino relic density, indirect detection, and
+      gluino cosmology.
+    forward_model_chain:
+    - inputs:
+      - Pati-Salam breaking
+      - Goldstino terms
+      notes: null
+      outputs:
+      - GUT-scale gaugino masses
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Use primary partial-unification mass-ratio discussion.
+    - inputs:
+      - GUT-scale masses
+      - split-SUSY thresholds
+      notes: null
+      outputs:
+      - weak-scale Wino LSP and gluino mass
+      step_id: s2
+      step_type: other
+      tool_or_code: RGE spectrum code
+      validity: Thresholds and unification conditions must be retained.
+    - inputs:
+      - Wino mass
+      - mass splitting
+      notes: null
+      outputs:
+      - Omega_DM h^2
+      - annihilation rates
+      step_id: s3
+      step_type: boltzmann_solver
+      tool_or_code: DarkSUSY or micrOMEGAs with Sommerfeld update
+      validity: Modern Wino relic prediction should include Sommerfeld effects.
+    - inputs:
+      - annihilation spectra
+      - gluino lifetime
+      notes: null
+      outputs:
+      - indirect-detection and cosmology constraints
+      step_id: s4
+      step_type: recasting
+      tool_or_code: null
+      validity: Needs current gamma-ray, cosmic-ray, and BBN/CMB inputs.
+    id: route_pati_salam_wino_to_observables
+    input_parameters:
+    - M1
+    - M2
+    - M3
+    - mu
+    - m_SUSY
+    - tan_beta
+    - halo profile
+    likelihoods:
+    - Planck relic target
+    - gamma-line and continuum searches
+    - antiproton/positron likelihoods
+    - gluino lifetime cosmology
+    observable_ids:
+    - obs_pati_salam_wino_relic
+    - obs_wino_indirect_line_and_antimatter
+    required_code_resources:
+    - RGE spectrum code
+    - Sommerfeld-aware Wino relic/annihilation calculator
+    - indirect-detection recast
+    route_status: planned
+    source_model_features:
+    - Pati-Salam unified model
+    - Goldstino gaugino mass contribution
+    - Wino-like LSP
+    - heavy gluino option
+    validation_tests:
+    - recover M2 about 2-2.5 TeV source target
+    - check Pati-Salam heavy-gluino unification claim

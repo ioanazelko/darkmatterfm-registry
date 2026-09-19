@@ -1,0 +1,290 @@
+_source:
+  shard: arXiv_src_1511_015_wds.tar
+  paper_id: '1511_06375'
+  source_member: 1511_06375.json
+agent_failure_modes:
+  warnings:
+  - category: notation_conflict
+    id: scotogenic_confusion
+    severity: medium
+    warning: Do not confuse this Type-II radiative seesaw construction with the earlier Type-I scotogenic
+      model mentioned for comparison.
+  - category: other
+    id: constraint_fields_omitted
+    severity: medium
+    warning: Direct-detection and LHC bounds are discussed in the paper but are intentionally not encoded
+      in this model-only row.
+associated_code:
+  code_summary: The paper says the model was implemented with FeynRules 2.0 for collider-event generation,
+    but no public reusable repository is identified in the text.
+  has_associated_code: partial
+  packages_or_modules:
+  - availability: unknown
+    name: FeynRules implementation
+    purpose: Model implementation for MadGraph event generation
+    relationship_to_model: paper_specific
+    resource_type: module
+  primary_code_role: collider_simulation
+assumptions:
+  global:
+  - description: Dark Z2 parity remains exact after soft lepton-number breaking.
+    id: dark_parity_exact
+    scope: global
+    status: assumed
+  - description: Relic-density discussion assumes standard thermal freeze-out.
+    id: standard_freezeout
+    scope: cosmological_history
+    status: assumed
+  - description: Three scalar singlets are present for the three-neutrino case.
+    id: three_s_scalars
+    scope: particle_content
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+  nonstandard_features: []
+  standard_history_assumed: true
+identity:
+  aliases:
+  - Type II radiative seesaw dark matter
+  - scalar s dark matter
+  family: radiative_neutrino_mass_dark_matter
+  historical_origin_or_motivation: Construct a Type-II radiative seesaw analogue of scotogenic models
+    with a dark sector tied to neutrino-mass generation.
+  model_kind: complete_theory
+  name: Type II radiative seesaw model with scalar-singlet dark matter
+  short_description: A radiative Type-II seesaw model where a scalar triplet, a vectorlike lepton doublet,
+    and complex neutral scalar singlets generate neutrino masses while the lightest scalar singlet s is
+    stabilized by dark parity and acts as dark matter.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - s_1 s_1* to hh through s_2 exchange
+  - possible s_1 s_1* annihilation to light scalar mediator if added
+  dark_sector_couplings:
+  - f_s s nu_L N_R
+  - f_R Delta^0 N_R N_R
+  - f_L Delta^0 N_L N_L
+  - quartic s* s Phi* Phi
+  - off-diagonal Higgs couplings among s_i
+  mediator_types:
+  - scalar Higgs
+  - scalar triplet
+  - vectorlike lepton doublet
+  - heavier scalar singlets
+  portals:
+  - higgs
+  - other
+  scattering:
+    elastic: 'yes'
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  standard_model_targets:
+  - leptons
+  - Higgs boson
+  tree_or_loop_level: both
+model_id: 1511_06375_type_ii_radiative_seesaw_scalar_s_dark_matter_v1
+parameters:
+  core:
+  - description: Mass of the lightest scalar singlet; benchmark discussion uses 130 GeV for collider examples.
+    name: dark scalar mass
+    role: core
+    status: inferred
+    symbol: m_s1
+  - description: Mass of the Dirac doublet (N,E), described as a few hundred GeV in examples.
+    name: vectorlike lepton mass
+    role: core
+    status: inferred
+    symbol: m_E
+  - description: Vacuum expectation value of Delta^0; example u about 0.1 GeV.
+    name: triplet vev
+    role: core
+    status: inferred
+    symbol: u
+  - description: Coupling s nu_L N_R; example value 0.01.
+    name: Yukawa coupling f_s
+    role: core
+    status: inferred
+    symbol: f_s
+  - description: Triplet couplings to N_R N_R and N_L N_L; example values about 0.1.
+    name: Yukawa couplings f_R and f_L
+    role: core
+    status: inferred
+    symbol: f_R,f_L
+  - description: Soft s s term that breaks lepton number by two units.
+    name: soft lepton-number-breaking scalar mass insertion
+    role: core
+    status: inferred
+    symbol: Delta m_s^2
+particle_content:
+  additional_dark_sector_particles:
+  - three complex neutral scalar singlets s_i
+  - Dirac fermion doublet (N,E)
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lightest complex scalar singlet s_1
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  long_lived_particles:
+  - s_1 if lightest dark-parity odd state
+  mediators:
+  - SM Higgs boson
+  - heavier scalar singlets s_2 and s_3
+  - optional light L=0 scalar mediator
+  standard_model_extension: substantial
+phase_space:
+  distribution_function_available: unknown
+  distribution_type: thermal
+production:
+  abundance_set_by:
+  - quartic Higgs coupling matrix lambda_ij
+  - off-diagonal s_1-s_2-Higgs coupling
+  - s_1 mass
+  - optional light scalar mediator
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through Higgs portal and heavier scalar exchange
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper notes lepton interactions alone are too weak for the relic density and invokes Higgs-portal/off-diagonal
+    scalar interactions.
+  thermal_equilibrium_with_hidden_sector: partial
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: Yukawa terms f_s, f_R, and f_L plus scalar mass and soft-breaking terms are written explicitly.
+      reference_id: '1511_06375'
+    parameter_ranges:
+    - confidence: high
+      note: Examples include f_R=f_L=0.1, f_s=0.01, u about 0.1 GeV, and m_s1=130 GeV in collider demonstrations.
+      reference_id: '1511_06375'
+    particle_content:
+    - confidence: high
+      note: The paper identifies the lightest scalar singlet s_1 as dark matter and lists N,E,s as dark-parity
+        odd particles.
+      reference_id: '1511_06375'
+    production_mechanism:
+    - confidence: high
+      note: Relic-density discussion uses Higgs-portal and heavier-s_i exchange because lepton couplings
+        are too weak.
+      reference_id: '1511_06375'
+    symmetries:
+    - confidence: high
+      note: Soft lepton-number breaking leaves a dark Z2 parity (-1)^(L+2j).
+      reference_id: '1511_06375'
+    validity_domain:
+    - confidence: high
+      note: Dark matter requires s_1 to be the lightest dark-parity odd particle.
+      reference_id: '1511_06375'
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0011
+    extraction_date: '2026-05-31'
+    extractor_name: gpt-5-codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - quote_or_summary: Adds a Dirac fermion doublet (N,E) and three complex neutral scalar singlets s
+        to connect the triplet in one loop.
+      reference_id: '1511_06375'
+      section: Model construction
+    - quote_or_summary: A dark Z2 parity exists under which N,E,s are odd and SM/triplet fields are even.
+      reference_id: '1511_06375'
+      section: Dark parity
+    - quote_or_summary: The lightest s is dark matter; Higgs-portal/off-diagonal scalar interactions can
+        set the relic density.
+      reference_id: '1511_06375'
+      section: Dark matter relic discussion
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: radiative_neutrino_mass_dark_matter
+  model_id: 1511_06375_type_ii_radiative_seesaw_scalar_s_dark_matter_v1
+  model_name: Type II radiative seesaw model with scalar-singlet dark matter
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: medium
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1511.06375'
+      notes: Assigned SQLite full text only.
+      reference_id: '1511_06375'
+      role: original_model
+      title: Type II Radiative Seesaw Model of Neutrino Mass with Dark Matter
+      year: 2015
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - lambda_12
+  - m_s1
+  - m_s2,m_s3
+  - Higgs portal annihilation
+  - optional light scalar mediator
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Relic-density viability depends on scalar mixing/coupling choices
+  - Collider implementation is described but not supplied as a reusable code artifact
+  observational_robustness: not_applicable
+  overall: medium
+  theory_robustness: medium
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: Soft breaking of lepton number U(1)_L to dark parity (-1)^(L+2j) leaves N, E,
+    and s odd; the lightest s is stable.
+  symmetries:
+  - breaking: soft breaking by s s terms to (-1)^L
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: lepton number U(1)_L
+    type: global
+  - exact_or_approximate: exact
+    name: dark Z2 parity (-1)^(L+2j)
+    type: discrete
+theory:
+  embedded_in_larger_framework: 'no'
+  lagrangian_available: partial
+  notes: The paper writes the scalar potential terms and Yukawa interactions used for the one-loop neutrino
+    mass.
+  parent_frameworks:
+  - Type II seesaw
+  - radiative neutrino mass
+  - scotogenic dark sector
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The lightest dark-parity odd scalar s must be the lightest odd particle.
+  extrapolation_risk: medium
+  id: lightest_s_stable
+  status: established
+- applies_to: parameter
+  caveats: []
+  condition: Loop neutrino mass expression assumes soft L-breaking terms small compared with scalar mass
+    splittings.
+  extrapolation_risk: medium
+  id: soft_breaking_small
+  status: assumed

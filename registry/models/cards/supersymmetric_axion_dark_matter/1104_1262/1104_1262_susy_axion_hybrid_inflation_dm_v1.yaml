@@ -1,0 +1,792 @@
+_source:
+  shard: arXiv_src_1104_002_wds.tar
+  paper_id: '1104_1262'
+  source_member: 1104_1262.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1104_1262_susy_axion_hybrid_inflation_dm_v1
+identity:
+  name: SUSY axion hybrid-inflation model with saxion-diluted axion dark matter
+  family: supersymmetric_axion_dark_matter
+  aliases:
+  - SUSY axion hybrid inflation model
+  - saxion-diluted axion dark matter
+  short_description: A supersymmetric Peccei-Quinn model in which the PQ sector realizes hybrid inflation
+    and late saxion decay dilutes coherent axion oscillations to the observed dark-matter abundance.
+  historical_origin_or_motivation: The paper links the strong-CP solution, supersymmetry, hybrid inflation,
+    and axion dark matter at a PQ scale near 10^15 GeV.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - supersymmetric axion model
+  - Peccei-Quinn symmetry
+  - SUSY hybrid inflation
+  - KSVZ or DFSZ axion realization
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the PQ-sector superpotential, soft terms, and supergravity hybrid-inflation potential;
+    KSVZ and DFSZ decay channels are discussed as realizations.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion from the PQ superfields
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - saxion scalar partner of the axion
+  - axino fermionic superpartner of the axion
+  - PQ scalar fields Phi and anti-Phi
+  - gauge-singlet inflaton superfield S
+  mediators:
+  - saxion
+  - heavy KSVZ quarks or DFSZ Higgs-sector couplings
+  - MSSM Higgs fields in the DFSZ case
+  dark_radiation_species:
+  - nonthermal axions from saxion decay if the branching ratio is non-negligible
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - axion
+  unstable_parent_particles:
+  - saxion
+  - inflaton S
+  - axino if not the LSP
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The axion is a pseudo-Nambu-Goldstone boson of broken U(1)_PQ; its cosmological
+    longevity follows from the weak PQ-suppressed couplings.
+  symmetries:
+  - name: U(1)_PQ
+    type: global
+    exact_or_approximate: broken
+    breaking: Spontaneously broken by PQ scalar vevs and explicitly reduced by the QCD anomaly.
+  - name: R symmetry
+    type: global
+    exact_or_approximate: unknown
+    breaking: Used in the superpotential charge assignments.
+  - name: anomaly-induced Z_N
+    type: discrete
+    exact_or_approximate: broken
+    breaking: QCD effects generate axion domain walls; N=1 avoids a cosmological domain-wall problem.
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  - higgs
+  - other
+  standard_model_targets:
+  - gluons
+  - heavy KSVZ quarks
+  - MSSM Higgs doublets
+  - radiation bath
+  dark_sector_couplings:
+  - PQ superpotential coupling S(Phi anti-Phi - f_a^2)
+  - saxion couplings to axions, gluons, or Higgs fields
+  - axion QCD instanton potential
+  mediator_types:
+  - saxion
+  - heavy quark loop
+  - Higgs-sector coupling
+  interaction_operators:
+  - PQ-sector superpotential terms
+  - saxion decay to gluons or Higgses
+  - temperature-dependent axion mass from QCD effects
+  scattering:
+    elastic: unknown
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels:
+  - saxion decay to Standard Model radiation
+  - saxion decay to axions if not suppressed
+  - inflaton decay through SYY coupling
+  self_scattering_channels: []
+  cp_structure: The axion dynamically relaxes the QCD CP-violating angle to the CP-conserving minimum.
+  flavor_structure: unknown
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: Peccei-Quinn breaking scale
+    symbol: f_a
+    description: PQ scale required for the hybrid-inflation density perturbation and axion dark matter
+      after entropy dilution.
+    value: around 10^15
+    unit: GeV
+    role: core
+    status: inferred
+  - name: saxion mass
+    symbol: m_sigma
+    description: Saxion mass scale used in decay-temperature and entropy-production estimates.
+    range: 1-10
+    unit: TeV
+    role: core
+    status: inferred
+  - name: saxion decay temperature
+    symbol: T_sigma
+    description: Late decay temperature; the text gives MeV-scale estimates and requires decay before
+      BBN.
+    value: about 5
+    unit: MeV
+    role: core
+    status: inferred
+  - name: entropy dilution factor
+    symbol: Delta
+    description: Ratio of entropy before and after saxion decay in the paper estimate.
+    value: about 2e-10 for s_before/s_after in the paper convention
+    unit: null
+    role: derived
+    status: inferred
+  - name: zero-temperature axion mass
+    symbol: m_a
+    description: Axion mass for f_a near 10^15 GeV.
+    value: 6e-9 * (10^15 GeV / f_a)
+    unit: eV
+    role: derived
+    status: inferred
+  - name: axion relic density
+    symbol: Omega_a h^2
+    description: Relic abundance after saxion entropy production.
+    value: about 0.02 * (T_sigma / 1 MeV) * (f_a / 10^15 GeV)^2
+    unit: null
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - nonthermal axion coherent oscillation after PQ breaking
+  - axion emission from axionic strings and domain walls
+  - late-time entropy dilution from saxion decay
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - PQ scale f_a
+  - initial axion misalignment after the PQ transition
+  - saxion oscillation amplitude and decay temperature
+  - topological-defect axion emission
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper finds that saxion entropy production relaxes the usual overclosure bound and allows
+    coherent axion oscillations to be the dominant dark matter.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - f_a near 10^15 GeV
+  - MeV-scale saxion decay temperature
+  - suppression of problematic saxion decay to LSPs
+  - domain-wall number N=1 for safe defect decay
+  requires_entropy_dilution: 'yes'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - PQ sector drives hybrid inflation
+  - large-amplitude saxion oscillation
+  - saxion-dominated epoch with late entropy production
+  - PQ transition at the end of inflation
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - PQ phase transition at end of inflation
+  - QCD transition turns on the axion mass
+  topological_defects:
+  - axionic strings
+  - axion domain walls for anomaly number N
+  isocurvature_perturbations: 'no'
+  bbn_relevance: high
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  f_of_p_or_q: not_applicable
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Dark matter is primarily coherent axion field oscillation, not a thermal particle distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: pq_scale_hybrid_inflation
+  applies_to: parameter
+  condition: The main hybrid-inflation construction requires f_a of order 10^15 GeV to match the density
+    perturbation.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: late_saxion_decay_before_bbn
+  applies_to: cosmological_history
+  condition: The saxion decay temperature must be at least a few MeV to preserve BBN.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+- id: domain_wall_number_one
+  applies_to: model
+  condition: The paper states that N=1 avoids a harmful domain-wall problem after the QCD transition.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - For N>1 the domain-wall network would be problematic.
+- id: not_smooth_hybrid_variant
+  applies_to: model
+  condition: This card describes the main hybrid-inflation model, not the later smooth-hybrid variant
+    where the axion cannot be the dominant dark matter in the displayed parameter choice.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: gravity_mediated_susy_breaking
+    description: The paper assumes gravity-mediated SUSY breaking in the SUSY axion model.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Saxion and axino masses and late-decay cosmology would change.
+  - id: saxion_entropy_dilution
+    description: The axion abundance estimate relies on a large saxion oscillation and late saxion entropy
+      production.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: 'no'
+    impact_if_violated: The f_a near 10^15 GeV axion would risk overclosing the Universe.
+  - id: lsp_problem_avoided
+    description: The scenario assumes R-parity violation or heavy SUSY particles so saxion decay does
+      not overproduce stable LSPs.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Late saxion decay could produce too large an LSP abundance.
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned paper text does not identify associated public model code.
+provenance:
+  model_id: 1104_1262_susy_axion_hybrid_inflation_dm_v1
+  model_name: SUSY axion hybrid-inflation model with saxion-diluted axion dark matter
+  model_family: supersymmetric_axion_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1104_1262'
+      title: Cosmological aspects of inflation in a supersymmetric axion model
+      authors:
+      - Masahiro Kawasaki
+      - Naoya Kitajima
+      - Kazunori Nakayama
+      year: 2011
+      arxiv_id: '1104.1262'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text used as the only source.
+    - arxiv_id: '1104.1262'
+      authors:
+      - Kawasaki, Masahiro
+      - Kitajima, Naoya
+      - Nakayama, Kazunori
+      doi: 10.1103/PhysRevD.83.123521
+      notes: Primary assigned model-card paper.
+      reference_id: src_1104_1262_primary
+      role: original_model
+      title: Cosmological aspects of inflation in a supersymmetric axion model
+      url: https://arxiv.org/abs/1104.1262
+      year: 2011
+    constraint_papers:
+    - arxiv_id: '1110.2491'
+      authors:
+      - Baer, Howard
+      - Lessa, Andre
+      - Sreethawong, Warintorn
+      doi: 10.1088/1475-7516/2012/01/036
+      notes: Related full text resolved locally from configured text DBs.
+      reference_id: src_1110_2491
+      role: implementation
+      title: Coupled Boltzmann calculation of mixed axion/neutralino cold dark matter production in the
+        early universe
+      url: https://arxiv.org/abs/1110.2491
+      year: 2012
+    - arxiv_id: '1104.4807'
+      authors:
+      - Baer, Howard
+      - Lessa, Andre
+      doi: 10.1007/JHEP06(2011)027
+      notes: Related full text resolved locally from configured text DBs.
+      reference_id: src_1104_4807
+      role: constraint
+      title: Some necessary conditions for allowing the PQ scale as high as M <SUB> GUT </SUB> in SUSY
+        models with an axino or neutralino LSP
+      url: https://arxiv.org/abs/1104.4807
+      year: 2011
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1301.1123'
+      authors:
+      - Kawasaki, Masahiro
+      - Nakayama, Kazunori
+      doi: 10.1146/annurev-nucl-102212-170536
+      notes: Related full text resolved locally from configured text DBs.
+      reference_id: src_1301_1123
+      role: review
+      title: 'Axions: Theory and Cosmological Role'
+      url: https://arxiv.org/abs/1301.1123
+      year: 2013
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1104_1262'
+      section: Abstract/introduction
+      page: null
+      quote_or_summary: The paper states that SUSY axion hybrid inflation with f_a around 10^15 GeV and
+        saxion entropy production makes axion coherent oscillation dominant dark matter.
+    - reference_id: '1104_1262'
+      section: Saxion decay and axion abundance
+      page: null
+      quote_or_summary: The paper computes MeV-scale saxion decay, entropy dilution, and Omega_a h^2 after
+        dilution.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1104_1262'
+      note: The PQ fields contain the axion, saxion, and axino; the axion is the dark-matter candidate.
+      confidence: high
+      section: Potential of the SUSY axion model
+    symmetries:
+    - reference_id: '1104_1262'
+      note: The model uses U(1)_PQ symmetry, an R symmetry, and discusses anomaly-induced domain walls
+        with color anomaly number N.
+      confidence: high
+      section: Potential/topological defects sections
+    interactions:
+    - reference_id: '1104_1262'
+      note: The text gives KSVZ and DFSZ saxion decay channels through gluons, Higgses, and axions.
+      confidence: medium
+      section: Saxion decay discussion
+    production_mechanism:
+    - reference_id: '1104_1262'
+      note: Axion coherent oscillation plus axion emission from strings/walls is diluted by late saxion
+        entropy production.
+      confidence: high
+      section: Axion abundance/topological defects sections
+    cosmological_history:
+    - reference_id: '1104_1262'
+      note: The PQ phase transition occurs at the end of hybrid inflation and the saxion later dominates
+        and decays.
+      confidence: high
+      section: Inflation and post-inflationary dynamics
+    parameter_ranges:
+    - reference_id: '1104_1262'
+      note: The paper quotes f_a around 10^15 GeV, MeV-scale saxion decay temperatures, and Omega_a h^2
+        estimates after dilution.
+      confidence: high
+      section: Axion abundance
+    validity_domain:
+    - reference_id: '1104_1262'
+      note: BBN requires saxion decay above a few MeV, and N=1 avoids the domain-wall problem.
+      confidence: high
+      section: Saxion decay/topological defects
+    constraints:
+    - confidence: high
+      note: Primary paper imposes a few MeV saxion decay temperature and discusses domain-wall number
+        N=1.
+      page: null
+      reference_id: src_1104_1262_primary
+      section: saxion decay and domain-wall discussion
+    - confidence: medium
+      note: Related PQ-scale paper discusses constraints on high PQ scales with saxion/axino cosmology.
+      page: null
+      reference_id: src_1104_4807
+      section: null
+    observables:
+    - confidence: high
+      note: Primary paper gives high-f_a axion dark matter enabled by saxion entropy dilution.
+      page: null
+      reference_id: src_1104_1262_primary
+      section: abstract and saxion cosmology
+    - confidence: medium
+      note: Review text supports axion cosmology context including topological defects and saxion/axino
+        cosmology.
+      page: null
+      reference_id: src_1301_1123
+      section: null
+    routes:
+    - confidence: high
+      note: Primary equations define the abundance and decay-temperature route.
+      page: null
+      reference_id: src_1104_1262_primary
+      section: axion abundance and saxion decay
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - The smooth-hybrid variant is noted but not emitted as a separate card because the paper says the axion
+    cannot be the dominant dark matter in its displayed parameter choice.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - The extraction relies on degraded plain-text mathematical notation.
+  - Detailed numerical scalar dynamics were not reproduced.
+  validation_status: expert_judgment_only
+  notes: Core model identity, production logic, and key scales are explicit in the text.
+agent_failure_modes:
+  warnings:
+  - id: do_not_apply_without_saxion_dilution
+    severity: high
+    category: assumption_mismatch
+    warning: The high-f_a axion dark-matter result relies on late saxion entropy production.
+    mitigation: Check the saxion decay and dilution assumptions before using the relic-density claim.
+  - id: smooth_hybrid_variant_differs
+    severity: medium
+    category: invalid_mapping
+    warning: The smooth-hybrid variant has different isocurvature and dark-matter conclusions.
+    mitigation: Do not merge smooth-hybrid parameter statements into this main hybrid-inflation card.
+observables:
+- caveats:
+  - Assumes suppressed saxion decays into axions and no problematic LSP production.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early universe
+  id: axion_relic_density_after_saxion_dilution
+  key_quantities:
+  - description: Hybrid-inflation/PQ scale used in the axion abundance estimate.
+    name: Peccei-Quinn scale
+    role: core
+    source_reference_ids:
+    - src_1104_1262_primary
+    status: inferred
+    symbol: f_a
+    unit: GeV
+    value: around 1e15
+  - description: Late decay temperature entering the diluted abundance.
+    name: saxion decay temperature
+    role: cosmological
+    source_reference_ids:
+    - src_1104_1262_primary
+    status: approximate
+    symbol: T_sigma
+    unit: MeV
+    value: about 5
+  - description: Paper estimate after entropy production.
+    name: axion relic density
+    role: derived
+    source_reference_ids:
+    - src_1104_1262_primary
+    status: approximate
+    symbol: Omega_a h^2
+    unit: derived
+    value: about 0.02 * (T_sigma / 1 MeV) * (f_a / 1e15 GeV)^2
+  linked_constraints:
+  - bbn_saxion_decay_temperature
+  - axion_overclosure_without_entropy_dilution
+  linked_routes:
+  - compute_axion_relic_with_entropy_dilution
+  name: Axion relic density after saxion entropy dilution
+  notes: Observable is a relic-density target rather than a direct signal.
+  observability: medium
+  predicted_effect: Large Peccei-Quinn scale axions can remain the dominant dark matter when saxion oscillations
+    dominate and decay late enough to dilute the coherent axion abundance.
+  redshift_range: null
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - src_1104_1262_primary
+  - src_1110_2491
+  - src_1301_1123
+  subchannel: nonthermal axion misalignment with late entropy production
+- caveats:
+  - Primary paper notes this as conditional on the axionic branching ratio; no detailed likelihood is
+    provided.
+  channel: cmb
+  effect_direction: enhancement
+  environments:
+  - early universe
+  - CMB
+  id: dark_radiation_from_saxion_axion_decays
+  key_quantities:
+  - description: Branching fraction controlling extra axion radiation.
+    name: saxion branching ratio to axions
+    role: core
+    source_reference_ids:
+    - src_1104_1262_primary
+    status: approximate
+    symbol: B_sigma_to_aa
+    unit: core
+    value: order 0.1 can be relevant
+  - description: Temperature at which the radiation bath is reheated.
+    name: saxion decay temperature
+    role: cosmological
+    source_reference_ids:
+    - src_1104_1262_primary
+    status: approximate
+    symbol: T_sigma
+    unit: MeV
+    value: few MeV or above
+  linked_constraints:
+  - bbn_saxion_decay_temperature
+  linked_routes:
+  - map_saxion_decay_to_bbn_and_neff
+  name: Extra radiation from saxion decays to axions
+  notes: Relevant when saxion decay to axions is not suppressed.
+  observability: low
+  predicted_effect: A non-negligible saxion branching fraction to axions produces nonthermal relativistic
+    axions, shifting the radiation density.
+  redshift_range: null
+  relevance: medium
+  scale_range: null
+  source_reference_ids:
+  - src_1104_1262_primary
+  - src_1301_1123
+  subchannel: Delta N_eff / relativistic axions
+constraints:
+- allowed_regions:
+  - T_sigma of at least a few MeV; paper estimates about 5 MeV for representative KSVZ/DFSZ choices.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: Saxion decays to axions are suppressed in the BBN-safe estimate.
+    id: suppressed_saxion_to_axions
+    impact_if_violated: Large axionic branching would change radiation density and reheating constraints.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids:
+    - src_1104_1262_primary
+    status: assumed
+  benchmark_implications:
+  - For f_a around 1e15 GeV the model needs sufficiently heavy saxions and suppressed harmful decays.
+  caveats:
+  - The local text does not provide a reusable BBN likelihood.
+  constrained_parameters:
+  - T_sigma
+  - m_sigma
+  - f_a
+  - saxion branching fractions
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Saxion decay temperatures below a few MeV would endanger successful BBN.
+  id: bbn_saxion_decay_temperature
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN lower bound on saxion decay temperature
+  notes: Primary paper explicitly imposes T_sigma above a few MeV.
+  observable_channel: BBN
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1104_1262_primary
+  - src_1104_4807
+- allowed_regions:
+  - Late-time saxion entropy production relaxes the usual f_a upper bound in the model.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: PQ symmetry is restored during inflation in the discussed setup, so the misalignment
+      angle is not freely tuned.
+    id: post_inflation_pq_restoration
+    impact_if_violated: Tuning theta_i would alter the overclosure argument.
+    notes: null
+    scope: initial_conditions
+    source_reference_ids:
+    - src_1104_1262_primary
+    status: assumed
+  benchmark_implications:
+  - The high PQ scale is viable only in the nonstandard saxion-decay history.
+  caveats:
+  - Topological-defect axions add uncertainty to the abundance.
+  constrained_parameters:
+  - f_a
+  - Delta
+  - theta_i
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Standard post-inflation axion cosmology would overclose for f_a near 1e15 GeV without dilution.
+  id: axion_overclosure_without_entropy_dilution
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Axion overclosure bound without saxion entropy production
+  notes: This is a model-building consistency constraint rather than an experimental exclusion curve.
+  observable_channel: relic_density
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1104_1262_primary
+  - src_1301_1123
+- allowed_regions:
+  - N=1 avoids the cosmological domain-wall problem in the paper discussion.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - The axion realization must choose anomaly/domain-wall structure compatible with N=1 or another wall-removal
+    mechanism.
+  caveats:
+  - Applies to post-inflation PQ breaking with strings and walls.
+  constrained_parameters:
+  - domain wall number N
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - N greater than one gives a harmful domain-wall network in the post-inflation PQ transition.
+  id: domain_wall_number_constraint
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Domain-wall number requirement
+  notes: Included because defect axion emission affects the same relic-density route.
+  observable_channel: topological_defects
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - src_1104_1262_primary
+  - src_1301_1123
+theory_to_observable_routing:
+  routes:
+  - agent_notes: No reusable code was located in this batch pass.
+    caveats:
+    - Topological-defect axion production is uncertain and should be bracketed.
+    constraint_ids:
+    - bbn_saxion_decay_temperature
+    - axion_overclosure_without_entropy_dilution
+    - domain_wall_number_constraint
+    derived_quantities:
+    - Delta
+    - Omega_a h^2
+    - m_a
+    description: Compute the axion abundance from misalignment/topological-defect production followed
+      by saxion entropy dilution.
+    forward_model_chain:
+    - inputs:
+      - f_a
+      - temperature-dependent axion mass
+      notes: Use primary equations for m_a(T), m_a, and rho_a.
+      outputs:
+      - oscillation temperature
+      - initial axion density
+      step_id: axion_mass_and_oscillation
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for QCD axion cosmology with the paper temperature-dependent mass approximation.
+    - inputs:
+      - T_sigma
+      - saxion initial amplitude
+      - m_sigma
+      notes: Apply the paper convention for entropy ratio carefully.
+      outputs:
+      - dilution factor
+      - diluted axion abundance
+      step_id: saxion_entropy_dilution
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Assumes saxion dominates and decays before BBN.
+    - inputs:
+      - T_sigma
+      - branching fractions
+      notes: Require T_sigma of at least a few MeV.
+      outputs:
+      - BBN pass/fail flag
+      step_id: bbn_check
+      step_type: validation
+      tool_or_code: null
+      validity: Only a threshold check without a likelihood.
+    id: compute_axion_relic_with_entropy_dilution
+    input_parameters:
+    - f_a
+    - theta_i distribution
+    - m_sigma
+    - T_sigma
+    - saxion initial amplitude
+    - domain wall number
+    likelihoods: []
+    observable_ids:
+    - axion_relic_density_after_saxion_dilution
+    required_code_resources:
+    - Primary-paper analytic formulae; optional axion cosmology review for cross-checks.
+    route_status: planned
+    source_model_features:
+    - PQ scale near 1e15 GeV
+    - late saxion matter domination
+    - coherent axion oscillations
+    validation_tests:
+    - Recover the paper benchmark Omega_a h^2 scaling with T_sigma and f_a.
+    - Verify source_reference_ids remain primary-supported for any added defect contribution.
+  - agent_notes: null
+    caveats:
+    - The primary text flags extra radiation qualitatively.
+    constraint_ids:
+    - bbn_saxion_decay_temperature
+    derived_quantities:
+    - Delta N_eff proxy
+    - BBN threshold
+    description: Map saxion decay branching fractions and lifetime to BBN and extra-radiation observables.
+    forward_model_chain:
+    - inputs:
+      - m_sigma
+      - f_a
+      - decay channel
+      notes: Use the saxion decay rate formula appropriate to the axion model realization.
+      outputs:
+      - T_sigma
+      step_id: decay_temperature
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Channel-dependent KSVZ/DFSZ estimates in the paper.
+    - inputs:
+      - B_sigma_to_aa
+      - T_sigma
+      notes: Treat as triage, not an exclusion curve.
+      outputs:
+      - extra relativistic axion contribution
+      step_id: radiation_branching
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Only approximate without a Boltzmann/BBN likelihood.
+    id: map_saxion_decay_to_bbn_and_neff
+    input_parameters:
+    - T_sigma
+    - B_sigma_to_aa
+    - m_sigma
+    - f_a
+    likelihoods: []
+    observable_ids:
+    - dark_radiation_from_saxion_axion_decays
+    required_code_resources:
+    - BBN/CMB likelihoods would be needed for quantitative Delta N_eff limits.
+    route_status: planned
+    source_model_features:
+    - saxion decay to SM radiation
+    - possible saxion decay to axions
+    validation_tests:
+    - Confirm branchings do not violate the primary paper assumptions.

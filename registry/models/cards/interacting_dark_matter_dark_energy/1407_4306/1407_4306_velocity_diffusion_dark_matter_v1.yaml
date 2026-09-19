@@ -1,0 +1,289 @@
+_source:
+  shard: data/astro-ph-00042.tar
+  paper_id: '1407_4306'
+  source_member: 1407_4306.json
+schema_version: model_only_v0
+model_id: 1407_4306_velocity_diffusion_dark_matter_v1
+identity:
+  name: Time-dependent velocity-diffusion dark matter
+  family: interacting_dark_matter_dark_energy
+  aliases:
+  - cosmic matter diffusion
+  - CDM diffusion model
+  short_description: Dark-sector model in which pressureless dark matter undergoes microscopic velocity
+    diffusion into a dark-energy scalar solvent, extended with time-dependent diffusion coefficients.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - general-relativistic velocity diffusion
+  - interacting dark sector
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The model uses modified conservation equations with a cosmological scalar field absorbing diffusion
+    energy.
+particle_content:
+  dark_matter_candidate:
+    name: pressureless dark matter fluid undergoing velocity diffusion
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - cosmological scalar field acting as dark-energy diffusion solvent
+  mediators:
+  - diffusion coefficient gamma
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Dark matter particle number current is conserved while energy diffuses into the
+    dark-energy solvent; no particle symmetry is specified.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - other
+  standard_model_targets: []
+  dark_sector_couplings:
+  - nabla_mu T^{mu nu}=gamma J^nu
+  - energy flow from matter to dark energy
+  mediator_types:
+  - dark-energy scalar solvent
+  - velocity-diffusion coefficient
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: unknown
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: today diffusion coefficient
+    symbol: gamma_0
+    value: 0.1
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Reference value used for background examples.
+  - name: scale-factor exponent
+    symbol: k
+    description: Power-law exponent for gamma proportional to a^k.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: matter-density exponent
+    symbol: alpha
+    description: Power-law exponent for gamma as a function of matter density.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: dark-energy-density exponent
+    symbol: beta
+    description: Power-law exponent for gamma as a function of dark-energy density.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: Hubble exponent
+    symbol: h
+    description: Power-law exponent for gamma as a function of H/H0.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - initial pressureless dark matter density evolves with velocity diffusion
+  - energy transfer from dark matter to dark-energy scalar field
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - initial matter density
+  - diffusion coefficient gamma
+  - power-law time dependence
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The extension changes the diffusion coefficient rather than introducing a new particle species.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - gamma_0
+  - chosen power-law exponent
+  - initial matter and dark-energy densities
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - dark matter energy-momentum is not divergence-free
+  - dark energy scalar field compensates diffusion
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'no'
+  f_of_p_or_q: unknown
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Microscopic velocity diffusion is assumed, but no explicit distribution function is provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: not quantified in this paper
+  nonlinear:
+    halo_mass_function_effect: not analyzed; paper says perturbation theory is mandatory
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: background_only
+  applies_to: model
+  condition: This paper studies background expansion; perturbation and structure-formation tests are deferred.
+  status: approximate
+  extrapolation_risk: unknown
+  caveats: []
+  source_reference_ids: []
+- id: power_law_gamma
+  applies_to: model
+  condition: Time-dependent diffusion coefficients are postulated as power laws of scale factor, matter
+    density, dark energy density, or Hubble rate.
+  status: assumed
+  extrapolation_risk: unknown
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: pressureless_dust
+    description: Matter content is a pressureless fluid with conserved particle current.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+  - id: positive_diffusion
+    description: The diffusion coefficient is positive and transfers energy from matter to dark energy.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+associated_code:
+  has_associated_code: 'no'
+  code_summary: No associated code is described in the paper text.
+provenance:
+  model_id: 1407_4306_velocity_diffusion_dark_matter_v1
+  model_name: Time-dependent velocity-diffusion dark matter
+  model_family: interacting_dark_matter_dark_energy
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: '1407_4306'
+      title: Exploring non-linear cosmological matter diffusion coefficients
+      role: original_model
+      arxiv_id: '1407.4306'
+      year: 2014
+      doi: null
+      url: null
+      notes: null
+      authors:
+      - Hermano Velten
+      - Simone Calogero
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0002
+    extractor_name: codex
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections: []
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1407_4306'
+      note: The paper states dark matter undergoes microscopic velocity diffusion into a dark-energy solvent
+        field.
+      confidence: high
+      section: model section
+      page: null
+    interactions:
+    - reference_id: '1407_4306'
+      note: Matter dynamics is written with conserved current and non-conserved energy-momentum proportional
+        to the diffusion coefficient.
+      confidence: high
+      section: introduction
+      page: null
+    parameter_ranges:
+    - reference_id: '1407_4306'
+      note: Authors test gamma with power-law dependence on scale factor, matter density, dark energy
+        density, and Hubble rate, using gamma_0=0.1 as a reference.
+      confidence: high
+      section: model analysis
+      page: null
+    validity_domain:
+    - reference_id: '1407_4306'
+      note: The conclusion emphasizes that perturbation theory is mandatory because matter diffusion is
+        sensitive to structure formation.
+      confidence: high
+      section: conclusion
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: unknown
+  observational_robustness: unknown
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  dominant_uncertainties: []
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: background_only
+    severity: high
+    category: extrapolation
+    warning: Do not infer viability for structure formation from the background-only analysis in this
+      paper.
+    mitigation: null
+    source_reference_ids: []

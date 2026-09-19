@@ -1,0 +1,314 @@
+_source:
+  shard: arXiv_src_1410_006_wds.tar
+  paper_id: '1410_2902'
+  source_member: 1410_2902.json
+schema_version: model_only_v0
+model_id: 1410_2902_flavor_symmetry_dirac_fermion_dm_v1
+identity:
+  name: Flavor-symmetry Dirac fermion dark matter
+  family: flavored_dark_matter
+  aliases:
+  - dark matter with flavor symmetry
+  short_description: A flavored dark matter framework where Z_2-odd neutral singlet Dirac fermions carry
+    flavor and radiatively generate charged-lepton and down-quark masses; the lightest N_1 is dark matter.
+  historical_origin_or_motivation: Connects dark matter flavor structure to SM fermion masses and predicts
+    an opposite-flavor collider signature.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - flavor symmetry
+  - radiative fermion mass generation
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper gives simplifying interactions for collider study and references a broader flavor framework.
+particle_content:
+  dark_matter_candidate:
+    name: N_1
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - N_2
+  - N_3
+  - charged scalar eta^+
+  - scalar electroweak doublet eta
+  - colored scalar squark analogs
+  mediators:
+  - color-triplet scalar
+  - charged scalar
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The lightest Z_2-odd neutral singlet fermion N_1 is stable.
+  symmetries:
+  - name: dark Z_2
+    type: discrete
+    exact_or_approximate: exact
+  - name: flavor symmetry such as A_4
+    type: discrete
+    exact_or_approximate: broken
+    breaking: softly broken by the N_L N_R mass matrix
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - right-handed down and strange quarks
+  - right-handed electron and muon
+  - Higgs Yukawa sector
+  dark_sector_couplings:
+  - f
+  - f_prime
+  - flavor-breaking N mass matrix
+  mediator_types:
+  - colored scalar
+  - charged scalar
+  interaction_operators:
+  - f(d_R N_1L + s_R N_2L) phi + f'(e_R N_1L + mu_R N_2L) eta^-
+  annihilation_channels:
+  - DM interactions through colored scalar mediators
+  tree_or_loop_level: both
+  flavor_structure: flavor is carried by neutral singlet fermions N_1,2,3 and transmitted radiatively
+    to visible fermions
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_N1
+    role: core
+    status: assumed
+  - name: second neutral fermion mass
+    symbol: m_N2
+    value: 400
+    unit: GeV
+    role: core
+    status: assumed
+    notes: Benchmark value used in collider optimization.
+  - name: charged scalar mass
+    symbol: m_eta
+    value: 200
+    unit: GeV
+    role: core
+    status: assumed
+  - name: colored scalar mass
+    symbol: m_phi
+    range: above roughly 400 GeV in collider discussion
+    unit: GeV
+    role: core
+    status: assumed
+  - name: quark mediator coupling
+    symbol: f
+    value: about 0.01 for down-quark mass
+    role: core
+    status: inferred
+  - name: lepton mediator coupling
+    symbol: f_prime
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - thermal freeze-out through scalar-mediated interactions
+  thermal_equilibrium_with_standard_model: unknown
+  abundance_set_by:
+  - Dirac fermion mass
+  - colored scalar mass
+  - mediator couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: unknown
+  notes: The paper references relic-abundance constraints but focuses on LHC signatures rather than solving
+    the relic density.
+relic_density:
+  full_or_subcomponent: unknown
+  calculation_type: thermal
+  key_dependencies:
+  - m_N1
+  - colored scalar mediator mass
+  - coupling f
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: collider_simplified_ordering
+  applies_to: model
+  condition: The highlighted collider signature assumes m_phi > m_N2 > m_eta > m_N1.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: a1
+    description: The dark Z_2 symmetry is exact and stabilizes N_1.
+    scope: global
+    status: assumed
+  - id: a2
+    description: The simplified interaction pattern captures the collider-relevant part of the flavor-DM
+      framework.
+    scope: global
+    status: assumed
+  - id: a3
+    description: The mass hierarchy used for the collider signature is realized.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: 'yes'
+  code_summary: The paper states that the model is implemented in CalcHEP and checked through FeynRules/MadGraph,
+    with PYTHIA used for event analysis.
+  primary_code_role: collider_simulation
+  packages_or_modules:
+  - name: CalcHEP implementation
+    resource_type: module
+    availability: unknown
+    relationship_to_model: official_author_code
+    purpose:
+    - compute_cross_sections
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: '2026-05-31'
+    maintained: unknown
+    dependencies:
+    - CalcHEP
+    supported_parameters:
+    - m_N1
+    - m_N2
+    - m_eta
+    - m_phi
+    - f
+    - f_prime
+    supported_model_families:
+    - flavored dark matter
+  expected_inputs:
+  - model masses
+  - couplings
+  expected_outputs:
+  - parton-level events
+  - cross sections
+  reproducibility:
+    reproducibility_level: partial
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: No repository or files are identified in the extracted text.
+provenance:
+  model_id: 1410_2902_flavor_symmetry_dirac_fermion_dm_v1
+  model_name: Flavor-symmetry Dirac fermion dark matter
+  model_family: flavored_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Dark Matter with Flavor Symmetry and its Collider Signature
+      authors: []
+      year: 2014
+      arxiv_id: '1410.2902'
+      doi: null
+      url: null
+      role: original_model
+      notes: The extracted text does not expose the author names in the title block.
+  extraction:
+    method: llm_assisted
+    extracted_by: batch-0001
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Theory basis
+      page: null
+      quote_or_summary: N_1,2,3 are Z_2-odd neutral singlet Dirac fermions; the lightest N_1 is a DM candidate.
+    - reference_id: primary
+      section: Collider signature
+      page: null
+      quote_or_summary: The assumed interactions and mass ordering yield 2 jets plus mu plus e plus missing
+        energy.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model has three neutral singlet Dirac fermions N_1,2,3 odd under dark Z_2; the lightest
+        N_1 is the DM candidate.
+      confidence: high
+      section: Theory basis
+    symmetries:
+    - reference_id: primary
+      note: Tree-level SM Yukawa couplings are forbidden by a flavor symmetry such as A_4 and a conserved
+        dark Z_2 distinguishes loop particles from SM fields.
+      confidence: high
+      section: Theory basis
+    interactions:
+    - reference_id: primary
+      note: A simplifying interaction L_int couples d_R and s_R to N_1/N_2 through a color-triplet scalar
+        and e_R/mu_R to N_1/N_2 through a charged scalar.
+      confidence: high
+      section: Collider signature
+    production_mechanism:
+    - reference_id: primary
+      note: The paper notes relic-abundance and direct-detection constraints for DM interacting with colored
+        scalars; the main development is collider phenomenology.
+      confidence: medium
+      section: Relic/direct detection discussion
+    parameter_ranges:
+    - reference_id: primary
+      note: Example masses used include m_N2 = 400 GeV, m_charged scalar = 200 GeV, squark-analog masses
+        above roughly 400 GeV, and benchmark DM masses near 100 GeV.
+      confidence: high
+      section: Collider analysis
+    validity_domain:
+    - reference_id: primary
+      note: The analysis assumes a mass ordering m_phi > m_N2 > m_eta > m_N1 leading to 2 jets plus mu
+        plus e plus missing energy.
+      confidence: high
+      section: Collider signature
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Relic density is mentioned through constraints but not computed in detail in the extracted text.
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: assumption_mismatch
+    warning: The row captures the paper's simplified collider-realized flavor-DM framework, not every
+      possible A_4 or U(1)_D completion.

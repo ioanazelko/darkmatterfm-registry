@@ -1,0 +1,545 @@
+_source:
+  shard: arXiv_src_2110_055_wds.tar
+  paper_id: '2110_08863'
+  source_member: 2110_08863.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2110_08863_scalar_inelastic_crdm_v1
+identity:
+  name: Scalar inelastic cosmic-ray-accelerated dark matter
+  family: inelastic_dark_matter
+  aliases:
+  - scalar inelastic CRDM
+  - real scalar inelastic dark matter with light vector mediator
+  short_description: A scalar inelastic dark matter variant with a spin-zero ground state, an excited
+    scalar state, and a light vector mediator; the paper studies vector-current and dipole-like scalar
+    benchmark interactions for cosmic-ray accelerated scattering.
+  historical_origin_or_motivation: Developed as a scalar counterpart to the fermionic inelastic CRDM benchmarks
+    to test how interaction structure changes the direct-detection spectrum.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - inelastic dark matter
+  - cosmic-ray accelerated dark matter
+  lagrangian_available: partial
+  renormalizable: 'no'
+  embedded_in_larger_framework: unknown
+  notes: The scalar section gives two benchmark interactions, including a derivative vector-current term
+    and a higher-dimensional dipole-like term.
+particle_content:
+  dark_matter_candidate:
+    name: phi_1
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - excited scalar state phi_2
+  mediators:
+  - light vector or axial-vector mediator V
+  long_lived_particles:
+  - phi_1
+  unstable_parent_particles:
+  - phi_2
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Stable lightest scalar state phi_1 is assumed; the exact stabilizing symmetry
+    is not specified in the extracted text.
+  symmetries: []
+interactions:
+  portals:
+  - vector
+  - other
+  standard_model_targets:
+  - nucleons
+  - quarks
+  - cosmic-ray protons and helium
+  dark_sector_couplings:
+  - g_phi (phi_1 partial_mu phi_2 - phi_2 partial_mu phi_1) V_mu
+  - dimension-six derivative coupling to F_V^mu_nu
+  mediator_types:
+  - light vector or axial-vector mediator V
+  interaction_operators:
+  - scalar derivative vector-current operator
+  - scalar dipole-like benchmark operator
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: not_applicable
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter ground-state mass
+    symbol: m_phi1
+    description: Mass of the scalar ground state; the paper uses the same sub-GeV to GeV range as the
+      CRDM study.
+    range: 1 MeV to 100 GeV
+    unit: GeV
+    role: core
+    status: speculative
+  - name: mass splitting
+    symbol: Delta
+    description: Mass gap between phi_2 and phi_1.
+    range: < O(1 GeV)
+    unit: GeV
+    role: core
+    status: speculative
+  - name: mediator mass
+    symbol: m_V
+    description: Light mediator mass used in scalar benchmark spectra.
+    range: sub-GeV benchmarks
+    unit: GeV
+    role: core
+    status: speculative
+  - name: scalar vector coupling
+    symbol: g_phi
+    description: Benchmark scalar-vector coupling fixed to 1 in demonstrations.
+    range: 1 benchmark
+    role: core
+    status: speculative
+  - name: scalar dipole scale
+    symbol: Lambda_s
+    description: Benchmark higher-dimensional scalar scale fixed to 100 MeV.
+    range: 100 MeV benchmark
+    unit: MeV
+    role: core
+    status: speculative
+production:
+  mechanisms:
+  - thermal coannihilation of nearly degenerate scalar states for relic-density motivation
+  - cosmic-ray upscattering produces an energetic late-time component
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - coannihilation region
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper treats the scalar variant as a benchmark interaction structure for CRDM spectra rather
+    than as a UV-complete relic calculation.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - mass splitting Delta
+  - coannihilation rate
+  - scalar-vector coupling choice
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: medium
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: approximate
+  notes: Virialized scalar DM is cold, with a cosmic-ray-accelerated high-energy component computed for
+    detector spectra.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: benchmark_operator_scope
+  applies_to: model
+  condition: Scalar interaction terms are representative benchmarks, not a complete UV model.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: light_mediator_decay
+  applies_to: model
+  condition: The study assumes a light mediator and on-shell excited-state decay for inelastic CRDM.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: stable_scalar_ground_state
+    description: phi_1 is treated as the stable dark matter particle.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: crdm_flux_model
+    description: A cosmic-ray scattering model supplies the high-energy dark matter flux reaching the
+      detector.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 2110_08863_scalar_inelastic_crdm_v1
+  model_name: Scalar inelastic cosmic-ray-accelerated dark matter
+  model_family: inelastic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Revising inelastic dark matter direct detection by including the cosmic ray acceleration
+      authors:
+      - Jie-Cheng Feng
+      - Xian-Wei Kang
+      - Chih-Ting Lu
+      - Yue Lin
+      - Sming Tsai
+      - Feng-Shou Zhang
+      year: 2021
+      arxiv_id: '2110.08863'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '2110.08863'
+      authors:
+      - Feng, Jie-Cheng
+      - Kang, Xian-Wei
+      - Lu, Chih-Ting
+      - Tsai, Yue-Lin Sming
+      - Zhang, Feng-Shou
+      doi: 10.1007/JHEP04(2022)080
+      notes: null
+      reference_id: '2110_08863'
+      role: original_model
+      title: Revising inelastic dark matter direct detection by including the cosmic ray acceleration
+      url: https://arxiv.org/abs/2110.08863
+      year: 2022
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used only for bounded metadata discovery of references and citations.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Scalar DM interaction
+      quote_or_summary: The scalar section defines two benchmark interactions for spin-zero inelastic
+        scalar DM and a vector mediator.
+    - reference_id: paper
+      section: Conclusion
+      quote_or_summary: The conclusion says the paper studies both fermionic and scalar inelastic DM interactions
+        for CRDM spectra.
+    unresolved_items:
+    - The exact scalar stabilizing symmetry and UV completion are not specified.
+    - No public likelihood or code resource was identified for the PandaX-4T/Xe CRDM recast.
+    - The UV completion and exact stabilizing symmetry are not fixed by the benchmark model.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The text explicitly discusses spin-zero inelastic scalar DM and an excited state.
+      confidence: medium
+      section: Scalar DM interaction
+    interactions:
+    - reference_id: paper
+      note: Two scalar benchmark interactions L_s1 and L_s2 are given with vector and dipole-like structures.
+      confidence: medium
+      section: Scalar DM interaction
+    production_mechanism:
+    - reference_id: paper
+      note: Relic density is motivated by coannihilation; cosmic-ray collisions produce the detectable
+        energetic component.
+      confidence: medium
+      section: Introduction and conclusion
+    parameter_ranges:
+    - reference_id: paper
+      note: The same mass-splitting, mediator-mass, and coupling benchmark logic is applied to scalar
+        spectra.
+      confidence: medium
+      section: Scalar DM interaction
+    validity_domain:
+    - reference_id: paper
+      note: The authors call these benchmarks for comparing spectra and exclusion power.
+      confidence: medium
+      section: Scalar DM interaction
+    constraints:
+    - confidence: high
+      note: Primary text recasts xenon direct-detection limits and discusses ordinary elastic-DD null
+        constraints.
+      page: null
+      reference_id: '2110_08863'
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text states that cosmic rays make inelastic direct detection sensitive to otherwise
+        inaccessible mass splittings.
+      page: null
+      reference_id: '2110_08863'
+      section: null
+    routes:
+    - confidence: medium
+      note: Primary text gives the chain from cosmic-ray upscattering to detector recoil spectra.
+      page: null
+      reference_id: '2110_08863'
+      section: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: low
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - benchmark-operator choice
+  - cosmic-ray flux normalization
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: benchmark_not_uv_complete
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat the scalar benchmark operators as a full UV-complete dark-sector theory.
+observables:
+- caveats:
+  - Requires cosmic-ray propagation, shielding, excited-state decay, and detector response modeling.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - Milky Way cosmic rays
+  - xenon direct-detection targets
+  id: crdm_recoil_spectrum
+  key_quantities:
+  - name: ground-state mass
+    range: 1 MeV to 100 GeV
+    role: core
+    source_reference_ids:
+    - '2110_08863'
+    status: inferred
+    symbol: m_phi1
+    unit: GeV
+  - name: mass splitting
+    range: below order 1 GeV
+    role: core
+    source_reference_ids:
+    - '2110_08863'
+    status: inferred
+    symbol: Delta
+    unit: GeV
+  - name: effective cosmic-ray length
+    role: astrophysical
+    source_reference_ids:
+    - '2110_08863'
+    status: assumed
+    symbol: D_eff
+    unit: kpc
+    value: 1 kpc benchmark
+  linked_constraints:
+  - pandax4t_xenon_crdm_limit
+  - traditional_elastic_dd_evasion
+  linked_routes:
+  - crdm_flux_to_recoil_route
+  name: Cosmic-ray-accelerated inelastic recoil spectrum
+  notes: null
+  observability: medium
+  predicted_effect: Cosmic rays upscatter the ground state to an excited state whose decay produces energetic
+    dark matter able to scatter in underground xenon detectors.
+  redshift_range: null
+  relevance: critical
+  scale_range: underground nuclear-recoil energies
+  source_reference_ids:
+  - '2110_08863'
+  subchannel: nuclear recoils
+- caveats:
+  - Reach is mediator- and operator-dependent.
+  channel: direct_detection
+  effect_direction: enhancement
+  environments:
+  - local halo
+  - cosmic-ray acceleration region
+  id: inelastic_splitting_reach
+  key_quantities:
+  - name: mediator mass
+    range: sub-GeV benchmarks
+    role: core
+    source_reference_ids:
+    - '2110_08863'
+    status: inferred
+    symbol: m_V
+    unit: GeV
+  - name: interaction strength
+    range: operator dependent
+    role: core
+    source_reference_ids:
+    - '2110_08863'
+    status: assumed
+    symbol: g_phi, Lambda_s
+  linked_constraints:
+  - pandax4t_xenon_crdm_limit
+  - traditional_elastic_dd_evasion
+  linked_routes:
+  - crdm_flux_to_recoil_route
+  name: Sensitivity to otherwise inaccessible inelastic splittings
+  notes: null
+  observability: medium
+  predicted_effect: The boosted component can probe sub-GeV mass splittings that virialized halo dark
+    matter cannot efficiently excite.
+  redshift_range: null
+  relevance: high
+  scale_range: mass splitting below order 1 GeV
+  source_reference_ids:
+  - '2110_08863'
+  subchannel: inelastic threshold
+constraints:
+- allowed_regions:
+  - Sub-GeV splittings remain reachable in parts of the 1 MeV to 100 GeV mass range.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The local CRDM flux is summarized by an effective cosmic-ray propagation length.
+    id: crdm_flux_assumption
+    impact_if_violated: Changing the flux model rescales coupling reach.
+    notes: null
+    scope: astrophysical flux
+    source_reference_ids:
+    - '2110_08863'
+    status: assumed
+  benchmark_implications:
+  - Primary paper uses PandaX-4T data with D_eff=1 kpc.
+  caveats:
+  - No public CRDM likelihood was identified.
+  constrained_parameters:
+  - m_phi1
+  - Delta
+  - m_V
+  - g_phi, Lambda_s
+  - D_eff
+  constraint_type: direct_detection
+  data_release: PandaX-4T public result as recast in primary paper
+  excluded_regions:
+  - Large couplings are excluded where the predicted CRDM recoil rate exceeds xenon null results.
+  id: pandax4t_xenon_crdm_limit
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: PandaX-4T/Xe recoil recast for inelastic CRDM
+  notes: null
+  observable_channel: xenon nuclear recoil spectrum
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '2110_08863'
+- allowed_regions:
+  - Large inelastic splitting with suppressed ground-state elastic scattering can evade cold-halo direct
+    detection.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: unknown
+    description: The lighter state is stable and the excited state decays back to the ground state plus
+      mediator.
+    id: stable_ground_state
+    impact_if_violated: Long-lived excited states would change the predicted detector flux.
+    notes: null
+    scope: dark-sector spectrum
+    source_reference_ids:
+    - '2110_08863'
+    status: assumed
+  benchmark_implications:
+  - The boosted component supplies a complementary search channel.
+  caveats:
+  - This is a model-space statement rather than a standalone likelihood.
+  constrained_parameters:
+  - m_phi1
+  - Delta
+  constraint_type: direct_detection
+  data_release: null
+  excluded_regions:
+  - Small splittings or elastic couplings remain subject to ordinary XENON1T/PandaX-style null limits.
+  id: traditional_elastic_dd_evasion
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Traditional virialized direct-detection evasion
+  notes: null
+  observable_channel: elastic/inelastic threshold
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '2110_08863'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Structured route is evidence-backed but not implemented as runnable code.
+    caveats:
+    - Astrophysical flux normalization is a leading nuisance.
+    constraint_ids:
+    - pandax4t_xenon_crdm_limit
+    - traditional_elastic_dd_evasion
+    derived_quantities:
+    - boosted dark-matter flux
+    - excited-state decay spectrum
+    - nuclear recoil spectrum
+    description: Map inelastic dark-sector parameters to a cosmic-ray-accelerated underground recoil prediction.
+    forward_model_chain:
+    - inputs:
+      - m_phi1
+      - Delta
+      - m_V
+      - g_phi, Lambda_s
+      - D_eff
+      - local cosmic-ray spectrum
+      notes: null
+      outputs:
+      - boosted dark-matter flux
+      - excited-state decay spectrum
+      - nuclear recoil spectrum
+      step_id: prediction
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Use only within the benchmark assumptions stated in the primary paper.
+    - inputs:
+      - boosted dark-matter flux
+      - excited-state decay spectrum
+      - nuclear recoil spectrum
+      notes: null
+      outputs:
+      - allowed_or_excluded_parameter_region
+      step_id: comparison
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires external experimental or cosmological likelihoods for precision use.
+    id: crdm_flux_to_recoil_route
+    input_parameters:
+    - m_phi1
+    - Delta
+    - m_V
+    - g_phi, Lambda_s
+    - D_eff
+    - local cosmic-ray spectrum
+    likelihoods:
+    - not packaged in assigned source
+    observable_ids:
+    - crdm_recoil_spectrum
+    - inelastic_splitting_reach
+    required_code_resources:
+    - domain-specific forward model
+    - experiment or cosmology likelihood tables
+    route_status: planned
+    source_model_features:
+    - inelastic two-state dark matter
+    - light mediator
+    - cosmic-ray upscattering
+    validation_tests:
+    - reproduce primary-paper benchmark plots or quoted parameter targets

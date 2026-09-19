@@ -1,0 +1,713 @@
+_source:
+  shard: arXiv_src_0902_002_wds.tar
+  paper_id: 0902_2510
+  source_member: 0902_2510.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 0902_2510_cmssm_rhn_gravitino_sneutrino_nlsp_v1
+identity:
+  name: CMSSM with GUT-scale right-handed neutrino, gravitino LSP, and sneutrino NLSP
+  family: gravitino_dark_matter
+  aliases:
+  - sneutrino NLSP gravitino LSP in the nu-CMSSM
+  - CMSSM plus right-handed neutrino gravitino dark matter
+  short_description: A variant of the right-handed-neutrino-extended CMSSM where the left-handed sneutrino
+    is the NLSP and decays to a gravitino LSP, with the gravitino abundance receiving both NLSP-decay
+    and thermal reheating contributions.
+  historical_origin_or_motivation: Considered because the same GUT-scale seesaw RGE effects can make a
+    sneutrino the lightest Standard Model superpartner, leaving a gravitino LSP as dark matter.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - CMSSM
+  - supergravity gravitino LSP scenario
+  - supersymmetric type-I seesaw
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The particle spectrum comes from the same CMSSM plus heavy right-handed-neutrino setup; gravitino
+    interactions enter through gravitationally suppressed sneutrino NLSP decay.
+particle_content:
+  dark_matter_candidate:
+    name: gravitino LSP
+    spin: 3/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - left-handed sneutrino NLSP
+  - heavy right-handed neutrino superfield
+  - neutralino and stau superpartners
+  mediators:
+  - gravitational interaction in sneutrino decay
+  - electroweak supersymmetric states in the NLSP abundance calculation
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - sneutrino NLSP, typically detector-stable in the gravitino LSP parameter range discussed
+  unstable_parent_particles:
+  - sneutrino NLSP
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R parity stabilizes the gravitino LSP; the sneutrino NLSP decays gravitationally
+    to the gravitino.
+  symmetries:
+  - name: R parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not broken in the paper
+  - name: local supersymmetry/supergravity
+    type: unknown
+    exact_or_approximate: broken
+    breaking: soft SUSY breaking produces a massive gravitino
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - neutrino
+  - other
+  standard_model_targets:
+  - sneutrinos
+  - leptons
+  - electroweak gauge/Higgs sector
+  dark_sector_couplings:
+  - gravitationally suppressed sneutrino-to-gravitino decay
+  - right-handed-neutrino Yukawa coupling affecting the spectrum
+  mediator_types:
+  - gravitational interaction
+  - sneutrino NLSP
+  interaction_operators:
+  - sneutrino NLSP decay to gravitino LSP
+  - W_MSSM + y_N L H_u N + 1/2 M_N N N
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels:
+  - sneutrino NLSP annihilation setting the would-be sneutrino relic abundance
+  decay_channels:
+  - sneutrino NLSP -> gravitino LSP
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: one heavy right-handed neutrino associated with the third generation in the example
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: gravitino mass
+    symbol: m_G
+    range: model dependent; appears in Omega_G h^2 = (m_G/m_snu) Omega_snu h^2 + Omega_G^T h^2
+    role: core
+    status: inferred
+  - name: sneutrino NLSP mass
+    symbol: m_snu
+    range: sneutrino-lighter-than-neutralino region in the displayed CMSSM planes
+    role: core
+    status: inferred
+  - name: would-be sneutrino abundance
+    symbol: Omega_snu h^2
+    value: small in the sneutrino-LSP region according to the paper
+    role: derived
+    status: inferred
+  - name: thermal gravitino contribution
+    symbol: Omega_G^T h^2
+    value: heavily model dependent thermal production during reheating
+    role: derived
+    status: inferred
+  - name: right-handed neutrino mass
+    symbol: M_N
+    value: near the GUT scale in the model setup
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - nonthermal production from sneutrino NLSP decay
+  - thermal gravitino production during reheating after inflation
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - sneutrino NLSP would-be relic abundance
+  - gravitino-to-sneutrino mass ratio
+  - thermal gravitino production after reheating
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper gives Omega_G h^2 = (m_G/m_snu) Omega_snu h^2 + Omega_G^T h^2 and notes that the thermal
+    term is reheating-model dependent.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: gravitino abundance
+    symbol: Omega_G h^2
+    value: (m_G/m_snu) Omega_snu h^2 + Omega_G^T h^2
+    role: derived
+    status: inferred
+  calculation_type: mixed
+  key_dependencies:
+  - sneutrino NLSP relic abundance before decay
+  - gravitino mass
+  - sneutrino mass
+  - reheating-era thermal production
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - late sneutrino NLSP decay to gravitino
+  - thermal gravitino production during reheating after inflation
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - supersymmetry breaking with gravitino LSP spectrum
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: unknown
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds:
+  - paper notes small-scale-structure constraints are analogously applicable to the CMSSM gravitino case
+  notes: The paper does not compute the gravitino momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: 0902_2510_gravitino_region
+  applies_to: model
+  condition: Applies in regions where the sneutrino is lighter than the neutralino and a gravitino is
+    assumed to be the LSP.
+  valid_range: sneutrino-lighter-than-neutralino region in the displayed planes
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - 0902_2510
+  notes: null
+- id: 0902_2510_reheating_dependence
+  applies_to: cosmological_history
+  condition: The thermal gravitino relic contribution is model dependent and tied to reheating after inflation.
+  valid_range: not quantified in the paper
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - 0902_2510
+  notes: null
+assumptions:
+  global:
+  - id: 0902_2510_gravitino_lsp
+    description: The gravitino is lighter than the sneutrino NLSP and is the stable LSP.
+    scope: theory
+    status: assumed
+    impact_if_violated: If not, this row collapses to the neutralino-LSP or sneutrino-LSP phenomenology.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - 0902_2510
+    notes: null
+  - id: 0902_2510_sneutrino_nlsp_decay
+    description: The sneutrino NLSP eventually decays to the gravitino with gravitationally suppressed
+      rate.
+    scope: production
+    status: assumed
+    impact_if_violated: The nonthermal part of the gravitino abundance would be absent.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - 0902_2510
+    notes: null
+  - id: 0902_2510_reheating_term
+    description: Thermal gravitino production during reheating contributes Omega_G^T h^2.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Total abundance can be under- or over-estimated if the reheating contribution
+      is neglected.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - 0902_2510
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public model-specific code is identified; the paper discusses numerical spectrum and
+    abundance calculations.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 0902_2510_cmssm_rhn_gravitino_sneutrino_nlsp_v1
+  model_name: CMSSM with GUT-scale right-handed neutrino, gravitino LSP, and sneutrino NLSP
+  model_family: gravitino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: 0902_2510
+      title: A Sneutrino NLSP in the CMSSM
+      authors:
+      - Kenji Kadota
+      - Keith A. Olive
+      - Liliana Velasco-Sevilla
+      year: 2009
+      arxiv_id: '0902.2510'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from the run SQLite database.
+    - arxiv_id: '0902.2510'
+      authors:
+      - Kadota, Kenji
+      - Olive, Keith A.
+      - Velasco-Sevilla, Liliana
+      doi: 10.1103/PhysRevD.79.055018
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:0902.2510
+      role: original_model
+      title: Sneutrino NLSP in the νCMSSM
+      url: https://arxiv.org/abs/0902.2510
+      year: 2009
+    constraint_papers:
+    - arxiv_id: hep-ph/0703130
+      authors:
+      - Covi, Laura
+      - Kraml, Sabine
+      doi: 10.1088/1126-6708/2007/08/015
+      notes: Related source text read locally or via bounded arXiv fallback for constraint context.
+      reference_id: arxiv:hep-ph/0703130
+      role: constraint
+      title: Collider signatures of gravitino dark matter with a sneutrino NLSP
+      url: https://arxiv.org/abs/hep-ph/0703130
+      year: 2007
+    - arxiv_id: '0909.3075'
+      authors:
+      - Kadota, Kenji
+      - Olive, Keith A.
+      doi: 10.1103/PhysRevD.80.095015
+      notes: Related source text read locally or via bounded arXiv fallback for constraint context.
+      reference_id: arxiv:0909.3075
+      role: constraint
+      title: Heavy right-handed neutrinos and dark matter in the νCMSSM
+      url: https://arxiv.org/abs/0909.3075
+      year: 2009
+    - arxiv_id: hep-ph/9706509
+      authors:
+      - Baer, Howard
+      - Brhlik, Michal
+      doi: 10.1103/PhysRevD.57.567
+      notes: Related source text read locally or via bounded arXiv fallback for constraint context.
+      reference_id: arxiv:hep-ph/9706509
+      role: constraint
+      title: 'Neutralino dark matter in minimal supergravity: Direct detection versus collider searches'
+      url: https://arxiv.org/abs/hep-ph/9706509
+      year: 1998
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: GPT-5.5 dark-matter batch worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: 0902_2510
+      section: opening summary
+      page: null
+      quote_or_summary: The paper considers a light sneutrino NLSP with either neutralino or gravitino
+        LSP.
+    - reference_id: 0902_2510
+      section: gravitino LSP discussion
+      page: null
+      quote_or_summary: It writes the gravitino abundance as a sneutrino-decay term plus thermal production
+        after reheating.
+    - reference_id: 0902_2510
+      section: collider/cosmology discussion
+      page: null
+      quote_or_summary: It notes BBN and small-scale-structure constraints are analogously applicable
+        to this CMSSM gravitino setup.
+    unresolved_items:
+    - Reheating temperature and thermal gravitino production were not specified enough for a numerical
+      bound.
+    - No BBN or collider likelihood was rerun.
+  evidence:
+    particle_content:
+    - reference_id: 0902_2510
+      note: Discusses models where the sneutrino is the NLSP and the gravitino is the LSP dark matter
+        candidate.
+      confidence: high
+      section: opening and gravitino LSP discussion
+      page: null
+    symmetries:
+    - reference_id: 0902_2510
+      note: Uses LSP/NLSP supersymmetric dark matter language with a stable gravitino LSP.
+      confidence: medium
+      section: gravitino LSP discussion
+      page: null
+    interactions:
+    - reference_id: 0902_2510
+      note: Gives the sneutrino-to-gravitino decay rate formula and says the sneutrino typically would
+        not decay within the detector.
+      confidence: medium
+      section: collider/cosmology discussion
+      page: null
+    production_mechanism:
+    - reference_id: 0902_2510
+      note: States Omega_G h^2 receives a contribution from NLSP sneutrino decay plus thermal gravitino
+        production during reheating.
+      confidence: high
+      section: gravitino LSP discussion
+      page: null
+    cosmological_history:
+    - reference_id: 0902_2510
+      note: Thermal gravitino production after inflation is described as heavily model dependent, with
+        BBN and small-scale-structure constraints noted.
+      confidence: medium
+      section: gravitino LSP discussion
+      page: null
+    validity_domain:
+    - reference_id: 0902_2510
+      note: This variant applies only where the sneutrino is lighter than the neutralino and the gravitino
+        is assumed to be the LSP.
+      confidence: medium
+      section: parameter-space discussion
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text quotes 0.0975 < Omega_DM h^2 < 0.1223 WMAP band and LEP Higgs/chargino contours.
+      page: null
+      reference_id: arxiv:0902.2510
+      section: Results
+    - confidence: medium
+      note: Primary text refers BBN and small-scale-structure constraints for sneutrino-decay gravitino
+        dark matter.
+      page: null
+      reference_id: arxiv:0902.2510
+      section: Gravitino LSP discussion
+    observables:
+    - confidence: high
+      note: Primary text identifies neutralino-sneutrino coannihilation strips yielding WMAP relic density
+        and a separate gravitino-LSP sneutrino-NLSP region.
+      page: null
+      reference_id: arxiv:0902.2510
+      section: Abstract/results
+    - confidence: high
+      note: Related sneutrino-NLSP gravitino paper highlights BBN constraints and collider signatures.
+      page: null
+      reference_id: arxiv:hep-ph/0703130
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper maps CMSSM plus right-handed-neutrino parameters through two-loop RGE spectra
+        to coannihilation or gravitino-NLSP regimes.
+      page: null
+      reference_id: arxiv:0902.2510
+      section: Model/results
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes:
+    - The gravitino-LSP variant is less developed than the neutralino coannihilation strip and depends
+      on reheating assumptions.
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: low
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - thermal gravitino production is reheating-model dependent
+  - BBN/small-scale-structure implications are referenced rather than computed
+  - less central than the neutralino coannihilation strip
+  validation_status: expert_judgment_only
+  notes: Accepted as a substantive model variant because the paper gives the LSP/NLSP identity and an
+    explicit gravitino abundance formula.
+agent_failure_modes:
+  warnings:
+  - id: 0902_2510_gravitino_not_neutralino
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not merge this row with the neutralino-LSP coannihilation row; the dark matter candidate
+      and abundance formula differ.
+    mitigation: Track the gravitino LSP and sneutrino decay contribution separately.
+    source_reference_ids:
+    - 0902_2510
+  - id: 0902_2510_reheating_uncertain
+    severity: medium
+    category: extrapolation
+    warning: The thermal gravitino abundance is explicitly model dependent and not fixed by the paper.
+    mitigation: Treat reheating-dependent abundance claims as parameter dependent.
+    source_reference_ids:
+    - 0902_2510
+observables:
+- caveats:
+  - Thermal gravitino abundance is heavily model dependent and no reheating model was specified.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early universe
+  id: obs_gravitino_mixed_abundance
+  key_quantities:
+  - description: LSP gravitino mass.
+    name: gravitino mass
+    role: core
+    source_reference_ids:
+    - arxiv:0902.2510
+    status: inferred
+    symbol: m_G
+  - description: NLSP sneutrino mass entering the nonthermal abundance ratio.
+    name: sneutrino mass
+    role: core
+    source_reference_ids:
+    - arxiv:0902.2510
+    status: inferred
+    symbol: m_snu
+  - description: Sneutrino abundance before decay.
+    name: sneutrino would-be relic abundance
+    role: derived
+    source_reference_ids:
+    - arxiv:0902.2510
+    status: inferred
+    symbol: Omega_snu h^2
+  - description: Thermal contribution during reheating after inflation.
+    name: thermal gravitino abundance
+    role: derived
+    source_reference_ids:
+    - arxiv:0902.2510
+    status: unknown
+    symbol: Omega_G^T h^2
+  linked_constraints:
+  - con_bbn_structure_sneutrino_gravitino
+  linked_routes:
+  - route_sneutrino_nlsp_gravitino_cosmology
+  name: Gravitino abundance from sneutrino decay plus reheating
+  notes: null
+  observability: medium
+  predicted_effect: In the sneutrino-NLSP, gravitino-LSP region the gravitino density is the sum of a
+    nonthermal sneutrino-decay term and a model-dependent thermal reheating contribution.
+  redshift_range: post-freeze-out through BBN and structure formation
+  relevance: critical
+  scale_range: cosmological abundance and free-streaming scales
+  source_reference_ids:
+  - arxiv:0902.2510
+  - arxiv:hep-ph/0703130
+  subchannel: nonthermal NLSP decay and thermal gravitino production
+- caveats:
+  - Primary collider discussion is prospective; no LHC analysis is rerun.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - LHC
+  - ILC
+  id: obs_sneutrino_nlsp_collider_missing_energy
+  key_quantities:
+  - description: Controls softness of visible decay products.
+    name: neutralino-sneutrino mass splitting
+    role: derived
+    source_reference_ids:
+    - arxiv:0902.2510
+    - arxiv:hep-ph/0703130
+    status: inferred
+    symbol: Delta m
+  linked_constraints:
+  - con_sneutrino_collider_visibility
+  linked_routes:
+  - route_sneutrino_nlsp_gravitino_cosmology
+  name: Sneutrino-NLSP missing-energy collider signatures
+  notes: null
+  observability: medium
+  predicted_effect: Sneutrino production followed by invisible or soft visible decays can appear as missing
+    energy with soft leptons/jets; related gravitino-NLSP studies emphasize small mass splittings.
+  redshift_range: not_applicable
+  relevance: medium
+  scale_range: electroweak-scale sparticle masses
+  source_reference_ids:
+  - arxiv:0902.2510
+  - arxiv:hep-ph/0703130
+  subchannel: LHC/ILC sneutrino production and decay
+constraints:
+- allowed_regions:
+  - Sneutrino NLSP with gravitino LSP remains a possible region when the combined nonthermal and thermal
+    gravitino density is acceptable.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Thermal gravitino production depends on reheating-era details not fixed by the primary
+      model.
+    id: model-dependent-reheating
+    impact_if_violated: Different reheating assumptions can dominate Omega_G h^2.
+    notes: null
+    scope: gravitino abundance
+    source_reference_ids:
+    - arxiv:0902.2510
+    status: assumed
+  benchmark_implications:
+  - The abundance formula Omega_G h^2=(m_G/m_snu) Omega_snu h^2 + Omega_G^T h^2 must be evaluated for
+    any benchmark.
+  caveats:
+  - No BBN or transfer-function likelihood was run.
+  constrained_parameters:
+  - m_G
+  - m_snu
+  - Omega_snu h^2
+  - Omega_G^T h^2
+  - reheating temperature
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Regions where sneutrino decays or thermal gravitino production violate BBN light-element or small-scale-structure
+    limits are not viable; the primary paper refers to prior constraints rather than deriving a new bound.
+  id: con_bbn_structure_sneutrino_gravitino
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN and small-scale-structure constraints on sneutrino-decay gravitino dark matter
+  notes: null
+  observable_channel: BBN light elements and gravitino free streaming
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:0902.2510
+  - arxiv:hep-ph/0703130
+- allowed_regions:
+  - Soft or invisible decays can make the sneutrino-NLSP scenario challenging but potentially distinctive.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Collider reach is controlled by compressed-spectrum efficiencies.
+    id: compressed-spectrum-search
+    impact_if_violated: Search sensitivity can change sharply with the mass splitting.
+    notes: null
+    scope: collider signatures
+    source_reference_ids:
+    - arxiv:0902.2510
+    - arxiv:hep-ph/0703130
+    status: assumed
+  benchmark_implications:
+  - Mass degeneracy creates soft final states.
+  caveats:
+  - No detector-level recast was attempted.
+  constrained_parameters:
+  - m_snu
+  - m_neutralino
+  - Delta m
+  - sparticle spectrum
+  constraint_type: collider
+  data_release: Prospective collider discussion only
+  excluded_regions:
+  - LEP and LHC/ILC sensitivity depend on mass splittings and production rates; primary text does not
+    provide an exclusion contour for the gravitino-NLSP case.
+  id: con_sneutrino_collider_visibility
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Collider visibility of sneutrino NLSP spectra
+  notes: null
+  observable_channel: missing energy plus soft leptons/jets
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:0902.2510
+  - arxiv:hep-ph/0703130
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The primary paper only briefly treats the gravitino-LSP case.
+    constraint_ids:
+    - con_bbn_structure_sneutrino_gravitino
+    - con_sneutrino_collider_visibility
+    derived_quantities:
+    - sneutrino abundance before decay
+    - Omega_G h^2
+    - sneutrino lifetime
+    - collider mass splittings
+    description: Map νCMSSM sneutrino-NLSP spectra to gravitino abundance, BBN/small-scale limits, and
+      missing-energy collider signatures.
+    forward_model_chain:
+    - inputs:
+      - m0
+      - M_1/2
+      - A0
+      - tan beta
+      - M_N
+      - m_nu
+      notes: null
+      outputs:
+      - sparticle masses
+      step_id: s1
+      step_type: other
+      tool_or_code: two-loop RGE spectrum generator
+      validity: Source uses numerical RGE evolution.
+    - inputs:
+      - m_G
+      - m_snu
+      - Omega_snu h^2
+      - Omega_G^T h^2
+      notes: null
+      outputs:
+      - Omega_G h^2
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Requires reheating input for thermal term.
+    - inputs:
+      - lifetime
+      - abundance
+      - mass splitting
+      notes: null
+      outputs:
+      - BBN/LSS/collider viability
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Likelihoods unavailable in batch.
+    id: route_sneutrino_nlsp_gravitino_cosmology
+    input_parameters:
+    - m0
+    - M_1/2
+    - A0
+    - tan beta
+    - M_N
+    - m_nu
+    - m_G
+    likelihoods:
+    - BBN likelihood unavailable
+    - small-scale structure recast unavailable
+    - collider recast unavailable
+    observable_ids:
+    - obs_gravitino_mixed_abundance
+    - obs_sneutrino_nlsp_collider_missing_energy
+    required_code_resources:
+    - spectrum generator with νCMSSM RGE
+    - BBN decay constraint code
+    route_status: planned
+    source_model_features:
+    - GUT-scale right-handed neutrino affects RGE running
+    - left-handed sneutrino NLSP
+    - gravitino LSP
+    validation_tests:
+    - recover source gravitino abundance formula
+    - recover sneutrino-NLSP region

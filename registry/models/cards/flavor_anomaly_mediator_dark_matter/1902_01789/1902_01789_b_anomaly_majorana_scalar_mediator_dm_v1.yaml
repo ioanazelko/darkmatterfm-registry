@@ -1,0 +1,287 @@
+_source:
+  shard: arXiv_src_1902_006_wds.tar
+  paper_id: '1902_01789'
+  source_member: 1902_01789.json
+schema_version: model_only_v0
+model_id: 1902_01789_b_anomaly_majorana_scalar_mediator_dm_v1
+identity:
+  name: Complex-coupling B-anomaly Majorana dark matter with scalar mediators
+  family: flavor_anomaly_mediator_dark_matter
+  aliases:
+  - B anomalies and dark matter model
+  - Majorana fermion DM with two scalar doublets
+  short_description: A Standard Model extension with a Majorana fermion dark matter particle and two scalar
+    mediators coupling to left-handed quark and lepton doublets, designed to address B -> K(*) l+l- anomalies
+    while reproducing the thermal relic abundance.
+  historical_origin_or_motivation: The paper modifies earlier one-loop flavor-anomaly dark matter models
+    by adding two scalar fields and allowing complex couplings needed by B_s mixing and lepton-flavor-universality
+    data.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - one-loop B-anomaly dark matter model
+  - Z2-odd scalar mediator model
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes the interaction Lagrangian between the Majorana fermion, scalar mediators, and
+    SM left-handed quark and lepton doublets.
+particle_content:
+  dark_matter_candidate:
+    name: Majorana fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - colored scalar doublet phi_q
+  - leptonic scalar doublet phi_l
+  mediators:
+  - phi_q
+  - phi_l
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z2 parity under which the new fields are odd and SM fields are even stabilizes
+    the Majorana fermion when mediator masses exceed the DM mass.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - left-handed quark doublets
+  - left-handed lepton doublets
+  - muons
+  - neutrinos
+  - b and s quarks
+  dark_sector_couplings:
+  - lambda_Qi quark couplings
+  - lambda_Li lepton couplings
+  - complex flavor couplings
+  mediator_types:
+  - colored scalar doublet
+  - leptonic scalar doublet
+  interaction_operators:
+  - lambda_Qi Q_i phi_q P_R chi
+  - lambda_Li L_i phi_l P_R chi
+  annihilation_channels:
+  - chi chi -> mu+ mu-
+  - chi chi -> neutrino pairs through t-channel phi_l
+  cp_structure: Complex couplings are required by the combined flavor fit in the paper.
+  flavor_structure: Negligible first-generation quark coupling and first/third lepton couplings; active
+    b, s, and muon-sector couplings.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the Majorana fermion.
+    role: core
+    status: inferred
+  - name: colored scalar mass
+    symbol: m_phi_q
+    description: Mass of the scalar coupling to quark doublets.
+    role: core
+    status: inferred
+  - name: leptonic scalar mass
+    symbol: m_phi_l
+    description: Mass of the scalar coupling to lepton doublets.
+    role: core
+    status: inferred
+  - name: b-quark coupling
+    symbol: lambda_b
+    description: New coupling to b-type quarks in the mass basis.
+    role: core
+    status: inferred
+  - name: s-quark coupling
+    symbol: lambda_s
+    description: New coupling to s-type quarks in the mass basis.
+    role: core
+    status: inferred
+  - name: muon/lepton coupling
+    symbol: lambda_mu
+    description: Dominant lepton coupling; fixed using the relic-annihilation condition in the paper.
+    role: core
+    status: inferred
+  - name: thermal annihilation target
+    symbol: <sigma v>
+    description: Value imposed to reproduce the relic abundance at freeze-out.
+    value: 2.2e-26 cm^3 s^-1 at x about 20
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  - t-channel annihilation through scalar mediators
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - lambda_mu
+  - m_chi
+  - m_phi_l
+  - helicity-suppressed Majorana annihilation with p-wave leading term
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper imposes the canonical freeze-out annihilation rate and uses it to fix one coupling
+    as a function of the remaining parameters.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_phi_l
+  - lambda_mu
+  - flavor couplings
+  - mediator hierarchy
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: low
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Cold thermal Majorana fermion relic.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: flavor_texture
+  applies_to: model
+  condition: Applies to the paper flavor texture with negligible first-generation quark coupling and negligible
+    electron/tau lepton couplings.
+  status: assumed
+  extrapolation_risk: medium
+- id: mediator_mass_ordering
+  applies_to: parameter
+  condition: Z2 stability requires scalar mediator masses above the Majorana fermion mass.
+  status: established
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: z2_stability
+    description: SM fields are Z2 even and new fields are Z2 odd, making chi stable if m_phi_q,l > m_chi.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: thermal_freezeout_rate
+    description: The relic density is obtained by imposing <sigma v> = 2.2e-26 cm^3 s^-1 at x about 20.
+    scope: production
+    status: inferred
+    can_be_relaxed: unknown
+  - id: dominant_leptonic_annihilation
+    description: Flavor and collider considerations make annihilation to muons and neutrinos dominant
+      over quark final states.
+    scope: production
+    status: inferred
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public model-specific code is identified in the extracted paper text.
+provenance:
+  model_id: 1902_01789_b_anomaly_majorana_scalar_mediator_dm_v1
+  model_name: 1902_01789_b_anomaly_majorana_scalar_mediator_dm_v1
+  model_family: flavor_anomaly_mediator_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: 'B anomalies and dark matter: a complex connection'
+      year: 2019
+      arxiv_id: '1902.01789'
+      role: original_model
+      notes: Assigned full text in target_text.sqlite for batch-0001.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0001
+    extractor_name: gpt55_dark_matter_model_batch_worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: model/relic abundance
+      page: null
+      quote_or_summary: Majorana chi with phi_q and phi_l scalar mediators; Z2 parity stabilizes chi and
+        thermal annihilation fixes a coupling.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model contains Majorana fermion chi plus scalar fields phi_q and phi_l; the text says
+        the alternative Dirac construction is ruled out by direct detection.
+      confidence: high
+      section: model section
+    symmetries:
+    - reference_id: primary
+      note: A Z2 parity is imposed with SM fields invariant, guaranteeing stability as long as mediator
+        masses are larger than chi.
+      confidence: high
+      section: model section
+    interactions:
+    - reference_id: primary
+      note: The interaction Lagrangian couples chi to SM left-handed quark and lepton doublets through
+        phi_q and phi_l.
+      confidence: high
+      section: model section
+    production_mechanism:
+    - reference_id: primary
+      note: The relic-density section says annihilation into muons and neutrinos dominates and imposes
+        2.2e-26 cm^3 s^-1 at x about 20.
+      confidence: high
+      section: relic abundance section
+    parameter_ranges:
+    - reference_id: primary
+      note: 'The paper lists six free parameters: the three new masses and the couplings to b-type quarks,
+        s-type quarks, and leptons.'
+      confidence: high
+      section: model section
+    validity_domain:
+    - reference_id: primary
+      note: The assumed flavor structure neglects first-generation quark coupling and electron/tau lepton
+        couplings.
+      confidence: high
+      section: model section
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    expert_reviewed: false
+    expert_reviewer: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Flavor texture assumptions
+  - Complex coupling fit
+  - Mediator mass hierarchy
+  validation_status: expert_judgment_only
+  notes: The model identity and thermal relic mechanism are well supported by the assigned text.
+agent_failure_modes:
+  warnings:
+  - id: flavor_model_not_generic_dm
+    severity: medium
+    category: assumption_mismatch
+    warning: The model card depends on a specific flavor texture motivated by B anomalies.
+    mitigation: Do not reuse as a generic scalar-mediator Majorana DM model without the flavor assumptions.

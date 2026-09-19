@@ -1,0 +1,799 @@
+_source:
+  shard: arXiv_src_2208_011_wds.tar
+  paper_id: '2208_01670'
+  source_member: 2208_01670.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2208_01670_reheaton_decay_kination_emd_dirac_fermion_dm_v1
+identity:
+  name: Reheaton-decay nonthermal Dirac fermion dark matter with kination and early matter domination
+  family: nonthermal_dark_matter
+  aliases: []
+  short_description: A Higgs-portal dark-sector model where a long-lived scalar reheaton decays out of
+    equilibrium into Dirac fermion dark matter after kination-like and early-matter-dominated epochs.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Higgs portal dark sector
+  - nonstandard pre-BBN cosmology
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper gives a microscopic Higgs-portal realization after developing a phenomenological reheaton-decay
+    cosmology.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion dark matter chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: unknown
+  additional_dark_sector_particles:
+  - singlet scalar reheaton S
+  mediators:
+  - reheaton S mixed with the SM Higgs
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - reheaton S
+  unstable_parent_particles:
+  - reheaton S
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: unknown dark-sector stability; DM is treated as stable relic from reheaton decay.
+  symmetries:
+  - name: unknown dark matter stability symmetry
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: unknown
+    breaking_scale: null
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - SM Higgs sector
+  - SM particles from reheaton decay
+  dark_sector_couplings:
+  - g_chi S chi chi
+  - Higgs-reheaton portal lambda_HS
+  - small Higgs-reheaton mixing angle
+  mediator_types:
+  - scalar reheaton
+  - Higgs-mixed scalar
+  interaction_operators:
+  - g_chi S chi chi
+  - lambda_HS |H|^2 |S|^2
+  annihilation_channels: []
+  decay_channels:
+  - S to dark matter
+  - S to Standard Model particles through Higgs mixing
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_DM
+    description: Illustrative viable range in the paper
+    range: O(10-100) keV
+    unit: keV
+    role: core
+    status: inferred
+  - name: reheaton mass
+    symbol: m_S
+    description: Illustrative viable range in the paper
+    range: O(0.5-5) GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: kination equation of state
+    symbol: w_kin
+    description: Stiff equation-of-state parameter before reheaton domination
+    range: '> 1/3; illustrative value about 0.5'
+    role: cosmological
+    status: inferred
+  - name: reheaton decay width
+    symbol: Gamma_S
+    description: Controls reheaton lifetime and reheating
+    role: core
+    status: inferred
+  - name: branching fraction to dark matter
+    symbol: Br(S to DM DM)
+    description: Fixed by requiring the observed dark matter relic abundance
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - nonthermal decay production from long-lived reheaton
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: 'no'
+  abundance_set_by:
+  - reheaton lifetime
+  - branching fraction to DM
+  - m_S/m_DM ratio
+  - kination and EMD history
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: Reheaton decays to SM and DM particles after dominating the energy density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed dark matter abundance
+    description: Demanded in the paper to fix the reheaton branching fraction
+    value: observed DM relic abundance
+    role: derived
+    status: assumed
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_S
+  - m_DM
+  - Gamma_S
+  - Br(S to DM DM)
+  - w_kin
+  - initial reheaton energy fraction
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - kination-like stiff epoch
+  - reheaton domination
+  - early matter domination
+  - late reheaton decay into SM and DM
+  phase_transitions: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: initially boosted with E_DM about m_S/2 before redshifting
+  notes: Produced DM is initially relativistic/boosted and redshifts before becoming the cold relic.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: kinematic_decay
+  applies_to: model
+  condition: Requires m_DM < m_S/2 for reheaton decay into DM.
+  status: inferred
+  extrapolation_risk: medium
+  source_reference_ids:
+  - paper
+- id: feeble_coupling
+  applies_to: production
+  condition: DM must remain out of equilibrium with the SM bath.
+  status: inferred
+  extrapolation_risk: high
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: constant_equations_of_state
+    description: Energy components are treated as fluids with constant equation-of-state parameters.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: reheaton_is_only_mediator
+    description: The reheaton is the only mediator between visible and dark sectors in the microscopic
+      model.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public code for the model is identified in the extracted text.
+  primary_code_role: null
+provenance:
+  model_id: 2208_01670_reheaton_decay_kination_emd_dirac_fermion_dm_v1
+  model_name: Reheaton-decay nonthermal Dirac fermion dark matter with kination and early matter domination
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: 'Signatures of Non-thermal Dark Matter with Kination and Early Matter Domination: Gravitational
+        Waves versus Laboratory Searches'
+      authors: []
+      year: 2022
+      arxiv_id: '2208.01670'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+    - reference_id: src_primary
+      title: Signatures of non-thermal dark matter with kination and early matter domination. Gravitational
+        waves versus laboratory searches
+      authors:
+      - Ghoshal, Anish
+      - Heurtier, Lucien
+      - Paul, Arnab
+      year: 2022
+      arxiv_id: '2208.01670'
+      doi: 10.1007/JHEP12(2022)105
+      url: https://arxiv.org/abs/2208.01670
+      role: original_model
+      notes: Primary assigned paper; local full text was used for structured enrichment.
+    constraint_papers: []
+    review_papers: []
+    external_databases:
+    - name: NASA ADS
+      url: https://ui.adsabs.harvard.edu/
+      note: Used for sanitized primary metadata and bounded related-paper discovery.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: abstract/introduction and model sections
+    unresolved_items:
+    - No structured Lyman-alpha transfer-function likelihood was available in the local text.
+    - Detector-specific LLP acceptances are summarized qualitatively rather than numerically.
+    - Inflationary tensor normalization remains an external assumption.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: Specific microscopic model is a Higgs-portal scenario with Dirac fermion dark matter and an
+        additional singlet scalar reheaton S.
+      confidence: high
+      section: microscopic model section
+    interactions:
+    - reference_id: paper
+      note: DM couples to reheaton S through a Yukawa coupling g_chi; the reheaton mixes with the SM Higgs
+        through a small angle.
+      confidence: high
+      section: microscopic model section
+    production_mechanism:
+    - reference_id: paper
+      note: DM forms out of equilibrium from reheaton decay; branching fraction into DM is fixed by demanding
+        the observed relic density.
+      confidence: high
+      section: abstract and cosmology sections
+    cosmological_history:
+    - reference_id: paper
+      note: Universe undergoes kination-like stiff equation of state before the reheaton dominates and
+        decays, giving early matter domination and reheating.
+      confidence: high
+      section: introduction and setup
+    parameter_ranges:
+    - reference_id: paper
+      note: Illustrative complementarity appears for w_kin about 0.5, reheaton mass O(0.5-5) GeV, and
+        DM mass O(10-100) keV.
+      confidence: high
+      section: abstract
+    validity_domain:
+    - reference_id: paper
+      note: Requires m_DM < m_S/2 and feeble coupling so DM does not thermalize with the SM bath.
+      confidence: high
+      section: microscopic model section
+    observables:
+    - reference_id: src_primary
+      note: Primary abstract and GW section describe detectable tensor-spectrum changes and LISA/u-DECIGO
+        complementarity.
+      confidence: high
+      section: abstract; gravitational-wave section
+      page: null
+    - reference_id: src_primary
+      note: Primary Higgs-portal section describes long-lived reheaton searches at DUNE/FASER/MATHUSLA/SHiP-type
+        experiments.
+      confidence: high
+      section: Higgs-portal DM section
+      page: null
+    constraints:
+    - reference_id: src_primary
+      note: Primary scan excludes low reheating temperature, m_DM below 5 keV, relativistic DM during
+        BBN, and thermalizing/overproducing regions.
+      confidence: high
+      section: dark-matter non-thermal production
+      page: null
+    routes:
+    - reference_id: src_primary
+      note: Primary paper links the cosmological history to both GW spectra and reheaton laboratory reach.
+      confidence: high
+      section: model and phenomenology sections
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: warmth_check
+    severity: medium
+    category: extrapolation
+    warning: The illustrative keV-scale decay-produced DM may require checking phase-space and structure-formation
+      implications before use outside the paper scope.
+    mitigation: null
+    source_reference_ids:
+    - paper
+  - id: history_dependence
+    severity: high
+    category: assumption_mismatch
+    warning: Relic-density and search predictions depend on the assumed kination plus early-matter-dominated
+      history.
+    mitigation: null
+    source_reference_ids:
+    - paper
+observables:
+- id: obs_gw_spectral_shape
+  name: Primordial gravitational-wave spectral shape from kination plus reheaton domination
+  channel: gravitational_waves
+  subchannel: inflationary tensor background processed by a stiff epoch and early matter domination
+  predicted_effect: A kination-like epoch amplifies high-frequency tensor modes and a following reheaton-dominated
+    epoch changes the spectral slopes; parts of the scan can enter LISA/u-DECIGO/BBO and related sensitivity
+    regions.
+  effect_direction: shape_change
+  key_quantities:
+  - name: kination equation of state
+    symbol: w_kin
+    range: '> 1/3; example near 0.5'
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: reheaton decay width
+    symbol: Gamma_S
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: reheating temperature
+    symbol: T_RH
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: reheaton mass
+    symbol: m_S
+    range: O(0.5-5)
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: dark matter mass
+    symbol: m_DM
+    range: O(10-100)
+    unit: keV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  redshift_range: post-inflationary pre-BBN history
+  scale_range: GW frequencies compared against PTA/SKA/LISA/BBO/DECIGO/CE/ET and related sensitivity curves
+  environments:
+  - early Universe
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - c_pre_bbn_and_warm_dm_consistency
+  linked_routes:
+  - route_cosmology_to_gw
+  caveats:
+  - Requires assumptions about inflationary tensor amplitude and nonstandard pre-BBN expansion history.
+  source_reference_ids:
+  - src_primary
+  notes: The paper computes SNR-like visibility regions rather than a released likelihood.
+- id: obs_reheaton_llp_searches
+  name: Long-lived Higgs-mixed reheaton decays in intensity-frontier detectors
+  channel: collider
+  subchannel: long-lived light scalar searches at DUNE, FASER, FASER-II, MATHUSLA, SHiP and similar experiments
+  predicted_effect: The relic-density requirement fixes the reheaton branching fraction to DM; with Higgs
+    mixing, the scalar reheaton can be long-lived and produce displaced-visible signatures while direct
+    DM detection remains out of reach.
+  effect_direction: rate_change
+  key_quantities:
+  - name: Higgs-reheaton mixing angle
+    symbol: theta
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: branching fraction to dark matter
+    symbol: Br(S->chi chi)
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: reheaton total width
+    symbol: Gamma_S
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: dark-sector Yukawa coupling
+    symbol: g_chi
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  redshift_range: late reheaton decay before standard radiation era
+  scale_range: m_S below the SM Higgs mass; examples emphasize sub-5 GeV long-lived scalar searches
+  environments:
+  - fixed-target and forward collider detectors
+  - underground long-baseline detectors
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - c_freezein_thermalization_exclusion
+  - c_llp_detector_recast
+  linked_routes:
+  - route_relic_to_llp
+  caveats:
+  - Projected detector acceptances and production modes need experiment-specific recasts.
+  source_reference_ids:
+  - src_primary
+  notes: The paper stresses complementarity between GW and laboratory searches.
+- id: obs_decay_produced_warmness
+  name: Warmness and BBN-era relativistic tail of decay-produced keV dark matter
+  channel: small_scale_structure
+  subchannel: Lyman-alpha, Tremaine-Gunn, and N_eff-sensitive warm or relativistic components
+  predicted_effect: Dark matter produced from reheaton decay can be too light or too relativistic; the
+    scan removes m_DM below 5 keV and points where DM remains relativistic during BBN.
+  effect_direction: suppression
+  key_quantities:
+  - name: dark matter mass
+    symbol: m_DM
+    range: '>= 5'
+    unit: keV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: initial momentum
+    symbol: p_chi
+    value: about m_S/2 at production
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  - name: reheaton decay temperature
+    symbol: T_RH
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - src_primary
+  redshift_range: BBN to low-redshift structure formation
+  scale_range: small-scale matter power / phase-space constraints
+  environments:
+  - early Universe
+  - small-scale structure
+  observability: low
+  relevance: medium
+  linked_constraints:
+  - c_pre_bbn_and_warm_dm_consistency
+  linked_routes:
+  - route_phase_space_to_structure
+  caveats:
+  - The paper applies conservative cuts rather than a dedicated Lyman-alpha transfer-function likelihood.
+  source_reference_ids:
+  - src_primary
+  notes: null
+constraints:
+- id: c_pre_bbn_and_warm_dm_consistency
+  name: Pre-BBN reheating, warm-DM, and N_eff consistency cuts
+  constraint_type: cosmological
+  observable_channel: BBN, warm dark matter, and relativistic energy-density constraints
+  applies: 'yes'
+  constrained_parameters:
+  - T_RH
+  - m_DM
+  - Gamma_S
+  - m_S
+  excluded_regions:
+  - T_RH below the BBN temperature
+  - m_DM < 5 keV
+  - DM still relativistic during BBN
+  - T_RH > m_S points where the reheaton approaches thermalization
+  allowed_regions:
+  - Scan points satisfying BBN reheating, m_DM >= 5 keV, and nonrelativistic DM by BBN
+  benchmark_implications:
+  - Viable examples have m_S of order 0.5-5 GeV and m_DM of order 10-100 keV.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: partial
+  robustness: medium
+  assumptions:
+  - id: a_decay_production_dominates
+    description: The observed abundance is produced dominantly by out-of-equilibrium reheaton decays.
+    scope: cosmology
+    status: assumed
+    impact_if_violated: If thermal production dominates, the branching-ratio and momentum-distribution
+      mapping used for the model card changes.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - src_primary
+    notes: null
+  caveats:
+  - No public likelihood for the warm-DM/N_eff cuts is provided in the flattened text.
+  source_reference_ids:
+  - src_primary
+  notes: The primary paper states the cuts explicitly before presenting the surviving scan.
+- id: c_freezein_thermalization_exclusion
+  name: Exclusion of parameter points with substantial thermal DM production
+  constraint_type: theoretical
+  observable_channel: freeze-in and dark-sector thermalization checks
+  applies: 'yes'
+  constrained_parameters:
+  - theta
+  - g_chi
+  - T_RH
+  - m_S
+  excluded_regions:
+  - Large mixing angles or reheating choices producing too much thermally generated DM or thermalizing
+    the dark sector
+  allowed_regions:
+  - Feebly coupled DM with reheaton-mediated production out of equilibrium
+  benchmark_implications:
+  - Large Higgs mixing is limited by overproduction/thermalization even when LLP reach improves.
+  likelihood_available: approximate
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: a_modified_freezein_code
+    description: The paper uses a modified freeze-in estimate to reject thermally overproduced points.
+    scope: numerical scan
+    status: approximate
+    impact_if_violated: A full Boltzmann treatment could shift the boundary.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - src_primary
+    notes: null
+  caveats:
+  - Exact code and likelihood are not packaged with the assignment.
+  source_reference_ids:
+  - src_primary
+  notes: null
+- id: c_llp_detector_recast
+  name: Long-lived scalar detector reach for the Higgs-mixed reheaton
+  constraint_type: collider
+  observable_channel: intensity-frontier LLP searches
+  applies: parameter_dependent
+  constrained_parameters:
+  - m_S
+  - theta
+  - Gamma_S
+  - Br(S->visible)
+  excluded_regions: []
+  allowed_regions:
+  - Regions falling in projected DUNE/FASER/FASER-II/MATHUSLA/SHiP-type acceptance after relic-density
+    matching
+  benchmark_implications:
+  - LLP reach can overlap with GW-sensitive regions and is the laboratory-facing signal of the reheaton
+    mediator.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: a_higgs_portal_realization
+    description: The reheaton is lighter than the SM Higgs and couples to visible states through small
+      Higgs mixing.
+    scope: laboratory recast
+    status: assumed
+    impact_if_violated: Other portal choices would change production and decay modes.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - src_primary
+    notes: null
+  caveats:
+  - Detector-specific acceptances are not reproduced in this enrichment row.
+  source_reference_ids:
+  - src_primary
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: route_cosmology_to_gw
+    description: Map kination plus reheaton domination into a modified inflationary tensor transfer function
+      and compare against GW detector sensitivity.
+    source_model_features:
+    - stiff post-inflationary epoch
+    - early matter domination by reheaton
+    - late reheaton decay
+    input_parameters:
+    - w_kin
+    - Gamma_S
+    - initial reheaton fraction
+    - inflationary tensor amplitude
+    derived_quantities:
+    - T_RH
+    - f_RH
+    - f_kin
+    - Omega_GW(f)
+    - SNR
+    forward_model_chain:
+    - step_id: background
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - w_kin
+      - Gamma_S
+      outputs:
+      - H(a)
+      - transition frequencies
+      validity: valid for the staged expansion history assumed in the paper
+      notes: null
+    - step_id: tensor
+      step_type: transfer_function
+      tool_or_code: null
+      inputs:
+      - inflationary tensor spectrum
+      - H(a)
+      outputs:
+      - Omega_GW(f)
+      validity: requires assumed primordial tensor normalization
+      notes: null
+    - step_id: detector
+      step_type: likelihood
+      tool_or_code: null
+      inputs:
+      - Omega_GW(f)
+      - sensitivity curves
+      outputs:
+      - SNR contours
+      validity: visibility metric rather than released likelihood
+      notes: null
+    observable_ids:
+    - obs_gw_spectral_shape
+    constraint_ids:
+    - c_pre_bbn_and_warm_dm_consistency
+    likelihoods:
+    - GW SNR visibility contours
+    required_code_resources:
+    - background evolution solver
+    - GW sensitivity curves
+    validation_tests:
+    - Reproduce paper benchmark spectra and SNR contours.
+    route_status: partially_implemented
+    agent_notes: The primary paper gives the analytic/numerical chain but not a packaged likelihood.
+    caveats:
+    - Inflationary inputs remain external to the dark-sector model.
+  - id: route_relic_to_llp
+    description: Use the relic abundance condition to infer reheaton branching fractions and map the Higgs-mixed
+      reheaton into LLP searches.
+    source_model_features:
+    - Dirac fermion DM coupled to scalar reheaton
+    - Higgs portal reheaton-visible coupling
+    input_parameters:
+    - m_DM
+    - m_S
+    - Gamma_S
+    - Br(S->chi chi)
+    - theta
+    derived_quantities:
+    - visible width
+    - proper lifetime
+    - detector event yield
+    forward_model_chain:
+    - step_id: abundance
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - cosmological history
+      - Br(S->chi chi)
+      outputs:
+      - observed relic-density matching
+      validity: valid when reheaton decays dominate DM production
+      notes: null
+    - step_id: portal
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - Gamma_S
+      - Br(S->visible)
+      - m_S
+      outputs:
+      - theta
+      - lifetime
+      validity: small-mixing Higgs-portal approximation
+      notes: null
+    - step_id: recast
+      step_type: recasting
+      tool_or_code: null
+      inputs:
+      - theta
+      - lifetime
+      - production mode
+      outputs:
+      - LLP reach
+      validity: requires experiment-specific acceptances
+      notes: null
+    observable_ids:
+    - obs_reheaton_llp_searches
+    constraint_ids:
+    - c_freezein_thermalization_exclusion
+    - c_llp_detector_recast
+    likelihoods:
+    - projected LLP reach
+    required_code_resources:
+    - Higgs-portal scalar decay tables
+    - LLP detector acceptances
+    validation_tests:
+    - Check relic-density matching and reproduce detector reach overlays.
+    route_status: planned
+    agent_notes: null
+    caveats:
+    - Direct DM scattering is expected to be beyond reach in the studied feebly coupled regime.
+  - id: route_phase_space_to_structure
+    description: Propagate decay-produced DM momenta to BBN and small-scale-structure cuts.
+    source_model_features:
+    - two-body reheaton decay to boosted keV DM
+    input_parameters:
+    - m_DM
+    - m_S
+    - T_RH
+    derived_quantities:
+    - DM velocity at BBN
+    - free-streaming scale
+    forward_model_chain:
+    - step_id: momentum
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - m_S
+      - m_DM
+      - scale-factor history
+      outputs:
+      - p_chi/T
+      - nonrelativistic transition
+      validity: approximate decay kinematics
+      notes: null
+    - step_id: cut
+      step_type: recasting
+      tool_or_code: null
+      inputs:
+      - m_DM
+      - velocity at BBN
+      outputs:
+      - warm-DM/N_eff pass-fail
+      validity: uses conservative cuts in primary paper
+      notes: null
+    observable_ids:
+    - obs_decay_produced_warmness
+    constraint_ids:
+    - c_pre_bbn_and_warm_dm_consistency
+    likelihoods:
+    - warm-DM and N_eff cuts
+    required_code_resources:
+    - Boltzmann/free-streaming solver for a full recast
+    validation_tests:
+    - Compare against a dedicated Lyman-alpha likelihood before using precision limits.
+    route_status: planned
+    agent_notes: null
+    caveats:
+    - The primary text does not provide a transfer function.

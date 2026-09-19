@@ -1,0 +1,651 @@
+_source:
+  shard: arXiv_src_2103_083_wds.tar
+  paper_id: '2103_13407'
+  source_member: 2103_13407.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2103_13407_tdsidm_smbh_seed_v1
+identity:
+  name: Nearly totally dissipative self-interacting dark matter SMBH-seeding model
+  family: self_interacting_dark_matter
+  aliases:
+  - tdSIDM
+  - dissipative self-interacting dark matter
+  - nearly totally dissipative SIDM
+  short_description: Phenomenological tdSIDM model in which dark matter loses nearly all kinetic energy
+    in self-collisions, causing rare dense halos to collapse and seed supermassive black holes.
+  historical_origin_or_motivation: Motivated by the difficulty of growing 10^9 solar-mass SMBHs by z about
+    7 in standard astrophysical scenarios.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - self-interacting dark matter
+  - dissipative dark matter
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper develops and calibrates a semi-analytic tdSIDM halo-collapse model with isolated-halo
+    N-body simulations and halo merger trees.
+particle_content:
+  dark_matter_candidate:
+    name: tdSIDM particle
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - unspecified dissipative self-interaction mediator
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Dark matter stability is assumed; no particle-level stabilizing symmetry is specified.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets: []
+  dark_sector_couplings:
+  - self-interaction with near-total kinetic-energy loss per collision
+  mediator_types:
+  - unspecified dark-sector mediator
+  scattering:
+    elastic: 'no'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  self_scattering_channels:
+  - dissipative dark matter self-collisions
+  cp_structure: unknown
+  flavor_structure: not_applicable
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: self-interaction cross-section per mass
+    symbol: sigma/m
+    description: Dissipative dark matter interaction strength used in halo collapse timescale.
+    value: about 0.05 can seed early SMBHs in the paper examples
+    unit: cm^2/g
+    role: core
+    status: inferred
+  - name: dissipated kinetic-energy fraction
+    symbol: f_diss
+    description: Fraction of kinetic energy lost in a self-collision; the paper studies nearly total dissipation.
+    value: nearly 1
+    role: core
+    status: assumed
+  - name: collapsed halo mass fraction
+    symbol: f_col
+    description: Universal collapsed fraction calibrated from simulations.
+    value: about 3e-3
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - not specified as a particle-production mechanism; tdSIDM is assumed to be the cosmological dark matter
+    component
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - cosmological dark matter abundance assumed in halo merger trees
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: The paper develops halo collapse and SMBH seeding rather than a microscopic relic-production
+    calculation.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - assumed tdSIDM halo abundance
+  - cross-section per mass
+  - dissipation fraction
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: approximate
+  f_of_p_or_q: NFW halo initial conditions and semi-analytic halo merger trees are used rather than a
+    particle phase-space distribution.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Halo-level phenomenological treatment.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: Rare high-density halos can undergo dissipative collapse and seed SMBHs.
+    subhalo_mass_function_effect: unknown
+    density_profile_effect: Dissipation can alter halo density profiles; the paper calibrates collapse
+      in isolated NFW halos.
+    simulation_calibrated: partial
+validity_domain:
+- id: tdsidm_nearly_total_dissipation
+  applies_to: model
+  condition: Applies to nearly totally dissipative SIDM where a collision loses nearly all kinetic energy
+    in the center-of-momentum frame.
+  status: assumed
+  extrapolation_risk: high
+  source_reference_ids:
+  - primary
+- id: isolated_nfw_calibration
+  applies_to: computation
+  condition: Semi-analytic collapse timescale is calibrated on isolated NFW halos with masses 10^9 to
+    10^13 solar masses.
+  status: approximate
+  extrapolation_risk: medium
+  source_reference_ids:
+  - primary
+assumptions:
+  global:
+  - id: full_tdsidm_component
+    description: The cosmological dark matter in the relevant halos is treated as tdSIDM.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+  - id: rare_dense_halo_seeding
+    description: SMBH seeds form only when halo merger-tree progenitors satisfy the calibrated collapse
+      criterion.
+    scope: structure_formation
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports GIZMO N-body simulations and pyICs initial conditions for calibration;
+    paper-specific public code availability is not stated.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 2103_13407_tdsidm_smbh_seed_v1
+  model_name: Nearly totally dissipative self-interacting dark matter SMBH-seeding model
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: SMBH Seeds from Dissipative Dark Matter
+      authors:
+      - Huangyu Xiao
+      - Xuejian Shen
+      - Philip F. Hopkins
+      - Kathryn M. Zurek
+      year: 2021
+      arxiv_id: '2103.13407'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used for extraction.
+    - arxiv_id: '2103.13407'
+      authors:
+      - Xiao, Huangyu
+      - Shen, Xuejian
+      - Hopkins, Philip F.
+      - Zurek, Kathryn M.
+      doi: 10.1088/1475-7516/2021/07/039
+      notes: Primary paper text resolved locally; ADS used for metadata discovery.
+      reference_id: '2103_13407'
+      role: original_model
+      title: SMBH seeds from dissipative dark matter
+      url: https://arxiv.org/abs/2103.13407
+      year: 2021
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for primary metadata plus bounded reference/citation discovery.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_gpt5_worker_batch_0009
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract and Semi-Analytic Model
+      page: null
+      quote_or_summary: Study of nearly totally dissipative SIDM producing SMBH seeds through catastrophic
+        halo collapse; calibrated with N-body simulations.
+    unresolved_items:
+    - The local text cache includes a referee-response wrapper before the article text.
+    - Baryonic effects, velocity-dependent cross sections, and f_diss variations need further quantitative
+      work.
+    - Strong-lensing and dwarf-galaxy signatures are discussed as follow-up context rather than calibrated
+      likelihoods.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: Paper identifies tdSIDM as dark matter that loses nearly all kinetic energy in self-collisions.
+      confidence: medium
+      section: Abstract
+      page: null
+    interactions:
+    - reference_id: primary
+      note: Collapse rate is characterized by density, velocity dispersion, and self-interaction cross-section
+        per mass.
+      confidence: medium
+      section: Semi-Analytic Model
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: No microscopic relic production is provided; the model assumes tdSIDM as the halo dark matter
+        component and studies SMBH seed formation.
+      confidence: medium
+      section: Abstract
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: A cross-section per mass around 0.05 cm^2/g is reported as sufficient for early SMBH production.
+      confidence: medium
+      section: Abstract
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: Semi-analytic model is calibrated by isolated NFW halo simulations and applied to halo merger
+        trees.
+      confidence: medium
+      section: Methods
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text discusses high-redshift SMBH demographics, low-redshift SIDM consistency, and
+        f_diss-sigma/m degeneracy.
+      page: null
+      reference_id: '2103_13407'
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text describes tdSIDM SMBH seeding, sigma/m about 0.05 cm^2/g, quasar luminosity function,
+        M_BH-sigma relation, mass density, and low-redshift signatures.
+      page: null
+      reference_id: '2103_13407'
+      section: null
+    routes:
+    - confidence: medium
+      note: Primary text describes an N-body-calibrated semi-analytic collapse model applied to halo merger
+        trees.
+      page: null
+      reference_id: '2103_13407'
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: low
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - No particle-level Lagrangian or relic calculation is specified.
+  - Astrophysical SMBH seeding prescriptions are phenomenological.
+  validation_status: partially_validated
+  notes: Validated at the halo-collapse level by simulations, not at the microscopic model level.
+agent_failure_modes:
+  warnings:
+  - id: tdsidm_microphysics_missing
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat this row as a complete particle model; the paper supplies a halo-level dissipative
+      SIDM parameterization.
+    source_reference_ids:
+    - primary
+    mitigation: Require a separate microphysical tdSIDM model before computing relic abundance or laboratory
+      rates.
+observables:
+- caveats:
+  - Observed quasar luminosity function has astrophysical uncertainties.
+  channel: black_holes
+  effect_direction: enhancement
+  environments:
+  - high-redshift quasars
+  id: high_redshift_quasar_luminosity_function
+  key_quantities:
+  - description: Dissipative dark matter interaction cross-section per unit mass.
+    fiducial_value: 0.05
+    name: self-interaction cross-section per mass
+    role: core
+    source_reference_ids:
+    - '2103_13407'
+    status: inferred
+    symbol: sigma_over_m
+    unit: cm^2/g
+  - description: Fraction of kinetic energy lost in an inelastic self-collision.
+    fiducial_value: 1
+    name: dissipation fraction
+    role: core
+    source_reference_ids:
+    - '2103_13407'
+    status: inferred
+    symbol: f_diss
+  - description: Optional baryonic growth parameter used in the SMBH catalog.
+    name: baryonic accretion normalization
+    role: core
+    source_reference_ids:
+    - '2103_13407'
+    status: assumed
+    symbol: M0
+    unit: solar masses
+  linked_constraints:
+  - sigma_over_m_smbh_seed_sufficiency
+  linked_routes:
+  - tdsidm_collapse_to_smbh_observables
+  name: High-redshift quasar luminosity function
+  notes: Primary observable for the SMBH-seeding motivation.
+  observability: medium
+  predicted_effect: tdSIDM catastrophic collapse seeds SMBHs in rare high-density halos, affecting the
+    predicted high-redshift quasar luminosity function.
+  redshift_range: z >= 6
+  relevance: critical
+  scale_range: rare high-density halo population
+  source_reference_ids:
+  - '2103_13407'
+  subchannel: SMBH abundance and luminosity
+- caveats:
+  - Baryonic growth and merger prescriptions are simplified.
+  channel: black_holes
+  effect_direction: shape_change
+  environments:
+  - quasars
+  - galaxy halos
+  id: mbh_sigma_and_mass_density
+  key_quantities:
+  - description: Seed mass assigned from collapsed tdSIDM halo fraction.
+    name: black hole seed mass
+    role: derived
+    source_reference_ids:
+    - '2103_13407'
+    status: inferred
+    unit: solar masses
+  - description: Halo parameter entering the merger-tree/seeding model.
+    name: halo concentration
+    role: astrophysical
+    source_reference_ids:
+    - '2103_13407'
+    status: inferred
+    symbol: c_vir
+  linked_constraints:
+  - sigma_over_m_smbh_seed_sufficiency
+  linked_routes:
+  - tdsidm_collapse_to_smbh_observables
+  name: M_BH-sigma relation and cosmic SMBH mass density
+  notes: Complements the luminosity-function observable.
+  observability: medium
+  predicted_effect: The semi-analytic model predicts the M_BH-sigma relation and cosmic SMBH mass density
+    at high redshift for comparison to observations.
+  redshift_range: high redshift
+  relevance: high
+  scale_range: halo to galaxy scales
+  source_reference_ids:
+  - '2103_13407'
+  subchannel: black-hole demographics
+- caveats:
+  - The primary model focuses on SMBH seeds rather than detailed dwarf-galaxy forecasts.
+  channel: dwarf_galaxies
+  effect_direction: morphology_change
+  environments:
+  - dwarf galaxies
+  id: dwarf_galaxy_structure_signatures
+  key_quantities:
+  - description: Effective self-interaction strength relevant for dwarf halos.
+    name: effective cross-section
+    role: core
+    source_reference_ids:
+    - '2103_13407'
+    status: inferred
+    symbol: sigma_over_m_eff
+    unit: cm^2/g
+  - description: Dissipative strength controlling collapse timescale together with sigma/m.
+    name: dissipation fraction
+    role: core
+    source_reference_ids:
+    - '2103_13407'
+    status: assumed
+    symbol: f_diss
+  linked_constraints:
+  - low_redshift_sidm_consistency
+  linked_routes:
+  - tdsidm_collapse_to_smbh_observables
+  name: Dwarf-galaxy structural signatures of dSIDM
+  notes: Use as a consistency and follow-up observable.
+  observability: medium
+  predicted_effect: The paper discusses consistency with dwarf-galaxy constraints and notes dSIDM can
+    affect density profiles, kinematics, and subhalo disruption.
+  redshift_range: low redshift
+  relevance: medium
+  scale_range: dwarf-galaxy halo scales
+  source_reference_ids:
+  - '2103_13407'
+  subchannel: density profiles and kinematics
+- caveats:
+  - The paper flags this as potential future work, not a calibrated prediction.
+  channel: strong_lensing
+  effect_direction: morphology_change
+  environments:
+  - strong lens systems
+  id: strong_lensing_substructure
+  key_quantities: []
+  linked_constraints:
+  - low_redshift_sidm_consistency
+  linked_routes:
+  - tdsidm_collapse_to_smbh_observables
+  name: Strong-lensing substructure signatures
+  notes: Kept low confidence in downstream recasts.
+  observability: low
+  predicted_effect: The response text notes potential observational signatures in strong gravitational
+    lensing from dSIDM-induced halo/subhalo changes.
+  redshift_range: null
+  relevance: medium
+  scale_range: subhalo scales
+  source_reference_ids:
+  - '2103_13407'
+  subchannel: halo substructure morphology
+constraints:
+- allowed_regions:
+  - The primary paper finds sigma/m about 0.05 cm^2/g sufficient to produce observed early SMBHs while
+    remaining consistent with ordinary late-time SMBHs.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Sets the fiducial interaction strength for SMBH seeding.
+  caveats:
+  - Depends on merger trees, N-body calibration, and baryonic growth assumptions.
+  constrained_parameters:
+  - sigma_over_m
+  - f_diss
+  - halo formation redshift
+  constraint_type: astrophysical
+  data_release: High-redshift quasar/SMBH observations compared in primary paper
+  excluded_regions: []
+  id: sigma_over_m_smbh_seed_sufficiency
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Cross-section sufficient for early SMBH seeds
+  notes: This is a sufficiency statement within the paper model.
+  observable_channel: high-redshift SMBH demographics
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '2103_13407'
+- allowed_regions:
+  - The paper states its model remains consistent with discussed dwarf-galaxy studies.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Follow-up must check dwarf, cluster, and lensing constraints jointly.
+  caveats:
+  - The paper does not quantitatively scan velocity-dependent cross-section models.
+  constrained_parameters:
+  - sigma_over_m
+  - velocity dependence
+  - f_diss
+  constraint_type: astrophysical
+  data_release: Low-redshift SIDM/dSIDM constraints discussed in primary paper
+  excluded_regions:
+  - Velocity-independent cross sections may overlap cluster-merger velocity scales and require care.
+  id: low_redshift_sidm_consistency
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Low-redshift SIDM and dwarf-galaxy consistency
+  notes: Logged as a caveated consistency constraint.
+  observable_channel: dwarf galaxies and cluster-scale SIDM constraints
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - '2103_13407'
+- allowed_regions:
+  - The text says the relevant physical combination in the dissipation timescale is f_diss times sigma/m.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Different microscopic models can map to similar collapse times.
+  caveats:
+  - The fiducial calculation assumes nearly total dissipation.
+  constrained_parameters:
+  - f_diss
+  - sigma_over_m
+  constraint_type: theoretical
+  data_release: Primary-paper discussion of f_diss degeneracy
+  excluded_regions: []
+  id: fdiss_cross_section_degeneracy
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Degeneracy of dissipation fraction and cross-section
+  notes: Important for interpreting sigma/m as a model parameter.
+  observable_channel: collapse timescale
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '2103_13407'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Scientific route is clear, but reproducing it needs simulation/merger-tree assets not
+      packaged in this batch.
+    caveats:
+    - Local primary text begins with a referee response before the paper body; evidence was taken from
+      the paper body and response statements.
+    constraint_ids:
+    - sigma_over_m_smbh_seed_sufficiency
+    - low_redshift_sidm_consistency
+    - fdiss_cross_section_degeneracy
+    derived_quantities:
+    - collapse timescale
+    - collapsed mass fraction
+    - SMBH seed catalog
+    - quasar luminosity function
+    - M_BH-sigma relation
+    - SMBH mass density
+    description: Use N-body-calibrated tdSIDM collapse criteria with halo merger trees to assign SMBH
+      seeds and compare black-hole demographics.
+    forward_model_chain:
+    - inputs:
+      - sigma_over_m
+      - f_diss
+      - halo density profile
+      notes: The local text includes a referee-response wrapper but the paper abstract describes the N-body
+        calibration.
+      outputs:
+      - collapse criteria
+      - collapse timescale
+      step_id: collapse_calibration
+      step_type: simulation
+      tool_or_code: N-body simulations of isolated halos
+      validity: Calibrated for isolated halos and fiducial dissipative assumptions.
+    - inputs:
+      - halo merger trees
+      - collapse criteria
+      notes: Baryonic accretion can be toggled through M0 in the model.
+      outputs:
+      - SMBH seed catalog
+      - growth histories
+      step_id: merger_trees
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Astrophysical merger and growth assumptions enter.
+    - inputs:
+      - SMBH catalog
+      - survey comparison data
+      notes: Compare to high-redshift quasar observations and local SMBH demographics.
+      outputs:
+      - quasar luminosity function
+      - M_BH-sigma relation
+      - mass density
+      step_id: observables
+      step_type: data_transform
+      tool_or_code: null
+      validity: Observational systematics not packaged as likelihood files.
+    id: tdsidm_collapse_to_smbh_observables
+    input_parameters:
+    - sigma_over_m
+    - f_diss
+    - halo mass
+    - concentration
+    - formation redshift
+    - M0
+    likelihoods:
+    - quasar luminosity function comparison
+    - M_BH-sigma comparison
+    - SMBH mass density comparison
+    observable_ids:
+    - high_redshift_quasar_luminosity_function
+    - mbh_sigma_and_mass_density
+    - dwarf_galaxy_structure_signatures
+    - strong_lensing_substructure
+    required_code_resources:
+    - N-body simulation setup from primary paper
+    - halo merger-tree machinery
+    route_status: partially_implemented
+    source_model_features:
+    - nearly totally dissipative self-interacting dark matter
+    - rare high-density early halos
+    - catastrophic halo core collapse
+    - SMBH seed assignment
+    - halo merger trees
+    validation_tests:
+    - recover sigma/m about 0.05 cm^2/g sufficiency
+    - recover quasar luminosity function comparison
+    - test sensitivity to M0 and f_diss

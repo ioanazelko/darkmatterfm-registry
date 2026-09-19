@@ -1,0 +1,756 @@
+_source:
+  shard: arXiv_src_2212_082_wds.tar
+  paper_id: '2212_11230'
+  source_member: 2212_11230.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2212_11230_z3_singlet_type_ii_seesaw_scalar_dm_v1
+identity:
+  name: Z3 symmetric complex singlet scalar extension of type-II seesaw
+  family: scalar_singlet_dark_matter
+  aliases:
+  - Z3 complex singlet scalar type-II seesaw dark matter
+  short_description: A Z3-stabilized complex scalar singlet dark matter candidate in a type-II seesaw
+    scalar sector, studied with electroweak first-order phase transition dilution of thermal relic abundance.
+  historical_origin_or_motivation: Connects singlet scalar dark matter, neutrino mass from type-II seesaw,
+    electroweak baryogenesis, and phase-transition dilution of a heavy thermal relic.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - type-II seesaw
+  - Z3 complex scalar singlet extension
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the kinetic/Yukawa terms and scalar potential for H, the triplet, and complex
+    singlet S.
+particle_content:
+  dark_matter_candidate:
+    name: complex scalar singlet S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - SU(2)_L scalar triplet with hypercharge Y=2
+  mediators:
+  - SM-like Higgs h0
+  - triplet-like scalar H0
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A discrete Z3 symmetry stabilizes the singlet field because it transforms nontrivially
+    and does not acquire a vacuum expectation value.
+  symmetries:
+  - name: Z3
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken for the singlet dark matter candidate
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - scalar triplet sector
+  dark_sector_couplings:
+  - lambda_SH H^dagger H S^* S
+  - lambda_SDelta Tr(Delta^dagger Delta) S^* S
+  - cubic Z3 singlet term
+  mediator_types:
+  - scalar
+  annihilation_channels:
+  - scalar-mediated thermal annihilation of singlet dark matter
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_S
+    description: Mass of the singlet scalar after electroweak symmetry breaking.
+    range: heavy TeV-scale region considered for freeze-out before the phase transition
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet-Higgs portal coupling
+    symbol: lambda_SH
+    description: Portal coupling between S and the Higgs doublet.
+    role: core
+    status: inferred
+  - name: singlet-triplet portal coupling
+    symbol: lambda_SDelta
+    description: Portal coupling between S and the triplet scalar.
+    role: core
+    status: inferred
+  - name: triplet vev
+    symbol: v_t
+    description: Small type-II seesaw triplet vacuum expectation value.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out before a first-order electroweak phase transition
+  - entropy dilution during the phase transition
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - thermal freeze-out
+  - dilution factor from latent heat/entropy injection
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The work studies when an FOPT below freeze-out dilutes the thermal relic density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_S
+  - portal couplings
+  - freeze-out temperature
+  - critical and nucleation temperatures
+  - dilution factor
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - first-order electroweak phase transition with entropy injection
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - first-order electroweak phase transition in the extended Higgs sector
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Thermal relic abundance is tracked, but no explicit present-day phase-space distribution is extracted.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: fopt_dilution_validity
+  applies_to: model
+  condition: Dilution is relevant when the electroweak first-order phase-transition temperature is below
+    the dark matter freeze-out temperature.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Converted equations obscure exact scalar-potential notation.
+  source_reference_ids:
+  - paper
+  notes: null
+assumptions:
+  global:
+  - id: thermal_freezeout_before_fopt
+    description: The heavy singlet-like scalar freezes out before the first-order phase transition so
+      that entropy release can dilute its relic abundance.
+    scope: production
+    status: assumed
+    impact_if_violated: The central dilution mechanism would not affect the relic density.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses the public CosmoTransitions package for phase-transition bounce calculations;
+    no model-specific release is identified.
+  primary_code_role: other
+  packages_or_modules:
+  - name: CosmoTransitions
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - other
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: '2026-05-31'
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families: []
+    supported_observables: []
+    inputs:
+    - finite-temperature effective potential
+    outputs:
+    - bounce solution
+    - nucleation temperature
+    validity_domain: []
+    citation_reference_ids:
+    - paper
+    notes: Mentioned as used for the Euclidean action/bounce solution.
+provenance:
+  model_id: 2212_11230_z3_singlet_type_ii_seesaw_scalar_dm_v1
+  model_name: Z3 symmetric complex singlet scalar extension of type-II seesaw
+  model_family: scalar_singlet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: unknown
+      authors: []
+      year: 2022
+      arxiv_id: '2212.11230'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '2212.11230'
+      authors:
+      - Roy, Subhojit
+      doi: 10.1103/PhysRevD.111.015037
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2212.11230
+      role: original_model
+      title: Dilution of dark matter relic abundance due to first order electroweak phase transition in
+        the singlet scalar extended type-II seesaw model
+      url: https://arxiv.org/abs/2212.11230
+      year: 2025
+    constraint_papers:
+    - arxiv_id: '0909.1317'
+      authors:
+      - Wainwright, Carroll
+      - Profumo, Stefano
+      doi: 10.1103/PhysRevD.80.103517
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:0909.1317
+      role: constraint
+      title: Impact of a strongly first-order phase transition on the abundance of thermal relics
+      url: https://arxiv.org/abs/0909.1317
+      year: 2009
+    - arxiv_id: '1501.01973'
+      authors:
+      - Bernal, Nicolás
+      - Garcia-Cely, Camilo
+      - Rosenfeld, Rogério
+      doi: 10.1088/1475-7516/2015/04/012
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1501.01973
+      role: constraint
+      title: WIMP and SIMP dark matter from the spontaneous breaking of a global group
+      url: https://arxiv.org/abs/1501.01973
+      year: 2015
+    - arxiv_id: '2202.12476'
+      authors:
+      - Chatterjee, Arindam
+      - Datta, AseshKrishna
+      - Roy, Subhojit
+      doi: 10.1007/JHEP06(2022)108
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2202.12476
+      role: constraint
+      title: 'Electroweak phase transition in the Z<SUB>3</SUB>-invariant NMSSM: Implications of LHC and
+        Dark matter searches and prospects of detecting the gravitational waves'
+      url: https://arxiv.org/abs/2202.12476
+      year: 2022
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: gpt-5.5-codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections: []
+    unresolved_items:
+    - Numerical dilution-factor contours and GW sensitivity curves were not digitized.
+    - A collider recast for the type-II triplet sector was not performed.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The paper states that it considers a Z3 symmetric complex singlet scalar extension of the
+        type-II seesaw model that provides a singlet scalar DM candidate.
+      confidence: medium
+      section: Introduction
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: The discrete Z3 symmetry stabilizes the singlet field and prevents it from developing a vacuum
+        expectation value.
+      confidence: medium
+      section: Model
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The scalar potential includes Higgs-singlet and triplet-singlet portal terms and a Z3 cubic
+        singlet term.
+      confidence: medium
+      section: Model
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The work studies thermal relic freeze-out followed by possible dilution from entropy release
+        during a first-order phase transition.
+      confidence: medium
+      section: Relic-density dilution
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: The phase transition analysis uses critical/nucleation temperatures and CosmoTransitions to
+        estimate the dilution factor.
+      confidence: medium
+      section: Phase transition
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The effect is significant when the FOPT temperature is below the DM freeze-out temperature
+        for TeV-scale candidates.
+      confidence: medium
+      section: Introduction
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text quotes Planck Omega_DM h^2 = 0.120 +/- 0.001 and discusses FOEWPT dilution rescuing
+        overabundant samples.
+      page: null
+      reference_id: arxiv:2212.11230
+      section: Results
+    - confidence: high
+      note: Primary text notes dilution can rescue samples otherwise excluded by XENON1T and PandaX-4T
+        direct detection.
+      page: null
+      reference_id: arxiv:2212.11230
+      section: Connection to direct detection
+    - confidence: medium
+      note: Primary text discusses LHC triplet-scalar bounds and their dependence on v_t and decay assumptions.
+      page: null
+      reference_id: arxiv:2212.11230
+      section: Model constraints
+    observables:
+    - confidence: high
+      note: Primary text states FOEWPT entropy injection dilutes relics that freeze out before the transition
+        and is important for TeV-scale dark matter.
+      page: null
+      reference_id: arxiv:2212.11230
+      section: Introduction and dilution
+    - confidence: high
+      note: Primary appendix gives sound-wave gravitational-wave formulas in terms of alpha, beta/H, T_n,
+        and wall velocity.
+      page: null
+      reference_id: arxiv:2212.11230
+      section: Appendix
+    - confidence: high
+      note: Primary text explains direct-detection rescaling by the post-dilution dark-matter fraction
+        and cites XENON1T/PandaX-4T.
+      page: null
+      reference_id: arxiv:2212.11230
+      section: Results
+    routes:
+    - confidence: high
+      note: Primary text combines micrOMEGAs-style DM observables, CosmoTransitions phase-transition calculation,
+        dilution, and GW formulas.
+      page: null
+      reference_id: arxiv:2212.11230
+      section: Methods and appendix
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Machine extraction from converted full text; mathematical notation may be degraded.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Converted text obscures some symbols and section labels.
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: notation_loss
+    severity: medium
+    category: notation_conflict
+    warning: Converted text drops or mangles some field symbols; do not infer exact charges or equations
+      beyond the compact evidence.
+    mitigation: Consult original paper before final registry inclusion.
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - Thermal relics decoupling after the transition are not diluted.
+  channel: cosmology
+  effect_direction: suppression
+  environments:
+  - early-universe electroweak plasma
+  id: obs_foewpt_entropy_dilution
+  key_quantities:
+  - description: Heavy singlet-like scalar dark matter mass scanned up to multi-TeV values.
+    name: singlet scalar mass
+    range: 0-5 TeV in the source scan
+    role: core
+    source_reference_ids:
+    - arxiv:2212.11230
+    status: inferred
+    symbol: m_S
+    unit: TeV
+  - description: Approximate WIMP freeze-out temperature; dilution matters when T_FO exceeds the transition
+      temperature.
+    name: freeze-out temperature
+    range: about m_S/25
+    role: core
+    source_reference_ids:
+    - arxiv:2212.11230
+    status: inferred
+    symbol: T_FO
+  - description: FOEWPT temperature found from S3/T about 140; controls dilution strength.
+    name: nucleation temperature
+    role: core
+    source_reference_ids:
+    - arxiv:2212.11230
+    status: inferred
+    symbol: T_n
+  linked_constraints:
+  - con_relic_dilution_planck_dd
+  linked_routes:
+  - route_z3_typeii_foewpt_dm_gw
+  name: FOEWPT entropy dilution of singlet-scalar relic abundance
+  notes: null
+  observability: high
+  predicted_effect: A first-order electroweak phase transition below the dark-matter freeze-out temperature
+    injects entropy and can reduce the thermal relic abundance of TeV-scale singlet scalar dark matter.
+  redshift_range: electroweak phase transition through today
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2212.11230
+  - arxiv:0909.1317
+  subchannel: entropy injection after freeze-out
+- caveats:
+  - The batch did not compute detector signal-to-noise.
+  channel: gravitational_waves
+  effect_direction: spectral_line
+  environments:
+  - space-based gravitational-wave detectors
+  id: obs_foewpt_stochastic_gw
+  key_quantities:
+  - description: Latent-heat to radiation-energy ratio used in GW estimate.
+    name: phase-transition strength
+    role: core
+    source_reference_ids:
+    - arxiv:2212.11230
+    status: inferred
+    symbol: alpha
+  - description: Dimensionless inverse duration of the phase transition.
+    name: inverse duration
+    role: core
+    source_reference_ids:
+    - arxiv:2212.11230
+    status: inferred
+    symbol: beta/H
+  - description: Sound-wave peak frequency formula quoted in appendix.
+    name: peak frequency
+    role: core
+    source_reference_ids:
+    - arxiv:2212.11230
+    status: inferred
+    symbol: f_SW
+  linked_constraints:
+  - con_relic_dilution_planck_dd
+  linked_routes:
+  - route_z3_typeii_foewpt_dm_gw
+  name: Stochastic gravitational waves from FOEWPT
+  notes: null
+  observability: medium
+  predicted_effect: The same first-order electroweak transition that dilutes dark matter can source a
+    stochastic gravitational-wave background with peak frequency and amplitude controlled by alpha, beta/H,
+    T_n, and wall velocity.
+  redshift_range: electroweak epoch to today
+  relevance: high
+  scale_range: mHz to deci-Hz detector bands depending on transition parameters
+  source_reference_ids:
+  - arxiv:2212.11230
+  - arxiv:2202.12476
+  subchannel: sound-wave dominated phase-transition background
+- caveats:
+  - Detector limits depend on whether the scalar is all or part of dark matter after dilution.
+  channel: direct_detection
+  effect_direction: null_signal
+  environments:
+  - XENON1T
+  - PandaX-4T
+  id: obs_scaled_direct_detection_after_dilution
+  key_quantities:
+  - description: Dominant coupling for spin-independent direct detection in the small-triplet-vev limit.
+    name: Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2212.11230
+    status: inferred
+    symbol: lambda_SH
+  - description: Controls annihilation to triplet-sector states without strongly increasing direct detection.
+    name: triplet portal coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2212.11230
+    status: inferred
+    symbol: lambda_SDelta
+  - description: Direct-detection scaling factor for underabundant dark matter.
+    name: rescaling factor
+    role: core
+    source_reference_ids:
+    - arxiv:2212.11230
+    status: inferred
+    symbol: f_scale
+    value: Omega_DM h^2 / 0.120
+  linked_constraints:
+  - con_direct_detection_rescaling
+  linked_routes:
+  - route_z3_typeii_foewpt_dm_gw
+  name: Dilution-rescaled scalar direct detection
+  notes: null
+  observability: high
+  predicted_effect: Entropy dilution changes the present dark-matter fraction, so the spin-independent
+    direct-detection rate is rescaled by Omega_DM h^2/0.120 for underabundant points.
+  redshift_range: today
+  relevance: high
+  scale_range: detector recoil energies
+  source_reference_ids:
+  - arxiv:2212.11230
+  - arxiv:1501.01973
+  subchannel: spin-independent scalar-nucleon scattering
+constraints:
+- allowed_regions:
+  - Significant dilution occurs when the FOEWPT temperature is lower than freeze-out, especially for heavier
+    TeV-scale dark matter.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The phase transition must complete after the species freezes out for entropy injection
+      to dilute the relic abundance.
+    id: transition-after-freezeout
+    impact_if_violated: If freeze-out happens after the transition, thermal equilibrium erases the dilution
+      effect.
+    notes: null
+    scope: FOEWPT dilution
+    source_reference_ids:
+    - arxiv:2212.11230
+    - arxiv:0909.1317
+    status: assumed
+  benchmark_implications:
+  - FOEWPT can rescue some otherwise overabundant scalar dark-matter samples.
+  caveats:
+  - The numerical dilution factor surfaces were not digitized.
+  constrained_parameters:
+  - Omega_S h^2
+  - dilution factor
+  - T_FO
+  - T_n
+  - m_S
+  constraint_type: cosmological
+  data_release: Planck Omega_DM h^2 = 0.120 +/- 0.001 quoted by primary source
+  excluded_regions:
+  - Overabundant pre-dilution scalar points are excluded unless the FOEWPT dilution reduces Omega_S h^2
+    to the Planck value or below.
+  id: con_relic_dilution_planck_dd
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Planck relic abundance after FOEWPT dilution
+  notes: null
+  observable_channel: thermal relic abundance with entropy dilution
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2212.11230
+  - arxiv:0909.1317
+- allowed_regions:
+  - Entropy dilution can reduce the abundance fraction and rescue some samples otherwise excluded by XENON1T
+    or PandaX-4T.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Direct-detection event rate scales linearly with the scalar fraction of total dark matter.
+    id: fractional-rate-scaling
+    impact_if_violated: Nonstandard local clustering of the diluted component would alter the scaling.
+    notes: null
+    scope: direct-detection recast
+    source_reference_ids:
+    - arxiv:2212.11230
+    status: assumed
+  benchmark_implications:
+  - Direct detection must be evaluated with the post-dilution relic fraction.
+  caveats: []
+  constrained_parameters:
+  - sigma_SI
+  - lambda_SH
+  - Omega_S h^2
+  - f_scale
+  constraint_type: direct_detection
+  data_release: XENON1T and PandaX-4T limits cited by primary source
+  excluded_regions:
+  - Samples above direct-detection limits after abundance rescaling are excluded.
+  id: con_direct_detection_rescaling
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: XENON1T and PandaX-4T constraints after dilution rescaling
+  notes: null
+  observable_channel: spin-independent nuclear scattering
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2212.11230
+- allowed_regions:
+  - FOEWPT-favored lighter triplet sectors must remain compatible with LHC, flavor, neutrino, and electroweak
+    precision constraints.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - The FOEWPT region is constrained by the same triplet masses that shape gravitational waves and dilution.
+  caveats:
+  - No LHC recast was rerun.
+  constrained_parameters:
+  - m_Hpp
+  - v_t
+  - Delta m
+  - triplet scalar masses
+  constraint_type: collider
+  data_release: ATLAS LHC triplet-scalar searches and electroweak/flavor constraints cited by primary
+    source
+  excluded_regions:
+  - ATLAS doubly charged scalar searches bound parts of the triplet spectrum, with the quoted limits depending
+    on leptonic or W-boson decay assumptions.
+  id: con_typeii_triplet_lhc_bounds
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Type-II seesaw triplet scalar collider bounds
+  notes: null
+  observable_channel: doubly charged and triplet-like scalar searches
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2212.11230
+  - arxiv:2202.12476
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Bubble-wall friction and detector SNR are not evaluated here.
+    constraint_ids:
+    - con_relic_dilution_planck_dd
+    - con_direct_detection_rescaling
+    - con_typeii_triplet_lhc_bounds
+    derived_quantities:
+    - Omega_S h^2 before and after dilution
+    - T_FO
+    - T_c
+    - T_n
+    - dilution factor
+    - sigma_SI
+    - GW spectrum
+    description: Compute scalar relic abundance, FOEWPT dilution, direct-detection rescaling, and gravitational-wave
+      output in the Z3 singlet type-II seesaw model.
+    forward_model_chain:
+    - inputs:
+      - m_S
+      - portal couplings
+      - scalar spectrum
+      notes: null
+      outputs:
+      - pre-dilution Omega_S h^2
+      - T_FO
+      - sigma_SI
+      step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: micrOMEGAs
+      validity: Thermal freeze-out with standard assumptions.
+    - inputs:
+      - finite-temperature effective potential
+      notes: null
+      outputs:
+      - bounce action
+      - T_c
+      - T_n
+      step_id: s2
+      step_type: simulation
+      tool_or_code: CosmoTransitions
+      validity: Source uses S3/T about 140 for nucleation.
+    - inputs:
+      - T_FO
+      - T_n
+      - entropy release
+      notes: null
+      outputs:
+      - dilution factor
+      - post-dilution Omega_S h^2
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid when transition occurs after freeze-out.
+    - inputs:
+      - alpha
+      - beta/H
+      - T_n
+      - wall velocity
+      notes: null
+      outputs:
+      - stochastic GW spectrum
+      step_id: s4
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Sound-wave dominated approximation from source appendix.
+    id: route_z3_typeii_foewpt_dm_gw
+    input_parameters:
+    - m_S
+    - lambda_SH
+    - lambda_SDelta
+    - v_t
+    - triplet scalar masses
+    - thermal potential parameters
+    likelihoods:
+    - Planck relic abundance
+    - XENON1T/PandaX-4T direct-detection limits
+    - LHC triplet-scalar bounds
+    - future GW sensitivities
+    observable_ids:
+    - obs_foewpt_entropy_dilution
+    - obs_foewpt_stochastic_gw
+    - obs_scaled_direct_detection_after_dilution
+    required_code_resources:
+    - micrOMEGAs
+    - CosmoTransitions
+    - GW spectrum calculator
+    - direct-detection recast
+    route_status: planned
+    source_model_features:
+    - Z3-stabilized complex singlet scalar
+    - type-II seesaw triplet scalars
+    - first-order electroweak phase transition
+    validation_tests:
+    - recover Planck-rescaled relic points
+    - recover T_n from S3/T about 140
+    - verify direct-detection fraction scaling

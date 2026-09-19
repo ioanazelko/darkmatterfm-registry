@@ -1,0 +1,654 @@
+_source:
+  shard: arXiv_src_1308_002_wds.tar
+  paper_id: '1308_1109'
+  source_member: 1308_1109.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1308_1109_thermal_fermion_wdm_v1
+identity:
+  name: Thermal-equilibrium fermionic WDM primordial-spectrum model
+  family: warm_dark_matter
+  aliases:
+  - FD WDM
+  - Fermi-Dirac WDM
+  short_description: Warm dark matter variant developed through analytic primordial-spectrum, overdensity,
+    and mass-function formulas in 1308.1109.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - warm dark matter cosmology
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: Thermal FD WDM is used as the reference spectrum for the paper mass mappings.
+particle_content:
+  dark_matter_candidate:
+    name: thermal fermionic WDM particle
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: cosmological longevity or stability is assumed; exact stabilizing symmetry is
+    not specified in this paper
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets:
+  - unknown
+  dark_sector_couplings: []
+  mediator_types: []
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: thermal WDM mass
+    symbol: m_FD
+    description: Reference WDM particle mass for fermions decoupling at thermal equilibrium.
+    range: keV scale
+    unit: keV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1308_1109'
+  - name: effective relativistic degrees of freedom at decoupling
+    symbol: g_d
+    description: Controls the free-streaming scale in the paper.
+    range: model dependent
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1308_1109'
+  - name: half-mode wavenumber
+    symbol: k_1/2
+    description: Scale where the WDM primordial power is one half of CDM.
+    value: 6.72*(m_FD/keV)^1.12 h/Mpc
+    unit: h/Mpc
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '1308_1109'
+production:
+  mechanisms:
+  - ultrarelativistic thermal decoupling with a Fermi-Dirac distribution
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - decoupling or production distribution and keV-scale mass
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: Paper treats the variant as a WDM particle model whose mass can be mapped to the FD reference
+    case for equal primordial power.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter abundance fraction
+    symbol: null
+    value: average DM density in the Universe
+    role: cosmological
+    status: assumed
+    source_reference_ids:
+    - '1308_1109'
+  calculation_type: thermal
+  key_dependencies:
+  - particle mass
+  - decoupling or production distribution
+  - effective relativistic degrees of freedom where applicable
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: null
+  free_streaming_length:
+    name: free-streaming length
+    symbol: l_fs
+    value: 210 kpc * (keV/m_FD) * (100/g_d)^(1/3)
+    unit: kpc
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '1308_1109'
+  phase_space_bounds: []
+  notes: The paper supplies analytic transfer-function fits and mass mappings for equal primordial power.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: Press-Schechter mass function suppressed at small masses relative to CDM
+    subhalo_mass_function_effect: small-scale structure formation delayed/suppressed
+    simulation_calibrated: partial
+validity_domain:
+- id: ultrarelativistic_decoupling_or_production
+  applies_to: model
+  condition: Applies to keV WDM particles produced or decoupled ultrarelativistically as treated in the
+    paper.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1308_1109'
+- id: linear_to_press_schechter
+  applies_to: structure_formation
+  condition: Primordial spectra and linear overdensities are propagated to mass functions using Press-Schechter
+    methods.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1308_1109'
+assumptions:
+  global:
+  - id: wdm_is_all_dm
+    description: The WDM particle species is treated as the dark matter component when computing spectra
+      and mass functions.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1308_1109'
+  - id: same_primordial_power_mapping
+    description: Mass correspondences are used only for models with identical primordial WDM spectra.
+    scope: structure_formation
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1308_1109'
+associated_code:
+  has_associated_code: unknown
+  code_summary: Paper mentions CAMB calculations and analytic fits, but no dedicated associated code release
+    is recorded in the extracted text.
+provenance:
+  model_id: 1308_1109_thermal_fermion_wdm_v1
+  model_name: Thermal-equilibrium fermionic WDM primordial-spectrum model
+  model_family: warm_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1308_1109'
+      title: Warm dark matter primordial spectra and the onset of structure formation at redshift z
+      authors:
+      - C. Destri
+      - H. J. de Vega
+      - N. G. Sanchez
+      year: 2013
+      arxiv_id: '1308.1109'
+      doi: null
+      url: null
+      role: extension
+      notes: Paper develops analytic primordial spectra, overdensity, and mass-function mappings for WDM
+        variants.
+    - reference_id: 1308_1109_primary
+      title: Warm dark matter primordial spectra and the onset of structure formation at redshift z
+      authors:
+      - C. Destri
+      - H. J. de Vega
+      - N. G. Sanchez
+      year: 2013
+      arxiv_id: '1308.1109'
+      doi: 10.1103/PhysRevD.88.083512
+      url: https://arxiv.org/abs/1308.1109
+      role: original_model
+      notes: Primary full text resolved locally.
+    constraint_papers:
+    - reference_id: 1308_1109_astro-ph0501562
+      title: Constraining warm dark matter candidates including sterile neutrinos and light gravitinos
+        with WMAP and the Lyman-alpha forest
+      authors:
+      - Matteo Viel
+      - Julien Lesgourgues
+      - Martin G. Haehnelt
+      - Sabino Matarrese
+      - Antonio Riotto
+      year: 2005
+      arxiv_id: astro-ph/0501562
+      doi: 10.1103/PhysRevD.71.063534
+      url: https://arxiv.org/abs/astro-ph/0501562
+      role: constraint
+      notes: Related full text resolved locally and read within the per-paper cap.
+    - reference_id: '1308_1109_1306_2314'
+      title: 'Warm dark matter as a solution to the small scale crisis: New constraints from high redshift
+        Lyman-alpha forest data'
+      authors:
+      - Matteo Viel
+      - George D. Becker
+      - James S. Bolton
+      - Martin G. Haehnelt
+      year: 2013
+      arxiv_id: '1306.2314'
+      doi: 10.1103/PhysRevD.88.043502
+      url: https://arxiv.org/abs/1306.2314
+      role: constraint
+      notes: Related full text resolved locally and read within the per-paper cap.
+    - reference_id: 1308_1109_astro-ph0512631
+      title: Linear cosmological structure limits on warm dark matter
+      authors:
+      - Kevork Abazajian
+      year: 2006
+      arxiv_id: astro-ph/0512631
+      doi: 10.1103/PhysRevD.73.063513
+      url: https://arxiv.org/abs/astro-ph/0512631
+      role: constraint
+      notes: Related full text resolved locally and read within the per-paper cap.
+    review_papers: []
+    external_databases: []
+  extraction:
+    method: llm_assisted
+    extracted_by: batch-0013
+    extractor_name: null
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1308_1109'
+      section: abstract/introduction
+      page: null
+      quote_or_summary: Analytic WDM primordial spectra are obtained for particles decoupling in and out
+        of thermal equilibrium.
+    - reference_id: '1308_1109'
+      section: WDM particles decoupling out of thermal equilibrium
+      page: null
+      quote_or_summary: The paper maps FD, DW, SF, and MSM WDM masses that give the same primordial spectrum.
+    unresolved_items:
+    - Exact stabilizing symmetry and microscopic Lagrangian are not specified in this paper.
+    - Numerical Lyman-alpha/high-redshift likelihoods were not resolved locally.
+    - Variant-specific nonthermal spectra require care before using simple thermal-WDM mass limits.
+  evidence:
+    particle_content:
+    - reference_id: '1308_1109'
+      note: Paper identifies thermal fermionic WDM particle as a WDM particle model or candidate.
+      confidence: medium
+      section: introduction/WDM particle models
+    production_mechanism:
+    - reference_id: '1308_1109'
+      note: ultrarelativistic thermal decoupling with a Fermi-Dirac distribution
+      confidence: high
+      section: WDM particles decoupling out of thermal equilibrium
+    parameter_ranges:
+    - reference_id: '1308_1109'
+      note: The WDM mass is in the keV scale; the paper gives FD/DW/SF/MSM mass mappings for equal primordial
+        power.
+      confidence: high
+      section: mass mapping
+    cosmological_history:
+    - reference_id: '1308_1109'
+      note: The analysis assumes WDM primordial spectra evolved in a standard cosmological structure-formation
+        calculation.
+      confidence: medium
+      section: primordial spectra
+    validity_domain:
+    - reference_id: '1308_1109'
+      note: Analytic transfer function, k_1/2, R_1/2, overdensity, and Press-Schechter mass-function formulas
+        are provided.
+      confidence: high
+      section: structure formation formulas
+    observables:
+    - reference_id: 1308_1109_primary
+      note: Primary text derives spectra, transfer functions, overdensities, and mass functions for the
+        thermal fermion WDM variant.
+      confidence: high
+      section: primary paper text
+      page: null
+    constraints:
+    - reference_id: 1308_1109_primary
+      note: Primary and related local texts support Lyman-alpha and linear-structure constraints on free-streaming
+        cutoffs.
+      confidence: high
+      section: constraints/phenomenology discussion
+      page: null
+    routes:
+    - reference_id: 1308_1109_primary
+      note: Primary text supports the distribution-to-transfer-function-to-mass-function calculation chain.
+      confidence: high
+      section: methods/results
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Machine extracted from assigned SQLite text only; no external bibliographic lookup was used.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - mapping particle models through equal primordial spectra
+  - Press-Schechter treatment of nonlinear formation
+  validation_status: partially_validated
+  notes: Extraction records the model variants as developed phenomenological WDM templates, not as newly
+    invented UV models.
+agent_failure_modes:
+  warnings:
+  - id: wdm_existing_models
+    severity: medium
+    category: other
+    warning: These are pre-existing WDM variants substantially developed by the paper; do not treat 1308.1109
+      as their original proposal.
+    source_reference_ids:
+    - '1308_1109'
+  - id: wdm_no_micro_lagrangian
+    severity: medium
+    category: extrapolation
+    warning: The paper gives spectra and mass mappings, not full particle-physics Lagrangians for each
+      variant.
+    source_reference_ids:
+    - '1308_1109'
+observables:
+- id: wdm_linear_power_suppression
+  name: Linear matter-power suppression below half-mode scale
+  channel: large_scale_structure
+  subchannel: WDM transfer function
+  predicted_effect: The primary derives WDM primordial spectra and transfer-function fits in which power
+    is suppressed relative to CDM below the half-mode scale.
+  effect_direction: suppression
+  key_quantities:
+  - name: WDM particle mass
+    symbol: m_FD
+    description: Variant-specific WDM mass.
+    unit: keV
+    role: core
+    status: assumed
+  - name: half-mode wavenumber
+    symbol: k_1/2
+    description: Scale where WDM power is half of CDM.
+    unit: h/Mpc
+    role: derived
+    status: established
+  - name: transfer function
+    symbol: T(k)
+    description: WDM-to-CDM linear perturbation ratio.
+    role: derived
+    status: established
+  redshift_range: null
+  scale_range: dwarf-galaxy and Lyman-alpha scales
+  environments:
+  - linear matter power
+  - intergalactic medium
+  - small halos
+  observability: high
+  relevance: critical
+  linked_constraints:
+  - lyman_alpha_wdm_mass_limits
+  - linear_structure_cutoff_limits
+  linked_routes:
+  - wdm_transfer_route
+  caveats:
+  - Nonthermal spectra should not be reduced to mass alone for precision constraints.
+  source_reference_ids:
+  - 1308_1109_primary
+  notes: null
+- id: wdm_halo_mass_function_delay
+  name: Delayed nonlinear halo formation
+  channel: small_scale_structure
+  subchannel: Press-Schechter mass function
+  predicted_effect: The primary computes overdensities and differential mass functions showing low-mass
+    halo suppression and delayed nonlinear structure, especially for high redshift comparisons.
+  effect_direction: suppression
+  key_quantities:
+  - name: halo mass
+    symbol: M
+    description: Press-Schechter mass variable.
+    role: derived
+    status: established
+  - name: redshift
+    symbol: z
+    description: Epoch of structure formation.
+    role: cosmological
+    status: established
+  - name: variance
+    symbol: sigma^2(M,z)
+    description: Overdensity variance.
+    role: derived
+    status: established
+  redshift_range: z around 4-12 emphasized
+  scale_range: low-mass galaxies and subgalactic scales
+  environments:
+  - high-redshift galaxies
+  - dwarf halos
+  - halo mass function
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - linear_structure_cutoff_limits
+  linked_routes:
+  - wdm_mass_function_route
+  caveats:
+  - Press-Schechter predictions need simulation calibration.
+  source_reference_ids:
+  - 1308_1109_primary
+  notes: null
+constraints:
+- id: lyman_alpha_wdm_mass_limits
+  name: Lyman-alpha forest WDM mass/free-streaming limits
+  constraint_type: astrophysical
+  observable_channel: Lyman-alpha forest
+  applies: parameter_dependent
+  constrained_parameters:
+  - m_FD
+  - k_1/2
+  - free-streaming length
+  excluded_regions:
+  - Related Lyman-alpha analyses exclude WDM spectra with too much small-scale suppression.
+  allowed_regions:
+  - Colder/larger-mass spectra with acceptable transfer functions remain viable.
+  benchmark_implications:
+  - The variant must be mapped to an equivalent transfer function before applying published limits.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: high
+  assumptions:
+  - id: lyman_alpha_wdm_mass_limits_assumption
+    description: Standard cosmological history and the model-specific abundance fraction are used unless
+      otherwise stated.
+    scope: constraint interpretation
+    status: assumed
+    impact_if_violated: The numerical exclusion or projection would move if this assumption changes.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - 1308_1109_primary
+    - 1308_1109_astro-ph0501562
+    notes: null
+  caveats:
+  - No machine-readable likelihood was resolved in the bounded local read.
+  source_reference_ids:
+  - 1308_1109_primary
+  - 1308_1109_astro-ph0501562
+  notes: null
+- id: linear_structure_cutoff_limits
+  name: Linear-structure cutoff and high-redshift abundance limits
+  constraint_type: cosmological
+  observable_channel: linear matter power and halo abundance
+  applies: parameter_dependent
+  constrained_parameters:
+  - m_FD
+  - k_1/2
+  - R_1/2
+  excluded_regions:
+  - Observed large-scale structure and high-redshift abundance constrain excessive free-streaming cutoffs.
+  allowed_regions:
+  - Models with smaller free-streaming length or larger mass satisfy the cutoff screen.
+  benchmark_implications:
+  - Primary formulas provide common k_1/2/R_1/2 variables for comparing WDM variants.
+  likelihood_available: unknown
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: linear_structure_cutoff_limits_assumption
+    description: Standard cosmological history and the model-specific abundance fraction are used unless
+      otherwise stated.
+    scope: constraint interpretation
+    status: assumed
+    impact_if_violated: The numerical exclusion or projection would move if this assumption changes.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - 1308_1109_primary
+    - '1308_1109_1306_2314'
+    notes: null
+  caveats:
+  - No machine-readable likelihood was resolved in the bounded local read.
+  source_reference_ids:
+  - 1308_1109_primary
+  - '1308_1109_1306_2314'
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: wdm_transfer_route
+    description: Map the variant-specific primordial distribution to the WDM transfer function and half-mode
+      scale.
+    source_model_features:
+    - fermionic WDM
+    - ultrarelativistic thermal decoupling with a Fermi-Dirac distribution
+    input_parameters:
+    - distribution function
+    - m_FD
+    - cosmological parameters
+    derived_quantities:
+    - P_WDM(k)
+    - T^2(k)
+    - k_1/2
+    - R_1/2
+    forward_model_chain:
+    - step_id: distribution
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - production model
+      - m_FD
+      outputs:
+      - primordial momentum distribution
+      validity: model dependent
+      notes: Thermal and nonthermal cases use different inputs.
+    - step_id: linear_evolution
+      step_type: transfer_function
+      tool_or_code: null
+      inputs:
+      - distribution
+      - cosmological parameters
+      outputs:
+      - linear WDM spectrum
+      validity: model dependent
+      notes: Primary uses CAMB/Volterra-equation methods.
+    - step_id: half_mode_fit
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - P_WDM/P_CDM
+      outputs:
+      - k_1/2
+      - fit parameters
+      validity: model dependent
+      notes: Primary provides self-similar fitting forms.
+    observable_ids:
+    - wdm_linear_power_suppression
+    constraint_ids:
+    - lyman_alpha_wdm_mass_limits
+    - linear_structure_cutoff_limits
+    likelihoods:
+    - external likelihood required for numerical exclusion
+    required_code_resources:
+    - external Lyman-alpha likelihoods
+    validation_tests:
+    - Reproduce primary transfer-function fit for this variant.
+    route_status: partially_implemented
+    agent_notes: Formula chain is explicit; no runnable pipeline resolved.
+    caveats:
+    - Distribution shape matters for precision recasts.
+  - id: wdm_mass_function_route
+    description: Propagate the transfer function to overdensity and Press-Schechter mass-function predictions.
+    source_model_features:
+    - suppressed small-scale spectrum
+    - thermal fermion WDM
+    input_parameters:
+    - T(k)
+    - redshift z
+    - halo mass M
+    derived_quantities:
+    - sigma^2(M,z)
+    - dN/dM
+    - nonlinear onset redshift
+    forward_model_chain:
+    - step_id: variance
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - P_WDM(k)
+      - M
+      - z
+      outputs:
+      - sigma^2(M,z)
+      validity: model dependent
+      notes: Primary derives overdensity formulas.
+    - step_id: press_schechter
+      step_type: semi_analytic_model
+      tool_or_code: null
+      inputs:
+      - sigma(M,z)
+      outputs:
+      - dN/dM
+      validity: model dependent
+      notes: Primary uses Press-Schechter mass functions.
+    - step_id: data_compare
+      step_type: recasting
+      tool_or_code: null
+      inputs:
+      - dN/dM
+      - observations
+      outputs:
+      - constraint flag
+      validity: model dependent
+      notes: External data and simulations needed.
+    observable_ids:
+    - wdm_halo_mass_function_delay
+    constraint_ids:
+    - linear_structure_cutoff_limits
+    likelihoods:
+    - external likelihood required for numerical exclusion
+    required_code_resources:
+    - high-redshift galaxy/Lyman-alpha likelihoods
+    validation_tests:
+    - Compare CDM and WDM mass functions over the primary redshift range.
+    route_status: planned
+    agent_notes: Needs observational likelihoods and calibration.
+    caveats:
+    - Press-Schechter is approximate.

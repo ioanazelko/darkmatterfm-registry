@@ -1,0 +1,471 @@
+_source:
+  shard: arXiv_src_2310_060_wds.tar
+  paper_id: '2310_07777'
+  source_member: 2310_07777.json
+schema_version: model_only_v0
+model_id: 2310_07777_scalar_relaxation_dm_baryon_coincidence_v1
+identity:
+  name: Scalar relaxation model for the dark matter-baryon coincidence
+  family: hidden_sector_dark_matter
+  aliases:
+  - Dynamical equilibration of dark matter and baryon energy densities
+  short_description: A light scalar controls baryon and dark matter masses through confinement-scale dependence
+    so that the finite-density potential relaxes their energy densities to comparable values after both
+    species are present.
+  historical_origin_or_motivation: Introduced to explain why the dark matter and baryon energy densities
+    are within a factor of a few despite unrelated microscopic production histories.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - scalar-dependent dimensional transmutation
+  - hidden confining dark sector
+  lagrangian_available: partial
+  renormalizable: 'no'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper writes effective scalar couplings to QCD and a dark confining sector and sketches a
+    vector-like-fermion UV completion for the exponential confinement-scale dependence.
+particle_content:
+  dark_matter_candidate:
+    name: D, an arbitrary nonrelativistic dark matter state with scalar-dependent mass
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - confining dark sector with field strength G_D
+  mediators:
+  - light scalar phi controlling QCD and dark confinement scales
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - phi may be long-lived and can be a significant fraction of dark matter in some parameter regions
+  unstable_parent_particles:
+  - heavy scalar E used for the entropy dump in the Standard Model implementation
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The microscopic dark matter stability mechanism is not specified; the relaxation
+    mechanism assumes dark matter has already been produced and remains nonrelativistic.
+  symmetries:
+  - name: periodic shift symmetry for phi in the UV-completion discussion
+    type: shift
+    exact_or_approximate: broken
+    breaking: A small periodic bare potential Lambda_0^4 F(phi/F) is introduced to stop late-time relaxation.
+    breaking_scale:
+      name: periodicity scale
+      symbol: F
+      value: 10^7
+      unit: GeV
+      role: core
+      status: inferred
+      source_reference_ids:
+      - '2310_07777'
+      notes: Benchmark value used in the Standard Model implementation.
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - baryons
+  - QCD gluons
+  - photons through loop-induced couplings
+  dark_sector_couplings:
+  - phi coupling shifts the dark confinement scale and hence the dark matter mass
+  mediator_types:
+  - light scalar phi
+  interaction_operators:
+  - phi G_B^2/f and phi G_D^2/f effective gauge-kinetic couplings
+  - finite-density potential V(phi)=m_p(phi)n_B+m_DM(phi)n_DM
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels:
+  - phi to photons through loop-induced couplings, when kinematically allowed
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: unknown
+  tree_or_loop_level: both
+operators:
+  renormalizable_terms: []
+  eft_operators:
+  - scalar coupling to baryonic/QCD confining field strength
+  - scalar coupling to dark confining field strength
+  - periodic bare potential for phi
+  - entropy-dump coupling of heavy scalar E to H^†H
+  contact_or_light_mediator: light_mediator
+  coupling_types:
+  - scalar-dependent gauge coupling
+  - finite-density effective potential
+parameters:
+  core:
+  - name: scalar decay constant over baryon coupling
+    symbol: f/c_B
+    description: Scale controlling the scalar coupling to the baryonic confinement sector.
+    value: 10^12
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2310_07777'
+    notes: Benchmark inferred from requiring relaxation to begin when m_phi equals H.
+  - name: dark-to-baryon scalar coupling ratio
+    symbol: c_D/c_B
+    description: Ratio setting the relaxed dark matter to baryon energy-density ratio.
+    value: O(0.2-1)
+    unit: null
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2310_07777'
+    notes: At the minimum rho_DM/rho_B=c_B/c_D up to order-one factors; the benchmark text discusses rho_D
+      about 5 rho_B.
+  - name: bare potential scale
+    symbol: Lambda_0
+    description: Amplitude scale of the bare periodic potential that stops further scalar relaxation.
+    value: '100'
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2310_07777'
+    notes: Benchmark value used to keep dense environments from moving the scalar too far.
+  - name: periodicity scale
+    symbol: F
+    description: Field-space scale in the small bare potential for phi.
+    value: 10^7
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2310_07777'
+    notes: Chosen small enough to scan the QCD scale and satisfy fifth-force considerations.
+  - name: reheating temperature after entropy dump
+    symbol: T_RH
+    description: Temperature after the heavy E population decays into the Standard Model.
+    value: '10'
+    unit: MeV
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - '2310_07777'
+    notes: Used in the Standard Model cosmological history.
+  nuisance: []
+  derived:
+  - name: relaxed energy-density ratio
+    symbol: rho_DM/rho_B
+    description: Ratio fixed by the scalar finite-density minimum.
+    value: c_B/c_D, order unity
+    unit: null
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2310_07777'
+    notes: The mechanism is designed to land near the observed dark matter-baryon coincidence.
+mass_scales_and_hierarchies:
+  scales:
+  - name: initial proton mass benchmark
+    symbol: m_p(initial)
+    value: '100'
+    unit: GeV
+    role: benchmark
+    status: inferred
+    source_reference_ids:
+    - '2310_07777'
+    notes: The Standard Model example relaxes this to about 1 GeV.
+  - name: scalar mass from bare potential
+    symbol: m_phi
+    value: Lambda_0^2/F
+    unit: null
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2310_07777'
+    notes: The paper gives m_phi about 1 eV for F=10^7 GeV.
+  hierarchy_questions:
+  - question: Can baryon and dark matter densities be comparable without tied microscopic production?
+    answer: The finite-density scalar potential drives the ratio to an order-one value after the species
+      are present.
+    status: speculative
+production:
+  mechanisms:
+  - pre-existing nonrelativistic dark matter abundance
+  - scalar relaxation of dark matter and baryon masses after production
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - finite-density scalar potential dominated by baryon and dark matter rest-mass energy
+  - entropy dump keeps Standard Model thermal contributions subdominant during relaxation
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper emphasizes that the mechanism is independent of the microscopic dark matter production
+    mechanism; it explains the energy-density ratio rather than producing the initial number density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter to baryon energy-density ratio
+    symbol: rho_DM/rho_B
+    value: about 5 in the Standard Model benchmark
+    unit: null
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2310_07777'
+    notes: Relaxation fixes rho_D about 5 rho_B in the worked example.
+  calculation_type: phenomenological
+  key_dependencies:
+  - c_B/c_D
+  - initial baryon and dark matter number densities
+  - timing of scalar relaxation
+  - entropy dump and bare potential
+  requires_entropy_dilution: 'yes'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - early relativistic species E dominates before reheating
+  - late entropy dump into the Standard Model
+  - QCD scale scans during radiation-dominated relaxation
+  - bare potential stops relaxation before dense environments move the scalar
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - QCD/dark confinement scales vary with phi
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: unknown
+  f_of_p_or_q: not specified
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The mechanism assumes dark matter is already nonrelativistic; it does not specify the momentum
+    distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: not discussed
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: finite_density_dominated_relaxation
+  applies_to: model
+  condition: Scalar evolution must be dominated by baryon and dark matter rest-mass density during the
+    relaxation epoch.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - Standard Model thermal free energy can dominate without an entropy dump.
+  source_reference_ids:
+  - '2310_07777'
+  notes: The paper adds an entropy dump because loop-induced Standard Model thermal effects otherwise
+    prevent relaxation.
+- id: late_environment_control
+  applies_to: model
+  condition: The bare potential must be strong enough that neutron-star and laboratory densities do not
+    move phi enough to unacceptably change proton masses.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Simplest implementation is excluded by density-dependent proton masses.
+  source_reference_ids:
+  - '2310_07777'
+  notes: The Standard Model implementation adds a bare potential to fix the late-time scalar value.
+assumptions:
+  global:
+  - id: dm_already_present
+    description: Dark matter and baryons are already produced and nonrelativistic when scalar relaxation
+      operates.
+    scope: production
+    status: assumed
+    impact_if_violated: The mechanism would not set the observed rest-mass energy-density ratio as described.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2310_07777'
+    notes: null
+  - id: entropy_dump_available
+    description: A heavy species E reheats the Standard Model late enough that SM thermal contributions
+      do not dominate the scalar potential during relaxation.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Loop-induced thermal potentials could prevent the desired relaxation.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2310_07777'
+    notes: The paper notes this can take any form and uses an E-Higgs coupling for concreteness.
+  constraint_specific: []
+  computation_specific: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public model code is identified in the assigned text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 2310_07777_scalar_relaxation_dm_baryon_coincidence_v1
+  model_name: Scalar relaxation model for the dark matter-baryon coincidence
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2310_07777'
+      title: A Dynamical Explanation of the Dark Matter-Baryon Coincidence
+      authors:
+      - Dawid Brzeminski
+      - Anson Hook
+      year: 2023
+      arxiv_id: '2310.07777'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_worker_batch-0007
+    extractor_name: null
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2310_07777'
+      section: Introduction and toy model
+      page: null
+      quote_or_summary: The paper posits a scalar-dependent proton and dark matter mass and a finite-density
+        potential whose minimum gives rho_DM/rho_B of order one.
+    - reference_id: '2310_07777'
+      section: Standard Model version
+      page: null
+      quote_or_summary: The Standard Model implementation adds a bare potential and entropy dump to avoid
+        thermal and dense-environment problems.
+    unresolved_items:
+    - The microscopic identity and stabilization of the dark matter candidate are intentionally left arbitrary
+      by the paper.
+  evidence:
+    particle_content:
+    - reference_id: '2310_07777'
+      note: The toy model uses baryon B and dark matter D masses tied to confining scales controlled by
+        phi; the text says other dark matter particles such as axions could also be used.
+      confidence: high
+      section: Toy model
+      page: null
+    symmetries:
+    - reference_id: '2310_07777'
+      note: The UV discussion makes phi periodic to suppress unwanted bare potentials and introduces a
+        small periodic potential to stop relaxation.
+      confidence: medium
+      section: Supplementary material
+      page: null
+    interactions:
+    - reference_id: '2310_07777'
+      note: Effective phi couplings to baryonic/QCD and dark field strengths shift the confinement scales
+        and mediate new forces.
+      confidence: high
+      section: Toy model and Standard Model version
+      page: null
+    production_mechanism:
+    - reference_id: '2310_07777'
+      note: The paper assumes baryons and dark matter are already produced and nonrelativistic; the scalar
+        subsequently adjusts their masses and energy-density ratio.
+      confidence: high
+      section: Toy cosmology
+      page: null
+    cosmological_history:
+    - reference_id: '2310_07777'
+      note: The worked Standard Model history includes E domination, entropy dump, QCD-scale scanning,
+        and reheating at about 10 MeV.
+      confidence: high
+      section: Standard Model version
+      page: null
+    parameter_ranges:
+    - reference_id: '2310_07777'
+      note: The benchmark uses f/c_B about 10^12 GeV, F about 10^7 GeV, Lambda_0 about 100 MeV, and T_RH
+        about 10 MeV.
+      confidence: high
+      section: Standard Model version
+      page: null
+    validity_domain:
+    - reference_id: '2310_07777'
+      note: The simplest implementation is excluded by density-dependent proton masses, motivating the
+        added bare potential and entropy dump.
+      confidence: high
+      section: Standard Model version and bounds
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The paper deliberately leaves the microscopic dark matter identity open, so several model-card fields
+    are necessarily generic.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - microscopic dark matter identity
+  - UV completion of the scalar sector
+  - late-time fifth-force and density-dependence viability
+  validation_status: expert_judgment_only
+  notes: Model-card confidence is limited by the paper's deliberately broad dark matter candidate identity.
+agent_failure_modes:
+  warnings:
+  - id: do_not_assume_dm_production
+    severity: medium
+    category: assumption_mismatch
+    warning: This entry describes a post-production mass-relaxation mechanism, not a specific thermal
+      or nonthermal production model for the dark matter number density.
+    mitigation: Keep production fields generic unless another source specifies the microscopic dark matter
+      candidate.
+    source_reference_ids:
+    - '2310_07777'
+  - id: environmental_mass_dependence
+    severity: high
+    category: extrapolation
+    warning: The simplest scalar coupling gives large environment-dependent proton masses; use the modified
+      Standard Model implementation when reasoning about late-time matter densities.
+    mitigation: Track the bare-potential and entropy-dump assumptions explicitly.
+    source_reference_ids:
+    - '2310_07777'

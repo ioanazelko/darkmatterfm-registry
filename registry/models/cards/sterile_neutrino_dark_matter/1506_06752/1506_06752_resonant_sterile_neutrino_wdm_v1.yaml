@@ -1,0 +1,668 @@
+_source:
+  shard: arXiv_src_1506_013_wds.tar
+  paper_id: '1506_06752'
+  source_member: 1506_06752.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1506_06752_resonant_sterile_neutrino_wdm_v1
+identity:
+  name: Resonantly produced 7.1 keV sterile neutrino warm dark matter
+  family: sterile_neutrino_dark_matter
+  aliases: []
+  short_description: A sterile-neutrino warm dark matter scenario in which a lepton asymmetry enables
+    Shi-Fuller resonant production and fixes the non-equilibrium momentum spectrum.
+  historical_origin_or_motivation: Extracted from the assigned paper only.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - right-handed neutrino extension of the Standard Model
+  - nuMSM-like sterile-neutrino framework
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper studies the dark-matter sterile neutrino aspect, with heavier sterile neutrinos effectively
+    decoupled during the low-temperature production calculation.
+particle_content:
+  dark_matter_candidate:
+    name: sterile neutrino N1
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavier sterile neutrinos in the broader framework
+  mediators:
+  - active-sterile neutrino mixing through Yukawa interactions
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Small active-sterile mixing makes the keV sterile neutrino cosmologically long-lived.
+  symmetries:
+  - name: approximate sterile-neutrino longevity from tiny mixing
+    type: approximate
+    exact_or_approximate: approximate
+  topological_defects_possible: 'no'
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - active neutrinos
+  - thermal Standard Model plasma
+  dark_sector_couplings:
+  - neutrino Yukawa couplings
+  - active-sterile mixing
+  mediator_types:
+  - neutrino mixing
+  interaction_operators:
+  - Yukawa interactions h between sterile neutrinos and SM leptons/Higgs
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels:
+  - radiative decay producing a 3.55 keV X-ray line in the motivating interpretation
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: unknown
+  tree_or_loop_level: loop
+parameters:
+  core:
+  - name: sterile neutrino mass
+    symbol: M_1
+    description: Mass motivated by interpreting a 3.55 keV line as two-body decay.
+    value: '7.1'
+    unit: keV
+    role: core
+    status: inferred
+  - name: active-sterile mixing angle
+    symbol: sin^2(2 theta)
+    description: Mixing angle used in production and decay interpretation.
+    value: model dependent; examples include 7e-11
+    role: core
+    status: inferred
+  - name: initial lepton asymmetry
+    symbol: n_L/s
+    description: Lepton asymmetry needed for resonant Shi-Fuller production.
+    value: order 1e-5 in examples
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - Shi-Fuller resonant production in a lepton-asymmetric plasma
+  - non-resonant sterile-neutrino production contributions
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - active-sterile mixing angle
+  - initial lepton asymmetry
+  - plasma charge neutrality and hadronic effects
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper computes the lepton asymmetry needed to obtain the correct abundance and a non-equilibrium
+    spectrum.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - M_1
+  - sin^2(2 theta)
+  - initial flavour lepton asymmetries
+  - finite-temperature rates
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - pre-existing lepton asymmetry
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: resonant
+  distribution_function_available: 'yes'
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Momentum distribution is explicitly computed for structure-formation use.
+  f_of_p_or_q: Non-equilibrium sterile-neutrino spectrum f_k from rate-equation integration.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'no'
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: suppressed relative to CDM expected for WDM, not calibrated here
+    simulation_calibrated: 'no'
+validity_domain:
+- id: paper_scope
+  applies_to: model
+  condition: Use only within the assumptions and parameter regimes discussed in the source paper.
+  status: inferred
+  extrapolation_risk: unknown
+  caveats: []
+- id: single_active_sterile_flavour
+  applies_to: model
+  condition: Production calculation assumes only one sterile neutrino flavour has an interaction rate
+    comparable to the Hubble rate during the period studied.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: source_only
+    description: Fields are populated only from the assigned paper text.
+    scope: global
+    status: assumed
+  - id: thermal_sm_plasma
+    description: Standard Model particles are assumed to be in thermal equilibrium at temperature T while
+      sterile neutrinos are produced.
+    scope: cosmological_history
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code was extracted from the assigned text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1506_06752_resonant_sterile_neutrino_wdm_v1
+  model_name: Resonantly produced 7.1 keV sterile neutrino warm dark matter
+  model_family: sterile_neutrino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1506_06752'
+      title: Improved determination of sterile neutrino dark matter spectrum
+      authors: []
+      year: 2015
+      arxiv_id: '1506.06752'
+      doi: null
+      url: null
+      role: original_model
+      notes: Local full text from assigned SQLite database.
+    - arxiv_id: '1506.06752'
+      authors:
+      - Ghiglieri, J.
+      - Laine, M.
+      doi: 10.1007/JHEP11(2015)171
+      notes: Primary paper full text resolved locally.
+      reference_id: paper_1506_06752
+      role: original_model
+      title: Improved determination of sterile neutrino dark matter spectrum
+      url: https://arxiv.org/abs/1506.06752
+      year: 2015
+    constraint_papers:
+    - arxiv_id: '1402.2301'
+      authors:
+      - Bulbul, Esra
+      - Markevitch, Maxim
+      - Foster, Adam
+      - Smith, Randall K.
+      - Loewenstein, Michael
+      - Randall, Scott W.
+      doi: 10.1088/0004-637X/789/1/13
+      notes: Local related full text read.
+      reference_id: ref_1402_2301
+      role: constraint
+      title: Detection of an Unidentified Emission Line in the Stacked X-Ray Spectrum of Galaxy Clusters
+      url: https://arxiv.org/abs/1402.2301
+      year: 2014
+    - arxiv_id: '1308.1399'
+      authors:
+      - Lovell, Mark R.
+      - Frenk, Carlos S.
+      - Eke, Vincent R.
+      - Jenkins, Adrian
+      - Gao, Liang
+      - Theuns, Tom
+      doi: 10.1093/mnras/stt2431
+      notes: Local related full text read.
+      reference_id: ref_1308_1399
+      role: constraint
+      title: The properties of warm dark matter haloes
+      url: https://arxiv.org/abs/1308.1399
+      year: 2014
+    - arxiv_id: '1402.4119'
+      authors:
+      - Boyarsky, A.
+      - Ruchayskiy, O.
+      - Iakubovskyi, D.
+      - Franse, J.
+      doi: 10.1103/PhysRevLett.113.251301
+      notes: arXiv fallback read.
+      reference_id: ref_1402_4119
+      role: constraint
+      title: Unidentified Line in X-Ray Spectra of the Andromeda Galaxy and Perseus Galaxy Cluster
+      url: https://arxiv.org/abs/1402.4119
+      year: 2014
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections: []
+    unresolved_items:
+    - A precision Lyman-alpha or halo constraint needs the actual computed spectrum passed through a transfer-function/simulation
+      pipeline.
+    - The 3.55 keV line interpretation remains tentative and should not be treated as established evidence
+      for the model.
+  evidence:
+    particle_content:
+    - reference_id: '1506_06752'
+      note: The paper considers 7.1 keV sterile neutrinos motivated by a 3.55 keV X-ray line interpreted
+        as warm dark matter decay.
+      confidence: high
+      section: Abstract
+      page: null
+    interactions:
+    - reference_id: '1506_06752'
+      note: Sterile and Standard Model sectors communicate through neutrino Yukawa couplings and active-sterile
+        mixing.
+      confidence: medium
+      section: Definitions/setup
+      page: null
+    production_mechanism:
+    - reference_id: '1506_06752'
+      note: A pre-existing lepton asymmetry boosts sterile-neutrino production through the Shi-Fuller
+        resonant mechanism.
+      confidence: high
+      section: Introduction
+      page: null
+    cosmological_history:
+    - reference_id: '1506_06752'
+      note: The rate equations track sterile-neutrino distribution functions and lepton densities in a
+        thermal SM plasma with charge neutrality.
+      confidence: medium
+      section: Theory/setup
+      page: null
+    parameter_ranges:
+    - reference_id: '1506_06752'
+      note: Examples include sin^2(2 theta)=7e-11 and lepton asymmetries of order 10^-5 for the correct
+        abundance.
+      confidence: medium
+      section: Numerical discussion
+      page: null
+    validity_domain:
+    - reference_id: '1506_06752'
+      note: The calculation assumes only one sterile neutrino is active during the production period.
+      confidence: medium
+      section: Summary of basic setup
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper computes abundance, lepton asymmetry, and spectra.
+      page: null
+      reference_id: paper_1506_06752
+      section: Theory/results
+    - confidence: medium
+      note: Related WDM halo paper supports structure-formation relevance.
+      page: null
+      reference_id: ref_1308_1399
+      section: Full text
+    observables:
+    - confidence: high
+      note: Primary paper states the 3.55 keV line motivation and non-equilibrium spectrum purpose.
+      page: null
+      reference_id: paper_1506_06752
+      section: Abstract
+    - confidence: medium
+      note: Related cluster-line paper supplies the stacked-cluster line context.
+      page: null
+      reference_id: ref_1402_2301
+      section: Full text
+    - confidence: medium
+      note: arXiv fallback line paper supplies the M31/Perseus line context.
+      page: null
+      reference_id: ref_1402_4119
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper defines the production and washout rate-equation chain.
+      page: null
+      reference_id: paper_1506_06752
+      section: Basic setup
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine extracted model-only candidate.
+agent_failure_modes:
+  warnings:
+  - id: model_only_scope
+    severity: medium
+    category: other
+    warning: This row intentionally omits observables, constraints, and theory-to-observable routing.
+observables:
+- caveats:
+  - The line is putative and subject to astrophysical/instrumental interpretation.
+  - Flux-to-mixing conversion depends on target dark-matter profiles.
+  channel: indirect_detection
+  effect_direction: spectral_line
+  environments:
+  - galaxy clusters
+  - M31
+  - Perseus
+  id: xray_3p55kev_decay_line
+  key_quantities:
+  - description: Mass implied by a two-body decay interpretation of the 3.55 keV line.
+    name: sterile neutrino mass
+    role: core
+    source_reference_ids:
+    - paper_1506_06752
+    - ref_1402_2301
+    - ref_1402_4119
+    status: inferred
+    symbol: M_1
+    unit: keV
+    value: 7.1
+  - description: Mixing controlling the radiative decay rate and production.
+    name: active-sterile mixing
+    range: line-interpretation dependent
+    role: core
+    source_reference_ids:
+    - paper_1506_06752
+    status: inferred
+    symbol: sin^2(2 theta)
+  linked_constraints:
+  - xray_line_mixing_interpretation
+  linked_routes:
+  - route_resonant_production_xray_structure
+  name: 3.55 keV X-ray decay line from a 7.1 keV sterile neutrino
+  notes: Primary paper treats the line as motivation rather than a confirmed detection.
+  observability: medium
+  predicted_effect: A 7.1 keV sterile neutrino decays radiatively to produce a photon near 3.55 keV; the
+    primary paper uses this putative line to fix the mass and mixing-angle target for its abundance calculation.
+  redshift_range: low redshift astrophysical systems
+  relevance: critical
+  scale_range: X-ray photon energy around 3.55 keV
+  source_reference_ids:
+  - paper_1506_06752
+  - ref_1402_2301
+  - ref_1402_4119
+  subchannel: X-ray line
+- caveats:
+  - Requires exporting the computed spectrum into a Boltzmann or simulation pipeline.
+  - The primary paper itself does not provide a full Lyman-alpha likelihood.
+  channel: small_scale_structure
+  effect_direction: shape_change
+  environments:
+  - early universe
+  - dwarf-galaxy scales
+  - structure simulations
+  id: nonthermal_wdm_spectrum
+  key_quantities:
+  - description: Pre-existing lepton asymmetry needed for resonant production.
+    name: initial lepton asymmetry
+    range: order 1e-5 in model-card examples; flavor-structure dependent in the paper
+    role: core
+    source_reference_ids:
+    - paper_1506_06752
+    status: inferred
+    symbol: n_L/s
+  - description: Non-equilibrium sterile-neutrino spectrum output by the rate equations.
+    name: momentum distribution
+    role: derived
+    source_reference_ids:
+    - paper_1506_06752
+    status: inferred
+    symbol: f_N(k)
+  linked_constraints:
+  - structure_formation_spectrum_recast
+  linked_routes:
+  - route_resonant_production_xray_structure
+  name: Non-equilibrium warm-dark-matter momentum spectrum
+  notes: This observable is the main bridge from production microphysics to astrophysical structure.
+  observability: medium
+  predicted_effect: Resonant Shi-Fuller production in a lepton-asymmetric plasma yields a nonthermal sterile-neutrino
+    spectrum; the primary paper emphasizes that this spectrum is needed for structure-formation simulations.
+  redshift_range: production near the QCD epoch; late-time structure formation
+  relevance: high
+  scale_range: small-scale matter power and halo scales
+  source_reference_ids:
+  - paper_1506_06752
+  - ref_1308_1399
+  subchannel: structure-formation simulations
+constraints:
+- allowed_regions:
+  - The motivated benchmark fixes M_1 near 7.1 keV when the 3.55 keV line is interpreted as sterile-neutrino
+    decay.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The unidentified line is interpreted as a dark-matter decay line rather than an astrophysical/instrumental
+      feature.
+    id: line_is_dm_decay
+    impact_if_violated: If false, the 7.1 keV benchmark loses its observational motivation.
+    notes: null
+    scope: indirect-detection interpretation
+    source_reference_ids:
+    - paper_1506_06752
+    - ref_1402_2301
+    - ref_1402_4119
+    status: speculative
+  benchmark_implications:
+  - The abundance calculation then determines the lepton asymmetry required for the line-motivated mass
+    and mixing.
+  caveats:
+  - Use as a motivated target, not as a settled detection.
+  constrained_parameters:
+  - M_1
+  - sin^2(2 theta)
+  constraint_type: indirect_detection
+  data_release: XMM-Newton cluster/M31/Perseus line reports
+  excluded_regions:
+  - Mixing angles inconsistent with X-ray line flux limits or non-observation would be excluded.
+  id: xray_line_mixing_interpretation
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: X-ray line mass and mixing target
+  notes: Primary paper uses the line to motivate the sterile-neutrino parameters; related line papers
+    provide observational context.
+  observable_channel: xray_line
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - paper_1506_06752
+  - ref_1402_2301
+  - ref_1402_4119
+- allowed_regions:
+  - The primary paper computes the lepton asymmetry needed to obtain the correct abundance for several
+    flavor structures and initial asymmetry patterns.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The calculation assumes one sterile neutrino flavor is dynamically relevant during the
+      production epoch.
+    id: single_active_sterile_flavour
+    impact_if_violated: Additional active sterile flavors would alter washout and production.
+    notes: null
+    scope: rate-equation setup
+    source_reference_ids:
+    - paper_1506_06752
+    status: assumed
+  benchmark_implications:
+  - Charge neutrality and hadronic contributions shift the required asymmetry relative to simpler treatments.
+  caveats:
+  - Numerical rate-equation implementation is needed to reproduce the spectra.
+  constrained_parameters:
+  - n_L/s
+  - sin^2(2 theta)
+  - M_1
+  - flavor_structure
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Too little or too much pre-existing lepton asymmetry underproduces or overproduces sterile-neutrino
+    dark matter for the fixed mass/mixing.
+  id: resonant_abundance_lepton_asymmetry
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Lepton asymmetry required for Shi-Fuller abundance
+  notes: Primary paper derives and solves the production/washout equations.
+  observable_channel: relic_density
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - paper_1506_06752
+- allowed_regions:
+  - Cooler resonant spectra may remain viable for the line-motivated mass, subject to dedicated transfer-function
+    constraints.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: The non-equilibrium spectrum is propagated into a matter-power or simulation calculation
+      without losing normalization or flavor assumptions.
+    id: spectrum_export
+    impact_if_violated: Incorrect mapping can misstate the warmness constraint.
+    notes: null
+    scope: structure recast
+    source_reference_ids:
+    - paper_1506_06752
+    - ref_1308_1399
+    status: assumed
+  benchmark_implications:
+  - The paper output spectrum is intended as input to structure-formation simulations.
+  caveats:
+  - No full structure likelihood is supplied by the primary paper.
+  constrained_parameters:
+  - f_N(k)
+  - M_1
+  - lepton_asymmetry
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Warmer spectra can erase excessive small-scale structure and be constrained by Lyman-alpha or halo
+    data.
+  id: structure_formation_spectrum_recast
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Structure-formation recast of the nonthermal spectrum
+  notes: Primary paper states the spectrum relevance; related WDM halo paper provides structure context.
+  observable_channel: small_scale_structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - paper_1506_06752
+  - ref_1308_1399
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The paper is mainly a production-spectrum calculation; downstream likelihoods are external.
+    caveats:
+    - Line interpretation and structure constraints are both model- and data-set-dependent.
+    constraint_ids:
+    - xray_line_mixing_interpretation
+    - resonant_abundance_lepton_asymmetry
+    - structure_formation_spectrum_recast
+    derived_quantities:
+    - sterile-neutrino spectrum
+    - Omega_N h^2
+    - radiative decay line energy
+    - structure transfer function
+    description: Route sterile-neutrino microphysics through resonant production, X-ray decay, and structure-formation
+      tests.
+    forward_model_chain:
+    - inputs:
+      - Yukawa/mixing parameters
+      - initial lepton asymmetries
+      - thermal spectral functions
+      notes: Solve production and washout through the relevant temperature range.
+      outputs:
+      - f_N(k)
+      - washout history
+      step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Requires the rate equations and plasma inputs from the primary paper.
+    - inputs:
+      - M_1
+      - sin^2(2 theta)
+      - dark matter profile
+      notes: Compare to line reports and non-detection bounds.
+      outputs:
+      - 3.55 keV line flux target
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Radiative-decay mapping depends on astrophysical target profiles.
+    - inputs:
+      - f_N(k)
+      - Omega_N h^2
+      notes: Use the nonthermal spectrum rather than a thermal-WDM surrogate when possible.
+      outputs:
+      - matter-power suppression
+      - halo response
+      step_id: s3
+      step_type: transfer_function
+      tool_or_code: null
+      validity: Needs an external Boltzmann/simulation pipeline.
+    id: route_resonant_production_xray_structure
+    input_parameters:
+    - M_1
+    - sin^2(2 theta)
+    - initial flavor lepton asymmetries
+    - temperature-dependent rates
+    likelihoods:
+    - X-ray line flux limits; relic-density target; Lyman-alpha/halo recast
+    observable_ids:
+    - xray_3p55kev_decay_line
+    - nonthermal_wdm_spectrum
+    required_code_resources:
+    - primary-paper rate equation implementation
+    - Boltzmann transfer code
+    - X-ray target-profile model
+    route_status: planned
+    source_model_features:
+    - 7.1 keV sterile neutrino
+    - active-sterile mixing
+    - pre-existing lepton asymmetry
+    - Shi-Fuller resonance
+    validation_tests:
+    - Recover the required lepton asymmetry for the 7.1 keV benchmark.
+    - Check spectrum normalization before structure recasts.

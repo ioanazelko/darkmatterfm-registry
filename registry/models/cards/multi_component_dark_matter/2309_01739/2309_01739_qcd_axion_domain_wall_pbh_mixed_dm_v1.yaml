@@ -1,0 +1,732 @@
+_source:
+  shard: arXiv_src_2309_013_wds.tar
+  paper_id: '2309_01739'
+  source_member: 2309_01739.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2309_01739_qcd_axion_domain_wall_pbh_mixed_dm_v1
+identity:
+  name: QCD-axion domain-wall PBH mixed dark matter scenario
+  family: multi_component_dark_matter
+  aliases:
+  - QCD axion closed-domain-wall PBH mechanism
+  - axion string-wall PBH mixed dark matter
+  short_description: A QCD-axion cosmology in which PQ symmetry breaks during inflation, an N_DW=1 string-wall
+    network re-enters the horizon late, closed axion domain walls collapse into PBHs, and open-wall collapse
+    emits free axions that can supply the dark matter abundance.
+  historical_origin_or_motivation: Introduced to generate primordial black holes inside a QCD-axion framework
+    while keeping free axions as the dominant relic dark matter component.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - QCD axion
+  - Peccei-Quinn mechanism
+  - axion string-wall network cosmology
+  lagrangian_available: partial
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper uses the standard QCD-axion/PQ setup and changes the cosmological history by having
+    PQ breaking during inflation with late horizon re-entry of defects.
+particle_content:
+  dark_matter_candidate:
+    name: free QCD axions plus primordial black holes from closed axion domain walls
+    spin: 'mixed: axion spin 0 and PBH macroscopic object'
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - complex Peccei-Quinn scalar field
+  - axion strings
+  - open axion domain walls
+  - closed axion domain walls
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - QCD axion
+  - primordial black holes
+  unstable_parent_particles:
+  - axion domain walls bounded by strings
+  - closed axion domain walls before collapse
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The axion follows from PQ symmetry breaking; nonperturbative QCD leaves a domain-wall
+    structure with N_DW=1, while PBHs are stable macroscopic remnants of closed wall collapse.
+  symmetries:
+  - name: U(1)_PQ
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken during inflation at the PQ scale
+    breaking_scale:
+      name: PQ scale
+      symbol: v_a
+      range: model dependent
+      unit: GeV
+      role: core
+      status: unknown
+  - name: Z(N_DW=1)
+    type: discrete
+    exact_or_approximate: broken
+    breaking: QCD effects generate the axion potential and domain-wall network
+    breaking_scale: null
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  - gravitational
+  standard_model_targets:
+  - QCD sector/gluons through the axion potential
+  dark_sector_couplings:
+  - PQ scalar potential V=lambda/4 (|Phi|^2 - v_a^2)^2
+  - closed-wall collapse to PBHs
+  - open-wall collapse radiating free axions
+  mediator_types:
+  - axion field
+  - gravity
+  interaction_operators: []
+  annihilation_channels: []
+  decay_channels:
+  - domain wall collapse to free axions
+  - closed domain wall collapse to PBHs
+  self_scattering_channels: []
+  cp_structure: QCD axion solution to the strong CP problem
+  flavor_structure: unknown
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: axion mass window
+    symbol: m_a
+    range:
+      min: 1e-5
+      max: 1e-2
+      unit: eV
+      notes: classical QCD axion window used for the quoted PBH mass range
+    unit: eV
+    role: core
+    status: inferred
+  - name: domain-wall number
+    symbol: N_DW
+    value: 1
+    role: core
+    status: assumed
+  - name: horizon re-entry temperature
+    symbol: T_en
+    range:
+      min: '1'
+      max: '300'
+      unit: MeV
+      notes: range quoted for the classical QCD axion mass window
+    unit: MeV
+    role: core
+    status: inferred
+  - name: closed wall area fraction
+    symbol: closed_wall_fraction
+    description: Fraction of total wall area in closed walls from the percolation/lattice simulation.
+    value: 0.8
+    role: core
+    status: inferred
+  - name: PBH dark matter fraction
+    symbol: f_PBH
+    description: PBH fraction when free axions from open-wall collapse account for the dark matter relic
+      abundance.
+    value: 0.0256
+    role: core
+    status: inferred
+  - name: PBH mass range
+    symbol: M_PBH
+    range:
+      min: 1e-10
+      max: 1e-1
+      unit: solar_mass
+      notes: monochromatic PBH mass range quoted for m_a=1e-5-1e-2 eV and T_en=300-1 MeV
+    unit: solar_mass
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - PQ symmetry breaks during inflation
+  - N_DW=1 axion string-wall network re-enters the horizon late
+  - closed axion domain walls collapse into PBHs
+  - open walls bounded by strings collapse and radiate free axions
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - wall area fraction from percolation simulation
+  - collapse of open walls into axions
+  - collapse of closed walls into PBHs
+  - horizon re-entry temperature
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The benchmark has free axions accounting for the relic dark matter and PBHs contributing f_PBH=0.0256;
+    partial-axion cases release additional parameter space.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: PBH dark matter fraction
+    symbol: f_PBH
+    description: PBH fraction in the benchmark where emitted axions account for dark matter.
+    value: 0.0256
+    role: core
+    status: inferred
+  calculation_type: nonthermal
+  key_dependencies:
+  - axion mass
+  - horizon re-entry temperature
+  - closed-wall fraction
+  - free-axion abundance from open-wall collapse
+  requires_entropy_dilution: 'no'
+  overclosure_risk: unknown
+  underproduction_risk: parameter_dependent
+  tuning_assessment: natural
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - PQ symmetry breaks during inflation
+  - super-horizon axion topological defects re-enter late
+  - closed domain walls collapse into PBHs
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - PQ symmetry breaking during inflation
+  - QCD axion potential turns on near T_1
+  topological_defects:
+  - axion strings
+  - open axion domain walls
+  - closed axion domain walls
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'no'
+  f_of_p_or_q: not provided
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper gives nonthermal production and a monochromatic PBH mass, not a full axion momentum
+    distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No WDM mapping is given for this mixed axion/PBH scenario.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: qcd_axion_pbh_validity_1
+  applies_to: cosmological_history
+  condition: PQ symmetry breaks during inflation and an N_DW=1 string-wall network re-enters the horizon
+    late.
+  valid_range: T_en about 300-1 MeV in the quoted classical QCD axion window
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The closed-wall fraction is taken from a generalized percolation simulation.
+  - BBN safety requires re-entry not too late.
+  source_reference_ids:
+  - '2309.01739'
+  notes: The paper states that T_en around 1 MeV is required not to disturb BBN observations.
+- id: qcd_axion_pbh_validity_2
+  applies_to: model
+  condition: Benchmark relic-density statement assumes free axions from open-wall collapse account for
+    dark matter.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - If axions are only a fraction of dark matter, PBH masses and formation criteria change.
+  source_reference_ids:
+  - '2309.01739'
+  notes: null
+assumptions:
+  global:
+  - id: assume_pq_breaks_during_inflation
+    description: PQ symmetry breaks during inflation so defects are initially super-horizon and re-enter
+      late.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The closed-wall PBH production mechanism would not apply as described.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2309.01739'
+    notes: null
+  - id: assume_closed_wall_fraction
+    description: The simulated closed-wall area fraction 0.80 is representative of the network.
+    scope: production
+    status: inferred
+    impact_if_violated: The PBH fraction would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2309.01739'
+    notes: null
+  - id: assume_axions_set_relic_density
+    description: Free axions from open-wall collapse can account for the dark matter relic abundance in
+      the benchmark.
+    scope: production
+    status: assumed
+    impact_if_violated: The quoted f_PBH=0.0256 benchmark would not be the total dark matter accounting.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2309.01739'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper reports a numerical lattice/percolation simulation for the wall network, but
+    the local text does not identify public associated code.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  caveats: []
+provenance:
+  model_id: 2309_01739_qcd_axion_domain_wall_pbh_mixed_dm_v1
+  model_name: QCD-axion domain-wall PBH mixed dark matter scenario
+  model_family: multi_component_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2309.01739'
+      title: A New Mechanism for Primordial Black Hole Formation from QCD Axion
+      authors:
+      - Shuailiang Ge
+      - Jinhui Guo
+      - Jia Liu
+      year: 2023
+      arxiv_id: '2309.01739'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned paper introducing the closed-domain-wall PBH production mechanism within QCD axion
+        cosmology.
+    - arxiv_id: '2309.01739'
+      authors:
+      - Ge, Shuailiang
+      - Guo, Jinhui
+      - Liu, Jia
+      doi: 10.1103/PhysRevD.109.123030
+      notes: Primary paper text resolved locally from the assigned GalaxyWiki text cache.
+      reference_id: paper
+      role: original_model
+      title: New mechanism for primordial black hole formation from the QCD axion
+      url: https://arxiv.org/abs/2309.01739
+      year: 2024
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for sanitized metadata discovery of primary records, references, and citations.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2309.01739'
+      section: Abstract
+      page: null
+      quote_or_summary: States a novel PBH production mechanism in a QCD axion framework with late re-entry
+        of an N_DW=1 string-wall network.
+    - reference_id: '2309.01739'
+      section: Closed axion domain walls
+      page: null
+      quote_or_summary: Reports generalized percolation/lattice simulation with 0.80 of wall area in closed
+        walls.
+    - reference_id: '2309.01739'
+      section: PBH formation
+      page: null
+      quote_or_summary: Derives collapse criterion, PBH abundance, and mass ranges for closed walls.
+    - reference_id: '2309.01739'
+      section: Conclusions
+      page: null
+      quote_or_summary: Summarizes free axions as the relic abundance source and f_PBH=0.0256 for the
+        benchmark.
+    unresolved_items:
+    - No full momentum distribution for emitted axions was extracted.
+    - No public simulation code was identified in the local text.
+    - No microlensing likelihood or extended PBH mass-function recast was constructed.
+    - The gravitational-wave spectrum from wall collapse was not used for a quantitative detector forecast.
+  evidence:
+    particle_content:
+    - reference_id: '2309.01739'
+      note: The paper identifies QCD axions, axion strings, open walls, closed walls, and PBHs from closed-wall
+        collapse.
+      confidence: medium
+      section: Abstract/Introduction
+    symmetries:
+    - reference_id: '2309.01739'
+      note: The text describes a PQ U(1) symmetry, QCD breaking to Z(N_DW), and specializes to N_DW=1.
+      confidence: medium
+      section: Introduction
+    interactions:
+    - reference_id: '2309.01739'
+      note: The mechanism uses the PQ scalar potential, QCD axion potential, wall collapse, and gravity
+        for PBH formation.
+      confidence: medium
+      section: Introduction/PBH formation
+    production_mechanism:
+    - reference_id: '2309.01739'
+      note: Closed walls collapse into PBHs while open walls bounded by strings collapse to free axions.
+      confidence: high
+      section: Abstract/Conclusions
+    cosmological_history:
+    - reference_id: '2309.01739'
+      note: The scenario assumes PQ breaking during inflation and late horizon re-entry at about 300-1
+        MeV.
+      confidence: medium
+      section: Abstract/Conclusions
+    parameter_ranges:
+    - reference_id: '2309.01739'
+      note: The paper quotes m_a=1e-5-1e-2 eV, T_en=300-1 MeV, f_PBH=0.0256, and PBH masses 1e-10-1e-1
+        solar masses.
+      confidence: medium
+      section: Abstract/Conclusions
+    validity_domain:
+    - reference_id: '2309.01739'
+      note: The paper notes T_en near or above 1 MeV to avoid disturbing BBN and discusses partial-axion
+        cases separately.
+      confidence: medium
+      section: PBH formation/Conclusions
+    constraints:
+    - confidence: medium
+      note: The paper imposes BBN-safe horizon re-entry and overlays published PBH microlensing constraints.
+      page: null
+      reference_id: paper
+      section: Constraints and numerical-results sections
+    observables:
+    - confidence: high
+      note: The paper derives a closed-wall PBH population, f_PBH, PBH mass range, OGLE microlensing overlap,
+        and a subdominant wall-collapse GW component.
+      page: null
+      reference_id: paper
+      section: Abstract and phenomenology/results sections
+    routes:
+    - confidence: medium
+      note: The paper routes PQ-breaking history through string-wall percolation, closed-wall collapse,
+        and microlensing/GW comparisons.
+      page: null
+      reference_id: paper
+      section: Model, scan, and phenomenology sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - closed-wall collapse criterion
+  - representativeness of the percolation simulation
+  - relic-density accounting when axions are a subcomponent
+  validation_status: expert_judgment_only
+  notes: The model card records the proposed scenario but does not evaluate external observational viability.
+agent_failure_modes:
+  warnings:
+  - id: qcd_axion_pbh_warn_1
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat the quoted f_PBH=0.0256 as an all-PBH dark matter model; the benchmark has free
+      axions carrying the main relic abundance.
+    mitigation: Keep the free-axion and PBH components together when using this row.
+    source_reference_ids:
+    - '2309.01739'
+  - id: qcd_axion_pbh_warn_2
+    severity: medium
+    category: extrapolation
+    warning: The PBH mass range and formation criterion depend on the late re-entry temperature and axion
+      mass window quoted by the paper.
+    mitigation: Avoid extrapolating outside T_en=300-1 MeV and m_a=1e-5-1e-2 eV without re-deriving the
+      scenario.
+    source_reference_ids:
+    - '2309.01739'
+observables:
+- caveats:
+  - The primary model predicts a monochromatic approximation; extended mass effects were not recast.
+  channel: black_holes
+  effect_direction: rate_change
+  environments:
+  - early universe axion domain-wall network
+  - Milky Way microlensing fields
+  id: monochromatic_pbh_microlensing_signal
+  key_quantities:
+  - name: PBH dark matter fraction
+    role: derived
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: f_PBH
+    value: 0.0256
+  - name: PBH mass
+    range:
+      max: '0.62'
+      min: '5.8e-10'
+      notes: Primary-paper range for free axions accounting for the dark matter relic abundance.
+      unit: solar_mass
+    role: derived
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: M_PBH
+    unit: solar_mass
+  - name: closed wall area fraction
+    role: derived
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: F_closed
+    value: 0.8
+  - name: axion mass
+    range:
+      max: 1e-2
+      min: 1e-5
+      notes: Classical QCD axion window used for the quoted PBH mass range.
+      unit: eV
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: m_a
+    unit: eV
+  linked_constraints:
+  - microlensing_limits_on_pbh_fraction
+  - bbn_reentry_temperature_window
+  linked_routes:
+  - route_axion_domain_walls_to_pbh_observables
+  name: Monochromatic planetary-mass PBH microlensing signal
+  notes: null
+  observability: medium
+  predicted_effect: Closed QCD-axion domain walls collapse into a monochromatic PBH population with f_PBH
+    about 0.0256, overlapping the mass and abundance region discussed for OGLE ultrashort microlensing
+    events.
+  redshift_range: post-inflationary horizon re-entry before BBN to present-day lensing
+  relevance: critical
+  scale_range: planetary to subsolar PBH masses
+  source_reference_ids:
+  - paper
+  subchannel: gravitational microlensing by primordial black holes
+- caveats:
+  - The QCD-axion PBH result is the robust structured claim; detailed GW detectability depends on additional
+    spectral modeling.
+  channel: gravitational_waves
+  effect_direction: rate_change
+  environments:
+  - axion string-wall network
+  id: domain_wall_collapse_gw_background
+  key_quantities:
+  - name: horizon re-entry temperature
+    range:
+      max: 300
+      min: 1
+      notes: Range emphasized for the classical QCD axion window and BBN-safe re-entry.
+      unit: MeV
+    role: core
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: T_en
+    unit: MeV
+  - name: domain-wall number
+    role: core
+    source_reference_ids:
+    - paper
+    status: assumed
+    symbol: N_DW
+    value: 1
+  - description: Small fraction of wall-collapse energy emitted as GWs
+    name: wall-collapse gravitational-wave fraction
+    role: derived
+    source_reference_ids:
+    - paper
+    status: approximate
+    symbol: Omega_GW
+  linked_constraints:
+  - bbn_reentry_temperature_window
+  linked_routes:
+  - route_axion_domain_walls_to_pbh_observables
+  name: Gravitational waves from axion string-wall collapse
+  notes: null
+  observability: low
+  predicted_effect: The collapse of walls bounded by strings releases most energy into axions and a small
+    component into gravitational waves; related parameter regions may be testable by present or future
+    GW detectors.
+  redshift_range: radiation era before BBN
+  relevance: medium
+  scale_range: model-dependent stochastic GW frequencies
+  source_reference_ids:
+  - paper
+  subchannel: domain-wall collapse stochastic background
+constraints:
+- allowed_regions:
+  - For the classical QCD axion window the paper emphasizes T_en about 300-1 MeV and PBH masses from 5.8e-10
+    to 0.62 solar masses.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The PQ symmetry breaks during inflation and the N_DW=1 string-wall network re-enters
+      the horizon later.
+    id: pq_breaks_during_inflation
+    impact_if_violated: Changes the numerical exclusion or allowed benchmark region.
+    scope: axion cosmological history
+    source_reference_ids:
+    - paper
+    status: assumed
+  benchmark_implications:
+  - Later horizon re-entry gives heavier PBHs; BBN sets the low-temperature edge.
+  caveats:
+  - The formation criterion is analytic/simulation based and was not rerun here.
+  constrained_parameters:
+  - T_en
+  - m_a
+  - f_a
+  - M_PBH
+  constraint_type: cosmological
+  data_release: BBN consistency requirement used analytically in the primary paper
+  excluded_regions:
+  - T_en below about 1 MeV would risk disturbing BBN; outside the paper formation criterion closed walls
+    do not form PBHs.
+  id: bbn_reentry_temperature_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN-safe horizon re-entry and PBH formation window
+  notes: null
+  observable_channel: BBN and axion domain-wall evolution
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - paper
+- allowed_regions:
+  - The predicted f_PBH about 0.0256 and mass range can overlap the OGLE ultrashort-timescale microlensing
+    interpretation discussed in the paper.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - The OGLE-motivated region is a natural observational target for the model.
+  caveats:
+  - The batch did not digitize or refit microlensing exclusion curves.
+  constrained_parameters:
+  - M_PBH
+  - f_PBH
+  constraint_type: astrophysical
+  data_release: OGLE and existing PBH microlensing constraints as summarized in the primary paper
+  excluded_regions:
+  - PBH masses and fractions above published microlensing bounds are not viable.
+  id: microlensing_limits_on_pbh_fraction
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Microlensing constraints and OGLE overlap for planetary-mass PBHs
+  notes: null
+  observable_channel: PBH microlensing
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - paper
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Structured values are from the primary text; no microlensing likelihood was rerun.
+    caveats:
+    - The GW signature is less quantified than the PBH/microlensing prediction.
+    constraint_ids:
+    - bbn_reentry_temperature_window
+    - microlensing_limits_on_pbh_fraction
+    derived_quantities:
+    - closed-wall area fraction
+    - M_PBH
+    - f_PBH
+    - axion relic abundance
+    - wall-collapse GW energy
+    description: Map QCD-axion string-wall network parameters to PBH abundance, PBH mass, microlensing,
+      and possible gravitational-wave signatures.
+    forward_model_chain:
+    - inputs:
+      - N_DW
+      - horizon re-entry configuration
+      notes: null
+      outputs:
+      - closed wall area fraction
+      step_id: network_percolation
+      step_type: simulation
+      tool_or_code: null
+      validity: Percolation/lattice result quoted by the paper.
+    - inputs:
+      - closed-wall size
+      - wall tension
+      - T_en
+      - f_a
+      notes: null
+      outputs:
+      - M_PBH
+      - PBH formation criterion
+      step_id: pbh_formation
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Closed walls collapse when compactness criterion is satisfied.
+    - inputs:
+      - M_PBH
+      - f_PBH
+      notes: null
+      outputs:
+      - microlensing comparison
+      - GW-detector target
+      step_id: observable_overlay
+      step_type: recasting
+      tool_or_code: null
+      validity: Uses published microlensing constraints and qualitative GW detector reach.
+    id: route_axion_domain_walls_to_pbh_observables
+    input_parameters:
+    - m_a
+    - f_a
+    - T_en
+    - N_DW
+    likelihoods:
+    - OGLE microlensing event region
+    - published PBH microlensing bounds
+    observable_ids:
+    - monochromatic_pbh_microlensing_signal
+    - domain_wall_collapse_gw_background
+    required_code_resources:
+    - axion string-wall simulation or calibrated percolation output
+    - PBH microlensing likelihood recast
+    - domain-wall GW spectrum calculator
+    route_status: planned
+    source_model_features:
+    - QCD axion with PQ breaking during inflation
+    - N_DW=1 string-wall network
+    - closed domain walls from percolation
+    - free-axion dark matter plus PBH subcomponent
+    validation_tests:
+    - Recover closed-wall area fraction about 0.8.
+    - Recover f_PBH about 0.0256 when free axions account for the remaining dark matter.
+    - Recover the quoted 5.8e-10 to 0.62 solar-mass range for the QCD axion window.

@@ -1,0 +1,607 @@
+_source:
+  shard: arXiv_src_2006_008_wds.tar
+  paper_id: '2006_02225'
+  source_member: 2006_02225.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2006_02225_decay_product_fermion_dm_v1
+identity:
+  name: Stable fermion dark matter from decays of gravitationally produced superheavy particles
+  family: superheavy_decay_product_dark_matter
+  aliases:
+  - S decay-product dark matter
+  - nonthermal fermion dark matter from chi decays
+  short_description: A stable fermion S is produced by decays of gravitationally created superheavy chi
+    particles; for chi masses around 1e13-1e16 GeV the paper finds S masses roughly in the GeV-TeV range
+    can provide cold dark matter if decays occur early enough.
+  historical_origin_or_motivation: The variant avoids overclosure by allowing abundantly produced superheavy
+    chi particles to decay into lighter stable dark matter.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - gravitational particle production after non-minimal inflation
+  - superheavy-parent decay dark matter
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper specifies the superheavy chi sector and invokes a Yukawa interaction causing chi decays
+    into stable fermions S.
+particle_content:
+  dark_matter_candidate:
+    name: stable fermion S
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - inflaton phi in the non-minimal inflation sector
+  mediators:
+  - superheavy scalar chi parent
+  - gravity/Ricci curvature
+  unstable_parent_particles:
+  - superheavy scalar chi
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The fermion S is assumed stable after production; the stabilizing symmetry is
+    not specified in the extracted text.
+  symmetries:
+  - name: unknown S-stabilizing symmetry
+    type: unknown
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - other
+  standard_model_targets: []
+  dark_sector_couplings:
+  - Yukawa coupling y for chi decay to stable fermions S
+  - gravitational production of the chi parent
+  mediator_types:
+  - unstable superheavy scalar parent chi
+  - gravity/Ricci curvature
+  decay_channels:
+  - chi -> S S
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: S mass
+    symbol: m_S
+    description: Mass of the stable fermion dark matter particle.
+    range: about 1 GeV to 1 TeV for m_chi in the 1e13-1e16 GeV range and xi between 1 and 100
+    unit: GeV
+    role: core
+    status: inferred
+    notes: The paper gives m_S about 6 GeV times 1e15 GeV/m_chi and summarizes the range as 1 GeV to 1
+      TeV.
+  - name: chi parent mass
+    symbol: m_chi
+    description: Mass of the gravitationally produced unstable parent.
+    range: about 1e13 to 1e16 GeV for production without exponential suppression in the decay-product
+      scenario
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Yukawa decay coupling
+    symbol: y
+    description: Coupling controlling chi decay to S particles.
+    range: Lower bound from requiring S to become non-relativistic before the Universe cools to about
+      1 keV; paper quotes y^2 greater than about 8e-18 times parameter factors
+    role: core
+    status: inferred
+  - name: decay temperature condition
+    symbol: T_dec
+    description: Temperature by which the chi parent should decay so S is cold enough for structure formation.
+    range: Must occur before the temperature drops below the paper-defined T_dec tied to m_chi/(2 m_S)
+      keV
+    unit: keV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - nonthermal production from decays of gravitationally produced superheavy chi particles
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - gravitational chi abundance
+  - m_S/m_chi
+  - chi branching ratio to S
+  - Yukawa decay coupling y
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper derives the S energy density from the gravitationally produced chi density and identifies
+    parameter ranges for the right cold dark matter abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_S/m_chi
+  - chi abundance
+  - branching ratio into S
+  - decay before S remains too warm
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - non-minimal inflation with gravitational chi production
+  - late but pre-structure-formation decay of superheavy chi into S
+  bbn_relevance: medium
+  cmb_relevance: low
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: potentially warm if y is near the lower decay bound
+  notes: The paper emphasizes that S must be non-relativistic by temperatures near 1 keV to preserve bottom-up
+    structure formation.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: parent_mass_unsuppressed_regime
+  applies_to: parameter
+  condition: The decay-product variant uses chi masses around 1e13-1e16 GeV, where chi is produced without
+    exponential suppression for xi between 1 and 100.
+  status: inferred
+  extrapolation_risk: medium
+- id: cold_enough_decay_products
+  applies_to: cosmological_history
+  condition: S particles must become non-relativistic by the epoch corresponding to temperature about
+    1 keV.
+  status: inferred
+  extrapolation_risk: high
+- id: branching_ratio_dependence
+  applies_to: model
+  condition: If chi has heavier masses or smaller branching ratio into S, a larger S mass is needed for
+    the right abundance.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: S_stability
+    description: The produced fermion S is stable and survives as dark matter.
+    scope: theory
+    status: assumed
+    impact_if_violated: The model would not yield present-day dark matter.
+    can_be_relaxed: unknown
+  - id: chi_decay_to_S
+    description: The superheavy chi parent has a Yukawa decay channel into S particles.
+    scope: production
+    status: assumed
+    impact_if_violated: Relic abundance and phase-space estimates would not apply.
+    can_be_relaxed: unknown
+  - id: cold_by_structure_formation
+    description: S is required to be non-relativistic before the Universe reaches roughly 1 keV.
+    scope: structure_formation
+    status: assumed
+    impact_if_violated: Late decays or too-small y would make the model warm and potentially disrupt structure
+      formation.
+    can_be_relaxed: 'no'
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public code is identified in the extracted text for this decay-product dark matter
+    variant.
+provenance:
+  model_id: 2006_02225_decay_product_fermion_dm_v1
+  model_name: Stable fermion dark matter from decays of gravitationally produced superheavy particles
+  model_family: superheavy_decay_product_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2006_02225'
+      title: Gravitational reheating and superheavy Dark Matter creation after inflation with non-minimal
+        coupling
+      authors:
+      - E. Babichev
+      - D. Gorbunov
+      - S. Ramazanov
+      - L. Reverberi
+      year: 2020
+      arxiv_id: '2006.02225'
+      doi: null
+      url: null
+      role: original_model
+      notes: Primary paper for the extracted gravitational-production dark matter variants.
+    - arxiv_id: '2006.02225'
+      authors:
+      - Babichev, E.
+      - Gorbunov, D.
+      - Ramazanov, S.
+      - Reverberi, L.
+      doi: 10.1088/1475-7516/2020/09/059
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2006.02225
+      role: original_model
+      title: Gravitational reheating and superheavy Dark Matter creation after inflation with non-minimal
+        coupling
+      url: https://arxiv.org/abs/2006.02225
+      year: 2020
+    constraint_papers:
+    - arxiv_id: '2305.02568'
+      authors:
+      - Zhang, Ruopeng
+      - Xu, Zixuan
+      - Zheng, Sibo
+      doi: 10.1088/1475-7516/2023/07/048
+      notes: Related full text resolved locally and read; used for gravitational-only detection caveat.
+      reference_id: arxiv:2305.02568
+      role: extension
+      title: Gravitational freeze-in dark matter from Higgs preheating
+      url: https://arxiv.org/abs/2305.02568
+      year: 2023
+    - arxiv_id: '2007.03484'
+      authors:
+      - Karam, Alexandros
+      - Raidal, Martti
+      - Tomberg, Eemeli
+      doi: 10.1088/1475-7516/2021/03/064
+      notes: Related full text resolved locally and read; used for gravitational production/isocurvature
+        validity context.
+      reference_id: arxiv:2007.03484
+      role: extension
+      title: Gravitational dark matter production in Palatini preheating
+      url: https://arxiv.org/abs/2007.03484
+      year: 2021
+    - arxiv_id: '1809.05410'
+      authors:
+      - Hashiba, Soichiro
+      - Yokoyama, Jun'ichi
+      doi: 10.1088/1475-7516/2019/01/028
+      notes: Related full text resolved locally and read; used for gravitational-reheating context.
+      reference_id: arxiv:1809.05410
+      role: extension
+      title: Gravitational reheating through conformally coupled superheavy scalar particles
+      url: https://arxiv.org/abs/1809.05410
+      year: 2019
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0001
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2006_02225'
+      section: Decay products of particles as Dark Matter
+      page: null
+      quote_or_summary: Discusses chi decay to stable fermions S and the resulting GeV-TeV mass range.
+    unresolved_items:
+    - The stabilizing symmetry and detailed branching ratios of the S sector are not specified.
+    - No transfer-function or Lyman-alpha likelihood is computed for the decay-product momentum distribution.
+    - The stabilizing symmetry for S is not specified.
+  evidence:
+    particle_content:
+    - reference_id: '2006_02225'
+      note: The decay-product subsection assumes unstable superheavy chi decays into stable fermions S.
+      confidence: medium
+    symmetries:
+    - reference_id: '2006_02225'
+      note: S stability is required for the decay products to be dark matter; no stabilizing symmetry
+        is specified.
+      confidence: low
+    interactions:
+    - reference_id: '2006_02225'
+      note: The decay proceeds through a Yukawa interaction with coupling y.
+      confidence: medium
+    production_mechanism:
+    - reference_id: '2006_02225'
+      note: The S energy density is inferred from the gravitationally produced chi abundance and subsequent
+        chi decays.
+      confidence: medium
+    cosmological_history:
+    - reference_id: '2006_02225'
+      note: The paper requires S to be non-relativistic by about 1 keV to preserve bottom-up structure
+        formation.
+      confidence: medium
+    parameter_ranges:
+    - reference_id: '2006_02225'
+      note: For m_chi about 1e13-1e16 GeV the paper maps to m_S about 1 GeV to 1 TeV.
+      confidence: medium
+    validity_domain:
+    - reference_id: '2006_02225'
+      note: The Yukawa coupling must be large enough for sufficiently early decays but still leaves a
+        broad allowed range.
+      confidence: medium
+    constraints:
+    - confidence: high
+      note: Primary text gives the m_S range and a lower-bound logic for y from the coldness condition.
+      page: null
+      reference_id: arxiv:2006.02225
+      section: Decay products as Dark Matter
+    observables:
+    - confidence: high
+      note: Primary text derives S abundance from chi abundance and requires S to become non-relativistic
+        by about 1 keV.
+      page: null
+      reference_id: arxiv:2006.02225
+      section: Decay products as Dark Matter
+    routes:
+    - confidence: high
+      note: Primary text supplies the analytic chain from gravitational chi production to decay-product
+        S abundance.
+      page: null
+      reference_id: arxiv:2006.02225
+      section: Dark Matter scenarios
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - This is a variant of the same gravitational-production framework, not a separate paper-level theory.
+robustness:
+  overall: medium
+  dominant_uncertainties:
+  - unspecified S stabilizing symmetry
+  - decay branching ratio
+  - phase-space warmth near the lower y bound
+  validation_status: expert_judgment_only
+  notes: The paper gives parametric abundance and coldness conditions but not a complete microscopic S
+    sector.
+agent_failure_modes:
+  warnings:
+  - id: warm_decay_product_risk
+    severity: medium
+    category: assumption_mismatch
+    warning: The decay product can be warm if chi decays too late or y is too close to the lower bound.
+    mitigation: Check the non-relativistic-by-1-keV condition before treating the model as CDM.
+  - id: branching_ratio_not_fixed
+    severity: medium
+    category: missing_likelihood
+    warning: The branching ratio into S is not fixed by the extracted text.
+    mitigation: Do not infer a precise relic fraction without the branching ratio assumption.
+observables:
+- caveats:
+  - The paper gives a coldness criterion but not a numerical transfer-function likelihood.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - early Universe
+  - linear matter perturbations
+  id: obs_decay_product_free_streaming
+  key_quantities:
+  - description: Mass of the decay-product fermion.
+    name: stable fermion mass
+    range: about 1 GeV to 1 TeV for m_chi in the unsuppressed production range
+    role: core
+    source_reference_ids:
+    - arxiv:2006.02225
+    status: inferred
+    symbol: m_S
+    unit: GeV
+  - description: Mass of the gravitationally produced parent.
+    name: parent mass
+    range: about 1e13 to 1e16 GeV
+    role: core
+    source_reference_ids:
+    - arxiv:2006.02225
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+  - description: Temperature by which S should be non-relativistic.
+    name: coldness temperature target
+    role: core
+    source_reference_ids:
+    - arxiv:2006.02225
+    status: inferred
+    symbol: T
+    unit: keV
+    value: about 1 keV
+  linked_constraints:
+  - con_cold_enough_decay_products
+  linked_routes:
+  - route_grav_parent_decay_to_lss
+  name: Decay-product coldness and free-streaming risk
+  notes: null
+  observability: medium
+  predicted_effect: If chi decays late, stable fermions S can remain too warm; the primary paper requires
+    S to become non-relativistic by the epoch when the plasma temperature is about 1 keV.
+  redshift_range: early radiation era through structure formation
+  relevance: critical
+  scale_range: small-scale matter power/free-streaming scales; no transfer function computed in the source
+  source_reference_ids:
+  - arxiv:2006.02225
+  subchannel: nonthermal decay momentum distribution
+- caveats:
+  - No direct-detection interaction for S is specified beyond the phenomenological decay coupling.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - post-inflationary Universe
+  id: obs_decay_product_relic_abundance
+  key_quantities:
+  - description: Coupling controlling chi -> S S and the decay time.
+    name: Yukawa decay coupling
+    range: lower bounded by the coldness requirement; source quotes an order 1e-17 y^2 scale with parameter
+      factors
+    role: core
+    source_reference_ids:
+    - arxiv:2006.02225
+    status: inferred
+    symbol: y
+  - description: Fraction of chi decays feeding stable S.
+    name: branching ratio to S
+    range: model dependent
+    role: core
+    source_reference_ids:
+    - arxiv:2006.02225
+    status: inferred
+    symbol: Br(chi -> S S)
+  linked_constraints:
+  - con_decay_product_relic_density
+  linked_routes:
+  - route_grav_parent_decay_to_lss
+  name: Relic density from gravitational parent abundance
+  notes: null
+  observability: medium
+  predicted_effect: The S abundance tracks the gravitationally produced chi abundance times the mass ratio
+    and decay branching assumptions.
+  redshift_range: post-inflationary production through radiation era
+  relevance: critical
+  scale_range: homogeneous relic density
+  source_reference_ids:
+  - arxiv:2006.02225
+  subchannel: nonthermal relic abundance
+constraints:
+- allowed_regions:
+  - Parameter choices with sufficiently early chi decay and m_S in the GeV-TeV range can behave as cold
+    dark matter.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The fermion S is stable on cosmological timescales.
+    id: stable_s_fermion
+    impact_if_violated: If S decays, it cannot be the present dark matter.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - arxiv:2006.02225
+    status: assumed
+  benchmark_implications:
+  - The paper converts the condition into a lower bound on the Yukawa coupling y with model-dependent
+    parameter factors.
+  caveats:
+  - A current Lyman-alpha or satellite-count recast would require the full decay-product phase-space distribution.
+  constrained_parameters:
+  - y
+  - T_dec
+  - m_S/m_chi
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Late chi decays that leave S relativistic near T about 1 keV would threaten bottom-up structure formation.
+  id: con_cold_enough_decay_products
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Decay before the S component remains warm
+  notes: null
+  observable_channel: large_scale_structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2006.02225
+- allowed_regions:
+  - The source estimate m_S approximately 6 GeV x (1e15 GeV/m_chi), with m_S roughly 1 GeV to 1 TeV over
+    the quoted parent-mass range.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: unknown
+    description: The superheavy parent has a decay channel chi -> S S with sufficient branching ratio.
+    id: chi_branching_to_s
+    impact_if_violated: The abundance relation would not apply.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - arxiv:2006.02225
+    status: assumed
+  benchmark_implications:
+  - Ground-based searches are only motivated if additional S interactions exist; none are specified in
+    the source.
+  caveats:
+  - Relic-density formula is analytic/source-level rather than a public likelihood.
+  constrained_parameters:
+  - m_S
+  - m_chi
+  - Br(chi -> S S)
+  - gravitational chi abundance
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Too light or too abundant S overcloses; too low abundance underproduces dark matter.
+  id: con_decay_product_relic_density
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Observed relic-density target for decay-product dark matter
+  notes: null
+  observable_channel: relic density
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2006.02225
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Related gravitational-production papers do not provide a direct S-decay likelihood.
+    constraint_ids:
+    - con_cold_enough_decay_products
+    - con_decay_product_relic_density
+    derived_quantities:
+    - chi abundance
+    - S relic abundance
+    - S momentum redshifting
+    - free-streaming scale
+    description: Map gravitational chi production and chi decay kinematics to the S relic density and
+      coldness/free-streaming target.
+    forward_model_chain:
+    - inputs:
+      - m_chi/H_infl
+      - xi
+      notes: null
+      outputs:
+      - chi number density
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary paper spike-production estimate.
+    - inputs:
+      - m_S/m_chi
+      - branching ratio
+      - y
+      notes: null
+      outputs:
+      - S abundance
+      - decay temperature
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Two-body decay and source coldness criterion.
+    - inputs:
+      - S phase-space distribution
+      notes: Not run in this batch.
+      outputs:
+      - small-scale matter suppression
+      step_id: s3
+      step_type: transfer_function
+      tool_or_code: null
+      validity: Needed for modern LSS/Lyman-alpha recast.
+    id: route_grav_parent_decay_to_lss
+    input_parameters:
+    - m_chi
+    - m_S
+    - y
+    - branching ratio
+    - post-inflationary Hubble history
+    likelihoods:
+    - relic-density target only
+    - LSS transfer-function likelihood unavailable
+    observable_ids:
+    - obs_decay_product_free_streaming
+    - obs_decay_product_relic_abundance
+    required_code_resources:
+    - Boltzmann/transfer-function solver for nonthermal decay products
+    route_status: planned
+    source_model_features:
+    - gravitationally produced superheavy parent
+    - chi -> S S decay
+    - stable fermion S
+    validation_tests:
+    - recover m_S about 6 GeV x 1e15 GeV/m_chi
+    - recover nonrelativistic-by-1-keV criterion

@@ -1,0 +1,858 @@
+_source:
+  shard: arXiv_src_0103_001_wds.tar
+  paper_id: hep-ph0103340
+  source_member: hep-ph0103340.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: phion_constraints_borderline
+    severity: medium
+    source_reference_ids:
+    - hep-ph/0103340
+    warning: Do not treat every mass range discussed as viable; the paper says 50-100 GeV phions overproduce
+      relic density while 0.5-2 GeV requires large Higgs coupling.
+  - category: other
+    id: stability_unspecified
+    severity: medium
+    source_reference_ids:
+    - hep-ph/0103340
+    warning: The phion is assumed stable, but the assigned text does not specify the stabilizing symmetry.
+associated_code:
+  caveats: []
+  code_summary: The paper text mentions HDECAY for a Standard Model Higgs width, but no model-specific
+    associated code resource is identified.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: The paper text mentions HDECAY for a Standard Model Higgs width, but no model-specific associated
+      code resource is identified.
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  validation:
+    benchmark_references: []
+    validation_notes: The paper text mentions HDECAY for a Standard Model Higgs width, but no model-specific
+      associated code resource is identified.
+    validation_status: unknown
+assumptions:
+  computation_specific: []
+  global:
+  - can_be_relaxed: unknown
+    description: The phion is a stable light gauge-singlet scalar dark matter particle.
+    id: stable_singlet_scalar
+    scope: global
+    source_reference_ids:
+    - hep-ph/0103340
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The phion couples to the Standard Model through the Higgs sector after electroweak symmetry
+      breaking.
+    id: higgs_portal_link
+    scope: theory
+    source_reference_ids:
+    - hep-ph/0103340
+    status: assumed
+  - can_be_relaxed: unknown
+    description: A large elastic self-scattering cross section with negligible dissipation can address
+      small-scale CDM structure issues.
+    id: self_interaction_solution
+    scope: structure_formation
+    source_reference_ids:
+    - hep-ph/0103340
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Relic-abundance estimates use standard thermal freeze-out formulae when phions thermalize.
+    id: standard_freezeout
+    scope: production
+    source_reference_ids:
+    - hep-ph/0103340
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling:
+    description: Freeze-out temperature entering relic abundance estimates.
+    name: chemical freeze-out temperature
+    role: core
+    source_reference_ids:
+    - hep-ph/0103340
+    status: inferred
+    symbol: T_F
+    unit: GeV
+    value: m_phi / x_F
+  cmb_relevance: low
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - possible out-of-equilibrium inflaton decay production for very small Higgs coupling
+  phase_transitions:
+  - electroweak phase transition affects the Higgs vacuum expectation value and switches on the phion-Higgs
+    coupling
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - phion
+  - collisional dark matter phion
+  - stable light scalar dark matter
+  family: self_interacting_scalar_dark_matter
+  historical_origin_or_motivation: The paper motivates the model as a concrete particle-physics realization
+    of self-interacting dark matter linked to invisible Higgs decays.
+  model_kind: simplified_model
+  name: Phion self-interacting scalar dark matter
+  short_description: A stable light gauge-singlet scalar, called the phion, with quartic self-interaction
+    and Higgs coupling, used as collisional cold dark matter for small-scale structure problems.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - phion annihilation through virtual Higgs exchange to Standard Model final states
+  cp_structure: not specified
+  dark_sector_couplings:
+  - phion quartic self-coupling g
+  decay_channels: []
+  flavor_structure: Higgs-mediated Standard Model final states; detailed flavor structure not specified
+  interaction_operators:
+  - g phi^4 / 4
+  - g' v phi^2 h
+  - g'^2 phi^2 H^2
+  mediator_types:
+  - scalar Higgs mediator
+  portals:
+  - higgs
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: not_applicable
+    velocity_dependence: mild
+  self_scattering_channels:
+  - phi phi elastic scattering
+  standard_model_targets:
+  - Higgs boson
+  - ordinary matter through virtual Higgs exchange
+  tree_or_loop_level: tree
+model_id: hep-ph0103340_phion_self_interacting_scalar_v1
+parameters:
+  core:
+  - description: Mass of the stable scalar dark matter particle.
+    name: phion mass
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: '2'
+      min: '0.5'
+      notes: Light regime where the paper finds acceptable abundance with large Higgs coupling; 50-100
+        GeV is said to be overabundant.
+      unit: GeV
+    role: core
+    source_reference_ids:
+    - hep-ph/0103340
+    status: inferred
+    symbol: m_phi
+    unit: GeV
+  - description: Quartic self-coupling controlling elastic self-scattering.
+    name: phion self-coupling
+    range: set by the desired halo mean free path; paper quotes very small values in relativistic-decoupling
+      cases
+    role: core
+    source_reference_ids:
+    - hep-ph/0103340
+    status: inferred
+    symbol: g
+  - description: Coupling between phion pairs and the Higgs sector.
+    name: Higgs-phion coupling
+    range: g' > 0.1 for nonrelativistic decoupling; about 2.5 in the 0.5-2 GeV viable abundance regime
+    role: core
+    source_reference_ids:
+    - hep-ph/0103340
+    status: inferred
+    symbol: g'
+  - description: Higgs mass entering the virtual-Higgs annihilation and invisible-width calculation.
+    name: Higgs mass
+    range: m_h > 130 GeV in the light-phion abundance regime discussed
+    role: core
+    source_reference_ids:
+    - hep-ph/0103340
+    status: inferred
+    symbol: m_h
+    unit: GeV
+  - description: Mean free path targeted for self-interacting dark matter behavior.
+    name: halo mean free path
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: '1000'
+      min: '1'
+      notes: Paper states 1 kpc < lambda < 1 Mpc.
+      unit: kpc
+    role: core
+    source_reference_ids:
+    - hep-ph/0103340
+    status: inferred
+    symbol: lambda
+    unit: kpc
+  derived:
+  - description: The paper asks for phion abundance compatible with a dark matter density around 0.3.
+    name: relic density target
+    role: core
+    source_reference_ids:
+    - hep-ph/0103340
+    status: inferred
+    symbol: Omega_phi h^2
+    value: about 0.3
+  - description: m_phi / T_F for thermal freeze-out estimates.
+    name: freeze-out variable
+    role: core
+    source_reference_ids:
+    - hep-ph/0103340
+    status: inferred
+    symbol: x_F
+    value: solved from standard freeze-out equation
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: phion
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - stable phion
+  mediators:
+  - Standard Model Higgs boson
+  standard_model_extension: minimal
+  unstable_parent_particles:
+  - inflaton, in an out-of-equilibrium production regime
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: not provided
+  free_streaming_length: null
+  notes: Thermal and out-of-equilibrium regimes are both discussed; no explicit distribution function
+    is supplied.
+  phase_space_bounds: []
+  velocity_dispersion_today: about 200 km/s in present halos, as used for near-threshold scattering
+production:
+  abundance_set_by:
+  - Higgs-phion coupling
+  - phion mass
+  - Higgs mass
+  - annihilation cross section
+  - decoupling temperature
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: parameter_dependent
+  mechanisms:
+  - thermal production and freeze-out through Higgs-mediated annihilation
+  - relativistic or nonrelativistic decoupling depending on Higgs coupling
+  - out-of-equilibrium inflaton decay for extremely small Higgs coupling
+  nonthermal_momentum_distribution: unknown
+  notes: The paper compares thermalization and expansion rates and evaluates relativistic and nonrelativistic
+    decoupling regimes.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  caveats:
+  - Accepted as a substantive model development even though the paper title and much of the analysis concern
+    cosmological bounds.
+  created_at: '2026-05-30'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The electroweak phase transition controls when the Higgs vacuum expectation value and phion-Higgs
+        coupling are active.
+      page: null
+      reference_id: hep-ph/0103340
+      section: thermalization discussion
+    interactions:
+    - confidence: high
+      note: The Lagrangian includes phion mass, quartic self-coupling, and coupling to the Standard Model
+        Higgs boson.
+      page: null
+      reference_id: hep-ph/0103340
+      section: model setup
+    parameter_ranges:
+    - confidence: high
+      note: The text quotes a light 0.5-2 GeV phion regime requiring large Higgs coupling and m_h above
+        about 130 GeV, and a 50-100 GeV regime that overproduces relic density.
+      page: null
+      reference_id: hep-ph/0103340
+      section: relic abundance discussion
+    particle_content:
+    - confidence: high
+      note: The paper identifies the phion as a stable light scalar particle and an extra gauge singlet.
+      page: null
+      reference_id: hep-ph/0103340
+      section: abstract/introduction
+    production_mechanism:
+    - confidence: high
+      note: The paper discusses thermal equilibrium, relativistic and nonrelativistic decoupling, and
+        out-of-equilibrium inflaton-decay production.
+      page: null
+      reference_id: hep-ph/0103340
+      section: early-universe behavior
+    symmetries:
+    - confidence: medium
+      note: The text assumes stability but does not identify a stabilizing symmetry.
+      page: null
+      reference_id: hep-ph/0103340
+      section: model setup
+    validity_domain:
+    - confidence: medium
+      note: The model targets halo mean free paths between 1 kpc and 1 Mpc and notes missing dedicated
+        numerical simulations.
+      page: null
+      reference_id: hep-ph/0103340
+      section: structure motivation
+    constraints:
+    - confidence: high
+      note: Primary text states that the 100 GeV phion range is excluded/overabundant and the 0.5-2 GeV
+        region requires large portal coupling.
+      page: null
+      reference_id: arxiv:hep-ph/0103340
+      section: Relic abundance
+    - confidence: medium
+      note: Related singlet-scalar text connects Higgs-portal coupling to direct detection near historical
+        limits and invisible Higgs width.
+      page: null
+      reference_id: arxiv:hep-ph/0011335
+      section: Phenomenology
+    observables:
+    - confidence: high
+      note: Primary text defines the phion as a self-interacting singlet scalar and quotes the halo mean-free-path
+        target.
+      page: null
+      reference_id: arxiv:hep-ph/0103340
+      section: Model and halo self-interaction
+    - confidence: high
+      note: Primary text links the large light-phion portal coupling to dominant invisible Higgs decays.
+      page: null
+      reference_id: arxiv:hep-ph/0103340
+      section: Relic abundance and Higgs decay
+    routes:
+    - confidence: high
+      note: Primary text provides the analytic path from mass/couplings to self-scattering and abundance.
+      page: null
+      reference_id: arxiv:hep-ph/0103340
+      section: Model calculations
+  extraction:
+    confidence: medium
+    extracted_by: codex
+    extraction_date: '2026-05-30'
+    extractor_name: dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Text calls the phion a stable light scalar in a collisional dark matter proposal.
+      reference_id: hep-ph/0103340
+      section: abstract/introduction
+    - page: null
+      quote_or_summary: A gauge-singlet scalar with quartic self-coupling and Higgs interaction is described
+        by a Lagrangian.
+      reference_id: hep-ph/0103340
+      section: model setup
+    - page: null
+      quote_or_summary: Thermalization, freeze-out, and overabundance regimes are calculated for different
+        masses and couplings.
+      reference_id: hep-ph/0103340
+      section: relic abundance discussion
+    unresolved_items:
+    - The stabilizing symmetry for the phion is not specified.
+    - The paper is partly a cosmological-constraint study, so classification as model-card-worthy is borderline
+      but supported by the concrete model construction and relic logic.
+    - The stabilizing symmetry of the phion is assumed rather than specified in the primary text.
+    - Modern Higgs invisible-width, direct-detection, and halo-shape likelihoods were not rerun.
+  last_updated: '2026-05-30'
+  model_family: self_interacting_scalar_dark_matter
+  model_id: hep-ph0103340_phion_self_interacting_scalar_v1
+  model_name: Phion self-interacting scalar dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: hep-ph/0103340
+      authors:
+      - M.C. Bento
+      - O. Bertolami
+      - R. Rosenfeld
+      doi: null
+      notes: Assigned SQLite full text; paper presents the phion scalar setup, Higgs coupling, and relic-abundance
+        regimes.
+      reference_id: hep-ph/0103340
+      role: extension
+      title: Cosmological Constraints on an Invisibly Decaying Higgs
+      url: null
+      year: 2000
+    - arxiv_id: hep-ph/0103340
+      authors:
+      - Bento, M. C.
+      - Bertolami, O.
+      - Rosenfeld, R.
+      doi: 10.1016/S0370-2693(01)01078-4
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:hep-ph/0103340
+      role: original_model
+      title: Cosmological constraints on an invisibly decaying Higgs
+      url: https://arxiv.org/abs/hep-ph/0103340
+      year: 2001
+    constraint_papers:
+    - arxiv_id: '1112.2582'
+      authors:
+      - Drozd, A.
+      - Grzadkowski, B.
+      - Wudka, J.
+      doi: 10.1007/JHEP04(2012)006
+      notes: Related scalar-singlet and invisible-Higgs full text resolved locally and read.
+      reference_id: arxiv:1112.2582
+      role: constraint
+      title: 'Multi-scalar-singlet extension of the standard model: the case for dark matter and an invisible
+        Higgs boson'
+      url: https://arxiv.org/abs/1112.2582
+      year: 2012
+    - arxiv_id: hep-ph/0011335
+      authors:
+      - Burgess, C. P.
+      - Pospelov, M.
+      - ter Veldhuis, T.
+      doi: 10.1016/S0550-3213(01)00513-2
+      notes: Related singlet-scalar direct-detection and invisible-Higgs full text resolved locally and
+        read.
+      reference_id: arxiv:hep-ph/0011335
+      role: constraint
+      title: 'The minimal model of nonbaryonic dark matter: a singlet scalar'
+      url: https://arxiv.org/abs/hep-ph/0011335
+      year: 2001
+    - arxiv_id: '1202.1316'
+      authors:
+      - Gonderinger, M.
+      - Lim, H.
+      - Ramsey-Musolf, M. J.
+      doi: 10.1103/PhysRevD.86.043511
+      notes: Related scalar-singlet vacuum-stability and phenomenology full text resolved locally and
+        read.
+      reference_id: arxiv:1202.1316
+      role: constraint
+      title: 'Complex scalar singlet dark matter: vacuum stability and phenomenology'
+      url: https://arxiv.org/abs/1202.1316
+      year: 2012
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: mixed
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_phi
+  - g'
+  - m_h
+  - virtual-Higgs annihilation cross section
+  - decoupling temperature
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: parameter_dependent
+  target_fraction:
+    description: Target density used in the paper.
+    name: target phion density
+    role: core
+    source_reference_ids:
+    - hep-ph/0103340
+    status: inferred
+    symbol: Omega_phi h^2
+    value: '0.3'
+  tuning_assessment: unknown
+  underproduction_risk: unknown
+robustness:
+  computational_robustness: low
+  dominant_uncertainties:
+  - unspecified stabilizing symmetry
+  - model viability depends strongly on mass and Higgs coupling
+  - dedicated small-scale structure simulations are stated to be missing
+  notes: The model identity and relic-density logic are clear in the paper; robustness is limited by parameter
+    sensitivity and missing simulations.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: suppression
+    transfer_function_shape: unknown
+  nonlinear:
+    core_or_cusp_effect: intended to soften dense halo cores
+    halo_mass_function_effect: Self-interactions are intended to address shallow halo cores and small-scale
+      CDM problems.
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: motivated by dwarf and low surface brightness galaxies
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: The phion is assumed stable in the paper; the stabilizing symmetry is not specified
+    in the assigned text.
+  symmetries:
+  - breaking: unknown
+    breaking_scale: null
+    exact_or_approximate: unknown
+    name: unspecified phion-stabilizing symmetry
+    type: unknown
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: The text gives a scalar Lagrangian with mass, quartic self-coupling, and Higgs coupling; it says
+    the phion mass should be regarded as a phenomenological parameter from a broader theory.
+  parent_frameworks:
+  - Standard Model plus gauge-singlet scalar
+  - collisional dark matter
+  - self-interacting dark matter
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: parameter
+  condition: For g' below about 1e-10, phions do not reach thermal equilibrium and can only be produced
+    by out-of-equilibrium inflaton decay.
+  extrapolation_risk: unknown
+  id: thermalization_threshold
+  source_reference_ids:
+  - hep-ph/0103340
+  status: inferred
+- applies_to: parameter
+  condition: The paper finds m_phi about 0.5-2 GeV can give Omega h^2 about 0.3 only for large g' around
+    2.5 and m_h above about 130 GeV.
+  extrapolation_risk: medium
+  id: light_phion_window
+  source_reference_ids:
+  - hep-ph/0103340
+  status: inferred
+- applies_to: parameter
+  condition: The paper finds the 50-100 GeV phion range overabundant because of a small annihilation cross
+    section.
+  extrapolation_risk: medium
+  id: heavy_phion_overabundance
+  source_reference_ids:
+  - hep-ph/0103340
+  status: inferred
+- applies_to: model
+  condition: Self-interaction strength is chosen so the halo mean free path lies between 1 kpc and 1 Mpc.
+  extrapolation_risk: unknown
+  id: halo_mean_free_path
+  source_reference_ids:
+  - hep-ph/0103340
+  status: inferred
+observables:
+- caveats:
+  - The original small-scale motivation is phenomenological and predates modern SIDM halo-shape constraints.
+  channel: small_scale_structure
+  effect_direction: morphology_change
+  environments:
+  - galaxy halos
+  - small-scale CDM structure
+  id: obs_phion_self_scattering_halo
+  key_quantities:
+  - description: Target mean free path for self-interacting dark matter in galactic halos.
+    name: halo mean free path
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 1000
+      min: 1
+      notes: Primary paper quotes 1 kpc < lambda < 1 Mpc.
+      unit: kpc
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0103340
+    status: inferred
+    symbol: lambda
+    unit: kpc
+  - description: Quartic self-coupling entering elastic scattering.
+    name: phion self-coupling
+    range: fixed jointly with m_phi by the halo mean-free-path target
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0103340
+    status: inferred
+    symbol: g
+  linked_constraints:
+  - con_phion_halo_mean_free_path
+  linked_routes:
+  - route_phion_higgs_portal_constraints
+  name: Phion self-scattering changes halo cores
+  notes: null
+  observability: medium
+  predicted_effect: Elastic phion-phion scattering is tuned so the halo mean free path lies between 1
+    kpc and 1 Mpc, softening small-scale CDM structure while remaining nondissipative.
+  redshift_range: low redshift halos
+  relevance: high
+  scale_range: kpc to Mpc halo scales
+  source_reference_ids:
+  - arxiv:hep-ph/0103340
+  - arxiv:1112.2582
+  subchannel: self-interacting dark matter halos
+- caveats:
+  - Modern Higgs invisible-width likelihoods were not rerun for this batch.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - colliders
+  id: obs_invisible_higgs_to_phions
+  key_quantities:
+  - description: Portal coupling controlling h -> phion phion and annihilation through Higgs exchange.
+    name: Higgs-phion coupling
+    range: g' about 2.5 in the primary light-phion abundance example
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0103340
+    status: inferred
+    symbol: g'
+  - description: Scalar dark matter mass.
+    name: phion mass
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 2
+      min: 0.5
+      notes: Primary paper light region with acceptable abundance and large portal coupling.
+      unit: GeV
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0103340
+    status: inferred
+    symbol: m_phi
+    unit: GeV
+  linked_constraints:
+  - con_phion_relic_higgs_window
+  - con_scalar_singlet_direct_invisible
+  linked_routes:
+  - route_phion_higgs_portal_constraints
+  name: Invisible Higgs decay to phions
+  notes: null
+  observability: high
+  predicted_effect: For sufficiently light phions, Higgs decays to phion pairs can dominate the Higgs
+    width in the large Higgs-portal-coupling region needed by the old relic-density estimate.
+  redshift_range: not_applicable
+  relevance: high
+  scale_range: collider Higgs resonance
+  source_reference_ids:
+  - arxiv:hep-ph/0103340
+  - arxiv:hep-ph/0011335
+  - arxiv:1112.2582
+  subchannel: Higgs invisible width
+constraints:
+- allowed_regions:
+  - 1 kpc < lambda < 1 Mpc in the primary halo target.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The small-scale-structure target assumes elastic, nondissipative self-interactions.
+    id: elastic_nondissipative_sidm
+    impact_if_violated: If inelastic or dissipative channels matter, the mean-free-path target is not
+      sufficient.
+    notes: null
+    scope: halo phenomenology
+    source_reference_ids:
+    - arxiv:hep-ph/0103340
+    status: assumed
+  benchmark_implications:
+  - The phion mass and quartic self-coupling must satisfy the source mean-free-path relation; not every
+    mass range in the paper is viable.
+  caveats:
+  - No modern cluster, halo-shape, or Bullet-Cluster likelihood was applied.
+  constrained_parameters:
+  - m_phi
+  - g
+  - lambda
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions: []
+  id: con_phion_halo_mean_free_path
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: SIDM halo mean-free-path target
+  notes: null
+  observable_channel: small_scale_structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0103340
+  - arxiv:1112.2582
+- allowed_regions:
+  - A 0.5-2 GeV phion can avoid overabundance only for large portal coupling and m_h above about 130 GeV
+    in the primary estimate.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The primary abundance estimate uses standard thermal freeze-out once phions thermalize.
+    id: standard_freezeout_primary
+    impact_if_violated: Nonthermal production or altered cosmology changes the abundance window.
+    notes: null
+    scope: relic abundance
+    source_reference_ids:
+    - arxiv:hep-ph/0103340
+    status: assumed
+  benchmark_implications:
+  - The light-phion benchmark predicts a dominant invisible Higgs decay mode.
+  caveats:
+  - The quoted Higgs mass assumptions predate the measured 125 GeV Higgs.
+  constrained_parameters:
+  - m_phi
+  - g'
+  - m_h
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - The primary paper states that a phion around 100 GeV is excluded/overabundant in its setup.
+  id: con_phion_relic_higgs_window
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Thermal abundance and invisible-Higgs window
+  notes: null
+  observable_channel: thermal relic abundance plus Higgs invisible decay
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0103340
+- allowed_regions:
+  - Use only as recast guidance for the phion because the primary self-interacting setup has additional
+    assumptions.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: The related singlet-scalar limits can be mapped onto the phion Higgs portal.
+    id: same_higgs_portal_mapping
+    impact_if_violated: Differences in self-interaction and multiplicity change the mapping.
+    notes: null
+    scope: recast
+    source_reference_ids:
+    - arxiv:hep-ph/0011335
+    - arxiv:1112.2582
+    - arxiv:1202.1316
+    status: assumed
+  benchmark_implications:
+  - A modern phion test should combine relic density, Higgs invisible width, and spin-independent scattering.
+  caveats:
+  - No numerical recast was performed in this batch.
+  constrained_parameters:
+  - m_phi
+  - g'
+  - sigma_SI
+  - BR_h_invisible
+  constraint_type: direct_detection
+  data_release: DAMA/CDMS historical context; later LHC and direct-detection constraints in related texts
+  excluded_regions:
+  - Related singlet-scalar studies find direct-detection and invisible-Higgs searches strongly constrain
+    Higgs-portal scalar dark matter.
+  id: con_scalar_singlet_direct_invisible
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Later scalar-singlet direct-detection and invisible-Higgs constraints
+  notes: null
+  observable_channel: nucleon scattering and Higgs invisible width
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0011335
+  - arxiv:1112.2582
+  - arxiv:1202.1316
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Measured 125 GeV Higgs mass should be imposed in any modern rerun.
+    constraint_ids:
+    - con_phion_halo_mean_free_path
+    - con_phion_relic_higgs_window
+    - con_scalar_singlet_direct_invisible
+    derived_quantities:
+    - sigma_phi_phi
+    - lambda
+    - Omega_phi h^2
+    - BR(h->phi phi)
+    - sigma_SI
+    description: Map phion mass, self-coupling, and Higgs portal coupling to halo self-scattering, relic
+      abundance, invisible Higgs width, and direct detection.
+    forward_model_chain:
+    - inputs:
+      - m_phi
+      - g
+      - halo density
+      notes: Recover the quoted mean-free-path interval.
+      outputs:
+      - sigma_phi_phi
+      - lambda
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid near the elastic threshold approximation used by the primary paper.
+    - inputs:
+      - m_phi
+      - g'
+      - m_h
+      notes: Use primary freeze-out and Higgs-width formulae.
+      outputs:
+      - annihilation rate
+      - Higgs invisible width
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for Higgs-mediated annihilation and open h -> phion pairs.
+    - inputs:
+      - sigma_SI
+      - BR(h->invisible)
+      - Omega_phi h^2
+      notes: Related singlet-scalar papers identify the necessary recast targets.
+      outputs:
+      - direct-detection and collider viability
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires modern likelihoods not run here.
+    id: route_phion_higgs_portal_constraints
+    input_parameters:
+    - m_phi
+    - g
+    - g'
+    - m_h
+    likelihoods:
+    - halo SIDM likelihood not available
+    - Higgs invisible and direct-detection likelihoods not run
+    observable_ids:
+    - obs_phion_self_scattering_halo
+    - obs_invisible_higgs_to_phions
+    required_code_resources:
+    - Higgs-portal relic code
+    - modern direct-detection limits
+    - Higgs invisible-width likelihood
+    route_status: planned
+    source_model_features:
+    - stable singlet scalar phion
+    - quartic self-interaction
+    - Higgs portal coupling
+    validation_tests:
+    - recover 1 kpc-1 Mpc mean-free-path target
+    - recover primary 0.5-2 GeV light-phion window

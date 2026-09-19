@@ -1,0 +1,435 @@
+_source:
+  shard: arXiv_src_1610_011_wds.tar
+  paper_id: '1610_04748'
+  source_member: 1610_04748.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: do_not_split_regimes_without_evidence
+    mitigation: Split into separate variants only if a downstream curator wants regime-specific model
+      entries.
+    severity: medium
+    source_reference_ids:
+    - arxiv:1610.04748
+    warning: SM-annihilation, SIMP, and forbidden channels are production regimes of the same gauged Z_3
+      model in this extraction, not automatically separate models.
+  - category: other
+    id: parameter_dependent_relic_channel
+    mitigation: Preserve the regime labels and do not infer a single universal freeze-out channel.
+    severity: medium
+    source_reference_ids:
+    - arxiv:1610.04748
+    warning: The relic-density channel and allowed mass range depend on mediator splittings, cubic coupling,
+      kinetic mixing, and unitarity conditions.
+associated_code:
+  code_summary: No associated public model code was identified from the assigned text.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The general Boltzmann equation is written assuming CP conservation in the dark sector
+      with equal phi and phi* densities.
+    id: cp_conserving_dark_sector
+    impact_if_violated: The number-density equations and semi-annihilation bookkeeping would need modification.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - arxiv:1610.04748
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: Dark photon and/or dark Higgs states are taken relatively light so that they can assist
+      thermal freeze-out through forbidden channels.
+    id: light_mediator_freezeout
+    impact_if_violated: The forbidden-channel regimes would decouple and pure SIMP or SM-annihilation
+      regimes would dominate.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - arxiv:1610.04748
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling:
+    description: Ratio m_phi/T_f used in relic-density expressions.
+    name: freeze-out variable
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: x_f
+    value: about 20 in benchmark formulas
+  cmb_relevance: low
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - dark photon and dark Higgs may remain light during freeze-out
+  - dark-sector 3->2 and forbidden reactions can contribute to number-changing freeze-out
+  phase_transitions:
+  - U(1)_d breaks to Z_3 through the dark Higgs vacuum expectation value
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - local U(1)_d remnant Z_3 scalar dark matter
+  - Z_3 SIMP forbidden-channel scalar dark matter
+  family: self_interacting_dark_matter
+  historical_origin_or_motivation: The paper develops thermal production regimes for self-interacting
+    light dark matter while keeping dark photon and dark Higgs states light enough to assist freeze-out
+    and perturbative consistency.
+  model_kind: complete_theory
+  name: Gauged Z_3 self-interacting scalar dark matter
+  short_description: A light complex scalar dark matter model stabilized by a gauged Z_3 remnant of local
+    U(1)_d, with dark photon and dark Higgs mediators enabling SM-annihilation, SIMP, and forbidden-channel
+    thermal production.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - 2->2 annihilation into SM fermion pairs
+  - 3->2 SIMP self-annihilation
+  - forbidden channels involving dark photon Z-prime
+  - forbidden channels involving dark Higgs h_1
+  - semi-annihilation channels such as phi phi -> phi* Z-prime or phi* h_1
+  dark_sector_couplings:
+  - dark gauge coupling g_d
+  - dark matter quartic coupling lambda_phi
+  - dark Higgs quartic coupling lambda_Phi
+  - dark matter cubic coupling after U(1)_d breaking
+  interaction_operators:
+  - gauge kinetic mixing V_{mu nu} B^{mu nu}
+  - scalar portal |phi|^2 |H|^2
+  - scalar portal |Phi|^2 |H|^2
+  - cubic dark-matter interaction from Phi^dagger phi^3
+  mediator_types:
+  - dark photon Z-prime
+  - dark Higgs h_1
+  - SM-like Higgs h_2
+  portals:
+  - vector
+  - higgs
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: not_applicable
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - phi phi self-scattering
+  - phi phi* self-scattering
+  standard_model_targets:
+  - SM charged leptons and fermion pairs through dark-photon kinetic mixing
+  - SM Higgs doublet through Higgs-portal mixing
+  tree_or_loop_level: tree
+model_id: 1610_04748_gauged_z3_self_interacting_scalar_dm_v1
+parameters:
+  core:
+  - description: Light complex scalar dark matter mass.
+    name: dark matter mass
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_phi
+    value: sub-GeV; scans include 10 MeV to 1 GeV and examples at 150 or 300 MeV
+  - description: U(1)_d gauge coupling.
+    name: dark gauge coupling
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: g_d
+    value: examples include 0.1, 0.3, 0.5, 1, 5, and 10 depending on channel study
+  - description: Mixing between the dark photon and hypercharge gauge boson.
+    name: gauge kinetic mixing
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: epsilon
+    value: model-dependent; values as small as about 1e-9 can maintain kinetic equilibrium in SIMP discussion
+  - description: (m_Zprime - m_phi)/m_phi for forbidden-channel studies.
+    name: dark photon mass splitting
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: Delta_Zprime
+    value: typically order 0.4 to 0.9 in displayed forbidden-channel examples
+  - description: (m_h1 - m_phi)/m_phi for forbidden-channel studies.
+    name: dark Higgs mass splitting
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: Delta_h1
+    value: typically order 0.75 to 0.9 in displayed forbidden-channel examples
+  - description: Self-scattering strength motivated by small-scale structure.
+    name: self-interaction per mass
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: sigma_self/m_phi
+    unit: cm^2/g
+    value: 0.1 to 10
+  - description: Planck target quoted by the paper.
+    name: observed relic density target
+    role: core
+    source_reference_ids: []
+    status: established
+    symbol: Omega_DM h^2
+    value: 0.1198 +/- 0.0015
+particle_content:
+  additional_dark_sector_particles:
+  - dark Higgs field with U(1)_d charge +3
+  - dark photon Z-prime
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: complex scalar dark matter phi
+    number_of_components: single_component
+    spin: '0'
+    statistics: boson
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - dark photon Z-prime
+  - dark Higgs h_1
+  - SM-like Higgs h_2 through mixing
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: approximate
+  distribution_type: thermal
+  f_of_p_or_q: thermal freeze-out treatment
+  free_streaming_length: null
+  notes: The paper solves approximate Boltzmann equations in thermal freeze-out regimes.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - Boltzmann equation for total dark matter number density
+  - relative importance of SM-annihilation, SIMP, and forbidden channels
+  - dark photon and dark Higgs masses near the dark matter mass
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out
+  - 2->2 SM-annihilation
+  - 3->2 SIMP annihilation
+  - forbidden-channel annihilation
+  - semi-annihilation to dark photon or dark Higgs
+  nonthermal_momentum_distribution: 'no'
+  notes: The same model admits several thermal production regimes; light dark photon and/or dark Higgs
+    states assist freeze-out and can allow heavier light-DM masses than the pure SIMP case.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: Thermal freeze-out is assumed with x_f about 20 in benchmark relic-density expressions and
+        kinetic equilibrium maintained through portal or dark-sector interactions.
+      page: null
+      reference_id: arxiv:1610.04748
+      section: Kinetic equilibrium and production sections
+    interactions:
+    - confidence: high
+      note: The Lagrangian includes gauge kinetic mixing, Higgs-portal couplings, dark scalar quartics,
+        and a dark cubic interaction that drives SIMP and semi-annihilation channels.
+      page: null
+      reference_id: arxiv:1610.04748
+      section: Model with gauged Z_3 symmetry
+    parameter_ranges:
+    - confidence: medium
+      note: Displayed scans use sub-GeV dark matter masses, self-scattering per mass around 0.1-10 cm^2/g,
+        and mediator mass splittings controlling forbidden channels.
+      page: null
+      reference_id: arxiv:1610.04748
+      section: Parameter-space figures and text
+    particle_content:
+    - confidence: high
+      note: The model has a charge +1 complex scalar dark matter field, a charge +3 dark Higgs, and a
+        massive dark photon after U(1)_d breaking.
+      page: null
+      reference_id: arxiv:1610.04748
+      section: Model with gauged Z_3 symmetry
+    production_mechanism:
+    - confidence: high
+      note: The paper derives Boltzmann equations for 2->2 SM-annihilation, 3->2 SIMP, and forbidden channels
+        involving Z-prime and h_1.
+      page: null
+      reference_id: arxiv:1610.04748
+      section: Thermal production sections
+    symmetries:
+    - confidence: high
+      note: The remaining discrete Z_3 symmetry from local U(1)_d breaking stabilizes the scalar dark
+        matter.
+      page: null
+      reference_id: arxiv:1610.04748
+      section: Model with gauged Z_3 symmetry
+    validity_domain:
+    - confidence: high
+      note: The paper imposes vacuum stability, perturbativity, and unitarity conditions and notes that
+        pure SIMP masses are bounded below the broader forbidden-channel range.
+      page: null
+      reference_id: arxiv:1610.04748
+      section: Self-scattering and unitarity bounds
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0015
+    extraction_date: '2026-05-31'
+    extractor_name: null
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper considers thermal production of self-interacting dark matter in gauged
+        Z_3 models.
+      reference_id: arxiv:1610.04748
+      section: Abstract
+    - page: null
+      quote_or_summary: It writes the local U(1)_d model with a charge +1 complex scalar dark matter and
+        charge +3 dark Higgs.
+      reference_id: arxiv:1610.04748
+      section: Model with gauged Z_3 symmetry
+    - page: null
+      quote_or_summary: It derives number-density equations for SM-annihilation, SIMP, and forbidden-channel
+        regimes.
+      reference_id: arxiv:1610.04748
+      section: General Boltzmann equation and production sections
+    - page: null
+      quote_or_summary: It concludes that light dark photon and dark Higgs states assist thermal production
+        while maintaining self-scattering.
+      reference_id: arxiv:1610.04748
+      section: Conclusions
+    unresolved_items:
+    - The paper studies multiple production regimes within one model; this row treats them as regimes
+      of the same gauged Z_3 model rather than separate model cards.
+  last_updated: '2026-05-31'
+  model_family: self_interacting_dark_matter
+  model_id: 1610_04748_gauged_z3_self_interacting_scalar_dm_v1
+  model_name: Gauged Z_3 self-interacting scalar dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1610.04748'
+      authors:
+      - Soo-Min Choi
+      - Yoo-Jin Kang
+      - Hyun Min Lee
+      doi: null
+      notes: Assigned SQLite full text only.
+      reference_id: arxiv:1610.04748
+      role: original_model
+      title: On thermal production of self-interacting dark matter
+      url: null
+      year: 2016
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_phi
+  - g_d
+  - epsilon
+  - dark matter cubic coupling
+  - Delta_Zprime
+  - Delta_h1
+  - self-scattering amplitude
+  - freeze-out temperature x_f
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    description: Observed dark matter relic density used for parameter-space curves.
+    name: target relic density
+    role: core
+    source_reference_ids: []
+    status: established
+    symbol: Omega_DM h^2
+    value: 0.1198 +/- 0.0015
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Thermal production mechanism is parameter-regime dependent.
+  - The card does not encode observational exclusions from the paper because this run omits constraints.
+  notes: The paper gives a renormalizable model and analytic production calculations, but a registry-quality
+    card would need expert review of each parameter regime.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    core_or_cusp_effect: large self-interaction is motivated by small-scale halo tensions
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: A local U(1)_d is spontaneously broken by a charge +3 dark Higgs field, leaving
+    a discrete Z_3 remnant that stabilizes the charge +1 complex scalar dark matter.
+  symmetries:
+  - breaking: spontaneously broken by the dark Higgs vacuum expectation value
+    breaking_scale:
+      description: Scale setting the dark photon mass m_Z' about 3 g_d v_d.
+      name: dark Higgs vacuum expectation value
+      role: core
+      source_reference_ids: []
+      status: inferred
+      symbol: v_d
+    exact_or_approximate: broken
+    name: U(1)_d
+    type: gauge
+  - breaking: unbroken remnant of local U(1)_d
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z_3
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: The text writes the dark gauge kinetic term, kinetic mixing, scalar kinetic terms, and scalar
+    potential for the dark matter scalar, dark Higgs, and Standard Model Higgs.
+  parent_frameworks:
+  - local U(1)_d dark gauge theory
+  - gauged discrete Z_3 dark matter
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats:
+  - Pure SIMP production is limited to lower masses by perturbativity and unitarity; forbidden channels
+    are used to extend the mass range.
+  condition: Use parameter points satisfying the hidden-sector vacuum-stability, perturbativity, and self-scattering
+    unitarity conditions discussed in the paper.
+  extrapolation_risk: high
+  id: gauged_z3_vacuum_and_unitarity
+  notes: null
+  source_reference_ids:
+  - arxiv:1610.04748
+  status: established
+- applies_to: production
+  caveats:
+  - If the dark sector decouples from both the Standard Model and dark radiation, the paper notes a dark-sector
+    heating issue.
+  condition: Thermal calculations assume kinetic equilibrium with either Standard Model particles through
+    portal interactions or with dark radiation in the dark sector.
+  extrapolation_risk: medium
+  id: thermal_kinetic_equilibrium
+  notes: null
+  source_reference_ids:
+  - arxiv:1610.04748
+  status: assumed

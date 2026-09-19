@@ -1,0 +1,299 @@
+_source:
+  shard: arXiv_src_1405_004_wds.tar
+  paper_id: '1405_1937'
+  source_member: 1405_1937.json
+schema_version: model_only_v0
+model_id: 1405_1937_hidden_dipole_fermion_v1
+identity:
+  name: Hidden dipole fermion dark matter
+  family: hidden_sector_dark_matter
+  aliases:
+  - fermionic hidden dipole model
+  short_description: A Dirac fermion dark matter model neutral under a kinetically mixed hidden U(1)'
+    but coupled to its gauge boson through a higher-dimensional dipole operator.
+  historical_origin_or_motivation: Designed to keep a thermal dark matter cosmology while suppressing
+    direct couplings to SM electroweak bosons.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - hidden U(1)' sector
+  - kinetic mixing portal
+  lagrangian_available: partial
+  renormalizable: 'no'
+  embedded_in_larger_framework: unknown
+  notes: The paper specifies an EFT below a cutoff scale rather than the detailed UV dynamics of the dark
+    sector.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion dark matter
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - dark Higgs field assumed to give Z' mass
+  mediators:
+  - hidden U(1)' gauge boson Z'
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Dark matter stability is assumed; the candidate is neutral under U(1)' and interacts
+    through higher-dimensional operators.
+  symmetries:
+  - name: hidden U(1)'
+    type: gauge
+    exact_or_approximate: broken
+    breaking: Z' mass arises from a dark Higgs vev
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - SM hypercharge/neutral currents through kinetic mixing
+  dark_sector_couplings:
+  - fermion dipole coupling to Z' field strength
+  mediator_types:
+  - massive hidden vector boson Z'
+  interaction_operators:
+  - dimension-five hidden dipole operator
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels:
+  - SM fermion pairs through mixed Z'
+  - Z'Z' when kinematically open
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: flavor-universal SM neutral-current couplings through mixing
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the fermionic dark matter candidate.
+    range: about 100-1000
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Z' mass
+    symbol: m_Zprime
+    description: Mass of the hidden vector mediator.
+    role: core
+    status: inferred
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Mixing between hidden U(1)' and SM hypercharge.
+    role: core
+    status: inferred
+  - name: EFT cutoff
+    symbol: Lambda
+    description: Suppression scale of the dipole operator.
+    role: core
+    status: inferred
+  derived:
+  - name: thermal relic density
+    symbol: Omega h^2
+    description: Observed relic abundance used as one constraint among model parameters.
+    value: 0.1199 +/- 0.0027
+    role: core
+    status: established
+production:
+  mechanisms:
+  - thermal freeze-out annihilation through the hidden vector portal
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - annihilation cross section into SM fermions or Z'Z'
+  - observed relic abundance constraint
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper uses micrOMEGAs to determine parameter regions compatible with the thermal relic abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - dark matter mass
+  - Z' mass
+  - kinetic mixing
+  - dipole cutoff
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - hidden U(1)' breaking by dark Higgs vev
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Thermal relic treatment; no explicit phase-space distribution is extracted.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: eft_validity
+  applies_to: EFT
+  condition: The cutoff scale should remain above the masses/energies used in annihilation calculations.
+  status: assumed
+  extrapolation_risk: high
+- id: weak_scale_focus
+  applies_to: model
+  condition: Main analysis focuses on dark matter masses of order 100-1000 GeV.
+  status: established
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: a1
+    description: The hidden U(1)' communicates with the Standard Model through kinetic mixing.
+    scope: theory
+    status: assumed
+  - id: a2
+    description: The dark Higgs is heavy enough not to significantly affect the phenomenology considered.
+    scope: theory
+    status: assumed
+  - id: a3
+    description: The candidate accounts for the observed thermal relic density in accepted parameter regions.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that relic abundance calculations were performed with micrOMEGAs; no
+    model-specific public code release is identified in the text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 1405_1937_hidden_dipole_fermion_v1
+  model_name: Hidden dipole fermion dark matter
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Hidden Dipole Dark Matter
+      authors:
+      - Aaron Pierce
+      - Zhengkang Zhang
+      year: 2014
+      arxiv_id: '1405.1937'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: Codex batch-0013 dark-matter extraction worker
+    extractor_name: gpt-5-codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract
+      page: null
+      quote_or_summary: Hidden U(1)' with kinetic mixing; fermionic dark matter uses a hidden dipole operator.
+    - reference_id: paper
+      section: Relic abundance
+      page: null
+      quote_or_summary: Observed thermal relic abundance provides a parameter constraint.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The paper assumes dark matter is neutral under U(1)' and treats a Dirac fermion with a hidden
+        dipole operator.
+      confidence: high
+      section: Abstract and model section
+    symmetries:
+    - reference_id: paper
+      note: The model relies on a hidden U(1)' portal; the fermion is neutral under U(1)' and stability
+        is taken as part of the dark matter setup.
+      confidence: medium
+      section: Model section
+    interactions:
+    - reference_id: paper
+      note: A new abelian U(1)' kinetically mixes with SM hypercharge; the fermionic dark matter couples
+        through a dipole interaction to Z'.
+      confidence: high
+      section: Model section
+    production_mechanism:
+    - reference_id: paper
+      note: The paper states the models allow a thermal cosmology and fixes one parameter using the observed
+        thermal relic abundance.
+      confidence: high
+      section: Relic abundance section
+    parameter_ranges:
+    - reference_id: paper
+      note: The focus is weak-scale dark matter, roughly 100-1000 GeV, with free parameters including
+        kinetic mixing, mass scales and Z' mass.
+      confidence: medium
+      section: Introduction and relic section
+    validity_domain:
+    - reference_id: paper
+      note: The annihilation calculation is treated as an EFT and the paper requires the cutoff scale
+        to exceed the relevant mass scale.
+      confidence: high
+      section: Relic abundance section
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - EFT validity near the cutoff
+  - unspecified UV completion
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: extrapolation
+    warning: Do not use the EFT outside the cutoff-valid region identified by the paper.
+    mitigation: Check the cutoff and mediator/dark-matter masses before reusing parameter points.
+operators:
+  renormalizable_terms:
+  - kinetic mixing between U(1)' and hypercharge
+  eft_operators:
+  - hidden dipole coupling of Dirac fermion dark matter to Z' field strength
+  contact_or_light_mediator: both
+  coupling_types:
+  - kinetic mixing
+  - dipole

@@ -1,0 +1,689 @@
+_source:
+  shard: data/astro-ph-00157.tar
+  paper_id: '2011_10606'
+  source_member: 2011_10606.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2011_10606_tmodel_noncanonical_pbh_v1
+identity:
+  name: Non-canonical T-model primordial-black-hole dark matter
+  family: primordial_black_holes
+  aliases:
+  - T-model with peaked non-canonical kinetic term
+  short_description: A T-model inflation realization of the peaked non-canonical kinetic mechanism that
+    enhances small-scale curvature perturbations and produces PBH dark matter with secondary gravitational
+    waves.
+  historical_origin_or_motivation: Motivated by the need to enhance primordial curvature perturbations
+    enough to produce PBH dark matter while remaining consistent with large-scale CMB observations.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - single-field inflation
+  - k-inflation/G-inflation inspired non-canonical kinetic term
+  lagrangian_available: 'yes'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: The action is given as integral sqrt(-g)[R/2 + X + G(phi)X - V(phi)]. T-model potential V(phi)=V0
+    tanh^(2m)(phi/sqrt(6)) with a non-canonical peak function.
+particle_content:
+  dark_matter_candidate:
+    name: primordial black holes
+    spin: macroscopic black hole
+    statistics: black_hole
+    elementary_or_composite: macroscopic
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  - inflaton perturbations
+  standard_model_extension: none
+symmetries:
+  stabilizing_mechanism: Macroscopic PBHs in the surviving mass windows are stable enough to act as dark
+    matter.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - radiation plasma through gravitational collapse
+  dark_sector_couplings: []
+  mediator_types:
+  - inflaton
+  - gravity
+  interaction_operators:
+  - G(phi) X non-canonical kinetic term
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: T-model potential
+    symbol: V(phi)
+    description: Inflationary potential used in this variant.
+    value: V0 tanh^(2m)(phi/sqrt(6))
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: T-model power
+    symbol: m
+    description: Power of the T-model potential.
+    value: model dependent
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: peak function amplitude
+    symbol: h
+    description: Controls the enhancement from G_p(phi).
+    value: model dependent
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: peak location
+    symbol: phi_p
+    description: Sets the scale at which the power spectrum is enhanced.
+    value: model dependent
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: peak width
+    symbol: w
+    description: Controls the peak width in field space.
+    value: model dependent
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: peak-shape index
+    symbol: q
+    description: Controls sharp versus broad enhanced power-spectrum peaks.
+    value: 1 or 5/4 in examples
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: PBH mass range for w models
+    symbol: M_PBH
+    description: PBH mass window that can make up almost all dark matter.
+    value: 10^-14 to 10^-12
+    unit: solar masses
+    role: core
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - inflationary enhancement of small-scale curvature perturbations followed by PBH collapse during radiation
+    domination
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - G_p peak parameters
+  - inflationary potential
+  - curvature power-spectrum amplitude
+  - collapse threshold
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The w-labeled variants produce PBHs in a mass window where the paper finds nearly all dark matter
+    can be made of PBHs.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: nonthermal
+  key_dependencies:
+  - curvature power spectrum
+  - PBH collapse threshold
+  - peak function q and phi_p
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - peaked non-canonical kinetic term during inflation
+  - enhanced small-scale scalar power
+  bbn_relevance: medium
+  cmb_relevance: high
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: approximate
+  f_of_p_or_q: PBH abundance Y_PBH(M) derived from scalar power spectrum
+  notes: The paper computes mass-dependent PBH abundance rather than a particle momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: enhanced_small_scale_power
+    small_scale_power_effect: enhancement
+  nonlinear:
+    halo_mass_function_effect: not simulated; compact PBHs behave as cold matter after formation
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: w_mass_window
+  applies_to: model
+  condition: Full-DM claim applies to w-labeled examples producing PBHs around 10^-14 to 10^-12 solar
+    masses.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: peak_parameter_control
+  applies_to: parameter
+  condition: Peak scale and shape are controlled by phi_p and q in the chosen G_p function.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: gaussian_collapse_estimate
+    description: PBH abundance is computed from the scalar power spectrum using a threshold collapse prescription.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: standard_radiation_era
+    description: PBH formation is treated during radiation domination after horizon re-entry.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text reports numerical power-spectrum and SGW calculations but does not identify
+    a public code.
+provenance:
+  model_id: 2011_10606_tmodel_noncanonical_pbh_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: '2011_10606'
+      title: Primordial black holes and secondary gravitational waves from inflationary model with a non-canonical
+        kinetic term
+      authors: []
+      year: 2020
+      arxiv_id: '2011.10606'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned batch paper used as the sole source for this model-card candidate.
+    constraint_papers:
+    - arxiv_id: '2211.14900'
+      authors:
+      - Theodoros Papanikolaou
+      - Andreas Lymperis
+      - Smaragda Lola
+      - Emmanuel N. Saridakis
+      doi: null
+      notes: Related noncanonical-inflation PBH/SIGW extension read locally.
+      reference_id: '2211_14900'
+      role: extension
+      title: Primordial black holes and gravitational waves from non-canonical inflation
+      url: https://arxiv.org/abs/2211.14900
+      year: 2023
+    - arxiv_id: '2403.07333'
+      authors:
+      - Lina Wu
+      - Jin-Ke Shen
+      - Tianjun Li
+      doi: null
+      notes: Related Higgs/no-scale PBH/SIGW extension read locally.
+      reference_id: '2403_07333'
+      role: extension
+      title: Development of generic no-scale inflation
+      url: https://arxiv.org/abs/2403.07333
+      year: 2024
+    external_databases:
+    - name: NASA ADS
+      note: Used for metadata discovery, reference counts, citation counts, and sanitized related-paper
+        shortlists.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0232_llm_assisted
+    extractor_name: codex
+    extraction_date: '2026-05-28'
+    confidence: high
+    source_chunks_or_sections: []
+    unresolved_items:
+    - No reusable likelihood or code package was identified in the assigned materials.
+    - Modern PTA/PBH constraints postdating the primary paper should be checked before final exclusions.
+    - Non-Gaussianity and collapse-threshold choices remain major unresolved theoretical systematics.
+  evidence:
+    particle_content:
+    - reference_id: '2011_10606'
+      note: The dark matter candidate is primordial black holes generated from enhanced curvature perturbations.
+      confidence: high
+      section: abstract/introduction
+    production_mechanism:
+    - reference_id: '2011_10606'
+      note: A peaked non-canonical kinetic term G_p enhances the curvature power spectrum by about seven
+        orders of magnitude at small scales, seeding PBH formation at horizon re-entry.
+      confidence: high
+      section: abstract/mechanism section
+    - reference_id: '2011_10606'
+      note: The paper applies the same mechanism to the T-model to show the inflationary potential is
+        not restricted and that T-model examples also generate PBH dark matter and SGWs.
+      confidence: high
+      section: model sections
+    parameter_ranges:
+    - reference_id: '2011_10606'
+      note: Models labeled w produce PBHs with masses around 10^-14 to 10^-12 solar masses and peak abundance
+        about one; other labels produce Earth-mass or stellar-mass PBHs.
+      confidence: high
+      section: Higgs/T-model results
+    cosmological_history:
+    - reference_id: '2011_10606'
+      note: PBHs form from overdense regions re-entering during radiation domination, with secondary gravitational
+        waves induced by the same scalar perturbations.
+      confidence: high
+      section: introduction/results
+    validity_domain:
+    - reference_id: '2011_10606'
+      note: The paper emphasizes the mechanism is adjustable through the peak location phi_p and peak-shape
+        index q, with constraints from PTA/space-based GW detectors for some variants.
+      confidence: medium
+      section: results/conclusion
+    constraints:
+    - confidence: high
+      note: Primary text discusses CMB consistency, PBH mass windows, compiled PBH constraints, and PTA/SKA/LISA/Taiji/TianQin
+        detectability.
+      page: null
+      reference_id: '2011_10606'
+      section: results/discussion
+    - confidence: medium
+      note: Related paper supports PBH abundance constraints from evaporation, microlensing, GW, and CMB
+        probes.
+      page: null
+      reference_id: '2211_14900'
+      section: PBH section
+    observables:
+    - confidence: high
+      note: Primary text states the noncanonical kinetic peak enhances small-scale scalar power, forms
+        PBH dark matter, and induces secondary gravitational waves.
+      page: null
+      reference_id: '2011_10606'
+      section: abstract/introduction
+    - confidence: medium
+      note: Related noncanonical-inflation paper supports the same PBH/SIGW observable class and compiled
+        PBH constraint overlays.
+      page: null
+      reference_id: '2211_14900'
+      section: PBH/GW sections
+    routes:
+    - confidence: high
+      note: Primary text provides the forward chain from inflation parameters to curvature spectrum, PBH
+        abundance, and induced GW spectrum.
+      page: null
+      reference_id: '2011_10606'
+      section: method/results
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - collapse threshold
+  - peak-function tuning
+  - PBH abundance limits
+  validation_status: partially_validated
+agent_failure_modes:
+  warnings:
+  - id: variant_dependent_abundance
+    severity: medium
+    category: assumption_mismatch
+    warning: Only specific parameter labels produce PBHs that nearly saturate dark matter; other variants
+      target Earth- or stellar-mass PBHs and can face different limits.
+    source_reference_ids: []
+observables:
+- caveats:
+  - PBH abundance is exponentially sensitive to the curvature-power amplitude and collapse threshold.
+  - Current PBH constraints must be applied to the full mass function, not only peak masses.
+  channel: black_holes
+  effect_direction: enhancement
+  environments:
+  - early universe
+  - PBH dark matter mass windows
+  id: pbh_dark_matter_abundance_peak
+  key_quantities:
+  - name: peak amplitude
+    role: core
+    source_reference_ids:
+    - '2011_10606'
+    status: inferred
+    symbol: h
+  - name: peak location
+    role: core
+    source_reference_ids:
+    - '2011_10606'
+    status: inferred
+    symbol: phi_p
+  - name: peak width
+    role: core
+    source_reference_ids:
+    - '2011_10606'
+    status: inferred
+    symbol: w
+  - name: peak index
+    range: 1 or 5/4 in examples
+    role: core
+    source_reference_ids:
+    - '2011_10606'
+    status: inferred
+    symbol: q
+  - name: PBH abundance fraction
+    role: derived
+    source_reference_ids:
+    - '2011_10606'
+    - '2211_14900'
+    status: inferred
+    symbol: f_PBH
+  - name: PBH mass
+    range: asteroid-mass and other windows discussed in primary paper
+    role: derived
+    source_reference_ids:
+    - '2011_10606'
+    status: inferred
+    symbol: M_PBH
+    unit: solar masses or grams depending on convention
+  linked_constraints:
+  - pbh_abundance_observational_windows
+  - cmb_inflation_consistency
+  linked_routes:
+  - inflation_peak_to_pbh_sgw_route
+  name: PBH dark matter abundance from noncanonical T-model inflation
+  notes: null
+  observability: high
+  predicted_effect: A peaked noncanonical kinetic function enhances the small-scale curvature power spectrum;
+    after horizon reentry, overdense radiation-era regions collapse into PBHs whose abundance can approach
+    the full dark matter density in allowed mass windows.
+  redshift_range: formation during radiation domination after small-scale horizon reentry
+  relevance: critical
+  scale_range: comoving scales selected by phi_p; PBH mass windows from asteroid to stellar examples
+  source_reference_ids:
+  - '2011_10606'
+  - '2211_14900'
+  subchannel: PBH mass function
+- caveats:
+  - Detectability depends strongly on peak width and benchmark mass scale.
+  - The primary paper predates some newer PTA datasets; later extensions should be treated separately.
+  channel: gravitational_waves
+  effect_direction: enhancement
+  environments:
+  - PTA experiments
+  - SKA
+  - LISA
+  - Taiji
+  - TianQin
+  id: scalar_induced_gw_background
+  key_quantities:
+  - name: curvature power spectrum
+    role: derived
+    source_reference_ids:
+    - '2011_10606'
+    status: inferred
+    symbol: P_zeta
+  - name: GW energy density
+    role: derived
+    source_reference_ids:
+    - '2011_10606'
+    - '2211_14900'
+    status: inferred
+    symbol: Omega_GW(f)
+  - name: peak frequency
+    range: nHz for stellar-mass examples, mHz for lighter PBH windows, and other frequencies set by the
+      PBH scale
+    role: core
+    source_reference_ids:
+    - '2011_10606'
+    status: inferred
+    symbol: f
+    unit: Hz
+  linked_constraints:
+  - pta_lisa_ska_sgw_sensitivity
+  linked_routes:
+  - inflation_peak_to_pbh_sgw_route
+  name: Scalar-induced gravitational-wave background from noncanonical T-model inflation
+  notes: null
+  observability: high
+  predicted_effect: The same enhanced scalar perturbations that seed PBHs induce a stochastic gravitational-wave
+    background at second order, with frequencies tied to the PBH mass scale and potentially testable by
+    PTA, SKA, LISA, Taiji, or TianQin depending on the benchmark.
+  redshift_range: radiation era source with present-day stochastic background
+  relevance: critical
+  scale_range: PTA to space-interferometer frequency bands depending on PBH mass
+  source_reference_ids:
+  - '2011_10606'
+  - '2403_07333'
+  subchannel: secondary stochastic gravitational waves
+constraints:
+- allowed_regions:
+  - The noncanonical peaked mechanism is constructed so large-scale CMB observables remain compatible
+    while small-scale power is enhanced.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The peak function enhances small scales without spoiling CMB-scale scalar tilt and tensor
+      bounds.
+    id: separated_large_and_small_scales
+    impact_if_violated: If the peak back-reacts on CMB scales, the benchmark fails before PBH constraints
+      apply.
+    notes: null
+    scope: inflation model building
+    source_reference_ids:
+    - '2011_10606'
+    status: assumed
+  benchmark_implications:
+  - Large-scale CMB consistency is a prerequisite before PBH/SIGW predictions are meaningful.
+  caveats:
+  - No full sampling likelihood is provided in the primary paper.
+  - Need current CMB constraints for updated fits.
+  constrained_parameters:
+  - n_s
+  - r
+  - large-scale P_zeta
+  - inflation potential parameters
+  constraint_type: cosmological
+  data_release: Planck 2018 constraints as quoted in primary paper
+  excluded_regions:
+  - Canonical Higgs inflation without the noncanonical modification is described as excluded by CMB tensor
+    constraints in the primary paper.
+  id: cmb_inflation_consistency
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: CMB large-scale inflation constraints for T-model inflation
+  notes: null
+  observable_channel: cmb_inflation
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '2011_10606'
+- allowed_regions:
+  - The primary paper identifies mass windows, especially asteroid-mass windows, where PBHs can make up
+    nearly all dark matter in selected benchmarks.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The PBH abundance calculation uses an assumed collapse threshold and treatment of the
+      curvature peak width.
+    id: collapse_threshold_model
+    impact_if_violated: Changing the threshold or non-Gaussianity can shift f_PBH by orders of magnitude.
+    notes: null
+    scope: PBH abundance calculation
+    source_reference_ids:
+    - '2011_10606'
+    - '2211_14900'
+    status: assumed
+  benchmark_implications:
+  - Benchmark viability requires overlaying the full predicted PBH mass function on observational constraints.
+  caveats:
+  - The primary paper uses compiled constraints rather than releasing a likelihood.
+  - Extended mass functions and non-Gaussianity need separate treatment.
+  constrained_parameters:
+  - f_PBH
+  - M_PBH
+  - mass function width
+  - collapse threshold
+  constraint_type: astrophysical
+  data_release: Compiled PBH constraints used in primary/related literature
+  excluded_regions:
+  - PBH mass functions overlapping excluded evaporation, microlensing, gravitational-wave, or CMB regions
+    are disfavored.
+  id: pbh_abundance_observational_windows
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: PBH abundance constraints from evaporation, microlensing, GW, and CMB probes
+  notes: null
+  observable_channel: pbh_abundance
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '2011_10606'
+  - '2211_14900'
+- allowed_regions:
+  - mHz induced-GW peaks associated with lighter PBH windows can be detectable by LISA/Taiji/TianQin;
+    sharp stellar-mass peaks can be tested by SKA in the primary discussion.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: Enhanced scalar perturbations source gravitational waves at second order during radiation
+      domination.
+    id: second_order_induced_gw
+    impact_if_violated: Incorrect source modeling changes the predicted stochastic background.
+    notes: null
+    scope: induced-GW calculation
+    source_reference_ids:
+    - '2011_10606'
+    status: assumed
+  benchmark_implications:
+  - The induced-GW spectrum provides an independent test of PBH-generating small-scale scalar power.
+  caveats:
+  - Detector curves and PTA data should be updated for a modern recast.
+  - Sensitivity statements depend on benchmark peak width.
+  constrained_parameters:
+  - Omega_GW(f)
+  - peak frequency
+  - peak width
+  - PBH mass scale
+  constraint_type: astrophysical
+  data_release: EPTA/SKA/LISA/Taiji/TianQin sensitivity curves as quoted in primary paper
+  excluded_regions:
+  - The primary paper states broad stellar-mass induced-GW peaks are excluded by EPTA data, while some
+    sharp/broad peaks fall beyond or within planned detector reach.
+  id: pta_lisa_ska_sgw_sensitivity
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: PTA, SKA, LISA/Taiji/TianQin sensitivity to induced gravitational waves
+  notes: null
+  observable_channel: gravitational_waves
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '2011_10606'
+  - '2403_07333'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The analytic/numerical route is clear, but no reusable code artifact or likelihood bundle
+      was found in the assignment.
+    caveats:
+    - PBH abundance is highly sensitive to non-Gaussianity and collapse-threshold assumptions.
+    - Update PTA and PBH constraints before modern exclusion claims.
+    constraint_ids:
+    - cmb_inflation_consistency
+    - pbh_abundance_observational_windows
+    - pta_lisa_ska_sgw_sensitivity
+    derived_quantities:
+    - P_zeta(k)
+    - PBH mass function
+    - f_PBH(M)
+    - Omega_GW(f)
+    - CMB-scale n_s and r
+    description: Forward route from noncanonical T-model inflation parameters to PBH abundance and scalar-induced
+      GW observables.
+    forward_model_chain:
+    - inputs:
+      - potential parameters
+      - G_p peak parameters
+      notes: Must resolve the peak region accurately.
+      outputs:
+      - inflationary trajectory
+      - slow-roll/ultra-slow-roll intervals
+      step_id: inflation_background
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Valid within the effective single-field noncanonical model.
+    - inputs:
+      - inflation background
+      - perturbation equation
+      notes: Validate CMB-scale and small-scale amplitudes.
+      outputs:
+      - P_zeta(k)
+      step_id: curvature_spectrum
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Requires numerical perturbation evolution near enhanced peak.
+    - inputs:
+      - P_zeta(k)
+      - collapse threshold
+      notes: Overlay evaporation/microlensing/GW/CMB constraints.
+      outputs:
+      - beta(M)
+      - f_PBH(M)
+      step_id: pbh_abundance
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Sensitive to threshold, window function, and non-Gaussianity assumptions.
+    - inputs:
+      - P_zeta(k)
+      - radiation-era transfer functions
+      notes: Compare to PTA/SKA/LISA/Taiji/TianQin curves.
+      outputs:
+      - Omega_GW(f)
+      step_id: induced_gw
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Second-order induced-GW approximation in radiation domination.
+    id: inflation_peak_to_pbh_sgw_route
+    input_parameters:
+    - inflation potential parameters
+    - h
+    - phi_p
+    - w
+    - q
+    - collapse threshold
+    - reheating/radiation-era assumptions
+    likelihoods:
+    - Planck/BICEP inflation likelihoods
+    - PBH abundance constraint compendium
+    - PTA and space-interferometer sensitivity curves
+    observable_ids:
+    - pbh_dark_matter_abundance_peak
+    - scalar_induced_gw_background
+    required_code_resources:
+    - inflation perturbation solver
+    - PBH mass-function module
+    - induced-GW calculator
+    route_status: planned
+    source_model_features:
+    - noncanonical kinetic peak
+    - T-model inflation
+    - enhanced small-scale curvature perturbations
+    - radiation-era PBH collapse
+    validation_tests:
+    - reproduce primary benchmark P_zeta peaks
+    - reproduce f_PBH curves for Higgs/T-model benchmarks
+    - reproduce primary induced-GW frequency-band statements

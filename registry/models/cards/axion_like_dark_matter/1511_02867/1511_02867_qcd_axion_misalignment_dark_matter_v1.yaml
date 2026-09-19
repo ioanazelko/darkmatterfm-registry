@@ -1,0 +1,303 @@
+_source:
+  shard: arXiv_src_1511_006_wds.tar
+  paper_id: '1511_02867'
+  source_member: 1511_02867.json
+schema_version: model_only_v0
+model_id: 1511_02867_qcd_axion_misalignment_dark_matter_v1
+identity:
+  name: QCD axion misalignment dark matter
+  family: axion_like_dark_matter
+  aliases: []
+  short_description: The QCD axion with mass and couplings fixed by f_a, produced nonthermally by misalignment
+    and evaluated with improved finite-temperature QCD inputs for relic abundance.
+  historical_origin_or_motivation: Extracted from the assigned paper text only.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - Peccei-Quinn solution to strong CP problem
+  - QCD chiral effective theory
+  lagrangian_available: 'yes'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: unknown
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - axion
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The axion is a very weakly coupled pseudo-Goldstone boson of Peccei-Quinn symmetry;
+    cosmological stability is implied by tiny couplings.
+  symmetries:
+  - name: Peccei-Quinn shift symmetry
+    type: shift
+    exact_or_approximate: broken
+    breaking: QCD anomaly generates the axion potential and mass.
+    breaking_scale:
+      name: axion decay constant
+      symbol: f_a
+      description: PQ breaking scale controlling axion mass and couplings.
+      role: core
+      status: inferred
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  standard_model_targets:
+  - gluons/topological charge
+  - photons
+  - nucleons
+  dark_sector_couplings:
+  - non-derivative coupling to QCD topological charge
+  - model-dependent derivative couplings
+  mediator_types:
+  - axion
+  interaction_operators:
+  - a G tilde G / f_a
+  - axion-photon coupling
+  - axion-nucleon couplings
+  annihilation_channels: []
+  decay_channels:
+  - very suppressed axion decays, not central to relic-density discussion
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: axion decay constant
+    symbol: f_a
+    description: Scale controlling QCD axion mass and couplings.
+    range: few 10^8 GeV to few 10^17 GeV astrophysical window quoted in the paper
+    unit: GeV
+    role: core
+    status: inferred
+  - name: axion mass
+    symbol: m_a
+    description: Paper reports m_a = 5.70(6)(4) micro-eV times 10^12 GeV/f_a.
+    value: 5.70(6)(4) micro-eV * (10^12 GeV/f_a)
+    unit: eV
+    role: derived
+    status: inferred
+  - name: initial misalignment angle
+    symbol: theta_0
+    description: Initial axion field angle for misalignment production.
+    role: core
+    status: inferred
+  - name: temperature dependence of axion mass
+    description: Finite-temperature potential and mass affect the relic abundance calculation.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - nonthermal misalignment production
+  - possible topological-defect contribution if PQ symmetry is restored after inflation
+  thermal_equilibrium_with_standard_model: 'no'
+  abundance_set_by:
+  - f_a
+  - initial misalignment angle
+  - finite-temperature axion mass and potential
+  - PQ breaking before or after inflation
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper updates allowed axion parameter space using finite-temperature QCD inputs and notes
+    topological-defect uncertainties.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: nonthermal
+  key_dependencies:
+  - f_a
+  - theta_0
+  - finite-temperature QCD potential
+  - standard cosmological evolution
+  - topological defect contribution when PQ breaks after inflation
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - Peccei-Quinn symmetry breaking
+  - QCD crossover
+  topological_defects:
+  - axion strings and domain walls possible if PQ breaks after inflation
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  notes: Misalignment yields cold, low-momentum axions; post-inflation defects add uncertainty.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: qcd_axion_window
+  applies_to: parameter
+  condition: Applies to QCD axion scenarios where the mass/couplings are controlled by f_a and finite-temperature
+    QCD determines the onset of oscillations.
+  valid_range: f_a in the astrophysically allowed window quoted by the paper; relic-abundance bounds are
+    cosmology dependent
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Topological defect contributions remain uncertain.
+  - High-temperature instanton extrapolation is flagged as unreliable by the paper.
+assumptions:
+  global:
+  - id: standard_cosmology
+    description: The relic-density calculation summarized here assumes standard cosmological evolution
+      unless otherwise varied in the paper.
+    scope: cosmological_history
+    status: assumed
+  - id: misalignment_initial_condition
+    description: The axion abundance depends on the initial misalignment angle or on averaging over angles
+      when PQ is restored after inflation.
+    scope: production
+    status: inferred
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code was extracted from the assigned text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 1511_02867_qcd_axion_misalignment_dark_matter_v1
+  model_name: QCD axion misalignment dark matter
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: The QCD axion, precisely
+      authors: []
+      year: 2015
+      arxiv_id: '1511.02867'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0013
+    extractor_name: gpt-5.5_dark_matter_model_worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract
+      page: null
+      quote_or_summary: The paper reconstructs the QCD axion potential, mass, photon coupling, nucleon
+        couplings, and finite-temperature behavior.
+    - reference_id: primary
+      section: relic abundance
+      page: null
+      quote_or_summary: Misalignment production can produce cold axion dark matter; the calculation depends
+        on f_a, theta_0, and the finite-temperature axion potential.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The paper describes the QCD axion as an extra pseudo-Goldstone boson whose mass and couplings
+        are controlled by f_a.
+      confidence: high
+      section: introduction
+      page: null
+    symmetries:
+    - reference_id: primary
+      note: The axion solution shifts away the QCD topological angle; the QCD anomaly generates the axion
+        potential and mass.
+      confidence: high
+      section: introduction
+      page: null
+    interactions:
+    - reference_id: primary
+      note: It reconstructs the axion potential, mass, photon coupling, and nucleon couplings from chiral
+        perturbation theory and lattice QCD.
+      confidence: high
+      section: abstract/results
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: It states nonthermal misalignment can generate a suitable abundance of cold axions and computes
+        the relic density dependence.
+      confidence: high
+      section: relic abundance section
+      page: null
+    cosmological_history:
+    - reference_id: primary
+      note: The paper distinguishes PQ breaking before versus after inflation and discusses topological-defect
+        uncertainties.
+      confidence: medium
+      section: relic abundance section
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: The paper quotes astrophysical bounds on f_a between few 10^8 and few 10^17 GeV and gives
+        m_a proportional to 1/f_a.
+      confidence: high
+      section: introduction/results
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: High-temperature instanton results are described as unreliable below about 10^6 GeV, affecting
+        relic abundance uncertainty.
+      confidence: medium
+      section: finite temperature section
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+robustness:
+  overall: high
+  theory_robustness: high
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Fields not stated in the source paper are left unknown.
+  validation_status: expert_judgment_only
+  notes: Machine-extracted candidate row; no human or expert review.
+agent_failure_modes:
+  warnings:
+  - id: no_external_canonicalization
+    severity: medium
+    category: other
+    warning: Do not merge or rename this candidate using information outside the source paper.
+  - id: model_scope
+    severity: medium
+    category: other
+    warning: This row captures only model-card content supported by the assigned paper text.

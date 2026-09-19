@@ -1,0 +1,383 @@
+_source:
+  shard: arXiv_src_1906_029_wds.tar
+  paper_id: '1906_09269'
+  source_member: 1906_09269.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: phase_boundary_sensitive
+    mitigation: Check the rate hierarchy before classifying a benchmark as coscattering.
+    severity: medium
+    source_reference_ids: []
+    warning: The model only lies in the coscattering regime for a hierarchy of rates; nearby parameter
+      choices become WIMP-like or hidden-annihilation dominated.
+  - category: extrapolation
+    id: qcd_transition_uncertainty
+    mitigation: Treat relic targets near T_f around 100-200 MeV with additional uncertainty.
+    severity: low
+    source_reference_ids: []
+    warning: The text notes theoretical uncertainty when freeze-out is near the QCD phase transition.
+associated_code:
+  code_summary: The assigned text does not identify public model-specific code for the coupled Boltzmann
+    solutions.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: Momentum transfer through electron scattering remains efficient until after coscattering
+      freezes out.
+    id: efficient_momentum_transfer
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: S decays or interacts with electrons sufficiently to stay in equilibrium during freeze-out
+      without controlling the relic density.
+    id: rapid_s_equilibration
+    scope: production
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling:
+    description: Temperature where inelastic scattering becomes slower than Hubble.
+    name: coscattering freeze-out temperature
+    status: inferred
+    symbol: T_f
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - thermal relic with exponentially small coupling
+  - electron coscattering dark matter
+  family: freeze_out_dark_matter
+  historical_origin_or_motivation: The paper introduces coscattering as a thermal-relic target on similar
+    footing to WIMPs but with much smaller visible couplings.
+  model_kind: simplified_model
+  name: Electron-coscattering scalar thermal relic
+  short_description: A light scalar dark matter model in which the relic density is set by inelastic scattering
+    against electrons into a heavier dark partner, allowing exponentially smaller Standard Model couplings
+    than ordinary annihilation freeze-out.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - dark partner pair to S S
+  - dark matter pair to e+ e- through off-shell dark photon when active
+  dark_sector_couplings:
+  - dark gauge coupling g_d
+  - kinetic mixing epsilon
+  - scalar mixing m^2
+  - hidden annihilation coupling lambda_S
+  - small S-electron Yukawa y_eS
+  decay_channels:
+  - S decays to the thermal bath through a small electron Yukawa
+  interaction_operators:
+  - kinetic mixing between photon and dark photon
+  - mass mixing between scalar dark matter and partner
+  - quartic partner annihilation to S S
+  mediator_types:
+  - dark photon
+  - mixed scalar partner
+  - real scalar
+  portals:
+  - vector
+  scattering:
+    elastic: unknown
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    spin_dependence: not_applicable
+    velocity_dependence: unknown
+  standard_model_targets:
+  - electrons
+  - positrons
+  - other relativistic SM states in generalizations
+  tree_or_loop_level: tree
+model_id: 1906_09269_electron_coscattering_scalar_dm_v1
+parameters:
+  core:
+  - description: Mass of the light complex scalar dark matter state.
+    name: dark matter mass
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_phi
+  - description: Mass of the heavier scalar partner reached by inelastic scattering.
+    name: partner mass
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_eta
+  - description: Mass of the kinetically mixed dark photon.
+    name: dark photon mass
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_A
+  - description: Mass of the lighter real scalar produced by partner annihilation.
+    name: real scalar mass
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_S
+  - description: The benchmark discussion takes g_d of order one.
+    name: dark gauge coupling
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: g_d
+    value: O(1)
+  - description: Controls coupling to electrons through the dark photon.
+    name: kinetic mixing
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: epsilon
+  - description: Mixing between the dark matter scalar and heavier partner, approximately m^2/m_eta^2
+      in the text.
+    name: scalar mixing angle
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: theta
+  - description: Controls partner annihilation to S S.
+    name: hidden annihilation coupling
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: lambda_S
+  - description: Chosen small enough not to control relic density but large enough to keep S in equilibrium
+      during freeze-out.
+    name: S-electron Yukawa
+    range: 1e-9-1e-4
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: y_eS
+particle_content:
+  additional_dark_sector_particles:
+  - heavier scalar dark partner mixed with the dark matter scalar
+  - dark photon A_d
+  - lighter real scalar S
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: complex scalar dark matter charged under U(1)_d
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - heavier scalar partner close enough for inelastic coscattering
+  long_lived_particles: []
+  mediators:
+  - kinetically mixed dark photon
+  - heavier scalar partner
+  - real scalar S
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - heavier scalar partner
+  - real scalar S
+phase_space:
+  average_momentum_relative_to_thermal: thermal before coscattering freeze-out
+  distribution_function_available: approximate
+  distribution_type: thermal
+  notes: The model assumes kinetic equilibrium with the SM bath during the relevant freeze-out calculation.
+production:
+  abundance_set_by:
+  - freeze-out of e + DM -> e + partner
+  - rapid partner annihilation to S S
+  - standard radiation-dominated expansion
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: 'no'
+  mechanisms:
+  - thermal coscattering freeze-out
+  - inelastic scattering against electrons followed by partner annihilation
+  nonthermal_momentum_distribution: 'no'
+  notes: The key claim is that the correct relic density is obtained with SM couplings exponentially smaller
+    than in annihilation freeze-out because electrons are much more abundant than nonrelativistic DM at
+    freeze-out.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The paper seeks thermal relics that begin in equilibrium, track the photon temperature, and
+        follow standard cosmology.
+      page: null
+      reference_id: primary
+      section: introduction
+    interactions:
+    - confidence: high
+      note: Coscattering e + DM -> e + partner is generated by scalar mixing; the partner annihilates
+        to S S and S decays to electrons.
+      page: null
+      reference_id: primary
+      section: example model
+    parameter_ranges:
+    - confidence: medium
+      note: The benchmark hierarchy includes m_A > m_partner > m_S > m_DM and couplings g_d = O(1), small
+        epsilon, and lambda_S controlling the hidden annihilation.
+      page: null
+      reference_id: primary
+      section: example model
+    particle_content:
+    - confidence: high
+      note: The example model uses complex scalar dark matter charged under U(1)_d, a heavier mixed scalar
+        partner, a dark photon, and a lighter real scalar S.
+      page: null
+      reference_id: primary
+      section: example model
+    production_mechanism:
+    - confidence: high
+      note: The relic density is set when inelastic scattering of DM against electrons falls out of equilibrium
+        after ordinary annihilation is too feeble.
+      page: null
+      reference_id: primary
+      section: coscattering vs annihilations
+    symmetries:
+    - confidence: high
+      note: The dark matter scalar is charged under U(1)_d and couples to the SM through a kinetically
+        mixed dark photon.
+      page: null
+      reference_id: primary
+      section: example model
+    validity_domain:
+    - confidence: high
+      note: The coscattering phase requires electron scattering to freeze out after direct annihilation
+        to SM states and before the partner's annihilation to S S.
+      page: null
+      reference_id: primary
+      section: example model
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0019
+    extraction_date: '2026-05-31'
+    extractor_name: dark_matter_model_gpt55_rolling_batch_worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper introduces DM produced by inelastic scattering against electrons as
+        a thermal relic target.
+      reference_id: primary
+      section: introduction
+    - page: null
+      quote_or_summary: A scalar DM model with dark photon, heavier partner, and real scalar S realizes
+        coscattering.
+      reference_id: primary
+      section: example model
+    - page: null
+      quote_or_summary: The paper concludes coscattering reproduces the relic density with exponentially
+        smaller SM coupling.
+      reference_id: primary
+      section: conclusions
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: freeze_out_dark_matter
+  model_id: 1906_09269_electron_coscattering_scalar_dm_v1
+  model_name: Electron-coscattering scalar thermal relic
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: high
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1906.09269'
+      authors:
+      - Raffaele Tito D'Agnolo
+      - Duccio Pappadopulo
+      - Joshua T. Ruderman
+      - Po-Jen Wang
+      doi: null
+      notes: Only the assigned SQLite full text was used.
+      reference_id: primary
+      role: original_model
+      title: Thermal Relic Targets with Exponentially Small Couplings
+      url: null
+      year: 2019
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_phi
+  - mass splitting to partner
+  - electron coscattering cross section
+  - partner annihilation rate to S S
+  - freeze-out temperature
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Exact phase boundaries depend on coupled Boltzmann equations and thermal assumptions.
+  overall: high
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: A dark U(1)_d charge stabilizes the lightest charged scalar in the simplified
+    model.
+  symmetries:
+  - breaking: dark photon mass can arise from a dark Higgs
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: U(1)_d
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper writes the scalar and dark-photon terms needed for the benchmark model and states that
+    the mechanism can extend any WIMP-like model.
+  parent_frameworks:
+  - light thermal relic dark matter
+  - dark photon portal
+  - coscattering
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: cosmological_history
+  caveats: []
+  condition: DM begins in thermal equilibrium, tracks the photon temperature, and follows standard cosmology.
+  extrapolation_risk: medium
+  id: standard_thermal_history
+  source_reference_ids: []
+  status: assumed
+- applies_to: production
+  caveats: []
+  condition: Coscattering off electrons freezes out after ordinary annihilation to SM states is too feeble
+    and before partner annihilation to S S freezes out.
+  extrapolation_risk: medium
+  id: coscattering_phase_hierarchy
+  source_reference_ids: []
+  status: assumed
+- applies_to: model
+  caveats: []
+  condition: The concrete benchmark uses m_A > m_partner > m_S > m_DM with small scalar mixing.
+  extrapolation_risk: medium
+  id: benchmark_mass_hierarchy
+  source_reference_ids: []
+  status: assumed

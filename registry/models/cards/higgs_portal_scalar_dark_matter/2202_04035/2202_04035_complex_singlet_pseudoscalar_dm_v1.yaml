@@ -1,0 +1,851 @@
+_source:
+  shard: arXiv_src_2202_026_wds.tar
+  paper_id: '2202_04035'
+  source_member: 2202_04035.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: other
+    id: extension_not_origin
+    mitigation: Use the provenance role as an extension.
+    severity: medium
+    source_reference_ids: []
+    warning: This paper develops NLO calculations in an existing CxSM dark matter phase; do not cite it
+      as the original model proposal.
+  - category: assumption_mismatch
+    id: scenario_dependence
+    mitigation: Keep Higgs-index statements tied to the chosen scenario.
+    severity: medium
+    source_reference_ids: []
+    warning: The h_125 -> A A calculation is split between scenario I and scenario II depending on which
+      CP-even scalar is SM-like.
+associated_code:
+  caveats:
+  - No paper-specific source repository is identified in the assigned text.
+  code_summary: The paper reports use of ScannerS, micrOMEGAs, FeynRules, FeynArts, FeynCalc, LoopTools,
+    and SARAH for scans and NLO calculations.
+  has_associated_code: partial
+  packages_or_modules:
+  - availability: public
+    citation_reference_ids:
+    - '2202_04035'
+    maintained: unknown
+    name: ScannerS
+    notes: Used for parameter point generation and checks.
+    purpose:
+    - other
+    relationship_to_model: related_but_not_model_specific
+    resource_type: package
+    url: null
+    version: null
+  - availability: public
+    citation_reference_ids:
+    - '2202_04035'
+    maintained: unknown
+    name: micrOMEGAs
+    notes: Used through ScannerS for relic density.
+    purpose:
+    - compute_relic_density
+    relationship_to_model: related_but_not_model_specific
+    resource_type: package
+    url: null
+    version: null
+  - availability: public
+    citation_reference_ids:
+    - '2202_04035'
+    maintained: unknown
+    name: FeynRules/FeynArts/FeynCalc/LoopTools/SARAH
+    notes: Used for independent NLO calculations according to the paper.
+    purpose:
+    - define_lagrangian
+    - compute_cross_sections
+    - other
+    relationship_to_model: related_but_not_model_specific
+    resource_type: package
+    url: null
+    version: null
+  primary_code_role: other
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: partial
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: 'no'
+    description: The A -> -A symmetry remains unbroken by v_A=0.
+    id: unbroken_a_parity
+    impact_if_violated: A would not be stable dark matter.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '2202_04035'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Relic density is evaluated with ScannerS interfaced to micrOMEGAs.
+    id: thermal_relic_tooling
+    impact_if_violated: Thermal abundance interpretation would change.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '2202_04035'
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - CxSM dark matter phase
+  - complex singlet extension with A dark matter
+  family: higgs_portal_scalar_dark_matter
+  historical_origin_or_motivation: The paper develops the CxSM dark matter phase by calculating one-loop
+    electroweak corrections to Higgs invisible decay into two dark matter particles.
+  model_kind: complete_theory
+  name: Complex singlet scalar model with stable pseudoscalar A dark matter
+  short_description: A complex singlet extension of the Standard Model in the phase where the pseudoscalar
+    component A is stabilized by an unbroken Z2 symmetry and couples through the Higgs/singlet scalar
+    sector.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - A A annihilation channels handled by micrOMEGAs
+  cp_structure: A is the CP-odd stable scalar; h1 and h2 are CP-even scalar mixtures.
+  dark_sector_couplings:
+  - lambda_2 Phi^dagger Phi |S|^2
+  - d2 |S|^4
+  - b1 S^2 soft term
+  decay_channels: []
+  flavor_structure: none introduced beyond the SM
+  interaction_operators:
+  - Phi^dagger Phi |S|^2
+  - '|S|^4'
+  - h_i A A
+  mediator_types:
+  - CP-even Higgs/singlet scalars
+  portals:
+  - higgs
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: strong
+  self_scattering_channels:
+  - singlet quartic self-coupling d2
+  standard_model_targets:
+  - SM Higgs doublet
+  - 125 GeV Higgs boson
+  tree_or_loop_level: both
+model_id: 2202_04035_complex_singlet_pseudoscalar_dm_v1
+parameters:
+  core:
+  - description: Mass of the stable pseudoscalar singlet component.
+    name: dark matter mass
+    notes: null
+    range: scan-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_A
+    unit: GeV
+    value: null
+  - description: VEV of the CP-even singlet component.
+    name: singlet VEV
+    notes: null
+    range: input parameter
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: v_S
+    unit: GeV
+    value: null
+  - description: Mixing angle between H and S CP-even scalars.
+    name: scalar mixing angle
+    notes: null
+    range: scan-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: alpha
+    unit: null
+    value: null
+  - description: Masses of the two CP-even scalars, one of which is the 125 GeV Higgs.
+    name: CP-even scalar masses
+    notes: null
+    range: scenario I or scenario II
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_h1, m_h2
+    unit: GeV
+    value: null
+  - description: Higgs-portal coupling in the CxSM potential.
+    name: portal coupling
+    notes: null
+    range: scan-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: lambda_2
+    unit: null
+    value: null
+  - description: Quartic coupling of the complex singlet.
+    name: singlet quartic coupling
+    notes: null
+    range: enters NLO invisible decay and scalar potential
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: d2
+    unit: null
+    value: null
+particle_content:
+  additional_dark_sector_particles:
+  - complex singlet scalar S
+  - CP-even singlet/doublet scalar mixture h1 and h2
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: pseudoscalar singlet component A
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - CP-even scalars h1 and h2
+  standard_model_extension: minimal
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: thermal
+  free_streaming_length: null
+  notes: The paper treats A as a scalar particle dark matter candidate with relic density from standard
+    numerical tools.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - A A annihilation through Higgs/singlet scalar sector
+  - scalar potential parameters
+  - m_A
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through scalar annihilation
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper requires the predicted relic density not to exceed the measured value and permits smaller
+    values.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: The potential includes the Higgs portal and singlet quartic terms, producing h_i A A couplings.
+      page: null
+      reference_id: '2202_04035'
+      section: Model/Higgs decay
+    parameter_ranges:
+    - confidence: medium
+      note: The paper treats m_s, m_A, mixing angle alpha, and v_S as input parameters after fixing G_F
+        and the 125 GeV Higgs mass.
+      page: null
+      reference_id: '2202_04035'
+      section: Results
+    particle_content:
+    - confidence: high
+      note: The stable dark matter candidate is the pseudoscalar component A of the complex singlet.
+      page: null
+      reference_id: '2202_04035'
+      section: Model
+    production_mechanism:
+    - confidence: medium
+      note: The model's relic density is evaluated with micrOMEGAs and is required not to exceed the measured
+        value.
+      page: null
+      reference_id: '2202_04035'
+      section: Experimental constraints
+    symmetries:
+    - confidence: high
+      note: The A -> -A symmetry remains unbroken when v_A=0, while the S symmetry is broken by v_S.
+      page: null
+      reference_id: '2202_04035'
+      section: Model
+    validity_domain:
+    - confidence: high
+      note: The analysis is limited to the CxSM phase with one dark matter candidate and to scenarios
+        where either h1 or h2 is the SM-like Higgs.
+      page: null
+      reference_id: '2202_04035'
+      section: Model/Higgs decay
+    constraints:
+    - confidence: high
+      note: Primary text gives the BR(H invisible)<0.11 bound, XENON1T loop-DD comparison, and ScannerS/micrOMEGAs/HiggsBounds
+        constraints.
+      page: null
+      reference_id: src_2202_04035_primary
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text supports invisible-Higgs, loop-direct-detection, and relic-density observables.
+      page: null
+      reference_id: src_2202_04035_primary
+      section: null
+    routes:
+    - confidence: high
+      note: Primary text describes the scan plus NLO invisible-decay calculation route.
+      page: null
+      reference_id: src_2202_04035_primary
+      section: null
+  extraction:
+    confidence: medium
+    extracted_by: codex_dark_matter_worker_batch-0013
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The CxSM adds a complex scalar singlet and imposes two Z2 symmetries; v_A=0 leaves
+        A stable.
+      reference_id: '2202_04035'
+      section: Model section
+    - page: null
+      quote_or_summary: The authors compute electroweak NLO corrections for h_125 -> A A in two Higgs-mass
+        scenarios.
+      reference_id: '2202_04035'
+      section: Higgs decay into dark matter
+    unresolved_items:
+    - No NLO calculation or ScannerS scan was rerun.
+    - The invisible-Higgs limit should be updated to current LHC combinations.
+    - Direct-detection interpretation below the neutrino floor is benchmark dependent.
+  last_updated: '2026-05-31'
+  model_family: higgs_portal_scalar_dark_matter
+  model_id: 2202_04035_complex_singlet_pseudoscalar_dm_v1
+  model_name: Complex singlet scalar model with stable pseudoscalar A dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes:
+    - Accepted as a substantive NLO development of an existing CxSM dark matter phase, not as the original
+      proposal of the CxSM.
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2202.04035'
+      authors:
+      - Felix Egle
+      - Margarete Muehlleitner
+      - Rui Santos
+      - Joao Viana
+      doi: null
+      notes: Assigned full text from run-local SQLite database.
+      reference_id: '2202_04035'
+      role: extension
+      title: One-loop Corrections to the Higgs Boson Invisible Decay in a Complex Singlet Extension of
+        the SM
+      url: null
+      year: 2022
+    - arxiv_id: '2202.04035'
+      authors:
+      - Egle, Felix
+      - Mühlleitner, Margarete
+      - Santos, Rui
+      - Viana, João
+      doi: 10.1103/PhysRevD.106.095030
+      notes: Primary paper text resolved locally and used for structured enrichment.
+      reference_id: src_2202_04035_primary
+      role: original_model
+      title: One-loop corrections to the Higgs boson invisible decay in a complex singlet extension of
+        the SM
+      url: https://arxiv.org/abs/2202.04035
+      year: 2022
+    constraint_papers:
+    - arxiv_id: '2306.04127'
+      authors:
+      - Egle, Felix
+      - Mühlleitner, Margarete
+      - Santos, Rui
+      - Viana, João
+      doi: 10.1007/JHEP11(2023)116
+      notes: Related source text resolved locally during bounded ADS discovery; not used for structured
+        claims unless cited.
+      reference_id: src_2306_04127
+      role: constraint
+      title: Electroweak corrections to Higgs boson decays in a Complex Singlet extension of the SM and
+        their phenomenological impact
+      url: https://arxiv.org/abs/2306.04127
+      year: 2023
+    - arxiv_id: '2403.16568'
+      authors:
+      - Pham, Hieu The
+      - Senaha, Eibun
+      doi: 10.1103/PhysRevD.109.095048
+      notes: Related source text resolved locally during bounded ADS discovery; not used for structured
+        claims unless cited.
+      reference_id: src_2403_16568
+      role: constraint
+      title: Gravitational waves from domain wall collapses and dark matter in the SM with a complex scalar
+        field
+      url: https://arxiv.org/abs/2403.16568
+      year: 2024
+    - arxiv_id: '2205.12046'
+      authors:
+      - Cho, Gi-Chol
+      - Idegawa, Chikako
+      - Senaha, Eibun
+      doi: 10.1103/PhysRevD.106.115012
+      notes: Related source text resolved locally during bounded ADS discovery; not used for structured
+        claims unless cited.
+      reference_id: src_2205_12046
+      role: constraint
+      title: C P -violating effects on gravitational waves in a complex singlet extension of the Standard
+        Model with degenerate scalars
+      url: https://arxiv.org/abs/2205.12046
+      year: 2022
+    external_databases:
+    - name: NASA ADS
+      note: Used for sanitized primary, reference, and citation discovery; no secrets logged.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: either
+  key_dependencies:
+  - m_A
+  - m_h1
+  - m_h2
+  - alpha
+  - v_S
+  - lambda_2
+  - d2
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: 'no'
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - renormalization scheme choices
+  - parameter-space restrictions
+  - not an original model proposal
+  notes: The particle model is explicit and renormalizable; the extraction deliberately omits the paper's
+    phenomenological limits.
+  overall: medium
+  theory_robustness: high
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: The A -> -A Z2 symmetry is unbroken by choosing v_A=0, making A stable.
+  symmetries:
+  - breaking: unbroken with v_A=0
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z2_A
+    type: discrete
+  - breaking: broken by nonzero v_S leading to H-S mixing
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: Z2_S
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  lagrangian_available: 'yes'
+  notes: The paper writes the renormalizable CxSM potential, fixes the v_A=0 phase, and computes electroweak
+    NLO corrections for h_i -> A A.
+  parent_frameworks:
+  - complex singlet extension of the Standard Model
+  - Higgs portal
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats:
+  - Other CxSM vacuum phases are discussed only to ensure the selected configuration is the relevant minimum.
+  condition: v_A=0 so the A symmetry remains unbroken; v_S is nonzero so the CP-even singlet mixes with
+    the SM Higgs.
+  extrapolation_risk: medium
+  id: cxsm_dm_phase
+  notes: null
+  source_reference_ids:
+  - '2202_04035'
+  status: assumed
+  valid_range: CxSM dark matter phase used in the paper
+- applies_to: model
+  caveats:
+  - The paper's substantive new calculation is the NLO correction to h_125 -> A A, not a complete new
+    cosmology.
+  condition: One of h1 or h2 is the 125 GeV SM-like Higgs and the relevant invisible decay h_125 -> A
+    A is kinematically open.
+  extrapolation_risk: low
+  id: nlo_invisible_decay_scenarios
+  notes: null
+  source_reference_ids:
+  - '2202_04035'
+  status: established
+  valid_range: 'scenario I: h1 is 125 GeV; scenario II: h2 is 125 GeV'
+observables:
+- caveats:
+  - The paper focuses on invisible decays, not a full global dark-matter fit.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - LHC Higgs measurements
+  id: obs_cxsm_higgs_invisible_aa
+  key_quantities:
+  - description: Current ATLAS-style bound quoted by the paper.
+    name: invisible branching ratio
+    range: less than 0.11
+    role: experimental
+    source_reference_ids:
+    - src_2202_04035_primary
+    status: established
+    symbol: BR(h125 -> invisible)
+  - description: Pseudoscalar mass controlling the h125 -> AA threshold.
+    name: dark matter mass
+    range: below m_h125/2 for invisible Higgs decay
+    role: core
+    source_reference_ids:
+    - src_2202_04035_primary
+    status: inferred
+    symbol: m_A
+    unit: GeV
+  - description: Dark-sector quartic accessed by NLO corrections.
+    name: singlet quartic
+    role: core
+    source_reference_ids:
+    - src_2202_04035_primary
+    status: inferred
+    symbol: d2
+  linked_constraints:
+  - con_higgs_invisible_branching
+  linked_routes:
+  - route_cxsm_invisible_decay_recast
+  name: Invisible Higgs decay to pseudoscalar dark matter
+  notes: null
+  observability: high
+  predicted_effect: If m_A < m_h125/2, the 125 GeV Higgs can decay invisibly to two pseudoscalar dark-matter
+    particles; one-loop electroweak corrections are stable and of order a few percent.
+  redshift_range: present collider epoch
+  relevance: critical
+  scale_range: 125 GeV Higgs decays
+  source_reference_ids:
+  - src_2202_04035_primary
+  subchannel: h125 to AA invisible width
+- caveats:
+  - Below-neutrino-floor direct detection makes collider invisible-width measurements comparatively more
+    important.
+  channel: direct_detection
+  effect_direction: null_signal
+  environments:
+  - direct-detection experiments
+  - XENON1T
+  id: obs_cxsm_loop_direct_detection
+  key_quantities:
+  - description: One-loop DM-nucleon cross section.
+    name: spin-independent cross section
+    role: derived
+    source_reference_ids:
+    - src_2202_04035_primary
+    status: inferred
+    symbol: sigma_SI
+  - description: Tree-level scattering is proportional to the DM velocity and negligible.
+    name: tree-level velocity suppression
+    role: derived
+    source_reference_ids:
+    - src_2202_04035_primary
+    status: inferred
+    symbol: v_DM
+  linked_constraints:
+  - con_loop_direct_detection_xenon
+  linked_routes:
+  - route_cxsm_invisible_decay_recast
+  name: Loop-suppressed pseudoscalar direct detection
+  notes: null
+  observability: low
+  predicted_effect: The tree-level DM-nucleon cross section is velocity suppressed by a cancellation,
+    so the relevant spin-independent scattering appears at one loop and is compared to XENON1T; the studied
+    points lie below the neutrino floor.
+  redshift_range: present day
+  relevance: medium
+  scale_range: nuclear recoil momentum transfer
+  source_reference_ids:
+  - src_2202_04035_primary
+  subchannel: spin-independent nuclear recoil
+- caveats:
+  - Underabundance is not excluded because other dark-matter components may exist.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe
+  id: obs_cxsm_relic_density_upper_bound
+  key_quantities:
+  - description: Predicted pseudoscalar dark-matter abundance.
+    name: relic density
+    role: derived
+    source_reference_ids:
+    - src_2202_04035_primary
+    status: inferred
+    symbol: Omega_A h^2
+  - description: Mixing of the two CP-even scalars in scenario I/II.
+    name: scalar mixing angle
+    role: core
+    source_reference_ids:
+    - src_2202_04035_primary
+    status: inferred
+    symbol: alpha
+  - description: Input parameter entering the scalar potential and renormalization schemes.
+    name: singlet vev
+    role: core
+    source_reference_ids:
+    - src_2202_04035_primary
+    status: inferred
+    symbol: v_S
+    unit: GeV
+  linked_constraints:
+  - con_relic_density_higgsbounds_scan
+  linked_routes:
+  - route_cxsm_invisible_decay_recast
+  name: Thermal relic-density upper bound for pseudoscalar A
+  notes: null
+  observability: medium
+  predicted_effect: The CxSM pseudoscalar candidate is allowed to be all or part of the dark matter; the
+    predicted relic density must not exceed the measured value and is computed with micrOMEGAs in ScannerS.
+  redshift_range: thermal freeze-out epoch
+  relevance: high
+  scale_range: electroweak/weak-scale scalar masses
+  source_reference_ids:
+  - src_2202_04035_primary
+  subchannel: thermal freeze-out abundance
+constraints:
+- allowed_regions:
+  - NLO electroweak corrections are typically a few percent and will be needed as LHC invisible-width
+    measurements improve.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - Collider invisible-width searches are the key probe when direct detection is below the neutrino floor.
+  caveats:
+  - The quoted 0.11 bound should be updated for current combinations before final phenomenology.
+  constrained_parameters:
+  - BR(h125 -> AA)
+  - m_A
+  - alpha
+  - v_S
+  - lambda_2
+  - d2
+  constraint_type: collider
+  data_release: ATLAS/LHC Higgs invisible branching-ratio bound quoted by the primary paper
+  excluded_regions:
+  - Parameter points with BR(H invisible) above 0.11 are already constrained at leading order in the paper
+    analysis.
+  id: con_higgs_invisible_branching
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Invisible Higgs branching-ratio constraint
+  notes: null
+  observable_channel: Higgs invisible decay
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - src_2202_04035_primary
+- allowed_regions:
+  - The paper finds the competing direct-detection process below the neutrino floor for the displayed
+    allowed parameter space.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - Direct detection is less constraining than Higgs invisible decays in the considered phase.
+  caveats:
+  - Future interpretation requires a one-loop direct-detection calculation and updated limits.
+  constrained_parameters:
+  - sigma_SI
+  - m_A
+  - alpha
+  - v_S
+  - d2
+  constraint_type: direct_detection
+  data_release: XENON1T comparison quoted by the primary paper
+  excluded_regions:
+  - One-loop spin-independent cross sections must stay below XENON1T limits.
+  id: con_loop_direct_detection_xenon
+  likelihood_available: partial
+  likelihood_reference: null
+  name: XENON1T comparison for one-loop direct detection
+  notes: null
+  observable_channel: spin-independent nuclear recoil
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2202_04035_primary
+- allowed_regions:
+  - Smaller Omega_A h^2 values are allowed, permitting additional dark-matter components.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - ScannerS with HiggsSignals/HiggsBounds and micrOMEGAs provides a reproducible scan structure.
+  caveats:
+  - Exact limits are scan- and scenario-dependent.
+  constrained_parameters:
+  - Omega_A h^2
+  - m_A
+  - m_h1
+  - m_h2
+  - alpha
+  - v_S
+  - lambda_2
+  - d2
+  constraint_type: cosmological
+  data_release: HiggsSignals 2.6.1, HiggsBounds 5.9.0, and micrOMEGAs constraints cited by the primary
+    paper
+  excluded_regions:
+  - Relic density above the measured value and points failing HiggsSignals/HiggsBounds are excluded.
+  id: con_relic_density_higgsbounds_scan
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Relic-density, HiggsSignals, and HiggsBounds scan constraints
+  notes: null
+  observable_channel: relic density and scalar searches
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_2202_04035_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route is explicit in the paper, but no local ScannerS/NLO run was executed in this
+      pass.
+    caveats:
+    - Current Higgs invisible and direct-detection constraints should be refreshed.
+    constraint_ids:
+    - con_higgs_invisible_branching
+    - con_loop_direct_detection_xenon
+    - con_relic_density_higgsbounds_scan
+    derived_quantities:
+    - Omega_A h^2
+    - BR(h125 -> AA)
+    - NLO correction factor
+    - sigma_SI one-loop
+    description: Scan the CxSM pseudoscalar-DM phase, apply collider/relic/direct-detection filters, compute
+      h125 -> AA at NLO, and compare to invisible-width constraints.
+    forward_model_chain:
+    - inputs:
+      - CxSM input parameters
+      notes: null
+      outputs:
+      - theory-valid and collider-valid points
+      step_id: s1
+      step_type: validation
+      tool_or_code: ScannerS
+      validity: Uses theoretical constraints plus HiggsSignals/HiggsBounds.
+    - inputs:
+      - m_A
+      - scalar spectrum
+      - couplings
+      notes: null
+      outputs:
+      - Omega_A h^2
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: micrOMEGAs
+      validity: Relic density must not exceed measured value.
+    - inputs:
+      - h125AA coupling
+      - counterterms
+      - d2
+      - v_S
+      notes: null
+      outputs:
+      - LO and NLO invisible widths
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: FeynRules/FeynArts/FeynCalc/LoopTools/SARAH
+      validity: One-loop electroweak calculation in the primary paper.
+    - inputs:
+      - BR(h125 -> AA)
+      notes: null
+      outputs:
+      - excluded invisible-width region
+      step_id: s4
+      step_type: recasting
+      tool_or_code: Higgs invisible likelihood
+      validity: Use current LHC invisible-width bound.
+    - inputs:
+      - m_A
+      - scalar couplings
+      notes: null
+      outputs:
+      - sigma_SI
+      - XENON/neutrino-floor comparison
+      step_id: s5
+      step_type: recasting
+      tool_or_code: one-loop direct-detection calculator
+      validity: Needed for updated direct-detection interpretation.
+    id: route_cxsm_invisible_decay_recast
+    input_parameters:
+    - m_A
+    - m_h1
+    - m_h2
+    - alpha
+    - v_S
+    - lambda_2
+    - d2
+    likelihoods:
+    - Higgs invisible branching-ratio likelihood
+    - relic-density upper-bound likelihood
+    - direct-detection likelihood
+    observable_ids:
+    - obs_cxsm_higgs_invisible_aa
+    - obs_cxsm_loop_direct_detection
+    - obs_cxsm_relic_density_upper_bound
+    required_code_resources:
+    - ScannerS model files
+    - micrOMEGAs
+    - one-loop EW toolchain
+    - HiggsBounds/HiggsSignals
+    route_status: partially_implemented
+    source_model_features:
+    - complex scalar singlet extension
+    - stable pseudoscalar A
+    - two CP-even scalar scenarios
+    - velocity-suppressed tree-level direct detection
+    validation_tests:
+    - Recover few-percent NLO correction sizes.
+    - Recover the BR(H invisible) < 0.11 exclusion.
+    - Recover the tree-level velocity suppression and one-loop direct-detection comparison.

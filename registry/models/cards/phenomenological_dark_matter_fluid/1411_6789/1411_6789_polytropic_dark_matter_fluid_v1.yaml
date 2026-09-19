@@ -1,0 +1,308 @@
+_source:
+  shard: data/astro-ph-00045.tar
+  paper_id: '1411_6789'
+  source_member: 1411_6789.json
+schema_version: model_only_v0
+model_id: 1411_6789_polytropic_dark_matter_fluid_v1
+identity:
+  name: Polytropic dark matter fluid cosmological model
+  family: phenomenological_dark_matter_fluid
+  aliases:
+  - polytropic-DM model
+  short_description: A phenomenological cosmological model in which dark matter is a collisional polytropic
+    fluid whose internal thermodynamic energy contributes to the gravitational source and can mimic dark
+    energy.
+  historical_origin_or_motivation: The paper motivates the model from polytropic treatments of dark galactic
+    haloes and the possibility of unifying dark matter and dark energy in one component.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - spatially flat Robertson-Walker cosmology
+  - general relativity
+  - polytropic perfect-fluid thermodynamics
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The authors explicitly describe the construction as an effective phenomenological approach with
+    unknown microphysics.
+particle_content:
+  dark_matter_candidate:
+    name: volume elements of a polytropic dark matter fluid
+    spin: unknown
+    statistics: macroscopic_object
+    elementary_or_composite: macroscopic
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: unknown; the model is a cosmological fluid parameterization rather than a particle-stability
+    construction.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - baryonic matter as subdominant component
+  - cosmological metric
+  dark_sector_couplings:
+  - polytropic pressure-density relation
+  - internal thermodynamic energy density
+  mediator_types:
+  - metric gravity
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: polytropic exponent
+    symbol: gamma
+    description: Single free exponent controlling the polytropic dark matter fluid.
+    range: -0.089 < gamma <= 0 for the realistic CDM-compatible range quoted in the paper
+    role: core
+    status: inferred
+  - name: matter density parameter
+    symbol: Omega_M
+    description: Present matter density used to normalize the spatially flat model.
+    value: about 0.279 or 0.274 in the paper examples
+    role: core
+    status: inferred
+  - name: internal-to-rest-mass density ratio
+    symbol: rho_int/rho_mat
+    description: Ratio of internal thermodynamic energy density to rest-mass energy density.
+    value: (1 - Omega_M) / Omega_M at z = 0
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - phenomenological cosmological evolution of a dominant dark matter fluid with polytropic internal energy
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - present matter density parameter
+  - polytropic exponent
+  - rest-mass plus internal-energy density split
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: The paper does not give a particle-production mechanism; it models the dark-matter cosmic abundance
+    phenomenologically.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: present total energy density parameter
+    symbol: Omega_total
+    value: 1
+    unit: null
+    status: assumed
+  calculation_type: phenomenological
+  key_dependencies:
+  - polytropic exponent
+  - present matter density
+  - internal energy of the DM fluid
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - no separate dark-energy component
+  - late-time acceleration sourced by dark-matter internal energy
+  dark_sector_temperature:
+    name: dark matter temperature
+    symbol: T_DM
+    description: Temperature evolves along the polytropic flow; present value is bounded by the neutrino-background
+      temperature in the paper discussion.
+    range: T_0 <= 1.95 K
+    unit: K
+    status: inferred
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - transition from decelerated to accelerated expansion at a gamma-dependent redshift
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  phase_space_bounds: []
+  notes: The paper treats dark matter as a macroscopic fluid, not through a microscopic distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: phenomenological_microphysics
+  applies_to: model
+  condition: Valid only as an effective fluid description because the microphysics producing polytropic
+    DM behavior is not specified.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: polytropic_exponent_range
+  applies_to: parameter
+  condition: The paper narrows the realistic exponent range to approximately -0.089 < gamma <= 0.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: spatial_flatness
+    description: The cosmology is spatially flat and the total present energy density parameter equals
+      unity.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+  - id: collisional_dm_fluid
+    description: Dark matter behaves as a collisional polytropic perfect fluid with thermodynamic internal
+      energy.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: unknown_microphysics
+    description: No microscopic particle model for the polytropic behavior is specified.
+    scope: theory
+    status: speculative
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+provenance:
+  model_id: 1411_6789_polytropic_dark_matter_fluid_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: '1411_6789'
+      title: Polytropic dark matter flows illuminate dark energy and accelerated expansion
+      authors:
+      - K. Kleidis
+      - N. K. Spyrou
+      year: 2014
+      arxiv_id: '1411.6789'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text for batch-0252.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0252
+    extractor_name: Codex
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1411_6789'
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper proposes a polytropic-DM cosmological toy model with no separate dark
+        energy.
+    - reference_id: '1411_6789'
+      section: conclusion
+      page: null
+      quote_or_summary: The conclusion identifies the model constituents as DM-fluid volume elements performing
+        polytropic flows.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1411_6789'
+      note: The effective constituents are volume elements of a dark matter fluid performing polytropic
+        flows.
+      confidence: medium
+      section: conclusion
+    symmetries:
+    - reference_id: '1411_6789'
+      note: No particle-stabilizing symmetry is specified; this is a fluid model.
+      confidence: medium
+      section: model description
+    interactions:
+    - reference_id: '1411_6789'
+      note: The model couples through gravity and through a polytropic pressure-density/internal-energy
+        relation.
+      confidence: medium
+      section: thermodynamics section
+    production_mechanism:
+    - reference_id: '1411_6789'
+      note: The abundance is modeled phenomenologically by rest-mass and internal-energy density rather
+        than by particle production.
+      confidence: medium
+      section: cosmological model section
+    cosmological_history:
+    - reference_id: '1411_6789'
+      note: The model behaves as pressureless matter in the distant past and accelerates at late times
+        from DM internal energy.
+      confidence: high
+      section: conclusion
+    parameter_ranges:
+    - reference_id: '1411_6789'
+      note: Physical requirements lead to an approximate exponent range -0.089 < gamma <= 0.
+      confidence: medium
+      section: introduction/conclusion
+    validity_domain:
+    - reference_id: '1411_6789'
+      note: The authors state that the microphysics of the postulated polytropic behavior is not yet clear.
+      confidence: high
+      section: introduction
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: low
+  theory_robustness: low
+  observational_robustness: medium
+  computational_robustness: low
+  dominant_uncertainties:
+  - unknown microphysics
+  - phenomenological fluid treatment
+  - no particle production calculation
+  validation_status: expert_judgment_only
+  notes: Accepted as a phenomenological dark-matter fluid model, not as a microscopic BSM particle model.
+agent_failure_modes:
+  warnings:
+  - id: phenomenological_not_particle_model
+    severity: high
+    category: invalid_mapping
+    warning: Do not infer a microscopic DM particle, spin, or stabilizing symmetry from this entry; the
+      paper explicitly leaves the microphysics unknown.
+    mitigation: null

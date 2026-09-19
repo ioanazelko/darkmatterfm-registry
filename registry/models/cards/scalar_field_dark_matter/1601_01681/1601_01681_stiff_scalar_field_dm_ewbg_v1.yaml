@@ -1,0 +1,776 @@
+_source:
+  shard: arXiv_src_1601_004_wds.tar
+  paper_id: '1601_01681'
+  source_member: 1601_01681.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1601_01681_stiff_scalar_field_dm_ewbg_v1
+identity:
+  name: Stiff-era scalar field dark matter for electroweak baryogenesis
+  family: scalar_field_dark_matter
+  aliases:
+  - SFDM-assisted electroweak baryogenesis
+  - scalar field dark matter stiff fluid
+  short_description: A complex scalar field dark matter scenario whose early stiff equation-of-state phase
+    increases the expansion rate during electroweak baryogenesis while later behaving as cold dark matter.
+  historical_origin_or_motivation: Used to show that dark matter itself can modify pre-BBN cosmology enough
+    to help preserve baryon asymmetry in an |H|^6 electroweak phase-transition EFT.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - scalar field dark matter
+  - nonstandard pre-BBN cosmological history
+  - dimension-six Higgs potential for EWBG
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  embedded_in_larger_framework: 'yes'
+  notes: The dark matter Lagrangian is a complex scalar with mass and repulsive quartic terms; the electroweak
+    sector is treated with a |H|^6 EFT.
+particle_content:
+  dark_matter_candidate:
+    name: complex scalar field dark matter boson
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity through the Hubble expansion rate
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - condensed scalar field dark matter
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A conserved global U(1) charge tracks the conserved dark matter abundance after
+    the ultra-light bosons condense.
+  symmetries:
+  - name: dark scalar U(1)
+    type: global
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - other
+  standard_model_targets:
+  - cosmological expansion during the electroweak phase transition
+  - Higgs potential in the separate |H|^6 EFT
+  dark_sector_couplings:
+  - scalar mass term
+  - repulsive or zero quartic self-coupling
+  mediator_types:
+  - gravitational expansion-rate effect
+  - effective dimension-six Higgs operator
+  self_scattering_channels:
+  - repulsive scalar self-interaction if lambda_s > 0
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: scalar boson mass
+    symbol: m_s
+    description: Mass of the SFDM boson.
+    range: phenomenological examples include m_s around 1e-22 eV for kpc Jeans scale
+    unit: eV
+    role: core
+    status: inferred
+  - name: scalar self-coupling strength
+    symbol: lambda_s
+    description: Repulsive or zero self-interaction parameter in the SFDM Lagrangian.
+    range: lambda_s >= 0; text cites tiny phenomenological values
+    role: core
+    status: inferred
+  - name: Higgs EFT cutoff
+    symbol: Lambda
+    description: Cutoff scale suppressing the |H|^6 operator that enables a first-order EW phase transition.
+    range: electroweak-scale EFT scan; required scale shifts by about twenty percent for large Hubble
+      enhancement
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Hubble enhancement during EWPT
+    symbol: H/H_rad
+    description: Ratio of modified to standard expansion rate during the electroweak phase transition.
+    range: up to several orders of magnitude; examples discuss six orders of magnitude
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - early condensation of ultra-light bosons into a classical field
+  - conserved U(1) charge chosen to match present-day dark matter abundance
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - conserved scalar U(1) charge
+  - present-day dark matter abundance matching
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper states the entire dark matter abundance is described as a complex scalar field condensed
+    into its ground state soon after birth.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: phenomenological
+  key_dependencies:
+  - conserved U(1) charge
+  - m_s
+  - lambda_s
+  - present-day abundance normalization
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - stiff equation-of-state era before radiation domination
+  - enhanced Hubble expansion during electroweak baryogenesis
+  - radiation domination restored by BBN
+  bbn_relevance: high
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  notes: The condensed ultra-light bosons are treated as a classical field.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: Jeans scale can reduce small-scale structure
+    subhalo_mass_function_effect: Jeans scale can reduce small-scale structure
+    simulation_calibrated: unknown
+validity_domain:
+- id: stiff_pre_bbn_only
+  applies_to: cosmological_history
+  condition: The stiff component must redshift away fast enough for radiation to dominate by BBN.
+  status: assumed
+  extrapolation_risk: high
+- id: sfdm_parameter_smallness
+  applies_to: parameter
+  condition: The SFDM mass and coupling must be tiny enough to satisfy the phenomenological structure-formation
+    motivation described in the paper.
+  status: inferred
+  extrapolation_risk: medium
+- id: higgs_eft_domain
+  applies_to: EFT
+  condition: The |H|^6 description applies below its cutoff scale Lambda around electroweak processes.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: complex_scalar_all_dm
+    description: The entire cosmological dark matter abundance is represented by one complex scalar field.
+    scope: theory
+    status: assumed
+  - id: u1_charge_matches_abundance
+    description: The conserved U(1) charge is chosen to match the present-day dark matter abundance.
+    scope: production
+    status: assumed
+  - id: pre_bbn_nonstandard_history
+    description: The expansion history can differ strongly before BBN without violating later radiation
+      domination.
+    scope: cosmological_history
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code release is identified in the assigned text.
+provenance:
+  model_id: 1601_01681_stiff_scalar_field_dm_ewbg_v1
+  model_name: Stiff-era scalar field dark matter for electroweak baryogenesis
+  model_family: scalar_field_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper_1601_01681
+      title: Enabling Electroweak Baryogenesis through Dark Matter
+      authors:
+      - Marek Lewicki
+      - Tanja Rindler-Daller
+      - James D. Wells
+      year: 2016
+      arxiv_id: '1601.01681'
+      doi: null
+      url: null
+      role: extension
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '1601.01681'
+      authors:
+      - Lewicki, Marek
+      - Rindler-Daller, Tanja
+      - Wells, James D.
+      doi: 10.1007/JHEP06(2016)055
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1601.01681
+      role: original_model
+      title: Enabling electroweak baryogenesis through dark matter
+      url: https://arxiv.org/abs/1601.01681
+      year: 2016
+    constraint_papers:
+    - arxiv_id: '1510.08369'
+      authors:
+      - Rindler-Daller, Tanja
+      - Li, Bohua
+      - Shapiro, Paul R.
+      - Lewicki, Marek
+      - Wells, James D.
+      doi: 10.48550/arXiv.1510.08369
+      notes: Related full text resolved locally and read for SFDM stiff-era EWBG motivation.
+      reference_id: arxiv:1510.08369
+      role: constraint
+      title: How scalar-field dark matter may conspire to facilitate baryogenesis at the electroweak scale
+      url: https://arxiv.org/abs/1510.08369
+      year: 2015
+    - arxiv_id: hep-ph/9709320
+      authors:
+      - Joyce, Michael
+      - Prokopec, Tomislav
+      doi: 10.1103/PhysRevD.57.6022
+      notes: Related full text resolved locally and read for enhanced-expansion sphaleron bound context.
+      reference_id: arxiv:hep-ph/9709320
+      role: constraint
+      title: 'Turning around the sphaleron bound: Electroweak baryogenesis in an alternative post-inflationary
+        cosmology'
+      url: https://arxiv.org/abs/hep-ph/9709320
+      year: 1998
+    - arxiv_id: '1310.6061'
+      authors:
+      - Li, Bohua
+      - Rindler-Daller, Tanja
+      - Shapiro, Paul R.
+      doi: 10.1103/PhysRevD.89.083536
+      notes: Related full text resolved locally and read for SFDM cosmological-transition constraints.
+      reference_id: arxiv:1310.6061
+      role: constraint
+      title: Cosmological constraints on Bose-Einstein-condensed scalar field dark matter
+      url: https://arxiv.org/abs/1310.6061
+      year: 2014
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker_batch-0019
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper_1601_01681
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper illustrates enhanced pre-BBN expansion using scalar field dark matter
+        that later matches the full DM abundance.
+    unresolved_items:
+    - No CP-violating baryon source calculation was performed.
+    - SFDM perturbation/structure constraints were not recast for the exact benchmarks.
+    - The ultralight scalar microphysics remains phenomenological in the enrichment.
+  evidence:
+    particle_content:
+    - reference_id: paper_1601_01681
+      note: The paper identifies scalar field dark matter as a complex scalar field whose ultra-light
+        bosons condense into the ground state.
+      confidence: medium
+      section: Dark Matter as a Stiff Fluid
+      page: null
+    symmetries:
+    - reference_id: paper_1601_01681
+      note: The text describes a conserved U(1) charge that acts as the conserved DM abundance.
+      confidence: medium
+      section: Dark Matter as a Stiff Fluid
+      page: null
+    production_mechanism:
+    - reference_id: paper_1601_01681
+      note: The DM abundance is selected through the conserved charge and matched to the present-day value.
+      confidence: medium
+      section: introduction
+      page: null
+    cosmological_history:
+    - reference_id: paper_1601_01681
+      note: The scalar field can have a stiff equation of state early, increasing the expansion rate during
+        EWBG and later behaving as CDM.
+      confidence: medium
+      section: Dark Matter as a Stiff Fluid
+      page: null
+    parameter_ranges:
+    - reference_id: paper_1601_01681
+      note: The text cites m_s about 1e-22 eV for a kpc Jeans scale, with tiny self-coupling values also
+        possible.
+      confidence: medium
+      section: Dark Matter as a Stiff Fluid
+      page: null
+    validity_domain:
+    - reference_id: paper_1601_01681
+      note: The scenario requires the nonstandard component to redshift faster than radiation so BBN remains
+        radiation dominated.
+      confidence: medium
+      section: introduction
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text notes BBN requires radiation domination during and after T~1 MeV while pre-BBN
+        history is poorly constrained.
+      page: null
+      reference_id: arxiv:1601.01681
+      section: Introduction
+    - confidence: high
+      note: Alternative-cosmology EWBG paper reformulates sphaleron bounds as expansion-rate requirements
+        and uses a 1/a^6 component before nucleosynthesis.
+      page: null
+      reference_id: arxiv:hep-ph/9709320
+      section: Abstract
+    - confidence: high
+      note: Primary text states the required new-physics scale can change by about twenty percent as expansion
+        increases by six orders of magnitude.
+      page: null
+      reference_id: arxiv:1601.01681
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary text states that SFDM can alter the expansion rate enough to enable EWBG with a dimension-six
+        Higgs operator.
+      page: null
+      reference_id: arxiv:1601.01681
+      section: Introduction
+    - confidence: high
+      note: Related SFDM paper states the early stiff phase has p=rho, dominates early, and is constrained
+        by BBN and primordial gravitational waves.
+      page: null
+      reference_id: arxiv:1510.08369
+      section: Abstract
+    - confidence: high
+      note: Related SFDM cosmology paper describes evolution from stiff to radiationlike to CDM-like behavior.
+      page: null
+      reference_id: arxiv:1310.6061
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary combines SFDM nonstandard expansion with a |H|^6 electroweak transition and Higgs-trilinear
+        reach.
+      page: null
+      reference_id: arxiv:1601.01681
+      section: Model discussion
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewed_by: null
+    expert_reviewer: null
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - SFDM microphysical origin not resolved
+  - relic abundance is imposed through conserved charge rather than derived from a production calculation
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: not_standard_radiation_history
+    severity: high
+    category: assumption_mismatch
+    warning: Using a standard radiation-dominated EWPT history would erase the key mechanism of this model
+      card.
+    mitigation: Keep the stiff pre-BBN phase when reasoning about baryogenesis.
+  - id: abundance_is_phenomenological
+    severity: medium
+    category: other
+    warning: The paper matches the SFDM charge to the present-day abundance rather than deriving a detailed
+      production history.
+    mitigation: Do not infer a thermal relic calculation from this row.
+observables:
+- caveats:
+  - Requires the nonstandard component to redshift away before BBN.
+  channel: cosmology
+  effect_direction: enhancement
+  environments:
+  - early-universe plasma
+  id: obs_sfdm_stiff_expansion_ewbg
+  key_quantities:
+  - description: Equation of state during the earliest SFDM-dominated phase.
+    name: stiff equation of state
+    role: cosmological
+    source_reference_ids:
+    - arxiv:1601.01681
+    - arxiv:1510.08369
+    - arxiv:1310.6061
+    status: inferred
+    symbol: w
+    value: 1
+  - description: Expansion-rate enhancement relative to radiation domination.
+    name: electroweak expansion enhancement
+    range: up to several orders of magnitude in the primary discussion
+    role: derived
+    source_reference_ids:
+    - arxiv:1601.01681
+    - arxiv:hep-ph/9709320
+    status: inferred
+    symbol: H/H_rad
+  - description: Cutoff scale of the |H|^6 operator controlling EWPT strength.
+    name: dimension-six Higgs scale
+    role: core
+    source_reference_ids:
+    - arxiv:1601.01681
+    status: inferred
+    symbol: Lambda
+    unit: GeV
+  linked_constraints:
+  - con_sfdm_bbn_radiation_recovery
+  - con_sfdm_ewbg_sphaleron
+  linked_routes:
+  - route_sfdm_stiff_ewbg_constraints
+  name: Stiff scalar-field era enhances electroweak expansion rate
+  notes: null
+  observability: medium
+  predicted_effect: A complex scalar-field dark matter component can behave as a stiff fluid with w=1
+    before BBN, increasing H at the electroweak scale and weakening sphaleron washout enough to help electroweak
+    baryogenesis with a |H|^6 Higgs potential.
+  redshift_range: electroweak epoch before BBN
+  relevance: critical
+  scale_range: homogeneous expansion rate
+  source_reference_ids:
+  - arxiv:1601.01681
+  - arxiv:1510.08369
+  - arxiv:hep-ph/9709320
+  subchannel: electroweak baryogenesis in nonstandard expansion
+- caveats:
+  - Small-scale structure bounds depend on the detailed SFDM mass/self-interaction choice.
+  channel: large_scale_structure
+  effect_direction: shape_change
+  environments:
+  - cosmological background
+  - large-scale structure
+  id: obs_sfdm_eos_transitions_lss
+  key_quantities:
+  - description: Ultralight scalar mass controlling late-time behavior.
+    name: scalar-field DM mass
+    range: around 10^-22 eV in fiducial fuzzy/SFDM examples
+    role: core
+    source_reference_ids:
+    - arxiv:1601.01681
+    - arxiv:1310.6061
+    status: approximate
+    symbol: m_s
+    unit: eV
+  - description: Phenomenological quartic coupling affecting transition scales.
+    name: self-interaction coupling
+    role: core
+    source_reference_ids:
+    - arxiv:1601.01681
+    - arxiv:1310.6061
+    status: approximate
+    symbol: lambda_s
+  - description: Temperatures of stiff/radiationlike/nonrelativistic transitions.
+    name: transition temperatures
+    role: derived
+    source_reference_ids:
+    - arxiv:1601.01681
+    - arxiv:1310.6061
+    status: inferred
+    symbol: T_trans
+  linked_constraints:
+  - con_sfdm_cosmological_transitions
+  linked_routes:
+  - route_sfdm_stiff_ewbg_constraints
+  name: Scalar-field dark matter equation-of-state transitions
+  notes: null
+  observability: medium
+  predicted_effect: SFDM evolves from an early stiff phase to radiationlike behavior and finally CDM-like
+    pressureless matter, so late structure formation can resemble CDM if transition times and particle
+    parameters satisfy cosmological constraints.
+  redshift_range: early universe through matter-radiation equality
+  relevance: high
+  scale_range: linear matter power and horizon scales
+  source_reference_ids:
+  - arxiv:1601.01681
+  - arxiv:1310.6061
+  subchannel: stiff-to-radiationlike-to-CDM evolution
+- caveats:
+  - Collider reach depends on future Higgs self-coupling precision.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - HL-LHC Higgs measurements
+  id: obs_sfdm_higgs_trilinear_window
+  key_quantities:
+  - description: Deviation induced by the |H|^6 operator.
+    name: triple-Higgs coupling deviation
+    role: derived
+    source_reference_ids:
+    - arxiv:1601.01681
+    status: inferred
+    symbol: delta_lambda_3
+  - description: Scale inferred from the dimension-six Higgs operator.
+    name: new-physics cutoff
+    role: core
+    source_reference_ids:
+    - arxiv:1601.01681
+    status: inferred
+    symbol: Lambda
+    unit: GeV
+  linked_constraints:
+  - con_sfdm_higgs_trilinear_hllhc
+  linked_routes:
+  - route_sfdm_stiff_ewbg_constraints
+  name: Collider handle on the |H|^6 electroweak phase-transition operator
+  notes: null
+  observability: medium
+  predicted_effect: The modified cosmology allows EWBG with smaller deviations in the Higgs trilinear
+    coupling, potentially below HL-LHC sensitivity, compared with a standard expansion history.
+  redshift_range: today
+  relevance: medium
+  scale_range: LHC energy scales
+  source_reference_ids:
+  - arxiv:1601.01681
+  subchannel: Higgs trilinear coupling
+constraints:
+- allowed_regions:
+  - The source scenario requires the stiff component to redshift faster than radiation and become harmless
+    by T~1 MeV.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The expansion history before BBN is poorly constrained but must recover radiation domination
+      by BBN.
+    id: pre-bbn-hidden-history
+    impact_if_violated: Late stiff domination would change BBN yields.
+    notes: null
+    scope: cosmological history
+    source_reference_ids:
+    - arxiv:1601.01681
+    - arxiv:1510.08369
+    - arxiv:hep-ph/9709320
+    status: established
+  benchmark_implications:
+  - The enhanced electroweak expansion must be an early, pre-BBN feature.
+  caveats:
+  - No BBN abundance code was run.
+  constrained_parameters:
+  - w
+  - rho_sfdm/rho_rad
+  - transition temperature
+  constraint_type: cosmological
+  data_release: BBN light-element expansion consistency quoted in primary and related sources
+  excluded_regions:
+  - A stiff component still dominating during or after BBN would spoil standard light-element expansion
+    assumptions.
+  id: con_sfdm_bbn_radiation_recovery
+  likelihood_available: partial
+  likelihood_reference: null
+  name: BBN requires radiation domination by MeV temperatures
+  notes: null
+  observable_channel: BBN expansion history
+  recasting_needed: 'yes'
+  robustness: high
+  source_reference_ids:
+  - arxiv:1601.01681
+  - arxiv:1510.08369
+  - arxiv:hep-ph/9709320
+- allowed_regions:
+  - Primary paper finds that increasing the expansion rate by up to six orders of magnitude can shift
+    the required new-physics scale by about twenty percent.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The calculation addresses survival of a generated asymmetry rather than computing the
+      CP-violating source.
+    id: washout-not-source
+    impact_if_violated: A full baryon-asymmetry calculation could add stronger requirements.
+    notes: null
+    scope: EWBG viability
+    source_reference_ids:
+    - arxiv:1601.01681
+    status: assumed
+  benchmark_implications:
+  - EWBG can be compatible with smaller Higgs self-coupling deviations than in standard cosmology.
+  caveats:
+  - No baryon-yield calculation was performed in this batch.
+  constrained_parameters:
+  - H_EW
+  - v/T
+  - Lambda
+  - w
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Insufficient Hubble enhancement or too-weak EWPT still fails baryon-number preservation.
+  id: con_sfdm_ewbg_sphaleron
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Sphaleron washout bound under enhanced expansion
+  notes: null
+  observable_channel: electroweak baryogenesis
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1601.01681
+  - arxiv:hep-ph/9709320
+- allowed_regions:
+  - Primary paper emphasizes viable nonstandard-cosmology points can keep deviations below HL-LHC sensitivity.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The collider mapping uses a simple |H|^6 modification of the Higgs potential.
+    id: single-dimension-six-operator
+    impact_if_violated: Additional operators could alter trilinear interpretations.
+    notes: null
+    scope: collider recast
+    source_reference_ids:
+    - arxiv:1601.01681
+    status: assumed
+  benchmark_implications:
+  - EWBG may remain possible without an observable HL-LHC trilinear deviation.
+  caveats:
+  - No collider likelihood was rerun.
+  constrained_parameters:
+  - Lambda
+  - delta_lambda_3
+  constraint_type: collider
+  data_release: HL-LHC trilinear sensitivity estimates in primary source
+  excluded_regions:
+  - Large deviations in the triple-Higgs coupling could be tested by HL-LHC precision.
+  id: con_sfdm_higgs_trilinear_hllhc
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: HL-LHC Higgs self-coupling reach for the |H|^6 operator
+  notes: null
+  observable_channel: Higgs trilinear coupling
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1601.01681
+- allowed_regions:
+  - SFDM can become CDM-like at late times while having a stiff/radiationlike early history.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The background SFDM evolution captures the expansion history relevant for EWBG.
+    id: homogeneous-sfdm-background
+    impact_if_violated: Perturbations and solitonic structure can impose additional constraints.
+    notes: null
+    scope: SFDM cosmology
+    source_reference_ids:
+    - arxiv:1310.6061
+    status: assumed
+  benchmark_implications:
+  - The same DM abundance can source the early expansion modification and late CDM-like matter.
+  caveats:
+  - Linear power-spectrum constraints were not computed.
+  constrained_parameters:
+  - m_s
+  - lambda_s
+  - transition redshifts
+  - sound speed
+  constraint_type: cosmological
+  data_release: Cosmological SFDM constraints in related source
+  excluded_regions:
+  - Transition times that leave SFDM too relativistic at late epochs or disrupt BBN/LSS are disfavored.
+  id: con_sfdm_cosmological_transitions
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: SFDM transition and structure-formation consistency
+  notes: null
+  observable_channel: background and structure evolution
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1601.01681
+  - arxiv:1310.6061
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The model does not by itself compute the CP-violating source for baryogenesis.
+    constraint_ids:
+    - con_sfdm_bbn_radiation_recovery
+    - con_sfdm_ewbg_sphaleron
+    - con_sfdm_higgs_trilinear_hllhc
+    - con_sfdm_cosmological_transitions
+    derived_quantities:
+    - H(T)
+    - rho_sfdm/rho_rad
+    - sphaleron washout factor
+    - delta_lambda_3
+    description: Integrate the scalar-field DM background through a stiff era and use the resulting H(T)
+      in EWBG and collider constraints.
+    forward_model_chain:
+    - inputs:
+      - SFDM Lagrangian
+      - initial charge
+      notes: null
+      outputs:
+      - equation of state
+      - energy-density scaling
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Use KG/Friedmann background evolution from source.
+    - inputs:
+      - rho_sfdm(T)
+      - radiation density
+      notes: null
+      outputs:
+      - H(T)/H_rad
+      step_id: s2
+      step_type: data_transform
+      tool_or_code: null
+      validity: Valid before BBN only if the stiff component has redshifted away.
+    - inputs:
+      - H_EW
+      - '|H|^6 potential'
+      notes: null
+      outputs:
+      - sphaleron washout condition
+      - Lambda window
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Does not compute CP-violating source.
+    - inputs:
+      - Lambda
+      notes: null
+      outputs:
+      - triple-Higgs deviation
+      - HL-LHC reach
+      step_id: s4
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires collider forecast assumptions.
+    id: route_sfdm_stiff_ewbg_constraints
+    input_parameters:
+    - m_s
+    - lambda_s
+    - initial charge density
+    - Lambda
+    - transition temperatures
+    likelihoods:
+    - BBN expansion prior
+    - EWBG washout criterion
+    - HL-LHC Higgs self-coupling forecast
+    - SFDM cosmology constraints
+    observable_ids:
+    - obs_sfdm_stiff_expansion_ewbg
+    - obs_sfdm_eos_transitions_lss
+    - obs_sfdm_higgs_trilinear_window
+    required_code_resources:
+    - Klein-Gordon/Friedmann integrator
+    - EWPT finite-temperature calculator
+    - collider self-coupling forecast
+    route_status: planned
+    source_model_features:
+    - complex scalar-field dark matter
+    - conserved U(1) charge
+    - early stiff equation of state
+    - dimension-six Higgs potential
+    validation_tests:
+    - recover w=1 stiff phase
+    - recover radiation domination by T~1 MeV
+    - recover quoted twenty percent Lambda shift

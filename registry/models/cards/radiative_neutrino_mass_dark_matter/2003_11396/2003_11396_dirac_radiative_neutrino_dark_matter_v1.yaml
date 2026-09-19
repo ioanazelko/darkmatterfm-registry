@@ -1,0 +1,502 @@
+_source:
+  shard: arXiv_src_2003_040_wds.tar
+  paper_id: '2003_11396'
+  source_member: 2003_11396.json
+schema_version: model_only_v0
+model_id: 2003_11396_dirac_radiative_neutrino_dark_matter_v1
+identity:
+  name: Dirac dark matter in a radiative neutrino model
+  family: radiative_neutrino_mass_dark_matter
+  aliases:
+  - Z3 radiative Dirac dark matter
+  - Dirac N1 dark matter
+  short_description: A Z3-symmetric one-loop radiative neutrino-mass model in which the lighter neutral
+    Dirac fermion N1 is the dark matter candidate and obtains its relic abundance through thermal freeze-out.
+  historical_origin_or_motivation: The paper links a Dirac dark matter candidate to one-loop radiative
+    neutrino mass generation and emphasizes that Dirac annihilation to leptons is not velocity suppressed
+    like a Majorana candidate.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - radiative seesaw
+  - one-loop Dirac neutrino mass model
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the lepton-sector Lagrangian and relevant Higgs-potential term for a renormalizable
+    SM extension with two neutral Dirac fermions and two inert doublets. Full SM kinetic/gauge terms are
+    implicit rather than rewritten.
+particle_content:
+  dark_matter_candidate:
+    name: lighter neutral Dirac fermion N1
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavier neutral Dirac fermion N2
+  - inert doublet H1 with charged and neutral components
+  - inert doublet H2 with charged and neutral components
+  mediators:
+  - inert scalar doublets H1 and H2
+  - loop-induced Higgs coupling
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: An exact discrete Z3 symmetry is imposed so that the lightest Z3-charged particle
+    is stable; the paper assumes this particle is N1.
+  symmetries:
+  - name: Z3
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified; used to keep the new fermions Dirac and the doublets inert
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  - higgs
+  - other
+  standard_model_targets:
+  - lepton doublets
+  - charged leptons
+  - SM Higgs
+  dark_sector_couplings:
+  - Yukawa couplings y_N_R and y_N_L between lepton doublets, inert doublets, and neutral Dirac fermions
+  - scalar coupling lambda_0 connecting H1 and H2 through the SM Higgs
+  - Dirac mass terms M_a for N_a
+  mediator_types:
+  - inert scalar doublets
+  - Higgs boson through loop-induced effective coupling
+  interaction_operators:
+  - L_L H1 N_R
+  - N_L H2 L_L^C
+  - M_a N_L N_R
+  - lambda_0 (H^dagger H1)(H^dagger H2)
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - N1 anti-N1 to charged leptons
+  - N1 anti-N1 to neutrino/lepton final states through inert-doublet exchange
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: Yukawa matrices are parameterized to reproduce the active neutrino mass matrix; one
+    charged-lepton annihilation channel may dominate in the numerical analysis.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: Dirac dark matter mass
+    symbol: M_1
+    description: Mass of the lighter neutral Dirac fermion N1, identified as the dark matter particle.
+    range: M_1 < M_2 < 10 TeV and M_1 below the inert-doublet masses in the numerical scan
+    unit: TeV
+    role: core
+    status: established
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: The paper denotes the DM mass as m_chi = M_1.
+  - name: heavier neutral Dirac fermion mass
+    symbol: M_2
+    description: Mass of the second neutral Dirac fermion.
+    range: M_1 < M_2 < 10 TeV
+    unit: TeV
+    role: core
+    status: established
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: null
+  - name: inert doublet masses
+    symbol: m_eta1, m_eta2
+    description: Masses of the charged and neutral components of the two inert doublets, taken nearly
+      degenerate within each doublet.
+    range: 1 TeV < m_eta1,2 < 10 TeV with M_1 < m_eta1,2
+    unit: TeV
+    role: core
+    status: established
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: The paper assumes neutral and charged components of each inert doublet are almost degenerate.
+  - name: H1-H2 scalar connector coupling
+    symbol: lambda_0
+    description: Coupling in the relevant Higgs-potential term connecting H1 and H2 and enabling one-loop
+      active neutrino masses.
+    range: '|lambda_0| < 4'
+    unit: null
+    role: core
+    status: established
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: null
+  - name: neutrino-sector Yukawa couplings
+    symbol: y_N_R, y_N_L
+    description: Yukawa matrices coupling SM leptons, inert doublets, and the neutral Dirac fermions;
+      parameterized to reproduce the active neutrino mass matrix.
+    range: perturbative values; numerical scan uses |Y_ab| < 4
+    unit: null
+    role: core
+    status: established
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: The scan uses an auxiliary parameterization in terms of Y, A_13, and orthonormal vectors.
+  - name: antisymmetric neutrino-mass parameter
+    symbol: A_13
+    description: Free antisymmetric-matrix parameter in the Yukawa parameterization.
+    range: '|A_13| < 10 eV'
+    unit: eV
+    role: core
+    status: established
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: null
+production:
+  mechanisms:
+  - thermal freeze-out
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - tree-level annihilation of N1 anti-N1 through inert-doublet interactions
+  - Boltzmann equation for the N1 number density with thermally averaged cross section
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper assumes no initial N1/anti-N1 asymmetry and neglects coannihilation by requiring the
+    other Z3-charged particles not to be close in mass to N1.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed relic density target
+    symbol: Omega h^2
+    description: Relic density target used for comparison in the paper.
+    value: 0.1193 +/- 0.0018
+    unit: null
+    role: cosmological
+    status: established
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: null
+  calculation_type: thermal
+  key_dependencies:
+  - M_1
+  - M_2
+  - m_eta1
+  - m_eta2
+  - y_N_R
+  - y_N_L
+  - lambda_0
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - no initial asymmetry between N1 and anti-N1
+  - coannihilation omitted by non-degenerate mass assumption
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: N1 chemical freeze-out
+    symbol: null
+    description: Chemical freeze-out sets the N1 relic abundance through a number-density Boltzmann equation.
+    value: null
+    unit: null
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  f_of_p_or_q: not provided
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper treats the relic abundance through the integrated Boltzmann number-density equation,
+    not a detailed momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No warm-dark-matter mapping is given in the paper.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: v_n1_lightest_z3_state
+  applies_to: model
+  condition: N1 is the lightest particle among the Z3-charged Dirac fermions and inert doublets.
+  valid_range: M_1 < M_2 and M_1 < m_eta1,2 in the numerical scan
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - If another Z3-charged particle is lighter, the dark matter identity changes.
+  source_reference_ids:
+  - okada_shoji_2020
+  notes: null
+- id: v_no_coannihilation_region
+  applies_to: production
+  condition: Other Z3-charged particles are not close enough in mass to require coannihilation.
+  valid_range: Paper avoids the roughly 1-10 percent degeneracy region where coannihilation would matter.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Near-degenerate spectra require a different relic-density calculation.
+  source_reference_ids:
+  - okada_shoji_2020
+  notes: null
+- id: v_scan_perturbative_parameters
+  applies_to: parameter
+  condition: Numerical scan keeps couplings perturbative and uses finite ranges for masses and auxiliary
+    Yukawa parameters.
+  valid_range: '|lambda_0| < 4, M_1 < M_2 < 10 TeV, 1 TeV < m_eta1,2 < 10 TeV, |Y_ab| < 4, |A_13| < 10
+    eV'
+  status: established
+  extrapolation_risk: medium
+  caveats:
+  - Allowed regions outside the scan ranges are not established by this paper.
+  source_reference_ids:
+  - okada_shoji_2020
+  notes: null
+assumptions:
+  global:
+  - id: a_n1_is_dark_matter
+    description: The lighter neutral Dirac fermion N1 is assumed to be the dark matter particle.
+    scope: global
+    status: assumed
+    impact_if_violated: The stable relic and the relevant interactions would be different.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: null
+  - id: a_no_initial_asymmetry
+    description: There is no initial asymmetry between the dark matter and anti-dark-matter densities.
+    scope: production
+    status: assumed
+    impact_if_violated: The relic-density calculation would not be the symmetric freeze-out calculation
+      used in the paper.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: null
+  - id: a_no_coannihilation
+    description: The other Z3-charged particles are not close to the dark matter mass, so coannihilation
+      is not included.
+    scope: production
+    status: assumed
+    impact_if_violated: Coannihilation channels could change the relic density and viable parameter space.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - okada_shoji_2020
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper reports numerical scans and Boltzmann-equation calculations, but the assigned
+    text does not identify a public code release.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs:
+  - model masses
+  - Yukawa-sector parameters
+  - scalar coupling lambda_0
+  expected_outputs:
+  - relic density
+  - annihilation cross sections
+  - allowed scan points
+  supported_observable_channels: []
+  reproducibility:
+    reproducibility_level: unknown
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: No reusable implementation is described in the extracted paper text.
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: Validation of any private numerical code cannot be assessed from the paper text.
+  caveats: []
+provenance:
+  model_id: 2003_11396_dirac_radiative_neutrino_dark_matter_v1
+  model_name: Dirac dark matter in a radiative neutrino model
+  model_family: radiative_neutrino_mass_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: okada_shoji_2020
+      title: Dirac dark matter in a radiative neutrino model
+      authors:
+      - Hiroshi Okada
+      - Yutaro Shoji
+      year: 2020
+      arxiv_id: '2003.11396'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text; local paper_id 2003_11396.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: Codex GPT-5 rolling batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: okada_shoji_2020
+      section: Abstract
+      page: null
+      quote_or_summary: The paper proposes a Z3 radiative neutrino-mass scenario with a Dirac dark matter
+        candidate and two inert doublets.
+    - reference_id: okada_shoji_2020
+      section: Model setup
+      page: null
+      quote_or_summary: The text introduces two neutral Dirac fermions N and two inert doublets H1 and
+        H2, imposes Z3, and identifies N1 as the DM candidate.
+    - reference_id: okada_shoji_2020
+      section: Relic density
+      page: null
+      quote_or_summary: The relic density is calculated with a freeze-out Boltzmann equation using thermally
+        averaged annihilation cross sections.
+    - reference_id: okada_shoji_2020
+      section: Numerical analysis
+      page: null
+      quote_or_summary: The scan uses TeV-scale masses, perturbative couplings, and points satisfying
+        the DM relic-density requirement.
+    unresolved_items:
+    - The plaintext extraction loses some TeX symbols in the explicit annihilation-channel list, so channels
+      are recorded at the lepton/inert-doublet level rather than as exact formulas.
+  evidence:
+    particle_content:
+    - reference_id: okada_shoji_2020
+      note: Introduces two families of neutral Dirac fermions N and two inert doublets H1,H2; assumes
+        lighter N, denoted N1, is the DM.
+      confidence: high
+      section: Model setup
+      page: null
+    symmetries:
+    - reference_id: okada_shoji_2020
+      note: Imposes discrete Abelian Z3 symmetry to assure the Dirac nature of N, inert doublets, and
+        stability of N1.
+      confidence: high
+      section: Model setup
+      page: null
+    interactions:
+    - reference_id: okada_shoji_2020
+      note: Lepton-sector Lagrangian includes y_N_R L H1 N_R, y_N_L N_L H2 L^C, Dirac masses M_a, and
+        a lambda_0 scalar term connecting H1 and H2.
+      confidence: high
+      section: Model setup
+      page: null
+    production_mechanism:
+    - reference_id: okada_shoji_2020
+      note: Relic density is explained by freeze-out; the paper solves a Boltzmann equation for N1 with
+        thermally averaged annihilation cross section.
+      confidence: high
+      section: Relic density
+      page: null
+    cosmological_history:
+    - reference_id: okada_shoji_2020
+      note: Assumes no initial DM/anti-DM asymmetry and omits coannihilation by keeping other Z3-charged
+        particles away from the DM mass.
+      confidence: high
+      section: Relic density
+      page: null
+    parameter_ranges:
+    - reference_id: okada_shoji_2020
+      note: Numerical scan uses |lambda_0|<4, M1<M2<10 TeV, M1 below inert-doublet masses, 1 TeV<m_eta1,2<10
+        TeV, |Y_ab|<4, and |A13|<10 eV.
+      confidence: high
+      section: Numerical analysis
+      page: null
+    validity_domain:
+    - reference_id: okada_shoji_2020
+      note: Paper states coannihilation would be needed near mass degeneracy and deliberately does not
+        analyze that fine-tuned region.
+      confidence: high
+      section: Relic density
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Model-card fields are limited to information present in the assigned SQLite paper text.
+  related_entries: []
+  external_links: {}
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - coannihilation region omitted
+  - exact annihilation-channel notation partly lost in plaintext
+  - public numerical implementation not identified
+  validation_status: expert_judgment_only
+  notes: The qualitative model construction is well supported; quantitative scans depend on assumptions
+    listed in the paper.
+agent_failure_modes:
+  warnings:
+  - id: w_do_not_majorana_map
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not map this entry onto a Majorana radiative-neutrino DM model; the paper relies on the
+      Dirac nature of N1.
+    mitigation: Keep Dirac/anti-Dirac degrees of freedom and use Dirac annihilation logic.
+    source_reference_ids:
+    - okada_shoji_2020
+  - id: w_coannihilation_omitted
+    severity: medium
+    category: extrapolation
+    warning: The extracted relic-density logic excludes near-degenerate spectra where coannihilation would
+      matter.
+    mitigation: Require a separate coannihilation calculation before using this card for degenerate Z3-charged
+      spectra.
+    source_reference_ids:
+    - okada_shoji_2020

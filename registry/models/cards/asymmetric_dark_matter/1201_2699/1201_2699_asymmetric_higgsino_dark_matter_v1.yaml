@@ -1,0 +1,790 @@
+_source:
+  shard: arXiv_src_1201_004_wds.tar
+  paper_id: '1201_2699'
+  source_member: 1201_2699.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: low_ewpt_model_building_gap
+    mitigation: Do not use the card as a generic MSSM higgsino scenario without checking the cosmological
+      phase-transition assumption.
+    severity: medium
+    source_reference_ids:
+    - '1201_2699'
+    warning: The viable abundance requires a low 1-10 GeV electroweak phase transition, which the paper
+      says may require additional degrees of freedom.
+associated_code:
+  code_summary: The assigned text develops analytic estimates and density-matrix evolution, but does not
+    identify a public model-specific code release.
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The lightest neutral higgsino is the lightest supersymmetric particle.
+    id: higgsino_lsp
+    impact_if_violated: A different LSP would change the dark matter candidate.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1201_2699'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Super-equilibrium breaks while higgsinos are still relativistic, freezing a usable higgsino
+      asymmetry.
+    id: early_nse
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '1201_2699'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The electroweak phase transition happens at a low temperature of order 1-10 GeV.
+    id: low_ewpt
+    impact_if_violated: A higher transition temperature would wash out too much of the higgsino relic
+      density.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids:
+    - '1201_2699'
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - low electroweak phase transition temperature of order 1-10 GeV
+  - higgsino asymmetry before electroweak symmetry breaking
+  phase_transitions:
+  - electroweak phase transition controls higgsino oscillations and abundance survival
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - asymmetric Higgsino DM
+  family: asymmetric_dark_matter
+  historical_origin_or_motivation: Motivated by relating the baryon asymmetry and dark matter abundance
+    through a higgsino asymmetry produced before the electroweak phase transition.
+  model_kind: complete_theory
+  name: Asymmetric higgsino dark matter
+  short_description: An MSSM-based asymmetric dark matter scenario where a pre-electroweak higgsino asymmetry
+    survives in a split superpartner spectrum with electroweak-scale higgsinos.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - W boson pairs
+  - Z boson pairs
+  cp_structure: unknown
+  dark_sector_couplings:
+  - higgsino electroweak gauge interactions
+  - higgsino-number-violating effective Higgs/higgsino operators
+  decay_channels: []
+  flavor_structure: Heavy sfermions suppress flavor problems; stop and sbottom mixing constraints are
+    part of the viable spectrum.
+  interaction_operators:
+  - effective operators inducing higgsino-number violation and neutral higgsino mass splitting
+  mediator_types:
+  - electroweak gauge bosons
+  - Higgs bosons
+  - heavy gauginos
+  - squarks and sleptons
+  portals:
+  - vector
+  - higgs
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - W bosons
+  - Z bosons
+  - Higgs bosons
+  - nucleons through inelastic scattering
+  tree_or_loop_level: both
+model_id: 1201_2699_asymmetric_higgsino_dark_matter_v1
+parameters:
+  core:
+  - description: Mass scale of the electroweak higgsinos.
+    name: higgsino mass
+    range: 200-1000
+    role: core
+    status: inferred
+    symbol: mu
+    unit: GeV
+  - description: Required heavy gaugino scale for early non-super-equilibrium.
+    name: electroweak gaugino mass scale
+    range: '> 10^8'
+    role: core
+    status: inferred
+    symbol: M_i
+    unit: GeV
+  - description: Required heavy squark and slepton scale.
+    name: sfermion mass scale
+    range: '> 10^4'
+    role: core
+    status: inferred
+    symbol: m_sfermion
+    unit: GeV
+  - description: Low phase-transition temperature required for the relic higgsino density to survive.
+    name: electroweak phase transition temperature
+    range: 1-10
+    role: cosmological
+    status: inferred
+    symbol: T_EWPT
+    unit: GeV
+  - description: Splitting used to kinematically forbid dangerous inelastic direct scattering.
+    name: neutral higgsino mass splitting
+    range: at least about 400 keV; paper discusses around 1 MeV
+    role: core
+    status: inferred
+    symbol: m_0
+    unit: keV-MeV
+  - description: Comoving higgsino asymmetry frozen while higgsinos are still relativistic.
+    name: higgsino asymmetry
+    role: derived
+    status: inferred
+    symbol: Y_h
+    value: about 10^-11
+particle_content:
+  additional_dark_sector_particles:
+  - second neutral higgsino
+  - charged higgsino
+  - very heavy electroweak gauginos
+  - very heavy squarks and sleptons
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lightest neutral higgsino
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - neutral higgsino state split by at least several hundred keV
+  - charged higgsino split by about 350 MeV
+  long_lived_particles: []
+  mediators:
+  - W boson
+  - Z boson
+  - Higgs bosons
+  - heavy gauginos
+  - squarks and sleptons
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: not supplied
+  free_streaming_length: null
+  notes: Higgsinos are electroweak-scale cold relics; no detailed phase-space distribution is provided.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - initial higgsino asymmetry tied to baryon/lepton asymmetry
+  - breakdown of super-equilibrium before higgsinos become nonrelativistic
+  - electroweak phase transition temperature
+  - higgsino annihilation into electroweak bosons
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - asymmetric relic from a pre-electroweak higgsino asymmetry
+  - post-electroweak higgsino-antihiggsino oscillations with annihilation freeze-out effects
+  nonthermal_momentum_distribution: 'no'
+  notes: The scenario requires a preserved higgsino asymmetry before the EWPT and a low EWPT temperature
+    so that the final abundance is not erased.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - The exact source of the unusually low electroweak phase-transition temperature is deferred by the
+    paper.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: Higgsino-number violation arises from Higgs-Higgs and Higgs-antihiggsino scattering, generated
+        by heavy gaugino and quark-squark diagrams.
+      page: null
+      reference_id: '1201_2699'
+      section: non-super-equilibrium
+    parameter_ranges:
+    - confidence: high
+      note: The conclusions give the heavy-spectrum and higgsino-mass ranges and require T_EWPT of order
+        1-10 GeV.
+      page: null
+      reference_id: '1201_2699'
+      section: conclusions
+    particle_content:
+    - confidence: high
+      note: The only electroweak-scale superpartners are higgsinos; gauginos, squarks, and sleptons must
+        be very heavy.
+      page: null
+      reference_id: '1201_2699'
+      section: abstract/conclusions
+    production_mechanism:
+    - confidence: high
+      note: Chemical equilibrium above the EWPT ties baryon and higgsino asymmetries; early NSE freezes
+        Y_h around 10^-11.
+      page: null
+      reference_id: '1201_2699'
+      section: higgsino asymmetry
+    symmetries:
+    - confidence: high
+      note: Before the EWPT higgsinos are Dirac-like and carry an asymmetry; after the EWPT Majorana splitting
+        and oscillations begin.
+      page: null
+      reference_id: '1201_2699'
+      section: introduction/oscillations
+    validity_domain:
+    - confidence: medium
+      note: The authors note the low EWPT temperature may require degrees of freedom beyond the MSSM.
+      page: null
+      reference_id: '1201_2699'
+      section: conclusions
+    constraints:
+    - confidence: high
+      note: Primary paper states that viable abundance requires a low electroweak phase transition and
+        very heavy superpartners except higgsinos.
+      page: null
+      reference_id: arxiv:1201.2699
+      section: Abstract and abundance sections
+    - confidence: medium
+      note: ADM review summarizes late oscillations and direct/indirect detection as generic ADM constraint
+        routes.
+      page: null
+      reference_id: arxiv:1308.0338
+      section: Review sections
+    observables:
+    - confidence: high
+      note: Primary paper quotes the inelastic direct-detection cross section scale and the required neutral-higgsino
+        splitting.
+      page: null
+      reference_id: arxiv:1201.2699
+      section: Constraints on the higgsino spectrum
+    - confidence: high
+      note: Primary paper gives the WW/ZZ annihilation-rate scaling after discussing oscillations.
+      page: null
+      reference_id: arxiv:1201.2699
+      section: Constraints on the higgsino spectrum
+    routes:
+    - confidence: high
+      note: Primary paper combines chemical-potential relations with density-matrix evolution for higgsino
+        oscillations and annihilation.
+      page: null
+      reference_id: arxiv:1201.2699
+      section: Higgsino asymmetry and density-matrix sections
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0018
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5 batch worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: States that a higgsino asymmetry exists before the EWPT and investigates the higgsino
+        as asymmetric dark matter.
+      reference_id: '1201_2699'
+      section: abstract/introduction
+    - page: null
+      quote_or_summary: Derives heavy gaugino and sfermion conditions for higgsino-number-violating reactions
+        to fall out of equilibrium.
+      reference_id: '1201_2699'
+      section: non-super-equilibrium
+    - page: null
+      quote_or_summary: 'Summarizes viable region: gauginos above 10^8 GeV, sfermions above 10^4 GeV,
+        higgsinos 200-1000 GeV, and EWPT temperature 1-10 GeV.'
+      reference_id: '1201_2699'
+      section: conclusions
+    unresolved_items:
+    - No modern direct-detection or indirect-detection likelihood was rerun.
+    - The extra dynamics needed for a 1-10 GeV electroweak phase transition remain outside the structured
+      fields.
+  last_updated: '2026-05-31'
+  model_family: asymmetric_dark_matter
+  model_id: 1201_2699_asymmetric_higgsino_dark_matter_v1
+  model_name: Asymmetric higgsino dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: high
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1201.2699'
+      authors:
+      - Kfir Blum
+      - Aielet Efrati
+      - Yuval Grossman
+      - Yosef Nir
+      - Antonio Riotto
+      doi: null
+      notes: The assigned paper asks whether higgsino asymmetry can yield viable asymmetric dark matter
+        and derives the needed spectrum/cosmology.
+      reference_id: '1201_2699'
+      role: original_model
+      title: Asymmetric Higgsino Dark Matter
+      url: null
+      year: 2012
+    - arxiv_id: '1201.2699'
+      authors:
+      - Blum, Kfir
+      - Efrati, Aielet
+      - Grossman, Yuval
+      - Nir, Yosef
+      - Riotto, Antonio
+      doi: 10.1103/PhysRevLett.109.051302
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1201.2699
+      role: original_model
+      title: Asymmetric Higgsino Dark Matter
+      url: https://arxiv.org/abs/1201.2699
+      year: 2012
+    constraint_papers:
+    - arxiv_id: '1306.4321'
+      authors:
+      - Cheung, Clifford
+      - Zhang, Yue
+      doi: 10.1007/JHEP09(2013)002
+      notes: Related electroweak-scale asymmetric-DM model resolved locally and read.
+      reference_id: arxiv:1306.4321
+      role: extension
+      title: Electroweak cogenesis
+      url: https://arxiv.org/abs/1306.4321
+      year: 2013
+    - arxiv_id: '1005.1655'
+      authors:
+      - Cohen, Timothy
+      - Phalen, Daniel J.
+      - Pierce, Aaron
+      - Zurek, Kathryn M.
+      doi: 10.1103/PhysRevD.82.056001
+      notes: Related ADM benchmark source resolved locally and read.
+      reference_id: arxiv:1005.1655
+      role: extension
+      title: Asymmetric dark matter from a GeV hidden sector
+      url: https://arxiv.org/abs/1005.1655
+      year: 2010
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1308.0338'
+      authors:
+      - Zurek, Kathryn M.
+      doi: 10.1016/j.physrep.2013.12.001
+      notes: Related ADM review resolved locally and read.
+      reference_id: arxiv:1308.0338
+      role: review
+      title: 'Asymmetric Dark Matter: Theories, signatures, and constraints'
+      url: https://arxiv.org/abs/1308.0338
+      year: 2014
+  status: machine_extracted
+relic_density:
+  calculation_type: mixed
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - higgsino asymmetry
+  - higgsino mass
+  - EWPT temperature
+  - annihilation cross section to WW/ZZ
+  - neutral mass splitting
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: mild_tuning
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Low electroweak phase-transition requirement is model-building intensive.
+  - Converted text loses some formula symbols for mixing-angle conditions.
+  notes: The model identity and viable parameter summary are explicit; detailed spectrum formulae need
+    source review.
+  observational_robustness: not_applicable
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    impact_on_sigma8_s8: not discussed
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: not discussed
+symmetries:
+  stabilizing_mechanism: The higgsino is assumed to be the lightest supersymmetric particle; before electroweak
+    symmetry breaking, an approximate higgsino number carries the asymmetry.
+  symmetries:
+  - breaking: heavy gaugino, squark, and slepton spectrum
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: supersymmetry
+    type: unknown
+  - breaking: violated by Higgs-Higgs and Higgs-antihiggsino scatterings and by post-EWPT Majorana splitting
+    breaking_scale: null
+    exact_or_approximate: approximate
+    name: higgsino number before electroweak phase transition
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The underlying setting is supersymmetric, while the paper uses effective higgsino-number-violating
+    interactions after integrating out heavy gauginos and squarks.
+  parent_frameworks:
+  - Minimal Supersymmetric Standard Model
+  - split-supersymmetry-like heavy spectrum
+  - leptogenesis-motivated asymmetric dark matter
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Higgsino must be the LSP and the only electroweak-scale superpartner; gauginos, squarks,
+    and sleptons are very heavy.
+  extrapolation_risk: medium
+  id: higgsino_lsp_heavy_spectrum
+  notes: null
+  source_reference_ids:
+  - '1201_2699'
+  status: inferred
+  valid_range: M_i > 10^8 GeV, m_sfermion > 10^4 GeV, mu = 200-1000 GeV
+- applies_to: cosmological_history
+  caveats:
+  - The paper notes this may require new degrees of freedom beyond the MSSM.
+  condition: Electroweak phase transition temperature must be of order 1-10 GeV.
+  extrapolation_risk: high
+  id: low_ewpt_temperature
+  notes: null
+  source_reference_ids:
+  - '1201_2699'
+  status: inferred
+  valid_range: T_EWPT about 1-10 GeV
+- applies_to: parameter
+  caveats: []
+  condition: Neutral higgsino splitting must be large enough to forbid direct inelastic scattering.
+  extrapolation_risk: medium
+  id: inelastic_splitting_direct_detection
+  notes: null
+  source_reference_ids:
+  - '1201_2699'
+  status: inferred
+  valid_range: minimum below 400 keV over the mass range; paper uses substantial sbottom contribution
+observables:
+- caveats:
+  - Requires halo velocity distribution and detector thresholds for a modern limit recast.
+  channel: direct_detection
+  effect_direction: null_signal
+  environments:
+  - direct-detection targets
+  id: obs_higgsino_inelastic_direct_detection
+  key_quantities:
+  - description: Electroweak higgsino mass scale.
+    name: higgsino mass
+    range: 200-1000
+    role: core
+    source_reference_ids:
+    - arxiv:1201.2699
+    status: inferred
+    symbol: mu
+    unit: GeV
+  - description: Splitting needed to suppress inelastic scattering.
+    name: neutral higgsino mass splitting
+    range: at least about 400 keV; paper discusses about 1 MeV
+    role: core
+    source_reference_ids:
+    - arxiv:1201.2699
+    status: inferred
+    symbol: m0
+    unit: keV-MeV
+  - description: Approximate spin-independent nucleon cross section before the inelastic threshold is
+      imposed.
+    name: zero-splitting nucleon cross section
+    range: about 1e-38 cm^2 at mu=100 GeV and 1e-36 cm^2 at mu=1000 GeV
+    role: core
+    source_reference_ids:
+    - arxiv:1201.2699
+    status: inferred
+    symbol: sigma_n
+    unit: cm^2
+  linked_constraints:
+  - con_higgsino_direct_inelastic_splitting
+  linked_routes:
+  - route_higgsino_asymmetry_to_detection
+  name: Inelastic higgsino-nucleus scattering threshold
+  notes: null
+  observability: high
+  predicted_effect: An electroweak-scale higgsino with too-small neutral-state splitting has an inelastic
+    nucleon cross section orders of magnitude above direct-detection bounds; a splitting of order hundreds
+    of keV kinematically suppresses the signal.
+  redshift_range: today
+  relevance: critical
+  scale_range: nuclear recoil energies in terrestrial detectors
+  source_reference_ids:
+  - arxiv:1201.2699
+  subchannel: spin-independent inelastic scattering
+- caveats:
+  - Indirect limits depend on the surviving symmetric fraction after density-matrix evolution.
+  channel: indirect_detection
+  effect_direction: rate_change
+  environments:
+  - Milky Way halo
+  - dwarf spheroidal galaxies
+  id: obs_higgsino_annihilation_after_oscillation
+  key_quantities:
+  - description: Approximate WW/ZZ annihilation rate quoted by the primary paper.
+    name: annihilation cross section
+    range: about 1e-26 (1 TeV / mu)^2
+    role: core
+    source_reference_ids:
+    - arxiv:1201.2699
+    status: inferred
+    symbol: sigma_ann v
+    unit: cm^3 s^-1
+  - description: Controls the oscillation timescale and survival of the asymmetric population.
+    name: higgsino-number violating splitting
+    range: model dependent; MeV-scale benchmark discussed
+    role: core
+    source_reference_ids:
+    - arxiv:1201.2699
+    status: inferred
+    symbol: m0
+    unit: eV-MeV
+  linked_constraints:
+  - con_higgsino_indirect_annihilation
+  linked_routes:
+  - route_higgsino_asymmetry_to_detection
+  name: Late higgsino annihilation after asymmetry washout
+  notes: null
+  observability: medium
+  predicted_effect: If higgsino-antihiggsino oscillations regenerate a symmetric component, annihilation
+    to electroweak gauge bosons can produce indirect-detection signals with a rate scaling roughly as
+    mu^-2.
+  redshift_range: post-electroweak to today
+  relevance: high
+  scale_range: Galactic halos and dwarf galaxies
+  source_reference_ids:
+  - arxiv:1201.2699
+  - arxiv:1308.0338
+  subchannel: WW and ZZ final states
+constraints:
+- allowed_regions:
+  - The primary paper states that the minimum splitting needed across the mass range of interest is below
+    about 400 keV and uses a substantial sbottom contribution to reach this scale.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The direct-detection threshold statement assumes ordinary halo velocities and elastic
+      detector kinematics translated to inelastic scattering.
+    id: standard_halo_kinematics
+    impact_if_violated: Different halo or detector assumptions move the precise splitting threshold.
+    notes: null
+    scope: direct-detection recast
+    source_reference_ids:
+    - arxiv:1201.2699
+    status: assumed
+  benchmark_implications:
+  - A MeV-scale splitting is compatible with evading inelastic direct detection in the source setup.
+  caveats:
+  - The batch did not recast XENON/LUX/PandaX/LZ likelihoods.
+  constrained_parameters:
+  - mu
+  - m0
+  - sigma_n
+  constraint_type: direct_detection
+  data_release: null
+  excluded_regions:
+  - Neutral higgsino splittings well below the detector inelastic threshold leave an excluded Z-mediated
+    recoil rate.
+  id: con_higgsino_direct_inelastic_splitting
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Direct-detection lower target for neutral-higgsino splitting
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1201.2699
+- allowed_regions:
+  - T_EWPT of order 1-10 GeV with very heavy gauginos and sfermions allows a surviving higgsino asymmetry.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: unknown
+    description: The electroweak phase transition is delayed to around 1-10 GeV.
+    id: low_temperature_ewpt
+    impact_if_violated: The asymmetric higgsino relic abundance is depleted if the transition happens
+      earlier.
+    notes: null
+    scope: cosmological history
+    source_reference_ids:
+    - arxiv:1201.2699
+    status: assumed
+  benchmark_implications:
+  - The model card benchmark relies on a nonstandard low-temperature electroweak transition.
+  caveats:
+  - The paper notes this may require additional model-building degrees of freedom.
+  constrained_parameters:
+  - T_EWPT
+  - M_i
+  - m_sfermion
+  - Y_h
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Electroweak phase transitions much above the quoted 1-10 GeV range wash out too much higgsino density
+    in the source scenario.
+  id: con_higgsino_low_ewpt_abundance
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Low electroweak phase-transition requirement for asymmetric abundance
+  notes: null
+  observable_channel: relic abundance
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1201.2699
+- allowed_regions:
+  - Large splitting and cosmological histories that keep the present higgsino population mostly asymmetric
+    weaken indirect limits.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: A present-day symmetric component must be computed from oscillation, damping, annihilation,
+      and expansion.
+    id: annihilation_fraction_modeling
+    impact_if_violated: Assuming a fully symmetric or fully asymmetric population would misstate the signal.
+    notes: null
+    scope: indirect-detection recast
+    source_reference_ids:
+    - arxiv:1201.2699
+    status: assumed
+  benchmark_implications:
+  - The primary paper quotes an annihilation rate to WW/ZZ of order 1e-26 cm^3 s^-1 times (1 TeV / mu)^2.
+  caveats:
+  - No gamma-ray or cosmic-ray likelihood was run.
+  constrained_parameters:
+  - mu
+  - m0
+  - sigma_ann v
+  - symmetric fraction
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Parameter regions where oscillations regenerate enough symmetric higgsinos can be constrained by electroweak-boson
+    annihilation products.
+  id: con_higgsino_indirect_annihilation
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Indirect limits on regenerated symmetric higgsino abundance
+  notes: null
+  observable_channel: indirect_detection
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:1201.2699
+  - arxiv:1308.0338
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The low electroweak transition is a model-building assumption rather than a measured observable.
+    constraint_ids:
+    - con_higgsino_direct_inelastic_splitting
+    - con_higgsino_low_ewpt_abundance
+    - con_higgsino_indirect_annihilation
+    derived_quantities:
+    - surviving higgsino abundance
+    - oscillation rate
+    - inelastic recoil threshold
+    - WW/ZZ annihilation rate
+    description: Propagate a pre-electroweak higgsino asymmetry through non-super-equilibrium, electroweak
+      symmetry breaking, oscillations, and detector/indirect signatures.
+    forward_model_chain:
+    - inputs:
+      - chemical potentials
+      - super-equilibrium decoupling temperature
+      notes: Use the source chemical-equilibrium relations.
+      outputs:
+      - higgsino-to-baryon asymmetry relation
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for the heavy-sfermion spectrum assumed in the primary paper.
+    - inputs:
+      - m0
+      - annihilation cross section
+      - thermal damping
+      notes: The batch records the route but does not solve it numerically.
+      outputs:
+      - surviving asymmetric and symmetric higgsino densities
+      step_id: s2
+      step_type: other
+      tool_or_code: density-matrix evolution
+      validity: Needed after electroweak symmetry breaking.
+    - inputs:
+      - m0
+      - mu
+      - halo velocities
+      - annihilation rate
+      notes: Use only as a planned recast route.
+      outputs:
+      - direct-detection threshold
+      - indirect-detection target
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires current experimental likelihoods for quantitative limits.
+    id: route_higgsino_asymmetry_to_detection
+    input_parameters:
+    - mu
+    - M_i
+    - m_sfermion
+    - T_EWPT
+    - m0
+    - Y_h
+    likelihoods:
+    - direct-detection likelihood unavailable
+    - indirect gamma-ray likelihood unavailable
+    observable_ids:
+    - obs_higgsino_inelastic_direct_detection
+    - obs_higgsino_annihilation_after_oscillation
+    required_code_resources:
+    - density-matrix solver for higgsino oscillations
+    - current direct/indirect likelihood tables
+    route_status: planned
+    source_model_features:
+    - higgsino LSP
+    - heavy gauginos and sfermions
+    - low electroweak phase transition
+    - higgsino-number violating neutral splitting
+    validation_tests:
+    - recover m0 threshold below about 400 keV
+    - recover T_EWPT 1-10 GeV viability window

@@ -1,0 +1,249 @@
+_source:
+  shard: arXiv_src_1506_005_wds.tar
+  paper_id: '1506_02148'
+  source_member: 1506_02148.json
+schema_version: model_only_v0
+model_id: 1506_02148_light_neutralino_chargino_bino_wino_v1
+identity:
+  name: Light neutralino-chargino bino-wino simplified MSSM dark matter
+  family: neutralino_dark_matter_simplified_mssm
+  aliases:
+  - MSSM neutralino simplified model
+  short_description: A simplified MSSM electroweakino benchmark with two light neutralinos and one chargino
+    governed by M1 and M2.
+  historical_origin_or_motivation: The paper defines simplified MSSM spectra with neutralino dark matter
+    to quantify monojet reach and relic-density coannihilation regions.
+  status: benchmark
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - MSSM with conserved R-parity
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: Only a few MSSM degrees of freedom are left light; other superpartners are decoupled.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino chi_1^0
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - chargino
+  - second neutralino
+  excited_or_degenerate_states:
+  - chargino
+  - second neutralino
+  unstable_parent_particles:
+  - chargino
+  - second neutralino
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R-parity conservation makes the lightest neutralino stable.
+  symmetries:
+  - name: R-parity
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - W bosons
+  - Higgs boson
+  dark_sector_couplings:
+  - MSSM gauge interactions
+  - neutralino-sparticle couplings
+  mediator_types:
+  - chargino
+  - second neutralino
+  annihilation_channels:
+  - coannihilation processes in compressed spectra
+  decay_channels:
+  - heavier sparticle decays to neutralino plus Standard Model particles
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: bino mass parameter
+    symbol: M1
+    description: One of the two low-energy electroweakino parameters.
+    range: 0-500 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: wino mass parameter
+    symbol: M2
+    description: One of the two low-energy electroweakino parameters.
+    range: 0-500 GeV
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out with coannihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - neutralino mass
+  - mass splitting to coannihilating sparticle
+  - MSSM electroweak or strong interactions
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: Compressed electroweakino spectra are connected to viable relic-density regions, especially for
+    pure wino or higgsino-like cases discussed in the energy-scaling section.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - compressed mass spectrum
+  - coannihilation rate
+  - neutralino-chargino mass splitting and electroweakino composition
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: The relic-density calculation is thermal, but the paper does not provide a phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: simplified_spectrum
+  applies_to: model
+  condition: Valid as a simplified MSSM benchmark with only the stated light superpartners and all other
+    masses decoupled.
+  status: assumed
+- id: compressed_relic_region
+  applies_to: model
+  condition: Correct relic density is achieved only in the compressed/coannihilation parameter region.
+  status: inferred
+assumptions:
+  global:
+  - id: r_parity
+    description: R-parity is conserved so the lightest neutralino is stable.
+    scope: theory
+    status: assumed
+  - id: heavy_decoupled_spectrum
+    description: All unspecified superpartners are decoupled at multi-TeV masses.
+    scope: theory
+    status: assumed
+  - id: standard_freezeout
+    description: Relic density is computed with standard thermal coannihilation.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports using SuperIso Relic and MicrOMEGAS for relic density and direct-detection
+    quantities, but does not identify a model-specific public code release.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 1506_02148_light_neutralino_chargino_bino_wino_v1
+  model_name: Light neutralino-chargino bino-wino simplified MSSM dark matter
+  model_family: neutralino_dark_matter_simplified_mssm
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1506_02148'
+      title: Monojet Searches for MSSM Simplified Models
+      year: 2015
+      arxiv_id: '1506.02148'
+      role: original_model
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0019
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1506_02148'
+      section: full text
+      quote_or_summary: Extraction used only the assigned SQLite full text.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1506_02148'
+      note: The light neutralino and chargino scenario has M1 and M2 as the only low-energy parameters,
+        producing two neutralinos and a wino chargino.
+      confidence: high
+      section: Light neutralino-chargino bino-wino simplified MSSM dark matter
+    symmetries:
+    - reference_id: '1506_02148'
+      note: The introduction states the lightest neutralino is a dark matter candidate when R-parity is
+        conserved.
+      confidence: high
+      section: Introduction
+    interactions:
+    - reference_id: '1506_02148'
+      note: The paper assumes chi_2^0 decays to chi_1^0 plus Higgs and chargino decays to chi_1^0 plus
+        W, with monojet sensitivity for small mass splittings.
+      confidence: medium
+      section: Light neutralino-chargino bino-wino simplified MSSM dark matter
+    production_mechanism:
+    - reference_id: '1506_02148'
+      note: Compressed electroweakino spectra are connected to viable relic-density regions, especially
+        for pure wino or higgsino-like cases discussed in the energy-scaling section.
+      confidence: high
+      section: Light neutralino-chargino bino-wino simplified MSSM dark matter
+    parameter_ranges:
+    - reference_id: '1506_02148'
+      note: The simplified scenarios vary the light sparticle masses while setting other superpartners
+        heavy, typically 10-40 TeV, and tune stop-sector parameters for a 125 GeV Higgs.
+      confidence: high
+      section: Simplified models
+    validity_domain:
+    - reference_id: '1506_02148'
+      note: The paper uses simplified MSSM spectra designed for monojet and SUSY-search reinterpretation,
+        not a complete global MSSM parameter scan.
+      confidence: medium
+      section: Simplified models
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: high
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - simplified-spectrum assumptions
+  - compressed-spectrum coannihilation dependence
+  validation_status: partially_validated
+agent_failure_modes:
+  warnings:
+  - id: simplified_only
+    severity: medium
+    category: assumption_mismatch
+    warning: This is a simplified MSSM benchmark and should not be interpreted as a full MSSM global model.
+  - id: coannihilation_region
+    severity: medium
+    category: extrapolation
+    warning: Relic-density statements rely on compressed mass splittings that enable coannihilation.

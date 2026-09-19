@@ -1,0 +1,715 @@
+_source:
+  shard: arXiv_src_2107_020_wds.tar
+  paper_id: '2107_03429'
+  source_member: 2107_03429.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: w1
+    mitigation: null
+    severity: medium
+    source_reference_ids: []
+    warning: Do not assume thermal equilibrium for this freeze-in A_H variant.
+  - category: extrapolation
+    id: w2
+    mitigation: null
+    severity: medium
+    source_reference_ids: []
+    warning: Check A_H lifetime assumptions before using the model as cosmological dark matter.
+associated_code:
+  caveats: []
+  code_summary: The paper gives analytic decay widths and uses collider recasts; no public freeze-in implementation
+    is identified in the extracted text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+  supported_observable_channels: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The feeble U(1)_H coupling and charged-lepton mixing keep A_H out of equilibrium.
+    id: a1
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The heavier vector-like lepton is thermally available and decays into A_H plus a charged
+      lepton.
+    id: a2
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: A_H is cosmologically stable or effectively stable in the freeze-in parameter region.
+    id: a3
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - feeble dark photon never thermalizes with the SM bath
+  phase_transitions:
+  - U(1)_H spontaneous breaking
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - FIMP A_H from vector-like lepton decay
+  - U(1)_H dark photon freeze-in
+  family: freeze_in_dark_matter
+  historical_origin_or_motivation: Introduced to connect feebly interacting dark matter relic production
+    with collider searches for vector-like leptons with exotic missing-energy decays.
+  model_kind: simplified_model
+  name: Vector-like lepton decay freeze-in dark photon dark matter
+  short_description: A light feebly coupled dark photon A_H produced by freeze-in through decays of a
+    heavier charge -1 vector-like lepton in an explicit U(1)_H realization.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: unknown
+  dark_sector_couplings:
+  - U(1)_H gauge coupling g_H
+  - right-handed lepton mixing angle s
+  decay_channels:
+  - E to A_H plus charged lepton produces the dark matter population
+  flavor_structure: The explicit realization couples the vector-like lepton to one SM right-handed charged
+    lepton, illustrated with the electron but replaceable by muon or tau.
+  interaction_operators:
+  - E A_H lepton coupling after U(1)_H breaking and charged-lepton mixing
+  - renormalizable U(1)_H covariant derivative coupling
+  mediator_types:
+  - vector-like lepton
+  - dark photon
+  portals:
+  - vector
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - one SM right-handed charged lepton flavor
+  - Z boson
+  - Higgs boson
+  - W boson through VLL mixing
+  tree_or_loop_level: tree
+model_id: 2107_03429_vll_decay_freezein_dark_photon_v1
+parameters:
+  core:
+  - description: Mass of the feebly coupled vector dark matter particle.
+    name: dark photon mass
+    notes: null
+    range: light compared with the vector-like lepton in the freeze-in regime
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: M_AH
+    unit: GeV
+  - description: Mass of the parent particle whose decays produce A_H.
+    name: vector-like lepton mass
+    notes: null
+    range: collider-accessible masses; freeze-in formula displayed for variable M_E
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: M_E
+    unit: GeV
+  - description: Feeble coupling entering the freeze-in yield and A_H lifetime.
+    name: U(1)_H gauge coupling
+    notes: null
+    range: fixed with s by the relic-density condition; very small in prompt/stability estimates
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: g_H
+    unit: null
+  - description: Mixing induced after U(1)_H breaking that controls E decays and A_H lifetime.
+    name: right-handed lepton mixing
+    notes: null
+    range: chosen to satisfy prompt E decay and long A_H lifetime requirements
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: s
+    unit: null
+  derived:
+  - description: Approximate relic-density formula proportional to M_E/M_AH times (g_H s)^2.
+    name: freeze-in relic density
+    notes: null
+    range: null
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: Omega h^2
+    unit: null
+    value: 0.12 target fixes g_H s for each M_E and M_AH
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - charge -1 vector-like lepton E
+  - U(1)_H-breaking complex scalar
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: feebly coupled dark photon A_H
+    number_of_components: single_component
+    spin: '1'
+    statistics: vector
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - A_H in the feebly coupled dark matter regime
+  mediators:
+  - vector-like lepton E
+  - U(1)_H gauge boson A_H
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - vector-like lepton E
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: decay_produced
+  f_of_p_or_q: Freeze-in momentum distribution from parent decays is not provided.
+  free_streaming_length: null
+  notes: The paper focuses on relic abundance and collider complementarity, not the detailed momentum
+    distribution.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - M_E
+  - M_AH
+  - g_H s product
+  - E decay branching ratios
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - freeze-in from vector-like lepton decay
+  - out-of-equilibrium production from the thermal bath
+  nonthermal_momentum_distribution: 'yes'
+  notes: The text gives a freeze-in formula where h^2=0.12 fixes g_H s for each mass point.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats:
+  - The paper is primarily a collider-complementarity study; the freeze-in model card records the explicit
+    realization and relic mechanism only.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: The E-A_H-lepton coupling after mixing controls both freeze-in production and collider decays.
+      page: null
+      reference_id: '2107_03429'
+      section: Explicit realization
+    parameter_ranges:
+    - confidence: medium
+      note: For each M_E and M_AH, h^2=0.12 fixes the product g_H s.
+      page: null
+      reference_id: '2107_03429'
+      section: Freeze-in
+    particle_content:
+    - confidence: high
+      note: The explicit U(1)_H realization contains A_H, a vector-like lepton E, and a complex scalar
+        that breaks U(1)_H.
+      page: null
+      reference_id: '2107_03429'
+      section: Explicit realization
+    production_mechanism:
+    - confidence: high
+      note: The relic abundance is generated by freeze-in from decays of the vector-like lepton.
+      page: null
+      reference_id: '2107_03429'
+      section: Freeze-in
+    symmetries:
+    - confidence: medium
+      note: U(1)_H is spontaneously broken and gives A_H its mass; long lifetime follows from tiny couplings
+        in the feeble regime.
+      page: null
+      reference_id: '2107_03429'
+      section: Explicit realization
+    validity_domain:
+    - confidence: medium
+      note: The collider recasts distinguish prompt and displaced E to A_H decays, which matters for the
+        freeze-in parameter space.
+      page: null
+      reference_id: '2107_03429'
+      section: Freeze-in
+    constraints:
+    - confidence: high
+      note: Primary text supports the relic coupling condition and collider recast constraints.
+      page: null
+      reference_id: '2107_03429'
+      section: null
+    - confidence: high
+      note: Primary text supports the relic coupling condition and collider recast constraints.
+      page: null
+      reference_id: '2107_03429'
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text supports VLL-decay FIMP and collider observables.
+      page: null
+      reference_id: '2107_03429'
+      section: null
+    - confidence: high
+      note: Primary text supports VLL-decay FIMP and collider observables.
+      page: null
+      reference_id: '2107_03429'
+      section: null
+    routes:
+    - confidence: high
+      note: Primary text connects FIMP production, VLL branching ratios, promptness, and collider searches.
+      page: null
+      reference_id: '2107_03429'
+      section: null
+  extraction:
+    confidence: medium
+    extracted_by: codex_dark_matter_batch_worker
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The light A_H regime is produced by freeze-in from VLL decays and the relic density
+        fixes g_H s.
+      reference_id: '2107_03429'
+      section: Freeze-in subsection
+    - page: null
+      quote_or_summary: The appendix constructs the U(1)_H model with a vector-like lepton, complex scalar,
+        and A_H gauge boson.
+      reference_id: '2107_03429'
+      section: Explicit realization appendix
+    - page: null
+      quote_or_summary: The text derives prompt E decay and long A_H decay-length conditions in terms
+        of g_H and s.
+      reference_id: '2107_03429'
+      section: Lifetime discussion
+    unresolved_items:
+    - The exact collider exclusion contours were not digitized.
+    - The arXiv fallback read for the coannihilation codex is logged only as related context.
+  last_updated: '2026-05-31'
+  model_family: freeze_in_dark_matter
+  model_id: 2107_03429_vll_decay_freezein_dark_photon_v1
+  model_name: Vector-like lepton decay freeze-in dark photon dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2107.03429'
+      authors:
+      - Guilherme Guedes
+      - Jose Santiago
+      doi: null
+      notes: Source text taken from the assigned run SQLite database only.
+      reference_id: '2107_03429'
+      role: original_model
+      title: 'New leptons with exotic decays: collider limits and dark matter complementarity'
+      url: null
+      year: 2021
+    - arxiv_id: '2107.03429'
+      authors:
+      - Guedes, Guilherme
+      - Santiago, José
+      doi: 10.1007/JHEP01(2022)111
+      notes: Primary assigned paper text resolved locally from hep_ph_dark_matter_model_lexical; structured
+        claims use local primary text windows.
+      reference_id: '2107_03429'
+      role: original_model
+      title: 'New leptons with exotic decays: collider limits and dark matter complementarity'
+      url: https://arxiv.org/abs/2107.03429
+      year: 2022
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - M_E/M_AH
+  - g_H
+  - s
+  - VLL decay width
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    description: The freeze-in curves impose that A_H accounts for all dark matter.
+    name: dark matter fraction
+    notes: null
+    range: null
+    role: derived
+    source_reference_ids: []
+    status: assumed
+    symbol: Omega_AH/Omega_DM
+    unit: null
+    value: 1
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - cosmological stability of A_H is parameter dependent
+  - momentum distribution and structure-formation effects are not supplied
+  notes: The U(1)_H realization and freeze-in scaling are explicit, but some cosmological details are
+    outside the paper scope.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: unknown
+    thermal_wdm_mapping:
+      available: false
+      validity: invalid
+      warning: The extracted model is not a thermal warm-dark-matter transfer-function model.
+    transfer_function_shape: unknown
+  nonlinear:
+    concentration_mass_relation_effect: unknown
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: not discussed; depends on the freeze-in mass and momentum distribution
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: not discussed; depends on the freeze-in mass and momentum distribution
+    subhalo_mass_function_effect: not discussed; depends on the freeze-in mass and momentum distribution
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+symmetries:
+  stabilizing_mechanism: The freeze-in analysis assumes A_H is sufficiently long-lived to be dark matter;
+    in the U(1)_H realization this follows from very small g_H and mixing s, with kinematic/lifetime details
+    parameter dependent.
+  symmetries:
+  - breaking: spontaneously broken by a complex scalar vev V that gives A_H a mass
+    breaking_scale:
+      description: VEV setting the dark photon mass M_AH=2 g_H V.
+      name: U(1)_H breaking vev
+      notes: null
+      range: model dependent
+      role: core
+      source_reference_ids: []
+      status: inferred
+      symbol: V
+      unit: GeV
+    exact_or_approximate: broken
+    name: U(1)_H gauge symmetry
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  lagrangian_available: 'yes'
+  notes: The appendix gives an SU(3)c x SU(2)L x U(1)Y x U(1)H model with a vector-like lepton and a complex
+    scalar that breaks U(1)_H.
+  parent_frameworks:
+  - U(1)_H gauge extension
+  - vector-like lepton portal
+  - freeze-in dark matter
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: production
+  caveats: []
+  condition: Freeze-in requires A_H to remain feebly coupled and out of equilibrium with the thermal bath.
+  extrapolation_risk: high
+  id: out_of_equilibrium
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: A_H must be long-lived enough to serve as dark matter, while E decays must be prompt enough
+    for the collider recasts used in the paper.
+  extrapolation_risk: high
+  id: lifetime_requirement
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: The explicit realization assumes the VLL couples to one SM right-handed charged lepton flavor.
+  extrapolation_risk: medium
+  id: single_flavor_vll
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+observables:
+- caveats:
+  - The OCR formula is recorded qualitatively; exact numerical curves were not digitized.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early universe
+  id: obs_vll_decay_fimp_relic
+  key_quantities:
+  - description: Mass of the decaying parent particle.
+    name: vector-like lepton mass
+    role: core
+    source_reference_ids:
+    - '2107_03429'
+    status: inferred
+    symbol: M_E
+  - description: Light stable vector dark matter mass.
+    name: dark photon mass
+    role: core
+    source_reference_ids:
+    - '2107_03429'
+    status: inferred
+    symbol: M_AH
+  - description: Product fixed by Omega h^2 = 0.12 for each mass point in the primary paper.
+    name: freeze-in coupling product
+    role: core
+    source_reference_ids:
+    - '2107_03429'
+    status: inferred
+    symbol: g_H s
+  linked_constraints:
+  - con_fimp_relic_product_condition
+  linked_routes:
+  - route_vll_fimp
+  name: Dark-photon FIMP relic from vector-like lepton decays
+  notes: null
+  observability: low
+  predicted_effect: A light, feebly coupled stable dark photon can be produced out of equilibrium by decays
+    of the heavier vector-like lepton; the full-DM condition fixes the product of the dark coupling and
+    mixing.
+  redshift_range: null
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - '2107_03429'
+  subchannel: freeze-in from heavy charged lepton decay
+- caveats:
+  - Promptness conditions must be checked for the relevant decay channel.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - LHC
+  - HL-LHC
+  - HE-LHC
+  - FCC-hh
+  id: obs_vll_missing_energy_collider
+  key_quantities:
+  - description: Arbitrary decay fractions used for collider recasts.
+    name: branching ratios
+    role: experimental
+    source_reference_ids:
+    - '2107_03429'
+    status: inferred
+    symbol: BR(E to A_H), BR(E to Z/H/W)
+  - description: Controls lepton softness and missing-energy search acceptance.
+    name: mass splitting
+    role: core
+    source_reference_ids:
+    - '2107_03429'
+    status: inferred
+    symbol: M_E - M_AH
+  linked_constraints:
+  - con_vll_lhc_fimp_recast
+  linked_routes:
+  - route_vll_fimp
+  name: Prompt lepton plus missing-energy VLL collider signature
+  notes: null
+  observability: high
+  predicted_effect: The same VLL that produces FIMP dark photons can be pair-produced at colliders and
+    decay into a charged lepton plus missing energy, with sensitivity controlled by branching ratios and
+    mass splittings.
+  redshift_range: null
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - '2107_03429'
+  subchannel: Drell-Yan VLL pair production with E to A_H plus lepton
+constraints:
+- allowed_regions:
+  - The primary paper fixes g_H s for each M_E and M_AH by requiring A_H to be all of DM.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The stable dark photon accounts for all of the dark matter.
+    id: all_dark_photon_dm
+    impact_if_violated: For subcomponent dark matter, the required coupling product and collider complementarity
+      change.
+    notes: null
+    scope: FIMP relic calculation
+    source_reference_ids:
+    - '2107_03429'
+    status: assumed
+  benchmark_implications:
+  - Collider branching ratios and FIMP relic abundance are correlated through the same small coupling/mixing
+    product.
+  caveats: []
+  constrained_parameters:
+  - M_E
+  - M_AH
+  - g_H s
+  constraint_type: cosmological
+  data_release: Planck relic-density target used by the primary paper
+  excluded_regions:
+  - For a fixed mass point, coupling products that do not reproduce Omega h^2 = 0.12 fail the full-DM
+    benchmark.
+  id: con_fimp_relic_product_condition
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: FIMP full-relic coupling condition
+  notes: null
+  observable_channel: freeze-in relic abundance
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - '2107_03429'
+- allowed_regions:
+  - Regions above the curves for fixed s values are experimentally allowed and can provide the correct
+    relic abundance in the primary analysis.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The VLL decay relevant to the search is prompt when applying prompt lepton plus missing-energy
+      limits.
+    id: prompt_vll_decay
+    impact_if_violated: Long-lived or displaced decays require a different search strategy.
+    notes: null
+    scope: collider recast
+    source_reference_ids:
+    - '2107_03429'
+    status: assumed
+  benchmark_implications:
+  - Collider searches can test freeze-in dark photon parameter space even when the dark coupling is feeble.
+  caveats:
+  - No detector-level likelihood files are included.
+  constrained_parameters:
+  - M_E
+  - M_AH
+  - BR(E to A_H)
+  - BR(E to Z/H/W)
+  - promptness
+  constraint_type: collider
+  data_release: ATLAS/CMS-inspired recasts and 13 TeV 139/fb analysis described in the primary paper
+  excluded_regions:
+  - Primary-paper 13 TeV, 139/fb recasts exclude regions below the displayed FIMP curves for fixed mixing
+    choices.
+  id: con_vll_lhc_fimp_recast
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: LHC missing-energy and multilepton recast for FIMP VLLs
+  notes: null
+  observable_channel: VLL pair production and exotic decays
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '2107_03429'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats: []
+    constraint_ids:
+    - con_fimp_relic_product_condition
+    - con_vll_lhc_fimp_recast
+    derived_quantities:
+    - Omega_AH h^2
+    - VLL decay widths
+    - promptness
+    - collider exclusion curves
+    description: Tie vector-like lepton decays to dark-photon freeze-in abundance and prompt collider
+      limits.
+    forward_model_chain:
+    - inputs:
+      - M_E
+      - M_AH
+      - g_H s
+      notes: null
+      outputs:
+      - Omega_AH h^2
+      step_id: freezein_decay_yield
+      step_type: analytic_formula
+      tool_or_code: primary-paper FIMP relic formula
+      validity: Valid for feebly interacting dark photon production from VLL decay.
+    - inputs:
+      - g_H
+      - s
+      - M_E
+      - M_AH
+      notes: null
+      outputs:
+      - BRs
+      - promptness
+      step_id: branching_promptness
+      step_type: analytic_formula
+      tool_or_code: VLL width and branching calculation
+      validity: Needed to choose the relevant collider recast.
+    - inputs:
+      - M_E
+      - M_AH
+      - BRs
+      notes: null
+      outputs:
+      - excluded mass regions
+      step_id: collider_recast
+      step_type: recasting
+      tool_or_code: Drell-Yan VLL recast
+      validity: Uses primary-paper recasts of multilepton and missing-energy analyses.
+    id: route_vll_fimp
+    input_parameters:
+    - M_E
+    - M_AH
+    - g_H
+    - s
+    - branching ratios
+    likelihoods:
+    - Planck relic-density target
+    - ATLAS/CMS VLL and slepton-style searches
+    observable_ids:
+    - obs_vll_decay_fimp_relic
+    - obs_vll_missing_energy_collider
+    required_code_resources:
+    - FIMP yield calculator
+    - VLL branching/promptness module
+    - collider recast workflow
+    route_status: planned
+    source_model_features:
+    - stable light dark photon
+    - charge -1 vector-like lepton parent
+    - feeble coupling/mixing product
+    validation_tests:
+    - Recover the Omega h^2 = 0.12 coupling product curves
+    - Recover the 13 TeV 139/fb exclusion curves

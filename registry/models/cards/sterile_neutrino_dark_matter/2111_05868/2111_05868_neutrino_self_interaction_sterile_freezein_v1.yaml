@@ -1,0 +1,624 @@
+_source:
+  shard: arXiv_src_2111_037_wds.tar
+  paper_id: '2111_05868'
+  source_member: 2111_05868.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2111_05868_neutrino_self_interaction_sterile_freezein_v1
+identity:
+  name: Neutrino self-interaction assisted sterile-neutrino freeze-in dark matter
+  family: sterile_neutrino_dark_matter
+  aliases:
+  - S DM freeze-in with neutrino self-interactions
+  - sterile neutrino DM with neutrinophilic scalar
+  short_description: A sterile-neutrino dark matter benchmark in which a neutrinophilic scalar enhances
+    active-neutrino self-interactions, allowing sterile dark matter to be produced by a freeze-in-like
+    active-sterile oscillation mechanism with smaller vacuum mixing.
+  historical_origin_or_motivation: Presented as a viable neutrino-portal target opened by new neutrino
+    self-interactions after the simplest Dodelson-Widrow mechanism is excluded.
+  status: benchmark
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - sterile neutrino dark matter
+  - neutrinophilic scalar mediator
+  - active-sterile oscillation production
+  lagrangian_available: partial
+  renormalizable: 'no'
+  embedded_in_larger_framework: unknown
+  notes: The scalar-neutrino coupling is given as a low-energy benchmark; the sterile state is specified
+    by mass and active-sterile mixing.
+particle_content:
+  dark_matter_candidate:
+    name: sterile neutrino nu_4
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - SM-gauge-singlet fermion nu_s
+  - active-neutrino admixture nu_a
+  mediators:
+  - massive neutrinophilic scalar
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: No exact stabilizing symmetry is specified; viability relies on small active-sterile
+    mixing and long sterile-neutrino lifetime.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - active neutrinos
+  dark_sector_couplings:
+  - active-sterile neutrino mixing
+  - neutrino self-interaction mediated by a scalar
+  mediator_types:
+  - massive scalar
+  interaction_operators:
+  - low-energy scalar-neutrino coupling
+  - active-sterile mixing term
+  annihilation_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: sterile neutrino mass
+    symbol: m4
+    description: Mass of the sterile-neutrino dark matter state.
+    range: keV to MeV window; benchmarks 7.1 keV and 16 keV
+    role: core
+    status: inferred
+  - name: active-sterile mixing
+    symbol: sin^2(2 theta)
+    description: Vacuum mixing controlling production and lifetime.
+    range: benchmarks 7e-11 and 8e-14
+    role: core
+    status: inferred
+  - name: mediator mass
+    symbol: m_phi
+    description: Mass of the scalar mediator driving neutrino self-interactions.
+    range: 0.3-20 GeV FPF target
+    unit: GeV
+    role: core
+    status: inferred
+  - name: neutrino-mediator coupling
+    symbol: lambda
+    description: Coupling controlling neutrino self-interaction rates and FPF sensitivity.
+    range: O(0.1) reach discussed
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - nonthermal freeze-in
+  - active-sterile neutrino oscillation in the early universe
+  - enhanced neutrino self-interactions through a neutrinophilic scalar
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - in-medium mixing angle
+  - neutrino self-interaction rate
+  - weak interaction rate
+  - sterile neutrino mass
+  - mediator parameters
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper describes this as freeze-in with a time-varying, mixing-induced coupling parameter
+    for sterile-neutrino dark matter.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed relic density target
+    symbol: Omega_DM
+    description: Relic target curves are tied to the observed dark matter abundance.
+    value: Planck-observed value
+    role: core
+    status: inferred
+  calculation_type: nonthermal
+  key_dependencies:
+  - m4
+  - sin^2(2 theta)
+  - m_phi
+  - lambda
+  - temperature-dependent in-medium mixing
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - new neutrino self-interactions delay neutrino decoupling/self-thermalization relative to the minimal
+    sterile-neutrino case
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: approximate
+  f_of_p_or_q: The text gives an integral form for f_nu4(E,T) over active-neutrino distribution, Hubble
+    rate, interaction rate, and effective mixing.
+  notes: Distribution follows active-sterile oscillation production with in-medium effects.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: low_energy_neutrino_operator
+  applies_to: EFT
+  condition: The mediator coupling to neutrinos is a low-energy benchmark not invariant under SM SU(2)_L
+    by itself.
+  status: established
+  extrapolation_risk: medium
+- id: sterile_mass_window
+  applies_to: parameter
+  condition: The viable sterile-neutrino target discussed lies in a keV-to-MeV mass window.
+  status: inferred
+  extrapolation_risk: medium
+- id: xray_limited_mixing
+  applies_to: parameter
+  condition: Benchmarks choose active-sterile mixing close to allowed values from indirect X-ray searches
+    as described in the paper.
+  status: inferred
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: active_sterile_mixing
+    description: The sterile state is a mixture of a gauge-singlet fermion and an active neutrino.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: self_interaction_production
+    description: New neutrino self-interactions are strong enough to modify the sterile-neutrino production
+      history.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+  - id: xray_near_limit
+    description: Displayed benchmarks use active-sterile mixing angles close to indirect X-ray limits.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper mentions simulation and analysis packages, but the extracted text does not identify
+    model-specific public code for relic-density calculation.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 2111_05868_neutrino_self_interaction_sterile_freezein_v1
+  model_name: Neutrino self-interaction assisted sterile-neutrino freeze-in dark matter
+  model_family: sterile_neutrino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2111_05868'
+      title: Probing Neutrino-Portal Dark Matter at the Forward Physics Facility
+      year: 2021
+      arxiv_id: '2111.05868'
+      role: benchmark
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '2111.05868'
+      authors:
+      - Kelly, Kevin J.
+      - Kling, Felix
+      - Tuckler, Douglas
+      - Zhang, Yue
+      doi: 10.1103/PhysRevD.105.075026
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2111.05868
+      role: original_model
+      title: Probing neutrino-portal dark matter at the Forward Physics Facility
+      url: https://arxiv.org/abs/2111.05868
+      year: 2022
+    constraint_papers:
+    - arxiv_id: '2301.08299'
+      authors:
+      - An, Rui
+      - Gluscevic, Vera
+      - Nadler, Ethan O.
+      - Zhang, Yue
+      doi: 10.3847/2041-8213/acf049
+      notes: Related sterile-neutrino self-interaction structure paper resolved locally and read.
+      reference_id: arxiv:2301.08299
+      role: constraint
+      title: Can Neutrino Self-interactions Save Sterile Neutrino Dark Matter?
+      url: https://arxiv.org/abs/2301.08299
+      year: 2023
+    - arxiv_id: '2107.00666'
+      authors:
+      - Batell, Brian
+      - Feng, Jonathan L.
+      - Ismail, Ahmed
+      - Kling, Felix
+      - Mammen Abraham, Roshan
+      - Trojanowski, Sebastian
+      doi: 10.1103/PhysRevD.104.035036
+      notes: Related far-forward detector dark-matter search paper resolved locally and read.
+      reference_id: arxiv:2107.00666
+      role: implementation
+      title: Discovering dark matter at the LHC through its nuclear scattering in far-forward emulsion
+        and liquid argon detectors
+      url: https://arxiv.org/abs/2107.00666
+      year: 2021
+    - arxiv_id: '1807.06209'
+      authors:
+      - Planck Collaboration
+      - Aghanim, N.
+      - Akrami, Y.
+      - Ashdown, M.
+      - Aumont, J.
+      - Baccigalupi, C.
+      - Ballardini, M.
+      - Banday, A. J.
+      doi: 10.1051/0004-6361/201833910
+      notes: Planck cosmological-parameter paper resolved locally and read for cosmology context.
+      reference_id: arxiv:1807.06209
+      role: constraint
+      title: Planck 2018 results. VI. Cosmological parameters
+      url: https://arxiv.org/abs/1807.06209
+      year: 2020
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0008
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2111_05868'
+      section: benchmark model
+      quote_or_summary: The paper introduces a massive neutrinophilic scalar with a low-energy coupling
+        to neutrinos.
+    - reference_id: '2111_05868'
+      section: dark matter targets
+      quote_or_summary: It considers thermal freeze-out and sterile-neutrino freeze-in dark matter realizations
+        tied to that mediator.
+    unresolved_items:
+    - The exact sterile-neutrino momentum distribution for this model was not recomputed.
+    - The 37 keV related bound is a recast target, not a direct exclusion without matching the production
+      history.
+  evidence:
+    particle_content:
+    - reference_id: '2111_05868'
+      note: The paper considers sterile neutrino dark matter nu_4 as a mixture of a singlet fermion and
+        an active neutrino.
+      confidence: high
+      section: Sterile Neutrino Dark Matter
+    interactions:
+    - reference_id: '2111_05868'
+      note: New neutrino self-interactions from the scalar mediator keep neutrinos in thermal equilibrium
+        longer and alter sterile-neutrino production.
+      confidence: high
+      section: Sterile Neutrino Dark Matter
+    production_mechanism:
+    - reference_id: '2111_05868'
+      note: The relic abundance builds up through a freeze-in-like mechanism with time-varying in-medium
+        active-sterile mixing.
+      confidence: high
+      section: Sterile Neutrino Dark Matter
+    parameter_ranges:
+    - reference_id: '2111_05868'
+      note: The paper discusses a keV-to-MeV mass window and shows benchmarks m4 = 7.1 keV and 16 keV
+        with specified sin^2(2 theta) values.
+      confidence: high
+      section: results
+    validity_domain:
+    - reference_id: '2111_05868'
+      note: The relic curves depend on the mediator mass, temperature dependence of interaction rates,
+        and effective in-medium active-sterile mixing.
+      confidence: medium
+      section: Sterile Neutrino Dark Matter
+    constraints:
+    - confidence: high
+      note: Primary paper compares FPF reach to existing mediator constraints and motivated DM targets.
+      page: null
+      reference_id: arxiv:2111.05868
+      section: Mediator constraints
+    - confidence: high
+      note: Related paper derives a 37 keV lower bound for a self-interacting sterile-neutrino production
+        setup.
+      page: null
+      reference_id: arxiv:2301.08299
+      section: Milky Way satellites
+    observables:
+    - confidence: high
+      note: Primary paper identifies 0.3-20 GeV neutrinophilic mediators and FPF missing-momentum/tau-like
+        signatures.
+      page: null
+      reference_id: arxiv:2111.05868
+      section: Abstract/introduction
+    - confidence: high
+      note: Related sterile-neutrino paper connects self-interaction production to phase-space distributions,
+        free streaming, and matter-power suppression.
+      page: null
+      reference_id: arxiv:2301.08299
+      section: Small-scale structure
+    routes:
+    - confidence: high
+      note: Primary paper supplies the route from mediator parameters to FPF event signatures.
+      page: null
+      reference_id: arxiv:2111.05868
+      section: Simulation/analysis
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - The neutrinophilic scalar operator is explicitly described as not gauge invariant under SM SU(2)_L
+    and as a low-energy benchmark.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - active-sterile in-medium production details
+  - neutrino self-interaction rate
+  - lifetime constraints not encoded in this model-only pass
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: do_not_use_minimal_dw
+    severity: high
+    category: invalid_mapping
+    warning: This card is not the excluded minimal Dodelson-Widrow scenario; production relies on new
+      neutrino self-interactions.
+    mitigation: Keep the neutrinophilic mediator and self-interaction terms in the model assumptions.
+observables:
+- caveats:
+  - Detector sensitivity depends strongly on hadronic energy resolution.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - FASER/FASER2-like detectors
+  - FLArE-like liquid argon detector
+  id: obs_fpf_neutrinophilic_mediator
+  key_quantities:
+  - description: Mass of the neutrinophilic scalar mediator.
+    name: mediator mass
+    range: 0.3-20
+    role: core
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: inferred
+    symbol: m_phi
+    unit: GeV
+  - description: Mediator coupling to active neutrinos.
+    name: neutrino coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: inferred
+    symbol: lambda
+  linked_constraints:
+  - con_fpf_mediator_reach
+  linked_routes:
+  - route_sterile_self_interaction_to_fpf_and_structure
+  name: FPF neutrino-scattering signal of a neutrinophilic mediator
+  notes: null
+  observability: medium
+  predicted_effect: A 0.3-20 GeV mediator coupled predominantly to neutrinos can produce charged-current
+    neutrino events with large missing transverse momentum and apparent tau-neutrino excesses at FPF detectors.
+  redshift_range: LHC running era
+  relevance: high
+  scale_range: hundreds of GeV to TeV neutrino energies in far-forward LHC fluxes
+  source_reference_ids:
+  - arxiv:2111.05868
+  - arxiv:2107.00666
+  subchannel: Forward Physics Facility neutrino scattering
+- caveats:
+  - Mapping to WDM bounds is production-history dependent.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - linear matter field
+  - Milky Way satellites
+  id: obs_sterile_neutrino_small_scale_power
+  key_quantities:
+  - description: Mass of the mostly sterile state.
+    name: sterile-neutrino mass
+    role: core
+    source_reference_ids:
+    - arxiv:2111.05868
+    - arxiv:2301.08299
+    status: inferred
+    symbol: m4
+    unit: keV
+  - description: Vacuum mixing controlling production and decay.
+    name: active-sterile mixing
+    role: core
+    source_reference_ids:
+    - arxiv:2111.05868
+    - arxiv:2301.08299
+    status: inferred
+    symbol: sin^2(2 theta)
+  - description: Power-spectrum cutoff scale used for WDM mapping.
+    name: half-mode scale
+    role: derived
+    source_reference_ids:
+    - arxiv:2301.08299
+    status: inferred
+    symbol: k_hm
+  linked_constraints:
+  - con_sterile_structure_bound
+  linked_routes:
+  - route_sterile_self_interaction_to_fpf_and_structure
+  name: Sterile-neutrino free-streaming suppression
+  notes: null
+  observability: medium
+  predicted_effect: Self-interacting sterile-neutrino production changes the phase-space distribution
+    and free-streaming length, suppressing small-scale matter power relative to CDM.
+  redshift_range: matter-radiation equality through z=0
+  relevance: critical
+  scale_range: k around dwarf-galaxy and Milky Way satellite scales
+  source_reference_ids:
+  - arxiv:2301.08299
+  - arxiv:2111.05868
+  subchannel: linear matter power and Milky Way satellites
+constraints:
+- allowed_regions:
+  - Primary paper projects FPF sensitivity to mediator masses between 0.3 and 20 GeV.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Hadronic energy reconstruction is close to the benchmark assumptions.
+    id: fpf-detector-performance
+    impact_if_violated: Poorer resolution weakens missing-transverse-momentum discrimination.
+    notes: null
+    scope: FPF projection
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: assumed
+  benchmark_implications:
+  - A signal would test the same neutrino self-interaction space used in sterile-neutrino production.
+  caveats:
+  - Projection, not an observed exclusion.
+  constrained_parameters:
+  - m_phi
+  - lambda
+  - flavor structure
+  constraint_type: collider
+  data_release: Projected FPF detector configurations
+  excluded_regions:
+  - Existing searches leave part of the small-coupling 0.3-20 GeV mediator space open.
+  id: con_fpf_mediator_reach
+  likelihood_available: partial
+  likelihood_reference: null
+  name: FPF reach for neutrinophilic scalar mediator
+  notes: null
+  observable_channel: far-forward neutrino scattering
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2111.05868
+  - arxiv:2107.00666
+- allowed_regions:
+  - Light-mediator production histories can remain viable in the related analysis.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The sterile-neutrino transfer-function cutoff can be mapped to a thermal-relic WDM half-mode
+      constraint.
+    id: wdm-half-mode-map
+    impact_if_violated: A different transfer-function shape shifts the satellite bound.
+    notes: null
+    scope: small-scale recast
+    source_reference_ids:
+    - arxiv:2301.08299
+    status: assumed
+  benchmark_implications:
+  - The assigned model needs its exact phase-space distribution run through CLASS or an equivalent Boltzmann
+    solver before applying the 37 keV bound directly.
+  caveats:
+  - X-ray decay limits and mediator flavor structure are external to this batch.
+  constrained_parameters:
+  - m4
+  - phase-space distribution
+  - k_hm
+  constraint_type: astrophysical
+  data_release: DES and Pan-STARRS1 Milky Way satellite constraints as used by related source
+  excluded_regions:
+  - Related analysis derives a lower sterile-neutrino mass bound of 37 keV for the tested self-interaction
+    production setup and excludes heavy-mediator all-DM production when combined with collider and X-ray
+    limits.
+  id: con_sterile_structure_bound
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Milky Way satellite bound on self-interacting sterile-neutrino DM
+  notes: null
+  observable_channel: small-scale structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2301.08299
+  - arxiv:2111.05868
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - No event simulation or satellite likelihood was rerun.
+    constraint_ids:
+    - con_fpf_mediator_reach
+    - con_sterile_structure_bound
+    derived_quantities:
+    - phase-space distribution
+    - P(k)
+    - k_hm
+    - FPF event spectrum
+    description: Connect sterile-neutrino self-interaction production to FPF mediator searches and small-scale-structure
+      limits.
+    forward_model_chain:
+    - inputs:
+      - sterile production history
+      - phase-space distribution
+      notes: Not run in batch.
+      outputs:
+      - linear matter power
+      step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: CLASS or equivalent
+      validity: Requires model-specific distribution function.
+    - inputs:
+      - P(k)
+      - k_hm
+      notes: Use related 37 keV result as recast target.
+      outputs:
+      - satellite constraint
+      step_id: s2
+      step_type: recasting
+      tool_or_code: null
+      validity: Valid when cutoff shape is WDM-like.
+    - inputs:
+      - m_phi
+      - lambda
+      - detector response
+      notes: Primary paper supplies target signatures.
+      outputs:
+      - missing-pT and tau-like event rates
+      step_id: s3
+      step_type: simulation
+      tool_or_code: null
+      validity: Projection depends on FPF design.
+    id: route_sterile_self_interaction_to_fpf_and_structure
+    input_parameters:
+    - m4
+    - sin^2(2 theta)
+    - m_phi
+    - lambda
+    - flavor coupling
+    likelihoods:
+    - MW satellite likelihood
+    - FPF projected event analysis
+    observable_ids:
+    - obs_fpf_neutrinophilic_mediator
+    - obs_sterile_neutrino_small_scale_power
+    required_code_resources:
+    - Boltzmann solver
+    - FPF neutrino-scattering simulation
+    route_status: planned
+    source_model_features:
+    - sterile-neutrino freeze-in from active-sterile oscillations
+    - neutrinophilic scalar mediator
+    validation_tests:
+    - recover 0.3-20 GeV mediator reach
+    - recover 37 keV structure bound for related setup

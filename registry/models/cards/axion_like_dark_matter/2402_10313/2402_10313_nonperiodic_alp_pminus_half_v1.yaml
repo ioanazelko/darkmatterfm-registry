@@ -1,0 +1,423 @@
+_source:
+  shard: arXiv_src_2402_077_wds.tar
+  paper_id: '2402_10313'
+  source_member: 2402_10313.json
+schema_version: model_only_v0
+model_id: 2402_10313_nonperiodic_alp_pminus_half_v1
+identity:
+  name: Non-periodic ALP dark matter with p = -1/2 potential
+  family: axion_like_dark_matter
+  aliases:
+  - ALP monodromy dark matter p=-1/2
+  - non-periodic ALP p=-1/2
+  short_description: An axion-like-particle dark matter variant in which the ALP evolves on a single non-periodic
+    branch of a monodromy-like potential and can fragment into dense halo seeds.
+  historical_origin_or_motivation: Motivated in the text by axion monodromy in string theory and ALPs
+    coupled to pure Yang-Mills gauge fields in the large-N limit.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - axion_monodromy
+  - large_n_yang_mills_alp
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The assigned text specifies the effective potential V(phi)=m_a^2 f_a^2/(2p) * ((1+phi^2/f_a^2)^p
+    - 1) with p=-1/2, plus homogeneous-field and perturbation equations of motion.
+particle_content:
+  dark_matter_candidate:
+    name: axion-like particle field
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - coherent ALP field
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: The text treats the ALP as a coherent dark matter field after oscillations begin;
+    branch transitions are assumed suppressed, and no decay channel is specified.
+  symmetries:
+  - name: broken global U(1) or higher-dimensional gauge origin
+    type: global
+    exact_or_approximate: broken
+    breaking: ALPs are described as angular degrees of freedom of a complex field with broken global U(1)
+      symmetry or as higher-dimensional gauge-field states.
+    breaking_scale: null
+  - name: single non-periodic branch assumption
+    type: approximate
+    exact_or_approximate: approximate
+    breaking: The full potential is described as periodic and multi-branched, but transitions between
+      branches are assumed suppressed.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets: []
+  dark_sector_couplings:
+  - self-interactions from the non-periodic ALP potential
+  mediator_types: []
+  interaction_operators:
+  - V(phi)=m_a^2 f_a^2/(2p) * ((1+phi^2/f_a^2)^p - 1), p=-1/2
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - classical field fragmentation through parametric resonance
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: ALP mass
+    symbol: m_a
+    description: Mass parameter in the effective ALP potential.
+    range: part of the (m_a, f_a) plane where the ALP relic abundance and dense halo projections are studied;
+      no numeric range is given in the assigned text
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2402_10313
+  - name: ALP decay constant
+    symbol: f_a
+    description: Decay constant appearing in the effective potential and in the normalized initial field
+      value.
+    range: part of the (m_a, f_a) plane; no numeric range is given in the assigned text
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2402_10313
+  - name: potential exponent
+    symbol: p
+    description: Exponent choosing the non-periodic ALP potential branch studied in this model-card row.
+    value: -1/2
+    role: core
+    status: assumed
+    source_reference_ids:
+    - paper_2402_10313
+  - name: initial field displacement ratio
+    symbol: phi_i/f_a
+    description: Initial field displacement normalized to the decay constant.
+    range: '> 1 for delayed onset and fragmentation regime discussed in the text'
+    role: core
+    status: assumed
+    source_reference_ids:
+    - paper_2402_10313
+  - name: critical fragmentation field value
+    symbol: phi_crit
+    description: Smallest initial field value above which fragmentation occurs in the paper analysis.
+    value: 3 f_a
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - paper_2402_10313
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - misalignment
+  - delayed onset of oscillations for large initial field values
+  - parametric resonance and fragmentation
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - m_a
+  - f_a
+  - initial field displacement
+  - potential exponent p
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The field is displaced, frozen while H > m_a, then oscillates; for large initial values the delayed
+    onset allows the ALP abundance to match the observed DM density over a broad parameter region.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: DM relic abundance
+    symbol: Omega_DM h^2
+    description: Observed relic abundance used as the target in the text.
+    value: '0.12'
+    role: cosmological
+    status: assumed
+    source_reference_ids:
+    - paper_2402_10313
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_a
+  - f_a
+  - phi_i/f_a
+  - p
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - initially displaced ALP field
+  - delayed onset of oscillations for large initial field values
+  - fragmentation into high-momentum modes for sufficiently large initial displacement
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The assigned text discusses homogeneous-field evolution, perturbations, and energy-density power
+    spectra rather than a particle distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: unknown
+    small_scale_power_effect: mixed
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No thermal-WDM mapping is supplied in the assigned text.
+  nonlinear:
+    halo_mass_function_effect: The text computes ALP halo abundances with Press-Schechter from the simulated
+      energy-density power spectrum; lighter axions form more massive halos and soliton physics cuts off
+      the maximum density at small scales.
+    subhalo_mass_function_effect: unknown
+    density_profile_effect: ALP halos are mapped to NFW halos with scale mass and scale density in the
+      text.
+    core_or_cusp_effect: Soliton formation from gradient pressure is expected at smaller scales.
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: partial
+validity_domain:
+- id: single_branch_suppression
+  applies_to: theory
+  condition: Transitions between branches of the underlying periodic multi-branch potential are suppressed
+    so that the ALP evolves on a single non-periodic branch.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - The assigned text does not quantify the branch-transition rate.
+  source_reference_ids:
+  - paper_2402_10313
+  notes: null
+- id: fragmentation_threshold
+  applies_to: production
+  condition: Fragmentation results apply once the initial field value exceeds the quoted threshold 3 f_a.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Critical value is quoted for the chosen p variant in the assigned text.
+  source_reference_ids:
+  - paper_2402_10313
+  notes: null
+- id: all_dm_projection
+  applies_to: model
+  condition: Dense-halo observational projections assume that the ALP makes up all of dark matter.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Subcomponent scenarios are not developed in the assigned text.
+  source_reference_ids:
+  - paper_2402_10313
+  notes: null
+assumptions:
+  global:
+  - id: assume_single_nonperiodic_branch
+    description: The ALP effectively lives on a single non-periodic branch because transitions between
+      branches are suppressed.
+    scope: theory
+    status: assumed
+    impact_if_violated: The effective potential and fragmentation analysis could fail if branch transitions
+      occur.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper_2402_10313
+    notes: null
+  - id: assume_initial_displacement
+    description: The ALP begins displaced from the minimum with large normalized initial values in the
+      regime used for delayed oscillations and fragmentation.
+    scope: production
+    status: assumed
+    impact_if_violated: The relic density and dense-halo outcomes would change or fragmentation may not
+      occur.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper_2402_10313
+    notes: null
+  - id: assume_full_dm_for_projections
+    description: The halo-density observational projections assume the ALP accounts for all dark matter.
+    scope: structure_formation
+    status: assumed
+    impact_if_violated: Dense-halo abundance and projected gravitational signatures would scale or change
+      for a subcomponent.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper_2402_10313
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text mentions fully non-linear lattice simulation but does not identify public
+    code.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  caveats:
+  - No code resource is named in the assigned paper text.
+provenance:
+  model_id: 2402_10313_nonperiodic_alp_pminus_half_v1
+  model_name: Non-periodic ALP dark matter with p = -1/2 potential
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-06-01'
+  last_updated: '2026-06-01'
+  sources:
+    primary_papers:
+    - reference_id: paper_2402_10313
+      title: Unknown title; DESY-24-024 text on ALP dark matter with non-periodic potentials
+      authors: []
+      year: 2024
+      arxiv_id: '2402.10313'
+      doi: null
+      url: null
+      role: original_model
+      notes: The database text begins with DESY-24-024 and does not expose a separate title or author
+        block.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: Codex GPT-5 dark-matter extraction worker
+    extraction_date: '2026-06-01'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper_2402_10313
+      section: opening text
+      page: null
+      quote_or_summary: ALPs arise from broken U(1) or higher-dimensional gauge fields and behave as DM
+        once oscillations begin.
+    - reference_id: paper_2402_10313
+      section: opening text
+      page: null
+      quote_or_summary: The paper takes a non-periodic potential with p=-1/2; relic abundance can match
+        Omega_DM h^2 about 0.12.
+    - reference_id: paper_2402_10313
+      section: fragmentation paragraph
+      page: null
+      quote_or_summary: Critical initial field for fragmentation is reported as 3 f_a.
+    - reference_id: paper_2402_10313
+      section: halo paragraphs
+      page: null
+      quote_or_summary: The power spectrum is fed to Press-Schechter to obtain ALP halo abundances and
+        dense halo projections.
+    unresolved_items:
+    - The assigned text does not expose a conventional title/author block.
+    - No public code information is provided.
+  evidence:
+    particle_content:
+    - reference_id: paper_2402_10313
+      note: The text says ALPs arise as an angular degree of freedom of a broken global U(1) field or
+        as higher-dimensional gauge-field states and behave as DM after oscillations begin.
+      confidence: high
+      section: assigned text
+      page: null
+    symmetries:
+    - reference_id: paper_2402_10313
+      note: The text motivates the non-periodic potential by axion monodromy or large-N Yang-Mills ALPs
+        and assumes suppressed transitions between branches.
+      confidence: high
+      section: assigned text
+      page: null
+    interactions:
+    - reference_id: paper_2402_10313
+      note: The effective potential is specified with p=-1/2, mass m_a, and decay constant f_a.
+      confidence: high
+      section: assigned text
+      page: null
+    production_mechanism:
+    - reference_id: paper_2402_10313
+      note: The field is initially displaced, remains frozen for H > m_a, begins oscillating, and for
+        large initial values undergoes parametric-resonance fragmentation.
+      confidence: high
+      section: assigned text
+      page: null
+    cosmological_history:
+    - reference_id: paper_2402_10313
+      note: The onset of oscillations is delayed for large initial field values, allowing the model to
+        match Omega_DM h^2 about 0.12 in a large part of parameter space.
+      confidence: high
+      section: assigned text
+      page: null
+    parameter_ranges:
+    - reference_id: paper_2402_10313
+      note: The paper studies p=-1/2, m_a, f_a, and initial displacement; it quotes fragmentation threshold
+        3 f_a.
+      confidence: high
+      section: assigned text
+      page: null
+    validity_domain:
+    - reference_id: paper_2402_10313
+      note: The dense-halo projections assume the ALP makes up all of DM and extrapolate results across
+        the (m_a, f_a) plane.
+      confidence: high
+      section: assigned text
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The extraction is based on a compact assigned text rather than a full-length article body.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - suppression of branch transitions
+  - extrapolation of lattice results across parameter space
+  - mapping from dense ALP halos to gravitational observables
+  validation_status: expert_judgment_only
+  notes: The text provides model equations and simulation-derived structure-formation logic, but no independent
+    validation or code artifact.
+agent_failure_modes:
+  warnings:
+  - id: branch_assumption_sensitive
+    severity: high
+    category: assumption_mismatch
+    warning: Do not use this card for ALP potentials where branch transitions are unsuppressed; the extraction
+      assumes a single non-periodic branch.
+    mitigation: Check whether the physical setup justifies suppressed transitions before applying the
+      potential.
+    source_reference_ids:
+    - paper_2402_10313
+  - id: projection_extrapolation
+    severity: medium
+    category: extrapolation
+    warning: Dense-halo observational regions come from extrapolating simulation results over the (m_a,
+      f_a) plane under the all-DM assumption.
+    mitigation: Treat halo-abundance and detectability claims as parameter- and assumption-dependent.
+    source_reference_ids:
+    - paper_2402_10313

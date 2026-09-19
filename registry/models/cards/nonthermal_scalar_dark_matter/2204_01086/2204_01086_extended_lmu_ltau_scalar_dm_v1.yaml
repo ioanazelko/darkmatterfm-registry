@@ -1,0 +1,919 @@
+_source:
+  shard: arXiv_src_2204_008_wds.tar
+  paper_id: '2204_01086'
+  source_member: 2204_01086.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2204_01086_extended_lmu_ltau_scalar_dm_v1
+identity:
+  name: Extended L_mu-L_tau singlet scalar dark matter
+  family: nonthermal_scalar_dark_matter
+  aliases:
+  - L_mu-L_tau scalar dark matter
+  - singlet scalar dark matter phi_dm
+  - right-handed-neutrino-produced scalar dark matter
+  short_description: A singlet scalar dark matter field charged under an extended U(1)_{L_mu-L_tau} framework,
+    produced nonthermally by right-handed-neutrino scatterings during leptogenesis.
+  historical_origin_or_motivation: The paper motivates the setup as a shared framework for light neutrino
+    masses, leptogenesis, scalar dark matter, and the muon g-2 anomaly in an L_mu-L_tau extension.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - U(1)_{L_mu-L_tau} gauge extension of the Standard Model
+  - type-I seesaw with right-handed neutrinos
+  - two-sector leptogenesis scenario
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The text gives the Lagrangian terms relevant for neutrino masses and dark matter, while setting
+    several scalar-DM couplings to zero or negligible values for simplicity.
+particle_content:
+  dark_matter_candidate:
+    name: phi_dm
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - right-handed neutrinos N_e, N_mu, and N_tau
+  - singlet scalars phi_1 and phi_2
+  - additional scalar doublets H_2 and H_3
+  mediators:
+  - right-handed neutrinos
+  - Z_prime gauge boson
+  - Higgs-portal scalars with tuned negligible couplings
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - phi_dm
+  unstable_parent_particles:
+  - heavy right-handed neutrino N
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: 'The scalar is required to be cosmologically long-lived: decays into heavy right-handed
+    neutrinos are kinematically forbidden, decays to light neutrinos are suppressed by heavy-light mixing,
+    and additional scalar couplings are set to zero or negligible.'
+  symmetries:
+  - name: U(1)_{L_mu-L_tau}
+    type: gauge
+    exact_or_approximate: broken
+    breaking: The text assumes high-scale U(1)_{L_mu-L_tau} breaking, with q and v_b setting the gauge-boson
+      and right-handed-neutrino scales.
+    breaking_scale:
+      name: L_mu-L_tau breaking scale
+      symbol: v_b
+      description: Scale related to the Z_prime mass and gauge coupling; also enters right-handed-neutrino
+        masses.
+      range: v_b above roughly 15 GeV in the viable scan
+      unit: GeV
+      role: core
+      status: inferred
+      source_reference_ids:
+      - paper:2204.01086
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - higgs
+  - other
+  standard_model_targets:
+  - neutrinos
+  - muons and taus through L_mu-L_tau gauge interactions
+  - Standard Model Higgs sector through tuned-negligible scalar portal terms
+  dark_sector_couplings:
+  - y_st coupling between phi_dm and heavy right-handed neutrinos
+  - y_sm coupling set negligible in the relic-density discussion
+  - tiny U(1)_{L_mu-L_tau} gauge charge q suppressing the gauge portal
+  mediator_types:
+  - heavy right-handed neutrino
+  - Z_prime vector boson
+  - scalar portal mediator
+  interaction_operators:
+  - phi_dm N_mu N_mu and phi_dm^* N_tau N_tau Yukawa-type terms in the displayed Lagrangian
+  - dominant t-channel N N -> phi_dm phi_dm scattering for relic production
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels:
+  - N N -> phi_dm phi_dm production scattering
+  decay_channels:
+  - phi_dm -> light neutrino pair through heavy-light mixing, required to be sufficiently suppressed
+  self_scattering_channels: []
+  cp_structure: CP-violating right-handed-neutrino decays generate the lepton asymmetry; CP structure
+    of dark matter interactions is not detailed.
+  flavor_structure: L_mu-L_tau charges distinguish the muon and tau sectors; the displayed right-handed-neutrino
+    mass matrix is fitted to light-neutrino data.
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_phi_dm
+    description: Mass of the singlet scalar dark matter particle.
+    range:
+      min: 10^-5
+      max: '0.1'
+      inclusive_min: false
+      inclusive_max: false
+      unit: GeV
+      notes: The extracted text gives keV-to-GeV light DM context and an allowed range rendered as 10^5
+        GeV to 0.1 GeV; the minus sign in the lower exponent appears lost in text extraction.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper:2204.01086
+  - name: dark matter Yukawa coupling
+    symbol: y_st
+    description: Singlet Yukawa coupling controlling nonthermal scalar dark matter production from right-handed-neutrino
+      scatterings.
+    range:
+      min: 0.004
+      max: 0.05
+      inclusive_min: false
+      inclusive_max: false
+      unit: null
+      notes: Viable nonthermal region quoted after excluding underproduction and late thermalization.
+    unit: null
+    scale: linear
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper:2204.01086
+  - name: heavy right-handed neutrino mass
+    symbol: m_N
+    description: Mass scale of the right-handed neutrino that drives leptogenesis and the dominant dark
+      matter production scattering.
+    range:
+      min: 1e10
+      max: 1e12
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: The paper scan finds this range while also requiring m_N > 1e10 GeV for dark matter stability.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper:2204.01086
+  - name: Z_prime mass benchmark
+    symbol: M_Z_prime
+    description: Benchmark L_mu-L_tau gauge-boson mass chosen for the phenomenology discussion.
+    value: 0.2
+    unit: GeV
+    role: benchmark
+    status: assumed
+    source_reference_ids:
+    - paper:2204.01086
+  - name: L_mu-L_tau gauge coupling benchmark
+    symbol: g_prime
+    description: Benchmark gauge coupling chosen alongside M_Z_prime in the scan.
+    value: 0.001
+    unit: null
+    role: benchmark
+    status: assumed
+    source_reference_ids:
+    - paper:2204.01086
+production:
+  mechanisms:
+  - nonthermal production from N N -> phi_dm phi_dm during leptogenesis
+  - right-handed-neutrino decay or annihilation production is discussed generally, with scattering dominant
+    in this model
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - y_st
+  - m_phi_dm
+  - m_N
+  - Boltzmann evolution during leptogenesis
+  - suppression of Higgs and gauge portal channels
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The text assumes no initial dark matter abundance and solves Boltzmann equations for Y_N, Y_dm,
+    and Y_{B-L}; y_st above about 0.05 would thermalize the dark matter at late times.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - right-handed-neutrino scattering rate
+  - dark matter mass
+  - dark matter Yukawa coupling y_st
+  - heavy right-handed-neutrino mass
+  - free-streaming selection of hot, warm, or cold regimes
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - dark matter initially absent in the early Universe
+  - dark matter generated during the leptogenesis epoch
+  - high-scale L_mu-L_tau breaking above the leptogenesis scale
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak sphaleron conversion of B-L asymmetry to baryon asymmetry
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: mixed_cold_warm
+  distribution_function_available: 'no'
+  f_of_p_or_q: not provided
+  average_momentum_relative_to_thermal: null
+  free_streaming_length:
+    name: free streaming length
+    symbol: r_FS
+    description: Used by the paper to split hot, warm, and cold dark matter scenarios.
+    value: computed from cosmological scale-factor integral
+    unit: Mpc
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - paper:2204.01086
+  velocity_dispersion_today: null
+  phase_space_bounds:
+  - hot dark matter scenario excluded by small-structure formation in the paper
+  - warm and cold dark matter regimes remain possible in different mass ranges
+  notes: The text reports warm/cold possibilities after applying the free-streaming-length criterion;
+    no explicit phase-space distribution function is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper uses free-streaming categories rather than providing a thermal-WDM mapping.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: hot dark matter regime is disfavored by small-structure formation; detailed
+      nonlinear effects are not modeled.
+    simulation_calibrated: 'no'
+validity_domain:
+- id: nonthermal_yukawa_window
+  applies_to: parameter
+  condition: Use the nonthermal scalar-DM production regime only for the narrow y_st window where production
+    is sufficient but late thermalization is avoided.
+  valid_range: 0.004 < y_st < 0.05
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - For y_st below the lower value, dark matter production is too small.
+  - For y_st above the upper value, the paper states that dark matter thermalizes at late times.
+  source_reference_ids:
+  - paper:2204.01086
+  notes: null
+- id: stability_mass_requirement
+  applies_to: model
+  condition: The scalar dark matter lifetime is longer than 1e27 s only when decays are suppressed, including
+    a sufficiently heavy right-handed neutrino sector.
+  valid_range: m_N > 1e10 GeV in the paper scan
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - The paper also sets potentially dangerous scalar couplings to zero or negligible values.
+  source_reference_ids:
+  - paper:2204.01086
+  notes: null
+- id: warm_cold_mass_regimes
+  applies_to: model
+  condition: Free-streaming considerations remove the hot-DM regime and leave warm or cold scalar-DM regions.
+  valid_range: approximately 10^-5 GeV < m_phi_dm < 0.1 GeV, with warm/cold split near 10^-4 GeV according
+    to the text context
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - The full text extraction appears to drop a minus sign in lower powers of ten for the light dark matter
+    mass.
+  source_reference_ids:
+  - paper:2204.01086
+  notes: null
+assumptions:
+  global:
+  - id: negligible_scalar_portal_terms
+    description: Scalar-DM couplings such as |phi_dm|^2 |H|^2 and trilinear or quadratic singlet terms
+      are set to zero or fine-tuned small.
+    scope: theory
+    status: assumed
+    impact_if_violated: Additional decay or production channels could invalidate the scalar-DM lifetime
+      and relic-density calculation.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper:2204.01086
+    notes: null
+  - id: suppressed_gauge_portal
+    description: The U(1)_{L_mu-L_tau} charge q of dark matter is chosen tiny, suppressing gauge-portal
+      production.
+    scope: production
+    status: assumed
+    impact_if_violated: Gauge-portal channels could compete with the Yukawa scattering channel.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper:2204.01086
+    notes: null
+  - id: single_rhn_dominance
+    description: The relic-density discussion fixes y_sm negligible and treats one right-handed neutrino
+      N as the dominant source of scalar dark matter.
+    scope: production
+    status: assumed
+    impact_if_violated: Additional right-handed-neutrino channels could change the abundance and leptogenesis
+      evolution.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper:2204.01086
+    notes: null
+  - id: standard_boltzmann_cosmology
+    description: The paper uses standard Hubble expansion, thermal right-handed-neutrino abundance, and
+      sphaleron conversion in the Boltzmann evolution.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Nonstandard expansion or entropy history would alter the nonthermal yield.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper:2204.01086
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text does not identify public or associated code for the Boltzmann scan.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 2204_01086_extended_lmu_ltau_scalar_dm_v1
+  model_name: Extended L_mu-L_tau singlet scalar dark matter
+  model_family: nonthermal_scalar_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper:2204.01086
+      title: unknown
+      authors: []
+      year: 2022
+      arxiv_id: '2204.01086'
+      doi: null
+      url: null
+      role: original_model
+      notes: Title and author metadata were not available in the assigned SQLite text; the local text
+        introduces the scalar dark matter model in an extended L_mu-L_tau framework.
+    - arxiv_id: '2204.01086'
+      authors:
+      - Qi, XinXin
+      - Sun, Hao
+      doi: 10.1103/PhysRevD.111.035008
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2204.01086
+      role: original_model
+      title: Nonthermal dark matter production and leptogenesis in a Lμ-Lτ model
+      url: https://arxiv.org/abs/2204.01086
+      year: 2025
+    constraint_papers:
+    - arxiv_id: '1707.00874'
+      authors:
+      - Bandyopadhyay, Priyotosh
+      - Chun, Eung Jin
+      - Mandal, Rusa
+      doi: 10.1103/PhysRevD.97.015001
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1707.00874
+      role: constraint
+      title: Implications of right-handed neutrinos in B -L extended standard model with scalar dark matter
+      url: https://arxiv.org/abs/1707.00874
+      year: 2018
+    - arxiv_id: '1608.04194'
+      authors:
+      - Biswas, Anirban
+      - Choubey, Sandhya
+      - Khan, Sarif
+      doi: 10.1007/JHEP09(2016)147
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1608.04194
+      role: constraint
+      title: Neutrino mass, dark matter and anomalous magnetic moment of muon in a U{(1)}_L{{}<SUB>{</SUB>_{μ}}}<SUB>-</SUB>{{}_L}<SUB>{</SUB>_{τ
+        }} model
+      url: https://arxiv.org/abs/1608.04194
+      year: 2016
+    - arxiv_id: '1612.03067'
+      authors:
+      - Biswas, Anirban
+      - Choubey, Sandhya
+      - Khan, Sarif
+      doi: 10.1007/JHEP02(2017)123
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1612.03067
+      role: constraint
+      title: FIMP and muon ( g - 2) in a U(1)<SUB> Lμ- Lτ </SUB> model
+      url: https://arxiv.org/abs/1612.03067
+      year: 2017
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_worker_batch_0004
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper:2204.01086
+      section: Introduction
+      page: null
+      quote_or_summary: The paper states that it considers dark matter carrying U(1)_{L_mu-L_tau} charge
+        and produced nonthermally by right-handed neutrinos.
+    - reference_id: paper:2204.01086
+      section: Model section sec:2
+      page: null
+      quote_or_summary: The text introduces an extension of the minimal L_mu-L_tau model including scalar
+        dark matter phi_dm, three right-handed neutrinos, extra doublets, and singlet scalars.
+    - reference_id: paper:2204.01086
+      section: Dark matter and leptogenesis section sec:4
+      page: null
+      quote_or_summary: The relic-density discussion focuses on N N -> phi_dm phi_dm scatterings and solves
+        Boltzmann equations for Y_N, Y_dm, and Y_{B-L}.
+    unresolved_items:
+    - The assigned text extraction does not expose the paper title or authors.
+    - The light-DM lower mass exponent appears to have lost a minus sign in the extracted text.
+    - The extracted text ambiguously renders the lower dark-matter mass bound; the PDF should be checked
+      before using that number.
+    - No direct-detection recoil spectrum or public likelihood is available in the primary text.
+    - The coupled leptogenesis/relic-density Boltzmann system was not rerun in this batch.
+  evidence:
+    particle_content:
+    - reference_id: paper:2204.01086
+      note: The model section says it introduces scalar dark matter phi_dm plus three right-handed neutrinos,
+        two extra scalar doublets, and singlet scalars in the L_mu-L_tau framework.
+      confidence: high
+      section: Model section sec:2
+      page: null
+    symmetries:
+    - reference_id: paper:2204.01086
+      note: The text assigns U(1)_{L_mu-L_tau} charges to the new fields and treats the gauge symmetry
+        as broken above the leptogenesis scale.
+      confidence: high
+      section: Model section sec:2
+      page: null
+    - reference_id: paper:2204.01086
+      note: Stability is handled by forbidding heavy-neutrino decays kinematically, suppressing light-neutrino
+        decays through mixing, and setting dangerous scalar terms negligible.
+      confidence: medium
+      section: Dark matter relic density discussion
+      page: null
+    interactions:
+    - reference_id: paper:2204.01086
+      note: The displayed Lagrangian contains phi_dm couplings to right-handed neutrinos; the relic discussion
+        identifies the t-channel N N -> phi_dm phi_dm process as dominant.
+      confidence: high
+      section: Model and relic sections
+      page: null
+    production_mechanism:
+    - reference_id: paper:2204.01086
+      note: The paper assumes no initial dark matter and states that dark matter is mainly produced nonthermally
+        through N N -> phi_dm phi_dm during leptogenesis.
+      confidence: high
+      section: Leptogenesis and dark matter section
+      page: null
+    cosmological_history:
+    - reference_id: paper:2204.01086
+      note: The Boltzmann equations track right-handed-neutrino abundance, dark matter abundance, and
+        B-L asymmetry, then convert the lepton asymmetry to baryon asymmetry through sphalerons.
+      confidence: high
+      section: Boltzmann equations discussion
+      page: null
+    parameter_ranges:
+    - reference_id: paper:2204.01086
+      note: The scan reports m_N around 1e10-1e12 GeV, viable y_st around 0.004-0.05 for nonthermal production,
+        and light scalar-DM masses up to 0.1 GeV.
+      confidence: medium
+      section: Parameter scan and summary
+      page: null
+    validity_domain:
+    - reference_id: paper:2204.01086
+      note: The model is valid only with suppressed Higgs/gauge portals, sufficiently heavy right-handed
+        neutrinos for lifetime, and a nonthermal y_st window; hot-DM regions are disfavored.
+      confidence: medium
+      section: Relic-density and free-streaming discussion
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text gives the viable nonthermal interval 0.004 < y_st < 0.05 and the laboratory benchmark
+        M_Z_prime=0.2 GeV, g_prime=0.001.
+      page: null
+      reference_id: arxiv:2204.01086
+      section: Relic density and laboratory constraints
+    - confidence: medium
+      note: Related FIMP L_mu-L_tau paper supports the freeze-in/nonthermal context for scalar dark matter
+        and muon g-2.
+      page: null
+      reference_id: arxiv:1612.03067
+      section: Introduction
+    observables:
+    - confidence: high
+      note: Primary text states that relic density is dominated by N N -> phi_dm phi_dm scattering after
+        suppressing Higgs and gauge portals.
+      page: null
+      reference_id: arxiv:2204.01086
+      section: Dark matter phenomenology
+    - confidence: medium
+      note: Related L_mu-L_tau scalar-DM paper discusses muon g-2, neutrino trident, relic abundance,
+        and direct-detection context.
+      page: null
+      reference_id: arxiv:1608.04194
+      section: Introduction
+    routes:
+    - confidence: high
+      note: Primary paper connects the L_mu-L_tau model parameters to relic density, muon g-2, and stability
+        requirements.
+      page: null
+      reference_id: arxiv:2204.01086
+      section: Model and phenomenology
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: low
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Dark matter stability depends on suppressed or vanishing scalar terms rather than an explicitly identified
+    exact stabilizing symmetry.
+  - The viable y_st interval is narrow and the large-coupling regime thermalizes the dark matter.
+  - The extracted text loses at least one minus sign in the light-DM mass exponent.
+  validation_status: expert_judgment_only
+  notes: The paper gives a concrete model and Boltzmann calculation, but this machine entry should be
+    checked against the source PDF for notation and exponent fidelity.
+agent_failure_modes:
+  warnings:
+  - id: stability_not_exact_symmetry
+    severity: high
+    category: assumption_mismatch
+    warning: Do not treat phi_dm stability as guaranteed by an explicit exact Z2-like symmetry; the paper
+      relies on kinematic suppression, heavy-light mixing suppression, and neglected scalar terms.
+    mitigation: Check the assumed scalar potential and lifetime requirement before using this model outside
+      the paper benchmark.
+    source_reference_ids:
+    - paper:2204.01086
+  - id: light_mass_exponent_text_loss
+    severity: medium
+    category: unit_convention
+    warning: The assigned text appears to drop a minus sign in the lower light-DM mass exponent, so the
+      keV-scale lower bound should be verified from the source.
+    mitigation: Verify the mass range against the original paper before numerical reuse.
+    source_reference_ids:
+    - paper:2204.01086
+  - id: portal_suppression_assumption
+    severity: medium
+    category: extrapolation
+    warning: Relic-density conclusions assume Higgs-portal and gauge-portal channels are negligible.
+    mitigation: Include those channels if q or scalar couplings are changed.
+    source_reference_ids:
+    - paper:2204.01086
+observables:
+- caveats:
+  - The batch did not rerun the coupled Boltzmann equations.
+  - The lower OCR-rendered dark-matter mass bound is ambiguous in the extracted text.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early universe thermal bath
+  id: obs_phi_nonthermal_relic_density
+  key_quantities:
+  - description: Controls the scalar production cross section from right-handed neutrinos.
+    name: dark matter Yukawa coupling
+    range:
+      inclusive_max: false
+      inclusive_min: false
+      max: 0.05
+      min: 0.004
+      notes: Primary viable nonthermal interval.
+      unit: null
+    role: core
+    source_reference_ids:
+    - arxiv:2204.01086
+    status: inferred
+    symbol: y_st
+  - description: Right-handed-neutrino scale entering both leptogenesis and the scalar production process.
+    name: heavy right-handed neutrino mass
+    range: about 1e10-1e12 GeV in the primary scan
+    role: core
+    source_reference_ids:
+    - arxiv:2204.01086
+    status: inferred
+    symbol: m_N
+    unit: GeV
+  linked_constraints:
+  - con_phi_relic_yukawa_window
+  linked_routes:
+  - route_lmutau_scalar_relic_lab
+  name: Nonthermal scalar abundance from right-handed-neutrino scattering
+  notes: null
+  observability: medium
+  predicted_effect: The singlet scalar abundance is produced mainly by N N -> phi_dm phi_dm scattering;
+    the production rate must be large enough to reach Omega_DM h^2 but small enough to avoid late thermalization.
+  redshift_range: early radiation era during leptogenesis, before BBN
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - arxiv:2204.01086
+  subchannel: freeze-in-like production during leptogenesis
+- caveats:
+  - The Z_prime benchmark is not the dominant dark-matter production channel because the gauge portal
+    is suppressed in the primary setup.
+  channel: precision_laboratory
+  effect_direction: enhancement
+  environments:
+  - muon g-2 experiments
+  - solar-neutrino scattering
+  - neutrino trident production
+  id: obs_lmutau_zprime_muon_gminus2
+  key_quantities:
+  - description: Benchmark vector mass used in the scalar-DM scan.
+    name: Z_prime mass benchmark
+    role: benchmark
+    source_reference_ids:
+    - arxiv:2204.01086
+    status: assumed
+    symbol: M_Z_prime
+    unit: GeV
+    value: 0.2
+  - description: Benchmark coupling used with M_Z_prime.
+    name: L_mu-L_tau gauge coupling benchmark
+    role: benchmark
+    source_reference_ids:
+    - arxiv:2204.01086
+    status: assumed
+    symbol: g_prime
+    value: 0.001
+  linked_constraints:
+  - con_lmutau_zprime_lab_plane
+  linked_routes:
+  - route_lmutau_scalar_relic_lab
+  name: Light L_mu-L_tau vector contribution to muon g-2
+  notes: null
+  observability: high
+  predicted_effect: A light Z_prime gives a positive one-loop contribution to the muon anomalous magnetic
+    moment while the same M_Z_prime-g_prime plane is checked against BaBar, Borexino, and CCFR trident
+    limits.
+  redshift_range: z=0 laboratory measurements
+  relevance: high
+  scale_range: M_Z_prime around 10-200 MeV in the discussed constraints
+  source_reference_ids:
+  - arxiv:2204.01086
+  - arxiv:1608.04194
+  - arxiv:1612.03067
+  subchannel: muon anomalous magnetic moment and neutrino scattering
+- caveats:
+  - A detector-level recoil spectrum is not given in the assigned paper.
+  channel: direct_detection
+  effect_direction: null_signal
+  environments:
+  - direct-detection targets
+  id: obs_suppressed_portal_direct_detection
+  key_quantities:
+  - description: Suppresses gauge-portal production and scattering channels.
+    name: tiny L_mu-L_tau dark charge
+    range: chosen small enough that gauge-portal channels are negligible
+    role: core
+    source_reference_ids:
+    - arxiv:2204.01086
+    status: assumed
+    symbol: q
+  linked_constraints: []
+  linked_routes:
+  - route_lmutau_scalar_relic_lab
+  name: Suppressed portal direct-detection signal
+  notes: null
+  observability: low
+  predicted_effect: The primary model tunes scalar-DM couplings small and suppresses the gauge portal
+    through a tiny L_mu-L_tau charge, so no robust nuclear or electron recoil rate is provided.
+  redshift_range: z=0
+  relevance: medium
+  scale_range: null
+  source_reference_ids:
+  - arxiv:2204.01086
+  - arxiv:1707.00874
+  subchannel: Higgs and vector portals
+constraints:
+- allowed_regions:
+  - 0.004 < y_st < 0.05 for the nonthermal scalar-production scenario.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: Higgs-portal scalar couplings and gauge-portal production are taken negligible.
+    id: negligible-higgs-and-gauge-portals
+    impact_if_violated: If relaxed, additional production or scattering channels would change the y_st
+      window.
+    notes: null
+    scope: scalar relic-density calculation
+    source_reference_ids:
+    - arxiv:2204.01086
+    status: assumed
+  benchmark_implications:
+  - The benchmark Z_prime point leaves relic density controlled primarily by the Yukawa portal N N ->
+    phi_dm phi_dm.
+  caveats:
+  - Only the primary scan was used; no independent Boltzmann solve was run.
+  constrained_parameters:
+  - y_st
+  - m_phi_dm
+  - m_N
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - y_st below about 0.004 underproduces the observed dark matter abundance.
+  - y_st above about 0.05 thermalizes the scalar at late times in the primary scan.
+  id: con_phi_relic_yukawa_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Nonthermal relic-density Yukawa window
+  notes: null
+  observable_channel: relic_density
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2204.01086
+- allowed_regions:
+  - The benchmark M_Z_prime=0.2 GeV and g_prime=0.001 is stated to satisfy muon g-2 and the listed experimental
+    constraints.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Additional Higgs-doublet contributions to muon g-2 are ignored.
+    id: zprime-dominant-gminus2
+    impact_if_violated: Extra scalar contributions would shift the preferred M_Z_prime-g_prime region.
+    notes: null
+    scope: laboratory interpretation
+    source_reference_ids:
+    - arxiv:2204.01086
+    status: assumed
+  benchmark_implications:
+  - The benchmark fixes q v_b at roughly the hundred-GeV scale in the primary discussion.
+  caveats:
+  - The batch did not reproduce the laboratory exclusion contours.
+  constrained_parameters:
+  - M_Z_prime
+  - g_prime
+  constraint_type: laboratory
+  data_release: BaBar, Borexino, and CCFR constraints as used in the primary paper
+  excluded_regions:
+  - BaBar, Borexino, and CCFR trident measurements constrain the M_Z_prime-g_prime plane at roughly M_Z_prime=10-200
+    MeV and g_prime=1e-4-1e-3 in the primary discussion.
+  id: con_lmutau_zprime_lab_plane
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Light L_mu-L_tau Z_prime laboratory plane
+  notes: null
+  observable_channel: precision_laboratory
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2204.01086
+  - arxiv:1608.04194
+- allowed_regions:
+  - Heavy right-handed-neutrino masses above about 1e10 GeV and suppressed heavy-light mixing keep the
+    scalar sufficiently long lived in the primary scenario.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - The viable leptogenesis mass scale also suppresses scalar decay to light neutrinos.
+  caveats:
+  - Indirect decay constraints are represented only through the lifetime criterion quoted by the primary
+    paper.
+  constrained_parameters:
+  - tau_phi_dm
+  - m_N
+  - heavy-light neutrino mixing
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Parameter choices leading to tau_phi_dm shorter than about 1e27 s are not viable as dark matter.
+  id: con_phi_dm_lifetime
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Cosmological scalar-DM lifetime requirement
+  notes: null
+  observable_channel: dark_matter_stability
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2204.01086
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The dark-matter mass lower bound is OCR-ambiguous and should be checked against the PDF before numerical
+      reuse.
+    constraint_ids:
+    - con_phi_relic_yukawa_window
+    - con_lmutau_zprime_lab_plane
+    - con_phi_dm_lifetime
+    derived_quantities:
+    - Omega_DM h^2
+    - tau_phi_dm
+    - Delta a_mu
+    - neutrino-trident rate
+    description: Map the extended L_mu-L_tau scalar model to relic-density, lifetime, and laboratory-vector
+      observables.
+    forward_model_chain:
+    - inputs:
+      - M_Z_prime
+      - g_prime
+      notes: null
+      outputs:
+      - Delta a_mu
+      - lab constraint overlay
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for the light-vector benchmark used in the primary paper.
+    - inputs:
+      - y_st
+      - m_phi_dm
+      - m_N
+      - initial thermal history
+      notes: null
+      outputs:
+      - Omega_DM h^2
+      - baryon asymmetry
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: custom freeze-in/leptogenesis Boltzmann equations
+      validity: Needed to reproduce the primary relic-density scan.
+    - inputs:
+      - Omega_DM h^2
+      - Delta a_mu
+      - lab exclusion curves
+      notes: null
+      outputs:
+      - accepted parameter region
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: This batch records the route but does not rerun likelihoods.
+    id: route_lmutau_scalar_relic_lab
+    input_parameters:
+    - y_st
+    - m_phi_dm
+    - m_N
+    - M_Z_prime
+    - g_prime
+    - q
+    likelihoods:
+    - Planck relic-density target as quoted by the primary paper
+    - BaBar/Borexino/CCFR contours require external data to reproduce
+    observable_ids:
+    - obs_phi_nonthermal_relic_density
+    - obs_lmutau_zprime_muon_gminus2
+    - obs_suppressed_portal_direct_detection
+    required_code_resources:
+    - Boltzmann-equation solver for nonthermal production
+    - laboratory Z_prime recast utilities
+    route_status: planned
+    source_model_features:
+    - singlet scalar phi_dm
+    - right-handed-neutrino Yukawa portal
+    - light L_mu-L_tau Z_prime
+    - suppressed Higgs and gauge portals
+    validation_tests:
+    - recover 0.004 < y_st < 0.05
+    - recover the benchmark M_Z_prime=0.2 GeV, g_prime=0.001 as allowed

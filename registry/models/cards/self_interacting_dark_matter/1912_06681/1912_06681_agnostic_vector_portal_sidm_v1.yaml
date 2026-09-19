@@ -1,0 +1,931 @@
+_source:
+  shard: arXiv_src_1912_023_wds.tar
+  paper_id: '1912_06681'
+  source_member: 1912_06681.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1912_06681_agnostic_vector_portal_sidm_v1
+identity:
+  name: Agnostic vector-portal self-interacting dark matter
+  family: self_interacting_dark_matter
+  aliases:
+  - fermionic SIDM with dark photon mediator
+  - kinetically mixed vector-mediator SIDM
+  short_description: A simplified self-interacting dark matter setup with a symmetric fermionic dark matter
+    particle and a light kinetically mixed dark photon mediator, analyzed without assuming a specific
+    early-universe production mechanism.
+  historical_origin_or_motivation: Designed to test whether light-mediator SIDM remains viable when thermal
+    freeze-out and a fully standard pre-BBN history are not imposed.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - self-interacting dark matter
+  - dark vector portal
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes the kinetic-mixing and dark-vector coupling terms and treats the relic genesis
+    agnostically.
+particle_content:
+  dark_matter_candidate:
+    name: symmetric fermionic dark matter chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - light dark photon mediator V
+  mediators:
+  - kinetically mixed dark photon V
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - meta-stable light mediator V in the viable regions emphasized by the paper
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The fermion is assumed to be stable dark matter carrying dark-sector charge;
+    the paper does not specify a UV completion of the stabilizing mechanism.
+  symmetries:
+  - name: U(1)_D dark vector symmetry
+    type: gauge
+    exact_or_approximate: unknown
+    breaking: The dark photon is massive; the mass-generation mechanism is not specified in the assigned
+      text.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - hypercharge field strength
+  - charged Standard Model fermions
+  - electrons
+  - protons
+  dark_sector_couplings:
+  - dark gauge coupling g_chi
+  - dark fine-structure constant alpha_D
+  - kinetic mixing epsilon
+  mediator_types:
+  - light vector mediator V
+  interaction_operators:
+  - epsilon_Y V_{mu nu} F_Y^{mu nu}/2
+  - g_chi chi gamma^mu chi V_mu
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - chi anti-chi annihilation to dark vectors V, with Sommerfeld-enhanced late-time annihilation considered
+  self_scattering_channels:
+  - chi-chi and chi-antichi self-scattering through light V exchange
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Fermionic dark matter mass scanned against the mediator mass.
+    role: core
+    status: inferred
+  - name: mediator mass
+    symbol: m_V
+    description: Mass of the light dark photon mediator.
+    role: core
+    status: inferred
+  - name: dark fine-structure constant
+    symbol: alpha_D
+    description: Set to the minimal value that yields the required dwarf-scale self-scattering for each
+      mass pair.
+    role: core
+    status: inferred
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Vector-portal coupling to the Standard Model; the paper derives upper bounds and mediator-lifetime
+      implications.
+    role: core
+    status: inferred
+  - name: fiducial self-scattering strength
+    symbol: sigma_T/m_chi
+    description: Self-scattering per mass fixed at dwarf-galaxy velocity.
+    value: '1'
+    unit: cm^2/g
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: mediator lifetime
+    symbol: tau_V
+    description: Lifetime implied by the allowed kinetic mixing range.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - relic genesis left unspecified; examples discussed include freeze-in, low reheating temperature, and
+    nonstandard cosmological histories
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - assumed to match the CMB-observed dark matter abundance by photon temperature around 1 eV
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: unknown
+  nonthermal_momentum_distribution: unknown
+  notes: The point of the analysis is to avoid imposing thermal freeze-out or dark-visible thermalization.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - m_chi
+  - m_V
+  - alpha_D
+  - epsilon
+  - assumed late-time abundance
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - production mechanism above the BBN era is not specified
+  - dark-visible thermalization is not assumed
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: unknown
+  notes: No phase-space distribution is specified because the production history is intentionally left
+    open.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: self-interactions are intended to alter halo cores and small-scale halo
+      phenomenology
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: partial
+validity_domain:
+- id: dwarf_self_scattering
+  applies_to: parameter
+  condition: The paper fixes sigma_T/m_chi = 1 cm^2/g at relative velocity 10 km/s and uses the minimal
+    alpha_D solution for each (m_chi, m_V).
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: light_mediator_velocity_dependence
+  applies_to: model
+  condition: Compatibility with cluster-scale self-scattering requires a velocity-dependent light-mediator
+    regime with m_chi larger than m_V.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: agnostic_relic_history
+  applies_to: cosmological_history
+  condition: The abundance is required to match the CMB value by T about 1 eV, but the pre-BBN production
+    mechanism is not fixed.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: symmetric_dm
+    description: The analysis focuses on symmetric dark matter, while only briefly commenting on asymmetric
+      dark matter.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: matched_late_abundance
+    description: The dark matter abundance has reached the CMB-observed value by photon temperature around
+      1 eV.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: minimal_vector_portal
+    description: The connection to the Standard Model is controlled by kinetic mixing of the dark photon.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is mentioned in the assigned paper text.
+provenance:
+  model_id: 1912_06681_agnostic_vector_portal_sidm_v1
+  model_name: Agnostic vector-portal self-interacting dark matter
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1912_06681'
+      title: Self-interacting dark matter without prejudice
+      authors:
+      - Nicolas Bernal
+      - Xiaoyong Chu
+      - Suchita Kulkarni
+      - Josef Pradler
+      year: 2019
+      arxiv_id: '1912.06681'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text for this batch.
+    - reference_id: src_1912_06681
+      title: Self-interacting dark matter without prejudice
+      authors:
+      - Nicolas Bernal
+      - Xiaoyong Chu
+      - Suchita Kulkarni
+      - Josef Pradler
+      year: 2019
+      arxiv_id: '1912.06681'
+      doi: null
+      url: https://arxiv.org/abs/1912.06681
+      role: original_model
+      notes: Primary paper text resolved from the local SQLite cache; ADS used for metadata counts.
+    constraint_papers:
+    - reference_id: rel_1912_1310_7945
+      title: Direct detection portals for self-interacting dark matter
+      authors:
+      - Kaplinghat, Manoj
+      - Tulin, Sean
+      - Yu, Hai-Bo
+      year: 2014
+      arxiv_id: '1310.7945'
+      doi: 10.1103/PhysRevD.89.035009
+      url: https://arxiv.org/abs/1310.7945
+      role: constraint
+      notes: 'Local related text read: direct-detection portals for SIDM.'
+    - reference_id: rel_1912_1507_04007
+      title: Direct detection signatures of self-interacting dark matter with a light mediator
+      authors:
+      - Del Nobile, Eugenio
+      - Kaplinghat, Manoj
+      - Yu, Hai-Bo
+      year: 2015
+      arxiv_id: '1507.04007'
+      doi: 10.1088/1475-7516/2015/10/055
+      url: https://arxiv.org/abs/1507.04007
+      role: constraint
+      notes: 'Local related text read: direct-detection signatures of SIDM with a light mediator.'
+    review_papers:
+    - reference_id: rel_1912_1412_1477
+      title: 'Core formation in dwarf haloes with self-interacting dark matter: no fine-tuning necessary'
+      authors:
+      - Elbert, Oliver D.
+      - Bullock, James S.
+      - Garrison-Kimmel, Shea
+      - Rocha, Miguel
+      - Oñorbe, Jose
+      - Peter, Annika H. G.
+      year: 2015
+      arxiv_id: '1412.1477'
+      doi: 10.1093/mnras/stv1470
+      url: https://arxiv.org/abs/1412.1477
+      role: extension
+      notes: 'Local related text read: dwarf-halo core formation in SIDM simulations.'
+    external_databases:
+    - name: NASA ADS
+      url: https://ui.adsabs.harvard.edu/
+      note: Used for primary record, reference, and citation metadata discovery.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: gpt-5.5-batch-0010
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1912_06681'
+      section: Introduction and setup
+      page: null
+      quote_or_summary: The paper introduces a prototypical SIDM model with fermionic DM and a light dark
+        photon mediator.
+    - reference_id: '1912_06681'
+      section: Setup
+      page: null
+      quote_or_summary: The vector-portal Lagrangian contains kinetic mixing and a dark fermion coupling
+        to V.
+    - reference_id: '1912_06681'
+      section: Conclusions
+      page: null
+      quote_or_summary: The relic-density generation mechanism and dark-visible thermalization are intentionally
+        not assumed.
+    unresolved_items:
+    - Relic production is deliberately unspecified, so production fields remain phenomenological rather
+      than a concrete mechanism.
+    - Relic production is intentionally unspecified; early histories before the assumed T around 1 eV
+      matching point can add constraints.
+    - No numerical grids or public code were found in the assigned text, so epsilon limits are routed
+      but not recomputed.
+    - Asymmetric dark matter variants are only briefly discussed in the source and are not split into
+      separate model entries.
+  evidence:
+    particle_content:
+    - reference_id: '1912_06681'
+      note: The setup names a symmetric fermionic DM candidate and a dark photon mediator V.
+      confidence: high
+      section: Setup
+      page: null
+    symmetries:
+    - reference_id: '1912_06681'
+      note: The dark photon/vector portal implies a dark vector gauge interaction, while the text leaves
+        the UV stabilizing mechanism unspecified.
+      confidence: medium
+      section: Setup
+      page: null
+    interactions:
+    - reference_id: '1912_06681'
+      note: The paper writes kinetic mixing with hypercharge and a g_chi dark-vector coupling to the fermion.
+      confidence: high
+      section: Setup
+      page: null
+    production_mechanism:
+    - reference_id: '1912_06681'
+      note: The analysis explicitly drops thermal-freeze-out assumptions and only requires the late abundance
+        to match the CMB value.
+      confidence: high
+      section: Introduction
+      page: null
+    cosmological_history:
+    - reference_id: '1912_06681'
+      note: The paper allows freeze-in, low reheating, or nonstandard histories and does not assume dark-visible
+        thermalization.
+      confidence: high
+      section: Introduction / Conclusions
+      page: null
+    parameter_ranges:
+    - reference_id: '1912_06681'
+      note: For each (m_chi, m_V), alpha_D is chosen to reproduce the fiducial self-scattering per mass
+        at dwarf velocities.
+      confidence: high
+      section: Setup
+      page: null
+    validity_domain:
+    - reference_id: '1912_06681'
+      note: The authors require perturbative alpha_D, halo stability, and velocity-dependent self-scattering,
+        but this extraction omits constraints by run instruction.
+      confidence: medium
+      section: Setup
+      page: null
+    observables:
+    - reference_id: src_1912_06681
+      note: Primary text sets the target sigma_T/m_chi = 1 cm^2/g at dwarf velocity and builds constraints
+        in the [m_chi,m_V,epsilon] space.
+      confidence: high
+      section: null
+      page: null
+    - reference_id: rel_1912_1412_1477
+      note: Related local text supports the dwarf-core structural motivation for SIDM cross sections.
+      confidence: medium
+      section: null
+      page: null
+    constraints:
+    - reference_id: src_1912_06681
+      note: Primary text lists cluster, direct-detection, CMB, gamma-ray, lifetime, density-depletion,
+        and perturbativity constraints.
+      confidence: high
+      section: null
+      page: null
+    - reference_id: rel_1912_1310_7945
+      note: Related local text supports direct-detection portals for light-mediator SIDM.
+      confidence: medium
+      section: null
+      page: null
+    - reference_id: rel_1912_1507_04007
+      note: Related local text supports direct-detection signatures for SIDM with a light mediator.
+      confidence: medium
+      section: null
+      page: null
+    routes:
+    - reference_id: src_1912_06681
+      note: 'Primary text describes the forward route: solve alpha_D from self-scattering, then constrain
+        epsilon through recoil and energy-injection observables.'
+      confidence: high
+      section: null
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: low
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  dominant_uncertainties:
+  - production mechanism intentionally unspecified
+  - UV origin of mediator mass and dark matter stability not specified
+agent_failure_modes:
+  warnings:
+  - id: agnostic_relic_history
+    severity: high
+    category: assumption_mismatch
+    warning: Do not treat this row as a concrete freeze-out or freeze-in model; the paper intentionally
+      leaves relic genesis open.
+    source_reference_ids: []
+  - id: constraints_omitted
+    severity: medium
+    category: other
+    warning: The source paper is constraint-heavy, but this run intentionally omits constraints and observable
+      routing.
+    source_reference_ids: []
+observables:
+- id: sidm_dwarf_core_self_scattering
+  name: Velocity-dependent self-scattering at dwarf-galaxy velocities
+  channel: small_scale_structure
+  subchannel: dwarf-galaxy cores
+  predicted_effect: The model fixes the dark fine-structure constant to obtain sigma_T/m_chi about 1 cm^2/g
+    at v = 10 km/s, targeting dwarf-scale core formation.
+  effect_direction: shape_change
+  key_quantities:
+  - name: self-scattering per mass
+    symbol: sigma_T/m_chi
+    description: Target transfer cross section per mass at dwarf velocities.
+    value: 1
+    unit: cm^2/g
+    role: derived
+    status: assumed
+    source_reference_ids:
+    - src_1912_06681
+  - name: dwarf velocity
+    symbol: v
+    description: Fiducial relative velocity used to set the self-interaction strength.
+    value: 10
+    unit: km/s
+    role: astrophysical
+    status: assumed
+    source_reference_ids:
+    - src_1912_06681
+  - name: dark fine-structure constant
+    symbol: alpha_D
+    description: Minimal coupling solving the self-scattering requirement for each mass pair.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_1912_06681
+  redshift_range: today
+  scale_range: dwarf-halo scales
+  environments:
+  - dwarf galaxies
+  observability: medium
+  relevance: critical
+  linked_constraints:
+  - sidm_cluster_cross_section
+  - sidm_annihilation_density_perturbativity
+  linked_routes:
+  - sidm_mass_mediator_to_constraints
+  caveats:
+  - Astrophysical inference of SIDM cross-section bounds has systematic uncertainties.
+  source_reference_ids:
+  - src_1912_06681
+  - rel_1912_1412_1477
+  notes: Primary and related local texts support dwarf-core SIDM as the target observable.
+- id: sidm_direct_recoil_signals
+  name: Nuclear and electron recoil signals from kinetic mixing
+  channel: direct_detection
+  subchannel: nuclear and electron recoils
+  predicted_effect: Kinetic mixing induces scattering on nuclei and electrons, constrained by low-threshold
+    and xenon-based direct-detection data.
+  effect_direction: rate_change
+  key_quantities:
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Vector-portal coupling to charged Standard Model fermions.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_1912_06681
+  - name: mediator mass
+    symbol: m_V
+    description: Controls light-mediator momentum dependence in recoil spectra.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_1912_06681
+  - name: dark matter mass
+    symbol: m_chi
+    description: Controls detector thresholds and recoil kinematics.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_1912_06681
+  redshift_range: today
+  scale_range: sub-GeV to multi-GeV recoil thresholds
+  environments:
+  - direct-detection laboratories
+  observability: high
+  relevance: high
+  linked_constraints:
+  - sidm_direct_detection_limits
+  linked_routes:
+  - sidm_mass_mediator_to_constraints
+  caveats:
+  - Light-mediator form factors and detector thresholds must be modeled for a recast.
+  source_reference_ids:
+  - src_1912_06681
+  - rel_1912_1310_7945
+  - rel_1912_1507_04007
+  notes: The primary paper combines nuclear and electron recoil limits in the epsilon plane.
+- id: sidm_cmb_gamma_energy_injection
+  name: CMB and gamma-ray energy injection from annihilation to long-lived mediators
+  channel: cmb
+  subchannel: Planck/Fermi/HESS energy injection
+  predicted_effect: Residual annihilation produces vector mediators whose boosted lifetime alters CMB
+    and diffuse-gamma energy-injection bounds.
+  effect_direction: enhancement
+  key_quantities:
+  - name: mediator lifetime
+    symbol: tau_V
+    description: Lifetime implied by epsilon and m_V.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - src_1912_06681
+  - name: annihilation cross section
+    symbol: sigma_ann v
+    description: Controls mediator abundance from residual annihilation.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - src_1912_06681
+  - name: electromagnetic branching ratio
+    symbol: Br_EM
+    description: Fraction of mediator decay energy visible electromagnetically.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - src_1912_06681
+  redshift_range: BBN to today
+  scale_range: cosmological and Galactic gamma-ray scales
+  environments:
+  - CMB
+  - diffuse gamma-ray background
+  - Galactic center
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - sidm_cmb_gamma_lifetime_limits
+  linked_routes:
+  - sidm_lifetime_energy_injection_route
+  caveats:
+  - Bounds are rescaled for finite in-flight mediator lifetime and depend on the assumed post-1-eV abundance.
+  source_reference_ids:
+  - src_1912_06681
+  notes: This is one of the paper's main agnostic constraints on epsilon.
+- id: sidm_lifetime_frontier
+  name: Long-lived mediator signatures and displaced energy deposition
+  channel: indirect_detection
+  subchannel: lifetime-frontier mediator searches
+  predicted_effect: Allowed parameter regions often imply meta-stable light mediators, shifting searches
+    toward displaced decays, cosmic-ray anisotropies, and boosted-mediator signatures.
+  effect_direction: model_dependent
+  key_quantities:
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Smaller epsilon increases mediator lifetime.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - src_1912_06681
+  - name: mediator decay length
+    symbol: gamma c tau_V
+    description: Determines where mediator decay products are deposited.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - src_1912_06681
+  redshift_range: today
+  scale_range: solar, Galactic, and cosmological baselines
+  environments:
+  - indirect-detection instruments
+  - neutrino/dark-matter detectors
+  observability: low
+  relevance: medium
+  linked_constraints: []
+  linked_routes:
+  - sidm_lifetime_energy_injection_route
+  caveats:
+  - The primary text lists these as modified search strategies rather than implemented likelihoods.
+  source_reference_ids:
+  - src_1912_06681
+  notes: Kept as a qualitative observable because no dedicated likelihood is supplied.
+constraints:
+- id: sidm_cluster_cross_section
+  name: Cluster-scale self-interaction upper bound
+  constraint_type: astrophysical
+  observable_channel: small_scale_structure
+  applies: 'yes'
+  constrained_parameters:
+  - sigma_T/m_chi
+  - m_chi
+  - m_V
+  - alpha_D
+  excluded_regions:
+  - Parameter points giving sigma_T/m_chi above about 0.5 cm^2/g at v = 1000 km/s are excluded in the
+    primary benchmark treatment.
+  allowed_regions:
+  - Velocity-dependent light-mediator regimes can satisfy dwarf-scale scattering while evading cluster
+    bounds.
+  benchmark_implications:
+  - Forces the model into a velocity-dependent light-mediator regime.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: Cluster SIDM benchmark in the primary paper
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: sidm_cluster_bound_face_value
+    description: The primary paper applies the cluster bound at face value despite astrophysical uncertainties.
+    scope: astrophysics
+    status: assumed
+    impact_if_violated: Relaxing it changes the allowed mass-mediator plane.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - src_1912_06681
+  caveats:
+  - The introduction also notes Bullet Cluster and cluster-collision bounds in the broader 0.2-1.25 cm^2/g
+    range.
+  source_reference_ids:
+  - src_1912_06681
+  notes: Structured as a benchmark constraint because this is how the primary analysis uses it.
+- id: sidm_direct_detection_limits
+  name: Direct-detection limits on vector-portal kinetic mixing
+  constraint_type: direct_detection
+  observable_channel: direct_detection
+  applies: parameter_dependent
+  constrained_parameters:
+  - epsilon
+  - m_chi
+  - m_V
+  - sigma_p
+  - sigma_e
+  excluded_regions:
+  - CDMSlite, CRESST-II, LUX, XENON1T, SENSEI, XENON10, and XENON electron-recoil analyses bound epsilon
+    across complementary mass ranges.
+  allowed_regions:
+  - Allowed regions require epsilon small enough to avoid nuclear/electron recoil limits while maintaining
+    the selected self-scattering strength.
+  benchmark_implications:
+  - Direct detection gives upper limits on epsilon and thus lower limits on mediator lifetime.
+  likelihood_available: partial
+  likelihood_reference: Primary paper recast using DDCalc and published electron-recoil limits
+  data_release: CDMSlite/CRESST-II/LUX/XENON1T/SENSEI/XENON10 inputs in the primary paper
+  recasting_needed: 'yes'
+  robustness: high
+  assumptions:
+  - id: sidm_minimal_alpha_d
+    description: The paper chooses the minimal alpha_D satisfying the dwarf-scale self-scattering target.
+    scope: modeling
+    status: assumed
+    impact_if_violated: Larger alpha_D strengthens visible-sector constraints.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - src_1912_06681
+  caveats:
+  - Momentum dependence matters when the mediator mass is below typical recoil momentum.
+  source_reference_ids:
+  - src_1912_06681
+  - rel_1912_1310_7945
+  - rel_1912_1507_04007
+  notes: The primary paper gives the experiment list and notes DDCalc for light-mediator proton scattering.
+- id: sidm_cmb_gamma_lifetime_limits
+  name: Planck and gamma-ray limits with finite mediator lifetime
+  constraint_type: cosmological
+  observable_channel: cmb/indirect_detection
+  applies: parameter_dependent
+  constrained_parameters:
+  - epsilon
+  - tau_V
+  - m_chi
+  - m_V
+  - sigma_ann v
+  excluded_regions:
+  - CMB, diffuse gamma-ray, and Galactic-center energy-injection bounds exclude epsilon values that make
+    mediator decays too prompt/visible for a given annihilation rate.
+  allowed_regions:
+  - For heavy mediators, the allowed region often implies cosmologically long-lived or meta-stable mediators.
+  benchmark_implications:
+  - The same constraint motivates lifetime-frontier search strategies.
+  likelihood_available: approximate
+  likelihood_reference: Rescaled existing CMB/gamma annihilation limits in the primary paper
+  data_release: Planck, Fermi-LAT diffuse gamma-ray, and H.E.S.S. inputs discussed in the primary paper
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: sidm_late_abundance_fixed
+    description: The DM abundance is assumed to match the CMB-observed value by photon temperature around
+      1 eV.
+    scope: cosmology
+    status: assumed
+    impact_if_violated: A specified earlier production history can add constraints outside this agnostic
+      setup.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - src_1912_06681
+  caveats:
+  - The paper does not apply freeze-in bounds from T > 1 under its agnostic assumptions.
+  source_reference_ids:
+  - src_1912_06681
+  notes: BBN energy-injection effects are discussed but not retained as final leading bounds.
+- id: sidm_annihilation_density_perturbativity
+  name: Dwarf-density depletion and perturbativity screens
+  constraint_type: theoretical
+  observable_channel: small_scale_structure
+  applies: 'yes'
+  constrained_parameters:
+  - alpha_D
+  - sigma_ann v
+  - m_chi
+  - m_V
+  excluded_regions:
+  - Points with alpha_D > 10 or with annihilation large enough to deplete dwarf central densities over
+    1e10 yr are removed.
+  allowed_regions:
+  - Accepted points keep annihilation decoupled by T around 1 eV and preserve dwarf halo densities.
+  benchmark_implications:
+  - These screens define the physically allowed self-scattering target region before visible-sector constraints.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: Primary paper analytic screens
+  recasting_needed: 'no'
+  robustness: medium
+  assumptions:
+  - id: sidm_symmetric_dm
+    description: The primary analysis focuses on symmetric dark matter.
+    scope: production
+    status: assumed
+    impact_if_violated: Asymmetric dark matter can weaken annihilation-related bounds.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - src_1912_06681
+  caveats:
+  - This is not an experimental likelihood.
+  source_reference_ids:
+  - src_1912_06681
+  notes: Included because it materially restricts the [m_chi,m_V] plane.
+theory_to_observable_routing:
+  routes:
+  - id: sidm_mass_mediator_to_constraints
+    description: For each dark-matter and mediator mass pair, solve for minimal alpha_D, then propagate
+      epsilon to direct-detection and astrophysical limits.
+    source_model_features:
+    - fermionic SIDM
+    - kinetically mixed dark photon
+    - agnostic relic genesis
+    input_parameters:
+    - m_chi
+    - m_V
+    - sigma_T/m_chi target
+    - epsilon
+    derived_quantities:
+    - alpha_D
+    - sigma_p
+    - sigma_e
+    - cluster-scale sigma_T/m_chi
+    - tau_V
+    forward_model_chain:
+    - step_id: solve_self_scattering
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - m_chi
+      - m_V
+      - sigma_T/m_chi at 10 km/s
+      outputs:
+      - minimal alpha_D
+      validity: Uses the resonant light-mediator transfer cross-section formula in the primary paper.
+      notes: Multiple alpha_D solutions can exist; the paper uses the smallest one.
+    - step_id: apply_cluster_and_screens
+      step_type: validation
+      tool_or_code: null
+      inputs:
+      - alpha_D
+      - sigma_ann v
+      - cluster velocity
+      outputs:
+      - screened mass-mediator plane
+      validity: Uses benchmark astrophysical and perturbativity screens.
+      notes: Cluster bound applied at face value.
+    - step_id: compute_recoil_limits
+      step_type: recasting
+      tool_or_code: DDCalc plus electron-recoil recasts
+      inputs:
+      - epsilon
+      - m_chi
+      - m_V
+      - alpha_D
+      outputs:
+      - epsilon upper limits
+      validity: Detector thresholds and light-mediator form factors must be modeled.
+      notes: Primary paper combines nuclear and electron recoil experiments.
+    observable_ids:
+    - sidm_dwarf_core_self_scattering
+    - sidm_direct_recoil_signals
+    constraint_ids:
+    - sidm_cluster_cross_section
+    - sidm_direct_detection_limits
+    - sidm_annihilation_density_perturbativity
+    likelihoods:
+    - direct-detection likelihoods or limit curves
+    required_code_resources:
+    - DDCalc
+    - published electron-recoil limit curves
+    validation_tests:
+    - Reproduce the primary epsilon limit panels.
+    route_status: planned
+    agent_notes: A full recast needs the primary paper's numerical grids or code, which are not in the
+      assigned text.
+    caveats:
+    - Relic production remains unspecified by design.
+  - id: sidm_lifetime_energy_injection_route
+    description: Convert epsilon into mediator lifetime and rescale CMB/gamma-ray energy-injection limits
+      for boosted delayed decays.
+    source_model_features:
+    - long-lived vector mediator
+    - residual symmetric-DM annihilation
+    input_parameters:
+    - epsilon
+    - m_V
+    - m_chi
+    - sigma_ann v
+    - Br_EM
+    derived_quantities:
+    - tau_V
+    - boosted decay time
+    - deposited electromagnetic energy
+    forward_model_chain:
+    - step_id: compute_lifetime
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - epsilon
+      - m_V
+      outputs:
+      - tau_V
+      validity: Decay modes change below the electron threshold.
+      notes: Primary paper marks BBN, CMB, and universe-age lifetime contours.
+    - step_id: integrate_energy_injection
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - sigma_ann v
+      - tau_V
+      - Br_EM
+      - redshift
+      outputs:
+      - deposited EM energy
+      validity: Approximate rescaling of existing annihilation limits.
+      notes: The paper uses Planck, Fermi-LAT, and H.E.S.S. limits.
+    - step_id: derive_epsilon_bounds
+      step_type: likelihood
+      tool_or_code: null
+      inputs:
+      - deposited EM energy
+      outputs:
+      - epsilon upper limit
+      validity: Requires selected external limit curve.
+      notes: Implemented qualitatively here only.
+    observable_ids:
+    - sidm_cmb_gamma_energy_injection
+    - sidm_lifetime_frontier
+    constraint_ids:
+    - sidm_cmb_gamma_lifetime_limits
+    likelihoods:
+    - Planck annihilation limit
+    - Fermi-LAT diffuse gamma-ray limit
+    - H.E.S.S. Galactic-center limit
+    required_code_resources: []
+    validation_tests:
+    - Check lifetime contours against the primary paper figures.
+    route_status: planned
+    agent_notes: The route is source-backed but not numerically implemented in this batch.
+    caveats:
+    - Asymmetric DM or altered post-1-eV history changes the bound.

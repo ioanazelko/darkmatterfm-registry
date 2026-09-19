@@ -1,0 +1,408 @@
+_source:
+  shard: arXiv_src_2405_108_wds.tar
+  paper_id: '2405_14309'
+  source_member: 2405_14309.json
+agent_failure_modes:
+  warnings:
+  - category: other
+    id: prior_model_borderline
+    mitigation: Use provenance caveat when merging registry candidates.
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: The paper states that the companion mechanism was proposed before; it is accepted here because
+      this work presents model terms and develops companion-decay regimes.
+  - category: other
+    id: do_not_encode_gamma_constraints
+    mitigation: Do not infer missing constraint or observable fields from this card.
+    severity: low
+    source_reference_ids:
+    - primary
+    warning: Gamma-ray bounds and spectra are central to the paper but are intentionally omitted from
+      this model-only run.
+associated_code:
+  code_summary: The paper generates a model file with FeynRules, simulates S1 S1 -> H S2* with MadGraph,
+    and uses PYTHIA8 for hadronization/photon spectra; no repository release is stated.
+  has_associated_code: partial
+  primary_code_role: indirect_detection_signal
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The Z3 symmetry stabilizing S1 is exact.
+    id: exact_z3
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - primary
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The usual S1 Higgs portal term is small, irrelevant, or removed.
+    id: small_conventional_higgs_portal
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - primary
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The anti-companion decays back to dark matter plus an on-shell or off-shell Higgs boson.
+    id: companion_decay_to_dm
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids:
+    - primary
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - semi-annihilating Z3 dark sector with companion decay
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - Z_N >= 3 dark matter-companion model
+  - dark matter companion model
+  - Z3 semi-annihilation companion model
+  family: semi_annihilating_scalar_dark_matter
+  historical_origin_or_motivation: The paper develops gamma-ray phenomenology for a previously proposed
+    dark matter-companion mechanism that reduces number density without inducing dark matter-nucleon scattering.
+  model_kind: simplified_model
+  name: Z3 dark matter-companion scalar model
+  short_description: A Z3 scalar dark matter model with a complex scalar dark matter particle S1 and companion
+    scalar S2, where semi-annihilation S1 S1 -> S2* H sets the relic-density logic while avoiding a conventional
+    Higgs-portal scattering coupling.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - S1 S1 -> S2* H semi-annihilation
+  - conventional S S -> S* H semi-annihilation used as comparison
+  cp_structure: not discussed
+  dark_sector_couplings:
+  - cubic scalar coupling A1 S1^3
+  - companion-Higgs coupling lambda_12 S1 S2* H
+  - suppressed or removed conventional |S1|^2 |H|^2 Higgs portal
+  decay_channels:
+  - S2* -> S1* + H when mass splitting is above m_H
+  - S2* -> S1* + off-shell H when mass splitting is below m_H
+  flavor_structure: not_applicable
+  interaction_operators:
+  - m_S1^2 S1 S1*
+  - m_S2^2 S2 S2*
+  - A1 S1^3/3
+  - lambda_12 S1 S2* H
+  mediator_types:
+  - Higgs boson
+  - companion scalar S2
+  portals:
+  - higgs
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs boson
+  tree_or_loop_level: tree
+model_id: 2405_14309_z3_dark_matter_companion_v1
+parameters:
+  core:
+  - description: Mass of complex scalar dark matter S1.
+    name: dark matter mass
+    range: examples include 300 GeV and 800 GeV; paper discusses sub-TeV to TeV regimes
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: m_S1
+    unit: GeV
+  - description: Mass of complex scalar companion S2.
+    name: companion mass
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: m_S2
+  - description: Mass splitting m_S2 - m_S1 controlling on-shell versus off-shell companion decay.
+    name: DM-companion mass splitting
+    range: below or above m_H = 125.6 GeV; examples include 5 GeV and 10 GeV for off-shell spectra
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: Delta m
+    unit: GeV
+  - description: Z3 cubic scalar coupling that enables semi-annihilation.
+    name: cubic scalar coupling
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: A1
+  - description: Coupling in S1 S2* H relevant terms.
+    name: companion-Higgs coupling
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: lambda_12
+  - description: Conventional Higgs portal coupling assumed small, removed, or irrelevant in the companion
+      mechanism.
+    name: Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - primary
+    status: assumed
+    symbol: lambda_1h
+    value: small/irrelevant
+  derived:
+  - description: Semi-annihilation rate compared with the typical thermal WIMP cross section.
+    name: annihilation cross section
+    role: derived
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: sigma_v_S1S1_to_S2H
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - complex scalar companion S2 with the same Z3 quantum number copy except mass
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: complex scalar S1
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - near-degenerate S1-S2 companion region discussed for small mass splitting
+  long_lived_particles: []
+  mediators:
+  - Standard Model Higgs boson in semi-annihilation and companion decay
+  standard_model_extension: minimal
+  unstable_parent_particles:
+  - anti-companion S2* decays back to dark matter plus an on-shell or off-shell Higgs boson
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: thermal
+  f_of_p_or_q: not provided
+  free_streaming_length: null
+  notes: No phase-space distribution is given; the model is WIMP-like and treated through annihilation
+    spectra.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - S1 S1 -> S2* H semi-annihilation
+  - companion decay back to dark matter plus on-shell or off-shell Higgs
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal WIMP-like freeze-out through Z3 semi-annihilation into the companion scalar
+  nonthermal_momentum_distribution: unknown
+  notes: The paper motivates the model as preserving the WIMP miracle while decoupling relic-density annihilation
+    from dark matter-nucleon scattering.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - 'Borderline acceptance: the text says the companion mechanism was proposed in a prior paper, but this
+    paper lays out the model terms and develops the on/off-shell companion-decay regimes.'
+  created_at: '2026-06-01'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: Relevant terms include S1 and S2 masses, A1 S1^3, and lambda_12 S1 S2* H, with the conventional
+        Higgs portal assumed small.
+      page: null
+      reference_id: primary
+      section: Z3 symmetric model section
+    parameter_ranges:
+    - confidence: medium
+      note: The paper emphasizes the S2-S1 mass splitting, including on-shell Delta m > m_H and off-shell
+        Delta m < m_H regimes.
+      page: null
+      reference_id: primary
+      section: model and spectrum sections
+    particle_content:
+    - confidence: high
+      note: The model uses complex scalar dark matter S1 and companion scalar S2.
+      page: null
+      reference_id: primary
+      section: Z3 symmetric model section
+    production_mechanism:
+    - confidence: high
+      note: The relic-density mechanism is semi-annihilation S1 S1 -> S2* H followed by companion decay
+        back to dark matter.
+      page: null
+      reference_id: primary
+      section: introduction and model section
+    symmetries:
+    - confidence: high
+      note: S1 transforms under Z3 and the companion mechanism is described for Z_N >= 3.
+      page: null
+      reference_id: primary
+      section: Z3 symmetric model section
+    validity_domain:
+    - confidence: medium
+      note: The mass window for two-body semi-annihilation is stated explicitly in the model section.
+      page: null
+      reference_id: primary
+      section: Z3 symmetric model section
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0013_worker
+    extraction_date: '2026-06-01'
+    extractor_name: Codex GPT-5 batch worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper studies Z_N >= 3 dark matter-companion models where DM+DM -> companion*+Higgs
+        avoids DM-nucleon scattering.
+      reference_id: primary
+      section: abstract/introduction
+    - page: null
+      quote_or_summary: It introduces the relevant Z3 model terms for S1, S2, A1, and lambda_12 in the
+        mass basis.
+      reference_id: primary
+      section: Z3 symmetric model
+    - page: null
+      quote_or_summary: The paper treats on-shell and off-shell companion decay regimes controlled by
+        the S2-S1 mass splitting.
+      reference_id: primary
+      section: spectrum setup
+    unresolved_items: []
+  last_updated: '2026-06-01'
+  model_family: semi_annihilating_scalar_dark_matter
+  model_id: 2405_14309_z3_dark_matter_companion_v1
+  model_name: Z3 dark matter-companion scalar model
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2405.14309'
+      authors:
+      - Jun Guo
+      - Zhaofeng Kang
+      - Ji-Gang Zhao
+      doi: null
+      notes: Assigned paper text from target_text.sqlite.
+      reference_id: primary
+      role: original_model
+      title: Gamma-ray Signal from Z_N >= 3 Dark Matter-Companion Models
+      url: null
+      year: 2024
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: unknown
+  key_dependencies:
+  - semi-annihilation cross section
+  - dark matter mass
+  - companion mass splitting
+  - lambda_12
+  - A1
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - prior-paper origin of the companion mechanism
+  - mass-splitting regime dependence
+  - Higgs portal removal assumption
+  notes: The model identity and interactions are clear, but acceptance depends on treating this paper
+    as a substantive development rather than only an indirect-detection study.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No warm-dark-matter mapping is provided.
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: Z3 charge stabilizes the complex scalar dark matter state and permits semi-annihilation.
+  symmetries:
+  - breaking: not discussed
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z3
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: partial
+  notes: The paper gives relevant mass-basis terms for two complex scalars S1 and S2 rather than the full
+    general Lagrangian.
+  parent_frameworks:
+  - Z_N >= 3 semi-annihilating dark matter
+  - scalar Higgs-sector dark matter
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats:
+  - The condition is copied from the parsed text and should be checked against the original notation.
+  condition: Relevant two-body semi-annihilation requires m_S2 > m_S1 > (m_S2 + m_H)/2 > m_S2/2 according
+    to the paper.
+  extrapolation_risk: medium
+  id: mass_window_for_two_body_semi_annihilation
+  notes: null
+  source_reference_ids:
+  - primary
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats:
+  - The paper studies spectra for representative mass splittings rather than all possible regimes.
+  condition: The companion decay is on-shell for Delta m > m_H and off-shell for Delta m < m_H.
+  extrapolation_risk: medium
+  id: companion_decay_regimes
+  notes: null
+  source_reference_ids:
+  - primary
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats:
+  - A complete symmetry explanation is not specified in the extracted terms.
+  condition: The conventional |S1|^2 |H|^2 Higgs portal is assumed small or removable so that direct scattering
+    is attenuated.
+  extrapolation_risk: medium
+  id: small_higgs_portal
+  notes: null
+  source_reference_ids:
+  - primary
+  status: assumed
+  valid_range: null

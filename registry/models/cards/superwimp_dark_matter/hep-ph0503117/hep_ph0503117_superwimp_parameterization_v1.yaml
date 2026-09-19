@@ -1,0 +1,297 @@
+_source:
+  shard: arXiv_src_0503_001_wds.tar
+  paper_id: hep-ph0503117
+  source_member: hep-ph0503117.json
+schema_version: model_only_v0
+model_id: hep_ph0503117_superwimp_parameterization_v1
+identity:
+  name: Model-independent superWIMP collider-production parameterization
+  family: superwimp_dark_matter
+  aliases:
+  - superweakly interacting massive particle parameterization
+  short_description: A superWIMP dark-matter parameterization in which a weakly interacting metastable
+    parent L freezes out and later decays to neutral stable superWIMPs, connecting relic density to collider
+    production of charged long-lived particles.
+  historical_origin_or_motivation: The paper extends its relic-density lower-bound argument to superWIMP
+    scenarios with metastable charged parents.
+  status: benchmark
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - generic superWIMP dark matter
+  - gravitino or Kaluza-Klein graviton examples
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The superWIMP and its parent are described by model-independent parameters rather than a specific
+    Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: neutral stable superWIMP
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - metastable charged parent particle L
+  mediators:
+  - gravity or other superweak interaction
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - neutral stable superWIMP
+  - metastable charged parent L
+  unstable_parent_particles:
+  - charged slepton-like or KK-lepton-like L in the motivated cases discussed
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The parameterization assumes the superWIMP is stable and the parent L is metastable;
+    the stabilizing symmetry is not specified.
+  symmetries:
+  - name: unspecified superWIMP-stabilizing symmetry
+    type: unknown
+    exact_or_approximate: unknown
+interactions:
+  portals:
+  - gravitational
+  - unknown
+  standard_model_targets:
+  - partonic final states in parent L annihilation and collider production
+  dark_sector_couplings:
+  - superweak superWIMP interactions
+  - weak-scale parent annihilation
+  mediator_types:
+  - unknown
+  interaction_operators: []
+  annihilation_channels:
+  - L L annihilation into partons before freeze-out
+  decay_channels:
+  - metastable L decays to superWIMP dark matter
+  self_scattering_channels: []
+parameters:
+  core:
+  - name: parent mass
+    symbol: m_L
+    description: Mass of the weakly interacting metastable parent particle L.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: superWIMP mass
+    symbol: m_SWIMP
+    description: Mass of the stable superWIMP dark matter particle.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: mass ratio
+    symbol: m_SWIMP/m_L
+    description: Relates parent freeze-out density to final superWIMP relic density.
+    role: core
+    status: inferred
+  - name: parent charge
+    symbol: Q_L
+    description: The paper restricts the collider study to charged L particles.
+    value: '1'
+    role: core
+    status: inferred
+  - name: annihilation coefficient
+    symbol: sigma_0
+    description: Leading coefficient for L L annihilation before freeze-out.
+    role: core
+    status: inferred
+  - name: partial-wave index
+    symbol: n
+    description: S-wave or P-wave leading annihilation behavior.
+    value: 0 or 1 in main examples
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out of weakly interacting parent L
+  - late decay of metastable L particles into neutral stable superWIMPs
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - parent freeze-out abundance
+  - m_SWIMP/m_L mass ratio
+  - L L annihilation cross section
+  - late parent decay
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The superWIMP abundance is inherited from the freeze-out abundance of the parent particle.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - parent relic density Omega_L h^2
+  - mass ratio m_SWIMP/m_L
+  - parent annihilation parameters
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - metastable charged parent survives after freeze-out and decays to superWIMPs
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: 'no'
+  notes: The paper does not provide a superWIMP momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: charged_parent_scope
+  applies_to: model
+  condition: The paper restricts the superWIMP collider analysis to charged parent particles L with charge
+    1.
+  status: assumed
+  extrapolation_risk: medium
+- id: parent_freezeout_mapping
+  applies_to: production
+  condition: The final superWIMP density is mapped from the parent freeze-out density through the superWIMP-to-parent
+    mass ratio.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: metastable_parent
+    description: A weakly interacting particle L freezes out and later decays to the superWIMP.
+    scope: production
+    status: assumed
+  - id: stable_superwimp
+    description: The neutral superWIMP produced in L decays is stable and forms the observed dark matter
+      component.
+    scope: theory
+    status: assumed
+  - id: charged_parent_analysis
+    description: The phenomenological collider analysis is restricted to charged L particles.
+    scope: global
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text does not identify model-specific public code for the superWIMP parameterization.
+provenance:
+  model_id: hep_ph0503117_superwimp_parameterization_v1
+  model_name: Model-independent superWIMP collider-production parameterization
+  model_family: superwimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: hep-ph0503117
+      title: Lower Limit on Dark Matter Production at the Large Hadron Collider
+      authors:
+      - Jonathan L. Feng
+      - Shufang Su
+      - Fumihiro Takayama
+      year: 2005
+      arxiv_id: hep/ph0503117
+      doi: null
+      url: null
+      role: benchmark
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-30'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: hep-ph0503117
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper analyzes superWIMP scenarios and predicts metastable charged particle
+        production from relic-density requirements.
+    - reference_id: hep-ph0503117
+      section: superWIMP discussion
+      page: null
+      quote_or_summary: A weakly interacting L particle freezes out, is metastable, and decays to neutral
+        stable superWIMPs.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: hep-ph0503117
+      note: The paper defines neutral stable superWIMPs and a metastable parent L.
+      confidence: medium
+      section: superWIMP discussion
+      page: null
+    interactions:
+    - reference_id: hep-ph0503117
+      note: L annihilation into partonic channels sets the parent freeze-out density and collider production
+        mapping.
+      confidence: medium
+      section: parameterization
+      page: null
+    production_mechanism:
+    - reference_id: hep-ph0503117
+      note: SuperWIMPs are produced by late decays of metastable L particles after L freezes out.
+      confidence: medium
+      section: superWIMP discussion
+      page: null
+    parameter_ranges:
+    - reference_id: hep-ph0503117
+      note: The paper uses parent charge 1 and S/P-wave annihilation examples for L pair production.
+      confidence: medium
+      section: superWIMP collider rates
+      page: null
+    validity_domain:
+    - reference_id: hep-ph0503117
+      note: The paper restricts the motivated collider study to charged L parents such as sleptons or
+        KK leptons.
+      confidence: medium
+      section: superWIMP discussion
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Machine-extracted candidate row; not a final registry entry.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - The row is a model-independent superWIMP parameterization, not a particular gravitino or KK-graviton
+    model.
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: superwimp_not_specific_uv_model
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not substitute a particular gravitino, KK-graviton, slepton, or KK-lepton realization
+      unless supported by another source.
+    mitigation: Use the row as a generic superWIMP parent-decay parameterization only.
+    source_reference_ids:
+    - hep-ph0503117

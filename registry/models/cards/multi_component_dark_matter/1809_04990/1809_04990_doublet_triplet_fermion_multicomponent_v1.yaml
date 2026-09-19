@@ -1,0 +1,317 @@
+_source:
+  shard: arXiv_src_1809_014_wds.tar
+  paper_id: '1809_04990'
+  source_member: 1809_04990.json
+schema_version: model_only_v0
+model_id: 1809_04990_doublet_triplet_fermion_multicomponent_v1
+identity:
+  name: Custodial-limit doublet-triplet fermion WIMP as a multicomponent dark-matter subcomponent
+  family: multi_component_dark_matter
+  aliases:
+  - DTF multicomponent dark sector scenario
+  - subcomponent pure-doublet custodial DTF DM
+  short_description: A custodial-limit doublet-triplet fermion WIMP whose neutral Z2-odd state is only
+    part of the total dark matter, with additional independent dark-sector particles providing the rest.
+  historical_origin_or_motivation: Developed in the paper to relax the relic-density requirement on the
+    electroweak pure-doublet DTF region while retaining standard freeze-out for the WIMP component.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - fermionic Higgs portal
+  - doublet-triplet fermion dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper presents a renormalizable SU(2)_L x U(1)_Y x Z_2 invariant Lagrangian for a vectorlike
+    doublet and Majorana triplet, then specializes to the custodial limit y1 = y2.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutral Z2-odd fermion chi_1^0
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: subcomponent
+  additional_dark_sector_particles:
+  - SU(2)_L vectorlike doublet with hypercharge -1
+  - Majorana SU(2)_L triplet
+  - heavier neutral Z2-odd fermions
+  - charged Z2-odd fermions
+  mediators:
+  - Higgs boson
+  - electroweak gauge bosons
+  - heavier Z2-odd fermions
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Exact Z2 symmetry makes the lightest Z2-odd particle stable; the custodial limit
+    y1 = y2 adds an SU(2)_R structure that removes tree-level diagonal Higgs and Z couplings for the pure-doublet
+    DM state.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+  - name: custodial SU(2)_R in the equal-Yukawa limit
+    type: global
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - Higgs doublet
+  - W bosons
+  - Z bosons
+  dark_sector_couplings:
+  - Yukawa interactions between the new fermions and the Higgs doublet
+  - electroweak gauge interactions of the doublet and triplet fermions
+  mediator_types:
+  - Higgs boson
+  - electroweak gauge bosons
+  - heavier Z2-odd fermions
+  interaction_operators:
+  - L_I = - y1 H^dagger Sigma_L psi_R + y2 Sigma_L psi_L H + h.c. (notation reconstructed from extracted
+    text)
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: both
+  annihilation_channels:
+  - chi_1^0 chi_1^0 -> W+ W-
+  - chi_1^0 chi_1^0 -> Z Z
+  tree_or_loop_level: both
+  cp_structure: CP conserved in the Z2-odd sector is assumed in the scan.
+parameters:
+  core:
+  - name: vectorlike doublet mass
+    symbol: M_doublet
+    description: Mass term for the new SU(2)_L vectorlike doublet.
+    role: core
+    status: inferred
+  - name: Majorana triplet mass
+    symbol: M_triplet
+    description: Mass term for the new SU(2)_L Majorana triplet.
+    role: core
+    status: inferred
+  - name: dark-sector Yukawa coupling
+    symbol: y
+    description: Effective Yukawa coupling built from the two Higgs-fermion Yukawa terms.
+    range: 0.5 < y < 3 discussed for large-coupling electroweak-mass saturation; bounds vary by scenario.
+    role: core
+    status: inferred
+  - name: Yukawa ratio
+    symbol: y2/y1
+    description: Custodial limit takes the Yukawa ratio to unity.
+    value: '1'
+    role: core
+    status: assumed
+  - name: dark matter mass
+    symbol: m_chi_1^0
+    description: Mass of the lightest neutral Z2-odd fermion.
+    range: Electroweak-scale masses are emphasized; 80 GeV to 200 GeV can saturate relic abundance in
+      the custodial setup before other restrictions.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: DTF relic fraction
+    symbol: xi_chi_1^0
+    description: Fraction of the observed dark matter carried by the DTF WIMP component.
+    range: 0 <= xi_chi_1^0 <= 1; text reports typically at most about 40 percent outside a narrow m_chi_1^0
+      near 80 GeV region.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - standard thermal freeze-out for the DTF WIMP component
+  - additional independent dark-matter sector supplies the remaining abundance
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Boltzmann freeze-out for chi_1^0
+  - independent relic production of unspecified other DM particles
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'no'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper assumes the other dark matter components do not affect the DTF relic abundance or direct-detection
+    limits.
+relic_density:
+  full_or_subcomponent: subcomponent
+  target_fraction:
+    name: DTF relic fraction
+    symbol: xi_chi_1^0
+    range: At most about 40 percent in much of the scanned parameter space; narrow near-80 GeV region
+      can approach larger fractions.
+    role: derived
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - dark matter mass
+  - heavier Z2-odd fermion masses
+  - Yukawa coupling y
+  - independent additional DM abundance
+  requires_entropy_dilution: 'no'
+  overclosure_risk: 'no'
+  underproduction_risk: 'yes'
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - multicomponent dark matter with independent sectors
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: The DTF WIMP component is treated with the usual thermal freeze-out calculation; no explicit
+    distribution function is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: custodial_pure_doublet_limit
+  applies_to: model
+  condition: Applies to the custodial limit y1 = y2 with chi_1^0 as a pure-doublet lightest Z2-odd state.
+  status: assumed
+  extrapolation_risk: medium
+- id: independent_multicomponent_sectors
+  applies_to: model
+  condition: Applies when the DTF WIMP and the additional dark matter components do not affect each other's
+    abundances or direct-detection rates except through density rescaling.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: exact_z2
+    description: The Z2 symmetry is exact so the lightest odd fermion is stable.
+    scope: global
+    status: assumed
+  - id: independent_dark_sectors
+    description: The other dark matter particles are independent of the DTF WIMP and do not alter its
+      freeze-out abundance.
+    scope: production
+    status: assumed
+    impact_if_violated: Interactions between sectors could invalidate the relic-fraction rescaling used
+      in the paper.
+associated_code:
+  has_associated_code: unknown
+  code_summary: The text reports calculations with public tools such as micrOMEGAS and acknowledges SARAH
+    and MadGraph help, but no model-specific released code is identified in the extracted text.
+provenance:
+  model_id: 1809_04990_doublet_triplet_fermion_multicomponent_v1
+  model_name: 1809_04990_doublet_triplet_fermion_multicomponent_v1
+  model_family: multi_component_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1809_04990'
+      title: Phenomenology of doublet-triplet fermionic dark matter in nonstandard cosmology and multicomponent
+        dark sectors
+      authors:
+      - Amalia Betancur
+      - Oscar Zapata
+      year: 2018
+      arxiv_id: '1809.04990'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned SQLite full text; paper studies custodial-limit doublet-triplet fermion DM in nonstandard
+        cosmology and multicomponent dark sectors.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0003
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1809_04990'
+      section: Abstract
+      quote_or_summary: Relic density may arise as part of a larger sector encompassing other DM particles.
+    - reference_id: '1809_04990'
+      section: themodel
+      quote_or_summary: Defines the DTF Lagrangian and custodial pure-doublet DM candidate.
+    - reference_id: '1809_04990'
+      section: multiDM
+      quote_or_summary: Uses xi_chi = Omega_chi/Omega_Planck to rescale rates for a subcomponent WIMP.
+    unresolved_items:
+    - Original symbol names are partially degraded in the extracted text, so several mass symbols are
+      described in words.
+  evidence:
+    particle_content:
+    - reference_id: '1809_04990'
+      note: The DTF particle content is the same vectorlike doublet plus Majorana triplet with lightest
+        neutral Z2-odd fermion DM candidate.
+      confidence: high
+      section: themodel
+    symmetries:
+    - reference_id: '1809_04990'
+      note: The Z2 symmetry stabilizes the DTF WIMP while the equal-Yukawa custodial limit controls Higgs
+        and Z couplings.
+      confidence: high
+      section: themodel
+    interactions:
+    - reference_id: '1809_04990'
+      note: The WIMP component annihilates via electroweak channels and couples to the Higgs through the
+        new Yukawa sector, with tree-level diagonal Higgs/Z couplings forbidden in the pure-doublet custodial
+        limit.
+      confidence: high
+      section: themodel
+    production_mechanism:
+    - reference_id: '1809_04990'
+      note: The multicomponent section assumes the DTF WIMP relic abundance is calculated by the usual
+        Boltzmann thermal freeze-out method and is supplemented by other independent DM particles.
+      confidence: high
+      section: multiDM
+    cosmological_history:
+    - reference_id: '1809_04990'
+      note: Unlike the nonstandard case, the multicomponent setup assumes standard cosmology for the DTF
+        WIMP relic density.
+      confidence: high
+      section: multiDM
+    parameter_ranges:
+    - reference_id: '1809_04990'
+      note: The paper defines xi_chi = Omega_chi/Omega_Planck and finds the DTF component is typically
+        at most about 40 percent of the observed dark matter outside a narrow near-80 GeV region.
+      confidence: high
+      section: multiDM
+    validity_domain:
+    - reference_id: '1809_04990'
+      note: The multicomponent scenario assumes independent dark sectors that do not affect each other's
+        relic density or direct-detection limits.
+      confidence: high
+      section: multiDM
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  notes: Machine-extracted candidate from one phenomenology paper; no expert review.
+agent_failure_modes:
+  warnings:
+  - id: unspecified_second_component
+    severity: medium
+    category: assumption_mismatch
+    warning: The additional dark matter particles are not specified; this row only captures the DTF WIMP
+      subcomponent variant developed in the paper.
+  - id: density_rescaling_assumption
+    severity: medium
+    category: approximate_constraint
+    warning: The paper relies on relic-fraction rescaling of detection rates; do not apply it if the dark
+      sectors interact or cluster differently.

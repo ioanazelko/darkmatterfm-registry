@@ -1,0 +1,554 @@
+_source:
+  shard: arXiv_src_2110_055_wds.tar
+  paper_id: '2110_08863'
+  source_member: 2110_08863.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2110_08863_fermionic_inelastic_crdm_v1
+identity:
+  name: Fermionic inelastic cosmic-ray-accelerated dark matter
+  family: inelastic_dark_matter
+  aliases:
+  - fermionic inelastic CRDM
+  - Majorana inelastic dark matter with light vector mediator
+  short_description: A simplified inelastic dark matter model with a stable fermionic ground state chi_1,
+    an excited state chi_2, and a light vector or axial-vector mediator V; cosmic rays upscatter chi_1
+    to chi_2, which decays back to energetic chi_1.
+  historical_origin_or_motivation: The paper combines coannihilating inelastic dark matter with cosmic-ray
+    acceleration to reopen direct-detection sensitivity for sub-GeV to GeV dark matter with large mass
+    splittings.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - inelastic dark matter
+  - cosmic-ray accelerated dark matter
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper gives minimal DM-SM interaction Lagrangians for demonstration, including vector/axial-vector
+    and dipole-like fermion operators.
+particle_content:
+  dark_matter_candidate:
+    name: chi_1
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - excited fermion state chi_2
+  mediators:
+  - light vector or axial-vector mediator V
+  long_lived_particles:
+  - chi_1
+  unstable_parent_particles:
+  - chi_2
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Stable lightest dark-sector state chi_1 is assumed; the exact stabilizing symmetry
+    is not specified in the extracted text.
+  symmetries: []
+interactions:
+  portals:
+  - vector
+  - other
+  standard_model_targets:
+  - nucleons
+  - quarks
+  - cosmic-ray protons and helium
+  dark_sector_couplings:
+  - chi_2-gamma^mu-(C_v + C_a gamma5)-chi_1 V_mu
+  - dipole-like chi_2 sigma_mu_nu chi_1 F_V^mu_nu
+  mediator_types:
+  - light vector or axial-vector mediator V
+  interaction_operators:
+  - fermionic vector-vector, axial-axial, electric-dipole, and magnetic-dipole benchmark operators
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: both
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter ground-state mass
+    symbol: m_chi1
+    description: Mass of chi_1; the paper studies roughly 1 MeV to 100 GeV.
+    range: 1 MeV to 100 GeV
+    unit: GeV
+    role: core
+    status: speculative
+  - name: mass splitting
+    symbol: Delta
+    description: Mass gap between chi_2 and chi_1; cosmic-ray acceleration can reach splittings below
+      order 1 GeV.
+    range: < O(1 GeV)
+    unit: GeV
+    role: core
+    status: speculative
+  - name: mediator mass
+    symbol: m_V
+    description: Light mediator mass, with sub-GeV benchmarks emphasized.
+    range: sub-GeV benchmarks
+    unit: GeV
+    role: core
+    status: speculative
+  - name: nucleon vector coupling
+    symbol: C_N^v
+    description: Vector mediator coupling to nucleons varied for exclusion plots.
+    range: < 1
+    role: core
+    status: speculative
+  - name: nucleon axial coupling
+    symbol: C_N^a
+    description: Axial-vector mediator coupling to nucleons varied for exclusion plots.
+    range: < 1
+    role: core
+    status: speculative
+  - name: dipole scale
+    symbol: Lambda_E_or_M
+    description: Benchmark electric or magnetic dipole-like scale fixed to 100 MeV in demonstrations.
+    range: 100 MeV benchmark
+    unit: MeV
+    role: core
+    status: speculative
+production:
+  mechanisms:
+  - thermal coannihilation of nearly degenerate chi_1 and chi_2 in the early universe
+  - cosmic-ray upscattering p + chi_1 -> p_prime + chi_2 followed by chi_2 -> chi_1 + V creates a detectable
+    energetic component
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - coannihilation region
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: Relic-density motivation is thermal coannihilation; the late-time high-energy flux is generated
+    by cosmic rays rather than by cosmological production.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - mass splitting Delta
+  - coannihilation rate
+  - suppressed chi_1-SM elastic coupling
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: medium
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: approximate
+  notes: Halo chi_1 is cold/virialized, while a small cosmic-ray-accelerated component is relativistic
+    and spectrum-dependent.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: light_mediator
+  applies_to: model
+  condition: Analysis focuses on light mediator cases where chi_2 can decay on shell to chi_1 plus V.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: crdm_detection_context
+  applies_to: production
+  condition: Energetic detectable component relies on local cosmic-ray scattering in the Milky Way and
+    an assumed effective length D_eff.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: stable_ground_state
+    description: chi_1 is the stable dark matter state and chi_2 decays before reaching the detector.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: coannihilation_relic
+    description: The relic-density motivation is the nearly degenerate coannihilation region.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 2110_08863_fermionic_inelastic_crdm_v1
+  model_name: Fermionic inelastic cosmic-ray-accelerated dark matter
+  model_family: inelastic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Revising inelastic dark matter direct detection by including the cosmic ray acceleration
+      authors:
+      - Jie-Cheng Feng
+      - Xian-Wei Kang
+      - Chih-Ting Lu
+      - Yue Lin
+      - Sming Tsai
+      - Feng-Shou Zhang
+      year: 2021
+      arxiv_id: '2110.08863'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '2110.08863'
+      authors:
+      - Feng, Jie-Cheng
+      - Kang, Xian-Wei
+      - Lu, Chih-Ting
+      - Tsai, Yue-Lin Sming
+      - Zhang, Feng-Shou
+      doi: 10.1007/JHEP04(2022)080
+      notes: null
+      reference_id: '2110_08863'
+      role: original_model
+      title: Revising inelastic dark matter direct detection by including the cosmic ray acceleration
+      url: https://arxiv.org/abs/2110.08863
+      year: 2022
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used only for bounded metadata discovery of references and citations.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract and introduction
+      quote_or_summary: The paper states that inelastic dark matter with two nearly degenerate states
+        can coannihilate and evade virialized direct detection.
+    - reference_id: paper
+      section: Model section
+      quote_or_summary: It introduces minimal Lagrangians for Majorana chi_1, chi_2 and a light vector/axial
+        mediator V, including vector and dipole-like operators.
+    unresolved_items:
+    - The exact stabilizing symmetry for chi_1 is not specified in the extracted text.
+    - No public likelihood or code resource was identified for the PandaX-4T/Xe CRDM recast.
+    - The UV completion and exact stabilizing symmetry are not fixed by the benchmark model.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: chi_1, excited chi_2, and light mediator V are specified in the model section.
+      confidence: medium
+      section: Model section
+    interactions:
+    - reference_id: paper
+      note: Fermionic vector/axial and electric/magnetic dipole-like benchmark operators are written explicitly.
+      confidence: medium
+      section: Fermionic DM interaction
+    production_mechanism:
+    - reference_id: paper
+      note: The paper motivates the relic density by coannihilation and the detectable component by cosmic-ray
+        upscattering.
+      confidence: medium
+      section: Introduction and model setup
+    parameter_ranges:
+    - reference_id: paper
+      note: The abstract reports m_chi1 from about 1 MeV to 100 GeV and mass splitting below order 1 GeV
+        with sub-GeV mediators.
+      confidence: medium
+      section: Abstract
+    validity_domain:
+    - reference_id: paper
+      note: On-shell chi_2 decay and light mediator assumptions are stated before the model Lagrangians.
+      confidence: medium
+      section: Model setup
+    constraints:
+    - confidence: high
+      note: Primary text recasts xenon direct-detection limits and discusses ordinary elastic-DD null
+        constraints.
+      page: null
+      reference_id: '2110_08863'
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text states that cosmic rays make inelastic direct detection sensitive to otherwise
+        inaccessible mass splittings.
+      page: null
+      reference_id: '2110_08863'
+      section: null
+    routes:
+    - confidence: medium
+      note: Primary text gives the chain from cosmic-ray upscattering to detector recoil spectra.
+      page: null
+      reference_id: '2110_08863'
+      section: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: low
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - cosmic-ray propagation effective length
+  - choice of effective operator
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: not_a_direct_constraint_entry
+    severity: medium
+    category: other
+    warning: This row records the simplified inelastic CRDM model variant, not the PandaX-4T exclusion
+      analysis.
+observables:
+- caveats:
+  - Requires cosmic-ray propagation, shielding, excited-state decay, and detector response modeling.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - Milky Way cosmic rays
+  - xenon direct-detection targets
+  id: crdm_recoil_spectrum
+  key_quantities:
+  - name: ground-state mass
+    range: 1 MeV to 100 GeV
+    role: core
+    source_reference_ids:
+    - '2110_08863'
+    status: inferred
+    symbol: m_chi1
+    unit: GeV
+  - name: mass splitting
+    range: below order 1 GeV
+    role: core
+    source_reference_ids:
+    - '2110_08863'
+    status: inferred
+    symbol: Delta
+    unit: GeV
+  - name: effective cosmic-ray length
+    role: astrophysical
+    source_reference_ids:
+    - '2110_08863'
+    status: assumed
+    symbol: D_eff
+    unit: kpc
+    value: 1 kpc benchmark
+  linked_constraints:
+  - pandax4t_xenon_crdm_limit
+  - traditional_elastic_dd_evasion
+  linked_routes:
+  - crdm_flux_to_recoil_route
+  name: Cosmic-ray-accelerated inelastic recoil spectrum
+  notes: null
+  observability: medium
+  predicted_effect: Cosmic rays upscatter the ground state to an excited state whose decay produces energetic
+    dark matter able to scatter in underground xenon detectors.
+  redshift_range: null
+  relevance: critical
+  scale_range: underground nuclear-recoil energies
+  source_reference_ids:
+  - '2110_08863'
+  subchannel: nuclear recoils
+- caveats:
+  - Reach is mediator- and operator-dependent.
+  channel: direct_detection
+  effect_direction: enhancement
+  environments:
+  - local halo
+  - cosmic-ray acceleration region
+  id: inelastic_splitting_reach
+  key_quantities:
+  - name: mediator mass
+    range: sub-GeV benchmarks
+    role: core
+    source_reference_ids:
+    - '2110_08863'
+    status: inferred
+    symbol: m_V
+    unit: GeV
+  - name: interaction strength
+    range: operator dependent
+    role: core
+    source_reference_ids:
+    - '2110_08863'
+    status: assumed
+    symbol: C_N^v, C_N^a, Lambda_E, Lambda_M
+  linked_constraints:
+  - pandax4t_xenon_crdm_limit
+  - traditional_elastic_dd_evasion
+  linked_routes:
+  - crdm_flux_to_recoil_route
+  name: Sensitivity to otherwise inaccessible inelastic splittings
+  notes: null
+  observability: medium
+  predicted_effect: The boosted component can probe sub-GeV mass splittings that virialized halo dark
+    matter cannot efficiently excite.
+  redshift_range: null
+  relevance: high
+  scale_range: mass splitting below order 1 GeV
+  source_reference_ids:
+  - '2110_08863'
+  subchannel: inelastic threshold
+constraints:
+- allowed_regions:
+  - Sub-GeV splittings remain reachable in parts of the 1 MeV to 100 GeV mass range.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The local CRDM flux is summarized by an effective cosmic-ray propagation length.
+    id: crdm_flux_assumption
+    impact_if_violated: Changing the flux model rescales coupling reach.
+    notes: null
+    scope: astrophysical flux
+    source_reference_ids:
+    - '2110_08863'
+    status: assumed
+  benchmark_implications:
+  - Primary paper uses PandaX-4T data with D_eff=1 kpc.
+  caveats:
+  - No public CRDM likelihood was identified.
+  constrained_parameters:
+  - m_chi1
+  - Delta
+  - m_V
+  - C_N^v, C_N^a, Lambda_E, Lambda_M
+  - D_eff
+  constraint_type: direct_detection
+  data_release: PandaX-4T public result as recast in primary paper
+  excluded_regions:
+  - Large couplings are excluded where the predicted CRDM recoil rate exceeds xenon null results.
+  id: pandax4t_xenon_crdm_limit
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: PandaX-4T/Xe recoil recast for inelastic CRDM
+  notes: null
+  observable_channel: xenon nuclear recoil spectrum
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '2110_08863'
+- allowed_regions:
+  - Large inelastic splitting with suppressed ground-state elastic scattering can evade cold-halo direct
+    detection.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: unknown
+    description: The lighter state is stable and the excited state decays back to the ground state plus
+      mediator.
+    id: stable_ground_state
+    impact_if_violated: Long-lived excited states would change the predicted detector flux.
+    notes: null
+    scope: dark-sector spectrum
+    source_reference_ids:
+    - '2110_08863'
+    status: assumed
+  benchmark_implications:
+  - The boosted component supplies a complementary search channel.
+  caveats:
+  - This is a model-space statement rather than a standalone likelihood.
+  constrained_parameters:
+  - m_chi1
+  - Delta
+  constraint_type: direct_detection
+  data_release: null
+  excluded_regions:
+  - Small splittings or elastic couplings remain subject to ordinary XENON1T/PandaX-style null limits.
+  id: traditional_elastic_dd_evasion
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Traditional virialized direct-detection evasion
+  notes: null
+  observable_channel: elastic/inelastic threshold
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '2110_08863'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Structured route is evidence-backed but not implemented as runnable code.
+    caveats:
+    - Astrophysical flux normalization is a leading nuisance.
+    constraint_ids:
+    - pandax4t_xenon_crdm_limit
+    - traditional_elastic_dd_evasion
+    derived_quantities:
+    - boosted dark-matter flux
+    - excited-state decay spectrum
+    - nuclear recoil spectrum
+    description: Map inelastic dark-sector parameters to a cosmic-ray-accelerated underground recoil prediction.
+    forward_model_chain:
+    - inputs:
+      - m_chi1
+      - Delta
+      - m_V
+      - C_N^v, C_N^a, Lambda_E, Lambda_M
+      - D_eff
+      - local cosmic-ray spectrum
+      notes: null
+      outputs:
+      - boosted dark-matter flux
+      - excited-state decay spectrum
+      - nuclear recoil spectrum
+      step_id: prediction
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Use only within the benchmark assumptions stated in the primary paper.
+    - inputs:
+      - boosted dark-matter flux
+      - excited-state decay spectrum
+      - nuclear recoil spectrum
+      notes: null
+      outputs:
+      - allowed_or_excluded_parameter_region
+      step_id: comparison
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires external experimental or cosmological likelihoods for precision use.
+    id: crdm_flux_to_recoil_route
+    input_parameters:
+    - m_chi1
+    - Delta
+    - m_V
+    - C_N^v, C_N^a, Lambda_E, Lambda_M
+    - D_eff
+    - local cosmic-ray spectrum
+    likelihoods:
+    - not packaged in assigned source
+    observable_ids:
+    - crdm_recoil_spectrum
+    - inelastic_splitting_reach
+    required_code_resources:
+    - domain-specific forward model
+    - experiment or cosmology likelihood tables
+    route_status: planned
+    source_model_features:
+    - inelastic two-state dark matter
+    - light mediator
+    - cosmic-ray upscattering
+    validation_tests:
+    - reproduce primary-paper benchmark plots or quoted parameter targets

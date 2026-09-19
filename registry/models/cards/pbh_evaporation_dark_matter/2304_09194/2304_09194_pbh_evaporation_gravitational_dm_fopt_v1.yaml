@@ -1,0 +1,732 @@
+_source:
+  shard: arXiv_src_2304_071_wds.tar
+  paper_id: '2304_09194'
+  source_member: 2304_09194.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2304_09194_pbh_evaporation_gravitational_dm_fopt_v1
+identity:
+  name: PBH-evaporation gravitational dark matter from first-order-phase-transition PBHs
+  family: pbh_evaporation_dark_matter
+  aliases:
+  - Hawking-produced gravitational DM from FOPT PBHs
+  short_description: A phenomenological model in which light PBHs formed from false-vacuum pockets in
+    a first-order phase transition evaporate before BBN into a gravitationally coupled DM particle.
+  historical_origin_or_motivation: The paper uses this variant to map a DM-compatible PBH population to
+    ultra-high-frequency gravitational waves from the phase transition.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - primordial black hole evaporation
+  - first-order phase transition PBH formation
+  lagrangian_available: not_applicable
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: The FOPT dynamics are parameterized rather than specified as a full particle model.
+particle_content:
+  dark_matter_candidate:
+    name: gravitationally coupled DM particle chi
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - light evaporating primordial black holes
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The DM particle is assumed stable after production; no stabilizing symmetry is
+    specified.
+  symmetries: []
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - Standard Model through gravity only
+  dark_sector_couplings: []
+  mediator_types:
+  - evaporating primordial black holes
+  interaction_operators: []
+  annihilation_channels: []
+  decay_channels: []
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the particle emitted by PBHs.
+    range: benchmark-dependent; TeV-scale examples appear in relic-density formulas
+    unit: GeV or TeV
+    role: core
+    status: inferred
+  - name: PBH mass
+    symbol: M_PBH
+    description: Initial mass of light PBHs that evaporate before BBN.
+    range: set by the FOPT temperature and false-vacuum pocket size
+    unit: g
+    role: cosmological
+    status: inferred
+  - name: initial PBH abundance
+    symbol: beta_PBH
+    description: Fraction of the energy density in PBHs at formation.
+    range: model-dependent
+    role: cosmological
+    status: inferred
+  - name: phase-transition temperature
+    symbol: T_star
+    description: Temperature of the first-order phase transition.
+    range: model-dependent
+    unit: GeV
+    role: cosmological
+    status: inferred
+  - name: transition inverse duration
+    symbol: beta/H_star
+    description: Inverse timescale of the phase transition in Hubble units.
+    range: model-dependent
+    role: cosmological
+    status: inferred
+  - name: released energy fraction
+    symbol: alpha
+    description: Energy density released in the phase transition normalized to radiation.
+    range: model-dependent
+    role: cosmological
+    status: inferred
+  - name: bubble wall velocity
+    symbol: v_w
+    description: Velocity of the FOPT bubble wall.
+    range: model-dependent
+    role: cosmological
+    status: inferred
+production:
+  mechanisms:
+  - Hawking emission from light PBHs
+  - PBH formation from particles trapped in false-vacuum pockets during a first-order phase transition
+  thermal_equilibrium_with_standard_model: 'no'
+  abundance_set_by:
+  - m_chi
+  - M_PBH
+  - beta_PBH
+  - T_star
+  - beta/H_star
+  - alpha
+  - v_w
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The phase transition also sources the high-frequency gravitational-wave mapping studied in the
+    paper.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - DM mass m_chi
+  - PBH mass M_PBH
+  - initial PBH abundance beta_PBH
+  - PBH formation temperature
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - first-order phase transition forming false-vacuum pockets
+  - light PBHs evaporate before BBN
+  - PBHs do not dominate the cosmic energy density
+  dark_sector_temperature: null
+  delta_neff: null
+  phase_transitions:
+  - first-order phase transition producing PBHs
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: medium
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper notes that purely gravitational PBH-produced light DM can be warm; detailed phase-space
+    bounds were not extracted.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: no_pbh_domination
+  applies_to: cosmological_history
+  condition: PBHs must not dominate the energy density before evaporation in this paper's calculation.
+  status: assumed
+  extrapolation_risk: high
+  source_reference_ids:
+  - '2304_09194'
+- id: pre_bbn_evaporation
+  applies_to: cosmological_history
+  condition: The light PBHs disappear before BBN.
+  status: assumed
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '2304_09194'
+- id: fopt_pocket_model
+  applies_to: production
+  condition: The FOPT PBH calculation assumes collapse of false-vacuum pockets with the paper's parameterization.
+  status: assumed
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '2304_09194'
+assumptions:
+  global:
+  - id: a1
+    description: The DM particle couples to the Standard Model exclusively through gravity.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2304_09194'
+  - id: a2
+    description: PBHs remain subdominant until evaporation.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2304_09194'
+  - id: a3
+    description: A first-order phase transition creates false-vacuum pockets that collapse into PBHs.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2304_09194'
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public model-specific code is identified in the extracted text.
+  primary_code_role: null
+provenance:
+  model_id: 2304_09194_pbh_evaporation_gravitational_dm_fopt_v1
+  model_name: PBH-evaporation gravitational dark matter from first-order-phase-transition PBHs
+  model_family: pbh_evaporation_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2304_09194'
+      title: unknown
+      year: 2023
+      arxiv_id: '2304.09194'
+      role: original_model
+      notes: Primary source for this machine-extracted batch row.
+    - arxiv_id: '2304.09194'
+      authors:
+      - Gehrman, Thomas C.
+      - Shams Es Haghi, Barmak
+      - Sinha, Kuver
+      - Xu, Tao
+      doi: 10.1088/1475-7516/2023/10/001
+      notes: null
+      reference_id: '2304_09194'
+      role: original_model
+      title: 'The primordial black holes that disappeared: connections to dark matter and MHz-GHz gravitational
+        Waves'
+      url: https://arxiv.org/abs/2304.09194
+      year: 2023
+    constraint_papers:
+    - arxiv_id: '2010.11573'
+      authors:
+      - Papanikolaou, Theodoros
+      - Vennin, Vincent
+      - Langlois, David
+      doi: 10.1088/1475-7516/2021/03/053
+      notes: null
+      reference_id: '2010_11573'
+      role: constraint
+      title: Gravitational waves from a universe filled with primordial black holes
+      url: https://arxiv.org/abs/2010.11573
+      year: 2021
+    - arxiv_id: '1612.07738'
+      authors:
+      - Clark, Steven J.
+      - Dutta, Bhaskar
+      - Gao, Yu
+      - Strigari, Louis E.
+      - Watson, Scott
+      doi: 10.1103/PhysRevD.95.083006
+      notes: null
+      reference_id: '1612_07738'
+      role: constraint
+      title: Planck constraint on relic primordial black holes
+      url: https://arxiv.org/abs/1612.07738
+      year: 2017
+    - arxiv_id: '2401.12282'
+      authors:
+      - Borah, Debasish
+      - Das, Suruj Jyoti
+      - Saha, Indrajit
+      doi: 10.1103/PhysRevD.110.035014
+      notes: null
+      reference_id: '2401_12282'
+      role: constraint
+      title: Dark matter from phase transition generated PBH evaporation with gravitational waves signatures
+      url: https://arxiv.org/abs/2401.12282
+      year: 2024
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: GPT-5.5 dark-matter model-card extraction worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2304_09194'
+      section: Introduction
+      quote_or_summary: The paper explores FOPT PBH formation as one channel correlated with DM from Hawking
+        evaporation.
+    - reference_id: '2304_09194'
+      section: First-order phase transition
+      quote_or_summary: PBHs form from collapse of particles trapped in false-vacuum pockets.
+    - reference_id: '2304_09194'
+      section: Conclusions
+      quote_or_summary: The paper connects FOPT PBH formation, DM abundance, and MHz-GHz gravitational
+        waves.
+    unresolved_items:
+    - Paper title and authors were not recoverable from the local extracted text head.
+    - The DM particle spin/statistics are intentionally agnostic in the paper.
+  evidence:
+    particle_content:
+    - reference_id: '2304_09194'
+      note: The same gravitationally coupled DM particle chi is produced by Hawking evaporation of light
+        PBHs.
+      confidence: high
+      section: Particle Production through Hawking Radiation
+    interactions:
+    - reference_id: '2304_09194'
+      note: The DM particle is assumed to have only gravitational interactions with the Standard Model
+        in the baseline scheme.
+      confidence: high
+      section: Introduction
+    production_mechanism:
+    - reference_id: '2304_09194'
+      note: This variant uses PBHs formed from particles trapped in the false vacuum of a first-order
+        phase transition; the PBHs then evaporate into DM.
+      confidence: high
+      section: First-order phase transition
+    cosmological_history:
+    - reference_id: '2304_09194'
+      note: The paper maps FOPT parameters to PBH masses and abundances, then to DM abundance and gravitational-wave
+        strain.
+      confidence: high
+      section: Correlating Dark Matter Abundance
+    parameter_ranges:
+    - reference_id: '2304_09194'
+      note: The FOPT mapping uses beta_PBH, M_PBH, phase-transition temperature T_star, inverse timescale
+        beta/H, released energy alpha, and wall velocity v_w.
+      confidence: high
+      section: First-order phase transition
+    validity_domain:
+    - reference_id: '2304_09194'
+      note: The paper keeps the PBH population subdominant to avoid entropy dilution from PBH domination.
+      confidence: medium
+      section: PBH Evaporation in a Radiation-Dominated Era
+    constraints:
+    - confidence: high
+      note: Primary text states the conventional pre-BBN evaporation requirement and discusses BBN/CMB
+        restricted regions.
+      page: null
+      reference_id: '2304_09194'
+      section: null
+    - confidence: high
+      note: Primary text quotes the warm-DM/free-streaming caveat and TeV-scale example.
+      page: null
+      reference_id: '2304_09194'
+      section: null
+    - confidence: medium
+      note: Related local text describes induced GWs surviving evaporation and constraining abundant ultra-light
+        PBHs.
+      page: null
+      reference_id: '2010_11573'
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text connects disappeared light PBHs to DM from Hawking evaporation and MHz-GHz gravitational
+        waves.
+      page: null
+      reference_id: '2304_09194'
+      section: null
+    - confidence: medium
+      note: Related local text supports the corresponding PBH-GW production channel.
+      page: null
+      reference_id: '2401_12282'
+      section: null
+    - confidence: high
+      note: Primary text notes warm-DM free streaming for light PBH-emitted particles.
+      page: null
+      reference_id: '2304_09194'
+      section: null
+    routes:
+    - confidence: high
+      note: Primary paper supplies the PBH evaporation-to-DM mapping and formation-dependent GW connection.
+      page: null
+      reference_id: '2304_09194'
+      section: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - agnostic particle identity
+  - FOPT parameterization rather than a full particle model
+  - free-streaming of PBH-produced DM
+  validation_status: expert_judgment_only
+  notes: Extracted as the FOPT formation variant of the paper's PBH-evaporation DM model.
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: high
+    category: assumption_mismatch
+    warning: The card combines an agnostic DM particle with a parameterized FOPT PBH source; it is not
+      a full UV particle model.
+    mitigation: Keep the FOPT parameters and gravitational-only DM assumption explicit.
+    source_reference_ids:
+    - '2304_09194'
+observables:
+- caveats:
+  - The predicted frequency band is experimentally challenging; detector reach is largely prospective.
+  channel: gravitational_waves
+  effect_direction: enhancement
+  environments:
+  - early universe
+  id: mhz_ghz_phase_transition_gw
+  key_quantities:
+  - description: Initial mass of the evaporating PBHs.
+    name: PBH mass
+    range: below roughly 10^9 g for pre-BBN evaporation in the primary discussion
+    role: cosmological
+    source_reference_ids:
+    - '2304_09194'
+    status: inferred
+    symbol: M_PBH
+    unit: g
+  - description: Fraction of the energy density in PBHs at formation.
+    name: PBH initial abundance
+    role: cosmological
+    source_reference_ids:
+    - '2304_09194'
+    status: inferred
+    symbol: beta_PBH
+  - description: Controls the GW peak scale for the chosen PBH formation mechanism.
+    name: transition temperature
+    role: cosmological
+    source_reference_ids:
+    - '2304_09194'
+    - '2401_12282'
+    status: inferred
+    symbol: T_*
+  linked_constraints:
+  - pre_bbn_evaporation_requirement
+  - pbh_domination_induced_gw_bound
+  linked_routes:
+  - pbh_dm_gw_forward_route
+  name: MHz-GHz gravitational waves from first-order-transition PBH formation
+  notes: This is the most distinctive observable counterpart of the otherwise evaporated PBH population.
+  observability: low
+  predicted_effect: 'The PBH formation mechanism supplies a stochastic gravitational-wave counterpart:
+    the phase transition itself for the FOPT case, or second-order scalar-induced waves for curvature-perturbation
+    PBHs.'
+  redshift_range: pre-BBN era
+  relevance: high
+  scale_range: MHz-GHz for the light-PBH benchmarks emphasized by the primary paper
+  source_reference_ids:
+  - '2304_09194'
+  - '2401_12282'
+  subchannel: stochastic high-frequency background
+- caveats:
+  - Non-gravitational interactions after production can cool or thermalize the spectrum and relax the
+    bound.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - linear matter power
+  - small halos
+  id: pbh_hawking_warm_cutoff
+  key_quantities:
+  - description: Mass of the Hawking-emitted stable particle.
+    name: dark matter mass
+    range: model dependent; TeV-scale lower bound example for M_PBH = 10^9 g when only gravitational interactions
+      are present
+    role: core
+    source_reference_ids:
+    - '2304_09194'
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+  - description: Sets the Hawking temperature and the emitted momentum distribution.
+    name: PBH mass
+    range: light, pre-BBN evaporating PBHs
+    role: cosmological
+    source_reference_ids:
+    - '2304_09194'
+    status: inferred
+    symbol: M_PBH
+    unit: g
+  linked_constraints:
+  - pbh_warm_dm_free_streaming
+  linked_routes:
+  - pbh_dm_gw_forward_route
+  name: Warm dark matter cutoff from Hawking-emitted particles
+  notes: The paper treats this as an important caveat rather than a full transfer-function calculation.
+  observability: medium
+  predicted_effect: Light purely gravitational DM emitted by PBHs can remain warm enough to erase small-scale
+    structure; the primary text quotes a TeV-scale lower mass example for M_PBH = 10^9 g.
+  redshift_range: post-production through matter era
+  relevance: high
+  scale_range: small-scale matter power / sub-Mpc free streaming
+  source_reference_ids:
+  - '2304_09194'
+  subchannel: free streaming
+- caveats:
+  - More detailed BBN constraints depend on branching fractions and PBH abundance.
+  channel: cosmology
+  effect_direction: null_signal
+  environments:
+  - primordial plasma
+  id: pbh_evaporation_bbn_null
+  key_quantities:
+  - description: Lifetime before Hawking evaporation.
+    name: PBH lifetime
+    range: less than the BBN time scale
+    role: derived
+    source_reference_ids:
+    - '2304_09194'
+    status: inferred
+    symbol: tau_PBH
+    unit: s
+  - description: Mass controlling the evaporation time.
+    name: PBH mass
+    role: cosmological
+    source_reference_ids:
+    - '2304_09194'
+    status: inferred
+    symbol: M_PBH
+    unit: g
+  linked_constraints:
+  - pre_bbn_evaporation_requirement
+  linked_routes:
+  - pbh_dm_gw_forward_route
+  name: Absence of post-BBN PBH evaporation products
+  notes: Primary-paper consistency requirement.
+  observability: medium
+  predicted_effect: The setup requires the light PBHs to disappear before BBN, avoiding late Hawking-radiation
+    energy injection into light-element synthesis.
+  redshift_range: BBN epoch
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - '2304_09194'
+  subchannel: BBN energy injection
+constraints:
+- allowed_regions:
+  - PBHs lighter than the pre-BBN evaporation threshold considered by the primary paper
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: Radiation domination and standard light-element synthesis are restored after PBH evaporation.
+    id: standard_bbn_after_evaporation
+    impact_if_violated: Late evaporation would require a dedicated BBN energy-injection treatment.
+    notes: null
+    scope: cosmological history
+    source_reference_ids:
+    - '2304_09194'
+    status: assumed
+  benchmark_implications:
+  - Keeps Hawking products from spoiling light-element abundances in the baseline scenario.
+  caveats:
+  - The primary paper notes more sophisticated BBN limits can be applied.
+  constrained_parameters:
+  - M_PBH
+  - tau_PBH
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - PBH lifetimes extending into or beyond BBN for the model assumptions used here
+  id: pre_bbn_evaporation_requirement
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Light PBHs must evaporate before BBN
+  notes: The paper frames pre-BBN evaporation as the conventional requirement for this class of disappeared
+    PBHs.
+  observable_channel: BBN
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - '2304_09194'
+- allowed_regions:
+  - Heavier DM, smaller/free-streaming-safe PBH benchmarks, or scenarios with thermal contact that cools
+    the DM
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The quoted warm-DM bound assumes no non-gravitational interactions that re-thermalize
+      or cool the emitted particles.
+    id: no_late_thermal_contact
+    impact_if_violated: Thermal contact can relax the free-streaming constraint.
+    notes: null
+    scope: phase-space evolution
+    source_reference_ids:
+    - '2304_09194'
+    status: assumed
+  benchmark_implications:
+  - For M_PBH = 10^9 g the primary text cites a lower limit around m_chi of order 1 TeV for purely gravitational
+    interactions.
+  caveats:
+  - A full recast needs the emitted spectrum and transfer function for the chosen benchmark.
+  constrained_parameters:
+  - m_chi
+  - M_PBH
+  - post-production interactions
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Purely gravitational, too-light Hawking-emitted DM that remains warm enough to erase small-scale structure
+  id: pbh_warm_dm_free_streaming
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Free-streaming bound on light PBH-emitted DM
+  notes: Structured as a cautionary constraint because the primary paper does not provide a full likelihood.
+  observable_channel: small_scale_structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - '2304_09194'
+- allowed_regions:
+  - Subdominant PBH abundance histories and benchmarks satisfying the primary paper assumptions
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Induced-GW estimates use perturbative/second-order calculations until backreaction becomes
+      important.
+    id: linear_induced_gw_treatment
+    impact_if_violated: Backreaction invalidates the simple forward model in the excluded regime.
+    notes: null
+    scope: early-universe perturbations
+    source_reference_ids:
+    - '2010_11573'
+    status: approximate
+  benchmark_implications:
+  - Constrains the abundance side of the PBH-DM mapping, especially for curvature-perturbation production.
+  caveats:
+  - The numerical coefficient is not carried into the model card; use the cited paper for recasting.
+  constrained_parameters:
+  - beta_PBH
+  - M_PBH
+  - PBH domination history
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Scenarios where ultra-light PBHs dominate too early can overproduce induced gravitational waves or
+    encounter backreaction limits
+  id: pbh_domination_induced_gw_bound
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Induced-GW/backreaction bound on abundant evaporating PBHs
+  notes: Related local text gives the surviving induced-GW constraint for evaporated ultra-light PBHs.
+  observable_channel: gravitational_waves
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '2304_09194'
+  - '2010_11573'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route is conceptually clear but not implemented as a likelihood in the primary paper.
+    caveats:
+    - High-frequency GW detector sensitivity and warm-DM recasting dominate the practical uncertainty.
+    constraint_ids:
+    - pre_bbn_evaporation_requirement
+    - pbh_warm_dm_free_streaming
+    - pbh_domination_induced_gw_bound
+    derived_quantities:
+    - tau_PBH
+    - Hawking yield
+    - DM momentum distribution
+    - GW peak frequency and amplitude
+    description: Map PBH formation parameters to Hawking-produced dark matter, high-frequency gravitational
+      waves, and cosmological/structure limits.
+    forward_model_chain:
+    - inputs:
+      - formation mechanism parameters
+      notes: FOPT and curvature variants differ at this first step.
+      outputs:
+      - M_PBH
+      - beta_PBH
+      - GW source scale
+      step_id: formation
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for the parameterized formation mechanism used by the primary paper.
+    - inputs:
+      - M_PBH
+      - m_chi
+      - beta_PBH
+      notes: Use dedicated PBH evaporation codes for precision recasts.
+      outputs:
+      - DM abundance
+      - emitted momentum spectrum
+      step_id: evaporation_yield
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Greybody and spin effects are simplified in the model card.
+    - inputs:
+      - GW source scale
+      - DM momentum spectrum
+      notes: Compare to BBN, induced-GW, and small-scale-structure constraints.
+      outputs:
+      - stochastic GW spectrum
+      - free-streaming cutoff
+      step_id: observables
+      step_type: data_transform
+      tool_or_code: null
+      validity: Prospective for MHz-GHz GW detection and approximate for warm-DM transfer effects.
+    id: pbh_dm_gw_forward_route
+    input_parameters:
+    - M_PBH
+    - beta_PBH
+    - m_chi
+    - T_*
+    likelihoods: []
+    observable_ids:
+    - mhz_ghz_phase_transition_gw
+    - pbh_hawking_warm_cutoff
+    - pbh_evaporation_bbn_null
+    required_code_resources:
+    - PBH evaporation/greybody calculator
+    - GW spectrum calculator for FOPT or induced scalar modes
+    - linear matter-power solver for warm spectra
+    route_status: planned
+    source_model_features:
+    - evaporating light PBHs
+    - Hawking emission into a stable particle
+    - formation-mechanism-dependent GW source
+    validation_tests:
+    - Check tau_PBH occurs before BBN
+    - Check linked observable and constraint IDs resolve
+    - Compare relic abundance against observed Omega_DM

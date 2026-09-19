@@ -1,0 +1,611 @@
+_source:
+  shard: arXiv_src_2302_005_wds.tar
+  paper_id: '2302_00644'
+  source_member: 2302_00644.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2302_00644_alp_mediated_dirac_fermion_dm_v1
+identity:
+  name: ALP-mediated Dirac fermion dark matter
+  family: hidden_sector_dark_matter
+  aliases:
+  - axion-like dark matter mediator model
+  short_description: A Dirac fermion dark matter particle coupled to Standard Model fermions through a
+    DFSZ-like axion-like particle mediator, with relic abundance from freeze-in or freeze-out in a thermally
+    decoupled hidden sector.
+  historical_origin_or_motivation: Explores ALPs as mediators rather than as the dark matter particle
+    after standard WIMP freeze-out became strongly limited.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - DFSZ-like axion-like particle mediator
+  - feebly interacting dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  embedded_in_larger_framework: 'yes'
+  notes: The effective Lagrangian is valid below electroweak symmetry breaking and contains mass-suppressed
+    ALP couplings.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - axion-like particle a
+  mediators:
+  - DFSZ-like ALP a
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The paper treats chi as stable dark matter; the detailed stabilizing symmetry
+    is not specified in the extracted text.
+  symmetries:
+  - name: approximate U(1) generating ALP
+    type: global
+    exact_or_approximate: approximate
+    breaking: spontaneously broken at high scale f_a; ALP is pseudo-Goldstone boson
+    breaking_scale:
+      name: ALP symmetry-breaking scale
+      symbol: f_a
+  - name: dark matter stability symmetry
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: unknown
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - axion
+  standard_model_targets:
+  - SM fermions at tree level
+  - gauge and Higgs bosons through loops
+  dark_sector_couplings:
+  - hidden coupling g_a_chi
+  - connector coupling g_aff
+  mediator_types:
+  - pseudoscalar ALP
+  interaction_operators:
+  - a f i gamma5 f mass-proportional coupling
+  - a chi i gamma5 chi coupling
+  annihilation_channels:
+  - chi chi to a a
+  - SM fermion collisions producing chi chi
+  decay_channels:
+  - ALP decays to SM final states when kinematically allowed
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+  - name: ALP mass
+    symbol: m_a
+  - name: ALP scale
+    symbol: f_a
+  - name: hidden coupling
+    symbol: g_a_chi
+  - name: fermion connector coupling
+    symbol: g_aff
+  - name: fermion coefficient
+    symbol: C_f
+  - name: dark coefficient
+    symbol: C_chi
+production:
+  mechanisms:
+  - freeze-in from Standard Model fermions
+  - freeze-in from mediator
+  - sequential freeze-in
+  - decoupled hidden-sector freeze-out
+  - thermal freeze-out outside the main focus
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - coupled Boltzmann evolution of ALP and DM number densities
+  - hidden-sector temperature in decoupled freeze-out
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper focuses on regions where DM is thermally decoupled from the SM bath.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed relic density
+    symbol: Omega_DM h^2
+    value: 0.12
+  calculation_type: mixed
+  key_dependencies:
+  - m_chi
+  - m_a
+  - g_a_chi
+  - g_aff
+  - hidden-sector temperature
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - thermally decoupled hidden sector
+  - long-lived ALP possible in decoupled freeze-out
+  dark_sector_temperature:
+    name: hidden-sector temperature
+    symbol: T_dark
+    description: computed from hidden-sector energy density in decoupled freeze-out
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - spontaneous breaking of approximate U(1) at f_a
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: unknown
+  notes: Sequential freeze-in may require unintegrated Boltzmann equations for reliable ALP phase-space
+    evolution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: below_ew_effective_lagrangian
+  applies_to: EFT
+  condition: Effective ALP couplings are used below electroweak symmetry breaking; possible UV-dominated
+    higher-dimensional contributions are not included in the main IR-dominated relic calculation.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - UV-complete ALP models can add higher-dimensional interactions.
+  source_reference_ids:
+  - arxiv:2302.00644
+  notes: null
+assumptions:
+  global:
+  - id: small_connector_couplings
+    description: ALP-SM and ALP-DM couplings can be too small for standard WIMP freeze-out, keeping DM
+      thermally decoupled from SM particles.
+    scope: production
+    status: assumed
+    impact_if_violated: The model moves to ordinary thermal freeze-out rather than the paper's main freeze-in/decoupled
+      regimes.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - arxiv:2302.00644
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code is identified in the extracted paper text.
+  primary_code_role: null
+provenance:
+  model_id: 2302_00644_alp_mediated_dirac_fermion_dm_v1
+  model_name: ALP-mediated Dirac fermion dark matter
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2302.00644
+      title: Axion-like Dark Matter Mediators
+      authors:
+      - Sophie Mutzel
+      year: 2023
+      arxiv_id: '2302.00644'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '2302.00644'
+      authors:
+      - Mutzel, Sophie
+      doi: 10.48550/arXiv.2302.00644
+      notes: Primary local full text supports the ALP-mediated hidden-sector phase diagram and laboratory/astrophysical/flavor
+        constraints.
+      reference_id: src_2302_00644_primary
+      role: original_model
+      title: Axion-like Dark Matter Mediators
+      url: https://arxiv.org/abs/2302.00644
+      year: 2023
+    constraint_papers:
+    - arxiv_id: '2209.03932'
+      authors: []
+      doi: null
+      notes: Local related full text read for ALP-mediator context; structured claims in this row are
+        supported by the primary paper.
+      reference_id: src_2209_03932_related
+      role: extension
+      title: 'Axion-like particles as mediators for dark matter: beyond freeze-out'
+      url: https://arxiv.org/abs/2209.03932
+      year: 2023
+    - arxiv_id: '1803.00993'
+      authors: []
+      doi: null
+      notes: arXiv abstract page read through bounded fallback; not used as sole support for structured
+        claims.
+      reference_id: src_1803_00993_fallback
+      role: constraint
+      title: Supernova 1987A constraints on sub-GeV dark sectors, millicharged particles, the QCD axion,
+        and an axion-like particle
+      url: https://arxiv.org/abs/1803.00993
+      year: 2018
+    - arxiv_id: '1903.12559'
+      authors: []
+      doi: null
+      notes: arXiv abstract page read through bounded fallback; not used as sole support for structured
+        claims.
+      reference_id: src_1903_12559_fallback
+      role: other
+      title: Axions are blind to anomalies
+      url: https://arxiv.org/abs/1903.12559
+      year: 2019
+    external_databases:
+    - name: NASA ADS
+      note: Used only for sanitized metadata discovery, references, and citations.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0019
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections: []
+    unresolved_items:
+    - No numerical exclusion contours were digitized from the ALP constraint figure.
+    - The two web/arXiv fallback reads for local misses were used for discovery context only, not as sole
+      support for structured claims.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2302.00644
+      note: The model extends the SM by a Dirac fermion chi and a DFSZ-like ALP mediator a.
+      confidence: medium
+      section: introduction/model
+      page: null
+    symmetries:
+    - reference_id: arxiv:2302.00644
+      note: The ALP is the pseudo-Goldstone boson of an approximate U(1) global symmetry broken at high
+        scale f_a.
+      confidence: medium
+      section: model
+      page: null
+    interactions:
+    - reference_id: arxiv:2302.00644
+      note: The effective Lagrangian contains mass-proportional ALP couplings to SM fermions and a pseudoscalar
+        coupling to chi.
+      confidence: medium
+      section: model
+      page: null
+    production_mechanism:
+    - reference_id: arxiv:2302.00644
+      note: The paper maps freeze-in from SM, freeze-in from mediator, sequential freeze-in, decoupled
+        freeze-out, and thermal freeze-out regions.
+      confidence: medium
+      section: phase diagram
+      page: null
+    cosmological_history:
+    - reference_id: arxiv:2302.00644
+      note: In decoupled freeze-out, chi and ALP share a hidden temperature different from the photon
+        temperature.
+      confidence: medium
+      section: phase diagram
+      page: null
+    parameter_ranges:
+    - reference_id: arxiv:2302.00644
+      note: Illustrative phase diagrams use m_chi=10 GeV and m_a=1 GeV, and constraint plots fix m_chi/m_a=10.
+      confidence: medium
+      section: phase diagram and phenomenology
+      page: null
+    validity_domain:
+    - reference_id: arxiv:2302.00644
+      note: The conclusion notes IR-dominated relic calculations and possible UV contributions from higher-dimensional
+        operators depending on reheating temperature.
+      confidence: medium
+      section: conclusions
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text explicitly overlays relic-density lines with beam-dump, astrophysical, and rare
+        B/K decay exclusions.
+      page: null
+      reference_id: src_2302_00644_primary
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text describes thermally decoupled Dirac DM coupled through a DFSZ-like ALP mediator
+        and multiple production regimes.
+      page: null
+      reference_id: src_2302_00644_primary
+      section: null
+    routes:
+    - confidence: high
+      note: Primary text motivates coupled Boltzmann evolution and model-specific ALP constraint recasting.
+      page: null
+      reference_id: src_2302_00644_primary
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: unvalidated
+  notes: Machine-extracted candidate row from one paper; expert review is required.
+agent_failure_modes:
+  warnings:
+  - id: paper_local_extraction
+    severity: medium
+    category: other
+    warning: Do not treat this paper-local candidate as a canonical registry entry without expert review.
+    mitigation: Review the paper text and equations before reuse.
+    source_reference_ids:
+    - arxiv:2302.00644
+observables:
+- caveats:
+  - Sequential freeze-in may require unintegrated Boltzmann equations because the ALP phase-space distribution
+    is not thermal.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - thermal Standard Model bath
+  - decoupled dark sector
+  id: obs_alp_hidden_sector_relic_phases
+  key_quantities:
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - src_2302_00644_primary
+    status: unknown
+    symbol: m_chi
+  - name: ALP mass
+    role: core
+    source_reference_ids:
+    - src_2302_00644_primary
+    status: unknown
+    symbol: m_a
+  - name: ALP-fermion coupling
+    role: core
+    source_reference_ids:
+    - src_2302_00644_primary
+    status: inferred
+    symbol: g_aff
+  - name: ALP-DM coupling
+    role: core
+    source_reference_ids:
+    - src_2302_00644_primary
+    status: inferred
+    symbol: g_a_chi
+  linked_constraints:
+  - constr_alp_relic_density_phase_lines
+  linked_routes:
+  - route_alp_boltzmann_constraints
+  name: ALP-mediated hidden-sector relic-density phase structure
+  notes: The primary text describes multiple regimes in the ALP-mediator phase diagram and focuses on
+    DM thermally decoupled from the SM.
+  observability: medium
+  predicted_effect: Small ALP-SM and ALP-DM couplings keep the dark matter thermally decoupled from the
+    Standard Model while freeze-in, mediator freeze-in, sequential freeze-in, or decoupled hidden-sector
+    freeze-out can reproduce the relic abundance.
+  redshift_range: early-universe thermal history before matter-radiation equality
+  relevance: critical
+  scale_range: homogeneous relic abundance
+  source_reference_ids:
+  - src_2302_00644_primary
+  subchannel: freeze-in, sequential freeze-in, and decoupled freeze-out
+- caveats:
+  - The exact exclusions are model-specific because tree-level ALP couplings are fermionic and gauge couplings
+    are loop-induced.
+  channel: precision_laboratory
+  effect_direction: rate_change
+  environments:
+  - laboratory fixed-target experiments
+  - rare meson decays
+  - supernova and stellar interiors
+  id: obs_alp_beamdump_flavor_astro_signals
+  key_quantities:
+  - name: ALP-fermion coupling
+    role: experimental
+    source_reference_ids:
+    - src_2302_00644_primary
+    status: inferred
+    symbol: g_aff
+  - name: ALP mass
+    role: core
+    source_reference_ids:
+    - src_2302_00644_primary
+    status: inferred
+    symbol: m_a
+  - name: ALP scale
+    role: core
+    source_reference_ids:
+    - src_2302_00644_primary
+    status: inferred
+    symbol: f_a
+  linked_constraints:
+  - constr_alp_beamdump_astro_flavor
+  linked_routes:
+  - route_alp_boltzmann_constraints
+  name: Visible-sector ALP constraints from beam dumps, flavor, and astrophysics
+  notes: The primary paper recalculates constraints for its specific DFSZ-like fermion-coupled ALP mediator.
+  observability: high
+  predicted_effect: The DFSZ-like ALP couples to Standard Model fermions at tree level and to gauge/Higgs
+    bosons through loops, producing laboratory and astrophysical sensitivity to the ALP-fermion coupling
+    as a function of ALP mass.
+  redshift_range: null
+  relevance: high
+  scale_range: sub-GeV to heavier ALP masses covered by beam-dump and meson-decay searches in the paper
+    figure
+  source_reference_ids:
+  - src_2302_00644_primary
+  subchannel: electron beam dumps, rare K/B decays, SN1987A and stellar cooling
+constraints:
+- allowed_regions:
+  - The primary figure overlays lines of constant hidden-sector coupling that give the correct relic density
+    in freeze-in and decoupled-freeze-out regimes, using m_chi/m_a = 10 as a displayed benchmark.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The phase diagram assumes a Dirac fermion DM particle and DFSZ-like ALP mediator with
+      the displayed mass ratio benchmark where specified.
+    id: assume_dirac_alp_mediator_setup
+    impact_if_violated: Changing the mediator content or mass ratio shifts phase boundaries.
+    notes: null
+    scope: relic-density calculation
+    source_reference_ids:
+    - src_2302_00644_primary
+    status: assumed
+  benchmark_implications:
+  - The same ALP-mediator model can realize freeze-in from SM fermions, freeze-in from mediators, sequential
+    freeze-in, decoupled freeze-out, or thermal freeze-out depending on couplings.
+  caveats:
+  - The primary paper is a conference-style short text and does not provide full numerical tables.
+  constrained_parameters:
+  - m_chi
+  - m_a
+  - g_a_chi
+  - g_aff
+  - hidden-sector temperature
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Coupling combinations that fail to populate the hidden sector sufficiently, thermalize the wrong sectors,
+    or leave the wrong relic abundance.
+  id: constr_alp_relic_density_phase_lines
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Correct relic-density phase lines for ALP-mediated DM
+  notes: Constraint is a relic-density target contour rather than an exclusion by a public likelihood.
+  observable_channel: dark-matter relic abundance
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2302_00644_primary
+- allowed_regions:
+  - The viable relic-density lines must avoid the paper-specific beam-dump, astrophysical, and flavor-exclusion
+    regions.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The exclusion overlay is recalculated for an ALP that couples to SM fermions at tree
+      level and to gauge/Higgs bosons through loops.
+    id: assume_fermion_dominant_alp_couplings
+    impact_if_violated: Additional heavy vectorlike fermions or direct gauge couplings would alter constraints.
+    notes: null
+    scope: visible-sector constraint recast
+    source_reference_ids:
+    - src_2302_00644_primary
+    status: assumed
+  benchmark_implications:
+  - Laboratory/flavor/astrophysical constraints can cut into ALP-mediator parameter space even when DM
+    is thermally decoupled from the SM.
+  caveats:
+  - Structured values are not digitized from the figure in this batch.
+  constrained_parameters:
+  - g_aff
+  - m_a
+  - f_a
+  constraint_type: laboratory
+  data_release: SLAC electron beam dump; NA62/NA48/2 and B-decay searches as cited in the primary text;
+    SN1987A and globular-cluster energy-loss arguments
+  excluded_regions:
+  - ALP-fermion couplings and masses excluded by beam-dump null searches, stellar/supernova energy-loss
+    arguments, or rare meson decay bounds in the model-specific constraint overlay.
+  id: constr_alp_beamdump_astro_flavor
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: ALP beam-dump, astrophysical, and flavor exclusions
+  notes: Primary text explicitly names beam dump, astrophysics, and rare B/K decay exclusions.
+  observable_channel: SLAC beam dump, SN1987A/globular-cluster energy loss, and rare K/B decays
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2302_00644_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary text is short; this route should be treated as a structured recast plan rather
+      than a ready implementation.
+    caveats:
+    - No figure digitization or public likelihood integration was performed.
+    constraint_ids:
+    - constr_alp_relic_density_phase_lines
+    - constr_alp_beamdump_astro_flavor
+    derived_quantities:
+    - Omega_DM h^2
+    - hidden-sector temperature
+    - ALP abundance
+    - visible ALP rates
+    description: Solve the ALP and DM Boltzmann history across freeze-in and decoupled-sector regimes,
+      then overlay model-specific ALP visible-sector constraints.
+    forward_model_chain:
+    - inputs:
+      - m_chi
+      - m_a
+      - g_a_chi
+      - g_aff
+      notes: Classify freeze-in from SM, freeze-in from mediator, sequential freeze-in, DFO, or thermal
+        freeze-out.
+      outputs:
+      - DM abundance
+      - ALP abundance
+      - thermalization regime
+      step_id: step_boltzmann_regimes
+      step_type: boltzmann_solver
+      tool_or_code: coupled integrated/unintegrated Boltzmann equations
+      validity: Sequential freeze-in requires nonthermal ALP phase-space treatment.
+    - inputs:
+      - m_a
+      - g_aff
+      - loop-induced gauge couplings
+      notes: Overlay beam-dump, astrophysical, and flavor limits.
+      outputs:
+      - excluded ALP parameter regions
+      step_id: step_visible_constraints
+      step_type: recasting
+      tool_or_code: ALP constraint recast for fermion-coupled DFSZ-like model
+      validity: Model-specific ALP coupling assumptions must be maintained.
+    id: route_alp_boltzmann_constraints
+    input_parameters:
+    - m_chi
+    - m_a
+    - f_a
+    - g_a_chi
+    - g_aff
+    - C_f
+    - C_chi
+    likelihoods: []
+    observable_ids:
+    - obs_alp_hidden_sector_relic_phases
+    - obs_alp_beamdump_flavor_astro_signals
+    required_code_resources:
+    - Boltzmann-equation solver for ALP/DM number densities
+    - ALP visible-constraint recast tools
+    route_status: planned
+    source_model_features:
+    - Dirac fermion DM
+    - DFSZ-like ALP mediator
+    - small portal couplings
+    - thermally decoupled hidden sector
+    validation_tests:
+    - Recover the phase ordering described in the primary text when varying g_a_chi and g_aff.
+    - Check the m_chi/m_a=10 benchmark lines against the paper figure before digitizing constraints.

@@ -1,0 +1,228 @@
+_source:
+  shard: arXiv_src_1705_003_wds.tar
+  paper_id: '1705_01105'
+  source_member: 1705_01105.json
+schema_version: model_only_v0
+model_id: 1705_01105_fermionic_dm_vector_dark_isr_v1
+identity:
+  name: Fermionic dark matter with vector dark initial-state radiation
+  family: dark_bremsstrahlung_dark_matter
+  aliases:
+  - A A plus dark vector ISR
+  short_description: Fermionic DM annihilation through an axial-vector four-Fermi operator radiates a
+    dark vector Z-prime, lifting helicity suppression.
+  historical_origin_or_motivation: Model-card candidate extracted from the assigned paper text.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  lagrangian_available: 'yes'
+  renormalizable: unknown
+  parent_frameworks: []
+  notes: The model is a four-Fermi EFT plus a dark vector coupling.
+particle_content:
+  dark_matter_candidate:
+    name: chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - dark vector Zprime
+  mediators:
+  - heavy EFT mediator
+  - Zprime
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Unknown; dark vectors naturally arise when DM stability is due to a charge under
+    a new dark gauge group.
+  symmetries:
+  - name: dark gauge charge
+    type: gauge
+    exact_or_approximate: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - SM fermions f
+  dark_sector_couplings:
+  - g_Zprime Zprime_mu chi gamma^mu chi
+  mediator_types:
+  - dark vector Zprime
+  - heavy EFT mediator
+  interaction_operators:
+  - (1/Lambda^2)(chi gamma_mu gamma5 chi)(f gamma^mu gamma5 f)
+  - g_Zprime Zprime_mu chi gamma^mu chi
+  annihilation_channels:
+  - chi chi -> f f Zprime
+  - chi chi -> f f
+  - chi chi -> Zprime Zprime
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    role: core
+    status: inferred
+  - name: vector mass
+    symbol: m_Zprime
+    role: core
+    status: inferred
+  - name: dark vector coupling
+    symbol: g_Zprime
+    role: core
+    status: inferred
+  - name: EFT cutoff
+    symbol: Lambda
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through fermion and dark-vector annihilation channels, with vector dark ISR important
+    at low velocity
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - helicity-suppressed chi chi -> f f
+  - s-wave chi chi -> f f Zprime
+  - s-wave chi chi -> Zprime Zprime
+  can_produce_all_dark_matter: parameter_dependent
+  notes: The paper stresses competition between f f Zprime and Zprime Zprime.
+relic_density:
+  full_or_subcomponent: unknown
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_Zprime
+  - g_Zprime
+  - Lambda
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - multi-particle dark sector with dark radiation that should decay or remain cosmologically harmless
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The paper discusses annihilation channels rather than a phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: eft_validity
+  applies_to: EFT
+  condition: The integrated-out mediator must be heavy enough for the four-Fermi description.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: channel_competition
+  applies_to: model
+  condition: The dominant annihilation can change between f f Zprime and Zprime Zprime.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: axial_operator
+    description: The underlying DM-SM interaction has A A Lorentz structure.
+    scope: theory
+    status: assumed
+  - id: illustrative_vector_coupling
+    description: The paper chooses a vector-form Zprime coupling for illustration.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is identified in the assigned text.
+provenance:
+  model_id: 1705_01105_fermionic_dm_vector_dark_isr_v1
+  model_name: Fermionic dark matter with vector dark initial-state radiation
+  model_family: dark_bremsstrahlung_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Enhancing Dark Matter Annihilation Rates with Dark Bremsstrahlung
+      authors:
+      - Nicole F. Bell
+      - Yi Cai
+      - James B. Dent
+      - Rebecca K. Leane
+      - Thomas J. Weiler
+      year: 2017
+      arxiv_id: '1705.01105'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Dark vector ISR
+      page: null
+      quote_or_summary: Axial four-Fermi interaction plus Zprime coupling opens s-wave f f Zprime annihilation.
+    - reference_id: primary
+      section: Conclusion
+      page: null
+      quote_or_summary: Vector dark ISR and Zprime Zprime are competing s-wave channels.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The paper studies fermionic DM radiating a dark spin-1 field Zprime.
+      section: Introduction
+      confidence: high
+    interactions:
+    - reference_id: primary
+      note: The A A four-Fermi operator is supplemented by a DM coupling to a spin-1 Zprime field.
+      section: Dark vector ISR
+      confidence: high
+    production_mechanism:
+    - reference_id: primary
+      note: Dark vector ISR removes helicity suppression and yields an s-wave f f Zprime channel.
+      section: Dark vector ISR
+      confidence: high
+    parameter_ranges:
+    - reference_id: primary
+      note: The analysis uses independent masses and couplings m_chi, m_Zprime, g_Zprime and Lambda.
+      section: Dark vector ISR
+      confidence: medium
+    validity_domain:
+    - reference_id: primary
+      note: The authors frame the results as EFT/Lorentz-structure results rather than one UV completion.
+      section: Dark ISR setup
+      confidence: medium
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+agent_failure_modes:
+  warnings:
+  - id: competing_channels
+    severity: medium
+    category: other
+    warning: Do not treat f f Zprime as automatically dominant; the paper emphasizes competition with
+      Zprime Zprime.

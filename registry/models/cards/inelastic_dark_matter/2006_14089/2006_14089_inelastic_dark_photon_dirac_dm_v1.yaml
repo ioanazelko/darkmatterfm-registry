@@ -1,0 +1,742 @@
+_source:
+  shard: arXiv_src_2006_051_wds.tar
+  paper_id: '2006_14089'
+  source_member: 2006_14089.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2006_14089_inelastic_dark_photon_dirac_dm_v1
+identity:
+  name: Inelastic dark-photon Dirac fermion thermal relic for the XENON1T excess
+  family: inelastic_dark_matter
+  aliases:
+  - exothermic dark photon dark matter
+  - sub-GeV inelastic Dirac fermion dark matter
+  short_description: A sub-GeV Dirac fermion dark matter model split into two keV-separated states by
+    a dark U(1) scalar, coupled to the Standard Model through a lighter kinetically mixed dark photon
+    and thermally produced by secluded freeze-out.
+  historical_origin_or_motivation: Constructed to explain the XENON1T low-energy electron recoil excess
+    while retaining a thermal relic abundance.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - dark photon
+  - inelastic dark matter
+  - secluded thermal relic
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The assigned text writes a dark U(1)_D Lagrangian with kinetic mixing, a Dirac fermion, and a
+    scalar responsible for the mass splitting.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion chi split into chi_1 and chi_2
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - complex scalar charged under U(1)_D
+  - optional auxiliary fermion chi_E
+  mediators:
+  - dark photon V
+  - optional lighter dark photon V_E
+  excited_or_degenerate_states:
+  - chi_2 excited state
+  - chi_1 ground state
+  long_lived_particles:
+  - chi_2 is required to live longer than the age of the universe in the target parameter space
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Dark U(1)_D charge structure and the small splitting leave chi_1 stable and require
+    chi_2 to be cosmologically long-lived in the viable region.
+  symmetries:
+  - name: U(1)_D
+    type: gauge
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - electrons
+  - nuclei
+  - SM photon through kinetic mixing
+  dark_sector_couplings:
+  - dark gauge coupling alpha_D
+  - Yukawa coupling y_D between chi and the scalar
+  mediator_types:
+  - dark photon
+  interaction_operators:
+  - kinetic mixing V_{mu nu} F^{mu nu}
+  - Yukawa splitting term y_D phi chi^T C^{-1} chi
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels:
+  - chi_1 chi_1 and chi_2 chi_2 annihilation to V V in the secluded regime
+  decay_channels:
+  - chi_2 to chi_1 plus neutrinos or photons is highly suppressed for few-keV splitting
+  - V can decay invisibly to auxiliary dark-sector states in the example completion
+  self_scattering_channels:
+  - chi_2 chi_2 to chi_1 chi_1 inter-conversion
+  cp_structure: unknown
+  flavor_structure: electron and photon portal interactions are emphasized
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: Dirac dark matter mass
+    symbol: M_chi
+    description: Mass of the inelastic Dirac fermion dark matter candidate.
+    range: Sub-GeV; fit discussion spans about 10 MeV to 1 GeV.
+    unit: GeV
+    role: core
+    status: inferred
+    notes: The paper also highlights sensitivity down to about 0.3 GeV in future nuclear recoil searches.
+  - name: Dark photon mass
+    symbol: M_V
+    description: Mass of the kinetically mixed dark photon mediator.
+    range: M_V < M_chi in the secluded freeze-out regime; benchmark M_V = 0.1 GeV is discussed.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Inelastic mass splitting
+    symbol: delta
+    description: Mass difference M_chi2 - M_chi1.
+    value: 2.8 keV best-fit example; generally a few keV.
+    unit: keV
+    role: core
+    status: inferred
+  - name: Dark gauge coupling
+    symbol: alpha_D
+    description: Gauge coupling controlling annihilation to dark photons and inter-conversion.
+    value: approximately 4e-5 * (M_chi/GeV) * (1 - M_V^2/M_chi^2)^(-1/4) for the relic abundance relation
+      in the text.
+    role: core
+    status: inferred
+  - name: Scalar Yukawa coupling
+    symbol: y_D
+    description: Yukawa coupling that generates the chi_1/chi_2 mass splitting when the scalar gets a
+      vev.
+    value: delta / v_phi; normalized example delta ~ keV for y_D ~ 1e-7 and v_phi ~ 10 GeV.
+    role: core
+    status: inferred
+  - name: Auxiliary invisible-decay sector benchmark
+    description: Optional extra dark photon and fermion used to make V decay mostly invisibly.
+    value: M_chiE = 25 MeV, alpha_E = 0.01, M_VE = 20 MeV, epsilon_E = 1e-4.
+    role: benchmark
+    status: assumed
+production:
+  mechanisms:
+  - thermal freeze-out
+  - secluded annihilation to dark photons
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - chi chi -> V V annihilation cross section
+  - dark gauge coupling alpha_D
+  - mass hierarchy M_V < M_chi
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper uses the standard freeze-out abundance formula and chooses alpha_D to obtain Omega_chi
+    h^2 about 0.12.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - M_chi
+  - M_V
+  - alpha_D
+  - x_f about 20
+  - g_* about 10
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - secluded dark-sector freeze-out
+  - late survival of the excited chi_2 state
+  - optional auxiliary dark sector for invisible V decay
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling:
+    name: electron kinetic decoupling temperature
+    symbol: T_de
+    description: Used in the estimate of inter-conversion shutoff.
+    value: MeV-scale benchmark in the text
+    status: inferred
+  chemical_decoupling:
+    name: freeze-out temperature ratio
+    symbol: x_f
+    description: Mass-normalized freeze-out temperature.
+    value: 20
+    status: assumed
+  phase_transitions:
+  - dark scalar obtains a vev to split the Dirac fermion states
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper treats the present-day halo population as cold enough for direct-detection kinematics
+    and focuses on the excited-state fraction.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: secluded_hierarchy
+  applies_to: model
+  condition: The relic-density calculation assumes M_V < M_chi so annihilation is dominated by chi chi
+    -> V V.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: long_lived_excited_state
+  applies_to: parameter
+  condition: The inelastic splitting is below 2 m_e and small enough that chi_2 decay is longer than the
+    age of the universe in the target parameter region.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: invisible_mediator_decay
+  applies_to: model
+  condition: CMB safety requires the dark photon to decay mostly to dark-sector states; the paper gives
+    one auxiliary-sector realization.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: thermal_contact
+    description: The dark sector was in thermal equilibrium with the SM plasma before freeze-out.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    impact_if_violated: The freeze-out relic-density relation would not apply directly.
+  - id: equal_excited_fraction
+    description: Inter-conversion shuts off so that n_chi2 is approximately n_chi1 for the XENON1T-motivated
+      parameter region.
+    scope: cosmological_history
+    status: inferred
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    impact_if_violated: The exothermic scattering rate would change.
+  - id: auxiliary_invisible_sector
+    description: An auxiliary lighter dark photon/fermion sector can make V decay mostly invisibly while
+      leaving the primary relic calculation intact.
+    scope: theory
+    status: assumed
+    can_be_relaxed: 'yes'
+    source_reference_ids: []
+    impact_if_violated: CMB bounds on visible V decays could invalidate part of the parameter space.
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text does not identify a public model-specific code release.
+provenance:
+  model_id: 2006_14089_inelastic_dark_photon_dirac_dm_v1
+  model_name: Inelastic dark-photon Dirac fermion thermal relic for the XENON1T excess
+  model_family: inelastic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2006_14089'
+      title: 'Electric But Not Eclectic: Thermal Relic Dark Matter for the XENON1T Excess'
+      authors:
+      - Joseph Bramante
+      - Ningqiang Song
+      year: 2020
+      arxiv_id: '2006.14089'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text.
+    - arxiv_id: '2006.14089'
+      authors:
+      - Bramante, Joseph
+      - Song, Ningqiang
+      doi: 10.1103/PhysRevLett.125.161805
+      notes: Primary locally resolved paper text.
+      reference_id: src_2006_14089_primary
+      role: original_model
+      title: 'Electric But Not Eclectic: Thermal Relic Dark Matter for the XENON1T Excess'
+      url: https://arxiv.org/abs/2006.14089
+      year: 2020
+    constraint_papers:
+    - arxiv_id: '2007.10754'
+      authors:
+      - Borah, Debasish
+      - Mahapatra, Satyabrata
+      - Nanda, Dibyendu
+      - Sahu, Narendra
+      doi: 10.1016/j.physletb.2020.135933
+      notes: Local related text read; independent inelastic-fermion interpretation of XENON1T electron
+        recoils.
+      reference_id: src_2007_10754_xenon_inelastic
+      role: constraint
+      title: Inelastic fermion dark matter origin of XENON1T excess with muon (g - 2) and light neutrino
+        mass
+      url: https://arxiv.org/abs/2007.10754
+      year: 2020
+    - arxiv_id: '2006.12447'
+      authors:
+      - Chen, Yifan
+      - Cui, Ming-Yang
+      - Shu, Jing
+      - Xue, Xiao
+      - Yuan, Guan-Wen
+      - Yuan, Qiang
+      doi: 10.1007/JHEP04(2021)282
+      notes: Local related text read for XENON1T electron-recoil context.
+      reference_id: src_2006_12447_xenon_context
+      role: constraint
+      title: Sun heated MeV-scale dark matter and the XENON1T electron recoil excess
+      url: https://arxiv.org/abs/2006.12447
+      year: 2021
+    - arxiv_id: '2102.08409'
+      authors:
+      - Kuo, Jui-Lin
+      - Pospelov, Maxim
+      - Pradler, Josef
+      doi: 10.1103/PhysRevD.103.115030
+      notes: Local related text read for electromagnetic direct-detection context.
+      reference_id: src_2102_08409_em_dark_radiation
+      role: constraint
+      title: Terrestrial probes of electromagnetically interacting dark radiation
+      url: https://arxiv.org/abs/2102.08409
+      year: 2021
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0007
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2006_14089'
+      section: opening summary
+      page: null
+      quote_or_summary: States a thermal inelastic dark-photon Dirac fermion model for the XENON1T excess.
+    - reference_id: '2006_14089'
+      section: model construction
+      page: null
+      quote_or_summary: Gives the dark U(1)_D Lagrangian, field content, and mass splitting.
+    - reference_id: '2006_14089'
+      section: relic abundance
+      page: null
+      quote_or_summary: Derives freeze-out through chi chi -> V V and the relic-density relation for alpha_D.
+    unresolved_items:
+    - The assigned text does not provide a full UV completion for the dark scalar potential or for all
+      cosmological histories outside the benchmark region.
+    - A modern XENON1T/PandaX/LZ electron-recoil likelihood was not extracted in this bounded pass.
+    - The exact CRESST exothermic nuclear-recoil recast remains unresolved.
+  evidence:
+    particle_content:
+    - reference_id: '2006_14089'
+      note: The model consists of sub-GeV Dirac fermion dark matter, a lighter dark photon kinetically
+        mixed with the SM photon, and a scalar that splits the Dirac states by a few keV.
+      confidence: high
+      section: opening summary
+    - reference_id: '2006_14089'
+      note: The paper labels the mass eigenstates chi_2 and chi_1 and assumes an auxiliary lighter dark
+        photon/fermion sector can make the mediator decay invisibly.
+      confidence: medium
+      section: model construction
+    symmetries:
+    - reference_id: '2006_14089'
+      note: The Dirac fermion, scalar, and dark photon are charged under a dark U(1)_D gauge symmetry.
+      confidence: high
+      section: model construction
+    interactions:
+    - reference_id: '2006_14089'
+      note: The Lagrangian includes kinetic mixing between the dark photon and the SM photon plus a Yukawa
+        term splitting the Dirac fermion components.
+      confidence: high
+      section: model construction
+    - reference_id: '2006_14089'
+      note: The detector signal is exothermic chi_2 electron down-scattering through the dark photon;
+        elastic and endothermic channels are discussed as subdominant for the excess.
+      confidence: medium
+      section: scattering discussion
+    production_mechanism:
+    - reference_id: '2006_14089'
+      note: The early dark sector is assumed in thermal equilibrium with the SM, and chi_1, chi_2 freeze
+        out through annihilation to V V in the secluded regime M_V < M_chi.
+      confidence: high
+      section: relic abundance
+    - reference_id: '2006_14089'
+      note: The relic-density formula fixes alpha_D approximately as a function of M_chi and M_V.
+      confidence: high
+      section: relic abundance
+    cosmological_history:
+    - reference_id: '2006_14089'
+      note: The paper discusses kinetic decoupling, inter-conversion shutoff, excited-state survival,
+        and an auxiliary sector benchmark satisfying BBN/CMB-relevant N_eff comments.
+      confidence: medium
+      section: cosmology discussion
+    parameter_ranges:
+    - reference_id: '2006_14089'
+      note: The XENON1T fit is shown for M_chi from about 10 MeV to 1 GeV, with a best-fit splitting of
+        2.8 keV and a benchmark M_V = 0.1 GeV.
+      confidence: high
+      section: parameter discussion
+    validity_domain:
+    - reference_id: '2006_14089'
+      note: The construction relies on the secluded hierarchy M_V < M_chi, a few-keV splitting below 2
+        m_e, long-lived chi_2, and mostly invisible V decay.
+      confidence: medium
+      section: model validity
+    constraints:
+    - confidence: high
+      note: Primary text discusses CMB visible-decay bounds, auxiliary invisible decays, and CRESST nuclear-recoil
+        limits.
+      page: null
+      reference_id: src_2006_14089_primary
+      section: null
+    - confidence: medium
+      note: Related local full text summarizes the XENON1T low-energy electron-recoil excess and background
+        caveat.
+      page: null
+      reference_id: src_2006_12447_xenon_context
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text states that exothermic inelastic scattering deposits a few keV in XENON1T electron
+        recoils.
+      page: null
+      reference_id: src_2006_14089_primary
+      section: null
+    - confidence: medium
+      note: Related local full text treats inelastic fermion dark matter as an electron-recoil explanation.
+      page: null
+      reference_id: src_2007_10754_xenon_inelastic
+      section: null
+    routes:
+    - confidence: high
+      note: Primary text provides relic scaling, recoil-rate ingredients, and constraint discussion.
+      page: null
+      reference_id: src_2006_14089_primary
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - XENON1T excess interpretation is not assumed as established
+  - auxiliary invisible-decay sector is one example rather than a unique completion
+  validation_status: expert_judgment_only
+  notes: Model construction and relic logic are explicit in the assigned text; empirical viability is
+    not extracted in this run.
+agent_failure_modes:
+  warnings:
+  - id: xenon_excess_not_registry_constraint
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat the XENON1T excess fit as an established detection or as an extracted constraint
+      in this model-only pass.
+    source_reference_ids:
+    - '2006_14089'
+    mitigation: Use the entry only as a proposed model construction unless a separate reviewed constraint
+      card is available.
+observables:
+- caveats:
+  - The excess can also be explained by unmodeled backgrounds such as tritium; the paper treats the signal
+    interpretation as speculative.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - underground xenon time-projection chambers
+  id: xenon1t_exothermic_electron_recoils
+  key_quantities:
+  - description: Mass difference between excited and ground dark fermion states.
+    name: Inelastic splitting
+    role: core
+    source_reference_ids:
+    - src_2006_14089_primary
+    status: inferred
+    symbol: delta
+    unit: keV
+    value: 2.8-3
+  - description: Sub-GeV to GeV-scale Dirac fermion mass used in the fit discussion.
+    name: Dark matter mass
+    role: core
+    source_reference_ids:
+    - src_2006_14089_primary
+    status: inferred
+    symbol: M_chi
+    unit: GeV
+    value: 0.01-1
+  - description: Mediator mass below the dark matter mass in the secluded freeze-out regime.
+    name: Dark photon mass
+    role: core
+    source_reference_ids:
+    - src_2006_14089_primary
+    status: inferred
+    symbol: M_V
+    unit: GeV
+    value: benchmark 0.1
+  - description: Controls coupling of the dark photon to electrons and nuclei.
+    name: Kinetic mixing
+    role: core
+    source_reference_ids:
+    - src_2006_14089_primary
+    status: inferred
+    symbol: epsilon
+  linked_constraints:
+  - xenon1t_spectral_fit
+  - cresst_elastic_nuclear_recoil_bound
+  linked_routes:
+  - inelastic_recoil_spectrum_route
+  name: Few-keV exothermic electron recoils in xenon
+  notes: Primary text gives the electron-recoil excess, few-keV splitting, and down-scattering mechanism.
+  observability: high
+  predicted_effect: Down-scattering of the excited dark fermion state to the ground state deposits the
+    keV mass splitting into bound electrons, producing a rate concentrated in the XENON1T low-energy electron-recoil
+    window.
+  redshift_range: z = 0
+  relevance: critical
+  scale_range: 1-30 keV electron recoil energies; xenon target
+  source_reference_ids:
+  - src_2006_14089_primary
+  subchannel: electron recoils
+- caveats:
+  - The CMB conclusion depends on the added invisible-decay sector, not just the minimal dark photon.
+  channel: cmb
+  effect_direction: model_dependent
+  environments:
+  - recombination-era plasma
+  id: cmb_energy_injection_from_dark_photon_decays
+  key_quantities:
+  - description: Approximate CMB-motivated requirement quoted in the primary text.
+    name: Visible-to-invisible dark photon width ratio
+    role: core
+    source_reference_ids:
+    - src_2006_14089_primary
+    status: approximate
+    symbol: Gamma_V_to_SM/Gamma_V_to_DS
+    value: less than about 1e-2 * (M_chi/GeV)
+  - description: Benchmark invisible decay products used to satisfy N_eff and CMB bounds.
+    name: Auxiliary invisible-sector masses
+    role: core
+    source_reference_ids:
+    - src_2006_14089_primary
+    status: assumed
+    symbol: M_chiE, M_VE
+    value: 25 MeV and 20 MeV
+  linked_constraints:
+  - cmb_invisible_dark_photon_requirement
+  linked_routes:
+  - inelastic_recoil_spectrum_route
+  name: CMB sensitivity to visible dark-photon decays
+  notes: null
+  observability: medium
+  predicted_effect: The secluded annihilation channel avoids CMB energy-injection bounds only if the dark
+    photon decays dominantly into invisible dark-sector states rather than Standard Model particles.
+  redshift_range: z ~ 600-1100
+  relevance: high
+  scale_range: CMB anisotropy energy-injection scales
+  source_reference_ids:
+  - src_2006_14089_primary
+  subchannel: energy injection at recombination
+constraints:
+- allowed_regions:
+  - Few-keV exothermic splitting with sub-GeV dark matter can reproduce the low-energy electron-recoil
+    excess in the primary analysis.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Best-fit examples favor delta around 2.8-3 keV and dark matter masses below about 1 GeV.
+  caveats:
+  - The excess was not established as dark matter; background interpretations remain viable.
+  constrained_parameters:
+  - delta
+  - M_chi
+  - M_V
+  - epsilon
+  constraint_type: direct_detection
+  data_release: XENON1T 0.65 tonne-year electron-recoil excess
+  excluded_regions: []
+  id: xenon1t_spectral_fit
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: XENON1T electron-recoil spectral fit
+  notes: Structured as a signal-fit constraint rather than an exclusion.
+  observable_channel: xenon electron recoils
+  recasting_needed: partial
+  robustness: low
+  source_reference_ids:
+  - src_2006_14089_primary
+- allowed_regions:
+  - Dominantly invisible V decays through an auxiliary dark sector can evade the CMB bound in the benchmark.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The dark photon has an available lighter dark-sector final state so the visible branching
+      fraction is small.
+    id: invisible_decay_completion
+    impact_if_violated: Recasting can shift the stated benchmark implication.
+    notes: null
+    scope: constraint applicability
+    source_reference_ids:
+    - src_2006_14089_primary
+    status: assumed
+  benchmark_implications:
+  - The optional V_E, chi_E benchmark is part of the viable thermal-relic construction.
+  caveats: []
+  constrained_parameters:
+  - Gamma_V_to_SM/Gamma_V_to_DS
+  - M_chi
+  - M_V
+  - alpha_D
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Dark photons decaying dominantly to Standard Model particles are CMB constrained for the sub-GeV thermal
+    relic setup.
+  id: cmb_invisible_dark_photon_requirement
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Invisible dark-photon decay requirement from CMB energy injection
+  notes: Primary paper quotes the approximate visible/invisible width condition.
+  observable_channel: cmb
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2006_14089_primary
+- allowed_regions: []
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - The primary text identifies CRESST as the leading nuclear-scattering bound for this model at the time.
+  caveats:
+  - The paper notes an exothermic reanalysis could change the bound.
+  constrained_parameters:
+  - sigma_n
+  - epsilon
+  - M_V
+  - M_chi
+  constraint_type: direct_detection
+  data_release: CRESST low-threshold nuclear recoils
+  excluded_regions:
+  - Large elastic DM-nucleon cross sections for sub-GeV masses are constrained by CRESST oxygen recoils.
+  id: cresst_elastic_nuclear_recoil_bound
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: CRESST low-mass nuclear recoil bound
+  notes: null
+  observable_channel: nuclear recoils
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2006_14089_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: No executable detector likelihood was found in the assigned text.
+    caveats:
+    - Needs detector response and background model to move beyond the paper-level fit.
+    constraint_ids:
+    - xenon1t_spectral_fit
+    - cmb_invisible_dark_photon_requirement
+    - cresst_elastic_nuclear_recoil_bound
+    derived_quantities:
+    - alpha_D relic target
+    - electron recoil spectrum
+    - DM-nucleon cross section
+    - visible dark-photon branching requirement
+    description: Map the inelastic dark-photon parameters to the xenon electron-recoil spectrum, relic
+      abundance, and direct/CMB constraints.
+    forward_model_chain:
+    - inputs:
+      - M_chi
+      - M_V
+      - x_f
+      - g_star
+      notes: Use the primary paper relic-abundance scaling.
+      outputs:
+      - alpha_D giving Omega_chi h^2 ~ 0.12
+      step_id: relic_alpha_d
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Secluded freeze-out with M_V < M_chi and small splitting relative to freeze-out temperature.
+    - inputs:
+      - delta
+      - M_chi
+      - epsilon
+      - atomic ionization factor
+      - halo speed distribution
+      notes: Compute exothermic down-scattering spectrum for XENON1T.
+      outputs:
+      - dR/dE_e
+      step_id: xenon_recoil_rate
+      step_type: data_transform
+      tool_or_code: null
+      validity: Requires detector response and atomic ionization functions.
+    - inputs:
+      - sigma_n
+      - dark photon branching fractions
+      notes: Apply nuclear recoil and CMB energy-injection conditions.
+      outputs:
+      - CRESST and CMB viability flags
+      step_id: constraint_overlay
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires current experimental likelihoods for a modern recast.
+    id: inelastic_recoil_spectrum_route
+    input_parameters:
+    - M_chi
+    - M_V
+    - delta
+    - alpha_D
+    - epsilon
+    - halo velocity distribution
+    likelihoods: []
+    observable_ids:
+    - xenon1t_exothermic_electron_recoils
+    - cmb_energy_injection_from_dark_photon_decays
+    required_code_resources: []
+    route_status: planned
+    source_model_features:
+    - keV-split Dirac fermion states
+    - kinetically mixed dark photon
+    - secluded chi chi -> V V freeze-out
+    validation_tests:
+    - Recover the primary paper benchmark spectrum peak at a few keV.

@@ -1,0 +1,279 @@
+_source:
+  shard: arXiv_src_1901_007_wds.tar
+  paper_id: '1901_02278'
+  source_member: 1901_02278.json
+schema_version: model_only_v0
+model_id: 1901_02278_cp_violating_singlet_doublet_fermion_dm_v1
+identity:
+  name: CP-violating singlet-doublet fermion dark matter
+  family: singlet_doublet_fermion_dark_matter
+  aliases:
+  - singlet-doublet DM with CP violation
+  - pseudoscalar Higgs-portal singlet-doublet DM
+  short_description: A Z2-odd gauge-singlet Majorana fermion mixed with a vectorlike electroweak doublet,
+    where a physical CP phase generates pseudoscalar Higgs interactions that preserve thermal relic viability
+    while suppressing nonrelativistic scattering.
+  historical_origin_or_motivation: The paper motivates the model as a TeV-scale UV completion of an effective
+    pseudoscalar Higgs-portal dark matter interaction.
+  status: emerging
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - singlet-doublet fermion dark matter
+  - pseudoscalar Higgs portal
+  - Bino-Higgsino-like limit
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes mass and Yukawa interaction terms for a gauge-singlet Majorana fermion and an
+    SU(2)L doublet Dirac fermion with a physical CP phase.
+particle_content:
+  dark_matter_candidate:
+    name: lightest Z2-odd Majorana fermion chi_1^0
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - two heavier neutral Majorana fermions
+  - charged vectorlike fermion pair
+  mediators:
+  - standard model Higgs boson
+  - electroweak gauge bosons
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: An imposed Z2 symmetry makes the introduced fermions odd and Standard Model fields
+    even, stabilizing the lightest odd Majorana fermion.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - standard model Higgs boson
+  - electroweak gauge bosons
+  - nucleons through Higgs exchange
+  dark_sector_couplings:
+  - complex singlet-doublet Yukawa couplings y and yprime
+  - CP-violating pseudoscalar Higgs interaction
+  mediator_types:
+  - Higgs boson
+  - electroweak doublet fermion
+  interaction_operators:
+  - effective scalar operator chi chi Hdagger H
+  - effective pseudoscalar operator i chi gamma5 chi Hdagger H
+  annihilation_channels:
+  - standard model final states through Higgs and electroweak interactions
+  cp_structure: Physical phase Arg(M1* M2* y yprime) induces CP-violating pseudoscalar interactions.
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: singlet Majorana mass
+    symbol: M1
+    description: Mass parameter for the gauge-singlet Majorana fermion.
+    role: core
+    status: inferred
+  - name: doublet Dirac mass
+    symbol: M2
+    description: Mass parameter for the SU(2)L doublet Dirac fermion.
+    role: core
+    status: inferred
+  - name: Yukawa magnitude
+    symbol: '|y|^2 + |yprime|^2'
+    description: The paper fixes this combination to reproduce the measured dark matter density.
+    role: core
+    status: inferred
+  - name: Yukawa ratio or mixing angle
+    symbol: theta
+    description: Parameter controlling the relative size of y and yprime.
+    role: core
+    status: inferred
+  - name: CP phase
+    symbol: phi
+    description: Physical CP-violating phase Arg(M1* M2* y yprime).
+    role: core
+    status: inferred
+  - name: dark matter relic density target
+    symbol: Omega h^2
+    description: Measured value used to determine the Yukawa magnitude.
+    value: 0.1198 +/- 0.0015
+    role: core
+    status: established
+production:
+  mechanisms:
+  - thermal freeze-out
+  - annihilation through pseudoscalar Higgs-portal and electroweak interactions
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Yukawa couplings
+  - singlet-doublet mass mixing
+  - CP-violating pseudoscalar interaction
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper determines the Yukawa strength so that the calculated thermal relic abundance matches
+    the measured dark matter density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - M1
+  - M2
+  - Yukawa magnitude
+  - CP phase
+  - Higgs funnel region
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: low
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Cold thermal fermion dark matter.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: renormalizable_singlet_doublet_setup
+  applies_to: model
+  condition: Applies to the Z2-odd singlet plus vectorlike doublet fermion model with the paper CP-violating
+    phase and relic-density matching.
+  status: inferred
+  extrapolation_risk: medium
+- id: higgs_funnel_caution
+  applies_to: parameter
+  condition: The Higgs-funnel region can behave differently from heavier generic parameter points.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: z2_exact
+    description: The Z2 symmetry remains exact so the lightest odd fermion is stable.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: thermal_relic
+    description: The dark matter abundance is set by standard thermal freeze-out.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+  - id: yukawa_fit_to_density
+    description: The Yukawa magnitude is selected to reproduce the measured relic abundance.
+    scope: production
+    status: inferred
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that micrOMEGAs is used to calculate the dark matter relic abundance;
+    no paper-specific public code is identified in the extracted text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 1901_02278_cp_violating_singlet_doublet_fermion_dm_v1
+  model_name: 1901_02278_cp_violating_singlet_doublet_fermion_dm_v1
+  model_family: singlet_doublet_fermion_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Current status and future prospects of the singlet-doublet dark matter model with CP violation
+      year: 2019
+      arxiv_id: '1901.02278'
+      role: original_model
+      notes: Assigned full text in target_text.sqlite for batch-0001.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0001
+    extractor_name: gpt55_dark_matter_model_batch_worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: model
+      page: null
+      quote_or_summary: Introduces singlet Majorana and doublet Dirac Z2-odd fermions, complex Yukawa
+        terms, and lightest Majorana DM.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model introduces a gauge-singlet Majorana fermion and an SU(2)L doublet Dirac fermion;
+        after electroweak symmetry breaking there are three neutral Majorana fermions and a charged pair,
+        with the lightest neutral fermion as DM.
+      confidence: high
+      section: model section
+    symmetries:
+    - reference_id: primary
+      note: The paper imposes a Z2 symmetry under which the new fermions are odd and SM particles are
+        even.
+      confidence: high
+      section: model section
+    interactions:
+    - reference_id: primary
+      note: The mass and Yukawa terms include complex M1, M2, y, and yprime, with a physical CP phase
+        producing pseudoscalar Higgs interactions.
+      confidence: high
+      section: model section
+    production_mechanism:
+    - reference_id: primary
+      note: The paper fixes the Yukawa combination to reproduce Omega h^2 = 0.1198 +/- 0.0015 and calculates
+        relic abundance with micrOMEGAs.
+      confidence: high
+      section: model section
+    parameter_ranges:
+    - reference_id: primary
+      note: The five free parameters are |M1|, |M2|, the Yukawa magnitude, a relative Yukawa parameter,
+        and the CP phase.
+      confidence: high
+      section: model section
+    validity_domain:
+    - reference_id: primary
+      note: The setup is motivated as a UV completion of an effective pseudoscalar Higgs-portal operator
+        with a TeV-scale cutoff.
+      confidence: medium
+      section: introduction
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    expert_reviewed: false
+    expert_reviewer: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - CP phase dependence
+  - Higgs-funnel special region
+  - Vacuum-stability treatment not encoded in this model-only pass
+  validation_status: expert_judgment_only
+  notes: Good textual support for model identity and relic mechanism; numerical scan details are not reproduced.
+agent_failure_modes:
+  warnings:
+  - id: cp_phase_is_core
+    severity: medium
+    category: assumption_mismatch
+    warning: Dropping the CP phase changes the Higgs interaction structure and the direct-scattering behavior
+      emphasized by the paper.
+    mitigation: Keep phi as a core parameter when mapping this model.

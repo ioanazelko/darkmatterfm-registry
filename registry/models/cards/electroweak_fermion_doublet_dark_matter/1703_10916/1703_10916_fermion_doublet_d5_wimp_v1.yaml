@@ -1,0 +1,410 @@
+_source:
+  shard: arXiv_src_1703_026_wds.tar
+  paper_id: '1703_10916'
+  source_member: 1703_10916.json
+schema_version: model_only_v0
+model_id: 1703_10916_fermion_doublet_d5_wimp_v1
+identity:
+  name: Dimension-5 fermion-doublet WIMP EFT
+  family: electroweak_fermion_doublet_dark_matter
+  aliases:
+  - bi-doublet dark matter EFT
+  - fermionic SU(2)_L doublet WIMP with dipoles
+  short_description: An EFT in which the Standard Model is extended by two Z2-odd SU(2)_L fermion doublets
+    with dimension-5 Yukawa and dipole operators; the lightest neutral Majorana state is a WIMP candidate.
+  historical_origin_or_motivation: Generalizes bi-doublet and higgsino-like dark matter scenarios while
+    allowing electroweak-scale WIMP masses through dimension-5 dipole operators.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - Standard Model plus Z2-odd fermion doublets
+  - dimension-5 dark-sector EFT
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff:
+    name: EFT cutoff
+    symbol: Lambda
+    description: Cutoff suppressing the dimension-5 Yukawa and dipole operators.
+    value: 1 TeV used in relic-density scans
+    unit: GeV
+    role: core
+    status: assumed
+  embedded_in_larger_framework: unknown
+  notes: The paper states that the dimension-5 magnetic dipole operators are expected to come from a UV-complete
+    model at the TeV scale.
+particle_content:
+  dark_matter_candidate:
+    name: chi_1^0
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - chi_2^0 heavier neutral Majorana state
+  - charged fermions chi^+ and chi^-
+  mediators:
+  - Higgs boson
+  - electroweak gauge bosons through gauge and dipole interactions
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - chi_2^0
+  - chi^+-
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A discrete Z2 parity separates the dark sector from Standard Model fields and
+    makes the lightest neutral state stable.
+  symmetries:
+  - name: Z2 dark parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not discussed
+    breaking_scale: null
+  - name: charge conjugation benchmark symmetry
+    type: global
+    exact_or_approximate: exact
+    breaking: used for y1 = y2 benchmark scenarios
+    breaking_scale: null
+  - name: custodial SU(2)_R benchmark
+    type: global
+    exact_or_approximate: exact
+    breaking: present for y1 = y2 = -y12
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - Higgs doublet
+  - electroweak gauge bosons
+  - nucleons through Higgs exchange
+  dark_sector_couplings:
+  - dimension-5 Yukawa coefficients y1, y2, y12, lambda12
+  - dipole coefficients d_gamma and d_W
+  mediator_types:
+  - Higgs boson
+  - W boson
+  - Z boson
+  - photon through dipole operator
+  interaction_operators:
+  - dimension-5 Higgs-doublet operators
+  - dimension-5 B_mu_nu and W_mu_nu dipole operators
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - chi_1^0 chi_1^0 -> W+ W-
+  - chi_1^0 chi_1^0 -> Z Z
+  - chi_1^0 chi_1^0 -> gamma gamma
+  - chi_1^0 chi_1^0 -> gamma Z
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: CP-violating dipole coefficients e_gamma and e_W are set to zero in the analysis.
+  flavor_structure: not_applicable
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: doublet mass parameter
+    symbol: M_D
+    description: Vector-like mass scale for the two fermion doublets.
+    range: electroweak scale; scans include M_D around 500 GeV and WIMP masses near 200-350 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: EFT cutoff
+    symbol: Lambda
+    description: Scale suppressing dimension-5 operators.
+    value: 1 TeV in representative scans
+    unit: GeV
+    role: core
+    status: assumed
+  - name: Yukawa coefficient
+    symbol: y
+    description: Common benchmark value for y1 and y2 in charge-conjugation symmetric scenarios.
+    role: core
+    status: inferred
+  - name: mixed Yukawa coefficient
+    symbol: y12
+    description: Dimension-5 Yukawa coefficient controlling benchmark mass spectra.
+    role: core
+    status: inferred
+  - name: Higgs-current coefficient
+    symbol: lambda12
+    description: Dimension-5 Higgs operator coefficient entering charged and neutral masses.
+    role: core
+    status: inferred
+  - name: hypercharge dipole coefficient
+    symbol: d_gamma
+    description: Coefficient of the U(1)_Y dipole operator.
+    role: core
+    status: inferred
+  - name: weak dipole coefficient
+    symbol: d_W
+    description: Coefficient of the SU(2)_L dipole operator; positive values near the cancellation region
+      support electroweak-scale relic abundance.
+    role: core
+    status: inferred
+  - name: WIMP mass
+    symbol: m_chi1
+    description: Mass of the lightest neutral Majorana state chi_1^0.
+    range: about 200-350 GeV in the LHC-accessible examples
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through electroweak, Higgs, and dimension-5 dipole annihilation channels
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - annihilation cross sections of chi_1^0 into electroweak gauge-boson final states
+  - dipole-operator cancellations that reduce the annihilation rate at electroweak masses
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper calculates the parameter region compatible with the observed relic abundance after
+    applying the EFT interactions.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - M_D
+  - m_chi1
+  - d_W
+  - d_gamma
+  - y
+  - y12
+  - lambda12
+  - Lambda
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Electroweak-scale thermal WIMP; no explicit phase-space distribution is tabulated.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: invalid
+      warning: Electroweak-scale WIMP rather than warm relic.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: eft-validity
+  applies_to: EFT
+  condition: Use below the dimension-5 cutoff scale Lambda; the benchmark scans set Lambda = 1 TeV.
+  valid_range: energies below the EFT cutoff
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - UV completion is not specified in the paper.
+  source_reference_ids:
+  - '1703_10916'
+  notes: null
+- id: z2-stability
+  applies_to: model
+  condition: Z2 parity remains exact so the lightest neutral state is stable.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - '1703_10916'
+  notes: null
+assumptions:
+  global:
+  - id: exact-z2
+    description: The discrete Z2 parity separating the dark sector from the Standard Model is exact.
+    scope: theory
+    status: assumed
+    impact_if_violated: The lightest neutral state would not be stable dark matter.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1703_10916'
+    notes: null
+  - id: charge-conjugation-benchmarks
+    description: The phenomenological analysis uses charge-conjugation symmetric benchmark choices y1
+      = y2 with y12 = -y or y12 = 0.
+    scope: theory
+    status: assumed
+    impact_if_violated: Mass spectra and direct couplings would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '1703_10916'
+    notes: null
+  - id: standard-thermal-history
+    description: The relic-density calculation assumes ordinary thermal freeze-out in a standard cosmological
+      history.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The inferred parameter region for the observed abundance would change.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1703_10916'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code release is identified in the paper text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1703_10916_fermion_doublet_d5_wimp_v1
+  model_name: null
+  model_family: electroweak_fermion_doublet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1703_10916'
+      title: unknown
+      year: 2017
+      arxiv_id: '1703.10916'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_0017
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1703_10916'
+      section: Opening model summary
+      page: null
+      quote_or_summary: The paper extends the SM by two fermion SU(2)_L doublets, imposes Z2 parity, and
+        introduces dimension-5 operators.
+    - reference_id: '1703_10916'
+      section: Mass spectrum
+      page: null
+      quote_or_summary: After electroweak symmetry breaking the neutral Dirac fermion splits into two
+        Majorana states; chi_1^0 is the WIMP candidate.
+    - reference_id: '1703_10916'
+      section: Relic abundance constraints
+      page: null
+      quote_or_summary: Dipole operators regulate annihilation cross sections and allow electroweak-scale
+        relic abundance.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1703_10916'
+      note: Two Z2-odd fermion doublets D1 and D2 with opposite hypercharge yield chi_1^0, chi_2^0 and
+        charged states after electroweak symmetry breaking.
+      confidence: medium
+      section: Mass spectrum
+      page: null
+    symmetries:
+    - reference_id: '1703_10916'
+      note: The paper imposes a Z2 parity separating the dark sector from SM fields and uses charge-conjugation
+        benchmark limits.
+      confidence: medium
+      section: Symmetries of the Dark sector
+      page: null
+    interactions:
+    - reference_id: '1703_10916'
+      note: Dimension-5 Yukawa and dipole operators couple the dark doublets to the Higgs and electroweak
+        gauge bosons.
+      confidence: medium
+      section: The dipole interactions
+      page: null
+    production_mechanism:
+    - reference_id: '1703_10916'
+      note: Thermal relic abundance is computed from chi_1^0 annihilation channels, with dipole coefficients
+        controlling cancellations in gauge-boson final states.
+      confidence: medium
+      section: Relic abundance constraints
+      page: null
+    parameter_ranges:
+    - reference_id: '1703_10916'
+      note: Representative scans use Lambda = 1 TeV, M_D around the electroweak scale, and WIMP masses
+        as low as about 200 GeV.
+      confidence: medium
+      section: Relic abundance constraints
+      page: null
+    validity_domain:
+    - reference_id: '1703_10916'
+      note: The EFT contains dimension-5 operators and the paper notes that the dipoles should arise from
+        a TeV-scale UV-complete model.
+      confidence: medium
+      section: Conclusions
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: eft-cutoff
+    severity: high
+    category: extrapolation
+    warning: Do not use the dimension-5 description above its cutoff or as a specified UV completion.
+    mitigation: Keep calculations within the EFT domain or supply a UV completion.
+    source_reference_ids:
+    - '1703_10916'
+  - id: benchmark-limits
+    severity: medium
+    category: assumption_mismatch
+    warning: The extracted parameter relations are tied to charge-conjugation benchmark scenarios.
+    mitigation: Recheck mass spectra and couplings before applying to general y1, y2, y12 choices.
+    source_reference_ids:
+    - '1703_10916'

@@ -1,0 +1,286 @@
+_source:
+  shard: arXiv_src_1608_002_wds.tar
+  paper_id: '1608_00791'
+  source_member: 1608_00791.json
+schema_version: model_only_v0
+model_id: 1608_00791_one_loop_scalar_higgs_portal_dm_v1
+identity:
+  name: One-loop scalar Higgs-portal dark matter
+  family: higgs_portal_dark_matter
+  aliases:
+  - scalar Higgs portal
+  - real singlet scalar dark matter
+  short_description: A real scalar singlet dark matter model with Z2 stability, Higgs-portal interactions,
+    and one-loop corrections to annihilation into Standard Model fermions.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Standard Model plus real scalar singlet
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  notes: Paper reviews the scalar portal Lagrangian and develops one-loop annihilation corrections.
+particle_content:
+  dark_matter_candidate:
+    name: S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Standard Model Higgs boson h
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - S
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Z2 symmetry under which S is odd and Standard Model fields are even.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - Standard Model fermions
+  dark_sector_couplings:
+  - lambda_hs S^2 H^dagger H
+  - lambda_S S^4
+  mediator_types:
+  - scalar Higgs mediator
+  interaction_operators:
+  - S^2 H^dagger H
+  annihilation_channels:
+  - S S to Standard Model fermion pairs through Higgs exchange
+  scattering:
+    elastic: 'yes'
+    inelastic: 'no'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_S
+    description: Physical scalar mass after electroweak symmetry breaking.
+    range: paper examples discuss admissible masses around 1-2 TeV and below 1 TeV effects
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1608.00791
+  - name: Higgs portal coupling
+    symbol: lambda_hs
+    description: Coupling of S^2 to H^dagger H.
+    range: model dependent; constrained by relic-abundance calculation in the paper
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1608.00791
+  - name: scalar self-coupling
+    symbol: lambda_S
+    description: Quartic self-interaction of S.
+    range: not specified in extraction text
+    role: core
+    status: unknown
+    source_reference_ids:
+    - arxiv:1608.00791
+production:
+  mechanisms:
+  - thermal freeze-out through Higgs-mediated annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - thermally averaged S S annihilation cross section
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: One-loop corrections modify the annihilation cross section used for the relic abundance.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_S
+  - lambda_hs
+  - one-loop annihilation correction
+  - Higgs mass
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak symmetry breaking sets Higgs-portal mass and cubic couplings
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: validity_scalar_portal
+  applies_to: model
+  condition: Real scalar Higgs portal with exact stabilizing Z2 symmetry and perturbative couplings.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Paper reports preliminary one-loop annihilation results and detailed report elsewhere.
+  source_reference_ids:
+  - arxiv:1608.00791
+- id: validity_relic_loop
+  applies_to: parameter
+  condition: Relic conclusions depend on loop-corrected annihilation to Standard Model fermions.
+  status: approximate
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - arxiv:1608.00791
+assumptions:
+  global:
+  - id: assume_exact_z2
+    description: The Z2 symmetry or similar mechanism stabilizes S.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: null
+    source_reference_ids:
+    - arxiv:1608.00791
+  - id: assume_standard_freezeout
+    description: Thermal relic-density relation is used for the Higgs-portal WIMP.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: null
+    source_reference_ids:
+    - arxiv:1608.00791
+associated_code:
+  has_associated_code: partial
+  code_summary: Paper mentions FeynArts, FormCalc, and micrOMEGAs for calculations, but no model-specific
+    released code is identified in the assigned text.
+  primary_code_role: relic_density_calculation
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Preliminary loop calculation
+  - Parameter space not fully reported in assigned text
+  validation_status: partially_validated
+  notes: Accepted as a substantive one-loop development of an existing model.
+agent_failure_modes:
+  warnings:
+  - id: existing_model_extension
+    severity: medium
+    category: other
+    warning: Do not treat this as the first proposal of scalar Higgs-portal dark matter; it is a loop-level
+      development.
+    mitigation: Preserve provenance role as extension.
+    source_reference_ids:
+    - arxiv:1608.00791
+operators:
+  renormalizable_terms:
+  - S kinetic term
+  - scalar mass term
+  - lambda_hs S^2 H^dagger H
+  - lambda_S S^4
+  eft_operators: []
+  contact_or_light_mediator: light_mediator
+  coupling_types:
+  - Higgs portal scalar coupling
+provenance:
+  model_id: 1608_00791_one_loop_scalar_higgs_portal_dm_v1
+  model_name: One-loop scalar Higgs-portal dark matter
+  model_family: higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:1608.00791
+      title: One-loop corrections for Higgs-portal dark matter
+      year: 2016
+      arxiv_id: '1608.00791'
+      role: extension
+      notes: Assigned SQLite full text only.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0004
+    extractor_name: gpt-5.5_dark_matter_model_worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:1608.00791
+      section: scalar and vector Higgs portals
+      quote_or_summary: Scalar portal Lagrangian, Z2 stabilization, and relic-density relation are reviewed.
+    - reference_id: arxiv:1608.00791
+      section: discussion
+      quote_or_summary: One-loop annihilation corrections can change the scalar-portal relic calculation.
+    unresolved_items:
+    - Whether the paper should be treated as a model extension rather than an original model is borderline.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:1608.00791
+      note: The scalar portal introduces a real massive scalar S as the dark matter candidate.
+      confidence: high
+      section: scalar and vector Higgs portals
+    symmetries:
+    - reference_id: arxiv:1608.00791
+      note: The scalar case requires a Z2 or similar stabilizing mechanism.
+      confidence: high
+      section: scalar and vector Higgs portals
+    interactions:
+    - reference_id: arxiv:1608.00791
+      note: The Lagrangian includes S^2 H^dagger H and S^4 terms.
+      confidence: high
+      section: scalar and vector Higgs portals
+    production_mechanism:
+    - reference_id: arxiv:1608.00791
+      note: Thermally averaged annihilation through the Higgs portal is tied to the Planck relic abundance.
+      confidence: high
+      section: scalar and vector Higgs portals
+    parameter_ranges:
+    - reference_id: arxiv:1608.00791
+      note: The paper studies loop effects for admissible TeV-scale scalar masses and lambda_hs values.
+      confidence: medium
+      section: discussion
+    validity_domain:
+    - reference_id: arxiv:1608.00791
+      note: The paper presents one-loop annihilation corrections as a development of the scalar portal.
+      confidence: medium
+      section: one-loop analysis
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium

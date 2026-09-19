@@ -1,0 +1,414 @@
+_source:
+  shard: arXiv_src_0803_001_wds.tar
+  paper_id: 0803_1444
+  source_member: 0803_1444.json
+schema_version: model_only_v0
+model_id: 0803_1444_intermediate_higgs_portal_singlet_v1
+identity:
+  name: Intermediate-mass electroweak singlet Higgs-portal dark matter
+  family: higgs_portal_dark_matter
+  aliases:
+  - electroweak singlet dark matter
+  - scalar singlet Higgs portal
+  - Z2-symmetric singlet dark matter
+  short_description: A Z2-stabilized electroweak singlet scalar or degenerate O(N) singlet multiplet with
+    Higgs-portal coupling, studied for intermediate masses near W, Z, and Higgs annihilation thresholds.
+  historical_origin_or_motivation: Used as a minimal renormalizable dark-matter model whose annihilation
+    products may produce cosmic-ray photon signals when m_S is near Higgs-portal thresholds.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Z2-symmetric scalar singlet extension of the Standard Model
+  - Higgs portal
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The scalar-sector Lagrangian includes S^2 H^dagger H, a bare singlet mass, and no Higgs-singlet
+    mixing; the paper also permits an O(N) multiplet of degenerate singlet states.
+particle_content:
+  dark_matter_candidate:
+    name: electroweak singlet scalar S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - optional O(N) multiplet of degenerate singlet scalars
+  mediators:
+  - Standard Model Higgs boson
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - degenerate singlet states for N > 1
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: An exact Z2 symmetry forbids singlet decay and Higgs-singlet mixing by taking
+    the singlet vacuum expectation value to vanish.
+  symmetries:
+  - name: Z2 singlet parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken in the model considered
+    breaking_scale: null
+  - name: optional global O(N)
+    type: global
+    exact_or_approximate: exact
+    breaking: unbroken for degenerate N-plet benchmarks
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - W bosons
+  - Z bosons
+  - Higgs bosons
+  dark_sector_couplings:
+  - lambda S^2 H^dagger H
+  - optional lambda_S S^4 self-interaction
+  mediator_types:
+  - Standard Model Higgs boson
+  interaction_operators:
+  - S^2 H^dagger H
+  - S^4
+  scattering:
+    elastic: unknown
+    inelastic: 'no'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - SS -> W W
+  - SS -> Z Z
+  - SS -> h h through Higgs-portal diagrams
+  decay_channels:
+  - not_applicable
+  self_scattering_channels:
+  - S S elastic self-interaction possible through lambda_S S^4
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: singlet mass
+    symbol: m_S
+    description: Mass of the electroweak singlet dark matter state.
+    range:
+      min: m_W
+      max: 1 TeV
+      inclusive_min: false
+      inclusive_max: false
+      unit: GeV
+      notes: Intermediate mass range emphasized in the paper.
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids: []
+  - name: Higgs mass
+    symbol: m_h
+    description: Benchmark Higgs masses used in annihilation and flux calculations.
+    value:
+    - 115 GeV
+    - 160 GeV
+    - 165 GeV
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids: []
+  - name: singlet-Higgs coupling squared
+    symbol: lambda^2
+    description: Perturbative Higgs-portal coupling benchmarks.
+    value:
+    - '0.1'
+    - '0.01'
+    role: core
+    status: established
+    source_reference_ids: []
+  - name: number of singlet states
+    symbol: N
+    description: Degenerate O(N) singlet multiplicity used in relic-density and flux scaling.
+    value:
+    - '1'
+    - '10'
+    role: core
+    status: established
+    source_reference_ids: []
+  derived:
+  - name: freeze-out temperature
+    symbol: T_f
+    description: Freeze-out temperature obtained from the Lee-Weinberg condition for benchmark points.
+    role: derived
+    status: approximate
+    source_reference_ids: []
+  - name: annihilation cross section times velocity
+    symbol: v_sigma_SS
+    description: Higgs-portal annihilation rate enhanced near W, Z, and Higgs peaks.
+    value: order lambda^2 * 1e-23 cm^3/s near m_S close to m_h
+    unit: cm^3/s
+    role: derived
+    status: approximate
+    source_reference_ids: []
+  nuisance: []
+production:
+  mechanisms:
+  - thermal freeze-out below the electroweak phase transition using Lee-Weinberg evolution
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Higgs-portal annihilation cross section
+  - singlet mass m_S
+  - Higgs mass m_h
+  - singlet multiplicity N
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper imposes Omega_S = Omega_dm and solves for benchmark masses and freeze-out temperatures
+    in the intermediate-mass range.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter energy density target
+    symbol: Omega_S
+    description: Assumption that singlets account for the dark matter density.
+    value: Omega_S = Omega_dm
+    role: cosmological
+    status: assumed
+    source_reference_ids: []
+  calculation_type: thermal
+  key_dependencies:
+  - v_sigma_SS/N
+  - m_S relative to W, Z, and Higgs thresholds
+  - N singlet multiplicity
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: chemical freeze-out temperature
+    symbol: T_f
+    description: Freeze-out temperature from Lee-Weinberg theory.
+    role: derived
+    status: approximate
+    source_reference_ids: []
+  phase_transitions:
+  - electroweak phase transition precedes singlet thermal production treatment
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: thermal equilibrium density n_0(T) used until freeze-out in the Lee-Weinberg approximation
+  average_momentum_relative_to_thermal: thermal before freeze-out
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The relic calculation assumes nonrelativistic freeze-out with T_f about 0.05 m_S.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: singlet_intermediate_mass
+  applies_to: parameter
+  condition: Intermediate mass range m_W < m_S < 1 TeV is the focus of the paper.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: singlet_perturbative_coupling
+  applies_to: model
+  condition: Calculations assume perturbative singlet-Higgs coupling, especially lambda^2 = 0.1 or 0.01.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: singlet_no_vev
+  applies_to: model
+  condition: The singlet vacuum expectation value is assumed to vanish to avoid Higgs-singlet mixing.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+- id: singlet_o_n_degeneracy
+  applies_to: model
+  condition: For N > 1, the O(N) symmetry is assumed to make singlets degenerate with universal Higgs
+    coupling.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: a1
+    description: The singlet sector is exactly Z2 symmetric and has vanishing singlet vacuum expectation
+      value.
+    scope: theory
+    status: assumed
+    source_reference_ids: []
+  - id: a2
+    description: Singlets account for the full dark matter energy density in the benchmark relic-density
+      calculation.
+    scope: production
+    status: assumed
+    source_reference_ids: []
+  - id: a3
+    description: The nonrelativistic Lee-Weinberg freeze-out approximation is applicable for the chosen
+      masses and couplings.
+    scope: production
+    status: approximate
+    source_reference_ids: []
+  - id: a4
+    description: If N > 1, all singlet states are degenerate and have universal Higgs-portal coupling.
+    scope: theory
+    status: assumed
+    source_reference_ids: []
+  constraint_specific: []
+  computation_specific: []
+associated_code:
+  has_associated_code: 'no'
+  code_summary: No model-specific public code is mentioned in the assigned text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 0803_1444_intermediate_higgs_portal_singlet_v1
+  model_name: Intermediate-mass electroweak singlet Higgs-portal dark matter
+  model_family: higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Cosmic rays through the Higgs portal
+      authors:
+      - Rainer Dick
+      - Robert B. Mann
+      - Kai E. Wunderle
+      year: 2008
+      arxiv_id: '0803.1444'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text in batch-0008.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex batch-0008
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: opening abstract/introduction
+      page: null
+      quote_or_summary: Considers electroweak singlet dark matter with mass comparable to the Higgs mass
+        and perturbative Higgs coupling.
+    - reference_id: paper
+      section: model setup
+      page: null
+      quote_or_summary: Writes the scalar-sector Lagrangian with S^2 H^dagger H, bare singlet mass, Z2
+        symmetry, and optional O(N) multiplet.
+    - reference_id: paper
+      section: Lee-Weinberg abundance section
+      page: null
+      quote_or_summary: Uses thermal production and the Lee-Weinberg condition to relate m_S, m_h, N,
+        and the annihilation rate.
+    unresolved_items:
+    - The paper develops phenomenology of an existing Higgs-portal model, so the row should not be treated
+      as the original proposal of scalar singlet dark matter.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The candidate is a stable electroweak singlet S; the paper also allows N degenerate singlet
+        states with global O(N) symmetry.
+      confidence: high
+      section: model setup
+    symmetries:
+    - reference_id: paper
+      note: The model is Z2 symmetric, assumes zero singlet vev, and can have global O(N) for mass degeneracy
+        and universal coupling.
+      confidence: high
+      section: model setup
+    interactions:
+    - reference_id: paper
+      note: The singlet couples to Standard Model matter exclusively through S^2 H^dagger H and annihilates
+        through Higgs-mediated W, Z, and Higgs thresholds.
+      confidence: high
+      section: model setup and annihilation sections
+    production_mechanism:
+    - reference_id: paper
+      note: The relic abundance section uses thermal creation below the electroweak phase transition and
+        Lee-Weinberg freeze-out equations.
+      confidence: high
+      section: Lee-Weinberg abundance section
+    cosmological_history:
+    - reference_id: paper
+      note: After freeze-out the paper states the number density follows standard cold dark matter late-time
+        evolution.
+      confidence: medium
+      section: Lee-Weinberg abundance section
+    parameter_ranges:
+    - reference_id: paper
+      note: Benchmarks include m_W < m_S < 1 TeV, lambda^2 = 0.1 or 0.01, and N = 1 or 10.
+      confidence: high
+      section: model setup and tables discussion
+    validity_domain:
+    - reference_id: paper
+      note: The calculations assume perturbative couplings, nonrelativistic annihilation, zero singlet
+        vev, and optional O(N) degeneracy.
+      confidence: high
+      section: model setup
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  validation_status: partially_validated
+  dominant_uncertainties:
+  - benchmark dependence on Higgs mass and singlet multiplicity
+  - phenomenology developed for cosmic rays rather than a new UV completion
+  notes: The paper provides strong support for the model ingredients and thermal relic logic but focuses
+    on an intermediate-mass phenomenological regime.
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: other
+    warning: This paper develops the Higgs-portal singlet phenomenology rather than being the original
+      proposal; avoid over-crediting origin.
+    source_reference_ids: []
+  - id: w2
+    severity: low
+    category: extrapolation
+    warning: Do not extrapolate the benchmark conclusions beyond perturbative couplings, zero singlet
+      vev, and the intermediate-mass range without further evidence.
+    source_reference_ids: []

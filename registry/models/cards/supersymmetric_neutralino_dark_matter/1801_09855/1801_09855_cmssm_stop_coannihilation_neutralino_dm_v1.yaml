@@ -1,0 +1,634 @@
+_source:
+  shard: arXiv_src_1801_025_wds.tar
+  paper_id: '1801_09855'
+  source_member: 1801_09855.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1801_09855_cmssm_stop_coannihilation_neutralino_dm_v1
+identity:
+  name: CMSSM stop-coannihilation neutralino dark matter
+  family: supersymmetric_neutralino_dark_matter
+  aliases:
+  - CMSSM stop coannihilation strip
+  short_description: A constrained MSSM neutralino-LSP dark matter scenario whose relic density is set
+    by coannihilation with a nearly degenerate lighter stop, including Goldstone-mode, Sommerfeld, and
+    bound-state effects.
+  historical_origin_or_motivation: Motivated by heavy supersymmetric spectra that evade LHC searches while
+    keeping neutralino dark matter at the observed abundance.
+  status: benchmark
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - MSSM
+  - R-parity conserving supersymmetry
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper studies constrained supersymmetric parameter spaces with a neutralino LSP and stop
+    coannihilation.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino LSP
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - lighter stop nearly degenerate with the LSP
+  - heavier stop
+  - other MSSM sparticles
+  mediators:
+  - W boson
+  - Z boson
+  - Higgs bosons
+  - Goldstone modes
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - nearly degenerate lighter stop
+  long_lived_particles: []
+  unstable_parent_particles:
+  - lighter stop coannihilation partner
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R parity conservation makes the lightest supersymmetric particle stable.
+  symmetries:
+  - name: R parity
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  - other
+  standard_model_targets:
+  - W bosons
+  - Z bosons
+  - Higgs bosons
+  - Standard Model final states from stop annihilation
+  dark_sector_couplings:
+  - stop-Goldstone interactions proportional to A_t
+  - neutralino-stop coannihilation
+  mediator_types:
+  - MSSM electroweak and Higgs-sector states
+  interaction_operators:
+  - MSSM stop-Higgs/Goldstone interactions controlled by top Yukawa and A terms
+  annihilation_channels:
+  - stop-antistop to WW
+  - stop-antistop to ZZ
+  - stop-antistop to hh
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: universal gaugino mass
+    symbol: m_1/2
+    description: CMSSM high-scale gaugino mass parameter.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: universal scalar mass
+    symbol: m_0
+    description: CMSSM high-scale scalar mass parameter.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: trilinear coupling
+    symbol: A_0
+    description: Universal trilinear soft term controlling stop-Goldstone enhancement.
+    role: core
+    status: inferred
+  - name: tan beta
+    symbol: tan_beta
+    description: Ratio of Higgs vacuum expectation values.
+    role: core
+    status: inferred
+  - name: LSP-stop mass splitting
+    symbol: Delta m
+    description: Mass difference between the lighter stop and the neutralino LSP.
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out with stop coannihilation
+  - stop-antistop annihilation to longitudinal W and Z modes
+  - Sommerfeld enhancement
+  - bound-state effects
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - LSP-stop mass splitting
+  - trilinear A terms
+  - stop annihilation rates
+  - Sommerfeld and bound-state effects
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper computes strips where coannihilation reduces the neutralino relic density into the
+    cosmological range.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - neutralino mass
+  - lighter stop mass
+  - A0
+  - tan beta
+  - mu sign
+  - input scale
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Thermal WIMP freeze-out with coannihilation; no phase-space distribution is provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: v1
+  applies_to: model
+  condition: CMSSM universality is imposed at the GUT scale.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: v2
+  applies_to: parameter
+  condition: The lighter stop is nearly degenerate with the neutralino LSP along the coannihilation strip.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: a1
+    description: R parity is conserved so that the neutralino LSP is stable.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: a2
+    description: The paper focuses on phenomenological supersymmetric parameter space and sets aside UV-dependent
+      proton-decay issues.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: 'yes'
+  code_summary: The study uses SSARD for spectra/relic density and FeynHiggs 2.13.0 for Higgs-mass calculations.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 1801_09855_cmssm_stop_coannihilation_neutralino_dm_v1
+  model_name: CMSSM stop-coannihilation neutralino dark matter
+  model_family: supersymmetric_neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arXiv:1801.09855
+      title: Stop Coannihilation in the CMSSM and SubGUT Models
+      authors: []
+      year: 2018
+      arxiv_id: '1801.09855'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '1801.09855'
+      authors:
+      - Ellis, John
+      - Evans, Jason L.
+      - Luo, Feng
+      - Olive, Keith A.
+      - Zheng, Jiaming
+      doi: 10.1140/epjc/s10052-018-5831-z
+      notes: Primary assigned paper.
+      reference_id: '1801_09855'
+      role: original_model
+      title: Stop coannihilation in the CMSSM and SubGUT models
+      url: https://arxiv.org/abs/1801.09855
+      year: 2018
+    constraint_papers:
+    - arxiv_id: '2210.16337'
+      authors:
+      - Ellis, John
+      - Olive, Keith A.
+      - Spanos, Vassilis C.
+      - Stamou, Ioanna D.
+      doi: 10.1140/epjc/s10052-023-11405-1
+      notes: Related paper resolved from local full-text cache.
+      reference_id: '2210_16337'
+      role: constraint
+      title: The CMSSM survives Planck, the LHC, LUX-ZEPLIN, Fermi-LAT, H.E.S.S. and IceCube
+      url: https://arxiv.org/abs/2210.16337
+      year: 2023
+    external_databases: []
+    review_papers:
+    - arxiv_id: '2103.15430'
+      authors:
+      - Ellis, John
+      - Evans, Jason L.
+      - Nagata, Natsumi
+      - Olive, Keith A.
+      doi: 10.1140/epjc/s10052-021-09337-9
+      notes: Related paper resolved from local full-text cache.
+      reference_id: '2103_15430'
+      role: extension
+      title: A minimal supersymmetric SU(5) missing-partner model
+      url: https://arxiv.org/abs/2103.15430
+      year: 2021
+    - arxiv_id: '2209.04134'
+      authors:
+      - Gupta, Surabhi
+      - Gupta, Sudhir Kumar
+      - Ren, Keven
+      doi: 10.48550/arXiv.2209.04134
+      notes: Related paper resolved from local full-text cache.
+      reference_id: '2209_04134'
+      role: extension
+      title: Higgs boson in a flavor-extension of the CMSSM
+      url: https://arxiv.org/abs/2209.04134
+      year: 2022
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0010
+    extractor_name: GPT-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arXiv:1801.09855
+      section: Introduction
+      page: null
+      quote_or_summary: The paper re-examines stop coannihilation as a way for a neutralino LSP to provide
+        the relic density.
+    - reference_id: arXiv:1801.09855
+      section: CMSSM
+      page: null
+      quote_or_summary: CMSSM strips are studied with Goldstone, Sommerfeld, and bound-state effects.
+    unresolved_items:
+    - No machine-readable CMSSM scan table was present in local text.
+    - The Higgs-mass boundary should be cross-checked with multiple calculators before precision use.
+  evidence:
+    particle_content:
+    - reference_id: arXiv:1801.09855
+      note: The introduction states that the LSP is an excellent cold dark matter candidate if R parity
+        is conserved and studies a neutralino LSP with a lighter stop coannihilation partner.
+      confidence: medium
+      section: Introduction
+    symmetries:
+    - reference_id: arXiv:1801.09855
+      note: R parity conservation is explicitly assumed for LSP stability.
+      confidence: medium
+      section: Introduction
+    interactions:
+    - reference_id: arXiv:1801.09855
+      note: Stop annihilations to longitudinal W and Z modes are enhanced by large A terms, with Sommerfeld
+        and bound-state effects included.
+      confidence: medium
+      section: Goldstone and bound-state sections
+    production_mechanism:
+    - reference_id: arXiv:1801.09855
+      note: The paper explains that stop coannihilation can reduce a massive neutralino LSP relic density
+        into the observed range.
+      confidence: medium
+      section: Introduction
+    parameter_ranges:
+    - reference_id: arXiv:1801.09855
+      note: CMSSM examples scan m_1/2, m_0, A0, tan beta, and the LSP-stop mass difference along the strip.
+      confidence: medium
+      section: CMSSM section
+    constraints:
+    - confidence: high
+      note: Primary paper states the Planck relic-density and Higgs-mass filters used for the strips.
+      page: null
+      reference_id: '1801_09855'
+      section: Main text/conclusion
+    - confidence: medium
+      note: Related CMSSM global-constraint paper was read locally for later Planck/LHC/LZ context.
+      page: null
+      reference_id: '2210_16337'
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary paper describes stop coannihilation, Goldstone/Sommerfeld/bound-state effects, and
+        CMSSM/sub-GUT differences.
+      page: null
+      reference_id: '1801_09855'
+      section: Abstract/conclusion
+    routes:
+    - confidence: high
+      note: Route follows the primary scan workflow and calculator discussion.
+      page: null
+      reference_id: '1801_09855'
+      section: Main text
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: assumption_mismatch
+    warning: The CMSSM strip should not be confused with the sub-GUT variant, where reduced running changes
+      the stop spectrum.
+    mitigation: null
+    source_reference_ids: []
+observables:
+- caveats:
+  - The strip position depends on mass-spectrum and relic-density codes.
+  channel: cosmology
+  effect_direction: suppression
+  environments:
+  - early universe
+  id: stop_coannihilation_relic_suppression
+  key_quantities:
+  - description: CMSSM high-scale gaugino mass parameter.
+    name: universal gaugino mass
+    role: core
+    source_reference_ids:
+    - '1801_09855'
+    status: inferred
+    symbol: m_1/2
+    unit: GeV
+  - description: CMSSM high-scale scalar mass parameter.
+    name: universal scalar mass
+    role: core
+    source_reference_ids:
+    - '1801_09855'
+    status: inferred
+    symbol: m_0
+    unit: GeV
+  - description: Large A terms enhance stop annihilations but affect the Higgs mass.
+    name: trilinear coupling
+    role: core
+    source_reference_ids:
+    - '1801_09855'
+    status: inferred
+    symbol: A_0
+  - description: Mass difference between lighter stop and neutralino LSP.
+    name: stop-LSP mass splitting
+    role: core
+    source_reference_ids:
+    - '1801_09855'
+    status: inferred
+    symbol: Delta m
+    unit: GeV
+  linked_constraints:
+  - planck_stop_coannihilation_strip
+  linked_routes:
+  - cmssm_stop_strip_to_planck_higgs
+  name: Neutralino relic-density suppression by stop coannihilation
+  notes: The primary paper emphasizes Goldstone, Sommerfeld, and bound-state enhancements.
+  observability: high
+  predicted_effect: A nearly degenerate lighter stop keeps the neutralino LSP in efficient coannihilation,
+    with longitudinal W/Z, Sommerfeld, and bound-state effects further lowering the relic density into
+    the Planck range.
+  redshift_range: null
+  relevance: critical
+  scale_range: freezeout epoch
+  source_reference_ids:
+  - '1801_09855'
+  subchannel: thermal_coannihilation
+- caveats:
+  - Differences among Higgs-mass calculators are a leading uncertainty.
+  channel: collider
+  effect_direction: shape_change
+  environments:
+  - LHC Higgs measurements
+  id: cmssm_higgs_mass_tension
+  key_quantities:
+  - description: Observed Higgs mass target around 125 GeV.
+    name: light Higgs mass
+    role: core
+    source_reference_ids:
+    - '1801_09855'
+    status: inferred
+    symbol: m_h
+    unit: GeV
+  - description: Stop mass entering Higgs radiative corrections and coannihilation.
+    name: lighter stop mass
+    role: core
+    source_reference_ids:
+    - '1801_09855'
+    status: inferred
+    symbol: m_stop1
+    unit: GeV
+  - description: Default calculator used in the primary paper.
+    name: Higgs calculator choice
+    role: computational
+    source_reference_ids:
+    - '1801_09855'
+    status: assumed
+    symbol: FeynHiggs 2.13.0
+  linked_constraints:
+  - higgs_mass_calculator_constraint
+  linked_routes:
+  - cmssm_stop_strip_to_planck_higgs
+  name: Higgs-mass tension along the CMSSM stop strip
+  notes: The primary paper treats the Higgs mass as a limiting constraint on CMSSM stop coannihilation.
+  observability: medium
+  predicted_effect: Large A terms can lengthen the stop coannihilation strip but may reduce the calculated
+    light Higgs mass below the observed value, depending on the Higgs-mass calculator.
+  redshift_range: null
+  relevance: high
+  scale_range: electroweak-scale spectrum
+  source_reference_ids:
+  - '1801_09855'
+  subchannel: higgs_mass_constraint
+constraints:
+- allowed_regions:
+  - Near-degenerate stop-LSP strips can match the Planck dark matter density when enhanced stop annihilation
+    effects are included.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: Soft terms are universal at the GUT scale for the CMSSM row.
+    id: standard_cmssm_boundary
+    impact_if_violated: Changing the input scale moves the strip and motivates the separate sub-GUT row.
+    notes: null
+    scope: CMSSM strip calculation
+    source_reference_ids:
+    - '1801_09855'
+    status: assumed
+  benchmark_implications:
+  - Goldstone-mode annihilations, Sommerfeld enhancement, and bound-state formation can extend viable
+    strips to heavier LSP masses than a simpler calculation.
+  caveats:
+  - The local text does not expose scan grids.
+  constrained_parameters:
+  - m_1/2
+  - m_0
+  - A_0
+  - tan_beta
+  - Delta m
+  - m_chi
+  constraint_type: cosmological
+  data_release: Planck relic-density target as used in primary paper
+  excluded_regions:
+  - CMSSM points off the narrow stop-coannihilation strip overproduce or underproduce the neutralino relic
+    abundance in standard cosmology.
+  id: planck_stop_coannihilation_strip
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Planck relic-density strip for CMSSM stop coannihilation
+  notes: null
+  observable_channel: thermal_relic_density
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '1801_09855'
+- allowed_regions: []
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The FeynHiggs 2.13.0 Higgs-mass prediction is used as the default boundary.
+    id: calculator_systematics
+    impact_if_violated: Other calculators can shift the viable strip.
+    notes: null
+    scope: Higgs-mass interpretation
+    source_reference_ids:
+    - '1801_09855'
+    status: assumed
+  benchmark_implications:
+  - The CMSSM strip is limited because large A terms split stop masses and suppress the Higgs mass in
+    FeynHiggs 2.13.0.
+  caveats:
+  - The primary paper explicitly flags calculator differences as an uncertainty.
+  constrained_parameters:
+  - A_0
+  - m_stop1
+  - m_stop2
+  - m_h
+  constraint_type: theoretical
+  data_release: LHC Higgs mass measurement
+  excluded_regions:
+  - Regions where the calculated light Higgs mass falls below the measured value are disfavored, but the
+    boundary is calculator-dependent.
+  id: higgs_mass_calculator_constraint
+  likelihood_available: approximate
+  likelihood_reference: FeynHiggs 2.13.0 in the primary paper
+  name: Higgs-mass calculator constraint on CMSSM strip
+  notes: null
+  observable_channel: higgs_mass
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '1801_09855'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Route is code-dependent and should preserve calculator versions.
+    caveats:
+    - High sensitivity to Delta m and Higgs-mass theory uncertainty.
+    constraint_ids:
+    - planck_stop_coannihilation_strip
+    - higgs_mass_calculator_constraint
+    derived_quantities:
+    - spectrum
+    - Delta m
+    - annihilation and coannihilation rates
+    - Omega_chi h^2
+    - m_h
+    description: Generate the CMSSM stop-coannihilation strip and apply relic-density and Higgs-mass filters.
+    forward_model_chain:
+    - inputs:
+      - m_1/2
+      - m_0
+      - A_0
+      - tan_beta
+      - sign(mu)
+      notes: Primary paper used SSARD for spectrum/relic calculations and FeynHiggs for m_h.
+      outputs:
+      - sparticle spectrum
+      - m_h
+      step_id: cmssm_spectrum
+      step_type: simulation
+      tool_or_code: SSARD plus FeynHiggs 2.13.0
+      validity: CMSSM GUT-scale boundary conditions.
+    - inputs:
+      - spectrum
+      - Delta m
+      notes: Compare with versions omitting bound states or WW/ZZ channels.
+      outputs:
+      - effective annihilation rate
+      step_id: coannihilation_rates
+      step_type: simulation
+      tool_or_code: SSARD relic-density implementation
+      validity: Includes Goldstone, Sommerfeld, and bound-state effects as discussed in primary paper.
+    - inputs:
+      - Omega_chi h^2
+      - m_h
+      notes: Apply Planck density and Higgs mass windows.
+      outputs:
+      - accepted strip
+      step_id: planck_higgs_filter
+      step_type: likelihood
+      tool_or_code: null
+      validity: Approximate target filters, not a full public likelihood.
+    id: cmssm_stop_strip_to_planck_higgs
+    input_parameters:
+    - m_1/2
+    - m_0
+    - A_0
+    - tan_beta
+    - sign(mu)
+    likelihoods:
+    - Planck relic-density target
+    - LHC Higgs mass
+    observable_ids:
+    - stop_coannihilation_relic_suppression
+    - cmssm_higgs_mass_tension
+    required_code_resources:
+    - SSARD or equivalent SUSY relic code
+    - FeynHiggs or cross-checked Higgs calculator
+    route_status: planned
+    source_model_features:
+    - GUT-scale universal soft terms
+    - neutralino LSP
+    - nearly degenerate lighter stop
+    validation_tests:
+    - Reproduce primary stop-coannihilation curves versus m_1/2
+    - Toggle bound-state and WW/ZZ effects
+    - Compare FeynHiggs against another Higgs calculator

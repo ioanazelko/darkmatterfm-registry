@@ -1,0 +1,325 @@
+_source:
+  shard: arXiv_src_1310_020_wds.tar
+  paper_id: '1310_7901'
+  source_member: 1310_7901.json
+schema_version: model_only_v0
+model_id: 1310_7901_higgs_portal_two_component_dm_v1
+identity:
+  name: Higgs-portal two-component dark matter
+  family: multi_component_dark_matter
+  aliases:
+  - scalar-singlet plus Majorana-fermion two-component DM
+  short_description: A two-component cold dark matter model with a real scalar singlet coupled through
+    the Higgs portal and a neutral Majorana fermion coupled within the dark sector.
+  historical_origin_or_motivation: Motivated by multi-component dark matter as an alternative to single-particle
+    WIMP scenarios.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Standard Model plus singlet scalar and singlet Majorana fermions
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes a renormalizable scalar potential and fermion-sector Lagrangian with a Z_2 x
+    Z_2 dark symmetry.
+particle_content:
+  dark_matter_candidate:
+    name: real scalar singlet eta and neutral Majorana fermion chi
+    spin: 0 and 1/2
+    statistics: unknown
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - heavier Majorana fermion chi_h
+  mediators:
+  - Standard Model Higgs boson
+  - real scalar singlet eta
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: A Z_2 x Z_2 dark-sector symmetry stabilizes the scalar and light Majorana components
+    while allowing the heavier fermion to decay.
+  symmetries:
+  - name: Z_2 x Z_2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken in the assumed parameter region
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs boson
+  - Standard Model final states through Higgs exchange
+  dark_sector_couplings:
+  - lambda_x Higgs-portal coupling
+  - g Yukawa-like dark-sector coupling between scalar and Majorana fermions
+  mediator_types:
+  - Higgs scalar
+  - dark scalar
+  interaction_operators:
+  - lambda_x H^dagger H eta^2
+  - eta chi_h chi coupling
+  annihilation_channels:
+  - eta eta -> SM SM
+  - chi chi -> eta eta where kinematically allowed
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: scalar dark matter mass
+    symbol: m_eta
+    description: Mass of the real scalar singlet
+    range: 10 GeV to 10 TeV scan
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: Majorana dark matter mass
+    symbol: m_chi
+    description: Mass of the neutral Majorana fermion component
+    range: 10 GeV to 10 TeV scan
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: Higgs-portal coupling
+    symbol: lambda_x
+    description: Coupling between eta^2 and H^dagger H
+    range: 1e-3 to 4 scan
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: dark Yukawa coupling
+    symbol: g
+    description: Coupling linking the scalar and Majorana fermion sector
+    range: 0.1 to 4 scan
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: heavy Majorana mass
+    symbol: M_h
+    description: Mass of the heavier Majorana fermion chosen to allow fast decay
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - thermal freeze-out with coupled Boltzmann equations
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - eta annihilation to Standard Model states
+  - conversion and annihilation reactions between eta and chi
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper assumes thermal production and solves two coupled number-density equations.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_eta
+  - m_chi
+  - lambda_x
+  - g
+  - mass hierarchy
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak symmetry breaking with unbroken dark Z_2 x Z_2
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Both components are treated as cold thermal relics.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: unbroken-z2xz2
+  applies_to: theory
+  condition: The Z_2 x Z_2 symmetry remains unbroken and eta has no vev
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: tree-level-boltzmann
+  applies_to: production
+  condition: Relic calculation includes tree-level interactions and assumes kinetic equilibrium
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: subcomponent-allowed
+  applies_to: model
+  condition: The paper allows eta plus chi to be below the total WMAP abundance, leaving room for other
+    components
+  status: inferred
+  extrapolation_risk: low
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: thermal-production
+    description: The scalar and Majorana components are thermally produced and evolve according to coupled
+      Boltzmann equations.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: kinetic-equilibrium
+    description: Kinetic equilibrium is assumed and quantum-statistical effects are neglected in the Boltzmann
+      treatment.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: No released model code is identified in the extracted text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1310_7901_higgs_portal_two_component_dm_v1
+  model_name: Constraints on Two-Component Dark Matter
+  model_family: multi_component_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Constraints on Two-Component Dark Matter
+      year: 2013
+      arxiv_id: '1310.7901'
+      doi: null
+      url: null
+      role: extension
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: gpt-5.5-rolling-batch-subagent
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      page: null
+      quote_or_summary: The paper states that it studies a Higgs-portal two-component scenario with a
+        neutral scalar singlet and a neutral Majorana fermion.
+    - reference_id: primary
+      section: Boltzmann equations
+      page: null
+      quote_or_summary: The relic abundance is found by solving coupled Boltzmann equations for the two
+        species.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: 'The model contains two cold dark matter species: a neutral scalar singlet and a neutral Majorana
+        fermion; it also includes a heavier Majorana fermion.'
+      confidence: high
+      section: Model setup
+      page: null
+    symmetries:
+    - reference_id: primary
+      note: The dark sector is made invariant under Z_2 x Z_2, with all extra fields transforming nontrivially
+        and Standard Model particles singlets.
+      confidence: high
+      section: Model setup
+      page: null
+    interactions:
+    - reference_id: primary
+      note: The scalar singlet couples to the Standard Model through the Higgs portal, while the fermionic
+        dark matter has no direct SM coupling and interacts through the dark sector.
+      confidence: high
+      section: Model setup
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: Relic abundances for the scalar and Majorana components are computed using coupled Boltzmann
+        equations under thermal production assumptions.
+      confidence: high
+      section: Boltzmann equations
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: The scan uses masses from 10 GeV to 10 TeV, Higgs-portal coupling lambda_x from 1e-3 to 4,
+        and fermion coupling g from 0.1 to 4.
+      confidence: medium
+      section: Numerical scan
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: The paper allows the two components to be below the WMAP upper relic abundance, leaving room
+        for other noninteracting dark matter components.
+      confidence: medium
+      section: Numerical scan
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats: []
+  related_entries: []
+  external_links: {}
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  dominant_uncertainties:
+  - conference-proceedings level detail
+  - loop effects for fermion-dominated direct scattering noted but not fully captured in model-only card
+  notes: The model is clearly specified but the paper is primarily a short constraints/proceedings treatment.
+agent_failure_modes:
+  warnings:
+  - id: component-fractions
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not assume each component separately equals the full dark matter density; the paper rescales
+      rates by component number fractions and permits subdominant total abundance.
+    mitigation: null
+    source_reference_ids: []

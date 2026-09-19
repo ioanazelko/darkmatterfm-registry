@@ -1,0 +1,815 @@
+_source:
+  shard: arXiv_src_1407_009_wds.tar
+  paper_id: '1407_4749'
+  source_member: 1407_4749.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: invalid_mapping
+    id: scenario_specific
+    mitigation: null
+    severity: medium
+    source_reference_ids:
+    - paper
+    warning: Do not merge Scenario 1 with the nondegenerate Scenario 2; they have different dark matter
+      component structure.
+associated_code:
+  code_summary: The paper states that model interactions were implemented in CalcHEP and relic abundance
+    was computed with MicrOMEGAs; no custom repository is identified.
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules:
+  - availability: public
+    name: MicrOMEGAs
+    purpose:
+    - compute_relic_density
+    - solve_boltzmann_equations
+    relationship_to_model: related_but_not_model_specific
+    resource_type: package
+  - availability: public
+    name: CalcHEP
+    purpose:
+    - define_lagrangian
+    - compute_cross_sections
+    relationship_to_model: related_but_not_model_specific
+    resource_type: package
+  primary_code_role: relic_density_calculation
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The S3 Case B field assignment and vacuum alignment v1 = v_SM, v2 = v3 = 0 hold.
+    id: s3_case_b
+    scope: global
+    source_reference_ids:
+    - paper
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The abundance is computed using standard thermal freeze-out Boltzmann evolution.
+    id: thermal_freezeout
+    scope: production
+    source_reference_ids:
+    - paper
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling:
+    description: Boltzmann equation uses y = m_H2^0/T.
+    name: freeze-out variable
+    role: core
+    status: inferred
+    symbol: y
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - Scenario 1 mass-degenerate two inert doublet dark matter
+  family: multi_component_dark_matter
+  historical_origin_or_motivation: unknown
+  model_kind: complete_theory
+  name: S3 three-Higgs-doublet model with degenerate CP-even inert scalar dark matter
+  short_description: Three-Higgs-doublet model with S3 symmetry and a vacuum alignment that leaves two
+    inert doublets; in the degenerate scenario the CP-even neutral scalars H2^0 and H3^0 are dark matter
+    candidates.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - H2^0 H2^0 to b bbar
+  - H3^0 H3^0 to b bbar
+  - H2^0/H3^0 to gauge boson pairs
+  - H2^0/H3^0 to tau pairs
+  cp_structure: unknown
+  dark_sector_couplings:
+  - scalar quartic couplings lambda_5, lambda_6, lambda_7 and inert-sector mass term mu_d^2
+  decay_channels: []
+  flavor_structure: unknown
+  interaction_operators: []
+  mediator_types:
+  - Higgs boson
+  - W boson
+  - Z boson
+  portals:
+  - higgs
+  - vector
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs boson
+  - electroweak gauge bosons
+  - b quarks
+  - tau leptons
+  tree_or_loop_level: tree
+model_id: 1407_4749_s3_two_inert_doublet_degenerate_dm_v1
+parameters:
+  core:
+  - description: Mass term entering the inert scalar spectrum.
+    name: inert-sector mass parameter
+    range: benchmark-dependent
+    role: core
+    status: inferred
+    symbol: mu_d^2
+  - description: Combinations of lambda_5, lambda_6, and lambda_7 set CP-even and CP-odd masses.
+    name: scalar quartic combination
+    range: benchmark-dependent
+    role: core
+    status: inferred
+    symbol: lambda_plus_minus
+  - description: Degenerate H2^0 and H3^0 masses in Scenario 1.
+    name: CP-even inert scalar masses
+    range: benchmark sets in Table 1
+    role: core
+    status: inferred
+    symbol: m_H2_H3
+    unit: GeV
+  derived: []
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - CP-odd inert scalars A2 and A3
+  - charged inert scalars h2+ and h3+
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: H2^0 and H3^0 CP-even inert neutral scalars
+    number_of_components: multi_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - Standard Model-like Higgs boson
+  - electroweak gauge bosons
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: approximate
+  distribution_type: thermal
+  f_of_p_or_q: unknown
+  free_streaming_length: null
+  notes: Thermal freeze-out abundance computed from a Boltzmann equation.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - annihilation cross sections of H2^0 and H3^0
+  - mass degeneracy
+  - scalar potential parameters
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out of inert scalar dark matter
+  nonthermal_momentum_distribution: unknown
+  notes: The paper solves the Boltzmann equation with MicrOMEGAs after implementing the interactions in
+    CalcHEP.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    parameter_ranges:
+    - confidence: medium
+      note: Masses are set by mu_d^2 and quartic combinations lambda_5, lambda_6, lambda_7; benchmark
+        sets are given in Table 1.
+      page: null
+      reference_id: paper
+      section: model/results section
+    particle_content:
+    - confidence: high
+      note: Scenario 1 chooses CP-even H2^0 and H3^0 as the lightest neutral inert scalars and dark matter
+        candidates.
+      page: null
+      reference_id: paper
+      section: model section
+    production_mechanism:
+    - confidence: high
+      note: The paper solves a thermal Boltzmann equation with MicrOMEGAs for the dark matter abundance.
+      page: null
+      reference_id: paper
+      section: DM abundance section
+    symmetries:
+    - confidence: high
+      note: S3 symmetry and v2=v3=0 make H2 and H3 inert; residual Z2 keeps the degenerate inert sector
+        stable.
+      page: null
+      reference_id: paper
+      section: model section
+    validity_domain:
+    - confidence: high
+      note: The authors separate a mass-degenerate Scenario 1 from a soft-breaking nondegenerate Scenario
+        2.
+      page: null
+      reference_id: paper
+      section: model section
+    constraints:
+    - confidence: high
+      note: Primary paper quotes Omega_DM h^2=0.1196 +/- 0.0031 and states benchmark direct-detection
+        agreement with LUX/XENON100 curves.
+      page: null
+      reference_id: arxiv:1407.4749
+      section: Introduction/numerical results
+    - confidence: medium
+      note: Related LUX paper supplies the direct-detection exclusion context used by the source.
+      page: null
+      reference_id: arxiv:1310.8214
+      section: Results
+    observables:
+    - confidence: high
+      note: Primary paper identifies Scenario 1 with degenerate H2^0 and H3^0 CP-even inert scalar dark
+        matter candidates.
+      page: null
+      reference_id: arxiv:1407.4749
+      section: Model/scenario definition
+    - confidence: high
+      note: Primary numerical discussion reports Scenario 1 annihilation fractions and invisible-Higgs
+        behavior.
+      page: null
+      reference_id: arxiv:1407.4749
+      section: Numerical results
+    routes:
+    - confidence: high
+      note: Primary paper routes S3 inert masses and quartics through CalcHEP/MicrOMEGAs to relic and
+        direct-detection comparisons.
+      page: null
+      reference_id: arxiv:1407.4749
+      section: Dark matter analysis
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0019
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Paper studies an S3 three-Higgs-doublet model with two inert doublets H2 and H3
+        and two DM scenarios.
+      reference_id: paper
+      section: introduction/model section
+    - page: null
+      quote_or_summary: Scenario 1 takes H2^0 and H3^0 as the lightest neutral scalars and computes their
+        thermal abundance.
+      reference_id: paper
+      section: dark matter calculation
+    unresolved_items:
+    - Scenario 1 component fractions and detector curves were not digitized.
+    - Invisible-Higgs constraints need a modern LHC likelihood before exclusion claims.
+  last_updated: '2026-05-31'
+  model_family: multi_component_dark_matter
+  model_id: 1407_4749_s3_two_inert_doublet_degenerate_dm_v1
+  model_name: S3 three-Higgs-doublet model with degenerate CP-even inert scalar dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1407.4749'
+      authors: []
+      doi: null
+      notes: null
+      reference_id: paper
+      role: extension
+      title: unknown
+      url: null
+      year: 2014
+    - arxiv_id: '1407.4749'
+      authors:
+      - Fortes, E. C. F. S.
+      - Machado, A. C. B.
+      - Montaño, J.
+      - Pleitez, V.
+      doi: 10.48550/arXiv.1407.4749
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1407.4749
+      role: original_model
+      title: Scalar Dark Matter Candidates in Two Inert Higgs Doublet Model
+      url: https://arxiv.org/abs/1407.4749
+      year: 2014
+    constraint_papers:
+    - arxiv_id: '1310.8214'
+      authors:
+      - Akerib, D. S.
+      - Araújo, H. M.
+      - Bai, X.
+      - Bailey, A. J.
+      - Balajthy, J.
+      - Bedikian, S.
+      - Bernard, E.
+      - Bernstein, A.
+      - Bolozdynya, A.
+      - Bradley, A.
+      - Byram, D.
+      - Cahn, S. B.
+      - Carmona-Benitez, M. C.
+      - Chan, C.
+      - Chapman, J. J.
+      - Chiller, A. A.
+      - Chiller, C.
+      - Clark, K.
+      - Coffey, T.
+      - Currie, A.
+      - Curioni, A.
+      - Dazeley, S.
+      - de Viveiros, L.
+      - Dobi, A.
+      - Dobson, J.
+      - Dragowsky, E. M.
+      - Druszkiewicz, E.
+      - Edwards, B.
+      - Faham, C. H.
+      - Fiorucci, S.
+      - Flores, C.
+      - Gaitskell, R. J.
+      - Gehman, V. M.
+      - Ghag, C.
+      - Gibson, K. R.
+      - Gilchriese, M. G. D.
+      - Hall, C.
+      - Hanhardt, M.
+      - Hertel, S. A.
+      - Horn, M.
+      - Huang, D. Q.
+      - Ihm, M.
+      - Jacobsen, R. G.
+      - Kastens, L.
+      - Kazkaz, K.
+      - Knoche, R.
+      - Kyre, S.
+      - Lander, R.
+      - Larsen, N. A.
+      - Lee, C.
+      - Leonard, D. S.
+      - Lesko, K. T.
+      - Lindote, A.
+      - Lopes, M. I.
+      - Lyashenko, A.
+      - Malling, D. C.
+      - Mannino, R.
+      - McKinsey, D. N.
+      - Mei, D.-M.
+      - Mock, J.
+      - Moongweluwan, M.
+      - Morad, J.
+      - Morii, M.
+      - Murphy, A. St. J.
+      - Nehrkorn, C.
+      - Nelson, H.
+      - Neves, F.
+      - Nikkel, J. A.
+      - Ott, R. A.
+      - Pangilinan, M.
+      - Parker, P. D.
+      - Pease, E. K.
+      - Pech, K.
+      - Phelps, P.
+      - Reichhart, L.
+      - Shutt, T.
+      - Silva, C.
+      - Skulski, W.
+      - Sofka, C. J.
+      - Solovov, V. N.
+      - Sorensen, P.
+      - Stiegler, T.
+      - O'Sullivan, K.
+      - Sumner, T. J.
+      - Svoboda, R.
+      - Sweany, M.
+      - Szydagis, M.
+      - Taylor, D.
+      - Tennyson, B.
+      - Tiedt, D. R.
+      - Tripathi, M.
+      - Uvarov, S.
+      - Verbus, J. R.
+      - Walsh, N.
+      - Webb, R.
+      - White, J. T.
+      - White, D.
+      - Witherell, M. S.
+      - Wlasenko, M.
+      - Wolfs, F. L. H.
+      - Woods, M.
+      - Zhang, C.
+      - LUX Collaboration
+      doi: 10.1103/PhysRevLett.112.091303
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1310.8214
+      role: constraint
+      title: First Results from the LUX Dark Matter Experiment at the Sanford Underground Research Facility
+      url: https://arxiv.org/abs/1310.8214
+      year: 2014
+    external_databases: []
+    review_papers:
+    - arxiv_id: hep-ph/0612275
+      authors:
+      - Lopez Honorez, Laura
+      - Nezri, Emmanuel
+      - Oliver, Josep F.
+      - Tytgat, Michel H. G.
+      doi: 10.1088/1475-7516/2007/02/028
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:hep-ph/0612275
+      role: review
+      title: 'The inert doublet model: an archetype for dark matter'
+      url: https://arxiv.org/abs/hep-ph/0612275
+      year: 2007
+    - arxiv_id: '1003.3125'
+      authors:
+      - Lopez Honorez, Laura
+      - Yaguna, Carlos E.
+      doi: 10.1007/JHEP09(2010)046
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1003.3125
+      role: review
+      title: The inert doublet model of dark matter revisited
+      url: https://arxiv.org/abs/1003.3125
+      year: 2010
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - H2^0 and H3^0 masses
+  - quartic couplings
+  - annihilation channels
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Title/authors were not present in the extracted text, so source title is left unknown.
+  - Detailed benchmark values are table-based and not fully reconstructed in this model-only row.
+  notes: Accepted as a substantive dark matter scenario developed in the paper.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: unknown
+  validation_status: unvalidated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: Not studied; inert scalar dark matter treated as CDM-like.
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: Not studied; inert scalar dark matter treated as CDM-like.
+symmetries:
+  stabilizing_mechanism: S3 symmetry plus vacuum alignment v2 = v3 = 0 leaves the two extra doublets inert;
+    residual Z2 in the degenerate scenario makes the lightest neutral inert states stable.
+  symmetries:
+  - breaking: vacuum alignment with H1 acquiring the SM vev and H2,H3 inert
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: S3
+    type: discrete
+  - breaking: unbroken in Scenario 1
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: residual Z2
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper studies the S3 Case B three-Higgs-doublet model proposed earlier and develops its dark
+    matter scenarios.
+  parent_frameworks:
+  - three Higgs doublet model
+  - S3 flavor symmetry
+  - inert doublet dark matter
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Applies to the paper's Scenario 1, where the residual Z2 is unbroken and inert scalar masses
+    are degenerate in each charged sector.
+  extrapolation_risk: unknown
+  id: scenario_1_degenerate
+  source_reference_ids:
+  - paper
+  status: inferred
+observables:
+- caveats:
+  - Degeneracy makes component accounting model-dependent.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early-universe thermal plasma
+  id: obs_degenerate_two_inert_relic
+  key_quantities:
+  - description: Common CP-even inert scalar mass in Scenario 1.
+    name: degenerate CP-even inert mass
+    range: Scenario 1a/1b benchmarks in Table 1
+    role: core
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: inferred
+    symbol: m_H2=m_H3
+    unit: GeV
+  - description: Summed abundance of the two degenerate CP-even states.
+    name: component relic densities
+    role: derived
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: inferred
+    symbol: Omega_H2 h^2 + Omega_H3 h^2
+  linked_constraints:
+  - con_degenerate_relic_density
+  linked_routes:
+  - route_degenerate_two_inert_relic_detection
+  name: Degenerate H2/H3 inert-scalar relic abundance
+  notes: null
+  observability: high
+  predicted_effect: In Scenario 1 the CP-even inert scalars H2^0 and H3^0 are degenerate and both contribute
+    to the dark matter abundance.
+  redshift_range: freeze-out through today
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:1407.4749
+  - arxiv:hep-ph/0612275
+  - arxiv:1003.3125
+  subchannel: two-component thermal freeze-out
+- caveats:
+  - The direct-detection comparison is benchmark-level.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - terrestrial direct-detection detectors
+  id: obs_degenerate_two_inert_si
+  key_quantities:
+  - description: Cold dark-matter-nucleon amplitude for the benchmark comparison.
+    name: spin-independent cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:1407.4749
+    - arxiv:1310.8214
+    status: inferred
+    symbol: sigma_SI
+  - description: Controls scattering and invisible Higgs channels.
+    name: Higgs-portal scalar combination
+    role: core
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: inferred
+    symbol: lambda
+  linked_constraints:
+  - con_degenerate_direct_detection
+  linked_routes:
+  - route_degenerate_two_inert_relic_detection
+  name: Two-inert-component spin-independent scattering
+  notes: null
+  observability: high
+  predicted_effect: The degenerate inert scalars scatter through Higgs-portal scalar interactions and
+    are compared to direct-detection recoil limits.
+  redshift_range: today
+  relevance: high
+  scale_range: nuclear recoil energies
+  source_reference_ids:
+  - arxiv:1407.4749
+  - arxiv:1310.8214
+  subchannel: elastic nuclear recoil
+- caveats:
+  - Modern Higgs invisible limits were not applied.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - collider Higgs decays
+  id: obs_degenerate_higgs_invisible
+  key_quantities:
+  - description: Source-level Scenario 1 invisible Higgs contribution.
+    name: invisible branching fraction
+    role: derived
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: inferred
+    symbol: Br(h -> inert inert)
+    value: 34.8 percent in Scenario 1a; null in Scenario 1b
+  linked_constraints:
+  - con_degenerate_higgs_width
+  linked_routes:
+  - route_degenerate_two_inert_relic_detection
+  name: Higgs invisible width from degenerate inert scalars
+  notes: null
+  observability: high
+  predicted_effect: Scenario 1a gives a sizable h -> H2^0 H2^0/H3^0 H3^0 invisible contribution, while
+    Scenario 1b is chosen to make it null.
+  redshift_range: not_applicable
+  relevance: high
+  scale_range: LHC Higgs mass scale
+  source_reference_ids:
+  - arxiv:1407.4749
+  subchannel: Higgs invisible width
+constraints:
+- allowed_regions:
+  - Scenario 1a/1b benchmark choices selected to reproduce the abundance with two CP-even inert states.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The two CP-even inert states remain degenerate and stable.
+    id: coequal_degenerate_components
+    impact_if_violated: Splitting or decay changes the component abundances.
+    notes: null
+    scope: dark-sector spectrum
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: assumed
+  benchmark_implications:
+  - Scenario 1a annihilates mainly to b bbar for each component; Scenario 1b is dominated by W+W-.
+  caveats:
+  - No coupled-component likelihood was reconstructed.
+  constrained_parameters:
+  - m_H2=m_H3
+  - <sigma_ann v>
+  - lambda_i
+  constraint_type: cosmological
+  data_release: Planck-era relic density quoted in the source text
+  excluded_regions:
+  - Benchmark choices whose summed H2/H3 abundance misses Omega_DM h^2 about 0.1196 +/- 0.0031 are outside
+    the source target.
+  id: con_degenerate_relic_density
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Observed relic-density target for two degenerate inert components
+  notes: null
+  observable_channel: relic_density
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - arxiv:1407.4749
+- allowed_regions:
+  - The source states the discussed scenarios are in agreement with CoGeNT, DAMA, LUX, and XENON100.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Direct-detection rates scale with the local fractions of H2^0 and H3^0.
+    id: component_fraction_scaling
+    impact_if_violated: Unequal fractions shift the inferred sigma_SI.
+    notes: null
+    scope: direct detection recast
+    source_reference_ids:
+    - arxiv:1407.4749
+    - arxiv:1310.8214
+    status: assumed
+  benchmark_implications:
+  - Degenerate components share the recoil-rate interpretation; component fractions must be included in
+    a recast.
+  caveats:
+  - Detector curves were not digitized.
+  constrained_parameters:
+  - sigma_SI
+  - m_H2=m_H3
+  - lambda
+  constraint_type: direct_detection
+  data_release: LUX first results and XENON100/XENON1T curves as used by the source
+  excluded_regions:
+  - Parameter choices above the LUX/XENON100 exclusion curves are not viable.
+  id: con_degenerate_direct_detection
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: LUX/XENON spin-independent comparison for degenerate inert scalars
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1407.4749
+  - arxiv:1310.8214
+- allowed_regions:
+  - Scenario 1b is chosen with null invisible Higgs contribution in the source.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The Higgs decay to inert scalars is kinematically allowed.
+    id: open_invisible_channel
+    impact_if_violated: If closed, the width constraint is not active.
+    notes: null
+    scope: collider phenomenology
+    source_reference_ids:
+    - arxiv:1407.4749
+    status: assumed
+  benchmark_implications:
+  - Scenario 1a has a sizable invisible branching fraction, so collider constraints can be decisive.
+  caveats:
+  - No current Higgs invisible likelihood was evaluated.
+  constrained_parameters:
+  - Br(h -> inert inert)
+  - lambda
+  constraint_type: collider
+  data_release: null
+  excluded_regions:
+  - Large invisible branching fractions require a Higgs-width recast.
+  id: con_degenerate_higgs_width
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Invisible Higgs-width consistency for degenerate inert scalars
+  notes: null
+  observable_channel: higgs_invisible
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1407.4749
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The batch did not rerun the numerical model files.
+    constraint_ids:
+    - con_degenerate_relic_density
+    - con_degenerate_direct_detection
+    - con_degenerate_higgs_width
+    derived_quantities:
+    - Omega_H2 h^2 + Omega_H3 h^2
+    - sigma_SI
+    - Br(h -> inert inert)
+    - annihilation branching fractions
+    description: Map the degenerate two-inert-doublet S3 benchmark to summed relic density, direct-detection
+      rates, and invisible-Higgs observables.
+    forward_model_chain:
+    - inputs:
+      - S3 residual Z2
+      - mass ordering
+      notes: Confirm both H2^0 and H3^0 are stable.
+      outputs:
+      - stable degenerate CP-even inert states
+      step_id: s1
+      step_type: validation
+      tool_or_code: null
+      validity: Requires exact or effectively exact degeneracy.
+    - inputs:
+      - masses
+      - quartic couplings
+      notes: Source used CalcHEP plus MicrOMEGAs.
+      outputs:
+      - component relic densities
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: CalcHEP/MicrOMEGAs
+      validity: Standard freeze-out calculation.
+    - inputs:
+      - component fractions
+      - sigma_SI
+      - Higgs width
+      notes: Batch captures source-level comparisons only.
+      outputs:
+      - direct detection and collider constraints
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires component-fraction scaling and detector likelihoods.
+    id: route_degenerate_two_inert_relic_detection
+    input_parameters:
+    - m_H2=m_H3
+    - lambda_i
+    - mu_d^2
+    - component fractions
+    likelihoods:
+    - relic-density target
+    - LUX/XENON direct-detection curves
+    - Higgs invisible-width limit
+    observable_ids:
+    - obs_degenerate_two_inert_relic
+    - obs_degenerate_two_inert_si
+    - obs_degenerate_higgs_invisible
+    required_code_resources:
+    - CalcHEP model implementation
+    - MicrOMEGAs multi-component treatment
+    - direct-detection recast
+    route_status: planned
+    source_model_features:
+    - S3 three-Higgs-doublet model
+    - two degenerate inert doublets
+    - two CP-even dark matter components
+    validation_tests:
+    - recover Scenario 1 annihilation fractions
+    - recover Omega_DM h^2 about 0.1196
+    - apply component fraction scaling in recoil rate

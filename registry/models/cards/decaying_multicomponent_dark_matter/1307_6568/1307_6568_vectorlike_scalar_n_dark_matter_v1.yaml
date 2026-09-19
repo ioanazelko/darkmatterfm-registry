@@ -1,0 +1,418 @@
+_source:
+  shard: arXiv_src_1307_012_wds.tar
+  paper_id: '1307_6568'
+  source_member: 1307_6568.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: do_not_treat_as_single_component_lsp
+    mitigation: Keep the SU(2)_Z/Z2 protection, metastable decay, and multi-component abundance assumptions
+      attached to downstream use.
+    severity: medium
+    source_reference_ids:
+    - '1307_6568'
+    warning: This is a new vector-like lepton dark matter subcomponent coexisting with a stable neutralino
+      LSP, not a replacement single-component neutralino model.
+associated_code:
+  caveats: []
+  code_summary: No associated model-specific public code is identified in the assigned paper text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: 'no'
+    description: The new SU(2)_Z symmetry and embedded Z2 protect the lightest new neutral component before
+      controlled breaking.
+    id: su2z_initial_protection
+    impact_if_violated: The new component would decay too quickly or fail to be a dark matter component.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1307_6568'
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: The conventional neutralino LSP remains stable by R parity and supplies the rest of the
+      total dark matter abundance.
+    id: neutralino_lsp_remainder
+    impact_if_violated: The subcomponent abundance accounting would change.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '1307_6568'
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - new SU(2)_Z/Z2 symmetry protects the new dark matter during freeze-out
+  - symmetry breaking near TeV scale allows metastable decay
+  - multi-component dark matter including conventional neutralino LSP
+  phase_transitions:
+  - SU(2)_Z or embedded Z2 breaking around the TeV scale
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - SU(2)_Z vector-like lepton dark matter
+  - new leptophilic decaying dark matter component
+  family: decaying_multicomponent_dark_matter
+  historical_origin_or_motivation: Motivated by the AMS-02 positron fraction excess, Fermi-LAT electron/positron
+    data, and vector-like leptons introduced for a less fine-tuned 126 GeV SUSY Higgs.
+  model_kind: effective_field_theory
+  name: Vector-like scalar N dark matter with broken SU(2)_Z protection
+  short_description: A complex scalar component of the new vector-like lepton multiplet is stabilized
+    by an embedded Z2/SU(2)_Z symmetry during freeze-out, contributes a dark matter subcomponent with
+    the neutralino LSP, and decays leptophilically after symmetry breaking through high-scale-suppressed
+    operators.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - higgsino pairs via t-channel vector-like L exchange
+  cp_structure: unknown
+  dark_sector_couplings:
+  - y_N L h_u N^c
+  - nonrenormalizable leptophilic decay operators
+  - SU(2)_Z gauge interactions
+  decay_channels:
+  - leptophilic decays to SM leptons and LSP-sector states after symmetry breaking
+  flavor_structure: leptophilic decay variants use exotic global charge assignments or heavy vector-like
+    leptons
+  interaction_operators:
+  - renormalizable y_N L h_u N^c
+  - dimension-6-like superheavy-suppressed decay operators
+  mediator_types:
+  - Higgs doublet
+  - vector-like lepton
+  - superheavy decay mediator
+  - SU(2)_Z gauge sector
+  portals:
+  - higgs
+  - vector
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs/higgsino sector
+  - SM charged leptons
+  - neutralino LSP
+  tree_or_loop_level: tree
+model_id: 1307_6568_vectorlike_scalar_n_dark_matter_v1
+parameters:
+  core:
+  - description: Mass of the lightest complex scalar dark matter component.
+    name: scalar N mass
+    range: around TeV scale in the decaying-DM discussion; exact value is parameter-dependent
+    role: core
+    status: inferred
+    symbol: m_N_scalar
+    unit: GeV
+  - description: Coupling controlling annihilation through vector-like L exchange.
+    name: Yukawa coupling to Higgs sector
+    range: sizable, order-unity values are discussed
+    role: core
+    status: inferred
+    symbol: y_N
+  - description: Complex scalar annihilation into higgsinos through t-channel L exchange.
+    name: scalar annihilation cross section
+    range: s-wave and p-wave terms are given in the paper
+    role: core
+    status: inferred
+    symbol: sigma v
+  - description: Lifetime needed for AMS-02/Fermi positron data in the decaying-DM interpretation.
+    name: dark matter lifetime
+    range: order 1e26 s
+    role: core
+    status: inferred
+    symbol: tau_DM
+    unit: s
+  - description: Total abundance from new component(s) plus ordinary neutralino LSP.
+    name: total relic abundance target
+    role: cosmological
+    status: inferred
+    symbol: Omega_tot h^2
+    value: 0.12
+  derived: []
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - vector-like lepton doublets L and L^c
+  - vector-like singlets N and N^c
+  - ordinary neutralino LSP as additional dark matter component
+  - SU(2)_Z-breaking fields N_H and N_H^c
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lightest neutral scalar component of N or N^c
+    number_of_components: subcomponent
+    spin: '0'
+    statistics: boson
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - fermionic and scalar components of N and N^c
+  long_lived_particles:
+  - new metastable vector-like lepton dark matter component
+  - stable neutralino LSP
+  mediators:
+  - Higgs h_u
+  - vector-like lepton L
+  - SU(2)_Z gauge/gaugino states
+  - heavy vector-like leptons for decay variants
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: thermal
+  f_of_p_or_q: unknown
+  free_streaming_length: null
+  notes: No explicit phase-space distribution is provided; TeV-scale thermal relic component is cold.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - y_N coupling
+  - new dark matter mass
+  - vector-like lepton mediator mass
+  - neutralino LSP residual component
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through renormalizable vector-like lepton interactions
+  - multi-component abundance with ordinary neutralino LSP supplying the rest
+  nonthermal_momentum_distribution: 'no'
+  notes: The assigned text says the new DM thermalized with MSSM fields can naturally explain the present
+    energy density together with the LSP.
+  thermal_equilibrium_with_hidden_sector: partial
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - Header metadata were incomplete in the extracted text.
+  - The two accepted rows split the paper's fermionic and complex-scalar new-DM variants.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: After SU(2)_Z/Z2 breaking near the TeV scale, the new dark matter decays through nonrenormalizable
+        operators suppressed by superheavy masses.
+      page: null
+      reference_id: '1307_6568'
+      section: Dark matter decay section
+    interactions:
+    - confidence: high
+      note: The vector-like lepton coupling y_N L h_u N^c thermalizes the new dark matter and controls
+        annihilation through L exchange.
+      page: null
+      reference_id: '1307_6568'
+      section: Relic-density section
+    parameter_ranges:
+    - confidence: medium
+      note: The text discusses TeV-scale vector-like lepton masses, lifetime around 10^26 s, and superheavy
+        squared-mass suppression for decay operators.
+      page: null
+      reference_id: '1307_6568'
+      section: Introduction and decay discussion
+    particle_content:
+    - confidence: high
+      note: The paper embeds a new dark matter component in vector-like leptons L,L^c,N,N^c charged under
+        SU(2)_Z, with neutral lightest components as candidates.
+      page: null
+      reference_id: '1307_6568'
+      section: Vector-like leptons/model setup
+    production_mechanism:
+    - confidence: high
+      note: The paper computes thermal freeze-out relic densities for fermionic and scalar new dark matter
+        and assumes the neutralino LSP supplies the rest.
+      page: null
+      reference_id: '1307_6568'
+      section: Relic-density section
+    relic_density:
+    - confidence: high
+      note: The total relic density is written as a sum over N-like components and the neutralino LSP,
+        with Omega_tot h^2 around 0.12.
+      page: null
+      reference_id: '1307_6568'
+      section: Relic-density section
+    symmetries:
+    - confidence: high
+      note: A discrete Z2 can be embedded in the new SU(2)_Z gauge symmetry and protects the lightest
+        new component before controlled symmetry breaking.
+      page: null
+      reference_id: '1307_6568'
+      section: Model setup
+    validity_domain:
+    - confidence: medium
+      note: The mechanism requires the new symmetry to thermalize and initially protect the new DM, then
+        break so that decays remain slow.
+      page: null
+      reference_id: '1307_6568'
+      section: Conclusion
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch-0000
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5 dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections: []
+    unresolved_items:
+    - Exact bibliographic title and authors were not present in the assigned text.
+  last_updated: '2026-05-31'
+  model_family: decaying_multicomponent_dark_matter
+  model_id: 1307_6568_vectorlike_scalar_n_dark_matter_v1
+  model_name: Vector-like scalar N dark matter with broken SU(2)_Z protection
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1307.6568'
+      doi: null
+      notes: Header title was not present in the extracted text; this descriptive title is inferred from
+        the assigned paper text.
+      reference_id: '1307_6568'
+      role: original_model
+      title: Vector-like lepton new dark matter explanation of AMS-02 positron excess
+      url: null
+      year: 2013
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: subcomponent
+  key_dependencies:
+  - thermal annihilation cross section
+  - mass hierarchy between N-like state and L mediator
+  - neutralino LSP contribution
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - identity of lightest new component
+  - superheavy decay operator realization
+  - multi-component abundance split
+  - AMS-02/Fermi positron interpretation
+  notes: The paper gives analytic freeze-out estimates and decay mechanisms but leaves UV decay mediators
+    implicit.
+  observational_robustness: low
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: An embedded Z2 subgroup of the new SU(2)_Z protects the lightest new neutral
+    component; after SU(2)_Z/Z2 breaking, only superheavy-suppressed operators allow slow decay. R parity
+    keeps the ordinary LSP stable.
+  symmetries:
+  - breaking: broken by vacuum expectation values of N_H and N_H^c near the TeV scale
+    breaking_scale:
+      description: Scale of new symmetry breaking.
+      name: SU(2)_Z breaking scale
+      range: around TeV scale
+      role: core
+      status: inferred
+      symbol: v_Z
+      unit: GeV
+    exact_or_approximate: broken
+    name: SU(2)_Z
+    type: gauge
+  - breaking: controlled breaking permits metastable dark matter decay
+    breaking_scale:
+      description: Inherited from SU(2)_Z breaking.
+      name: Z2 breaking scale
+      range: around TeV scale
+      role: core
+      status: inferred
+      unit: GeV
+    exact_or_approximate: broken
+    name: embedded Z2
+    type: discrete
+  - breaking: not broken in the scenario
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: R parity
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff:
+    description: Mass scale suppressing nonrenormalizable dark matter decay operators.
+    name: superheavy decay-operator mass scale
+    range: order GUT-scale squared suppression in the paper discussion
+    role: core
+    status: inferred
+    symbol: M
+    unit: GeV
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: Renormalizable vector-like lepton interactions set freeze-out, while nonrenormalizable superheavy-suppressed
+    operators control metastable decay.
+  parent_frameworks:
+  - MSSM
+  - vector-like lepton extension
+  - new SU(2)_Z gauge symmetry
+  renormalizable: 'no'
+  theory_level: effective_field_theory
+validity_domain:
+- applies_to: model
+  caveats:
+  - The decay operators are presented as mechanisms rather than a fully specified UV mediator spectrum.
+  condition: The new symmetry must protect dark matter through freeze-out but allow superheavy-suppressed
+    decay with lifetime near 10^26 s after breaking.
+  extrapolation_risk: high
+  id: metastable_decay_window
+  notes: For scalar dark matter, the text discusses TeV-scale leptophilic decays with lifetime of order
+    5e26 s for positron data.
+  source_reference_ids:
+  - '1307_6568'
+  status: inferred
+  valid_range: tau_DM of order 1e26 s; TeV-scale new sector masses in the paper discussion

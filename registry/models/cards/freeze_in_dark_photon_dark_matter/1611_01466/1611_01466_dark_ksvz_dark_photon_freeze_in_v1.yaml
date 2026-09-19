@@ -1,0 +1,428 @@
+_source:
+  shard: arXiv_src_1611_004_wds.tar
+  paper_id: '1611_01466'
+  source_member: 1611_01466.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: warn_1611_01466_multicomponent
+    mitigation: Track whether the application assumes the dark photon alone or the combined a + gamma_prime
+      abundance.
+    severity: medium
+    source_reference_ids: []
+    warning: Do not treat the dark photon row as a universally full-DM single-component model; the paper
+      uses an axion plus dark photon relic-density system.
+  - category: extrapolation
+    id: warn_1611_01466_stability
+    mitigation: Re-evaluate lifetime and production before using non-benchmark charge assignments.
+    severity: high
+    source_reference_ids: []
+    warning: Changing Q_psi or kinetic mixing can open gamma_prime decay and additional production channels.
+associated_code:
+  code_summary: No model-specific public code was identified from the assigned paper text.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: 'yes'
+    description: Use the benchmark Q_psi=0 and epsilon=0 adopted for stable dark photon dark matter.
+    id: assume_1611_01466_qpsi_epsilon
+    impact_if_violated: Dark photon decays and extra production channels can become important.
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Use the standard entropy density and Hubble expansion equations in the freeze-in Boltzmann
+      calculation.
+    id: assume_1611_01466_standard_expansion
+    impact_if_violated: The freeze-in yield and relic-density relation would change.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - dark photon is kept out of thermal equilibrium during freeze-in
+  - abundance depends on reheating temperature
+  phase_transitions:
+  - PQ breaking
+  - U(1)_Dark breaking
+  - QCD phase transition sets the axion mass
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - dark axion portal dark photon DM
+  - dark KSVZ model
+  family: freeze_in_dark_photon_dark_matter
+  historical_origin_or_motivation: Introduced to connect axions and dark photons through new axion-photon-dark-photon
+    and axion-dark-photon-dark-photon portal couplings, and to supplement axion dark matter relic density.
+  model_kind: complete_theory
+  name: Dark-KSVZ dark photon freeze-in model
+  short_description: A KSVZ-type axion model with U(1)_Dark in which a keV-scale dark photon is produced
+    nonthermally by freeze-in through axion-mediated dark axion portal interactions.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - g g -> gamma_prime gamma_prime via axion exchange
+  cp_structure: Axion anomalous couplings to gauge-field duals.
+  dark_sector_couplings:
+  - a F tilde{Z_prime}
+  - a Z_prime tilde{Z_prime}
+  - a G tilde{G}
+  decay_channels:
+  - gamma_prime -> gamma a is discussed and forbidden in the Q_psi=0, epsilon=0 benchmark
+  flavor_structure: One flavor of exotic heavy quarks/fermions is introduced in the dark KSVZ realization.
+  interaction_operators:
+  - (G_a gamma_prime gamma_prime / 4) a Z_prime_{mu nu} tilde{Z_prime}^{mu nu}
+  - (G_a gamma gamma_prime / 2) a F_{mu nu} tilde{Z_prime}^{mu nu}
+  - (G_agg / 4) a G_{mu nu} tilde{G}^{mu nu}
+  mediator_types:
+  - axion
+  portals:
+  - axion
+  - vector
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - gluons
+  - photons
+  tree_or_loop_level: both
+model_id: 1611_01466_dark_ksvz_dark_photon_freeze_in_v1
+operators:
+  contact_or_light_mediator: light_mediator
+  coupling_types:
+  - anomaly-induced axion gauge couplings
+  - dark gauge coupling e_prime
+  - kinetic mixing epsilon
+  eft_operators:
+  - a G tilde{G}
+  - a F tilde{F}
+  - a F tilde{Z_prime}
+  - a Z_prime tilde{Z_prime}
+  renormalizable_terms:
+  - y_psi Phi_PQ psi psi^c + h.c. in the dark KSVZ realization
+parameters:
+  core:
+  - description: PQ breaking scale controlling axion and dark axion portal couplings.
+    name: axion decay constant
+    notes: The paper notes the QCD axion viable window and focuses on f_a below about 10^11 GeV where
+      axion DM alone may be insufficient.
+    range: 10^9-10^12
+    role: core
+    source_reference_ids: []
+    status: established
+    symbol: f_a
+    unit: GeV
+  - description: Mass of the dark photon DM candidate.
+    name: dark photon mass
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_gamma_prime
+    unit: keV
+    value: roughly keV scale; relic estimate normalized to 10 keV
+  - description: Defined as e_prime D_psi / 0.3 in the relic density estimate.
+    name: dark gauge normalization
+    role: core
+    source_reference_ids: []
+    status: established
+    symbol: g_D
+    value: e_prime D_psi / 0.3
+  - description: Temperature that sets freeze-in yield through the UV-sensitive production integral.
+    name: reheating temperature
+    range: bounded above by non-thermalization requirement; appears as (T_RH/f_a)^3 in the relic estimate
+    role: cosmological
+    source_reference_ids: []
+    status: inferred
+    symbol: T_RH
+    unit: GeV
+  - description: Anomaly-induced coupling used in gg -> gamma_prime gamma_prime production.
+    name: dark axion portal coupling to dark photons
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: G_a_gamma_prime_gamma_prime
+    value: proportional to e_prime^2 D_psi^2 / (8 pi^2 f_a)
+  derived:
+  - description: Freeze-in abundance from gg -> gamma_prime gamma_prime.
+    name: dark photon relic abundance
+    role: core
+    source_reference_ids: []
+    status: established
+    symbol: Omega_gamma_prime h^2
+    value: 0.1 * g_D^4 * (10^2/g_*)^(3/2) * (m_gamma_prime/10 keV) * (T_RH/f_a)^3 * (10^10 GeV/f_a)
+particle_content:
+  additional_dark_sector_particles:
+  - QCD axion a
+  - dark Higgs singlet Phi_D
+  - PQ scalar Phi_PQ
+  - exotic Weyl fermions psi and psi^c
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: dark photon gamma_prime / Z_prime
+    number_of_components: multi_component
+    spin: '1'
+    statistics: vector
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - dark photon gamma_prime in the Q_psi=0 and epsilon=0 benchmark
+  mediators:
+  - axion a
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: nonthermal
+  f_of_p_or_q: not given
+  free_streaming_length: null
+  notes: The paper identifies freeze-in production of nonthermal dark photons but does not provide a phase-space
+    distribution.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - f_a
+  - m_gamma_prime
+  - g_D
+  - T_RH
+  - dark axion portal couplings G_agg and G_a_gamma_prime_gamma_prime
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: 'yes'
+  mechanisms:
+  - UV freeze-in of nonthermal dark photons through gg -> gamma_prime gamma_prime mediated by axion
+  - axion misalignment contributes the axion component of the combined a + gamma_prime dark matter system
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper states that a sufficiently low reheating temperature avoids thermalization and that
+    the total axion plus dark photon relic density can match the observed value.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The Boltzmann estimate uses entropy density, Hubble rate, T_RH, and a non-thermalization upper
+        bound.
+      page: null
+      reference_id: paper
+      section: Cosmology example
+    interactions:
+    - confidence: medium
+      note: The new portal terms include a F tilde{Z_prime} and a Z_prime tilde{Z_prime}; gg -> gamma_prime
+        gamma_prime proceeds through axion exchange.
+      page: null
+      reference_id: paper
+      section: Dark axion portal / cosmology example
+    parameter_ranges:
+    - confidence: medium
+      note: The paper quotes f_a between 10^9 and 10^12 GeV, a roughly keV dark photon, and a relic formula
+        normalized to m_gamma_prime = 10 keV.
+      page: null
+      reference_id: paper
+      section: Cosmology example
+    particle_content:
+    - confidence: medium
+      note: The model adds U(1)_Dark, U(1)_PQ, exotic Weyl fermions, Phi_PQ, Phi_D, an axion, and a massive
+        dark photon.
+      page: null
+      reference_id: paper
+      section: Dark KSVZ model
+    production_mechanism:
+    - confidence: high
+      note: The paper says the feeble gg -> gamma_prime gamma_prime reaction cannot thermalize gamma_prime
+        and works as freeze-in production.
+      page: null
+      reference_id: paper
+      section: Cosmology example
+    symmetries:
+    - confidence: medium
+      note: U(1)_PQ is broken at f_a and U(1)_Dark is broken by Phi_D; Q_psi=0 and epsilon=0 are used
+        for dark photon stability.
+      page: null
+      reference_id: paper
+      section: Dark KSVZ model / cosmology example
+    validity_domain:
+    - confidence: medium
+      note: The paper warns that too high T_RH can thermalize gamma_prime and overproduce dark matter.
+      page: null
+      reference_id: paper
+      section: Cosmology example
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0011
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Introduces a new dark axion portal connecting dark photons and axions.
+      reference_id: paper
+      section: Abstract and Introduction
+    - page: null
+      quote_or_summary: Constructs a KSVZ-type U(1)_Dark and U(1)_PQ model with exotic fermions and singlet
+        scalars.
+      reference_id: paper
+      section: Dark KSVZ model
+    - page: null
+      quote_or_summary: Presents dark photon freeze-in via gg -> gamma_prime gamma_prime and a relic-density
+        estimate.
+      reference_id: paper
+      section: Cosmology example
+    unresolved_items:
+    - The paper does not provide a structure-formation treatment for the keV nonthermal dark photon component.
+  last_updated: '2026-05-31'
+  model_family: freeze_in_dark_photon_dark_matter
+  model_id: 1611_01466_dark_ksvz_dark_photon_freeze_in_v1
+  model_name: Dark-KSVZ dark photon freeze-in model
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1611.01466'
+      authors:
+      - Kunio Kaneta
+      - Hye-Sung Lee
+      - Seokhoon Yun
+      doi: null
+      notes: Primary text used for the dark axion portal and dark photon freeze-in construction.
+      reference_id: paper
+      role: original_model
+      title: Portal Connecting Dark Photons and Axions
+      url: null
+      year: 2016
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: subcomponent
+  key_dependencies:
+  - m_gamma_prime
+  - T_RH/f_a
+  - g_D
+  - f_a
+  - g_*
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    description: Reference abundance used in the paper.
+    name: observed dark matter abundance
+    role: cosmological
+    source_reference_ids: []
+    status: established
+    symbol: Omega_DM h^2
+    value: 0.12
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - stability and lifetime outside the Q_psi=0, epsilon=0 benchmark
+  - reheating-temperature dependence
+  - structure-formation impact not extracted
+  notes: Extraction is from the paper text; constraints and observables are intentionally omitted for
+    this run.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: For the benchmark Q_psi=0 and kinetic mixing epsilon=0, the decay gamma_prime
+    -> gamma a is forbidden and the dark photon is stable.
+  symmetries:
+  - breaking: Broken by the Phi_D vacuum expectation value that gives the dark photon a mass.
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: U(1)_Dark
+    type: gauge
+  - breaking: Spontaneously broken by Phi_PQ at f_a, producing the axion.
+    breaking_scale:
+      description: Axion decay constant / PQ scale.
+      name: PQ breaking scale
+      range: 10^9-10^12 GeV viable QCD axion window discussed in the paper
+      role: core
+      source_reference_ids: []
+      status: inferred
+      symbol: f_a
+      unit: GeV
+    exact_or_approximate: broken
+    name: U(1)_PQ
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper gives the vector, axion, and dark axion portal terms and a simple dark KSVZ realization;
+    the low-energy dark axion portal couplings are nonrenormalizable anomaly-induced terms.
+  parent_frameworks:
+  - KSVZ axion model
+  - U(1)_Dark gauge sector
+  - Peccei-Quinn symmetry
+  renormalizable: unknown
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats:
+  - For Q_psi not zero, gamma_prime -> gamma a and Primakoff-like production require additional lifetime
+    and astrophysical checks.
+  condition: Dark photon stability uses Q_psi=0 and epsilon=0 so gamma_prime -> gamma a is forbidden.
+  extrapolation_risk: high
+  id: valid_1611_01466_stability
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: production
+  caveats:
+  - If thermalized, the dark photon may be overproduced.
+  condition: Freeze-in requires the gamma_prime interaction rate to remain below H at T_RH.
+  extrapolation_risk: medium
+  id: valid_1611_01466_freeze_in
+  notes: null
+  source_reference_ids: []
+  status: established
+  valid_range: T_RH below the non-thermalization bound quoted in the paper
+- applies_to: EFT
+  caveats: []
+  condition: Dark axion portal couplings are used below the heavy fermion/PQ scale.
+  extrapolation_risk: medium
+  id: valid_1611_01466_low_energy
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: temperatures below the heavy fermion mass scale in the relevant parameter space

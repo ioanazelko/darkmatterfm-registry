@@ -1,0 +1,296 @@
+_source:
+  shard: arXiv_src_1606_005_wds.tar
+  paper_id: '1606_01628'
+  source_member: 1606_01628.json
+schema_version: model_only_v0
+model_id: 1606_01628_nonabelian_singlet_higgs_portal_simp_v1
+identity:
+  name: Non-Abelian singlet-Higgs-portal SIMP pion dark matter
+  family: self_interacting_dark_matter
+  aliases:
+  - hidden-pion SIMP with singlet mediator
+  short_description: A confining hidden SU(N) sector whose stable hidden pions are SIMP dark matter, kept
+    in kinetic equilibrium with the Standard Model through singlet-Higgs mixing.
+  historical_origin_or_motivation: Constructed to realize SIMP 3-to-2 freeze-out while avoiding a hot
+    hidden sector through a simple Higgs-portal mediator.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - hidden confining gauge theory
+  - SIMP dark matter
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the hidden-quark Yukawa interaction, a low-energy pion effective Lagrangian,
+    and a singlet-Higgs scalar potential; pion dynamics are estimated with NDA.
+particle_content:
+  dark_matter_candidate:
+    name: hidden pions
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: composite
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - hidden quarks Q_i and anti-quarks
+  - hidden baryons
+  mediators:
+  - real singlet scalar S mixed with the Standard Model Higgs
+  excited_or_degenerate_states: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Hidden pions are stable under the unbroken hidden SU(N_F)_V flavour symmetry.
+  symmetries:
+  - name: hidden SU(N)
+    type: gauge
+    exact_or_approximate: exact
+    breaking: confining at low energy
+    breaking_scale: null
+  - name: SU(N_F)_V flavour symmetry
+    type: global
+    exact_or_approximate: exact
+    breaking: not_applicable
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs sector
+  dark_sector_couplings:
+  - hidden-pion self-scattering
+  - Wess-Zumino-Witten 3-to-2 pion interaction
+  - S-pion coupling
+  mediator_types:
+  - scalar singlet-Higgs admixture
+  interaction_operators:
+  - S Q_i Qbar_i Yukawa interaction
+  - S-Higgs mixing terms
+  - effective WZW pion interaction
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  self_scattering_channels:
+  - pion-pion elastic scattering
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: hidden pion mass
+    symbol: m_pi
+    description: Mass of the composite SIMP pion.
+    range: sub-GeV to GeV scale; NDA relic example near 1 GeV
+    unit: GeV
+    role: core
+    status: approximate
+  - name: hidden pion decay constant
+    symbol: f_pi
+    description: Decay constant controlling the pion effective theory.
+    range: model-dependent; related to confinement scale by NDA
+    unit: GeV
+    role: core
+    status: approximate
+  - name: number of hidden colors
+    symbol: N
+    description: Hidden SU(N) gauge-group size.
+    range: positive integer
+    role: core
+    status: assumed
+  - name: singlet-Higgs mixing angle
+    symbol: theta
+    description: Mixing between the singlet scalar and the Standard Model Higgs.
+    range: small but nonzero region compatible with kinetic equilibrium and bounds
+    role: core
+    status: approximate
+production:
+  mechanisms:
+  - thermal SIMP freeze-out through 3-to-2 pion annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - 3-to-2 hidden-pion process
+  - Hubble rate at pion freeze-out
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper emphasizes kinetic equilibrium with the SM so SIMP freeze-out does not overheat the
+    hidden sector.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_pi
+  - f_pi
+  - N
+  - WZW coefficient
+  - freeze-out temperature
+  - singlet-Higgs mixing
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - hidden sector must remain kinetically coupled to the SM through freeze-out
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Thermal relic SIMP population after 3-to-2 freeze-out.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    core_or_cusp_effect: self-interactions are motivated by small-scale halo tensions
+validity_domain:
+- id: kinetic_equilibrium_until_freezeout
+  applies_to: production
+  condition: The hidden pions must remain in kinetic equilibrium with the Standard Model until SIMP freeze-out.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: nda_effective_theory
+  applies_to: model
+  condition: Pion properties are estimated with naive dimensional analysis in a regime where chiral perturbation
+    theory can be marginal.
+  status: approximate
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: exact_hidden_flavour_symmetry
+    description: The hidden SU(N_F)_V flavour symmetry is exact enough to stabilize the pions.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Pion decays would destroy the dark matter candidate.
+  - id: small_singlet_higgs_mixing
+    description: A nonzero singlet-Higgs mixing mediates kinetic equilibrium while respecting experimental
+      bounds.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Without sufficient mixing the hidden sector can overheat during 3-to-2 freeze-out.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public code is described in the assigned text.
+provenance:
+  model_id: 1606_01628_nonabelian_singlet_higgs_portal_simp_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: SIMP from a strong U(1) gauge theory with a monopole condensation
+      authors:
+      - Ayuki Kamada
+      - Masaki Yamada
+      - Tsutomu T. Yanagida
+      - Kazuya Yonekura
+      year: 2016
+      arxiv_id: '1606.01628'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: Codex
+    extractor_name: dark-matter model-card batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: SIMP and its thermal relic
+      page: null
+      quote_or_summary: Hidden pions are stable and identified as self-interacting DM; 3-to-2 freeze-out
+        sets relic density.
+    - reference_id: primary
+      section: Kinetic equilibrium between two sectors
+      page: null
+      quote_or_summary: Singlet-Higgs mixing keeps the hidden and SM sectors kinetically coupled.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The paper introduces hidden quarks charged under hidden SU(N); confinement gives hidden pions
+        that are identified as self-interacting DM.
+      confidence: high
+      section: SIMP and its thermal relic
+      page: null
+    symmetries:
+    - reference_id: primary
+      note: The hidden pions are stated to be stable due to the SU(N_F)_V flavour symmetry.
+      confidence: high
+      section: SIMP and its thermal relic
+      page: null
+    interactions:
+    - reference_id: primary
+      note: A singlet field S mixes with the Standard Model Higgs and couples the hidden pions to the
+        SM sector.
+      confidence: high
+      section: Kinetic equilibrium between two sectors
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: The thermal relic abundance is determined by 3-to-2 pion processes while kinetic equilibrium
+        with the SM is maintained.
+      confidence: high
+      section: SIMP and its thermal relic
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: The text quotes hidden pion masses near the sub-GeV to GeV scale, with an NDA example giving
+        the observed abundance near m_pi about 1 GeV.
+      confidence: medium
+      section: SIMP and its thermal relic
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: The paper assumes the hidden sector remains in kinetic equilibrium and uses naive dimensional
+        analysis where chiral perturbation theory may be marginal.
+      confidence: medium
+      section: SIMP and its thermal relic
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: low
+  dominant_uncertainties:
+  - NDA estimates for strongly coupled pion dynamics
+  - experimental viability of the required singlet-Higgs mixing
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: strong_coupling_nda
+    severity: medium
+    category: extrapolation
+    warning: Do not treat the NDA relic-density and self-scattering estimates as precision calculations.
+    mitigation: Use the entry as a model-card candidate requiring expert review.
+    source_reference_ids:
+    - primary

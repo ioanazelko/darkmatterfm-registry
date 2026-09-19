@@ -1,0 +1,319 @@
+_source:
+  shard: arXiv_src_2002_026_wds.tar
+  paper_id: '2002_07809'
+  source_member: 2002_07809.json
+schema_version: model_only_v0
+model_id: 2002_07809_sub_mev_scalar_dm_eft_v1
+identity:
+  name: Sub-MeV scalar dark matter EFT with heavy mediator
+  family: effective_field_theory_dark_matter
+  aliases:
+  - sub-MeV scalar DM EFT
+  short_description: An effective field theory for a single SM-singlet scalar dark matter species below
+    1 MeV interacting with electrons through heavy-mediator contact operators.
+  historical_origin_or_motivation: Built to connect cosmological histories of sub-MeV DM with electron
+    recoil detection prospects using a heavy-mediator EFT.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - sub-MeV dark matter
+  - electron recoil dark matter
+  - heavy mediator EFT
+  lagrangian_available: partial
+  renormalizable: 'no'
+  eft_cutoff:
+    name: EFT cutoff
+    symbol: Lambda
+    range: O(10 MeV) or higher in the analysis
+    unit: MeV
+    status: assumed
+  embedded_in_larger_framework: 'yes'
+  notes: The low-energy Lagrangian contains scalar DM free terms plus higher-dimensional DM-electron operators;
+    UV mediators are integrated out.
+particle_content:
+  dark_matter_candidate:
+    name: scalar field phi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - heavy integrated-out mediator
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Assumed symmetry requiring operators to contain two scalar DM fields.
+  symmetries:
+  - name: Z2-like DM parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - electrons
+  dark_sector_couplings:
+  - scalar DM-electron effective operators
+  mediator_types:
+  - heavy integrated-out scalar or vector mediator
+  interaction_operators:
+  - scalar S, P, V, and A effective operators up to dimension 6
+  scattering:
+    elastic: 'yes'
+    inelastic: not_applicable
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels:
+  - DM annihilation to electron-positron pairs where kinematically allowed in the EFT
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the single dominant sub-MeV DM species.
+    range: < 1 MeV in the EFT study
+    unit: MeV
+    role: core
+    status: assumed
+  - name: EFT scale
+    symbol: Lambda
+    description: Scale of heavy degrees of freedom integrated out of the low-energy EFT.
+    range: at least O(10 MeV) for the framework used below BBN scale
+    unit: MeV
+    role: core
+    status: assumed
+  - name: Wilson coefficients
+    symbol: c_i
+    description: Coefficients of effective DM-electron operators.
+    range: operator dependent
+    role: core
+    status: unknown
+production:
+  mechanisms:
+  - thermal freeze-out with the SM bath
+  - out-of-equilibrium production by SM annihilations
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - DM-electron/electroweak EFT operator strength
+  - DM mass
+  - initial conditions for nonthermal production
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper divides viable histories into freeze-out and nonthermal production; abundance can be
+    partial or complete depending on parameters.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: dark matter density
+    symbol: Omega_DM h^2
+    value: about 0.12 as the not-to-exceed abundance target
+    status: established
+  calculation_type: mixed
+  key_dependencies:
+  - annihilation/scattering matrix elements from effective operators
+  - DM mass
+  - EFT scale
+  - thermal history
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - thermal freeze-out or out-of-equilibrium production are both considered within the EFT
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: unknown
+  notes: The paper treats both thermal and nonthermal histories; no single phase-space distribution is
+    fixed for the EFT model card.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: valid_sub_mev_eft
+  applies_to: EFT
+  condition: The EFT is applied at or below the BBN scale with e, positrons, photons, neutrinos, and the
+    DM particle as dynamical degrees of freedom.
+  status: assumed
+  extrapolation_risk: medium
+- id: valid_heavy_mediator
+  applies_to: mediator
+  condition: All mediators and other new physics are presumed heavier than the MeV-scale EFT regime.
+  status: assumed
+  extrapolation_risk: high
+- id: valid_single_species
+  applies_to: model
+  condition: The DM abundance is dominated by one particle species below 1 MeV.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: single_species
+    description: The dark matter density is dominated by one light species.
+    scope: theory
+    status: assumed
+  - id: sm_singlet
+    description: The dark matter candidate is a singlet under Standard Model gauge groups.
+    scope: theory
+    status: assumed
+  - id: no_extra_light_new_physics
+    description: No additional light new physics besides the DM particle is present below the EFT cutoff.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is identified in the extracted paper text.
+provenance:
+  model_id: 2002_07809_sub_mev_scalar_dm_eft_v1
+  model_name: Sub-MeV scalar dark matter EFT with heavy mediator
+  model_family: effective_field_theory_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Cosmology and prospects for sub-MeV dark matter in electron recoil experiments
+      authors:
+      - Benjamin V. Lehmann
+      - Stefano Profumo
+      year: 2020
+      arxiv_id: '2002.07809'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extractor_name: Codex GPT-5.5 rolling batch worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: EFT framework
+      page: null
+      quote_or_summary: The paper builds a low-energy EFT for sub-MeV scalar and fermion DM coupled to
+        electrons.
+    - reference_id: paper
+      section: Thermal histories
+      page: null
+      quote_or_summary: Thermal freeze-out and out-of-equilibrium production are the allowed histories
+        studied.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The framework studies sub-MeV DM candidates that are SM singlets and explicitly develops scalar
+        DM using real or complex scalar free Lagrangians.
+      confidence: high
+      section: EFT framework
+    symmetries:
+    - reference_id: paper
+      note: The EFT assumes a stabilizing Z2-like symmetry so operators contain two DM fields and preserve
+        DM stability.
+      confidence: high
+      section: EFT framework
+    interactions:
+    - reference_id: paper
+      note: Scalar DM-electron operators up to dimension six are enumerated; the S operator is generated
+        by scalar-mediator or Higgs-portal-like completions.
+      confidence: high
+      section: EFT for scalar DM
+    production_mechanism:
+    - reference_id: paper
+      note: Thermal freeze-out and out-of-equilibrium production are the two thermal histories considered
+        for the broad EFT class.
+      confidence: high
+      section: Thermal histories
+    cosmological_history:
+    - reference_id: paper
+      note: The EFT is applied below the MeV/BBN scale with electrons, positrons, neutrinos, photons,
+        and DM as light degrees of freedom.
+      confidence: high
+      section: EFT framework
+    parameter_ranges:
+    - reference_id: paper
+      note: The paper assumes a dominant DM species below 1 MeV and an EFT cutoff of order 10 MeV or higher.
+      confidence: high
+      section: EFT framework
+    validity_domain:
+    - reference_id: paper
+      note: Validity requires heavy mediators and no additional light new physics besides the DM particle
+        in the sub-MeV EFT regime.
+      confidence: high
+      section: EFT framework
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - validity of heavy-mediator EFT near MeV scales
+  - operator-dependent Wilson coefficients
+  - initial conditions for nonthermal production
+  validation_status: expert_judgment_only
+  notes: This is a broad EFT class, not a single UV completion.
+agent_failure_modes:
+  warnings:
+  - id: broad_eft_class
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not interpret the scalar EFT row as one unique UV-complete model; the row summarizes a
+      class of heavy-mediator scalar DM operators.
+  - id: operator_interference
+    severity: low
+    category: other
+    warning: The paper notes that arbitrary linear combinations of operators can alter annihilation/production
+      relative to scattering.
+operators:
+  renormalizable_terms:
+  - scalar DM free Lagrangian
+  - possible Higgs-portal contribution mapped into scalar electron operator
+  eft_operators:
+  - S scalar electron bilinear operator
+  - P pseudoscalar electron bilinear operator
+  - derivative vector operator
+  - derivative axial-vector operator
+  contact_or_light_mediator: contact
+  coupling_types:
+  - scalar
+  - pseudoscalar
+  - vector-current derivative
+  - axial-current derivative

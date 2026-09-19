@@ -1,0 +1,458 @@
+_source:
+  shard: arXiv_src_2309_079_wds.tar
+  paper_id: '2309_10700'
+  source_member: 2309_10700.json
+schema_version: model_only_v0
+model_id: 2309_10700_higgs_portal_lepton_flavoured_scalar_dm_v1
+identity:
+  name: Higgs-portal lepton-flavoured complex scalar dark matter
+  family: lepton_flavoured_scalar_dark_matter
+  aliases:
+  - DMFV complex scalar lepton-flavoured dark matter with Higgs portal
+  short_description: A simplified Dark Minimal Flavour Violation model in which a complex scalar flavour
+    triplet contains the dark matter state and couples to right-handed leptons through a charged Dirac
+    mediator and to the Higgs through a quartic portal.
+  historical_origin_or_motivation: The paper revisits an earlier complex scalar lepton-flavoured DMFV
+    model, opens the Higgs portal, and allows generic dark-flavour mass and coupling hierarchies to recover
+    electroweak-scale parameter space.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Dark Minimal Flavour Violation
+  - Higgs portal
+  - lepton-flavoured dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper gives a renormalizable simplified Lagrangian with scalar triplet, charged vector-like
+    mediator, lepton portal matrix, Higgs portal matrix, and dark quartic terms.
+particle_content:
+  dark_matter_candidate:
+    name: lightest complex scalar flavour state phi_3
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavier complex scalar flavour states phi_1 and phi_2
+  mediators:
+  - electrically charged vector-like Dirac fermion mediator with right-handed lepton quantum numbers
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - near-degenerate scalar flavour states and mediator can participate in coannihilation regimes
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A discrete Z2 under which only the new scalar flavours and the mediator are charged
+    makes the lightest new state stable.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified
+    breaking_scale: null
+  - name: U(3)_phi
+    type: global
+    exact_or_approximate: approximate
+    breaking: broken by DMFV spurions in the lepton and Higgs portal coupling matrices
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - right-handed charged leptons
+  - Higgs doublet
+  - electroweak gauge and top final states through Higgs-portal annihilation
+  dark_sector_couplings:
+  - lepton portal matrix lambda = U D
+  - Higgs portal matrix lambda_H = lambda_H identity + delta_lambda_H D^2
+  - dark scalar quartic coupling
+  mediator_types:
+  - charged vector-like Dirac fermion
+  - Higgs boson
+  interaction_operators:
+  - lambda_ij psi_bar l_Ri phi_j
+  - lambda_H,ij phi_i^dagger phi_j H^dagger H
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - phi_i dagger phi_j to charged lepton pairs through mediator exchange
+  - Higgs-portal annihilation to Higgs, W, Z, and top final states when kinematically open
+  - coannihilation with near-degenerate mediator or heavier scalar flavours
+  decay_channels: []
+  self_scattering_channels:
+  - dark scalar quartic self-interactions, not central in the analysis
+  cp_structure: DMFV coupling matrix includes phases but the numerical extraction focuses on flavour-conserving
+    cases in parts of the analysis.
+  flavor_structure: Single new DMFV source of flavour and CP violation beyond SM Yukawas, parameterized
+    by lambda = U D.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: lightest scalar DM mass
+    symbol: m_phi3
+    description: Mass of the lightest scalar flavour state that accounts for the observed DM abundance.
+    range: electroweak scale to multi-TeV ranges studied; best-fit examples near 100 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: mediator mass
+    symbol: m_psi
+    description: Mass of the charged vector-like Dirac mediator.
+    range: electroweak scale to multi-TeV ranges studied
+    unit: GeV
+    role: core
+    status: inferred
+  - name: lepton portal diagonal couplings
+    symbol: D_i
+    description: Positive real entries in the diagonal matrix D of lambda = U D.
+    range:
+      min: 0
+      max: 3
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Range adopted to maintain perturbativity in the paper.
+    role: core
+    status: inferred
+  - name: lepton portal mixing angles
+    symbol: theta_ij
+    description: Angles in the unitary matrix U parameterizing lambda.
+    range:
+      min: 0
+      max: pi/4
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Range as stated in the paper.
+    role: core
+    status: inferred
+  - name: lepton portal phases
+    symbol: delta_ij
+    description: CP phases in the unitary matrix U.
+    range:
+      min: 0
+      max: 2*pi
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Range as stated in the paper.
+    role: core
+    status: inferred
+  - name: universal Higgs portal coupling
+    symbol: lambda_H
+    description: Flavour-universal term in the Higgs portal coupling matrix.
+    range:
+      min: -3
+      max: 3
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Range adopted in the scan.
+    role: core
+    status: inferred
+  - name: DMFV Higgs portal correction
+    symbol: delta_lambda_H
+    description: Coefficient of the D^2 correction to the Higgs portal matrix.
+    range:
+      min: -0.1
+      max: 0.1
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Range adopted in the scan.
+    role: core
+    status: inferred
+  - name: mass hierarchy spurion coefficient
+    symbol: eta
+    description: Controls flavour non-universal corrections to the scalar DM mass matrix.
+    range: generic sign and magnitude considered; sign controls ordinary or reversed hierarchy
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  - mediator-exchange annihilation
+  - Higgs-portal annihilation
+  - coannihilation in near-degenerate regimes
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - thermally averaged annihilation rate
+  - Higgs portal coupling
+  - lepton portal couplings
+  - mediator and scalar mass splittings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The analysis treats the lightest scalar flavour as the observed DM and computes relic density
+    with micrOMEGAs.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: target abundance
+    symbol: Omega h^2
+    description: Observed DM relic abundance imposed in the global analysis.
+    value: '0.12'
+    role: derived
+    status: assumed
+  calculation_type: thermal
+  key_dependencies:
+  - lambda and lambda_H couplings
+  - m_phi3
+  - m_psi
+  - mass hierarchy and coannihilation splittings
+  - Higgs resonance and electroweak thresholds
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  f_of_p_or_q: not specified
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: WIMP-like thermal relic; the paper does not derive a phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: not discussed
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: perturbative_scan
+  applies_to: parameter
+  condition: Couplings are kept within the scan ranges D_i in [0,3], lambda_H in [-3,3], and delta_lambda_H
+    in [-0.1,0.1].
+  status: assumed
+  extrapolation_risk: medium
+  source_reference_ids:
+  - paper
+- id: dmfv_flavour_structure
+  applies_to: model
+  condition: The Higgs portal and mass matrices are expanded consistently with the DMFV spurion hypothesis.
+  status: assumed
+  extrapolation_risk: high
+  source_reference_ids:
+  - paper
+- id: flavour_conserving_fit
+  applies_to: model
+  condition: Parts of the combined fit restrict to the flavour-conserving case theta_ij = 0.
+  status: assumed
+  extrapolation_risk: medium
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: z2_exact
+    description: The stabilizing Z2 symmetry is exact so the lightest new field is stable.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    impact_if_violated: The scalar DM state could decay if the Z2 is broken.
+  - id: standard_freezeout
+    description: The relic abundance is computed in the standard thermal freeze-out setting.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper
+    impact_if_violated: A nonstandard cosmology would change the target parameter space.
+  - id: dmfv_spurion
+    description: All new flavour and CP violation follows the DMFV spurion structure used in the paper.
+    scope: theory
+    status: assumed
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper
+    impact_if_violated: Additional flavour sources would alter flavour constraints and couplings.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports a private micrOMEGAs fork for relic-density evaluation and a FeynRules/UFO
+    implementation used with MadGraph and PYTHIA, but no public model-specific repository is specified
+    in the extracted text.
+  primary_code_role: relic_density_calculation
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs:
+  - model parameters
+  expected_outputs:
+  - relic density
+  - collider event samples
+  supported_observable_channels: []
+  reproducibility:
+    reproducibility_level: partial
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: Relic densities were validated against public micrOMEGAs, but the speed-up fork is private.
+  validation:
+    validation_status: internally_validated
+    benchmark_references: []
+    validation_notes: Collider recasts are stated to be validated against experimental cutflows where
+      available.
+  caveats:
+  - No public URL or archive for the model implementation is given in the assigned text.
+provenance:
+  model_id: 2309_10700_higgs_portal_lepton_flavoured_scalar_dm_v1
+  model_name: Higgs-portal lepton-flavoured complex scalar dark matter
+  model_family: lepton_flavoured_scalar_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Opening the Higgs Portal to Lepton-Flavoured Dark Matter
+      authors: []
+      year: 2023
+      arxiv_id: '2309.10700'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned SQLite full text for batch-0017.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0017
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract
+      page: null
+      quote_or_summary: States the simplified model of lepton-flavoured complex scalar DM with right-handed
+        leptons and the Higgs boson.
+    - reference_id: paper
+      section: Model Setup and Details
+      page: null
+      quote_or_summary: Defines the scalar triplet, charged mediator, Z2 symmetry, Lagrangian, DMFV spurion
+        structure, and Higgs portal.
+    - reference_id: paper
+      section: Phenomenology of Higgs Portal
+      page: null
+      quote_or_summary: Explains the Higgs-portal annihilation channels and their effect on thermal freeze-out.
+    - reference_id: paper
+      section: Combined Analysis
+      page: null
+      quote_or_summary: Reports micrOMEGAs relic-density evaluation and FeynRules/UFO collider implementation.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: Complex scalar flavour triplet phi and charged Dirac mediator psi are introduced; phi_3 is
+        selected as the lightest stable DM state.
+      confidence: high
+      section: Model Setup and Details
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: A Z2 symmetry charges only the new fields, ensuring stability of the lightest new state; DMFV
+        imposes a U(3)_phi flavour structure.
+      confidence: high
+      section: Model Setup and Details
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The Lagrangian contains lepton-portal lambda_ij psi l_Ri phi_j and Higgs-portal lambda_H,ij
+        phi_i^dagger phi_j H^dagger H interactions.
+      confidence: high
+      section: Model Setup and Details
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: Higgs-portal quartic interactions add thermal annihilation channels and resonances beyond
+        the t-channel lepton-portal annihilation process.
+      confidence: high
+      section: Phenomenology of Higgs Portal
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: The scan uses D_i in [0,3], lambda_H in [-3,3], delta_lambda_H in [-0.1,0.1], plus angle and
+        phase ranges for U.
+      confidence: high
+      section: Model Setup and Details
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The paper emphasizes the DMFV spurion ansatz and perturbative parameter ranges as defining
+        assumptions of the simplified model.
+      confidence: medium
+      section: Model Setup and Details
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - private relic-density implementation
+  - flavour assumptions
+  - parameter-space scan choices
+  validation_status: partially_validated
+  notes: The model definition is explicit, but quantitative viability depends on scan assumptions and
+    recast details.
+agent_failure_modes:
+  warnings:
+  - id: not_original_base_model
+    severity: medium
+    category: assumption_mismatch
+    warning: This paper extends an earlier DMFV scalar model; do not present the entire base model as
+      newly invented here.
+    source_reference_ids:
+    - paper
+    mitigation: Frame the row as the Higgs-portal and generic-hierarchy variant developed in this paper.
+  - id: no_constraints_block
+    severity: low
+    category: other
+    warning: The paper contains many constraints, but this run omits constraints by instruction.
+    source_reference_ids:
+    - paper
+    mitigation: Use only model, production, and provenance fields in this extraction.

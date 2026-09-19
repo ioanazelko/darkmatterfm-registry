@@ -1,0 +1,285 @@
+_source:
+  shard: arXiv_src_1509_012_wds.tar
+  paper_id: '1509_05841'
+  source_member: 1509_05841.json
+schema_version: model_only_v0
+model_id: 1509_05841_radiative_seesaw_inert_doublet_dm_singlet_inflation_v1
+identity:
+  name: Radiative-seesaw inert-doublet dark matter with singlet-scalar inflation
+  family: inert_doublet_dark_matter
+  aliases: []
+  short_description: An extension of the radiative seesaw model with an inert doublet dark matter candidate
+    and Z2-odd real singlet scalars that generate an effective coupling, support inflation, and allow
+    leptogenesis while preserving thermal inert-doublet dark matter.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - radiative seesaw model
+  - inert doublet model
+  - singlet-scalar inflation
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the Lagrangian for the inert doublet, singlet fermions, and two Z2-odd real
+    singlet scalars.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutral inert-doublet scalar eta_R^0
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - inert scalar doublet eta
+  - singlet fermions N_k
+  - real singlet scalars S_1 and S_2
+  mediators:
+  - Higgs-sector scalar interactions
+  - singlet scalars
+  unstable_parent_particles:
+  - inflaton singlet scalar S_1
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z2 symmetry assigns odd parity to the inert doublet, singlet fermions, and
+    singlet scalars while Standard Model fields are even; the lightest Z2-odd particle is dark matter.
+  symmetries:
+  - name: Z2 parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - Higgs doublet
+  - lepton doublets
+  dark_sector_couplings:
+  - lambda_3 and lambda_4 inert-doublet scalar couplings
+  - effective lambda_5 coupling from singlet-scalar exchange
+  - Yukawa couplings h_alpha k between leptons, N_k and eta
+  mediator_types:
+  - scalar singlet
+  - inert scalar doublet
+  - singlet fermion
+  interaction_operators:
+  - eta-Higgs quartic interactions
+  - S_a eta-Higgs trilinear/effective coupling
+  - non-minimal singlet-scalar coupling to Ricci scalar
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: inert-doublet DM mass
+    symbol: M_eta_R0
+    description: Mass of the lightest neutral inert-doublet scalar
+    range: 600 GeV, 1 TeV, and 3 TeV examples; below about 530 GeV cannot explain the abundance in the
+      stated setup
+    unit: GeV
+    role: core
+    status: inferred
+  - name: inert scalar quartic couplings
+    symbol: lambda_3, lambda_4
+    description: Couplings determining the eta_R^0 relic abundance
+    role: core
+    status: inferred
+  - name: effective lambda_5
+    symbol: lambda_5
+    description: Small effective quartic coupling generated after integrating out singlet scalars
+    role: core
+    status: inferred
+  - name: singlet scalar masses
+    symbol: m_Sa
+    description: Masses of the Z2-odd real singlet scalars
+    role: core
+    status: inferred
+  - name: non-minimal curvature couplings
+    symbol: xi_a
+    description: Singlet-scalar non-minimal couplings to the Ricci scalar
+    role: core
+    status: inferred
+  - name: reheating temperature
+    symbol: T_R
+    description: Must exceed the inert-doublet DM mass for thermal eta_R^0 relics
+    role: cosmological
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out after reheating
+  - inflaton decay reheating compatible with thermal inert-doublet dark matter
+  thermal_equilibrium_with_standard_model: 'yes'
+  abundance_set_by:
+  - lambda_3 and lambda_4 scalar couplings
+  - inert-doublet gauge interactions
+  - reheating temperature above the dark matter mass
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper requires T_R greater than the inert-doublet DM mass so eta_R^0 is thermalized; suitable
+    lambda_3,4 values can match the observed abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - M_eta_R0
+  - lambda_3
+  - lambda_4
+  - reheating temperature
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - inflation driven by singlet scalars with non-minimal Ricci coupling
+  - reheating via singlet-scalar decay
+  - nonthermal leptogenesis from inflaton decay
+  bbn_relevance: medium
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The dark matter component is treated as a thermal inert-doublet scalar relic.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: thermal_reheating_condition
+  applies_to: production
+  condition: Thermal inert-doublet dark matter requires reheating temperature above M_eta_R0.
+  status: inferred
+  extrapolation_risk: medium
+- id: inert_doublet_mass_window
+  applies_to: parameter
+  condition: The paper states the required abundance cannot be explained for M_eta_R0 below about 530
+    GeV in the considered setup.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: z2_odd_lightest_scalar
+    description: The lightest neutral component of the inert doublet is assumed to be the dark matter
+      particle.
+    scope: theory
+    status: assumed
+  - id: thermal_eta_abundance
+    description: Reheating after inflation is high enough that eta_R0 enters the thermal bath.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code was identified in the extracted paper text.
+provenance:
+  model_id: 1509_05841_radiative_seesaw_inert_doublet_dm_singlet_inflation_v1
+  model_name: Radiative-seesaw inert-doublet dark matter with singlet-scalar inflation
+  model_family: inert_doublet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1509_05841'
+      title: Inflation due to a non-minimal coupling of singlet scalars in the radiative seesaw model
+      authors:
+      - Romy H. S. Budhi
+      - Shoichi Kashiwase
+      - Daijiro Suematsu
+      year: 2015
+      arxiv_id: '1509.05841'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_0009
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1509_05841'
+      section: abstract/model
+      page: null
+      quote_or_summary: The model extends radiative seesaw inert-doublet dark matter with Z2-odd real
+        singlet scalars.
+    - reference_id: '1509_05841'
+      section: dark matter subsection
+      page: null
+      quote_or_summary: The relic abundance of eta_R0 is controlled by lambda_3,4 and can be thermal if
+        reheating exceeds its mass.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1509_05841'
+      note: The model has an inert scalar doublet, singlet fermions N_k, and two Z2-odd real singlet scalars
+        S_a.
+      confidence: medium
+      section: model section
+    symmetries:
+    - reference_id: '1509_05841'
+      note: Z2-odd new fields generate radiative neutrino masses and the lightest Z2-odd particle can
+        be dark matter.
+      confidence: medium
+      section: introduction/model
+    interactions:
+    - reference_id: '1509_05841'
+      note: The Lagrangian includes eta-Higgs quartics, singlet-scalar terms, and Yukawa couplings h_alpha
+        k.
+      confidence: medium
+      section: model section
+    production_mechanism:
+    - reference_id: '1509_05841'
+      note: The paper requires T_R > M_eta_R0 for thermal inert-doublet dark matter after singlet-scalar
+        inflation.
+      confidence: medium
+      section: leptogenesis/dark matter section
+    parameter_ranges:
+    - reference_id: '1509_05841'
+      note: Relic abundance examples are shown for M_eta_R0 = 600 GeV, 1 TeV, and 3 TeV, with M_eta_R0
+        below about 530 GeV disfavored for the required abundance.
+      confidence: medium
+      section: dark matter subsection
+    cosmological_history:
+    - reference_id: '1509_05841'
+      note: Singlet scalar inflation and inflaton decay are tied to reheating and leptogenesis.
+      confidence: medium
+      section: inflation/leptogenesis sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  notes: Machine-extracted model-only candidate.
+agent_failure_modes:
+  warnings:
+  - id: dm_not_inflaton
+    severity: medium
+    category: invalid_mapping
+    warning: The inert-doublet scalar eta_R0 is the dark matter candidate; the singlet scalar is the inflaton/reheating
+      field, not the DM in this extraction.
+  - id: thermal_condition
+    severity: medium
+    category: assumption_mismatch
+    warning: The relic-density statement assumes reheating above the inert-doublet DM mass.

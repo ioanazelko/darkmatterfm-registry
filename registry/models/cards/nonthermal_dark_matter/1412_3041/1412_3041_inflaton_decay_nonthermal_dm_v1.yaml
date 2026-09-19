@@ -1,0 +1,350 @@
+_source:
+  shard: arXiv_src_1412_006_wds.tar
+  paper_id: '1412_3041'
+  source_member: 1412_3041.json
+schema_version: model_only_v0
+model_id: 1412_3041_inflaton_decay_nonthermal_dm_v1
+identity:
+  name: Inflaton-decay nonthermal dark matter
+  family: nonthermal_dark_matter
+  aliases:
+  - hidden-sector inflaton decay dark matter
+  short_description: Cosmologically stable hidden-sector DM produced directly by inflaton or heavy hidden-scalar
+    decay, retaining memory of inflationary initial conditions.
+  historical_origin_or_motivation: Motivated by a shared hidden sector for inflation and dark matter and
+    by a possible correlation between DM abundance and tensor perturbations.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - inflationary hidden sector
+  - nonthermal dark matter
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: For concreteness the text assumes fermionic DM with a Yukawa-type inflaton coupling; it also
+    notes a scalar DM trilinear alternative.
+particle_content:
+  dark_matter_candidate:
+    name: chi
+    spin: 1/2 for the concrete fermionic example; scalar alternative noted
+    statistics: fermion
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - inflaton phi
+  - optional heavy hidden scalar X
+  mediators:
+  - inflaton phi or heavy hidden scalar X
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - cosmologically stable chi
+  unstable_parent_particles:
+  - inflaton phi
+  - heavy hidden scalar X
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper assumes the DM is cosmologically stable but does not specify the stabilizing
+    symmetry.
+  symmetries:
+  - name: unknown DM stabilizing symmetry
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: not specified
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - right-handed Standard Model fermions indirectly through inflaton-sector couplings
+  dark_sector_couplings:
+  - Yukawa-type inflaton-DM coupling
+  - possible scalar trilinear inflaton-DM coupling
+  mediator_types:
+  - inflaton
+  - heavy hidden scalar
+  interaction_operators:
+  - phi chi chi Yukawa-type interaction
+  - optional scalar-DM trilinear coupling
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels:
+  - phi -> chi chi
+  - X -> chi chi
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: DM mass scanned/correlated with tensor-to-scalar ratio.
+    range: model-dependent
+    unit: GeV
+    role: core
+    status: inferred
+  - name: inflaton mass
+    symbol: m_phi
+    description: Effective inflaton mass after inflation.
+    range: set by inflationary potential
+    role: core
+    status: inferred
+  - name: inflaton branching ratio to DM
+    symbol: B_chi
+    description: Branching fraction for direct nonthermal production.
+    range: B_chi << 1 in the nonthermal setup
+    role: core
+    status: inferred
+  - name: inflaton-SM coupling
+    symbol: y_phi
+    description: Controls reheating through inflaton decay to SM right-handed fermions.
+    role: core
+    status: inferred
+  - name: tensor-to-scalar ratio
+    symbol: r
+    description: Inflationary observable correlated with the DM abundance in this scenario.
+    range: roughly 0.004 to 0.1 in example attractor potentials
+    role: cosmological
+    status: inferred
+production:
+  mechanisms:
+  - direct inflaton decay
+  - nonthermal production during reheating
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - initial inflaton energy density
+  - inflaton branching ratio to DM
+  - inflationary potential and reheating history
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The DM is described as essentially decoupled from the thermal bath since creation in case (a).
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_chi
+  - B_chi
+  - m_phi
+  - V_end
+  - tensor-to-scalar ratio r
+  - reheating temperature
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - inflaton oscillation era
+  - reheating-controlled DM production
+  - hidden-sector inflaton-DM connection
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: nonthermal decay product
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper tracks abundance, not a detailed phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: no_thermalization
+  applies_to: production
+  condition: DM must not fully thermalize with the primordial plasma for the nonthermal memory of inflation
+    to survive.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: reheating_model
+  applies_to: cosmological_history
+  condition: Boltzmann treatment assumes inflaton oscillation around a quadratic minimum after inflation.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: cosmologically_stable_dm
+    description: The net DM is assumed cosmologically stable.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: hidden_sector_connection
+    description: Inflaton and DM can both belong to a hidden sector.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: small_branching
+    description: The branching fraction into DM is small enough to avoid full thermalization.
+    scope: production
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper reports numerical integration of Boltzmann equations, but the assigned text
+    does not identify public code.
+provenance:
+  model_id: 1412_3041_inflaton_decay_nonthermal_dm_v1
+  model_name: Inflaton-decay nonthermal dark matter
+  model_family: nonthermal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Connection between Dark Matter Abundance and Primordial Tensor Perturbations
+      authors:
+      - P. S. Bhupal Dev
+      - Anupam Mazumdar
+      - Saleh Qutub
+      year: 2014
+      arxiv_id: '1412.3041'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: Proposes direct or indirect inflaton-sector production of hidden-sector DM.
+    - reference_id: paper
+      section: Boltzmann equations and numerical results
+      page: null
+      quote_or_summary: Direct decay term sources the DM number density and links abundance to the inflaton
+        energy density.
+    unresolved_items:
+    - Specific stabilizing symmetry and detailed particle spin assignment beyond the fermionic example
+      are not fixed.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The concrete direct-decay case assumes fermionic chi; scalar DM with trilinear coupling is
+        also mentioned.
+      confidence: medium
+      section: Introduction
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: The text assumes cosmological stability but does not name a stabilizing symmetry.
+      confidence: medium
+      section: Introduction
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The direct case uses renormalizable inflaton-DM interactions such as a Yukawa-type coupling.
+      confidence: medium
+      section: Introduction
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: Case (a) produces DM directly via inflaton or heavy scalar decay and keeps it decoupled from
+        the thermal bath.
+      confidence: high
+      section: Introduction
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: The relic density is set during reheating and depends on initial inflaton energy density.
+      confidence: high
+      section: Boltzmann equations
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: Example numerical choices include m_chi = 0.5 GeV and y_phi around 3.6e-7; the discussion
+        scans inflationary parameter alpha/r.
+      confidence: medium
+      section: Numerical results
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The nonthermal scenario requires no full thermalization with the primordial plasma.
+      confidence: high
+      section: Introduction
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - model is intentionally generic
+  - stabilizing symmetry unspecified
+  - depends on reheating and inflationary-potential assumptions
+  validation_status: expert_judgment_only
+  notes: Strong production/relic logic is present, but the particle model is schematic.
+agent_failure_modes:
+  warnings:
+  - id: generic_model
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper says the discussion is general rather than tied to one complete DM model.
+    mitigation: Treat this as a phenomenological production model unless a UV completion is specified.
+    source_reference_ids:
+    - paper
+  - id: no_stabilizer
+    severity: medium
+    category: missing_likelihood
+    warning: The cosmological stability mechanism is assumed, not specified.
+    mitigation: Do not infer a Z2 or other symmetry without review.
+    source_reference_ids:
+    - paper

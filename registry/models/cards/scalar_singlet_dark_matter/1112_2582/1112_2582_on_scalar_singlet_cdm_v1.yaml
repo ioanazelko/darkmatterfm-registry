@@ -1,0 +1,344 @@
+_source:
+  shard: arXiv_src_1112_003_wds.tar
+  paper_id: '1112_2582'
+  source_member: 1112_2582.json
+schema_version: model_only_v0
+model_id: 1112_2582_on_scalar_singlet_cdm_v1
+identity:
+  name: O(N) scalar singlet Higgs-portal cold dark matter
+  family: scalar_singlet_dark_matter
+  aliases:
+  - O(N) scalar singlet dark matter
+  - multi-scalar singlet Higgs-portal dark matter
+  short_description: A renormalizable Standard Model extension with N real scalar singlets stabilized
+    by unbroken O(N)/Z2 symmetry, where the relic abundance is set by thermal Higgs-portal freeze-out.
+  historical_origin_or_motivation: The paper generalizes the real scalar singlet dark matter extension
+    of the Standard Model to an unbroken global O(N) dark sector and studies invisible Higgs decays and
+    relic abundance.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Standard Model plus real scalar gauge singlets
+  - Higgs portal
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The assigned text writes the renormalizable scalar potential and scalar-sector Lagrangian for
+    the O(N) singlets.
+particle_content:
+  dark_matter_candidate:
+    name: N real scalar gauge singlets phi_i
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Standard Model Higgs boson
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The singlets have zero vev and are odd under an unbroken Z2 parity; for N>1 this
+    follows from O(N) invariance.
+  symmetries:
+  - name: global O(N)
+    type: global
+    exact_or_approximate: exact
+    breaking: Assumed unbroken in the model.
+    breaking_scale: null
+  - name: Z2 parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: Not spontaneously broken; singlets are odd and SM fields are even.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs boson
+  - W bosons
+  - Z bosons
+  - SM fermions
+  - Higgs pairs when kinematically allowed
+  dark_sector_couplings:
+  - Higgs portal coupling lambda_x
+  - singlet quartic coupling lambda_phi
+  mediator_types:
+  - scalar Higgs mediator
+  interaction_operators:
+  - lambda_x H^dagger H phi^2
+  - lambda_phi (phi^2)^2
+  annihilation_channels:
+  - phi_i phi_i -> SM SM through Higgs exchange
+  - phi_i phi_i -> h h when open
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: number of scalar singlets
+    symbol: N
+    description: Number of O(N)-related real scalar singlet dark matter components.
+    range: positive integer
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: singlet scalar mass
+    symbol: m_phi
+    description: Common physical mass of the O(N)-degenerate singlet scalars.
+    range: model dependent; CDM and FIDM regions differ
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: Higgs portal coupling
+    symbol: lambda_x
+    description: Coupling multiplying H^dagger H phi^2 in the scalar potential.
+    range: model dependent
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: singlet quartic coupling
+    symbol: lambda_phi
+    description: Dark-sector scalar self-interaction coupling.
+    range: bounded by perturbativity/unitarity in the paper
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: Higgs mass
+    symbol: m_h
+    description: Higgs mass entering annihilation and invisible decay calculations.
+    range: benchmarks around 110-140 in the paper
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - thermal freeze-out through Higgs-portal annihilation into SM particles
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - lambda_x
+  - m_phi
+  - N
+  - Higgs mass and width
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: In the CDM limit the paper solves the Boltzmann equation using Higgs-mediated annihilation cross
+    sections and searches for lambda_x values matching the observed relic abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - Higgs portal coupling lambda_x
+  - number of singlet degrees of freedom N
+  - singlet scalar mass
+  - Higgs-mediated cross sections
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The paper solves for number density/yield, not a full phase-space distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: Not studied in the assigned text.
+    subhalo_mass_function_effect: Not studied in the assigned text.
+    simulation_calibrated: unknown
+validity_domain:
+- id: unbroken_on_symmetry
+  applies_to: model
+  condition: The O(N) symmetry and associated Z2 parity remain unbroken, with zero singlet vev.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - '1112_2582'
+- id: theory_consistency
+  applies_to: parameter_space
+  condition: Vacuum stability, perturbativity/unitarity, and triviality bounds restrict lambda_H, lambda_phi,
+    lambda_x, m_phi, and the cutoff.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1112_2582'
+- id: cdm_freezeout_region
+  applies_to: production
+  condition: The CDM solution assumes thermal equilibrium and freeze-out; the paper notes no CDM solutions
+    for scalar masses below about 1 GeV in the considered ranges.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1112_2582'
+assumptions:
+  global:
+  - id: unbroken_o_n
+    description: The O(N) symmetry is exact and not spontaneously broken.
+    scope: theory
+    status: assumed
+    source_reference_ids:
+    - '1112_2582'
+    impact_if_violated: Breaking O(N) or Z2 could destabilize the singlet dark matter candidate.
+    can_be_relaxed: 'yes'
+  - id: zero_singlet_vev
+    description: The singlet fields have zero vacuum expectation value.
+    scope: theory
+    status: assumed
+    source_reference_ids:
+    - '1112_2582'
+    impact_if_violated: A singlet vev would induce Higgs-singlet mixing not used in this model definition.
+    can_be_relaxed: unknown
+  - id: thermal_freezeout
+    description: The scalar singlets thermalize with the Standard Model bath before freeze-out.
+    scope: production
+    status: assumed
+    source_reference_ids:
+    - '1112_2582'
+    impact_if_violated: If thermalization fails, the FIDM treatment is required.
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: For the CDM calculation the paper reports using micrOMEGAs; no model-specific public code
+    release is described in the assigned text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 1112_2582_on_scalar_singlet_cdm_v1
+  model_name: O(N) scalar singlet Higgs-portal cold dark matter
+  model_family: scalar_singlet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1112_2582'
+      title: Multi-Scalar-Singlet Extension of the Standard Model - the Case for Dark Matter and an Invisible
+        Higgs Boson
+      authors:
+      - A. Drozd
+      - B. Grzadkowski
+      - Jose Wudka
+      year: 2011
+      arxiv_id: '1112.2582'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text from target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014_llm_assisted
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1112_2582'
+      section: model definition
+      page: null
+      quote_or_summary: The paper extends the SM by N real scalar gauge singlets transforming under an
+        unbroken global O(N), with an unbroken Z2 stabilizing the dark scalars.
+    - reference_id: '1112_2582'
+      section: dark matter abundance
+      page: null
+      quote_or_summary: The paper treats the CDM limiting case by solving a Boltzmann equation for the
+        scalar singlet abundance.
+    - reference_id: '1112_2582'
+      section: parameters and potential
+      page: null
+      quote_or_summary: The renormalizable scalar potential contains the Higgs portal coupling lambda_x,
+        singlet quartic lambda_phi, and singlet mass parameter.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1112_2582'
+      note: The dark matter candidates are N real scalar gauge singlets phi_i, all SM gauge singlets and
+        degenerate under O(N).
+      confidence: high
+      section: model definition
+      page: null
+    symmetries:
+    - reference_id: '1112_2582'
+      note: Unbroken O(N) and the associated Z2 parity keep the singlets stable with zero singlet vev.
+      confidence: high
+      section: model definition
+      page: null
+    interactions:
+    - reference_id: '1112_2582'
+      note: The scalar potential includes the Higgs portal term lambda_x H^dagger H phi^2 and a singlet
+        quartic self-interaction.
+      confidence: high
+      section: model definition
+      page: null
+    production_mechanism:
+    - reference_id: '1112_2582'
+      note: In the CDM limit the paper solves the Boltzmann equation using Higgs-mediated annihilation
+        cross sections and searches for lambda_x values matching the observed relic abundance.
+      confidence: high
+      section: dark matter abundance
+      page: null
+    parameter_ranges:
+    - reference_id: '1112_2582'
+      note: The model parameters include N, lambda_H, lambda_phi, lambda_x, and m_phi; the paper scans
+        regions consistent with relic abundance and theoretical consistency.
+      confidence: medium
+      section: model definition/dark matter abundance
+      page: null
+    validity_domain:
+    - reference_id: '1112_2582'
+      note: The paper requires unbroken O(N)/Z2, vacuum stability, perturbativity/unitarity, and finite
+        quartic couplings below the cutoff.
+      confidence: medium
+      section: model definition/theory constraints
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Allowed regions depend on theoretical consistency cuts and relic-production regime.
+  validation_status: expert_judgment_only
+  notes: The model definition is explicit; detailed viable parameter ranges are regime dependent.
+agent_failure_modes:
+  warnings:
+  - id: do_not_drop_n_scaling
+    severity: medium
+    category: assumption_mismatch
+    warning: The relic abundance scales with the number of O(N) singlet components, so N should not be
+      silently set to one.
+    mitigation: Track N when using the relic-density relation.
+    source_reference_ids:
+    - '1112_2582'
+  - id: symmetry_required
+    severity: medium
+    category: assumption_mismatch
+    warning: Stability relies on unbroken O(N)/Z2 and zero singlet vev.
+    mitigation: Check the symmetry assumptions before using the model as stable dark matter.
+    source_reference_ids:
+    - '1112_2582'

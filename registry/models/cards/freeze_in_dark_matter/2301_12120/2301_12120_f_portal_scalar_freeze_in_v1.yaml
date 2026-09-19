@@ -1,0 +1,242 @@
+_source:
+  shard: arXiv_src_2301_086_wds.tar
+  paper_id: '2301_12120'
+  source_member: 2301_12120.json
+agent_failure_modes:
+  warnings:
+  - category: other
+    id: machine_extraction_scope
+    severity: medium
+    warning: This candidate row is machine extracted from one paper and should not be treated as a reviewed
+      registry entry.
+associated_code:
+  code_summary: No dedicated model code is identified in the extracted paper text.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: Higgs portal couplings are assumed very small so the F-portal freeze-in channel controls
+      the scalar abundance and longevity.
+    id: small_higgs_portal
+    impact_if_violated: The scalar abundance and decay phenomenology reduce to Higgs-portal or unstable
+      scalar behavior.
+    scope: production
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  cmb_relevance: medium
+  nonstandard_features:
+  - freeze-in production from thermal F population
+  standard_history_assumed: true
+identity:
+  aliases: []
+  family: freeze_in_dark_matter
+  historical_origin_or_motivation: Introduced as a minimal dark-sector extension in the assigned paper.
+  model_kind: simplified_model
+  name: F-portal real scalar freeze-in dark matter
+  short_description: A minimal F-portal model where a real scalar singlet is produced by annihilations
+    of hypercharge-3/2 vector-like fermions and can act as keV-scale dark matter.
+  status: speculative
+interactions:
+  dark_sector_couplings:
+  - y_phi phi Fbar F
+  - lambda_H phi H dagger H
+  - lambda_H phi^2 H dagger H
+  interaction_operators:
+  - real scalar singlet potential and Yukawa coupling to F
+  mediator_types:
+  - hypercharge-3/2 vector-like fermion F
+  - Higgs portal
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - Higgs doublet
+  - charged leptons through F portal
+  tree_or_loop_level: both
+model_id: 2301_12120_f_portal_scalar_freeze_in_v1
+parameters:
+  core:
+  - description: Mass of the real scalar singlet dark matter candidate.
+    name: scalar mass
+    range: keV scale with Lyman-alpha lower bound around 15 keV discussed in paper
+    role: core
+    status: inferred
+    symbol: m_phi
+    unit: keV
+  - description: Mass of hypercharge-3/2 vector-like fermion mediating production.
+    name: F fermion mass
+    range: EeV-scale or heavier for long-lived scalar scenario discussed in summary
+    role: core
+    status: inferred
+    symbol: M_F
+    unit: eV
+  - description: Coupling of scalar singlet to Fbar F.
+    name: F-portal scalar coupling
+    range: around 2.9e-4 for representative freeze-in abundance scaling
+    role: core
+    status: approximate
+    symbol: y_phi
+  - description: Scalar couplings to the Higgs sector, required very small for the light scalar scenario.
+    name: Higgs portal couplings
+    range: very small
+    role: core
+    status: inferred
+    symbol: lambda_H
+particle_content:
+  additional_dark_sector_particles:
+  - vector-like weak-doublet fermion F with hypercharge 3/2
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: real scalar singlet phi
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  mediators:
+  - F
+  - Higgs portal terms
+  standard_model_extension: substantial
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: nonthermal
+  notes: The paper discusses Lyman-alpha sensitivity to frozen-in keV dark matter but does not provide
+    a full distribution function.
+production:
+  abundance_set_by:
+  - F F annihilation rate
+  - y_phi
+  - m_phi
+  - M_F
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - freeze-in from t- and u-channel F F annihilations
+  nonthermal_momentum_distribution: 'yes'
+  notes: Paper gives a freeze-in Boltzmann equation and relic abundance scaling for the scalar yield.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: medium
+      note: The scalar Lagrangian includes singlet potential terms, Higgs couplings, and y_phi phi Fbar
+        F.
+      reference_id: primary
+      section: Real scalar singlet
+    particle_content:
+    - confidence: medium
+      note: The paper identifies a real scalar singlet as the neutral one-field F-portal dark matter candidate.
+      reference_id: primary
+      section: Section sec:DM
+    production_mechanism:
+    - confidence: medium
+      note: The scalar is dominantly produced by t- and u-channel F F annihilations and the paper writes
+        the freeze-in Boltzmann equation.
+      reference_id: primary
+      section: Real scalar singlet
+    relic_density:
+    - confidence: medium
+      note: The paper gives Omega h^2 scaling with y_phi, m_phi and M_F for the freeze-in yield.
+      reference_id: primary
+      section: Real scalar singlet
+    validity_domain:
+    - confidence: medium
+      note: The text notes long lifetime requires m_phi < 2 M_F and very small couplings; Lyman-alpha
+        bounds forbid too-light frozen-in DM.
+      reference_id: primary
+      section: Real scalar singlet
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0013
+    extraction_date: '2026-05-31'
+    extractor_name: Codex dark-matter model extraction worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - quote_or_summary: Minimal F-mediated dark matter includes frozen-in keV-scale scalar DM.
+      reference_id: primary
+      section: Abstract
+    - quote_or_summary: Scalar production, stability, and relic abundance are computed for the F-portal
+        model.
+      reference_id: primary
+      section: Real scalar singlet
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: freeze_in_dark_matter
+  model_id: 2301_12120_f_portal_scalar_freeze_in_v1
+  model_name: F-portal real scalar freeze-in dark matter
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: low
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2301.12120'
+      authors: []
+      doi: null
+      notes: Full text read from assigned SQLite database.
+      reference_id: primary
+      role: original_model
+      title: 'A forgotten fermion: the hypercharge 3/2 doublet, its phenomenology and connections to dark
+        matter'
+      url: null
+      year: 2023
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - y_phi
+  - m_phi
+  - M_F
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  tuning_assessment: tuned
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Machine extraction from paper text only; fields marked unknown where unsupported.
+  observational_robustness: unknown
+  overall: low
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: suppression
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: Longevity requires kinematic restrictions and very small couplings; the paper
+    treats stability as a phenomenological requirement rather than an exact symmetry.
+  symmetries:
+  - exact_or_approximate: exact
+    name: Standard Model gauge symmetry
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: Populated only from the assigned paper text.
+  parent_frameworks:
+  - Standard Model plus vector-like weak doublet F with hypercharge 3/2
+  - F portal
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats:
+  - The paper calls the single-field option contrived because several parameters must be tiny.
+  condition: The scalar must be light enough and sufficiently long-lived; m_phi below 2 M_F avoids prompt
+    decay to F pairs, but loop decays remain important.
+  extrapolation_risk: high
+  id: scalar_light_and_long_lived
+  status: approximate

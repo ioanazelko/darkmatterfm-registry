@@ -1,0 +1,993 @@
+_source:
+  shard: arXiv_src_1807_011_wds.tar
+  paper_id: '1807_03762'
+  source_member: 1807_03762.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: other
+    id: analysis_vs_model
+    mitigation: null
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: The paper is a comprehensive Bayesian/frequentist analysis of a model extension rather than
+      the first proposal of the full NMSSM Type-I seesaw framework.
+  - category: assumption_mismatch
+    id: coannihilation_sensitive
+    mitigation: Track Higgsino mass splitting when using this model card.
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: Relic-density conclusions often rely on near degeneracy with Higgsino-dominated particles.
+associated_code:
+  caveats:
+  - Computational setup is analysis code rather than a standalone model release.
+  code_summary: The paper builds the model with SARAH and uses SPheno, FlavorKit, MicrOMEGAs, HiggsBounds,
+    HiggsSignal, MultiNest, EasyScan HEP, and Superplot; no standalone public repository for the model
+    card is identified.
+  expected_inputs:
+  - NMSSM Type-I seesaw parameters
+  - Higgs and sneutrino sector parameters
+  expected_outputs:
+  - particle spectrum
+  - relic density
+  - direct and indirect dark matter observables
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules:
+  - availability: public
+    name: SARAH
+    purpose: Build model files for spectrum and observables.
+    relationship_to_model: used_for_model_implementation
+    resource_type: package
+  - availability: public
+    name: SPheno
+    purpose: Generate particle spectrum.
+    relationship_to_model: used_for_spectrum_calculation
+    resource_type: package
+  - availability: public
+    name: MicrOMEGAs
+    purpose: Calculate relic density and dark-matter observables.
+    relationship_to_model: used_for_relic_density_and_dm_observables
+    resource_type: package
+  primary_code_role: relic_density_calculation
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: Version numbers are given for several packages, but exact run files are not extracted.
+    pinned_dependencies: partial
+    reproducibility_level: partial
+  scripts: []
+  validation:
+    benchmark_references: []
+    validation_notes: The scan is described in the paper; no public validation package was extracted.
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The sneutrino is treated as the lightest supersymmetric particle and stable dark matter
+      candidate.
+    id: r_parity_lsp
+    impact_if_violated: null
+    scope: theory
+    source_reference_ids:
+    - primary
+    status: assumed
+  - can_be_relaxed: unknown
+    description: MicrOMEGAs calculations assume the lightest sneutrino accounts for all dark matter.
+    id: sole_dm
+    impact_if_violated: null
+    scope: production
+    source_reference_ids:
+    - primary
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Sneutrino flavor mixing is assumed negligible for the DM study.
+    id: suppressed_flavor_mixing
+    impact_if_violated: null
+    scope: theory
+    source_reference_ids:
+    - primary
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling:
+    name: thermal freeze-out
+    role: core
+    status: inferred
+    symbol: T_fo
+    value: computed by MicrOMEGAs in scan
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - CP-odd right-handed sneutrino
+  - Type-I seesaw NMSSM sneutrino DM
+  family: supersymmetric_sneutrino_dark_matter
+  historical_origin_or_motivation: Motivated by tension between natural neutralino dark matter, direct-detection
+    limits, and the need for neutrino masses.
+  model_kind: complete_theory
+  name: CP-odd sneutrino dark matter in the NMSSM with Type-I seesaw
+  short_description: CP-odd scalar right-handed sneutrino lightest supersymmetric particle in a Type-I
+    seesaw extension of the NMSSM, with relic abundance commonly set by Higgsino coannihilation and singlet-Higgs
+    interactions.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - coannihilation with Higgsinos
+  - annihilation to singlet-dominated Higgs bosons
+  - resonant Higgs-mediated annihilation in parts of parameter space
+  cp_structure: The CP-odd state is the alternative lightest sneutrino possibility and is scanned separately
+    from the CP-even case.
+  dark_sector_couplings:
+  - lambda_N S nu_R nu_R coupling
+  - sneutrino pair couplings to singlet and doublet Higgs states
+  - Higgsino coannihilation interactions
+  decay_channels: []
+  flavor_structure: One-generation sneutrino approximation with suppressed flavor mixing.
+  interaction_operators:
+  - NMSSM Type-I seesaw superpotential terms
+  - soft trilinear sneutrino terms
+  mediator_types:
+  - singlet-dominated Higgs bosons
+  - SM-like Higgs boson
+  - Higgsino-dominated electroweakinos
+  portals:
+  - higgs
+  - neutrino
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: mild
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs sector
+  - nucleons through Higgs exchange
+  tree_or_loop_level: both
+model_id: 1807_03762_cp_odd_sneutrino_nmssm_type_i_seesaw_v1
+parameters:
+  core:
+  - name: lambda
+    range: 0 to 0.7
+    role: core
+    status: inferred
+    symbol: lambda
+  - name: kappa
+    range: absolute value below 0.7
+    role: core
+    status: inferred
+    symbol: kappa
+  - name: right-handed neutrino coupling
+    range: 0 to 0.7
+    role: core
+    status: inferred
+    symbol: lambda_N
+  - name: tan beta
+    range: 1 to 60
+    role: core
+    status: inferred
+    symbol: tan beta
+  - name: Higgsino mass parameter
+    range: 100 to 300
+    role: core
+    status: inferred
+    symbol: mu
+    unit: GeV
+  - name: sneutrino soft mass
+    range: 0 to 300
+    role: core
+    status: inferred
+    symbol: m_sneutrino
+    unit: GeV
+  - name: soft trilinear coupling
+    range: absolute value below 1
+    role: core
+    status: inferred
+    symbol: A_lambda_N
+    unit: TeV
+  - name: soft Higgs singlet trilinear
+    range: absolute value below 1
+    role: core
+    status: inferred
+    symbol: A_kappa
+    unit: TeV
+particle_content:
+  additional_dark_sector_particles:
+  - right-handed neutrino superfields
+  - singlet-dominated Higgs bosons
+  - Higgsino-dominated neutralinos and charginos
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: CP-odd scalar right-handed sneutrino lightest supersymmetric particle
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - opposite-CP sneutrino state
+  - nearly degenerate Higgsino-dominated particles in coannihilation regions
+  long_lived_particles: []
+  mediators:
+  - CP-even Higgs bosons
+  - CP-odd Higgs bosons
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: not_applicable
+  distribution_type: thermal
+  notes: WIMP-like freeze-out/coannihilation scenario; no explicit phase-space distribution is presented.
+production:
+  abundance_set_by:
+  - sneutrino mass
+  - Higgsino mass and mass splitting
+  - singlet Higgs masses and mixings
+  - lambda_N and A_lambda_N parameters
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal WIMP freeze-out with frequent Higgsino coannihilation
+  - annihilation through or into singlet-dominated Higgs bosons in parts of parameter space
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper assumes the lightest sneutrino is the sole DM candidate and finds coannihilation with
+    Higgsinos often sets the right relic density.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  caveats:
+  - Variant separated because the paper analyzes CP-even and CP-odd sneutrino DM scenarios separately.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The paper treats the sneutrino as a thermal WIMP candidate and computes the relic abundance
+        with MicrOMEGAs.
+      page: null
+      reference_id: primary
+      section: Scan strategy
+    interactions:
+    - confidence: high
+      note: Sneutrino DM couples mainly to Higgs bosons; singlet-dominated Higgs states can be annihilation
+        products or mediators.
+      page: null
+      reference_id: primary
+      section: Model and annihilation mechanisms
+    parameter_ranges:
+    - confidence: high
+      note: The scan uses 0<lambda<0.7, |kappa|<0.7, 0<lambda_N<0.7, 1<tan beta<60, |A_lambda_N| and |A_kappa|<1
+        TeV, mu between 100 and 300 GeV, and m_sneutrino soft mass below 300 GeV.
+      page: null
+      reference_id: primary
+      section: Scan strategy
+    particle_content:
+    - confidence: high
+      note: The Type-I seesaw NMSSM introduces three generations of right-handed neutrino fields; the
+        lightest sneutrino in this sector is the DM candidate.
+      page: null
+      reference_id: primary
+      section: The Lagrangian of the Model
+    production_mechanism:
+    - confidence: high
+      note: The right relic density is usually obtained by coannihilation with Higgsino-dominated particles,
+        with singlet Higgs mediation also relevant.
+      page: null
+      reference_id: primary
+      section: DM annihilation mechanisms
+    symmetries:
+    - confidence: medium
+      note: The superpotential uses a Z3 symmetry; the supersymmetric WIMP setup treats the sneutrino
+        LSP as stable.
+      page: null
+      reference_id: primary
+      section: The Lagrangian of the Model
+    validity_domain:
+    - confidence: medium
+      note: The paper assumes one-generation sneutrino DM because flavor mixing is suppressed by small
+        neutrino Yukawa couplings.
+      page: null
+      reference_id: primary
+      section: Sneutrino sector
+    constraints:
+    - confidence: high
+      note: Primary source defines likelihood terms for relic density, direct detection, indirect detection,
+        Higgs, and B physics.
+      page: null
+      reference_id: src_1807_03762_primary
+      section: scan/likelihood sections
+    - confidence: medium
+      note: Related source gives complementary XENON1T and LHC constraint context.
+      page: null
+      reference_id: src_1807_03762_1810_09143
+      section: abstract
+    - confidence: medium
+      note: Related source gives right-handed sneutrino indirect-search context.
+      page: null
+      reference_id: src_1807_03762_1501_01296
+      section: abstract
+    observables:
+    - confidence: high
+      note: Primary text states the CP-even/odd sneutrino possibilities, coannihilation, direct detection,
+        Fermi-LAT, and LHC-signature treatment.
+      page: null
+      reference_id: src_1807_03762_primary
+      section: abstract/model/results
+    - confidence: medium
+      note: Related local text supports XENON1T/LHC constraints in natural NMSSM Higgsino spectra.
+      page: null
+      reference_id: src_1807_03762_1810_09143
+      section: abstract
+    - confidence: medium
+      note: Related local text supports RH sneutrino indirect/direct/LHC phenomenology.
+      page: null
+      reference_id: src_1807_03762_1501_01296
+      section: abstract
+    - confidence: medium
+      note: Related local text supports sneutrino-DM LHC multi-lepton context.
+      page: null
+      reference_id: src_1807_03762_1311_6549
+      section: introduction
+    routes:
+    - confidence: high
+      note: Primary source lists SARAH, SPheno, FlavorKit, micrOMEGAs, HiggsBounds/HiggsSignal, EasyScan,
+        and MultiNest workflow.
+      page: null
+      reference_id: src_1807_03762_primary
+      section: scan strategy
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0009
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper augments the NMSSM with Type-I seesaw and studies sneutrino DM scenarios.
+      reference_id: primary
+      section: Abstract
+    - page: null
+      quote_or_summary: Gives the superpotential, soft terms, Z3 symmetry, and sneutrino-sector setup.
+      reference_id: primary
+      section: The Lagrangian of the Model
+    - page: null
+      quote_or_summary: Finds broad viable regions and frequent Higgsino coannihilation for the measured
+        relic density.
+      reference_id: primary
+      section: DM annihilation mechanisms and conclusions
+    unresolved_items:
+    - Fields not discussed in the assigned paper text are left unknown or not_applicable.
+    - Machine-readable posterior samples and exact exclusion contours were not present in the local text.
+    - LHC two-lepton plus missing-energy treatment is qualitative without a detector-level recast.
+  last_updated: '2026-05-31'
+  model_family: supersymmetric_sneutrino_dark_matter
+  model_id: 1807_03762_cp_odd_sneutrino_nmssm_type_i_seesaw_v1
+  model_name: CP-odd sneutrino dark matter in the NMSSM with Type-I seesaw
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1807.03762'
+      authors:
+      - Junjie Cao
+      - Jie Li
+      - Yusi Pan
+      - Liangliang Shang
+      - Yuanfang Yue
+      - Di Zhang
+      doi: null
+      notes: Assigned full text from target_text.sqlite.
+      reference_id: primary
+      role: extension
+      title: A Bayesian analysis of sneutrino DM in the NMSSM with Type-I seesaw mechanism
+      url: null
+      year: 2018
+    - arxiv_id: '1807.03762'
+      authors:
+      - Cao, Junjie
+      - Li, Jie
+      - Pan, Yusi
+      - Shang, Liangliang
+      - Yue, Yuanfang
+      - Zhang, Di
+      doi: 10.1103/PhysRevD.99.115033
+      notes: null
+      reference_id: src_1807_03762_primary
+      role: original_model
+      title: Bayesian analysis of sneutrino dark matter in the NMSSM with a type-I seesaw mechanism
+      url: https://arxiv.org/abs/1807.03762
+      year: 2019
+    constraint_papers:
+    - arxiv_id: '1810.09143'
+      authors:
+      - Cao, Junjie
+      - He, Yangle
+      - Shang, Liangliang
+      - Zhang, Yang
+      - Zhu, Pengxuan
+      doi: 10.1103/PhysRevD.99.075020
+      notes: null
+      reference_id: src_1807_03762_1810_09143
+      role: constraint
+      title: Current status of a natural NMSSM in light of LHC 13 TeV data and XENON-1T results
+      url: https://arxiv.org/abs/1810.09143
+      year: 2019
+    - arxiv_id: '1501.01296'
+      authors:
+      - Cerdeño, D. G.
+      - Peiró, M.
+      - Robles, S.
+      doi: 10.1103/PhysRevD.91.123530
+      notes: null
+      reference_id: src_1807_03762_1501_01296
+      role: constraint
+      title: 'Fits to the Fermi-LAT GeV excess with right-handed sneutrino dark matter: Implications for
+        direct and indirect dark matter searches and the LHC'
+      url: https://arxiv.org/abs/1501.01296
+      year: 2015
+    - arxiv_id: '1311.6549'
+      authors:
+      - Arina, Chiara
+      - Cabrera, Maria Eugenia
+      doi: 10.1007/JHEP04(2014)100
+      notes: null
+      reference_id: src_1807_03762_1311_6549
+      role: constraint
+      title: Multi-lepton signatures at LHC from sneutrino dark matter
+      url: https://arxiv.org/abs/1311.6549
+      year: 2014
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - Higgsino coannihilation
+  - singlet-dominated Higgs annihilation channels
+  - sneutrino-Higgs couplings
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    name: observed relic abundance
+    role: core
+    status: assumed
+    symbol: Omega h^2
+    value: measured DM relic density used in likelihood
+  tuning_assessment: mild_tuning
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - model-only extraction; constraints and observables intentionally omitted
+  notes: Machine-extracted candidate; requires expert review.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: Sneutrino is treated as the stable LSP in a supersymmetric dark matter scenario,
+    with R-parity implicitly providing stability.
+  symmetries:
+  - breaking: not specified
+    breaking_scale: null
+    exact_or_approximate: unknown
+    name: R-parity
+    type: discrete
+  - breaking: Introduced to forbid dimensional parameters in the superpotential.
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z3
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: 'yes'
+  notes: The paper writes the relevant superpotential and soft-breaking terms for the Type-I seesaw extension
+    of the NMSSM.
+  parent_frameworks:
+  - Next-to-Minimal Supersymmetric Standard Model
+  - Type-I seesaw mechanism
+  - supersymmetric WIMP dark matter
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The scan assumes the lightest sneutrino is the sole dark matter candidate.
+  extrapolation_risk: medium
+  id: single_dm_candidate
+  notes: null
+  source_reference_ids:
+  - primary
+  status: inferred
+- applies_to: model
+  caveats: []
+  condition: Flavor mixing is neglected so one sneutrino generation is used for DM phenomenology.
+  extrapolation_risk: medium
+  id: one_generation_sneutrino
+  notes: null
+  source_reference_ids:
+  - primary
+  status: inferred
+- applies_to: model
+  caveats: []
+  condition: Main results focus on the h1 scenario where h1 is the SM-like Higgs boson.
+  extrapolation_risk: medium
+  id: h1_sm_like_focus
+  notes: null
+  source_reference_ids:
+  - primary
+  status: inferred
+observables:
+- caveats:
+  - The coannihilation statement is scan-level and not a public contour.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early-universe plasma
+  id: obs_higgsino_coannihilation_relic
+  key_quantities:
+  - description: Mass of the CP-odd right-handed sneutrino LSP.
+    name: sneutrino mass
+    role: core
+    source_reference_ids:
+    - src_1807_03762_primary
+    status: inferred
+    symbol: m_snu1
+    unit: GeV
+  - description: Sets the nearby Higgsino-like states used for coannihilation.
+    name: Higgsino mass parameter
+    role: core
+    source_reference_ids:
+    - src_1807_03762_primary
+    status: inferred
+    symbol: mu
+    unit: GeV
+  - description: Coannihilation becomes important for small Higgsino-sneutrino splitting.
+    name: mass splitting
+    role: core
+    source_reference_ids:
+    - src_1807_03762_primary
+    status: inferred
+    symbol: Delta m/m
+  linked_constraints:
+  - con_planck_relic_1807
+  linked_routes:
+  - route_cp_odd_type_i_sneutrino_scan
+  name: CP-odd sneutrino-Higgsino coannihilation relic density
+  notes: null
+  observability: high
+  predicted_effect: The CP-odd right-handed sneutrino LSP often obtains the measured relic density by
+    coannihilating with Higgsino-like neutralinos/charginos when the mass splitting is below about 10
+    percent.
+  redshift_range: z ~ freeze-out to today
+  relevance: critical
+  scale_range: WIMP freeze-out/coannihilation epoch
+  source_reference_ids:
+  - src_1807_03762_primary
+  subchannel: thermal relic abundance
+- caveats:
+  - Nucleon matrix-element choices create O(10%) uncertainties in the paper discussion.
+  channel: direct_detection
+  effect_direction: suppression
+  environments:
+  - XENON1T/PandaX/LUX style detectors
+  id: obs_sneutrino_si_direct_detection
+  key_quantities:
+  - description: Computed with micrOMEGAs nucleon form factors.
+    name: spin-independent proton cross section
+    role: core
+    source_reference_ids:
+    - src_1807_03762_primary
+    status: inferred
+    symbol: sigma_SI_p
+    unit: cm^2
+  - description: Controls the scalar nucleon scattering amplitude.
+    name: sneutrino-Higgs coupling
+    role: core
+    source_reference_ids:
+    - src_1807_03762_primary
+    status: inferred
+    symbol: C_snu_snu_h
+  linked_constraints:
+  - con_xenon1t_si_1807
+  linked_routes:
+  - route_cp_odd_type_i_sneutrino_scan
+  name: CP-odd sneutrino spin-independent direct detection
+  notes: null
+  observability: medium
+  predicted_effect: The right-handed sneutrino scatters through Higgs-sector exchange; coannihilation-dominated
+    viable points naturally suppress the DM-nucleon rate below XENON1T in much of the favored region.
+  redshift_range: local halo
+  relevance: high
+  scale_range: nuclear recoil energies
+  source_reference_ids:
+  - src_1807_03762_primary
+  - src_1807_03762_1810_09143
+  subchannel: Higgs-mediated nuclear recoil
+- caveats:
+  - Line searches are not represented.
+  channel: indirect_detection
+  effect_direction: rate_change
+  environments:
+  - Fermi-LAT dwarf galaxies
+  id: obs_fermi_dwarf_gamma
+  key_quantities:
+  - description: Sneutrino annihilation rate into SM final states.
+    name: annihilation cross section
+    role: core
+    source_reference_ids:
+    - src_1807_03762_primary
+    - src_1807_03762_1501_01296
+    status: inferred
+    symbol: <sigma v>
+  - description: Fermi-LAT dwarf likelihood term used in the scan.
+    name: dwarf-galaxy likelihood
+    role: core
+    source_reference_ids:
+    - src_1807_03762_primary
+    status: inferred
+    symbol: L_ID
+  linked_constraints:
+  - con_fermi_dwarf_1807
+  linked_routes:
+  - route_cp_odd_type_i_sneutrino_scan
+  name: Gamma-ray limits from dwarf galaxies
+  notes: null
+  observability: medium
+  predicted_effect: The likelihood includes Fermi-LAT dwarf-galaxy indirect-search data for sneutrino
+    annihilation products, while line constraints are stated to be weak and omitted.
+  redshift_range: z ~ 0
+  relevance: medium
+  scale_range: dwarf spheroidal halos
+  source_reference_ids:
+  - src_1807_03762_primary
+  - src_1807_03762_1501_01296
+  subchannel: continuum gamma rays from annihilation
+- caveats:
+  - Primary paper discusses but does not include full Monte Carlo LHC likelihood.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - ATLAS/CMS dilepton+MET searches
+  id: obs_lhc_higgsino_2lmet
+  key_quantities:
+  - description: Controls LHC electroweakino production and decay kinematics.
+    name: Higgsino-like chargino mass
+    role: core
+    source_reference_ids:
+    - src_1807_03762_primary
+    - src_1807_03762_1311_6549
+    status: inferred
+    symbol: m_chargino
+    unit: GeV
+  - description: Sets missing-energy endpoint and compression.
+    name: sneutrino LSP mass
+    role: core
+    source_reference_ids:
+    - src_1807_03762_primary
+    status: inferred
+    symbol: m_snu1
+    unit: GeV
+  linked_constraints:
+  - con_lhc_2lmet_1807
+  linked_routes:
+  - route_cp_odd_type_i_sneutrino_scan
+  name: LHC electroweakino two-lepton plus missing-energy searches
+  notes: null
+  observability: medium
+  predicted_effect: Light Higgsino-like states associated with naturalness can yield two-lepton plus missing-energy
+    signatures; the authors argue favored regions naturally survive existing direct electroweakino searches.
+  redshift_range: not_applicable
+  relevance: medium
+  scale_range: 13 TeV LHC electroweak production
+  source_reference_ids:
+  - src_1807_03762_primary
+  - src_1807_03762_1311_6549
+  subchannel: 2 lepton + missing transverse energy
+constraints:
+- allowed_regions:
+  - Coannihilation with Higgsinos or singlet-Higgs mediated annihilation can achieve the measured abundance.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The lightest sneutrino is treated as the sole DM candidate.
+    id: asm_sneutrino_all_dm
+    impact_if_violated: Multi-component DM would relax the relic-density target and direct-detection normalization.
+    notes: null
+    scope: cosmology
+    source_reference_ids:
+    - src_1807_03762_primary
+    status: assumed
+  benchmark_implications:
+  - Relic density strongly favors near-degenerate Higgsino-sneutrino spectra in much of the posterior.
+  caveats:
+  - No public scan grid is encoded.
+  constrained_parameters:
+  - Omega h2
+  - m_snu1
+  - mu
+  - lambda_N
+  constraint_type: cosmological
+  data_release: Relic-density likelihood computed with micrOMEGAs in the primary scan.
+  excluded_regions:
+  - Points outside the Gaussian relic-density likelihood are disfavored.
+  id: con_planck_relic_1807
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Relic-density likelihood for Type-I NMSSM sneutrino DM
+  notes: null
+  observable_channel: cosmology/relic density
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - src_1807_03762_primary
+- allowed_regions:
+  - The favored coannihilation/secluded regions often remain below XENON1T without fine tuning.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: micrOMEGAs default nucleon form factors and standard halo comparison are used.
+    id: asm_standard_dd_inputs_1807
+    impact_if_violated: Changing hadronic or halo inputs shifts the cross-section comparison.
+    notes: null
+    scope: direct detection
+    source_reference_ids:
+    - src_1807_03762_primary
+    status: assumed
+  benchmark_implications:
+  - Direct detection helps select singlet/secluded sneutrino-Higgs configurations.
+  caveats:
+  - Detector-level likelihood is not reconstructed.
+  constrained_parameters:
+  - sigma_SI_p
+  - m_snu1
+  - Higgs-sector mixing
+  constraint_type: direct_detection
+  data_release: Latest XENON1T limit at the time of the paper, with PandaX/LUX context.
+  excluded_regions:
+  - Parameter points with scattering rates above the XENON1T 90% upper limit are penalized.
+  id: con_xenon1t_si_1807
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: XENON1T spin-independent scattering constraint
+  notes: null
+  observable_channel: direct_detection/nuclear recoil
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - src_1807_03762_primary
+  - src_1807_03762_1810_09143
+- allowed_regions:
+  - Most favored coannihilation-dominated regions are not excluded in the primary scan.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Indirect limits complement direct detection for annihilation channels with SM final states.
+  caveats:
+  - Gamma-ray line constraints are explicitly omitted as weak in the primary scan.
+  constrained_parameters:
+  - <sigma v>
+  - annihilation channels
+  - m_snu1
+  constraint_type: astrophysical
+  data_release: Fermi-LAT dwarf-galaxy data and likelihood prescription cited in the primary paper.
+  excluded_regions:
+  - Annihilation rates exceeding the Fermi-LAT dwarf likelihood are disfavored.
+  id: con_fermi_dwarf_1807
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Fermi-LAT dwarf-galaxy indirect-search likelihood
+  notes: null
+  observable_channel: indirect_detection/gamma rays
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_1807_03762_primary
+  - src_1807_03762_1501_01296
+- allowed_regions:
+  - Accepted points keep h1 as the SM-like Higgs in the scenario emphasized by the primary paper.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The lightest CP-even Higgs h1 is treated as the discovered SM-like Higgs.
+    id: asm_h1_sm_like
+    impact_if_violated: Choosing h2 as the SM-like Higgs is reported to have much lower Bayesian evidence.
+    notes: null
+    scope: Higgs-sector interpretation
+    source_reference_ids:
+    - src_1807_03762_primary
+    status: assumed
+  benchmark_implications:
+  - Higgs-sector constraints shape the singlet/doublet mixing that controls both relic and scattering.
+  caveats:
+  - Implemented as scan likelihood terms, not exported as reusable likelihoods.
+  constrained_parameters:
+  - m_h
+  - BR_Bs_mumu
+  - BR_B_to_Xs_gamma
+  - Higgs-sector masses
+  constraint_type: collider
+  data_release: HiggsBounds-5.0.0, HiggsSignal-2.0.0, FlavorKit/SPheno observables.
+  excluded_regions:
+  - Points failing HiggsBounds/HiggsSignal or B-physics measurements are penalized/excluded.
+  id: con_higgs_bphysics_1807
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Higgs, B-physics, and scalar-spectrum constraints
+  notes: null
+  observable_channel: Higgs/B physics
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_1807_03762_primary
+- allowed_regions:
+  - Primary paper states the favored sneutrino scenarios naturally survive current direct electroweakino
+    searches.
+  applies: recast_required
+  assumptions: []
+  benchmark_implications:
+  - A recast is needed for future collider reinterpretations.
+  caveats:
+  - No event simulation outputs are included.
+  constrained_parameters:
+  - m_chargino
+  - m_neutralino
+  - m_snu1
+  - mass splitting
+  constraint_type: collider
+  data_release: ATLAS/CMS direct electroweakino search context discussed in the primary and related sneutrino
+    literature.
+  excluded_regions:
+  - Light Higgsino-like spectra with visible leptonic decays can be probed by LHC electroweakino searches.
+  id: con_lhc_2lmet_1807
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: LHC two-lepton plus missing-energy electroweakino constraint
+  notes: null
+  observable_channel: collider/2l+MET
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1807_03762_primary
+  - src_1807_03762_1311_6549
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary paper documents the full scan stack but does not publish machine-readable
+      samples in the local text.
+    caveats:
+    - Future direct-detection and LHC updates require fresh recasts.
+    constraint_ids:
+    - con_planck_relic_1807
+    - con_xenon1t_si_1807
+    - con_fermi_dwarf_1807
+    - con_higgs_bphysics_1807
+    - con_lhc_2lmet_1807
+    derived_quantities:
+    - sneutrino spectrum
+    - Omega h2
+    - sigma_SI_p
+    - Fermi dwarf likelihood
+    - Bayesian evidence/posterior
+    - 2l+MET viability
+    description: Map Type-I seesaw NMSSM parameters to CP-odd sneutrino relic density, direct/indirect
+      detection, Higgs/B constraints, and LHC electroweakino signatures.
+    forward_model_chain:
+    - inputs:
+      - NMSSM Type-I seesaw Lagrangian
+      - soft terms
+      notes: null
+      outputs:
+      - spectrum
+      - Higgs/B observables
+      - flavor observables
+      step_id: step_spectrum
+      step_type: simulation
+      tool_or_code: SARAH/SPheno/FlavorKit
+      validity: Valid in the scanned perturbative/naturalness ranges.
+    - inputs:
+      - spectrum
+      - sneutrino LSP
+      - couplings
+      notes: null
+      outputs:
+      - Omega h2
+      - sigma_SI_p
+      - annihilation channels
+      step_id: step_dm
+      step_type: simulation
+      tool_or_code: micrOMEGAs 4.3.4
+      validity: Assumes lightest sneutrino is all DM.
+    - inputs:
+      - observable predictions
+      - experimental terms
+      notes: null
+      outputs:
+      - posterior samples
+      - profile likelihood
+      - Bayesian evidence
+      step_id: step_scan
+      step_type: likelihood
+      tool_or_code: EasyScan HEP + MultiNest
+      validity: Paper-level scan, not a public likelihood package.
+    - inputs:
+      - Higgsino/sneutrino spectrum
+      - decay pattern
+      notes: null
+      outputs:
+      - 2l+MET recast need
+      step_id: step_lhc
+      step_type: recasting
+      tool_or_code: null
+      validity: Qualitative in the primary source.
+    id: route_cp_odd_type_i_sneutrino_scan
+    input_parameters:
+    - lambda
+    - kappa
+    - lambda_N
+    - A_lambda_N
+    - m_snu
+    - mu
+    - tan beta
+    - Higgs-sector soft terms
+    likelihoods:
+    - Planck relic likelihood
+    - XENON1T upper-limit likelihood
+    - Fermi-LAT dwarf likelihood
+    - Higgs/B likelihood terms
+    observable_ids:
+    - obs_higgsino_coannihilation_relic
+    - obs_sneutrino_si_direct_detection
+    - obs_fermi_dwarf_gamma
+    - obs_lhc_higgsino_2lmet
+    required_code_resources:
+    - SARAH
+    - SPheno
+    - FlavorKit
+    - micrOMEGAs
+    - HiggsBounds
+    - HiggsSignal
+    - EasyScan HEP
+    - MultiNest
+    route_status: partially_implemented
+    source_model_features:
+    - CP-odd right-handed sneutrino LSP
+    - NMSSM singlet Higgs sector
+    - Type-I seesaw neutrino superfields
+    - light Higgsino coannihilation
+    validation_tests:
+    - recover near-degenerate Higgsino-sneutrino posterior
+    - recover XENON1T-compatible SI rates
+    - verify CP-even/odd mass-ordering choice

@@ -1,0 +1,298 @@
+_source:
+  shard: arXiv_src_2009_005_wds.tar
+  paper_id: '2009_00885'
+  source_member: 2009_00885.json
+schema_version: model_only_v0
+model_id: 2009_00885_singlet_doublet_fermion_neutrino_dm_v1
+identity:
+  name: Singlet-doublet fermion dark matter with right-handed neutrinos
+  family: singlet_doublet_fermion_dark_matter
+  aliases:
+  - vector-like doublet plus right-handed-neutrino Majorana dark matter
+  - mixed singlet-doublet WIMP fermion dark matter
+  short_description: A Standard Model extension with a vector-like fermion doublet and three right-handed
+    neutrinos, where a Z2-odd mixture of the neutral doublet state and N_R1 gives a stable Majorana WIMP
+    dark matter candidate while the Z2-even right-handed neutrinos generate light neutrino masses.
+  historical_origin_or_motivation: Motivated by jointly addressing dark matter and neutrino masses with
+    a singlet-doublet WIMP-like fermion sector.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Standard Model plus vector-like lepton doublet
+  - type-I seesaw neutrino mass
+  - singlet-doublet fermion dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'no'
+  notes: The paper gives kinetic, bare mass, Majorana mass, and Yukawa terms for the vector-like doublet
+    and right-handed neutrinos.
+particle_content:
+  dark_matter_candidate:
+    name: chi_3 mixed neutral Majorana fermion
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavier neutral Majorana fermions chi_1 and chi_2
+  - charged vector-like fermion eta^-
+  - right-handed neutrinos N_R2 and N_R3
+  mediators:
+  - SM Higgs boson
+  - W boson
+  - Z boson in off-diagonal interactions
+  unstable_parent_particles:
+  - heavier Z2-odd neutral and charged fermions
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: An imposed Z2 makes the vector-like doublet and N_R1 odd while all other fields
+    are even; the lightest Z2-odd Majorana state chi_3 is stable.
+  symmetries:
+  - name: z2_dark_parity
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  - neutrino
+  standard_model_targets:
+  - Higgs doublet
+  - SM leptons
+  - W boson
+  - Z boson
+  - SM fermions
+  dark_sector_couplings:
+  - Y1 coupling between vector-like doublet, Higgs, and N_R1
+  - Y_j couplings of Z2-even right-handed neutrinos to SM lepton doublets
+  mediator_types:
+  - Higgs scalar
+  - electroweak gauge bosons
+  - heavier Z2-odd coannihilation partners
+  annihilation_channels:
+  - chi_3 chi_3 annihilation to SM states
+  - coannihilation with chi_1, chi_2, and eta^-
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi3
+    description: Mass of the lightest neutral Majorana fermion chi_3.
+    range: scan dependent
+    unit: GeV
+    role: core
+    status: inferred
+  - name: mass splitting
+    symbol: Delta M
+    description: Mass splitting between chi_3 and heavier neutral/charged Z2-odd fermions.
+    range: model dependent; controls coannihilation
+    unit: GeV
+    role: core
+    status: inferred
+  - name: doublet-singlet mixing angle
+    symbol: theta
+    description: Mixing of the neutral vector-like doublet component with N_R1.
+    range: model dependent
+    role: core
+    status: inferred
+  - name: vector-like doublet mass
+    symbol: M
+    description: Bare mass of the vector-like fermion doublet.
+    range: above charged-fermion lower bounds in paper discussion
+    unit: GeV
+    role: core
+    status: inferred
+  - name: right-handed neutrino Majorana mass
+    symbol: M_R1
+    description: Majorana mass of the Z2-odd right-handed neutrino entering the dark matter mixture.
+    range: model dependent
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dark Yukawa coupling
+    symbol: Y1
+    description: Yukawa coupling connecting the vector-like doublet, Higgs, and N_R1.
+    range: perturbative in the paper setup
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  - annihilation and coannihilation of Z2-odd fermions
+  thermal_equilibrium_with_standard_model: 'yes'
+  abundance_set_by:
+  - effective annihilation cross section including chi_3, chi_1, chi_2, and eta coannihilations
+  - mass splitting Delta M
+  - mixing angle theta
+  can_produce_all_dark_matter: parameter_dependent
+  notes: The paper assumes thermal equilibrium with the SM bath and solves the Boltzmann equation with
+    an effective cross section.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi3
+  - Delta M
+  - theta
+  - Y1
+  - coannihilation channels
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: low
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: WIMP-like thermal relic after freeze-out.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: not discussed in the paper text
+    subhalo_mass_function_effect: not discussed in the paper text
+    simulation_calibrated: unknown
+validity_domain:
+- id: z2_odd_lightest_state
+  applies_to: model
+  condition: The dark matter interpretation requires chi_3 to be the lightest Z2-odd state.
+  status: assumed
+  extrapolation_risk: medium
+- id: thermal_freezeout_domain
+  applies_to: production
+  condition: Relic-density formulas apply when the Z2-odd sector was in thermal equilibrium with the SM
+    plasma.
+  status: assumed
+  extrapolation_risk: medium
+- id: perturbative_yukawas
+  applies_to: parameter
+  condition: The paper requires Yukawa couplings to remain perturbative.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: exact_z2
+    description: The imposed Z2 symmetry is exact and stabilizes the lightest odd fermion.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: mass_ordering
+    description: The paper assumes m_chi1 > m_chi2 > m_chi3 so chi_3 is stable dark matter.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: standard_thermal_history
+    description: The relic abundance is computed using standard thermal freeze-out and coannihilation.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses MicrOmegas for relic-density calculations; no paper-specific public repository
+    is identified in the assigned text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 2009_00885_singlet_doublet_fermion_neutrino_dm_v1
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2009.00885
+      title: unknown
+      year: 2020
+      arxiv_id: '2009.00885'
+      role: original_model
+      notes: The SQLite full text for this paper begins at the introduction; title and author metadata
+        were not present in the assigned text.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:2009.00885
+      section: introduction/model/relic-density discussion
+      quote_or_summary: SM plus vector-like doublet and right-handed neutrinos; Z2-odd mixed Majorana
+        chi_3 freezes out thermally with coannihilation.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2009.00885
+      note: The model extends the SM by a vector-like fermion doublet and three right-handed neutrinos,
+        with chi_3 as the lightest mixed neutral Majorana state.
+      confidence: high
+      section: model section
+    symmetries:
+    - reference_id: arxiv:2009.00885
+      note: The vector-like doublet and N_R1 are Z2 odd while other fields are even, stabilizing the lightest
+        odd state.
+      confidence: high
+      section: model section
+    interactions:
+    - reference_id: arxiv:2009.00885
+      note: The Yukawa interaction Y1 links the vector-like doublet, Higgs, and N_R1; electroweak interactions
+        of the doublet mediate annihilation and coannihilation.
+      confidence: high
+      section: model section
+    production_mechanism:
+    - reference_id: arxiv:2009.00885
+      note: The relic-density section assumes thermal equilibrium followed by freeze-out through annihilation
+        and coannihilation with heavier dark-sector states.
+      confidence: high
+      section: relic-density section
+    parameter_ranges:
+    - reference_id: arxiv:2009.00885
+      note: The dark-sector phenomenology is governed mainly by m_chi3, Delta M, and the doublet-singlet
+        mixing angle.
+      confidence: high
+      section: model section
+    validity_domain:
+    - reference_id: arxiv:2009.00885
+      note: The paper states perturbativity conditions and assumes the mass ordering with chi_3 as the
+        stable state.
+      confidence: medium
+      section: model and constraints setup
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - title/authors absent from assigned SQLite text
+  - parameter viability is scan dependent
+  - coannihilation importance depends strongly on Delta M
+  validation_status: expert_judgment_only
+  notes: The model construction and relic-density logic are explicit, but bibliographic metadata was incomplete
+    in the assigned text.
+agent_failure_modes:
+  warnings:
+  - id: metadata_missing
+    severity: low
+    category: other
+    warning: The assigned paper text did not include title/authors, so provenance title is marked unknown.
+  - id: coannihilation_sensitive
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not estimate the relic density from chi_3 annihilation alone when Delta M is small; coannihilations
+      are central in the paper.

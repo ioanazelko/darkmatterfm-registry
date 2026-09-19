@@ -1,0 +1,568 @@
+_source:
+  shard: arXiv_src_0701_002_wds.tar
+  paper_id: hep-ph0701007
+  source_member: hep-ph0701007.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: hep-ph0701007_right_handed_kk_neutrino_superwimp_v1
+identity:
+  name: Right-handed Kaluza-Klein neutrino superWIMP from late KK decay
+  family: kaluza_klein_neutrino_superwimp_dark_matter
+  aliases:
+  - right-handed KK neutrino superWIMP
+  - nu_R^(1) late-decay dark matter
+  short_description: A UED superWIMP scenario where the first KK mode of a right-handed neutrino is populated
+    by late decays of quasi-stable thermal relic KK states.
+  historical_origin_or_motivation: Proposed as a UED analogue of right-handed sneutrino superWIMP dark
+    matter and as an alternative to KK-graviton late-decay dark matter.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - universal extra dimensions
+  - superWIMP dark matter
+  lagrangian_available: partial
+  renormalizable: 'no'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper discusses one universal extra dimension and Dirac-neutrino-induced mixing for right-handed
+    KK neutrinos.
+particle_content:
+  dark_matter_candidate:
+    name: first Kaluza-Klein mode of a right-handed neutrino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - KK tower of Standard Model fields
+  - KK graviton
+  mediators:
+  - Dirac neutrino mixing
+  - KK gauge states
+  unstable_parent_particles:
+  - quasi-stable thermal relic KK state such as B^(1)
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: KK parity stabilizes the lightest KK-odd state, taken here to be the right-handed
+    KK neutrino.
+  symmetries:
+  - name: KK parity
+    type: discrete
+    exact_or_approximate: exact
+  - name: lepton number
+    type: global
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - neutrinos
+  - KK hypercharge gauge boson
+  - KK leptons
+  dark_sector_couplings:
+  - tiny Dirac-neutrino-mass mixing between right- and left-handed KK neutrinos
+  mediator_types:
+  - KK gauge states
+  - KK leptons
+  decay_channels:
+  - quasi-stable KK parent -> right-handed KK neutrino + neutrino
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: compactification scale
+    symbol: R^-1
+    description: Sets the KK mass scale.
+    range: about TeV scale in the UED discussion
+    unit: GeV
+    role: core
+    status: inferred
+  - name: right-handed KK neutrino mass
+    symbol: M_nuR^(1)
+    description: Mass of the superWIMP daughter, approximately R^-1 in the paper discussion.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: KK parent mass
+    symbol: M_parent
+    description: Mass of the quasi-stable thermal relic parent.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Dirac neutrino mass
+    symbol: m_nu
+    description: Controls mixing and decay rate; full oscillation-scale Dirac masses make the decay too
+      fast for the small-scale goal.
+    unit: eV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - late decay of quasi-stable thermal relic KK states
+  thermal_equilibrium_with_standard_model: 'no'
+  abundance_set_by:
+  - parent KK thermal relic density
+  - KK mass splitting
+  - Dirac-neutrino mixing
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The right-handed KK neutrino plays the superWIMP role with production inherited from a thermal
+    relic parent.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - parent relic density
+  - mass ratio
+  - decay lifetime set by Dirac-neutrino mixing
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late KK parent decay
+  - superWIMP daughter velocities
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: approximate
+  notes: The paper uses the late-decay free-streaming framework for this candidate.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: possible reduction of small-scale structure only in special neutrino-mass
+      setups
+    subhalo_mass_function_effect: parameter-dependent suppression
+    simulation_calibrated: partial
+validity_domain:
+- id: valid_kk_parity
+  applies_to: model
+  condition: KK parity must make the right-handed KK neutrino the stable lightest KK-odd state.
+  status: assumed
+  extrapolation_risk: high
+- id: valid_dirac_subdominant
+  applies_to: parameter
+  condition: Observed neutrino masses should not be generated mainly by the Dirac terms controlling the
+    decay rate.
+  status: inferred
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: assume_u_ed
+    description: The UED effective theory and KK-parity spectrum apply at the relevant mass scale.
+    scope: theory
+    status: assumed
+  - id: assume_thermal_kk_parent
+    description: The quasi-stable KK parent is thermally produced before decay.
+    scope: production
+    status: assumed
+  - id: assume_small_mass_splitting
+    description: KK spectra provide small mass splittings between parent and daughter.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No dedicated code release is identified in the extracted text.
+  primary_code_role: null
+provenance:
+  model_id: hep-ph0701007_right_handed_kk_neutrino_superwimp_v1
+  model_name: Right-handed Kaluza-Klein neutrino superWIMP from late KK decay
+  model_family: kaluza_klein_neutrino_superwimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: hep-ph0701007
+      title: Dark matter from late decays and the small-scale structure problems
+      authors:
+      - Francesca Borzumati
+      - Torsten Bringmann
+      - Piero Ullio
+      year: 2007
+      arxiv_id: hep-ph/0701007
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+    - arxiv_id: hep-ph/0701007
+      authors:
+      - Borzumati, Francesca
+      - Bringmann, Torsten
+      - Ullio, Piero
+      doi: 10.1103/PhysRevD.77.063514
+      notes: Primary paper text resolved locally; ADS used for sanitized bibliographic metadata.
+      reference_id: primary
+      role: original_model
+      title: Dark matter from late decays and the small-scale structure problems
+      url: https://arxiv.org/abs/hep-ph/0701007
+      year: 2008
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for metadata and reference/citation discovery only; ADS metadata alone was not used as
+        scientific evidence.
+      url: https://ui.adsabs.harvard.edu
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-30'
+    confidence: medium
+    source_chunks_or_sections:
+    - section: UED discussion
+      page: null
+      quote_or_summary: The authors introduce the first KK state of the right-handed neutrino as a superWIMP
+        candidate.
+      reference_id: hep-ph0701007
+    - section: conclusion
+      page: null
+      quote_or_summary: They state the mechanism is dark matter production through decay of quasi-stable
+        thermal relics.
+      reference_id: hep-ph0701007
+    unresolved_items:
+    - Primary-paper figure regions were not digitized; numerical exclusions are qualitative.
+    - Related local reads were logged for discovery context only.
+  evidence:
+    particle_content:
+    - reference_id: hep-ph0701007
+      note: The paper introduces the first KK state of a right-handed neutrino as a superWIMP dark matter
+        candidate in UED.
+      confidence: high
+    symmetries:
+    - reference_id: hep-ph0701007
+      note: UED supplies KK parity, stabilizing the lightest KK particle.
+      confidence: high
+    interactions:
+    - reference_id: hep-ph0701007
+      note: Tiny Dirac neutrino mass mixing couples right- and left-handed KK neutrino states and allows
+        decays to the right-handed KK neutrino.
+      confidence: medium
+    production_mechanism:
+    - reference_id: hep-ph0701007
+      note: The mechanism is dark matter production through decay of quasi-stable thermal relics, analogous
+        to the supersymmetric case.
+      confidence: high
+    cosmological_history:
+    - reference_id: hep-ph0701007
+      note: The paper emphasizes naturally small KK mass splittings but a too-large decay rate unless
+        the Dirac contribution is reduced.
+      confidence: medium
+    parameter_ranges:
+    - reference_id: hep-ph0701007
+      note: Relevant parameters include compactification scale R^-1, KK masses, mass splitting, and Dirac
+        neutrino mass.
+      confidence: medium
+    validity_domain:
+    - reference_id: hep-ph0701007
+      note: A small-scale solution needs a neutrino-mass scheme where the observed masses do not mainly
+        derive from these Dirac terms.
+      confidence: medium
+    constraints:
+    - confidence: medium
+      note: 'Primary paper text supports constraint: Lyman-alpha and WDM-like free-streaming bound'
+      page: null
+      reference_id: primary
+      section: null
+    - confidence: medium
+      note: 'Primary paper text supports constraint: CMB/LSS bound on relativistic energy released in
+        late decay'
+      page: null
+      reference_id: primary
+      section: null
+    observables:
+    - confidence: medium
+      note: 'Primary paper text supports observable: Nonthermal free-streaming cutoff in small-scale structure'
+      page: null
+      reference_id: primary
+      section: null
+    - confidence: medium
+      note: 'Primary paper text supports observable: Reduced primordial phase-space density'
+      page: null
+      reference_id: primary
+      section: null
+    routes:
+    - confidence: medium
+      note: 'Primary paper text supports route: Map Kaluza-Klein parent state decay kinematics into a
+        nonthermal right-handed Kaluza-Klein neutrino velocity distribution, free-streaming scale, matter-power
+        cutoff, and CMB/LSS checks.'
+      page: null
+      reference_id: primary
+      section: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: low
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - The paper notes that a detailed neutrino-mass picture is missing for the UED realization.
+  validation_status: expert_judgment_only
+  notes: Accepted as a proposed UED superWIMP candidate, with strong caveats from the paper itself.
+agent_failure_modes:
+  warnings:
+  - id: w_neutrino_mass_model
+    severity: high
+    category: assumption_mismatch
+    warning: The model needs a neutrino-mass scheme in which the relevant Dirac mass term is not the main
+      source of observed neutrino masses.
+  - id: w_decay_rate
+    severity: medium
+    category: extrapolation
+    warning: Default Dirac-neutrino masses make the decay too fast to affect small-scale structure.
+observables:
+- caveats: []
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - Milky Way satellites
+  - Lyman-alpha forest
+  - small halos
+  id: free_streaming_power_cutoff
+  key_quantities:
+  - description: Comoving scale below which perturbations are erased.
+    name: free-streaming length
+    range: phenomenologically interesting around 0.3 Mpc; WDM-like upper comparison around 0.5 Mpc
+    role: derived
+    source_reference_ids:
+    - primary
+    status: approximate
+    symbol: lambda_FS
+    unit: Mpc
+  - description: Decay epoch of the metastable parent.
+    name: parent lifetime
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: tau
+    unit: s
+  - description: Controls daughter momentum.
+    name: fractional mass splitting
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: Delta
+  linked_constraints:
+  - lyman_alpha_free_streaming
+  - relativistic_energy_injection
+  linked_routes:
+  - late_decay_transfer_route
+  name: Nonthermal free-streaming cutoff in small-scale structure
+  notes: Primary text defines lambda_FS and links it to erased primordial perturbations.
+  observability: medium
+  predicted_effect: Late two-body decays of the Kaluza-Klein parent state produce right-handed Kaluza-Klein
+    neutrino dark matter with daughter velocities that erase primordial perturbations below a free-streaming
+    scale.
+  redshift_range: from decay epoch to today
+  relevance: high
+  scale_range: sub-Mpc to Mpc comoving scales
+  source_reference_ids:
+  - primary
+  subchannel: free_streaming_matter_power
+- caveats:
+  - Viable small-scale effects require tuned lifetime, mass splitting, and neutrino-sector parameters.
+  channel: dwarf_galaxies
+  effect_direction: shape_change
+  environments:
+  - dwarf galaxies
+  - satellite halos
+  id: primordial_phase_space_shift
+  key_quantities:
+  - description: Phase-space density variable used to summarize small-scale structure requirements.
+    name: primordial phase-space density
+    role: derived
+    source_reference_ids:
+    - primary
+    status: approximate
+    symbol: Q_p
+  - description: Mass of the right-handed Kaluza-Klein neutrino daughter.
+    name: daughter mass
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: M_X
+    unit: GeV
+  linked_constraints:
+  - lyman_alpha_free_streaming
+  linked_routes:
+  - late_decay_transfer_route
+  name: Reduced primordial phase-space density
+  notes: null
+  observability: medium
+  predicted_effect: The nonthermal momentum inherited by right-handed Kaluza-Klein neutrino changes primordial
+    phase-space density and can soften small-halo central structure in tuned late-decay regions.
+  redshift_range: post-decay halo formation
+  relevance: medium
+  scale_range: dwarf-galaxy halo scales
+  source_reference_ids:
+  - primary
+  subchannel: phase_space_density
+constraints:
+- allowed_regions:
+  - Sub-Mpc free-streaming windows can address satellite-scale power while staying below the quoted ceiling.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The nonthermal daughter distribution is mapped approximately onto WDM-style free-streaming
+      constraints.
+    id: wdm_mapping
+    impact_if_violated: A dedicated transfer-function likelihood could shift the boundary.
+    scope: matter-power comparison
+    source_reference_ids:
+    - primary
+    status: assumed
+  benchmark_implications:
+  - right-handed Kaluza-Klein neutrino benchmarks need small splittings and decay epochs that give nonthermal
+    but not too-hot daughters.
+  caveats: []
+  constrained_parameters:
+  - lambda_FS
+  - tau
+  - Delta
+  - M_X
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Scenarios with too-large free-streaming scales are disfavored by the paper's WDM-like comparison.
+  id: lyman_alpha_free_streaming
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Lyman-alpha and WDM-like free-streaming bound
+  notes: The primary paper quotes about 0.3 Mpc as useful for satellites and about 0.5 Mpc as an upper
+    comparison.
+  observable_channel: lyman_alpha/small_scale_structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - primary
+- allowed_regions:
+  - Small enough light-species energy release remains viable.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The comparison assumes the standard cosmological background used in the primary paper.
+    id: standard_background
+    impact_if_violated: Nonstandard expansion or radiation could alter the mapping.
+    scope: CMB/LSS interpretation
+    source_reference_ids:
+    - primary
+    status: assumed
+  benchmark_implications:
+  - right-handed Kaluza-Klein neutrino models must keep neutrino or other light-species energy injection
+    compatible with CMB/LSS limits.
+  caveats: []
+  constrained_parameters:
+  - tau
+  - Delta
+  - relativistic energy fraction
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Late decays with too much energy in light species are constrained by ISW and effective-neutrino bounds.
+  id: relativistic_energy_injection
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: CMB/LSS bound on relativistic energy released in late decay
+  notes: null
+  observable_channel: cmb/large_scale_structure
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Structured fields remain qualitative where the source only provides plots or approximate
+      comparisons.
+    caveats: []
+    constraint_ids:
+    - lyman_alpha_free_streaming
+    - relativistic_energy_injection
+    derived_quantities:
+    - daughter velocity
+    - lambda_FS
+    - Q_p
+    - suppressed transfer function
+    description: Map Kaluza-Klein parent state decay kinematics into a nonthermal right-handed Kaluza-Klein
+      neutrino velocity distribution, free-streaming scale, matter-power cutoff, and CMB/LSS checks.
+    forward_model_chain:
+    - inputs:
+      - M_X
+      - M_Y
+      - tau
+      notes: Primary paper gives the relevant small-splitting scaling.
+      outputs:
+      - daughter momentum
+      - v_X(a)
+      step_id: decay_kinematics
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: two-body small-splitting decay
+    - inputs:
+      - v_X(a)
+      - decay scale factor
+      notes: Use the primary-paper definition of lambda_FS.
+      outputs:
+      - lambda_FS
+      step_id: free_streaming
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: standard expansion history
+    - inputs:
+      - transfer-function shape
+      - relativistic energy release
+      notes: Primary paper gives qualitative and figure-level bounds.
+      outputs:
+      - Lyman-alpha and CMB/LSS consistency
+      step_id: likelihood_check
+      step_type: likelihood
+      tool_or_code: null
+      validity: recast required
+    id: late_decay_transfer_route
+    input_parameters:
+    - tau
+    - Delta
+    - M_X
+    - M_Y
+    - effective decay coupling
+    likelihoods:
+    - Lyman-alpha WDM-style bound
+    - CMB/LSS relativistic-energy bound
+    observable_ids:
+    - free_streaming_power_cutoff
+    - primordial_phase_space_shift
+    required_code_resources:
+    - Boltzmann solver or transfer-function emulator
+    route_status: planned
+    source_model_features:
+    - right-handed Kaluza-Klein neutrino
+    - Kaluza-Klein parent state
+    - two-body late decay
+    validation_tests:
+    - Recover the paper lambda_FS and Q_p benchmark regions.

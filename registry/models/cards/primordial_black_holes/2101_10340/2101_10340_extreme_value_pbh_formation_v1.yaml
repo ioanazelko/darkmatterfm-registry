@@ -1,0 +1,334 @@
+_source:
+  shard: arXiv_src_2101_056_wds.tar
+  paper_id: '2101_10340'
+  source_member: 2101_10340.json
+schema_version: model_only_v0
+model_id: 2101_10340_extreme_value_pbh_formation_v1
+identity:
+  name: Extreme-value primordial-black-hole formation model
+  family: primordial_black_holes
+  aliases:
+  - PBH extreme-value formation
+  - Gumbel PBH formation
+  short_description: A primordial black-hole dark matter model in which rare finite-time collapse is treated
+    with extreme-value statistics rather than Gaussian tail statistics.
+  historical_origin_or_motivation: The paper argues that PBH formation is a rare-event problem with finite
+    collapse time, so block maxima and generalized extreme-value distributions should replace ordinary
+    Gaussian-tail estimates.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - primordial_black_hole_dark_matter
+  - extreme_value_statistics
+  - critical_collapse
+  lagrangian_available: not_applicable
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The construction modifies the statistical treatment of PBH production and mass functions, not
+    a particle Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: primordial black holes
+    spin: unknown
+    statistics: black_hole
+    elementary_or_composite: macroscopic
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - primordial black holes above the evaporation threshold
+  unstable_parent_particles: []
+  standard_model_extension: none
+symmetries:
+  stabilizing_mechanism: Macroscopic black-hole longevity for masses above the evaporation threshold;
+    no stabilizing internal symmetry is specified.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets: []
+  dark_sector_couplings: []
+  mediator_types:
+  - gravity
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels:
+  - Hawking evaporation for sufficiently low masses
+  self_scattering_channels: []
+parameters:
+  core:
+  - name: critical overdensity threshold
+    symbol: delta_c
+    description: Threshold density contrast for PBH collapse.
+    value: about 0.45 for spherical radiation-era overdensities in the cited setup
+    role: core
+    status: approximate
+    source_reference_ids: []
+  - name: block size at formation
+    symbol: N_*
+    description: Number of original Hubble patches in a finite-time collapse block.
+    value: about 1000 in the illustrative example
+    role: core
+    status: assumed
+    source_reference_ids: []
+  - name: critical-collapse exponent
+    symbol: gamma
+    description: Exponent relating PBH mass to excess overdensity in critical collapse.
+    value: about 0.36 for a radiation fluid
+    role: core
+    status: approximate
+    source_reference_ids: []
+  - name: horizon mass
+    symbol: M_H
+    description: Horizon mass at the PBH-forming epoch.
+    range: model-dependent from evaporation threshold up to horizon mass near matter-radiation equality
+      in examples
+    unit: solar masses
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: PBH abundance fraction
+    symbol: Omega_PBH
+    description: Current PBH fraction or density implied by the finite-time extreme-value treatment.
+    range: can be very small or set to all dark matter depending on primordial spectrum amplitude and
+      mass scale
+    role: derived
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - collapse of rare overdense Hubble patches
+  - finite-time block-maxima extreme-value production
+  - critical collapse mass scaling
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - tail of the density-contrast distribution
+  - block size from finite collapse duration
+  - critical threshold and horizon mass
+  - primordial power spectrum amplitude
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper shows finite-time extreme-value treatment can boost PBH abundance by many orders of
+    magnitude relative to instantaneous Gaussian estimates.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - Gumbel or other extreme-value distribution
+  - finite collapse time
+  - critical collapse
+  - formation mass scale
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - rare PBH-forming overdensity tail
+  - finite collapse duration treated as block maxima
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: not_applicable
+  distribution_function_available: not_applicable
+  notes: The paper models a PBH mass function rather than a microscopic momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: finite_collapse_blocks
+  applies_to: model
+  condition: PBH collapse lasts for a finite number of e-folds, so block maxima of overdense patches are
+    the relevant statistics.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: iid_overdensity_blocks
+  applies_to: model
+  condition: Horizon-sized density contrasts are treated as independent and identically distributed random
+    variables within blocks.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+- id: critical_collapse_scaling
+  applies_to: production
+  condition: PBH mass is related to excess overdensity through critical-collapse scaling.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: iid_patches
+    description: Density contrasts in horizon-sized patches are treated as iid random variables for the
+      statistical derivation.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    impact_if_violated: Correlations or nontrivial primordial statistics could change the extreme-value
+      mapping.
+  - id: finite_collapse_time
+    description: PBH collapse is not instantaneous and creates blocks of multiple Hubble patches.
+    scope: production
+    status: inferred
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    impact_if_violated: Instantaneous collapse would reduce the model toward older Gaussian-tail estimates.
+  - id: pbhs_as_dm
+    description: PBHs are allowed to constitute either a subcomponent or all of the dark matter depending
+      on parameters.
+    scope: global
+    status: speculative
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    impact_if_violated: The dark matter fraction is parameter-dependent and not fixed uniquely by the
+      paper.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public model code is identified in the assigned text.
+  primary_code_role: null
+provenance:
+  model_id: 2101_10340_extreme_value_pbh_formation_v1
+  model_name: Extreme-value primordial-black-hole formation model
+  model_family: primordial_black_holes
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Extreme-Value Distributions and Primordial Black-Hole Formation
+      authors:
+      - Florian Kuhnel
+      - Dominik J. Schwarz
+      year: 2021
+      arxiv_id: '2101.10340'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned paper text from run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0001
+    extractor_name: gpt-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract and Introduction
+      page: null
+      quote_or_summary: PBH formation is described with extreme-value theory because it is rare and finite
+        in duration.
+    - reference_id: primary
+      section: Naturally Emerging Blocks
+      page: null
+      quote_or_summary: Finite collapse time leads to blocks of Hubble patches and a modified PBH mass
+        spectrum.
+    - reference_id: primary
+      section: Conclusions
+      page: null
+      quote_or_summary: Extreme-value statistics amplify PBH abundance and provide opportunities to explain
+        dark matter.
+    unresolved_items:
+    - Exact PBH abundance depends on the primordial perturbation statistics and mass scale; the paper
+      gives illustrative estimates rather than a unique benchmark.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The paper identifies primordial black holes as early-Universe black holes and discusses their
+        role as dark-matter candidates.
+      confidence: high
+      section: Introduction
+    production_mechanism:
+    - reference_id: primary
+      note: PBHs form from overdensities above a critical threshold, with finite collapse time motivating
+        block maxima.
+      confidence: high
+      section: Introduction and Naturally Emerging Blocks
+    parameter_ranges:
+    - reference_id: primary
+      note: The text cites delta_c about 0.45, gamma about 0.36 for radiation fluid, and N_* about 1000
+        as an illustrative finite-collapse block size.
+      confidence: medium
+      section: Mass Distribution and Naturally Emerging Blocks
+    cosmological_history:
+    - reference_id: primary
+      note: Examples assume radiation-era formation and evolve the PBH fraction to matter-radiation equality/today.
+      confidence: medium
+      section: Naturally Emerging Blocks
+    validity_domain:
+    - reference_id: primary
+      note: The derivation depends on iid horizon patches, finite collapse duration, and the choice of
+        extreme-value distribution.
+      confidence: medium
+      section: Averages versus maxima
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  dominant_uncertainties:
+  - primordial density-tail statistics
+  - finite collapse block size
+  - critical threshold and perturbation shape
+  notes: The statistical argument is explicit, but the paper does not define a unique UV source of the
+    perturbations.
+agent_failure_modes:
+  warnings:
+  - id: pbh_not_particle_dm
+    severity: medium
+    category: other
+    warning: This is a macroscopic PBH dark-matter formation model, not a particle BSM Lagrangian.
+    mitigation: Do not infer particle portals or laboratory rates from this entry.
+    source_reference_ids: []
+  - id: evd_tail_assumption
+    severity: medium
+    category: extrapolation
+    warning: The abundance boost depends on extrapolating density-tail and block-statistics assumptions.
+    mitigation: Keep the extreme-value distribution and block-size assumptions explicit.
+    source_reference_ids: []

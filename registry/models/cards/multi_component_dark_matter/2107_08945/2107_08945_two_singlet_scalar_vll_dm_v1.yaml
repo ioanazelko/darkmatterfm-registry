@@ -1,0 +1,409 @@
+_source:
+  shard: arXiv_src_2107_052_wds.tar
+  paper_id: '2107_08945'
+  source_member: 2107_08945.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: do_not_split_components_as_independent_models
+    mitigation: Preserve the coupled Boltzmann and conversion assumptions when using this card.
+    severity: medium
+    source_reference_ids:
+    - paper
+    warning: S1 and S2 are treated in the paper as a coupled two-component dark matter model, not as two
+      independent single-component entries.
+associated_code:
+  caveats:
+  - Code availability is not established from the assigned full text.
+  code_summary: The paper reports solving the coupled Boltzmann equations with an in-house Python code
+    and cross-checking with Micromegas; no public repository is identified in the assigned text.
+  expected_inputs:
+  - model parameters
+  - thermal annihilation cross sections
+  expected_outputs:
+  - S1 and S2 relic yields
+  - total relic abundance
+  has_associated_code: partial
+  primary_code_role: relic_density_calculation
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: Micromegas cross-check is stated, but no code release is given in the text.
+    pinned_dependencies: unknown
+    reproducibility_level: partial
+  validation:
+    benchmark_references:
+    - paper
+    validation_notes: Paper states results were cross-checked with Micromegas.
+    validation_status: internally_validated
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: All parameters are real and the singlet scalars do not acquire vacuum expectation values.
+    id: real_parameters_no_scalar_vevs
+    impact_if_violated: Could alter stability, CP structure, and scalar mixing.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - paper
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The relic abundance calculation uses thermal equilibrium yields and standard entropy
+      and Hubble factors.
+    id: standard_thermal_history
+    impact_if_violated: The freeze-out abundance could change.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - paper
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - S1-S2 singlet scalar dark matter with vector-like lepton portal
+  family: multi_component_dark_matter
+  historical_origin_or_motivation: The paper adds a second singlet scalar to the one-singlet-scalar plus
+    vector-like-lepton setup to address under-abundant relic density while fitting the muon g-2 anomaly
+    near the electroweak scale.
+  model_kind: simplified_model
+  name: Two singlet scalar plus vector-like lepton dark matter
+  short_description: A simplified Standard Model extension with two stable real singlet scalars, S1 and
+    S2, and a charged vector-like lepton; S1 and S2 form two-component dark matter with assisted thermal
+    freeze-out.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - S_i S_i annihilation to Standard Model particles including Higgs final states
+  - S1 S1 to S2 S2 dark matter conversion
+  cp_structure: all model parameters are taken real in the paper
+  dark_sector_couplings:
+  - lambda_1 S1-vector-like-lepton coupling to muons
+  - lambda_Hi |H|^2 S_i^2 Higgs portal couplings
+  - lambda_12 S1^2 S2^2 scalar conversion coupling
+  decay_channels: []
+  flavor_structure: new lepton interaction is used to address the muon anomalous magnetic moment
+  interaction_operators:
+  - lambda_1 lepton-vector-like-lepton-S1 Yukawa term
+  - '|H|^2 S_i^2'
+  - S1^2 S2^2
+  mediator_types:
+  - Higgs boson
+  - charged vector-like lepton
+  portals:
+  - higgs
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - S1 S1 to S2 S2 conversion
+  standard_model_targets:
+  - muons and charged leptons
+  - Higgs boson
+  - Standard Model final states denoted X
+  tree_or_loop_level: both
+model_id: 2107_08945_two_singlet_scalar_vll_dm_v1
+parameters:
+  core:
+  - description: Mass of the first real singlet scalar.
+    name: S1 mass
+    range: around 100 GeV; benchmark 130 GeV
+    role: core
+    source_reference_ids:
+    - paper
+    status: speculative
+    symbol: m1
+    unit: GeV
+  - description: Mass of the second real singlet scalar.
+    name: S2 mass
+    range: around 100 GeV; benchmark 125 GeV
+    role: core
+    source_reference_ids:
+    - paper
+    status: speculative
+    symbol: m2
+    unit: GeV
+  - description: Mass of the charged vector-like lepton.
+    name: vector-like lepton mass
+    range: around 100 GeV; benchmark 150 GeV
+    role: core
+    source_reference_ids:
+    - paper
+    status: speculative
+    symbol: m_E
+    unit: GeV
+  - description: Coupling of S1 to the vector-like lepton and muon sector.
+    name: muon portal coupling
+    range: order one; benchmark 2.8
+    role: core
+    source_reference_ids:
+    - paper
+    status: speculative
+    symbol: lambda_1
+  - description: Portal couplings |H|^2 S_i^2.
+    name: Higgs portal couplings
+    range: model dependent; often set small or zero in examples
+    role: core
+    source_reference_ids:
+    - paper
+    status: speculative
+    symbol: lambda_H1, lambda_H2
+  - description: Quartic coupling controlling S1 S1 to S2 S2 conversions.
+    name: scalar conversion coupling
+    range: benchmark values 0.1 and 1
+    role: core
+    source_reference_ids:
+    - paper
+    status: speculative
+    symbol: lambda_12
+  - description: Hierarchy used so S1 remains stable and conversions raise the S2 abundance.
+    name: mass hierarchy
+    role: core
+    source_reference_ids:
+    - paper
+    status: assumed
+    symbol: m2 <= m1 < m_E
+    value: m2 <= m1 < m_E
+  derived:
+  - description: Sum of the S1 and S2 relic abundances.
+    name: total relic abundance
+    role: derived
+    source_reference_ids:
+    - paper
+    status: inferred
+    symbol: Omega h^2
+    value: Omega_1 h^2 + Omega_2 h^2
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - charged vector-like lepton, SU(2)_L singlet with hypercharge Y=-1
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: S1 and S2 real singlet scalars
+    number_of_components: multi_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - S1
+  - S2
+  mediators:
+  - Higgs portal interactions
+  - charged vector-like lepton portal
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: not provided
+  free_streaming_length: null
+  notes: No phase-space distribution is given beyond the thermal freeze-out treatment.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - coupled Boltzmann equations for Y1 and Y2
+  - annihilation to Standard Model final states
+  - S1 S1 to S2 S2 conversion rate
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out
+  - assisted freeze-out through S1 S1 to S2 S2 dark matter conversions
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper describes the mechanism as assisted freeze-out and solves coupled Boltzmann equations
+    for the two scalar yields.
+  thermal_equilibrium_with_hidden_sector: partial
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: The Lagrangian contains the S1 lepton-vector-like-lepton term, Higgs portal terms, and S1^2
+        S2^2 scalar conversion.
+      page: null
+      reference_id: paper
+      section: Lagrangian
+    parameter_ranges:
+    - confidence: high
+      note: Worked scenarios use masses around 100 GeV and order-one new couplings, with m2 <= m1 < m_E.
+      page: null
+      reference_id: paper
+      section: analysis
+    particle_content:
+    - confidence: high
+      note: Two real singlet scalars S1 and S2 and a vector-like lepton are introduced; S1 and S2 both
+        play the role of dark matter.
+      page: null
+      reference_id: paper
+      section: Lagrangian
+    production_mechanism:
+    - confidence: high
+      note: The paper describes assisted freeze-out using coupled Boltzmann equations for the two singlet
+        scalar yields.
+      page: null
+      reference_id: paper
+      section: Relic abundance
+    symmetries:
+    - confidence: high
+      note: The text imposes Z2 and Z2 prime symmetries and states that both scalar fields are stable.
+      page: null
+      reference_id: paper
+      section: Lagrangian
+    validity_domain:
+    - confidence: high
+      note: The paper neglects coannihilations in the parameter region it considers and relies on the
+        scalar mass hierarchy.
+      page: null
+      reference_id: paper
+      section: Relic abundance
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0015
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5 batch worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper says it explores a simple model with two singlet scalars as dark matter
+        candidates and a vector-like lepton.
+      reference_id: paper
+      section: opening summary
+    - page: null
+      quote_or_summary: It introduces S1 and S2 real singlet scalars, a charged vector-like lepton, Z2
+        x Z2 prime symmetries, and Higgs/conversion couplings.
+      reference_id: paper
+      section: Lagrangian
+    - page: null
+      quote_or_summary: The total abundance is the sum of two components and is obtained from coupled
+        Boltzmann equations with S1 S1 to S2 S2 conversions.
+      reference_id: paper
+      section: Relic abundance
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: multi_component_dark_matter
+  model_id: 2107_08945_two_singlet_scalar_vll_dm_v1
+  model_name: Two singlet scalar plus vector-like lepton dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: high
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2107.08945'
+      doi: null
+      notes: Only the assigned SQLite full text was used.
+      reference_id: paper
+      role: original_model
+      title: unknown
+      url: null
+      year: 2021
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - mass hierarchy m2 <= m1 < m_E
+  - lambda_12 conversion strength
+  - lambda_1 and Higgs portal couplings
+  - thermal averaged annihilation cross sections
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    description: Target value used for the total two-component relic abundance.
+    name: Planck dark matter abundance target
+    role: cosmological
+    source_reference_ids:
+    - paper
+    status: assumed
+    symbol: Omega_c h^2
+    value: 0.12
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - No public code is identified in the text.
+  - The viable region depends on order-one couplings and near-electroweak-scale masses.
+  notes: Extraction confidence is high for particle content and freeze-out logic, lower for unsupported
+    structure-formation fields.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: partially_validated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: not discussed
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: not discussed
+symmetries:
+  stabilizing_mechanism: Two imposed discrete symmetries, Z2 and Z2 prime, prevent scalar vacuum expectation
+    values and make both singlet scalars stable.
+  symmetries:
+  - breaking: not specified
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z2
+    type: discrete
+  - breaking: not specified
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z2 prime
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: The paper gives a Lagrangian with real parameters, Higgs-portal terms, an S1-vector-like-lepton
+    Yukawa interaction, and an S1^2 S2^2 conversion term.
+  parent_frameworks:
+  - Standard Model extension with real scalar singlets and a charged vector-like lepton
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats:
+  - Coannihilation processes are neglected in the parameter region of interest.
+  condition: The analysis assumes m2 <= m1 < m_E so S1 is stable and S1 S1 to S2 S2 conversion can raise
+    the S2 abundance.
+  extrapolation_risk: medium
+  id: hierarchy_for_two_component_freezeout
+  notes: null
+  source_reference_ids:
+  - paper
+  status: assumed
+  valid_range: m2 <= m1 < m_E with masses near the electroweak scale in the worked scenarios

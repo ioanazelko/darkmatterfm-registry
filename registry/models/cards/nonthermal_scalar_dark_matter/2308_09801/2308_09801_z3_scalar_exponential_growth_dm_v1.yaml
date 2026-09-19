@@ -1,0 +1,628 @@
+_source:
+  shard: arXiv_src_2308_072_wds.tar
+  paper_id: '2308_09801'
+  source_member: 2308_09801.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2308_09801_z3_scalar_exponential_growth_dm_v1
+identity:
+  name: Z3 scalar dark matter with exponential-growth production
+  family: nonthermal_scalar_dark_matter
+  aliases:
+  - semi-production scalar dark matter
+  - exponential-growth dark matter toy model
+  short_description: A Z3-charged scalar dark matter toy model in which a thermally coupled singlet scalar
+    bath particle initiates nonthermal exponential-growth production after a small seed abundance is generated.
+  historical_origin_or_motivation: The paper studies exponential-growth dark matter beyond the equilibrium-distribution
+    approximation by solving the Boltzmann equation at operator level and applying it to a Z3 scalar toy
+    model.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Z3 scalar dark matter
+  - nonthermal exponential-growth production
+  - Boltzmann phase-space evolution
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The interaction Lagrangian contains a cubic scalar term, Higgs interactions for the bath scalar,
+    and a freeze-in interaction used to seed the initial abundance.
+particle_content:
+  dark_matter_candidate:
+    name: Z3-charged scalar dark matter
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - singlet scalar bath particle
+  - anti-particle dark matter component with identical distribution in the no-asymmetry case
+  mediators:
+  - singlet scalar bath particle coupled to the Standard Model through the Higgs
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - heavy non-relativistic particle in the out-of-equilibrium seed-production example
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The dark matter scalar is charged under a Z3 symmetry, which controls semi-production
+    scatterings and stabilizes the candidate in the toy model.
+  symmetries:
+  - name: Z3
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not discussed
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - Higgs doublet
+  - thermal Standard Model plasma
+  dark_sector_couplings:
+  - lambda_tr cubic scalar coupling driving semi-production
+  - lambda_S Higgs mixing for the bath scalar
+  - lambda_Sphi Higgs decay/scattering coupling to bath scalars
+  - lambda_fi freeze-in seed coupling
+  mediator_types:
+  - singlet scalar bath particle
+  interaction_operators:
+  - lambda_tr phi chi^3 + h.c.
+  - lambda_S phi^2 H^dagger H
+  - lambda_Sphi phi^2 H^dagger H chi^2-like bath production term as described in text
+  - lambda_fi phi^2 chi* chi seed-production interaction
+  scattering:
+    elastic: unknown
+    inelastic: 'yes'
+    momentum_dependence: strong
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels:
+  - out-of-equilibrium heavy-parent decay to initial dark matter in one seed example
+  self_scattering_channels:
+  - chi plus bath scalar to two anti-chi particles
+  - anti-chi plus bath scalar to two chi particles
+  cp_structure: not discussed
+  flavor_structure: not_applicable
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the Z3-charged scalar dark matter particle.
+    value: 1 GeV benchmark in freeze-in example; must be above MeV scale in the illustrated mass hierarchy
+    unit: GeV
+    role: core
+    status: inferred
+  - name: bath scalar mass
+    symbol: m_phi
+    description: Mass of the singlet scalar bath particle that scatters with dark matter.
+    value: 2 GeV benchmark in freeze-in example; m_phi = 2 m_chi used in toy-model calculations
+    unit: GeV
+    role: core
+    status: inferred
+  - name: semi-production coupling
+    symbol: lambda_tr
+    description: Coupling controlling chi plus bath-scalar scatterings that drive exponential growth.
+    range: chosen below the regime where backward scatterings/equilibrium densities invalidate the approximation
+    role: core
+    status: inferred
+  - name: Higgs mixing coupling
+    symbol: lambda_S
+    description: Scalar coupling governing mixing of the bath scalar with the Standard Model Higgs doublet.
+    range: approximately <= O(0.01) for electroweak-scale masses in the paper discussion
+    role: core
+    status: inferred
+  - name: Higgs bath-production coupling
+    symbol: lambda_Sphi
+    description: Coupling governing Higgs decays and scatterings to bath scalars.
+    range: approximately <= O(0.01) for electroweak-scale masses in the paper discussion
+    role: core
+    status: inferred
+  - name: freeze-in seed coupling
+    symbol: lambda_fi
+    description: Small coupling that can generate the initial dark matter abundance before exponential
+      growth.
+    range: nonzero but much smaller than the coupling that would produce the full abundance by freeze-in
+      alone
+    role: core
+    status: inferred
+  - name: production start epoch
+    symbol: x_init
+    description: Temperature variable epoch when exponential-growth production begins.
+    range: model dependent
+    role: cosmological
+    status: inferred
+  - name: production end epoch
+    symbol: x_end
+    description: Epoch when scattering becomes Boltzmann suppressed and the comoving abundance freezes.
+    range: near x ~ 1 for m_phi > m_chi; near x ~ m_chi/m_phi for the opposite hierarchy
+    role: cosmological
+    status: inferred
+  derived:
+  - name: growth function
+    symbol: P(q,x)
+    description: Momentum- and epoch-dependent growth function obtained by solving the Boltzmann equation
+      at operator level.
+    range: model dependent
+    role: derived
+    status: inferred
+  - name: growth factor
+    symbol: A(x)
+    description: Generic exponential factor describing dark matter growth; not necessarily a simple exponential
+      in x.
+    range: model dependent
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - nonthermal exponential-growth scattering
+  - semi-production
+  - freeze-in seed abundance
+  - out-of-equilibrium heavy-particle decay seed abundance
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - initial seed distribution f_chi(q,x_init)
+  - growth function P(q,x)
+  - lambda_tr
+  - lambda_fi or heavy-parent decay parameters
+  - m_chi
+  - m_phi
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The exponential-growth process cannot by itself create the abundance from zero; a seed from freeze-in
+    or heavy-particle decay is required, after which the scattering can dominate production.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: relic abundance target
+    symbol: Omega_chi h^2
+    description: The toy model examples compare couplings to the observed dark matter relic abundance.
+    value: '0.12'
+    role: derived
+    status: inferred
+  calculation_type: nonthermal
+  key_dependencies:
+  - initial phase-space distribution
+  - lambda_tr
+  - lambda_fi or decay seed
+  - m_chi
+  - m_phi
+  - x_init
+  - x_end
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - nonthermal dark matter production after a small initial seed abundance
+  - adiabatic expansion assumed after production
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: low
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'yes'
+  f_of_p_or_q: The paper solves f_chi(q,x) with a linearized Boltzmann equation in comoving momentum q
+    and temperature variable x.
+  average_momentum_relative_to_thermal: freeze-in seed gives colder-than-equilibrium distribution; heavy-particle
+    decay seed gives hotter distribution peaked at high q
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds:
+  - Structure-formation free-streaming bound checked naively for illustrated masses in the heavy-decay
+    seed example.
+  notes: The model is explicitly about phase-space distributions rather than only number-density moments.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: seed_required
+  applies_to: production
+  condition: A nonzero initial dark matter abundance must be generated before exponential growth begins.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2308_09801'
+- id: linearized_boltzmann
+  applies_to: calculation
+  condition: Backward scattering and quantum-statistics factors are neglected while dark matter density
+    remains much smaller than equilibrium density.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2308_09801'
+- id: bath_distribution
+  applies_to: calculation
+  condition: The bath scalar distribution is approximated as Maxwell-Boltzmann and thermally coupled to
+    the Standard Model plasma.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2308_09801'
+- id: mass_hierarchy_examples
+  applies_to: parameter
+  condition: Detailed examples emphasize m_phi > m_chi, especially m_phi = 2 m_chi; opposite hierarchy
+    requires quantum-statistics improvements.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - '2308_09801'
+assumptions:
+  global:
+  - id: adiabatic_expansion
+    description: Entropy is conserved so the comoving distribution freezes after production.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2308_09801'
+  - id: tiny_initial_density
+    description: Initial dark matter density is much smaller than the final abundance and much smaller
+      than equilibrium density during the linearized treatment.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2308_09801'
+  - id: no_particle_antiparticle_asymmetry
+    description: The particle and anti-particle dark matter distributions are taken identical.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2308_09801'
+  - id: negligible_elastic_scattering
+    description: Elastic scatterings between bath particles and dark matter are neglected in the computed
+      distributions.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2308_09801'
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public model code was identified in the assigned full text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 2308_09801_z3_scalar_exponential_growth_dm_v1
+  model_name: Z3 scalar dark matter with exponential-growth production
+  model_family: nonthermal_scalar_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2308_09801'
+      title: unknown
+      authors: []
+      year: 2023
+      arxiv_id: '2308.09801'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used for extraction.
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0010
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2308_09801'
+      section: introduction
+      page: null
+      quote_or_summary: Motivates exponential-growth dark matter as nonthermal production requiring a
+        nonzero seed abundance.
+    - reference_id: '2308_09801'
+      section: model-independent Boltzmann discussion
+      page: null
+      quote_or_summary: Derives the phase-space distribution from a linearized Boltzmann equation in comoving
+        momentum.
+    - reference_id: '2308_09801'
+      section: toy model
+      page: null
+      quote_or_summary: Defines a Z3 charged scalar dark matter toy model with singlet scalar bath interactions
+        and seed-production examples.
+    - reference_id: '2308_09801'
+      section: summary
+      page: null
+      quote_or_summary: Summarizes colder freeze-in-seeded and hotter decay-seeded nonthermal distributions
+        and lists approximations.
+    unresolved_items:
+    - Related-paper ADS/local/web enrichment was not completed before local recovery; rerun this batch
+      for full citation-supported enrichment.
+  evidence:
+    particle_content:
+    - reference_id: '2308_09801'
+      note: The toy model contains a Z3 charged scalar dark matter particle and a singlet scalar bath
+        particle.
+      confidence: high
+      section: toy model
+    symmetries:
+    - reference_id: '2308_09801'
+      note: The paper states that the dark matter is charged under a Z3 symmetry.
+      confidence: high
+      section: toy model
+    interactions:
+    - reference_id: '2308_09801'
+      note: The interaction Lagrangian includes lambda_tr, Higgs couplings for the bath scalar, and a
+        freeze-in seed interaction.
+      confidence: high
+      section: toy model and freeze-in
+    production_mechanism:
+    - reference_id: '2308_09801'
+      note: Dark matter production proceeds through semi-production/exponential-growth scatterings after
+        freeze-in or heavy-decay seed production.
+      confidence: high
+      section: production sections
+    cosmological_history:
+    - reference_id: '2308_09801'
+      note: The paper assumes radiation domination after inflation and adiabatic expansion so the comoving
+        distribution freezes after production.
+      confidence: medium
+      section: introduction and formalism
+    parameter_ranges:
+    - reference_id: '2308_09801'
+      note: The benchmark example fixes m_phi = 2 GeV and m_chi = 1 GeV and discusses small Higgs scalar
+        couplings below O(0.01).
+      confidence: medium
+      section: toy model
+    phase_space:
+    - reference_id: '2308_09801'
+      note: The central result is a nonthermal f_chi(q,x), colder for freeze-in seed production and hotter
+        for heavy-decay seed production.
+      confidence: high
+      section: summary
+    validity_domain:
+    - reference_id: '2308_09801'
+      note: The summary lists neglected quantum-statistics factors, Maxwell-Boltzmann bath approximation,
+        and neglected elastic scatterings.
+      confidence: high
+      section: summary
+    constraints:
+    - confidence: low
+      note: Constraint completeness was not established in recovery; limitation row records missing enrichment.
+      page: null
+      reference_id: '2308_09801'
+      section: null
+    observables:
+    - confidence: low
+      note: Completed model card supplied the primary phenomenology used for this recovery row.
+      page: null
+      reference_id: '2308_09801'
+      section: null
+    routes:
+    - confidence: low
+      note: Route is a conservative model-card-to-phenomenology placeholder.
+      page: null
+      reference_id: '2308_09801'
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: low
+  computational_robustness: medium
+  constraint_robustness: low
+  dominant_uncertainties:
+  - initial seed mechanism
+  - neglected backward scatterings near equilibrium
+  - bath distribution approximation
+  - elastic scattering effects
+  - structure-formation constraints on nonthermal spectra
+  validation_status: partially_validated
+  notes: The paper compares analytic and operator-level Boltzmann treatments for benchmark examples but
+    leaves several extensions to future work.
+agent_failure_modes:
+  warnings:
+  - id: seed_not_optional
+    severity: high
+    category: assumption_mismatch
+    warning: The exponential-growth scattering does not create dark matter from zero abundance; a seed
+      mechanism is required.
+    source_reference_ids:
+    - '2308_09801'
+  - id: distribution_not_equilibrium
+    severity: high
+    category: invalid_mapping
+    warning: Do not replace the model with an equilibrium phase-space distribution; the paper emphasizes
+      that this can change relic-abundance couplings.
+    source_reference_ids:
+    - '2308_09801'
+  - id: mass_hierarchy_limit
+    severity: medium
+    category: extrapolation
+    warning: The worked examples focus on m_phi greater than m_chi; the opposite hierarchy needs quantum-statistics
+      corrections.
+    source_reference_ids:
+    - '2308_09801'
+observables:
+- caveats:
+  - Recovery row uses the completed model card only; related-paper citation enrichment was not completed
+    for this batch.
+  channel: small_scale_structure
+  effect_direction: shape_change
+  environments:
+  - primary-paper model context
+  id: 2308_09801_z3_scalar_exponential_growth_dm_v1_pr
+  key_quantities:
+  - description: Mass of the Z3-charged scalar dark matter particle.
+    name: dark matter mass
+    role: core
+    source_reference_ids:
+    - '2308_09801'
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+    value: 1 GeV benchmark in freeze-in example; must be above MeV scale in the illustrated mass hierarchy
+  - description: Mass of the singlet scalar bath particle that scatters with dark matter.
+    name: bath scalar mass
+    role: core
+    source_reference_ids:
+    - '2308_09801'
+    status: inferred
+    symbol: m_phi
+    unit: GeV
+    value: 2 GeV benchmark in freeze-in example; m_phi = 2 m_chi used in toy-model calculations
+  - description: Coupling controlling chi plus bath-scalar scatterings that drive exponential growth.
+    name: semi-production coupling
+    range: chosen below the regime where backward scatterings/equilibrium densities invalidate the approximation
+    role: core
+    source_reference_ids:
+    - '2308_09801'
+    status: inferred
+    symbol: lambda_tr
+  - description: Scalar coupling governing mixing of the bath scalar with the Standard Model Higgs doublet.
+    name: Higgs mixing coupling
+    range: approximately <= O(0.01) for electroweak-scale masses in the paper discussion
+    role: core
+    source_reference_ids:
+    - '2308_09801'
+    status: inferred
+    symbol: lambda_S
+  - description: Coupling governing Higgs decays and scatterings to bath scalars.
+    name: Higgs bath-production coupling
+    range: approximately <= O(0.01) for electroweak-scale masses in the paper discussion
+    role: core
+    source_reference_ids:
+    - '2308_09801'
+    status: inferred
+    symbol: lambda_Sphi
+  - description: Small coupling that can generate the initial dark matter abundance before exponential
+      growth.
+    name: freeze-in seed coupling
+    range: nonzero but much smaller than the coupling that would produce the full abundance by freeze-in
+      alone
+    role: core
+    source_reference_ids:
+    - '2308_09801'
+    status: inferred
+    symbol: lambda_fi
+  linked_constraints:
+  - 2308_09801_z3_scalar_exponential_growth_dm_v1_mo
+  linked_routes:
+  - 2308_09801_z3_scalar_exponential_growth_dm_v1_ph
+  name: Z3 scalar dark matter with exponential-growth production primary phenomenology
+  notes: Conservative recovery observable generated to preserve schema coverage at the top-2000 boundary.
+  observability: unknown
+  predicted_effect: A Z3-charged scalar dark matter toy model in which a thermally coupled singlet scalar
+    bath particle initiates nonthermal exponential-growth production after a small seed abundance is generated.
+  redshift_range: null
+  relevance: medium
+  scale_range: null
+  source_reference_ids:
+  - '2308_09801'
+  subchannel: halo/structure formation
+constraints:
+- allowed_regions: []
+  applies: unknown
+  assumptions: []
+  benchmark_implications:
+  - No additional related-paper constraint extraction was completed in the recovery path.
+  caveats:
+  - Use the original model card and paper text before treating this as constraint-complete.
+  constrained_parameters:
+  - m_chi
+  - m_phi
+  - lambda_tr
+  - lambda_S
+  - lambda_Sphi
+  - lambda_fi
+  constraint_type: unknown
+  data_release: null
+  excluded_regions: []
+  id: 2308_09801_z3_scalar_exponential_growth_dm_v1_mo
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Z3 scalar dark matter with exponential-growth production enrichment limitations
+  notes: Placeholder limitation record, not a scientific exclusion.
+  observable_channel: small_scale_structure
+  recasting_needed: unknown
+  robustness: unknown
+  source_reference_ids:
+  - '2308_09801'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Recovery route generated locally after subagent contexts stalled on this batch.
+    caveats:
+    - Needs normal enrichment rerun for full citation-supported observables and constraints.
+    constraint_ids:
+    - 2308_09801_z3_scalar_exponential_growth_dm_v1_mo
+    derived_quantities: []
+    description: Map the model-card description of Z3 scalar dark matter with exponential-growth production
+      to its primary observational or phenomenological channel.
+    forward_model_chain:
+    - inputs:
+      - completed model card
+      notes: null
+      outputs:
+      - structured recovery observable
+      step_id: read_primary_model_card
+      step_type: data_transform
+      tool_or_code: null
+      validity: Conservative recovery only; no related-paper full-text enrichment completed.
+    id: 2308_09801_z3_scalar_exponential_growth_dm_v1_ph
+    input_parameters:
+    - m_chi
+    - m_phi
+    - lambda_tr
+    - lambda_S
+    - lambda_Sphi
+    - lambda_fi
+    likelihoods: []
+    observable_ids:
+    - 2308_09801_z3_scalar_exponential_growth_dm_v1_pr
+    required_code_resources: []
+    route_status: planned
+    source_model_features:
+    - Z3 scalar dark matter
+    - nonthermal exponential-growth production
+    - Boltzmann phase-space evolution
+    validation_tests:
+    - parent jsonschema validation
+    - assignment count check

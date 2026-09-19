@@ -1,0 +1,943 @@
+_source:
+  shard: arXiv_src_2105_036_wds.tar
+  paper_id: '2105_06089'
+  source_member: 2105_06089.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: w1
+    mitigation: Track eta_R and axion fractions separately.
+    severity: medium
+    source_reference_ids: []
+    warning: Do not treat the axion as automatically dominant dark matter; the paper's isocurvature examples
+      require it to be subdominant.
+  - category: notation_conflict
+    id: w2
+    mitigation: Human-review the original equations and table of charges.
+    severity: medium
+    source_reference_ids: []
+    warning: The extracted text drops some Greek field symbols, so eta/phi notation should be checked
+      against the source before final registry use.
+associated_code:
+  code_summary: The paper describes RGE and Boltzmann-equation analyses but no associated model-specific
+    public code is identified in the extracted text.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The residual Z2 symmetry is exact after singlet symmetry breaking.
+    id: a1
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The neutral inert-doublet component eta_R is the dominant dark matter in the benchmark
+      case I.
+    id: a2
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: PQ symmetry is broken during inflation, so axion isocurvature constraints apply.
+    id: a3
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: inferred
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: high
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: 'yes'
+  kinetic_decoupling: null
+  nonstandard_features:
+  - inflation driven by singlet scalar sector
+  - PQ symmetry broken during inflation
+  - spontaneous CP breaking
+  - leptogenesis through N1
+  phase_transitions:
+  - U(1) x Z4 breaking to residual Z2
+  standard_history_assumed: false
+  topological_defects:
+  - PQ axion strings are mentioned as affecting the axion abundance
+  - domain-wall number N_DW = 1 avoids the domain-wall problem
+identity:
+  aliases:
+  - CP-invariant PQ scotogenic model
+  - inert doublet plus PQ axion dark matter
+  family: multi_component_dark_matter
+  historical_origin_or_motivation: Motivated by connecting CKM/PMNS CP phases, the strong CP problem,
+    inflation, leptogenesis, and dark matter in one simple extension.
+  model_kind: effective_field_theory
+  name: CP/PQ scotogenic inert-doublet dark matter with axion component
+  short_description: A CP-invariant Standard Model extension with vector-like fermions, singlet PQ scalars,
+    right-handed singlet fermions, and a residual Z2 symmetry; the dominant dark matter can be the lightest
+    neutral inert-doublet scalar, with a PQ axion component constrained by isocurvature.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - eta_R coannihilation with inert-doublet partners through electroweak and scalar interactions
+  cp_structure: The CP phase is spontaneous and feeds CKM/PMNS phases through vector-like fermion mixing.
+  dark_sector_couplings:
+  - scalar quartics lambda3, lambda4, lambda5
+  - neutrino Yukawa couplings h_alpha_j
+  - PQ-sector Yukawa couplings to vector-like fermions
+  decay_channels:
+  - N1 out-of-equilibrium decays in the leptogenesis sector
+  flavor_structure: Complex low-energy neutrino Yukawa couplings arise after spontaneous CP breaking;
+    examples use structured h_alpha_j.
+  interaction_operators:
+  - scotogenic inert-doublet Yukawa terms
+  - scalar quartic Higgs-inert interactions
+  - dimension-five terms suppressed by M
+  - PQ anomalous axion couplings
+  mediator_types:
+  - scalar
+  - right-handed singlet fermion
+  - axion
+  portals:
+  - higgs
+  - axion
+  - other
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - Higgs doublet
+  - lepton doublets
+  - down-type quarks
+  - charged leptons
+  - photons
+  - gluons
+  tree_or_loop_level: both
+model_id: 2105_06089_cp_pq_scotogenic_inert_axion_dm_v1
+parameters:
+  core:
+  - description: Mass of the lightest neutral inert-doublet component.
+    name: inert neutral scalar mass
+    range: 0.9, 1.0, and 1.1 TeV benchmark cases
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: M_eta_R
+    unit: TeV
+  - description: Quartic coupling constrained by relic abundance, direct search, stability, and perturbativity.
+    name: Higgs-inert quartic
+    range: O(1) in allowed regions
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: lambda3
+  - description: Quartic coupling entering the neutral scalar spectrum and relic abundance.
+    name: inert scalar splitting coupling
+    range: '|lambda4| of O(1) in allowed regions'
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: lambda4
+  - description: Axion decay constant identified with the phi vev.
+    name: PQ scale
+    range: 4e8 to 1e11
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: f_a = w
+    unit: GeV
+  - description: Fraction of cold dark matter carried by the axion.
+    name: axion CDM fraction
+    range: bounded by isocurvature; examples include R_a < 0.21 or 0.034 in case II
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: R_a
+  - description: Second singlet scalar vev entering spontaneous CP breaking.
+    name: singlet vev
+    range: examples include 1e11 GeV
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: u
+    unit: GeV
+particle_content:
+  additional_dark_sector_particles:
+  - PQ axion
+  - inert doublet partners
+  - right-handed singlet fermions N_j
+  - singlet complex scalars phi and S
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lightest neutral Z2-odd inert-doublet scalar eta_R with possible PQ axion component
+    number_of_components: multi_component
+    spin: '0'
+    statistics: boson
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - charged and neutral inert-doublet partners participating in coannihilation
+  long_lived_particles:
+  - PQ axion
+  mediators:
+  - Higgs/inert scalar portal
+  - PQ scalar radial modes
+  - right-handed singlet fermions
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - right-handed singlet fermion N1 in the leptogenesis sector
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: unknown
+  f_of_p_or_q: No explicit phase-space distribution is provided; the inert scalar behaves as a heavy thermal
+    relic and the axion is field-like.
+  free_streaming_length: null
+  notes: The paper does not compute a transfer function or phase-space distribution.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - inert-doublet mass splittings and quartic couplings
+  - coannihilation efficiency
+  - PQ scale f_a
+  - axion initial angle/fraction R_a
+  - isocurvature bound
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: parameter_dependent
+  mechanisms:
+  - thermal freeze-out/coannihilation of inert scalar
+  - axion misalignment/string contribution as a possible subcomponent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper's case I uses eta_R for the required dark matter; axion dark matter is possible but
+    the isocurvature bound prevents it from dominating in the studied case II examples.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - The paper's main emphasis is CP, inflation, and leptogenesis; the dark-matter sector is extracted
+    because the constructed model explicitly includes viable dark-matter candidates and relic-density
+    logic.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: PQ symmetry is broken during inflation and axion quantum fluctuations source CMB isocurvature,
+        constraining R_a.
+      page: null
+      reference_id: '2105_06089'
+      section: Dark matter and isocurvature fluctuations
+    interactions:
+    - confidence: medium
+      note: The Lagrangian contains scotogenic Yukawa terms, scalar quartics, vector-like fermion couplings,
+        and PQ-sector interactions.
+      page: null
+      reference_id: '2105_06089'
+      section: An extended model
+    parameter_ranges:
+    - confidence: medium
+      note: Benchmarks use M_eta_R = 0.9, 1.0, 1.1 TeV and f_a = w in the 4e8-1e11 GeV axion range.
+      page: null
+      reference_id: '2105_06089'
+      section: Effective model and dark matter
+    particle_content:
+    - confidence: high
+      note: The text introduces eta, singlet scalars, right-handed singlet fermions, vector-like fermions,
+        and identifies eta_R and the axion as dark matter candidates.
+      page: null
+      reference_id: '2105_06089'
+      section: An extended model
+    production_mechanism:
+    - confidence: high
+      note: The neutral inert scalar satisfies the dark matter abundance through TeV-scale coannihilation
+        for suitable lambda3 and lambda4; the axion fraction is controlled by f_a and isocurvature.
+      page: null
+      reference_id: '2105_06089'
+      section: Dark matter and isocurvature fluctuations
+    symmetries:
+    - confidence: high
+      note: Large singlet vevs break global U(1) x Z4 to a diagonal Z2, stabilizing the lightest Z2-odd
+        field; the U(1) acts as PQ symmetry.
+      page: null
+      reference_id: '2105_06089'
+      section: Scalar potential and symmetry breaking
+    validity_domain:
+    - confidence: medium
+      note: The paper checks potential stability and perturbativity because relic abundance requires large
+        quartic couplings.
+      page: null
+      reference_id: '2105_06089'
+      section: Effective model at lower energy
+    constraints:
+    - confidence: high
+      note: Related IDM analysis computes relic abundance and direct/gamma detection prospects for inert-doublet
+        scalar dark matter.
+      page: null
+      reference_id: arxiv:hep-ph/0612275
+      section: Abstract
+    - confidence: high
+      note: Axion review describes inflationary axion isocurvature and relic-abundance dependence.
+      page: null
+      reference_id: arxiv:1510.07633
+      section: Isocurvature and relic abundance sections
+    - confidence: high
+      note: Primary paper gives f_a=w window and inert-scalar benchmark coupling restrictions.
+      page: null
+      reference_id: arxiv:2105.06089
+      section: Model and DM phenomenology
+    observables:
+    - confidence: high
+      note: Primary text states the inert neutral scalar can be the alternative DM candidate and shows
+        relic/direct-search coupling regions.
+      page: null
+      reference_id: arxiv:2105.06089
+      section: DM phenomenology
+    - confidence: high
+      note: Primary text discusses PQ symmetry during inflation and consistency with isocurvature if axions
+        are a small DM fraction.
+      page: null
+      reference_id: arxiv:2105.06089
+      section: Conclusion and axion discussion
+    - confidence: high
+      note: Related PQ scotogenic model connects PQ symmetry, remnant Z2 stability, and one-loop neutrino
+        mass generation.
+      page: null
+      reference_id: arxiv:1709.02886
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper supplies the route from PQ/CP symmetry breaking to scotogenic low-energy model,
+        axion, and inert DM.
+      page: null
+      reference_id: arxiv:2105.06089
+      section: Model construction
+  extraction:
+    confidence: medium
+    extracted_by: codex_dark_matter_batch_worker
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The model extends the SM with vector-like fermions, right-handed singlet fermions,
+        an additional doublet scalar, singlet scalars, U(1) x Z4, and PQ symmetry.
+      reference_id: '2105_06089'
+      section: An extended model
+    - page: null
+      quote_or_summary: After symmetry breaking the low-energy theory is a scotogenic model with residual
+        Z2.
+      reference_id: '2105_06089'
+      section: Effective model at lower energy
+    - page: null
+      quote_or_summary: The paper identifies the lightest neutral Z2-odd scalar and the axion as dark
+        matter candidates.
+      reference_id: '2105_06089'
+      section: Dark matter and isocurvature fluctuations
+    unresolved_items:
+    - Modern inert-doublet direct-detection and relic-density likelihoods were not rerun.
+    - Axion misalignment angle, topological defects, and detailed PQ cosmological history remain benchmark-dependent.
+    - Charged-lepton-flavor constraints were noted only as a route target.
+  last_updated: '2026-05-31'
+  model_family: multi_component_dark_matter
+  model_id: 2105_06089_cp_pq_scotogenic_inert_axion_dm_v1
+  model_name: CP/PQ scotogenic inert-doublet dark matter with axion component
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2105.06089'
+      authors:
+      - Tsuyoshi Hashimoto
+      - Norma Sidik Risdianto
+      - Daijiro Suematsu
+      doi: null
+      notes: Source text taken from the assigned run SQLite database only.
+      reference_id: '2105_06089'
+      role: original_model
+      title: Inflation connected to the origin of CP violation
+      url: null
+      year: 2021
+    - arxiv_id: '2105.06089'
+      authors:
+      - Hashimoto, Tsuyoshi
+      - Risdianto, Norma Sidik
+      - Suematsu, Daijiro
+      doi: 10.1103/PhysRevD.104.075034
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2105.06089
+      role: original_model
+      title: Inflation connected to the origin of C P violation
+      url: https://arxiv.org/abs/2105.06089
+      year: 2021
+    constraint_papers:
+    - arxiv_id: hep-ph/0612275
+      authors:
+      - Lopez Honorez, Laura
+      - Nezri, Emmanuel
+      - Oliver, Josep F.
+      - Tytgat, Michel H. G.
+      doi: 10.1088/1475-7516/2007/02/028
+      notes: Related inert-doublet DM paper resolved locally and read.
+      reference_id: arxiv:hep-ph/0612275
+      role: constraint
+      title: 'The inert doublet model: an archetype for dark matter'
+      url: https://arxiv.org/abs/hep-ph/0612275
+      year: 2007
+    - arxiv_id: '1709.02886'
+      authors:
+      - Suematsu, Daijiro
+      doi: 10.1140/epjc/s10052-018-5519-4
+      notes: Related PQ scotogenic stability paper resolved locally and read.
+      reference_id: arxiv:1709.02886
+      role: implementation
+      title: Dark matter stability and one-loop neutrino mass generation based on Peccei-Quinn symmetry
+      url: https://arxiv.org/abs/1709.02886
+      year: 2018
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1510.07633'
+      authors:
+      - Marsh, David J. E.
+      doi: 10.1016/j.physrep.2016.06.005
+      notes: Related axion-cosmology review resolved locally and read.
+      reference_id: arxiv:1510.07633
+      role: review
+      title: Axion cosmology
+      url: https://arxiv.org/abs/1510.07633
+      year: 2016
+  status: machine_extracted
+relic_density:
+  calculation_type: mixed
+  full_or_subcomponent: either
+  key_dependencies:
+  - M_eta_R
+  - lambda3
+  - lambda4
+  - lambda5
+  - f_a
+  - R_a
+  - isocurvature amplitude
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: tuned
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: medium
+  dominant_uncertainties:
+  - amount of axion dark matter
+  - quartic-coupling perturbativity
+  - parameter tuning from large singlet vevs
+  - exact inert scalar spectrum
+  notes: The source supports the model ingredients and relic logic, but several details are benchmark-dependent
+    and require human review.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No dedicated transfer-function mapping is supplied in the extracted paper text.
+    transfer_function_shape: cdm_like
+  nonlinear:
+    concentration_mass_relation_effect: unknown
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    smallest_galaxies_effect: unknown
+    subhalo_mass_function_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+symmetries:
+  stabilizing_mechanism: Large singlet vevs break global U(1) x Z4 to an exact residual Z2 that stabilizes
+    the lightest Z2-odd field; the global U(1) also acts as a PQ symmetry producing an axion.
+  symmetries:
+  - breaking: spontaneously broken by the phi vev with f_a = w
+    breaking_scale:
+      description: Axion decay constant identified with the singlet vev.
+      name: PQ scale
+      range: 4e8 to 1e11
+      role: core
+      source_reference_ids: []
+      status: inferred
+      symbol: f_a = w
+      unit: GeV
+    exact_or_approximate: broken
+    name: U(1) Peccei-Quinn
+    type: global
+  - breaking: broken with U(1) to a residual diagonal Z2
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: Z4
+    type: discrete
+  - breaking: unbroken when the inert doublet has no vev
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: residual Z2
+    type: discrete
+  - breaking: spontaneously broken in the singlet scalar sector
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: CP
+    type: discrete
+  topological_defects_possible: 'yes'
+theory:
+  eft_cutoff:
+    description: Cutoff scale appearing in the listed dimension-five terms.
+    name: dimension-five cutoff
+    range: not fixed in the extracted text
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: M
+    unit: GeV
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper lists dominant Yukawa and scalar-potential terms up to dimension five and then derives
+    a lower-energy scotogenic model after singlet fields acquire large vevs.
+  parent_frameworks:
+  - scotogenic neutrino-mass model
+  - Peccei-Quinn/KSVZ-like axion model
+  - spontaneous CP violation
+  renormalizable: 'no'
+  theory_level: effective_field_theory
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The inert doublet must have no vev so the residual Z2 remains exact.
+  extrapolation_risk: high
+  id: residual_z2
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: parameter
+  caveats: []
+  condition: The neutral inert scalar candidate is viable in the TeV range where coannihilation can be
+    effective.
+  extrapolation_risk: medium
+  id: teV_coannihilation
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: M_eta_R around 0.9-1.1 TeV in the displayed benchmarks
+- applies_to: parameter
+  caveats: []
+  condition: The PQ scale is taken in the axion window quoted by the paper.
+  extrapolation_risk: medium
+  id: pq_scale
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: 4e8 GeV < f_a < 1e11 GeV
+- applies_to: model
+  caveats: []
+  condition: If PQ breaking occurs during inflation, the axion fraction must satisfy the paper's CMB isocurvature
+    bound.
+  extrapolation_risk: high
+  id: axion_isocurvature
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: Scalar quartic choices that realize the relic abundance must remain perturbative under the
+    RGE study.
+  extrapolation_risk: medium
+  id: perturbativity
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+observables:
+- caveats:
+  - Primary paper presents benchmark coupling regions rather than a full detector likelihood.
+  channel: direct_detection
+  effect_direction: model_dependent
+  environments:
+  - thermal early universe
+  - underground direct-detection experiments
+  - gamma-ray indirect searches
+  id: obs_inert_scalar_relic_direct
+  key_quantities:
+  - description: Primary benchmark range shown around 0.9, 1.0, and 1.1 TeV.
+    name: inert scalar mass
+    range: 0.9-1.1 TeV in primary figure benchmarks
+    role: core
+    source_reference_ids:
+    - arxiv:2105.06089
+    status: inferred
+    symbol: M_etaR
+    unit: TeV
+  - description: lambda_3 + lambda_4 + lambda_5 controls M_etaR and interactions.
+    name: Higgs-portal coupling combination
+    role: core
+    source_reference_ids:
+    - arxiv:2105.06089
+    status: inferred
+    symbol: lambda_plus
+  - description: Related IDM analysis computes thermal freeze-out abundance and direct/gamma detection
+      prospects.
+    name: inert-doublet relic abundance
+    role: derived
+    source_reference_ids:
+    - arxiv:hep-ph/0612275
+    status: inferred
+    symbol: Omega_H0 h^2
+  linked_constraints:
+  - con_idm_relic_direct_search
+  linked_routes:
+  - route_pq_scotogenic_dm_cosmology
+  name: Inert-doublet scalar relic abundance and direct-search target
+  notes: null
+  observability: medium
+  predicted_effect: The lightest neutral Z2-odd inert scalar can supply the dominant dark matter abundance;
+    relic density and direct searches restrict scalar potential couplings.
+  redshift_range: thermal freeze-out to present-day detectors
+  relevance: critical
+  scale_range: TeV dark matter mass scale
+  source_reference_ids:
+  - arxiv:2105.06089
+  - arxiv:hep-ph/0612275
+  subchannel: TeV inert-doublet scalar scattering and relic abundance
+- caveats:
+  - Axion abundance and isocurvature depend on initial misalignment and PQ history.
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - inflationary perturbations
+  - CMB anisotropies
+  id: obs_axion_fraction_isocurvature
+  key_quantities:
+  - description: Primary text gives the allowed PQ scale window.
+    name: axion decay constant
+    range: 4e8-1e11 GeV
+    role: core
+    source_reference_ids:
+    - arxiv:2105.06089
+    status: inferred
+    symbol: f_a = w
+    unit: GeV
+  - description: Primary text states the axion relic density should be a small fraction of DM.
+    name: axion relic fraction
+    role: core
+    source_reference_ids:
+    - arxiv:2105.06089
+    - arxiv:1510.07633
+    status: inferred
+    symbol: Omega_a/Omega_DM
+  - description: Controls axion isocurvature amplitude when PQ symmetry is broken during inflation.
+    name: inflationary Hubble scale
+    role: cosmological
+    source_reference_ids:
+    - arxiv:1510.07633
+    status: inferred
+    symbol: H_I
+  linked_constraints:
+  - con_axion_isocurvature_fraction
+  linked_routes:
+  - route_pq_scotogenic_dm_cosmology
+  name: PQ axion relic fraction and inflationary isocurvature
+  notes: null
+  observability: high
+  predicted_effect: The PQ symmetry is broken during inflation, so axion isocurvature constrains the model;
+    the primary text finds consistency when the axion is only a small fraction of dark matter.
+  redshift_range: inflation through recombination
+  relevance: high
+  scale_range: CMB isocurvature angular scales
+  source_reference_ids:
+  - arxiv:2105.06089
+  - arxiv:1510.07633
+  subchannel: axion isocurvature and relic fraction
+- caveats:
+  - No charged-lepton-flavor likelihood was evaluated here.
+  channel: precision_laboratory
+  effect_direction: model_dependent
+  environments:
+  - neutrino oscillation fits
+  - charged-lepton flavor searches
+  id: obs_pq_scotogenic_neutrino_lfv
+  key_quantities:
+  - description: Complex Yukawa couplings in the scotogenic sector.
+    name: neutrino Yukawa couplings
+    role: core
+    source_reference_ids:
+    - arxiv:2105.06089
+    - arxiv:1709.02886
+    status: inferred
+    symbol: h_alpha j
+  - description: Masses entering one-loop neutrino generation.
+    name: right-handed neutrino masses
+    role: core
+    source_reference_ids:
+    - arxiv:2105.06089
+    status: inferred
+    symbol: M_Nj
+  linked_constraints:
+  - con_scotogenic_pq_consistency
+  linked_routes:
+  - route_pq_scotogenic_dm_cosmology
+  name: Scotogenic neutrino-mass and lepton-flavor observables
+  notes: null
+  observability: medium
+  predicted_effect: The low-energy model reduces to a scotogenic neutrino-mass model with complex Yukawa
+    couplings; neutrino masses and flavor observables constrain the same Z2-odd sector that stabilizes
+    inert dark matter.
+  redshift_range: present-day laboratory and neutrino data
+  relevance: medium
+  scale_range: electroweak to heavy-singlet mass scales
+  source_reference_ids:
+  - arxiv:2105.06089
+  - arxiv:1709.02886
+  subchannel: radiative neutrino mass and lepton flavor
+constraints:
+- allowed_regions:
+  - Primary benchmark regions around M_etaR=0.9-1.1 TeV with restricted lambda_3/lambda_4 values satisfying
+    stability and perturbativity.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The lightest inert neutral scalar is the dominant dark-matter component.
+    id: inert-scalar-dominance
+    impact_if_violated: If axions or other components dominate, direct-detection and relic targets rescale.
+    notes: null
+    scope: IDM relic and direct search
+    source_reference_ids:
+    - arxiv:2105.06089
+    status: assumed
+  benchmark_implications:
+  - The inert scalar can carry the main DM density while axions remain subdominant.
+  caveats:
+  - Modern direct-detection limits were not substituted for the primary benchmark scan.
+  constrained_parameters:
+  - M_etaR
+  - lambda_3
+  - lambda_4
+  - lambda_5
+  - lambda_plus
+  constraint_type: cosmological
+  data_release: WMAP-era IDM relic-density context in related paper; primary benchmark figure
+  excluded_regions:
+  - Coupling choices that fail the relic-density/direct-search requirements or violate high-scale perturbativity
+    in the primary discussion.
+  id: con_idm_relic_direct_search
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Inert-doublet relic abundance, direct search, and perturbativity constraints
+  notes: null
+  observable_channel: thermal relic abundance and direct detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2105.06089
+  - arxiv:hep-ph/0612275
+- allowed_regions:
+  - Primary text finds consistency when the axion relic density is a small DM fraction and f_a=w lies
+    in the quoted window.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The PQ symmetry is spontaneously broken during inflation.
+    id: pq-broken-during-inflation
+    impact_if_violated: If PQ breaking occurs after inflation, the isocurvature and relic calculation
+      changes.
+    notes: null
+    scope: axion isocurvature
+    source_reference_ids:
+    - arxiv:2105.06089
+    - arxiv:1510.07633
+    status: assumed
+  benchmark_implications:
+  - The inert scalar, not the axion, is favored as the dominant DM component in the primary scenario.
+  caveats:
+  - Misalignment angle and string/domain-wall contributions were not scanned.
+  constrained_parameters:
+  - f_a
+  - H_I
+  - theta_i
+  - Omega_a/Omega_DM
+  constraint_type: cosmological
+  data_release: CMB isocurvature constraints discussed in primary and axion review context
+  excluded_regions:
+  - PQ/inflation histories producing too much axion dark matter or excessive isocurvature.
+  id: con_axion_isocurvature_fraction
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Axion isocurvature and subdominant-axion relic constraint
+  notes: null
+  observable_channel: CMB isocurvature and axion relic abundance
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2105.06089
+  - arxiv:1510.07633
+- allowed_regions:
+  - PQ symmetry forbids tree-level neutrino mass generation, leaves a Z2 remnant, and supports one-loop
+    neutrino masses in the related model.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The diagonal remnant Z2 after PQ/global symmetry breaking remains exact at low energy.
+    id: unbroken-remnant-z2
+    impact_if_violated: Breaking the remnant symmetry destabilizes the inert dark matter.
+    notes: null
+    scope: DM stability
+    source_reference_ids:
+    - arxiv:2105.06089
+    - arxiv:1709.02886
+    status: assumed
+  benchmark_implications:
+  - The same remnant symmetry stabilizes the inert-sector dark-matter candidate.
+  caveats:
+  - Flavor constraints were not numerically evaluated.
+  constrained_parameters:
+  - h_alpha j
+  - M_Nj
+  - lambda_5
+  - PQ breaking scale
+  - Z2 parity
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Parameter choices that break the remnant Z2 or fail to reproduce radiative neutrino masses.
+  id: con_scotogenic_pq_consistency
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: PQ-remnant Z2 stability and scotogenic neutrino consistency
+  notes: null
+  observable_channel: neutrino mass and dark-matter stability
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2105.06089
+  - arxiv:1709.02886
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The primary paper emphasizes CP/inflation as much as dark-matter phenomenology; DM constraints are
+      benchmark-level.
+    constraint_ids:
+    - con_idm_relic_direct_search
+    - con_axion_isocurvature_fraction
+    - con_scotogenic_pq_consistency
+    derived_quantities:
+    - Omega_etaR h^2
+    - direct-detection cross section
+    - Omega_a/Omega_DM
+    - isocurvature fraction
+    - one-loop neutrino masses
+    description: Route the CP/PQ scotogenic model through inert-scalar relic density, axion isocurvature,
+      and neutrino/flavor consistency.
+    forward_model_chain:
+    - inputs:
+      - PQ and singlet scalar potential
+      notes: null
+      outputs:
+      - remnant Z2
+      - axion decay constant
+      - CP phases
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary symmetry-breaking construction.
+    - inputs:
+      - M_etaR
+      - lambda_i
+      notes: null
+      outputs:
+      - Omega_etaR h^2
+      - direct-detection rate
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: micrOMEGAs-style IDM relic calculation
+      validity: Needs updated IDM relic/direct-detection scan.
+    - inputs:
+      - f_a
+      - H_I
+      - theta_i
+      notes: null
+      outputs:
+      - axion relic fraction
+      - isocurvature amplitude
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Axion cosmology recast required.
+    - inputs:
+      - h_alpha j
+      - M_Nj
+      - lambda_5
+      notes: null
+      outputs:
+      - neutrino mass matrix
+      - flavor observables
+      step_id: s4
+      step_type: validation
+      tool_or_code: null
+      validity: Laboratory flavor likelihood not run.
+    id: route_pq_scotogenic_dm_cosmology
+    input_parameters:
+    - f_a=w
+    - u
+    - M_etaR
+    - lambda_3
+    - lambda_4
+    - lambda_5
+    - h_alpha j
+    - H_I
+    likelihoods:
+    - thermal relic-density likelihood
+    - CMB isocurvature likelihood
+    - direct-detection likelihood
+    observable_ids:
+    - obs_inert_scalar_relic_direct
+    - obs_axion_fraction_isocurvature
+    - obs_pq_scotogenic_neutrino_lfv
+    required_code_resources:
+    - IDM relic/direct-detection calculator
+    - axion misalignment/isocurvature calculator
+    - neutrino-mass and LFV scanner
+    route_status: planned
+    source_model_features:
+    - spontaneous CP violation
+    - PQ symmetry
+    - remnant Z2 parity
+    - inert doublet scalar
+    - scotogenic neutrino masses
+    - subdominant axion
+    validation_tests:
+    - recover primary f_a window
+    - recover primary 0.9-1.1 TeV inert scalar benchmarks
+    - verify remnant Z2 stability

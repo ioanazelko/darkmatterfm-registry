@@ -1,0 +1,624 @@
+_source:
+  shard: arXiv_src_1709_021_wds.tar
+  paper_id: '1709_07865'
+  source_member: 1709_07865.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1709_07865_string_axion_pbh_coexistence_dm_v1
+identity:
+  name: String axion dark matter coexisting with O(10) solar-mass primordial black holes
+  family: string_axion_dark_matter
+  aliases:
+  - string axion DM with LIGO PBHs
+  - double-inflation string axion dark matter
+  short_description: A string axion dark matter cosmology with GUT-scale decay constant, low-scale double
+    hilltop inflation, and a subdominant O(10) solar-mass PBH population.
+  historical_origin_or_motivation: Motivated by LIGO black-hole mergers, PBH abundance limits, and the
+    difficulty of WIMP coexistence with PBHs.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - string axion
+  - strong CP solution
+  - double hilltop inflation
+  - primordial black holes
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The paper specifies the axion coupling normalization and a concrete double-inflation parameter
+    example rather than a full string compactification.
+particle_content:
+  dark_matter_candidate:
+    name: string axion
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - O(10) solar-mass primordial black holes as a subdominant coexisting component
+  mediators:
+  - QCD instantons generate the axion mass
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Approximate axion shift symmetry and feeble interactions make the string axion
+    long-lived.
+  symmetries:
+  - name: axion shift symmetry
+    type: shift
+    exact_or_approximate: approximate
+    breaking: Broken by QCD instantons
+  - name: inflationary background evolution
+    type: unknown
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - axion
+  - gravitational
+  standard_model_targets:
+  - QCD gauge fields
+  - inflationary curvature perturbations through gravity
+  dark_sector_couplings:
+  - axion misalignment dynamics
+  - gravitational PBH formation
+  mediator_types:
+  - axion field
+  - inflationary scalar fields
+  interaction_operators:
+  - (g^2/16 pi^2 f_a) a Tr F Ftilde
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: axion decay constant
+    symbol: f_a
+    value: about 1e16
+    unit: GeV
+    role: core
+    status: inferred
+  - name: initial misalignment angle
+    symbol: theta
+    range: theta < about 3.4e-3 for f_a = 1e16 GeV if axion is all DM
+    role: cosmological
+    status: inferred
+  - name: inflationary Hubble scale
+    symbol: H_inf
+    range: less than about 1e9 GeV (f_a/1e16 GeV)^0.405 from isocurvature
+    unit: GeV
+    role: cosmological
+    status: inferred
+  - name: PBH-to-DM fraction
+    symbol: Omega_PBH/Omega_DM
+    range: O(1e-3) to O(1e-2) for LIGO merger rate
+    role: derived
+    status: inferred
+  - name: curvature peak scale
+    symbol: k_peak
+    range: around 1e6 Mpc^-1 for O(10) solar-mass PBHs
+    unit: Mpc^-1
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - axion coherent misalignment after QCD mass turn-on
+  - subdominant PBH production from amplified small-scale curvature perturbations in double inflation
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - f_a
+  - misalignment angle
+  - inflationary Hubble scale
+  - small-scale curvature power spectrum
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: Axion accounts for the dominant dark matter abundance; PBHs are needed only at the small fraction
+    associated with LIGO merger rates.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - f_a
+  - theta
+  - H_inf
+  - PBH fraction
+  requires_entropy_dilution: 'no'
+  overclosure_risk: 'yes'
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - multiple low-scale inflation stages
+  - sharp small-scale curvature power peak
+  - subdominant PBH formation
+  bbn_relevance: medium
+  cmb_relevance: high
+  isocurvature_perturbations: 'yes'
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: 'no'
+  notes: The axion component is a coherent field; the PBH component is macroscopic and subdominant.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: enhanced_small_scale_power
+    small_scale_power_effect: enhancement
+  nonlinear:
+    halo_mass_function_effect: sharp small-scale power peak may seed PBHs and axion miniclusters
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: v_low_inflation_scale
+  applies_to: cosmological_history
+  condition: Axion isocurvature requires low-scale inflation, roughly H_inf below 1e9 GeV for f_a around
+    1e16 GeV.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: v_sharp_power_peak
+  applies_to: cosmological_history
+  condition: The PBH scenario requires a sharp perturbation peak near k ~ 1e6 Mpc^-1.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: a_saxion_stabilized
+    description: The moduli field (saxion) is assumed stabilized throughout cosmological evolution.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: a_gaussian_pbh
+    description: The PBH abundance calculation assumes the density perturbations follow a Gaussian distribution
+      in the paper review.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is identified in the assigned paper text.
+  primary_code_role: null
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine extraction from assigned paper text; observables and constraints omitted by run profile.
+agent_failure_modes:
+  warnings:
+  - id: w_mixed_components
+    severity: medium
+    category: assumption_mismatch
+    warning: The dark matter entry is axion-dominated with a PBH subcomponent; do not treat PBHs as all
+      of the dark matter in this paper.
+    source_reference_ids:
+    - paper
+provenance:
+  model_id: 1709_07865_string_axion_pbh_coexistence_dm_v1
+  model_name: String axion dark matter coexisting with O(10) solar-mass primordial black holes
+  model_family: string_axion_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: O(10) M_sun primordial black holes and string axion dark matter
+      authors:
+      - Keisuke Inomata
+      - Masahiro Kawasaki
+      - Kyohei Mukaida
+      - Yuichiro Tada
+      - Tsutomu T. Yanagida
+      year: 2017
+      arxiv_id: '1709.07865'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned SQLite full text only; no external lookup used.
+    - arxiv_id: '1709.07865'
+      authors: []
+      doi: null
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1709.07865
+      role: original_model
+      title: O(10) solar-mass primordial black holes and string axion dark matter
+      url: https://arxiv.org/abs/1709.07865
+      year: 2017
+    constraint_papers:
+    - arxiv_id: '1711.00990'
+      authors: []
+      doi: null
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1711.00990
+      role: extension
+      title: Cogenesis of LIGO primordial black holes and dark matter
+      url: https://arxiv.org/abs/1711.00990
+      year: 2018
+    - arxiv_id: '1802.06785'
+      authors: []
+      doi: null
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1802.06785
+      role: constraint
+      title: Primordial black hole dark matter and LIGO/Virgo merger rate from inflation with running
+        spectral indices
+      url: https://arxiv.org/abs/1802.06785
+      year: 2018
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1301.1123'
+      authors: []
+      doi: null
+      notes: Related review/context source resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1301.1123
+      role: review
+      title: 'Axions: theory and cosmological role'
+      url: https://arxiv.org/abs/1301.1123
+      year: 2013
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0005
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Introduction
+      page: null
+      quote_or_summary: Assumes string axion dark matter and constructs a scenario where it coexists with
+        inflationary PBHs for LIGO events.
+    - reference_id: paper
+      section: Conclusion
+      page: null
+      quote_or_summary: States that double hilltop inflation can satisfy axion isocurvature, CMB, and
+        PBH abundance requirements.
+    unresolved_items:
+    - PBH abundance constraints and merger-rate calculations were not recomputed.
+    - The small-scale curvature spectrum is treated through source-paper estimates only.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The paper assumes the string axion solving the strong CP problem makes up the dark matter
+        while O(10) solar-mass PBHs are a coexisting subcomponent.
+      confidence: high
+      section: Introduction
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: The axion is tied to an approximate global symmetry in string theory and QCD instanton mass
+        generation.
+      confidence: medium
+      section: String axion as DM
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The axion interaction is normalized as a F F-tilde coupling with decay constant f_a around
+        10^16 GeV.
+      confidence: high
+      section: String axion as DM
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The axion abundance comes from coherent oscillation after the QCD instanton mass exceeds Hubble;
+        PBHs arise from enhanced curvature perturbations in double inflation.
+      confidence: high
+      section: String axion as DM and PBH formation
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: The constructed double hilltop inflation model satisfies low Hubble scale for isocurvature
+        and generates a sharp small-scale power peak for PBHs.
+      confidence: high
+      section: Conclusion
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: The paper quotes f_a about 10^16 GeV, H_inf below about 10^9 GeV, and PBH-DM fraction O(10^-3)-O(10^-2).
+      confidence: high
+      section: String axion as DM and PBH discussion
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text quotes theta and H_inf bounds and a PBH fraction around 1e-3 to 1e-2 for merger-rate
+        motivation.
+      page: null
+      reference_id: arxiv:1709.07865
+      section: Axion and PBH sections
+    - confidence: medium
+      note: Axion review covers axion isocurvature and topological-defect cosmology context.
+      page: null
+      reference_id: arxiv:1301.1123
+      section: Review introduction
+    observables:
+    - confidence: high
+      note: Primary text gives f_a around 1e16 GeV, the low H_inf isocurvature requirement, and the LIGO-mass
+        PBH motivation.
+      page: null
+      reference_id: arxiv:1709.07865
+      section: Introduction and PBH section
+    - confidence: medium
+      note: Related paper discusses LIGO/Virgo merger-rate fits with O(10) solar-mass PBHs.
+      page: null
+      reference_id: arxiv:1802.06785
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper connects low-scale inflation, string axion DM, and PBH formation from small-scale
+        curvature perturbations.
+      page: null
+      reference_id: arxiv:1709.07865
+      section: Model sections
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: high
+    reviewer_notes: []
+observables:
+- caveats:
+  - Assumes the string axion dominates the dark matter abundance.
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - inflation
+  - cosmic microwave background
+  id: obs_string_axion_isocurvature
+  key_quantities:
+  - description: String axion decay constant.
+    name: axion decay constant
+    role: core
+    source_reference_ids:
+    - arxiv:1709.07865
+    status: inferred
+    symbol: f_a
+    unit: GeV
+    value: about 1e16
+  - description: Bound from axion isocurvature.
+    name: inflationary Hubble scale
+    range: less than about 1e9 GeV (f_a/1e16 GeV)^0.405 in the primary introduction
+    role: cosmological
+    source_reference_ids:
+    - arxiv:1709.07865
+    status: inferred
+    symbol: H_inf
+    unit: GeV
+  - description: Initial axion displacement.
+    name: initial misalignment angle
+    range: theta < about 3.4e-3 for f_a = 1e16 GeV if axion is all DM
+    role: core
+    source_reference_ids:
+    - arxiv:1709.07865
+    status: inferred
+    symbol: theta
+  linked_constraints:
+  - con_string_axion_isocurvature
+  linked_routes:
+  - route_string_axion_pbh_coexistence
+  name: String-axion isocurvature bound
+  notes: null
+  observability: high
+  predicted_effect: A GUT-scale string axion that makes all dark matter develops inflationary isocurvature
+    fluctuations, forcing a low inflationary Hubble scale.
+  redshift_range: inflation imprint observed at recombination
+  relevance: critical
+  scale_range: CMB pivot scale k=0.05 Mpc^-1 in the primary discussion
+  source_reference_ids:
+  - arxiv:1709.07865
+  - arxiv:1301.1123
+  subchannel: axion isocurvature perturbations
+- caveats:
+  - PBH merger-rate inference and abundance constraints are model dependent.
+  channel: gravitational_waves
+  effect_direction: rate_change
+  environments:
+  - early universe
+  - binary black hole mergers
+  id: obs_ligo_mass_pbh_population
+  key_quantities:
+  - description: Fraction required to explain LIGO-rate PBHs without making all DM.
+    name: PBH-to-DM fraction
+    range: O(1e-3) to O(1e-2)
+    role: derived
+    source_reference_ids:
+    - arxiv:1709.07865
+    status: inferred
+    symbol: Omega_PBH/Omega_DM
+  - description: Scale corresponding to O(10) solar-mass PBH formation.
+    name: curvature peak scale
+    range: about 1.9e6 Mpc^-1 for the fiducial relation
+    role: derived
+    source_reference_ids:
+    - arxiv:1709.07865
+    status: inferred
+    symbol: k
+    unit: Mpc^-1
+  linked_constraints:
+  - con_pbh_fraction_ligo
+  linked_routes:
+  - route_string_axion_pbh_coexistence
+  name: O(10) solar-mass PBH gravitational-wave population
+  notes: null
+  observability: medium
+  predicted_effect: A sharp small-scale curvature peak can produce a subdominant O(10) solar-mass PBH
+    population with merger rates relevant to LIGO/Virgo events.
+  redshift_range: PBH formation in radiation era; mergers at low redshift
+  relevance: high
+  scale_range: O(10) solar-mass PBHs and small-scale curvature modes
+  source_reference_ids:
+  - arxiv:1709.07865
+  - arxiv:1711.00990
+  - arxiv:1802.06785
+  subchannel: LIGO/Virgo binary black-hole mergers
+constraints:
+- allowed_regions:
+  - Primary scenario uses low-scale inflation satisfying H_inf below about 1e9 GeV (f_a/1e16 GeV)^0.405.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The string axion accounts for the present dark matter density.
+    id: axion_all_dm
+    impact_if_violated: If axions are subdominant, isocurvature and theta bounds weaken.
+    notes: null
+    scope: isocurvature and abundance bound
+    source_reference_ids:
+    - arxiv:1709.07865
+    - arxiv:1301.1123
+    status: assumed
+  benchmark_implications:
+  - For f_a=1e16 GeV, the primary text gives theta below about 3.4e-3 from abundance and a stronger isocurvature
+    H_inf bound.
+  caveats:
+  - No Planck likelihood was rerun.
+  constrained_parameters:
+  - f_a
+  - theta
+  - H_inf
+  - Omega_a/Omega_DM
+  constraint_type: cosmological
+  data_release: Planck CMB isocurvature bound quoted in the primary paper
+  excluded_regions:
+  - High H_inf for f_a around 1e16 GeV is excluded by CMB isocurvature if axions make all DM.
+  id: con_string_axion_isocurvature
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Planck isocurvature limit for GUT-scale string axion dark matter
+  notes: null
+  observable_channel: CMB isocurvature
+  recasting_needed: 'yes'
+  robustness: high
+  source_reference_ids:
+  - arxiv:1709.07865
+  - arxiv:1301.1123
+- allowed_regions:
+  - A subdominant PBH fraction around 1e-3 to 1e-2 can be consistent with LIGO/Virgo merger-rate motivation
+    and abundance constraints.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: PBH abundance is inferred from a model-dependent binary merger-rate calculation.
+    id: pbh_merger_rate_mapping
+    impact_if_violated: Different PBH clustering or binary formation changes the required fraction.
+    notes: null
+    scope: PBH fraction
+    source_reference_ids:
+    - arxiv:1709.07865
+    - arxiv:1802.06785
+    status: approximate
+  benchmark_implications:
+  - The axion supplies dominant DM while PBHs provide only the small merger-rate population.
+  caveats:
+  - Microlensing, dynamical, and merger-rate constraints are not recomputed here.
+  constrained_parameters:
+  - Omega_PBH/Omega_DM
+  - PBH mass
+  - curvature power amplitude
+  - merger rate
+  constraint_type: astrophysical
+  data_release: LIGO/Virgo merger-rate estimates and PBH abundance constraints cited by source papers
+  excluded_regions:
+  - O(10) solar-mass PBHs making all dark matter are disfavored by multiple abundance constraints in the
+    primary discussion.
+  id: con_pbh_fraction_ligo
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Subdominant PBH fraction for LIGO-rate O(10) solar-mass PBHs
+  notes: null
+  observable_channel: PBH abundance and merger rate
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1709.07865
+  - arxiv:1711.00990
+  - arxiv:1802.06785
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The coexistence is a phenomenological cosmology, not a full PBH population inference.
+    constraint_ids:
+    - con_string_axion_isocurvature
+    - con_pbh_fraction_ligo
+    derived_quantities:
+    - Omega_a
+    - isocurvature power
+    - PBH mass function
+    - Omega_PBH/Omega_DM
+    - merger rate
+    description: Route low-scale inflation and GUT-scale string axion misalignment into axion isocurvature
+      constraints and a subdominant LIGO-mass PBH population.
+    forward_model_chain:
+    - inputs:
+      - f_a
+      - theta
+      - H_inf
+      notes: Primary paper quotes abundance and isocurvature bounds.
+      outputs:
+      - axion abundance
+      - isocurvature power
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for the pre-inflationary string axion scenario.
+    - inputs:
+      - curvature peak scale
+      - curvature peak amplitude
+      notes: Primary paper gives the mass-scale relation.
+      outputs:
+      - PBH mass
+      - PBH formation fraction
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Uses radiation-era PBH formation estimates.
+    - inputs:
+      - PBH fraction
+      - PBH mass
+      notes: No PBH likelihood was rerun.
+      outputs:
+      - LIGO/Virgo merger-rate target
+      - abundance constraints
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Merger-rate mapping is model dependent.
+    id: route_string_axion_pbh_coexistence
+    input_parameters:
+    - f_a
+    - theta
+    - H_inf
+    - curvature peak amplitude
+    - curvature peak scale
+    likelihoods:
+    - Planck isocurvature likelihood not rerun
+    - PBH merger-rate likelihood not rerun
+    observable_ids:
+    - obs_string_axion_isocurvature
+    - obs_ligo_mass_pbh_population
+    required_code_resources:
+    - CMB isocurvature likelihood
+    - PBH abundance and merger-rate calculator
+    route_status: planned
+    source_model_features:
+    - GUT-scale string axion
+    - low-scale double hilltop inflation
+    - sharp small-scale curvature peak
+    - subdominant O(10) solar-mass PBHs
+    validation_tests:
+    - recover H_inf isocurvature scaling
+    - recover O(1e-3)-O(1e-2) PBH fraction target

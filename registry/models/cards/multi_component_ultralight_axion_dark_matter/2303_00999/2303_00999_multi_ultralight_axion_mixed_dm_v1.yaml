@@ -1,0 +1,553 @@
+_source:
+  shard: data/astro-ph-00234.tar
+  paper_id: '2303_00999'
+  source_member: 2303_00999.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2303_00999_multi_ultralight_axion_mixed_dm_v1
+identity:
+  name: Multi-ultralight-axion mixed dark matter
+  family: multi_component_ultralight_axion_dark_matter
+  aliases:
+  - multi-ULA dark matter
+  - multi-axion mixed dark matter
+  short_description: A mixed dark-matter scenario with multiple ultralight axions, possibly plus CDM,
+    whose different masses and fractions shape the linear power spectrum and halo mass function.
+  historical_origin_or_motivation: Motivated by stringy axion mass spectra and tensions between single-ULA
+    core and Lyman-alpha requirements.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - ultralight axion dark matter
+  - string axiverse
+  - mixed cold and fuzzy dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes a low-energy ULA Lagrangian with decay constant, instanton scale and periodic
+    potential, then studies multiple species.
+particle_content:
+  dark_matter_candidate:
+    name: multiple ultralight axions
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - optional cold dark matter component
+  mediators:
+  - gravity
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Approximate axion shift symmetry broken to a discrete periodic potential; cosmological
+    field oscillations act as dark matter.
+  symmetries:
+  - name: axion shift symmetry
+    type: shift
+    exact_or_approximate: broken
+    breaking: broken by instanton effects to a discrete periodic potential
+interactions:
+  portals:
+  - gravitational
+  - axion
+  standard_model_targets:
+  - metric perturbations
+  - large-scale structure
+  mediator_types:
+  - gravity
+  dark_sector_couplings:
+  - no inter-axion interaction in the linear treatment
+parameters:
+  core:
+  - name: axion masses
+    symbol: m_i
+    description: Multiple ULA masses; two-ULA examples use m1 < m2.
+    role: core
+    status: inferred
+  - name: mass ratio
+    symbol: m_r = m1/m2
+    description: A key two-ULA parameter with a critical overlap value near 0.017.
+    role: core
+    status: inferred
+  - name: abundance ratio
+    symbol: alpha = Omega_a1/Omega_a2
+    role: core
+    status: inferred
+  - name: ULA fraction
+    symbol: f_12
+    description: Fraction of total dark matter in the two ULA species.
+    role: core
+    status: inferred
+  - name: effective mass
+    symbol: m_e
+    description: Effective single-ULA mass inferred for overlapping suppression intervals.
+    role: core
+    status: inferred
+  - name: decay constant
+    symbol: f_a
+    role: core
+    status: inferred
+  - name: instanton scale
+    symbol: Lambda_a
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - initial axion field displacement
+  - coherent oscillation after Hubble friction drops below mass
+  - mixed ULA plus CDM abundance
+  thermal_equilibrium_with_standard_model: 'no'
+  can_produce_all_dark_matter: parameter_dependent
+  notes: The paper studies both ULA subfractions and all-DM ULA comparisons; production is not the central
+    calculation.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_i
+  - Omega_ai
+  - f_12
+  - mass-ratio overlap
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - multiple ultralight axion species
+  - optional mixed CDM component
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  notes: The paper uses an effective fluid approximation for oscillating ULAs in a Boltzmann code.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    thermal_wdm_mapping:
+      available: true
+      validity: approximate
+      warning: The paper stresses WDM comparison is not accurate because the transfer-function shape differs.
+  nonlinear:
+    halo_mass_function_effect: mass function has fewer halos and a smaller cut-off mass than a single
+      ULA with the same half-mode scale in two-ULA examples
+    subhalo_mass_function_effect: suppressed small-scale halo abundance is expected but nonlinear simulations
+      are lacking
+    simulation_calibrated: partial
+validity_domain:
+- id: linear_effective_fluid
+  applies_to: model
+  condition: Power spectra are computed with an effective fluid approximation for multiple ULAs.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: two_ula_to_n_ula_extrapolation
+  applies_to: model
+  condition: General N-ULA effective-mass rule is inferred from two-ULA behavior when suppression intervals
+    overlap.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: ula_plus_cdm
+    description: The main setup allows ULAs to be only a fraction of total dark matter with the rest CDM.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: no_full_nonlinear_simulation
+    description: Halo mass function insights are approximate and not calibrated by a self-consistent multi-ULA
+      nonlinear simulation.
+    scope: structure_formation
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper says the authors developed a Boltzmann code for multiple ULAs; public availability
+    is not stated in the assigned text.
+  primary_code_role: boltzmann_solver_patch
+provenance:
+  model_id: 2303_00999_multi_ultralight_axion_mixed_dm_v1
+  model_name: 2303_00999_multi_ultralight_axion_mixed_dm_v1
+  model_family: multi_component_ultralight_axion_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: '2303_00999'
+      title: Multi-ultralight axion dark matter and structure formation
+      authors: []
+      year: 2023
+      arxiv_id: '2303.00999'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '2303.00999'
+      authors:
+      - Chen, Chong-Bin
+      - Soda, Jiro
+      doi: 10.1088/1475-7516/2023/06/049
+      notes: null
+      reference_id: src_2303_primary
+      role: original_model
+      title: Implications of multi-axion dark matter on structure formation
+      url: https://arxiv.org/abs/2303.00999
+      year: 2023
+    constraint_papers:
+    - arxiv_id: '2403.04956'
+      authors:
+      - Garland, James T.
+      - Masters, Karen L.
+      - Grin, Daniel
+      doi: 10.1093/mnras/stae2370
+      notes: null
+      reference_id: src_2303_hi_ula
+      role: constraint
+      title: Using H I observations of low-mass galaxies to test ultralight axion dark matter
+      url: https://arxiv.org/abs/2403.04956
+      year: 2024
+    external_databases:
+    - name: NASA ADS
+      note: Used only for sanitized metadata discovery and candidate ranking.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers:
+    - arxiv_id: '0905.4720'
+      authors:
+      - Arvanitaki, Asimina
+      - Dimopoulos, Savas
+      - Dubovsky, Sergei
+      - Kaloper, Nemanja
+      - March-Russell, John
+      doi: 10.1103/PhysRevD.81.123530
+      notes: null
+      reference_id: src_2303_string_axiverse
+      role: review
+      title: String axiverse
+      url: https://arxiv.org/abs/0905.4720
+      year: 2010
+    - arxiv_id: '1510.07633'
+      authors:
+      - Marsh, David J. E.
+      doi: 10.1016/j.physrep.2016.06.005
+      notes: null
+      reference_id: src_2303_axion_cosmology
+      role: review
+      title: Axion cosmology
+      url: https://arxiv.org/abs/1510.07633
+      year: 2016
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0226
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2303_00999'
+      section: paper text
+      page: null
+      quote_or_summary: A mixed dark-matter scenario with multiple ultralight axions, possibly plus CDM,
+        whose different masses and fractions shape the linear power spectrum and halo mass function.
+    unresolved_items:
+    - Original Lyman-alpha, strong-lensing, and stellar-stream likelihood papers were not read; quoted
+      exclusions remain cited-context constraints requiring recast.
+  evidence:
+    particle_content:
+    - reference_id: '2303_00999'
+      note: The paper considers a universe with multiple ULAs of different masses and initial conditions,
+        optionally mixed with CDM.
+      confidence: medium
+      section: null
+      page: null
+    production_mechanism:
+    - reference_id: '2303_00999'
+      note: The ULA section gives the low-energy Lagrangian and states axions oscillate after Hubble friction
+        drops below the mass.
+      confidence: medium
+      section: null
+      page: null
+    validity_domain:
+    - reference_id: '2303_00999'
+      note: The paper derives an effective single-ULA description when suppression intervals overlap and
+        identifies a critical mass ratio near 0.017.
+      confidence: medium
+      section: null
+      page: null
+    constraints:
+    - confidence: medium
+      note: Primary paper cites Lyman-alpha, strong-lensing, and stellar-stream bounds as context for
+        ULDM masses.
+      page: null
+      reference_id: src_2303_primary
+      section: Introduction
+    observables:
+    - confidence: high
+      note: Primary paper gives the multi-ULA transfer-function behavior, critical mass-ratio overlap,
+        effective-mass estimate, and halo-mass-function calculation.
+      page: null
+      reference_id: src_2303_primary
+      section: Sections on ULA physics, suppression, and halo mass functions
+    routes:
+    - confidence: high
+      note: Primary paper describes the accurate effective-fluid Boltzmann calculation and semi-analytic
+        halo-mass-function pipeline.
+      page: null
+      reference_id: src_2303_primary
+      section: Boltzmann-code and halo-mass-function sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - nonlinear multi-ULA simulations lacking
+  - production history not modeled
+  - mapping to WDM constraints approximate
+  validation_status: partially_validated
+agent_failure_modes:
+  warnings:
+  - id: wdm_mapping_limit
+    severity: medium
+    category: invalid_mapping
+    warning: Do not replace this model by a thermal WDM mapping without checking the transfer-function
+      shape; the paper says the comparison is not accurate in general.
+    source_reference_ids: []
+observables:
+- caveats:
+  - The WDM mapping is only approximate because ULA and WDM transfer-function shapes differ.
+  - The effective-mass rule is most explicit for overlapping two-ULA intervals.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - linear cosmological perturbations
+  id: linear_power_spectrum_suppression
+  key_quantities:
+  - name: ULA masses
+    role: core
+    source_reference_ids:
+    - src_2303_primary
+    status: inferred
+    symbol: m_i
+  - name: mass ratio
+    role: core
+    source_reference_ids:
+    - src_2303_primary
+    status: inferred
+    symbol: m_r=m_1/m_2
+    value: critical overlap near 0.017
+  - name: ULA fraction
+    role: core
+    source_reference_ids:
+    - src_2303_primary
+    status: inferred
+    symbol: f_12
+  - description: Approximate single-ULA replacement for overlapping two-ULA suppression.
+    name: effective mass
+    role: derived
+    source_reference_ids:
+    - src_2303_primary
+    status: inferred
+    symbol: m_e
+  linked_constraints:
+  - lya_ula_mass_bound
+  linked_routes:
+  - boltzmann_transfer_to_hmf
+  name: Scale-dependent linear matter-power suppression from multiple ULAs
+  notes: Primary paper computes transfer functions with an accurate ULA effective-fluid approximation.
+  observability: high
+  predicted_effect: Multiple ultralight axion species suppress small-scale linear power over mass-dependent
+    intervals; overlapping intervals admit an effective single-ULA mass estimate for the half-mode scale.
+  redshift_range: null
+  relevance: critical
+  scale_range: Small cosmological scales around the ULA Jeans/free-streaming wavenumbers; Lyman-alpha
+    context cited for roughly 0.5-10 h/Mpc.
+  source_reference_ids:
+  - src_2303_primary
+  subchannel: matter transfer function
+- caveats:
+  - Halo-mass-function results are semi-analytic and not a substitute for nonlinear multi-ULA simulations.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - dark matter halos
+  - dwarf-galaxy scales
+  id: halo_mass_function_cutoff
+  key_quantities:
+  - name: halo variance
+    role: derived
+    source_reference_ids:
+    - src_2303_primary
+    status: inferred
+    symbol: sigma(R)
+  - name: effective mass
+    role: derived
+    source_reference_ids:
+    - src_2303_primary
+    status: inferred
+    symbol: m_e
+  linked_constraints:
+  - subhalo_lensing_stream_bound
+  linked_routes:
+  - boltzmann_transfer_to_hmf
+  name: Suppressed halo mass function in mixed/multi-ULA dark matter
+  notes: null
+  observability: medium
+  predicted_effect: The suppressed linear spectrum propagates to a lower abundance of low-mass halos;
+    two-ULA cases can have a smaller cutoff mass than a single ULA with a matched half-mode scale.
+  redshift_range: null
+  relevance: high
+  scale_range: Low-mass halo regime set by the ULA cutoff scale.
+  source_reference_ids:
+  - src_2303_primary
+  subchannel: halo mass function
+constraints:
+- allowed_regions:
+  - Mixed fractions and multi-mass spectra require a dedicated transfer-function recast.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The quoted bound is for ULDM making up all of the dark matter.
+    id: all_dm_ula_for_bound
+    impact_if_violated: Mixed ULA plus CDM fractions weaken or reshape the bound.
+    notes: null
+    scope: constraint interpretation
+    source_reference_ids:
+    - src_2303_primary
+    status: assumed
+  benchmark_implications:
+  - Single-ULA all-DM masses light enough to solve dwarf-core tensions are in tension with cited small-scale
+    power limits.
+  caveats:
+  - The likelihood and original Lyman-alpha analysis were not read in this bounded pass.
+  constrained_parameters:
+  - m_i
+  - f_i
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - For all-DM ULDM, the primary paper cites a 95% lower-mass exclusion around 2e-20 eV from hydrodynamic
+    Lyman-alpha analyses.
+  id: lya_ula_mass_bound
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Cited Lyman-alpha lower-mass bound on all-DM ULDM
+  notes: null
+  observable_channel: lyman_alpha
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2303_primary
+- allowed_regions:
+  - Multi-component spectra need recasting in terms of the computed halo/subhalo mass function.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The cited exclusion assumes a single all-DM ULDM transfer function.
+    id: subhalo_recast_needed
+    impact_if_violated: A multi-ULA spectrum can broaden or shift the cutoff.
+    notes: null
+    scope: constraint interpretation
+    source_reference_ids:
+    - src_2303_primary
+    status: assumed
+  benchmark_implications:
+  - Observable subhalo deficits are a direct route to test the small-scale cutoff.
+  caveats:
+  - Only the citing primary paper and related local context were read; no lensing/stream likelihood was
+    ingested.
+  constrained_parameters:
+  - m_i
+  - f_i
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - The primary paper cites exclusions near/below 2.1e-21 eV when all dark matter is ULDM.
+  id: subhalo_lensing_stream_bound
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Cited subhalo constraints from strong lensing and stellar streams
+  notes: null
+  observable_channel: strong_lensing_and_stellar_streams
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2303_primary
+  - src_2303_hi_ula
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route is computationally clear, but data likelihoods require separate recasts.
+    caveats:
+    - WDM-equivalent masses should not be treated as exact likelihood inputs.
+    constraint_ids:
+    - lya_ula_mass_bound
+    - subhalo_lensing_stream_bound
+    derived_quantities:
+    - T(k)
+    - half-mode scale
+    - sigma(R)
+    - halo mass function
+    description: Compute ULA perturbations, transfer functions, and a semi-analytic halo mass function
+      for comparison with small-scale structure data.
+    forward_model_chain:
+    - inputs:
+      - m_i
+      - Omega_ai
+      - standard cosmology
+      notes: null
+      outputs:
+      - linear matter power spectrum
+      step_id: solve_background_perturbations
+      step_type: boltzmann_solver
+      tool_or_code: modified Boltzmann code / accurate ULA effective-fluid approximation
+      validity: Primary paper reports the approximation works for multiple ULAs in the mass range studied.
+    - inputs:
+      - linear matter power spectrum
+      notes: null
+      outputs:
+      - halo mass function
+      - cutoff scale
+      step_id: derive_hmf
+      step_type: semi_analytic_model
+      tool_or_code: Press-Schechter-style halo-mass-function post-processing
+      validity: Semi-analytic mapping; nonlinear simulation calibration remains limited.
+    id: boltzmann_transfer_to_hmf
+    input_parameters:
+    - m_i
+    - f_i
+    - m_r
+    - alpha
+    - background cosmology
+    likelihoods:
+    - No public likelihood identified in this pass.
+    observable_ids:
+    - linear_power_spectrum_suppression
+    - halo_mass_function_cutoff
+    required_code_resources:
+    - Boltzmann solver with ULA effective-fluid treatment
+    - halo mass function integration
+    route_status: partially_implemented
+    source_model_features:
+    - multiple ultralight axion fields
+    - mixed ULA plus CDM abundance
+    - accurate ULA effective-fluid approximation
+    validation_tests:
+    - Recover CDM limit at large scales
+    - Compare single-ULA and effective-mass two-ULA half-mode scales

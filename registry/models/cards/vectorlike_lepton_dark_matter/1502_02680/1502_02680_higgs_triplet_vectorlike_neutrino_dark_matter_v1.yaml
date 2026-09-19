@@ -1,0 +1,295 @@
+_source:
+  shard: arXiv_src_1502_006_wds.tar
+  paper_id: '1502_02680'
+  source_member: 1502_02680.json
+schema_version: model_only_v0
+model_id: 1502_02680_higgs_triplet_vectorlike_neutrino_dark_matter_v1
+identity:
+  name: Higgs Triplet Model with vectorlike-neutrino dark matter
+  family: vectorlike_lepton_dark_matter
+  aliases: []
+  short_description: A Higgs Triplet Model extension with a complete vectorlike lepton generation and
+    a parity symmetry yields a mostly singlet vectorlike neutrino dark matter candidate.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Higgs Triplet Model
+  - vectorlike lepton extension
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes the HTM/vectorlike-lepton Lagrangian and neutral lepton mass matrices.
+particle_content:
+  dark_matter_candidate:
+    name: lightest vectorlike neutrino N_1 / nu_1
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - vectorlike lepton doublets
+  - charged vectorlike leptons
+  - neutral vectorlike singlets
+  - Higgs triplet scalars including charged and doubly charged states
+  mediators:
+  - Z boson via small mixing
+  - SM-like Higgs h
+  - triplet Higgs components
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: New parity makes vectorlike leptons odd and forbids mixing with ordinary SM leptons;
+    the lightest odd state is stable.
+  symmetries:
+  - name: new vectorlike-lepton parity
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - quarks
+  - leptons
+  - W bosons
+  - Z bosons
+  - Higgs bosons
+  dark_sector_couplings:
+  - vectorlike neutrino Yukawa coupling h_nu_prime
+  - mixing between singlet and doublet vectorlike neutrinos
+  mediator_types:
+  - Z boson
+  - Higgs boson
+  - charged vectorlike lepton
+  interaction_operators: []
+  annihilation_channels:
+  - Z resonance
+  - Higgs resonance
+  - W+ W- above threshold
+  - quark-antiquark final states
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: M_DM
+    description: Mass of the lightest vectorlike neutrino
+    range: roughly 23-103 GeV relic-density window discussed in the paper
+    unit: GeV
+    role: core
+    status: inferred
+  - name: vectorlike neutrino Yukawa coupling
+    symbol: h_nu_prime
+    description: Yukawa coupling controlling mixing and annihilation
+    role: core
+    status: inferred
+  - name: vectorlike doublet mass
+    symbol: M_L
+    description: Explicit vectorlike doublet mass
+    unit: GeV
+    role: core
+    status: inferred
+  - name: neutral Higgs mixing angle
+    symbol: alpha
+    description: Mixing angle in neutral Higgs sector
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through annihilation/coannihilation channels
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - annihilation through Z/h resonances
+  - Yukawa coupling
+  - coannihilation with charged vectorlike lepton
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: Relic density computed with micrOMEGAs after CalcHEP implementation.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - M_DM
+  - h_nu_prime
+  - Z and Higgs resonances
+  - charged vectorlike lepton coannihilation
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: No phase-space distribution was extracted unless stated.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: none specified
+    subhalo_mass_function_effect: none specified
+    simulation_calibrated: 'no'
+validity_domain:
+- id: small_z_coupling
+  applies_to: parameter
+  condition: Singlet-like vectorlike neutrino requires small mixing/Yukawa choices to suppress Z coupling.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+  notes: null
+- id: relic_density_window
+  applies_to: parameter
+  condition: Relic density restricts the dark matter mass and Yukawa coupling, with resonant regions near
+    Z and Higgs poles.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+  notes: null
+assumptions:
+  global:
+  - id: new_parity_exact
+    description: The parity differentiating vectorlike leptons from SM leptons is assumed exact enough
+      for cosmological stability.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that the Lagrangian was implemented in CalcHEP/micrOMEGAs for relic-density
+    and detection calculations; no standalone model code release is identified.
+provenance:
+  model_id: 1502_02680_higgs_triplet_vectorlike_neutrino_dark_matter_v1
+  model_name: Higgs Triplet Model with vectorlike-neutrino dark matter
+  model_family: vectorlike_lepton_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Dark Matter in the Higgs Triplet Model
+      authors: []
+      year: 2015
+      arxiv_id: '1502.02680'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned local full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: gpt-5.5-codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: introduction/model
+      page: null
+      quote_or_summary: The authors add a complete vectorlike lepton generation to HTM and impose a new
+        parity so the lightest odd singlet neutrino is stable.
+    - reference_id: primary
+      section: relic density
+      page: null
+      quote_or_summary: Relic density is calculated as a function of M_DM and h_nu_prime with Z/Higgs
+        resonances and coannihilation.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: A mostly singlet right-handed vectorlike neutrino emerges as the single dark matter candidate.
+      confidence: medium
+      section: model/conclusion
+      page: null
+    symmetries:
+    - reference_id: primary
+      note: A new parity makes vectorlike leptons odd, forbidding ordinary-lepton mixing and stabilizing
+        the lightest odd state.
+      confidence: medium
+      section: introduction
+      page: null
+    interactions:
+    - reference_id: primary
+      note: Small mixing induces Z coupling; Higgs and Z resonances control annihilation channels.
+      confidence: medium
+      section: model/relic density
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: Thermal relic density is computed using CalcHEP and micrOMEGAs.
+      confidence: medium
+      section: relic density
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: Relic-density window disfavors masses below about 23 GeV or above about 103 GeV in the scan.
+      confidence: medium
+      section: conclusion
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: Model relies on simplified Yukawa structure and parity-protected vectorlike sector.
+      confidence: medium
+      section: model
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine-extracted candidate; no human review.
+agent_failure_modes:
+  warnings:
+  - id: machine_extraction_review_required
+    severity: medium
+    category: other
+    warning: Machine extraction from paper text should be checked before registry use.
+    mitigation: Human expert review of model identity and parameter mapping.
+    source_reference_ids:
+    - primary

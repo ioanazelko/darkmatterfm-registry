@@ -1,0 +1,627 @@
+_source:
+  shard: arXiv_src_1603_013_wds.tar
+  paper_id: '1603_05601'
+  source_member: 1603_05601.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: invalid_mapping
+    id: warm-dm-transfer-missing
+    severity: high
+    warning: Do not map this keV freeze-in row to a thermal warm-dark-matter transfer function without
+      a paper-supported calculation.
+  - category: assumption_mismatch
+    id: diphoton-excess-context
+    severity: high
+    warning: This entry is tied to the diphoton-motivated scalar framework in the paper.
+associated_code:
+  code_summary: The text reports numerical Boltzmann/relic calculations and use of MicrOMEGAs for related
+    regimes, but no public model code is identified.
+  has_associated_code: partial
+assumptions:
+  global:
+  - description: The chi interaction rate remains below the Hubble rate so freeze-in, not freeze-out,
+      sets the abundance.
+    id: out-of-equilibrium
+    scope: production
+    status: assumed
+  - description: Coupled Boltzmann equations for chi, s, and a capture the leading abundance evolution.
+    id: boltzmann-treatment
+    scope: computation
+    status: assumed
+cosmological_history:
+  bbn_relevance: medium
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - freeze-in production while chi remains out of equilibrium
+  phase_transitions:
+  - QCD phase transition affects g_* in the Boltzmann solutions
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - keV chi freeze-in variant
+  - diphoton scalar portal freeze-in dark matter
+  family: freeze_in_dark_matter
+  historical_origin_or_motivation: Introduced as the very light dark matter regime compatible with the
+    diphoton-motivated scalar/pseudoscalar setup.
+  model_kind: simplified_model
+  name: 750 GeV complex-scalar portal keV freeze-in dark matter
+  short_description: A very light Majorana chi variant of the 750 GeV complex-scalar portal model, where
+    chi does not thermalize and is produced by freeze-in decays of the light pseudoscalar mediator.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - inefficient chi chi annihilation to photons or gluons
+  - production from a -> chi chi freeze-in decay
+  - subleading production from s decay
+  dark_sector_couplings:
+  - suppressed coupling controlling a -> chi chi
+  - Phi chi chi Yukawa coupling
+  mediator_types:
+  - pseudoscalar
+  - scalar
+  portals:
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  standard_model_targets:
+  - photons
+  - gluons
+  - electroweak gauge bosons through effective operators
+  tree_or_loop_level: both
+model_id: 1603_05601_750gev_complex_scalar_freezein_kev_v1
+parameters:
+  core:
+  - description: Very light Majorana fermion mass
+    name: dark matter mass
+    range: about 1-10 keV in the freeze-in window
+    role: core
+    status: inferred
+    symbol: m_chi
+    unit: keV
+  - description: Mass of the pseudoscalar parent in freeze-in decays
+    name: pseudoscalar mass
+    range: O(1 GeV) benchmark scale
+    role: core
+    status: inferred
+    symbol: m_a
+    unit: GeV
+  - description: Mass of scalar resonance
+    name: scalar resonance mass
+    role: core
+    status: inferred
+    symbol: m_s
+    unit: GeV
+    value: 750
+  - description: Width fraction controlling viable freeze-in abundance
+    name: scalar width fraction
+    range: smaller side, around percent-level in paper estimates
+    role: core
+    status: inferred
+    symbol: Gamma_s/m_s
+particle_content:
+  additional_dark_sector_particles:
+  - scalar s
+  - pseudoscalar a
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: chi
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  mediators:
+  - light pseudoscalar a
+  - 750 GeV scalar s
+  standard_model_extension: substantial
+phase_space:
+  distribution_function_available: approximate
+  distribution_type: decay_produced
+  free_streaming_length: null
+  notes: The paper discusses keV masses; detailed phase-space transfer functions are not provided.
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - a decay width to chi
+  - m_chi
+  - m_a
+  - Gamma_s/m_s
+  - effective gauge-boson couplings
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - freeze-in from pseudoscalar decay a -> chi chi
+  - subleading freeze-in from scalar s decay
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper compares Boltzmann solutions and finds a light nonthermal window where chi remains
+    below equilibrium.
+  thermal_equilibrium_with_hidden_sector: 'no'
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats:
+  - Same Lagrangian as the WIMP row, but a distinct nonthermal mass-production regime.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The paper solves coupled Boltzmann equations for chi, s, and a and compares 2 keV and 50 keV
+        examples.
+      page: null
+      reference_id: paper:1603.05601
+      section: very light case
+    interactions:
+    - confidence: high
+      note: For very light chi, annihilation rates through pseudoscalar exchange are far below the thermally
+        favored value, and decays of a or s can produce chi.
+      page: null
+      reference_id: paper:1603.05601
+      section: very light case
+    parameter_ranges:
+    - confidence: medium
+      note: The viable nonthermal window is reported around m_chi = 1-10 keV, with m_a around GeV scale
+        and a smaller scalar width.
+      page: null
+      reference_id: paper:1603.05601
+      section: very light case
+    particle_content:
+    - confidence: high
+      note: The same Majorana singlet chi is considered in a very light mass regime with the scalar s
+        and pseudoscalar a mediators.
+      page: null
+      reference_id: paper:1603.05601
+      section: very light case
+    production_mechanism:
+    - confidence: high
+      note: For a small width window, m_chi around 1-10 keV does not thermalize and is produced through
+        freeze-in by pseudoscalar decay.
+      page: null
+      reference_id: paper:1603.05601
+      section: very light case
+    constraints:
+    - confidence: high
+      note: The paper ties the keV freeze-in window to WMAP/Planck relic density and quotes the LHC angular/ECAL
+        requirements for the light pseudoscalar.
+      page: null
+      reference_id: '1603_05601'
+      section: Results
+    observables:
+    - confidence: high
+      note: The primary text identifies a 1-10 keV nonthermal window produced through freeze-in by pseudoscalar
+        decay.
+      page: null
+      reference_id: '1603_05601'
+      section: Dark matter relic density section
+    - confidence: high
+      note: The paper describes the light-pseudoscalar collimated-photon condition needed to mimic a diphoton
+        signal.
+      page: null
+      reference_id: '1603_05601'
+      section: Collider setup
+    routes:
+    - confidence: medium
+      note: The route follows the paper from mediator widths to freeze-in abundance and collider cuts.
+      page: null
+      reference_id: '1603_05601'
+      section: Relic-density and collider sections
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0001
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Identifies a small 1-10 keV window where chi is produced by freeze-in from pseudoscalar
+        decay.
+      reference_id: paper:1603.05601
+      section: 'very light case: freeze-in regime'
+    unresolved_items:
+    - Exact author list not visible in the extracted text chunk used for metadata.
+    - No Lyman-alpha or warm-DM transfer-function recast was present in the primary text.
+    - The 750 GeV diphoton-excess motivation is historical and should not be treated as current evidence.
+  last_updated: '2026-05-31'
+  model_family: freeze_in_dark_matter
+  model_id: 1603_05601_750gev_complex_scalar_freezein_kev_v1
+  model_name: 750 GeV complex-scalar portal keV freeze-in dark matter
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: medium
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1603.05601'
+      authors:
+      - paper authors not resolved from extracted text
+      doi: null
+      notes: Only the assigned SQLite full text was used.
+      reference_id: paper:1603.05601
+      role: original_model
+      title: The 750 GeV Diphoton Excess in a Dark Matter Model
+      url: null
+      year: 2016
+    - arxiv_id: '1603.05601'
+      authors:
+      - Arcadi, Giorgio
+      - Ghosh, Pradipta
+      - Mambrini, Yann
+      - Pierre, Mathias
+      doi: 10.1088/1475-7516/2016/07/005
+      notes: Primary paper text resolved locally; ADS used for sanitized metadata.
+      reference_id: '1603_05601'
+      role: original_model
+      title: Re-opening dark matter windows compatible with a diphoton excess
+      url: https://arxiv.org/abs/1603.05601
+      year: 2016
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for primary, reference, and citation metadata discovery; no API key written.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers:
+    - arxiv_id: '1512.04913'
+      authors:
+      - Mambrini, Yann
+      - Arcadi, Giorgio
+      - Djouadi, Abdelhak
+      doi: 10.1016/j.physletb.2016.02.049
+      notes: Related reference text read via local.
+      reference_id: '1512_04913'
+      role: other
+      title: The LHC diphoton resonance and dark matter
+      url: https://arxiv.org/abs/1512.04913
+      year: 2016
+    - arxiv_id: '1703.07364'
+      authors:
+      - Arcadi, Giorgio
+      - Dutra, Maíra
+      - Ghosh, Pradipta
+      - Lindner, Manfred
+      - Mambrini, Yann
+      - Pierre, Mathias
+      - Profumo, Stefano
+      - Queiroz, Farinaldo S.
+      doi: 10.1140/epjc/s10052-018-5662-y
+      notes: Related citation text read via local.
+      reference_id: '1703_07364'
+      role: other
+      title: The waning of the WIMP? A review of models, searches, and constraints
+      url: https://arxiv.org/abs/1703.07364
+      year: 2018
+    - arxiv_id: '1801.03509'
+      authors:
+      - Bélanger, G.
+      - Boudjema, F.
+      - Goudelis, A.
+      - Pukhov, A.
+      - Zaldívar, B.
+      doi: 10.1016/j.cpc.2018.04.027
+      notes: Related citation text read via local.
+      reference_id: '1801_03509'
+      role: other
+      title: 'micrOMEGAs5.0 : Freeze-in'
+      url: https://arxiv.org/abs/1801.03509
+      year: 2018
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - pseudoscalar decay rate
+  - whether chi reaches equilibrium
+  - QCD-era degrees of freedom
+  - m_chi^3 scaling in the freeze-in estimate
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    name: dark matter relic abundance
+    status: inferred
+    symbol: Omega_chi h^2
+    value: '0.12'
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Warm/decay-produced phase space not tabulated
+  - narrow viable parameter window
+  - 750 GeV excess motivation
+  notes: Distinct freeze-in regime is explicit but sparse.
+  observational_robustness: low
+  overall: low
+  theory_robustness: low
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: suppression
+    transfer_function_shape: smooth_cutoff
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: The assigned text treats chi as a dark matter candidate; the stabilizing symmetry
+    is not explicitly specified in the recovered model section.
+  symmetries:
+  - breaking: explicit pseudoscalar mass term
+    exact_or_approximate: broken
+    name: broken scalar-sector U(1)
+    type: global
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: Shares the effective scalar-gauge-boson operators and scalar-fermion coupling of the WIMP variant.
+  parent_frameworks:
+  - 750 GeV diphoton effective scalar framework
+  - freeze-in dark matter
+  renormalizable: 'no'
+  theory_level: effective_field_theory
+validity_domain:
+- applies_to: parameter
+  caveats: []
+  condition: Freeze-in row applies to the very light window where chi never reaches thermal equilibrium,
+    roughly 1-10 keV in the paper.
+  extrapolation_risk: high
+  id: nonthermal-window
+  status: inferred
+- applies_to: model
+  caveats: []
+  condition: Uses the same 750 GeV scalar and light pseudoscalar diphoton-mimic framework as the WIMP
+    variant.
+  extrapolation_risk: high
+  id: same-diphoton-setup
+  status: speculative
+observables:
+- caveats:
+  - Warm-DM/free-streaming transfer constraints are not supplied by the primary text.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe
+  id: freezein_relic_density_kevdm
+  key_quantities:
+  - name: dark matter mass
+    range: 1-10 keV window in the primary paper
+    role: core
+    source_reference_ids:
+    - '1603_05601'
+    status: inferred
+    symbol: m_chi
+    unit: keV
+  - name: pseudoscalar mass
+    role: core
+    source_reference_ids:
+    - '1603_05601'
+    status: inferred
+    symbol: m_a
+    unit: GeV
+  - name: scalar mass
+    role: core
+    source_reference_ids:
+    - '1603_05601'
+    status: inferred
+    symbol: m_s
+    unit: GeV
+    value: 750
+  - name: scalar width ratio
+    role: core
+    source_reference_ids:
+    - '1603_05601'
+    status: inferred
+    symbol: Gamma_s/m_s
+  linked_constraints:
+  - planck_freezein_mass_window
+  linked_routes:
+  - freezein_decay_relic_route
+  name: Freeze-in relic abundance from pseudoscalar decay
+  notes: null
+  observability: high
+  predicted_effect: For a keV-scale Majorana dark matter mass window, the dark matter does not thermalize
+    and is produced by pseudoscalar decays, with a relic-density formula depending on m_chi, m_a, m_s,
+    and mediator widths.
+  redshift_range: radiation era
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - '1603_05601'
+  subchannel: freeze-in relic density
+- caveats:
+  - The motivating 750 GeV excess is historical and not a current signal.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - LHC
+  id: collimated_photon_portal_signature
+  key_quantities:
+  - name: pseudoscalar mass
+    range: less than about 2 GeV for photon collimation
+    role: core
+    source_reference_ids:
+    - '1603_05601'
+    status: inferred
+    symbol: m_a
+    unit: GeV
+  - name: pseudoscalar decay length
+    role: core
+    source_reference_ids:
+    - '1603_05601'
+    status: inferred
+    symbol: l_a
+    unit: m
+  linked_constraints:
+  - lhc_collimated_pseudoscalar_cut
+  linked_routes:
+  - freezein_decay_relic_route
+  name: Collimated photon-pair portal signature from light pseudoscalar decay
+  notes: null
+  observability: medium
+  predicted_effect: The scalar resonance can mimic a diphoton signal through s -> aa -> 4 gamma when each
+    light pseudoscalar produces collimated photons before the ECAL.
+  redshift_range: null
+  relevance: medium
+  scale_range: LHC detector angular resolution and ECAL scale
+  source_reference_ids:
+  - '1603_05601'
+  subchannel: 750 GeV diphoton-like resonance
+constraints:
+- allowed_regions:
+  - For Gamma_s/m_s < 2, the paper identifies a small m_chi ~ 1-10 keV window where dark matter is produced
+    by freeze-in and can match the relic density.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: unknown
+    description: The keV dark matter does not reach thermal equilibrium in the early Universe.
+    id: never_thermalizes
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '1603_05601'
+    status: assumed
+  benchmark_implications:
+  - The correct relic density favors smaller scalar width, with the text quoting Gamma_s around 7.5 GeV
+    in the freeze-in discussion.
+  caveats:
+  - No structure-formation transfer-function bound was included in the primary extraction.
+  constrained_parameters:
+  - m_chi
+  - Gamma(a->chi chi)
+  - m_a
+  - Gamma_s/m_s
+  constraint_type: cosmological
+  data_release: WMAP/Planck relic-density target as used by the paper
+  excluded_regions:
+  - Thermal-equilibrium keV points are overabundant in the primary discussion.
+  id: planck_freezein_mass_window
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: WMAP/Planck relic-density-compatible keV freeze-in window
+  notes: null
+  observable_channel: relic density
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - '1603_05601'
+- allowed_regions:
+  - The pseudoscalar must decay before the ECAL, roughly within 1 m, to mimic the diphoton signal.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: unknown
+    description: The apparent diphoton resonance is modeled as collimated photon pairs from light-pseudoscalar
+      decays.
+    id: diphoton_mimicry
+    impact_if_violated: null
+    notes: null
+    scope: collider
+    source_reference_ids:
+    - '1603_05601'
+    status: assumed
+  benchmark_implications:
+  - This collider requirement shapes the mediator parameter space that feeds the freeze-in rate.
+  caveats:
+  - The 750 GeV excess is now historical; recasting would require current LHC datasets.
+  constrained_parameters:
+  - m_a
+  - l_a
+  - c_GG
+  - c_BB
+  constraint_type: collider
+  data_release: ATLAS/CMS 13 TeV diphoton-excess context
+  excluded_regions:
+  - m_a above roughly 2 GeV does not satisfy the photon-collimation condition quoted for the LHC angular
+    resolution.
+  id: lhc_collimated_pseudoscalar_cut
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Light-pseudoscalar collimation and ECAL decay requirement
+  notes: null
+  observable_channel: diphoton-like LHC signature
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '1603_05601'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: No warm-DM transfer calculation was exposed in the primary text.
+    caveats:
+    - Current LHC interpretation differs from the historical 750 GeV excess context.
+    constraint_ids:
+    - planck_freezein_mass_window
+    - lhc_collimated_pseudoscalar_cut
+    derived_quantities:
+    - Gamma(a->chi chi)
+    - Omega_FI h^2
+    - pseudoscalar decay length
+    description: Map the scalar/pseudoscalar portal parameters to a freeze-in relic-density target and
+      collider viability cuts.
+    forward_model_chain:
+    - inputs:
+      - m_chi
+      - m_a
+      - m_s
+      - couplings
+      notes: null
+      outputs:
+      - mediator widths
+      step_id: decay_widths
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: narrow-width and effective-operator treatment
+    - inputs:
+      - Gamma(a->chi chi)
+      - m_chi
+      - m_a
+      notes: null
+      outputs:
+      - Omega_FI h^2
+      step_id: freezein
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: freeze-in, no thermal equilibrium
+    - inputs:
+      - m_a
+      - l_a
+      notes: null
+      outputs:
+      - collimation/pass ECAL cut
+      step_id: collider_cut
+      step_type: recasting
+      tool_or_code: LHC geometry cuts
+      validity: historical diphoton-mimicry assumptions
+    id: freezein_decay_relic_route
+    input_parameters:
+    - m_chi
+    - m_a
+    - m_s
+    - Gamma_s
+    - c_GG
+    - c_BB
+    likelihoods:
+    - WMAP/Planck relic density target
+    - LHC diphoton-object cuts
+    observable_ids:
+    - freezein_relic_density_kevdm
+    - collimated_photon_portal_signature
+    required_code_resources: []
+    route_status: planned
+    source_model_features:
+    - 750 GeV scalar portal
+    - light pseudoscalar mediator
+    - keV nonthermal Majorana dark matter
+    validation_tests:
+    - compare analytic freeze-in formula to the plotted relic-density window

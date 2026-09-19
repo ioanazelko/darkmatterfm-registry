@@ -1,0 +1,590 @@
+_source:
+  shard: arXiv_src_1805_022_wds.tar
+  paper_id: '1805_08112'
+  source_member: 1805_08112.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1805_08112_quartic_fuzzy_dark_matter_v1
+identity:
+  name: Fuzzy dark matter with repulsive quartic self-interaction
+  family: fuzzy_ultralight_dark_matter
+  aliases:
+  - anharmonic fuzzy dark matter
+  - quartic self-interacting ultralight scalar dark matter
+  short_description: An ultralight scalar-field dark matter model with potential V(phi)=m^2 phi^2/2 +
+    lambda phi^4/4, where a repulsive quartic term modifies background evolution and suppresses small-scale
+    power through the sound speed.
+  historical_origin_or_motivation: Motivated by fuzzy dark matter solutions to small-scale structure tensions
+    and by anharmonic corrections to axion-like scalar potentials.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - ultralight scalar field dark matter
+  - axion-like particle phenomenology
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper specifies a scalar-field Lagrangian and quartic potential in an expanding homogeneous
+    universe.
+particle_content:
+  dark_matter_candidate:
+    name: ultralight scalar field phi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The field is treated as a coherently oscillating cosmological scalar; no non-gravitational
+    decay channel is specified in the extracted text.
+  symmetries:
+  - name: unknown scalar-field symmetry
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: The paper uses a mass plus quartic potential rather than specifying a UV stabilizing symmetry.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets: []
+  dark_sector_couplings:
+  - repulsive quartic self-interaction lambda phi^4
+  mediator_types: []
+  interaction_operators:
+  - lambda phi^4/4 self-interaction
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - quartic scalar self-interaction
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: scalar mass
+    symbol: m
+    description: Ultralight scalar mass controlling oscillation scale and fuzzy-DM behavior.
+    range: around or above 10^-22 eV in the discussed fuzzy-DM regime
+    unit: eV
+    role: core
+    status: inferred
+    notes: The paper also discusses higher masses that reproduce CDM-like behavior.
+  - name: quartic self-coupling
+    symbol: lambda
+    description: Repulsive anharmonic self-interaction coefficient in V(phi)=m^2 phi^2/2 + lambda phi^4/4.
+    range: positive; constrained approximately with scaling log10(lambda) < -91.86 + 4 log10(m/10^-22
+      eV) for m > 10^-24 eV
+    role: core
+    status: inferred
+    notes: Formula extracted from the conclusion text.
+  - name: initial field value
+    symbol: phi_0
+    description: Initial homogeneous field value chosen to match the desired present dark matter density.
+    range: chosen to match today density
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - misalignment production of a coherently oscillating scalar field
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - initial field amplitude
+  - scalar mass
+  - quartic self-coupling
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper uses initial frozen-field conditions typical of axion-like misalignment production
+    and chooses phi_0 to match the desired density today.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - m
+  - lambda
+  - initial field amplitude
+  - onset of coherent oscillations
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - quartic-dominated phase can behave like radiation before cold-matter behavior
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  f_of_p_or_q: effective fluid description for coherent scalar perturbations
+  average_momentum_relative_to_thermal: null
+  notes: The paper treats perturbations with an effective-fluid description rather than particle phase-space
+    distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: suppressed relative to CDM expected from linear cutoff but not simulation-calibrated
+      in this paper
+    simulation_calibrated: 'no'
+validity_domain:
+- id: rapid_oscillation_fluid_limit
+  applies_to: model
+  condition: Effective-fluid/CDM-like behavior applies once the scalar oscillates rapidly compared with
+    the expansion rate and anharmonic corrections are sufficiently small.
+  status: approximate
+  extrapolation_risk: medium
+  caveats:
+  - Large quartic domination makes the field behave like radiation and changes equality.
+  source_reference_ids:
+  - paper
+  notes: null
+assumptions:
+  global:
+  - id: misalignment_initial_conditions
+    description: The homogeneous scalar starts frozen with initial velocity zero and phi_0 chosen to match
+      the desired present density.
+    scope: production
+    status: assumed
+    impact_if_violated: Alternative initial velocity or prehistory can change early stiff/radiation-like
+      phases and abundance.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports use of a modified CLASS Boltzmann code and MontePython for parameter
+    extraction; no repository metadata is extracted here.
+  primary_code_role: boltzmann_solver_patch
+  repositories: []
+  packages_or_modules:
+  - name: modified CLASS
+    resource_type: patch
+    availability: unknown
+    relationship_to_model: unknown
+    purpose:
+    - compute_matter_power_spectrum
+    - solve_boltzmann_equations
+    notes: Mentioned as modified version of CLASS.
+  - name: MontePython
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - compute_likelihood
+    notes: Used for parameter extraction according to the paper.
+provenance:
+  model_id: 1805_08112_quartic_fuzzy_dark_matter_v1
+  model_name: Fuzzy dark matter with repulsive quartic self-interaction
+  model_family: fuzzy_ultralight_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Constraints on anharmonic corrections of Fuzzy Dark Matter
+      authors:
+      - J. A. R. Cembranos
+      - A. L. Maroto
+      - S. J. Nunez Jareno
+      - H. Villarrubia-Rojo
+      year: 2018
+      arxiv_id: '1805.08112'
+      doi: null
+      url: null
+      role: original_model
+      notes: Paper analyzes ultralight scalar dark matter with a repulsive quartic anharmonic correction.
+    - arxiv_id: '1805.08112'
+      authors:
+      - Cembranos, J. A. R.
+      - Maroto, A. L.
+      - Núñez Jareño, S. J.
+      - Villarrubia-Rojo, H.
+      doi: 10.1007/JHEP08(2018)073
+      notes: Primary paper for this model-card row.
+      reference_id: src-1805-08112
+      role: original_model
+      title: Constraints on anharmonic corrections of fuzzy dark matter
+      url: https://arxiv.org/abs/1805.08112
+      year: 2018
+    constraint_papers:
+    - arxiv_id: '1709.07946'
+      authors:
+      - Desjacques, Vincent
+      - Kehagias, Alex
+      - Riotto, Antonio
+      doi: 10.1103/PhysRevD.97.023529
+      notes: Locally resolved related text read for context or constraints.
+      reference_id: src-1709-07946
+      role: constraint
+      title: Impact of ultralight axion self-interactions on the large scale structure of the Universe
+      url: https://arxiv.org/abs/1709.07946
+      year: 2018
+    - arxiv_id: '1702.02116'
+      authors:
+      - Diez-Tejedor, Alberto
+      - Marsh, David J. E.
+      doi: 10.48550/arXiv.1702.02116
+      notes: Locally resolved related text read for context or constraints.
+      reference_id: src-1702-02116
+      role: constraint
+      title: Cosmological production of ultralight dark matter axions
+      url: https://arxiv.org/abs/1702.02116
+      year: 2017
+    - arxiv_id: '1310.6061'
+      authors:
+      - Li, Bohua
+      - Rindler-Daller, Tanja
+      - Shapiro, Paul R.
+      doi: 10.1103/PhysRevD.89.083536
+      notes: Locally resolved related text read for context or constraints.
+      reference_id: src-1310-6061
+      role: constraint
+      title: Cosmological constraints on Bose-Einstein-condensed scalar field dark matter
+      url: https://arxiv.org/abs/1310.6061
+      year: 2014
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0004
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: abstract/model
+      page: null
+      quote_or_summary: Paper considers an ultralight scalar with mass and repulsive quartic terms, misalignment-like
+        initial conditions, and modified CLASS/MontePython evolution.
+    unresolved_items:
+    - No nonlinear simulations or Lyman-alpha recast were added to the structured constraint.
+    - The sign convention for lambda follows the existing model card and primary-paper interpretation
+      of the repulsive quartic term.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: Dark matter is an ultralight scalar field in the fuzzy-DM regime, with m around 10^-22 eV
+        discussed as characteristic.
+      confidence: high
+      section: abstract/introduction
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The specified potential includes a repulsive quartic self-interaction lambda phi^4/4.
+      confidence: high
+      section: model section
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: Initial conditions are the usual frozen-field misalignment conditions, with phi_0 chosen to
+        match today density.
+      confidence: high
+      section: model section
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: Quartic domination makes the field radiation-like and can shift matter-radiation equality.
+      confidence: high
+      section: abstract
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: The conclusion gives an approximate lambda bound scaling with m for m > 10^-24 eV.
+      confidence: medium
+      section: conclusions
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: Effective-fluid CDM-like behavior requires rapid oscillations; the quartic term adds a sound-speed
+        contribution and small-scale cutoff.
+      confidence: high
+      section: introduction/model
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text quotes the approximate high-mass lambda scaling log10(lambda)<-91.86+4 log10(m/1e-22
+        eV).
+      page: null
+      reference_id: src-1805-08112
+      section: constraints/conclusion section
+    observables:
+    - confidence: high
+      note: Primary text says quartic domination behaves like radiation and the sound speed produces a
+        cutoff in the matter power spectrum.
+      page: null
+      reference_id: src-1805-08112
+      section: abstract and physical-effects section
+    - confidence: medium
+      note: Related local text treats ultralight-axion self-interactions as LSS-relevant.
+      page: null
+      reference_id: src-1709-07946
+      section: abstract
+    routes:
+    - confidence: high
+      note: Primary text states that constraints were obtained with a modified version of CLASS compared
+        with CMB and LSS data.
+      page: null
+      reference_id: src-1805-08112
+      section: abstract
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - machine extraction from paper text only
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: scope_warning
+    severity: medium
+    category: other
+    warning: Entry is a paper-local model-card candidate and should not be treated as a deduplicated registry
+      model.
+    mitigation: Check against the full registry and source paper before reuse.
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - The paper emphasizes linear observables; nonlinear simulations could tighten the parameter space.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - large-scale structure
+  - fuzzy-DM halo-seed scales
+  id: quartic-fdm-matter-power-cutoff
+  key_quantities:
+  - description: Ultralight scalar mass.
+    name: scalar mass
+    notes: null
+    range: m > 1e-24 eV for the quoted high-mass extrapolated lambda bound.
+    role: core
+    scale: null
+    source_reference_ids:
+    - src-1805-08112
+    status: inferred
+    symbol: m
+    unit: eV
+  - description: Repulsive quartic coupling in the scalar potential.
+    name: quartic self-coupling
+    notes: null
+    range: log10(lambda) < -91.86 + 4 log10(m/1e-22 eV)
+    role: core
+    scale: null
+    source_reference_ids:
+    - src-1805-08112
+    status: inferred
+    symbol: lambda
+    unit: null
+  linked_constraints:
+  - cmb-lss-quartic-lambda-bound
+  linked_routes:
+  - modified-class-quartic-fdm-route
+  name: Small-scale matter-power cutoff from quartic fuzzy dark matter
+  notes: Primary text explicitly identifies the matter-power cutoff as the main signature; related ULDM
+    self-interaction work supports the LSS relevance.
+  observability: high
+  predicted_effect: The repulsive quartic self-interaction increases the effective sound speed and shifts
+    the Jeans scale, suppressing modes above the Jeans wavenumber.
+  redshift_range: matter-radiation equality to z=0
+  relevance: critical
+  scale_range: linear matter-power scales near and below the Jeans scale
+  source_reference_ids:
+  - src-1805-08112
+  - src-1709-07946
+  subchannel: linear matter power spectrum
+- caveats:
+  - The observable is parameter-dependent and can be degenerate with the mass-only fuzzy-DM cutoff.
+  channel: cosmology
+  effect_direction: shape_change
+  environments:
+  - early Universe
+  - CMB background evolution
+  id: quartic-fdm-equality-shift
+  key_quantities:
+  - description: Initial scalar amplitude chosen to match the present dark matter abundance.
+    name: initial field amplitude
+    notes: null
+    role: core
+    scale: null
+    source_reference_ids:
+    - src-1805-08112
+    status: inferred
+    symbol: phi_0
+    unit: null
+  - description: Controls whether the quartic or quadratic term dominates the averaged dynamics.
+    name: quartic self-coupling
+    notes: null
+    role: core
+    scale: null
+    source_reference_ids:
+    - src-1805-08112
+    status: inferred
+    symbol: lambda
+    unit: null
+  linked_constraints:
+  - cmb-lss-quartic-lambda-bound
+  linked_routes:
+  - modified-class-quartic-fdm-route
+  name: Radiation-like era when the quartic term dominates
+  notes: Related production paper supports the role of misalignment/anharmonicity in ultralight axion
+    cosmology.
+  observability: medium
+  predicted_effect: If the anharmonic quartic term dominates, the scalar behaves as radiation rather than
+    cold matter and changes matter-radiation equality.
+  redshift_range: pre-equality to equality
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - src-1805-08112
+  - src-1702-02116
+  subchannel: background expansion and equality timing
+constraints:
+- allowed_regions:
+  - Small or zero quartic coupling recovers the harmonic fuzzy-DM limit; allowed lambda scales approximately
+    as m^4 in the high-mass extrapolation.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The quoted lambda relation is based on the paper linear-observable analysis and extrapolation.
+    id: linear-observable-limit
+    impact_if_violated: Nonlinear observables could strengthen or reshape the bound.
+    notes: null
+    scope: constraint extraction
+    source_reference_ids:
+    - src-1805-08112
+    status: approximate
+  benchmark_implications:
+  - Masses that would otherwise look CDM-like can regain a small-scale cutoff when lambda is large enough.
+  caveats:
+  - The paper states nonlinear information was not included and could further constrain the model.
+  constrained_parameters:
+  - m
+  - lambda
+  constraint_type: cosmological
+  data_release: CMB and large-scale-structure data as used in the paper
+  excluded_regions:
+  - For m > 1e-24 eV, the paper extrapolates an approximate two-sigma exclusion above log10(lambda) =
+    -91.86 + 4 log10(m/1e-22 eV).
+  id: cmb-lss-quartic-lambda-bound
+  likelihood_available: partial
+  likelihood_reference: Modified CLASS comparison with CMB and large-scale-structure data in the primary
+    paper.
+  name: CMB and large-scale-structure bound on repulsive quartic FDM
+  notes: The primary-paper formula is structured directly; related scalar-field-DM constraints provide
+    context but not the numeric lambda line.
+  observable_channel: CMB and linear matter power spectrum
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src-1805-08112
+  - src-1310-6061
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The local text supports the calculation chain but not a reusable code release.
+    caveats:
+    - Nonlinear structure and solitonic-core observables are not included.
+    constraint_ids:
+    - cmb-lss-quartic-lambda-bound
+    derived_quantities:
+    - c_s^2(a,k)
+    - Jeans wavenumber
+    - CMB spectra
+    - linear P(k)
+    description: Use an averaged scalar-field fluid with quartic sound speed in a modified Boltzmann solver,
+      then compare CMB spectra and P(k) to data.
+    forward_model_chain:
+    - inputs:
+      - m
+      - lambda
+      - background density
+      notes: Matches the primary paper averaged treatment.
+      outputs:
+      - effective equation of state
+      - effective sound speed
+      step_id: averaged-fluid
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: rapid-oscillation regime
+    - inputs:
+      - effective sound speed
+      - cosmological parameters
+      notes: Primary paper reports a modified CLASS analysis.
+      outputs:
+      - CMB Cl
+      - P(k)
+      step_id: spectra
+      step_type: boltzmann_solver
+      tool_or_code: modified CLASS
+      validity: linear regime
+    - inputs:
+      - CMB Cl
+      - P(k)
+      notes: Reconstruct or replace with current likelihoods before precision use.
+      outputs:
+      - allowed lambda(m) region
+      step_id: bound
+      step_type: likelihood
+      tool_or_code: CMB/LSS likelihood comparison
+      validity: paper-level data combination
+    id: modified-class-quartic-fdm-route
+    input_parameters:
+    - m
+    - lambda
+    - phi_0
+    - standard cosmological parameters
+    likelihoods:
+    - CMB
+    - large-scale structure
+    observable_ids:
+    - quartic-fdm-matter-power-cutoff
+    - quartic-fdm-equality-shift
+    required_code_resources:
+    - modified CLASS or equivalent scalar-fluid module
+    route_status: planned
+    source_model_features:
+    - potential V(phi)=m^2 phi^2/2 + lambda phi^4/4
+    - coherent ultralight scalar oscillations
+    - effective sound speed and Jeans scale
+    validation_tests:
+    - recover the paper matter-power cutoff and the quoted log10(lambda) scaling

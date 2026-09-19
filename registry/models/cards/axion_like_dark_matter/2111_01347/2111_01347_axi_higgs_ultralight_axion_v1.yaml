@@ -1,0 +1,795 @@
+_source:
+  shard: arXiv_src_2111_010_wds.tar
+  paper_id: '2111_01347'
+  source_member: 2111_01347.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: axi_higgs_not_all_dm
+    mitigation: Keep full-dark-matter claims separate from this model card.
+    severity: high
+    source_reference_ids:
+    - '2111_01347'
+    warning: The extracted axion is a small matter-like component in the paper, not a replacement for
+      all CDM.
+associated_code:
+  caveats:
+  - External repository availability was not checked.
+  code_summary: The paper states that a modified CAMB implementation named aHCAMB is publicly available.
+  containers_or_environments: []
+  expected_inputs:
+  - cosmological parameters
+  - axi-Higgs parameters
+  expected_outputs:
+  - CMB spectra
+  - matter power spectrum
+  has_associated_code: 'yes'
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: boltzmann_solver_patch
+  repositories:
+  - archive_url: null
+    availability: public
+    citation_reference_ids:
+    - '2111_01347'
+    commit: null
+    dependencies:
+    - CAMB
+    documentation_url: null
+    doi: null
+    inputs:
+    - cosmological parameters
+    languages: []
+    last_checked: '2026-05-31'
+    license: null
+    maintained: unknown
+    name: aHCAMB
+    notes: URL is taken from the paper text; not externally checked.
+    outputs:
+    - CMB spectra
+    - matter power spectrum
+    purpose:
+    - solve_boltzmann_equations
+    - compute_matter_power_spectrum
+    relationship_to_model: official_author_code
+    repository_url: https://github.com/lhnhan/aHCAMB.git
+    resource_type: repository
+    supported_model_families:
+    - axi-Higgs
+    supported_observables: []
+    supported_parameters:
+    - m_a
+    - Omega_a
+    - initial Higgs-VEV ratio
+    url: https://github.com/lhnhan/aHCAMB.git
+    validity_domain:
+    - ultralight axion effective-fluid approximation
+    version: null
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: No repository contents were inspected.
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references:
+    - '2111_01347'
+    validation_notes: Paper reports MCMC analysis using the implementation.
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: Spatially flat homogeneous FLRW cosmology is used for the axion background evolution.
+    id: flrw_background
+    impact_if_violated: The extracted background and relic-density logic would not apply.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids:
+    - '2111_01347'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The axion evolution is initialized near the bottom of its potential.
+    id: initial_near_potential_bottom
+    impact_if_violated: The oscillation history and density estimate would change.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '2111_01347'
+    status: assumed
+cosmological_history:
+  bbn_relevance: high
+  chemical_decoupling: null
+  cmb_relevance: critical
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - early Higgs-VEV uplift
+  - time-dependent electron mass before recombination
+  - ultralight axion field becoming matter-like after oscillations
+  phase_transitions: []
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - axi-Higgs
+  - CDM plus varying electron mass plus ultralight axion
+  family: axion_like_dark_matter
+  historical_origin_or_motivation: Introduced to explore non-canonical recombination cosmology and ease
+    Hubble/S8-related tensions while retaining a CDM background.
+  model_kind: effective_field_theory
+  name: Axi-Higgs ultralight axion cosmology
+  short_description: An ultralight axion coupled to the Higgs field drives early Higgs-VEV variation and
+    later behaves as a small matter-like axion component.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: unknown
+  dark_sector_couplings:
+  - C phi^2 / M_Pl^2 coupling in the Higgs-VEV function
+  - ultralight axion mass term
+  decay_channels: []
+  flavor_structure: couples through Higgs-VEV-driven electron mass variation in the cosmology calculation
+  interaction_operators:
+  - V(H,phi) with F(phi)=(1+delta v)^2=1+C phi^2/M_Pl^2
+  mediator_types:
+  - Higgs-sector background coupling
+  portals:
+  - higgs
+  - axion
+  self_scattering_channels: []
+  standard_model_targets:
+  - electroweak Higgs doublet
+  - electron mass through Higgs-VEV variation
+  tree_or_loop_level: unknown
+model_id: 2111_01347_axi_higgs_ultralight_axion_v1
+parameters:
+  core:
+  - name: axion mass
+    notes: Typical range of interest quoted for the axi-Higgs analysis.
+    range: 10^-30 to 10^-29
+    role: core
+    source_reference_ids:
+    - '2111_01347'
+    status: inferred
+    symbol: m_a
+    unit: eV
+  - name: axion decay constant
+    role: core
+    source_reference_ids:
+    - '2111_01347'
+    status: inferred
+    symbol: f_a
+    unit: GeV
+    value: around 10^17
+  - description: Initial coherent axion field value used to set the axion density and Higgs-VEV shift.
+    name: initial axion field value
+    role: core
+    source_reference_ids:
+    - '2111_01347'
+    status: inferred
+    symbol: phi_ini
+  - description: Coupling controlling v/v0 through C phi^2/(2 M_Pl^2).
+    name: Higgs-axion coupling constant
+    role: core
+    source_reference_ids:
+    - '2111_01347'
+    status: inferred
+    symbol: C
+  - description: Phenomenological axion density used in the MCMC implementation.
+    name: axion relic density parameter
+    range: negligible to about 0.001 in preferred fits
+    role: core
+    source_reference_ids:
+    - '2111_01347'
+    status: approximate
+    symbol: Omega_a
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: ultralight axion field
+    number_of_components: subcomponent
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - ultralight axion coherent field
+  mediators:
+  - electroweak Higgs doublet
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: not_applicable
+  distribution_type: field_like
+  f_of_p_or_q: coherent ultralight scalar field; no particle distribution function used
+  free_streaming_length: null
+  notes: Effective-fluid treatment is used after oscillations begin.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - initial axion field value
+  - axion mass
+  - oscillation epoch H(a_osc) comparable to m_a
+  can_produce_all_dark_matter: 'no'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - coherent-field misalignment-like evolution
+  - Hubble-friction freeze followed by late oscillations
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper explicitly treats the axion abundance as negligible compared to the total cosmic budget
+    for the main analysis.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: After oscillations begin, the paper treats the axion as matter-like with rho_a proportional
+        to a^-3 and p_a approximately zero.
+      page: null
+      reference_id: '2111_01347'
+      section: Axion background dynamics
+    interactions:
+    - confidence: high
+      note: The axion couples to the Higgs sector through the Higgs-VEV function F(phi)=1+C phi^2/M_Pl^2,
+        producing electron-mass variation.
+      page: null
+      reference_id: '2111_01347'
+      section: Axi-Higgs potential
+    parameter_ranges:
+    - confidence: high
+      note: The typical mass range of interest is m_a around 10^-29 to 10^-30 eV and f_a around 10^17
+        GeV; fits also use Omega_a and initial Higgs-VEV ratio.
+      page: null
+      reference_id: '2111_01347'
+      section: Axi-Higgs potential and parameters
+    particle_content:
+    - confidence: high
+      note: The paper extends electroweak interactions with an ultralight axion field of mass around 10^-29
+        eV.
+      page: null
+      reference_id: '2111_01347'
+      section: Introduction/model overview
+    production_mechanism:
+    - confidence: high
+      note: The axion starts near the bottom of its potential, is Hubble-friction frozen, and begins damped
+        oscillations when H is comparable to m_a.
+      page: null
+      reference_id: '2111_01347'
+      section: Axion background dynamics
+    symmetries:
+    - confidence: medium
+      note: The axion effective potential is tied to shift-symmetry breaking, with radiative corrections
+        argued to vanish when the shift symmetry is restored.
+      page: null
+      reference_id: '2111_01347'
+      section: Axi-Higgs potential
+    validity_domain:
+    - confidence: high
+      note: The analysis assumes the axion abundance is negligible compared with the total cosmic budget
+        so backreaction on Hubble flow is neglected.
+      page: null
+      reference_id: '2111_01347'
+      section: Axion perturbations/model implementation
+    constraints:
+    - confidence: high
+      note: Primary paper reports MCMC constraints from CMB, BAO, weak-lensing, supernovae, and SH0ES
+        combinations.
+      page: null
+      reference_id: paper
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text states axi-Higgs changes recombination, CMB spectra, matter power, and may be
+        tested by atomic clocks and quasar spectra.
+      page: null
+      reference_id: paper
+      section: null
+    - confidence: medium
+      note: arXiv fallback abstract page was read for the earlier axi-Higgs model context.
+      page: null
+      reference_id: rel_2102_11257
+      section: null
+    - confidence: medium
+      note: Related local text establishes CMB and lensing sensitivity to ultralight axion dark-matter
+        components.
+      page: null
+      reference_id: rel_1708_05681
+      section: null
+    routes:
+    - confidence: high
+      note: 'Primary text gives the Boltzmann-analysis ingredients: modified recombination, axion background,
+        perturbations, and adiabatic initial conditions.'
+      page: null
+      reference_id: paper
+      section: null
+  extraction:
+    confidence: medium
+    extracted_by: codex-batch-0014
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Axi-Higgs is described as an ultralight axion coupled to the Higgs field and phenomenologically
+        equivalent to CDM plus electron-mass variation plus axion.
+      reference_id: '2111_01347'
+      section: Abstract
+    - page: null
+      quote_or_summary: The potential contains the Higgs-VEV function F(phi) and an axion potential with
+        m_a and f_a in the ultralight range.
+      reference_id: '2111_01347'
+      section: Axi-Higgs potential
+    - page: null
+      quote_or_summary: The coherent axion evolves from frozen field behavior to damped oscillations that
+        contribute matter-like density.
+      reference_id: '2111_01347'
+      section: Axion background dynamics
+    unresolved_items:
+    - Whether the axion is elementary or an effective field is not fully specified by the paper.
+    - No quantitative atomic-clock or quasar-spectral likelihood was extracted.
+    - Primordial axion isocurvature is assumed negligible in the structured route.
+  last_updated: '2026-05-31'
+  model_family: axion_like_dark_matter
+  model_id: 2111_01347_axi_higgs_ultralight_axion_v1
+  model_name: Axi-Higgs ultralight axion cosmology
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: low
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2111.01347'
+      authors:
+      - Hoang Nhan Luu
+      doi: null
+      notes: null
+      reference_id: '2111_01347'
+      role: extension
+      title: 'Axi-Higgs cosmology: Cosmic Microwave Background and cosmological tensions'
+      url: null
+      year: 2021
+    - arxiv_id: '2111.01347'
+      authors:
+      - Hoang Nhan Luu
+      doi: null
+      notes: Assigned primary paper full text resolved locally.
+      reference_id: paper
+      role: original_model
+      title: 'Axi-Higgs cosmology: Cosmic Microwave Background and cosmological tensions'
+      url: https://arxiv.org/abs/2111.01347
+      year: 2021
+    constraint_papers:
+    - arxiv_id: '1708.05681'
+      authors:
+      - Hložek, Renée
+      - Marsh, David J. E.
+      - Grin, Daniel
+      doi: 10.1093/mnras/sty271
+      notes: Related full text resolved locally from dark_matter_model_astro_lexical.
+      reference_id: rel_1708_05681
+      role: constraint
+      title: Using the full power of the cosmic microwave background to probe axion dark matter
+      url: https://arxiv.org/abs/1708.05681
+      year: 2018
+    external_databases:
+    - name: NASA ADS
+      note: Used for bounded metadata discovery of primary records, references, and citations; metadata
+        alone was not used for structured scientific claims.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers:
+    - arxiv_id: '2102.11257'
+      authors:
+      - Fung, Leo W. H.
+      - Li, Lingfeng
+      - Liu, Tao
+      - Luu, Hoang Nhan
+      - Qiu, Yu-Cheng
+      - Tye, S.-H. Henry
+      doi: 10.1088/1475-7516/2021/08/057
+      notes: Local text unavailable; bounded arXiv fallback read the abstract page only.
+      reference_id: rel_2102_11257
+      role: extension
+      title: Axi-Higgs cosmology
+      url: https://arxiv.org/abs/2102.11257
+      year: 2021
+    - arxiv_id: '1510.07633'
+      authors:
+      - Marsh, David J. E.
+      doi: 10.1016/j.physrep.2016.06.005
+      notes: Related full text resolved locally from dark_matter_model_astro_lexical.
+      reference_id: rel_1510_07633
+      role: review
+      title: Axion cosmology
+      url: https://arxiv.org/abs/1510.07633
+      year: 2016
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: subcomponent
+  key_dependencies:
+  - initial axion displacement
+  - m_a
+  - effective-fluid transition after oscillations
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    name: axion fraction
+    range: less than or around 0.001 in the discussed fits
+    role: core
+    source_reference_ids:
+    - '2111_01347'
+    status: approximate
+    symbol: Omega_a
+  tuning_assessment: unknown
+  underproduction_risk: 'no'
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  notes: Physics blocks are well supported for the cosmological EFT, but the dark-matter role is explicitly
+    subcomponent-like.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    small_scale_power_effect: suppression
+    transfer_function_shape: smooth_cutoff
+  nonlinear:
+    halo_mass_function_effect: not developed in this paper
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: not developed in this paper
+symmetries:
+  stabilizing_mechanism: Axion longevity and ultralightness are associated with an approximate shift symmetry;
+    the paper treats it as a cosmological coherent field.
+  symmetries:
+  - breaking: spontaneously and nonperturbatively broken in the effective potential
+    breaking_scale:
+      name: axion decay constant
+      role: core
+      source_reference_ids:
+      - '2111_01347'
+      status: inferred
+      symbol: f_a
+      unit: GeV
+      value: around 10^17
+    exact_or_approximate: broken
+    name: axion shift symmetry
+    type: shift
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper gives an effective axion-Higgs potential and axion background Lagrangian rather than
+    a complete UV construction.
+  parent_frameworks:
+  - axi-Higgs
+  - CDM with varying electron mass and ultralight axion
+  renormalizable: unknown
+  theory_level: effective_field_theory
+validity_domain:
+- applies_to: model
+  caveats:
+  - The paper warns that substantial Omega_a is tightly bounded by CMB lensing.
+  condition: Ultralight axion mass in the range where oscillations affect recombination-era cosmology.
+  extrapolation_risk: medium
+  id: axi_higgs_mass_range
+  notes: null
+  source_reference_ids:
+  - '2111_01347'
+  status: approximate
+  valid_range: m_a around 10^-30 to 10^-29 eV in the motivating model; implementation scans a wider ultralight
+    range.
+- applies_to: cosmological_history
+  caveats:
+  - Do not reinterpret the extracted model as all of dark matter.
+  condition: Axion abundance is small enough that its backreaction on the Hubble flow can be neglected.
+  extrapolation_risk: high
+  id: negligible_axion_backreaction
+  notes: null
+  source_reference_ids:
+  - '2111_01347'
+  status: assumed
+  valid_range: Omega_a negligible compared with total cosmic budget
+observables:
+- caveats: []
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - cosmic_microwave_background
+  id: recombination_cmb_spectrum_shift
+  key_quantities:
+  - description: Early uplift of the Higgs vacuum expectation value.
+    name: initial Higgs vev ratio
+    role: core
+    source_reference_ids:
+    - paper
+    status: established
+    symbol: (v/v0)_ini
+  - description: Phenomenological effect of the uplifted Higgs vev.
+    name: electron mass variation
+    role: derived
+    source_reference_ids:
+    - paper
+    status: established
+    symbol: Delta m_e/m_e
+  linked_constraints:
+  - cmb_bao_shear_axi_higgs_constraints
+  linked_routes:
+  - axi_higgs_boltzmann_recombination_route
+  name: CMB spectral shifts from early electron-mass variation
+  notes: Primary paper performs standard Boltzmann/MCMC analysis for this channel.
+  observability: high
+  predicted_effect: The Higgs-VEV-driving axion changes the electron mass before recombination, speeding
+    recombination, shifting the visibility function, shortening the sound horizon, and changing CMB spectra.
+  redshift_range: recombination redshifts
+  relevance: critical
+  scale_range: CMB temperature, polarization, and lensing multipoles
+  source_reference_ids:
+  - paper
+  - rel_2102_11257
+  subchannel: recombination and acoustic peaks
+- caveats:
+  - Primary analysis assumes negligible primordial axion isocurvature.
+  channel: large_scale_structure
+  effect_direction: shape_change
+  environments:
+  - weak_lensing_surveys
+  - galaxy_clustering
+  id: ultralight_axion_matter_power_change
+  key_quantities:
+  - description: Ultralight Higgs-VEV-driving axion mass.
+    name: axion mass
+    range: about 1e-29 eV
+    role: core
+    source_reference_ids:
+    - paper
+    status: established
+    symbol: m_a
+    unit: eV
+  - description: Energy density in the ultralight axion component.
+    name: axion abundance fraction
+    role: core
+    source_reference_ids:
+    - paper
+    - rel_1708_05681
+    status: established
+    symbol: Omega_a
+  linked_constraints:
+  - cmb_bao_shear_axi_higgs_constraints
+  linked_routes:
+  - axi_higgs_boltzmann_recombination_route
+  name: Matter-power changes from ultralight axion perturbations
+  notes: null
+  observability: medium
+  predicted_effect: The ultralight axion component affects background and perturbation evolution; the
+    primary text says axi-Higgs leaves distinctive phenomenology in the matter power spectrum.
+  redshift_range: late time after onset of axion oscillations
+  relevance: high
+  scale_range: linear matter-power and weak-lensing scales
+  source_reference_ids:
+  - paper
+  - rel_1708_05681
+  subchannel: linear matter power and weak lensing
+- caveats:
+  - No quantitative clock/quasar likelihood is extracted in the primary paper.
+  channel: precision_laboratory
+  effect_direction: rate_change
+  environments:
+  - atomic_clock_experiments
+  - quasar_absorption_systems
+  id: atomic_clock_quasar_spectral_tests
+  key_quantities:
+  - description: Time dependence of the Higgs vev/electron mass after recombination.
+    name: late-time vev relaxation
+    role: derived
+    source_reference_ids:
+    - paper
+    status: established
+    symbol: v(t)/v0
+  linked_constraints: []
+  linked_routes:
+  - axi_higgs_clock_quasar_route
+  name: Laboratory and quasar tests of Higgs-VEV evolution
+  notes: This is a future-testability channel rather than the main cosmological fit.
+  observability: medium
+  predicted_effect: The primary abstract notes that the Higgs-VEV-driving axion may be tested by atomic-clock
+    and quasar spectral measurements.
+  redshift_range: late Universe to today
+  relevance: medium
+  scale_range: null
+  source_reference_ids:
+  - paper
+  subchannel: atomic clocks and quasar spectra
+constraints:
+- allowed_regions:
+  - Primary text reports H0=69.4 +/- 1.3 km/s/Mpc for CMB+BAO+weak-lensing combinations and H0=71.34 +/-
+    0.96 km/s/Mpc when adding supernovae and SH0ES.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The primary perturbation treatment focuses on adiabatic initial conditions and assumes
+      primordial axion isocurvature is negligible.
+    id: negligible_axion_isocurvature
+    impact_if_violated: A non-negligible isocurvature mode would add CMB constraints and alter the fit.
+    scope: initial_conditions
+    source_reference_ids:
+    - paper
+    status: assumed
+  benchmark_implications:
+  - Axi-Higgs should be evaluated with modified recombination and axion perturbations, not as a simple
+    CDM rescaling.
+  caveats:
+  - The primary text reports parameter constraints but no reusable likelihood package.
+  constrained_parameters:
+  - (v/v0)_ini
+  - m_a
+  - Omega_a
+  - H0
+  - S8
+  constraint_type: cosmological
+  data_release: CMB, BAO, weak-lensing cosmic shear, supernovae, and SH0ES combinations as described in
+    the primary paper.
+  excluded_regions:
+  - Parameter values that spoil CMB/BAO/shear fits are excluded by the MCMC analysis.
+  id: cmb_bao_shear_axi_higgs_constraints
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: CMB+BAO+weak-lensing MCMC constraints on axi-Higgs
+  notes: null
+  observable_channel: cmb; bao; weak_lensing
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - paper
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The conceptual route is explicit, but no code artifact was extracted.
+    caveats:
+    - Isocurvature and nonlinear LSS are outside this row.
+    constraint_ids:
+    - cmb_bao_shear_axi_higgs_constraints
+    derived_quantities:
+    - electron-mass history
+    - visibility function
+    - CMB spectra
+    - matter power spectrum
+    - H0 and S8 posteriors
+    description: Implement axi-Higgs cosmology in a Boltzmann/MCMC pipeline.
+    forward_model_chain:
+    - inputs:
+      - m_a
+      - initial axion field
+      - Higgs coupling
+      notes: null
+      outputs:
+      - v(t)/v0
+      - m_e(t)
+      step_id: vev_history
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Axi-Higgs model equations and oscillation-averaged axion treatment.
+    - inputs:
+      - m_e(t)
+      - cosmological parameters
+      notes: Primary text describes earlier and longer recombination.
+      outputs:
+      - visibility function
+      - CMB spectra
+      step_id: modified_recombination
+      step_type: boltzmann_solver
+      tool_or_code: CLASS/CAMB with modified recombination
+      validity: Requires recombination module modifications.
+    - inputs:
+      - m_a
+      - Omega_a
+      - adiabatic initial conditions
+      notes: null
+      outputs:
+      - matter power spectrum
+      - CMB lensing
+      step_id: axion_perturbations
+      step_type: boltzmann_solver
+      tool_or_code: ULA perturbation module
+      validity: Assumes negligible primordial isocurvature.
+    - inputs:
+      - CMB spectra
+      - matter power
+      notes: null
+      outputs:
+      - posterior constraints
+      step_id: mcmc_fit
+      step_type: likelihood
+      tool_or_code: Planck+BAO+shear/SN/SH0ES likelihoods
+      validity: Dataset combination dependent.
+    id: axi_higgs_boltzmann_recombination_route
+    input_parameters:
+    - m_a
+    - (v/v0)_ini
+    - Omega_a
+    - standard cosmological parameters
+    likelihoods:
+    - Planck CMB
+    - BAO
+    - weak-lensing shear
+    - supernovae
+    - SH0ES
+    observable_ids:
+    - recombination_cmb_spectrum_shift
+    - ultralight_axion_matter_power_change
+    required_code_resources:
+    - Modified Boltzmann solver
+    - MCMC sampler
+    route_status: partially_implemented
+    source_model_features:
+    - ultralight axion coupled to Higgs field
+    - early uplifted Higgs vev
+    - electron-mass variation
+    - axion background and perturbations
+    validation_tests:
+    - Reproduce the primary H0 constraints and CMB spectra shifts.
+  - agent_notes: null
+    caveats:
+    - No quantitative laboratory likelihood extracted.
+    constraint_ids: []
+    derived_quantities:
+    - frequency drift
+    - spectral-line shifts
+    description: Translate late Higgs-VEV/electron-mass evolution into clock and quasar spectral observables.
+    forward_model_chain:
+    - inputs:
+      - v(t)/v0
+      notes: null
+      outputs:
+      - Delta m_e/m_e
+      step_id: constant_variation
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Model-dependent mapping to measured constants.
+    - inputs:
+      - Delta m_e/m_e history
+      notes: null
+      outputs:
+      - constraints
+      step_id: lab_quasar_compare
+      step_type: likelihood
+      tool_or_code: atomic clock and quasar spectral datasets
+      validity: Not supplied in primary paper.
+    id: axi_higgs_clock_quasar_route
+    input_parameters:
+    - v(t)/v0
+    - couplings to Standard Model masses
+    likelihoods:
+    - atomic clock frequency-ratio limits
+    - quasar absorption spectra
+    observable_ids:
+    - atomic_clock_quasar_spectral_tests
+    required_code_resources: []
+    route_status: planned
+    source_model_features:
+    - time-varying Higgs vev from ultralight axion background
+    validation_tests:
+    - Check consistency with present-day vev restoration.

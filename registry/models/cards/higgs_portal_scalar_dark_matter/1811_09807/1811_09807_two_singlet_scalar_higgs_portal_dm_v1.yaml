@@ -1,0 +1,417 @@
+_source:
+  shard: arXiv_src_1811_027_wds.tar
+  paper_id: '1811_09807'
+  source_member: 1811_09807.json
+schema_version: model_only_v0
+model_id: 1811_09807_two_singlet_scalar_higgs_portal_dm_v1
+identity:
+  name: Two-real-singlet scalar Higgs-portal dark matter model
+  family: higgs_portal_scalar_dark_matter
+  aliases:
+  - two-singlet scalar extension with S2 dark matter
+  short_description: A renormalizable Standard Model extension with two real gauge-singlet scalars, where
+    S1 has a nonzero vacuum expectation value for the electroweak phase transition and Z2-odd S2 is scalar
+    dark matter.
+  historical_origin_or_motivation: The paper extends a two-scalar singlet model to address strong first-order
+    electroweak phase transition, gravitational waves, and dark matter through a Higgs-portal scalar candidate.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Standard Model plus two real gauge-singlet scalars
+  - Higgs-portal scalar dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper gives the most general renormalizable tree-level scalar potential with H, S1, and Z2-odd
+    S2 terms, then uses finite-temperature effective potentials for the EWPT.
+particle_content:
+  dark_matter_candidate:
+    name: s_2 scalar
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - s_1 real singlet scalar with nonzero VEV
+  mediators:
+  - Standard Model Higgs
+  - mixed s_1 scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Z2-odd s_2 scalar
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: An imposed Z2 symmetry acts as S2 -> -S2, forbids odd S2 terms, and S2 has zero
+    VEV so the dark matter scalar remains stable.
+  symmetries:
+  - name: Z2 acting on S2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken in the zero-temperature vacuum with <S2> = 0
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - W bosons
+  - Z boson
+  - Standard Model fermions
+  dark_sector_couplings:
+  - lambda_3 S2^2 H^dagger H
+  - lambda_5 S1 S2^2
+  - lambda_2 S2^4
+  - mixing between h and s1
+  mediator_types:
+  - Higgs scalar
+  - singlet scalar s1
+  interaction_operators:
+  - S2^2 H^dagger H
+  - S1 S2^2
+  - S1^2 H^dagger H
+  - S1^3
+  annihilation_channels:
+  - s2 s2 -> W+ W-
+  - s2 s2 -> ZZ
+  - s2 s2 -> f fbar
+  - s2 s2 -> h h
+  - s2 s2 -> h s1
+  - s2 s2 -> s1 s1
+  decay_channels: []
+  self_scattering_channels:
+  - S2 quartic self-interaction
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: M_2
+    description: Physical mass of S2/s2, identified in the paper as the DM mass.
+    range:
+      min: 5
+      max: 750
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Monte Carlo scan range; benchmark conclusions emphasize masses above 100 GeV.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: additional singlet mass
+    symbol: M_1
+    description: Physical mass of S1/s1.
+    range:
+      min: 5
+      max: 750
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Monte Carlo scan range.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs-singlet mixing angle
+    symbol: theta
+    description: Mixing angle between the Higgs and S1 scalar.
+    range:
+      min: -23
+      max: 23
+      inclusive_min: true
+      inclusive_max: true
+      unit: degree
+      notes: Scan range in the paper.
+    unit: degree
+    role: core
+    status: inferred
+  - name: Higgs portal coupling to S2
+    symbol: lambda_3
+    description: Coupling of S2^2 to the Higgs bilinear.
+    range:
+      min: 0.0001
+      max: 0.1
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Scan range in the paper.
+    role: core
+    status: inferred
+  - name: S2 quartic
+    symbol: lambda_2
+    description: S2 self-quartic coupling.
+    range:
+      min: 0
+      max: 4
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Scan range in the paper.
+    role: core
+    status: inferred
+  - name: S1-S2 coupling
+    symbol: lambda_5
+    description: Coupling S1 S2^2 that contributes to annihilation through the singlet sector.
+    range:
+      min: -80
+      max: 80
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Scan range in the paper.
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through Higgs-portal and singlet-sector annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - thermally averaged s2 annihilation cross section
+  - Higgs-portal couplings
+  - s1-mediated and scalar final-state annihilation channels
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves the standard Boltzmann equation for Y = n/s and reports benchmark relic densities
+    compatible with the Planck abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - DM mass M2
+  - Higgs-portal coupling lambda_3
+  - S1-S2 coupling lambda_5
+  - annihilation channels into SM and scalar final states
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - strong first-order electroweak phase transition in the extended scalar potential
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - one-step or two-step electroweak phase transition in H-S1-S2 field space
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  f_of_p_or_q: not provided in extracted text
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The candidate is a massive scalar WIMP-like thermal relic.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: not discussed
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: vd-z2-unbroken
+  applies_to: model
+  condition: S2 must have zero vacuum expectation value so the imposed Z2 symmetry remains unbroken and
+    stabilizes the scalar DM candidate.
+  valid_range: <S2> = 0
+  status: established
+  extrapolation_risk: high
+  caveats:
+  - If S2 obtains a VEV, the stabilizing symmetry would be broken.
+  source_reference_ids:
+  - '1811_09807'
+  notes: null
+- id: vd-scan-range
+  applies_to: parameter
+  condition: The reported benchmark conclusions are within the paper's Monte Carlo scan over M1, M2, theta,
+    lambda_3, lambda_5, and related scalar-potential parameters.
+  valid_range: M1,M2 in 5-750 GeV; theta in -23 to 23 degrees; lambda_3 in 0.0001-0.1; lambda_2 in 0-4
+  status: established
+  extrapolation_risk: medium
+  caveats:
+  - Lighter dark matter may require further Monte Carlo exploration according to the paper.
+  source_reference_ids:
+  - '1811_09807'
+  notes: null
+assumptions:
+  global:
+  - id: assume-z2
+    description: A discrete Z2 symmetry is imposed on S2 to stabilize the dark matter candidate.
+    scope: theory
+    status: assumed
+    impact_if_violated: S2 would generally decay or mix and cease to be the stable DM candidate.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - '1811_09807'
+    notes: null
+  - id: assume-thermal-relic
+    description: The relic density is computed using the usual thermal Boltzmann equation for annihilating
+      scalar dark matter.
+    scope: production
+    status: assumed
+    impact_if_violated: The relic-density interpretation would change.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1811_09807'
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports implementation in SARAH, spectrum calculation with SPheno, relic-density
+    calculations with MicrOMEGAs, and finite-temperature calculations with CosmoTransitions; no custom
+    public repository is specified.
+  primary_code_role: relic_density_calculation
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  expected_inputs:
+  - scalar potential parameters
+  - benchmark points
+  expected_outputs:
+  - mass spectrum
+  - relic density
+  - finite-temperature phase transition quantities
+provenance:
+  model_id: 1811_09807_two_singlet_scalar_higgs_portal_dm_v1
+  model_name: Two-real-singlet scalar Higgs-portal dark matter model
+  model_family: higgs_portal_scalar_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1811_09807'
+      title: unknown
+      authors: []
+      year: 2018
+      arxiv_id: '1811.09807'
+      doi: null
+      url: null
+      role: original_model
+      notes: Source text from assigned SQLite database only.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0018
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1811_09807'
+      section: model
+      page: null
+      quote_or_summary: The text presents a renormalizable SM extension with S1 and S2, imposing Z2 on
+        S2 as the DM candidate.
+    - reference_id: '1811_09807'
+      section: dark matter
+      page: null
+      quote_or_summary: The paper solves a Boltzmann equation for scalar DM annihilation and studies relic
+        density with MicrOMEGAs.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1811_09807'
+      note: The candidate is the S2/s2 real scalar; S1 has a nonzero VEV and helps the electroweak phase
+        transition.
+      confidence: high
+      section: model
+      page: null
+    symmetries:
+    - reference_id: '1811_09807'
+      note: The paper imposes S2 -> -S2 and requires <S2> = 0 for stability.
+      confidence: high
+      section: model
+      page: null
+    interactions:
+    - reference_id: '1811_09807'
+      note: The scalar potential includes Higgs-portal and singlet interactions involving S2^2 and S1
+        S2^2.
+      confidence: high
+      section: model
+      page: null
+    production_mechanism:
+    - reference_id: '1811_09807'
+      note: The relic-density calculation uses the thermal Boltzmann equation and annihilation channels
+        through the Higgs portal and scalar final states.
+      confidence: high
+      section: dark matter
+      page: null
+    cosmological_history:
+    - reference_id: '1811_09807'
+      note: The same scalar potential is used to realize a strong first-order electroweak phase transition.
+      confidence: medium
+      section: EWPT
+      page: null
+    parameter_ranges:
+    - reference_id: '1811_09807'
+      note: The scan ranges include M1 and M2 between 5 and 750 GeV, theta between -23 and 23 degrees,
+        and several scalar couplings.
+      confidence: high
+      section: model
+      page: null
+    validity_domain:
+    - reference_id: '1811_09807'
+      note: The Z2 symmetry forbids linear and cubic terms for S2; unbroken Z2 is required for stable
+        scalar DM.
+      confidence: high
+      section: model
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - title and authors are absent from the extracted text
+  - benchmark-space conclusions may not cover all lighter DM regions
+  - finite-temperature GW assumptions are outside the model-only extraction scope
+  validation_status: expert_judgment_only
+  notes: The card focuses on the model definition and relic-density logic, omitting constraint and observable
+    blocks by run instruction.
+agent_failure_modes:
+  warnings:
+  - id: warn-title-missing
+    severity: low
+    category: other
+    warning: The extracted full text for this paper does not include a title or author block, so provenance
+      title/authors are left unknown/empty.
+    mitigation: Do not fill bibliographic metadata from outside sources for this run.
+    source_reference_ids:
+    - '1811_09807'
+  - id: warn-not-gw-card
+    severity: medium
+    category: invalid_mapping
+    warning: The paper also studies electroweak gravitational-wave signals, but this run excludes observable
+      and constraint extraction.
+    mitigation: Keep the model card limited to model, production, and relic-density content.
+    source_reference_ids:
+    - '1811_09807'

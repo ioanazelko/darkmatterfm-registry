@@ -1,0 +1,412 @@
+_source:
+  shard: arXiv_src_1302_005_wds.tar
+  paper_id: '1302_3427'
+  source_member: 1302_3427.json
+schema_version: model_only_v0
+model_id: 1302_3427_cp_violating_u1prime_mssm_neutralino_lsp_v1
+identity:
+  name: CP-violating U(1)' extended MSSM with neutralino LSP
+  family: supersymmetric_neutralino_dark_matter
+  aliases:
+  - U(1)' extended MSSM
+  - E6-inspired U(1) prime MSSM neutralino LSP
+  - UMSSM neutralino LSP
+  short_description: A supersymmetric U(1)' extension of the MSSM with an added singlet that dynamically
+    generates mu_eff, CP-violating phases, and a lightest neutralino LSP whose relic density is checked
+    in benchmark scenarios.
+  historical_origin_or_motivation: The paper motivates the setup as a gauge-extended MSSM Higgs sector
+    with a singlet solution to the mu problem, possible invisible Higgs decays, and benchmark points compatible
+    with relic-density requirements.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - MSSM
+  - anomaly-free U(1)' gauge extensions
+  - E6-inspired supersymmetric models
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the effective U(1)' superpotential, soft terms, Higgs potential, and neutralino
+    mass matrix, then studies anomaly-free benchmark charge choices.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino chi_1^0
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - singlino
+  - bino-prime / zino-prime neutralino state
+  - heavier neutralinos and charginos
+  mediators:
+  - neutral Higgs bosons
+  - Z' gauge boson
+  - singlet scalar S
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - light neutral Higgs boson decaying invisibly to neutralino pairs when kinematically open
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper assumes the lightest neutralino is the LSP and dark matter candidate;
+    the extracted text does not spell out the stabilizing symmetry.
+  symmetries:
+  - name: U(1)'
+    type: gauge
+    exact_or_approximate: broken
+    breaking: Broken by the singlet S vacuum expectation value that also generates mu_eff.
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - Higgs sector
+  - top and bottom quark/squark sectors
+  - electroweak gauge sector
+  dark_sector_couplings:
+  - Y_S S H_u H_d singlet-Higgs coupling
+  - neutralino couplings to Higgs bosons
+  - U(1)' gauge interactions
+  mediator_types:
+  - neutral Higgs bosons
+  - Z' gauge boson
+  - neutralino-sector states
+  interaction_operators:
+  - U(1) prime superpotential term Y_S S H_u H_d
+  - soft trilinear terms involving A_S, A_t, and A_b
+  annihilation_channels: []
+  decay_channels:
+  - H_1^0 -> chi_1^0 chi_1^0 invisible Higgs decay
+  self_scattering_channels: []
+  cp_structure: Explicit CP-violating phases are included in mu_eff and soft parameters.
+  flavor_structure: Top and bottom Yukawa sectors dominate the one-loop Higgs corrections used in the
+    paper.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: U(1)' charge choice
+    symbol: Q'
+    description: Anomaly-free E6-inspired U(1)' benchmark charge assignment.
+    status: established
+    role: core
+    source_reference_ids:
+    - Frank2013
+  - name: singlet-Higgs Yukawa coupling
+    symbol: Y_S
+    description: Coupling in the superpotential term Y_S S H_u H_d.
+    status: established
+    role: core
+    source_reference_ids:
+    - Frank2013
+  - name: effective mu parameter
+    symbol: mu_eff
+    description: Generated dynamically by the singlet S vacuum expectation value.
+    status: established
+    role: core
+    source_reference_ids:
+    - Frank2013
+  - name: CP-violating singlet phase
+    symbol: theta_s
+    description: Phase varied in the CP-violating benchmark scenarios and tied to neutralino mass and
+      relic density.
+    status: established
+    role: core
+    source_reference_ids:
+    - Frank2013
+  - name: gaugino mass ratio
+    symbol: R_Y'
+    description: Free parameter to which the paper says the relic density is very sensitive.
+    status: established
+    role: core
+    source_reference_ids:
+    - Frank2013
+  - name: lightest neutralino mass
+    symbol: m_chi_1^0
+    description: LSP mass constrained by collider limits, invisible Higgs decays, and relic density.
+    status: established
+    role: core
+    source_reference_ids:
+    - Frank2013
+  nuisance: []
+  derived:
+  - name: dark matter relic density
+    symbol: Omega_DM h^2
+    description: Computed with micrOMEGAs for the U(1) prime benchmark scenarios.
+    status: established
+    role: derived
+    source_reference_ids:
+    - Frank2013
+production:
+  mechanisms:
+  - neutralino LSP thermal relic density calculation with micrOMEGAs for U(1) prime benchmarks
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - neutralino mass and composition
+  - U(1)' benchmark parameters
+  - CP-violating singlet phase
+  - gaugino ratio R_Y'
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: Benchmarks are selected to satisfy the WMAP relic-density band; the paper focuses on Higgs production
+    and decays rather than deriving a new freeze-out formalism.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: WMAP dark matter density target
+    symbol: Omega_DM h^2
+    value: 0.111 +0.011 -0.015
+    unit: null
+    status: established
+    source_reference_ids:
+    - Frank2013
+  calculation_type: thermal
+  key_dependencies:
+  - R_Y'
+  - theta_s
+  - lightest neutralino mass
+  - U(1)' benchmark charge assignment
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: No explicit distribution function is extracted; the relic-density calculation is treated as thermal
+    neutralino dark matter.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: u1prime_benchmark_scope
+  applies_to: model
+  condition: Applies to the anomaly-free U(1)' benchmark groups and CP-violating parameter choices studied
+    in the paper.
+  status: established
+  extrapolation_risk: unknown
+  source_reference_ids:
+  - Frank2013
+- id: relic_density_selected_benchmarks
+  applies_to: parameter
+  condition: Benchmarks are required to keep the lightest neutralino as the LSP and satisfy the WMAP relic-density
+    band used by the paper.
+  status: established
+  extrapolation_risk: medium
+  source_reference_ids:
+  - Frank2013
+- id: higgs_sector_focus
+  applies_to: model
+  condition: The paper develops the Higgs and neutralino sectors; dark-matter extraction should not treat
+    it as a complete scan of all neutralino relic mechanisms.
+  status: inferred
+  extrapolation_risk: medium
+  source_reference_ids:
+  - Frank2013
+assumptions:
+  global:
+  - id: neutralino_lsp
+    description: The lightest neutralino is assumed to be the LSP and dark matter candidate.
+    scope: global
+    status: assumed
+    source_reference_ids:
+    - Frank2013
+  - id: benchmark_relic_compatibility
+    description: The retained benchmark points satisfy the relic-density band quoted in the paper.
+    scope: production
+    status: established
+    source_reference_ids:
+    - Frank2013
+  - id: dominant_loop_sectors
+    description: One-loop Higgs corrections retain dominant top/bottom quark and squark contributions.
+    scope: theory
+    status: assumed
+    source_reference_ids:
+    - Frank2013
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses micrOMEGAs and CalcHEP U(1)' model files for relic-density calculations,
+    but no paper-specific repository is identified in the extracted text.
+  primary_code_role: relic_density_calculation
+  packages_or_modules:
+  - name: micrOMEGAs
+    resource_type: package
+    availability: public
+    relationship_to_model: wrapper_around_public_tool
+    purpose:
+    - compute_relic_density
+  - name: CalcHEP U(1) prime model files
+    resource_type: module
+    availability: unknown
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - define_lagrangian
+    - compute_cross_sections
+  caveats:
+  - No official paper-specific code release is identified from the assigned text.
+provenance:
+  model_id: 1302_3427_cp_violating_u1prime_mssm_neutralino_lsp_v1
+  model_name: CP-violating U(1)' extended MSSM with neutralino LSP
+  model_family: supersymmetric_neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: Frank2013
+      title: Higgs Bosons in supersymmetric U(1)' models with CP Violation
+      authors:
+      - Mariana Frank
+      - Levent Selbuz
+      - Levent Solmaz
+      - Ismail Turan
+      year: 2013
+      arxiv_id: '1302.3427'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text for batch-0006.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex GPT-5 extraction worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: Frank2013
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: Paper studies U(1)' MSSM Higgs sector with CP phases and benchmark points consistent
+        with relic density.
+    - reference_id: Frank2013
+      section: Model and neutralino sector
+      page: null
+      quote_or_summary: Superpotential includes Y_S S H_u H_d and the neutralino sector gains singlino
+        and bino-prime states.
+    - reference_id: Frank2013
+      section: Numerical relic-density discussion
+      page: null
+      quote_or_summary: Lightest neutralino is the LSP; relic density is computed with micrOMEGAs and
+        lies within the quoted WMAP band.
+    unresolved_items:
+    - The exact Greek labels for some U(1) prime charge variants are degraded in the text extraction,
+      so they are not split into separate model rows.
+  evidence:
+    particle_content:
+    - reference_id: Frank2013
+      note: Neutralino sector is enlarged by singlino and bino-prime states, with chi_1^0 taken as the
+        LSP.
+      confidence: high
+      section: Neutralino mass matrix
+      page: null
+    symmetries:
+    - reference_id: Frank2013
+      note: The model is an anomaly-free U(1)' extension whose singlet S breaks the extra gauge symmetry
+        and generates mu_eff.
+      confidence: high
+      section: Model section
+      page: null
+    interactions:
+    - reference_id: Frank2013
+      note: The superpotential term Y_S S H_u H_d and Higgs-to-neutralino invisible decays support the
+        Higgs portal structure.
+      confidence: high
+      section: Model and decay sections
+      page: null
+    production_mechanism:
+    - reference_id: Frank2013
+      note: Benchmarks assume neutralino LSP dark matter and compute relic density with micrOMEGAs.
+      confidence: high
+      section: Numerical analysis
+      page: null
+    cosmological_history:
+    - reference_id: Frank2013
+      note: Relic density is compared to the WMAP dark-matter density band for the benchmark scenarios.
+      confidence: medium
+      section: Numerical analysis
+      page: null
+    parameter_ranges:
+    - reference_id: Frank2013
+      note: Relic density is described as sensitive to R_Y' and to the CP phase theta_s through the LSP
+        mass.
+      confidence: medium
+      section: Numerical analysis
+      page: null
+    validity_domain:
+    - reference_id: Frank2013
+      note: Benchmarks are constrained by Higgs mass, neutralino mass, relic density, Z prime mass, EDMs,
+        and kaon-sector CP violation.
+      confidence: medium
+      section: Benchmark setup
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes:
+    - Machine extracted from assigned full text only.
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The paper is primarily a Higgs-sector phenomenology study; the dark-matter model card is justified
+    by the neutralino LSP relic-density benchmark construction.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Benchmark dependence
+  - OCR loss of some U(1) prime variant labels
+  - Relic-density machinery not fully reproduced in the text
+  validation_status: expert_judgment_only
+  notes: Dark-matter support is through benchmark relic-density compatibility rather than a dedicated
+    relic-density derivation.
+agent_failure_modes:
+  warnings:
+  - id: do_not_split_corrupted_u1_labels
+    severity: medium
+    category: notation_conflict
+    warning: Text extraction loses several U(1)' Greek subscripts; avoid over-specific variant names unless
+      checked against source.
+    source_reference_ids:
+    - Frank2013
+  - id: higgs_focus_not_full_dm_scan
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat the paper as an exhaustive neutralino dark-matter scan; its main calculations
+      concern Higgs masses and decays.
+    source_reference_ids:
+    - Frank2013

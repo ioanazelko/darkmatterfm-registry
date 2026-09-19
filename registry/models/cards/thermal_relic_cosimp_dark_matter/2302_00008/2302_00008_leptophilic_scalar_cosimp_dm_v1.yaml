@@ -1,0 +1,628 @@
+_source:
+  shard: arXiv_src_2302_001_wds.tar
+  paper_id: '2302_00008'
+  source_member: 2302_00008.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2302_00008_leptophilic_scalar_cosimp_dm_v1
+identity:
+  name: Leptophilic scalar Co-SIMP dark matter
+  family: thermal_relic_cosimp_dark_matter
+  aliases:
+  - electrophilic scalar Co-SIMP dark matter
+  short_description: A scalar Co-SIMP UV completion where complex scalar dark matter and a real scalar
+    mediator interact with electrons, and the relic density is set by a 3-to-2 process with an electron.
+  historical_origin_or_motivation: Extends Co-SIMP freeze-out to sub-MeV thermal light dark matter and
+    uses late thermalization to open parameter space otherwise pressured by BBN and CMB limits.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Co-SIMP freeze-out
+  - leptophilic scalar mediator dark sector
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The leptophilic construction can integrate out a vector-like lepton to induce a scalar mediator
+    coupling to charged leptons.
+particle_content:
+  dark_matter_candidate:
+    name: complex scalar Co-SIMP phi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - real scalar mediator eta
+  - heavy vector-like lepton used to generate electron coupling
+  mediators:
+  - real scalar mediator eta
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z3 charge stabilizes the complex scalar dark matter; the scalar mediator is
+    neutral under that symmetry.
+  symmetries:
+  - name: Z3
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken for dark matter
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - electrons
+  - charged leptons
+  dark_sector_couplings:
+  - eta phi^3 interaction
+  - scalar potential terms involving phi and eta
+  mediator_types:
+  - scalar
+  interaction_operators:
+  - e phi phi -> e phi Co-SIMP interaction
+  - induced eta e e coupling
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_phi
+    description: Mass of the scalar Co-SIMP.
+    range: sub-MeV favored for leptophilic interactions; m_phi < 2 m_e discussed for late thermalization
+    unit: MeV
+    role: core
+    status: inferred
+  - name: mediator mass
+    symbol: m_eta
+    description: Mass of the real scalar mediator.
+    role: core
+    status: inferred
+  - name: Co-SIMP coupling
+    symbol: y_phi
+    description: Trilinear dark-sector coupling controlling the Co-SIMP process.
+    role: core
+    status: inferred
+  - name: electron mediator coupling
+    symbol: y_e
+    description: Effective scalar mediator coupling to electrons.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal Co-SIMP freeze-out via phi phi e -> phi e
+  - late thermalization after BBN in viable light-mass regions
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - 3-to-2 Co-SIMP interaction rate
+  - mediator coupling to electrons
+  - dark matter and mediator masses
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper assumes late thermalization can populate the dark sector after BBN and then Co-SIMP
+    freeze-out fixes the abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_phi
+  - m_eta
+  - y_phi
+  - y_e
+  - electron abundance
+  - late thermalization timing
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - possible late thermalization after BBN through a phase transition
+  - dark sector may be unpopulated before the transition
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - late-time phase transition can make the dark sector light only at late times
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: The relic abundance is set by thermal freeze-out of number-changing Co-SIMP interactions.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: late_thermalization_light_dm
+  applies_to: cosmological_history
+  condition: For sub-MeV leptophilic Co-SIMPs, the dark sector should thermalize late enough to avoid
+    severe BBN/CMB bounds while still freezing out through Co-SIMP reactions.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - If the dark sector is populated before thermalization, future CMB/BBN constraints can be important.
+  source_reference_ids:
+  - paper
+  notes: null
+assumptions:
+  global:
+  - id: cosimp_dominates_freezeout
+    description: The 3-to-2 Co-SIMP process dominates the number-changing reactions that set the relic
+      abundance in the relevant parameter region.
+    scope: production
+    status: assumed
+    impact_if_violated: Other depletion channels could set a different relic abundance.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code was identified in the assigned text.
+provenance:
+  model_id: 2302_00008_leptophilic_scalar_cosimp_dm_v1
+  model_name: Leptophilic scalar Co-SIMP dark matter
+  model_family: thermal_relic_cosimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: 'Scalar Co-SIMP Dark Matter: Models and Sensitivities'
+      authors: []
+      year: 2023
+      arxiv_id: '2302.00008'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '2302.00008'
+      authors:
+      - Parikh, Aditya
+      - Smirnov, Juri
+      - Xu, W. Linda
+      - Zhou, Bei
+      doi: 10.1007/JHEP08(2023)091
+      notes: Primary UV-complete scalar Co-SIMP model and sensitivity study.
+      reference_id: primary_2302_00008
+      role: original_model
+      title: 'Scalar Co-SIMP dark matter: models and sensitivities'
+      url: https://arxiv.org/abs/2302.00008
+      year: 2023
+    constraint_papers:
+    - arxiv_id: '1810.10543'
+      authors:
+      - Bringmann, Torsten
+      - Pospelov, Maxim
+      doi: 10.1103/PhysRevLett.122.171801
+      notes: Related light-DM direct-detection constraints read locally.
+      reference_id: rel_1810_10543
+      role: constraint
+      title: Novel Direct Detection Constraints on Light Dark Matter
+      url: https://arxiv.org/abs/1810.10543
+      year: 2019
+    - arxiv_id: '1810.07705'
+      authors:
+      - Cappiello, Christopher V.
+      - Ng, Kenny C. Y.
+      - Beacom, John F.
+      doi: 10.1103/PhysRevD.99.063004
+      notes: Related cosmic-ray accelerated light-DM direct-detection constraints read locally.
+      reference_id: rel_1810_07705
+      role: constraint
+      title: 'Reverse direct detection: Cosmic ray scattering with light dark matter'
+      url: https://arxiv.org/abs/1810.07705
+      year: 2019
+    - arxiv_id: '1604.08206'
+      authors:
+      - Schutz, Katelin
+      - Zurek, Kathryn M.
+      doi: 10.1103/PhysRevLett.117.121302
+      notes: Related superfluid-helium light-DM detector proposal read locally.
+      reference_id: rel_1604_08206
+      role: implementation
+      title: Detectability of Light Dark Matter with Superfluid Helium
+      url: https://arxiv.org/abs/1604.08206
+      year: 2016
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: gpt-5.5-codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections: []
+    unresolved_items:
+    - Precise detector limits require digitizing or reimplementing the sensitivity curves.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The leptophilic scenario assumes both dark matter and mediator are new scalars.
+      confidence: medium
+      section: Leptophilic model setup
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: The mediator is neutral and the dark matter is charged under Z3.
+      confidence: medium
+      section: Leptophilic model setup
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The Lagrangian includes scalar kinetic/mass terms, a mediator-electron coupling, and an eta
+        phi^3 interaction.
+      confidence: medium
+      section: Leptophilic model setup
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The Co-SIMP interaction has the nucleon line replaced by an electron line and contributes
+        to dark matter depletion.
+      confidence: medium
+      section: Leptophilic model setup
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: For m_phi below the electron threshold, the paper assumes late thermalization after BBN followed
+        by Co-SIMP freeze-out.
+      confidence: medium
+      section: Leptophilic early-universe cosmology
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: Leptophilic interactions favor the sub-MeV mass range.
+      confidence: medium
+      section: Abstract
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The paper notes stronger cosmological and astrophysical constraints for the light leptophilic
+        case and relies on late thermalization.
+      confidence: medium
+      section: Leptophilic scenario
+      page: null
+    constraints:
+    - confidence: high
+      note: Model-specific direct-detection and late-phase-transition viability claims come from the primary
+        text.
+      page: null
+      reference_id: primary_2302_00008
+      section: sensitivity sections
+    - confidence: medium
+      note: Related local text gives light-DM direct-detection constraint context.
+      page: null
+      reference_id: rel_1810_10543
+      section: abstract
+    observables:
+    - confidence: high
+      note: Primary paper describes the electron-coupled scalar Co-SIMP branch, monoenergetic recoil signature,
+        and BBN/CMB issue for sub-MeV particles.
+      page: null
+      reference_id: primary_2302_00008
+      section: abstract/direct detection/cosmology sections
+    routes:
+    - confidence: high
+      note: Primary text defines the Co-SIMP freeze-out and correlated detection signals.
+      page: null
+      reference_id: primary_2302_00008
+      section: model and sensitivity sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Machine extraction from converted full text; mathematical notation may be degraded.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Converted text obscures some symbols and section labels.
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: notation_loss
+    severity: medium
+    category: notation_conflict
+    warning: Converted text drops or mangles some field symbols; do not infer exact charges or equations
+      beyond the compact evidence.
+    mitigation: Consult original paper before final registry inclusion.
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - Elastic electron scattering is loop-suppressed in the minimal setup; the conversion signal depends
+    quadratically on local Co-SIMP density.
+  channel: direct_detection
+  effect_direction: spectral_line
+  environments:
+  - low-threshold electron-recoil detectors
+  - terrestrial detector material
+  id: obs_monoenergetic_electron_recoil
+  key_quantities:
+  - description: Complex scalar Co-SIMP mass in the leptophilic branch.
+    name: dark matter mass
+    role: core
+    source_reference_ids:
+    - primary_2302_00008
+    status: inferred
+    symbol: m_phi
+    unit: MeV
+  - description: Mediator coupling to electrons.
+    name: electron coupling
+    role: core
+    source_reference_ids:
+    - primary_2302_00008
+    status: inferred
+    symbol: y_e
+  - description: Dark-sector coupling controlling the 3-to-2 process.
+    name: Co-SIMP coupling
+    role: core
+    source_reference_ids:
+    - primary_2302_00008
+    status: inferred
+    symbol: y_phi
+  linked_constraints:
+  - con_leptophilic_electron_direct_detection
+  linked_routes:
+  - route_leptophilic_cosimp_sensitivity
+  name: Monoenergetic electron recoil from leptophilic Co-SIMP conversion
+  notes: The monoenergetic feature is the most distinctive direct-detection handle for the leptophilic
+    branch.
+  observability: medium
+  predicted_effect: The exothermic 3-to-2 Co-SIMP process can occur in detector material with an electron
+    as the Standard Model participant, producing a monoenergetic recoil rather than only a low-threshold
+    elastic signal.
+  redshift_range: null
+  relevance: critical
+  scale_range: sub-MeV to MeV dark matter with electron recoil energies set by an exothermic 3-to-2 process
+  source_reference_ids:
+  - primary_2302_00008
+  - rel_1810_10543
+  subchannel: electron recoil
+- caveats:
+  - The primary paper treats non-minimal thermal histories; a standard thermal history may be excluded
+    in parts of the sub-MeV space.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early universe plasma
+  - late dark-sector phase transition
+  id: obs_leptophilic_bbn_cmb_thermalization
+  key_quantities:
+  - description: Temperature at which the dark sector is populated after an initially empty state.
+    name: phase-transition temperature
+    role: cosmological
+    source_reference_ids:
+    - primary_2302_00008
+    status: inferred
+    symbol: T_pt
+    unit: MeV
+  - description: Net radiation-density effect after entropy return to the SM/neutrino sectors.
+    name: effective radiation change
+    role: derived
+    source_reference_ids:
+    - primary_2302_00008
+    status: inferred
+    symbol: Delta N_eff
+  linked_constraints:
+  - con_leptophilic_bbn_cmb
+  linked_routes:
+  - route_leptophilic_cosimp_sensitivity
+  name: BBN/CMB sensitivity to sub-MeV thermal Co-SIMPs
+  notes: This is a cosmological viability observable, not a single experiment-specific likelihood.
+  observability: medium
+  predicted_effect: Sub-MeV Co-SIMPs can affect light-element formation and CMB-era radiation/entropy
+    transfer, while a late-time phase transition can open viable thermal parameter space.
+  redshift_range:
+    inclusive_max: true
+    inclusive_min: true
+    max: CMB
+    min: BBN
+    notes: Epoch labels rather than numeric redshift bounds.
+    unit: null
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - primary_2302_00008
+  subchannel: light relic thermal history
+constraints:
+- allowed_regions:
+  - Viable thermal benchmarks survive in regions where loop-suppressed elastic electron scattering and
+    direct 3-to-2 conversion remain below current bounds.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Only the minimal couplings needed for the leptophilic UV completion are active.
+    id: assume_minimal_leptophilic_couplings
+    impact_if_violated: Additional tree-level interactions can strengthen ordinary elastic signals and
+      change reach.
+    notes: null
+    scope: model parameterization
+    source_reference_ids:
+    - primary_2302_00008
+    status: assumed
+  - can_be_relaxed: partial
+    description: The local Co-SIMP density equals the halo density used in the rate scaling.
+    id: assume_standard_local_density
+    impact_if_violated: Accumulation or depletion changes the conversion rate.
+    notes: null
+    scope: direct detection
+    source_reference_ids:
+    - primary_2302_00008
+    status: assumed
+  benchmark_implications:
+  - Future low-threshold electron-recoil searches can target correlated elastic and conversion signatures.
+  caveats:
+  - Related light-DM constraints are not direct Co-SIMP likelihoods and require recasting to the exothermic
+    3-to-2 signature.
+  constrained_parameters:
+  - m_phi
+  - m_eta
+  - y_phi
+  - y_e
+  - local Co-SIMP density
+  constraint_type: direct_detection
+  data_release: null
+  excluded_regions: []
+  id: con_leptophilic_electron_direct_detection
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Electron-recoil and low-threshold constraints on leptophilic scalar Co-SIMPs
+  notes: Use the primary paper for model-specific rates and related light-DM papers for detector reach
+    context.
+  observable_channel: electron recoils and conversion recoils
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - primary_2302_00008
+  - rel_1810_10543
+- allowed_regions:
+  - Late-time phase-transition histories can reopen large fractions of the scalar Co-SIMP parameter space.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The dark sector is populated after a late phase transition rather than reheated after
+      inflation.
+    id: assume_late_phase_transition
+    impact_if_violated: The BBN/CMB viability window can close if the sector is populated too early.
+    notes: null
+    scope: cosmological history
+    source_reference_ids:
+    - primary_2302_00008
+    status: speculative
+  benchmark_implications:
+  - Cosmology must be specified alongside any direct-detection benchmark.
+  caveats:
+  - No standalone BBN/CMB likelihood implementation was supplied in the primary text.
+  constrained_parameters:
+  - m_phi
+  - thermalization temperature
+  - phase-transition temperature
+  - Delta N_eff
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Standard early-populated sub-MeV sectors can be constrained by light-element and CMB radiation observables.
+  id: con_leptophilic_bbn_cmb
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN/CMB viability of sub-MeV leptophilic Co-SIMP thermal histories
+  notes: The constraint is a viability condition on thermal history.
+  observable_channel: BBN and CMB radiation/entropy observables
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - primary_2302_00008
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Model-specific public code was not identified in the local text.
+    caveats:
+    - Thermal-history assumptions are part of the model point.
+    constraint_ids:
+    - con_leptophilic_electron_direct_detection
+    - con_leptophilic_bbn_cmb
+    derived_quantities:
+    - 3-to-2 thermal target
+    - electron elastic rate
+    - monoenergetic conversion rate
+    - Delta N_eff proxy
+    description: Compute leptophilic Co-SIMP relic abundance, cosmological viability, and electron-recoil/conversion
+      direct-detection rates.
+    forward_model_chain:
+    - inputs:
+      - m_phi
+      - m_eta
+      - y_phi
+      - y_e
+      - thermal history
+      notes: Solve for the 3-to-2 freeze-out target.
+      outputs:
+      - Omega_phi h^2
+      - thermal target coupling
+      step_id: cosimp_freezeout
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Requires Co-SIMP collision terms rather than WIMP annihilation terms.
+    - inputs:
+      - thermalization temperature
+      - phase-transition temperature
+      - m_phi
+      notes: Apply the late-phase-transition viability criterion.
+      outputs:
+      - BBN/CMB viability flag
+      step_id: cosmology_filter
+      step_type: recasting
+      tool_or_code: null
+      validity: Approximate unless coupled to a BBN/CMB likelihood.
+    - inputs:
+      - local density
+      - electron coupling
+      - detector electron number
+      notes: Produce correlated direct-detection predictions.
+      outputs:
+      - elastic electron rate
+      - 3-to-2 monoenergetic recoil rate
+      step_id: electron_detector_rates
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Detector material response must be supplied separately.
+    id: route_leptophilic_cosimp_sensitivity
+    input_parameters:
+    - m_phi
+    - m_eta
+    - y_phi
+    - y_e
+    - T_pt
+    - local density
+    likelihoods:
+    - custom likelihood or digitized sensitivity curves from the primary paper
+    observable_ids:
+    - obs_monoenergetic_electron_recoil
+    - obs_leptophilic_bbn_cmb_thermalization
+    required_code_resources:
+    - Co-SIMP Boltzmann/relic solver
+    - electron recoil detector response
+    - BBN/CMB viability recast
+    route_status: planned
+    source_model_features:
+    - complex scalar DM
+    - real scalar mediator
+    - Z3-stabilized Co-SIMP number-changing process
+    - electron-coupled mediator
+    validation_tests:
+    - Recover Omega h^2=0.12 thermal target at a benchmark mass.
+    - Check rate scaling with local density squared for conversion recoils.

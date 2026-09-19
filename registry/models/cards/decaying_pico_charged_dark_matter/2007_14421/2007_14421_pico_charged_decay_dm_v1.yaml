@@ -1,0 +1,904 @@
+_source:
+  shard: arXiv_src_2007_057_wds.tar
+  paper_id: '2007_14421'
+  source_member: 2007_14421.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2007_14421_pico_charged_decay_dm_v1
+identity:
+  name: Pico-charged particles from dark matter decay
+  family: decaying_pico_charged_dark_matter
+  aliases:
+  - pico-charged C-particle decay dark matter
+  - SLIM-like decaying X model
+  short_description: A light scalar dark matter particle X decays very slowly into relativistic pico-charged
+    C and anti-C particles; the C population is trapped by Galactic magnetic fields and can annihilate
+    to positrons while also scattering from detector electrons.
+  historical_origin_or_motivation: Developed to explain the Galactic 511 keV line while avoiding recombination
+    and dwarf-galaxy bounds, and extended here to the XENON1T electron recoil excess.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - U_X(1) extension of the Standard Model
+  - SLIM scenario for MeV scalar dark matter
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the kinetic and Stueckelberg mass mixing for a dark photon A prime and gives
+    the relevant C-particle gauge couplings; it stays agnostic about the detailed X production mechanism
+    in this work.
+particle_content:
+  dark_matter_candidate:
+    name: X scalar dark matter
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - pico-charged C and anti-C particles
+  - dark photon A prime
+  - possible coolant Y
+  - right-handed Majorana fermion N in the SLIM embedding
+  mediators:
+  - SM photon
+  - dark photon A prime
+  dark_radiation_species:
+  - A prime can contribute to N_eff in parts of parameter space
+  unstable_parent_particles:
+  - metastable X
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: X is metastable with a lifetime far longer than the age of the Universe; C particles
+    are not the main relic but are retained in galaxies by magnetic fields because of their pico electric
+    charge.
+  symmetries:
+  - name: U_X(1)
+    type: gauge
+    exact_or_approximate: broken
+    breaking: Stueckelberg mass and mixing with hypercharge/photon
+  - name: L_mu - L_tau option for A prime neutrino coupling
+    type: gauge
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - other
+  standard_model_targets:
+  - electrons
+  - protons
+  - neutrinos
+  - charged Standard Model fermions
+  dark_sector_couplings:
+  - g_X J_C A_prime coupling
+  - X decays to C anti-C
+  - possible A prime coupling to neutrinos
+  mediator_types:
+  - SM photon
+  - dark photon A prime
+  interaction_operators:
+  - kinetic mixing between A and hypercharge B
+  - Stueckelberg mass mixing
+  - t-channel photon and dark-photon exchange in C-electron scattering
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: mild
+    spin_dependence: unknown
+  annihilation_channels:
+  - C anti-C eventually annihilate to e- e+ pairs
+  decay_channels:
+  - X -> C anti-C
+  - A prime -> neutrino pairs in some parameter ranges
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_X
+    description: Mass of the metastable scalar X; the paper fixes a benchmark.
+    value: '10'
+    unit: MeV
+    role: core
+    status: inferred
+    notes: The paper discusses few-MeV X and fixes m_X=10 MeV for the XENON1T analysis.
+  - name: C-particle mass
+    symbol: m_C
+    description: Mass of the pico-charged intermediate particle.
+    range: about 1-5 MeV, with m_C < 12 MeV used to satisfy high-energy positron bounds
+    unit: MeV
+    role: core
+    status: inferred
+  - name: C-particle electric charge
+    symbol: q_C
+    description: Tiny electric charge induced by mass mixing.
+    value: order 1e-11 e
+    unit: electric charge
+    role: core
+    status: inferred
+  - name: decayed fraction of X
+    symbol: f
+    description: Fraction of dark matter particles that have decayed into C anti-C by today.
+    range: few 1e-7 to 1e-6; XENON1T gives an upper bound around 1e-6
+    role: core
+    status: inferred
+  - name: C-particle velocity after cooling
+    symbol: v_f
+    description: Collective velocity used for Galactic C particles after cooling on Y.
+    value: 0.08 c
+    role: core
+    status: inferred
+  - name: dark photon mass
+    symbol: m_A_prime
+    description: Mass ranges considered for dark photon exchange and cooling bounds.
+    range: keV to few MeV depending on scenario
+    role: core
+    status: inferred
+  - name: dark photon coupling to SM fermions
+    symbol: q_prime
+    description: Coupling generated by kinetic and mass mixing.
+    range: model dependent; examples include 1e-9 to 1e-10 or about 3e-8 with neutrino decay modes
+    role: core
+    status: inferred
+  derived:
+  - name: dark matter lifetime lower bound
+    symbol: tau_X
+    description: Lifetime inferred from XENON1T electron recoil data.
+    value: larger than 1e6 times the age of the Universe
+    role: derived
+    status: inferred
+  - name: local dark matter density used
+    symbol: rho_DM_local
+    description: Local density used to estimate the C density near Earth.
+    value: '0.4'
+    unit: GeV/cm^3
+    role: astrophysical
+    status: inferred
+production:
+  mechanisms:
+  - SLIM-like thermal freeze-out of X through annihilation to neutrinos and a right-handed Majorana fermion
+  - alternative freeze-in or other nonthermal X production left open
+  - late metastable X decay produces the relativistic C anti-C population
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - X annihilation cross section of order 1 pb in the SLIM embedding
+  - or an unspecified nonthermal production mechanism
+  - very small late-time decay fraction f
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper states that the original SLIM embedding gives a freeze-out abundance but that the present
+    analysis remains agnostic about X production and fixes m_X=10 MeV.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - X production mechanism
+  - X lifetime
+  - fraction f of X decays
+  - possible subdominant A prime relic abundance
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - metastable MeV dark matter decays after recombination into relativistic pico-charged particles
+  - dark photon can contribute to N_eff unless its couplings or decays avoid the bound
+  dark_sector_temperature: null
+  delta_neff:
+    name: Delta N_eff
+    symbol: Delta N_eff
+    description: The dark photon contribution is required to be below about one in the discussed parameter
+      space.
+    range: less than 1
+    role: cosmological
+    status: inferred
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: C particles are relativistic with energy about m_X/2 at production
+    and are modeled with v_f=0.08 after cooling
+  free_streaming_length: null
+  velocity_dispersion_today:
+    name: C-particle velocity
+    symbol: v_f
+    description: Velocity used for Galactic C particles near Earth.
+    value: 0.08 c
+    role: astrophysical
+    status: inferred
+  phase_space_bounds:
+  - C particles are magnetically trapped in the Galactic disk for q_C of order 1e-11 and m_X around 10
+    MeV
+  notes: The dominant X dark matter is nonrelativistic in the Galaxy; the observable C population is a
+    late-time relativistic decay product.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: pico_charge_trapping
+  applies_to: model
+  condition: C particles remain in the Galactic disk only when their Larmor radius is below the disk thickness,
+    requiring q_C of order 1e-11 for the benchmark masses.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: light_C_for_detector_recoil
+  applies_to: parameter
+  condition: m_C around 1-5 MeV gives keV electron recoils; m_C below about 12 MeV avoids high-energy
+    positron bounds discussed by the paper.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: small_decay_fraction
+  applies_to: parameter
+  condition: The accepted XENON1T fit and bounds require f around few 1e-7 to 1e-6, implying tau_X greater
+    than about 1e6 times the age of the Universe.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: dark_photon_bounds
+  applies_to: model
+  condition: Dark photon couplings and mass must avoid stellar cooling, supernova cooling, and N_eff limits;
+    the paper discusses neutrino decay channels to relax some bounds.
+  status: speculative
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: local_C_density_tracks_DM
+    description: The local C and anti-C density is estimated as f times the local dark matter density
+      divided by m_X.
+    scope: production
+    status: assumed
+    impact_if_violated: Detector-rate predictions change directly if the Galactic C density differs.
+    can_be_relaxed: 'yes'
+    source_reference_ids: []
+  - id: single_C_velocity
+    description: The C velocity distribution is approximated by a delta function at v_f=0.08.
+    scope: production
+    status: approximate
+    impact_if_violated: The electron recoil spectrum and endpoint would broaden for a full velocity distribution.
+    can_be_relaxed: 'yes'
+    source_reference_ids: []
+  - id: galactic_magnetic_confinement
+    description: The Galactic magnetic field traps the pico-charged C particles while dwarf-galaxy fields
+      do not.
+    scope: global
+    status: assumed
+    impact_if_violated: The 511 keV-line explanation relies on this environmental difference.
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: production_agnostic
+    description: The present paper does not commit to a unique early-Universe production mechanism for
+      X, although it reviews the SLIM freeze-out embedding.
+    scope: production
+    status: unknown
+    impact_if_violated: Relic-density conclusions are model dependent.
+    can_be_relaxed: 'yes'
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 2007_14421_pico_charged_decay_dm_v1
+  model_name: Pico-charged particles from dark matter decay
+  model_family: decaying_pico_charged_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2007_14421'
+      title: Pico-charged particles from dark matter decay explain 511 keV line and XENON1T signal
+      authors:
+      - Y. Farzan
+      - M. Rajaee
+      year: 2020
+      arxiv_id: '2007.14421'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned SQLite full text; this paper extends an earlier proposed decaying-DM/pico-charge
+        scenario to XENON1T electron recoils.
+    - arxiv_id: '2007.14421'
+      authors:
+      - Farzan, Yasaman
+      - Rajaee, Meshkat
+      doi: 10.48550/arXiv.2007.14421
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2007.14421
+      role: original_model
+      title: Pico-charged particles explaining 511 keV line and XENON1T signal
+      url: https://arxiv.org/abs/2007.14421
+      year: 2020
+    constraint_papers:
+    - arxiv_id: '2012.05891'
+      authors:
+      - He, Hong-Jian
+      - Wang, Yu-Chen
+      - Zheng, Jiaming
+      doi: 10.1103/PhysRevD.104.115033
+      notes: Related full text resolved locally and read for dark-photon direct-detection/cosmology context.
+      reference_id: arxiv:2012.05891
+      role: constraint
+      title: GeV-scale inelastic dark matter with dark photon mediator via direct detection and cosmological
+        and laboratory constraints
+      url: https://arxiv.org/abs/2012.05891
+      year: 2021
+    - arxiv_id: '2007.09105'
+      authors:
+      - Ema, Yohei
+      - Sala, Filippo
+      - Sato, Ryosuke
+      doi: 10.1140/epjc/s10052-021-08899-y
+      notes: Related full text resolved locally and read for 511 keV/electron-recoil model context.
+      reference_id: arxiv:2007.09105
+      role: constraint
+      title: Dark matter models for the 511 keV galactic line predict keV electron recoils on Earth
+      url: https://arxiv.org/abs/2007.09105
+      year: 2021
+    external_databases: []
+    review_papers:
+    - arxiv_id: '2006.14521'
+      authors:
+      - Bloch, Itay M.
+      - Caputo, Andrea
+      - Essig, Rouven
+      - Redigolo, Diego
+      - Sholapurkar, Mukul
+      - Volansky, Tomer
+      doi: 10.1007/JHEP01(2021)178
+      notes: Related arXiv fallback source read for keV electron-recoil context; not used alone for detailed
+        limits.
+      reference_id: arxiv:2006.14521
+      role: review
+      title: Exploring new physics with O(keV) electron recoils in direct detection experiments
+      url: https://arxiv.org/abs/2006.14521
+      year: 2021
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: gpt-5-codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2007_14421'
+      section: Abstract
+      page: null
+      quote_or_summary: The abstract describes MeV dark matter decaying to pico-charged C particles that
+        later annihilate and scatter in XENON1T.
+    - reference_id: '2007_14421'
+      section: Model
+      page: null
+      quote_or_summary: The model section introduces U_X(1), dark photon mixing, C charge q_C, and scalar
+        X decay to C anti-C.
+    - reference_id: '2007_14421'
+      section: XENON1T analysis/conclusion
+      page: null
+      quote_or_summary: The paper fixes benchmark masses and uses electron recoil data to bound the decayed
+        fraction and lifetime.
+    unresolved_items:
+    - The paper deliberately leaves the detailed X production mechanism open in this analysis.
+    - No XENON1T, 511 keV morphology, or dark-photon cooling likelihood was rerun.
+    - The lowest-bin treatment in XENON1T materially changes the inferred f bound.
+  evidence:
+    particle_content:
+    - reference_id: '2007_14421'
+      note: Main dark matter is a scalar X; the intermediate particles are pico-charged C and anti-C,
+        with a dark photon A prime from U_X(1).
+      confidence: high
+      section: Model
+    symmetries:
+    - reference_id: '2007_14421'
+      note: The paper adds a U_X(1) gauge symmetry with kinetic and Stueckelberg mass mixing between the
+        new gauge field and hypercharge/photon.
+      confidence: high
+      section: Model
+    interactions:
+    - reference_id: '2007_14421'
+      note: C scatters from electrons through t-channel photon exchange and, for nonzero q prime, dark-photon
+        exchange.
+      confidence: high
+      section: Direct-detection section
+    production_mechanism:
+    - reference_id: '2007_14421'
+      note: The text reviews SLIM freeze-out for X but says the present paper stays agnostic and fixes
+        m_X=10 MeV.
+      confidence: medium
+      section: Model
+    cosmological_history:
+    - reference_id: '2007_14421'
+      note: Delayed recombination, dwarf-galaxy 511 keV limits, N_eff, and supernova bounds motivate the
+        late-decay and dark-photon parameter choices.
+      confidence: medium
+      section: Introduction/model
+    parameter_ranges:
+    - reference_id: '2007_14421'
+      note: Benchmarks include m_X=10 MeV, m_C around 1-5 MeV, q_C around 1e-11, v_f=0.08, and f around
+        few 1e-7 to 1e-6.
+      confidence: high
+      section: XENON1T analysis
+    validity_domain:
+    - reference_id: '2007_14421'
+      note: The conclusion states that XENON1T implies a lifetime larger than 1e6 times the age of the
+        Universe while still allowing the 511 keV explanation.
+      confidence: high
+      section: Conclusion
+    constraints:
+    - confidence: high
+      note: Primary text gives an upper bound f about 1.5e-6 at 3 sigma using all E_r<8 keV bins, relaxing
+        to about 1e-5 if the first bin is excluded.
+      page: null
+      reference_id: arxiv:2007.14421
+      section: Direct detection
+    - confidence: high
+      note: Primary text states m_C < 12 MeV readily satisfies Voyager and in-flight annihilation bounds.
+      page: null
+      reference_id: arxiv:2007.14421
+      section: Model
+    - confidence: high
+      note: Related paper connects 511 keV dark-matter models to keV electron recoils on Earth.
+      page: null
+      reference_id: arxiv:2007.09105
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary text states relativistic pico-charged C particles can scatter on detector electrons
+        and account for XENON1T keV recoils.
+      page: null
+      reference_id: arxiv:2007.14421
+      section: Introduction
+    - confidence: high
+      note: Primary text states C and anti-C annihilation produces e+e- and can explain the 511 keV line.
+      page: null
+      reference_id: arxiv:2007.14421
+      section: Model
+    - confidence: high
+      note: Primary text discusses dark photon N_eff and cooling side constraints.
+      page: null
+      reference_id: arxiv:2007.14421
+      section: Model
+    routes:
+    - confidence: high
+      note: Primary paper links rare X decay, C trapping/cooling, 511 keV emission, and XENON1T electron
+        recoils.
+      page: null
+      reference_id: arxiv:2007.14421
+      section: Model and direct detection
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The core X relic-density mechanism is not fixed uniquely in this paper.
+  - Several bounds are avoided through parameter-dependent dark-photon/neutrino assumptions.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: low
+  computational_robustness: unknown
+  constraint_robustness: medium
+  dominant_uncertainties:
+  - C velocity distribution
+  - dark photon bounds
+  - X production mechanism
+  - Galactic magnetic confinement
+  validation_status: expert_judgment_only
+  notes: The paper gives concrete benchmark rates, but several astrophysical and dark-sector assumptions
+    are central.
+agent_failure_modes:
+  warnings:
+  - id: do_not_treat_C_as_primary_relic
+    severity: medium
+    category: assumption_mismatch
+    warning: The C particles are late decay products, not the dominant primordial dark matter relic.
+    mitigation: Keep X as the primary DM candidate in this model card.
+    source_reference_ids: []
+  - id: production_mechanism_open
+    severity: medium
+    category: other
+    warning: The present paper is agnostic about X production despite mentioning a SLIM freeze-out embedding.
+    mitigation: Do not infer a unique relic-density calculation beyond the text.
+    source_reference_ids: []
+  - id: dark_photon_bounds_parameter_dependent
+    severity: high
+    category: extrapolation
+    warning: Allowed dark photon masses and couplings depend on additional neutrino interactions and cooling
+      assumptions.
+    mitigation: Retain parameter-dependent language.
+    source_reference_ids: []
+observables:
+- caveats:
+  - The fit depends on treatment of the lowest XENON1T energy bin and background systematics.
+  channel: direct_detection
+  effect_direction: enhancement
+  environments:
+  - XENON1T detector
+  - Galactic magnetic field trapped C population
+  id: obs_pico_xenon1t_electron_recoils
+  key_quantities:
+  - description: null
+    name: C-particle electric charge
+    role: core
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: inferred
+    symbol: q_C
+    unit: electric charge
+    value: order 1e-11 e
+  - description: null
+    name: decayed fraction
+    range: few 1e-7 to 1e-6 for the source XENON1T discussion
+    role: core
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: inferred
+    symbol: f
+  - description: null
+    name: C-particle mass
+    range: about 1-5
+    role: core
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: inferred
+    symbol: m_C
+    unit: MeV
+  - description: null
+    name: cooled C velocity
+    role: core
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: inferred
+    symbol: v_f
+    value: 0.08 c
+  linked_constraints:
+  - con_pico_xenon1t_fraction_lifetime
+  linked_routes:
+  - route_pico_decay_to_511_xenon
+  name: XENON1T keV electron recoils from pico-charged C scattering
+  notes: null
+  observability: medium
+  predicted_effect: Relativistic pico-charged C particles from rare X decay scatter on detector electrons
+    and can produce keV electron recoils.
+  redshift_range: z=0 local halo/Galactic disk population
+  relevance: critical
+  scale_range: keV electron recoils
+  source_reference_ids:
+  - arxiv:2007.14421
+  - arxiv:2012.05891
+  subchannel: electron recoil
+- caveats:
+  - Morphology depends on magnetic trapping and C-particle transport.
+  channel: indirect_detection
+  effect_direction: spectral_line
+  environments:
+  - Galactic magnetic field
+  - Galactic center
+  id: obs_pico_511_kev_line
+  key_quantities:
+  - description: null
+    name: dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: inferred
+    symbol: m_X
+    unit: MeV
+    value: 10
+  - description: null
+    name: C-particle mass
+    range: m_C < 12 MeV for high-energy positron bounds
+    role: core
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: inferred
+    symbol: m_C
+    unit: MeV
+  - description: null
+    name: C-particle charge
+    role: core
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: inferred
+    symbol: q_C
+    value: order 1e-11 e
+  linked_constraints:
+  - con_pico_positron_energy
+  linked_routes:
+  - route_pico_decay_to_511_xenon
+  name: 511 keV line from trapped C anti-C annihilation
+  notes: null
+  observability: medium
+  predicted_effect: C and anti-C accumulate in the Galactic disk and eventually annihilate to e+e-, yielding
+    positronium and the 511 keV photon line.
+  redshift_range: present-day Milky Way
+  relevance: high
+  scale_range: Galactic-center/bulge positronium emission
+  source_reference_ids:
+  - arxiv:2007.14421
+  - arxiv:2007.09105
+  subchannel: Galactic-center 511 keV line
+- caveats:
+  - Bounds can be relaxed by additional interactions or cancellations in the mixing parameters.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early Universe
+  - stars
+  - supernova cores
+  id: obs_pico_dark_photon_constraints
+  key_quantities:
+  - description: null
+    name: dark photon mass
+    range: keV to MeV depending on scenario
+    role: core
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: inferred
+    symbol: m_Aprime
+  - description: null
+    name: dark photon coupling to SM fermions
+    range: below about 1e-9 sqrt(m_Aprime/MeV) for an N_eff example; supernova limits can be slightly
+      below 1e-10
+    role: core
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: inferred
+    symbol: q_prime
+  linked_constraints:
+  - con_pico_dark_photon_side_bounds
+  linked_routes:
+  - route_pico_decay_to_511_xenon
+  name: Dark-photon mixing and light mediator side constraints
+  notes: null
+  observability: medium
+  predicted_effect: The dark photon can contribute to N_eff or cooling unless its coupling, mass, and
+    possible decay channels avoid BBN and stellar/supernova limits.
+  redshift_range: BBN era and stellar/supernova environments
+  relevance: medium
+  scale_range: keV-MeV mediator masses
+  source_reference_ids:
+  - arxiv:2007.14421
+  subchannel: N_eff and stellar/supernova cooling
+constraints:
+- allowed_regions:
+  - Excluding the lowest bin relaxes the bound to about 1e-5; f of order 1e-7 can still address the 511
+    keV line.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The inferred f limit depends on whether the lowest XENON1T energy bin is included at
+      face value.
+    id: xenon1t-lowest-bin-treatment
+    impact_if_violated: Background modeling can move the best fit and bound on f.
+    scope: electron-recoil fit
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: assumed
+  benchmark_implications:
+  - The bound implies X lifetimes about 1e5-1e6 times the age of the Universe.
+  caveats:
+  - No XENON1T likelihood was rerun.
+  constrained_parameters:
+  - f
+  - tau_X
+  - q_C
+  - m_C
+  - v_f
+  constraint_type: direct_detection
+  data_release: XENON1T electron-recoil excess as used in the primary paper
+  excluded_regions:
+  - Taking all E_r<8 keV bins at face value, the primary paper gives an upper bound f about 1.5e-6 at
+    3 sigma.
+  id: con_pico_xenon1t_fraction_lifetime
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: XENON1T electron-recoil bound on decayed fraction and X lifetime
+  notes: null
+  observable_channel: electron recoil
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2007.14421
+  - arxiv:2012.05891
+- allowed_regions:
+  - m_C in the few-MeV range is used for the XENON1T/511 keV benchmark.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The positron energy estimate assumes the C particles have cooled to the source velocity
+      v_f distribution.
+    id: cooled-c-velocity
+    impact_if_violated: A hotter C population would strengthen high-energy positron constraints.
+    scope: 511 keV positron injection
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: assumed
+  benchmark_implications:
+  - The m_C=4 MeV example lies in the low-energy positron-safe region.
+  caveats:
+  - Transport of C particles was not simulated in this batch.
+  constrained_parameters:
+  - m_C
+  - C velocity distribution
+  - positron injection energy
+  constraint_type: indirect_detection
+  data_release: Voyager and in-flight annihilation bounds as summarized by the primary paper
+  excluded_regions:
+  - The primary paper states that keeping m_C below 12 MeV readily satisfies Voyager and in-flight annihilation
+    bounds.
+  id: con_pico_positron_energy
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: High-energy positron and in-flight annihilation bound on m_C
+  notes: null
+  observable_channel: 511 keV positron injection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2007.14421
+  - arxiv:2007.09105
+- allowed_regions:
+  - The primary paper describes cancellations or extra interactions/decays that can relax parts of these
+    bounds.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The side bounds depend on whether A-prime reaches thermal equilibrium and on its decay
+      channels.
+    id: dark-photon-thermal-history
+    impact_if_violated: Additional invisible or trapping interactions can weaken simple cooling bounds.
+    scope: mediator cosmology and astrophysics
+    source_reference_ids:
+    - arxiv:2007.14421
+    status: assumed
+  benchmark_implications:
+  - The mediator sector must be specified before the pico-charged signal can be globally constrained.
+  caveats:
+  - No stellar, supernova, or BBN likelihood was rerun.
+  constrained_parameters:
+  - m_Aprime
+  - q_prime
+  - dark photon decay modes
+  - mixing cancellation
+  constraint_type: cosmological
+  data_release: N_eff and cooling constraints summarized in the primary paper
+  excluded_regions:
+  - A light A-prime with too-large SM coupling can be excluded by N_eff, stellar cooling, or supernova
+    cooling bounds.
+  id: con_pico_dark_photon_side_bounds
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Dark-photon N_eff and cooling side bounds
+  notes: null
+  observable_channel: N_eff, stellar cooling, supernova cooling
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2007.14421
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The signal interpretation is sensitive to detector backgrounds and Galactic magnetic/cooling assumptions.
+    constraint_ids:
+    - con_pico_xenon1t_fraction_lifetime
+    - con_pico_positron_energy
+    - con_pico_dark_photon_side_bounds
+    derived_quantities:
+    - C local density
+    - electron recoil spectrum
+    - positron injection spectrum
+    - 511 keV line intensity
+    - dark photon side bounds
+    description: Map rare X decay into trapped pico-charged C particles, Galactic 511 keV emission, and
+      terrestrial electron recoils.
+    forward_model_chain:
+    - inputs:
+      - Gamma_X
+      - t_0
+      - m_X
+      notes: null
+      outputs:
+      - f
+      - C abundance
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for rare decays with f much less than 1.
+    - inputs:
+      - q_C
+      - Galactic magnetic field
+      - cooling on Y
+      notes: null
+      outputs:
+      - C retention
+      - v_f
+      step_id: s2
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Requires magnetic trapping and cooling assumptions.
+    - inputs:
+      - C-electron scattering
+      - detector response
+      notes: null
+      outputs:
+      - XENON1T recoil spectrum
+      - bound on f
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: XENON1T likelihood not rerun in this batch.
+    - inputs:
+      - m_C
+      - positron energy
+      - C annihilation
+      notes: null
+      outputs:
+      - 511 keV and high-energy positron constraints
+      step_id: s4
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires Galactic transport/morphology recast.
+    id: route_pico_decay_to_511_xenon
+    input_parameters:
+    - m_X
+    - m_C
+    - q_C
+    - f
+    - v_f
+    - m_Aprime
+    - q_prime
+    likelihoods:
+    - XENON1T likelihood unavailable
+    - 511 keV morphology likelihood unavailable
+    - dark photon side-bound likelihoods unavailable
+    observable_ids:
+    - obs_pico_xenon1t_electron_recoils
+    - obs_pico_511_kev_line
+    - obs_pico_dark_photon_constraints
+    required_code_resources:
+    - electron-recoil detector response
+    - Galactic C-particle transport model
+    - 511 keV positron propagation/morphology recast
+    route_status: planned
+    source_model_features:
+    - metastable MeV scalar X
+    - pico-charged C and anti-C
+    - dark photon mediator
+    - Galactic magnetic trapping
+    validation_tests:
+    - recover f bound about 1.5e-6 at 3 sigma when all low-energy bins are used
+    - recover m_C < 12 MeV high-energy positron guidance
+    - recover v_f about 0.08 c benchmark

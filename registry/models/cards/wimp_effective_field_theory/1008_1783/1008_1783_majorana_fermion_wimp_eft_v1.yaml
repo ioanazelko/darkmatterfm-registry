@@ -1,0 +1,402 @@
+_source:
+  shard: arXiv_src_1008_002_wds.tar
+  paper_id: '1008_1783'
+  source_member: 1008_1783.json
+agent_failure_modes:
+  warnings:
+  - category: extrapolation
+    id: eft_not_uv_complete
+    mitigation: null
+    severity: medium
+    source_reference_ids:
+    - '1008_1783'
+    warning: Do not extrapolate this contact-operator card above the mediator scale or treat it as a specified
+      UV completion.
+  - category: other
+    id: operator_family_row
+    mitigation: null
+    severity: low
+    source_reference_ids:
+    - '1008_1783'
+    warning: This row summarizes an operator family; individual operator coefficients may map differently
+      to phenomenology.
+associated_code:
+  caveats:
+  - No paper-specific code release is identified.
+  code_summary: The paper reports using CompHEP, Pythia, and PGS for collider simulations, but does not
+    identify a model-specific public implementation.
+  containers_or_environments: []
+  expected_inputs:
+  - WIMP mass
+  - operator coefficients
+  - collider cuts
+  expected_outputs:
+  - cross sections
+  - event yields
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules:
+  - archive_url: null
+    availability: public
+    citation_reference_ids:
+    - '1008_1783'
+    commit: null
+    dependencies: []
+    documentation_url: null
+    doi: null
+    inputs:
+    - operator choice
+    - WIMP mass
+    - M_*
+    languages: []
+    last_checked: null
+    license: null
+    maintained: unknown
+    name: CompHEP
+    notes: Mentioned as the partonic event generator used in the paper.
+    outputs:
+    - partonic production cross sections
+    purpose:
+    - compute_cross_sections
+    relationship_to_model: related_but_not_model_specific
+    repository_url: null
+    resource_type: package
+    supported_model_families:
+    - singlet WIMP effective operators
+    supported_observables: []
+    supported_parameters: []
+    url: null
+    validity_domain: []
+    version: null
+  primary_code_role: collider_simulation
+  repositories: []
+  scripts: []
+  supported_observable_channels: []
+assumptions:
+  computation_specific: []
+  constraint_specific: []
+  global:
+  - can_be_relaxed: unknown
+    description: The WIMP is a Standard-Model gauge singlet.
+    id: sm_singlet
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The WIMP is odd under a Z2-like stabilizing symmetry.
+    id: z2_parity
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Particles mediating WIMP-SM interactions are heavier than the WIMP and integrated out.
+    id: heavy_mediators
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The extraction follows the paper's focus on quark and gluon operators, neglecting lepton,
+      Higgs, and electroweak gauge couplings.
+    id: hadronic_focus
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - Majorana fermion WIMP EFT
+  family: wimp_effective_field_theory
+  historical_origin_or_motivation: Built to compare collider production of light WIMPs with low-energy
+    WIMP-nucleon scattering using a common operator language.
+  model_kind: effective_field_theory
+  name: SM-singlet Majorana WIMP effective-operator model
+  short_description: A phenomenological effective-field-theory model for a Standard-Model singlet WIMP
+    interacting with hadronic matter through contact operators.
+  status: benchmark
+interactions:
+  annihilation_channels:
+  - annihilation to quarks
+  - annihilation to gluons
+  cp_structure: operator-dependent
+  dark_sector_couplings:
+  - WIMP bilinear contact interactions
+  decay_channels: []
+  flavor_structure: minimal-flavor-violation normalization is used for scalar quark bilinears
+  interaction_operators:
+  - Majorana-fermion contact operators are treated as the self-conjugate fermion variant of the singlet
+    WIMP EFT.
+  - Quark scalar, pseudoscalar, vector, axial-vector, and tensor bilinears are discussed as allowed SM
+    factors.
+  - Color field-strength operators built from G_mu_nu are included for gluon-dominated couplings.
+  mediator_types:
+  - heavy integrated-out mediator
+  - contact interaction
+  portals:
+  - other
+  scattering:
+    elastic: 'yes'
+    inelastic: 'no'
+    momentum_dependence: unknown
+    spin_dependence: both
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - quark bilinears
+  - gluon field strengths
+  tree_or_loop_level: unknown
+model_id: 1008_1783_majorana_fermion_wimp_eft_v1
+operators:
+  contact_or_light_mediator: contact
+  coupling_types:
+  - scalar
+  - pseudoscalar
+  - vector
+  - axial_vector
+  - tensor
+  - gluon
+  eft_operators:
+  - WIMP bilinear times qbar Gamma q, normalized by powers of M_*
+  - WIMP bilinear times alpha_s G_mu_nu G^mu_nu or related gluon contractions
+  renormalizable_terms: []
+parameters:
+  core:
+  - description: Mass of the singlet WIMP candidate.
+    name: WIMP mass
+    role: core
+    status: unknown
+    symbol: m_chi or m_phi
+  - description: Operator-dependent scale controlling WIMP-SM interaction strength.
+    name: effective operator scale
+    role: core
+    status: assumed
+    symbol: M_*
+  - description: Choice among quark and gluon contact operators.
+    name: operator choice
+    role: core
+    status: assumed
+  derived: []
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: SM-singlet Majorana WIMP
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - heavy integrated-out mediator particles
+  standard_model_extension: minimal
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: thermal
+  f_of_p_or_q: unknown
+  free_streaming_length: null
+  notes: As a WIMP EFT benchmark, the candidate is implicitly cold after freeze-out.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - WIMP annihilation cross section
+  - operator scale M_*
+  - WIMP mass
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through WIMP-SM annihilation operators
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper uses thermal relic-density targets as reference lines; it does not provide a UV cosmology.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - This is a broad operator-family model card; the paper is primarily a collider phenomenology study.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: medium
+      note: The leading interactions are higher-dimensional contact operators coupling WIMP bilinears
+        to quark bilinears or gluon field strengths.
+      page: null
+      reference_id: '1008_1783'
+      section: Operator discussion
+    parameter_ranges:
+    - confidence: medium
+      note: Core free parameters are the WIMP mass, the operator scale M_*, and operator-dependent coefficients.
+      page: null
+      reference_id: '1008_1783'
+      section: Effective theory
+    particle_content:
+    - confidence: medium
+      note: The paper separates scalar, Dirac-fermion, and Majorana-fermion WIMP cases and assumes the
+        WIMP is the only accessible new particle.
+      page: null
+      reference_id: '1008_1783'
+      section: Model setup
+    production_mechanism:
+    - confidence: medium
+      note: The paper frames the candidates as WIMPs and compares operator strengths with thermal relic-density
+        targets.
+      page: null
+      reference_id: '1008_1783'
+      section: Introduction and results
+    symmetries:
+    - confidence: medium
+      note: The WIMP is assumed odd under a Z2-like symmetry, implying pair couplings and missing-energy
+        stability in collider events.
+      page: null
+      reference_id: '1008_1783'
+      section: Model setup
+    validity_domain:
+    - confidence: medium
+      note: The paper states the EFT is valid only when mediator masses are above the relevant WIMP and
+        collider energy scales.
+      page: null
+      reference_id: '1008_1783'
+      section: Validity discussion
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0009
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper analyzes fermion and scalar singlet WIMPs coupled to quarks or gluons
+        through higher-dimensional operators.
+      reference_id: '1008_1783'
+      section: Introduction and model setup
+    - page: null
+      quote_or_summary: The text assumes heavy mediators integrated out and discusses where the effective
+        theory breaks down.
+      reference_id: '1008_1783'
+      section: Effective theory validity
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: wimp_effective_field_theory
+  model_id: 1008_1783_majorana_fermion_wimp_eft_v1
+  model_name: SM-singlet Majorana WIMP effective-operator model
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    constraint_papers: []
+    external_databases: []
+    primary_papers:
+    - arxiv_id: '1008.1783'
+      authors:
+      - Jessica Goodman
+      - Masahiro Ibe
+      - Arvind Rajaraman
+      - William Shepherd
+      - Tim M. P. Tait
+      - Hai-Bo Yu
+      doi: null
+      notes: Assigned SQLite full text was the only source used for this extraction.
+      reference_id: '1008_1783'
+      role: original_model
+      title: Constraints on Dark Matter from Colliders
+      url: null
+      year: 2010
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: either
+  key_dependencies:
+  - WIMP mass
+  - operator scale M_*
+  - annihilation channel
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - UV completion
+  - EFT validity at collider momentum transfer
+  - operator choice
+  notes: The EFT is useful as a benchmark language but is not a UV-complete dark-matter model.
+  observational_robustness: not_applicable
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: A Z2-like parity makes the WIMP odd, so interactions contain an even number of
+    WIMPs and the candidate is stable on detector scales.
+  symmetries:
+  - breaking: none specified
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: WIMP parity
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff:
+    description: Scale suppressing the higher-dimensional WIMP-SM operator.
+    name: effective operator scale
+    role: core
+    status: assumed
+    symbol: M_*
+  embedded_in_larger_framework: unknown
+  lagrangian_available: partial
+  notes: The UV mediator sector is not fixed; the EFT is used below the mediator scale.
+  parent_frameworks:
+  - WIMP dark matter
+  - SM-singlet effective operators
+  renormalizable: 'no'
+  theory_level: effective_field_theory
+validity_domain:
+- applies_to: EFT
+  caveats: []
+  condition: Mediator masses should exceed the WIMP mass and the characteristic collider energy transfer.
+  extrapolation_risk: high
+  id: eft_validity
+  source_reference_ids: []
+  status: assumed
+- applies_to: model
+  caveats: []
+  condition: The paper notes a weakly coupled UV completion requires roughly m_chi less than 2 M_*.
+  extrapolation_risk: medium
+  id: weak_uv_completion
+  source_reference_ids: []
+  status: assumed

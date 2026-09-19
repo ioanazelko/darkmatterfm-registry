@@ -1,0 +1,688 @@
+_source:
+  shard: arXiv_src_2006_048_wds.tar
+  paper_id: '2006_13224'
+  source_member: 2006_13224.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2006_13224_inflationary_vector_dark_matter_radiation_v1
+identity:
+  name: Inflation-produced vector dark matter with neutrino decays
+  family: inflationary_vector_dark_matter
+  aliases:
+  - dark radiation from inflationary vector fluctuations
+  - minimal U(1) vector decaying dark matter
+  short_description: A light massive vector boson produced by inflationary fluctuations that can initially
+    behave as dark matter, but in anomaly-free U(1) extensions decays to neutrinos and becomes dark radiation
+    before recombination.
+  historical_origin_or_motivation: Motivated by gravitational production of spin-1 dark matter during
+    inflation and by possible dark-radiation contributions to the Hubble-tension era.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - inflationary gravitational production
+  - minimal anomaly-free U(1) gauge extensions
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper uses a massive vector Lagrangian plus representative neutrino gauge coupling and discusses
+    charge assignments at the class level.
+particle_content:
+  dark_matter_candidate:
+    name: massive vector boson V
+    spin: '1'
+    statistics: vector
+    elementary_or_composite: elementary
+    number_of_components: subcomponent
+  additional_dark_sector_particles:
+  - relic neutrinos from V decay
+  mediators:
+  - V gauge boson
+  dark_radiation_species:
+  - nonthermal neutrinos
+  long_lived_particles:
+  - V
+  unstable_parent_particles:
+  - V
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Cosmological metastability for kinetically mixed vectors below electron threshold;
+    in anomaly-free U(1) cases neutrino couplings make V unstable but potentially long-lived.
+  symmetries:
+  - name: anomaly-free U(1)
+    type: gauge
+    exact_or_approximate: exact
+  - name: neutrino-coupled lepton/baryon number combination
+    type: gauge
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - gravitational
+  standard_model_targets:
+  - neutrinos
+  - charged leptons in many anomaly-free assignments
+  - gravity
+  dark_sector_couplings:
+  - g V_mu nu gamma^mu nu
+  - kinetic mixing in comparison cases
+  mediator_types:
+  - light massive vector boson
+  decay_channels:
+  - V to neutrino pairs
+  - V to three photons for kinetically mixed comparison case
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: vector mass
+    symbol: m
+    description: Mass of the inflation-produced vector boson.
+    range: light vector regime; viable gravitational production quoted for m below about eV*(1e14 GeV/H_I)^4
+    unit: eV
+    role: core
+    status: inferred
+  - name: inflationary Hubble scale
+    symbol: H_I
+    description: Inflationary Hubble scale controlling gravitational production abundance.
+    value: 1e13 GeV benchmark in f_V scaling
+    unit: GeV
+    role: core
+    status: assumed
+  - name: gauge coupling
+    symbol: g
+    description: Coupling of V to neutrinos in anomaly-free U(1) extensions.
+    range: bounded by avoiding thermalization and by lifetime window
+    role: core
+    status: inferred
+  - name: present-day vector fraction if stable
+    symbol: f_V^0
+    description: Would-be dark matter fraction before decay effects.
+    value: scales as m^(1/2) H_I^2 in the paper formula
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - gravitational production of the longitudinal vector mode during inflation
+  - sub-Hubble freeze-in contribution from SM interactions when couplings are present
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - m
+  - H_I
+  - gauge coupling g
+  - vector lifetime
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The initial vector abundance is nonthermal and may be depleted by neutrino decays in minimal
+    anomaly-free U(1) models.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: nonthermal
+  key_dependencies:
+  - m
+  - H_I
+  - g
+  - neutrino masses
+  - decay epoch
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - inflationary production of massive vector longitudinal modes
+  - late decay to neutrinos between neutrino decoupling and photon decoupling in target region
+  - extra dark radiation at recombination
+  isocurvature_perturbations: 'no'
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: approximate
+  notes: The abundance is described by gravitational production scaling rather than a full distribution
+    function.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: Not studied; the paper focuses on background abundance and dark-radiation
+      conversion.
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: valid_inflationary_vector_01
+  applies_to: model
+  condition: Applies to light vector masses below the inflationary Hubble scale where longitudinal modes
+    are gravitationally produced.
+  status: inferred
+  extrapolation_risk: medium
+- id: valid_inflationary_vector_02
+  applies_to: parameter
+  condition: Dark-radiation prediction assumes V lifetime between neutrino decoupling and CMB photon decoupling
+    and sufficiently small couplings to avoid thermalization.
+  status: assumed
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: asm_inflationary_vector_01
+    description: Inflation produces the initial vector population through quantum fluctuations.
+    scope: production
+    status: assumed
+  - id: asm_inflationary_vector_02
+    description: At least one neutrino mass eigenstate is light enough for V to decay to neutrinos.
+    scope: cosmological_history
+    status: assumed
+  - id: asm_inflationary_vector_03
+    description: The U(1) charge assignment is anomaly-free and minimal, with no additional SM-charged
+      fermions.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code was identified in the assigned paper text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 2006_13224_inflationary_vector_dark_matter_radiation_v1
+  model_name: Inflation-produced vector dark matter with neutrino decays
+  model_family: inflationary_vector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2006_13224'
+      title: Dark Radiation from Inflationary Fluctuations
+      authors:
+      - Gordan Krnjaic
+      year: 2020
+      arxiv_id: '2006.13224'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned SQLite full text was the only source used.
+    - arxiv_id: '2006.13224'
+      authors:
+      - Krnjaic, Gordan
+      doi: 10.1103/PhysRevD.103.123507
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2006.13224
+      role: original_model
+      title: Dark radiation from inflationary fluctuations
+      url: https://arxiv.org/abs/2006.13224
+      year: 2021
+    constraint_papers:
+    - arxiv_id: '2207.13133'
+      authors:
+      - Yeh, Tsung-Han
+      - Shelton, Jessie
+      - Olive, Keith A.
+      - Fields, Brian D.
+      doi: 10.1088/1475-7516/2022/10/046
+      notes: Related BBN+CMB N_eff full text resolved locally and read.
+      reference_id: arxiv:2207.13133
+      role: constraint
+      title: 'Probing physics beyond the standard model: limits from BBN and the CMB independently and
+        combined'
+      url: https://arxiv.org/abs/2207.13133
+      year: 2022
+    - arxiv_id: '1807.06209'
+      authors:
+      - Planck Collaboration
+      - Aghanim, N.
+      - Akrami, Y.
+      - Ashdown, M.
+      - Aumont, J.
+      - Baccigalupi, C.
+      - Ballardini, M.
+      - Banday, A. J.
+      - et al.
+      doi: 10.1051/0004-6361/201833910
+      notes: Planck 2018 cosmological-parameters full text resolved locally and read.
+      reference_id: arxiv:1807.06209
+      role: constraint
+      title: Planck 2018 results. VI. Cosmological parameters
+      url: https://arxiv.org/abs/1807.06209
+      year: 2020
+    - arxiv_id: '1901.06944'
+      authors:
+      - Depta, Paul Frederik
+      - Hufnagel, Marco
+      - Schmidt-Hoberg, Kai
+      - Wild, Sebastian
+      doi: 10.1088/1475-7516/2019/04/029
+      notes: Related MeV thermal-history and N_eff full text resolved locally and read.
+      reference_id: arxiv:1901.06944
+      role: constraint
+      title: BBN constraints on the annihilation of MeV-scale dark matter
+      url: https://arxiv.org/abs/1901.06944
+      year: 2019
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0003
+    extractor_name: Codex GPT-5 dark-matter batch worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2006_13224'
+      section: Introduction
+      page: null
+      quote_or_summary: Light vector bosons from inflation can account for dark matter if metastable;
+        anomaly-free U(1) vectors decay to neutrinos.
+    - reference_id: '2006_13224'
+      section: Model setup/conclusion
+      page: null
+      quote_or_summary: The paper studies the fate of massive vectors produced by inflationary fluctuations
+        and their conversion to dark radiation.
+    unresolved_items:
+    - The paper treats a class of anomaly-free U(1) vectors rather than one fixed charge assignment.
+    - No CMB likelihood or H0-tension fit was rerun.
+    - Exact anomaly-free U(1) charge assignment and charged-fermion couplings determine additional thermalization
+      bounds.
+  evidence:
+    particle_content:
+    - reference_id: '2006_13224'
+      note: The candidate is a light massive vector boson V, produced gravitationally during inflation.
+      confidence: high
+      section: Introduction
+    symmetries:
+    - reference_id: '2006_13224'
+      note: The paper focuses on minimal anomaly-free U(1) gauge extensions such as B-L, L_i-L_j, and
+        B-3L_i that require neutrino couplings.
+      confidence: high
+      section: Introduction
+    interactions:
+    - reference_id: '2006_13224'
+      note: A representative interaction g V_mu nu_i gamma^mu nu_i is added to the Proca-like vector Lagrangian
+        in an FRW metric.
+      confidence: high
+      section: Model setup
+    production_mechanism:
+    - reference_id: '2006_13224'
+      note: The longitudinal vector mode is gravitationally produced from inflationary fluctuations and
+        can constitute a present-day dark matter fraction if stable.
+      confidence: high
+      section: Model setup
+    cosmological_history:
+    - reference_id: '2006_13224'
+      note: If V decays after neutrino decoupling but before CMB photon decoupling, it depletes the initial
+        dark matter population and increases relic neutrino radiation.
+      confidence: high
+      section: Introduction/conclusions
+    parameter_ranges:
+    - reference_id: '2006_13224'
+      note: The paper gives f_V^0 scaling with m and H_I and notes viable spin-1 inflationary production
+        for m below about eV*(1e14 GeV/H_I)^4.
+      confidence: medium
+      section: Introduction/model setup
+    validity_domain:
+    - reference_id: '2006_13224'
+      note: Thermalization through inverse decays or charged-fermion production must be avoided; the paper
+        derives gauge-coupling bounds.
+      confidence: medium
+      section: Thermalization discussion
+    constraints:
+    - confidence: high
+      note: Planck 2018 reports N_eff constraints compatible with the Standard Model value.
+      page: null
+      reference_id: arxiv:1807.06209
+      section: Cosmological parameters
+    - confidence: high
+      note: Related BBN+CMB analysis gives tight independent and combined limits on equivalent neutrino
+        species.
+      page: null
+      reference_id: arxiv:2207.13133
+      section: Abstract
+    - confidence: high
+      note: Primary text identifies thermalization through inverse decays/charged production as a bound
+        on the coupling.
+      page: null
+      reference_id: arxiv:2006.13224
+      section: Thermal production discussion
+    observables:
+    - confidence: high
+      note: Primary text states that vector decays after BBN/neutrino decoupling can give N_eff > 0 at
+        recombination and no BBN shift.
+      page: null
+      reference_id: arxiv:2006.13224
+      section: Abstract
+    - confidence: high
+      note: Primary text gives the vector decay width to neutrinos and evolves the injected neutrino radiation
+        density.
+      page: null
+      reference_id: arxiv:2006.13224
+      section: Vector decay calculation
+    routes:
+    - confidence: high
+      note: Primary paper connects inflationary vector production, neutrino decays, and Delta N_eff predictions.
+      page: null
+      reference_id: arxiv:2006.13224
+      section: Model calculation
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: low
+  dominant_uncertainties:
+  - choice of anomaly-free U(1) assignment
+  - neutrino mass spectrum
+  - thermalization bounds
+  - decay lifetime window
+  validation_status: expert_judgment_only
+  notes: The paper gives analytic abundance and decay estimates but not a single fully specified charge
+    model.
+agent_failure_modes:
+  warnings:
+  - id: warn_inflationary_vector_01
+    severity: medium
+    category: assumption_mismatch
+    warning: Stable kinetically mixed vectors and neutrino-coupled anomaly-free U(1) vectors have different
+      lifetimes and cosmological outcomes.
+    mitigation: Keep the neutrino-coupled decay assumption explicit.
+  - id: warn_inflationary_vector_02
+    severity: medium
+    category: extrapolation
+    warning: The entry should not be mapped directly to late-time cold dark matter if V decays before
+      recombination in the target parameter space.
+    mitigation: Track whether the chosen point is stable, metastable, or depleted into radiation.
+observables:
+- caveats:
+  - The primary paper notes tension with the full CMB data set for Hubble-tension relief.
+  - Precise Delta N_eff requires numerical integration of the decay history.
+  channel: cmb
+  effect_direction: enhancement
+  environments:
+  - early-universe neutrino bath
+  - CMB plasma
+  id: obs_vector_decay_delta_neff
+  key_quantities:
+  - description: Mass of the inflation-produced vector.
+    name: vector mass
+    range: light vector regime; m below the inflationary Hubble scale and often sub-eV to eV in examples
+    role: core
+    source_reference_ids:
+    - arxiv:2006.13224
+    status: inferred
+    symbol: m
+    unit: eV
+  - description: Controls the initial gravitational vector abundance.
+    name: inflationary Hubble scale
+    range: bounded by tensor-mode limits; benchmark 1e14 GeV appears in scaling
+    role: core
+    source_reference_ids:
+    - arxiv:2006.13224
+    status: inferred
+    symbol: H_I
+    unit: GeV
+  - description: Neutrino coupling controlling decay width and thermalization.
+    name: gauge coupling
+    range: must be small enough to avoid thermalization; decay window fixes useful range
+    role: core
+    source_reference_ids:
+    - arxiv:2006.13224
+    status: inferred
+    symbol: g
+  - description: Radiation contribution from late vector decays.
+    name: extra effective neutrino number
+    range: approximately proportional to (H_I/1e14 GeV)^2 (1e-8/g) in the instantaneous-decay estimate
+    role: derived
+    source_reference_ids:
+    - arxiv:2006.13224
+    status: approximate
+    symbol: Delta N_eff
+  linked_constraints:
+  - con_vector_cmb_neff_window
+  - con_vector_thermalization_bound
+  linked_routes:
+  - route_vector_inflation_decay_neff
+  name: Dark radiation from vector decays to neutrinos
+  notes: null
+  observability: high
+  predicted_effect: Inflation-produced massive vectors that decay to neutrinos after neutrino decoupling
+    but before CMB photon decoupling increase N_eff at recombination while leaving BBN N_eff unchanged.
+  redshift_range: after neutrino decoupling and before photon decoupling
+  relevance: critical
+  scale_range: homogeneous radiation density in CMB observables
+  source_reference_ids:
+  - arxiv:2006.13224
+  - arxiv:2207.13133
+  - arxiv:1807.06209
+  - arxiv:1901.06944
+  subchannel: extra effective neutrino number
+- caveats:
+  - Late decays outside the useful window change matter density rather than CMB dark radiation.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early-universe dark sector
+  - cosmic neutrino background
+  id: obs_vector_unstable_dm_depletion
+  key_quantities:
+  - description: Inverse of the summed neutrino decay width.
+    name: vector lifetime
+    role: derived
+    source_reference_ids:
+    - arxiv:2006.13224
+    status: inferred
+    symbol: tau_V
+    unit: s
+  - description: Present-day dark matter fraction if the vector were stable.
+    name: would-be stable vector fraction
+    range: scales as m^(1/2) H_I^2 in the primary formula
+    role: derived
+    source_reference_ids:
+    - arxiv:2006.13224
+    status: inferred
+    symbol: f_V0
+  linked_constraints:
+  - con_vector_cmb_neff_window
+  linked_routes:
+  - route_vector_inflation_decay_neff
+  name: Decay of initially matter-like vector abundance
+  notes: null
+  observability: medium
+  predicted_effect: The inflationary vector population initially behaves as an unstable dark matter component;
+    decays before CMB freeze-out convert that energy to relativistic neutrinos, while decays after last
+    scattering would instead raise the matter density at recombination.
+  redshift_range: neutrino decoupling through last scattering
+  relevance: high
+  scale_range: background expansion history
+  source_reference_ids:
+  - arxiv:2006.13224
+  subchannel: decaying dark-matter subcomponent
+constraints:
+- allowed_regions:
+  - Useful models decay after neutrino decoupling and before CMB photon decoupling, producing Delta N_eff
+    at recombination but not during BBN.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Vector decays occur after BBN/neutrino decoupling but before photon decoupling.
+    id: post_bbn_decay_window
+    impact_if_violated: If decays occur too early or too late, the CMB and BBN interpretation changes.
+    notes: null
+    scope: N_eff signal timing
+    source_reference_ids:
+    - arxiv:2006.13224
+    status: assumed
+  benchmark_implications:
+  - CMB-S4-level sensitivity can test the primary paper target range.
+  caveats:
+  - No Planck or CMB-S4 likelihood was rerun.
+  - BBN limits apply differently because the primary signal is post-BBN.
+  constrained_parameters:
+  - Delta N_eff
+  - g
+  - H_I
+  - tau_V
+  - T_decay
+  constraint_type: cosmological
+  data_release: Planck 2018 cosmological parameters and related BBN+CMB N_eff analyses
+  excluded_regions:
+  - Parameter choices that inject too much radiation before recombination exceed Planck-era and combined
+    BBN+CMB N_eff limits.
+  - Decays before neutrino decoupling thermalize and do not produce the intended separate dark-radiation
+    signal.
+  id: con_vector_cmb_neff_window
+  likelihood_available: partial
+  likelihood_reference: null
+  name: CMB/BBN N_eff consistency for late neutrino injection
+  notes: null
+  observable_channel: cmb+bbn
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2006.13224
+  - arxiv:1807.06209
+  - arxiv:2207.13133
+- allowed_regions:
+  - Feeble neutrino coupling keeps the inflation-produced vector population out of thermal equilibrium
+    while still allowing decays in the target window.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The vector couples feebly to at least one sufficiently light neutrino mass eigenstate.
+    id: minimal_neutrino_coupling
+    impact_if_violated: Additional charged couplings can thermalize V and change Delta N_eff.
+    notes: null
+    scope: decay and thermalization calculation
+    source_reference_ids:
+    - arxiv:2006.13224
+    - arxiv:1901.06944
+    status: assumed
+  benchmark_implications:
+  - Thermalization bounds must be applied before interpreting Delta N_eff as solely inflation-produced
+    vector radiation.
+  caveats:
+  - Charged-fermion couplings are model dependent.
+  constrained_parameters:
+  - g
+  - m
+  - T_nu_dec
+  - Gamma_V/H
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - If inverse decays or charged-fermion production thermalize the vector before neutrino decoupling,
+    the model predicts a large extra radiation contribution rather than the desired inflationary relic
+    signal.
+  id: con_vector_thermalization_bound
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Avoiding vector thermalization with the Standard Model bath
+  notes: null
+  observable_channel: thermal_history
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2006.13224
+  - arxiv:1901.06944
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Tension with full CMB H0 fits must be evaluated separately.
+    constraint_ids:
+    - con_vector_cmb_neff_window
+    - con_vector_thermalization_bound
+    derived_quantities:
+    - f_V0
+    - Gamma_V
+    - tau_V
+    - T_decay
+    - Delta N_eff
+    description: Compute the inflation-produced vector abundance, decay it into neutrinos, and compare
+      the resulting recombination-time Delta N_eff to CMB and BBN consistency limits.
+    forward_model_chain:
+    - inputs:
+      - m
+      - H_I
+      notes: null
+      outputs:
+      - would-be stable vector abundance f_V0
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Use primary inflationary production scaling.
+    - inputs:
+      - g
+      - m
+      - neutrino channels
+      notes: null
+      outputs:
+      - Gamma_V
+      - tau_V
+      - T_decay
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for feeble coupling and allowed neutrino channels.
+    - inputs:
+      - rho_V(t)
+      - decay history
+      notes: null
+      outputs:
+      - Delta N_eff at recombination
+      step_id: s3
+      step_type: data_transform
+      tool_or_code: null
+      validity: Primary paper integrates the neutrino radiation density; instantaneous estimate is approximate.
+    - inputs:
+      - Delta N_eff
+      notes: null
+      outputs:
+      - CMB/BBN consistency
+      step_id: s4
+      step_type: likelihood
+      tool_or_code: null
+      validity: Requires external CMB/BBN likelihoods; not run here.
+    id: route_vector_inflation_decay_neff
+    input_parameters:
+    - m
+    - H_I
+    - g
+    - neutrino mass spectrum
+    - decay window
+    likelihoods:
+    - Planck N_eff likelihood
+    - CMB-S4 forecast likelihood
+    - BBN light-element likelihood
+    observable_ids:
+    - obs_vector_decay_delta_neff
+    - obs_vector_unstable_dm_depletion
+    required_code_resources:
+    - background decay integrator
+    - Boltzmann/CMB N_eff likelihood wrapper
+    route_status: planned
+    source_model_features:
+    - massive vector produced by inflationary fluctuations
+    - feeble U(1) neutrino coupling
+    - metastable matter-like abundance
+    - late decay to neutrino radiation
+    validation_tests:
+    - recover zero BBN Delta N_eff for post-BBN decays
+    - recover primary mass cancellation in the approximate Delta N_eff formula

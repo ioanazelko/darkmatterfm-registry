@@ -1,0 +1,600 @@
+_source:
+  shard: arXiv_src_1108_002_wds.tar
+  paper_id: '1108_1391'
+  source_member: 1108_1391.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1108_1391_elastic_scalar_vector_isospin_violating_dm_v1
+identity:
+  name: Elastic scalar-vector isospin-violating dark matter
+  family: isospin_violating_dark_matter
+  aliases:
+  - elastic scalar-exchange IVDM
+  short_description: Dirac dark matter model where elastic isospin-violating scattering comes from interference
+    between a kinetically mixed vector and a real singlet scalar mixed with the Higgs.
+  historical_origin_or_motivation: Constructed as an elastic alternative for CoGeNT/DAMA-motivated isospin
+    violation.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - hidden-sector vector portal
+  - Higgs portal scalar mediator
+  - Dirac fermion dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: An economical model, but it still needs a singlet Higgs sector to break the hidden U(1).
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - real singlet scalar phi
+  - hidden U(1)-breaking scalar
+  mediators:
+  - kinetically mixed Z prime
+  - real singlet scalar phi
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Dirac dark matter remains stable in the hidden-sector construction.
+  symmetries:
+  - name: U(1) prime
+    type: gauge
+    exact_or_approximate: broken
+    breaking: broken by a singlet Higgs sector
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - higgs
+  standard_model_targets:
+  - electromagnetic current
+  - SM fermions through Higgs mixing
+  - nucleons
+  dark_sector_couplings:
+  - Dirac DM coupling to Z prime
+  - Yukawa coupling to singlet scalar
+  - Higgs portal phi^2 h^2
+  mediator_types:
+  - light vector
+  - scalar
+  interaction_operators:
+  - chi (g prime Z prime + y phi) chi
+  - theta_s y_i phi f_i f_i
+  - epsilon j_EM Z prime
+  scattering:
+    elastic: 'yes'
+    inelastic: 'no'
+    momentum_dependence: none
+    velocity_dependence: none
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - chi chi to Z prime Z prime
+  - chi chi to Z prime phi
+  - chi chi to charged SM fermions through Z prime
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: M
+    value: '7.5'
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet scalar mass
+    symbol: m_phi
+    range: <10
+    unit: GeV
+    role: core
+    status: inferred
+  - name: kinetically mixed vector mass
+    symbol: m_Zprime
+    range: typically below 1 GeV in relic contours
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs-scalar mixing angle
+    symbol: theta_s
+    range: <0.01 for m_phi < 5 GeV in the text
+    role: core
+    status: inferred
+  - name: thermal annihilation cross section
+    symbol: <sigma_ann v>
+    value: 3e-26
+    unit: cm^3/s
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through Z-prime and scalar mediator channels
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - Z-prime mass and coupling
+  - scalar mass and Yukawa coupling
+  - Higgs mixing angle
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper plots m_Zprime-m_phi relic-density contours.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_Zprime
+  - m_phi
+  - Higgs mixing angle
+  - kinetic mixing
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - hidden-sector scalar and vector mediators
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - hidden U(1) breaking
+  - singlet scalar mixing with SM Higgs
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Thermal relic freeze-out is used for abundance.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: elastic_variant
+  applies_to: model
+  condition: This variant is elastic and does not realize the inelastic mass splitting.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: light_scalar_window
+  applies_to: parameter
+  condition: Scalar mass is kept below about 10 GeV in the paper-supported relic contours.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: elastic_interpretation
+    description: The model assumes the elastic scattering alternative is adequate.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+  - id: thermal_history
+    description: A standard thermal relic calculation is assumed.
+    scope: production
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated code is described in the assigned text.
+provenance:
+  model_id: 1108_1391_elastic_scalar_vector_isospin_violating_dm_v1
+  model_name: Elastic scalar-vector isospin-violating dark matter
+  model_family: isospin_violating_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1108.1391'
+      title: Isospin-violating dark matter models for DAMA and CoGeNT
+      authors:
+      - James M. Cline
+      - Zuowei Liu
+      - Wei Xue
+      year: 2011
+      arxiv_id: '1108.1391'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '1108.1391'
+      authors:
+      - Cline, James M.
+      - Frey, Andrew R.
+      doi: 10.1103/PhysRevD.84.075003
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1108.1391
+      role: original_model
+      title: Minimal hidden sector models for CoGeNT/DAMA events
+      url: https://arxiv.org/abs/1108.1391
+      year: 2011
+    constraint_papers:
+    - arxiv_id: '1105.3734'
+      authors:
+      - Frandsen, Mads T.
+      - Kahlhoefer, Felix
+      - March-Russell, John
+      - McCabe, Christopher
+      - McCullough, Matthew
+      - Schmidt-Hoberg, Kai
+      doi: 10.1103/PhysRevD.84.041301
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1105.3734
+      role: constraint
+      title: On the DAMA and CoGeNT modulations
+      url: https://arxiv.org/abs/1105.3734
+      year: 2011
+    - arxiv_id: '1108.3943'
+      authors:
+      - An, Haipeng
+      - Gao, Fei
+      doi: 10.48550/arXiv.1108.3943
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1108.3943
+      role: constraint
+      title: Fitting CoGeNT Modulation with an Inelastic, Isospin-Violating $Z'$ Model
+      url: https://arxiv.org/abs/1108.3943
+      year: 2011
+    - arxiv_id: '0910.3698'
+      authors:
+      - Angle, J.
+      - Aprile, E.
+      - Arneodo, F.
+      - Baudis, L.
+      - Bernstein, A.
+      - Bolozdynya, A.
+      - Coelho, L. C. C.
+      - Dahl, C. E.
+      doi: 10.1103/PhysRevD.80.115005
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:0910.3698
+      role: constraint
+      title: Constraints on inelastic dark matter from XENON10
+      url: https://arxiv.org/abs/0910.3698
+      year: 2009
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex-batch-0008
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1108.1391'
+      section: Scalar exchange/Relic density/Recapitulation
+      page: null
+      quote_or_summary: Paper constructs the elastic scalar-vector IVDM alternative and computes relic-density
+        contours.
+    unresolved_items:
+    - No direct-detection or relic likelihood was rerun.
+    - Do not merge this row with the inelastic vector variant.
+  evidence:
+    particle_content:
+    - reference_id: '1108.1391'
+      note: The scalar-exchange model has exactly Dirac dark matter with M = 7.5 GeV and elastic scattering.
+      confidence: high
+      section: Recapitulation
+      page: null
+    interactions:
+    - reference_id: '1108.1391'
+      note: Isospin violation arises from interference between a kinetically mixed Z prime and a hidden-sector
+        scalar Higgs mixed through the Higgs portal.
+      confidence: high
+      section: Scalar exchange
+      page: null
+    production_mechanism:
+    - reference_id: '1108.1391'
+      note: The relic-density section uses analogous annihilation channels with B replaced by the scalar
+        and retains Z-prime channels.
+      confidence: high
+      section: Relic density
+      page: null
+    parameter_ranges:
+    - reference_id: '1108.1391'
+      note: The text states m_phi below about 10 GeV and m_Zprime/m_phi usually below 1 GeV in relic contours.
+      confidence: high
+      section: Recapitulation
+      page: null
+    validity_domain:
+    - reference_id: '1108.1391'
+      note: This is the elastic-scattering alternative if inelasticity is not demanded.
+      confidence: medium
+      section: Introduction
+      page: null
+    constraints:
+    - confidence: medium
+      note: Primary paper uses canonical thermal cross-section contours.
+      page: null
+      reference_id: arxiv:1108.1391
+      section: Relic density
+    - confidence: medium
+      note: Related direct-detection paper compares target response assumptions.
+      page: null
+      reference_id: arxiv:1105.3734
+      section: Experiment comparison
+    observables:
+    - confidence: high
+      note: Primary text presents an elastic scalar-vector alternative with a light singlet scalar.
+      page: null
+      reference_id: arxiv:1108.1391
+      section: Model construction
+    routes:
+    - confidence: high
+      note: Primary text supplies the mediator-level route to direct-detection and relic observables.
+      page: null
+      reference_id: arxiv:1108.1391
+      section: Model sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  validation_status: expert_judgment_only
+  dominant_uncertainties: []
+  notes: Machine-extracted from assigned full text only.
+agent_failure_modes:
+  warnings:
+  - id: elastic_variant_context
+    severity: low
+    category: assumption_mismatch
+    warning: Do not merge this elastic variant with the inelastic vector model from the same paper.
+    mitigation: null
+    source_reference_ids: []
+observables:
+- caveats: []
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - DAMA
+  - CoGeNT
+  - xenon/germanium detectors
+  id: obs_elastic_scalar_vector_recoil
+  key_quantities:
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:1108.1391
+    status: inferred
+    symbol: M
+    unit: GeV
+    value: about 7.5
+  - name: singlet scalar mass
+    range: <10
+    role: core
+    source_reference_ids:
+    - arxiv:1108.1391
+    status: inferred
+    symbol: m_phi
+    unit: GeV
+  - name: Higgs-singlet mixing
+    range: <0.01 for light phi
+    role: core
+    source_reference_ids:
+    - arxiv:1108.1391
+    status: inferred
+    symbol: theta_s
+  linked_constraints:
+  - con_elastic_direct_detection
+  - con_elastic_relic_target
+  linked_routes:
+  - route_elastic_recoil_relic
+  name: Elastic scalar-vector IVDM recoil response
+  notes: null
+  observability: medium
+  predicted_effect: Scalar and vector mediator interference produces target-dependent elastic scattering
+    for the CoGeNT/DAMA-motivated low-mass region.
+  redshift_range: null
+  relevance: high
+  scale_range: keV nuclear recoils
+  source_reference_ids:
+  - arxiv:1108.1391
+  - arxiv:1105.3734
+  subchannel: elastic SI nuclear recoils
+- caveats: []
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early universe thermal plasma
+  id: obs_elastic_thermal_target
+  key_quantities:
+  - name: thermal cross section
+    role: core
+    source_reference_ids:
+    - arxiv:1108.1391
+    status: inferred
+    symbol: <sigma_ann v>
+    unit: cm^3/s
+    value: 3e-26
+  - name: vector mass
+    range: below about 1 GeV in relic contours
+    role: core
+    source_reference_ids:
+    - arxiv:1108.1391
+    status: inferred
+    symbol: m_Zprime
+    unit: GeV
+  linked_constraints:
+  - con_elastic_relic_target
+  linked_routes:
+  - route_elastic_recoil_relic
+  name: Elastic model thermal annihilation target
+  notes: null
+  observability: medium
+  predicted_effect: The source compares light-mediator annihilation channels with the canonical thermal
+    relic target.
+  redshift_range: freeze-out epoch
+  relevance: medium
+  scale_range: null
+  source_reference_ids:
+  - arxiv:1108.1391
+  subchannel: thermal freeze-out
+constraints:
+- allowed_regions:
+  - Tuned scalar-vector regions can weaken xenon tension in historical comparisons.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Elastic recoil mapping assumes experiment-specific quenching and thresholds.
+    id: elastic_mapping
+    impact_if_violated: null
+    scope: direct_detection
+    source_reference_ids:
+    - arxiv:1105.3734
+    status: assumed
+  benchmark_implications:
+  - Viability is tied to historical detector assumptions.
+  caveats: []
+  constrained_parameters:
+  - M
+  - m_phi
+  - theta_s
+  - f_p/f_n
+  constraint_type: direct_detection
+  data_release: null
+  excluded_regions:
+  - Untuned low-mass SI scattering is constrained by xenon/germanium bounds.
+  id: con_elastic_direct_detection
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Elastic IVDM direct-detection target response
+  notes: null
+  observable_channel: low-mass SI recoils
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1108.1391
+  - arxiv:1105.3734
+- allowed_regions:
+  - Source relic contours target the canonical thermal value.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The relic target assumes standard thermal freeze-out.
+    id: standard_history
+    impact_if_violated: null
+    scope: production
+    source_reference_ids:
+    - arxiv:1108.1391
+    status: assumed
+  benchmark_implications:
+  - No relic contour was reproduced here.
+  caveats: []
+  constrained_parameters:
+  - <sigma_ann v>
+  - m_phi
+  - m_Zprime
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Away from source contours the model can over- or under-produce DM.
+  id: con_elastic_relic_target
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Canonical thermal relic target for elastic model
+  notes: null
+  observable_channel: thermal relic density
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1108.1391
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats: []
+    constraint_ids:
+    - con_elastic_direct_detection
+    - con_elastic_relic_target
+    derived_quantities:
+    - SI amplitudes
+    - annihilation cross section
+    - recoil spectrum
+    description: Connect scalar/vector mediator parameters to elastic recoil rates and relic-density contours.
+    forward_model_chain:
+    - inputs:
+      - M
+      - m_phi
+      - m_Zprime
+      - theta_s
+      - epsilon
+      notes: Compute model-level quantities.
+      outputs:
+      - SI amplitudes
+      - annihilation cross section
+      - recoil spectrum
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Use source model assumptions.
+    - inputs:
+      - SI amplitudes
+      - annihilation cross section
+      - recoil spectrum
+      notes: Compare to the cited constraints or projections.
+      outputs:
+      - con_elastic_direct_detection
+      - con_elastic_relic_target
+      step_id: s2
+      step_type: likelihood
+      tool_or_code: null
+      validity: Likelihood assets were not bundled in this batch.
+    id: route_elastic_recoil_relic
+    input_parameters:
+    - M
+    - m_phi
+    - m_Zprime
+    - theta_s
+    - epsilon
+    likelihoods:
+    - not rerun in this batch
+    observable_ids:
+    - obs_elastic_scalar_vector_recoil
+    - obs_elastic_thermal_target
+    required_code_resources:
+    - recoil calculator
+    - relic-density solver
+    route_status: planned
+    source_model_features:
+    - Dirac fermion DM
+    - Higgs-mixed scalar
+    - kinetically mixed vector
+    validation_tests:
+    - recover source benchmark statements

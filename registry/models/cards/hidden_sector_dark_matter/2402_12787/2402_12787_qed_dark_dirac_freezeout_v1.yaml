@@ -1,0 +1,380 @@
+_source:
+  shard: arXiv_src_2402_096_wds.tar
+  paper_id: '2402_12787'
+  source_member: 2402_12787.json
+schema_version: model_only_v0
+model_id: 2402_12787_qed_dark_dirac_freezeout_v1
+identity:
+  name: QED-like Dirac-fermion dark matter with dark photons and recoil-corrected freeze-out
+  family: hidden_sector_dark_matter
+  aliases:
+  - QED_DM Dirac dark matter
+  - darkonium freeze-out model
+  short_description: A heavy Dirac dark fermion charged under an abelian dark gauge group freezes out
+    through dark-photon annihilation and bound-state dynamics with recoil-corrected rates.
+  historical_origin_or_motivation: Benchmark framework for precision relic-density calculations of near-threshold
+    heavy hidden-sector dark matter.
+  status: benchmark
+  model_kind: simplified_model
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - QED-like hidden sector
+  - NRQED_DM
+  - pNRQED_DM
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper uses nonrelativistic EFT methods to compute recoil corrections to annihilation, bound-state
+    formation, and dissociation.
+particle_content:
+  dark_matter_candidate:
+    name: dark Dirac fermion X
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - dark photon
+  - darkonium bound states
+  mediators:
+  - dark photon
+  dark_radiation_species:
+  - dark photon
+  excited_or_degenerate_states:
+  - paradarkonium
+  - orthodarkonium
+  long_lived_particles:
+  - dark Dirac fermion X
+  unstable_parent_particles:
+  - darkonium bound states
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The dark fermion is treated as stable dark matter; no separate stabilizing symmetry
+    is specified in the extracted text.
+  symmetries:
+  - name: U(1)_dark / QED_DM gauge symmetry
+    type: gauge
+    exact_or_approximate: exact
+    breaking: unknown
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - Standard Model fermions through kinetic mixing portal, assumed subdominant for cross sections
+  dark_sector_couplings:
+  - dark gauge coupling g
+  - alpha = g^2/(4 pi)
+  mediator_types:
+  - dark photon
+  interaction_operators:
+  - abelian gauge interaction
+  - electric-dipole and Rontgen terms in pNRQED_DM
+  - center-of-mass dependent four-fermion operators
+  annihilation_channels:
+  - X anti-X -> dark photons
+  - darkonium annihilation to dark photons
+  decay_channels: []
+  self_scattering_channels:
+  - dark gauge exchange
+  cp_structure: unknown
+  flavor_structure: single dark Dirac fermion species or representation
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark fermion mass
+    source_reference_ids:
+    - paper
+    symbol: M
+    description: Heavy dark matter particle mass.
+    range: not fixed; relic-density recoil impact is nearly mass-independent in the considered scans
+    role: core
+    status: inferred
+  - name: dark fine-structure coupling
+    source_reference_ids:
+    - paper
+    symbol: alpha
+    description: Dark gauge coupling alpha = g^2/(4 pi).
+    range: 0.05 to 0.5 in relic-density scans; alpha=0.1 used for several plots
+    role: core
+    status: inferred
+  - name: plasma temperature
+    source_reference_ids:
+    - paper
+    symbol: T
+    description: Thermal-bath temperature during freeze-out.
+    range: nonrelativistic freeze-out; T approximately M/25 discussed generically
+    role: cosmological
+    status: inferred
+  - name: center-of-mass momentum
+    source_reference_ids:
+    - paper
+    symbol: P
+    description: Momentum of the heavy pair relative to the plasma.
+    range: order sqrt(M T) in kinetic equilibrium
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - hidden-sector thermal freeze-out with Sommerfeld, bound-state formation, bound-state dissociation,
+    and recoil-corrected effective cross section
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - dark fermion mass
+  - dark gauge coupling
+  - annihilation rate
+  - bound-state formation and dissociation
+  - center-of-mass recoil corrections
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: Portal interactions are assumed to keep a common SM/dark-sector temperature while being negligible
+    for the dark-sector rates.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: target relic abundance
+    source_reference_ids:
+    - paper
+    symbol: Omega_DM h^2
+    description: Observed dark matter density quoted as the freeze-out target.
+    value: 0.1200 +/- 0.0012
+    role: derived
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - effective annihilation cross section
+  - bound-state effects
+  - dark gauge coupling
+  - center-of-mass recoil corrections
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: chemical freeze-out temperature
+    source_reference_ids:
+    - paper
+    symbol: T_f
+    description: Freeze-out temperature described generically as about M/25.
+    value: M/25
+    role: derived
+    status: inferred
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: Thermal averaging assumes Maxwell-Boltzmann total-momentum distributions for kinetically
+    equilibrated pairs and bound states.
+  average_momentum_relative_to_thermal: P is of order sqrt(M T) in kinetic equilibrium
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper focuses on freeze-out-era nonrelativistic pair dynamics, not late-time phase-space
+    bounds.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: nonrelativistic_hierarchy
+  applies_to: EFT calculation
+  condition: Heavy dark matter pairs are nonrelativistic and described by hard, soft, binding, recoil,
+    and thermal scales after chemical decoupling.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: kinetic_equilibrium
+  applies_to: thermal averaging
+  condition: The total-momentum distribution is Maxwell-Boltzmann in the plasma rest frame.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: portal_subdominance
+  applies_to: interaction calculation
+  condition: Portal interactions keep equal temperatures but are neglected in dark-sector cross sections.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: common_temperature
+    description: SM and dark sectors are at the same temperature through portal interactions.
+    scope: cosmological_history
+    status: assumed
+    source_reference_ids:
+    - paper
+  - id: dark_coupling_dominates
+    description: Dark gauge interactions dominate over portal-induced couplings in computed rates.
+    scope: theory
+    status: assumed
+    source_reference_ids:
+    - paper
+  - id: coulombic_bound_states
+    description: Darkonium bound states are Coulombic in the nonrelativistic EFT.
+    scope: theory
+    status: assumed
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 2402_12787_qed_dark_dirac_freezeout_v1
+  model_name: QED-like Dirac-fermion dark matter with dark photons and recoil-corrected freeze-out
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-06-01'
+  last_updated: '2026-06-01'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: unknown
+      authors: []
+      year: 2024
+      arxiv_id: '2402.12787'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text from target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0008_worker
+    extractor_name: GPT-5.5 dark-matter model-card extraction worker
+    extraction_date: '2026-06-01'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: abelian dark matter model setup
+      page: null
+      quote_or_summary: The paper defines a dark Dirac fermion X charged under QED_DM with dark photon
+        and portal terms.
+    - reference_id: paper
+      section: Boltzmann equations with recoil corrections
+      page: null
+      quote_or_summary: The paper solves number-density equations for X, anti-X, and 1S paradarkonium
+        with recoil-corrected rates.
+    - reference_id: paper
+      section: conclusions
+      page: null
+      quote_or_summary: The paper identifies QED-like Dirac fermions and dark photons as a prototypical
+        dark matter model.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The paper sets up a dark Dirac fermion X charged under an abelian gauge group with a dark
+        photon mediator.
+      confidence: high
+      section: null
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: The abelian QED_DM gauge symmetry defines the dark charge and dark photon.
+      confidence: medium
+      section: null
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The Lagrangian includes X(iD-M)X, the dark-photon field strength, and a portal term; kinetic
+        mixing is mentioned as a renormalizable portal.
+      confidence: high
+      section: null
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: Thermal freeze-out includes annihilation, bound-state formation, and bound-state dissociation
+        in the thermal bath.
+      confidence: high
+      section: null
+      page: null
+    relic_density:
+    - reference_id: paper
+      note: The paper solves recoil-corrected Boltzmann equations and finds percent-level shifts in relic
+        density.
+      confidence: high
+      section: null
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The EFT assumes nonrelativistic heavy pairs, a Coulombic scale hierarchy, and kinetic equilibrium.
+      confidence: medium
+      section: null
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The SQLite full_text row did not expose the title or authors; these are left unknown/empty rather
+    than inferred externally.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - scale hierarchy validity
+  - portal assumptions
+  - higher bound-state contributions
+  validation_status: expert_judgment_only
+  notes: The EFT and relic-density logic are well supported; no observables or constraints are included.
+agent_failure_modes:
+  warnings:
+  - id: not_pointlike_wimp
+    severity: medium
+    category: invalid_mapping
+    warning: The relic-density result depends on hidden-sector bound-state and recoil effects, not only
+      a pointlike annihilation cross section.
+    source_reference_ids:
+    - paper
+  - id: portal_not_rate_driver
+    severity: medium
+    category: assumption_mismatch
+    warning: The portal maintains common temperature but is not the rate driver in the extracted calculation.
+    source_reference_ids:
+    - paper

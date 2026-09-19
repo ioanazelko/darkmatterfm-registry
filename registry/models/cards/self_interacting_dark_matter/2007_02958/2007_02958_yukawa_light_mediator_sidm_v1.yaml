@@ -1,0 +1,318 @@
+_source:
+  shard: data/astro-ph-00145.tar
+  paper_id: '2007_02958'
+  source_member: 2007_02958.json
+schema_version: model_only_v0
+model_id: 2007_02958_yukawa_light_mediator_sidm_v1
+identity:
+  name: Velocity-dependent Yukawa self-interacting dark matter benchmark
+  family: self_interacting_dark_matter
+  aliases:
+  - light-mediator SIDM fit
+  short_description: A benchmark SIDM particle model in which GeV-scale dark matter self-scatters through
+    a MeV-scale light mediator with a Yukawa potential fitted to Milky Way dwarf spheroidal profiles.
+  historical_origin_or_motivation: The paper uses the anti-correlation between central dwarf-spheroidal
+    dark matter density and orbital pericenter as a possible SIDM signature.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - self-interacting dark matter
+  - Yukawa-potential light mediator model
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The text specifies the potential and cross-section relation, not a complete microscopic Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: self-interacting dark matter particle
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - light mediator
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - self-interacting dark matter particle
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: unknown; the paper assumes a stable dark matter particle but does not specify
+    a stabilizing symmetry.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - dark matter halo particles through self-scattering
+  dark_sector_couplings:
+  - Yukawa self-interaction
+  - dark fine-structure analogue alpha
+  mediator_types:
+  - light dark-sector mediator
+  interaction_operators:
+  - Yukawa potential V(r)=alpha exp(-m_phi r)/r
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - DM DM -> DM DM through light mediator
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark matter particle mass
+    symbol: m_chi
+    description: Best-fit SIDM particle mass.
+    value: 0.648 +/- 0.154
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: mediator mass
+    symbol: m_phi
+    description: Best-fit light mediator mass.
+    value: 0.636 +/- 0.055
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: dark fine-structure analogue
+    symbol: alpha
+    description: Assumed coupling analogue in the dark sector.
+    value: 0.01
+    unit: dimensionless
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: self-interaction cross section per unit mass
+    symbol: sigma/m_chi
+    description: Values needed for dwarf spheroidal profiles.
+    range: roughly 30-100 cm^2/g for the modeled dwarfs
+    unit: cm^2/g
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: characteristic collision velocity
+    symbol: v
+    description: Average collision velocity in each subhalo core that correlates with the inferred cross
+      section.
+    unit: km/s
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - primary
+production:
+  mechanisms:
+  - not specified; abundance treated as existing SIDM halo population
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - not specified in assigned text
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: unknown
+  nonthermal_momentum_distribution: unknown
+  notes: This is a fitted self-interaction benchmark, not a relic-density calculation.
+relic_density:
+  full_or_subcomponent: unknown
+  target_fraction: null
+  calculation_type: unknown
+  key_dependencies:
+  - self-interaction cross section
+  - halo collision velocity
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - velocity-dependent dark matter self-interactions affect dwarf subhalo evolution
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: 'no'
+  notes: The paper evolves halo density and velocity-dispersion profiles rather than primordial phase-space
+    distributions.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    thermal_wdm_mapping:
+      available: false
+      validity: not_applicable
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: possible suppression from self-interactions and tidal stripping
+    density_profile_effect: gravothermal core collapse can increase central densities in dwarf spheroidals
+    simulation_calibrated: partial
+validity_domain:
+- id: born_approximation
+  applies_to: model
+  condition: The analytic Yukawa cross section is evaluated in the Born approximation.
+  status: approximate
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+- id: dwarf_fit_domain
+  applies_to: parameter
+  condition: The fitted masses are inferred from Milky Way dwarf spheroidal halo modeling and extrapolated
+    to larger velocities.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - primary
+assumptions:
+  global:
+  - id: alpha_fixed
+    description: The dark-sector coupling analogue alpha is fixed to 0.01 in the particle-model fit.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+  - id: gravothermal_fluid_model
+    description: Dwarf subhalo evolution is modeled with gravothermal fluid equations plus orbital tidal
+      stripping.
+    scope: computation
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific associated code is identified in the assigned text.
+provenance:
+  model_id: 2007_02958_yukawa_light_mediator_sidm_v1
+  model_name: Velocity-dependent Yukawa self-interacting dark matter benchmark
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Observed anti-correlation between dwarf-spheroidal central dark matter densities and pericenter
+        distances as a SIDM signature
+      authors: []
+      year: 2020
+      arxiv_id: '2007.02958'
+      doi: null
+      url: null
+      role: benchmark
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: gpt55_dark_matter_batch_worker_batch_0163
+    extractor_name: Codex
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: opening/results
+      page: null
+      quote_or_summary: The paper fits a Yukawa light-mediator SIDM particle model to dwarf-spheroidal
+        cross-section velocities.
+    - reference_id: primary
+      section: particle model
+      page: null
+      quote_or_summary: It reports m_chi=0.648 GeV and m_phi=0.636 MeV for alpha=0.01.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The fitted SIDM particle model has a DM particle mass of 0.648 +/- 0.154 GeV and a light mediator
+        mass of 0.636 +/- 0.055 MeV.
+      confidence: high
+      section: abstract/results
+    interactions:
+    - reference_id: primary
+      note: Self-interactions are described by a Yukawa potential and fitted to the cross-section velocity
+        relation inferred from dwarf spheroidals.
+      confidence: high
+      section: velocity-dependent relation
+    production_mechanism:
+    - reference_id: primary
+      note: The paper treats the SIDM abundance as the halo dark matter population and does not derive
+        a thermal relic history.
+      confidence: low
+      section: model setup
+    cosmological_history:
+    - reference_id: primary
+      note: The model is embedded in otherwise cold dark matter structure formation and modifies nonlinear
+        halo evolution through self-scattering.
+      confidence: medium
+      section: introduction/model
+    parameter_ranges:
+    - reference_id: primary
+      note: The paper assumes a dark fine-structure analogue alpha=0.01 and fits m_DM and m_mediator to
+        the dwarf-galaxy cross-section relation.
+      confidence: high
+      section: particle model fit
+    validity_domain:
+    - reference_id: primary
+      note: The Born-approximation cross-section formula is used and the extrapolated relation is compared
+        across dwarf, Milky Way, and cluster velocities.
+      confidence: medium
+      section: cross-section section
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - The paper primarily constrains and benchmarks a SIDM model; it does not derive the relic abundance
+    or stabilizing symmetry.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  validation_status: expert_judgment_only
+  dominant_uncertainties:
+  - gravothermal calibration
+  - orbit and tidal-stripping modeling
+  - lack of relic-density calculation
+  notes: The interaction benchmark is explicit, but its status as a model-card row is borderline because
+    the paper is also a constraint/simulation study.
+agent_failure_modes:
+  warnings:
+  - id: benchmark_not_relic_model
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not infer a complete thermal history or full UV model from this benchmark fit.
+    source_reference_ids:
+    - primary
+  - id: born_approximation_limit
+    severity: medium
+    category: extrapolation
+    warning: The extracted cross-section relation uses an approximate Yukawa treatment and should not
+      be extrapolated outside its stated regime without review.
+    source_reference_ids:
+    - primary

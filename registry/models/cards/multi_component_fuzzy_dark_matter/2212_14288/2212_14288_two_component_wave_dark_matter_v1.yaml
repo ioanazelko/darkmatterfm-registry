@@ -1,0 +1,657 @@
+_source:
+  shard: data/astro-ph-00227.tar
+  paper_id: '2212_14288'
+  source_member: 2212_14288.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2212_14288_two_component_wave_dark_matter_v1
+identity:
+  name: Two-component wave dark matter with distinct boson masses
+  family: multi_component_fuzzy_dark_matter
+  aliases:
+  - two-mass wave dark matter
+  - two-component fuzzy dark matter
+  short_description: An extension of wave/fuzzy dark matter to two ultralight scalar components with distinct
+    particle masses, fixed mass fractions, and gravity-only coupling in cosmological simulations.
+  historical_origin_or_motivation: Introduced to add flexibility to single-component wave dark matter
+    for small-scale structure and soliton-halo tensions.
+  status: emerging
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - wave dark matter
+  - fuzzy dark matter
+  - scalar field dark matter
+  - multi-axion/string-axiverse motivation
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives coupled Schrodinger-Poisson equations for two scalar wave functions interacting
+    only through gravity.
+particle_content:
+  dark_matter_candidate:
+    name: two ultralight scalar boson components
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - major scalar wave component
+  - minor scalar wave component
+  mediators:
+  - gravity
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The ultralight boson components are assumed cosmologically stable and coupled
+    only through gravity.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets: []
+  dark_sector_couplings:
+  - common gravitational potential
+  mediator_types:
+  - gravity
+  interaction_operators:
+  - Schrodinger-Poisson gravitational coupling
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  self_scattering_channels:
+  - gravity-only coupling between wave components
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: major-component mass
+    symbol: m_major
+    description: Mass of the component carrying 75 percent of the dark matter in the simulations.
+    value: 1e-22
+    role: core
+    status: inferred
+    notes: The OCR text omits or corrupts the mass unit; value is recorded as written.
+  - name: minor-component mass
+    symbol: m_minor
+    description: Mass of the component carrying 25 percent of the dark matter in the simulations.
+    range: m_minor/m_major = 3:1 or 1:3
+    role: core
+    status: inferred
+  - name: major mass fraction
+    symbol: f_major
+    description: Fraction of total dark matter mass in the major component.
+    value: 0.75
+    role: core
+    status: inferred
+  - name: minor mass fraction
+    symbol: f_minor
+    description: Fraction of total dark matter mass in the minor component.
+    value: 0.25
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - assumed cosmological abundance of two ultralight boson components
+  - axion/axion-like cosmological production mentioned as motivation
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - assumed 75/25 mass fractions
+  - particle masses
+  - initial cosmological density field
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper studies structure formation for assumed fractions rather than deriving the relic abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: two-component total
+    symbol: f_major+f_minor
+    description: The simulated model assigns 75 percent plus 25 percent of total dark matter to the two
+      components.
+    value: 1
+    role: core
+    status: assumed
+  calculation_type: phenomenological
+  key_dependencies:
+  - component masses
+  - component mass fractions
+  - initial power spectrum
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - two ultralight wave components
+  - quantum-pressure Jeans scale
+  - solitonic cores
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: 'yes'
+  f_of_p_or_q: Two wave functions psi_major and psi_minor obey coupled Schrodinger-Poisson equations.
+  free_streaming_length: null
+  notes: Phase space is represented as coherent scalar wave fields rather than classical particle momenta.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper treats wave/soliton dynamics rather than a thermal WDM mapping.
+  nonlinear:
+    halo_mass_function_effect: wave pressure suppresses small-scale structure below the Jeans length
+    subhalo_mass_function_effect: unknown
+    density_profile_effect: two masses change soliton-halo transition and rotation curves
+    core_or_cusp_effect: solitonic core structure differs from single-component wave dark matter
+    simulation_calibrated: 'yes'
+validity_domain:
+- id: v1
+  applies_to: model
+  condition: Proof-of-concept simulations assume two scalar components, distinct particle masses, and
+    gravity-only coupling.
+  status: inferred
+  extrapolation_risk: medium
+- id: v2
+  applies_to: parameter
+  condition: The reported simulations use 75/25 mass fractions and mass ratios 3:1 and 1:3.
+  status: inferred
+  extrapolation_risk: medium
+- id: v3
+  applies_to: simulation
+  condition: Initial conditions adopt a CDM power spectrum above the Jeans length with a cutoff below
+    it.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: a1
+    description: The two scalar components interact only through the common gravitational potential.
+    scope: theory
+    status: assumed
+    can_be_relaxed: 'yes'
+  - id: a2
+    description: The component fractions are fixed to 75 percent and 25 percent in the simulations.
+    scope: production
+    status: assumed
+    can_be_relaxed: 'yes'
+  - id: a3
+    description: The nonrelativistic Schrodinger-Poisson description is valid for halo formation in the
+      studied regime.
+    scope: computation
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code was identified in the assigned text.
+provenance:
+  model_id: 2212_14288_two_component_wave_dark_matter_v1
+  model_name: Two-component wave dark matter with distinct boson masses
+  model_family: multi_component_fuzzy_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Two-mass Cosmological Simulations of Two-Component Wave Dark Matter
+      authors: []
+      year: 2022
+      arxiv_id: '2212.14288'
+      doi: null
+      url: null
+      role: extension
+      notes: Source text from assigned SQLite database.
+    - arxiv_id: '2212.14288'
+      authors:
+      - Huang, Hsinhao
+      - Schive, Hsi-Yu
+      - Chiueh, Tzihong
+      doi: 10.1093/mnras/stad998
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2212.14288
+      role: original_model
+      title: Cosmological simulations of two-component wave dark matter
+      url: https://arxiv.org/abs/2212.14288
+      year: 2023
+    constraint_papers:
+    - arxiv_id: '2104.13359'
+      authors:
+      - Chiang, Barry T.
+      - Schive, Hsi-Yu
+      - Chiueh, Tzihong
+      doi: 10.1103/PhysRevD.103.103019
+      notes: Related local full text read for soliton oscillations and Eridanus II fuzzy-DM constraints.
+      reference_id: arxiv:2104.13359
+      role: constraint
+      title: Soliton oscillations and revised constraints from Eridanus II of fuzzy dark matter
+      url: https://arxiv.org/abs/2104.13359
+      year: 2021
+    - arxiv_id: '2203.05750'
+      authors:
+      - Dalal, Neal
+      - Kravtsov, Andrey
+      doi: 10.1103/PhysRevD.106.063517
+      notes: Related local full text read for ultrafaint-dwarf heating constraints on FDM.
+      reference_id: arxiv:2203.05750
+      role: constraint
+      title: Excluding fuzzy dark matter with sizes and stellar kinematics of ultrafaint dwarf galaxies
+      url: https://arxiv.org/abs/2203.05750
+      year: 2022
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1912.07064'
+      authors:
+      - Niemeyer, Jens C.
+      doi: 10.1016/j.ppnp.2020.103787
+      notes: Related local full text read for fuzzy/axion-like small-scale-structure review context.
+      reference_id: arxiv:1912.07064
+      role: review
+      title: Small-scale structure of fuzzy and axion-like dark matter
+      url: https://arxiv.org/abs/1912.07064
+      year: 2020
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0074
+    extractor_name: GPT-5.5 model-card extraction worker
+    extraction_date: '2026-05-28'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      page: null
+      quote_or_summary: The paper extends wave dark matter to two distinct particle masses coupled only
+        through gravity.
+    - reference_id: primary
+      section: Governing equations
+      page: null
+      quote_or_summary: Each component has a wave function coupled through a shared gravitational potential.
+    - reference_id: primary
+      section: Simulation set-up
+      page: null
+      quote_or_summary: The simulations use 75/25 mass fractions and two mass-ratio cases.
+    unresolved_items:
+    - The paper does not derive the relic abundances of the two components from microphysics.
+    - No two-component transfer-function or dwarf-galaxy likelihood recast was run.
+    - Single-component FDM constraints should not be copied directly onto the two-component 75/25 benchmarks.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model contains two scalar-field wave components with distinct particle masses.
+      confidence: high
+      section: null
+    interactions:
+    - reference_id: primary
+      note: The components are coupled only through gravity in the Schrodinger-Poisson system.
+      confidence: high
+      section: null
+    parameter_ranges:
+    - reference_id: primary
+      note: The benchmark fractions are 75 percent major and 25 percent minor, with mass ratios 3:1 and
+        1:3.
+      confidence: high
+      section: null
+    production_mechanism:
+    - reference_id: primary
+      note: The fractions are assumed for simulations; cosmological axion/ALP production is motivation
+        rather than a derived abundance.
+      confidence: medium
+      section: null
+    structure_formation:
+    - reference_id: primary
+      note: Cosmological simulations show different soliton coexistence/absence behavior for the two mass-ratio
+        cases.
+      confidence: high
+      section: null
+    validity_domain:
+    - reference_id: primary
+      note: The paper presents a proof-of-concept two-component simulation rather than a full relic-production
+        model.
+      confidence: medium
+      section: null
+    constraints:
+    - confidence: medium
+      note: Related ultrafaint-dwarf paper states that wave-interference heating can test/exclude FDM
+        in the 1e-22 to 1e-20 eV mass range.
+      page: null
+      reference_id: arxiv:2203.05750
+      section: Introduction
+    - confidence: high
+      note: Primary paper shows that the 1:3 two-component case cannot be treated as two independent stable
+        solitons.
+      page: null
+      reference_id: arxiv:2212.14288
+      section: Abstract/results
+    observables:
+    - confidence: high
+      note: Primary abstract states the 75/25 two-component setup, m_major=1e-22 eV, mass ratios 3:1 and
+        1:3, and the contrasting soliton outcomes.
+      page: null
+      reference_id: arxiv:2212.14288
+      section: Abstract
+    - confidence: medium
+      note: Related review summarizes FDM solitonic cores, suppressed small-scale perturbations, and Lyman-alpha/dwarf
+        probes.
+      page: null
+      reference_id: arxiv:1912.07064
+      section: Abstract/review
+    routes:
+    - confidence: high
+      note: Primary source derives component Jeans scales and runs two-mass cosmological wave-DM simulations.
+      page: null
+      reference_id: arxiv:2212.14288
+      section: Theory and simulations
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes:
+    - Mass units were partially lost in OCR; numerical mass values were recorded conservatively as strings/notes.
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - relic origin of component fractions
+  - generality beyond two benchmark mass ratios
+  validation_status: partially_validated
+  notes: Accepted as a substantive multi-component wave-DM extension with simulations.
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: extrapolation
+    warning: Do not generalize the soliton behavior to arbitrary fractions or mass ratios without new
+      simulations.
+  - id: w2
+    severity: low
+    category: unit_convention
+    warning: The OCR text obscures mass units, so mass values in this card should be checked against the
+      source PDF before final registry use.
+observables:
+- caveats:
+  - Primary simulations focus on individual halo structure and use CDM-like initial power above the Jeans
+    scale.
+  channel: dwarf_galaxies
+  effect_direction: morphology_change
+  environments:
+  - dwarf-galaxy halos
+  - wave-DM solitonic cores
+  id: obs_two_component_soliton_profiles
+  key_quantities:
+  - name: major-component mass
+    role: core
+    source_reference_ids:
+    - arxiv:2212.14288
+    status: inferred
+    symbol: m_major
+    unit: eV
+    value: 1e-22
+  - name: minor-to-major mass ratio
+    range: 3:1 or 1:3
+    role: core
+    source_reference_ids:
+    - arxiv:2212.14288
+    status: inferred
+    symbol: m_minor/m_major
+  - name: major mass fraction
+    role: core
+    source_reference_ids:
+    - arxiv:2212.14288
+    status: inferred
+    symbol: f_major
+    value: 0.75
+  - name: minor mass fraction
+    role: core
+    source_reference_ids:
+    - arxiv:2212.14288
+    status: inferred
+    symbol: f_minor
+    value: 0.25
+  linked_constraints:
+  - con_two_component_core_halo_validation
+  - con_single_fdm_dwarf_recast
+  linked_routes:
+  - route_two_component_schrodinger_poisson
+  name: Two-component wave-DM soliton and halo morphology
+  notes: null
+  observability: medium
+  predicted_effect: With 75 percent major and 25 percent minor components and only gravitational coupling,
+    the m_minor/m_major=3 case forms roughly concentric major/minor solitons with a smoother soliton-to-halo
+    transition, while the 1/3 case does not form a stable minor-component soliton.
+  redshift_range: cosmological simulations from high redshift to halo formation
+  relevance: critical
+  scale_range: soliton-core to halo scales
+  source_reference_ids:
+  - arxiv:2212.14288
+  - arxiv:1912.07064
+  - arxiv:2104.13359
+  subchannel: solitonic cores and rotation curves
+- caveats:
+  - Single-component FDM bounds require a two-component mass-fraction recast.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - Lyman-alpha forest
+  - ultrafaint dwarf galaxies
+  - stellar streams
+  id: obs_wave_jeans_power_cutoff
+  key_quantities:
+  - description: Scale as particle-mass dependent quantum-pressure thresholds.
+    name: component Jeans wavenumbers
+    role: derived
+    source_reference_ids:
+    - arxiv:2212.14288
+    status: inferred
+    symbol: k_J,1; k_J,2
+  - name: ultralight boson mass range
+    range: about 1e-22 to 1e-20
+    role: core
+    source_reference_ids:
+    - arxiv:2212.14288
+    - arxiv:2203.05750
+    status: inferred
+    symbol: m
+    unit: eV
+  linked_constraints:
+  - con_single_fdm_dwarf_recast
+  linked_routes:
+  - route_two_component_schrodinger_poisson
+  name: Wave-DM Jeans cutoff and small-scale suppression
+  notes: null
+  observability: high
+  predicted_effect: Each ultralight component has a mass-dependent Jeans scale; quantum pressure suppresses
+    power below that scale and motivates Lyman-alpha, satellite, and dwarf-galaxy constraints.
+  redshift_range: linear initial conditions through low-redshift halo formation
+  relevance: high
+  scale_range: subgalactic small-scale structure
+  source_reference_ids:
+  - arxiv:2212.14288
+  - arxiv:1912.07064
+  - arxiv:2203.05750
+  subchannel: quantum-pressure cutoff
+constraints:
+- allowed_regions:
+  - The 3:1 case supports coexisting roughly concentric solitons, while the total soliton mass follows
+    the single-component core-halo relation in the primary simulations.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The two components couple only through gravity and have fixed 75/25 mass fractions.
+    id: gravity-only-two-field-system
+    impact_if_violated: Self-interactions or different fractions could change soliton coexistence and
+      core-halo relations.
+    notes: null
+    scope: simulation interpretation
+    source_reference_ids:
+    - arxiv:2212.14288
+    status: assumed
+  benchmark_implications:
+  - Observable core profiles depend on mass ordering, not just total ultralight-DM fraction.
+  caveats:
+  - No simulation was rerun.
+  constrained_parameters:
+  - m_minor/m_major
+  - f_major
+  - f_minor
+  - core radius
+  - soliton mass
+  constraint_type: numerical
+  data_release: Primary simulation outputs not bundled in this batch
+  excluded_regions:
+  - Assuming independent single-component soliton profiles for both fields fails in the 1:3 case where
+    the minor-component soliton does not stably form.
+  id: con_two_component_core_halo_validation
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Numerical core-halo relation and soliton coexistence checks
+  notes: null
+  observable_channel: soliton core-halo structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2212.14288
+  - arxiv:2104.13359
+- allowed_regions:
+  - A two-component model must be compared through its actual combined density fluctuations and soliton
+    structure rather than directly importing a single-mass limit.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: Single-component FDM heating and Lyman-alpha limits can only be applied after computing
+      the two-component transfer function and halo granularity.
+    id: single-to-two-component-recast
+    impact_if_violated: Directly applying a single-component bound can misstate allowed mass ratios and
+      fractions.
+    notes: null
+    scope: constraint recast
+    source_reference_ids:
+    - arxiv:2212.14288
+    - arxiv:2203.05750
+    status: assumed
+  benchmark_implications:
+  - The primary m_major=1e-22 eV benchmark lies in the mass range where dwarf-galaxy constraints are relevant,
+    but needs a dedicated two-component recast.
+  caveats:
+  - No dwarf likelihood or two-component transfer-function recast was run.
+  constrained_parameters:
+  - m_major
+  - m_minor
+  - mass fractions
+  - granule heating rate
+  - Jeans cutoff
+  constraint_type: astrophysical
+  data_release: Ultrafaint dwarf size and stellar-kinematic measurements as used by related sources
+  excluded_regions:
+  - Single-component FDM masses around the classic 1e-22 to 1e-20 eV window are strongly tested by ultrafaint
+    dwarf heating and other small-scale probes.
+  id: con_single_fdm_dwarf_recast
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Ultrafaint-dwarf and FDM small-scale constraints needing two-component recast
+  notes: null
+  observable_channel: ultrafaint dwarf heating and small-scale structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2212.14288
+  - arxiv:1912.07064
+  - arxiv:2203.05750
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Primary simulation assets are not available in this batch.
+    constraint_ids:
+    - con_two_component_core_halo_validation
+    - con_single_fdm_dwarf_recast
+    derived_quantities:
+    - k_J,1
+    - k_J,2
+    - soliton masses
+    - core radii
+    - density profiles
+    - rotation curves
+    description: Evolve two gravitationally coupled ultralight fields with distinct masses to soliton/halo
+      observables and recast small-scale constraints.
+    forward_model_chain:
+    - inputs:
+      - m_major
+      - m_minor
+      - scale factor
+      notes: null
+      outputs:
+      - component Jeans wavenumbers
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Use primary two-component linear analysis.
+    - inputs:
+      - component wave functions
+      - initial density field
+      notes: null
+      outputs:
+      - halo profiles
+      - soliton cores
+      - granular structure
+      step_id: s2
+      step_type: simulation
+      tool_or_code: two-component Schrodinger-Poisson cosmological simulation
+      validity: Required for nonlinear morphology.
+    - inputs:
+      - density profiles
+      - granule statistics
+      - transfer function
+      notes: null
+      outputs:
+      - dwarf-heating and small-scale limits
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Planned; no likelihood run in this batch.
+    id: route_two_component_schrodinger_poisson
+    input_parameters:
+    - m_major
+    - m_minor
+    - f_major
+    - f_minor
+    - initial phases/power
+    likelihoods:
+    - ultrafaint dwarf stellar-kinematic likelihood
+    - Lyman-alpha transfer-function recast
+    observable_ids:
+    - obs_two_component_soliton_profiles
+    - obs_wave_jeans_power_cutoff
+    required_code_resources:
+    - Schrodinger-Poisson simulation code
+    - two-component transfer-function pipeline
+    route_status: planned
+    source_model_features:
+    - two wave-DM components
+    - 75/25 mass fractions
+    - m_minor/m_major = 3 or 1/3
+    - gravity-only coupling
+    validation_tests:
+    - recover 3:1 coexisting solitons
+    - recover absence of stable minor soliton in 1:3 case

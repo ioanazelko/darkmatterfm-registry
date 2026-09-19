@@ -1,0 +1,843 @@
+_source:
+  shard: arXiv_src_1103_006_wds.tar
+  paper_id: '1103_5413'
+  source_member: 1103_5413.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1103_5413_pqmssm_mixed_axion_neutralino_cdm_v1
+identity:
+  name: PQ-augmented MSSM mixed axion/neutralino cold dark matter
+  family: multi_component_axion_neutralino_dark_matter
+  aliases:
+  - mixed axion/neutralino CDM
+  - mixed a chi_1 CDM
+  - PQMSSM with neutralino LSP
+  short_description: A PQ-augmented, R-parity-conserving SUSY dark matter scenario in which the cold dark
+    matter abundance is shared by axions and the lightest neutralino, with axino production and decay
+    modifying the neutralino relic density.
+  historical_origin_or_motivation: The paper motivates the model by combining the SUSY solution to electroweak
+    fine-tuning with the Peccei-Quinn solution to the strong CP problem.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - MSSM
+  - Peccei-Quinn augmented MSSM
+  - R-parity conserving supersymmetry
+  - mSUGRA benchmark
+  - gaugino AMSB benchmark
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The text develops relic-density calculations for the PQ-augmented MSSM with neutralino LSP and
+    uses mSUGRA HB/FP and gaugino-AMSB benchmark spectra.
+particle_content:
+  dark_matter_candidate:
+    name: axion plus lightest neutralino chi_1
+    spin: 0 and 1/2
+    statistics: unknown
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - axino
+  - saxion
+  - MSSM superpartners
+  mediators:
+  - MSSM electroweak superpartners
+  - axino decay chain
+  - saxion decay channel
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - neutralino benchmark spectra in HB/FP mSUGRA and gaugino AMSB
+  long_lived_particles: []
+  unstable_parent_particles:
+  - thermally produced axinos
+  - saxions when included
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R parity stabilizes the neutralino LSP, while the Peccei-Quinn mechanism supplies
+    the axion component.
+  symmetries:
+  - name: R parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: assumed conserved
+  - name: Peccei-Quinn symmetry
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken at f_a/N
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - axion
+  - vector
+  - other
+  standard_model_targets:
+  - gluons and gauge fields through PQ-sector interactions
+  - Standard Model final states from neutralino annihilation
+  dark_sector_couplings:
+  - axino production and cascade decay into the neutralino LSP
+  - neutralino annihilation and re-annihilation
+  - axion vacuum misalignment
+  mediator_types:
+  - axino
+  - saxion
+  - MSSM electroweak superpartners
+  interaction_operators:
+  - PQ-sector axion/axino interactions
+  - MSSM neutralino annihilation interactions
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels:
+  - higgsino-like or wino-like neutralino annihilation via s-wave reactions in the paper benchmarks
+  decay_channels:
+  - axino cascade decays into chi_1
+  - saxion production and decay included as an additional effect
+  self_scattering_channels: []
+  cp_structure: PQ symmetry is introduced to solve the strong CP problem.
+  flavor_structure: unknown
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: Peccei-Quinn scale divided by anomaly factor
+    symbol: f_a/N
+    description: PQ scale used in the relic-density scans.
+    range: 10^9 GeV and above; examples around 10^12 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: reheating temperature
+    symbol: T_R
+    description: Controls thermal axino production in the early universe.
+    range: model-dependent; figures include 10^6 and 10^10 GeV examples
+    unit: GeV
+    role: cosmological
+    status: inferred
+  - name: axino mass
+    symbol: m_axino
+    description: Mass of the axino parent whose decays inject neutralinos.
+    range: benchmark scans include sub-TeV to multi-TeV values
+    unit: GeV
+    role: core
+    status: inferred
+  - name: neutralino mass in BM1
+    symbol: m_chi_1
+    description: Mixed higgsino-bino-wino neutralino mass in the HB/FP mSUGRA benchmark.
+    value: '87.9'
+    unit: GeV
+    role: benchmark
+    status: inferred
+  - name: BM1 standard neutralino thermal abundance
+    symbol: Omega_chi_1^std h^2
+    description: Thermal neutralino abundance in the HB/FP mSUGRA benchmark before PQ-sector effects.
+    value: '0.05'
+    unit: null
+    role: benchmark
+    status: inferred
+  - name: BM2 standard neutralino thermal abundance
+    symbol: Omega_chi_1^std h^2
+    description: Thermal neutralino abundance in the gaugino-AMSB wino-like benchmark before PQ-sector
+      effects.
+    value: '0.0016'
+    unit: null
+    role: benchmark
+    status: inferred
+  - name: axino decay temperature
+    symbol: T_D
+    description: Temperature at which axinos decay and inject neutralinos.
+    value: computed from axino width
+    unit: GeV
+    role: derived
+    status: inferred
+  - name: axino equality temperature
+    symbol: T_e
+    description: Temperature at which axinos may dominate the energy density.
+    value: computed in the paper
+    unit: GeV
+    role: derived
+    status: inferred
+  - name: target cold dark matter abundance
+    symbol: Omega_DM h^2
+    description: WMAP7 reference value used by the paper.
+    value: 0.1123 +/- 0.0035
+    unit: null
+    role: cosmological
+    status: inferred
+production:
+  mechanisms:
+  - axion vacuum misalignment
+  - thermal neutralino freeze-out
+  - thermal axino production followed by decays to neutralinos
+  - neutralino re-annihilation after axino decay
+  - entropy dilution from late decays
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - f_a/N
+  - T_R
+  - m_axino
+  - neutralino annihilation cross section
+  - axion misalignment contribution
+  - entropy injection from axino or saxion decays
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper explicitly builds an algorithm for the mixed axion plus neutralino CDM abundance including
+    axino decay, re-annihilation, and entropy dilution.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - axion vacuum misalignment
+  - thermally produced axinos
+  - late axino decay temperature
+  - neutralino re-annihilation condition
+  - possible saxion effects
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - axino matter domination
+  - decaying-particle dominated epoch
+  - late entropy injection
+  - possible saxion production and decay
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - Peccei-Quinn symmetry breaking
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: medium
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: 'no'
+  f_of_p_or_q: unknown
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper treats the components as cold dark matter but does not provide an explicit phase-space
+    distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: neutralino_lsp
+  applies_to: model
+  condition: Applies to PQ-augmented SUSY models with m_axino greater than m_chi_1 so the lightest neutralino
+    is the LSP.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+- id: r_parity_conserved
+  applies_to: model
+  condition: Neutralino stability assumes conserved R parity.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: bbn_decay_temperature
+  applies_to: cosmological_history
+  condition: Regions with axino decay temperature below about 2 MeV are identified as BBN-excluded in
+    the text.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+- id: benchmark_underabundant_neutralino
+  applies_to: parameter
+  condition: The paper focuses on higgsino-like or wino-like neutralino benchmarks whose standard thermal
+    relic abundance is below the observed value.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: conserved_r_parity
+    description: R parity is conserved so that the neutralino LSP is stable.
+    scope: theory
+    status: assumed
+    can_be_relaxed: 'no'
+    impact_if_violated: The neutralino component would not be stable dark matter.
+  - id: pq_solution
+    description: A Peccei-Quinn symmetry exists and is broken at f_a/N, producing the axion supermultiplet.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: The axion and axino contributions would be absent.
+  - id: neutralino_lsp_hierarchy
+    description: The axino is heavier than the lightest neutralino in the scenario studied.
+    scope: production
+    status: assumed
+    can_be_relaxed: 'yes'
+    impact_if_violated: The model would move toward axino-LSP mixed axion/axino dark matter rather than
+      the paper's mixed axion/neutralino case.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses Isajet/Isasugra and IsaReD for benchmark spectra and neutralino thermal
+    abundance calculations; no model-specific public release is identified in the assigned text.
+provenance:
+  model_id: 1103_5413_pqmssm_mixed_axion_neutralino_cdm_v1
+  model_name: PQ-augmented MSSM mixed axion/neutralino cold dark matter
+  model_family: multi_component_axion_neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1103_5413'
+      title: Mixed axion/neutralino cold dark matter in supersymmetric models
+      authors: []
+      year: 2011
+      arxiv_id: '1103.5413'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned SQLite full text used as the only source.
+    - reference_id: arxiv:1103.5413
+      title: Mixed axion/neutralino cold dark matter in supersymmetric models
+      authors:
+      - Baer, Howard
+      - Lessa, Andre
+      - Rajagopalan, Shibi
+      - Sreethawong, Warintorn
+      year: 2011
+      arxiv_id: '1103.5413'
+      doi: 10.1088/1475-7516/2011/06/031
+      url: https://arxiv.org/abs/1103.5413
+      role: original_model
+      notes: Primary assigned paper read from local SQLite full text.
+    constraint_papers:
+    - reference_id: arxiv:1301.7428
+      title: Dark radiation constraints on mixed Axion/Neutralino dark matter
+      authors:
+      - Bae, Kyu Jung
+      - Baer, Howard
+      - Lessa, Andre
+      year: 2013
+      arxiv_id: '1301.7428'
+      doi: 10.1088/1475-7516/2013/04/041
+      url: https://arxiv.org/abs/1301.7428
+      role: constraint
+      notes: Related full text resolved locally and read for dark-radiation/N_eff constraints.
+    review_papers:
+    - reference_id: arxiv:1110.2491
+      title: Coupled Boltzmann calculation of mixed axion/neutralino cold dark matter production in the
+        early universe
+      authors:
+      - Baer, Howard
+      - Lessa, Andre
+      - Sreethawong, Warintorn
+      year: 2012
+      arxiv_id: '1110.2491'
+      doi: 10.1088/1475-7516/2012/01/036
+      url: https://arxiv.org/abs/1110.2491
+      role: extension
+      notes: Related full text resolved locally and read for coupled Boltzmann mixed-DM treatment.
+    - reference_id: arxiv:0811.3347
+      title: Dark-matter candidates. Axions, neutralinos, gravitinos, and axinos
+      authors:
+      - Steffen, Frank Daniel
+      year: 2009
+      arxiv_id: '0811.3347'
+      doi: 10.1140/epjc/s10052-008-0830-0
+      url: https://arxiv.org/abs/0811.3347
+      role: review
+      notes: Related full text resolved locally and read for axion/neutralino/axino dark matter context.
+    external_databases: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1103_5413'
+      section: Opening/motivation
+      page: null
+      quote_or_summary: The text states that R-parity SUSY plus PQ symmetry implies an axion plus LSP
+        dark matter admixture and explores neutralino LSP mixed a chi_1 CDM.
+    - reference_id: '1103_5413'
+      section: Relic-density algorithm
+      page: null
+      quote_or_summary: The paper includes axion misalignment, thermal axino production, axino decay,
+        neutralino re-annihilation, entropy injection, and saxion effects.
+    - reference_id: '1103_5413'
+      section: Benchmark discussion
+      page: null
+      quote_or_summary: BM1 is an HB/FP mSUGRA mixed higgsino benchmark and BM2 is a gaugino-AMSB wino-like
+        benchmark.
+    unresolved_items:
+    - Modern Planck and direct-detection likelihoods were not applied.
+    - A full BBN calculation for late decays was not run.
+  evidence:
+    particle_content:
+    - reference_id: '1103_5413'
+      note: The model contains axions, neutralino LSPs, axinos, saxions, and MSSM benchmark spectra.
+      confidence: high
+      section: Opening and benchmark sections
+      page: null
+    symmetries:
+    - reference_id: '1103_5413'
+      note: The text combines R-parity conserving SUSY with the Peccei-Quinn solution to the strong CP
+        problem.
+      confidence: high
+      section: Opening/motivation
+      page: null
+    interactions:
+    - reference_id: '1103_5413'
+      note: Axino production and decay inject neutralinos; neutralinos can re-annihilate after axino decay.
+      confidence: high
+      section: Neutralino re-annihilation section
+      page: null
+    production_mechanism:
+    - reference_id: '1103_5413'
+      note: The abundance calculation includes axion vacuum misalignment, thermal neutralino freeze-out,
+        thermal axino production, late decay, re-annihilation, and entropy dilution.
+      confidence: high
+      section: Relic-density algorithm
+      page: null
+    cosmological_history:
+    - reference_id: '1103_5413'
+      note: The paper treats radiation-dominated, matter-dominated, and decaying-particle-dominated histories
+        when computing relic abundances.
+      confidence: high
+      section: Algorithm/appendices summary
+      page: null
+    parameter_ranges:
+    - reference_id: '1103_5413'
+      note: The paper scans f_a/N, T_R, and m_axino and quotes BM1/BM2 neutralino masses and thermal relic
+        abundances.
+      confidence: medium
+      section: Benchmark and results sections
+      page: null
+    validity_domain:
+    - reference_id: '1103_5413'
+      note: The analysis assumes the neutralino is the LSP and identifies BBN-sensitive regions where
+        T_D drops below about 2 MeV.
+      confidence: medium
+      section: Axino decay and results sections
+      page: null
+    observables:
+    - reference_id: arxiv:1103.5413
+      note: Primary paper states the WMAP7 Omega_DM target and mixed axion-neutralino abundance accounting.
+      confidence: high
+      section: Introduction
+      page: null
+    - reference_id: arxiv:1103.5413
+      note: Primary paper discusses re-annihilation and entropy dilution after axino decay.
+      confidence: high
+      section: Introduction and algorithm
+      page: null
+    - reference_id: arxiv:1301.7428
+      note: Related paper identifies saxion decays to axions as a dark-radiation source.
+      confidence: medium
+      section: Introduction
+      page: null
+    constraints:
+    - reference_id: arxiv:1103.5413
+      note: Primary paper marks T_D below about 2 MeV as likely BBN excluded.
+      confidence: high
+      section: Axino domination/decay
+      page: null
+    - reference_id: arxiv:1301.7428
+      note: Related paper connects relativistic axion production to N_eff constraints.
+      confidence: medium
+      section: Dark radiation discussion
+      page: null
+    routes:
+    - reference_id: arxiv:1110.2491
+      note: Related paper says full coupled Boltzmann equations are needed for neutralino, axino, axion,
+        saxion, gravitino, and radiation abundances.
+      confidence: high
+      section: Introduction
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - The assigned text does not include a title/author header, so the source title is a concise description
+    from the paper content.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  dominant_uncertainties:
+  - The extraction records the model-only relic logic and omits constraint-level interpretation.
+  - The source text has degraded mathematical notation for some formulae.
+  validation_status: expert_judgment_only
+  notes: The dark matter identity and relic-production logic are explicit; numerical calculations were
+    not rerun.
+agent_failure_modes:
+  warnings:
+  - id: do_not_treat_as_single_component
+    severity: high
+    category: assumption_mismatch
+    warning: This entry is a multi-component axion plus neutralino CDM scenario, not a pure neutralino
+      or pure axion model.
+    mitigation: Track the axion and neutralino abundance components separately.
+  - id: bbn_regions_need_source
+    severity: medium
+    category: extrapolation
+    warning: BBN-sensitive regions depend on axino decay temperature and should not be inferred from this
+      card alone.
+    mitigation: Use the source paper's T_D and T_e calculations for detailed scans.
+observables:
+- id: obs_pqmssm_mixed_relic_abundance
+  name: Mixed axion-neutralino relic abundance
+  channel: cosmology
+  subchannel: multi-component cold dark matter abundance
+  predicted_effect: The total cold dark matter abundance is a sum of axion misalignment and neutralinos
+    from thermal freeze-out plus axino decays, with late re-annihilation and entropy injection able to
+    raise or lower the neutralino component.
+  effect_direction: rate_change
+  key_quantities:
+  - name: target dark matter abundance
+    symbol: Omega_DM h^2
+    description: WMAP7 value used by the primary paper.
+    value: 0.1123 +/- 0.0035
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - arxiv:1103.5413
+  - name: PQ scale divided by anomaly factor
+    symbol: f_a/N
+    description: Invisible-axion scale controlling axion and axino production.
+    range: '>=1e9; examples near 1e12'
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1103.5413
+  - name: axino decay temperature
+    symbol: T_D
+    description: Temperature when axinos decay into neutralinos and radiation.
+    range: must exceed about 2 MeV for BBN safety
+    unit: MeV
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - arxiv:1103.5413
+  redshift_range: freeze-out through BBN and matter-radiation equality
+  scale_range: GeV-TeV superpartner masses and 1e9-1e12 GeV PQ scales
+  environments:
+  - early universe thermal bath
+  observability: high
+  relevance: critical
+  linked_constraints:
+  - con_pqmssm_wmap_relic_target
+  - con_pqmssm_bbn_axino_decay
+  linked_routes:
+  - route_pqmssm_boltzmann_relic_detection
+  caveats:
+  - Semi-analytic abundance estimates are sensitive to axino/saxion assumptions and reheating temperature.
+  source_reference_ids:
+  - arxiv:1103.5413
+  - arxiv:1110.2491
+  notes: null
+- id: obs_pqmssm_detection_partition
+  name: Axion versus WIMP detection partition
+  channel: direct_detection
+  subchannel: neutralino recoil and axion haloscope complementarity
+  predicted_effect: The relative axion and neutralino fractions determine whether axion searches, WIMP
+    direct detection, or both have the better discovery prospects.
+  effect_direction: rate_change
+  key_quantities:
+  - name: neutralino dark matter fraction
+    symbol: xi_chi
+    description: Fraction of local density in neutralinos.
+    range: model dependent
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - arxiv:1103.5413
+  - name: axion dark matter fraction
+    symbol: xi_a
+    description: Fraction of local density in axions.
+    range: model dependent
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - arxiv:1103.5413
+    - arxiv:0811.3347
+  redshift_range: local halo today
+  scale_range: laboratory axion and WIMP search scales
+  environments:
+  - direct-detection targets
+  - axion haloscopes
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - con_pqmssm_wmap_relic_target
+  linked_routes:
+  - route_pqmssm_boltzmann_relic_detection
+  caveats:
+  - The batch did not compute local-density rescaling for a specific benchmark.
+  source_reference_ids:
+  - arxiv:1103.5413
+  - arxiv:0811.3347
+  notes: null
+- id: obs_pqmssm_dark_radiation
+  name: Relativistic axion dark-radiation component
+  channel: cmb
+  subchannel: Delta N_eff from saxion decays
+  predicted_effect: In extended PQMSSM cosmologies, saxion decays to axions can produce a relativistic
+    component that shifts N_eff while also changing mixed axion-neutralino dark matter production.
+  effect_direction: enhancement
+  key_quantities:
+  - name: effective neutrino number shift
+    symbol: Delta N_eff
+    description: Dark-radiation contribution from relativistic axions.
+    range: model dependent
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - arxiv:1301.7428
+  - name: saxion branching to axions
+    symbol: BR(s -> aa)
+    description: Branching fraction controlling dark radiation.
+    range: model dependent
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1301.7428
+  redshift_range: BBN and recombination
+  scale_range: radiation energy density
+  environments:
+  - early universe plasma
+  - CMB
+  observability: medium
+  relevance: medium
+  linked_constraints:
+  - con_pqmssm_dark_radiation_neff
+  linked_routes:
+  - route_pqmssm_boltzmann_relic_detection
+  caveats:
+  - This is an extension/source-context observable; the primary paper treated saxions more briefly than
+    the related Boltzmann work.
+  source_reference_ids:
+  - arxiv:1301.7428
+  notes: null
+constraints:
+- id: con_pqmssm_wmap_relic_target
+  name: WMAP7 total cold dark matter abundance target
+  constraint_type: cosmological
+  observable_channel: Omega_DM h^2
+  applies: 'yes'
+  constrained_parameters:
+  - f_a/N
+  - T_R
+  - m_axino
+  - theta_i
+  - Omega_chi^std h^2
+  excluded_regions:
+  - Parameter points whose axion plus neutralino abundance falls outside Omega_DM h^2=0.1123 +/- 0.0035
+    in the primary calculation.
+  allowed_regions:
+  - Underabundant standard higgsino-like or wino-like neutralino benchmarks can be lifted to the target
+    abundance by PQ-sector production.
+  benchmark_implications:
+  - BM1 and BM2 viability depends on f_a/N, T_R, axino mass, and re-annihilation/entropy effects.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: WMAP7 cosmological interpretation value quoted in the primary paper
+  recasting_needed: partial
+  robustness: medium
+  assumptions:
+  - id: mixed-cdm-sum
+    description: The total dark matter abundance is the sum of cold axion and neutralino components.
+    scope: relic-density accounting
+    status: assumed
+    impact_if_violated: Extra relativistic or unstable components would change the target calculation.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - arxiv:1103.5413
+    notes: null
+  caveats:
+  - Modern Planck replacement likelihood was not applied.
+  source_reference_ids:
+  - arxiv:1103.5413
+  notes: null
+- id: con_pqmssm_bbn_axino_decay
+  name: BBN lower bound on axino decay temperature
+  constraint_type: cosmological
+  observable_channel: late entropy injection
+  applies: 'yes'
+  constrained_parameters:
+  - T_D
+  - m_axino
+  - f_a/N
+  - neutralino channel
+  excluded_regions:
+  - Primary paper shades T_D below about 2 MeV as likely excluded because axino entropy is dumped after
+    BBN starts.
+  allowed_regions:
+  - Axino decays before BBN and either before or after neutralino freeze-out depending on m_axino and
+    T_R.
+  benchmark_implications:
+  - Low axino masses in the wino-like BM2 case can be BBN excluded until heavier decay channels open.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: BBN timing bound used in the primary paper
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: td-bbn-threshold
+    description: T_D above roughly 2 MeV is treated as the minimum BBN-safe decay temperature.
+    scope: late-decay cosmology
+    status: assumed
+    impact_if_violated: A full hadronic/electromagnetic BBN calculation could strengthen or weaken exclusions.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - arxiv:1103.5413
+    notes: null
+  caveats:
+  - No BBN reaction-network likelihood was run.
+  source_reference_ids:
+  - arxiv:1103.5413
+  notes: null
+- id: con_pqmssm_dark_radiation_neff
+  name: Dark-radiation constraint from relativistic axions
+  constraint_type: cosmological
+  observable_channel: N_eff
+  applies: parameter_dependent
+  constrained_parameters:
+  - Delta N_eff
+  - BR(s -> aa)
+  - saxion abundance
+  - T_R
+  excluded_regions:
+  - Regions with excessive saxion decay to axions would overproduce dark radiation.
+  allowed_regions:
+  - Mixed axion/neutralino production with acceptable Delta N_eff after saxion decay.
+  benchmark_implications:
+  - A full coupled Boltzmann treatment is needed when saxions are included.
+  likelihood_available: partial
+  likelihood_reference: null
+  data_release: WMAP/SPT/ACT/Planck-era N_eff context discussed by related source
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: saxion-extension
+    description: The related saxion cosmology extends the primary mixed axion-neutralino setup.
+    scope: dark radiation
+    status: assumed
+    impact_if_violated: If saxions are negligible, this constraint is not relevant.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - arxiv:1301.7428
+    notes: null
+  caveats:
+  - Recorded as an extension constraint, not a primary-paper exclusion.
+  source_reference_ids:
+  - arxiv:1301.7428
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: route_pqmssm_boltzmann_relic_detection
+    description: Compute mixed axion/neutralino CDM abundance with axino and saxion cosmology, then map
+      component fractions to detection and cosmological constraints.
+    source_model_features:
+    - PQ-augmented MSSM
+    - axion vacuum misalignment
+    - neutralino LSP
+    - axino decays
+    - possible saxion dark radiation
+    input_parameters:
+    - f_a/N
+    - T_R
+    - m_axino
+    - theta_i
+    - Omega_chi^std h^2
+    - neutralino annihilation rate
+    - saxion branching fractions
+    derived_quantities:
+    - T_D
+    - T_e
+    - entropy dilution
+    - neutralino re-annihilation yield
+    - Omega_a h^2
+    - Omega_chi h^2
+    - Delta N_eff
+    forward_model_chain:
+    - step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - f_a/N
+      - theta_i
+      outputs:
+      - axion misalignment abundance
+      validity: Primary appendix-level analytic treatment.
+      notes: null
+    - step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: coupled Boltzmann equations
+      inputs:
+      - axino/saxion/gravitino/neutralino yields
+      - decay widths
+      outputs:
+      - mixed CDM abundance
+      - dark radiation
+      validity: Related paper develops full coupled equations.
+      notes: null
+    - step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      inputs:
+      - component fractions
+      - local density assumptions
+      outputs:
+      - rescaled WIMP and axion search targets
+      validity: Requires benchmark spectrum and local-density assumptions.
+      notes: null
+    observable_ids:
+    - obs_pqmssm_mixed_relic_abundance
+    - obs_pqmssm_detection_partition
+    - obs_pqmssm_dark_radiation
+    constraint_ids:
+    - con_pqmssm_wmap_relic_target
+    - con_pqmssm_bbn_axino_decay
+    - con_pqmssm_dark_radiation_neff
+    likelihoods:
+    - WMAP7 value quoted but likelihood not included
+    - BBN decay likelihood unavailable
+    - N_eff recast required
+    required_code_resources:
+    - PQMSSM spectrum generator
+    - coupled Boltzmann solver
+    - BBN/N_eff likelihood for late decays
+    validation_tests:
+    - recover Omega_DM h^2=0.1123 +/- 0.0035 target
+    - recover T_D > 2 MeV BBN-safe threshold
+    - recover axion plus neutralino abundance sum
+    route_status: planned
+    agent_notes: null
+    caveats:
+    - Modern cosmological constraints should replace WMAP7 in a current recast.

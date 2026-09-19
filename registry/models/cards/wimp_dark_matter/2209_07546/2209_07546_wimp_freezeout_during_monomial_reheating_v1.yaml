@@ -1,0 +1,307 @@
+_source:
+  shard: arXiv_src_2209_051_wds.tar
+  paper_id: '2209_07546'
+  source_member: 2209_07546.json
+schema_version: model_only_v0
+model_id: 2209_07546_wimp_freezeout_during_monomial_reheating_v1
+identity:
+  name: WIMP freeze-out during monomial-potential reheating
+  family: wimp_dark_matter
+  aliases: []
+  short_description: A WIMP dark matter production scenario where freeze-out occurs during reheating while
+    the inflaton oscillates in a monomial potential, modifying the expansion, entropy injection, and required
+    annihilation cross section.
+  historical_origin_or_motivation: Introduced or substantially developed in the assigned paper text for
+    dark-matter phenomenology.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - generic WIMP
+  - inflationary reheating with monomial inflaton potential
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: Extracted only from the assigned paper text.
+particle_content:
+  dark_matter_candidate:
+    name: generic WIMP
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Cosmological stability of the WIMP is assumed; no specific stabilizing symmetry
+    is extracted
+  symmetries:
+  - name: unknown WIMP stabilizing symmetry
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: not specified
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets:
+  - Standard Model thermal bath
+  dark_sector_couplings:
+  - temperature-independent S-wave annihilation cross section
+  mediator_types:
+  - unknown
+  annihilation_channels:
+  - generic WIMP annihilation into Standard Model bath
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: none
+    spin_dependence: unknown
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m
+    description: WIMP mass used in Boltzmann evolution and parameter-space plots
+    range: paper scans include GeV-scale examples
+    unit: GeV
+    role: core
+    status: inferred
+  - name: thermally averaged annihilation cross section
+    symbol: <sigma v>
+    description: Temperature-independent S-wave annihilation cross section
+    range: can be several orders smaller than the standard WIMP value in the reheating scenario
+    unit: cm^3/s
+    role: core
+    status: inferred
+  - name: inflaton potential index
+    symbol: n
+    description: Power in the monomial inflaton potential V(phi) proportional to phi^n
+    range: examples include n=2 and n=4
+    role: core
+    status: inferred
+  - name: reheating temperature
+    symbol: T_rh
+    description: Temperature at onset of radiation domination
+    range: must exceed BBN temperature; contours include T_BBN, 0.1, 1, and 10 GeV
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - chemical equilibrium with SM bath followed by freeze-out during reheating
+  - entropy dilution from inflaton decay
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - annihilation cross section
+  - DM mass
+  - reheating temperature
+  - inflaton equation of state
+  - inflaton decay channel
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: Direct DM production from inflaton decay is omitted in the paper’s main analysis under a small
+    branching-ratio assumption.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: target relic abundance
+    symbol: Omega h^2
+    description: Observed abundance targeted by the contours
+    value: '0.12'
+    role: derived
+    status: assumed
+  calculation_type: thermal
+  key_dependencies:
+  - m
+  - <sigma v>
+  - T_rh
+  - n
+  - fermionic or bosonic inflaton decay
+  requires_entropy_dilution: 'yes'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - freeze-out before radiation domination
+  - inflaton oscillations in monomial potential
+  - time-dependent inflaton decay rate
+  - entropy injection during reheating
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: freeze-out temperature
+    symbol: T_f
+    description: Freeze-out occurs above reheating temperature in the scenario
+    range: T_f > T_rh
+    unit: GeV
+    role: derived
+    status: inferred
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: Nonrelativistic equilibrium density is used in the Boltzmann equation; no full momentum distribution
+    is extracted.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: reheating_freezeout_validity
+  applies_to: model
+  condition: Applies when WIMP freeze-out occurs during reheating with T_f greater than T_rh and the WIMP
+    reaches chemical equilibrium
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: no_inflaton_dm_decay
+  applies_to: production
+  condition: Direct inflaton decays into DM are neglected when the branching ratio is sufficiently small
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: s_wave
+    description: The thermally averaged annihilation cross section is temperature-independent and S-wave
+      dominated.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+  - id: chemical_equilibrium
+    description: The WIMP reaches chemical equilibrium with the SM bath before freeze-out.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+  - id: perturbative_reheating
+    description: The analysis focuses on perturbative reheating and assumes preheating is not efficient.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code was extracted from the assigned text.
+provenance:
+  model_id: 2209_07546_wimp_freezeout_during_monomial_reheating_v1
+  model_name: WIMP freeze-out during monomial-potential reheating
+  model_family: wimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: 2209_07546_paper
+      title: WIMP dark matter freeze-out during reheating in fast-expanding universe
+      authors: []
+      year: 2022
+      arxiv_id: '2209.07546'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text in target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0018
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: 2209_07546_paper
+      section: null
+      page: null
+      quote_or_summary: Compact evidence drawn only from the assigned SQLite full text.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: 2209_07546_paper
+      note: The paper studies a generic non-baryonic WIMP candidate satisfying stability, neutrality,
+        nonrelativistic behavior, and relic abundance requirements.
+      confidence: medium
+      section: Introduction
+    symmetries:
+    - reference_id: 2209_07546_paper
+      note: No explicit stabilizing symmetry is specified for the generic WIMP; cosmological stability
+        is imposed as a viability property.
+      confidence: medium
+      section: Introduction
+    interactions:
+    - reference_id: 2209_07546_paper
+      note: The DM number-density Boltzmann equation uses a temperature-independent annihilation cross
+        section corresponding to S-wave dominated interaction.
+      confidence: high
+      section: DM production
+    production_mechanism:
+    - reference_id: 2209_07546_paper
+      note: The work investigates WIMP freezing out during reheating with inflaton oscillations in V(phi)
+        proportional to phi^n.
+      confidence: high
+      section: Introduction
+    cosmological_history:
+    - reference_id: 2209_07546_paper
+      note: The inflaton equation of state depends on n, and fermionic or bosonic decay changes the radiation
+        and temperature evolution during reheating.
+      confidence: high
+      section: Reheating
+    parameter_ranges:
+    - reference_id: 2209_07546_paper
+      note: Figures and text discuss n=2 and n=4 cases, reheating temperatures including T_BBN, 0.1, 1,
+        and 10 GeV, and smaller annihilation cross sections than standard WIMP freeze-out.
+      confidence: medium
+      section: Results
+    validity_domain:
+    - reference_id: 2209_07546_paper
+      note: The paper excludes the no-freeze-out/FIMP-like region from the main WIMP analysis and requires
+        reheating above the BBN temperature.
+      confidence: high
+      section: Results
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: The cosmological production mechanism is well supported, but the particle physics model is intentionally
+    generic.
+agent_failure_modes:
+  warnings:
+  - id: generic_wimp_only
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper does not define a UV WIMP particle model or mediator; use this row as a production-history
+      model card, not as a complete particle model.
+  - id: requires_equilibrium
+    severity: medium
+    category: extrapolation
+    warning: Very small annihilation cross sections can enter a no-freeze-out/FIMP-like regime that the
+      paper excludes from its WIMP analysis.

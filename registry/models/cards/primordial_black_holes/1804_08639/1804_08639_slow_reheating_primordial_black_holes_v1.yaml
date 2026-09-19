@@ -1,0 +1,810 @@
+_source:
+  shard: arXiv_src_1804_024_wds.tar
+  paper_id: '1804_08639'
+  source_member: 1804_08639.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1804_08639_slow_reheating_primordial_black_holes_v1
+identity:
+  name: Primordial black holes from slow reheating
+  family: primordial_black_holes
+  aliases:
+  - PBHs during slow reheating
+  - slow-reheating PBH mass-function model
+  short_description: A primordial-black-hole dark matter scenario in which overdensities collapse during
+    a slow post-inflation reheating era, with a gradual transition from matter domination to radiation
+    domination shaping the PBH mass function.
+  historical_origin_or_motivation: The paper develops PBH formation during slow reheating and derives
+    consequences for the PBH mass function, including a threshold-dependent transition and an upper mass
+    cutoff relevant to LIGO-scale black holes.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - primordial black hole dark matter
+  - post-inflation reheating cosmology
+  lagrangian_available: not_applicable
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper does not specify a concrete inflaton model; it parameterizes reheating by a scalar
+    condensate decay rate and reheat temperature.
+particle_content:
+  dark_matter_candidate:
+    name: primordial black hole
+    spin: unknown
+    statistics: black_hole
+    elementary_or_composite: macroscopic
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - primordial black holes above the evaporation threshold
+  unstable_parent_particles:
+  - oscillating scalar field responsible for reheating
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: PBHs are stable on cosmological timescales when their masses are large enough
+    to avoid complete Hawking evaporation by the current epoch.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - gravitationally coupled matter and radiation
+  dark_sector_couplings: []
+  mediator_types:
+  - gravity
+  interaction_operators: []
+  scattering:
+    elastic: not_applicable
+    inelastic: not_applicable
+    momentum_dependence: not_applicable
+    velocity_dependence: not_applicable
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels:
+  - Hawking evaporation for sufficiently low-mass PBHs
+  self_scattering_channels:
+  - gravitational clustering and mergers
+  cp_structure: not_applicable
+  flavor_structure: not_applicable
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: density contrast threshold
+    symbol: delta_c
+    description: Threshold controlling when overdense regions collapse to PBHs during the matter-to-radiation
+      transition.
+    value: about 0.05 threshold below which transition occurs before reheating
+    fiducial_value: '0.05'
+    range: null
+    unit: null
+    prior: null
+    scale: linear
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper:1804_08639
+    notes: The abstract reports a threshold delta_c about 0.05.
+  - name: reheating decay rate
+    symbol: Gamma
+    description: Decay rate of the scalar condensate into radiation; determines reheating duration and
+      reheat temperature.
+    value: null
+    fiducial_value: null
+    range: bounded by instant reheating and by successful reheating before BBN, according to the paper
+    unit: GeV
+    prior: null
+    scale: log
+    role: cosmological
+    status: assumed
+    source_reference_ids:
+    - paper:1804_08639
+    notes: The paper leaves Gamma as a free parameter.
+  - name: reheat temperature
+    symbol: T_reh
+    description: Temperature at the end of reheating, determined by the scalar decay rate and relativistic
+      degrees of freedom.
+    value: (90/(pi^2 g_*))^(1/4) sqrt(Gamma M_P) in the paper notation
+    fiducial_value: null
+    range: null
+    unit: GeV
+    prior: null
+    scale: log
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - paper:1804_08639
+    notes: Formula quoted in text with notation degraded by extraction.
+  - name: PBH mass cutoff
+    symbol: M_cutoff
+    description: Maximum mass scale below which the subdominant radiation bath affects PBH production
+      in the slow-reheating scenario.
+    value: around 100 solar masses
+    fiducial_value: '100'
+    range: null
+    unit: M_sun
+    prior: null
+    scale: log
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - paper:1804_08639
+    notes: The abstract states a maximum cutoff around 100 solar masses.
+  nuisance: []
+  derived:
+  - name: PBH mass function
+    symbol: f_PBH(M)
+    description: Expected PBH mass function calculated across the transition from matter domination to
+      radiation domination.
+    value: model-dependent function calculated in the paper
+    fiducial_value: null
+    range: null
+    unit: null
+    prior: null
+    scale: derived
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - paper:1804_08639
+    notes: The paper states it calculates the characteristic PBH mass function.
+production:
+  mechanisms:
+  - collapse of primordial overdensities during slow reheating after inflation
+  - transition from matter-dominated to radiation-dominated PBH formation
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - primordial density perturbations
+  - density-contrast threshold
+  - duration and temperature of reheating
+  - PBH mass function
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: not_applicable
+  notes: PBHs are produced gravitationally from overdensities, not by thermal particle freeze-out.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - PBH mass function
+  - initial collapse fraction
+  - reheating duration
+  - density contrast threshold
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - slow reheating after inflation
+  - early matter-dominated phase from an oscillating scalar field
+  - gradual transition to radiation domination
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - end of reheating
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: not_applicable
+  distribution_function_available: not_applicable
+  f_of_p_or_q: not_applicable for macroscopic primordial black holes
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The relevant distribution is a PBH mass function rather than a particle momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: Thermal WDM mapping is not applicable to PBHs.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: validity_1804_08639_slow_reheating
+  applies_to: model
+  condition: Applies to PBH formation in a post-inflation reheating epoch where an oscillating scalar
+    condensate in a quadratic potential behaves as matter until it decays into radiation.
+  valid_range: The paper leaves the scalar decay rate free subject to model-independent upper and lower
+    bounds and emphasizes a cutoff near 100 solar masses for the scenario considered.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - No concrete inflationary model or perturbation spectrum is specified in the extracted text.
+  - PBH survival as dark matter requires masses above the Hawking evaporation limit.
+  source_reference_ids:
+  - paper:1804_08639
+  notes: The paper studies how PBH formation changes across the transition between matter and radiation
+    domination.
+assumptions:
+  global:
+  - id: assume_quadratic_reheating_scalar
+    description: The scalar field responsible for reheating oscillates in a quadratic potential and behaves
+      as pressureless matter before decaying.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The matter-dominated collapse probability and mass-function calculation may not
+      apply.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper:1804_08639
+    notes: null
+  - id: assume_primordial_overdensities
+    description: PBHs form from primordial overdensities whose collapse threshold and abundance determine
+      the mass function.
+    scope: production
+    status: assumed
+    impact_if_violated: The PBH production mechanism would be absent or quantitatively different.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper:1804_08639
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated code is identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  reproducibility:
+    reproducibility_level: unknown
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: null
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats: []
+provenance:
+  model_id: 1804_08639_slow_reheating_primordial_black_holes_v1
+  model_name: Primordial black holes from slow reheating
+  model_family: primordial_black_holes
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper:1804_08639
+      title: Primordial Black Hole Formation During Slow Reheating After Inflation
+      authors:
+      - Bernard Carr
+      - Konstantinos Dimopoulos
+      - Charlotte Owen
+      - Tommi Tenkanen
+      year: 2018
+      arxiv_id: '1804.08639'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text source.
+    - arxiv_id: '1804.08639'
+      authors:
+      - Carr, Bernard
+      - Dimopoulos, Konstantinos
+      - Owen, Charlotte
+      - Tenkanen, Tommi
+      doi: 10.1103/PhysRevD.97.123535
+      notes: Primary assigned paper; local full text resolved from dark_matter_model_astro_lexical.
+      reference_id: primary
+      role: original_model
+      title: Primordial black hole formation during slow reheating after inflation
+      url: https://arxiv.org/abs/1804.08639
+      year: 2018
+    constraint_papers:
+    - arxiv_id: '2002.12778'
+      authors:
+      - Carr, Bernard
+      - Kohri, Kazunori
+      - Sendouda, Yuuiti
+      - Yokoyama, Jun'ichi
+      doi: 10.1088/1361-6633/ac1e31
+      notes: ADS citation candidate rank 1; local related text was read.
+      reference_id: rel1
+      role: constraint
+      title: Constraints on primordial black holes
+      url: https://arxiv.org/abs/2002.12778
+      year: 2021
+    - arxiv_id: '1705.05567'
+      authors:
+      - Carr, Bernard
+      - Raidal, Martti
+      - Tenkanen, Tommi
+      - Vaskonen, Ville
+      - Veermäe, Hardi
+      doi: 10.1103/PhysRevD.96.023514
+      notes: ADS reference candidate rank 5; local related text was read.
+      reference_id: rel3
+      role: constraint
+      title: Primordial black hole constraints for extended mass functions
+      url: https://arxiv.org/abs/1705.05567
+      year: 2017
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1901.07803'
+      authors:
+      - Carr, Bernard
+      doi: 10.1007/978-3-030-31593-1_4
+      notes: ADS citation candidate rank 2; local related text was read.
+      reference_id: rel2
+      role: review
+      title: Primordial Black Holes as Dark Matter and Generators of Cosmic Structure
+      url: https://arxiv.org/abs/1901.07803
+      year: 2019
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: gpt-5.5_batch-0008
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper:1804_08639
+      section: abstract
+      page: null
+      quote_or_summary: The paper studies PBH formation during slow reheating and calculates the expected
+        PBH mass function.
+    - reference_id: paper:1804_08639
+      section: reheating setup
+      page: null
+      quote_or_summary: The paper assumes an oscillating scalar field in a quadratic potential, decaying
+        into radiation with rate Gamma.
+    - reference_id: paper:1804_08639
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The scenario gives a threshold near delta_c = 0.05 and a mass cutoff around 100
+        solar masses.
+    unresolved_items:
+    - The extracted text does not provide all mass-function equations in a clean machine-readable form.
+    - Whether PBHs make all or part of dark matter depends on model parameters not fixed in the card.
+    - The primary paper does not perform a full observational PBH abundance constraint recast.
+    - Primordial power-spectrum choice and non-Gaussianity are not fixed by the model card.
+    - PBH merger-rate claims require additional binary-formation assumptions.
+  evidence:
+    particle_content:
+    - reference_id: paper:1804_08639
+      note: The introduction states larger PBHs might provide dark matter or other astrophysical consequences.
+      confidence: high
+      section: introduction
+      page: null
+    symmetries:
+    - reference_id: paper:1804_08639
+      note: No stabilizing particle symmetry is used; PBH longevity is mass-dependent gravitational physics.
+      confidence: medium
+      section: introduction
+      page: null
+    interactions:
+    - reference_id: paper:1804_08639
+      note: PBHs form and evolve through gravity in the early Universe; no non-gravitational particle
+        portal is introduced.
+      confidence: medium
+      section: abstract/introduction
+      page: null
+    production_mechanism:
+    - reference_id: paper:1804_08639
+      note: The paper demonstrates how PBH formation changes during the transition from matter domination
+        to radiation domination in slow reheating.
+      confidence: high
+      section: abstract
+      page: null
+    cosmological_history:
+    - reference_id: paper:1804_08639
+      note: The setup assumes a scalar condensate reheats the Universe slowly, with T_reh determined by
+        the decay rate Gamma.
+      confidence: high
+      section: reheating setup
+      page: null
+    parameter_ranges:
+    - reference_id: paper:1804_08639
+      note: The abstract gives delta_c around 0.05 and a maximum PBH mass cutoff near 100 solar masses.
+      confidence: high
+      section: abstract
+      page: null
+    validity_domain:
+    - reference_id: paper:1804_08639
+      note: The authors leave Gamma free and note model-independent bounds from instant reheating and
+        lower limits on successful reheating.
+      confidence: medium
+      section: reheating setup
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper notes PBH constraints likely preclude all-DM LIGO-mass PBHs and that it does
+        not evaluate final constraints.
+      page: null
+      reference_id: primary
+      section: null
+    - confidence: medium
+      note: Related constraints review provides broad PBH abundance constraint context.
+      page: null
+      reference_id: rel1
+      section: null
+    - confidence: medium
+      note: Related extended-mass-function paper supports recasting constraints for broad mass functions.
+      page: null
+      reference_id: rel3
+      section: null
+    observables:
+    - confidence: high
+      note: Primary paper states the slow-reheating PBH formation mechanism, delta_c threshold, and approximately
+        100 solar mass cutoff.
+      page: null
+      reference_id: primary
+      section: null
+    - confidence: medium
+      note: Related review discusses PBHs as dark matter and cosmic-structure generators, including possible
+        mass windows.
+      page: null
+      reference_id: rel2
+      section: null
+    routes:
+    - confidence: high
+      note: Primary paper supplies the formation and mass-function calculation route.
+      page: null
+      reference_id: primary
+      section: null
+    - confidence: medium
+      note: Extended mass-function related paper supports the constraint-recast step.
+      page: null
+      reference_id: rel3
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - PBH dark matter fraction is parameter dependent and cannot be inferred from the card alone.
+  related_entries: []
+  external_links: {}
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - The card captures the production model but not a numerical mass-function implementation.
+  - The perturbation spectrum and PBH abundance normalization are not fixed in the extracted text.
+  validation_status: expert_judgment_only
+  notes: The paper's model-building target is clear, but quantitative use needs the original mass-function
+    equations.
+agent_failure_modes:
+  warnings:
+  - id: warning_pbh_fraction_parameter_dependent
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not assume this scenario automatically produces all dark matter; the PBH fraction depends
+      on the primordial perturbations and reheating parameters.
+    mitigation: Track the PBH mass function and abundance normalization explicitly.
+    source_reference_ids:
+    - paper:1804_08639
+observables:
+- caveats:
+  - Requires specifying the primordial power spectrum and reheating temperature.
+  channel: black_holes
+  effect_direction: shape_change
+  environments:
+  - early-universe overdensities
+  - matter-to-radiation transition
+  id: slow_reheating_pbh_mass_function
+  key_quantities:
+  - description: Threshold below which the production mechanism changes before reheating in the primary
+      paper.
+    name: density-contrast threshold
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: delta_c
+    value: 0.05
+  - description: Upper mass cutoff of the affected mass function, around 100 solar masses in the primary
+      abstract/conclusions.
+    name: maximum PBH mass
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: M_max
+    unit: M_sun
+  linked_constraints:
+  - pbh_abundance_constraints_extended_mass
+  - slow_reheating_mass_function_validity
+  linked_routes:
+  - slow_reheating_pbh_route
+  name: PBH mass-function cutoff from slow reheating
+  notes: Primary paper focuses on the formation calculation and states that observational abundance constraints
+    are not fully evaluated there.
+  observability: medium
+  predicted_effect: A slow transition from matter domination to radiation domination changes the PBH formation
+    probability and truncates the mass function; the primary paper finds a density-contrast threshold
+    near delta_c = 0.05 and a maximum cutoff around 100 solar masses in the subdominant-radiation affected
+    case.
+  redshift_range: post-inflation reheating era
+  relevance: critical
+  scale_range: PBH horizon masses set by reheating scale; example affected cutoff around 100 solar masses
+  source_reference_ids:
+  - primary
+  - rel1
+  - rel3
+  subchannel: primordial black hole abundance and mass spectrum
+- caveats:
+  - Merger rates require astrophysical clustering and binary-formation assumptions not computed in the
+    primary paper.
+  channel: gravitational_waves
+  effect_direction: rate_change
+  environments:
+  - LIGO/Virgo compact-binary population
+  id: ligo_mass_pbh_merger_population
+  key_quantities:
+  - description: Integrated PBH mass function fraction in dark matter.
+    name: PBH dark-matter fraction
+    role: derived
+    source_reference_ids:
+    - primary
+    - rel1
+    - rel2
+    status: inferred
+    symbol: f_PBH
+  - description: PBH mass in the LIGO-sensitive stellar-mass range.
+    name: merger-relevant mass
+    role: core
+    source_reference_ids:
+    - primary
+    - rel2
+    status: inferred
+    symbol: M_PBH
+    unit: M_sun
+  linked_constraints:
+  - pbh_abundance_constraints_extended_mass
+  linked_routes:
+  - slow_reheating_pbh_route
+  name: Possible LIGO-mass PBH population
+  notes: The primary paper says PBH constraints seem to preclude all DM in the relevant range, while a
+    LIGO contribution may remain possible.
+  observability: medium
+  predicted_effect: The mass-function cutoff can place PBHs in the tens-to-hundreds solar-mass range,
+    making the scenario relevant for LIGO/Virgo black-hole merger interpretations even if PBHs cannot
+    be all of the dark matter.
+  redshift_range: late-time compact-binary merger observations
+  relevance: medium
+  scale_range: roughly 10-100 solar mass PBHs in the paper motivation
+  source_reference_ids:
+  - primary
+  - rel2
+  - rel3
+  subchannel: stellar-mass black-hole mergers
+constraints:
+- allowed_regions:
+  - Related review text identifies possible PBH-DM windows near 10^16-10^17 g, 10^20-10^24 g, and 10-10^3
+    solar masses, subject to mass-function assumptions.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: Constraints derived for monochromatic PBHs are recast to the slow-reheating extended
+      mass function.
+    id: extended_mass_function_recast
+    impact_if_violated: Using monochromatic bounds directly can overstate or understate exclusions.
+    notes: null
+    scope: constraint recast
+    source_reference_ids:
+    - rel1
+    - rel3
+    status: assumed
+  benchmark_implications:
+  - A slow-reheating mass function must be passed through extended-mass-function constraints rather than
+    tested as monochromatic.
+  caveats:
+  - The primary paper explicitly does not perform the final observational abundance-constraint evaluation.
+  constrained_parameters:
+  - f_PBH
+  - PBH mass function
+  - M_min
+  - M_max
+  - mass-function width
+  constraint_type: astrophysical
+  data_release: PBH microlensing, evaporation, dynamical, CMB, and gravitational-wave constraints as compiled
+    in related literature
+  excluded_regions:
+  - Related PBH constraint reviews show that many masses cannot make up all of the dark matter; the primary
+    paper states PBH constraints seem to preclude all-DM LIGO-mass PBHs in its scenario.
+  id: pbh_abundance_constraints_extended_mass
+  likelihood_available: partial
+  likelihood_reference: PBH constraint compilations and extended-mass-function procedures in related papers
+  name: PBH abundance limits for monochromatic and extended mass functions
+  notes: Related texts were used for constraint context; primary paper supplies the slow-reheating mass-function
+    model.
+  observable_channel: microlensing_evaporation_dynamics_gravitational_waves
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - primary
+  - rel1
+  - rel2
+  - rel3
+- allowed_regions:
+  - Scenarios with specified reheating scale and primordial fluctuation amplitude that satisfy the paper
+    collapse conditions.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: PBH abundance estimates assume a specified fluctuation distribution, commonly Gaussian
+      in the paper discussion.
+    id: gaussian_overdensities
+    impact_if_violated: Non-Gaussian tails can drastically change PBH abundance.
+    notes: null
+    scope: formation probability
+    source_reference_ids:
+    - primary
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Critical collapse in a matter-dominated era is uncertain in the primary discussion.
+    id: critical_collapse_uncertainty
+    impact_if_violated: A low-mass tail below M_min may appear if critical collapse operates.
+    notes: null
+    scope: low-mass tail
+    source_reference_ids:
+    - primary
+    status: assumed
+  benchmark_implications:
+  - For delta_c below about 0.05, the transition occurs before reheating and strongly affects the mass
+    cutoff.
+  caveats:
+  - The paper leaves non-scale-invariant spectra and final observational constraints for future work.
+  constrained_parameters:
+  - delta_c
+  - sigma(M)
+  - T_reh
+  - M_min
+  - M_max
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Parameter choices outside the slow-reheating/matter-dominated transition assumptions or without a
+    specified primordial power spectrum cannot be turned into a robust PBH abundance.
+  id: slow_reheating_mass_function_validity
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Validity conditions for slow-reheating PBH mass-function calculation
+  notes: This is a modeling-validity constraint rather than an external data exclusion.
+  observable_channel: early_universe_pbh_formation
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary paper provides analytic/semi-analytic formation formulae; external PBH constraints
+      must be applied separately.
+    caveats:
+    - Merger-rate interpretation is especially assumption dependent.
+    constraint_ids:
+    - pbh_abundance_constraints_extended_mass
+    - slow_reheating_mass_function_validity
+    derived_quantities:
+    - PBH formation probability beta(M)
+    - M_min
+    - M_max
+    - PBH mass function
+    - f_PBH
+    - merger-relevant mass range
+    description: Map reheating dynamics and primordial fluctuation amplitudes to a PBH mass function,
+      integrate f_PBH, and compare to extended-mass-function observational constraints and gravitational-wave
+      interpretations.
+    forward_model_chain:
+    - inputs:
+      - reheating history
+      - sigma(M)
+      - delta_c
+      notes: Use the primary paper collapse probabilities and transition criterion.
+      outputs:
+      - beta(M)
+      - transition condition
+      step_id: formation
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Applies during slow reheating with specified fluctuation statistics.
+    - inputs:
+      - beta(M)
+      - T_reh
+      - H_*
+      notes: Compute cutoff and integrated abundance.
+      outputs:
+      - d f_PBH / dM
+      - M_min
+      - M_max
+      step_id: mass_function
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Mass function depends on reheating and power-spectrum assumptions.
+    - inputs:
+      - d f_PBH / dM
+      notes: Compare to related PBH constraint compilations.
+      outputs:
+      - excluded f_PBH regions
+      - allowed windows
+      step_id: constraints
+      step_type: recasting
+      tool_or_code: PBH extended mass-function recast
+      validity: Must use extended rather than monochromatic constraints.
+    - inputs:
+      - mass function
+      - f_PBH
+      - clustering assumptions
+      notes: Optional route for gravitational-wave interpretation.
+      outputs:
+      - possible LIGO/Virgo contribution
+      step_id: gw_context
+      step_type: recasting
+      tool_or_code: GW merger-rate model
+      validity: Merger-rate modeling is not in the primary paper.
+    id: slow_reheating_pbh_route
+    input_parameters:
+    - T_reh
+    - H_*
+    - sigma(M)
+    - delta_c
+    - primordial power spectrum
+    likelihoods:
+    - PBH constraint compilation/recast
+    - optional GW merger-rate likelihood
+    observable_ids:
+    - slow_reheating_pbh_mass_function
+    - ligo_mass_pbh_merger_population
+    required_code_resources:
+    - PBH mass-function integrator
+    - extended-mass-function constraint recaster
+    - optional PBH merger-rate model
+    route_status: planned
+    source_model_features:
+    - slow reheating after inflation
+    - matter-dominated to radiation-dominated transition
+    - PBH collapse from overdensities
+    - extended PBH mass function
+    validation_tests:
+    - Recover radiation-dominated and matter-dominated limiting collapse probabilities.
+    - Check f_PBH integral over M_min to M_max.
+    - Compare monochromatic-limit recast against published PBH bounds.

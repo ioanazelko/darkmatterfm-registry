@@ -1,0 +1,315 @@
+_source:
+  shard: data/astro-ph-00041.tar
+  paper_id: '1407_1207'
+  source_member: 1407_1207.json
+schema_version: model_only_v0
+model_id: 1407_1207_modified_baryonic_dynamics_sterile_neutrino_v1
+identity:
+  name: Modified Baryonic Dynamics sterile-neutrino dark matter model
+  family: sterile_neutrino_modified_gravity
+  aliases:
+  - MBD sterile-neutrino MOND
+  short_description: A phenomenological MOND-plus-sterile-neutrino framework in which baryons, but not
+    sterile neutrinos, source the modified gravitational field.
+  historical_origin_or_motivation: Designed to retain MOND galaxy phenomenology while using sterile neutrinos
+    for cluster and CMB-scale missing mass without overproducing massive clusters.
+  status: excluded
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - QUMOND
+  - MOND plus sterile-neutrino cosmology
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper explicitly calls the proposal phenomenological and notes that a classical/covariant
+    Lagrangian remains future work.
+particle_content:
+  dark_matter_candidate:
+    name: sterile neutrino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - modified baryonic gravitational field
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - sterile neutrino dark matter
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Sterile neutrino longevity is assumed from the MOND+sterile-neutrino setup; no
+    stabilizing symmetry is specified.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - other
+  standard_model_targets:
+  - baryons
+  - sterile neutrinos through gravity
+  dark_sector_couplings:
+  - sterile neutrinos source only Newtonian gravity in MBD
+  - baryons source the QUMOND modified field
+  mediator_types:
+  - modified gravitational potential
+  interaction_operators:
+  - QUMOND-like modified Poisson equation for baryonic source
+  scattering:
+    elastic: not_applicable
+    inelastic: not_applicable
+    momentum_dependence: not_applicable
+    velocity_dependence: not_applicable
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: sterile-neutrino species not specified
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: sterile-neutrino mass
+    symbol: m_s
+    description: Masses used in MBD simulations.
+    value:
+    - 50
+    - 100
+    - 150
+    - 300
+    unit: eV
+    role: core
+    status: inferred
+  - name: sterile-neutrino density fraction
+    symbol: Omega_s
+    description: Planck-like sterile-neutrino density fraction used in setup.
+    value: '0.267'
+    role: core
+    status: inferred
+  - name: baryon density fraction
+    symbol: Omega_b
+    description: Planck-like baryon density fraction used in setup.
+    value: '0.049'
+    role: core
+    status: inferred
+  - name: MOND acceleration constant
+    symbol: a0
+    description: Acceleration constant used in QUMOND equation.
+    value: 3.6 (km/s)^2 pc^-1
+    role: core
+    status: inferred
+  - name: CMB quadrupole normalization
+    symbol: Q_rms-PS
+    description: Initial power-spectrum normalization varied in simulations.
+    value: about 4-17 microK
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - fully thermalized sterile-neutrino abundance in the MOND+sterile-neutrino setup
+  - massive-neutrino transfer-function initial conditions
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - thermal sterile-neutrino abundance
+  - chosen cosmological density fractions
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper uses sterile neutrinos as the nonbaryonic matter component but ultimately finds the
+    simple MBD realization not viable.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: sterile-neutrino density fraction
+    symbol: Omega_s
+    description: Assigned nonbaryonic matter fraction in the simulations.
+    value: '0.267'
+    role: core
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - sterile-neutrino mass
+  - initial power-spectrum normalization
+  - MOND acceleration constant
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - MOND/QUMOND modified gravity
+  - MBD separation of baryonic and sterile-neutrino gravitational sourcing
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  phase_space_bounds:
+  - massive-neutrino transfer functions used for initial conditions
+  notes: Sterile-neutrino distribution is represented through massive-neutrino transfer functions rather
+    than a particle-physics distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'no'
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: MBD simulations were built to study the cluster halo mass function.
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'yes'
+validity_domain:
+- id: phenomenological_mbd
+  applies_to: model
+  condition: Applies only to the paper's phenomenological classical MBD equations; no covariant Lagrangian
+    is supplied.
+  status: speculative
+  extrapolation_risk: high
+  caveats: []
+- id: author_nonviable
+  applies_to: model
+  condition: The simple MBD model considered here is concluded by the authors to be not viable.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+assumptions:
+  global:
+  - id: baryons_only_modify_gravity
+    description: Baryons produce the modified gravitational field while sterile neutrinos produce Newtonian
+      gravity only.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: sterile_neutrino_component
+    description: Sterile neutrinos supply the nonbaryonic matter density in the cosmological simulations.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper describes a purpose-built particle-mesh MOND cosmological N-body code, but no
+    public repository is identified in the assigned text.
+  primary_code_role: structure_formation_simulation
+provenance:
+  model_id: 1407_1207_modified_baryonic_dynamics_sterile_neutrino_v1
+  model_name: Modified Baryonic Dynamics sterile-neutrino dark matter model
+  model_family: sterile_neutrino_modified_gravity
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Modified Baryonic Dynamics with sterile-neutrino dark matter
+      year: 2014
+      arxiv_id: '1407.1207'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned batch paper text in target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0017
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Modified Baryonic Dynamics
+      page: null
+      quote_or_summary: The paper names the proposed framework MBD and gives modified Poisson/QUMOND equations.
+    - reference_id: primary
+      section: conclusions
+      page: null
+      quote_or_summary: The simple MBD model is judged not viable by the authors.
+    unresolved_items:
+    - The text extraction does not include the title line, but the model name is explicitly given in the
+      paper body.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The framework blends MOND with sterile neutrinos; simulations use baryon and sterile-neutrino
+        particle species.
+      confidence: high
+      section: introduction/simulation setup
+    interactions:
+    - reference_id: primary
+      note: The proposed MBD equations leave sterile-neutrino gravity Newtonian while baryons source the
+        modified QUMOND field felt by all particles.
+      confidence: high
+      section: Modified Baryonic Dynamics
+    production_mechanism:
+    - reference_id: primary
+      note: The paper notes fully thermalized sterile neutrinos in MOND+sterile-neutrino scenarios and
+        uses massive-neutrino transfer functions for initial conditions.
+      confidence: medium
+      section: introduction/initial conditions
+    cosmological_history:
+    - reference_id: primary
+      note: Initial conditions use Planck-like baryon and sterile-neutrino density fractions and evolve
+        from high redshift to z=0.
+      confidence: medium
+      section: Initial Conditions and Simulation Setup
+    parameter_ranges:
+    - reference_id: primary
+      note: The simulations vary sterile-neutrino masses 50, 100, 150, and 300 eV and the CMB quadrupole
+        normalization.
+      confidence: medium
+      section: simulation results
+    validity_domain:
+    - reference_id: primary
+      note: The authors conclude the simple MBD model considered is not viable and suggest more involved
+        dark-matter fluid couplings.
+      confidence: high
+      section: conclusions
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: low
+  theory_robustness: low
+  observational_robustness: low
+  computational_robustness: medium
+  dominant_uncertainties:
+  - no Lagrangian
+  - authors conclude simple model not viable
+  - sterile-neutrino microphysics not developed
+  validation_status: partially_validated
+  notes: Accepted as a substantive dark-matter/gravity model variant but marked excluded following the
+    paper.
+agent_failure_modes:
+  warnings:
+  - id: author_excluded
+    severity: high
+    category: invalid_mapping
+    warning: The paper concludes the simple MBD model considered is not viable.
+    mitigation: Do not use this as an allowed model without a revised theory.
+  - id: no_lagrangian
+    severity: medium
+    category: assumption_mismatch
+    warning: The MBD equations are phenomenological and may require equivalence-principle-violating metric
+      couplings.
+    mitigation: Require a covariant completion before high-stakes inference.

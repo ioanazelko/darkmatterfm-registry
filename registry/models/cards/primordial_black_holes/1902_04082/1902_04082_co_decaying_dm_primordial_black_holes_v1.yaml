@@ -1,0 +1,720 @@
+_source:
+  shard: arXiv_src_1902_012_wds.tar
+  paper_id: '1902_04082'
+  source_member: 1902_04082.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1902_04082_co_decaying_dm_primordial_black_holes_v1
+identity:
+  name: Primordial black holes from co-decaying dark matter
+  family: primordial_black_holes
+  aliases:
+  - co-decay PBH dark matter
+  - co-decaying dark matter with PBH relics
+  short_description: A co-decaying dark-sector scenario in which an early matter dominated epoch enhances
+    density perturbations; collapsing dark matter substructure can form primordial black holes that may
+    be a significant dark matter fraction.
+  historical_origin_or_motivation: The paper asks whether primordial structures in co-decaying dark matter
+    can collapse into PBHs and contribute appreciably to the dark matter abundance.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - co-decaying dark matter
+  - early matter dominated epoch
+  - primordial black hole formation
+  lagrangian_available: 'no'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper reviews co-decay in terms of dark-sector A and B particles, B decay rate, dark-sector
+    entropy, and annihilation/freeze-out, then models PBH formation during the EMDE.
+particle_content:
+  dark_matter_candidate:
+    name: primordial black holes formed during co-decay plus surviving A particles
+    spin: not_applicable
+    statistics: black_hole
+    elementary_or_composite: macroscopic
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - stable A particle
+  - unstable B particle decaying to the Standard Model
+  mediators:
+  - gravity
+  - dark-sector interactions maintaining A-B equilibrium
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The co-decay setup contains a stable A particle and an unstable B particle; the
+    symmetry stabilizing A is not specified in the extracted text.
+  symmetries:
+  - name: unknown A-particle stability symmetry
+    type: unknown
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - other
+  standard_model_targets:
+  - Standard Model radiation through B decays
+  - gravity
+  dark_sector_couplings:
+  - AA <-> BB interactions
+  - B decay with rate Gamma_B
+  - gravitational collapse of enhanced perturbations
+  mediator_types:
+  - unstable B particle
+  - gravitational collapse
+  self_scattering_channels:
+  - dark sector interactions maintaining A and B number-density equilibrium before freeze-out
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: stable dark particle mass
+    symbol: m_A
+    description: Mass scale controlling dark-sector matter domination and A relic abundance.
+    role: core
+    status: inferred
+  - name: B decay rate
+    symbol: Gamma_B
+    description: Decay rate ending the early matter dominated epoch.
+    role: core
+    status: inferred
+  - name: A-B annihilation rate
+    symbol: <sigma v>
+    description: Velocity-averaged rate controlling A freeze-out from B number density.
+    role: core
+    status: inferred
+  - name: dark-to-SM entropy ratio
+    symbol: eta
+    description: Ratio of dark-sector to Standard Model entropy density at decoupling.
+    range: order 0.1 in the text example
+    role: core
+    status: inferred
+  - name: EMDE duration
+    symbol: N_dur
+    description: Number of e-folds of early matter domination.
+    range: 0 to about 20 for reasonable parameters
+    role: core
+    status: inferred
+  - name: PBH mass fraction
+    symbol: beta
+    description: Mass fraction in primordial black holes derived from perturbation collapse probability.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - co-decaying dark matter freeze-out
+  - early matter dominated growth of perturbations
+  - collapse of dark matter clumps into primordial black holes
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - A freeze-out condition H approximately n_A <sigma v>
+  - B decay rate ending the EMDE
+  - PBH collapse probability and mass fraction
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper gives a co-decay abundance expression for the A fraction and calculates the PBH mass
+    fraction generated during the EMDE.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: mixed
+  key_dependencies:
+  - m_A
+  - Gamma_B
+  - dark-sector entropy ratio
+  - EMDE duration
+  - PBH collapse fraction
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - early matter dominated epoch before BBN
+  - late B-particle decays to the Standard Model
+  - enhanced growth of dark matter substructure
+  - primordial black hole formation
+  bbn_relevance: critical
+  cmb_relevance: medium
+phase_space:
+  distribution_type: not_applicable
+  distribution_function_available: not_applicable
+  notes: PBHs are macroscopic relics; the surviving A-particle distribution is not tabulated in the extracted
+    text.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: enhanced_small_scale_power
+    small_scale_power_effect: enhancement
+  nonlinear:
+    halo_mass_function_effect: Enhanced small-scale collapse during the early matter dominated epoch can
+      form PBHs.
+    subhalo_mass_function_effect: Enhanced primordial dark matter substructure before B decay.
+    simulation_calibrated: unknown
+validity_domain:
+- id: pre_bbn_emde
+  applies_to: cosmological_history
+  condition: Applies when the co-decaying dark sector produces an early matter dominated epoch that ends
+    before BBN.
+  status: assumed
+  extrapolation_risk: high
+- id: pbh_collapse_estimate
+  applies_to: model
+  condition: PBH abundance uses analytic collapse and sphericity estimates rather than a full numerical
+    simulation.
+  status: approximate
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: hidden_sector_decoupled
+    description: The dark sector and Standard Model are approximately entropy-decoupled until B decays.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+  - id: instantaneous_decay_approximation
+    description: The duration estimate uses an instantaneous-decay approximation for the end of the EMDE.
+    scope: cosmological_history
+    status: approximate
+    can_be_relaxed: unknown
+  - id: cannibalism_neglected
+    description: The paper neglects number-changing cannibal processes for the PBH formation analysis
+      because the EMDE duration is the relevant quantity.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated computational code is identified in the extracted text.
+provenance:
+  model_id: 1902_04082_co_decaying_dm_primordial_black_holes_v1
+  model_name: 1902_04082_co_decaying_dm_primordial_black_holes_v1
+  model_family: primordial_black_holes
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Primordial Black Holes and Co-Decaying Dark Matter
+      year: 2019
+      arxiv_id: '1902.04082'
+      role: extension
+      notes: Assigned full text in target_text.sqlite for batch-0001.
+    - reference_id: arxiv:1902.04082
+      title: Primordial black holes and Co-Decaying dark matter
+      authors:
+      - Georg, Julian
+      - Melcher, Brandon
+      - Watson, Scott
+      year: 2019
+      arxiv_id: '1902.04082'
+      doi: 10.1088/1475-7516/2019/11/014
+      url: https://arxiv.org/abs/1902.04082
+      role: original_model
+      notes: Primary assigned paper read from local SQLite full text.
+    constraint_papers:
+    - reference_id: arxiv:1701.02151
+      title: Microlensing constraints on primordial black holes with Subaru/HSC Andromeda observations
+      authors:
+      - Niikura, Hiroko
+      - Takada, Masahiro
+      - Yasuda, Naoki
+      - Lupton, Robert H.
+      - Sumi, Takahiro
+      - More, Surhud
+      - Kurita, Toshiki
+      - Sugiyama, Sunao
+      - More, Anupreeta
+      - Oguri, Masamune
+      - Chiba, Masashi
+      year: 2019
+      arxiv_id: '1701.02151'
+      doi: 10.1038/s41550-019-0723-1
+      url: https://arxiv.org/abs/1701.02151
+      role: constraint
+      notes: Related local full text read for Subaru/HSC microlensing constraints on PBHs.
+    - reference_id: arxiv:1612.05644
+      title: Cosmic microwave background limits on accreting primordial black holes
+      authors:
+      - Ali-Haïmoud, Yacine
+      - Kamionkowski, Marc
+      year: 2017
+      arxiv_id: '1612.05644'
+      doi: 10.1103/PhysRevD.95.043534
+      url: https://arxiv.org/abs/1612.05644
+      role: constraint
+      notes: Related local full text read for CMB limits on accreting PBHs.
+    - reference_id: arxiv:1705.05567
+      title: Primordial black hole constraints for extended mass functions
+      authors:
+      - Carr, Bernard
+      - Raidal, Martti
+      - Tenkanen, Tommi
+      - Vaskonen, Ville
+      - Veermäe, Hardi
+      year: 2017
+      arxiv_id: '1705.05567'
+      doi: 10.1103/PhysRevD.96.023514
+      url: https://arxiv.org/abs/1705.05567
+      role: constraint
+      notes: Related local full text read for extended PBH mass-function recasts.
+    review_papers: []
+    external_databases: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0001
+    extractor_name: gpt55_dark_matter_model_batch_worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract/co-decay review
+      page: null
+      quote_or_summary: Co-decaying DM produces a pre-BBN EMDE; enhanced structures may collapse into
+        non-monochromatic PBHs contributing to DM.
+    unresolved_items:
+    - No microlensing, CMB, or BBN likelihood was rerun.
+    - The co-decay PBH spatial clustering and merger-rate predictions remain outside this enrichment row.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The co-decay review describes stable A particles and decaying B particles; the paper adds
+        PBHs as an additional relic candidate from collapsed structures.
+      confidence: high
+      section: abstract and co-decay review
+    interactions:
+    - reference_id: primary
+      note: AA <-> BB interactions maintain A and B equilibrium until dark-sector interactions freeze
+        out, while B decays to the SM end the EMDE.
+      confidence: high
+      section: co-decay review
+    production_mechanism:
+    - reference_id: primary
+      note: The paper derives PBH production from enhanced perturbation growth during the co-decay early
+        matter dominated epoch.
+      confidence: high
+      section: PBH formation sections
+    cosmological_history:
+    - reference_id: primary
+      note: The abstract and introduction state that co-decaying dark matter leads to a pre-BBN early
+        matter dominated epoch.
+      confidence: high
+      section: abstract/introduction
+    parameter_ranges:
+    - reference_id: primary
+      note: The text states that reasonable parameters give roughly 0 to 20 e-folds of early matter domination.
+      confidence: medium
+      section: co-decay review
+    validity_domain:
+    - reference_id: primary
+      note: The PBH abundance estimate depends on analytic collapse probabilities and the EMDE ending
+        before BBN.
+      confidence: medium
+      section: PBH formation and constraints
+    observables:
+    - reference_id: arxiv:1902.04082
+      note: Primary abstract links co-decay, a pre-BBN early matter dominated epoch, enhanced substructure,
+        and PBH formation.
+      confidence: high
+      section: Abstract
+      page: null
+    - reference_id: arxiv:1701.02151
+      note: Related HSC paper describes dense-cadence M31 microlensing constraints on PBH dark matter.
+      confidence: high
+      section: Abstract
+      page: null
+    - reference_id: arxiv:1612.05644
+      note: Related CMB paper describes accreting PBH effects on CMB spectra and anisotropies.
+      confidence: high
+      section: Abstract
+      page: null
+    constraints:
+    - reference_id: arxiv:1705.05567
+      note: Related paper motivates converting PBH constraints for extended mass functions.
+      confidence: high
+      section: Abstract
+      page: null
+    - reference_id: arxiv:1701.02151
+      note: HSC paper gives the one-candidate M31 microlensing result and upper-bound target.
+      confidence: high
+      section: Abstract
+      page: null
+    - reference_id: arxiv:1902.04082
+      note: Primary paper states the early matter dominated epoch occurs prior to BBN.
+      confidence: high
+      section: Abstract
+      page: null
+    routes:
+    - reference_id: arxiv:1902.04082
+      note: Primary paper derives the PBH mass fraction from co-decay substructure collapse.
+      confidence: high
+      section: Model/results
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    expert_reviewed: false
+    expert_reviewer: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: low
+  dominant_uncertainties:
+  - Analytic PBH collapse estimate
+  - Duration of early matter domination
+  - Underlying co-decay microphysics unspecified
+  validation_status: expert_judgment_only
+  notes: Strong textual support for the mechanism, but the model is phenomenological rather than a full
+    Lagrangian construction.
+agent_failure_modes:
+  warnings:
+  - id: nonstandard_history_required
+    severity: high
+    category: assumption_mismatch
+    warning: This PBH production mechanism requires a pre-BBN early matter dominated epoch from co-decay.
+    mitigation: Do not apply under a standard radiation-dominated thermal history.
+observables:
+- id: obs_codecay_pbh_nonmonochromatic_mass_function
+  name: PBH mass function from co-decay enhanced substructure
+  channel: black_holes
+  subchannel: PBHs from an early matter dominated era
+  predicted_effect: Co-decaying dark matter creates a pre-BBN early matter-dominated epoch that enhances
+    dark substructure; collapse of those structures produces a nonmonochromatic PBH population that can
+    be a significant dark-matter fraction and may reach near-solar masses.
+  effect_direction: enhancement
+  key_quantities:
+  - name: dark-sector mass scale
+    symbol: m_A
+    description: Mass scale in the co-decaying dark matter sector.
+    range: model-dependent
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1902.04082
+  - name: unstable-partner decay rate
+    symbol: Gamma_B
+    description: Decay rate setting the end of the co-decay matter-dominated era.
+    range: before BBN in the viable scenario
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1902.04082
+  - name: PBH collapse fraction
+    symbol: beta
+    description: Initial PBH mass fraction from collapsed substructure.
+    range: nonmonochromatic output of the primary calculation
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1902.04082
+  redshift_range: pre-BBN formation through z=0
+  scale_range: subhorizon dark substructure to compact PBHs, including near-solar masses
+  environments:
+  - dark sector
+  - early matter dominated epoch
+  - compact halo objects
+  observability: medium
+  relevance: critical
+  linked_constraints:
+  - con_codecay_hsc_microlensing
+  - con_codecay_bbn_decay_timing
+  linked_routes:
+  - route_codecay_to_pbh_constraints
+  caveats:
+  - PBH mass function is not monochromatic, so direct use of monochromatic bounds is unsafe.
+  source_reference_ids:
+  - arxiv:1902.04082
+  - arxiv:1705.05567
+  notes: null
+- id: obs_codecay_pbh_microlensing
+  name: Compact-object microlensing from co-decay PBHs
+  channel: black_holes
+  subchannel: Subaru/HSC and compact-object lensing
+  predicted_effect: If the co-decay PBH population occupies lensing-sensitive masses, it produces transient
+    magnification events; the related HSC M31 search found only one candidate and set strong upper bounds
+    in its target mass window.
+  effect_direction: rate_change
+  key_quantities:
+  - name: PBH dark matter fraction
+    symbol: f_PBH
+    description: Fraction of DM in PBHs as a function of mass.
+    range: 0 to 1
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1902.04082
+    - arxiv:1701.02151
+    - arxiv:1705.05567
+  - name: PBH mass
+    symbol: M_PBH
+    description: Compact-lens mass.
+    range: extended, model-dependent
+    unit: solar masses or grams
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1902.04082
+    - arxiv:1701.02151
+  redshift_range: z=0 halo lenses
+  scale_range: M31/Milky-Way microlensing line of sight
+  environments:
+  - Milky Way halo
+  - M31 halo
+  - compact PBHs
+  observability: high
+  relevance: high
+  linked_constraints:
+  - con_codecay_hsc_microlensing
+  linked_routes:
+  - route_codecay_to_pbh_constraints
+  caveats:
+  - Survey efficiencies and extended mass functions must be folded in.
+  source_reference_ids:
+  - arxiv:1902.04082
+  - arxiv:1701.02151
+  - arxiv:1705.05567
+  notes: null
+- id: obs_codecay_pbh_cmb_accretion
+  name: CMB energy injection from accreting co-decay PBHs
+  channel: cmb
+  subchannel: accreting PBHs
+  predicted_effect: Near-solar or heavier PBHs can accrete primordial gas and alter CMB frequency spectra
+    and temperature/polarization anisotropies, requiring a recast for the co-decay mass function.
+  effect_direction: rate_change
+  key_quantities:
+  - name: PBH mass
+    symbol: M_PBH
+    description: Mass controlling accretion luminosity.
+    range: roughly solar and above for the related CMB discussion
+    unit: solar masses
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1612.05644
+  - name: accretion luminosity
+    symbol: L(M)
+    description: Luminosity entering the CMB energy-injection integral.
+    range: model-dependent
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1612.05644
+  redshift_range: recombination era
+  scale_range: CMB anisotropy and spectral-distortion scales
+  environments:
+  - primordial gas
+  - CMB
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - con_codecay_cmb_accretion
+  linked_routes:
+  - route_codecay_to_pbh_constraints
+  caveats:
+  - Accretion model and PBH velocities are major systematics.
+  source_reference_ids:
+  - arxiv:1902.04082
+  - arxiv:1612.05644
+  notes: null
+constraints:
+- id: con_codecay_hsc_microlensing
+  name: Subaru/HSC microlensing bound on compact PBHs
+  constraint_type: astrophysical
+  observable_channel: M31 compact-object microlensing
+  applies: recast_required
+  constrained_parameters:
+  - f_PBH(M)
+  - M_PBH
+  excluded_regions:
+  - Compact PBH fractions in the HSC-sensitive mass window are bounded by the null-like M31 microlensing
+    search.
+  allowed_regions:
+  - Co-decay PBHs outside the HSC window or with sufficiently low integrated fraction remain allowed.
+  benchmark_implications:
+  - Nonmonochromatic co-decay PBH spectra must be integrated against the HSC efficiency curve.
+  likelihood_available: partial
+  likelihood_reference: null
+  data_release: Subaru Hyper Suprime-Cam M31 dense-cadence observation
+  recasting_needed: 'yes'
+  robustness: high
+  assumptions:
+  - id: compact-lens-approximation
+    description: PBHs behave as pointlike compact lenses for the HSC microlensing recast.
+    scope: co-decay PBH lensing
+    status: assumed
+    impact_if_violated: Any clustering or nonstandard spatial distribution changes the event-rate mapping.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - arxiv:1701.02151
+    - arxiv:1705.05567
+    notes: null
+  caveats:
+  - No HSC likelihood was rerun in this batch.
+  source_reference_ids:
+  - arxiv:1902.04082
+  - arxiv:1701.02151
+  - arxiv:1705.05567
+  notes: null
+- id: con_codecay_cmb_accretion
+  name: CMB limits on accreting PBHs
+  constraint_type: cosmological
+  observable_channel: CMB anisotropy and spectral distortions
+  applies: parameter_dependent
+  constrained_parameters:
+  - f_PBH(M)
+  - M_PBH
+  - accretion luminosity
+  excluded_regions:
+  - Solar-mass and heavier PBH fractions can be constrained when accretion energy injection exceeds CMB
+    limits.
+  allowed_regions:
+  - Lower fractions, lighter masses, or suppressed accretion models remain viable.
+  benchmark_implications:
+  - The near-solar-mass examples mentioned by the primary paper require this CMB accretion check.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: Planck-era CMB power spectra and spectral constraints as discussed in related paper
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: accretion-model-choice
+    description: The accretion prescription used for ordinary PBHs can be applied to the co-decay PBH
+      mass spectrum.
+    scope: CMB recast
+    status: assumed
+    impact_if_violated: Different accretion physics shifts the excluded fraction.
+    can_be_relaxed: partial
+    source_reference_ids:
+    - arxiv:1612.05644
+    notes: null
+  caveats:
+  - CMB accretion constraints have known astrophysical systematics.
+  source_reference_ids:
+  - arxiv:1902.04082
+  - arxiv:1612.05644
+  notes: null
+- id: con_codecay_bbn_decay_timing
+  name: Pre-BBN completion of the co-decay matter era
+  constraint_type: cosmological
+  observable_channel: BBN thermal history
+  applies: 'yes'
+  constrained_parameters:
+  - Gamma_B
+  - N_dur
+  - dark-sector temperature
+  excluded_regions:
+  - Late decays that leave the universe matter dominated through BBN are outside the stated scenario.
+  allowed_regions:
+  - The primary model is constructed with the early matter dominated epoch ending prior to BBN.
+  benchmark_implications:
+  - Constrains the duration of perturbation growth and therefore the PBH abundance.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: standard-bbn-after-codecay
+    description: After the unstable component decays, the cosmology is compatible with standard BBN.
+    scope: co-decay thermal history
+    status: assumed
+    impact_if_violated: If the decay reheats too late, light-element constraints dominate the scenario.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - arxiv:1902.04082
+    notes: null
+  caveats:
+  - The batch did not compute light-element yields.
+  source_reference_ids:
+  - arxiv:1902.04082
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: route_codecay_to_pbh_constraints
+    description: Propagate co-decay dark-sector parameters through pre-BBN matter domination, substructure
+      collapse, PBH mass functions, and compact-object constraints.
+    source_model_features:
+    - co-decaying dark matter
+    - early matter dominated epoch
+    - enhanced dark substructure
+    - nonmonochromatic PBH mass function
+    input_parameters:
+    - m_A
+    - Gamma_B
+    - <sigma v>
+    - eta
+    - N_dur
+    - initial perturbation spectrum
+    derived_quantities:
+    - substructure growth factor
+    - collapse fraction beta(M)
+    - f_PBH(M)
+    - microlensing/CMB observables
+    forward_model_chain:
+    - step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: null
+      inputs:
+      - m_A
+      - Gamma_B
+      - <sigma v>
+      - eta
+      outputs:
+      - dark-sector abundance
+      - duration of matter domination
+      validity: Requires co-decay thermal-history equations.
+      notes: null
+    - step_id: s2
+      step_type: semi_analytic_model
+      tool_or_code: null
+      inputs:
+      - N_dur
+      - initial perturbations
+      outputs:
+      - collapsed halo abundance
+      - PBH mass function
+      validity: Primary-paper analytic collapse model; simulations would refine thresholds.
+      notes: null
+    - step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      inputs:
+      - f_PBH(M)
+      - survey efficiencies
+      - CMB accretion model
+      outputs:
+      - microlensing and CMB limits
+      validity: Extended mass-function recast required.
+      notes: null
+    observable_ids:
+    - obs_codecay_pbh_nonmonochromatic_mass_function
+    - obs_codecay_pbh_microlensing
+    - obs_codecay_pbh_cmb_accretion
+    constraint_ids:
+    - con_codecay_hsc_microlensing
+    - con_codecay_cmb_accretion
+    - con_codecay_bbn_decay_timing
+    likelihoods:
+    - HSC microlensing likelihood not assembled
+    - CMB accretion likelihood not rerun
+    required_code_resources:
+    - co-decay Boltzmann solver
+    - extended PBH mass-function constraint integrator
+    - CMB energy-injection likelihood
+    validation_tests:
+    - recover nonmonochromatic PBH spectrum
+    - recover near-solar mass benchmarks
+    - verify BBN-before-decay timing
+    route_status: planned
+    agent_notes: null
+    caveats:
+    - The primary PBH population can be clustered, which may alter simple lensing and merger interpretations.

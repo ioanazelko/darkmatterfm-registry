@@ -1,0 +1,304 @@
+_source:
+  shard: arXiv_src_2011_064_wds.tar
+  paper_id: '2011_11548'
+  source_member: 2011_11548.json
+schema_version: model_only_v0
+model_id: 2011_11548_interacting_de_wimp_freezeout_v1
+identity:
+  name: Interacting dark-energy WIMP freeze-out model
+  family: interacting_dark_energy_wimp
+  aliases:
+  - Q=3 xi_DM H rho_DM WIMP model
+  short_description: A phenomenological WIMP dark matter scenario in which WIMP freeze-out is combined
+    with an energy-transfer interaction between dark energy and dark matter.
+  historical_origin_or_motivation: Motivated as a way to test WIMP dark matter models using cosmological
+    constraints on dark-energy and dark-matter interaction strength.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - interacting dark energy
+  - thermal WIMP freeze-out
+  - scalar Higgs-portal WIMP example
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: The paper provides continuity/Boltzmann equations for the interacting DE-WIMP system rather than
+    a UV Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: WIMP dark matter, with a real scalar Higgs-portal example
+    spin: unknown for generic WIMP; 0 in scalar example
+    statistics: unknown
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - dark energy component
+  mediators:
+  - phenomenological dark-energy interaction
+  - Standard Model Higgs boson in scalar example
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Not specified beyond the WIMP dark matter assumption and the scalar example inherited
+    from Higgs-portal dark matter.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - dark energy sector
+  - Standard Model Higgs in scalar example
+  dark_sector_couplings:
+  - Q_DM = 3 xi_DM H rho_DM energy transfer
+  mediator_types:
+  - phenomenological cosmological coupling
+  - Higgs boson in scalar example
+  annihilation_channels:
+  - generic WIMP annihilation encoded by thermal average cross section
+  - h h / Standard Model final states in scalar example
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark energy-dark matter interaction strength
+    symbol: xi_DM
+    description: Dimensionless coupling in Q_DM = 3 xi_DM H rho_DM.
+    range: 'Examples: 0.134^{+0.17}_{-0.069} from SGL+SNe+Hz and -0.0008 +/- 0.0016 from CMB+BAO+SNe.'
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2011_11548'
+  - name: WIMP mass
+    symbol: m_DM
+    description: Mass entering x=m_DM/T and the relic-density expression.
+    range: Generic; scalar example scans scalar masses including the Higgs-resonance region.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2011_11548'
+  - name: thermal averaged annihilation cross section
+    symbol: <sigma v>
+    description: Annihilation term retained together with the DE-DM interaction term.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2011_11548'
+  - name: freeze-out parameter
+    symbol: x_f
+    description: The paper finds x_f approximately unchanged near 20 for small xi_DM.
+    value: about 20
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2011_11548'
+  - name: Higgs-portal scalar coupling
+    symbol: lambda_hS
+    description: Coupling used in the real scalar WIMP example.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2011_11548'
+production:
+  mechanisms:
+  - thermal WIMP freeze-out modified by dark energy-dark matter energy transfer
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - thermal annihilation cross section
+  - freeze-out parameter
+  - interaction strength xi_DM
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper modifies the standard WIMP relic-density calculation by including Q_DM in the dark-matter
+    evolution equation.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - xi_DM
+  - m_DM
+  - <sigma v>
+  - x_f
+  - g_*
+  - s_0
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - Energy exchange between dark energy and WIMP dark matter
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: freeze-out temperature
+    symbol: T_f
+    description: Defined through x_f=m_DM/T_f.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2011_11548'
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The phase-space distribution is not derived; the paper uses thermal freeze-out variables.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: small_interaction_strength
+  applies_to: model
+  condition: The freeze-out estimate x_f about 20 is checked for small |xi_DM| values; extrapolation to
+    large interactions is not established.
+  status: inferred
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '2011_11548'
+- id: phenomenological_energy_transfer
+  applies_to: cosmological_history
+  condition: The interaction is parameterized as Q_DM = 3 xi_DM H rho_DM and is not derived from a microscopic
+    mediator.
+  status: assumed
+  extrapolation_risk: high
+  source_reference_ids:
+  - '2011_11548'
+assumptions:
+  global:
+  - id: wimp_thermal_freezeout
+    description: The WIMP is initially treated with the usual thermal freeze-out calculation.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2011_11548'
+  - id: fixed_q_form
+    description: The dark energy-dark matter interaction has the fixed form Q_DM = 3 xi_DM H rho_DM.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2011_11548'
+associated_code:
+  has_associated_code: unknown
+  code_summary: No paper-specific public code is identified in the assigned text.
+  primary_code_role: null
+provenance:
+  model_id: 2011_11548_interacting_de_wimp_freezeout_v1
+  model_name: null
+  model_family: interacting_dark_energy_wimp
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2011_11548'
+      title: A new way to test the WIMP dark matter models
+      authors:
+      - Wei Cheng
+      - Yuan He
+      - Jing-Wang Diao
+      - Yu Pan
+      - Jun Zeng
+      - Jia-Wei Zhang
+      year: 2020
+      arxiv_id: '2011.11548'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0003
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2011_11548'
+      section: Model setup
+      page: null
+      quote_or_summary: Constructs DE and WIMP DM models with Q=3 xi_DM H rho_DM and includes WIMP annihilation
+        in the evolution equation.
+    - reference_id: '2011_11548'
+      section: Relic density
+      page: null
+      quote_or_summary: Derives the modified WIMP relic density and finds x_f about 20.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2011_11548'
+      note: The paper restricts the new scenario to WIMP dark matter and uses a real scalar Higgs-portal
+        WIMP as its detailed example.
+      confidence: medium
+      section: Model setup
+      page: null
+    interactions:
+    - reference_id: '2011_11548'
+      note: It introduces an energy-transfer term between dark energy and WIMP dark matter, Q_DM = 3 xi_DM
+        H rho_DM, while keeping WIMP annihilation in the evolution equation.
+      confidence: high
+      section: Interacting DE-DM model
+      page: null
+    production_mechanism:
+    - reference_id: '2011_11548'
+      note: The relic-density derivation keeps thermal WIMP freeze-out and finds x_f about 20 while modifying
+        the relic abundance by the dark-sector interaction parameter.
+      confidence: high
+      section: Relic density
+      page: null
+    parameter_ranges:
+    - reference_id: '2011_11548'
+      note: Cosmological data examples give xi_DM = 0.134^{+0.17}_{-0.069} and xi_DM = -0.0008 +/- 0.0016;
+        the scalar example studies Higgs-portal mass/coupling space.
+      confidence: medium
+      section: Cosmological constraints and scalar example
+      page: null
+    cosmological_history:
+    - reference_id: '2011_11548'
+      note: The model is explicitly a nonstandard cosmology with energy transfer between dark energy and
+        matter/dark matter.
+      confidence: medium
+      section: Model setup
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Generic WIMP particle content is not specified; the paper uses a scalar Higgs-portal WIMP only as
+    an example.
+robustness:
+  overall: medium
+  notes: Core equations are explicit, but microscopic particle content is mostly phenomenological.
+agent_failure_modes:
+  warnings:
+  - id: phenomenological_not_uv_model
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat the DE-WIMP energy-transfer parameterization as a UV-complete WIMP model.
+    source_reference_ids:
+    - '2011_11548'

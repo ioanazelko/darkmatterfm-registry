@@ -1,0 +1,284 @@
+_source:
+  shard: arXiv_src_1807_030_wds.tar
+  paper_id: '1807_10322'
+  source_member: 1807_10322.json
+schema_version: model_only_v0
+model_id: 1807_10322_cp_in_the_dark_n2hdm_singlet_v1
+identity:
+  name: CP in the Dark N2HDM singlet-doublet dark sector
+  family: scalar_portal_dark_matter
+  aliases:
+  - CP in the Dark
+  - N2HDM with hidden scalar sector
+  short_description: A two-Higgs-doublet plus real-singlet scalar model with a single Z2 symmetry; only
+    one doublet gets a vev, leaving a hidden scalar sector with a viable dark matter candidate and CP
+    violation confined to the dark sector.
+  historical_origin_or_motivation: Built to combine a viable scalar dark matter candidate with CP violation
+    in a hidden scalar sector while retaining Standard-Model-like Higgs phenomenology.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - two-Higgs-doublet model
+  - N2HDM
+  - scalar singlet extension
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'no'
+  notes: The paper gives the renormalizable scalar potential and Yukawa structure for two doublets and
+    one real singlet.
+particle_content:
+  dark_matter_candidate:
+    name: lightest hidden neutral scalar h_1
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - hidden neutral scalars h_2 and h_3
+  - charged scalar H+
+  mediators:
+  - SM-like Higgs h
+  - hidden neutral scalars
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A single Z2 symmetry under which Phi1 is even while Phi2 and S are odd leaves
+    the lightest hidden-sector scalar stable after only Phi1 gets a vev.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken in the inert vacuum
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet Phi1
+  - Standard Model fermions through Phi1
+  - electroweak gauge bosons through scalar doublet components
+  dark_sector_couplings:
+  - A Phi1^dagger Phi2 S plus quartic scalar couplings lambda_3 through lambda_8
+  - hidden scalar mixing among eta, chi, and s
+  mediator_types:
+  - scalar
+  interaction_operators:
+  - renormalizable scalar potential terms connecting Phi1, Phi2, and S
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - scalar annihilation channels computed with MicrOMEGAs, not itemized in the extracted text
+  tree_or_loop_level: both
+operators:
+  renormalizable_terms:
+  - m11^2 |Phi1|^2
+  - m22^2 |Phi2|^2
+  - mS^2 S^2/2
+  - A Phi1^dagger Phi2 S + h.c.
+  - quartic scalar interactions lambda_1...lambda_8
+  contact_or_light_mediator: light_mediator
+  coupling_types:
+  - scalar quartic
+  - scalar trilinear
+  - Yukawa couplings of Phi1 to SM fermions
+parameters:
+  core:
+  - name: dark matter scalar mass
+    symbol: m_h1
+    description: Mass of the lightest hidden neutral scalar acting as the DM candidate
+    role: core
+    status: inferred
+  - name: hidden neutral scalar masses
+    symbol: m_h2,m_h3
+    description: Masses of additional hidden neutral scalars
+    role: core
+    status: inferred
+  - name: charged scalar mass
+    symbol: m_H+
+    description: Mass of the charged scalar from Phi2
+    role: core
+    status: inferred
+  - name: complex trilinear scalar coupling
+    symbol: A
+    description: Only A may be complex and sources CP violation in the hidden scalar sector
+    role: core
+    status: inferred
+  - name: scalar quartic couplings
+    symbol: lambda_i
+    description: Quartic couplings in the scalar potential
+    role: core
+    status: inferred
+  - name: electroweak vev
+    symbol: v
+    description: Only Phi1 has a nonzero vev in the studied vacuum
+    value: 246
+    unit: GeV
+    role: core
+    status: established
+    notes: The paper sets v = 246 GeV.
+production:
+  mechanisms:
+  - thermal freeze-out of scalar dark matter evaluated numerically
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - scalar interactions with the Higgs/doublet sector and hidden scalar spectrum
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  notes: The scan accepts points saturating Planck relic abundance and also underabundant points requiring
+    additional DM.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: thermal
+  key_dependencies:
+  - DM mass
+  - scalar couplings
+  - hidden scalar spectrum
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: medium
+validity_domain:
+- id: inert_vacuum
+  applies_to: model
+  condition: Only Phi1 obtains the electroweak vev, leaving the hidden scalar sector Z2-odd.
+  status: inferred
+  extrapolation_risk: medium
+- id: relic_scan
+  applies_to: parameter
+  condition: Accepted scan points do not exceed the Planck dark matter relic abundance by more than 1
+    sigma.
+  status: established
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: z2_exact
+    description: The stabilizing Z2 symmetry is exact in the vacuum used by the model.
+    scope: theory
+    status: assumed
+  - id: micromegas_relic
+    description: Relic abundance and direct-detection quantities are taken from the paper’s MicrOMEGAs
+      scan.
+    scope: production
+    status: established
+agent_failure_modes:
+  warnings:
+  - id: dark_sector_identity
+    severity: medium
+    category: notation_conflict
+    warning: The text refers to the dark matter candidate through the hidden scalar sector rather than
+      a single universal symbol; the lightest hidden neutral scalar is inferred as the candidate.
+    mitigation: Check the paper’s mass-ordering conventions before using this as a finalized registry
+      entry.
+    source_reference_ids:
+    - paper
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: unknown
+  notes: No detailed phase-space distribution extracted from the paper.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public implementation was extracted from the assigned text.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Machine extraction from paper text only; no external cross-checking.
+  validation_status: expert_judgment_only
+provenance:
+  model_id: 1807_10322_cp_in_the_dark_n2hdm_singlet_v1
+  model_name: CP in the Dark N2HDM singlet-doublet dark sector
+  model_family: scalar_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: CP in the Dark
+      year: 2018
+      arxiv_id: '1807.10322'
+      role: original_model
+      notes: Assigned full text from run SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extractor_name: Codex GPT-5 worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: abstract/introduction
+      quote_or_summary: The paper says it builds a two-doublet plus singlet model with a hidden scalar
+        sector providing a viable dark matter candidate.
+    - reference_id: paper
+      section: model definition
+      quote_or_summary: The scalar potential uses a single Z2 with Phi1 even and Phi2,S odd, and only
+        Phi1 gets a vev.
+    - reference_id: paper
+      section: dark matter variables
+      quote_or_summary: The paper computes relic abundance with MicrOMEGAs and accepts Planck-saturating
+        or underabundant points.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The scalar sector contains two doublets and a real singlet; after EWSB the hidden neutral
+        scalars h1,h2,h3 arise.
+      confidence: medium
+      section: model definition
+    symmetries:
+    - reference_id: paper
+      note: A single Z2 symmetry Phi1 -> Phi1, Phi2 -> -Phi2, S -> -S is imposed.
+      confidence: medium
+      section: model definition
+    interactions:
+    - reference_id: paper
+      note: The paper writes the renormalizable scalar potential including A Phi1^dagger Phi2 S and quartic
+        couplings.
+      confidence: medium
+      section: model definition
+    production_mechanism:
+    - reference_id: paper
+      note: Relic density for the model is calculated with MicrOMEGAs and compared to Planck.
+      confidence: medium
+      section: dark matter variables
+    parameter_ranges:
+    - reference_id: paper
+      note: The scan includes hidden-scalar masses/couplings and classifies Planck-saturating versus underabundant
+        points.
+      confidence: medium
+      section: dark matter variables
+    validity_domain:
+    - reference_id: paper
+      note: The studied vacuum has only Phi1 with v=246 GeV, giving SM-like Higgs couplings.
+      confidence: medium
+      section: model definition
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []

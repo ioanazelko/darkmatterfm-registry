@@ -1,0 +1,377 @@
+_source:
+  shard: arXiv_src_1104_002_wds.tar
+  paper_id: '1104_1429'
+  source_member: 1104_1429.json
+schema_version: model_only_v0
+model_id: 1104_1429_adm_dirac_fermion_axial_quark_operator_v1
+identity:
+  name: Asymmetric Dirac fermion dark matter with axial-vector quark operator
+  family: asymmetric_dark_matter
+  aliases:
+  - L_F,A
+  short_description: A Dirac fermion ADM EFT variant where a chi_F axial current couples to an axial quark
+    current.
+  historical_origin_or_motivation: The paper studies the universal ADM requirement that the symmetric
+    chi/anti-chi component annihilate to well below the observed dark matter abundance.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - asymmetric dark matter
+  - quark-coupled effective operators after electroweak symmetry breaking
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff:
+    name: suppression scale
+    symbol: Lambda
+    description: Energy scale suppressing the higher-dimensional ADM-quark operator, roughly mediator
+      mass divided by coupling.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1104_1429'
+  embedded_in_larger_framework: unknown
+  notes: The paper remains agnostic about the UV particle content and keeps only contact operators coupling
+    dark matter bilinears to quark bilinears.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion asymmetric dark matter particle chi_F
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - heavy state integrated out into the scale Lambda
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: A conserved low-energy dark quantum number X distinguishes particle from antiparticle
+    and supports an asymmetric abundance.
+  symmetries:
+  - name: X
+    type: global
+    exact_or_approximate: exact
+    breaking: The paper assumes the annihilation operators preserve X; an earlier X-violating process
+      generates the asymmetry but is not modeled.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - quarks
+  dark_sector_couplings: []
+  mediator_types:
+  - heavy integrated-out mediator
+  interaction_operators:
+  - L_F,A = (1/Lambda^2) chibar_F gamma5 gamma^mu chi_F qbar gamma5 gamma_mu q
+  annihilation_channels:
+  - chi anti-chi to quark anti-quark
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: axial-vector interaction
+  flavor_structure: Flavor-blind coupling to all six quark flavors is assumed unless noted otherwise.
+  tree_or_loop_level: tree
+operators:
+  renormalizable_terms: []
+  eft_operators:
+  - L_F,A = (1/Lambda^2) chibar_F gamma5 gamma^mu chi_F qbar gamma5 gamma_mu q
+  contact_or_light_mediator: contact
+  coupling_types:
+  - Dirac fermion axial current
+  - axial quark current
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the asymmetric dark matter particle in the EFT operator analysis.
+    range: free variable in Lambda versus m_chi plots; many ADM-motivated windows discussed near 5-10
+      GeV
+    unit: GeV
+    role: core
+    status: speculative
+    source_reference_ids:
+    - '1104_1429'
+  - name: suppression scale
+    symbol: Lambda
+    description: Scale suppressing the higher-dimensional operator.
+    range: operator- and mass-dependent; constrained in the paper by requiring efficient annihilation
+      of the symmetric component and EFT validity
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '1104_1429'
+  - name: quark mass
+    symbol: m_q
+    description: Quark mass factor included in scalar and pseudoscalar quark bilinear operators when required
+      by the operator definition.
+    unit: GeV
+    role: core
+    status: established
+    source_reference_ids:
+    - '1104_1429'
+  derived:
+  - name: annihilation expansion coefficients
+    symbol: a,b
+    description: Coefficients in sigma v = a + b v^2 used for thermal freeze-out of the symmetric component.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '1104_1429'
+    notes: The paper gives a mass-suppressed leading term and a velocity correction for L_F,A.
+production:
+  mechanisms:
+  - primordial asymmetric X abundance with thermal annihilation depleting the symmetric component through
+    the listed quark operator
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - dark X asymmetry
+  - thermal freeze-out of the symmetric component
+  - operator scale Lambda
+  - dark matter mass m_chi
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper requires the symmetric component to be less than 10 percent of the total dark matter
+    density for the ADM benchmark.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: maximum symmetric component fraction
+    symbol: Omega_sym/Omega_DM
+    description: Benchmark requirement that the symmetric thermal component be below 10 percent of total
+      dark matter.
+    value: <0.1
+    role: derived
+    status: assumed
+    source_reference_ids:
+    - '1104_1429'
+  calculation_type: mixed
+  key_dependencies:
+  - dark asymmetry
+  - sigma v expansion coefficients
+  - m_chi
+  - Lambda
+  - quark final states
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - asymmetric dark quantum number generated by an unspecified earlier X-violating process
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: freeze-out ratio
+    symbol: x_f
+    description: Ratio m_chi/T at freeze-out used in the relic-density estimate.
+    range: 20-30
+    role: cosmological
+    status: assumed
+    source_reference_ids:
+    - '1104_1429'
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Only the thermal freeze-out abundance of the symmetric component is calculated.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: adm_symmetric_fraction
+  applies_to: model
+  condition: The EFT row represents the paper benchmark where the symmetric component is below 10 percent
+    of total dark matter.
+  status: assumed
+  source_reference_ids:
+  - '1104_1429'
+  extrapolation_risk: medium
+  caveats: []
+- id: weakly_coupled_eft
+  applies_to: EFT
+  condition: For a weakly coupled UV completion the exchanged particle should be heavier than roughly
+    2 m_chi, summarized in the paper as m_chi < 2 Lambda.
+  status: assumed
+  source_reference_ids:
+  - '1104_1429'
+  extrapolation_risk: high
+  caveats:
+  - Composite, nonperturbative, light-mediator, leptophilic, or additional-light-state ADM scenarios are
+    outside this EFT row.
+- id: flavor_blind_quarks
+  applies_to: interaction_operator
+  condition: The listed operator assumes flavor-blind coupling to all six quark flavors.
+  status: assumed
+  source_reference_ids:
+  - '1104_1429'
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: adm_low_energy_x_conservation
+    description: The dark quantum number X is conserved at low energies so the asymmetric abundance is
+      stable.
+    scope: theory
+    status: assumed
+    source_reference_ids:
+    - '1104_1429'
+    can_be_relaxed: unknown
+  - id: same_operator_controls_annihilation
+    description: The same contact operator is used for early-universe over-annihilation and low-energy
+      quark interactions.
+    scope: production
+    status: assumed
+    source_reference_ids:
+    - '1104_1429'
+    can_be_relaxed: 'yes'
+  - id: flavor_blind_couplings
+    description: Couplings to quarks are treated as flavor-blind in the main operator analysis.
+    scope: theory
+    status: assumed
+    source_reference_ids:
+    - '1104_1429'
+    can_be_relaxed: 'yes'
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific associated code was identified in the assigned paper text.
+provenance:
+  model_id: 1104_1429_adm_dirac_fermion_axial_quark_operator_v1
+  model_name: Asymmetric Dirac fermion dark matter with axial-vector quark operator
+  model_family: asymmetric_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-06-01'
+  last_updated: '2026-06-01'
+  sources:
+    primary_papers:
+    - reference_id: '1104_1429'
+      title: Asymmetric Dark Matter and Effective Operators
+      authors:
+      - Matthew R. Buckley
+      year: 2011
+      arxiv_id: '1104.1429'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-06-01'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1104_1429'
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: The paper considers effective operators allowing ADM to annihilate into quarks
+        and requires the symmetric component to be small.
+    - reference_id: '1104_1429'
+      section: Effective operators
+      page: null
+      quote_or_summary: The paper lists eight scalar or fermion dark matter operators coupling to quark
+        bilinears.
+    unresolved_items:
+    - The origin of the X asymmetry and the UV mediator content are intentionally left unspecified in
+      the paper.
+  evidence:
+    particle_content:
+    - reference_id: '1104_1429'
+      note: The paper restricts ADM candidates to complex scalar chi_S or Dirac fermion chi_F because
+        real scalars and Majorana fermions do not carry the conserved current X.
+      confidence: high
+      section: Introduction / operator definitions
+      page: null
+    symmetries:
+    - reference_id: '1104_1429'
+      note: ADM is described as carrying a conserved low-energy quantum number X generated by an earlier
+        X-violating process.
+      confidence: high
+      section: Introduction
+      page: null
+    interactions:
+    - reference_id: '1104_1429'
+      note: The row uses the paper-defined operator L_F,A coupling dark matter to quarks.
+      confidence: high
+      section: Effective operators
+      page: null
+    production_mechanism:
+    - reference_id: '1104_1429'
+      note: The paper computes thermal freeze-out of the symmetric component and requires it to be less
+        than 10 percent of total DM.
+      confidence: high
+      section: Relic-density discussion
+      page: null
+    parameter_ranges:
+    - reference_id: '1104_1429'
+      note: Core parameters are m_chi and Lambda; freeze-out uses x_f approximately 20-30 and operator-dependent
+        sigma v coefficients.
+      confidence: medium
+      section: Relic-density calculation
+      page: null
+    validity_domain:
+    - reference_id: '1104_1429'
+      note: The EFT interpretation assumes a weakly coupled mediator heavier than about 2 m_chi and flavor-blind
+        quark couplings.
+      confidence: high
+      section: Assumptions and operator validity
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - UV completion is unspecified
+  - X-asymmetry generation is not modeled
+  - EFT validity can fail for light mediators or strong coupling
+  validation_status: expert_judgment_only
+  notes: Accepted as EFT model-card variants because the paper defines and analyzes the operators as ADM
+    requirements, not as final UV-complete models.
+agent_failure_modes:
+  warnings:
+  - id: not_uv_complete
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat this operator row as a UV-complete ADM model; the mediator and asymmetry-generation
+      sector are unspecified.
+    source_reference_ids:
+    - '1104_1429'
+  - id: operator_specific
+    severity: medium
+    category: invalid_mapping
+    warning: Do not merge the eight operator rows without checking spin and Lorentz structure; their annihilation
+      behavior differs.
+    source_reference_ids:
+    - '1104_1429'

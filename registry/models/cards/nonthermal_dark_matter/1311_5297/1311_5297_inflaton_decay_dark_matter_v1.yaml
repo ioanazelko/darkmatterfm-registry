@@ -1,0 +1,286 @@
+_source:
+  shard: arXiv_src_1311_009_wds.tar
+  paper_id: '1311_5297'
+  source_member: 1311_5297.json
+schema_version: model_only_v0
+model_id: 1311_5297_inflaton_decay_dark_matter_v1
+identity:
+  name: Model-independent inflaton-decay dark matter
+  family: nonthermal_dark_matter
+  aliases:
+  - Direct inflaton-decay dark matter
+  short_description: A phenomenological framework in which perturbative inflaton decay initially produces
+    dark matter, with the final abundance governed by the DM mass, inflaton branching ratio, reheating
+    temperature, and interaction rate with the thermal bath.
+  historical_origin_or_motivation: The paper studies generic overclosure and relic-density consequences
+    when the inflaton or moduli directly produce dark matter after inflation.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - post-inflation reheating cosmology
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper keeps the inflaton-to-DM coupling generic; it mentions a fermionic DM coupling to the
+    inflaton as an example but does not specify a full UV model.
+particle_content:
+  dark_matter_candidate:
+    name: generic dark matter particle produced in inflaton decay
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - inflaton or modulus field
+  unstable_parent_particles:
+  - inflaton
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Assumed cosmological stability of the dark matter particle; no explicit stabilizing
+    symmetry is specified.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - thermal bath
+  - Standard Model decay products of inflaton
+  dark_sector_couplings:
+  - thermally averaged interaction rate <sigma v> with the thermal bath
+  - inflaton branching fraction to dark matter
+  mediator_types:
+  - inflaton
+  interaction_operators:
+  - generic inflaton-DM coupling, for example a fermionic DM term in the Lagrangian
+  annihilation_channels:
+  - annihilation into Standard Model degrees of freedom or thermal bath states, treated model-independently
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the DM particle directly produced in inflaton decay
+    range: m_chi < m_phi / 2
+    unit: GeV
+    role: core
+    status: inferred
+  - name: inflaton mass
+    symbol: m_phi
+    description: Mass of the parent inflaton field
+    unit: GeV
+    role: core
+    status: inferred
+  - name: reheat temperature
+    symbol: T_R
+    description: Temperature after instantaneous reheating
+    unit: GeV
+    role: core
+    status: inferred
+  - name: inflaton branching ratio to DM
+    symbol: B_chi
+    description: Branching fraction setting initial DM number density
+    range: small enough for radiation domination
+    role: core
+    status: inferred
+  - name: thermally averaged interaction rate
+    symbol: <sigma v>
+    description: Controls whether the DM thermalizes, freezes in, or remains nonthermal
+    unit: cm^3 s^-1
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - perturbative inflaton decay
+  - thermal freeze-out if interactions bring DM into LTE
+  - freeze-in for feeble interactions
+  - nonthermal SWIMP-like production for extremely small annihilation rates
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - inflaton branching ratio
+  - reheat temperature
+  - DM mass
+  - thermally averaged interaction rate
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper assumes instantaneous reheating and solves the Boltzmann evolution for cold, warm,
+    and hot relic regimes.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: mixed
+  key_dependencies:
+  - m_chi
+  - m_phi
+  - T_R
+  - B_chi
+  - <sigma v>
+  requires_entropy_dilution: unknown
+  overclosure_risk: 'yes'
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - instantaneous reheating with direct inflaton branching to dark matter
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: mixed_cold_warm
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length:
+    name: free-streaming length
+    symbol: lambda_fs
+    description: Used to require warm/cold relics have lambda_fs below about 1 Mpc
+    value: < 1
+    unit: Mpc
+    role: derived
+    status: inferred
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: instant_reheating
+  applies_to: model
+  condition: Assumes perturbative inflaton decay followed by instantaneous thermalization of SM decay
+    products.
+  status: assumed
+  extrapolation_risk: high
+- id: kinematic_decay
+  applies_to: production
+  condition: Direct two-body inflaton production requires m_chi < m_phi/2.
+  status: inferred
+  extrapolation_risk: low
+assumptions:
+  global:
+  - id: dm_stability
+    description: The DM particle is stable on cosmological timescales, but the paper does not specify
+      the stabilizing symmetry.
+    scope: global
+    status: assumed
+  - id: instant_thermalization
+    description: Standard Model degrees of freedom from inflaton decay thermalize rapidly at reheating.
+    scope: cosmological_history
+    status: assumed
+  - id: small_branching
+    description: The inflaton branching ratio to DM is small enough to preserve radiation domination after
+      reheating.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper describes numerical Boltzmann-equation solutions but does not identify a public
+    model code in the assigned text.
+provenance:
+  model_id: 1311_5297_inflaton_decay_dark_matter_v1
+  model_name: Model-independent inflaton-decay dark matter
+  model_family: nonthermal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1311_5297'
+      title: Dark matter produced from inflaton decay
+      authors: []
+      year: 2013
+      arxiv_id: '1311.5297'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extractor_name: GPT-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1311_5297'
+      section: Introduction
+      page: null
+      quote_or_summary: The paper seeks a model-independent analysis of DM directly produced from inflaton
+        decay in terms of masses, branching ratio, and coupling to the thermal bath.
+    - reference_id: '1311_5297'
+      section: Production and relic abundance
+      page: null
+      quote_or_summary: It classifies thermal WIMP, FIMP, and nonthermal SWIMP-like regimes according
+        to the interaction rate.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1311_5297'
+      note: Generic DM particles are assumed to be among the perturbative inflaton decay products.
+      confidence: medium
+    interactions:
+    - reference_id: '1311_5297'
+      note: The framework is parameterized by an inflaton branching ratio to DM and a thermally averaged
+        interaction rate with the bath.
+      confidence: medium
+    production_mechanism:
+    - reference_id: '1311_5297'
+      note: Direct inflaton decay sets the initial DM abundance; subsequent evolution can be thermal,
+        freeze-in, or nonthermal.
+      confidence: medium
+    cosmological_history:
+    - reference_id: '1311_5297'
+      note: The analysis assumes instantaneous reheating and rapid thermalization of SM decay products.
+      confidence: medium
+    parameter_ranges:
+    - reference_id: '1311_5297'
+      note: The paper states the kinematic condition m_chi < m_phi/2 for perturbative inflaton decay.
+      confidence: medium
+    validity_domain:
+    - reference_id: '1311_5297'
+      note: The authors flag non-instantaneous thermalization and preheating as model-dependent effects
+        outside their treatment.
+      confidence: medium
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - This is a model-independent phenomenological framework rather than a fully specified particle theory.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - unspecified inflaton-DM coupling
+  - instantaneous reheating approximation
+  - unspecified DM spin and stabilizing symmetry
+  validation_status: expert_judgment_only
+  notes: Accepted as a phenomenological dark-matter production model because the paper develops production
+    and relic-density logic, but many particle-identity fields remain generic.
+agent_failure_modes:
+  warnings:
+  - id: generic_candidate
+    severity: medium
+    category: other
+    warning: Do not treat the generic dark matter particle as a specific WIMP, FIMP, gravitino, neutralino,
+      or axion unless a downstream source adds that information.
+  - id: reheating_assumption
+    severity: high
+    category: other
+    warning: Results depend strongly on the instantaneous reheating and thermalization assumptions.

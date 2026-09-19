@@ -1,0 +1,752 @@
+_source:
+  shard: arXiv_src_2111_008_wds.tar
+  paper_id: '2111_01164'
+  source_member: 2111_01164.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: invalid_mapping
+    id: idm_standard_coannihilation_confusion
+    mitigation: Preserve the sigma_11 approximately zero and sigma_12 << sigma_22 hierarchy.
+    severity: medium
+    source_reference_ids:
+    - arxiv:2111.01164
+    warning: Do not map this model to ordinary s1-s2 coannihilation dominated by sigma_12; the paper focuses
+      on partner-partner annihilation sigma_22.
+  - category: assumption_mismatch
+    id: idm_ps_lambda12_balance
+    mitigation: Check thermalization before using the relic-density logic.
+    severity: medium
+    source_reference_ids:
+    - arxiv:2111.01164
+    warning: The same small lambda_12 controls lifetime and thermal contact, so using this card outside
+      that balanced regime can misstate the relic history.
+associated_code:
+  caveats:
+  - The assigned text mentions numerical/MadGraph comparisons but does not identify a public repository.
+  code_summary: The paper gives analytic decay-width estimates and relic-density calculations; no public
+    code is identified in the assigned text.
+  expected_inputs:
+  - m1
+  - m2
+  - Delta
+  - lambda_22
+  - decay-variant couplings
+  expected_outputs:
+  - relic abundance
+  - partner lifetime
+  - collider reach estimates
+  has_associated_code: partial
+  primary_code_role: relic_density_calculation
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: partial
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The U(1)-conserving |S|^2 H^dagger H component is omitted by hand so that s1s1 annihilation
+      is negligible.
+    id: idm_no_s1_higgs_portal
+    scope: theory
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The abundance is computed with a standard thermal coannihilation freeze-out treatment.
+    id: idm_standard_freezeout
+    scope: production
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The scalar interaction matrix is only slightly misaligned so lambda_12 << lambda_22 and
+      lambda_11 remains negligible.
+    id: idm_ps_small_misalignment
+    scope: theory
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - inelastic scalar coannihilation model (pure-scalar)
+  - partner-partner coannihilation scalar iDM
+  family: inelastic_scalar_coannihilation
+  historical_origin_or_motivation: The paper introduces a parameter region where partner-partner annihilation
+    dominates the effective coannihilation cross section, opening heavier dark-matter masses and displaced-collider
+    signatures.
+  model_kind: simplified_model
+  name: Pure-scalar inelastic coannihilation dark matter model
+  short_description: A real scalar ground state s1 is the dark matter particle and an excited scalar s2
+    is a nearly degenerate long-lived coannihilation partner; the relic density is dominated by s2 s2
+    annihilation through a Higgs-portal quartic.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - s2 s2 to SM SM through Higgs portal
+  - s2 s2 to fermion pairs, W+W-, ZZ, and hh when kinematically allowed
+  cp_structure: scalar
+  dark_sector_couplings:
+  - lambda_22 s2 s2 H^dagger H
+  - small lambda_12 s1 s2 H^dagger H misalignment coupling
+  decay_channels:
+  - s2 to s1 f f through an off-shell Higgs
+  flavor_structure: Higgs/Yukawa-like SM fermion couplings in s2 decay
+  interaction_operators:
+  - lambda_22 s2^2 H^dagger H
+  - lambda_12 s1 s2 H^dagger H
+  mediator_types:
+  - SM Higgs
+  portals:
+  - higgs
+  scattering:
+    elastic: 'no'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    spin_dependence: none
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - SM Higgs boson
+  - SM fermions
+  - W bosons
+  - Z bosons
+  tree_or_loop_level: tree
+model_id: 2111_01164_pure_scalar_inelastic_coannihilation_dm_v1
+parameters:
+  core:
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: m1
+  - name: coannihilation partner mass
+    role: core
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: m2
+  - name: fractional mass splitting
+    range: 0.05, 0.10, and 0.15 benchmarks
+    role: core
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: Delta
+  - name: partner Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: lambda_22
+  - name: partner decay length
+    range: detector scale in benchmark regions
+    role: core
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: c tau_s2
+    unit: cm
+  - name: small scalar decay coupling
+    notes: lambda_12 is much smaller than lambda_22 and controls the s2 lifetime.
+    role: core
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: lambda_12
+particle_content:
+  additional_dark_sector_particles:
+  - excited scalar s2 coannihilation partner
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: scalar ground state s1
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - excited scalar s2 coannihilation partner
+  long_lived_particles:
+  - excited scalar s2
+  mediators:
+  - SM Higgs boson
+  standard_model_extension: minimal
+  unstable_parent_particles:
+  - s2 decays to s1 plus Standard Model fermions
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: The paper treats the relic as a thermal coannihilation WIMP.
+production:
+  abundance_set_by:
+  - lambda_22
+  - m2
+  - mass splitting Delta
+  - s1-s2 thermalization rate
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal coannihilation freeze-out dominated by s2 s2 annihilation
+  - thermal conversion between s1 and s2 before freeze-out
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves for lambda_22 values giving the observed relic abundance, with s1s1 and s1s2
+    annihilation negligible by construction.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  caveats:
+  - The two decay realizations are recorded as separate model variants because the paper explicitly introduces
+    them as separate models.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: Only s2 couples appreciably to the SM Higgs through lambda_22 in the baseline model.
+      reference_id: arxiv:2111.01164
+      section: inelastic scalar dark matter model
+    - confidence: high
+      note: The pure-scalar model adds lambda_12 s1 s2 H^dagger H; s2 decays to s1 f f with a width suppressed
+        by lambda_12, mass splitting, and fermion mass.
+      reference_id: arxiv:2111.01164
+      section: excited dark matter particle as long-lived particle
+    parameter_ranges:
+    - confidence: medium
+      note: Benchmark mass splittings Delta = 0.05, 0.10, and 0.15 are used, with electroweak-scale masses
+        emphasized.
+      reference_id: arxiv:2111.01164
+      section: constraints
+    particle_content:
+    - confidence: high
+      note: The dark matter is the real scalar ground state s1 and s2 is the excited coannihilation partner.
+      reference_id: arxiv:2111.01164
+      section: inelastic scalar dark matter model
+    production_mechanism:
+    - confidence: high
+      note: The effective annihilation cross section is chosen to be dominated by partner-partner annihilation
+        sigma_22.
+      reference_id: arxiv:2111.01164
+      section: relic abundance
+    validity_domain:
+    - confidence: medium
+      note: The construction relies on suppressing s1s1 and s1s2 annihilation while maintaining s1-s2
+        equilibrium.
+      reference_id: arxiv:2111.01164
+      section: relic abundance
+    constraints:
+    - confidence: high
+      note: Primary paper ties relic density to lambda_22 and discusses XENON1T/PandaX Higgs-portal constraints.
+      page: null
+      reference_id: arxiv:2111.01164
+      section: Model and phenomenology
+    observables:
+    - confidence: high
+      note: Primary text states partner-partner annihilation domination, direct-detection evasion, and
+        O(10 cm) s2 decay length benchmarks.
+      page: null
+      reference_id: arxiv:2111.01164
+      section: Abstract and model
+    - confidence: medium
+      note: Related inelastic-DM collider text reports long-lived, displaced, soft-lepton, and mono-photon
+        signatures for inelastic dark sectors.
+      page: null
+      reference_id: arxiv:2309.00271
+      section: Abstract
+    - confidence: medium
+      note: Fallback arXiv abstract supports collider discovery of inelastic thermal relic dark matter.
+      page: null
+      reference_id: arxiv:1508.03050
+      section: arXiv abstract
+    - confidence: medium
+      note: Fallback arXiv abstract supports lifetime-frontier searches for inelastic dark matter at LHC
+        experiments.
+      page: null
+      reference_id: arxiv:1810.01879
+      section: arXiv abstract
+    routes:
+    - confidence: high
+      note: Primary paper connects coannihilation relic bands to HL-LHC displaced searches.
+      page: null
+      reference_id: arxiv:2111.01164
+      section: Collider section
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0018
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5.5 dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper defines a complex scalar split into s1 and s2 and a baseline effective
+        Lagrangian with lambda_22 s2^2 H^dagger H.
+      reference_id: arxiv:2111.01164
+      section: inelastic scalar dark matter model
+    - page: null
+      quote_or_summary: The paper introduces the pure-scalar realization for the long-lived s2 decay.
+      reference_id: arxiv:2111.01164
+      section: excited dark matter particle as long-lived particle
+    - page: null
+      quote_or_summary: The relic abundance is dominated by s2s2 annihilation and matched to the observed
+        value.
+      reference_id: arxiv:2111.01164
+      section: relic abundance
+    unresolved_items:
+    - No collider simulation or direct-detection likelihood was rerun.
+    - Only arXiv abstract pages were read for two fallback related papers.
+  last_updated: '2026-05-31'
+  model_family: inelastic_scalar_coannihilation
+  model_id: 2111_01164_pure_scalar_inelastic_coannihilation_dm_v1
+  model_name: Pure-scalar inelastic coannihilation dark matter model
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2111.01164'
+      doi: null
+      notes: Only the assigned SQLite full text was used.
+      reference_id: arxiv:2111.01164
+      role: original_model
+      title: Heavy long-lived coannihilation partner from inelastic Dark Matter model and its signatures
+        at the LHC
+      url: null
+      year: 2021
+    - arxiv_id: '2111.01164'
+      authors:
+      - Guo, Jinhui
+      - He, Yuxuan
+      - Liu, Jia
+      - Wang, Xiao-Ping
+      doi: 10.1007/JHEP04(2022)024
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2111.01164
+      role: original_model
+      title: Heavy long-lived coannihilation partner from inelastic Dark Matter model and its signatures
+        at the LHC
+      url: https://arxiv.org/abs/2111.01164
+      year: 2022
+    constraint_papers:
+    - arxiv_id: '2309.00271'
+      authors:
+      - Lu, Chih-Ting
+      - Tu, Jianfeng
+      - Wu, Lei
+      doi: 10.1103/PhysRevD.109.015018
+      notes: Related local full text read for inelastic-DM collider signatures.
+      reference_id: arxiv:2309.00271
+      role: constraint
+      title: Probing inelastic dark matter at the LHC, FASER, and STCF
+      url: https://arxiv.org/abs/2309.00271
+      year: 2024
+    - arxiv_id: '1508.03050'
+      authors:
+      - Izaguirre, Eder
+      - Krnjaic, Gordan
+      - Shuve, Brian
+      doi: 10.1103/PhysRevD.93.063523
+      notes: arXiv abstract page read through bounded web fallback; no full text stored.
+      reference_id: arxiv:1508.03050
+      role: constraint
+      title: Discovering inelastic thermal relic dark matter at colliders
+      url: https://arxiv.org/abs/1508.03050
+      year: 2016
+    - arxiv_id: '1810.01879'
+      authors:
+      - Berlin, Asher
+      - Kling, Felix
+      doi: 10.48550/arXiv.1810.01879
+      notes: arXiv abstract page read through bounded web fallback; no full text stored.
+      reference_id: arxiv:1810.01879
+      role: constraint
+      title: 'Inelastic Dark Matter at the LHC Lifetime Frontier: ATLAS, CMS, LHCb, CODEX-b, FASER, and
+        MATHUSLA'
+      url: https://arxiv.org/abs/1810.01879
+      year: 2018
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - s2 s2 annihilation cross section
+  - Boltzmann suppression from Delta
+  - thermalization between s1 and s2
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    name: Omega_s1 h^2 target
+    role: cosmological
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: Omega h^2
+    value: 0.1198 +/- 0.0026
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - The no-s1-Higgs-portal condition is imposed by hand
+  - Thermalization and long lifetime pull on small couplings
+  notes: The relic mechanism and Lagrangians are explicit, but the parameter region is deliberately specialized.
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: not discussed
+symmetries:
+  stabilizing_mechanism: s1 is the lightest dark-sector scalar after the broken U(1)-motivated splitting,
+    while the small decay interaction allows s2 to decay back to s1.
+  symmetries:
+  - breaking: mass splitting between s1 and s2
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: broken dark U(1)
+    type: global
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: The baseline effective Lagrangian contains s1, s2, a mass splitting, and lambda_22 s2^2 H^dagger
+    H; the variant adds the small interaction responsible for long-lived s2 decay.
+  parent_frameworks:
+  - inelastic scalar dark matter
+  - coannihilation dark matter
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  condition: The intended regime has sigma_11 approximately zero and sigma_12 much smaller than sigma_22.
+  extrapolation_risk: medium
+  id: idm_partner_dominated
+  source_reference_ids:
+  - arxiv:2111.01164
+  status: assumed
+- applies_to: parameter
+  condition: Mass splittings are small enough for s2 to remain Boltzmann-populated during freeze-out.
+  extrapolation_risk: medium
+  id: idm_small_splitting
+  source_reference_ids:
+  - arxiv:2111.01164
+  status: assumed
+- applies_to: production
+  condition: s1 and s2 must remain in sufficient thermal contact until freeze-out.
+  extrapolation_risk: high
+  id: idm_thermalization
+  source_reference_ids:
+  - arxiv:2111.01164
+  status: assumed
+- applies_to: model
+  condition: The pure-scalar variant is valid where lambda_12 is small enough for displaced s2 decay but
+    large enough for thermal contact.
+  extrapolation_risk: high
+  id: idm_ps_llp_decay
+  source_reference_ids:
+  - arxiv:2111.01164
+  status: assumed
+observables:
+- caveats:
+  - Decay widths require numerical phase-space integration near heavy-fermion thresholds.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - HL-LHC detectors
+  id: obs_scalar_s2_displaced_vertices
+  key_quantities:
+  - description: Excited scalar coannihilation partner mass.
+    name: partner mass
+    range: O(100) GeV in collider study
+    role: core
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: m2
+    unit: GeV
+  - description: Proper decay length of s2.
+    name: partner decay length
+    role: derived
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: approximate
+    symbol: c tau_s2
+    unit: cm
+    value: O(10 cm) for m2 about 200 GeV, lambda_12=1e-3, and 10 percent splitting
+  - description: Misalignment coupling controlling s2 decay.
+    name: small decay coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: lambda_12
+    value: example 1e-3
+  linked_constraints:
+  - con_hl_lhc_displaced_scalar
+  linked_routes:
+  - route_scalar_coannihilation_llp
+  name: Pure-scalar s2 displaced decays at HL-LHC
+  notes: null
+  observability: medium
+  predicted_effect: The small lambda_12 coupling and small mass splitting make s2 long-lived; the primary
+    text gives an O(10 cm) decay length for m2 around 200 GeV, lambda_12=1e-3, and 10 percent splitting.
+  redshift_range: LHC running
+  relevance: high
+  scale_range: detector-scale displaced vertices
+  source_reference_ids:
+  - arxiv:2111.01164
+  - arxiv:1508.03050
+  - arxiv:1810.01879
+  subchannel: displaced vertices from long-lived coannihilation partner
+- caveats:
+  - A dedicated inelastic-scattering nuclear recoil calculation was not performed.
+  channel: direct_detection
+  effect_direction: null_signal
+  environments:
+  - direct-detection experiments
+  id: obs_scalar_direct_detection_suppression
+  key_quantities:
+  - description: Mass splitting between s2 and s1.
+    name: fractional mass splitting
+    range: 0.05, 0.10, and 0.15 benchmarks
+    role: core
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: Delta
+  - description: Coupling controlling s2s2 annihilation, not elastic s1 scattering.
+    name: partner Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: inferred
+    symbol: lambda_22
+  linked_constraints:
+  - con_higgs_portal_dd_evasion
+  linked_routes:
+  - route_scalar_coannihilation_llp
+  name: Inelastic scalar direct-detection suppression
+  notes: null
+  observability: low
+  predicted_effect: Because the coannihilation partner is neutral and the ground state is inelastic, the
+    model can evade severe elastic Higgs-portal scalar direct-detection bounds while retaining thermal
+    coannihilation.
+  redshift_range: today
+  relevance: medium
+  scale_range: nuclear recoil thresholds
+  source_reference_ids:
+  - arxiv:2111.01164
+  subchannel: inelastic neutral coannihilation
+constraints:
+- allowed_regions:
+  - Primary paper solves lambda_22 bands for the observed relic density at Delta=0.05, 0.10, and 0.15.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: s1 and s2 remain thermally connected until coannihilation freeze-out.
+    id: thermal-conversion-maintained
+    impact_if_violated: If conversions fail, lambda_22 no longer fixes the relic abundance in the same
+      way.
+    scope: coannihilation calculation
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: assumed
+  benchmark_implications:
+  - Partner-partner annihilation opens heavier coannihilation masses than partner-DM dominated scenarios.
+  caveats:
+  - No micrOMEGAs-style relic calculation was rerun.
+  constrained_parameters:
+  - lambda_22
+  - m2
+  - Delta
+  - Omega h^2
+  constraint_type: cosmological
+  data_release: thermal relic-density target used in primary paper
+  excluded_regions:
+  - Regions where s2s2 annihilation is too weak overproduce s1 dark matter; too strong underproduces it.
+  id: con_scalar_relic_partner_annihilation
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Relic density from s2s2 partner annihilation
+  notes: null
+  observable_channel: thermal coannihilation freeze-out
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2111.01164
+- allowed_regions:
+  - The inelastic coannihilation setup opens parameter space by suppressing elastic direct detection.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: Mass splitting is large enough to suppress ordinary halo upscattering in detectors.
+    id: inelastic-upscatter-threshold
+    impact_if_violated: Small splittings could restore direct-detection sensitivity.
+    scope: direct detection
+    source_reference_ids:
+    - arxiv:2111.01164
+    status: assumed
+  benchmark_implications:
+  - Direct-detection null results do not immediately exclude the partner-annihilation region.
+  caveats:
+  - Only qualitative direct-detection evasion is encoded.
+  constrained_parameters:
+  - lambda_12
+  - lambda_22
+  - Delta
+  constraint_type: direct_detection
+  data_release: XENON1T/PandaX bounds discussed by primary paper
+  excluded_regions:
+  - Ordinary scalar Higgs-portal dark matter is heavily constrained by XENON1T and PandaX except resonance-like
+    regions.
+  id: con_higgs_portal_dd_evasion
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Direct-detection evasion relative to elastic Higgs portal
+  notes: null
+  observable_channel: nuclear recoil
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2111.01164
+- allowed_regions:
+  - Blind spots remain for too-prompt, too-long-lived, or too-small-production regions.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - HL-LHC at 3 ab^-1 is the main primary-paper target for O(100 GeV) pure-scalar partners.
+  caveats:
+  - Detector acceptances were not rerun in this batch.
+  constrained_parameters:
+  - m2
+  - c tau_s2
+  - lambda_12
+  - lambda_22
+  constraint_type: collider
+  data_release: HL-LHC projection in primary paper
+  excluded_regions:
+  - Parameter points with sufficient production and detector-scale lifetime can be excluded by displaced
+    searches.
+  id: con_hl_lhc_displaced_scalar
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: HL-LHC displaced search reach for pure-scalar partner
+  notes: null
+  observable_channel: displaced long-lived-particle searches
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2111.01164
+  - arxiv:1508.03050
+  - arxiv:1810.01879
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Long-lived search reach is sharply lifetime-dependent.
+    constraint_ids:
+    - con_scalar_relic_partner_annihilation
+    - con_higgs_portal_dd_evasion
+    - con_hl_lhc_displaced_scalar
+    derived_quantities:
+    - effective coannihilation cross section
+    - Omega h^2
+    - s2 decay width
+    - HL-LHC displaced yield
+    description: Map pure-scalar inelastic coannihilation parameters to relic density and displaced-Higgs-portal
+      signatures.
+    forward_model_chain:
+    - inputs:
+      - m1
+      - m2
+      - lambda_22
+      - Delta
+      notes: null
+      outputs:
+      - sigma_eff
+      - relic target lambda_22
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Assumes s2s2 annihilation dominates.
+    - inputs:
+      - lambda_12
+      - Delta
+      - m2
+      notes: null
+      outputs:
+      - Gamma(s2 -> s1 f f)
+      - c tau_s2
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Approximate for light final-state fermions.
+    - inputs:
+      - s2 production
+      - decay length
+      - detector geometry
+      notes: null
+      outputs:
+      - displaced-event yield
+      step_id: s3
+      step_type: simulation
+      tool_or_code: MadGraph/Pythia/Delphes-style collider chain
+      validity: Needed for actual HL-LHC exclusion; not run here.
+    id: route_scalar_coannihilation_llp
+    input_parameters:
+    - m1
+    - m2
+    - Delta
+    - lambda_22
+    - lambda_12
+    likelihoods:
+    - HL-LHC projection only; no public likelihood attached.
+    observable_ids:
+    - obs_scalar_s2_displaced_vertices
+    - obs_scalar_direct_detection_suppression
+    required_code_resources:
+    - thermal relic calculator
+    - collider event generation and displaced-object analysis
+    route_status: planned
+    source_model_features:
+    - real scalar s1 dark matter
+    - neutral scalar s2 coannihilation partner
+    - small lambda_12 decay coupling
+    validation_tests:
+    - recover O(10 cm) lifetime benchmark
+    - recover relic lambda_22 bands

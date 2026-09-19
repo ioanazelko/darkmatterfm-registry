@@ -1,0 +1,297 @@
+_source:
+  shard: data/astro-ph-00251.tar
+  paper_id: '2308_13617'
+  source_member: 2308_13617.json
+schema_version: model_only_v0
+model_id: 2308_13617_negative_eos_generalized_dark_matter_v1
+identity:
+  name: Late-time negative-equation-of-state generalized dark matter
+  family: generalized_dark_matter
+  aliases:
+  - nonzero dark matter EoS model
+  - late-time negative w_dm model
+  short_description: A phenomenological generalized-dark-matter model in which the dark matter equation
+    of state is zero at early times and transitions at late times to a negative linear function of scale
+    factor.
+  historical_origin_or_motivation: The model is proposed to address Hubble and S8 tensions and the ISW
+    void anomaly using late-time dark-sector physics.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - generalized dark matter fluid
+  - interacting dark sector interpretation
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper treats dark matter as a fluid with a free EoS function, adiabatic sound speed, and
+    zero shear viscosity.
+particle_content:
+  dark_matter_candidate:
+    name: effective dark matter fluid with late-time negative pressure
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: unknown
+  additional_dark_sector_particles:
+  - possible interacting dark energy component, inferred as an interpretation
+  mediators:
+  - gravity
+  - unknown dark-sector interaction
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - effective dark matter fluid
+  unstable_parent_particles: []
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: Not specified microscopically; the model parameterizes dark matter as a conserved
+    or effectively interacting fluid.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - other
+  standard_model_targets:
+  - metric perturbations and cosmic expansion
+  dark_sector_couplings:
+  - possible dark matter-dark energy interaction or decay interpretation
+  mediator_types:
+  - gravity
+  - unknown dark-sector mediator
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: present-day dark matter equation of state
+    symbol: w_dm,0
+    range: '[-1, 0] in constraints shown'
+    role: core
+    status: inferred
+  - name: transition scale factor
+    symbol: a_nz
+    value: 0.5 in main examples
+    role: core
+    status: inferred
+  - name: EoS transition function
+    symbol: w_dm(a)
+    value: w_dm,0*(a-a_nz)/(1-a_nz) for a>a_nz; 0 otherwise
+    role: core
+    status: inferred
+  - name: density-evolution factor
+    symbol: W(a)
+    value: exp[3 integral_a^1 w_dm(a_prime)/a_prime da_prime]
+    role: core
+    status: inferred
+  - name: dark matter sound speed
+    symbol: c_s
+    value: adiabatic
+    role: core
+    status: inferred
+  - name: shear viscosity
+    symbol: c_vis
+    value: '0'
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - late-time phenomenological density evolution from continuity equation
+  - possible effective dark matter interaction with dark energy
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - Omega_dm,0
+  - W(a)
+  - transition scale factor a_nz
+  - present-day EoS w_dm,0
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: No microscopic production mechanism is supplied; the relic density is handled as a cosmological
+    fluid density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - w_dm,0
+  - a_nz
+  - Omega_dm,0
+  - W(a)
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - dark matter EoS becomes negative only at late times
+  - density no longer scales simply as a^-3 after a_nz
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: high
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: 'no'
+  notes: This is a fluid/EoS model rather than a particle phase-space model.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: scale_dependent_growth
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: late negative EoS suppresses growth in the phenomenological calculation
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: late_time_only
+  applies_to: parameter
+  condition: w_dm(a) is fixed to zero before a_nz and varied only at late times.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: linear_model_limit
+  applies_to: model
+  condition: Generalized dark matter treatment is limited to linear perturbation theory in the paper.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: early_cdm_limit
+    description: Dark matter behaves as cold dark matter with w_dm=0 at early times.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: adiabatic_no_shear
+    description: The speed of sound is taken to be adiabatic and shear viscosity is set to zero.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated code release is described in the extracted paper text.
+provenance:
+  model_id: 2308_13617_negative_eos_generalized_dark_matter_v1
+  model_name: Late-time negative-equation-of-state generalized dark matter
+  model_family: generalized_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Signs of a non-zero equation-of-state for Dark Matter
+      authors:
+      - Krishna Naidoo
+      year: 2023
+      arxiv_id: '2308.13617'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0034
+    extractor_name: gpt-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: A non-zero Equation-of-State
+      page: null
+      quote_or_summary: Dark matter EoS starts at zero, transitions at a_nz, and evolves linearly with
+        scale factor.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: Dark matter is modeled as a generalized fluid with EoS, sound speed, and shear-viscosity functions.
+      confidence: high
+      section: Introduction
+      page: null
+    interactions:
+    - reference_id: primary
+      note: Negative EoS is interpreted as indicative of a unified dark sector and degenerate with dark
+        matter-dark energy interaction.
+      confidence: medium
+      section: Implications
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: Density evolution follows from the continuity equation with rho_dm(a)=rho_dm,0 a^-3 W(a).
+      confidence: high
+      section: A non-zero Equation-of-State
+      page: null
+    cosmological_history:
+    - reference_id: primary
+      note: By construction, the model is identical to LambdaCDM at early times and changes only after
+        a_nz.
+      confidence: high
+      section: Impact on ISW and lensing
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: Main constraints fix a_nz=0.5 and vary w_dm,0 between -1 and 0.
+      confidence: high
+      section: Observational constraints
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: The paper states generalized dark matter is limited to linear perturbation theory and needs
+        simulation work.
+      confidence: high
+      section: Conclusion
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: low
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: low
+  observational_robustness: medium
+  computational_robustness: low
+  dominant_uncertainties:
+  - microscopic origin of negative EoS
+  - nonlinear structure behavior
+  - degeneracy with dark-sector interactions
+  validation_status: expert_judgment_only
+  notes: Useful phenomenological parameterization but not a particle model.
+agent_failure_modes:
+  warnings:
+  - id: phenomenology_only
+    severity: medium
+    category: invalid_mapping
+    warning: Do not map this EoS parameterization to a specific particle model without additional assumptions.
+    source_reference_ids: []
+    mitigation: Keep microscopic particle content as unknown unless supplied by another source.

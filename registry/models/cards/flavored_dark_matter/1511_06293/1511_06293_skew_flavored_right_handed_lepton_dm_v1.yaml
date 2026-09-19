@@ -1,0 +1,347 @@
+_source:
+  shard: arXiv_src_1511_015_wds.tar
+  paper_id: '1511_06293'
+  source_member: 1511_06293.json
+schema_version: model_only_v0
+model_id: 1511_06293_skew_flavored_right_handed_lepton_dm_v1
+identity:
+  name: Skew-flavored dark matter with right-handed leptons
+  family: flavored_dark_matter
+  aliases: []
+  short_description: A WIMP model where Dirac-fermion dark matter and scalar mediators carry lepton flavor,
+    with antisymmetric skew couplings to right-handed charged leptons under Minimal Flavor Violation.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Minimal Flavor Violation
+  - flavored dark matter
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper constructs renormalizable contact interactions among dark matter, Standard Model matter,
+    and a mediator using an antisymmetric flavor tensor.
+particle_content:
+  dark_matter_candidate:
+    name: chi_i flavored Dirac fermion
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - three flavor components chi_e, chi_mu, chi_tau
+  mediators:
+  - complex scalar mediator phi_k
+  excited_or_degenerate_states:
+  - nearly degenerate electron-, muon-, and tau-flavored dark matter states
+  long_lived_particles:
+  - all three chi flavors in the sub-MeV splitting hierarchy
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Dark matter is the lightest flavor state or a set of long-lived nearly degenerate
+    flavor states; the paper assumes heavier flavors decay away or remain cosmologically long-lived depending
+    on splittings.
+  symmetries:
+  - name: SU(3)_E flavor symmetry with MFV spurion breaking
+    type: global
+    exact_or_approximate: approximate
+    breaking: Standard Model charged-lepton Yukawa spurions
+    breaking_scale: null
+  - name: antisymmetric skew flavor texture
+    type: accidental
+    exact_or_approximate: approximate
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - right-handed charged leptons e^c, mu^c, tau^c
+  dark_sector_couplings:
+  - lambda^{ijk} chi_i E^c_j phi_k + h.c.
+  mediator_types:
+  - complex scalar
+  annihilation_channels:
+  - chi chi_bar -> charged lepton pairs through t-channel scalar exchange
+  decay_channels:
+  - heavier dark matter flavors may decay to lighter flavors when splittings allow
+  tree_or_loop_level: tree
+  flavor_structure: Minimal Flavor Violation with antisymmetric skew couplings
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Common WIMP-scale mass with small flavor splittings.
+    range: GeV-TeV scale
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: mediator mass
+    symbol: m_phi
+    description: Common scalar mediator mass used in benchmark plots.
+    range: 200, 350, and 500 GeV benchmark values
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: skew coupling
+    symbol: lambda
+    description: Renormalizable dark matter-matter-mediator coupling with antisymmetric flavor tensor.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: dark matter flavor splitting
+    symbol: Delta m
+    description: Splitting between tau and electron/muon flavored dark matter states.
+    range: large enough for heavier flavors to decay, or below an MeV for all flavors to be long-lived
+    unit: unknown
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+production:
+  mechanisms:
+  - thermal freeze-out through t-channel scalar mediator exchange
+  - coannihilation among nearly degenerate flavors
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - annihilation rate to charged leptons
+  - number of long-lived flavor components
+  - m_chi
+  - m_phi
+  - lambda
+  depends_on_reheating_temperature: 'no'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper identifies regions where the thermal relic abundance matches the observed dark matter
+    density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_phi
+  - lambda
+  - mass hierarchy among flavor states
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - standard thermal WIMP freeze-out
+  - possible coannihilations or late decays among flavored states
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: As a GeV-TeV WIMP thermal relic, the paper treats it as cold dark matter for structure purposes.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: wimp_mass_ordering
+  applies_to: model
+  condition: Benchmark assumes GeV-TeV dark matter and mediator masses with m_chi < m_phi.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: mfv_skew_texture
+  applies_to: model
+  condition: Flavor couplings must respect MFV up to charged-lepton Yukawa spurions.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: two_hierarchies
+  applies_to: relic_density
+  condition: Relic calculations are given for a tau-like lightest flavor after heavier flavors decay,
+    and for sub-MeV splittings where all three flavors remain long-lived.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: minimal_flavor_violation
+    description: The skew flavor texture respects Minimal Flavor Violation, with departures controlled
+      by Standard Model Yukawa spurions.
+    scope: theory
+    status: assumed
+    impact_if_violated: Changing this assumption can alter the abundance or momentum distribution.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: thermal_wimp_history
+    description: The abundance calculation assumes ordinary thermal freeze-out of weak-scale states.
+    scope: production
+    status: assumed
+    impact_if_violated: Changing this assumption can alter the abundance or momentum distribution.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: benchmark_right_handed_leptons
+    description: The main benchmark restricts couplings to right-handed charged leptons.
+    scope: theory
+    status: assumed
+    impact_if_violated: Changing this assumption can alter the abundance or momentum distribution.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public code is identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+provenance:
+  model_id: 1511_06293_skew_flavored_right_handed_lepton_dm_v1
+  model_name: Skew-flavored dark matter with right-handed leptons
+  model_family: flavored_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Skew-Flavored Dark Matter
+      year: 2015
+      arxiv_id: '1511.06293'
+      role: original_model
+      notes: Assigned full text from run SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract
+      page: null
+      quote_or_summary: Introduces a novel skewed flavor structure for dark matter and mediator interactions
+        with Standard Model fields.
+    - reference_id: paper
+      section: Benchmark model
+      page: null
+      quote_or_summary: Constructs a right-handed charged-lepton benchmark with chi_i, phi_k, and antisymmetric
+        flavor couplings.
+    - reference_id: paper
+      section: Relic Abundance
+      page: null
+      quote_or_summary: Computes thermal relic abundance for lightest-flavor and degenerate-flavor hierarchies.
+    unresolved_items:
+    - Only model-card fields supported by the assigned text were populated; observables and constraints
+      intentionally omitted.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The benchmark model contains a Standard-Model-singlet Dirac fermion dark matter field chi
+        and a complex scalar mediator phi, both carrying SU(3)_E flavor labels.
+      confidence: high
+      section: Benchmark model
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: The construction respects Minimal Flavor Violation by using SU(3) flavor invariants and Yukawa
+        spurions.
+      confidence: high
+      section: Skewed flavor structure
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The interaction has the antisymmetric flavor structure lambda^{ijk} chi_i E^c_j phi_k + h.c.;
+        a dark matter flavor couples to the other two charged-lepton flavors, not its own.
+      confidence: high
+      section: Skewed flavor structure
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The paper computes thermal relic abundance from t-channel mediator exchange to charged leptons
+        and studies two mass hierarchies.
+      confidence: high
+      section: Relic Abundance
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: Figure discussion uses mediator masses 200, 350, and 500 GeV and scans dark matter mass versus
+        coupling for relic abundance.
+      confidence: medium
+      section: Relic Abundance
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The benchmark assumes GeV-TeV WIMP masses with m_chi below m_phi and either tau-flavored lightest
+        DM or nearly degenerate long-lived flavors.
+      confidence: high
+      section: Benchmark model
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: high
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  validation_status: expert_judgment_only
+  notes: Machine-extracted candidate from one paper; no external validation performed.
+agent_failure_modes:
+  warnings:
+  - id: flavor_variant_scope
+    severity: medium
+    category: assumption_mismatch
+    warning: This row captures the right-handed charged-lepton benchmark; the paper also mentions other
+      skew-flavored realizations more briefly.
+    mitigation: Do not reuse this card for left-handed lepton or quark variants without a separate extraction.
+    source_reference_ids:
+    - paper
+mass_scales_and_hierarchies:
+  scales:
+  - name: WIMP mass scale
+    symbol: m_chi
+    description: Dark matter mass scale assumed for the benchmark.
+    range: GeV-TeV scale
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: mediator benchmark masses
+    symbol: m_phi
+    description: Scalar mediator masses highlighted in relic-abundance plots.
+    range: 200, 350, 500
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  hierarchy_questions:
+  - question: Which dark matter flavor is lightest?
+    answer: Either tau-flavored chi is significantly lighter, or all three flavors are nearly degenerate
+      and long-lived.
+    status: established

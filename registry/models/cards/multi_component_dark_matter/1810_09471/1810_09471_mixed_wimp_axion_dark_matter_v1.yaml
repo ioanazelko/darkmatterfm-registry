@@ -1,0 +1,411 @@
+_source:
+  shard: arXiv_src_1810_026_wds.tar
+  paper_id: '1810_09471'
+  source_member: 1810_09471.json
+schema_version: model_only_v0
+model_id: 1810_09471_mixed_wimp_axion_dark_matter_v1
+identity:
+  name: Mixed WIMP-axion dark matter
+  family: multi_component_dark_matter
+  aliases:
+  - KSVZ axion plus residual-Z2 scalar dark matter
+  - two-component WIMP-axion dark matter
+  short_description: A two-component dark matter model in which the QCD axion and a stable scalar chi_1
+    from a PQ-charged complex scalar both contribute to the relic abundance.
+  historical_origin_or_motivation: The paper combines the strong-CP-motivated KSVZ axion with a residual-Z2-stabilized
+    scalar WIMP so axion and scalar components can share the observed dark matter density.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - KSVZ axion model
+  - Peccei-Quinn symmetry
+  - scalar WIMP dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the relevant scalar and Yukawa interactions for the SM Higgs, PQ scalar, extra
+    complex scalar, and vectorlike KSVZ quarks.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion a plus the lighter real scalar chi_1
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - heavier scalar chi_2
+  - radial PQ scalar excitation sigma_0
+  - vectorlike electroweak-singlet quarks Q_L and Q_R
+  mediators:
+  - SM-like Higgs h
+  - radial PQ scalar sigma
+  - vectorlike quark Q
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - chi_2 heavier partner of chi_1
+  long_lived_particles:
+  - QCD axion for F_a greater than 1e10 GeV
+  unstable_parent_particles:
+  - chi_2 decays to chi_1
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The global U(1)_PQ symmetry is spontaneously broken and leaves a residual Z2
+    symmetry that stabilizes chi_1; the axion is long-lived because its couplings are suppressed by F_a.
+  symmetries:
+  - name: U(1)_PQ
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken by the PQ scalar at F_a and explicitly affected by QCD dynamics
+    breaking_scale:
+      name: PQ breaking scale
+      symbol: F_a
+      range:
+        min: 1e10
+        max: 1e12
+        unit: GeV
+        notes: Range used in the paper to avoid supernova cooling and axion overproduction.
+      unit: GeV
+      role: core
+      status: inferred
+  - name: residual Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken residual symmetry after PQ breaking
+    breaking_scale: null
+  - name: axion shift symmetry
+    type: shift
+    exact_or_approximate: broken
+    breaking: QCD nonperturbative effects generate the axion potential
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - axion
+  - other
+  standard_model_targets:
+  - SM Higgs doublet
+  - right-handed down-type quarks
+  - gluons through the KSVZ axion sector
+  dark_sector_couplings:
+  - Higgs-chi portal coupling lambda_Hchi
+  - PQ-scalar-chi coupling lambda_PhiChi
+  - chi mass splitting parameter alpha
+  - Yukawa couplings f_d and f_Q involving vectorlike quarks
+  mediator_types:
+  - scalar
+  - vectorlike quark
+  interaction_operators:
+  - Higgs and PQ-scalar quartics coupled to chi
+  - alpha Phi* chi^2 plus hermitian conjugate
+  - f_d Q_L d_R chi and f_Q Q_L Q_R Phi
+  annihilation_channels:
+  - chi_1 chi_1 to Standard Model particles through scalar mediation
+  - chi_1 chi_1 to hh when kinematically open
+  decay_channels:
+  - chi_2 decays to chi_1
+  self_scattering_channels: []
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: PQ breaking scale
+    symbol: F_a
+    range:
+      min: 1e10
+      max: 1e12
+      unit: GeV
+      notes: The paper focuses on this interval after imposing supernova cooling and axion overproduction
+        considerations.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: axion initial misalignment angle
+    symbol: theta_a
+    value: approximately 1
+    unit: null
+    role: cosmological
+    status: assumed
+    notes: Used for simplicity in the relic-density discussion.
+  - name: lighter scalar dark matter mass
+    symbol: m_chi
+    range: scanned; viable region emphasized near m_h/2 around 62.5 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs-chi quartic coupling
+    symbol: lambda_Hchi
+    description: Portal coupling controlling chi_1 annihilation and the h chi_1 chi_1 coupling.
+    role: core
+    status: inferred
+  - name: PQ-scalar-chi quartic coupling
+    symbol: lambda_PhiChi
+    description: Coupling entering the cancellation condition for the h chi_1 chi_1 interaction.
+    role: core
+    status: inferred
+  - name: chi mass-splitting parameter
+    symbol: alpha
+    description: Controls the chi_1 and chi_2 mass split after PQ breaking.
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: total cold dark matter abundance
+    symbol: Omega_c h^2
+    value: Omega_chi h^2 + Omega_a h^2
+    unit: null
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - axion misalignment production
+  - thermal freeze-out of chi_1 annihilations
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - axion misalignment angle and F_a
+  - chi_1 annihilation cross section to Standard Model final states
+  - Higgs-mediated resonance near m_h/2
+  - opening of chi_1 chi_1 to hh
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The axion is produced coherently after m_a exceeds H, while chi_1 freezes out after thermal contact
+    with the SM bath; the observed density is their sum.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - F_a
+  - theta_a
+  - m_chi
+  - lambda_Hchi
+  - lambda_PhiChi
+  - alpha
+  - Higgs-chi coupling cancellation condition
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - PQ symmetry breaking before axion misalignment oscillations
+  - chi_2 Boltzmann suppression and decay to chi_1 before scalar relic abundance is finalized
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: chi_1 chemical freeze-out temperature
+    symbol: T_f
+    range: of order m_chi/20
+    unit: GeV
+    role: derived
+    status: inferred
+  phase_transitions:
+  - electroweak symmetry breaking
+  - PQ symmetry breaking
+  - QCD effects generating the axion potential
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  f_of_p_or_q: The axion is treated as a coherently oscillating cold field; chi_1 is treated by thermal
+    freeze-out.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: 'The entry is multi-component: the scalar WIMP has thermal freeze-out phase space, while the
+    axion component is field-like cold dark matter.'
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No warm-dark-matter mapping is provided for this mixed cold axion and WIMP model.
+  nonlinear:
+    halo_mass_function_effect: not discussed in the paper
+    subhalo_mass_function_effect: not discussed in the paper
+    simulation_calibrated: unknown
+validity_domain:
+- id: vd_fa_range
+  applies_to: model
+  condition: The extraction follows the paper's focus on 1e10 GeV < F_a < 1e12 GeV and theta_a approximately
+    1.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Changing the axion misalignment angle rescales the F_a relation for the axion abundance.
+  source_reference_ids:
+  - paper
+  notes: null
+- id: vd_no_chi_coannihilation
+  applies_to: production
+  condition: The chi_1-chi_2 mass split is large enough that chi_2 is Boltzmann suppressed during chi_1
+    freeze-out.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Coannihilation is neglected in the parameter region emphasized by the paper.
+  source_reference_ids:
+  - paper
+  notes: null
+assumptions:
+  global:
+  - id: a_residual_z2_stability
+    description: The residual Z2 symmetry after PQ breaking remains exact, making chi_1 stable.
+    scope: theory
+    status: assumed
+    impact_if_violated: The scalar WIMP component would decay and the two-component dark matter model
+      would fail.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+  - id: a_axion_remainder
+    description: Underabundance of chi_1 is allowed because the QCD axion can supply the remaining dark
+      matter density.
+    scope: production
+    status: assumed
+    impact_if_violated: The scalar relic-density target and viable parameter space would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that the model was implemented with FeynRules and relic densities were
+    computed with micrOMEGAs5.0; no public repository is identified in the assigned text.
+  primary_code_role: relic_density_calculation
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  caveats:
+  - Implementation availability is not established from the assigned text.
+provenance:
+  model_id: 1810_09471_mixed_wimp_axion_dark_matter_v1
+  model_name: Mixed WIMP-axion dark matter
+  model_family: multi_component_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Mixed WIMP-axion dark matter
+      authors:
+      - Suman Chatterjee
+      - Anirban Das
+      - Tousik Samui
+      - Manibrata Sen
+      year: 2018
+      arxiv_id: '1810.09471'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0008
+    extractor_name: gpt-5.5-codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: abstract and model definition
+      page: null
+      quote_or_summary: The paper describes a two-component dark matter model with QCD axion plus residual-Z2
+        scalar WIMP.
+    - reference_id: paper
+      section: Dark matter relic abundance
+      page: null
+      quote_or_summary: Axion misalignment and chi_1 freeze-out combine as Omega_c h^2 = Omega_chi h^2
+        + Omega_a h^2.
+    unresolved_items:
+    - Exact public availability of the FeynRules implementation is not stated in the assigned text.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The model augments KSVZ with a complex scalar chi; chi_1 is the lighter stable scalar and
+        the axion a is the PQ Nambu-Goldstone mode.
+      confidence: high
+    symmetries:
+    - reference_id: paper
+      note: The text states that the global PQ symmetry breaks to a residual Z2 symmetry stabilizing the
+        scalar WIMP.
+      confidence: high
+    interactions:
+    - reference_id: paper
+      note: The Lagrangian includes Higgs/PQ-scalar quartics, alpha Phi* chi^2, and vectorlike-quark Yukawa
+        terms.
+      confidence: high
+    production_mechanism:
+    - reference_id: paper
+      note: The axion begins coherent oscillation when m_a exceeds H; chi_1 freezes out through annihilation
+        into SM particles.
+      confidence: high
+    cosmological_history:
+    - reference_id: paper
+      note: PQ breaking, QCD axion-potential generation, and chi_2 Boltzmann suppression enter the relic
+        history.
+      confidence: high
+    parameter_ranges:
+    - reference_id: paper
+      note: The paper focuses on 1e10 GeV < F_a < 1e12 GeV and a scalar resonance region near m_h/2.
+      confidence: high
+    validity_domain:
+    - reference_id: paper
+      note: Underabundant chi_1 regions are allowed because the axion abundance accounts for the remainder.
+      confidence: high
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Parameter-space viability depends on cancellation in the h chi_1 chi_1 coupling and on the axion fraction.
+  - Public code availability is unresolved from the text.
+  validation_status: expert_judgment_only
+  notes: Machine extraction from a single assigned paper; constraints were not extracted in this model-only
+    pass.
+agent_failure_modes:
+  warnings:
+  - id: w_two_component_fraction
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat chi_1 alone as necessarily all of the dark matter; the paper permits the axion
+      to supply the remaining relic abundance.
+    mitigation: Carry the two-component relic-density relation when reusing this entry.
+    source_reference_ids:
+    - paper
+  - id: w_constraints_omitted
+    severity: low
+    category: other
+    warning: The paper performs direct, indirect, and collider tests, but constraints are intentionally
+      omitted in this run.
+    mitigation: Use this row only as a model-card candidate, not as a viability summary.
+    source_reference_ids:
+    - paper

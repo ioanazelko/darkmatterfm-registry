@@ -1,0 +1,294 @@
+_source:
+  shard: arXiv_src_1905_013_wds.tar
+  paper_id: '1905_04195'
+  source_member: 1905_04195.json
+schema_version: model_only_v0
+model_id: 1905_04195_hierarchical_inert_doublet_model_v1
+identity:
+  name: Hierarchical inert doublet model with light scalar dark matter
+  family: inert_doublet_dark_matter
+  aliases:
+  - IDM hierarchical spectrum
+  - light-DM inert doublet scenario
+  short_description: A developed IDM region with a light neutral inert scalar and heavier inert scalars,
+    arranged to give full thermal relic abundance.
+  historical_origin_or_motivation: The paper targets the IDM light-DM hierarchical mass spectrum as an
+    LHC-motivated scenario.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Standard Model plus inert SU(2)_L scalar doublet
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'no'
+  notes: The assigned text describes the IDM scalar sector and an implementation of the IDM Lagrangian
+    for collider simulation.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutral inert scalar
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavier neutral inert scalar A
+  - charged inert scalars H^+-
+  mediators:
+  - Standard Model Higgs
+  - electroweak gauge bosons
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: An exact discrete Z_2 symmetry makes the lightest neutral inert scalar stable.
+  symmetries:
+  - name: Z_2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken for inert sector
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - Higgs boson
+  - W bosons
+  - Z bosons
+  dark_sector_couplings:
+  - quartic scalar couplings lambda_L and inert-doublet potential couplings
+  mediator_types:
+  - scalar
+  - electroweak gauge boson
+  interaction_operators:
+  - Higgs-portal scalar quartic interactions
+  - electroweak gauge interactions of the inert doublet
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - Higgs-resonant annihilation for light dark matter
+  - coannihilation can occur when spectra are degenerate
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_DM
+    description: Light inert scalar mass in the hierarchical region.
+    value: null
+    range: about 55-80
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Text contrasts this window with heavier inert scalars.
+  - name: heavier inert scalar masses
+    symbol: m_A, m_H+-
+    description: Masses of the pseudoscalar and charged inert states.
+    value: null
+    range: about 250-700
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Hierarchical spectrum used for boosted-vector collider topology.
+  - name: Higgs portal coupling
+    symbol: lambda_L
+    description: Quartic coupling controlling Higgs-mediated scalar dark matter interactions.
+    value: null
+    range: null
+    unit: null
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: null
+production:
+  mechanisms:
+  - thermal freeze-out
+  - Higgs-resonance annihilation for light dark matter
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - annihilation cross sections
+  - mass splittings in the inert scalar spectrum
+  - Higgs portal coupling
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper focuses on the light-DM hierarchical region where full relic abundance can be satisfied.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_DM
+  - inert scalar mass splittings
+  - lambda_L
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Thermal relic treatment is discussed, but no full phase-space distribution is extracted.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: idm_hierarchical_region
+  applies_to: model
+  condition: Light dark matter near 55-80 GeV with heavier inert scalars around 250-700 GeV.
+  valid_range: null
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1905_04195'
+  notes: null
+assumptions:
+  global:
+  - id: exact_inert_z2
+    description: The inert doublet is odd under an unbroken Z_2 symmetry while Standard Model fields are
+      even.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1905_04195'
+    notes: null
+  - id: standard_thermal_freezeout
+    description: Relic abundance is interpreted using standard thermal freeze-out in the IDM.
+    scope: production
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1905_04195'
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The text says the IDM Lagrangian is implemented in FeynRules and simulated with MadGraph,
+    Pythia, and MicrOMEGAs; no dedicated repository is given.
+  primary_code_role: model_definition
+provenance:
+  model_id: 1905_04195_hierarchical_inert_doublet_model_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1905_04195'
+      title: Probing the inert doublet model using jet substructure with a multivariate analysis
+      year: 2019
+      arxiv_id: '1905.04195'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned SQLite full text used as the only source.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0002
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections: []
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1905_04195'
+      note: The text states that the SM is extended by an extra SU(2)_L scalar doublet with a lightest
+        neutral scalar DM candidate.
+      confidence: high
+      section: Introduction
+      page: null
+    symmetries:
+    - reference_id: '1905_04195'
+      note: The inert doublet is odd under a discrete Z_2 symmetry that stabilizes the neutral scalar.
+      confidence: high
+      section: Introduction
+      page: null
+    interactions:
+    - reference_id: '1905_04195'
+      note: The discussion identifies Higgs-portal annihilation and electroweak decays of heavier inert
+        scalars.
+      confidence: medium
+      section: IDM phenomenology
+      page: null
+    production_mechanism:
+    - reference_id: '1905_04195'
+      note: The hierarchical light-DM region is described as capable of satisfying the full relic abundance.
+      confidence: high
+      section: Abstract/Introduction
+      page: null
+    parameter_ranges:
+    - reference_id: '1905_04195'
+      note: The scenario uses DM around 55-80 GeV and heavier inert scalars around 250-700 GeV.
+      confidence: high
+      section: Benchmark discussion
+      page: null
+    validity_domain:
+    - reference_id: '1905_04195'
+      note: The extracted row is limited to the hierarchical light-DM IDM region studied in the paper.
+      confidence: medium
+      section: Benchmark discussion
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine-extracted candidate row; observables and constraints intentionally omitted for this run.
+agent_failure_modes:
+  warnings:
+  - id: hierarchical_idm_variant
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat this as a generic IDM card; it represents the paper's hierarchical light-DM
+      region.
+    mitigation: null
+    source_reference_ids:
+    - '1905_04195'
+  - id: collider_focus
+    severity: low
+    category: other
+    warning: The paper is collider-analysis heavy, so model-wide cosmological details beyond thermal relic
+      logic are sparse.
+    mitigation: null
+    source_reference_ids:
+    - '1905_04195'

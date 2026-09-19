@@ -1,0 +1,280 @@
+_source:
+  shard: arXiv_src_1201_002_wds.tar
+  paper_id: '1201_1413'
+  source_member: 1201_1413.json
+schema_version: model_only_v0
+model_id: 1201_1413_two_singlet_light_scalar_cdm_v1
+identity:
+  name: Light cold dark matter two-singlet Standard Model extension
+  family: scalar_singlet_dark_matter
+  aliases:
+  - two-singlet light cold dark matter model
+  short_description: A Standard Model extension with two real scalar singlets, where an unbroken Z2 leaves
+    S0 stable as a light cold dark matter WIMP and a second singlet S1 mixes with the Higgs sector.
+  historical_origin_or_motivation: Motivated by light GeV-scale dark matter regions suggested by CoGeNT,
+    DAMA, and CRESST II and by the difficulty of light neutralinos in supersymmetric scenarios.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Standard Model plus scalar singlets
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'no'
+  notes: The paper gives the model in terms of physical scalar masses, vevs, a Higgs-singlet mixing angle,
+    and scalar mutual couplings.
+particle_content:
+  dark_matter_candidate:
+    name: S0 dark-matter singlet
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - second scalar singlet S1
+  mediators:
+  - Higgs boson h
+  - scalar singlet S1
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: One Z2 symmetry remains unbroken and stabilizes the S0 dark-matter candidate.
+  symmetries:
+  - name: Z2 for S0
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken
+  - name: Z2 for S1
+    type: discrete
+    exact_or_approximate: broken
+    breaking: spontaneously broken
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - Higgs sector
+  - bottomonium and B-meson decay channels
+  dark_sector_couplings:
+  - S0-S0-h coupling
+  - S0-S0-S1 coupling
+  - h-S1 mixing
+  mediator_types:
+  - scalar Higgs
+  - light scalar singlet
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m0
+    range: light-GeV regime; paper focuses on small dark-matter masses
+    unit: GeV
+    role: core
+    status: inferred
+  - name: second singlet mass
+    symbol: m1
+    range: 0.1-10
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs mass
+    symbol: mh
+    value: 125
+    unit: GeV
+    role: core
+    status: inferred
+    notes: Fixed except in the Higgs-decay discussion, where 100-200 GeV is scanned.
+  - name: singlet vacuum expectation value
+    symbol: v1
+    value: 100
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs-S1 mixing angle
+    symbol: theta
+    range: 1-40 degrees
+    unit: degree
+    role: core
+    status: inferred
+  - name: dark matter-Higgs coupling
+    symbol: lambda_0^(4)
+    range: small values
+    role: core
+    status: inferred
+    notes: Scanned as a physical mutual coupling.
+  - name: dark matter-S1 coupling
+    symbol: lambda_01^(4)
+    range: smallest real positive solution to relic-density constraint; required below 1
+    role: core
+    status: inferred
+    notes: Perturbativity imposes lambda_01^(4) < 1.
+production:
+  mechanisms:
+  - thermal cold-dark-matter relic-density solution through scalar singlet interactions
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - lambda_01^(4) relic-density solution
+  - S0 mass
+  - S1 mass
+  - Higgs-S1 mixing
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper systematically implements the dark-matter relic-density constraint and then studies
+    rare-decay and Higgs-decay restrictions.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - m0
+  - m1
+  - theta
+  - lambda_0^(4)
+  - lambda_01^(4)
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: light_mass_scan
+  applies_to: model
+  condition: The extraction applies to the paper's light-mass regime, including m1 between 0.1 and 10
+    GeV and small m0 values.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: perturbative_coupling
+  applies_to: model
+  condition: The scan requires lambda_01^(4) < 1 for perturbativity and uses the positive relic-density
+    solution.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: unbroken_z2
+    description: The S0 stabilizing Z2 remains unbroken.
+    scope: theory
+    status: assumed
+  - id: thermal_cdm
+    description: The dark matter is nonrelativistic when it decouples from the thermal bath.
+    scope: cosmological_history
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code is identified in the assigned text.
+  primary_code_role: null
+provenance:
+  model_id: 1201_1413_two_singlet_light_scalar_cdm_v1
+  model_name: Light cold dark matter two-singlet Standard Model extension
+  model_family: scalar_singlet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1201_1413'
+      title: Phenomenology of a Light Cold Dark Matter Two-Singlet Model
+      authors:
+      - Abdessamad Abada
+      - Salah Nasri
+      year: 2012
+      arxiv_id: '1201.1413'
+      doi: null
+      url: null
+      role: extension
+      notes: Paper substantially develops a previously introduced two-singlet model by imposing relic-density,
+        perturbativity, rare-decay, and Higgs-decay phenomenology.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0003
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1201_1413'
+      section: Introduction/model setup
+      page: null
+      quote_or_summary: The paper studies a two-singlet Standard Model extension introduced for light
+        cold dark matter, with one unbroken Z2 stabilizing S0.
+    - reference_id: '1201_1413'
+      section: Parameter discussion
+      page: null
+      quote_or_summary: The model is described by scalar masses, v1, mixing angle, and couplings; lambda_01
+        is fixed by the relic-density constraint.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1201_1413'
+      note: The physical masses include m0 for the S0 dark-matter singlet, m1 for the second singlet S1,
+        and mh for the Higgs.
+      confidence: high
+      section: Parameter discussion
+    symmetries:
+    - reference_id: '1201_1413'
+      note: Both singlets are Z2 symmetric; one Z2 is broken and one remains unbroken to ensure S0 stability.
+      confidence: high
+      section: Introduction
+    interactions:
+    - reference_id: '1201_1413'
+      note: The model uses dark matter-Higgs and dark matter-S1 mutual couplings plus h-S1 mixing.
+      confidence: high
+      section: Parameter discussion
+    production_mechanism:
+    - reference_id: '1201_1413'
+      note: lambda_01^(4) is determined as the positive solution to the dark-matter relic-density constraint.
+      confidence: high
+      section: Parameter discussion
+    parameter_ranges:
+    - reference_id: '1201_1413'
+      note: The paper takes v1=100 GeV, theta in 1-40 degrees, m1 in 0.1-10 GeV, and mh=125 GeV except
+        in Higgs-decay scans.
+      confidence: high
+      section: Parameter discussion
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - full scalar potential not reconstructed from extracted text
+  - accepted as a substantive follow-up to a previously introduced model
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: prior_model
+    severity: low
+    category: other
+    warning: The paper states that the model was introduced in previous work, but this paper substantially
+      develops its phenomenology and relic-density-constrained parameter space.

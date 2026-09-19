@@ -1,0 +1,326 @@
+_source:
+  shard: arXiv_src_2308_043_wds.tar
+  paper_id: '2308_05723'
+  source_member: 2308_05723.json
+schema_version: model_only_v0
+model_id: 2308_05723_ew_mssm_stau_r_coannihilation_v1
+identity:
+  name: EW MSSM bino dark matter with SU(2) singlet stau coannihilation
+  family: supersymmetric_neutralino_dark_matter
+  aliases:
+  - stau-R coannihilation EW MSSM
+  - bino DM with tau_2 coannihilation
+  short_description: Electroweak MSSM scenario with a bino-like neutralino LSP and a mostly SU(2) singlet
+    stau NLSP close in mass so thermal coannihilation controls the relic abundance.
+  historical_origin_or_motivation: Introduced as the singlet-stau counterpart to the paper's non-universal
+    slepton-mass stau coannihilation scenario.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - MSSM
+  - electroweak MSSM
+  - R-parity conserving supersymmetry
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The model card represents the paper's stau-R mass-ordering scan within the EW MSSM.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino chi_1^0, bino-like LSP
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - lighter stau NLSP, mostly SU(2) singlet
+  - heavier SU(2) doublet sleptons
+  - charginos and heavier neutralinos
+  mediators:
+  - sleptons
+  - electroweak gauge bosons
+  - MSSM Higgs bosons
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R-parity conserving MSSM makes the lightest neutralino stable.
+  symmetries:
+  - name: R-parity
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - charged leptons
+  - tau leptons
+  - electroweak gauge and Higgs sector
+  dark_sector_couplings:
+  - neutralino-stau-tau electroweak couplings
+  - neutralino-neutralino-gauge/Higgs couplings
+  mediator_types:
+  - sleptons
+  - charginos
+  - neutralinos
+  - electroweak gauge bosons
+  - Higgs bosons
+  annihilation_channels:
+  - neutralino-stau coannihilation
+  - stau-antistau annihilation
+  - neutralino pair annihilation
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: bino soft mass
+    symbol: M1
+    range:
+      min: 100
+      max: 1000
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+    role: core
+    status: inferred
+    notes: Smallest electroweakino mass parameter in the scan.
+  - name: wino soft mass
+    symbol: M2
+    range: 1.2 M1 to 10 M1
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgsino mass parameter
+    symbol: mu
+    range: 1.2 M1 to 10 M1
+    unit: GeV
+    role: core
+    status: inferred
+  - name: tan beta
+    symbol: tan_beta
+    range:
+      min: 5
+      max: 60
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+    role: core
+    status: inferred
+  - name: right stau/slepton soft mass
+    symbol: R
+    range: M1 to 1.2 M1
+    unit: GeV
+    role: core
+    status: inferred
+    notes: Chosen close to M1 for the stau-R coannihilation case.
+  - name: left stau/slepton soft mass
+    symbol: L
+    range: R to 10 R
+    unit: GeV
+    role: core
+    status: inferred
+  - name: heavy Higgs mass scale
+    symbol: M_A
+    value: 1.5 TeV
+    unit: TeV
+    role: core
+    status: inferred
+  derived:
+  - name: upper neutralino and lighter stau mass in viable scan
+    value: about 550 GeV
+    unit: GeV
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out with stau coannihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - mass splitting between chi_1^0 and the mostly singlet stau
+  - coannihilation rates involving the stau NLSP
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper treats the relic density either as a measured target or as an upper bound.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - neutralino-stau mass difference
+  - bino purity and electroweakino admixture
+  - stau-R mass hierarchy
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Heavy neutralino freeze-out scenario; no phase-space function is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: stau_r_hierarchy
+  applies_to: model
+  condition: Bino-like neutralino LSP with SU(2) singlet stau mass parameter close to M1.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: decoupled_colored_sector
+  applies_to: model
+  condition: Colored MSSM sector is assumed heavy enough not to affect the EW-sector analysis.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: small_mass_splitting
+  applies_to: production
+  condition: Correct relic density requires a small chi_1^0-stau mass splitting, quoted around 10 GeV
+    in the results.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: r_parity
+    description: R-parity conservation stabilizes the lightest neutralino.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: standard_freezeout
+    description: Relic abundance is computed in the standard thermal coannihilation picture.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+  - id: real_parameters
+    description: The analysis assumes no CP violation, so parameters are real.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses public MSSM calculation tools for the scan, but no model-specific repository
+    is identified.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 2308_05723_ew_mssm_stau_r_coannihilation_v1
+  model_name: EW MSSM bino dark matter with SU(2) singlet stau coannihilation
+  model_family: supersymmetric_neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arXiv:2308.05723
+      title: 'g-2 and Stau coannihilation: Dark Matter and Collider Analysis'
+      year: 2023
+      arxiv_id: '2308.05723'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text from run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0017
+    extractor_name: null
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arXiv:2308.05723
+      section: Parameter scan
+      page: null
+      quote_or_summary: The stau-R case is bino DM with SU(2) singlet stau coannihilation.
+    - reference_id: arXiv:2308.05723
+      section: Results/conclusion
+      page: null
+      quote_or_summary: Correct relic density requires small neutralino-stau mass splitting and gives
+        masses up to about 550 GeV.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: arXiv:2308.05723
+      note: The paper states that the lightest neutralino can be the DM candidate and separates a stau-R
+        case with the singlet stau close in mass.
+      confidence: high
+      section: Abstract/parameter scan
+      page: null
+    symmetries:
+    - reference_id: arXiv:2308.05723
+      note: The text identifies an R-parity conserving MSSM scenario in which the lightest neutralino
+        can be stable DM.
+      confidence: high
+      section: MSSM setup
+      page: null
+    interactions:
+    - reference_id: arXiv:2308.05723
+      note: The EW MSSM sector includes neutralinos, charginos and scalar leptons; the stau-R case uses
+        the singlet stau as coannihilating NLSP.
+      confidence: medium
+      section: Model setup
+      page: null
+    production_mechanism:
+    - reference_id: arXiv:2308.05723
+      note: For stau-R, the R parameter is close to M1 and stau coannihilation reduces the relic DM density.
+      confidence: high
+      section: Parameter scan
+      page: null
+    parameter_ranges:
+    - reference_id: arXiv:2308.05723
+      note: For stau-R the scan uses 100 GeV <= M1 <= 1000 GeV, R close to M1, heavier L, and tan beta
+        from 5 to 60.
+      confidence: high
+      section: Parameter scan
+      page: null
+    validity_domain:
+    - reference_id: arXiv:2308.05723
+      note: The paper reports a small neutralino-stau mass splitting and upper masses about 550 GeV for
+        viable stau-R points.
+      confidence: medium
+      section: Results
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: phenomenological_scenario
+    severity: medium
+    category: assumption_mismatch
+    warning: This row describes one EW MSSM mass-hierarchy scenario, not a new UV completion of the MSSM.
+    mitigation: Keep the stau-R hierarchy and decoupling assumptions attached when using the card.

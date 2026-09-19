@@ -1,0 +1,603 @@
+_source:
+  shard: data/astro-ph-00263.tar
+  paper_id: '2312_01410'
+  source_member: 2312_01410.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2312_01410_yukawa_coupled_dark_sector_v1
+identity:
+  name: Yukawa-coupled dark sector model
+  family: interacting_dark_matter_dark_energy
+  aliases:
+  - YCDS model
+  - Yukawa-coupled early-dark-energy and cold-dark-matter model
+  short_description: A phenomenological dark-sector model in which a fermionic cold dark matter field
+    has a Yukawa coupling to an early-dark-energy scalar, making the CDM energy density depend on the
+    scalar field.
+  historical_origin_or_motivation: Retain the Hubble-tension benefits of early dark energy while using
+    dark-sector coupling to reduce matter clustering relative to uncoupled EDE.
+  status: emerging
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - early dark energy
+  - interacting dark energy
+  - Yukawa-coupled scalar-fermion dark sector
+  lagrangian_available: partial
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper writes an action with an EDE scalar, a CDM fermion, and a Yukawa interaction, then
+    evolves the background and perturbations.
+particle_content:
+  dark_matter_candidate:
+    name: fermionic cold dark matter field psi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - early-dark-energy scalar field phi
+  mediators:
+  - early-dark-energy scalar phi
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - cold dark matter fermion treated as stable on cosmological timescales
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper treats the fermion as cold dark matter; a microscopic stabilizing symmetry
+    is not specified.
+  symmetries:
+  - name: unknown dark matter stability symmetry
+    type: unknown
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - early-dark-energy scalar field rather than direct SM targets
+  dark_sector_couplings:
+  - Yukawa coupling between scalar phi and fermion psi
+  - scalar-dependent CDM mass m_c = m_psi(1 + beta phi/M_Pl)
+  mediator_types:
+  - scalar early-dark-energy field
+  interaction_operators:
+  - L_int = - beta phi psi_bar psi in normalized form
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: unknown
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: Yukawa coupling constant
+    symbol: beta
+    description: Dimensionless coupling controlling the interaction between EDE scalar and CDM fermion.
+    value: best-fit about -0.023; 68 percent result about -0.011 +0.013/-0.015
+    role: core
+    status: inferred
+  - name: cold dark matter mass parameter
+    symbol: m_psi
+    description: Bare fermion mass before scalar-dependent coupling contribution.
+    role: core
+    status: unknown
+  - name: EDE axion mass
+    symbol: m_phi
+    description: Mass scale in the EDE potential.
+    value: log10(m_phi) = -27.31 in fixed numerical examples
+    role: core
+    status: inferred
+  - name: EDE decay constant
+    symbol: f_phi
+    description: Decay constant in the EDE potential.
+    value: log10(f_phi) = 26.61 in fixed numerical examples
+    role: core
+    status: inferred
+  - name: initial scalar angle
+    symbol: theta_i
+    description: Initial phi/f_phi parameter for the EDE field.
+    value: 2.77 in fixed numerical examples
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: scalar-dependent CDM density
+    symbol: rho_c(phi)
+    description: CDM density scales as rho_c times (1 + beta phi/M_Pl).
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - phenomenological cold dark matter abundance evolved with scalar-dependent mass
+  - energy and momentum exchange between CDM and EDE scalar
+  - no microphysical primordial production mechanism is specified
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - initial CDM density parameter
+  - Yukawa coupling beta
+  - EDE scalar evolution
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: This is a phenomenological interacting-CDM model rather than a relic-production calculation.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: cold dark matter density parameter
+    symbol: Omega_cdm
+    description: The model treats the interacting CDM component as the cosmological cold dark matter density.
+    status: inferred
+  calculation_type: phenomenological
+  key_dependencies:
+  - Omega_cdm
+  - beta
+  - phi evolution
+  - EDE parameters
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - early dark energy scalar freezes at early times and later evolves
+  - energy transfer between dark matter and dark energy for nonzero beta
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: high
+phase_space:
+  distribution_type: not_applicable
+  distribution_function_available: not_applicable
+  f_of_p_or_q: CDM is treated as a pressureless fluid; no phase-space distribution is supplied.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The model is implemented at fluid background and perturbation level.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: scale_dependent_growth
+    small_scale_power_effect: suppression
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: nonlinear halo effects are not modeled; the paper studies linear matter
+      power and f sigma8
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: phenomenological_fluid_limit
+  applies_to: model
+  condition: CDM is treated as a nonrelativistic fermion fluid with scalar-dependent mass
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - No microscopic stability or relic-production mechanism is given.
+- id: ede_limit
+  applies_to: model
+  condition: The model reduces to the uncoupled EDE model when beta = 0
+  status: inferred
+  extrapolation_risk: low
+  caveats: []
+assumptions:
+  global:
+  - id: fermion_cdm
+    description: Cold dark matter is represented by a fermion field whose nonrelativistic energy density
+      depends on the EDE scalar.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: dark_sector_exchange_only
+    description: Only the dark matter and dark energy energy-momentum tensors exchange energy-momentum
+      through the Yukawa coupling.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: adiabatic_initial_conditions
+    description: The perturbation calculation adopts adiabatic initial conditions and leaves CDM initial
+      conditions unchanged at early times.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that CLASS was modified and MontePython/GetDist were used, but no public
+    repository is identified in the assigned text.
+  primary_code_role: boltzmann_solver_patch
+provenance:
+  model_id: 2312_01410_yukawa_coupled_dark_sector_v1
+  model_name: Yukawa-coupled dark sector model
+  model_family: interacting_dark_matter_dark_energy
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: The Yukawa-Coupled Dark Sector Model and Cosmological Tensions
+      year: 2023
+      arxiv_id: '2312.01410'
+      role: original_model
+      authors:
+      - Gang Liu
+      - Yuhao Mu
+      - Jiaze Gao
+      - Yufen Han
+      - Lixin Xu
+    - arxiv_id: '2312.01410'
+      authors:
+      - Liu, Gang
+      - Gao, Jiaze
+      - Han, Yufen
+      - Mu, Yuhao
+      - Xu, Lixin
+      doi: 10.1103/PhysRevD.109.103531
+      notes: Primary local full text read for this enrichment.
+      reference_id: p_2312_01410
+      role: original_model
+      title: Coupled dark sector models and cosmological tensions
+      url: https://arxiv.org/abs/2312.01410
+      year: 2024
+    constraint_papers:
+    - arxiv_id: '1807.06209'
+      authors:
+      - Planck Collaboration
+      - Aghanim, N.
+      - Akrami, Y.
+      - Ashdown, M.
+      - Aumont, J.
+      - Baccigalupi, C.
+      - Ballardini, M.
+      - Banday, A. J.
+      doi: 10.1051/0004-6361/201833910
+      notes: Local full text read as supporting context for Planck 2018 cosmological constraints.
+      reference_id: rel_1807_06209_planck2018
+      role: dataset
+      title: Planck 2018 results. VI. Cosmological parameters
+      url: https://arxiv.org/abs/1807.06209
+      year: 2020
+    - arxiv_id: '1104.2933'
+      authors:
+      - Blas, Diego
+      - Lesgourgues, Julien
+      - Tram, Thomas
+      doi: 10.1088/1475-7516/2011/07/034
+      notes: Local full text read for CLASS Boltzmann-code context.
+      reference_id: rel_1104_2933_class
+      role: implementation
+      title: 'The Cosmic Linear Anisotropy Solving System (CLASS). Part II: Approximation schemes'
+      url: https://arxiv.org/abs/1104.2933
+      year: 2011
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0333
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      quote_or_summary: The paper proposes a Yukawa-coupled dark sector model coupling EDE and cold dark
+        matter.
+    - reference_id: primary
+      section: Model definition
+      quote_or_summary: The action includes EDE, CDM, and the Yukawa interaction term.
+    unresolved_items:
+    - No direct-detection, indirect-detection, or collider observables are supported by the primary text.
+    - The exact likelihood/code release for the modified CLASS analysis was not resolved.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The action represents EDE with a scalar phi and cold dark matter with a fermion field psi.
+      confidence: high
+      section: Model definition
+    interactions:
+    - reference_id: primary
+      note: The Yukawa interaction gives scalar-dependent CDM mass and density.
+      confidence: high
+      section: Model definition
+    production_mechanism:
+    - reference_id: primary
+      note: The paper evolves the CDM density equation with a source term from the scalar field rather
+        than deriving primordial production.
+      confidence: medium
+      section: Background equations
+    cosmological_history:
+    - reference_id: primary
+      note: The EDE scalar freezes at early times, and beta controls energy transfer between dark matter
+        and dark energy.
+      confidence: high
+      section: Initial conditions and numerical results
+    validity_domain:
+    - reference_id: primary
+      note: The authors note beta = 0 degenerates to the uncoupled EDE model.
+      confidence: medium
+      section: Numerical results and summary
+    constraints:
+    - confidence: high
+      note: Primary text supplies the MCMC constraint values and modified-CLASS description.
+      page: null
+      reference_id: p_2312_01410
+      section: null
+    - confidence: medium
+      note: CLASS paper supports the Boltzmann-code routing context.
+      page: null
+      reference_id: rel_1104_2933_class
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text reports H0/S8 fit results and data combination.
+      page: null
+      reference_id: p_2312_01410
+      section: null
+    - confidence: medium
+      note: Planck 2018 supports the CMB cosmology dataset context.
+      page: null
+      reference_id: rel_1807_06209_planck2018
+      section: null
+    routes:
+    - confidence: high
+      note: Primary text describes the coupled equations and modified CLASS workflow.
+      page: null
+      reference_id: p_2312_01410
+      section: null
+    - confidence: medium
+      note: CLASS source document supports the code family used in routing.
+      page: null
+      reference_id: rel_1104_2933_class
+      section: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: low
+  computational_robustness: medium
+  dominant_uncertainties:
+  - phenomenological stability assumption
+  - no relic-production calculation
+  - linear-regime implementation
+  validation_status: partially_validated
+  notes: Accepted as a proposed phenomenological dark-sector model, not as a complete particle relic model.
+agent_failure_modes:
+  warnings:
+  - id: no_relic_microphysics
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper specifies interacting CDM evolution but not a microscopic relic-production or stabilizing
+      mechanism for the fermion.
+observables:
+- caveats:
+  - Value is conditional on the primary paper data combination and EDE/coupling parameterization.
+  channel: cosmology
+  effect_direction: enhancement
+  environments:
+  - CMB
+  - BAO
+  - Type Ia supernovae
+  - SH0ES
+  id: obs_2312_h0_shift
+  key_quantities:
+  - description: Late-time expansion rate inferred in the coupled model.
+    name: Hubble constant
+    role: cosmological
+    source_reference_ids:
+    - p_2312_01410
+    status: inferred
+    symbol: H_0
+    unit: km/s/Mpc
+    value: 72.21 +0.82/-0.69
+  linked_constraints:
+  - con_2312_joint_cosmo
+  linked_routes:
+  - route_2312_modified_class_mcmc
+  name: CMB-plus-distance-ladder H0 inference
+  notes: Primary observable targeted at the Hubble-tension side of the model.
+  observability: high
+  predicted_effect: The Yukawa-coupled EDE/CDM model gives H0 = 72.21 +0.82/-0.69 km/s/Mpc at 68 percent
+    confidence in the primary joint MCMC analysis.
+  redshift_range: CMB to z~0 distance-ladder data
+  relevance: high
+  scale_range: linear cosmological scales
+  source_reference_ids:
+  - p_2312_01410
+  - rel_1807_06209_planck2018
+  subchannel: Hubble tension
+- caveats:
+  - The primary paper says the model mitigates but does not fully remove the S8 tension.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - DES-Y3
+  - large-scale structure
+  id: obs_2312_s8_mitigation
+  key_quantities:
+  - description: sigma8 times sqrt(Omega_m/0.3).
+    name: clustering amplitude
+    role: derived
+    source_reference_ids:
+    - p_2312_01410
+    status: inferred
+    symbol: S_8
+    value: 0.817 best fit
+  linked_constraints:
+  - con_2312_joint_cosmo
+  linked_routes:
+  - route_2312_modified_class_mcmc
+  name: Matter-clustering amplitude S8
+  notes: Observable is a relative improvement over the EDE comparison model, not a standalone exclusion.
+  observability: high
+  predicted_effect: The best-fit coupled model has S8 = 0.817, lower than the uncoupled EDE value quoted
+    by the paper but still above the DES-Y3 central value.
+  redshift_range: late-time large-scale-structure measurements
+  relevance: high
+  scale_range: 8 h^-1 Mpc reference scale
+  source_reference_ids:
+  - p_2312_01410
+  - rel_1807_06209_planck2018
+  subchannel: S8 tension
+constraints:
+- allowed_regions:
+  - Primary fit reports H0 = 72.21 +0.82/-0.69 km/s/Mpc at 68 percent confidence.
+  - Best-fit S8 = 0.817 in the coupled model.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The EDE scalar/fermion Yukawa parameterization is valid through the background and perturbation
+      epochs used in the MCMC.
+    id: assume_2312_background
+    impact_if_violated: Incorrect perturbation treatment would shift H0/S8 constraints.
+    notes: null
+    scope: cosmological fit
+    source_reference_ids:
+    - p_2312_01410
+    status: assumed
+  benchmark_implications:
+  - Negative best-fit beta mildly lowers S8 relative to uncoupled EDE while retaining the high-H0 behavior.
+  caveats:
+  - No independent likelihood reproduction was performed in this batch.
+  constrained_parameters:
+  - beta
+  - H_0
+  - S_8
+  - Omega_cdm
+  - EDE parameters
+  constraint_type: cosmological
+  data_release: Planck 2018, BAO, Pantheon/SNe Ia, SH0ES, DES-Y3 as used by the primary paper
+  excluded_regions: []
+  id: con_2312_joint_cosmo
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Joint cosmological-data MCMC constraint
+  notes: Structured values are taken from the primary local text; Planck 2018 is supporting dataset context.
+  observable_channel: CMB+BAO+SNe+SH0ES+DES-Y3
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - p_2312_01410
+  - rel_1807_06209_planck2018
+- allowed_regions:
+  - Primary paper states that CLASS was modified to include the coupled CDM velocity equation and EDE
+    initial conditions.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - A recast requires implementing the same coupled background and perturbation terms before applying
+    CMB/LSS likelihoods.
+  caveats:
+  - Public code release was not identified.
+  constrained_parameters:
+  - beta
+  - rho_c(phi)
+  - EDE perturbations
+  constraint_type: numerical
+  data_release: null
+  excluded_regions: []
+  id: con_2312_class_implementation
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Modified CLASS evolution requirement
+  notes: This is a computational constraint on reproducible routing rather than an experimental exclusion.
+  observable_channel: Boltzmann perturbation evolution
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - p_2312_01410
+  - rel_1104_2933_class
+theory_to_observable_routing:
+  routes:
+  - agent_notes: No executable code was reproduced in this enrichment pass.
+    caveats:
+    - Likelihood details and code release remain unresolved.
+    constraint_ids:
+    - con_2312_joint_cosmo
+    - con_2312_class_implementation
+    derived_quantities:
+    - CMB spectra
+    - matter power spectrum
+    - H_0
+    - S_8
+    description: Propagate the Yukawa-coupled CDM/EDE background and perturbations through a modified
+      CLASS calculation and compare H0/S8-sensitive datasets.
+    forward_model_chain:
+    - inputs:
+      - Yukawa-coupled action
+      - rho_c(phi)
+      notes: null
+      outputs:
+      - background and perturbation equations
+      step_id: r2312_s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary paper defines the coupled evolution equations.
+    - inputs:
+      - coupled equations
+      - cosmological parameters
+      notes: null
+      outputs:
+      - CMB spectra
+      - matter power
+      step_id: r2312_s2
+      step_type: boltzmann_solver
+      tool_or_code: CLASS (modified)
+      validity: Requires reproducing the primary code modifications.
+    - inputs:
+      - CMB/BAO/SNe/SH0ES/DES-Y3 likelihoods
+      notes: null
+      outputs:
+      - posterior constraints on H0, S8, beta
+      step_id: r2312_s3
+      step_type: likelihood
+      tool_or_code: MCMC sampler
+      validity: Data-combination dependent.
+    id: route_2312_modified_class_mcmc
+    input_parameters:
+    - beta
+    - EDE mass/decay parameters
+    - theta_i
+    - Omega_cdm
+    likelihoods:
+    - Planck 2018 likelihoods
+    - BAO/SNe/SH0ES/DES-Y3 likelihoods
+    observable_ids:
+    - obs_2312_h0_shift
+    - obs_2312_s8_mitigation
+    required_code_resources:
+    - CLASS with coupled-dark-sector patch
+    - MCMC sampler
+    route_status: planned
+    source_model_features:
+    - scalar-dependent CDM mass
+    - EDE scalar perturbations
+    - Yukawa coupling beta
+    validation_tests:
+    - Recover Lambda-CDM/EDE limits as beta -> 0.
+    - Check quoted H0 and S8 constraints against the primary tables.

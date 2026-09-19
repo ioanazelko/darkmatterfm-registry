@@ -1,0 +1,309 @@
+_source:
+  shard: data/astro-ph-00286.tar
+  paper_id: astro-ph9908152
+  source_member: astro-ph9908152.json
+schema_version: model_only_v0
+model_id: astro-ph9908152_scalar_field_dark_matter_v1
+identity:
+  name: Scalar field dark matter and dark energy universe
+  family: scalar_field_dark_matter
+  aliases:
+  - scalar field as dark matter in the Universe
+  short_description: A cosmological scalar field with an exponential potential is hypothesized to supply
+    both dark matter and dark energy, dominating the Universe at late times.
+  historical_origin_or_motivation: Proposed to connect scalar-field fits to spiral-galaxy rotation curves
+    with supernova evidence for cosmic acceleration.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - FRW scalar-field cosmology
+  - quintessence-like scalar field dark matter
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper writes the scalar-field equation of motion, density, pressure, and an exponential potential
+    in a flat FRW cosmology.
+particle_content:
+  dark_matter_candidate:
+    name: cosmological scalar field phi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - classical scalar field condensate
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The scalar field is treated as a long-lived cosmological component; no microscopic
+    stabilizing symmetry is specified.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets: []
+  dark_sector_couplings:
+  - self-interaction through exponential potential
+  mediator_types:
+  - gravity
+  interaction_operators:
+  - scalar potential V(phi) exponential in the scalar-dominated regime
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - scalar self-potential
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: exponential potential normalization
+    symbol: V0
+    description: Normalization of the scalar potential fit to supernova data
+    value: 0.78 rho_c
+    role: core
+    status: inferred
+  - name: power-law expansion parameter
+    symbol: alpha
+    description: Scale-factor exponent a(t) proportional to t^alpha in the scalar-dominated solution
+    value: 1.83
+    role: core
+    status: inferred
+  - name: scalar equation of state
+    symbol: w_phi
+    description: Constant scalar-field equation-of-state parameter in the fitted solution
+    value: -0.636
+    role: core
+    status: inferred
+  - name: present scalar density fraction
+    symbol: Omega_phi
+    description: Scalar-field density fraction used in the fit
+    value: about 0.95
+    role: core
+    status: inferred
+  derived:
+  - name: transition redshift
+    symbol: z_transition
+    description: Redshift where scalar density equals matter density in the paper history
+    value: about 3.7
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - postulated cosmological scalar-field component with exponential potential and late-time domination
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - scalar potential normalization
+  - scalar-field initial conditions
+  - FRW expansion history
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper treats the scalar abundance phenomenologically through its cosmological density evolution,
+    not through particle freeze-out.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark sector scalar fraction
+    symbol: Omega_phi
+    description: Paper argues the scalar field can represent more than 95 percent of the matter-energy
+      budget, including dark matter and dark energy.
+    value: '>0.95'
+    role: core
+    status: inferred
+  calculation_type: phenomenological
+  key_dependencies:
+  - exponential potential
+  - FRW scalar-field equations
+  - supernova luminosity-distance fit
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - late scalar-field domination after radiation and matter eras
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The model is a coherent cosmological field rather than a thermal particle gas.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    density_profile_effect: paper cites previous rotation-curve motivation but does not give a full nonlinear
+      structure model here
+    simulation_calibrated: 'no'
+validity_domain:
+- id: late_time_scalar_domination
+  applies_to: model
+  condition: The exponential-potential solution is used in the scalar-field-dominated late universe and
+    fitted to SNIa data.
+  status: inferred
+  extrapolation_risk: medium
+- id: phenomenological_abundance
+  applies_to: production
+  condition: The paper does not provide a microscopic production mechanism for the scalar field abundance.
+  status: unknown
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: homogeneous_isotropic_universe
+    description: The cosmological calculation assumes a homogeneous and isotropic FRW universe.
+    scope: cosmological_history
+    status: assumed
+  - id: exponential_potential
+    description: In the scalar-field-dominated regime the potential is taken to be exponential.
+    scope: theory
+    status: assumed
+  - id: scalar_unifies_dark_components
+    description: The scalar field is hypothesized to account for both dark matter and dark energy.
+    scope: global
+    status: speculative
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: astro-ph9908152_scalar_field_dark_matter_v1
+  model_name: Scalar field dark matter and dark energy universe
+  model_family: scalar_field_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Scalar Field as Dark Matter in the Universe
+      authors:
+      - Tonatiuh Matos
+      - F. Siddhartha Guzman
+      - L. Arturo Urena-Lopez
+      year: 1999
+      arxiv_id: astro-ph/9908152
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0029
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper investigates the hypothesis that a scalar field is both dark matter
+        and dark energy.
+    - reference_id: primary
+      section: model solution
+      page: null
+      quote_or_summary: The paper derives an exponential potential and fits a scalar-dominated universe
+        to SNIa data.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The dark component is a scalar field phi, treated as the dark matter and dark energy of the
+        Universe.
+      confidence: high
+      section: abstract/introduction
+      page: null
+    interactions:
+    - reference_id: primary
+      note: The only specified interactions are gravitational cosmological dynamics and scalar self-interaction
+        through V(phi).
+      confidence: medium
+      section: abstract/introduction
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: The scalar abundance is set phenomenologically by the FRW solution and fit, not by freeze-out
+        or decay.
+      confidence: medium
+      section: abstract/introduction
+      page: null
+    cosmological_history:
+    - reference_id: primary
+      note: The paper allows radiation/matter eras before late scalar domination and gives a transition
+        around z=3.7.
+      confidence: medium
+      section: abstract/introduction
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: The fit reports alpha=1.83, V0=0.78 rho_c, Omega_phi about 0.95, and w_phi=-0.636.
+      confidence: high
+      section: abstract/introduction
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: The exponential potential theorem is stated for a flat scalar-field-dominated universe.
+      confidence: medium
+      section: abstract/introduction
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The model is phenomenological and does not specify a microscopic production mechanism for the scalar
+    abundance.
+robustness:
+  overall: low
+  theory_robustness: low
+  observational_robustness: low
+  computational_robustness: low
+  dominant_uncertainties:
+  - no microscopic production mechanism
+  - dark matter and dark energy are not separated into distinct components
+  validation_status: expert_judgment_only
+  notes: Accepted because the paper explicitly develops a scalar-field dark matter/dark energy cosmological
+    model.
+agent_failure_modes:
+  warnings:
+  - id: unified_dark_sector
+    severity: medium
+    category: assumption_mismatch
+    warning: The scalar field is used for both dark matter and dark energy, so it should not be routed
+      as ordinary pressureless CDM without checking the equation of state.
+    mitigation: Preserve the field-like phase-space and phenomenological equation-of-state assumptions.

@@ -1,0 +1,479 @@
+_source:
+  shard: arXiv_src_2402_036_wds.tar
+  paper_id: '2402_04743'
+  source_member: 2402_04743.json
+schema_version: model_only_v0
+model_id: 2402_04743_higgs_portal_stronger_coupling_freeze_in_v1
+identity:
+  name: Higgs-portal scalar freeze-in at stronger coupling
+  family: freeze_in_dark_matter
+  aliases:
+  - stronger-coupling freeze-in scalar dark matter
+  - low-reheating-temperature Higgs-portal scalar dark matter
+  short_description: A real scalar dark matter model with Higgs-portal coupling, produced nonthermally
+    from the Boltzmann tail when the Standard Model bath temperature stays below the dark matter mass.
+  historical_origin_or_motivation: The paper motivates the model as a testable alternative to conventional
+    feeble freeze-in, using low reheating temperature to dilute gravitationally produced relics and permit
+    larger SM-DM coupling.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Higgs_portal_scalar_dark_matter
+  - freeze_in_at_stronger_coupling
+  - right_handed_neutrino_reheating
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The text gives the reheating-sector terms y_phi phi N_R N_R and y_N H l N_R plus the scalar dark
+    matter potential V(s)=1/2 lambda_hs s^2 H^dagger H + 1/2 m_s^2 s^2; it does not provide a complete
+    inflation model.
+particle_content:
+  dark_matter_candidate:
+    name: real scalar s
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - feebly interacting right-handed neutrino N_R
+  mediators:
+  - Standard Model Higgs doublet
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - real scalar s
+  unstable_parent_particles:
+  - inflaton phi
+  - right-handed neutrino N_R
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper treats s as dark matter and displays only even powers of s in the Higgs-portal
+    potential; the exact stabilizing symmetry is implicit rather than fully specified.
+  symmetries:
+  - name: implicit scalar parity for s
+    type: discrete
+    exact_or_approximate: unknown
+    breaking: No s decay operator is specified in the displayed potential.
+    breaking_scale: null
+  - name: approximate Z4 reheating-sector symmetry
+    type: discrete
+    exact_or_approximate: approximate
+    breaking: Used in the text to suppress direct inflaton decay into SM states relative to inflaton decay
+      into right-handed neutrinos.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - high-energy electroweak Higgs/vector degrees of freedom
+  dark_sector_couplings:
+  - lambda_hs s^2 H^dagger H
+  - y_phi phi N_R N_R
+  - y_N H l N_R
+  mediator_types:
+  - Higgs doublet
+  - right-handed neutrino in the reheating chain
+  interaction_operators:
+  - V(s)=1/2 lambda_hs s^2 H^dagger H + 1/2 m_s^2 s^2
+  - L includes y_phi phi N_R N_R + y_N H l N_R + h.c.
+  - h_i h_i -> s s from Higgs/electroweak degrees of freedom in the Boltzmann tail
+  annihilation_channels:
+  - s s -> h_i h_i at larger coupling
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_s
+    description: Mass of the real scalar dark matter particle.
+    range: Regime emphasized in the paper has m_s larger than the maximal SM bath temperature T_max, so
+      production is Boltzmann suppressed.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2402_04743
+  - name: Higgs portal coupling
+    symbol: lambda_hs
+    description: Coupling in the Higgs-portal term lambda_hs s^2 H^dagger H / 2.
+    range: Can be as large as order one when m_s/T_max is large; much smaller couplings are needed in
+      high-temperature conventional freeze-in.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2402_04743
+  - name: maximal SM bath temperature
+    symbol: T_max
+    description: Maximum temperature reached by the Standard Model bath during the nonstandard reheating
+      history.
+    range: Comparable to, and in some cases coincident with, the reheating temperature T_R.
+    unit: GeV
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - paper_2402_04743
+  - name: reheating temperature
+    symbol: T_R
+    description: Temperature when the SM radiation begins dominating the energy balance.
+    range: Low reheating-temperature regime; example discussion uses T_R around 100 GeV.
+    unit: GeV
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - paper_2402_04743
+  - name: right-handed neutrino mass
+    symbol: M_N
+    description: Mass of the feebly interacting right-handed neutrino that mediates reheating of the SM
+      bath.
+    range: Example discussion takes M_N around 1 TeV; the parameter is otherwise left free.
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper_2402_04743
+  - name: inflaton and neutrino decay rates
+    symbol: Gamma_phi, Gamma_N
+    description: Decay rates controlling phi -> N_R N_R and N_R -> SM reheating stages.
+    range: The T_max approximately T_R case is realized when the inflaton and N_R decay rates are of similar
+      size in the paper scenario.
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - paper_2402_04743
+  nuisance: []
+  derived:
+  - name: relic yield target
+    symbol: Y_obs
+    description: Observed abundance target expressed as scalar yield.
+    value: 4.4e-10 GeV / m_s
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - paper_2402_04743
+production:
+  mechanisms:
+  - Boltzmann-suppressed freeze-in from SM thermal bath
+  - Higgs and vector boson pair annihilation h_i h_i -> s s
+  - nonstandard reheating through inflaton decay to right-handed neutrinos followed by N_R decay to SM
+    states
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - m_s
+  - lambda_hs
+  - T_max
+  - T_R
+  - SM temperature history before reheating
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The pure freeze-in regime neglects the s s -> h_i h_i annihilation term. The paper also notes
+    that at larger coupling the system can thermalize and later freeze out.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed dark matter yield
+    symbol: Y_obs
+    description: Observed abundance target used for the scalar s relic density.
+    value: 4.4e-10 GeV / m_s
+    role: cosmological
+    status: assumed
+    source_reference_ids:
+    - paper_2402_04743
+  calculation_type: nonthermal
+  key_dependencies:
+  - lambda_hs squared
+  - m_s
+  - T_max
+  - T_R
+  - pre-reheating temperature plateau
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - low reheating temperature
+  - long inflaton matter-dominated expansion before reheating
+  - inflaton decays dominantly to feebly interacting right-handed neutrinos
+  - right-handed neutrino decays generate the SM bath
+  - SM bath temperature can stay constant over cosmological times before reheating
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'no'
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The text computes integrated number density from the Boltzmann tail and does not give a final
+    s momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No structure-formation mapping is supplied in the assigned paper text.
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: boltzmann_suppressed_regime
+  applies_to: production
+  condition: The Standard Model bath temperature never exceeds the scalar dark matter mass, T_max < m_s,
+    so production is Boltzmann suppressed.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - The stronger-coupling freeze-in relation changes if the SM bath becomes hotter than the dark matter
+    mass.
+  source_reference_ids:
+  - paper_2402_04743
+  notes: null
+- id: suppressed_direct_parent_decays
+  applies_to: production
+  condition: Direct inflaton or right-handed-neutrino decays into dark matter are highly suppressed or
+    kinematically forbidden.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The paper notes N_R -> DM plus lepton is forbidden if M_N < 2 m_DM in the example.
+  source_reference_ids:
+  - paper_2402_04743
+  notes: null
+- id: right_handed_neutrino_reheating
+  applies_to: cosmological_history
+  condition: Inflaton decay into feebly interacting right-handed neutrinos dominates over direct decay
+    into SM states, and N_R later produces the SM bath.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The scenario relies on very small reheating-sector couplings and an approximate symmetry suppressing
+    direct SM production.
+  source_reference_ids:
+  - paper_2402_04743
+  notes: null
+- id: pure_freeze_in_limit
+  applies_to: relic_density
+  condition: The s s -> h_i h_i annihilation term can be neglected until the coupling is large enough
+    for thermalization.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - At larger lambda_hs, the text says the system thermalizes and the abundance is instead set by freeze-out.
+  source_reference_ids:
+  - paper_2402_04743
+  notes: null
+assumptions:
+  global:
+  - id: assume_low_reheating_temperature
+    description: The reheating temperature is low enough that gravitationally produced relics are diluted
+      and thermal production is Boltzmann suppressed.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: A hotter SM bath would move the model back toward conventional freeze-in or thermal
+      production.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper_2402_04743
+    notes: null
+  - id: assume_scalar_dm_stability
+    description: The real scalar s is stable on cosmological times and is described by the displayed even
+      Higgs-portal potential.
+    scope: theory
+    status: assumed
+    impact_if_violated: The relic-density calculation would not describe a surviving dark matter abundance.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - paper_2402_04743
+    notes: The stabilizing symmetry is implicit in the assigned text.
+  - id: assume_rh_neutrino_reheating_chain
+    description: The SM bath is generated through phi -> N_R N_R followed by N_R -> SM rather than direct
+      inflaton decay to SM particles.
+    scope: production
+    status: assumed
+    impact_if_violated: The relation between T_max and T_R and hence the freeze-in yield can change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper_2402_04743
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public code or repository is identified in the assigned paper text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  caveats:
+  - The paper text does not name associated code.
+provenance:
+  model_id: 2402_04743_higgs_portal_stronger_coupling_freeze_in_v1
+  model_name: Higgs-portal scalar freeze-in at stronger coupling
+  model_family: freeze_in_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-06-01'
+  last_updated: '2026-06-01'
+  sources:
+    primary_papers:
+    - reference_id: paper_2402_04743
+      title: Temperature evolution in the Early Universe and freeze-in at stronger coupling
+      authors:
+      - Catarina Cosme
+      - Francesco Costa
+      - Oleg Lebedev
+      year: 2024
+      arxiv_id: '2402.04743'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from the run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: Codex GPT-5 dark-matter extraction worker
+    extraction_date: '2026-06-01'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper_2402_04743
+      section: Abstract
+      page: null
+      quote_or_summary: The paper says stronger-coupling freeze-in operates when the SM bath temperature
+        never exceeds the dark matter mass.
+    - reference_id: paper_2402_04743
+      section: reheating example
+      page: null
+      quote_or_summary: Inflaton decays primarily into feebly interacting right-handed neutrinos, which
+        subsequently generate the SM thermal bath.
+    - reference_id: paper_2402_04743
+      section: freeze-in production
+      page: null
+      quote_or_summary: For definiteness the paper takes real scalar dark matter s with Higgs-portal potential
+        and h_i h_i -> s s production.
+    - reference_id: paper_2402_04743
+      section: relic abundance
+      page: null
+      quote_or_summary: The scalar yield is matched to Y_obs = 4.4e-10 GeV/m_s and is exponentially sensitive
+        to m_s/T_max.
+    unresolved_items:
+    - The exact stabilizing symmetry for s is implicit rather than explicitly named.
+    - No associated public code is identified.
+  evidence:
+    particle_content:
+    - reference_id: paper_2402_04743
+      note: The text says to consider real scalar dark matter s of mass m_s coupled through the Higgs
+        portal.
+      confidence: high
+      section: freeze-in production
+      page: null
+    symmetries:
+    - reference_id: paper_2402_04743
+      note: The reheating sector uses an approximate Z4 symmetry to suppress direct inflaton decay into
+        SM states; scalar stability is inferred from the even s potential.
+      confidence: medium
+      section: reheating example
+      page: null
+    interactions:
+    - reference_id: paper_2402_04743
+      note: Displayed terms include y_phi phi N_R N_R, y_N H l N_R, and V(s)=1/2 lambda_hs s^2 H^dagger
+        H + 1/2 m_s^2 s^2.
+      confidence: high
+      section: model setup
+      page: null
+    production_mechanism:
+    - reference_id: paper_2402_04743
+      note: The leading dark matter production process is Higgs/electroweak boson pair annihilation into
+        s pairs from the Boltzmann tail.
+      confidence: high
+      section: freeze-in production
+      page: null
+    cosmological_history:
+    - reference_id: paper_2402_04743
+      note: The paper realizes a temperature plateau with inflaton decay to right-handed neutrinos followed
+        by their decay to the SM bath, so T_max can be close to T_R.
+      confidence: high
+      section: temperature evolution
+      page: null
+    parameter_ranges:
+    - reference_id: paper_2402_04743
+      note: The relevant parameters are m_s, lambda_hs, T_max, T_R, right-handed-neutrino mass and reheating
+        decay rates; example values include T_R about 100 GeV and M_N about 1 TeV.
+      confidence: medium
+      section: reheating estimates
+      page: null
+    validity_domain:
+    - reference_id: paper_2402_04743
+      note: The stronger-coupling freeze-in regime assumes T_max < m_s and suppressed or forbidden direct
+        parent decays into dark matter.
+      confidence: high
+      section: freeze-in production
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The extraction intentionally omits observables, constraints, and theory-to-observable routes for this
+    run.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - pre-reheating SM temperature history
+  - suppression of direct inflaton or N_R decays to dark matter
+  - implicit scalar stabilization symmetry
+  validation_status: expert_judgment_only
+  notes: The paper gives analytic Boltzmann-equation estimates and a UV reheating example, but the extraction
+    has not been expert reviewed.
+agent_failure_modes:
+  warnings:
+  - id: thermal_history_sensitive
+    severity: high
+    category: assumption_mismatch
+    warning: Do not apply this card under a standard high-temperature reheating history; the relic abundance
+      depends on T_max being close to or below the dark matter mass.
+    mitigation: Check the assumed T(a), T_max, and T_R before using the lambda_hs-m_s relation.
+    source_reference_ids:
+    - paper_2402_04743
+  - id: parent_decay_contamination
+    severity: medium
+    category: assumption_mismatch
+    warning: Direct inflaton or right-handed-neutrino decays into dark matter would add production channels
+      not captured by the pure Boltzmann-tail freeze-in estimate.
+    mitigation: Verify that such decays are suppressed or kinematically forbidden in the chosen parameter
+      point.
+    source_reference_ids:
+    - paper_2402_04743

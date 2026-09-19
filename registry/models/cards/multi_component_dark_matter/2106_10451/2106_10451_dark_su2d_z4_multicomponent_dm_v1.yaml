@@ -1,0 +1,388 @@
+_source:
+  shard: arXiv_src_2106_064_wds.tar
+  paper_id: '2106_10451'
+  source_member: 2106_10451.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: w1
+    mitigation: Use the case-1 condition m_X + m_eta1 < m_eta2 when applying the row.
+    severity: medium
+    source_reference_ids: []
+    warning: Do not apply this row to the paper's unstudied case-2 or case-3 mass hierarchies without
+      re-extracting those variants.
+  - category: extrapolation
+    id: w2
+    mitigation: Recompute the relic density if moving outside the stated mass/coupling ranges.
+    severity: medium
+    source_reference_ids: []
+    warning: Relic-density behavior is tied to the benchmark scan ranges and the implemented micrOMEGAs
+      interactions.
+associated_code:
+  code_summary: The paper reports estimating the relic density with micrOMEGAs 5 after implementing relevant
+    interactions; no model-specific public repository is identified.
+  has_associated_code: partial
+  primary_code_role: relic_density_calculation
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The remnant Z4 symmetry remains exact and stabilizes the Z4-charged dark matter components.
+    id: a1
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The analyzed dark matter phenomenology uses case 1, where X^+/- and eta_1 are stable
+      components.
+    id: a2
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Relic density is evaluated with standard cosmology and micrOMEGAs implementation of the
+      listed interactions.
+    id: a3
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: low
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - remnant Z4 multicomponent dark sector
+  phase_transitions:
+  - spontaneous SU(2)_D breaking to remnant Z4
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - dark non-Abelian SU(2)_D multicomponent dark matter
+  - Z4-stabilized vector-scalar dark matter
+  family: multi_component_dark_matter
+  historical_origin_or_motivation: Built to connect radiative neutrino mass generation, loop-induced SU(2)_D-U(1)_Y
+    kinetic mixing, and stable dark matter from a remnant non-Abelian dark gauge symmetry.
+  model_kind: complete_theory
+  name: Dark SU(2)_D radiative-neutrino-mass model with remnant Z4 multicomponent dark matter
+  short_description: A non-Abelian dark SU(2)_D gauge model with vector-like bi-doublet leptons and dark
+    scalar multiplets; after symmetry breaking a remnant Z4 stabilizes multicomponent dark matter, analyzed
+    for a case with X^+/- and eta_1 components.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - eta_1 eta_1 pair annihilation
+  - X^+ X^- pair annihilation
+  - semi-annihilation eta eta -> X Z prime
+  - semi-coannihilation eta_1 eta_2 -> X Z prime
+  dark_sector_couplings:
+  - SU(2)_D gauge coupling g_X
+  - Yukawa couplings involving vector-like leptons and N
+  - scalar portal couplings to H
+  decay_channels:
+  - Z prime decays into SM particles through mixing
+  interaction_operators:
+  - SU(2)_D gauge interactions among X, Z prime, eta_1, and eta_2
+  - loop-induced kinetic mixing between SU(2)_D and U(1)_Y
+  - Yukawa terms generating radiative neutrino mass
+  mediator_types:
+  - dark vector bosons X and Z prime
+  - vector-like leptons
+  - dark scalar multiplets
+  portals:
+  - vector
+  - higgs
+  - neutrino
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - dark gauge interactions among Z4-charged components
+  standard_model_targets:
+  - SM leptons
+  - U(1)_Y gauge field through loop-induced kinetic mixing
+  - SM Higgs doublet
+  - Z boson through Z-Z prime mixing
+  tree_or_loop_level: both
+model_id: 2106_10451_dark_su2d_z4_multicomponent_dm_v1
+parameters:
+  core:
+  - description: Mass of the X^+/- vector dark matter component in the analyzed scan.
+    name: charged dark gauge boson mass
+    range: 100-1000
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_X
+    unit: GeV
+  - description: Mass of the scalar dark matter component in the analyzed scan.
+    name: eta_1 scalar mass
+    range: 100-1000
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_eta1
+    unit: GeV
+  - description: Gauge coupling scanned for the relic-density estimate.
+    name: dark SU(2)_D gauge coupling
+    range: 0.01-1.0
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: g_X
+  - description: Case-1 mass relation used in the scan.
+    name: eta_2 mass relation
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_eta2
+    value: m_eta2 = m_X + m_eta1 + 100 GeV
+  - description: Benchmark ratio used in the relic-density scan.
+    name: dark VEV ratio
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: v_phi^2/v_varphi^2
+    value: 0.1
+  - description: Small Z-Z prime mixing parameter used for the scan.
+    name: kinetic mixing parameter
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: epsilon
+    value: 5e-4
+particle_content:
+  additional_dark_sector_particles:
+  - SU(2)_D complex quintet scalar
+  - SU(2)_D real triplet scalar
+  - SU(2)_D complex doublet scalar eta
+  - SU(2)_L x SU(2)_D bi-doublet vector-like leptons
+  - SU(2)_D doublet fermions N
+  - Z prime
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: X^+/- and eta_1 in the analyzed case-1 spectrum
+    number_of_components: multi_component
+    spin: mixed spin-1 vector and spin-0 scalar
+    statistics: boson
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - eta_2 in alternate mass-ordering cases
+  long_lived_particles:
+  - Z4-charged dark matter components
+  mediators:
+  - Z prime
+  - dark SU(2)_D gauge bosons
+  - vector-like leptons
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - heavier Z4-charged particles outside the chosen mass ordering
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  free_streaming_length: null
+  notes: Electroweak-to-TeV scale thermal multicomponent dark matter; no explicit distribution function
+    is provided.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - m_X
+  - m_eta1
+  - g_X
+  - Z prime resonance and kinetic mixing
+  - case-1 mass hierarchy
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal relic abundance from pair annihilation
+  - semi-annihilation and semi-coannihilation among Z4-charged components
+  - gauge interactions with kinetic mixing effects
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper estimates relic density with micrOMEGAs 5 for case 1, requiring the sum of X^+/- and
+    eta_1 abundances to match the observed density.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: Gauge interactions among X, Z prime, eta_1, and eta_2 drive annihilation, semi-annihilation,
+        and semi-coannihilation.
+      page: null
+      reference_id: '2106_10451'
+      section: Dark matter subsection
+    parameter_ranges:
+    - confidence: high
+      note: The scan uses m_X and m_eta1 in 100-1000 GeV and g_X in 0.01-1.0, with m_eta2 fixed relative
+        to them.
+      page: null
+      reference_id: '2106_10451'
+      section: Dark matter subsection
+    particle_content:
+    - confidence: high
+      note: The model introduces SU(2)_D gauge bosons and scalar multiplets; in case 1 X^+/- and eta_1
+        are dark matter.
+      page: null
+      reference_id: '2106_10451'
+      section: Dark matter subsection
+    production_mechanism:
+    - confidence: high
+      note: The paper estimates the combined relic density of X^+/- and eta_1 with micrOMEGAs 5.
+      page: null
+      reference_id: '2106_10451'
+      section: Dark matter subsection
+    symmetries:
+    - confidence: high
+      note: After SU(2)_D breaking a remnant Z4 symmetry guarantees stability of dark matter candidates.
+      page: null
+      reference_id: '2106_10451'
+      section: Scalar sector and symmetry breaking
+    validity_domain:
+    - confidence: medium
+      note: The main relic-density results are for the case-1 mass hierarchy; other mass-ordering cases
+        are noted but not analyzed in detail.
+      page: null
+      reference_id: '2106_10451'
+      section: Dark matter subsection
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0010
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper introduces an SU(2)_D gauge model with bi-doublet vector-like leptons
+        and dark scalar multiplets.
+      reference_id: '2106_10451'
+      section: Model setup
+    - page: null
+      quote_or_summary: The paper lists mass-ordering cases and studies case 1 with X^+/- and eta_1 relic
+        density using micrOMEGAs 5.
+      reference_id: '2106_10451'
+      section: Dark matter subsection
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: multi_component_dark_matter
+  model_id: 2106_10451_dark_su2d_z4_multicomponent_dm_v1
+  model_name: Dark SU(2)_D radiative-neutrino-mass model with remnant Z4 multicomponent dark matter
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: medium
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2106.10451'
+      authors:
+      - Takaaki Nomura
+      - Hiroshi Okada
+      doi: null
+      notes: null
+      reference_id: '2106_10451'
+      role: original_model
+      title: A Radiative Neutrino Mass Model in Dark Non-Abelian Gauge Symmetry
+      url: null
+      year: 2021
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_X
+  - m_eta1
+  - g_X
+  - m_eta2 mass relation
+  - kinetic mixing
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - other mass-ordering dark matter variants are not extracted as separate rows
+  - full micrOMEGAs implementation details are not included
+  - kinetic mixing is benchmarked rather than generally solved
+  notes: The model construction is explicit, and the row focuses on the analyzed case-1 multicomponent
+    dark matter spectrum.
+  observational_robustness: not_applicable
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: Spontaneous SU(2)_D breaking leaves a remnant Z4 symmetry; Z4-charged particles
+    can be stable and become dark matter.
+  symmetries:
+  - breaking: spontaneously broken by dark scalar vacuum expectation values
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: SU(2)_D
+    type: gauge
+  - breaking: unbroken remnant after SU(2)_D breaking
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: remnant Z4
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  lagrangian_available: 'yes'
+  notes: The paper gives new field content, L_new, scalar potential, symmetry breaking, gauge mixing,
+    and dark matter interactions.
+  parent_frameworks:
+  - dark non-Abelian SU(2)_D gauge symmetry
+  - radiative neutrino mass model
+  - multicomponent dark matter
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The extracted dark matter row follows the case-1 mass hierarchy m_X + m_eta1 < m_eta2, where
+    X^+/- and eta_1 are dark matter.
+  extrapolation_risk: medium
+  id: v1
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: relic_density
+  caveats: []
+  condition: Relic-density scan is performed for m_X and m_eta1 between 100 and 1000 GeV, g_X between
+    0.01 and 1.0, and fixed benchmark relations for other parameters.
+  extrapolation_risk: medium
+  id: v2
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null

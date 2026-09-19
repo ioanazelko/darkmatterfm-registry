@@ -1,0 +1,320 @@
+_source:
+  shard: arXiv_src_1710_028_wds.tar
+  paper_id: '1710_11006'
+  source_member: 1710_11006.json
+schema_version: model_only_v0
+model_id: 1710_11006_wimp_kination_production_v1
+identity:
+  name: WIMP dark matter production during decaying kination
+  family: wimp_dark_matter
+  aliases:
+  - nonthermal WIMPs during kination
+  - kination WIMP production model
+  short_description: A phenomenological WIMP production scenario in which a fast-rolling scalar field
+    drives a pre-BBN kination era, decays into radiation and possibly WIMPs, and sets the relic abundance
+    through freeze-out, freeze-in, or nonthermal production.
+  historical_origin_or_motivation: Motivated by using WIMP properties to probe nonstandard pre-BBN cosmology.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - kination cosmology
+  - WIMP thermal freeze-out
+  - freeze-in dark matter
+  - nonthermal parent-particle decay
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper solves coupled Boltzmann equations for phi, radiation, and WIMPs rather than specifying
+    a microscopic WIMP Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: WIMP chi
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - stable WIMP chi
+  unstable_parent_particles:
+  - kination scalar phi
+  standard_model_extension: unknown
+symmetries:
+  stabilizing_mechanism: WIMP stability is assumed but not specified microscopically.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - unknown
+  standard_model_targets:
+  - SM radiation bath, parameterized through annihilation and production rates
+  dark_sector_couplings:
+  - thermally averaged annihilation cross section times velocity
+  - phi decay branching ratio to WIMPs
+  mediator_types:
+  - unknown
+  interaction_operators: []
+  annihilation_channels:
+  - WIMP annihilation to radiation/SM bath, parameterized inclusively
+  decay_channels:
+  - phi -> radiation
+  - phi -> WIMPs
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: WIMP mass
+    symbol: m_chi
+    description: Mass of the WIMP candidate.
+    value: 100
+    unit: GeV
+    role: core
+    status: inferred
+    notes: Main benchmark; paper also varies m_chi to 200, 500, and 1000 GeV.
+  - name: annihilation cross section
+    symbol: <sigma v>
+    description: Thermally averaged annihilation cross section controlling freeze-out/freeze-in.
+    range:
+      min: 4e-16
+      max: 2e-5
+      unit: GeV^-2
+      notes: range quoted for m_chi = 100 GeV and at least one mechanism yielding observed DM
+    role: core
+    status: inferred
+  - name: phi decay rate
+    symbol: Gamma_phi
+    description: Decay rate of the scalar field that ends kination.
+    range: BBN requires kination to end above roughly 5 MeV
+    role: core
+    status: inferred
+  - name: branching ratio to WIMPs
+    symbol: b
+    description: Branching fraction for phi decay into WIMPs.
+    range: 0 to 1; examples include 1e-11 to 1e-2
+    role: core
+    status: inferred
+  derived:
+  - name: kination end temperature
+    symbol: T_kin
+    description: Temperature at which the universe enters standard radiation domination.
+    range: must exceed about 5 MeV
+    unit: MeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out during kination
+  - thermal freeze-in during kination
+  - nonthermal production from phi decay without chemical equilibrium
+  - nonthermal production from phi decay with chemical equilibrium
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - annihilation cross section
+  - phi decay rate
+  - branching ratio b
+  - WIMP mass
+  - BBN lower bound on kination end temperature
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper identifies four production mechanisms and regions where each gives the observed WIMP
+    abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - <sigma v>
+  - m_chi
+  - Gamma_phi
+  - branching ratio b
+  - entropy injection from phi decay
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - pre-BBN kination era with p_phi = rho_phi
+  - entropy production from phi decay
+  - transition to radiation domination before BBN
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: chemical equilibrium flag
+    symbol: n_chi vs n_eq
+    description: Production regimes depend on whether WIMPs reach chemical equilibrium.
+    range: freeze-out and nonthermal-equilibrium regimes versus freeze-in regimes
+    role: core
+    status: inferred
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: critical
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: 'no'
+  notes: The paper follows number/energy density Boltzmann equations and does not provide a final phase-space
+    distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed in this paper
+    subhalo_mass_function_effect: not discussed in this paper
+    simulation_calibrated: unknown
+validity_domain:
+- id: kination-eos
+  applies_to: cosmological_history
+  condition: Assumes a kination scalar with equation of state p_phi = rho_phi.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: pre-bbn-end
+  applies_to: cosmological_history
+  condition: Kination must end before BBN, with the transition temperature above about 5 MeV.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+- id: phenomenological-wimp
+  applies_to: model
+  condition: No microscopic WIMP interaction model is specified; use only as a production/cosmology model.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: stable-wimp
+    description: The WIMP is stable on cosmological timescales.
+    scope: theory
+    status: assumed
+  - id: nonrelativistic-wimps
+    description: The Boltzmann treatment assumes WIMPs can be treated as nonrelativistic for the relevant
+      abundance calculation.
+    scope: production
+    status: assumed
+  - id: subdominant-wimp-energy
+    description: The WIMP population is kept under-abundant relative to other energy components during
+      the evolution.
+    scope: cosmological_history
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No dedicated public model code is identified in the assigned text.
+provenance:
+  model_id: 1710_11006_wimp_kination_production_v1
+  model_name: WIMP dark matter production during decaying kination
+  model_family: wimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper:1710_11006
+      title: (Non-)Thermal Production of WIMPs during Kination
+      authors:
+      - Luca Visinelli
+      year: 2017
+      arxiv_id: '1710.11006'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: gpt-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper:1710_11006
+      section: Introduction
+      page: null
+      quote_or_summary: Defines kination, WIMPs, phi decays, and the production mechanisms.
+    - reference_id: paper:1710_11006
+      section: Boltzmann equations and results
+      page: null
+      quote_or_summary: Provides the coupled evolution equations and relic-abundance regimes.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper:1710_11006
+      note: The paper takes the dark matter particle to be a WIMP of mass m_chi and includes a scalar
+        field phi whose kinetic energy drives kination and whose decays may produce WIMPs.
+      confidence: high
+      section: introduction/model setup
+    production_mechanism:
+    - reference_id: paper:1710_11006
+      note: WIMP abundance is fixed during kination through thermal freeze-out, thermal freeze-in, nonthermal
+        production from phi decay, or nonthermal production with chemical equilibrium.
+      confidence: high
+      section: mechanism summary
+    cosmological_history:
+    - reference_id: paper:1710_11006
+      note: The expansion after inflation is governed by kinetic energy of phi, with p_phi = rho_phi,
+        and kination ends when phi decays into radiation and possibly WIMPs before BBN.
+      confidence: high
+      section: Boltzmann-equation setup
+    interactions:
+    - reference_id: paper:1710_11006
+      note: The particle physics input is parameterized by the thermally averaged WIMP annihilation cross
+        section and the branching ratio b of phi decays into WIMPs.
+      confidence: high
+      section: Boltzmann-equation setup
+    parameter_ranges:
+    - reference_id: paper:1710_11006
+      note: For m_chi = 100 GeV and BBN-safe kination ending above about 5 MeV, the paper infers an allowed
+        annihilation-cross-section range from roughly 4e-16 to 2e-5 GeV^-2 for at least one production
+        mechanism.
+      confidence: high
+      section: results
+    validity_domain:
+    - reference_id: paper:1710_11006
+      note: The conclusions are tied to a kination equation of state p_phi = rho_phi; the authors say
+        faster-than-radiation fluids would be qualitatively similar.
+      confidence: medium
+      section: summary
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - microscopic WIMP model unspecified
+  - results depend on pre-BBN cosmology and phi decay assumptions
+  validation_status: partially_validated
+  notes: The production model is well specified phenomenologically through Boltzmann equations.
+agent_failure_modes:
+  warnings:
+  - id: not-particle-uv-model
+    severity: medium
+    category: assumption_mismatch
+    warning: This card describes a cosmological WIMP production scenario, not a specific microscopic WIMP
+      particle model.
+  - id: bbn-bound-critical
+    severity: high
+    category: extrapolation
+    warning: Parameter choices with kination ending below the BBN-safe temperature are outside the paper-supported
+      validity domain.

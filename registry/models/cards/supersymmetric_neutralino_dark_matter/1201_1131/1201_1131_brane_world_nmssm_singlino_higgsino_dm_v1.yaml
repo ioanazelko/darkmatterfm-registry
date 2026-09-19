@@ -1,0 +1,276 @@
+_source:
+  shard: arXiv_src_1201_002_wds.tar
+  paper_id: '1201_1131'
+  source_member: 1201_1131.json
+schema_version: model_only_v0
+model_id: 1201_1131_brane_world_nmssm_singlino_higgsino_dm_v1
+identity:
+  name: Brane-world NMSSM mixed singlino-Higgsino dark matter
+  family: supersymmetric_neutralino_dark_matter
+  aliases:
+  - quasi-localized singlet NMSSM dark matter
+  short_description: An NMSSM extension of the brane-world Scherk-Schwarz setup in which a quasi-localized
+    gauge singlet generates a singlet vev and can yield a light neutralino dark matter state with a large
+    singlino component.
+  historical_origin_or_motivation: Introduced to recover parameter space lost to collider and cosmological
+    data and improve WMAP compatibility through mixed singlino-Higgsino dark matter.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - NMSSM
+  - five-dimensional brane-world
+  - Scherk-Schwarz supersymmetry breaking
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the NMSSM superpotential and soft terms for a quasi-localized singlet and implements
+    Scherk-Schwarz induced tachyonic singlet mass.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino with large singlino component
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - singlet scalar S
+  - singlet-like Higgs states
+  - Higgsino components
+  mediators:
+  - Higgs sector
+  - singlet scalar sector
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The lightest neutralino is treated as the dark matter candidate; the specific
+    stabilizing parity is not detailed in the extracted passages.
+  symmetries:
+  - name: LSP-stabilizing supersymmetry parity
+    type: unknown
+    exact_or_approximate: unknown
+  - name: SU(2)_H rotation used in singlet localization
+    type: global
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - Higgs sector
+  - electroweak sector
+  dark_sector_couplings:
+  - singlet-Higgs coupling
+  - singlet self-coupling
+  - singlino-Higgsino mixing
+  mediator_types:
+  - CP-even Higgs states
+  - CP-odd Higgs states
+  - singlet scalar
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: compactification scale
+    symbol: R^-1
+    value: 11
+    unit: TeV
+    role: core
+    status: inferred
+    notes: Benchmark point quoted for the NMSSM extension.
+  - name: lightest neutralino mass
+    symbol: m_chi_1^0
+    value: 56
+    unit: GeV
+    role: core
+    status: inferred
+    notes: Benchmark dark matter mass with large singlino component.
+  - name: singlino fraction
+    symbol: S
+    value: 0.93
+    role: core
+    status: inferred
+    notes: Benchmark lightest neutralino has a 0.93 singlino component.
+  - name: singlet-Higgs and singlet self-couplings
+    symbol: lambda, kappa
+    range: benchmark values in paper's seven-parameter scan
+    role: core
+    status: inferred
+    notes: Text lists seven free parameters after potential minimization.
+production:
+  mechanisms:
+  - thermal freeze-out of mixed singlino-Higgsino neutralino dark matter
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - neutralino composition
+  - singlet-Higgs couplings
+  - Higgs spectrum
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: A benchmark point has Omega_chi h^2 = 0.1 and satisfies low-energy constraints quoted in the
+    paper.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - singlino fraction
+  - neutralino mass
+  - Higgs spectrum
+  - singlet vev
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: benchmark_nmssm
+  applies_to: model
+  condition: Benchmark R^-1=11 TeV, a=1.6, and quoted singlet-sector couplings yields a 56 GeV neutralino
+    with Omega h^2 = 0.1.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: singlet_vev
+  applies_to: model
+  condition: The scenario relies on a tachyonic singlet soft mass from brane-world dynamics to generate
+    the singlet vev.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: standard_thermal_history
+    description: The neutralino relic-density interpretation assumes the standard thermal calculation
+      used by NMSSMTools and micrOMEGAS.
+    scope: cosmological_history
+    status: assumed
+  - id: lsp_stability
+    description: The lightest neutralino is assumed stable on cosmological timescales.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses NMSSMTools modified for its split spectrum and linked to micrOMEGAS; no
+    standalone model code release is identified in the text.
+  primary_code_role: relic_density_calculation
+  packages_or_modules:
+  - name: NMSSMTools
+    resource_type: package
+    availability: unknown
+    relationship_to_model: wrapper_around_public_tool
+    purpose:
+    - compute_relic_density
+    - generate_benchmarks
+  - name: micrOMEGAS
+    resource_type: package
+    availability: unknown
+    relationship_to_model: wrapper_around_public_tool
+    purpose:
+    - compute_relic_density
+provenance:
+  model_id: 1201_1131_brane_world_nmssm_singlino_higgsino_dm_v1
+  model_name: Brane-world NMSSM mixed singlino-Higgsino dark matter
+  model_family: supersymmetric_neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1201_1131'
+      title: Naturally split supersymmetry
+      authors:
+      - Gautam Bhattacharyya
+      - Tirtha Sankar Ray
+      year: 2012
+      arxiv_id: '1201.1131'
+      doi: null
+      url: null
+      role: original_model
+      notes: Paper performs a numerical study of brane-world induced supersymmetry breaking and its dark-matter
+        relic density implications.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0003
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1201_1131'
+      section: NMSSM using a quasi-localized singlet
+      page: null
+      quote_or_summary: The paper constructs a brane-world NMSSM by quasi-localizing a gauge singlet and
+        writes superpotential plus soft terms.
+    - reference_id: '1201_1131'
+      section: NMSSM benchmark
+      page: null
+      quote_or_summary: A benchmark has dark matter as a 56 GeV lightest neutralino with large singlino
+        component and Omega h^2 = 0.1.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1201_1131'
+      note: The benchmark dark matter is the lightest neutralino with mass 56 GeV and 0.93 singlino component.
+      confidence: medium
+      section: NMSSM using a quasi-localized singlet
+    interactions:
+    - reference_id: '1201_1131'
+      note: The NMSSM superpotential contains singlet-Higgs and singlet self-coupling terms.
+      confidence: medium
+      section: NMSSM using a quasi-localized singlet
+    production_mechanism:
+    - reference_id: '1201_1131'
+      note: The benchmark relic abundance is Omega_chi h^2 = 0.1 using NMSSMTools linked to micrOMEGAS.
+      confidence: medium
+      section: NMSSM benchmark
+    validity_domain:
+    - reference_id: '1201_1131'
+      note: The model is checked against Higgs, WMAP, b to s gamma, and B_s to mu mu quantities in the
+        benchmark.
+      confidence: medium
+      section: NMSSM benchmark
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - benchmark-specific extraction
+  - modified NMSSMTools implementation is not supplied in text
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: benchmark_specific
+    severity: medium
+    category: extrapolation
+    warning: The extracted neutralino properties are benchmark values and should not be extrapolated to
+      the whole NMSSM scan.

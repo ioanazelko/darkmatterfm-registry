@@ -1,0 +1,847 @@
+_source:
+  shard: arXiv_src_2308_015_wds.tar
+  paper_id: '2308_01960'
+  source_member: 2308_01960.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2308_01960_resonant_pseudo_dirac_dark_matter_v1
+identity:
+  name: Resonant pseudo-Dirac dark matter
+  family: pseudo_dirac_dark_matter
+  aliases:
+  - resonant vector-portal pseudo-Dirac DM
+  - sub-GeV resonant pseudo-Dirac thermal target
+  short_description: A sub-GeV pseudo-Dirac thermal relic with a small mass splitting, off-diagonal coupling
+    to a kinetically mixed dark photon, and resonant annihilation when the mediator mass is just above
+    twice the dark matter mass.
+  historical_origin_or_motivation: Motivated by sub-GeV thermal dark matter targets and by avoiding the
+    usual CMB depletion assumptions in pseudo-Dirac dark matter.
+  status: emerging
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - vector_portal_dark_matter
+  - pseudo_dirac_dark_matter
+  - thermal_relic_dark_matter
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper writes the interaction terms for kinetic mixing and the off-diagonal dark photon coupling,
+    while leaving the mass-splitting origin unspecified.
+particle_content:
+  dark_matter_candidate:
+    name: pseudo-Dirac fermion states chi_1 and chi_2
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - excited pseudo-Dirac state chi_2
+  mediators:
+  - kinetically mixed dark photon A_prime
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - chi_2 with mass splitting delta = m_chi2 - m_chi1
+  long_lived_particles:
+  - chi_2 can retain a present-day abundance in the resonant regime
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The lower pseudo-Dirac state is treated as the stable dark matter component;
+    the text motivates small splittings through an approximate dark symmetry but does not specify its
+    origin.
+  symmetries:
+  - name: dark gauge symmetry
+    type: gauge
+    exact_or_approximate: broken
+    breaking: Broken at low energies, allowing the Dirac fermion to split into two Majorana-like states.
+    breaking_scale: null
+  - name: approximate symmetry protecting small mass splitting
+    type: approximate
+    exact_or_approximate: approximate
+    breaking: Small pseudo-Dirac mass splitting is treated phenomenologically.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - electromagnetic current
+  - Standard Model charged final states
+  dark_sector_couplings:
+  - off-diagonal chi_1-chi_2-dark-photon coupling g_D
+  - kinetic mixing epsilon
+  mediator_types:
+  - dark photon
+  interaction_operators:
+  - epsilon F_prime_mu_nu F_mu_nu / 2
+  - i g_D A_prime_mu chi_2 gamma_mu chi_1
+  scattering:
+    elastic: unknown
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels:
+  - chi_1 chi_2 -> A_prime -> Standard Model final states
+  decay_channels: []
+  self_scattering_channels:
+  - dark-photon-mediated self-interactions in parts of the parameter space
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Average mass of the pseudo-Dirac states.
+    range:
+      min: null
+      max: 10
+      inclusive_min: false
+      inclusive_max: true
+      unit: GeV
+      notes: Paper focuses on light, sub-10-GeV dark matter.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: mass splitting
+    symbol: delta
+    description: Mass difference m_chi2 - m_chi1.
+    range: small compared with m_chi; sub-keV splittings are emphasized for parts of the phenomenology
+    role: core
+    status: inferred
+  - name: dark photon mass
+    symbol: m_A_prime
+    description: Mediator mass near the chi_1 + chi_2 threshold.
+    range: m_A_prime slightly above 2 m_chi
+    unit: GeV
+    role: core
+    status: inferred
+  - name: resonance proximity
+    symbol: delta_R
+    description: Dimensionless proximity to the s-channel resonance.
+    range:
+      min: 0.001
+      max: 0.1
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Range stated in the paper.
+    role: core
+    status: established
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Dark photon kinetic mixing with the Standard Model photon.
+    role: core
+    status: unknown
+  - name: dark gauge coupling
+    symbol: g_D
+    description: Off-diagonal coupling of A_prime to chi_1 and chi_2.
+    role: core
+    status: unknown
+  nuisance: []
+  derived:
+  - name: excited state relic fraction
+    symbol: f_chi2
+    description: Present-day fraction in the excited pseudo-Dirac state.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through resonant s-channel dark photon annihilation to Standard Model final states
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - resonant annihilation rate
+  - kinetic decoupling temperature
+  - dark matter temperature evolution
+  - mass splitting
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: Small resonant couplings can reproduce the observed relic abundance while allowing kinetic decoupling
+    before the final abundance is set.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter abundance
+    symbol: Omega_chi h^2
+    description: The model is evaluated as a thermal target reproducing the observed relic abundance.
+    role: derived
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - m_A_prime about 2 m_chi
+  - epsilon
+  - g_D
+  - delta_R
+  - mass splitting delta
+  - kinetic decoupling
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - early kinetic decoupling from the Standard Model in much of the resonant parameter space
+  - non-negligible present-day excited-state abundance
+  dark_sector_temperature:
+    name: dark matter temperature
+    symbol: T_chi
+    description: Temperature variable evolved in the Boltzmann system.
+    role: cosmological
+    status: inferred
+  delta_neff: null
+  kinetic_decoupling:
+    name: kinetic decoupling point
+    description: Kinetic decoupling can occur before the final relic abundance is reached.
+    role: derived
+    status: inferred
+  chemical_decoupling:
+    name: chemical freeze-out
+    description: Chemical abundance is set by annihilation through the resonant dark photon.
+    role: derived
+    status: inferred
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  average_momentum_relative_to_thermal: separate dark matter temperature can evolve after kinetic decoupling
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper solves coupled density and temperature Boltzmann equations rather than tabulating a
+    full distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: sub_10_gev_regime
+  applies_to: model
+  condition: The analysis focuses on light pseudo-Dirac dark matter with m_chi below about 10 GeV.
+  valid_range:
+    min: null
+    max: 10
+    inclusive_min: false
+    inclusive_max: true
+    unit: GeV
+    notes: Upper mass scale stated in the parameter-space discussion.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper_2308_01960
+  notes: null
+- id: resonant_mediator_regime
+  applies_to: model
+  condition: The dark photon mass is slightly more than twice the dark matter mass, with delta_R between
+    0.001 and 0.1.
+  valid_range:
+    min: 0.001
+    max: 0.1
+    inclusive_min: true
+    inclusive_max: true
+    unit: null
+    notes: Range for delta_R in the paper.
+  status: established
+  extrapolation_risk: high
+  caveats:
+  - Moving far from resonance approaches the non-resonant limit studied elsewhere.
+  source_reference_ids:
+  - paper_2308_01960
+  notes: null
+assumptions:
+  global:
+  - id: phenomenological_mass_splitting
+    description: The origin of the small pseudo-Dirac mass splitting is not specified and is treated phenomenologically.
+    scope: theory
+    status: assumed
+    impact_if_violated: A UV completion could alter the relation between states, stability, or interactions.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper_2308_01960
+    notes: null
+  - id: resonant_freezeout_history
+    description: The relic abundance is calculated in the resonant regime with coupled evolution of number
+      densities and dark matter temperature.
+    scope: production
+    status: established
+    impact_if_violated: The excited-state fraction and abundance can resemble the usual pseudo-Dirac thermal
+      history instead.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper_2308_01960
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  reproducibility:
+    reproducibility_level: unknown
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: null
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats: []
+provenance:
+  model_id: 2308_01960_resonant_pseudo_dirac_dark_matter_v1
+  model_name: Resonant pseudo-Dirac dark matter
+  model_family: pseudo_dirac_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper_2308_01960
+      title: Resonant Pseudo-Dirac Dark Matter as a Sub-GeV Thermal Target
+      authors:
+      - Nirmalya Brahma
+      - Saniya Heeba
+      - Katelin Schutz
+      year: 2023
+      arxiv_id: '2308.01960'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text used as the sole source for this machine-extracted candidate.
+    - arxiv_id: '2308.01960'
+      authors:
+      - Brahma, Nirmalya
+      - Heeba, Saniya
+      - Schutz, Katelin
+      doi: 10.1103/PhysRevD.109.035006
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2308.01960
+      role: original_model
+      title: Resonant pseudo-Dirac dark matter as a sub-GeV thermal target
+      url: https://arxiv.org/abs/2308.01960
+      year: 2024
+    constraint_papers:
+    - arxiv_id: '1707.03835'
+      authors:
+      - Feng, Jonathan L.
+      - Smolinsky, Jordan
+      doi: 10.1103/PhysRevD.96.095022
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1707.03835
+      role: constraint
+      title: Impact of a resonance on thermal targets for invisible dark photon searches
+      url: https://arxiv.org/abs/1707.03835
+      year: 2017
+    - arxiv_id: '1908.07525'
+      authors:
+      - Tsai, Yu-Dai
+      - deNiverville, Patrick
+      - Liu, Ming Xiong
+      doi: 10.1103/PhysRevLett.126.181801
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1908.07525
+      role: constraint
+      title: Dark Photon and Muon g -2 Inspired Inelastic Dark Matter Models at the High-Energy Intensity
+        Frontier
+      url: https://arxiv.org/abs/1908.07525
+      year: 2021
+    - arxiv_id: '1910.01649'
+      authors:
+      - Sabti, Nashwan
+      - Alvey, James
+      - Escudero, Miguel
+      - Fairbairn, Malcolm
+      - Blas, Diego
+      doi: 10.1088/1475-7516/2020/01/004
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1910.01649
+      role: constraint
+      title: Refined bounds on MeV-scale thermal dark sectors from BBN and the CMB
+      url: https://arxiv.org/abs/1910.01649
+      year: 2020
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: Codex GPT-5 batch-0007
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper_2308_01960
+      section: Abstract
+      page: null
+      quote_or_summary: The paper studies pseudo-Dirac thermal relic dark matter with small splitting
+        and an off-diagonal kinetically mixed dark photon coupling.
+    - reference_id: paper_2308_01960
+      section: Pseudo-Dirac DM Parameter space
+      page: null
+      quote_or_summary: The relic abundance is set by annihilation to Standard Model final states via
+        a dark photon mediator in the resonant regime m_A about 2 m_chi.
+    - reference_id: paper_2308_01960
+      section: Cosmology
+      page: null
+      quote_or_summary: The authors solve coupled Boltzmann equations for the density and temperature
+        evolution of the ground and excited states.
+    unresolved_items:
+    - The paper treats the origin of the small mass splitting phenomenologically rather than specifying
+      a full high-energy completion.
+    - The exact kinetic-mixing symbol is lost in some extracted text snippets; epsilon is retained as
+      the standard dark-photon parameter but marked cautiously.
+    - No CMB/BBN likelihood or accelerator acceptance calculation was rerun.
+  evidence:
+    particle_content:
+    - reference_id: paper_2308_01960
+      note: The model contains ground and excited pseudo-Dirac states chi_1 and chi_2 coupled to a dark
+        photon mediator.
+      confidence: high
+      section: Pseudo-Dirac DM Parameter space
+      page: null
+    symmetries:
+    - reference_id: paper_2308_01960
+      note: The text notes that such splittings can arise when dark matter is charged under a dark gauge
+        symmetry at high energies that is broken at low energies.
+      confidence: medium
+      section: Introduction
+      page: null
+    interactions:
+    - reference_id: paper_2308_01960
+      note: The interaction terms include kinetic mixing and an off-diagonal dark photon coupling between
+        chi_1 and chi_2.
+      confidence: high
+      section: Pseudo-Dirac DM Parameter space
+      page: null
+    production_mechanism:
+    - reference_id: paper_2308_01960
+      note: The relic abundance is set by resonant annihilation to Standard Model final states through
+        an s-channel dark photon.
+      confidence: high
+      section: Abstract and Parameter space
+      page: null
+    cosmological_history:
+    - reference_id: paper_2308_01960
+      note: Small couplings in the resonant regime can make dark matter kinetically decouple from the
+        Standard Model before the final abundance is reached.
+      confidence: high
+      section: Abstract
+      page: null
+    parameter_ranges:
+    - reference_id: paper_2308_01960
+      note: The paper focuses on m_chi below 10 GeV, small splittings, and delta_R in the interval 0.001
+        to 0.1.
+      confidence: high
+      section: Pseudo-Dirac DM Parameter space
+      page: null
+    validity_domain:
+    - reference_id: paper_2308_01960
+      note: The resonant regime requires the dark photon mass to be slightly more than twice the dark
+        matter mass.
+      confidence: high
+      section: Abstract and Parameter space
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text defines delta_R in [0.001,0.1] and ties the lower edge to BBN photodissociation
+        motivation.
+      page: null
+      reference_id: arxiv:2308.01960
+      section: Model setup
+    - confidence: medium
+      note: Related full text addresses BBN and CMB bounds on MeV-scale thermal dark sectors.
+      page: null
+      reference_id: arxiv:1910.01649
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary abstract states the resonance is within about 10%, reduces required couplings, causes
+        early kinetic decoupling, and leaves a high excited-state abundance without violating CMB bounds.
+      page: null
+      reference_id: arxiv:2308.01960
+      section: Abstract/introduction
+    - confidence: medium
+      note: Related local text explains resonance effects on dark photon thermal targets.
+      page: null
+      reference_id: arxiv:1707.03835
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper emphasizes early kinetic decoupling and late excited-state abundance as the
+        central route from theory to observables.
+      page: null
+      reference_id: arxiv:2308.01960
+      section: Thermal history discussion
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - unspecified origin of the mass splitting
+  - resonant sensitivity to m_A_prime near 2 m_chi
+  - late-time abundance of the excited state
+  validation_status: partially_validated
+  notes: The extraction captures the model and thermal-history logic from the paper but should be reviewed
+    before registry promotion.
+agent_failure_modes:
+  warnings:
+  - id: resonance_sensitivity
+    severity: medium
+    category: extrapolation
+    warning: Do not extrapolate the resonant thermal target to generic pseudo-Dirac dark matter away from
+      m_A_prime about 2 m_chi.
+    mitigation: Check delta_R and recompute the coupled abundance and temperature evolution.
+    source_reference_ids:
+    - paper_2308_01960
+  - id: mass_splitting_origin_unspecified
+    severity: low
+    category: assumption_mismatch
+    warning: The mass-splitting origin is phenomenological in this paper.
+    mitigation: Attach a UV completion only when separately specified.
+    source_reference_ids:
+    - paper_2308_01960
+observables:
+- caveats:
+  - Requires solving the nonstandard thermal history; generic s-wave CMB limits cannot be applied blindly.
+  channel: cmb
+  effect_direction: model_dependent
+  environments:
+  - cosmic microwave background
+  id: obs_resonant_pseudo_dirac_cmb_annihilation
+  key_quantities:
+  - description: Parameter (m_A^2-s0)/s0 used by the primary to define the resonant regime.
+    name: resonance proximity
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 0.1
+      min: 0.001
+      notes: Lower end motivated by BBN photodissociation; upper end approaches non-resonant limit.
+      unit: null
+    role: core
+    source_reference_ids:
+    - arxiv:2308.01960
+    status: inferred
+    symbol: delta_R
+  - description: Primary studies m_A slightly above twice the DM mass, within about 10%.
+    name: dark photon to DM mass ratio
+    range: m_A approximately 2 m_chi within 10%
+    role: core
+    source_reference_ids:
+    - arxiv:2308.01960
+    - arxiv:1707.03835
+    status: inferred
+    symbol: m_A/m_chi
+  - description: Late-time abundance of the excited state remains high over much of the resonant parameter
+      space.
+    name: excited-state fraction
+    range: order unity for g_D around 0.1 in primary discussion
+    role: core
+    source_reference_ids:
+    - arxiv:2308.01960
+    status: inferred
+    symbol: f_*
+  linked_constraints:
+  - con_cmb_resonant_pseudo_dirac
+  - con_bbn_resonance_window
+  linked_routes:
+  - route_resonant_pseudo_dirac_thermal_history
+  name: CMB response of resonant pseudo-Dirac annihilation
+  notes: null
+  observability: medium
+  predicted_effect: Near the dark-photon resonance, smaller relic-setting couplings and early kinetic
+    decoupling lower the recombination-era annihilation rate, so a high excited-state fraction need not
+    violate CMB bounds.
+  redshift_range: recombination
+  relevance: critical
+  scale_range: CMB anisotropy energy-injection scales
+  source_reference_ids:
+  - arxiv:2308.01960
+  - arxiv:1910.01649
+  subchannel: late-time energy injection
+- caveats:
+  - Specific experiments require branching-ratio and lifetime recasts not performed here.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - beam dumps
+  - colliders
+  - direct-detection targets
+  - indirect-detection telescopes
+  id: obs_excited_state_late_time_signatures
+  key_quantities:
+  - description: Dark photon coupling to the Standard Model controlling production and decay signatures.
+    name: kinetic mixing
+    role: core
+    source_reference_ids:
+    - arxiv:2308.01960
+    - arxiv:1908.07525
+    status: unknown
+    symbol: epsilon
+  - description: Primary shows excited-state suppression depends strongly on g_D.
+    name: dark gauge coupling
+    range: examples include g_D around 0.1
+    role: core
+    source_reference_ids:
+    - arxiv:2308.01960
+    status: inferred
+    symbol: g_D
+  - description: Pseudo-Dirac splitting between Majorana states; primary finds CMB viability even for
+      arbitrarily small splittings in the resonant regime.
+    name: mass splitting
+    role: core
+    source_reference_ids:
+    - arxiv:2308.01960
+    status: inferred
+    symbol: Delta
+  linked_constraints:
+  - con_accelerator_dark_photon_recast
+  linked_routes:
+  - route_resonant_pseudo_dirac_thermal_history
+  name: Late-time excited-state direct, indirect, and accelerator signatures
+  notes: null
+  observability: medium
+  predicted_effect: The unsuppressed excited-state abundance opens signatures usually absent in pseudo-Dirac
+    scenarios, including indirect detection, direct detection, self-interactions, and dark-photon accelerator
+    searches.
+  redshift_range: late universe and laboratory
+  relevance: high
+  scale_range: MeV-GeV mediator/DM mass range
+  source_reference_ids:
+  - arxiv:2308.01960
+  - arxiv:1908.07525
+  subchannel: dark photon and inelastic dark matter searches
+constraints:
+- allowed_regions:
+  - Primary finds CMB-allowed resonant parameter space even with a large excited-state abundance and small
+    mass splitting.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The annihilation rate relevant at recombination is off the early-universe resonance enough
+      to evade generic s-wave bounds.
+    id: resonant-off-shell-recombination
+    impact_if_violated: If late-time velocities return to resonance, CMB and indirect limits strengthen.
+    notes: null
+    scope: CMB recast
+    source_reference_ids:
+    - arxiv:2308.01960
+    status: assumed
+  benchmark_implications:
+  - The usual requirement of exponential excited-state depopulation is relaxed in the resonant regime.
+  caveats:
+  - No CMB likelihood was rerun; use primary result as a route target.
+  constrained_parameters:
+  - <sigma v>_rec
+  - delta_R
+  - f_*
+  - m_chi
+  - m_A
+  constraint_type: cosmological
+  data_release: Planck CMB anisotropy constraints as quoted by source
+  excluded_regions:
+  - Generic sub-10-GeV s-wave thermal freeze-out is excluded by CMB energy-injection limits, but this
+    exclusion does not directly cover the resonant thermal history.
+  id: con_cmb_resonant_pseudo_dirac
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Planck CMB annihilation bound in resonant pseudo-Dirac regime
+  notes: null
+  observable_channel: CMB energy injection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2308.01960
+  - arxiv:1910.01649
+- allowed_regions:
+  - Primary scans delta_R from 0.001 to 0.1.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: BBN impact is controlled by the dark photon and excited-state decay history assumed in
+      the primary setup.
+    id: minimal-dark-photon-decay-history
+    impact_if_violated: Additional late decays would require a dedicated BBN calculation.
+    notes: null
+    scope: BBN resonance window
+    source_reference_ids:
+    - arxiv:2308.01960
+    - arxiv:1910.01649
+    status: assumed
+  benchmark_implications:
+  - Very narrow resonance choices require BBN/lifetime checks before being accepted.
+  caveats:
+  - The batch did not run a BBN cascade or N_eff code.
+  constrained_parameters:
+  - delta_R
+  - m_A
+  - m_chi
+  - dark-sector lifetime
+  constraint_type: cosmological
+  data_release: BBN photodissociation context in primary; related MeV dark-sector BBN/CMB bounds
+  excluded_regions:
+  - Primary avoids delta_R below about 0.001 because of BBN photodissociation motivation.
+  id: con_bbn_resonance_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN-motivated lower edge of resonance proximity
+  notes: null
+  observable_channel: BBN photodissociation and light dark sectors
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2308.01960
+  - arxiv:1910.01649
+- allowed_regions:
+  - Primary notes complementary accelerator probes through missing-energy or displaced signatures.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Search sensitivity depends on invisible, semi-visible, or displaced dark-photon decay
+      modes.
+    id: dark-photon-branching-model
+    impact_if_violated: Different branching fractions move the excluded epsilon-g_D region.
+    notes: null
+    scope: accelerator recast
+    source_reference_ids:
+    - arxiv:2308.01960
+    - arxiv:1908.07525
+    status: assumed
+  benchmark_implications:
+  - The target can be probed through dark photon production and decay, but the resonant thermal history
+    changes the expected couplings.
+  caveats:
+  - No experiment-specific acceptance was evaluated.
+  constrained_parameters:
+  - epsilon
+  - g_D
+  - m_A
+  - Delta
+  - dark photon lifetime
+  constraint_type: collider
+  data_release: Beam dump/collider dark photon programs discussed in related inelastic-DM text
+  excluded_regions:
+  - Existing accelerator bounds are model-dependent and may not yet cover the CMB-allowed resonant target.
+  id: con_accelerator_dark_photon_recast
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Accelerator dark-photon/inelastic-DM reach
+  notes: null
+  observable_channel: beam dump and collider searches
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2308.01960
+  - arxiv:1707.03835
+  - arxiv:1908.07525
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Direct and indirect detection rates depend on the surviving excited-state population and astrophysical
+      assumptions.
+    constraint_ids:
+    - con_cmb_resonant_pseudo_dirac
+    - con_bbn_resonance_window
+    - con_accelerator_dark_photon_recast
+    derived_quantities:
+    - relic abundance
+    - kinetic decoupling temperature
+    - excited-state fraction
+    - recombination annihilation rate
+    description: Solve the resonant pseudo-Dirac thermal history through kinetic decoupling, excited-state
+      survival, CMB energy injection, and laboratory search mappings.
+    forward_model_chain:
+    - inputs:
+      - masses
+      - delta_R
+      - g_D
+      - epsilon
+      notes: null
+      outputs:
+      - chemical and kinetic evolution
+      step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Must include early kinetic decoupling in the resonant regime.
+    - inputs:
+      - velocity distribution
+      - resonance parameters
+      notes: null
+      outputs:
+      - late-time annihilation rate
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Velocity-dependent resonance treatment required.
+    - inputs:
+      - epsilon
+      - lifetimes
+      - branching fractions
+      notes: null
+      outputs:
+      - CMB, BBN, accelerator, direct/indirect reach
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Needs external likelihoods/acceptances for current limits.
+    id: route_resonant_pseudo_dirac_thermal_history
+    input_parameters:
+    - m_chi
+    - m_A
+    - delta_R
+    - Delta
+    - g_D
+    - epsilon
+    likelihoods:
+    - Planck p_ann likelihood not bundled
+    - accelerator acceptances not bundled
+    observable_ids:
+    - obs_resonant_pseudo_dirac_cmb_annihilation
+    - obs_excited_state_late_time_signatures
+    required_code_resources:
+    - thermal-history Boltzmann solver
+    - CMB energy-injection module
+    - dark-photon search recasts
+    route_status: planned
+    source_model_features:
+    - off-diagonal dark photon coupling
+    - near-threshold s-channel resonance
+    - pseudo-Dirac mass splitting
+    validation_tests:
+    - recover delta_R scan 0.001-0.1
+    - recover high f_* with CMB-allowed benchmarks

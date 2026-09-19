@@ -1,0 +1,294 @@
+_source:
+  shard: arXiv_src_1903_001_wds.tar
+  paper_id: '1903_00013'
+  source_member: 1903_00013.json
+schema_version: model_only_v0
+model_id: 1903_00013_pure_wino_variable_splitting_v1
+identity:
+  name: Pure Wino dark matter with variable charged-neutral splitting
+  family: electroweak_multiplet_dark_matter
+  aliases: []
+  short_description: A simplified electroweak-multiplet thermal dark matter model in which charged-neutral
+    splittings are varied to study Sommerfeld and Coulomb resonance effects.
+  historical_origin_or_motivation: Used to test how partner-state resonances alter indirect-detection
+    phenomenology in pure electroweakino dark matter.
+  status: benchmark
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - Minimal Supersymmetric Standard Model pure electroweakino limit
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  embedded_in_larger_framework: 'yes'
+  notes: Simplified pure-Wino/MSSM-limit model augmented by the leading higher-dimension splitting operator.
+particle_content:
+  dark_matter_candidate:
+    name: neutral Majorana component of an SU(2)_L triplet with zero hypercharge
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - charged triplet partners
+  mediators:
+  - W boson
+  - Z boson
+  - electroweak gauge bosons
+  excited_or_degenerate_states:
+  - charged triplet partners
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: A global symmetry is assumed to stabilize the neutral triplet state.
+  symmetries:
+  - name: dark matter number or R-parity-like global symmetry
+    type: global
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - electroweak gauge bosons
+  - Higgs doublet
+  dark_sector_couplings:
+  - dimension-7 Higgs operator controlling the triplet charged-neutral splitting
+  - electroweak gauge interactions mixing neutral and charged two-particle states
+  mediator_types:
+  - W boson
+  - Z boson
+  - charged electroweak partner
+  interaction_operators:
+  - dimension-7 Higgs operator controlling the triplet charged-neutral splitting
+  - electroweak gauge interactions mixing neutral and charged two-particle states
+  scattering:
+    elastic: unknown
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: strong
+    spin_dependence: unknown
+  annihilation_channels:
+  - neutral dark matter pair to W boson pairs
+  - neutral dark matter pair to Z boson pairs
+  cp_structure: unknown
+  flavor_structure: minimal electroweak multiplet
+  tree_or_loop_level: both
+operators:
+  renormalizable_terms:
+  - electroweak kinetic and mass terms for the new multiplet
+  eft_operators:
+  - dimension-7 Higgs operator controlling the triplet charged-neutral splitting
+  - electroweak gauge interactions mixing neutral and charged two-particle states
+  contact_or_light_mediator: both
+  coupling_types:
+  - electroweak gauge couplings
+  - higher-dimension Higgs operators
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: M
+    description: Mass of the neutral triplet dark matter state.
+    value: 2925 +/- 15
+    unit: GeV
+    role: core
+    status: inferred
+    notes: Thermal Wino relic mass quoted by the paper.
+  - name: charged-neutral splitting
+    symbol: Delta m
+    description: Mass splitting M_charged - M_neutral treated as a tunable free parameter.
+    range: 0 to 1
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dimension-7 Wilson coefficient
+    symbol: c3
+    description: Coefficient controlling the first nontrivial tree-level triplet mass splitting.
+    range: model dependent
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - weak annihilation cross section
+  - Sommerfeld-enhanced annihilation in the relic calculation
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper states that small charged-neutral splittings do not change the thermal relic mass when
+    they are much smaller than the freeze-out temperature.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed dark matter abundance
+    symbol: Omega_DM h^2
+    value: thermal relic target
+    role: derived
+    status: assumed
+  calculation_type: thermal
+  key_dependencies:
+  - dark matter mass
+  - annihilation cross section
+  - Sommerfeld enhancement
+  - charged-neutral splitting
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: tuned
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: Maxwell-Boltzmann distribution used for nonrelativistic thermal averaging
+  notes: The paper uses thermal velocity distributions for relic and present-day annihilation estimates.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: positive_splitting
+  applies_to: parameter
+  condition: The charged triplet state must remain heavier than the neutral dark matter state.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: dimension7_tuning
+  applies_to: model
+  condition: Large deviations from the electroweak-loop splitting require strong or tuned new physics
+    because the leading triplet operator is dimension seven.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: freezeout_splitting_limit
+  applies_to: production
+  condition: Charged-neutral splitting is assumed much smaller than the freeze-out temperature for the
+    relic-mass statement.
+  status: inferred
+  extrapolation_risk: low
+  caveats: []
+assumptions:
+  global:
+  - id: standard_thermal_history
+    description: Standard thermal freeze-out is assumed for the relic-density discussion.
+    scope: cosmological_history
+    status: assumed
+  - id: positive_charged_splitting
+    description: The charged partner is assumed heavier than the neutral dark matter state.
+    scope: theory
+    status: assumed
+  - id: sommerfeld_framework
+    description: Nonrelativistic Sommerfeld treatment is used for low-velocity annihilation.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper describes numerical Sommerfeld and relic calculations, but no public associated
+    code is identified in the text.
+provenance:
+  model_id: 1903_00013_pure_wino_variable_splitting_v1
+  model_name: Pure Wino dark matter with variable charged-neutral splitting
+  model_family: electroweak_multiplet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1903_00013'
+      title: unknown
+      year: 2019
+      arxiv_id: '1903.00013'
+      role: extension
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1903_00013'
+      section: Introduction / model setup
+      quote_or_summary: The paper studies pure Wino dark matter with charged-neutral splitting varied
+        by higher-dimension operators.
+    - reference_id: '1903_00013'
+      section: Models
+      quote_or_summary: The triplet model adds an SU(2)_L Majorana fermion with zero hypercharge.
+    - reference_id: '1903_00013'
+      section: Relic density
+      quote_or_summary: The thermal Wino relic mass is quoted as 2925 +/- 15 GeV.
+    unresolved_items:
+    - Bibliographic title is absent from the database text.
+  evidence:
+    particle_content:
+    - reference_id: '1903_00013'
+      note: The paper defines an SU(2)_L triplet of Majorana fermions with zero hypercharge and a neutral
+        dark matter component.
+      confidence: high
+      section: Models
+    symmetries:
+    - reference_id: '1903_00013'
+      note: A global symmetry is assumed to stabilize the neutral triplet state.
+      confidence: medium
+      section: Models
+    interactions:
+    - reference_id: '1903_00013'
+      note: Gauge-boson exchange mixes neutral-neutral and charged-charged two-particle states and generates
+        Sommerfeld/Coulomb resonances.
+      confidence: high
+      section: Sommerfeld factors
+    production_mechanism:
+    - reference_id: '1903_00013'
+      note: The relic calculation assumes thermal freeze-out and quotes a thermal relic mass for the electroweak
+        multiplet.
+      confidence: high
+      section: Relic density
+    parameter_ranges:
+    - reference_id: '1903_00013'
+      note: The triplet thermal relic mass is quoted as 2925 +/- 15 GeV; Delta m is scanned as a free
+        positive parameter.
+      confidence: high
+      section: Models / Relic density
+    validity_domain:
+    - reference_id: '1903_00013'
+      note: The paper cautions that the small splittings relevant for resonances require tuning in pure
+        electroweakino examples.
+      confidence: medium
+      section: Conclusions
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  dominant_uncertainties:
+  - small charged-neutral splitting tuning
+  - mapping of simplified splitting operator to UV physics
+agent_failure_modes:
+  warnings:
+  - id: strong_coupling_needed
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper notes that changing the Wino splitting substantially may require strongly coupled
+      low-scale new physics.
+  - id: title_missing
+    severity: low
+    category: other
+    warning: The database text for this paper did not expose the bibliographic title; provenance title
+      is recorded as unknown.

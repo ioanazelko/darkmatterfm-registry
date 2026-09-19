@@ -1,0 +1,316 @@
+_source:
+  shard: arXiv_src_1002_002_wds.tar
+  paper_id: '1002_1646'
+  source_member: 1002_1646.json
+schema_version: model_only_v0
+model_id: 1002_1646_pq_nmssm_singlet_majorana_dm_v1
+identity:
+  name: PQ-limit NMSSM plus singlet Majorana dark matter
+  family: hidden_sector_dark_matter
+  aliases:
+  - natural singlet-extended MSSM dark matter
+  - secluded singlet Majorana dark matter
+  short_description: A singlet extension of the PQ-limit NMSSM with an additional Z2-odd singlet superfield
+    whose fermion is stable heavy dark matter and annihilates through a secluded singlet sector.
+  historical_origin_or_motivation: Constructed to fit PAMELA positron data while retaining a natural supersymmetric
+    solution to the hierarchy and mu problems without tuning the NMSSM singlet sector.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - MSSM
+  - PQ-limit NMSSM
+  - supersymmetry
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the superpotential and soft terms for the singlet extension, including the additional
+    dark matter superfield.
+particle_content:
+  dark_matter_candidate:
+    name: Z2-odd singlet fermion psi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - singlet scalar and pseudoscalar partners
+  - NMSSM singlino-like neutralino N1
+  - light CP-odd scalar a1
+  - CP-even scalar h1
+  mediators:
+  - light CP-odd Higgs a1
+  - singlino-like neutralino N1
+  - singlet scalars
+  unstable_parent_particles:
+  - singlet scalar partners
+  - N1
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: An unbroken Z2 symmetry protects the singlet fermion dark matter candidate.
+  symmetries:
+  - name: Z2 acting on the added singlet superfield
+    type: discrete
+    exact_or_approximate: exact
+  - name: approximate Peccei-Quinn symmetry
+    type: global
+    exact_or_approximate: approximate
+    breaking: small explicit PQ-breaking term in the superpotential
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - leptons through light pseudoscalar decays
+  - MSSM Higgs sector
+  dark_sector_couplings:
+  - singlet self-couplings in the superpotential
+  - couplings among psi, singlet scalars, and singlino-like states
+  mediator_types:
+  - pseudoscalar
+  - scalar
+  - neutralino
+  annihilation_channels:
+  - psi psi to N1 N1
+  - psi psi to h1 a1
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: singlet-Higgs coupling
+    symbol: lambda
+    description: NMSSM-like coupling that sets the effective mu term.
+    role: core
+    status: assumed
+  - name: dark singlet coupling
+    symbol: eta
+    description: Coupling that sets both the dark matter mass and annihilation cross section in the paper's
+      setup.
+    value: about 0.4 in viable examples
+    unit: null
+    role: core
+    status: inferred
+  - name: seclusion coupling
+    symbol: xi
+    description: Small coupling, roughly below 0.1, making the new singlet sector moderately secluded.
+    range: less than about 0.1
+    unit: null
+    role: core
+    status: inferred
+  - name: dark matter mass
+    symbol: m_psi
+    description: Set by the singlet vev and coupling; the paper targets O(100 GeV) or above.
+    range: O(100 GeV) or above
+    unit: GeV
+    role: derived
+    status: inferred
+  - name: light pseudoscalar mass
+    symbol: m_a1
+    description: Kept sub-GeV in the PQ limit to favor light lepton final states.
+    range: sub-GeV
+    unit: GeV
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out of the singlet fermion
+  - late decay chains of heavier singlet-sector states into lighter hidden particles
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - psi annihilation to singlino-like neutralinos
+  - psi annihilation to h1 a1
+  - dark coupling eta
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper explicitly states the relic dark matter is thermally produced in this scenario.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - eta
+  - xi
+  - singlet vev
+  - annihilation to N1 N1
+  - annihilation to h1 a1
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - secluded sector may thermally decouple and have a different temperature
+  dark_sector_temperature: null
+  delta_neff: null
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  notes: The candidate is a cold thermal relic; no explicit distribution function is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: unknown
+validity_domain:
+- id: pq_nmssm_secluded_region
+  applies_to: model
+  condition: PQ-limit NMSSM with an added Z2-odd singlet superfield, moderately small seclusion coupling,
+    and a sub-GeV pseudoscalar mediator.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Relic density and positron phenomenology depend on the singlet-sector spectrum and Sommerfeld enhancement.
+  source_reference_ids:
+  - arxiv:1002.1646
+assumptions:
+  global:
+  - id: z2_stability
+    description: The new singlet fermion is stable because of an unbroken Z2 symmetry.
+    scope: theory
+    status: assumed
+    impact_if_violated: The dark matter candidate could decay.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - arxiv:1002.1646
+  - id: thermal_relic
+    description: The relic density is set by thermal freeze-out in the secluded singlet sector.
+    scope: production
+    status: inferred
+    impact_if_violated: The paper's mass/coupling relation to the abundance would no longer hold.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - arxiv:1002.1646
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports implementing the model and cross sections in CalcHEP; no released model
+    files are stated in the extracted text.
+  primary_code_role: compute_cross_sections
+  repositories: []
+provenance:
+  model_id: 1002_1646_pq_nmssm_singlet_majorana_dm_v1
+  model_name: PQ-limit NMSSM plus singlet Majorana dark matter
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:1002.1646
+      title: Dark matter in natural supersymmetric extensions of the Standard Model
+      authors:
+      - Francesc Ferrer
+      - Christopher Spitzer
+      year: 2010
+      arxiv_id: '1002.1646'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text in batch-0006.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: arxiv:1002.1646
+      section: Natural Models of Dark Matter and Relic Density
+      page: null
+      quote_or_summary: The authors add an NMSSM singlet plus a second Z2-odd singlet serving as dark
+        matter and state that the relic dark matter is thermally produced.
+    unresolved_items:
+    - The plain-text extraction drops some math symbols, so coupling names are inferred from surrounding
+      notation.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:1002.1646
+      note: The new superfield contains a fermionic component identified as a stable dark matter candidate
+        and a complex scalar partner.
+      confidence: high
+      section: model definition
+      page: null
+    symmetries:
+    - reference_id: arxiv:1002.1646
+      note: The paper assumes a Z2 symmetry guaranteeing stability and works in the PQ limit with small
+        explicit breaking.
+      confidence: high
+      section: model definition
+      page: null
+    interactions:
+    - reference_id: arxiv:1002.1646
+      note: Dominant annihilation is found to be psi psi to N1 N1, with h1 a1 a significant subdominant
+        channel.
+      confidence: high
+      section: Relic Density
+      page: null
+    production_mechanism:
+    - reference_id: arxiv:1002.1646
+      note: The paper says the relic dark matter is thermally produced and ties the abundance to the dark
+        singlet coupling.
+      confidence: high
+      section: Relic Density
+      page: null
+    cosmological_history:
+    - reference_id: arxiv:1002.1646
+      note: The authors note the secluded sector may decouple and evolve with a different temperature.
+      confidence: medium
+      section: Relic Density
+      page: null
+    parameter_ranges:
+    - reference_id: arxiv:1002.1646
+      note: The paper targets dark matter mass O(100 GeV) or above, xi below about 0.1, and eta around
+        0.4 in viable examples.
+      confidence: medium
+      section: mass spectrum and relic density
+      page: null
+    validity_domain:
+    - reference_id: arxiv:1002.1646
+      note: The construction is viable in the PQ-limit singlet extension, not in the minimal neutralino
+        NMSSM region the authors find tuned.
+      confidence: high
+      section: conclusions
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  dominant_uncertainties:
+  - plain-text math symbol loss
+  - Sommerfeld enhancement details
+  - secluded-sector temperature history
+  validation_status: expert_judgment_only
+  notes: The model is clearly introduced by the paper, but detailed numeric reproduction would need the
+    original notation and implementation.
+agent_failure_modes:
+  warnings:
+  - id: symbol_loss
+    severity: medium
+    category: notation_conflict
+    warning: The extracted text omits some math symbols, so coupling labels should be checked against
+      the source before detailed calculation.
+  - id: do_not_treat_as_generic_nmssm
+    severity: medium
+    category: invalid_mapping
+    warning: This row is the added Z2-odd singlet model, not the generic NMSSM neutralino scenario that
+      the paper criticizes as tuned.

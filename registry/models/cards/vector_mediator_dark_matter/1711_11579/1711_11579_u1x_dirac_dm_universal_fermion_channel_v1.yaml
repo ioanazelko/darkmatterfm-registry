@@ -1,0 +1,358 @@
+_source:
+  shard: arXiv_src_1711_030_wds.tar
+  paper_id: '1711_11579'
+  source_member: 1711_11579.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: u1x_univ_w1
+    mitigation: null
+    severity: medium
+    source_reference_ids: []
+    warning: This row is the universal-fermion-coupling variant, not the electrophilic variant.
+  - category: extrapolation
+    id: u1x_univ_w2
+    mitigation: null
+    severity: high
+    source_reference_ids: []
+    warning: The paper says this case relies on near-resonance annihilation and the local-subhalo assumption.
+associated_code:
+  code_summary: The text uses PPPC4DMID for spectra, but does not identify a model-specific public implementation.
+  has_associated_code: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The DAMPE excess is sourced by annihilation in a nearby ultra-faint NFW dark-matter subhalo,
+      with the adopted SHB distance 0.3 kpc.
+    id: u1x_a1
+    impact_if_violated: Without the local subhalo, the Milky Way halo flux is too broad and much smaller
+      in the paper's calculation.
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The X boson has universal couplings to all SM fermions.
+    id: u1x_univ_a2
+    impact_if_violated: Changing the flavor pattern changes the spectrum and rates.
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The halo annihilation enhancement near resonance is relevant to the DAMPE signal.
+    id: u1x_univ_a3
+    impact_if_violated: Away from resonance the required signal rate would not match the paper's benchmark
+      logic.
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - nearby ultra-faint dark-matter subhalo used for the DAMPE flux interpretation
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - U(1)_X Dirac dark matter
+  - X boson mediated Dirac dark matter
+  family: vector_mediator_dark_matter
+  historical_origin_or_motivation: Introduced as a TeV-scale dark-matter explanation of the DAMPE electron/positron
+    excess from a nearby subhalo.
+  model_kind: simplified_model
+  name: U(1)_X Dirac dark matter with universal SM-fermion couplings
+  short_description: A 1.5 TeV Dirac fermion dark-matter variant where the X boson couples universally
+    to SM fermions and mediates s-channel annihilation to f fbar.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - chi chi -> X* -> f fbar
+  cp_structure: vector-current interactions in the simplified model
+  dark_sector_couplings:
+  - vector current coupling g_chi between Dirac dark matter and X boson
+  decay_channels:
+  - X boson decays to SM fermions according to the chosen coupling pattern
+  flavor_structure: scenario dependent
+  interaction_operators:
+  - X_mu J_X^mu with vector-current couplings to dark matter and selected SM fermions
+  mediator_types:
+  - massive vector boson
+  portals:
+  - vector
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - all Standard Model fermions
+  tree_or_loop_level: tree
+model_id: 1711_11579_u1x_dirac_dm_universal_fermion_channel_v1
+parameters:
+  core:
+  - description: Mass fixed for the universal-coupling fit.
+    name: dark matter mass
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: m_chi
+    unit: TeV
+    value: 1.5
+  - description: Benchmark near the X resonance.
+    name: benchmark mass splitting
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: m = 2 m_chi - M_X
+    unit: GeV
+    value: 10
+  - description: Benchmark universal X-SM coupling.
+    name: universal SM fermion coupling
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: g_f
+    value: 4e-3
+  - description: Benchmark X-DM coupling.
+    name: dark coupling
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: g_chi
+    value: 1
+  - description: Benchmark halo annihilation rate quoted near resonance.
+    name: halo annihilation cross section
+    role: core
+    source_reference_ids: []
+    status: assumed
+    symbol: <sigma v>_halo
+    unit: pb
+    value: 30
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: Dirac fermion dark matter
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Dirac fermion dark matter
+  mediators:
+  - U(1)_X gauge boson X
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - X boson
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: thermal
+  f_of_p_or_q: unknown
+  free_streaming_length: null
+  notes: No primordial distribution function is provided; the indirect signal calculation assumes annihilation
+    in a local NFW subhalo.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - velocity-averaged annihilation cross section
+  - mediator mass and couplings
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out
+  - annihilation signal from a nearby dark-matter subhalo
+  nonthermal_momentum_distribution: 'no'
+  notes: The universal-coupling case must annihilate near the X-boson resonance to obtain a larger halo
+    annihilation cross section for the DAMPE excess.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: unknown
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The DAMPE interpretation assumes an ultra-faint local NFW subhalo, with the adopted SHB setup
+        at 0.3 kpc.
+      page: null
+      reference_id: primary
+      section: subhalo setup
+    interactions:
+    - confidence: high
+      note: Scenario C has chi chi annihilating to all SM fermions through an s-channel X boson with universal
+        couplings.
+      page: null
+      reference_id: primary
+      section: model setup/fit
+    parameter_ranges:
+    - confidence: high
+      note: The fit fixes m_chi = 1.5 TeV; a benchmark has m = 10 GeV, g_f = 4e-3, g_chi = 1 and halo
+        sigma v about 30 pb.
+      page: null
+      reference_id: primary
+      section: relic discussion
+    particle_content:
+    - confidence: medium
+      note: Dirac dark matter is charged under a new U(1)_X gauge symmetry, mediated by an X boson.
+      page: null
+      reference_id: primary
+      section: model setup
+    production_mechanism:
+    - confidence: medium
+      note: The paper compares the required DAMPE signal to the canonical thermal annihilation cross section
+        and discusses relic density.
+      page: null
+      reference_id: primary
+      section: fit/relic discussion
+    symmetries:
+    - confidence: medium
+      note: The defining new symmetry is U(1)_X; the text writes an X-boson mass term but not the symmetry-breaking
+        completion.
+      page: null
+      reference_id: primary
+      section: model setup
+    validity_domain:
+    - confidence: high
+      note: The text says the universal case must annihilate near the X-boson resonance to explain the
+        excess.
+      page: null
+      reference_id: primary
+      section: summary
+  extraction:
+    confidence: medium
+    extracted_by: codex-batch-0004
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper considers a U(1)_X extension with Dirac dark matter and an X boson mediator.
+      reference_id: primary
+      section: introduction/model setup
+    - page: null
+      quote_or_summary: It studies three annihilation scenarios for a local subhalo explanation of the
+        DAMPE excess.
+      reference_id: primary
+      section: DAMPE fit and summary
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: vector_mediator_dark_matter
+  model_id: 1711_11579_u1x_dirac_dm_universal_fermion_channel_v1
+  model_name: U(1)_X Dirac dark matter with universal SM-fermion couplings
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1711.11579'
+      authors:
+      - Xuewen Liu
+      - Zuowei Liu
+      doi: null
+      notes: Information extracted only from the assigned SQLite full text.
+      reference_id: primary
+      role: original_model
+      title: TeV dark matter and the DAMPE electron excess
+      url: null
+      year: 2017
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_chi
+  - M_X
+  - g_chi
+  - SM fermion couplings
+  - annihilation channel
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - nearby subhalo assumption
+  - DAMPE excess interpretation
+  - The paper notes the freeze-out annihilation rate differs from the halo value near resonance and displays
+    a relic-density line for this case.
+  notes: The model is tied to a tentative spectral feature and an assumed nearby subhalo.
+  observational_robustness: low
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: The text assumes a Dirac dark-matter particle charged under U(1)_X; an explicit
+    stabilizing symmetry beyond this charge assignment is not specified.
+  symmetries:
+  - breaking: The Lagrangian includes a mass term M_X for the X boson; the breaking mechanism is not specified
+      in the extracted text.
+    breaking_scale: null
+    exact_or_approximate: unknown
+    name: U(1)_X
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: partial
+  notes: The paper writes new Lagrangian terms for a massive X_mu boson with vector-current couplings
+    to Dirac dark matter and SM fermions.
+  parent_frameworks:
+  - U(1)_X gauge extension of the Standard Model
+  renormalizable: unknown
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The X boson couples to all SM fermions with universal coupling strength.
+  extrapolation_risk: medium
+  id: u1x_univ_v1
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: parameter
+  caveats: []
+  condition: The viable benchmark lies near the X-boson resonance with m = 2 m_chi - M_X about 10 GeV.
+  extrapolation_risk: high
+  id: u1x_univ_v2
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null

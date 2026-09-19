@@ -1,0 +1,301 @@
+_source:
+  shard: arXiv_src_0901_003_wds.tar
+  paper_id: 0901_3545
+  source_member: 0901_3545.json
+schema_version: model_only_v0
+model_id: 0901_3545_u1r_gravitino_lsp_v1
+identity:
+  name: U(1)_R-mediated gravitino LSP dark matter
+  family: gravitino_dark_matter
+  aliases:
+  - U(1)_R mediation gravitino LSP
+  short_description: A gravitino-LSP region of the gauged U(1)_R mediation model, with neutralino or stau
+    NLSP and a mixed thermal plus nonthermal relic contribution.
+  historical_origin_or_motivation: The gravitino variant arises as a characteristic region of the U(1)_R-mediated
+    SUSY-breaking spectrum.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - MSSM
+  - 4D effective gauged supergravity
+  - 6D chiral gauged supergravity flux compactification
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: Same U(1)_R mediation construction as the neutralino variant, but in parameter regions where
+    the gravitino is the LSP.
+particle_content:
+  dark_matter_candidate:
+    name: gravitino
+    spin: 3/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - supergravity interactions
+  unstable_parent_particles:
+  - neutralino NLSP
+  - stau NLSP
+  long_lived_particles:
+  - neutralino NLSP or stau NLSP depending on parameter point
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R-parity conservation stabilizes the gravitino LSP.
+  symmetries:
+  - name: gauged U(1)_R
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneous U(1)_R breaking and moduli stabilization enter the effective supergravity
+  - name: R-parity
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - other
+  standard_model_targets:
+  - NLSP decay products
+  - MSSM superpartners
+  dark_sector_couplings:
+  - gravitino-superpartner couplings suppressed by supergravity scale
+  mediator_types:
+  - supergravity interactions
+  decay_channels:
+  - neutralino NLSP to gravitino plus Standard Model particles
+  - stau NLSP to gravitino plus tau
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: gravitino mass parameter
+    symbol: m_3/2
+    description: Controls the gravitino LSP mass in the U(1)_R mediation spectrum.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: unified gaugino mass
+    symbol: M_1/2
+    description: Gaugino mass input in the model scan.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: doublet squark R charge
+    symbol: q
+    description: R-charge input; examples include q = -1.1.
+    value: example q = -1.1
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: reheating temperature
+    symbol: T_R
+    description: Range quoted for thermally produced gravitino relic density in example points.
+    range: 10^7-10^9
+    unit: GeV
+    role: cosmological
+    status: inferred
+    source_reference_ids: []
+  - name: stau NLSP lifetime bound
+    symbol: tau_stau
+    description: BBN-motivated bound quoted for charged stau NLSP.
+    range:
+      min: null
+      max: 5 x 10^3
+      unit: s
+      notes: Upper bound quoted in the paper
+    unit: s
+    role: derived
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - thermal gravitino production
+  - nonthermal gravitino production from NLSP decay
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - reheating temperature
+  - NLSP identity and lifetime
+  - U(1)_R mediation spectrum
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The paper states thermally produced gravitinos can provide the relic density for T_R = 10^7-10^9
+    GeV in example points.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - T_R
+  - gravitino mass
+  - NLSP identity
+  - NLSP lifetime
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late NLSP decays can affect BBN
+  bbn_relevance: high
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: 'no'
+  notes: The paper does not provide a full phase-space distribution; production may include thermal and
+    NLSP-decay components.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: nlsp_bbn
+  applies_to: model
+  condition: Neutralino NLSP is described as very difficult under BBN constraints; stau NLSP is less sensitive
+    and preferred in the discussion.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+- id: reheat_window
+  applies_to: cosmological_history
+  condition: The example relic-density statement uses T_R = 10^7-10^9 GeV.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: r_parity
+    description: R-parity is conserved so the gravitino LSP is stable.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: standard_bbn_constraints
+    description: The viability discussion uses standard BBN sensitivity to late electromagnetic and hadronic
+      energy injection.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports using SUSPECT and DarkSUSY in the U(1)_R model scan; no dedicated gravitino
+    code release is described.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 0901_3545_u1r_gravitino_lsp_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: 0901_3545
+      title: U(1)_R mediated supersymmetry breaking from a six-dimensional flux compactification
+      year: 2009
+      arxiv_id: '0901.3545'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used for extraction.
+  extraction:
+    method: llm_assisted
+    extracted_by: Codex batch-0002 dark-matter extraction worker
+    extractor_name: gpt-5.5 dark-matter model-card pass
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: 0901_3545
+      section: U(1)_R SUSY phenomenology
+      page: null
+      quote_or_summary: Gravitino LSP regions have neutralino or stau NLSP and thermal plus nonthermal
+        production.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: 0901_3545
+      note: The paper identifies blue regions where the gravitino is the LSP and neutralino or stau is
+        the NLSP.
+      confidence: medium
+      section: U(1)_R SUSY phenomenology
+      page: null
+    symmetries:
+    - reference_id: 0901_3545
+      note: The U(1)_R mediation model is discussed with R-parity; a small R-parity breaking option is
+        mentioned only as a possible BBN escape.
+      confidence: medium
+      section: U(1)_R SUSY phenomenology
+      page: null
+    interactions:
+    - reference_id: 0901_3545
+      note: NLSP decays can inject electromagnetic or hadronic particles; stau NLSP is less constrained
+        than neutralino NLSP.
+      confidence: medium
+      section: U(1)_R SUSY phenomenology
+      page: null
+    production_mechanism:
+    - reference_id: 0901_3545
+      note: The paper says the gravitino can be a dark-matter component with thermal and nonthermal production.
+      confidence: medium
+      section: U(1)_R SUSY phenomenology
+      page: null
+    cosmological_history:
+    - reference_id: 0901_3545
+      note: Thermally produced gravitino can provide relic density for reheating temperature T_R = 10^7-10^9
+        GeV.
+      confidence: medium
+      section: U(1)_R SUSY phenomenology
+      page: null
+    parameter_ranges:
+    - reference_id: 0901_3545
+      note: The stau NLSP lifetime is constrained to be below about 5 x 10^3 seconds in the BBN discussion.
+      confidence: medium
+      section: U(1)_R SUSY phenomenology
+      page: null
+    validity_domain:
+    - reference_id: 0901_3545
+      note: Neutralino NLSP is said to be very difficult due to BBN, while stau NLSP gives a good reason
+        for gravitino LSP dark matter.
+      confidence: medium
+      section: U(1)_R SUSY phenomenology
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - BBN viability depends strongly on the NLSP and lifetime
+  validation_status: expert_judgment_only
+  notes: Machine extraction preserves the paper's caveat that neutralino NLSP is hard to make viable.
+agent_failure_modes:
+  warnings:
+  - id: bbn_sensitive
+    severity: high
+    category: assumption_mismatch
+    warning: The gravitino-LSP interpretation is sensitive to late NLSP-decay assumptions and BBN bounds.
+    source_reference_ids: []
+    mitigation: Track the NLSP identity and lifetime before using this model in cosmological reasoning.

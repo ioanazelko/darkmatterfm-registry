@@ -1,0 +1,645 @@
+_source:
+  shard: arXiv_src_1306_008_wds.tar
+  paper_id: '1306_4677'
+  source_member: 1306_4677.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1306_4677_kinetic_mixing_zprime_fimp_v1
+identity:
+  name: Kinetic-mixing Z' portal FIMP dark matter
+  family: freeze_in_dark_matter
+  aliases:
+  - Z' portal freeze-in
+  - kinetic mixing FIMP
+  short_description: A secluded dark-sector model where the lightest U'(1)-charged particle is populated
+    by freeze-in through a kinetically mixed Z' mediator.
+  historical_origin_or_motivation: Tests whether tiny kinetic mixing in an extra-U(1) portal can produce
+    the observed relic density without thermalizing dark matter with the Standard Model.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - secluded U(1)' dark sector
+  - Z' portal
+  - FIMP freeze-in
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the kinetic-mixing gauge Lagrangian and effective Z/Z' couplings after diagonalization.
+particle_content:
+  dark_matter_candidate:
+    name: lightest dark-sector particle chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - Z' gauge boson
+  - dark-sector particles charged under U'(1)
+  - hybrid-sector states inducing kinetic mixing
+  mediators:
+  - Z' gauge boson
+  - SM Z through mixing
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Z' can be long-lived for very small kinetic mixing
+  unstable_parent_particles:
+  - Z'
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The dark matter candidate is the lightest particle in the secluded dark sector
+    charged under U'(1).
+  symmetries:
+  - name: U'(1)
+    type: gauge
+    exact_or_approximate: unknown
+    breaking: massive Z' sector; breaking details not specified
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - SM fermions
+  - hypercharge current
+  dark_sector_couplings:
+  - q_D g_D coupling of chi to Z'
+  mediator_types:
+  - kinetically mixed Z'
+  - SM Z via mixing
+  interaction_operators:
+  - kinetic mixing epsilon B_{mu nu} X^{mu nu}
+  annihilation_channels:
+  - SM SM to chi chi through Z/Z'
+  - Z' decay to chi chi when open
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Mixing between hypercharge and the dark U'(1)
+    range: about 1e-12 to 1e-11 for FIMP relic abundance
+    role: core
+    status: inferred
+  - name: Z' mass
+    symbol: m_Z'
+    description: Mass of the vector mediator
+    range: about 1 GeV to 1 TeV in the explicit kinetic-mixing analysis
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the lightest dark-sector particle
+    role: core
+    status: inferred
+  - name: dark gauge coupling
+    symbol: q_D g_D
+    description: Effective dark coupling, set to 1 in the paper's numerical analysis
+    value: 1 in benchmark analysis
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - freeze-in
+  - Z' mediated SM annihilation
+  - Z' decay to dark matter
+  - possible dark thermalisation
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - kinetic mixing epsilon
+  - m_Z'
+  - m_chi
+  - dark-sector coupling
+  - dark thermalisation corrections
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper finds FIMP-like relic abundance for tiny epsilon, with dark thermalisation changing
+    the abundance by up to about a factor of two in the studied parameter space.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - epsilon
+  - m_Z'
+  - m_chi
+  - q_D g_D
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - negligible initial dark matter abundance
+  - possible dark-sector chemical equilibrium
+  bbn_relevance: high
+  cmb_relevance: medium
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'no'
+  notes: The paper tracks number densities but does not provide a full momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: light_mediator_regime
+  applies_to: model
+  condition: The explicit kinetic-mixing model is used for m_Z' below the reheating temperature
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: tiny_mixing
+  applies_to: parameter
+  condition: Freeze-in relic abundance requires epsilon around 10^-12 to 10^-11 in the studied mass range
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: bbn_light_zprime
+  applies_to: parameter
+  condition: For m_Z' < 2 m_chi, Z' lifetime can make BBN relevant
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: secluded_dark_sector
+    description: The dark matter is the lightest particle in a sector charged under U'(1) and neutral
+      under the SM.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: The stability and portal interpretation would change.
+  - id: small_initial_abundance
+    description: The initial dark matter abundance is negligible.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: 'yes'
+    impact_if_violated: A primordial abundance would change the relic-density calculation.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code is identified in the assigned paper text.
+provenance:
+  model_id: 1306_4677_kinetic_mixing_zprime_fimp_v1
+  model_name: Kinetic-mixing Z' portal FIMP dark matter
+  model_family: freeze_in_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Thermal and non-thermal production of dark matter via Z'-portal(s)
+      authors:
+      - Xiaoyong Chu
+      - Yann Mambrini
+      - Jeremie Quevillon
+      - Bryan Zaldivar
+      year: 2013
+      arxiv_id: '1306.4677'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from target_text.sqlite only.
+    - arxiv_id: '1306.4677'
+      authors:
+      - Chu, Xiaoyong
+      - Mambrini, Yann
+      - Quevillon, Jérémie
+      - Zaldívar, Bryan
+      doi: 10.1088/1475-7516/2014/01/034
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1306.4677
+      role: original_model
+      title: Thermal and non-thermal production of dark matter via Z'-portal(s)
+      url: https://arxiv.org/abs/1306.4677
+      year: 2014
+    constraint_papers:
+    - arxiv_id: '1207.5988'
+      authors:
+      - Aprile, E.
+      - Alfonsi, M.
+      - Arisaka, K.
+      - Arneodo, F.
+      - Balan, C.
+      - Baudis, L.
+      - Bauermeister, B.
+      - Behrens, A.
+      - Beltrame, P.
+      - Bokeloh, K.
+      - Brown, E.
+      - Bruno, G.
+      doi: 10.1103/PhysRevLett.109.181301
+      notes: Related full text resolved locally and read for XENON100 direct-detection context.
+      reference_id: arxiv:1207.5988
+      role: constraint
+      title: Dark Matter Results from 225 Live Days of XENON100 Data
+      url: https://arxiv.org/abs/1207.5988
+      year: 2012
+    - arxiv_id: '1212.5226'
+      authors:
+      - Hinshaw, G.
+      - Larson, D.
+      - Komatsu, E.
+      - Spergel, D. N.
+      - Bennett, C. L.
+      - Dunkley, J.
+      - Nolta, M. R.
+      - Halpern, M.
+      - Hill, R. S.
+      - Odegard, N.
+      - Page, L.
+      - Smith, K. M.
+      doi: 10.1088/0067-0049/208/2/19
+      notes: Related full text resolved locally and read for WMAP relic-density context.
+      reference_id: arxiv:1212.5226
+      role: constraint
+      title: 'Nine-year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Cosmological Parameter
+        Results'
+      url: https://arxiv.org/abs/1212.5226
+      year: 2013
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1706.07442'
+      authors:
+      - Bernal, Nicolás
+      - Heikinheimo, Matti
+      - Tenkanen, Tommi
+      - Tuominen, Kimmo
+      - Vaskonen, Ville
+      doi: 10.1142/S0217751X1730023X
+      notes: Related full text resolved locally and read for freeze-in/FIMP context.
+      reference_id: arxiv:1706.07442
+      role: review
+      title: 'The dawn of FIMP Dark Matter: A review of models and constraints'
+      url: https://arxiv.org/abs/1706.07442
+      year: 2017
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0018
+    extractor_name: Codex GPT-5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: 'm_Z'' < T_RH: extra Z'' and kinetic mixing'
+      page: null
+      quote_or_summary: The paper defines visible, dark and hybrid sectors under an extra U'(1), with
+        kinetic mixing generating the Z' portal.
+    - reference_id: primary
+      section: Conclusion
+      page: null
+      quote_or_summary: Relic abundance compatible kinetic mixing values are about 10^-12 to 10^-11 for
+        Z' masses in the GeV-TeV range.
+    unresolved_items:
+    - No direct detection likelihood was recast because source text says XENON reach is not competitive
+      with the FIMP relic band.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The dark sector contains particles charged under U'(1), with the dark matter candidate the
+        lightest particle of that sector.
+      confidence: high
+      section: 'm_Z'' < T_RH: extra Z'' and kinetic mixing'
+    symmetries:
+    - reference_id: primary
+      note: The model has an additional dark U'(1) gauge sector and a Z' portal generated by kinetic mixing.
+      confidence: high
+      section: Definition of the model
+    interactions:
+    - reference_id: primary
+      note: Kinetic mixing between hypercharge and U'(1) induces effective couplings of SM states to Z'
+        and dark matter to the SM Z.
+      confidence: high
+      section: Definition of the model
+    production_mechanism:
+    - reference_id: primary
+      note: For weak-scale Z' mediators, very small kinetic mixing around 10^-12 to 10^-11 produces the
+        right dark matter abundance in a FIMP regime.
+      confidence: high
+      section: Abstract / kinetic mixing results
+    cosmological_history:
+    - reference_id: primary
+      note: The paper solves coupled Boltzmann equations including Z' decays, annihilations, and possible
+        dark thermalisation.
+      confidence: medium
+      section: Processes of interest / Appendix Boltzmann equations
+    parameter_ranges:
+    - reference_id: primary
+      note: The kinetic-mixing study considers Z' masses from about 1 GeV to 1 TeV and epsilon values
+        around 10^-12 to 10^-11 for the relic abundance.
+      confidence: medium
+      section: m_Z' < T_RH results / Conclusion
+    validity_domain:
+    - reference_id: primary
+      note: The explicit model applies to m_Z' below T_RH, with the Z' acting as a portal between visible
+        and dark sectors.
+      confidence: high
+      section: 'm_Z'' < T_RH: extra Z'' and kinetic mixing'
+    constraints:
+    - confidence: medium
+      note: WMAP paper provides the cosmological cold-dark-matter density context used as a relic-abundance
+        target.
+      page: null
+      reference_id: arxiv:1212.5226
+      section: Cosmological parameters
+    - confidence: high
+      note: Primary paper translates light-Z-prime late decay into an approximate BBN lifetime bound.
+      page: null
+      reference_id: arxiv:1306.4677
+      section: Constraints
+    observables:
+    - confidence: high
+      note: Primary text states the FIMP kinetic-mixing range and the BBN lifetime concern for light Z-prime
+        mediators.
+      page: null
+      reference_id: arxiv:1306.4677
+      section: Model and constraints discussion
+    - confidence: medium
+      note: Related review describes freeze-in as out-of-equilibrium production by decays or annihilations
+        with feeble couplings.
+      page: null
+      reference_id: arxiv:1706.07442
+      section: FIMP overview
+    routes:
+    - confidence: high
+      note: Primary paper formulates the kinetic-mixing portal and freeze-in abundance calculation.
+      page: null
+      reference_id: arxiv:1306.4677
+      section: FIMP analysis
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Dark thermalisation and BBN-sensitive light-Z' regions require detailed Boltzmann treatment.
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: bbn_lifetime
+    severity: medium
+    category: assumption_mismatch
+    warning: For very light Z' and tiny kinetic mixing, late Z' decay can be important for cosmology.
+    mitigation: Check the relevant lifetime regime before using the model.
+observables:
+- caveats:
+  - A full momentum distribution or likelihood scan was not rerun in this batch.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe plasma
+  - secluded dark sector
+  id: obs_zprime_fimp_relic_density
+  key_quantities:
+  - description: Hypercharge-dark U(1) kinetic mixing.
+    name: kinetic mixing
+    range: about 10^-12 to 10^-11 in the FIMP regime
+    role: core
+    source_reference_ids:
+    - arxiv:1306.4677
+    status: inferred
+    symbol: epsilon
+  - description: Mediator mass in the weak-scale portal study.
+    name: Z-prime mass
+    range: about 1 GeV to 1 TeV in the explicit scan
+    role: core
+    source_reference_ids:
+    - arxiv:1306.4677
+    status: inferred
+    symbol: m_Z'
+    unit: GeV
+  - description: Cosmological abundance target from WMAP/Planck-era data.
+    name: cold dark matter density
+    role: cosmological
+    source_reference_ids:
+    - arxiv:1306.4677
+    - arxiv:1212.5226
+    status: established
+    symbol: Omega_c h^2
+  linked_constraints:
+  - con_zprime_fimp_relic_band
+  - con_light_zprime_bbn_lifetime
+  linked_routes:
+  - route_zprime_freezein_relic
+  name: Freeze-in relic abundance from kinetic mixing
+  notes: null
+  observability: medium
+  predicted_effect: Tiny kinetic mixing populates the secluded sector without full Standard Model thermalization;
+    the primary paper quotes epsilon near 10^-12 to 10^-11 as sufficient for the observed abundance.
+  redshift_range: radiation era through today
+  relevance: critical
+  scale_range: homogeneous relic abundance
+  source_reference_ids:
+  - arxiv:1306.4677
+  - arxiv:1706.07442
+  - arxiv:1212.5226
+  subchannel: nonthermal relic density
+- caveats:
+  - Primary text gives a simple lifetime criterion rather than a BBN likelihood.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - primordial plasma
+  id: obs_light_zprime_decay_bbn
+  key_quantities:
+  - description: Lifetime of a light mediator decaying to the thermal bath.
+    name: Z-prime lifetime
+    range: less than O(100) s as a naive BBN requirement
+    role: core
+    source_reference_ids:
+    - arxiv:1306.4677
+    status: approximate
+    symbol: tau_Z'
+    unit: s
+  - description: Controls the visible decay width of the light mediator.
+    name: kinetic mixing
+    role: core
+    source_reference_ids:
+    - arxiv:1306.4677
+    status: inferred
+    symbol: epsilon
+  linked_constraints:
+  - con_light_zprime_bbn_lifetime
+  linked_routes:
+  - route_zprime_freezein_relic
+  name: Light Z-prime late-decay sensitivity
+  notes: null
+  observability: medium
+  predicted_effect: If the Z-prime is lighter than the dark matter, its slow decays to visible particles
+    can disturb light-element abundances unless the lifetime is short enough.
+  redshift_range: BBN epoch
+  relevance: high
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:1306.4677
+  subchannel: BBN lifetime check
+constraints:
+- allowed_regions:
+  - Primary scan finds the observed abundance for epsilon around 10^-12 to 10^-11 for weak-scale Z-prime
+    mediators.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The relic-density target assumes the standard radiation-dominated thermal history used
+      in the paper.
+    id: standard-cosmology
+    impact_if_violated: A nonstandard expansion history changes the epsilon band.
+    scope: freeze-in abundance
+    source_reference_ids:
+    - arxiv:1306.4677
+    - arxiv:1212.5226
+    status: assumed
+  benchmark_implications:
+  - The benchmark q_D g_D=1 scan can reproduce all of dark matter.
+  caveats:
+  - The batch records the source scan, not a new Boltzmann solve.
+  constrained_parameters:
+  - epsilon
+  - m_Z'
+  - m_chi
+  - q_D g_D
+  constraint_type: cosmological
+  data_release: WMAP/Planck-era cosmological abundance target
+  excluded_regions:
+  - Too small epsilon underproduces the secluded particle; too large epsilon moves away from the FIMP
+    regime and over/thermal-produces depending on masses.
+  id: con_zprime_fimp_relic_band
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: WMAP/Planck relic-abundance band for kinetic-mixing FIMP
+  notes: null
+  observable_channel: relic_density
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1306.4677
+  - arxiv:1212.5226
+- allowed_regions:
+  - Kinetic mixing large enough to make the Z-prime decay before roughly 100 s avoids the paper's naive
+    BBN exclusion.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The BBN statement uses a lifetime cutoff instead of a light-element network.
+    id: lifetime-only-bbn
+    impact_if_violated: Branching fractions and abundance of the mediator can shift the bound.
+    scope: light mediator
+    source_reference_ids:
+    - arxiv:1306.4677
+    status: assumed
+  benchmark_implications:
+  - The BBN line matters only for the light-mediator hierarchy.
+  caveats:
+  - Not applicable to m_Z' > 2 m_chi where the mediator can decay invisibly.
+  constrained_parameters:
+  - epsilon
+  - m_Z'
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Regions with Z-prime lifetime longer than O(100) s are identified as BBN-risk regions when m_Z' <
+    2 m_chi.
+  id: con_light_zprime_bbn_lifetime
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN lower bound on visible coupling for a light Z-prime
+  notes: null
+  observable_channel: BBN light elements
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1306.4677
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Direct detection limits from XENON are much weaker than the FIMP relic band in the primary parameter
+      range.
+    constraint_ids:
+    - con_zprime_fimp_relic_band
+    - con_light_zprime_bbn_lifetime
+    derived_quantities:
+    - freeze-in yield
+    - Omega_chi h^2
+    - Z-prime lifetime
+    description: Map kinetic mixing and mediator mass to freeze-in yield, relic density, and light-mediator
+      BBN viability.
+    forward_model_chain:
+    - inputs:
+      - epsilon
+      - m_Z'
+      - m_chi
+      notes: Source formulas not rerun.
+      outputs:
+      - SM to dark-sector production rates
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid in the feeble-coupling regime before dark matter equilibrates.
+    - inputs:
+      - production rates
+      - temperature history
+      notes: Planned route for recast.
+      outputs:
+      - Y_chi
+      - Omega_chi h^2
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Requires the collision terms and reheating assumptions of the paper.
+    - inputs:
+      - Z-prime lifetime
+      - mediator abundance
+      notes: null
+      outputs:
+      - BBN allowed/excluded flag
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Lifetime-only check is approximate.
+    id: route_zprime_freezein_relic
+    input_parameters:
+    - epsilon
+    - m_Z'
+    - m_chi
+    - q_D g_D
+    likelihoods:
+    - No batch likelihood; relic-density and BBN criteria are source-paper targets.
+    observable_ids:
+    - obs_zprime_fimp_relic_density
+    - obs_light_zprime_decay_bbn
+    required_code_resources:
+    - Boltzmann solver for freeze-in
+    - BBN decay constraint recast
+    route_status: planned
+    source_model_features:
+    - secluded U(1) sector
+    - kinetically mixed Z-prime
+    - feebly coupled dark matter
+    validation_tests:
+    - recover epsilon near 10^-12 to 10^-11
+    - recover tau_Z' below O(100) s for BBN-safe light mediators

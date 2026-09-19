@@ -1,0 +1,368 @@
+_source:
+  shard: arXiv_src_1205_009_wds.tar
+  paper_id: '1205_6416'
+  source_member: 1205_6416.json
+schema_version: model_only_v0
+model_id: 1205_6416_discrete_gauge_darkon_b_l_wimp_v1
+identity:
+  name: Discrete-gauge B-L darkon WIMP model
+  family: hidden_sector_dark_matter
+  aliases:
+  - discrete gauge darkon model
+  - B-L darkon model
+  short_description: A WIMP darkon model where a complex singlet D is stabilized by a residual Z2 symmetry
+    from broken U(1)_{B-L}, with Higgs and Z' interactions setting the relic abundance.
+  historical_origin_or_motivation: Designed to connect dark matter, a Higgs sector compatible with LHC
+    information, and seesaw neutrino masses in an economical B-L gauge extension.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - U(1)_{B-L} gauge extension
+  - darkon WIMP
+  - type-I seesaw
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'no'
+  notes: The scalar potential and relevant D interactions are explicitly given; heavy scalar mixing is
+    taken small for the phenomenology.
+particle_content:
+  dark_matter_candidate:
+    name: D_I darkon
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - D_R nearly degenerate scalar partner
+  - singlet scalar S
+  mediators:
+  - Z' gauge boson
+  - Higgs boson h
+  - heavy scalar s
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - D_R
+  long_lived_particles:
+  - D_I
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A discrete Z2 remnant of broken U(1)_{B-L} stabilizes the D field when D has
+    zero vacuum expectation value.
+  symmetries:
+  - name: U(1)_{B-L}
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneously broken by the S vacuum expectation value to a Z2 remnant
+    breaking_scale:
+      name: S vacuum expectation value
+      symbol: v_S
+      description: Scale setting U(1)_{B-L} breaking.
+      unit: GeV
+      role: core
+      status: inferred
+  - name: residual Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken if D has zero VEV
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - Standard Model fermions carrying B-L
+  - Higgs doublet
+  - nucleons
+  dark_sector_couplings:
+  - lambda_DH
+  - lambda_DS
+  - g_zeta
+  mediator_types:
+  - scalar Higgs portal
+  - B-L vector boson Z'
+  interaction_operators:
+  - '|D|^2 H^dagger H'
+  - D_I D_R Z' derivative coupling
+  - D^2 S^dagger term
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - D_I D_I to Standard Model particles through Higgs exchange
+  - D_R D_R to Standard Model particles through Higgs exchange
+  - D_I D_R to Standard Model fermions through Z' exchange
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: B-L charges assigned to SM fermions with right-handed neutrinos for anomaly cancellation.
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: darkon mass
+    symbol: m_D
+    description: Mass of the WIMP darkon D_I.
+    range: paper scans light to electroweak-scale values; examples include m_D below and above 100 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Z' mass
+    symbol: m_Z'
+    description: Mass of the B-L gauge boson.
+    value: often taken near 2 m_D for the resonance region
+    unit: GeV
+    role: core
+    status: inferred
+  - name: B-L gauge coupling
+    symbol: g_zeta
+    description: New gauge coupling constrained by Drell-Yan and relic density.
+    role: core
+    status: inferred
+  - name: darkon-Higgs coupling
+    symbol: lambda_DH
+    description: Higgs portal coupling for D.
+    role: core
+    status: inferred
+  - name: D_R-D_I mass splitting
+    symbol: delta
+    description: Relative mass splitting used in the coannihilation regime.
+    value: approximately 0 in the paper's coannihilation setup
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - thermal freeze-out
+  - coannihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - Higgs-mediated annihilation
+  - Z'-mediated D_I D_R coannihilation
+  - near-degeneracy of D_I and D_R
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper evaluates Omega_D h^2 using the usual thermal relic integral and an effective coannihilation
+    cross section.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed darkon relic density range
+    symbol: Omega_D h^2
+    description: Relic range used in the paper.
+    range:
+      min: 0.092
+      max: 0.118
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: 90 percent confidence range quoted by the paper
+    role: derived
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - m_D
+  - m_Z'
+  - g_zeta
+  - lambda_DH
+  - D_R-D_I degeneracy
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: freeze-out variable
+    symbol: x_f
+    description: Defined as m_D / T_f in the relic-density calculation.
+    role: derived
+    status: inferred
+  phase_transitions:
+  - U(1)_{B-L} breaking
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: Standard WIMP freeze-out treatment is used through thermally averaged annihilation cross
+    sections.
+  average_momentum_relative_to_thermal: null
+  notes: No nonthermal phase-space calculation is presented.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: coannihilation_limit
+  applies_to: model
+  condition: The dark-matter analysis assumes nearly degenerate D_I and D_R components.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: zprime_resonance
+  applies_to: parameter
+  condition: Collider and relic constraints favor the Z' resonance region m_Z' approximately 2 m_D when
+    Z' effects dominate.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: zero_d_vev
+    description: The D scalar has zero vacuum expectation value, preserving the residual Z2 symmetry.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+  - id: small_h_s_mixing
+    description: The heavy scalar s is taken to have negligible effects in the processes of interest.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper mentions using CalcHEP for collider cross sections, but the assigned text does
+    not identify a public model-code release.
+provenance:
+  model_id: 1205_6416_discrete_gauge_darkon_b_l_wimp_v1
+  model_name: Discrete-gauge B-L darkon WIMP model
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1205_6416'
+      title: Dark Matter and Higgs Boson in a Model with Discrete Gauge Symmetry
+      authors:
+      - Cheng-Wei Chiang
+      - Takaaki Nomura
+      - Jusak Tandean
+      year: 2012
+      arxiv_id: '1205.6416'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0013
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1205_6416'
+      section: Introduction
+      page: null
+      quote_or_summary: The paper studies a simple new-physics model with discrete gauge symmetry, Higgs,
+        dark matter, and light-neutrino masses.
+    - reference_id: '1205_6416'
+      section: Model
+      page: null
+      quote_or_summary: The darkon is the lighter component of D, stabilized by a remnant Z2 from U(1)
+        breaking.
+    - reference_id: '1205_6416'
+      section: Relic abundance
+      page: null
+      quote_or_summary: The relic abundance uses D_I/D_R coannihilation with Higgs and Z' contributions.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1205_6416'
+      note: The model adds right-handed neutrinos, singlet scalars S and D, and a Z' boson; the lighter
+        component of D is the darkon dark matter.
+      confidence: high
+      section: Model
+      page: null
+    symmetries:
+    - reference_id: '1205_6416'
+      note: A remnant Z2 symmetry emerges from spontaneous breaking of U(1)_{B-L}; D must have zero VEV
+        to keep the dark matter stable.
+      confidence: high
+      section: Model
+      page: null
+    interactions:
+    - reference_id: '1205_6416'
+      note: The D components interact through Higgs exchange via lambda_DH and through the B-L Z' gauge
+        boson; the text writes the relevant L_D interactions.
+      confidence: high
+      section: Model
+      page: null
+    production_mechanism:
+    - reference_id: '1205_6416'
+      note: The relic density is calculated with nearly degenerate D_I and D_R coannihilation, including
+        Higgs and Z' contributions to annihilation.
+      confidence: high
+      section: Relic abundance
+      page: null
+    parameter_ranges:
+    - reference_id: '1205_6416'
+      note: The paper uses m_Z' near 2 m_D for the resonance region and the observed relic range 0.092
+        <= Omega_D h^2 <= 0.118.
+      confidence: medium
+      section: Relic abundance
+      page: null
+    validity_domain:
+    - reference_id: '1205_6416'
+      note: The analysis assumes D_R and D_I are nearly degenerate and takes D_I as the WIMP for lambda_DS
+        > 0.
+      confidence: high
+      section: Model
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  notes: The model definition and relic calculation are explicit; detailed viability depends on collider
+    and direct-search bounds not extracted in this model-only pass.
+agent_failure_modes:
+  warnings:
+  - id: component_swap
+    severity: low
+    category: notation_conflict
+    warning: The paper takes lambda_DS > 0 so D_I is dark matter; if the sign is reversed D_R plays the
+      same role.
+    mitigation: Track the sign convention before comparing component labels.
+    source_reference_ids: []
+  - id: degeneracy_assumption
+    severity: medium
+    category: assumption_mismatch
+    warning: The relic-density treatment relies on a nearly degenerate D_I/D_R coannihilation setup.
+    mitigation: Do not reuse the coannihilation result for large splittings without recalculation.
+    source_reference_ids: []

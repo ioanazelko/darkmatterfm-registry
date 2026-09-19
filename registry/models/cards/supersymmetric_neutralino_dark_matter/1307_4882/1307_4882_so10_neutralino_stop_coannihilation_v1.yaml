@@ -1,0 +1,443 @@
+_source:
+  shard: arXiv_src_1307_009_wds.tar
+  paper_id: '1307_4882'
+  source_member: 1307_4882.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: do_not_replace_with_generic_neutralino
+    mitigation: Preserve the SO(10) 144+anti-144 and non-universal gaugino assumptions.
+    severity: medium
+    source_reference_ids:
+    - '1307_4882'
+    warning: This is not a generic MSSM neutralino card; the SO(10) Yukawa relation and stop coannihilation
+      are central.
+associated_code:
+  caveats: []
+  code_summary: The paper uses ISAJET 7.84 for spectrum scans and Micromegas 2.4 interfaced with Isajet
+    for relic-density and flavor calculations; no model-specific public repository is identified.
+  containers_or_environments: []
+  expected_inputs:
+  - GUT-scale soft terms
+  - MSSM spectrum parameters
+  expected_outputs:
+  - sparticle spectrum
+  - neutralino relic density
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules:
+  - archive_url: null
+    availability: public
+    citation_reference_ids:
+    - '1307_4882'
+    commit: null
+    dependencies: []
+    documentation_url: null
+    doi: null
+    inputs:
+    - GUT-scale soft parameters
+    languages: []
+    last_checked: '2026-05-31'
+    license: null
+    maintained: unknown
+    name: ISAJET 7.84
+    notes: Used by the paper to perform random scans and run MSSM RGEs.
+    outputs:
+    - sparticle spectrum
+    purpose:
+    - generate_benchmarks
+    relationship_to_model: related_but_not_model_specific
+    repository_url: null
+    resource_type: package
+    supported_model_families:
+    - supersymmetric models
+    supported_observables: []
+    supported_parameters:
+    - SO(10)/MSSM soft parameters
+    url: null
+    validity_domain: []
+    version: '7.84'
+  - archive_url: null
+    availability: public
+    citation_reference_ids:
+    - '1307_4882'
+    commit: null
+    dependencies:
+    - ISAJET interface
+    documentation_url: null
+    doi: null
+    inputs:
+    - sparticle spectrum
+    languages: []
+    last_checked: '2026-05-31'
+    license: null
+    maintained: unknown
+    name: Micromegas 2.4
+    notes: Interfaced with Isajet in the paper to calculate relic density.
+    outputs:
+    - neutralino relic density
+    purpose:
+    - compute_relic_density
+    relationship_to_model: related_but_not_model_specific
+    repository_url: null
+    resource_type: package
+    supported_model_families:
+    - supersymmetric neutralino dark matter
+    supported_observables: []
+    supported_parameters:
+    - neutralino spectrum and couplings
+    url: null
+    validity_domain: []
+    version: '2.4'
+  primary_code_role: relic_density_calculation
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: 'no'
+    description: The lightest neutralino is stable and is the dark matter candidate.
+    id: neutralino_lsp_stable
+    impact_if_violated: The model would not provide neutralino dark matter.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1307_4882'
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: Relic abundance is set by standard thermal coannihilation calculated with Micromegas.
+    id: thermal_coannihilation_history
+    impact_if_violated: The neutralino-stop coannihilation requirement could change.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '1307_4882'
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - SO(10) 144+144bar neutralino dark matter
+  - neutralino-stop coannihilation in SO(10) unified Higgs sector
+  family: supersymmetric_neutralino_dark_matter
+  historical_origin_or_motivation: Motivated by SO(10) Yukawa coupling relation Y_b approximately Y_tau
+    approximately Y_t/6, a 125 GeV Higgs, and the neutralino relic-density requirement.
+  model_kind: complete_theory
+  name: SO(10) unified-Higgs neutralino-stop coannihilation dark matter
+  short_description: An SO(10) supersymmetric model with a 144 plus anti-144 unified Higgs sector and
+    non-universal gaugino masses where a bino-like neutralino LSP obtains an acceptable relic abundance
+    through coannihilation with a light stop.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - neutralino-stop coannihilation channels
+  - neutralino annihilation channels computed by Micromegas
+  cp_structure: unknown
+  dark_sector_couplings:
+  - MSSM neutralino gauge and Higgsino couplings
+  - neutralino-stop coannihilation interactions
+  decay_channels: []
+  flavor_structure: third-generation Yukawa relation Y_b approximately Y_tau approximately Y_t/6 at M_GUT
+  interaction_operators:
+  - MSSM supersymmetric interactions with SO(10)-motivated boundary conditions
+  mediator_types:
+  - stop NLSP
+  - MSSM Higgs and gauge bosons
+  portals:
+  - higgs
+  - vector
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - top quarks
+  - electroweak gauge bosons
+  - Higgs-sector states
+  tree_or_loop_level: both
+model_id: 1307_4882_so10_neutralino_stop_coannihilation_v1
+parameters:
+  core:
+  - description: MSSM Higgs vev ratio predicted in a narrow interval by the SO(10) Yukawa relation.
+    name: tan beta
+    range: around 14
+    role: core
+    status: inferred
+    symbol: tan beta
+  - description: Point 1 satisfies the five-sigma WMAP relic-density bound; h^2<10 is used to identify
+      regions with additional depletion mechanisms.
+    name: neutralino relic abundance
+    range: WMAP-compatible benchmark for point 1
+    role: core
+    status: inferred
+    symbol: Omega h^2
+  - description: Light stop mass in the benchmark table; the lightest quoted stop is in point 1.
+    name: stop NLSP mass
+    role: core
+    status: inferred
+    symbol: m_stop1
+    unit: GeV
+    value: 488
+  - description: Neutralino is mostly bino-like and heavier than 100 GeV in the scan.
+    name: lightest neutralino mass
+    range: above 100 GeV
+    role: core
+    status: inferred
+    symbol: m_chi10
+  - description: Benchmark gluino masses decrease from point 1 to point 3.
+    name: gluino mass
+    range: about 1.5-4 TeV
+    role: core
+    status: inferred
+    symbol: m_gluino
+    unit: TeV
+  derived: []
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - MSSM superpartners
+  - relatively light stop NLSP
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lightest neutralino, mostly bino-like
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - stop NLSP near the neutralino for coannihilation
+  long_lived_particles:
+  - neutralino LSP
+  mediators:
+  - stop coannihilation partner
+  - MSSM electroweak and Higgs-sector states
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - stop NLSP
+  - heavier MSSM superpartners
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: thermal
+  f_of_p_or_q: unknown
+  free_streaming_length: null
+  notes: No explicit phase-space distribution is provided; the model is treated as cold WIMP-like dark
+    matter.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - neutralino-stop mass splitting
+  - bino-like neutralino abundance
+  - MSSM coannihilation rates
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out with neutralino-stop coannihilation
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper finds the LSP neutralino can be realized as dark matter only through the neutralino-stop
+    coannihilation scenario in this SO(10) model.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: The viable relic-density mechanism is neutralino-stop coannihilation; stau coannihilation
+        and the M_A resonance are not realized with good Yukawa unification.
+      page: null
+      reference_id: '1307_4882'
+      section: Results
+    parameter_ranges:
+    - confidence: high
+      note: Good Yukawa unification implies tan beta near 14; the lightest benchmark stop is 488 GeV and
+        point 1 satisfies the 5-sigma WMAP relic-density bound.
+      page: null
+      reference_id: '1307_4882'
+      section: Benchmark discussion
+    particle_content:
+    - confidence: high
+      note: The paper requires a neutralino LSP and shows it can be an acceptable dark matter candidate
+        with a relatively light stop NLSP.
+      page: null
+      reference_id: '1307_4882'
+      section: Abstract and results
+    production_mechanism:
+    - confidence: high
+      note: Micromegas interfaced with Isajet is used to calculate neutralino relic density, and the paper
+        identifies stop coannihilation as the only viable neutralino dark matter realization.
+      page: null
+      reference_id: '1307_4882'
+      section: Scanning procedure and results
+    symmetries:
+    - confidence: high
+      note: The dark matter candidate is the LSP neutralino in an MSSM/SO(10) supersymmetric setup, relying
+        on the usual LSP stability assumption.
+      page: null
+      reference_id: '1307_4882'
+      section: Model scan
+    validity_domain:
+    - confidence: high
+      note: The SO(10) setup uses a 144 + anti-144 unified Higgs sector and non-universal GUT-scale gaugino
+        masses to realize Y_b approximately Y_tau approximately Y_t/6.
+      page: null
+      reference_id: '1307_4882'
+      section: Model description
+  extraction:
+    confidence: high
+    extracted_by: codex_batch-0008
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5 dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections: []
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: supersymmetric_neutralino_dark_matter
+  model_id: 1307_4882_so10_neutralino_stop_coannihilation_v1
+  model_name: SO(10) unified-Higgs neutralino-stop coannihilation dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: high
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1307.4882'
+      authors:
+      - M. Adeel Ajaib
+      - Ilia Gogoladze
+      - Qaisar Shafi
+      doi: null
+      notes: Assigned full text from the run-local SQLite database.
+      reference_id: '1307_4882'
+      role: original_model
+      title: Sparticle Spectroscopy from SO(10) GUT with a Unified Higgs Sector
+      url: null
+      year: 2013
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - stop-neutralino coannihilation
+  - bino-like neutralino mass
+  - non-universal gaugino masses
+  - SO(10) Yukawa unification
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction: null
+  tuning_assessment: mild_tuning
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - spectrum-generator uncertainties
+  - coannihilation mass degeneracy
+  - GUT-scale threshold assumptions
+  notes: The card records the paper-local SO(10) neutralino-stop coannihilation construction.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: The neutralino is accepted as the LSP dark matter candidate in the supersymmetric
+    model, implicitly requiring the usual LSP-stabilizing parity.
+  symmetries:
+  - breaking: not discussed in the assigned text
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: R parity
+    type: discrete
+  - breaking: broken to the Standard Model gauge group by the unified Higgs sector
+    breaking_scale:
+      name: GUT scale
+      status: inferred
+      symbol: M_GUT
+      unit: GeV
+      value: about 2 x 10^16
+    exact_or_approximate: broken
+    name: SO(10) gauge symmetry
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper studies low-energy spectra from SO(10) broken with a 144 + anti-144 Higgs sector and
+    non-universal GUT-scale gaugino masses.
+  parent_frameworks:
+  - SO(10) grand unification
+  - MSSM
+  - gravity-mediated supersymmetry breaking
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The SO(10) model uses the asymptotic relation Y_b approximately Y_tau approximately Y_t/6
+    from a 144 + anti-144 unified Higgs sector.
+  extrapolation_risk: medium
+  id: so10_yukawa_relation
+  notes: null
+  source_reference_ids:
+  - '1307_4882'
+  status: inferred
+  valid_range: tan beta around 14
+- applies_to: model
+  caveats: []
+  condition: The neutralino dark matter realization requires neutralino-stop coannihilation; stau coannihilation
+    and M_A resonance are not realized with good Yukawa unification.
+  extrapolation_risk: medium
+  id: stop_coannihilation_required
+  notes: null
+  source_reference_ids:
+  - '1307_4882'
+  status: inferred
+  valid_range: light stop NLSP near neutralino; benchmark stop as low as 488 GeV

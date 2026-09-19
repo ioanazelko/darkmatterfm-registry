@@ -1,0 +1,317 @@
+_source:
+  shard: arXiv_src_2211_001_wds.tar
+  paper_id: '2211_00025'
+  source_member: 2211_00025.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: ultraheavy_nonthermal
+    severity: high
+    warning: The ultra-heavy decaying benchmark cannot have a thermal origin in the paper and requires
+      nonthermal production plus a long-lived symmetry.
+  - category: extrapolation
+    id: dark_shower_model_dependence
+    severity: high
+    warning: Multiplicity and antinucleus yields depend sensitively on hidden-sector gauge dynamics and
+      shower modeling.
+associated_code:
+  caveats:
+  - Full dark showering model implementation is stated to be beyond the paper scope.
+  code_summary: The paper describes a toy Pythia implementation with auxiliary resonances for the dark
+    shower.
+  containers_or_environments: []
+  expected_inputs:
+  - dark_matter_mass
+  - dark_hadron_multiplicity
+  - annihilation_cross_section_or_decay_rate
+  expected_outputs:
+  - antinucleus_energy_spectrum
+  has_associated_code: 'yes'
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: indirect_detection_signal
+  repositories: []
+  scripts: []
+  supported_observable_channels: []
+assumptions:
+  global:
+  - description: The dark sector is strongly coupled and produces high-multiplicity dark hadron final
+      states.
+    id: strong_dark_shower
+    scope: theory
+    status: assumed
+  - description: The light dark hadrons decay promptly and hadronically, concretely to top pairs in the
+      benchmark.
+    id: hadronic_dark_pion_decay
+    scope: production
+    status: assumed
+  - description: Dark matter is very heavy to allow 100-1000 dark hadrons that subsequently decay to tops.
+    id: heavy_dm_kinematics
+    scope: production
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases: []
+  family: strongly_coupled_dark_sector
+  historical_origin_or_motivation: unknown
+  model_kind: phenomenological_parameterization
+  name: Decaying strongly coupled dark-sector dark matter
+  short_description: A heavy dark matter benchmark annihilates or decays into a strongly coupled hidden
+    sector; dark showers yield many heavy dark hadrons that decay hadronically and enhance antihelium
+    production.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: unknown
+  dark_sector_couplings: []
+  decay_channels: []
+  flavor_structure: unknown
+  interaction_operators: []
+  mediator_types:
+  - heavy scalar mediator
+  - dark quarks
+  - dark gluons
+  - dark hadrons/dark pions
+  portals:
+  - higgs
+  - vector
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - heavy scalars
+  - dark quarks
+  - top quarks
+  tree_or_loop_level: unknown
+model_id: 2211_00025_decaying_strongly_coupled_dark_sector_v1
+parameters:
+  core:
+  - description: Benchmark decaying DM mass.
+    name: dark matter mass
+    role: core
+    status: inferred
+    symbol: m_chi
+    unit: TeV
+    value: '5000'
+  - description: Lifetime must be much longer than the age of the universe; decay rate controls the source
+      term.
+    name: dark matter lifetime
+    range: constrained by antiprotons in the paper benchmark
+    role: core
+    status: inferred
+    unit: s
+  - description: Scale below which dark quarks and gluons bind into dark hadrons.
+    name: dark confinement scale
+    range: around TeV in examples
+    role: core
+    status: inferred
+    symbol: Lambda_d
+    unit: TeV
+  - description: Number of light dark hadrons produced in the dark shower.
+    name: dark pion multiplicity
+    range: 100-1000
+    role: core
+    status: inferred
+    symbol: N_pi_dark
+  - description: Mass scale of light dark hadrons that decay to top pairs in the benchmark.
+    name: dark pion mass
+    range: around or above TeV
+    role: core
+    status: inferred
+    symbol: m_pi_dark
+    unit: TeV
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: unknown
+    name: heavy dark matter particle chi
+    number_of_components: unknown
+    spin: unknown
+    statistics: unknown
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - heavy scalar mediator
+  - dark quarks
+  - dark gluons
+  - dark hadrons/dark pions
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: unknown
+  free_streaming_length: null
+  notes: unknown
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - nonthermal production during reheating, gravitational production, or first-order phase transition
+  - late decay into heavy scalars followed by dark showering
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - nonthermal production during reheating, gravitational production, or first-order phase transition
+  - late decay into heavy scalars followed by dark showering
+  nonthermal_momentum_distribution: unknown
+  notes: Production summary is limited to mechanisms discussed in the paper.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: unknown
+provenance:
+  caveats:
+  - This card records the paper benchmark/model class, not a complete UV model.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: DM annihilates or decays into heavy scalars, which decay into dark quarks; dark hadrons then
+        decay hadronically, concretely to top pairs.
+      page: null
+      reference_id: '2211_00025'
+      section: Model
+    parameter_ranges:
+    - confidence: high
+      note: Benchmarks use m_chi=150 TeV or 5000 TeV and dark-hadron multiplicities N_pi-hat=100-1000.
+      page: null
+      reference_id: '2211_00025'
+      section: Model/Flux results
+    particle_content:
+    - confidence: high
+      note: The hidden sector contains dark quarks, dark gluons, dark hadrons, and light dark hadrons
+        denoted pi-hat.
+      page: null
+      reference_id: '2211_00025'
+      section: Model
+    production_mechanism:
+    - confidence: medium
+      note: The annihilating benchmark can be compatible with thermal origin with 1/v scaling; the decaying
+        benchmark is ultra-heavy and needs nonthermal production.
+      page: null
+      reference_id: '2211_00025'
+      section: Flux results
+    validity_domain:
+    - confidence: high
+      note: The full hidden-sector shower is approximated by a toy Pythia decay chain with auxiliary resonances.
+      page: null
+      reference_id: '2211_00025'
+      section: Implementation
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0003
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper extends the SM by a strongly coupled dark sector with dark quarks and
+        dark gluons.
+      reference_id: '2211_00025'
+      section: Model
+    - page: null
+      quote_or_summary: It considers annihilating and decaying DM benchmarks through the dark-shower process.
+      reference_id: '2211_00025'
+      section: Flux calculation
+    unresolved_items:
+    - The dark matter spin/statistics and detailed UV completion are not fixed in the extracted text.
+  last_updated: '2026-05-31'
+  model_family: strongly_coupled_dark_sector
+  model_id: 2211_00025_decaying_strongly_coupled_dark_sector_v1
+  model_name: Decaying strongly coupled dark-sector dark matter
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: medium
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2211.00025'
+      authors: []
+      doi: null
+      notes: null
+      reference_id: '2211_00025'
+      role: original_model
+      title: Cosmic Ray Antihelium from a Strongly Coupled Dark Sector
+      url: null
+      year: 2022
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - dark matter mass
+  - dark matter lifetime
+  - dark confinement scale
+  - dark pion multiplicity
+  - dark pion mass
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: unknown
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  notes: null
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: For the decaying benchmark, long lifetime can be protected by an approximate
+    symmetry; the annihilating benchmark relies on dark matter stability not specified in detail.
+  symmetries:
+  - exact_or_approximate: approximate
+    name: approximate dark-matter stability symmetry
+    type: unknown
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: unknown
+  lagrangian_available: partial
+  notes: Populated only from the assigned paper text.
+  parent_frameworks: []
+  renormalizable: unknown
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: computation
+  condition: The paper uses a toy Pythia implementation to capture the dark shower rather than a complete
+    hidden-sector event generator.
+  extrapolation_risk: high
+  id: toy_shower_implementation
+  status: approximate
+- applies_to: parameter
+  condition: 'Benchmarks use very heavy dark matter masses: 150 TeV for annihilation and 5000 TeV for
+    decay.'
+  extrapolation_risk: medium
+  id: heavy_mass_benchmark
+  status: inferred

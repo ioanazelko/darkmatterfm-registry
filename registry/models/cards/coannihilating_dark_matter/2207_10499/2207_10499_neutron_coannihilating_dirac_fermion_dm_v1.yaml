@@ -1,0 +1,296 @@
+_source:
+  shard: arXiv_src_2207_075_wds.tar
+  paper_id: '2207_10499'
+  source_member: 2207_10499.json
+schema_version: model_only_v0
+model_id: 2207_10499_neutron_coannihilating_dirac_fermion_dm_v1
+identity:
+  name: Neutron-coannihilating neutral Dirac fermion dark matter
+  family: coannihilating_dark_matter
+  aliases: []
+  short_description: An effective GeV-scale neutral Dirac fermion DM scenario whose abundance and BBN
+    impact are controlled by co-annihilation with neutrons.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - low-energy neutron-DM co-annihilation effective theory
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper is agnostic about the ultraviolet completion and uses an effective four-fermion co-annihilation
+    operator.
+particle_content:
+  dark_matter_candidate:
+    name: charge-neutral Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Assumed stable over cosmological time scales; kinematics are chosen to forbid
+    chi decay into n + p + e.
+  symmetries:
+  - name: lepton number assignment for chi
+    type: global
+    exact_or_approximate: unknown
+    breaking: The text assigns chi lepton number equal to the electron to avoid lepton-number violation
+      in co-annihilation.
+  topological_defects_possible: 'no'
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - neutrons
+  - protons
+  - electrons
+  dark_sector_couplings:
+  - effective co-annihilation coupling G_D
+  mediator_types:
+  - integrated-out effective mediator, possible leptoquark-motivated UV physics
+  interaction_operators:
+  - (G_D/2) p Gamma^a n e Gamma_a chi
+  annihilation_channels:
+  - n + chi -> p + e-
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark fermion mass
+    symbol: m_chi
+    description: Mass of the neutral Dirac fermion.
+    range: 1.68 MeV to 1.88 GeV; observed full relic density near 0.92 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: co-annihilation coupling
+    symbol: G_D
+    description: Effective four-fermion coupling for neutron-chi co-annihilation.
+    range: studied relative to G_F; BBN behavior depends on G_D/G_F
+    unit: GeV^-2
+    role: core
+    status: inferred
+  - name: thermalization temperature
+    description: Thermal number density is assumed around T about 100 MeV in the analysis.
+    value: T ~ 100 MeV
+    unit: MeV
+    role: cosmological
+    status: inferred
+production:
+  mechanisms:
+  - thermal initial abundance followed by neutron co-annihilation freeze-out
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - co-annihilation n + chi -> p + e-
+  - mass m_chi
+  - coupling ratio G_D/G_F
+  - BBN-era neutron abundance
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: For m_chi about 0.92 GeV the paper finds the observed DM relic density can be satisfied while
+    preserving BBN.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - G_D/G_F
+  - neutron-proton ratio evolution
+  - co-annihilation freeze-out
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - BBN-era co-annihilation removes neutrons and chi from the thermal bath
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: chemical freeze-out temperature
+    symbol: T_F
+    description: Freeze-out temperature depends on m_chi and G_D/G_F; examples include nonrelativistic
+      freeze-out around tens of MeV.
+    range: model dependent
+    unit: MeV
+    role: cosmological
+    status: inferred
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: critical
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: The number density is taken to be thermal initially; the Boltzmann equations track the comoving
+    yield.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: validity_10499_mass_window
+  applies_to: parameter
+  condition: Stable thermalized extra fermion mass is taken in the window 1.68 MeV < m_chi < 1.88 GeV.
+  status: inferred
+  extrapolation_risk: medium
+- id: validity_10499_full_dm
+  applies_to: parameter
+  condition: Full observed DM relic density occurs near m_chi about 0.92 GeV in the analyzed co-annihilation
+    scenario.
+  status: inferred
+  extrapolation_risk: medium
+- id: validity_10499_overabundance
+  applies_to: model
+  condition: For m_chi below about 0.92 GeV the model overproduces chi unless extra number-changing processes
+    are added.
+  status: inferred
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: assumption_10499_stability
+    description: chi is stable over cosmological time scales.
+    scope: global
+    status: assumed
+    impact_if_violated: Without stability it is not a dark matter candidate.
+  - id: assumption_10499_thermal_initial
+    description: chi has a thermal number density at the start of the BBN-era evolution.
+    scope: production
+    status: assumed
+    impact_if_violated: Relic-density conclusions depend on the assumed initial abundance.
+  - id: assumption_10499_eft
+    description: The low-energy effective operator captures the co-annihilation dynamics without specifying
+      the UV mediator.
+    scope: theory
+    status: assumed
+    impact_if_violated: A UV completion could add channels or modify direct-detection and relic predictions.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code was identified in the extracted text.
+  primary_code_role: null
+provenance:
+  model_id: 2207_10499_neutron_coannihilating_dirac_fermion_dm_v1
+  model_name: Neutron-coannihilating neutral Dirac fermion dark matter
+  model_family: coannihilating_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2207_10499'
+      title: unknown
+      year: 2022
+      arxiv_id: '2207.10499'
+      doi: null
+      url: null
+      role: original_model
+      notes: Extracted only from assigned SQLite full text.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0000
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2207_10499'
+      section: Introduction and model setup
+      page: null
+      quote_or_summary: The paper introduces a charge-neutral Dirac fermion that co-annihilates with neutrons
+        through n + chi -> p + e- and can be a DM candidate.
+    - reference_id: '2207_10499'
+      section: Relic density constraint
+      page: null
+      quote_or_summary: The observed relic density is obtained near m_chi about 0.92 GeV while satisfying
+        BBN; larger masses give subcomponent DM and smaller masses overproduce.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2207_10499'
+      note: The new particle is taken as a charge-neutral Dirac fermion and considered as a viable DM
+        candidate if cosmologically stable.
+      confidence: high
+      section: Model setup
+    interactions:
+    - reference_id: '2207_10499'
+      note: The low-energy effective operator mediates n + chi -> p + e- with coupling G_D and a standard
+        V-A prototype structure.
+      confidence: high
+      section: Model setup
+    production_mechanism:
+    - reference_id: '2207_10499'
+      note: The initial chi abundance is assumed thermal, and its yield freezes out through co-annihilation
+        with neutrons.
+      confidence: high
+      section: Evolution equations
+    cosmological_history:
+    - reference_id: '2207_10499'
+      note: The model is analyzed during BBN, where the co-annihilation modifies neutron/proton freeze-out
+        depending on m_chi and G_D.
+      confidence: high
+      section: Study of the evolution equations
+    parameter_ranges:
+    - reference_id: '2207_10499'
+      note: Stable thermalized fermion mass window is quoted as 1.68 MeV < m_chi < 1.88 GeV; full DM occurs
+        near 0.92 GeV.
+      confidence: high
+      section: Model setup and relic density constraint
+    validity_domain:
+    - reference_id: '2207_10499'
+      note: For m_chi below about 0.92 GeV the universe is overabundant unless extra number-changing processes
+        are added.
+      confidence: high
+      section: Relic density constraint
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: high
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Machine extraction from paper text; no external cross-check.
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: warn_10499_eft_uv
+    severity: medium
+    category: extrapolation
+    warning: The paper is explicit that the UV completion is not specified; avoid treating the effective
+      operator as valid at arbitrary energies.
+  - id: warn_10499_bbn_sensitive
+    severity: high
+    category: assumption_mismatch
+    warning: Relic and BBN conclusions depend sensitively on the assumed thermal initial abundance and
+      cosmological stability of chi.

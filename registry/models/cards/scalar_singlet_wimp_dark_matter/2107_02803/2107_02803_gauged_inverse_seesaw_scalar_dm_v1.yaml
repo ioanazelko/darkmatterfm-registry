@@ -1,0 +1,805 @@
+_source:
+  shard: arXiv_src_2107_017_wds.tar
+  paper_id: '2107_02803'
+  source_member: 2107_02803.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: w1
+    mitigation: null
+    severity: medium
+    source_reference_ids: []
+    warning: Do not treat the scalar and fermionic candidates as simultaneous dark matter in this row;
+      this row is the scalar lightest-odd-state variant.
+  - category: notation_conflict
+    id: w2
+    mitigation: null
+    severity: low
+    source_reference_ids: []
+    warning: The field symbol for the inert scalar is partly lost in OCR; eta_R and eta_I are descriptive
+      names for the real and imaginary components.
+associated_code:
+  caveats: []
+  code_summary: The paper states that MicrOMEGAs was used for relic-density and scattering calculations,
+    but no public model file or repository is identified in the extracted text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+  supported_observable_channels: []
+assumptions:
+  computation_specific: []
+  constraint_specific: []
+  global:
+  - can_be_relaxed: unknown
+    description: The residual Z2 remains exact and stabilizes the lightest inert scalar.
+    id: exact_residual_z2
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The main scalar dark matter calculation assumes standard WIMP freeze-out from the thermal
+      bath.
+    id: standard_wimp_cosmology
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The numerical discussion assumes eta_R lighter than eta_I, while stating the opposite
+      ordering gives similar results.
+    id: real_component_benchmark
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: inferred
+cosmological_history:
+  bbn_relevance: low
+  chemical_decoupling:
+    description: Chemical decoupling temperature for scalar WIMP freeze-out; not explicitly tabulated.
+    name: WIMP freeze-out temperature
+    range: not specified
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: T_f
+    unit: GeV
+  cmb_relevance: low
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - radiative inverse-seesaw mass generation in the dark sector
+  phase_transitions:
+  - U(1)_{B-L} breaking
+  - Z4 breaking to residual Z2
+  - electroweak symmetry breaking
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - scalar dark matter in gauged inverse seesaw
+  - residual Z2 inert-scalar dark matter
+  family: scalar_singlet_wimp_dark_matter
+  historical_origin_or_motivation: Built to connect dark matter with a radiative origin for the inverse-seesaw
+    Majorana mass term and active neutrino masses.
+  model_kind: complete_theory
+  name: Gauged inverse-seesaw inert-scalar dark matter
+  short_description: A local U(1)_{B-L} plus Z4 inverse-seesaw model in which the lightest real or imaginary
+    component of an inert scalar singlet is a residual-Z2-stabilized thermal WIMP dark matter candidate.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - eta eta to Higgs bosons
+  - eta eta to charged fermions and vector bosons through Higgs portal
+  - eta eta to new scalars
+  - eta eta to neutrinos through N_R exchange
+  cp_structure: CP-conserving scalar potential assumed in the paper
+  dark_sector_couplings:
+  - Higgs portal coupling lambda_etaH
+  - scalar couplings to the new singlets
+  - Yukawa couplings to N_R and sterile neutrinos
+  - trilinear parameter mu splitting eta_R and eta_I
+  decay_channels: []
+  flavor_structure: Yukawa matrices connect the inert scalar, N_R, and sterile neutrino sectors.
+  interaction_operators:
+  - scalar Higgs-portal quartic interactions
+  - Yukawa terms involving sterile neutrinos and N_R
+  - trilinear scalar coupling generating eta_R eta_I splitting
+  mediator_types:
+  - Higgs boson
+  - new scalar singlets
+  - N_R fermions
+  - Z prime gauge boson
+  portals:
+  - higgs
+  - neutrino
+  - vector
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - quartic inert-scalar self-interactions if sizable
+  standard_model_targets:
+  - Higgs bosons
+  - charged fermions
+  - electroweak vector bosons
+  - active neutrinos
+  tree_or_loop_level: both
+model_id: 2107_02803_gauged_inverse_seesaw_scalar_dm_v1
+parameters:
+  core:
+  - description: Mass of the lightest eta_R or eta_I component.
+    name: scalar dark matter mass
+    range: Higgs funnel or roughly 1 TeV to 30 TeV in the WIMP scenario
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_eta
+    unit: GeV
+  - description: Controls Higgs-mediated annihilation and direct scattering.
+    name: Higgs portal coupling
+    range: model-dependent; order unity for high-mass WIMP solutions
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: lambda_etaH
+  - description: Mass splitting proportional to the trilinear parameter mu times the Z4-breaking vev.
+    name: eta_R eta_I mass splitting
+    range: model-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: Delta m_eta
+  - description: Controls both eta_R/eta_I splitting and the loop-generated inverse-seesaw term.
+    name: trilinear scalar parameter
+    range: small values technically protected
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: mu
+  - description: Gauge coupling of the U(1)_{B-L} extension.
+    name: B-L gauge coupling
+    range: model-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: g_B-L
+  - description: Mass of the B-L gauge boson.
+    name: Z prime mass
+    range: TeV scale
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: M_Zprime
+    unit: GeV
+  derived:
+  - description: Whole observed dark matter abundance used in the scalar WIMP scan.
+    name: target relic abundance
+    role: derived
+    source_reference_ids: []
+    status: assumed
+    symbol: Omega_eta h^2
+    value: '0.12'
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - heavier inert scalar component
+  - three N_R singlet fermions
+  - two pairs of sterile neutrinos nu_R and nu_S
+  - new scalar singlets that break U(1)_{B-L} and Z4
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: lightest inert scalar component eta_R or eta_I
+    number_of_components: single_component
+    spin: '0'
+    statistics: boson
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - opposite CP component of the inert scalar
+  long_lived_particles: []
+  mediators:
+  - Standard Model Higgs
+  - new neutral scalars
+  - N_R fermions
+  - Z prime gauge boson
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: Standard cold WIMP thermal relic; no explicit phase-space function is given.
+  free_streaming_length: null
+  notes: The viable WIMP masses are heavy enough to behave as cold dark matter.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - m_eta
+  - Higgs portal coupling
+  - new scalar masses
+  - eta_R eta_I splitting
+  - sterile-neutrino couplings
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal WIMP freeze-out from the Standard Model bath
+  - 2-to-2 annihilation and coannihilation involving Higgs, scalar, gauge, and neutrino final states
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper also mentions FIMP, self-interaction, primordial-black-hole and nonstandard-cosmology
+    alternatives, but the developed calculation is the WIMP case.
+  thermal_equilibrium_with_hidden_sector: partial
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The relic-density computation targets the whole observed dark matter abundance and uses MicrOMEGAs
+        in a standard WIMP setup.
+      page: null
+      reference_id: '2107_02803'
+      section: Scalar dark matter
+    interactions:
+    - confidence: high
+      note: The scalar candidate annihilates into Higgs bosons, charged fermions, vector bosons, new scalars,
+        and neutrinos through Higgs/scalar portals and N_R exchange.
+      page: null
+      reference_id: '2107_02803'
+      section: Scalar dark matter
+    parameter_ranges:
+    - confidence: medium
+      note: Allowed scalar masses are close to the Higgs funnel or above about 1 TeV up to about 30 TeV
+        in the WIMP portal scenario.
+      page: null
+      reference_id: '2107_02803'
+      section: Conclusions
+    particle_content:
+    - confidence: high
+      note: 'The model offers a scalar dark matter candidate: the lightest real or imaginary component
+        of the inert scalar singlet.'
+      page: null
+      reference_id: '2107_02803'
+      section: Scalar dark matter
+    production_mechanism:
+    - confidence: high
+      note: The paper explicitly states that the scalar candidate is produced from the Standard Model
+        thermal bath by the WIMP mechanism through 2-to-2 scatterings.
+      page: null
+      reference_id: '2107_02803'
+      section: Scalar dark matter
+    symmetries:
+    - confidence: high
+      note: The Z4 symmetry is spontaneously broken to a residual Z2, under which the inert scalar components
+        are odd and stable.
+      page: null
+      reference_id: '2107_02803'
+      section: Scalar potential
+    validity_domain:
+    - confidence: medium
+      note: The scalar WIMP analysis is performed in the decoupling limit where h behaves as the Standard
+        Model Higgs and the inert scalar is lighter than the other dark-sector particles.
+      page: null
+      reference_id: '2107_02803'
+      section: Scalar dark matter
+    constraints:
+    - confidence: high
+      note: Primary paper states XENON1T plus invisible Higgs bounds leave the Higgs funnel and 1-30 TeV
+        scalar region.
+      page: null
+      reference_id: arxiv:2107.02803
+      section: Scalar dark matter
+    - confidence: high
+      note: Primary paper states masses above 30 TeV would require non-perturbative coupling to avoid
+        overclosure.
+      page: null
+      reference_id: arxiv:2107.02803
+      section: Scalar dark matter
+    observables:
+    - confidence: high
+      note: Primary paper reports scalar-DM relic curve from MicrOMEGAs and direct-detection formula with
+        f_n about 0.3.
+      page: null
+      reference_id: arxiv:2107.02803
+      section: Dark matter
+    - confidence: medium
+      note: Related GAMBIT analysis provides Higgs-portal scalar-DM context for relic and direct-detection
+        constraints.
+      page: null
+      reference_id: arxiv:1808.10465
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary text describes the scalar-DM MicrOMEGAs computation and overlay of ATLAS/XENON1T exclusions.
+      page: null
+      reference_id: arxiv:2107.02803
+      section: Scalar dark matter
+  extraction:
+    confidence: high
+    extracted_by: codex_dark_matter_model_worker_batch_0014
+    extraction_date: '2026-05-31'
+    extractor_name: codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper proposes a U(1)_{B-L} and Z4 extension with scalar and fermionic dark
+        matter candidates stabilized by residual Z2.
+      reference_id: '2107_02803'
+      section: Abstract
+    - page: null
+      quote_or_summary: The scalar candidate is the lightest real or imaginary inert-scalar component
+        and is produced by WIMP 2-to-2 annihilations.
+      reference_id: '2107_02803'
+      section: Scalar dark matter
+    - page: null
+      quote_or_summary: The scalar candidate can reproduce the measured abundance while satisfying the
+        discussed searches in Higgs-funnel or TeV-scale regimes.
+      reference_id: '2107_02803'
+      section: Conclusions
+    unresolved_items:
+    - No exact XENON1T, ATLAS, or indirect-detection likelihood was rerun.
+    - Nonthermal FIMP/PBH alternatives are noted by the primary paper but not structured for this WIMP
+      row.
+  last_updated: '2026-05-31'
+  model_family: scalar_singlet_wimp_dark_matter
+  model_id: 2107_02803_gauged_inverse_seesaw_scalar_dm_v1
+  model_name: Gauged inverse-seesaw inert-scalar dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2107.02803'
+      authors:
+      - Asmaa Abada
+      - Nicolas Bernal
+      - Antonio E. Carcamo Hernandez
+      - Xabier Marcano
+      - Gioacchino Piazza
+      doi: null
+      notes: Source text taken from the assigned run SQLite database only.
+      reference_id: '2107_02803'
+      role: original_model
+      title: Gauged Inverse Seesaw from Dark Matter
+      url: null
+      year: 2021
+    - arxiv_id: '2107.02803'
+      authors:
+      - Abada, Asmaa
+      - Bernal, Nicolas
+      - Hernandez, Antonio E. Carcamo
+      - Marcano, Xabier
+      - Piazza, Gioacchino
+      doi: 10.1140/epjc/s10052-021-09535-5
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2107.02803
+      role: original_model
+      title: Gauged inverse seesaw from dark matter
+      url: https://arxiv.org/abs/2107.02803
+      year: 2021
+    constraint_papers:
+    - arxiv_id: '1707.08606'
+      authors:
+      - De Romeri, Valentina
+      - Fernandez-Martinez, Enrique
+      - Gehrlein, Julia
+      - Machado, Pedro A. N.
+      - Niro, Viviana
+      doi: 10.1007/JHEP10(2017)169
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1707.08606
+      role: constraint
+      title: Dark Matter and the elusive Z' in a dynamical Inverse Seesaw scenario
+      url: https://arxiv.org/abs/1707.08606
+      year: 2017
+    - arxiv_id: '1808.10465'
+      authors:
+      - Athron, Peter
+      - Balazs, Csaba
+      - Beniwal, Ankit
+      - Bloor, Sanjay
+      - Camargo-Molina, Jose Eliel
+      - Cornell, Jonathan M.
+      - Farmer, Ben
+      - Fowlie, Andrew
+      - et al.
+      doi: 10.1140/epjc/s10052-018-6513-6
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1808.10465
+      role: constraint
+      title: Global analyses of Higgs portal singlet dark matter models using GAMBIT
+      url: https://arxiv.org/abs/1808.10465
+      year: 2019
+    - arxiv_id: '1501.03490'
+      authors:
+      - Alves, Alexandre
+      - Berlin, Asher
+      - Profumo, Stefano
+      - Queiroz, Farinaldo S.
+      doi: 10.1103/PhysRevD.92.083004
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1501.03490
+      role: constraint
+      title: Dark matter complementarity and the Z' portal
+      url: https://arxiv.org/abs/1501.03490
+      year: 2015
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - scalar mass
+  - Higgs portal coupling
+  - annihilation into Standard Model and new scalar final states
+  - coannihilation if eta_R eta_I splitting is small
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    description: The scalar WIMP scan targets all observed dark matter.
+    name: scalar dark matter fraction
+    role: derived
+    source_reference_ids: []
+    status: assumed
+    symbol: Omega_eta/Omega_DM
+    unit: null
+    value: 1
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: medium
+  dominant_uncertainties:
+  - Exact numerical allowed regions require the MicrOMEGAs implementation and figure data.
+  - OCR obscures some scalar field names.
+  notes: The scalar candidate, stabilizing symmetry, Lagrangian ingredients, and WIMP production are explicit.
+  observational_robustness: medium
+  overall: high
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    thermal_wdm_mapping:
+      available: false
+      validity: invalid
+      warning: This is not a warm-dark-matter transfer-function model.
+    transfer_function_shape: cdm_like
+  nonlinear:
+    concentration_mass_relation_effect: unknown
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: No distinctive structure-formation calculation is provided; the heavy particle
+      candidates are treated as cold dark matter relics.
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: unknown
+    subhalo_mass_function_effect: No distinctive structure-formation calculation is provided; the heavy
+      particle candidates are treated as cold dark matter relics.
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+symmetries:
+  stabilizing_mechanism: Z4 is spontaneously broken to a residual Z2; eta_R and eta_I are odd under the
+    residual symmetry, making the lightest component stable.
+  symmetries:
+  - breaking: spontaneously broken by a scalar singlet vev
+    breaking_scale:
+      description: TeV-scale breaking assumed for consistency with Z prime searches.
+      name: B-L breaking scale
+      range: TeV scale
+      role: core
+      source_reference_ids: []
+      status: inferred
+      symbol: v_phi
+      unit: GeV
+    exact_or_approximate: broken
+    name: U(1)_{B-L}
+    type: gauge
+  - breaking: spontaneously broken to residual Z2
+    breaking_scale:
+      description: Scalar vev that breaks Z4 to Z2.
+      name: Z4 breaking scale
+      range: TeV scale
+      role: core
+      source_reference_ids: []
+      status: inferred
+      symbol: v_varphi
+      unit: GeV
+    exact_or_approximate: broken
+    name: Z4
+    type: discrete
+  - breaking: unbroken stabilizing remnant
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: residual Z2
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  lagrangian_available: 'yes'
+  notes: The paper gives the scalar potential, Yukawa terms, residual Z2 assignments, and the loop generating
+    the inverse-seesaw term.
+  parent_frameworks:
+  - gauged U(1)_{B-L}
+  - inverse seesaw
+  - scotogenic radiative mass generation
+  - scalar singlet dark matter
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The scalar candidate must be the lightest residual-Z2-odd particle.
+  extrapolation_risk: high
+  id: lightest_odd_scalar
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: The scalar WIMP scan focuses on the decoupling limit with h behaving like the Standard Model
+    Higgs.
+  extrapolation_risk: medium
+  id: decoupling_limit
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: parameter
+  caveats: []
+  condition: The paper concludes that viable scalar WIMP mass lies near the Higgs funnel or above about
+    1 TeV up to perturbativity around 30 TeV.
+  extrapolation_risk: medium
+  id: wimp_mass_region
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: m_eta near m_h/2 or roughly 1-30 TeV
+observables:
+- caveats:
+  - The scalar sector reduces to singlet scalar DM only in the decoupling limit.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - thermal bath
+  id: obs_scalar_eta_relic_curve
+  key_quantities:
+  - description: Mass of the lightest inert scalar component.
+    name: scalar DM mass
+    range: near m_h/2 or about 1-30 TeV after bounds
+    role: core
+    source_reference_ids:
+    - arxiv:2107.02803
+    status: inferred
+    symbol: m_eta
+    unit: GeV
+  - description: Coupling setting annihilation, invisible Higgs decay, and SI recoil.
+    name: Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2107.02803
+    status: inferred
+    symbol: lambda_etaH
+  linked_constraints:
+  - con_scalar_xenon1t_higgs_invisible
+  - con_scalar_perturbative_mass_ceiling
+  linked_routes:
+  - route_gauged_iss_scalar_wimp
+  name: Inert-singlet scalar WIMP relic curve
+  notes: null
+  observability: high
+  predicted_effect: The real or imaginary inert scalar component follows a Higgs-portal-like relic curve,
+    with viable full-DM points near the Higgs funnel or above the TeV scale.
+  redshift_range: freeze-out epoch to today
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2107.02803
+  - arxiv:1808.10465
+  subchannel: Higgs-portal freeze-out
+- caveats:
+  - Indirect limits are stated comparable to direct detection but not shown by the primary source.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - direct-detection targets
+  id: obs_scalar_eta_nuclear_recoil
+  key_quantities:
+  - description: Higgs-mediated scalar-nucleon cross section.
+    name: SI cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:2107.02803
+    status: inferred
+    symbol: sigma_SI
+  - description: Nucleon scalar form factor used by the source.
+    name: hadron matrix element
+    role: nuisance
+    source_reference_ids:
+    - arxiv:2107.02803
+    status: assumed
+    symbol: f_n
+    value: 0.3
+  linked_constraints:
+  - con_scalar_xenon1t_higgs_invisible
+  linked_routes:
+  - route_gauged_iss_scalar_wimp
+  name: Scalar DM spin-independent nuclear recoil
+  notes: null
+  observability: medium
+  predicted_effect: The same portal coupling needed for full thermal abundance produces SI nuclear recoil
+    constrained by XENON1T.
+  redshift_range: z=0 halo scattering
+  relevance: high
+  scale_range: nuclear recoil energies
+  source_reference_ids:
+  - arxiv:2107.02803
+  subchannel: Higgs-mediated SI scattering
+constraints:
+- allowed_regions:
+  - Narrow Higgs-funnel region near m_h/2 and the high-mass 1-30 TeV band remain viable in the source
+    scan.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The plotted scalar-DM result is interpreted in the decoupling limit where the SM-like
+      Higgs dominates the portal.
+    id: scalar-decoupling-limit
+    impact_if_violated: Additional scalar mixing can modify annihilation, recoil, and invisible-width
+      rates.
+    notes: null
+    scope: scalar WIMP scan
+    source_reference_ids:
+    - arxiv:2107.02803
+    status: assumed
+  benchmark_implications:
+  - Scalar WIMP solutions below the TeV scale are highly compressed around the Higgs funnel.
+  caveats:
+  - Exact experimental likelihoods are not available in this batch.
+  constrained_parameters:
+  - m_eta
+  - lambda_etaH
+  - sigma_SI
+  - Br(h invisible)
+  constraint_type: direct_detection
+  data_release: XENON1T SI limit and ATLAS Br(h invisible) < 0.11 at 95 percent CL as quoted by primary
+    paper
+  excluded_regions:
+  - Large portions of the scalar-DM relic curve are excluded by XENON1T and ATLAS invisible-Higgs bounds.
+  id: con_scalar_xenon1t_higgs_invisible
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: XENON1T and invisible-Higgs exclusions for scalar DM
+  notes: null
+  observable_channel: spin-independent recoil plus invisible Higgs decay
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2107.02803
+  - arxiv:1808.10465
+- allowed_regions:
+  - Primary paper quotes 1 TeV <= m_eta <= 30 TeV as the heavy scalar-DM region.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - The scalar model is not treated as an arbitrarily heavy thermal relic.
+  caveats:
+  - Nonthermal alternatives are mentioned but not developed as this scalar WIMP row.
+  constrained_parameters:
+  - m_eta
+  - lambda_etaH
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Masses above about 30 TeV would require non-perturbative portal coupling to avoid overclosure in the
+    primary WIMP setup.
+  id: con_scalar_perturbative_mass_ceiling
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Perturbativity ceiling for heavy scalar WIMP
+  notes: null
+  observable_channel: thermal relic overclosure
+  recasting_needed: not_applicable
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2107.02803
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - FIMP and PBH alternatives are outside this row.
+    constraint_ids:
+    - con_scalar_xenon1t_higgs_invisible
+    - con_scalar_perturbative_mass_ceiling
+    derived_quantities:
+    - Omega_eta h^2
+    - Br(h invisible)
+    - sigma_SI
+    description: Compute scalar-DM freeze-out and confront Higgs invisible and SI recoil bounds in the
+      gauged inverse-seesaw model.
+    forward_model_chain:
+    - inputs:
+      - scalar potential
+      - vevs
+      - mu
+      notes: null
+      outputs:
+      - eta_R/eta_I masses
+      - portal couplings
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid in the source scalar sector.
+    - inputs:
+      - spectrum
+      - portal coupling
+      notes: null
+      outputs:
+      - relic density
+      step_id: s2
+      step_type: likelihood
+      tool_or_code: MicrOMEGAs
+      validity: Standard WIMP freeze-out calculation.
+    - inputs:
+      - sigma_SI
+      - Br(h invisible)
+      notes: null
+      outputs:
+      - XENON1T and ATLAS excluded regions
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires experimental curves not bundled here.
+    id: route_gauged_iss_scalar_wimp
+    input_parameters:
+    - m_eta
+    - lambda_etaH
+    - scalar masses
+    - mu splitting parameter
+    likelihoods:
+    - No XENON1T or ATLAS likelihood files available.
+    observable_ids:
+    - obs_scalar_eta_relic_curve
+    - obs_scalar_eta_nuclear_recoil
+    required_code_resources:
+    - MicrOMEGAs model implementation
+    - Higgs-portal direct-detection recast
+    route_status: planned
+    source_model_features:
+    - residual-Z2 inert scalar
+    - B-L plus Z4 inverse seesaw
+    - Higgs portal
+    validation_tests:
+    - recover Higgs-funnel and 1-30 TeV viable regions

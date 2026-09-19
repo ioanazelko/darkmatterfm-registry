@@ -1,0 +1,725 @@
+_source:
+  shard: arXiv_src_1806_031_wds.tar
+  paper_id: '1806_11122'
+  source_member: 1806_11122.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1806_11122_nonstandard_singlet_scalar_higgs_portal_dm_v1
+identity:
+  name: Singlet scalar Higgs-portal dark matter with non-standard expansion
+  family: scalar_singlet_higgs_portal_dark_matter
+  aliases:
+  - non-standard cosmology singlet scalar DM
+  - Higgs portal FIMP/WIMP singlet
+  short_description: A real scalar singlet S stabilized by Z2 and coupled through the Higgs portal, with
+    relic abundance computed for freeze-in or freeze-out during an early non-standard expansion era.
+  historical_origin_or_motivation: Tests how pre-BBN non-standard expansion changes singlet scalar Higgs-portal
+    dark matter production and detectability.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - real singlet scalar dark matter
+  - Higgs portal
+  - non-standard pre-BBN cosmology
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The scalar potential is explicitly written with S mass, S self-coupling, and Higgs-portal terms.
+particle_content:
+  dark_matter_candidate:
+    name: real singlet scalar S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - SM Higgs boson
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - S
+  unstable_parent_particles:
+  - early cosmological component phi
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Exact Z2 parity with S odd and all other fields even.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - SM radiation bath
+  dark_sector_couplings:
+  - lambda_S S^4 self-interaction
+  - lambda_HS S^2 |H|^2 Higgs portal
+  mediator_types:
+  - Higgs boson
+  interaction_operators:
+  - lambda_HS S^2 |H|^2 / 2
+  scattering:
+    elastic: 'yes'
+    inelastic: 'no'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - SS to SM through Higgs portal
+  - SM to SS freeze-in production
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: singlet mass
+    symbol: M_S
+    description: Physical mass of the scalar singlet dark matter.
+    range: broad scan; paper discusses below and above m_h/2
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs portal coupling
+    symbol: lambda_HS
+    description: Couples S^2 to |H|^2.
+    range: bounded by invisible Higgs decay for M_S < m_h/2
+    role: core
+    status: inferred
+  - name: singlet self-coupling
+    symbol: lambda_S
+    description: Quartic S self-coupling, assumed small enough not to dominate most production results.
+    role: core
+    status: inferred
+  - name: equation of state
+    symbol: w
+    description: Equation-of-state parameter of the early dominant component.
+    range:
+      min: -1
+      max: 1
+      unit: null
+    role: core
+    status: inferred
+  - name: end temperature
+    symbol: T_end
+    description: Temperature at which the non-standard era ends.
+    role: cosmological
+    status: inferred
+  - name: nonstandard-history parameter
+    symbol: F
+    description: Cosmological parameter controlling the non-standard expansion benchmark.
+    role: cosmological
+    status: inferred
+production:
+  mechanisms:
+  - freeze-out from SM bath
+  - freeze-in from SM bath
+  - entropy dilution from decaying early component
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - lambda_HS
+  - M_S
+  - w
+  - F
+  - T_end
+  - Hubble expansion history
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: Freeze-out and freeze-in are both considered; the non-standard cosmological history can open
+    or close parameter regions.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - Higgs portal coupling
+  - DM mass
+  - duration and equation of state of non-standard expansion
+  - entropy injection into SM radiation
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - pre-BBN component phi dominates total energy density
+  - phi decays solely into SM radiation
+  - equation-of-state parameter w can vary from -1 to 1
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: unknown
+  notes: The relic density is computed numerically, but no compact phase-space distribution was extracted
+    for the model card.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: pre_bbn_limit
+  applies_to: cosmological_history
+  condition: The non-standard expansion phase must end before BBN and the phi component is assumed to
+    decay to SM radiation, not to S.
+  status: assumed
+  extrapolation_risk: high
+- id: small_self_interaction
+  applies_to: production
+  condition: Most presented production results assume lambda_S is small enough that S number-changing
+    self-interactions do not control the abundance.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: z2_unbroken
+    description: The Z2 symmetry is not spontaneously broken at the electroweak-breaking vacuum.
+    scope: theory
+    status: assumed
+  - id: sm_internal_equilibrium
+    description: The SM plasma maintains internal equilibrium during the non-standard era.
+    scope: cosmological_history
+    status: assumed
+  - id: no_phi_to_s_decay
+    description: The early component phi does not decay into S particles.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+provenance:
+  model_id: 1806_11122_nonstandard_singlet_scalar_higgs_portal_dm_v1
+  model_name: Singlet scalar Higgs-portal dark matter with non-standard expansion
+  model_family: scalar_singlet_higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: 1806_11122_paper
+      title: Singlet scalar dark matter production in non-standard cosmologies
+      year: 2018
+      arxiv_id: '1806.11122'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text from local SQLite database.
+    - arxiv_id: '1806.11122'
+      authors:
+      - Bernal, Nicolás
+      - Cosme, Catarina
+      - Tenkanen, Tommi
+      - Vaskonen, Ville
+      doi: 10.1140/epjc/s10052-019-6550-9
+      notes: Assigned primary paper; local full text resolved and read.
+      reference_id: src_1806_primary
+      role: original_model
+      title: Scalar singlet dark matter in non-standard cosmologies
+      url: https://arxiv.org/abs/1806.11122
+      year: 2019
+    constraint_papers:
+    - arxiv_id: '1805.12562'
+      authors:
+      - Aprile, E.
+      - Aalbers, J.
+      - Agostini, F.
+      - Alfonsi, M.
+      - Althueser, L.
+      - Amaro, F. D.
+      - et al.
+      doi: 10.1103/PhysRevLett.121.111302
+      notes: arXiv fallback abstract page read for direct-detection context.
+      reference_id: src_1806_xenon1t
+      role: constraint
+      title: Dark Matter Search Results from a One Ton-Year Exposure of XENON1T
+      url: https://arxiv.org/abs/1805.12562
+      year: 2018
+    external_databases: []
+    review_papers:
+    - arxiv_id: hep-ph/0011335
+      authors:
+      - Burgess, C. P.
+      - Pospelov, Maxim
+      - ter Veldhuis, Tonnis
+      doi: 10.1016/S0550-3213(01)00513-2
+      notes: Local related text read for foundational scalar-singlet context.
+      reference_id: src_1806_singlet_scalar
+      role: original_model
+      title: 'The Minimal Model of nonbaryonic dark matter: a singlet scalar'
+      url: https://arxiv.org/abs/hep-ph/0011335
+      year: 2001
+    - arxiv_id: '1703.07364'
+      authors:
+      - Arcadi, Giorgio
+      - Dutra, Maíra
+      - Ghosh, Pradipta
+      - Lindner, Manfred
+      - Mambrini, Yann
+      - Pierre, Mathias
+      - et al.
+      doi: 10.1140/epjc/s10052-018-5662-y
+      notes: Local related review text read for Higgs-portal and WIMP-search context.
+      reference_id: src_1806_wimp_review
+      role: review
+      title: The waning of the WIMP? A review of models, searches, and constraints
+      url: https://arxiv.org/abs/1703.07364
+      year: 2018
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0000
+    extractor_name: gpt-5.5_dark_matter_model_worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: 1806_11122_paper
+      section: Introduction and scalar singlet model section
+      page: null
+      quote_or_summary: The paper introduces the cosmological setup and singlet scalar DM model for freeze-in
+        and freeze-out during non-standard expansion.
+    unresolved_items:
+    - Exact experimental likelihood tables for LUX/PandaX-II/XENON1T/DARWIN were not ingested; constraints
+      are represented at the recasting/contour level.
+    - The enrichment does not reproduce the full lambda_HS-M_S numerical scan.
+  evidence:
+    particle_content:
+    - reference_id: 1806_11122_paper
+      note: The DM consists of real singlet scalar particles S added to the SM and to a cosmological fluid
+        component.
+      confidence: high
+      section: Scalar singlet dark matter
+    symmetries:
+    - reference_id: 1806_11122_paper
+      note: S is odd under a discrete Z2 symmetry while all other fields are even; this makes S a viable
+        DM candidate.
+      confidence: high
+      section: Scalar singlet dark matter
+    interactions:
+    - reference_id: 1806_11122_paper
+      note: The only interaction between S and the SM sector is the Higgs portal coupling lambda_HS S^2
+        |H|^2 / 2.
+      confidence: high
+      section: Scalar singlet dark matter
+    production_mechanism:
+    - reference_id: 1806_11122_paper
+      note: The paper studies S production by both freeze-out and freeze-in from the SM plasma during
+        a non-standard expansion phase.
+      confidence: high
+      section: Introduction and production sections
+    cosmological_history:
+    - reference_id: 1806_11122_paper
+      note: The early Universe is assumed to be dominated for some period by a component phi with equation-of-state
+        parameter w in [-1,1] that decays into SM radiation.
+      confidence: high
+      section: Expansion history
+    parameter_ranges:
+    - reference_id: 1806_11122_paper
+      note: The total parameter space is described as three particle parameters lambda_S, lambda_HS, M_S
+        and three cosmological parameters w, F, and T_end.
+      confidence: high
+      section: Scalar singlet dark matter
+    validity_domain:
+    - reference_id: 1806_11122_paper
+      note: The paper assumes phi does not decay into S and focuses on relic production from the SM plasma.
+      confidence: medium
+      section: Scalar singlet dark matter
+    constraints:
+    - confidence: high
+      note: Primary text quotes BR_inv, BBN T_end, relic-density target, and direct-detection comparisons.
+      page: null
+      reference_id: src_1806_primary
+      section: constraints and production sections
+    - confidence: medium
+      note: XENON1T fallback source reports no significant excess and spin-independent exclusions.
+      page: null
+      reference_id: src_1806_xenon1t
+      section: abstract
+    observables:
+    - confidence: high
+      note: Primary text supports Higgs-portal scattering, invisible-Higgs, and non-standard relic-density
+        observables.
+      page: null
+      reference_id: src_1806_primary
+      section: model and production sections
+    - confidence: medium
+      note: arXiv fallback abstract page supports the XENON1T direct-detection context.
+      page: null
+      reference_id: src_1806_xenon1t
+      section: abstract
+    routes:
+    - confidence: high
+      note: Primary paper lays out the background and scalar abundance Boltzmann chain.
+      page: null
+      reference_id: src_1806_primary
+      section: expansion history and DM production sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  dominant_uncertainties:
+  - Machine extraction from converted full text; numerical bounds and detailed spectra were not re-derived.
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: cosmology_dependent_relic
+    severity: high
+    category: assumption_mismatch
+    warning: The same particle model has different viable parameter space under standard radiation domination;
+      always track w, F, and T_end.
+  - id: production_regime_branch
+    severity: medium
+    category: other
+    warning: Freeze-in and freeze-out are both considered; do not merge their coupling ranges or direct-detection
+      expectations.
+observables:
+- caveats:
+  - Requires standard halo assumptions when mapping cross section to event rates.
+  - The non-standard cosmology changes the lambda_HS values selected by relic density but not the Higgs-exchange
+    operator itself.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - xenon time-projection chambers
+  - underground direct-detection experiments
+  id: obs_si_nuclear_recoil
+  key_quantities:
+  - description: Controls both production and Higgs-mediated nucleon scattering.
+    name: Higgs portal coupling
+    role: core
+    source_reference_ids:
+    - src_1806_primary
+    status: inferred
+    symbol: lambda_HS
+  - description: Sets recoil kinematics and the Higgs invisible threshold.
+    name: singlet scalar mass
+    role: core
+    source_reference_ids:
+    - src_1806_primary
+    status: inferred
+    symbol: M_S
+    unit: GeV
+  - description: Rescales the effective direct-detection cross section when S is subdominant.
+    name: fractional scalar abundance
+    role: derived
+    source_reference_ids:
+    - src_1806_primary
+    status: inferred
+    symbol: Omega_S/Omega_DM
+  linked_constraints:
+  - con_si_direct_detection
+  linked_routes:
+  - route_nonstandard_portal_scan
+  name: Spin-independent nuclear recoil through Higgs exchange
+  notes: Primary paper gives the effective spin-independent cross section and compares LUX/PandaX-II/XENON1T/DARWIN
+    reach.
+  observability: high
+  predicted_effect: The Higgs portal produces elastic DM-nucleon scattering with a rate proportional to
+    the fractional abundance times lambda_HS^2 and the Higgs-exchange form factor.
+  redshift_range: null
+  relevance: high
+  scale_range: laboratory nuclear recoil energies
+  source_reference_ids:
+  - src_1806_primary
+  - src_1806_xenon1t
+  subchannel: elastic nuclear recoil
+- caveats:
+  - Only applies for M_S < m_h/2.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - LHC Higgs analyses
+  id: obs_invisible_higgs_decay
+  key_quantities:
+  - description: Collider observable constrained by LHC invisible-Higgs searches.
+    name: invisible Higgs branching ratio
+    role: experimental
+    source_reference_ids:
+    - src_1806_primary
+    status: inferred
+    symbol: BR_inv
+  - description: Partial width used to translate BR_inv into a lambda_HS bound.
+    name: Higgs decay width to singlets
+    role: derived
+    source_reference_ids:
+    - src_1806_primary
+    status: inferred
+    symbol: Gamma(h->SS)
+  linked_constraints:
+  - con_higgs_invisible
+  linked_routes:
+  - route_nonstandard_portal_scan
+  name: Invisible Higgs decay to scalar singlets
+  notes: Primary paper quotes the LHC BR_inv bound and the corresponding small-M_S portal-coupling limit.
+  observability: high
+  predicted_effect: For M_S below half the Higgs mass, the portal opens an invisible Higgs decay whose
+    branching fraction increases with lambda_HS^2.
+  redshift_range: null
+  relevance: high
+  scale_range: LHC Higgs-production scales
+  source_reference_ids:
+  - src_1806_primary
+  subchannel: h -> SS
+- caveats:
+  - 'Observable consequence is indirect: a different coupling-mass locus for the measured relic density.'
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early Universe
+  id: obs_relic_density_history_dependence
+  key_quantities:
+  - description: Equation of state of the early dominant component.
+    name: equation of state
+    range: '[-1, 1]'
+    role: cosmological
+    source_reference_ids:
+    - src_1806_primary
+    status: inferred
+    symbol: w
+  - description: Increase of comoving SM radiation energy density during the non-standard era.
+    name: entropy-injection factor
+    role: cosmological
+    source_reference_ids:
+    - src_1806_primary
+    status: inferred
+    symbol: F
+  - description: SM temperature when the non-standard era ends.
+    name: end temperature
+    role: cosmological
+    source_reference_ids:
+    - src_1806_primary
+    status: inferred
+    symbol: T_end
+    unit: MeV
+  linked_constraints:
+  - con_relic_density
+  - con_bbn_tend
+  linked_routes:
+  - route_nonstandard_portal_scan
+  name: Relic-density target in a pre-BBN non-standard expansion era
+  notes: The primary paper scans M_S and lambda_HS for fixed non-standard histories to hit Omega_DM h^2
+    about 0.12.
+  observability: medium
+  predicted_effect: The required lambda_HS for Omega_S h^2 about 0.12 shifts because H(T), freeze-out/freeze-in
+    timing, and entropy dilution depend on w, F, and T_end.
+  redshift_range: pre-BBN era
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - src_1806_primary
+  subchannel: freeze-out and freeze-in abundance
+constraints:
+- allowed_regions:
+  - Non-standard histories with entropy dilution can move viable points below current direct-detection
+    bounds.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Direct searches remain a leading test once the cosmological history fixes lambda_HS for a given M_S.
+  caveats:
+  - Requires rescaling if S is not all of DM.
+  - Exact exclusion contours need the experimental likelihood/limit tables.
+  constrained_parameters:
+  - lambda_HS
+  - M_S
+  - Omega_S/Omega_DM
+  constraint_type: direct_detection
+  data_release: LUX/PandaX-II/XENON1T public limits; DARWIN projection discussed in primary paper
+  excluded_regions:
+  - Standard-radiation thermal-relic scalar singlet space is mostly excluded except near the Higgs resonance
+    and above O(1) TeV in the primary paper comparison.
+  - Large lambda_HS values selected by some non-standard histories can enter present or projected xenon
+    limits.
+  id: con_si_direct_detection
+  likelihood_available: partial
+  likelihood_reference: null
+  name: LUX/PandaX-II/XENON1T spin-independent limits and DARWIN reach
+  notes: The primary paper uses contemporary xenon-family limits; XENON1T fallback source confirms a no-excess
+    spin-independent WIMP-nucleon search.
+  observable_channel: direct_detection
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - src_1806_primary
+  - src_1806_xenon1t
+- allowed_regions:
+  - No h -> SS bound for M_S > m_h/2.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Sub-Higgs-threshold freeze-in/freeze-out benchmarks with too large lambda_HS are excluded independently
+    of direct detection.
+  caveats:
+  - Uses the Higgs width and invisible-branching bound adopted in the 2018/2019 analysis.
+  constrained_parameters:
+  - lambda_HS
+  - M_S
+  constraint_type: collider
+  data_release: LHC invisible-Higgs searches as quoted in primary paper
+  excluded_regions:
+  - For M_S much below m_h/2 the paper quotes lambda_HS < 0.014 from BR_inv < 0.24 at 2 sigma.
+  id: con_higgs_invisible
+  likelihood_available: partial
+  likelihood_reference: null
+  name: LHC invisible-Higgs branching fraction bound
+  notes: Primary paper provides the h -> SS partial-width expression and bound translation.
+  observable_channel: collider
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - src_1806_primary
+- allowed_regions:
+  - Primary scans use T_end = 10 MeV as a near-maximal but BBN-safe benchmark.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - The strongest non-standard effects are displayed near the lower allowed T_end.
+  caveats:
+  - The bound is applied as a conservative cosmological consistency floor, not as a likelihood.
+  constrained_parameters:
+  - T_end
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - T_end <= 4 MeV is treated as incompatible with successful BBN in the setup.
+  id: con_bbn_tend
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: End of non-standard expansion before BBN
+  notes: Primary paper states T_end must exceed 4 MeV for successful BBN.
+  observable_channel: cosmology
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - src_1806_primary
+- allowed_regions:
+  - The scan selects lambda_HS(M_S) curves that reproduce Omega_S h^2 = Omega_DM h^2 about 0.12.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - The target abundance maps cosmology into direct-detection and collider predictions.
+  caveats:
+  - Does not by itself distinguish freeze-in from freeze-out without thermalization assumptions.
+  constrained_parameters:
+  - lambda_HS
+  - M_S
+  - w
+  - F
+  - T_end
+  constraint_type: cosmological
+  data_release: Planck abundance value as quoted in primary paper
+  excluded_regions: []
+  id: con_relic_density
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Observed dark-matter abundance target
+  notes: Primary paper solves the Boltzmann equation and tunes lambda_HS to the observed relic abundance.
+  observable_channel: cosmology
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - src_1806_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The routing is straightforward but needs the primary numerical scan machinery or an equivalent
+      Boltzmann implementation.
+    caveats:
+    - Portal self-coupling effects are mostly neglected in the plotted benchmark discussion.
+    constraint_ids:
+    - con_si_direct_detection
+    - con_higgs_invisible
+    - con_bbn_tend
+    - con_relic_density
+    derived_quantities:
+    - H(T)
+    - Omega_S h^2
+    - sigma_SI_eff
+    - BR(h->SS)
+    description: Map scalar-singlet Higgs-portal parameters through a pre-BBN expansion history to relic
+      density, direct detection, and invisible-Higgs observables.
+    forward_model_chain:
+    - inputs:
+      - w
+      - F
+      - T_end
+      notes: Solve coupled rho_phi/rho_R equations.
+      outputs:
+      - H(T)
+      - radiation entropy history
+      step_id: solve_background
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Valid for the phenomenological non-standard histories defined in the primary paper.
+    - inputs:
+      - M_S
+      - lambda_HS
+      - H(T)
+      notes: Primary paper numerically solves the scalar number-density equation.
+      outputs:
+      - Omega_S h^2
+      step_id: solve_scalar_abundance
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Separate freeze-out and freeze-in regimes require checking thermalization threshold.
+    - inputs:
+      - lambda_HS
+      - M_S
+      - Omega_S/Omega_DM
+      notes: Compare to direct-detection and invisible-Higgs limits.
+      outputs:
+      - sigma_SI_eff
+      - BR_inv
+      step_id: project_searches
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Uses tree-level Higgs exchange and h -> SS width.
+    id: route_nonstandard_portal_scan
+    input_parameters:
+    - M_S
+    - lambda_HS
+    - lambda_S
+    - w
+    - F
+    - T_end
+    likelihoods:
+    - external experimental limits needed for exact contours
+    observable_ids:
+    - obs_si_nuclear_recoil
+    - obs_invisible_higgs_decay
+    - obs_relic_density_history_dependence
+    required_code_resources:
+    - Boltzmann solver for scalar singlet abundance
+    - direct-detection limit tables
+    - Higgs invisible-width calculator
+    route_status: planned
+    source_model_features:
+    - real Z2-odd scalar singlet
+    - Higgs portal interaction
+    - early component decaying to SM radiation
+    validation_tests:
+    - Reproduce the primary paper radiation-dominated comparison curve.
+    - Check T_end > 4 MeV before applying non-standard scans.

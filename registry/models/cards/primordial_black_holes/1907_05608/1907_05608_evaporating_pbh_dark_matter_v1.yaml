@@ -1,0 +1,733 @@
+_source:
+  shard: arXiv_src_1907_017_wds.tar
+  paper_id: '1907_05608'
+  source_member: 1907_05608.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1907_05608_evaporating_pbh_dark_matter_v1
+identity:
+  name: Evaporating primordial black-hole dark matter as varying dark energy
+  family: primordial_black_holes
+  aliases:
+  - evaporating PBH dark matter
+  - PBH dark matter with Hawking mass loss
+  short_description: A phenomenological PBH dark-matter population whose mass loss through Hawking radiation
+    makes the matter density time-dependent and sources a relativistic component.
+  historical_origin_or_motivation: Motivated by PBHs as dark matter and by using Hawking evaporation as
+    a realization of matter-to-radiation energy transfer in cosmology.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - primordial black-hole dark matter
+  - FRW cosmology with coupled fluids
+  - Hawking evaporation
+  lagrangian_available: not_applicable
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The paper formulates PBH mass loss and the associated radiation component as cosmological evolution
+    equations rather than a particle Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: primordial black-hole population
+    spin: not_applicable
+    statistics: black_hole
+    elementary_or_composite: macroscopic
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  dark_radiation_species:
+  - relativistic Standard Model particles emitted by Hawking evaporation
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - PBHs with masses high enough to survive to late times
+  unstable_parent_particles: []
+  standard_model_extension: none
+symmetries:
+  stabilizing_mechanism: Macroscopic lifetime set by initial PBH mass; no particle stabilizing symmetry
+    is invoked.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - relativistic Standard Model particles emitted through Hawking radiation
+  dark_sector_couplings:
+  - PBH density is coupled to a radiation component by Hawking mass loss
+  mediator_types:
+  - gravity
+  interaction_operators: []
+  annihilation_channels: []
+  decay_channels:
+  - Hawking evaporation to lighter Standard Model species
+  self_scattering_channels: []
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: PBH initial mass
+    symbol: M_in
+    description: Initial mass of the monochromatic PBH population.
+    range: Asteroid-window masses are discussed; an example fixes M = 9.79e15 g.
+    unit: g
+    role: core
+    status: inferred
+  - name: PBH fraction
+    symbol: f_PBH
+    description: Fraction of dark matter initially in PBHs.
+    range: sampled through log10(f_PBH) in [-20, 0]; f_PBH = 1 used for the largest late-time contribution
+      example
+    role: core
+    status: inferred
+  - name: Hawking evaporation coefficient
+    symbol: alpha
+    description: Coefficient controlling PBH mass loss dM/da.
+    range: sampled through log10(alpha) in [-20, 0]; log10(alpha) = -4 used in an illustrative run
+    role: core
+    status: inferred
+  nuisance:
+  - name: effective relativistic degrees of freedom
+    symbol: F(M)
+    description: Mass-dependent factor in the Hawking power.
+    value: 4.427e-4 for 5e14 g < M < 1e16 g; larger for ultralight PBHs
+    role: nuisance
+    status: inferred
+  derived:
+  - name: radiation energy density from evaporation
+    symbol: rho_x
+    description: Radiation component sourced by PBH mass loss.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - primordial gravitational collapse after horizon re-entry
+  - enhanced primordial curvature fluctuations
+  - possible production from ultra-slow-roll inflation, phase transitions, topological defects, slow reheating,
+    resonances, or strongly coupled cosmologies
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - initial PBH mass function
+  - initial PBH fraction f_PBH
+  - primordial fluctuation tail
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The extracted row represents the late-time evaporating PBH DM population; the paper separately
+    discusses an ultralight PBH fraction that cannot be the dark matter today.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: PBH dark matter fraction
+    symbol: f_PBH
+    description: Fraction of the dark matter density in PBHs.
+    range: 0 to 1 in the paper parameterization
+    role: core
+    status: inferred
+  calculation_type: phenomenological
+  key_dependencies:
+  - initial PBH fraction
+  - PBH initial mass
+  - Hawking mass-loss rate
+  - coupled PBH-radiation fluid evolution
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - PBH matter density decreases as PBHs lose mass
+  - evaporation energy sources a relativistic component
+  - effective dark-energy-like equation of state can be defined for the radiation component
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: not_applicable
+  distribution_function_available: not_applicable
+  f_of_p_or_q: Macroscopic PBH population; no particle momentum distribution is specified.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: PBHs are treated as pressureless matter apart from mass loss.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown in this paper
+    subhalo_mass_function_effect: unknown in this paper
+    simulation_calibrated: 'no'
+validity_domain:
+- id: monochromatic_pbh_population
+  applies_to: model
+  condition: Paper analysis assumes a monochromatic PBH population in the mass range where evaporation
+    is slow enough to affect late-time cosmology.
+  status: assumed
+- id: ultralight_fraction_not_dm
+  applies_to: interpretation
+  condition: The 1e9 g ultralight PBH example is explicitly a small decayed fraction on top of the DM
+    fluid, not the present-day DM candidate.
+  status: inferred
+  caveats:
+  - Do not reinterpret the ultralight example as all of dark matter.
+assumptions:
+  global:
+  - id: flat_frw
+    description: Spatially flat cosmology is assumed in the parameter fits.
+    scope: cosmological_history
+    status: assumed
+  - id: monochromatic_mass_function
+    description: The main PBH treatment uses a monochromatic mass population.
+    scope: theory
+    status: assumed
+  - id: standard_model_hawking_products
+    description: The emitted radiation is treated as relativistic Standard Model particles in the discussed
+      mass ranges.
+    scope: cosmological_history
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper says its MCMC analysis code was written independently in Mathematica and Python,
+    with a Mathematica code made freely available; no standalone PBH model package is identified.
+  primary_code_role: other
+  caveats:
+  - Code availability is described for the cosmological fit, not as a reusable model implementation.
+provenance:
+  model_id: 1907_05608_evaporating_pbh_dark_matter_v1
+  model_name: Evaporating primordial black-hole dark matter as varying dark energy
+  model_family: primordial_black_holes
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1907.05608'
+      title: Evaporating primordial black holes as varying dark energy
+      authors:
+      - Savvas Nesseris
+      - Domenico Sapone
+      - Spyros Sypsas
+      year: 2019
+      arxiv_id: '1907.05608'
+      doi: null
+      url: null
+      role: extension
+      notes: Only the assigned SQLite full text was used.
+    - reference_id: arxiv:1907.05608
+      title: Evaporating primordial black holes as varying dark energy
+      authors:
+      - Nesseris, Savvas
+      - Sapone, Domenico
+      - Sypsas, Spyros
+      year: 2020
+      arxiv_id: '1907.05608'
+      doi: 10.1016/j.dark.2019.100413
+      url: https://arxiv.org/abs/1907.05608
+      role: original_model
+      notes: Primary assigned paper read from local SQLite full text.
+    constraint_papers:
+    - reference_id: arxiv:2209.14307
+      title: The interplay between the dark matter axion and primordial black holes
+      authors:
+      - Mazde, Kratika
+      - Visinelli, Luca
+      year: 2023
+      arxiv_id: '2209.14307'
+      doi: 10.1088/1475-7516/2023/01/021
+      url: https://arxiv.org/abs/2209.14307
+      role: extension
+      notes: 'Related local full text read: primordial black holes affecting axion dark matter through
+        evaporation.'
+    - reference_id: arxiv:1811.04083
+      title: Early Dark Energy can Resolve the Hubble Tension
+      authors:
+      - Poulin, Vivian
+      - Smith, Tristan L.
+      - Karwal, Tanvi
+      - Kamionkowski, Marc
+      year: 2019
+      arxiv_id: '1811.04083'
+      doi: 10.1103/PhysRevLett.122.221301
+      url: https://arxiv.org/abs/1811.04083
+      role: benchmark
+      notes: 'Related local full text read: early dark energy as Hubble-tension context.'
+    review_papers:
+    - reference_id: arxiv:1910.09853
+      title: Nonminimal dark sector physics and cosmological tensions
+      authors:
+      - Di Valentino, Eleonora
+      - Melchiorri, Alessandro
+      - Mena, Olga
+      - Vagnozzi, Sunny
+      year: 2020
+      arxiv_id: '1910.09853'
+      doi: 10.1103/PhysRevD.101.063502
+      url: https://arxiv.org/abs/1910.09853
+      role: review
+      notes: 'Related local full text read: non-minimal dark-sector physics and cosmological tensions.'
+    external_databases: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0013
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1907.05608'
+      section: Abstract
+      page: null
+      quote_or_summary: PBHs can account for dark matter while losing mass through Hawking radiation;
+        the density time dependence is recast as w(z).
+    - reference_id: '1907.05608'
+      section: Model setup
+      page: null
+      quote_or_summary: The paper writes PBH mass loss and density transfer to a radiation component as
+        coupled fluid equations.
+    - reference_id: '1907.05608'
+      section: Speculative venues
+      page: null
+      quote_or_summary: The ultralight PBH fraction is discussed separately as a non-DM radiation-injection
+        component.
+    unresolved_items:
+    - No full CMB perturbation likelihood was extracted.
+    - Extended PBH mass functions were not treated.
+    - The ultralight 1e9 g PBH H0 scenario is speculative and not a present-day DM candidate.
+  evidence:
+    particle_content:
+    - reference_id: '1907.05608'
+      note: The dark component is a PBH population; ultralight PBHs below about 1e14 g are not present-day
+        DM.
+      confidence: high
+      section: Abstract and speculative venues
+      page: null
+    interactions:
+    - reference_id: '1907.05608'
+      note: Hawking evaporation transfers energy from PBHs into relativistic particles.
+      confidence: high
+      section: Model setup
+      page: null
+    production_mechanism:
+    - reference_id: '1907.05608'
+      note: The paper lists early-universe PBH formation channels including amplified curvature perturbations
+        and phase transitions.
+      confidence: medium
+      section: Introduction
+      page: null
+    cosmological_history:
+    - reference_id: '1907.05608'
+      note: PBH density is evolved with mass loss and a radiation gain component, yielding an effective
+        dark-energy-like behavior.
+      confidence: high
+      section: Model setup
+      page: null
+    parameter_ranges:
+    - reference_id: '1907.05608'
+      note: Fits use parameters alpha and f_PBH; an example fixes log10(alpha)=-4, corresponding to M=9.79e15
+        g.
+      confidence: medium
+      section: Parameter analysis
+      page: null
+    validity_domain:
+    - reference_id: '1907.05608'
+      note: The paper distinguishes viable PBH DM masses from 1e9 g PBHs that fully evaporate and cannot
+        serve as DM.
+      confidence: high
+      section: Speculative venues
+      page: null
+    observables:
+    - reference_id: arxiv:1907.05608
+      note: Primary paper defines evaporating PBH dark matter as an effective w(z) background and discusses
+        the ultralight PBH N_eff scenario.
+      confidence: high
+      section: Abstract, effective equation-of-state, speculative venues
+      page: null
+    - reference_id: arxiv:1811.04083
+      note: Related text gives early-dark-energy H0-tension context for early radiation-like injections.
+      confidence: medium
+      section: Abstract
+      page: null
+    constraints:
+    - reference_id: arxiv:1907.05608
+      note: Primary paper gives AIC behavior, PBH mass/fraction priors, and BBN/CMB caveats for ultralight
+        PBHs.
+      confidence: high
+      section: Data/results/speculative sections
+      page: null
+    - reference_id: arxiv:1910.09853
+      note: Related text supports the broader dark-sector/H0-tension context.
+      confidence: medium
+      section: Introduction
+      page: null
+    routes:
+    - reference_id: arxiv:1907.05608
+      note: Primary text lays out the coupled-fluid ODEs, H(z) mapping, and AIC comparison.
+      confidence: high
+      section: Methodology/results
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Accepted as a substantive cosmological development of PBH dark matter; the ultralight radiation-injection
+    example is not treated as a separate DM model.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - PBH mass function
+  - formation mechanism
+  - treatment of radiation injection near neutrino decoupling
+  validation_status: expert_judgment_only
+  notes: The card records the model construction only; observational constraints are intentionally omitted
+    in this run.
+agent_failure_modes:
+  warnings:
+  - id: pbh_ultralight_confusion
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat the 1e9 g ultralight PBH example as the present-day dark matter candidate; the
+      paper says it would have evaporated.
+  - id: pbh_existing_model
+    severity: low
+    category: other
+    warning: The paper develops an evaporating-PBH cosmological variant rather than introducing PBHs as
+      a new concept.
+observables:
+- id: obs_pbh_varying_de_background
+  name: Evaporating PBH matter loss as an effective varying dark-energy background
+  channel: cosmology
+  subchannel: H(z), distances, and effective w(z)
+  predicted_effect: A monochromatic light-PBH matter component loses mass by Hawking evaporation, sourcing
+    radiation and producing a very mild phantom-like effective equation of state in the background expansion.
+  effect_direction: shape_change
+  key_quantities:
+  - name: PBH initial mass
+    symbol: M_in
+    description: Initial monochromatic PBH mass.
+    value: 9.79e15 g in the fixed large-contribution example; asteroid-window masses discussed
+    unit: g
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1907.05608
+  - name: PBH fraction
+    symbol: f_PBH
+    description: Fraction of dark matter initially in PBHs.
+    range: log10(f_PBH) prior from -20 to 0; f_PBH=1 fixed in a maximal example
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1907.05608
+  - name: evaporation coefficient
+    symbol: alpha
+    description: Mass-loss coefficient sampled in the MCMC parameterization.
+    range: log10(alpha) prior from -20 to 0
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1907.05608
+  redshift_range: recombination to z=0
+  scale_range: background expansion distances
+  environments:
+  - Pantheon SNe Ia
+  - BAO
+  - CMB shift parameters
+  - H(z) data
+  observability: medium
+  relevance: high
+  linked_constraints:
+  - con_pbh_aic_background
+  - con_pbh_mass_evaporation_window
+  linked_routes:
+  - route_pbh_evaporation_background
+  caveats:
+  - The late-time effect is too mild to solve the H0 tension for asteroid-window PBH dark matter.
+  source_reference_ids:
+  - arxiv:1907.05608
+  notes: null
+- id: obs_ultralight_pbh_neff_h0
+  name: Ultralight PBH radiation injection around neutrino decoupling
+  channel: cmb
+  subchannel: Delta N_eff and H0 shift
+  predicted_effect: A tiny f_PBH~1e-7 population with M_PBH~1e9 g, not surviving as dark matter, can decay
+    around neutrino decoupling and raise N_eff by about 0.35, shifting the CMB-inferred H0 toward 70.5
+    km/s/Mpc.
+  effect_direction: enhancement
+  key_quantities:
+  - name: ultralight PBH mass
+    symbol: M_PBH
+    description: Mass of speculative evaporating population.
+    value: about 1e9 g
+    unit: g
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1907.05608
+  - name: ultralight PBH fraction
+    symbol: f_PBH
+    description: Tiny fraction on top of dark matter.
+    value: about 1e-7
+    role: core
+    status: inferred
+    source_reference_ids:
+    - arxiv:1907.05608
+  - name: radiation contribution
+    symbol: Delta N_eff
+    description: Increase in effective relativistic species.
+    value: about 0.35
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - arxiv:1907.05608
+  redshift_range: neutrino decoupling and CMB inference
+  scale_range: CMB acoustic scale
+  environments:
+  - CMB
+  - early universe
+  observability: medium
+  relevance: medium
+  linked_constraints:
+  - con_ultralight_pbh_bbn_cmb
+  linked_routes:
+  - route_pbh_evaporation_background
+  caveats:
+  - This population cannot be the dark matter today because it evaporates before nucleosynthesis.
+  source_reference_ids:
+  - arxiv:1907.05608
+  - arxiv:1811.04083
+  - arxiv:1910.09853
+  notes: null
+constraints:
+- id: con_pbh_aic_background
+  name: SNe/BAO/CMB/H(z) AIC consistency of the PBH background model
+  constraint_type: cosmological
+  observable_channel: background-expansion data
+  applies: 'yes'
+  constrained_parameters:
+  - M_in
+  - f_PBH
+  - alpha
+  - N_eff
+  - h
+  - Omega_m
+  excluded_regions:
+  - With all data, the full PBH case has Delta AIC around 7 relative to LambdaCDM, indicating strain.
+  allowed_regions:
+  - CMB-only Delta AIC is roughly 0 to 1.3 for PBH variants, and the paper concludes the PBH model is
+    statistically consistent by AIC.
+  benchmark_implications:
+  - Asteroid-window PBH evaporation produces an expansion history nearly degenerate with LambdaCDM.
+  likelihood_available: approximate
+  likelihood_reference: null
+  data_release: Pantheon SNe Ia, BAO, Planck 2018 CMB shift parameters, 36 H(z) points
+  recasting_needed: 'no'
+  robustness: medium
+  assumptions:
+  - id: background-only-analysis
+    description: The analysis uses background distances and CMB shift parameters, not the full CMB anisotropy
+      likelihood.
+    scope: cosmological likelihood
+    status: assumed
+    impact_if_violated: Full perturbation observables could strengthen or modify the constraint.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - arxiv:1907.05608
+    notes: null
+  caveats: []
+  source_reference_ids:
+  - arxiv:1907.05608
+  - arxiv:1811.04083
+  - arxiv:1910.09853
+  notes: null
+- id: con_pbh_mass_evaporation_window
+  name: Mass window and Hawking-emission consistency for PBH dark matter
+  constraint_type: astrophysical
+  observable_channel: PBH evaporation and existing mass constraints
+  applies: parameter_dependent
+  constrained_parameters:
+  - M_in
+  - f_PBH
+  - F(M)
+  excluded_regions:
+  - PBHs much below the asteroid window evaporate by today and cannot be all dark matter; very light PBHs
+    are severely constrained by light-element, CMB, gamma, and charged-particle considerations.
+  allowed_regions:
+  - The paper focuses on light/asteroid-window PBH masses where all-dark-matter PBHs are at least considered
+    viable, with F(M)=4.427e-4 for 5e14-1e16 g.
+  benchmark_implications:
+  - For M~1e16 g, w_eff differs from -1 by only about 0.001.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: medium
+  assumptions:
+  - id: monochromatic-mass-function
+    description: The PBH population is treated as monochromatic.
+    scope: PBH population model
+    status: assumed
+    impact_if_violated: An extended mass function changes evaporation and observational constraints.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - arxiv:1907.05608
+    notes: null
+  caveats:
+  - The primary paper notes the consensus on asteroid-window constraints is unsettled.
+  source_reference_ids:
+  - arxiv:1907.05608
+  - arxiv:2209.14307
+  notes: null
+- id: con_ultralight_pbh_bbn_cmb
+  name: Ultralight PBH radiation injection and BBN/CMB caveats
+  constraint_type: cosmological
+  observable_channel: N_eff, BBN, and CMB distortions
+  applies: parameter_dependent
+  constrained_parameters:
+  - M_PBH
+  - f_PBH
+  - Delta N_eff
+  excluded_regions:
+  - M~1e10 g populations decaying later can affect light-element abundances; the 1e9 g estimate needs
+    a more accurate treatment around neutrino decoupling.
+  allowed_regions:
+  - M~1e9 g and f_PBH~1e-7 can raise H0 to about 70.49 in the primary CMB-only calculation without being
+    the dark matter today.
+  benchmark_implications:
+  - This is an H0-tension adjunct, not the assigned dark matter population itself.
+  likelihood_available: 'no'
+  likelihood_reference: null
+  data_release: null
+  recasting_needed: 'yes'
+  robustness: low
+  assumptions:
+  - id: instant-neutrino-decoupling-approx
+    description: The Delta N_eff estimate uses an approximation around neutrino decoupling.
+    scope: early-universe radiation
+    status: approximate
+    impact_if_violated: A full neutrino-decoupling calculation could shift Delta N_eff and H0.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - arxiv:1907.05608
+    notes: null
+  caveats: []
+  source_reference_ids:
+  - arxiv:1907.05608
+  - arxiv:1811.04083
+  - arxiv:1910.09853
+  notes: null
+theory_to_observable_routing:
+  routes:
+  - id: route_pbh_evaporation_background
+    description: Solve coupled PBH matter and radiation fluids, reinterpret the result as w(z), and compare
+      to background cosmology data.
+    source_model_features:
+    - monochromatic PBH dark matter
+    - Hawking mass loss
+    - radiation sourced by matter loss
+    input_parameters:
+    - M_in
+    - f_PBH
+    - alpha
+    - F(M)
+    - N_eff
+    - standard cosmological parameters
+    derived_quantities:
+    - rho_PBH(a)
+    - rho_x(a)
+    - w_eff(a)
+    - H(z)
+    - Delta N_eff
+    - AIC
+    forward_model_chain:
+    - step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      inputs:
+      - M_in
+      - F(M)
+      - H(a)
+      outputs:
+      - dM/da
+      - alpha
+      validity: Hawking mass-loss relation in the primary parameterization.
+      notes: null
+    - step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: null
+      inputs:
+      - rho_PBH
+      - rho_x
+      - alpha
+      - f_PBH
+      outputs:
+      - coupled fluid histories
+      validity: Background-only coupled ODE system.
+      notes: null
+    - step_id: s3
+      step_type: data_transform
+      tool_or_code: null
+      inputs:
+      - H(z)
+      - distance measures
+      outputs:
+      - SNe/BAO/CMB-shift/H(z) observables
+      validity: FRW distance mapping.
+      notes: null
+    - step_id: s4
+      step_type: likelihood
+      tool_or_code: null
+      inputs:
+      - observables
+      - data covariance
+      outputs:
+      - chi2
+      - AIC
+      validity: Use primary likelihood construction; not a full perturbation likelihood.
+      notes: null
+    observable_ids:
+    - obs_pbh_varying_de_background
+    - obs_ultralight_pbh_neff_h0
+    constraint_ids:
+    - con_pbh_aic_background
+    - con_pbh_mass_evaporation_window
+    - con_ultralight_pbh_bbn_cmb
+    likelihoods:
+    - Pantheon SNe Ia
+    - BAO distance ladder
+    - Planck CMB shift parameters
+    - H(z) compilation
+    required_code_resources:
+    - PBH evaporation ODE solver
+    - FRW distance calculator
+    - MCMC/AIC analysis
+    validation_tests:
+    - recover M=9.79e15 g fixed example
+    - recover H0=70.49 ultralight PBH example
+    - check Delta AIC categories
+    route_status: planned
+    agent_notes: null
+    caveats: []

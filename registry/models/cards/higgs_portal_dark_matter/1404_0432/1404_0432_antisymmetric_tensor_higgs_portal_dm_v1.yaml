@@ -1,0 +1,280 @@
+_source:
+  shard: arXiv_src_1404_001_wds.tar
+  paper_id: '1404_0432'
+  source_member: 1404_0432.json
+schema_version: model_only_v0
+model_id: 1404_0432_antisymmetric_tensor_higgs_portal_dm_v1
+identity:
+  name: Antisymmetric tensor Higgs-portal dark matter without new symmetries
+  family: higgs_portal_dark_matter
+  aliases:
+  - antisymmetric tensor dark matter
+  - B_mu_nu dark matter
+  short_description: A Standard-Model-singlet antisymmetric tensor dark matter field whose accidental
+    Z2 stability follows from Standard Model symmetries and whose abundance is set by Higgs-portal thermal
+    freeze-out.
+  historical_origin_or_motivation: The paper aims to obtain cosmological dark matter stability without
+    imposing a new symmetry beyond the Standard Model gauge and Lorentz symmetries.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - Higgs portal
+  - Standard Model singlet dark matter
+  lagrangian_available: 'yes'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The leading-order Lagrangian is explicit, but high-energy unitarity requires additional new physics
+    or a UV completion.
+particle_content:
+  dark_matter_candidate:
+    name: B_mu_nu antisymmetric tensor field
+    spin: spin-1 representation in antisymmetric tensor form
+    statistics: boson
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Standard Model Higgs boson
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: An accidental exact Z2 symmetry of the leading Lagrangian under B_mu_nu -> -B_mu_nu
+    forbids decay through Standard Model fields.
+  symmetries:
+  - name: accidental Z2
+    type: accidental
+    exact_or_approximate: exact
+    breaking: May be broken by unspecified ultraviolet interactions with non-SM fields.
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs boson
+  - weak gauge bosons
+  - fermion pairs
+  - nucleons through Higgs exchange
+  dark_sector_couplings:
+  - dimensionless Higgs-portal coupling c_B
+  mediator_types:
+  - scalar Higgs mediator
+  interaction_operators:
+  - B_mu_nu B^mu_nu H^dagger H
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - W+ W-
+  - Z Z
+  - fermion-antifermion pairs
+  - Higgs boson pairs
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_B
+    description: Mass of the antisymmetric tensor dark matter particle.
+    range: roughly 200 GeV to 5 TeV used for the heavy-mass freeze-out estimate
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs portal coupling
+    symbol: c_B
+    description: Dimensionless coupling between B_mu_nu B^mu_nu and H^dagger H.
+    range: perturbative values; c_B approximately 0.061 (m_B / 500 GeV) for m_B much larger than m_h
+    role: core
+    status: inferred
+  - name: Higgs vacuum expectation value
+    symbol: v
+    description: Standard Model Higgs vacuum expectation value used in cross sections.
+    value: 246
+    unit: GeV
+    role: derived
+    status: assumed
+production:
+  mechanisms:
+  - thermal freeze-out after Higgs-portal thermalization with Standard Model particles
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - thermally averaged annihilation cross section through Higgs portal
+  - mass m_B
+  - coupling c_B
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper computes the relic abundance with an instantaneous freeze-out approximation.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: dark matter relic density
+    symbol: Omega_B h^2
+    description: Observed dark matter abundance targeted by choosing c_B for a given mass.
+    value: observed dark matter abundance
+    role: cosmological
+    status: assumed
+  calculation_type: thermal
+  key_dependencies:
+  - m_B
+  - c_B
+  - Higgs resonance and weak/Higgs thresholds
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: Freeze-out temperature x_f is estimated to be about 20-30.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: unitarity_limit
+  applies_to: model
+  condition: The effective theory should not be extrapolated to center-of-mass energies where the tensor
+    cross section violates perturbative unitarity.
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - New physics is required at high energy to restore unitarity.
+- id: sm_only_stability
+  applies_to: model
+  condition: The accidental Z2 stability is argued only when interactions are restricted to Standard Model
+    fields.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: sm_field_content_only
+    description: No non-SM interactions are added that would break the accidental Z2 symmetry.
+    scope: theory
+    status: assumed
+    impact_if_violated: Additional right-handed neutrinos or vector-like fermions could induce decays.
+  - id: thermal_wimp_history
+    description: The relic abundance is computed with the usual thermal freeze-out history.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No dedicated public implementation is identified; the paper states that lengthy cross-section
+    formulae and Feynman rules are presented or deferred.
+provenance:
+  model_id: 1404_0432_antisymmetric_tensor_higgs_portal_dm_v1
+  model_name: Antisymmetric tensor Higgs-portal dark matter without new symmetries
+  model_family: higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1404_0432'
+      title: Dark Matter Stability without New Symmetries
+      authors:
+      - Oscar Cata
+      - Alejandro Ibarra
+      year: 2014
+      arxiv_id: '1404.0432'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1404_0432'
+      section: Abstract
+      page: null
+      quote_or_summary: The abstract states the antisymmetric tensor singlet, accidental Z2, Higgs portal,
+        and thermal freeze-out.
+    unresolved_items:
+    - The ultraviolet completion that restores high-energy unitarity is not specified.
+  evidence:
+    particle_content:
+    - reference_id: '1404_0432'
+      note: The paper introduces a Standard-Model-singlet antisymmetric tensor field B_mu nu as the dark
+        matter particle.
+      section: Abstract and introduction
+      confidence: high
+    symmetries:
+    - reference_id: '1404_0432'
+      note: The leading Lagrangian has an accidental Z2 symmetry from Standard Model Lorentz and gauge
+        symmetries, making B_mu nu stable when only SM interactions are included.
+      section: Stability discussion
+      confidence: high
+    interactions:
+    - reference_id: '1404_0432'
+      note: The dark matter couples to Standard Model fields through the Higgs portal, with annihilation
+        through Higgs exchange and B B h h contact interactions.
+      section: Relic abundance
+      confidence: high
+    production_mechanism:
+    - reference_id: '1404_0432'
+      note: The observed abundance is generated by thermal freeze-out after a thermal population from
+        Standard Model scattering.
+      section: Abstract and relic abundance
+      confidence: high
+    parameter_ranges:
+    - reference_id: '1404_0432'
+      note: The phenomenology is controlled mainly by m_B and the Higgs-portal coupling c_B; in the heavy-mass
+        limit c_B is about 0.061 times m_B/500 GeV.
+      section: Relic abundance
+      confidence: high
+    validity_domain:
+    - reference_id: '1404_0432'
+      note: The annihilation cross section grows pathologically at high energy and requires new physics
+        to restore unitarity.
+      section: Relic abundance
+      confidence: medium
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - High-energy unitarity requires unspecified new physics.
+  - Stability can be spoiled by interactions outside the Standard Model field content.
+  validation_status: expert_judgment_only
+  notes: The model identity and relic mechanism are explicit; UV completion remains open.
+agent_failure_modes:
+  warnings:
+  - id: do_not_extrapolate_above_unitarity
+    severity: high
+    category: extrapolation
+    warning: Do not use the effective tensor model at energies above its perturbative unitarity domain
+      without adding a UV completion.
+    mitigation: Check center-of-mass energy against the paper unitarity discussion before applying high-energy
+      predictions.
+    source_reference_ids:
+    - '1404_0432'

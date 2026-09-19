@@ -1,0 +1,279 @@
+_source:
+  shard: arXiv_src_2009_066_wds.tar
+  paper_id: '2009_12002'
+  source_member: 2009_12002.json
+schema_version: model_only_v0
+model_id: 2009_12002_loop_neutrino_portal_majorana_dm_v1
+identity:
+  name: Loop neutrino-portal Majorana dark matter
+  family: neutrino_portal_dark_matter
+  aliases:
+  - scenario A for Majorana DM
+  short_description: A sub-GeV Majorana dark matter component whose annihilation to neutrinos is generated
+    mainly by a one-loop box diagram with a heavier Majorana mediator and scalar partner.
+  historical_origin_or_motivation: Motivated by making loop corrections dominate the neutrino-portal annihilation
+    process that sets the relic density.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - neutrino portal
+  - two-component dark matter
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes the interaction Lagrangian for scenario A and neglects Higgs interactions of
+    the new scalar singlets for simplicity.
+particle_content:
+  dark_matter_candidate:
+    name: light Majorana fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: subcomponent
+  additional_dark_sector_particles:
+  - heavier complex scalar phi
+  - heavier dark component that depletes into the lighter state
+  mediators:
+  - right-handed Majorana neutrino N_R
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - light Majorana fermion chi
+  unstable_parent_particles:
+  - heavier dark-sector component
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z_2 symmetry stabilizes both dark components, with the heavier component depleted
+    by annihilation to the lighter one.
+  symmetries:
+  - name: Z_2
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - active neutrinos
+  dark_sector_couplings:
+  - Yukawa couplings between the complex scalar, the dark fermion, and N_R
+  - couplings of N_R to left-handed active neutrinos
+  mediator_types:
+  - Majorana fermion mediator
+  - complex scalar
+  interaction_operators:
+  - one-loop box annihilation to neutrinos
+  annihilation_channels:
+  - chi chi -> neutrino neutrino through a box diagram
+  - heavier dark component annihilation into lighter dark matter
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: loop
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the light Majorana dark matter component.
+    range: sub-GeV in the thermal analysis; numerical examples take m_chi above about 10 MeV
+    unit: MeV--GeV
+    role: core
+    status: inferred
+  - name: complex scalar mass
+    symbol: m_phi
+    description: Mass of the scalar participating in the box diagram and heavier-component dynamics.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Majorana mediator mass
+    symbol: m_N
+    description: Mass of the right-handed Majorana neutrino mediator.
+    value: 10 GeV benchmark in the relic-density contour example
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Yukawa couplings
+    symbol: Y_phi, Y_N
+    description: Couplings controlling the loop annihilation amplitude.
+    value: Y_phi=1 and Y_N=0.2 in one benchmark
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through loop-induced annihilation to neutrinos
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - one-loop box annihilation cross section
+  - dark matter mass
+  - scalar and Majorana mediator masses
+  - Yukawa couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper shows relic-abundance contours including h^2 = 0.12 for scenario A.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - box loop function
+  - m_chi
+  - m_phi
+  - m_N
+  - Yukawa couplings
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The paper treats nonrelativistic thermal freeze-out.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: loop_dominated_portal
+  applies_to: model
+  condition: The scenario assumes tree-level annihilation is absent or negligible so that the neutrino
+    portal operates mainly through the loop diagram.
+  status: inferred
+  extrapolation_risk: medium
+- id: light_dm_bounds
+  applies_to: parameter
+  condition: The numerical discussion uses light cold dark matter masses above the sub-keV to MeV lower-bound
+    region.
+  status: inferred
+  extrapolation_risk: medium
+  valid_range: m_chi above the light-DM lower bounds used in the paper
+assumptions:
+  global:
+  - id: neglected_higgs_interactions
+    description: Higgs interactions of the new scalar singlets and quartic scalar bilinears are neglected
+      for simplicity.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Including them could open additional production or detection channels.
+  - id: active_neutrino_mass_neglected
+    description: Active neutrino masses are neglected in the sub-GeV thermal calculation.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper says the loop integral was simplified with Package-X; no public model implementation
+    is identified.
+provenance:
+  model_id: 2009_12002_loop_neutrino_portal_majorana_dm_v1
+  model_name: Loop neutrino-portal Majorana dark matter
+  model_family: neutrino_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Neutrino Portal via Loops
+      authors: []
+      year: 2020
+      arxiv_id: '2009.12002'
+      role: original_model
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: Codex dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      quote_or_summary: The paper proposes dark matter freeze-out mainly via loop-level neutrino-portal
+        annihilation.
+    - reference_id: primary
+      section: Loop-portal models
+      quote_or_summary: Scenario A is presented as Majorana dark matter stabilized by Z_2 and annihilating
+        to neutrinos through a box diagram.
+    - reference_id: primary
+      section: Relic density
+      quote_or_summary: Relic-density contours are shown for benchmark masses and Yukawa couplings, including
+        h^2 = 0.12.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: Scenario A contains a light Majorana dark matter candidate, a heavier scalar component, and
+        a Majorana mediator N_R.
+      section: Loop-portal models
+      confidence: high
+    symmetries:
+    - reference_id: primary
+      note: The text states that both dark components in scenario A are stabilized by a Z_2 symmetry.
+      section: Loop-portal models
+      confidence: high
+    interactions:
+    - reference_id: primary
+      note: The dominant annihilation of the Majorana component to neutrinos is through the box diagram
+        shown for scenario A.
+      section: Loop-portal models
+      confidence: high
+    production_mechanism:
+    - reference_id: primary
+      note: The paper explicitly calculates the thermal averaged reduced annihilation cross section and
+        relic-density contours for scenario A.
+      section: Relic density
+      confidence: high
+    parameter_ranges:
+    - reference_id: primary
+      note: The numerical example sets Y_phi = 1, Y_N = 0.2, m_N = 10 GeV and scans the dark matter and
+        scalar masses.
+      section: Relic density
+      confidence: medium
+    validity_domain:
+    - reference_id: primary
+      note: The construction neglects Higgs interactions of the new scalar singlets and focuses on sub-GeV
+        dark matter thermal dynamics.
+      section: Loop-portal models
+      confidence: medium
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - tree-level portals neglected by assumption
+  - thermal and loop approximations for very light dark matter
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: loop_dominance_assumption
+    severity: medium
+    category: assumption_mismatch
+    warning: Adding omitted Higgs or scalar interactions could spoil the claim that the neutrino portal
+      is loop dominated.
+  - id: two_component_language
+    severity: low
+    category: notation_conflict
+    warning: The paper calls the setup two-component even though the heavier component is intended to
+      have negligible relic abundance.

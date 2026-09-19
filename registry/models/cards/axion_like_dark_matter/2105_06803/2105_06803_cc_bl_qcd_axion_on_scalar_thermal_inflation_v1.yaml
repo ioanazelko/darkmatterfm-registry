@@ -1,0 +1,415 @@
+_source:
+  shard: arXiv_src_2105_040_wds.tar
+  paper_id: '2105_06803'
+  source_member: 2105_06803.json
+schema_version: model_only_v0
+model_id: 2105_06803_cc_bl_qcd_axion_on_scalar_thermal_inflation_v1
+identity:
+  name: Classically conformal B-L QCD axion model with massless O(N) scalar thermal inflation
+  family: axion_like_dark_matter
+  aliases:
+  - axion-CMB scenario in a supercooled B-L universe
+  - CC B-L model with QCD axion and O(N) scalars
+  short_description: A QCD-axion scenario embedded in a classically conformal B-L model extended by many
+    O(N) scalar fields; thermal inflation after the QCD transition dilutes the axion so it is only a tiny
+    present-day CDM fraction while its primordial fluctuations source CMB anisotropy.
+  historical_origin_or_motivation: Constructed as a concrete particle-physics realization of the axion-CMB
+    scenario requiring large axion energy at the QCD transition but small present isocurvature.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - QCD axion
+  - classically conformal B-L extension of the Standard Model
+  - thermal inflation
+  - O(N) scalar extension
+  lagrangian_available: partial
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the CC B-L scalar potential and the O(N) scalar extension but does not provide
+    a full UV account of the axion/PQ sector in the extracted text.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: subcomponent
+  additional_dark_sector_particles:
+  - O(N) scalar fields S
+  - B-L scalar
+  - right-handed neutrinos
+  mediators:
+  - B-L gauge boson Z_prime
+  - B-L scalar/thermal-inflation field
+  dark_radiation_species:
+  - massless components of the O(N) scalar sector
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Peccei-Quinn symmetry supplies the axion degree of freedom; the paper requires
+    PQ symmetry to be broken before primordial inflation.
+  symmetries:
+  - name: Peccei-Quinn symmetry
+    type: global
+    exact_or_approximate: broken
+    breaking: broken before primordial inflation
+    breaking_scale:
+      name: PQ scale
+      symbol: f_A
+      description: Axion decay constant used in the CMB/isocurvature relations.
+      range: model dependent, examples around 1e12 GeV
+      unit: GeV
+      role: core
+      status: inferred
+  - name: U(1)_{B-L}
+    type: gauge
+    exact_or_approximate: broken
+    breaking: Coleman-Weinberg symmetry breaking after supercooling
+    breaking_scale: null
+  - name: O(N)
+    type: global
+    exact_or_approximate: unknown
+    breaking: massless S case keeps N-1 massless components after thermal inflation
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - axion
+  - higgs
+  - vector
+  - other
+  standard_model_targets:
+  - QCD sector
+  - Higgs sector
+  - B-L charged fields
+  dark_sector_couplings:
+  - axion potential generated at the QCD transition
+  - negative Higgs portal coupling between O(N) scalars and H
+  - B-L gauge and scalar interactions
+  mediator_types:
+  - QCD axion
+  - B-L gauge boson
+  - B-L scalar
+  - O(N) scalar sector
+  interaction_operators:
+  - S^2 H^dagger H portal term
+  - S^2 Phi^dagger Phi coupling
+  - QCD axion potential
+  scattering:
+    elastic: unknown
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: number of O(N) scalars
+    symbol: N
+    description: Large multiplicity needed in the successful massless-S realization.
+    value: about 1e19
+    role: core
+    status: inferred
+  - name: B-L gauge boson mass
+    symbol: m_Z_prime
+    description: Typical mass range stated for satisfying the axion-CMB conditions.
+    range:
+      min: 5
+      max: 10
+      inclusive_min: true
+      inclusive_max: true
+      unit: TeV
+      notes: Abstract states around 5-10 TeV.
+    unit: TeV
+    role: core
+    status: inferred
+  - name: axion fraction today
+    symbol: r_A
+    description: Ratio of axion abundance to total cold dark matter today; must be very small.
+    range: r_A < 8.2e-3 R, typically around 1e-4 in discussed regions
+    role: core
+    status: inferred
+  - name: axion decay constant
+    symbol: f_A
+    description: PQ/axion scale entering CMB amplitude and axion abundance formulas.
+    range: model dependent; formulas normalized to 1e12 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs portal aggregate coupling
+    symbol: lambda_SH
+    description: O(N)-enhanced negative Higgs portal controls symmetry non-restoration.
+    range: parameter-dependent allowed regions
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - misalignment production of QCD axion fluctuations
+  - thermal-inflation dilution after the QCD transition
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - initial axion misalignment angle
+  - axion decay constant
+  - thermal-inflation e-folding after QCD transition
+  - O(N) scalar sector history
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: 'no'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The model intentionally dilutes axions so their present fraction of CDM is tiny; it is therefore
+    a subcomponent axion model rather than all of dark matter.
+relic_density:
+  full_or_subcomponent: subcomponent
+  target_fraction:
+    name: axion CDM fraction
+    symbol: r_A
+    description: Present axion abundance relative to total CDM.
+    range: r_A < 8.2e-3 R
+    role: derived
+    status: inferred
+  calculation_type: nonthermal
+  key_dependencies:
+  - theta_ini
+  - f_A
+  - thermal-inflation duration
+  - B-L gauge boson mass
+  - O(N) scalar multiplicity
+  requires_entropy_dilution: 'yes'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: 'yes'
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - long supercooling of B-L and electroweak symmetries
+  - thermal inflation after QCD transition
+  - separate O(N) and SM/B-L sector evolution
+  - secondary reheating
+  dark_sector_temperature: null
+  delta_neff:
+    name: extra relativistic species
+    symbol: Delta N_eff
+    description: Massless S components contribute as dark radiation.
+    range: parameter dependent; Planck-era N_eff bound discussed
+    role: derived
+    status: inferred
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - QCD phase transition
+  - B-L symmetry breaking
+  - electroweak symmetry breaking after supercooling
+  topological_defects: []
+  isocurvature_perturbations: 'yes'
+  bbn_relevance: unknown
+  cmb_relevance: critical
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The relevant axion component is a coherently oscillating field; massless S components behave
+    as dark radiation.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: not addressed
+  nonlinear:
+    halo_mass_function_effect: not addressed; axion fraction is required to be tiny
+    subhalo_mass_function_effect: not addressed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: massless_s_success_region
+  applies_to: model
+  condition: The paper finds simultaneous satisfaction of axion-CMB requirements in parameter regions
+    for massless S fields, with N around 1e19 and B-L gauge boson mass around 5-10 TeV.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: tiny_axion_fraction
+  applies_to: relic_density
+  condition: Axions must be largely diluted by thermal inflation so r_A is tiny at present.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: pq_broken_before_inflation
+  applies_to: cosmological_history
+  condition: The scenario assumes Peccei-Quinn symmetry is broken before primordial inflation.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: pq_preinflationary
+    description: Peccei-Quinn symmetry is already broken before primordial inflation.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: separate_on_sector
+    description: The O(N) scalar sector and the SM/B-L sector evolve almost separately in the early universe.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: low_secondary_reheating
+    description: The production estimates after thermal inflation assume a low reheating-temperature case
+      in parts of the analysis.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper includes numerical parameter-region calculations but no associated public code
+    is identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 2105_06803_cc_bl_qcd_axion_on_scalar_thermal_inflation_v1
+  model_name: Classically conformal B-L QCD axion model with massless O(N) scalar thermal inflation
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2105.06803
+      title: Axion-CMB Scenario in Supercooled Universe
+      authors:
+      - Satoshi Iso
+      - Kiyoharu Kawana
+      - Kengo Shimada
+      year: 2021
+      arxiv_id: '2105.06803'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_worker_batch-0015
+    extractor_name: GPT-5.5 dark-matter model-card extraction worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:2105.06803
+      section: Abstract
+      page: null
+      quote_or_summary: The paper focuses on a CC B-L model with a QCD axion and extends it by N scalar
+        fields S to realize the axion-CMB scenario.
+    - reference_id: arxiv:2105.06803
+      section: O(N) scalar extension
+      page: null
+      quote_or_summary: The model adds gauge-singlet O(N) scalar fields with Higgs and B-L scalar portal
+        couplings.
+    - reference_id: arxiv:2105.06803
+      section: Massless O(N) sector
+      page: null
+      quote_or_summary: For massless S fields, the paper evaluates axion dilution, S relic abundance,
+        and allowed regions.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2105.06803
+      note: The model contains a QCD axion, CC B-L fields, right-handed neutrinos, and added O(N) scalar
+        fields S.
+      confidence: high
+      section: Abstract and model sections
+      page: null
+    symmetries:
+    - reference_id: arxiv:2105.06803
+      note: The scenario assumes pre-inflationary PQ breaking and uses gauged B-L plus an O(N) scalar
+        sector.
+      confidence: medium
+      section: Introduction and model sections
+      page: null
+    interactions:
+    - reference_id: arxiv:2105.06803
+      note: The O(N) scalar potential includes S-H and S-B-L-scalar portal terms; the axion potential
+        is generated at QCD.
+      confidence: medium
+      section: O(N) scalar extension
+      page: null
+    production_mechanism:
+    - reference_id: arxiv:2105.06803
+      note: Axion abundance is set by misalignment and then diluted by thermal inflation after QCD.
+      confidence: high
+      section: Axion-CMB scenario
+      page: null
+    cosmological_history:
+    - reference_id: arxiv:2105.06803
+      note: The successful construction uses long supercooling, thermal inflation, separate O(N) evolution,
+        and reheating.
+      confidence: high
+      section: CC B-L and massless S sections
+      page: null
+    parameter_ranges:
+    - reference_id: arxiv:2105.06803
+      note: The abstract states successful regions for massless S with N around 1e19 and B-L gauge boson
+        mass around 5-10 TeV.
+      confidence: high
+      section: Abstract
+      page: null
+    validity_domain:
+    - reference_id: arxiv:2105.06803
+      note: The original CC B-L model is insufficient; the massless O(N) extension is the successful variant.
+      confidence: medium
+      section: Introduction and model sections
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - This is a borderline model-card inclusion because the axion is intentionally diluted to a tiny subcomponent
+    of present-day CDM; the paper is primarily an axion-CMB cosmology construction.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Requires very large N
+  - Massless O(N) sector and reheating assumptions dominate viability
+  validation_status: expert_judgment_only
+  notes: Good support for the constructed cosmological model; classification as a DM model is borderline
+    because the axion is not intended to make all DM.
+agent_failure_modes:
+  warnings:
+  - id: subcomponent_not_all_dm
+    severity: high
+    category: assumption_mismatch
+    warning: Do not treat this model as producing all dark matter; the paper requires the axion fraction
+      today to be tiny.
+    source_reference_ids: []
+  - id: cmb_model_not_constraint_entry
+    severity: medium
+    category: other
+    warning: The CMB and isocurvature discussion is provenance for production history here, not an extracted
+      observable or constraint block.
+    source_reference_ids: []

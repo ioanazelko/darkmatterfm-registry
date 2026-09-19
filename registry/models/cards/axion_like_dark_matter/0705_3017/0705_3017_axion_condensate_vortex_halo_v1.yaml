@@ -1,0 +1,399 @@
+_source:
+  shard: data/astro-ph-00006.tar
+  paper_id: '0705_3017'
+  source_member: 0705_3017.json
+schema_version: model_only_v0
+model_id: 0705_3017_axion_condensate_vortex_halo_v1
+identity:
+  name: Axion-condensate vortex dark matter halo
+  family: axion_like_dark_matter
+  aliases:
+  - singular vortex in axion condensate
+  - axion BEC halo vortex
+  short_description: A galactic-halo model in which primordial axions form a Bose-Einstein condensate
+    whose vortex states can produce dark-matter halo rotation curves.
+  historical_origin_or_motivation: The paper extends axion cold dark matter by asking whether cosmic rotation
+    can seed vortices in an axion condensate on halo or smaller scales.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - QCD axion dark matter
+  - Bose-Einstein condensate halo
+  - Gross-Pitaevskii equation in an expanding FRW universe
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The assigned text models the condensate with a Gross-Pitaevskii equation, topological vortex
+    charge, and halo rotation curves rather than a full particle-physics Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: primordial axions in a condensate vortex
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - vortex state with topological charge l = 1
+  - non-vortex l = 0 condensate state
+  long_lived_particles:
+  - axions
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The paper relies on low-mass axions preventing ordinary decay modes and on stable
+    elementary l=1 vortex states in a rotating condensate.
+  symmetries:
+  - name: Peccei-Quinn symmetry
+    type: global
+    exact_or_approximate: broken
+    breaking: Peccei-Quinn phase transition and QCD-era axion mass generation
+    breaking_scale:
+      name: Peccei-Quinn scale
+      symbol: f_a
+      value: 10^12
+      unit: GeV
+      status: assumed
+  - name: vortex topological charge
+    type: unknown
+    exact_or_approximate: exact
+    breaking: not specified
+    breaking_scale: null
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  - gravitational
+  standard_model_targets:
+  - galactic gravitational potential
+  - visible matter contribution neglected in halo fits
+  dark_sector_couplings:
+  - axion self-coupling g in the Gross-Pitaevskii equation, set to zero in the free-condensate approximation
+  - weak gravitational coupling between axions
+  mediator_types:
+  - gravity
+  - axion condensate mean field
+  interaction_operators:
+  - Gross-Pitaevskii condensate evolution with optional self-interaction term g^2 |psi|^2
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: strong
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels:
+  - condensate self-interaction parameterized by g
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: Peccei-Quinn scale
+    symbol: f_a
+    description: Reference axion scale used in the paper's example.
+    role: core
+    status: assumed
+    source_reference_ids:
+    - primary
+    value: 10^12
+    unit: GeV
+  - name: axion mass
+    symbol: m_a
+    description: Low axion mass corresponding to the chosen Peccei-Quinn scale; exponent signs are unclear
+      in the extracted text.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+    value: about 10^-5 eV in the paper's QCD-axion example
+    unit: eV
+    notes: The extracted text drops minus signs in several exponents; the model card records the paper's
+      low-mass axion context rather than treating the rendered exponent literally.
+  - name: topological charge
+    symbol: l
+    description: Vortex winding number; the paper focuses on elementary l = 1 vortices.
+    role: core
+    status: assumed
+    source_reference_ids:
+    - primary
+    value: '1'
+  - name: axion velocity dispersion
+    symbol: v
+    description: Velocity dispersion required to maintain a single galactic-scale vortex.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+    value: order 10^-12 m/s in the paper's notation
+    unit: m/s
+    notes: The extracted text renders the exponent sign unclearly; the paper emphasizes that the required
+      value is extremely smaller than standard axion expectations.
+  - name: axion-like particle mass for galactic coherence
+    symbol: m
+    description: Alternative ultralight mass scale required if the de Broglie wavelength is comparable
+      to a galactic diameter.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+    value: order 10^-30 eV in context
+    unit: eV
+    notes: The extracted text renders the exponent sign unclearly.
+production:
+  mechanisms:
+  - primordial axions from the Peccei-Quinn phase transition
+  - Bose-Einstein condensation when the axion acquires mass near the QCD epoch
+  - vortex formation from global rotation of the early Universe
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - axion mass
+  - Peccei-Quinn scale
+  - condensation temperature
+  - global rotation and vortex coherence requirements
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper treats axions as primordial cold condensate dark matter and studies vortex halo formation
+    rather than computing a full relic abundance.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - m_a
+  - f_a
+  - axion condensate formation
+  - halo-scale coherence
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: severe_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - possible global rotation of the early Universe
+  - axion condensate vortex network
+  dark_sector_temperature:
+    name: axion temperature at condensation
+    symbol: T
+    value: of order Hubble expansion rate in text
+    unit: eV
+    status: inferred
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - Peccei-Quinn phase transition
+  - QCD-era axion mass generation and condensation
+  topological_defects:
+  - axion condensate vortices
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  f_of_p_or_q: condensate wave function psi whose modulus gives the axion density
+  average_momentum_relative_to_thermal: nonrelativistic axions in a coherent condensate
+  free_streaming_length: null
+  velocity_dispersion_today:
+    name: halo-scale vortex velocity dispersion
+    symbol: v
+    value: extremely small
+    unit: m/s
+    status: inferred
+  phase_space_bounds:
+  - de Broglie wavelength must be comparable with the scale on which the condensate remains coherent
+  notes: The model is a coherent field/condensate halo rather than a thermal particle gas at late times.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+  nonlinear:
+    halo_mass_function_effect: vortices on small scales may seed galaxy formation and angular momenta
+    subhalo_mass_function_effect: unknown
+    density_profile_effect: vortex and non-vortex condensate profiles can yield flat rotation-curve plateaus
+    simulation_calibrated: 'no'
+validity_domain:
+- id: gross_pitaevskii_condensate
+  applies_to: model
+  condition: Axion condensate can be described by a one-particle Gross-Pitaevskii wave function in an
+    expanding FRW background.
+  status: approximate
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+- id: galactic_vortex_coherence
+  applies_to: structure_formation
+  condition: A single galactic-scale vortex requires an extremely small axion velocity dispersion or an
+    ultralight axion-like particle whose de Broglie wavelength matches a galaxy.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - primary
+- id: halo_rotation_fits
+  applies_to: model
+  condition: Rotation-curve examples neglect the contribution from ordinary luminous matter.
+  status: approximate
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+assumptions:
+  global:
+  - id: primordial_axion_condensate
+    description: Axions form a cold Bose-Einstein condensate once the Universe cools to the QCD-era mass-generation
+      regime.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+  - id: cosmic_rotation_vortices
+    description: Global rotation of the early Universe can seed elementary vortices in the condensate.
+    scope: cosmological_history
+    status: speculative
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+  - id: luminous_matter_neglected
+    description: The example rotation curves isolate the dark halo contribution and neglect baryonic luminous
+      matter.
+    scope: structure_formation
+    status: approximate
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific associated code is identified in the assigned text.
+provenance:
+  model_id: 0705_3017_axion_condensate_vortex_halo_v1
+  model_name: Axion-condensate vortex dark matter halo
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Vortex in axion condensate as a dark matter halo
+      authors:
+      - Jakub Mielczarek
+      - Tomasz Stachowiak
+      - Marek Szydlowski
+      year: 2007
+      arxiv_id: '0705.3017'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: gpt55_dark_matter_batch_worker_batch_0334
+    extractor_name: Codex
+    extraction_date: '2026-05-28'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract
+      page: null
+      quote_or_summary: The paper studies vortices in an axion condensate on galactic scales and computes
+        rotation curves.
+    - reference_id: primary
+      section: axion condensate setup
+      page: null
+      quote_or_summary: The text uses a Gross-Pitaevskii equation, primordial axions from the Peccei-Quinn
+        transition, and BEC formation near the QCD epoch.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The candidate is a condensate of primordial axions; vortex and non-vortex condensate states
+        are analyzed.
+      confidence: high
+      section: introduction and condensate section
+    symmetries:
+    - reference_id: primary
+      note: The paper names the Peccei-Quinn phase transition and uses integer vortex topological charge
+        l.
+      confidence: high
+      section: condensate setup
+    interactions:
+    - reference_id: primary
+      note: The condensate is modeled with the Gross-Pitaevskii equation including self-interaction parameter
+        g and gravitational coupling as a thermalization effect.
+      confidence: high
+      section: model equations
+    production_mechanism:
+    - reference_id: primary
+      note: The text says axions can be present since the Peccei-Quinn phase transition and condense when
+        the axion mass appears near T about 1 GeV.
+      confidence: high
+      section: axion condensation discussion
+    cosmological_history:
+    - reference_id: primary
+      note: Vortices are proposed to arise from global rotation of the early Universe.
+      confidence: high
+      section: vortex motivation
+    parameter_ranges:
+    - reference_id: primary
+      note: The paper fixes f_a = 10^12 GeV and discusses extremely small velocity dispersion or ultralight
+        axion-like mass for galactic-scale coherence.
+      confidence: medium
+      section: parameter discussion
+    validity_domain:
+    - reference_id: primary
+      note: The authors state that required halo-scale velocity dispersions are much smaller than present
+        axion-physics expectations.
+      confidence: high
+      section: abstract/conclusions
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - The extracted text drops minus signs in several exponent values; numerical exponent details should
+    be checked against the source PDF before registry use.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: low
+  computational_robustness: low
+  validation_status: expert_judgment_only
+  dominant_uncertainties:
+  - halo-scale coherence condition
+  - velocity dispersion requirement
+  - OCR exponent signs
+  notes: Core model identity is clear, but the paper itself flags severe tension for galactic-scale vortices
+    with standard axion expectations.
+agent_failure_modes:
+  warnings:
+  - id: ocr_exponents
+    severity: medium
+    category: unit_convention
+    warning: The extracted text loses minus signs in exponents for axion mass and velocity dispersion;
+      do not treat the rendered powers literally without source checking.
+    source_reference_ids:
+    - primary
+  - id: halo_scale_tuning
+    severity: high
+    category: extrapolation
+    warning: The paper finds galactic-scale vortices require extremely small velocity dispersion or ultralight
+      axion-like particles, so do not use the model as an ordinary QCD-axion halo prediction.
+    source_reference_ids:
+    - primary

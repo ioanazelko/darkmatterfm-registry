@@ -1,0 +1,307 @@
+_source:
+  shard: arXiv_src_2011_025_wds.tar
+  paper_id: '2011_04537'
+  source_member: 2011_04537.json
+schema_version: model_only_v0
+model_id: 2011_04537_general_u1x_dirac_wimp_v1
+identity:
+  name: General U(1)_X Dirac WIMP dark matter
+  family: vector_portal_wimp_dark_matter
+  aliases:
+  - general U(1)_X singlet Dirac fermion dark matter
+  short_description: An SM-singlet Dirac fermion charged under a general anomaly-free U(1)_X gauge symmetry,
+    interacting with Standard Model fields through the Z prime gauge boson.
+  historical_origin_or_motivation: Motivated by anomaly-free U(1)_X extensions with right-handed neutrinos
+    and seesaw neutrino masses.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - general U(1)_X extension of the Standard Model
+  - U(1)_Y plus U(1)_{B-L} linear combination
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the gauge, scalar, neutrino, and dark matter interaction terms for the anomaly-free
+    U(1)_X setup.
+particle_content:
+  dark_matter_candidate:
+    name: SM-singlet Dirac fermion charged under U(1)_X
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - right-handed neutrinos
+  - U(1)_X-breaking scalar
+  mediators:
+  - Z prime gauge boson
+  - mixed scalar mass eigenstates
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The U(1)_X charge n_chi is chosen so the Dirac fermion cannot decay to right-handed
+    neutrinos or other fields.
+  symmetries:
+  - name: U(1)_X
+    type: gauge
+    exact_or_approximate: exact
+    breaking: spontaneously broken by an SM-singlet scalar
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - higgs
+  standard_model_targets:
+  - Standard Model fermions
+  - right-handed neutrinos
+  - Z boson
+  - scalar mass eigenstates
+  dark_sector_couplings:
+  - g_X n_chi Z prime current coupling
+  mediator_types:
+  - massive U(1)_X gauge boson
+  - singlet-doublet mixed scalars
+  interaction_operators:
+  - Dirac current coupling to Z prime
+  annihilation_channels:
+  - SM fermion pairs
+  - right-handed neutrino pairs
+  - Z plus scalar
+  - Z prime plus scalar
+  - Z prime pairs
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: U(1)_X gauge coupling
+    symbol: g_X
+    description: Gauge coupling controlling Z prime interactions.
+    range:
+      min: 0.01
+      max: 1.0
+      unit: null
+      notes: Scan range quoted in the paper.
+    role: core
+    status: inferred
+  - name: Z prime mass
+    symbol: m_Zprime
+    description: Mass of the U(1)_X gauge boson.
+    range:
+      min: 1
+      max: 10
+      unit: TeV
+      notes: Scan range quoted for the dark matter study.
+    unit: TeV
+    role: core
+    status: inferred
+  - name: dark matter mass
+    symbol: m_DM
+    description: Mass of the singlet Dirac dark matter fermion.
+    range:
+      min: 1
+      max: 10
+      unit: TeV
+      notes: Scan range quoted for the dark matter study.
+    unit: TeV
+    role: core
+    status: inferred
+  - name: U(1)_X mixing direction
+    symbol: x_H
+    description: Parameter setting the linear combination of hypercharge and B-L.
+    range: benchmarks include -2, -0.5, 0, and 2
+    role: core
+    status: established
+  - name: dark matter U(1)_X charge
+    symbol: n_chi
+    description: U(1)_X charge of the Dirac fermion.
+    range: benchmarks include 1/3 and 2
+    role: core
+    status: established
+production:
+  mechanisms:
+  - thermal freeze-out of a vector-portal WIMP
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - Z prime mediated annihilation cross sections
+  - dark matter mass
+  - U(1)_X charge and coupling
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper evaluates thermal averaged cross sections and the relic abundance h^2.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - g_X
+  - m_Zprime
+  - m_DM
+  - x_H
+  - n_chi
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  phase_transitions:
+  - spontaneous U(1)_X breaking
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: A standard thermal freeze-out treatment is used.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: charge_stability
+  applies_to: model
+  condition: Charge choices must forbid decays of the Dirac fermion into right-handed neutrinos or other
+    lighter fields.
+  status: inferred
+  extrapolation_risk: high
+- id: no_kinetic_mixing_limit
+  applies_to: model
+  condition: The analysis neglects kinetic mixing between Z and Z prime.
+  status: assumed
+  extrapolation_risk: medium
+- id: scan_range
+  applies_to: parameter
+  condition: The phenomenology is demonstrated over the TeV-scale scan ranges quoted by the paper.
+  status: inferred
+  extrapolation_risk: medium
+  valid_range: g_X in [0.01,1], m_Zprime and m_DM in [1,10] TeV
+assumptions:
+  global:
+  - id: anomaly_free_u1x
+    description: The U(1)_X charges are the anomaly-free linear combination of hypercharge and B-L with
+      three right-handed neutrinos.
+    scope: theory
+    status: established
+    can_be_relaxed: unknown
+  - id: xphi_fixed
+    description: The analysis fixes x_phi=1 for the U(1)_X-breaking scalar charge normalization.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: thermal_relic
+    description: The dark matter abundance is computed as a thermal relic abundance.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is mentioned in the assigned paper text.
+provenance:
+  model_id: 2011_04537_general_u1x_dirac_wimp_v1
+  model_name: General U(1)_X Dirac WIMP dark matter
+  model_family: vector_portal_wimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Alternative dark matter phenomenology in a general U(1)_X extension of the Standard Model
+      authors:
+      - Arindam Das
+      - Kazuki Enomoto
+      - Shinya Kanemura
+      year: 2020
+      arxiv_id: '2011.04537'
+      role: original_model
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0000
+    extractor_name: Codex dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      quote_or_summary: Introduces a massive weakly interacting Dirac dark matter candidate in a general
+        U(1)_X model.
+    - reference_id: primary
+      section: Model setup
+      quote_or_summary: Defines Q_X as a linear combination of hypercharge and B-L and adds the SM-singlet
+        Dirac fermion.
+    - reference_id: primary
+      section: Relic abundance calculation
+      quote_or_summary: Gives annihilation cross sections and uses thermal averaging to compute relic
+        abundance.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model introduces an SM-singlet Dirac fermion with U(1)_X charge n_chi as the dark matter
+        candidate.
+      section: Model setup
+      confidence: high
+    symmetries:
+    - reference_id: primary
+      note: The stability of the Dirac fermion is protected by its U(1)_X charge, with charge choices
+        excluding decays to right-handed neutrinos and other fields.
+      section: Dark matter candidate section
+      confidence: high
+    interactions:
+    - reference_id: primary
+      note: The dark matter couples to the Z prime gauge boson and annihilates through channels including
+        SM fermions, right-handed neutrinos, scalar plus gauge boson final states, and Z prime pairs.
+      section: Dark matter annihilation processes
+      confidence: high
+    production_mechanism:
+    - reference_id: primary
+      note: The paper computes thermal averaged annihilation cross sections and the freeze-out relic abundance.
+      section: Relic abundance calculation
+      confidence: high
+    parameter_ranges:
+    - reference_id: primary
+      note: The text scans g_X, m_Zprime, and m_DM over TeV-scale ranges and uses benchmark x_H and n_chi
+        values.
+      section: Parameter scan discussion
+      confidence: medium
+    validity_domain:
+    - reference_id: primary
+      note: The paper fixes x_phi=1, neglects kinetic mixing, and treats the U(1)_X charge as a linear
+        combination of hypercharge and B-L.
+      section: Model setup
+      confidence: medium
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - neglected kinetic mixing
+  - charge assignments and TeV-scale parameter choices
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: charge_choice_required
+    severity: medium
+    category: assumption_mismatch
+    warning: The stability argument depends on excluding charge choices that allow decay operators.
+  - id: kinetic_mixing_omitted
+    severity: low
+    category: extrapolation
+    warning: The paper neglects Z-Z prime kinetic mixing; applications including kinetic mixing may change
+      the phenomenology.

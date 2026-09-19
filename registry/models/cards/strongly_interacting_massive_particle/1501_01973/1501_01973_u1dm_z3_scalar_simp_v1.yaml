@@ -1,0 +1,654 @@
+_source:
+  shard: arXiv_src_1501_004_wds.tar
+  paper_id: '1501_01973'
+  source_member: 1501_01973.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: goldstone_radiation_relevance
+    mitigation: Preserve the global U(1)_DM-breaking origin when comparing models.
+    severity: medium
+    source_reference_ids: []
+    warning: The massless Goldstone boson and scalar mixing are integral to the model; do not map this
+      directly to a minimal Z3 scalar model without them.
+associated_code:
+  code_summary: The paper states that the model was implemented in FeynRules with CalcHEP and MicrOMEGAs
+    used for phenomenological studies; no public repository is identified in the text.
+  has_associated_code: partial
+  packages_or_modules:
+  - availability: unknown
+    name: FeynRules/CalcHEP/MicrOMEGAs implementation
+    notes: Mentioned in the paper text without a public link in the assigned source.
+    purpose:
+    - define_lagrangian
+    - compute_relic_density
+    relationship_to_model: official_author_code
+    resource_type: module
+  primary_code_role: model_definition
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The relic-density Boltzmann equation assumes no asymmetry between X and anti-X.
+    id: no_dm_asymmetry
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The phenomenological analysis requires scalar couplings in the perturbative regime at
+      the electroweak scale.
+    id: perturbative_couplings
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling:
+    description: Freeze-out governed by selected number-changing processes
+    name: chemical freeze-out
+    role: cosmological
+    status: inferred
+    symbol: T_f
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - massless Goldstone boson affects radiation content
+  phase_transitions:
+  - spontaneous breaking of global U(1)_DM to Z3
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - Z3 scalar dark matter from global U(1)_DM breaking
+  family: strongly_interacting_massive_particle
+  historical_origin_or_motivation: Constructed to realize stable scalar dark matter, a Goldstone boson,
+    Higgs mixing, and WIMP/SIMP relic-density mechanisms from a continuous symmetry remnant.
+  model_kind: complete_theory
+  name: Global U(1)_DM-remnant Z3 scalar SIMP
+  short_description: A scalar extension of the Standard Model with complex singlets phi_X and X; spontaneous
+    global U(1)_DM breaking leaves a remnant Z3 symmetry stabilizing the complex scalar X.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - 3-to-2 dark-matter annihilation
+  - self-interactions
+  dark_sector_couplings:
+  - X-Higgs portal coupling
+  - X-phi_X coupling
+  - cubic X^3 phi_X* term
+  - Goldstone interactions
+  interaction_operators:
+  - X* X H†H
+  - X* X phi_X* phi_X
+  - X^3 phi_X* + h.c.
+  mediator_types:
+  - mixed scalar h/rho
+  - Goldstone boson
+  portals:
+  - higgs
+  - other
+  self_scattering_channels:
+  - scalar X self-interactions
+  standard_model_targets:
+  - Higgs doublet
+  - Standard Model particles through scalar mixing
+  tree_or_loop_level: tree
+model_id: 1501_01973_u1dm_z3_scalar_simp_v1
+parameters:
+  core:
+  - description: Mass of the complex scalar X
+    name: dark matter mass
+    range: 7 to 115 MeV
+    role: core
+    status: inferred
+    symbol: m_X
+  - description: Vacuum expectation value of phi_X
+    name: global symmetry breaking scale
+    range: TeV scale
+    role: core
+    status: inferred
+    symbol: v_phi
+    unit: TeV
+  - description: Mixing angle between h and rho
+    name: Higgs-scalar mixing angle
+    role: core
+    status: inferred
+    symbol: theta
+  - description: Coupling of X to H†H
+    name: Higgs portal coupling
+    role: core
+    status: inferred
+    symbol: lambda_HX
+  - description: Coupling of X to phi_X* phi_X
+    name: dark scalar coupling
+    role: core
+    status: inferred
+    symbol: lambda_phiX
+  - description: Coupling producing X^3 phi_X* and number-changing processes
+    name: cubic dark coupling
+    role: core
+    status: inferred
+    symbol: lambda_3
+particle_content:
+  additional_dark_sector_particles:
+  - complex scalar phi_X
+  - Goldstone boson from global U(1)_DM breaking
+  - mixed scalar rho
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: X
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species:
+  - Goldstone boson
+  mediators:
+  - SM-like Higgs h
+  - new scalar rho
+  - Goldstone boson
+  standard_model_extension: substantial
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: Relic abundance is computed with Boltzmann equations for X and anti-X.
+production:
+  abundance_set_by:
+  - 3-to-2 dark-matter annihilation
+  - self-interactions
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - 3-to-2 dark-matter annihilation
+  - self-interactions
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The SIMP regime suppresses ordinary portals so 3-to-2 processes set the relic abundance; the
+    paper finds m_X between 7 and 115 MeV.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The paper includes a Goldstone boson and discusses radiation-content bounds before recombination.
+      page: null
+      reference_id: '1501_01973'
+      section: constraints discussion
+    interactions:
+    - confidence: high
+      note: The scalar potential contains Higgs portal, X-phi_X, and X^3 phi_X* terms.
+      page: null
+      reference_id: '1501_01973'
+      section: model
+    parameter_ranges:
+    - confidence: high
+      note: 'Variant mass regime: 7 to 115 MeV.'
+      page: null
+      reference_id: '1501_01973'
+      section: abstract/results
+    particle_content:
+    - confidence: high
+      note: The model adds two complex SM-singlet scalars phi_X and X; X is the stable DM particle.
+      page: null
+      reference_id: '1501_01973'
+      section: model
+    production_mechanism:
+    - confidence: high
+      note: The relic density in this variant is governed by 3-to-2 dark-matter annihilation, self-interactions.
+      page: null
+      reference_id: '1501_01973'
+      section: relic abundance
+    symmetries:
+    - confidence: high
+      note: A global U(1)_DM with charges 3 and 1 breaks to a remnant symmetry that stabilizes X.
+      page: null
+      reference_id: '1501_01973'
+      section: model
+    validity_domain:
+    - confidence: medium
+      note: The remnant-symmetry vacuum and perturbative scalar couplings are part of the model setup.
+      page: null
+      reference_id: '1501_01973'
+      section: model
+    constraints:
+    - confidence: high
+      note: Primary paper gives perturbative-unitarity, Bullet Cluster/halo-shape, and N_eff constraints
+        for the SIMP regime.
+      page: null
+      reference_id: src_primary
+      section: null
+    - confidence: medium
+      note: Planck 2015 arXiv fallback page was read for CMB parameter context.
+      page: null
+      reference_id: src_planck2015
+      section: null
+    observables:
+    - confidence: high
+      note: Primary paper states the 3-to-2 SIMP mechanism, 7-115 MeV mass range, self-interaction motivation,
+        and N_eff constraint.
+      page: null
+      reference_id: src_primary
+      section: null
+    - confidence: medium
+      note: Self-interacting-dark-matter related page was read through arXiv fallback for motivation context.
+      page: null
+      reference_id: src_sidm
+      section: null
+    routes:
+    - confidence: high
+      note: Primary paper lays out the Boltzmann, self-scattering, and N_eff chain for the SIMP scenario.
+      page: null
+      reference_id: src_primary
+      section: null
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0004
+    extraction_date: '2026-05-31'
+    extractor_name: Codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Paper proposes a scalar SM extension with global U(1)_DM breaking to a stabilizing
+        remnant symmetry.
+      reference_id: '1501_01973'
+      section: abstract/model/relic abundance
+    unresolved_items:
+    - No public FeynRules/CalcHEP/MicrOMEGAs files were identified in the extracted text; only the reported
+      tool usage is recorded.
+  last_updated: '2026-05-31'
+  model_family: strongly_interacting_massive_particle
+  model_id: 1501_01973_u1dm_z3_scalar_simp_v1
+  model_name: Global U(1)_DM-remnant Z3 scalar SIMP
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1501.01973'
+      authors:
+      - Nicolas Bernal
+      - Camilo Garcia-Cely
+      - Rogerio Rosenfeld
+      doi: null
+      notes: null
+      reference_id: '1501_01973'
+      role: original_model
+      title: WIMP and SIMP Dark Matter from the Spontaneous Breaking of a Global Group
+      url: null
+      year: 2015
+    - arxiv_id: '1501.01973'
+      authors:
+      - Nicolas Bernal
+      - Camilo Garcia-Cely
+      - Rogerio Rosenfeld
+      doi: 10.1088/1475-7516/2015/04/012
+      notes: Primary paper text read locally from hep_ph_dark_matter_model_lexical.
+      reference_id: src_primary
+      role: original_model
+      title: WIMP and SIMP dark matter from the spontaneous breaking of a global group
+      url: https://arxiv.org/abs/1501.01973
+      year: 2015
+    constraint_papers:
+    - arxiv_id: '1502.01589'
+      authors:
+      - Planck Collaboration
+      - P. A. R. Ade
+      - N. Aghanim
+      - M. Arnaud
+      doi: 10.1051/0004-6361/201525830
+      notes: arXiv fallback abstract page read for Planck N_eff/cosmology context.
+      reference_id: src_planck2015
+      role: constraint
+      title: Planck 2015 results. XIII. Cosmological parameters
+      url: https://arxiv.org/abs/1502.01589
+      year: 2016
+    external_databases: []
+    review_papers:
+    - arxiv_id: astro-ph/9909386
+      authors:
+      - David N. Spergel
+      - Paul J. Steinhardt
+      doi: 10.1103/PhysRevLett.84.3760
+      notes: arXiv fallback abstract page read for self-interacting-dark-matter motivation.
+      reference_id: src_sidm
+      role: review
+      title: Observational Evidence for Self-Interacting Cold Dark Matter
+      url: https://arxiv.org/abs/astro-ph/9909386
+      year: 2000
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_X
+  - scalar portal couplings
+  - Higgs-rho mixing
+  - Goldstone sector
+  - 3-to-2 coupling
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - portal-coupling choices
+  - Goldstone-sector cosmology
+  - perturbativity of scalar couplings
+  notes: null
+  overall: medium
+  theory_robustness: medium
+  validation_status: partially_validated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    impact_on_sigma8_s8: not discussed in extracted model text
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: self-interactions may affect small-scale halo structure
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: A remnant Z3 symmetry after spontaneous global U(1)_DM breaking forbids X decay.
+  symmetries:
+  - breaking: phi_X obtains a nonzero vacuum expectation value
+    breaking_scale:
+      description: The SIMP regime requires a TeV-scale breaking scale
+      name: global symmetry breaking scale
+      range: TeV scale in SIMP regime
+      role: core
+      status: inferred
+      symbol: v_phi
+      unit: TeV
+    exact_or_approximate: broken
+    name: global U(1)_DM
+    type: global
+  - breaking: unbroken remnant acting on X
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z3 remnant
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: 'no'
+  lagrangian_available: 'yes'
+  notes: The paper writes the most general renormalizable scalar potential for H, phi_X, and X with global
+    U(1)_DM charges 0, 3, and 1.
+  parent_frameworks:
+  - scalar extension of the Standard Model
+  - global U(1)_DM broken to Z3
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: Requires the vacuum with <X> = 0 and <phi_X> nonzero so U(1)_DM leaves the stabilizing remnant
+    symmetry.
+  extrapolation_risk: medium
+  id: z3_remnant_scalar_model
+  notes: null
+  source_reference_ids: []
+  status: inferred
+- applies_to: model
+  caveats: []
+  condition: SIMP behavior requires suppressing ordinary Higgs and Goldstone portal depletion so 3-to-2
+    processes dominate.
+  extrapolation_risk: medium
+  id: simp_portal_suppression
+  notes: null
+  source_reference_ids: []
+  status: inferred
+observables:
+- caveats:
+  - Kinetic equilibrium with the SM or Goldstone boson sector is required to remove heat from 3-to-2 reactions.
+  channel: cosmology
+  effect_direction: rate_change
+  environments: []
+  id: simp_3to2_relic_density
+  key_quantities:
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: m_X
+    unit: MeV
+    value: 7-115
+  - name: global symmetry breaking scale
+    role: core
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    unit: TeV
+    value: TeV range
+  - name: dominant number-changing process
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    value: 3 X -> 2 X
+  linked_constraints:
+  - simp_unitarity_self_interaction_constraint
+  linked_routes:
+  - route_z3_simp_freezeout
+  name: SIMP 3-to-2 relic-density production
+  notes: null
+  observability: medium
+  predicted_effect: The remnant-Z3 scalar model can realize a SIMP regime in which 3-to-2 dark-matter
+    reactions dominate the relic density; the primary paper finds m_X between 7 and 115 MeV with a TeV-scale
+    symmetry-breaking scale.
+  redshift_range: thermal freeze-out before recombination
+  relevance: critical
+  scale_range: MeV-scale particle physics
+  source_reference_ids:
+  - src_primary
+  subchannel: number-changing dark-sector freeze-out
+- caveats:
+  - Nonperturbative long-range effects are avoided only in the perturbative regime assumed by the paper.
+  channel: small_scale_structure
+  effect_direction: rate_change
+  environments: []
+  id: simp_self_interactions
+  key_quantities:
+  - name: self-scattering per mass
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: sigma_scatter/m_X
+    unit: cm^2/g
+    value: 0.1-10 favored; <1 upper bound at velocities >300 km/s
+  linked_constraints:
+  - simp_unitarity_self_interaction_constraint
+  linked_routes:
+  - route_z3_simp_freezeout
+  name: Astrophysically relevant dark-matter self-interactions
+  notes: null
+  observability: medium
+  predicted_effect: The same SIMP parameter space can yield self-interaction cross sections in the range
+    invoked for small-scale-structure tensions, while Bullet Cluster and halo-shape bounds impose upper
+    limits.
+  redshift_range: late-time halos
+  relevance: high
+  scale_range: dwarf-to-cluster halo velocities
+  source_reference_ids:
+  - src_primary
+  - src_sidm
+  subchannel: elastic self-scattering
+- caveats:
+  - The contribution depends on the Goldstone decoupling temperature.
+  channel: cmb
+  effect_direction: enhancement
+  environments: []
+  id: goldstone_dark_radiation
+  key_quantities:
+  - name: effective neutrino number
+    role: cosmological
+    source_reference_ids:
+    - src_primary
+    status: established
+    symbol: N_eff
+    value: Planck-constrained
+  linked_constraints:
+  - neff_goldstone_constraint
+  linked_routes:
+  - route_z3_simp_freezeout
+  name: Goldstone-boson dark-radiation contribution
+  notes: null
+  observability: medium
+  predicted_effect: The physical Goldstone boson can contribute to N_eff, so the model is constrained
+    by CMB measurements of the effective number of relativistic species.
+  redshift_range: before recombination
+  relevance: high
+  scale_range: relativistic species / CMB anisotropies
+  source_reference_ids:
+  - src_primary
+  - src_planck2015
+  subchannel: effective number of neutrino species
+constraints:
+- allowed_regions:
+  - Dedicated scan finds SIMP viability for m_X between 7 and 115 MeV, with a broader perturbative-unitarity
+    ceiling around 173 MeV.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - SIMP benchmark selection must satisfy relic density, self-interaction, and perturbativity simultaneously.
+  caveats:
+  - Self-interaction targets are astrophysical preference ranges, not a single likelihood.
+  constrained_parameters:
+  - m_X
+  - cubic scalar coupling
+  - self-scattering cross section
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Perturbative unitarity is lost above the relevant coupling/mass envelope; benchmark A is noted as
+    in tension with Bullet Cluster/halo-shape constraints.
+  id: simp_unitarity_self_interaction_constraint
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: SIMP mass, perturbative-unitarity, and self-interaction constraints
+  notes: null
+  observable_channel: small_scale_structure
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_primary
+  - src_sidm
+- allowed_regions:
+  - Scenarios with early enough Goldstone decoupling can remain compatible with CMB N_eff.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - SIMP kinetic-equilibrium assumptions must be checked against N_eff.
+  caveats:
+  - The primary paper used Planck-era values available at publication.
+  constrained_parameters:
+  - Goldstone decoupling temperature
+  - Higgs/Goldstone portal couplings
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Regions where the Goldstone remains too warm/abundant and overcontributes to N_eff.
+  id: neff_goldstone_constraint
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Planck effective-neutrino-number bound on Goldstone dark radiation
+  notes: null
+  observable_channel: cmb
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_primary
+  - src_planck2015
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Primary paper describes the tool chain but the actual model files were not found in the
+      local extraction.
+    caveats:
+    - SIMP viability depends on kinetic equilibrium and perturbativity.
+    constraint_ids:
+    - simp_unitarity_self_interaction_constraint
+    - neff_goldstone_constraint
+    derived_quantities:
+    - thermal relic density
+    - sigma_self/m_X
+    - N_eff contribution
+    description: Compute the remnant-Z3 scalar SIMP relic density, self-interactions, and dark-radiation
+      limits.
+    forward_model_chain:
+    - inputs:
+      - number-changing rates
+      - temperature history
+      notes: null
+      outputs:
+      - Omega_X h^2
+      step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: Boltzmann equation for self-, semi-, and 3-to-2 annihilations
+      validity: primary paper implemented numerical phenomenology in CalcHEP/MicrOMEGAs workflow
+    - inputs:
+      - scalar couplings
+      - m_X
+      notes: null
+      outputs:
+      - sigma_self/m_X
+      - unitarity envelope
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: self-scattering cross-section and perturbative-unitarity checks
+      validity: perturbative regime only
+    - inputs:
+      - Goldstone decoupling
+      - sigma_self/m_X
+      notes: null
+      outputs:
+      - allowed SIMP benchmarks
+      step_id: s3
+      step_type: recasting
+      tool_or_code: CMB N_eff and astrophysical self-interaction comparison
+      validity: requires external data update
+    id: route_z3_simp_freezeout
+    input_parameters:
+    - m_X
+    - scalar cubic coupling
+    - Higgs portal
+    - Goldstone portal
+    - symmetry-breaking scale
+    likelihoods: []
+    observable_ids:
+    - simp_3to2_relic_density
+    - simp_self_interactions
+    - goldstone_dark_radiation
+    required_code_resources:
+    - FeynRules model implementation noted by primary paper
+    - CalcHEP
+    - MicrOMEGAs
+    route_status: partially_implemented
+    source_model_features:
+    - global U(1)_DM broken to remnant Z3
+    - complex scalar X
+    - physical Goldstone boson
+    - 3-to-2 annihilations
+    validation_tests:
+    - Recover 7-115 MeV SIMP mass window
+    - Check Bullet Cluster upper bound

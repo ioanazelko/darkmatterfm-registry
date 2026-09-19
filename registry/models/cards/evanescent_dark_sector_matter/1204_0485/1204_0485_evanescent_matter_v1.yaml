@@ -1,0 +1,284 @@
+_source:
+  shard: data/astro-ph-00024.tar
+  paper_id: '1204_0485'
+  source_member: 1204_0485.json
+schema_version: model_only_v0
+model_id: 1204_0485_evanescent_matter_v1
+identity:
+  name: Evanescent matter
+  family: evanescent_dark_sector_matter
+  aliases:
+  - evanescent mass component
+  short_description: A subdominant dark-sector matter component added to CDM, with particle masses set
+    by evolving scalar/pseudoscalar fields and a fifth force among evanescent particles.
+  historical_origin_or_motivation: Motivated as an adjustment to CDM to promote earlier assembly of isolated
+    protogalaxies while leaving standard CDM as the main dark matter component.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - CDM cosmology with an added dark-sector matter component
+  - classical particle limit of a Yukawa-coupled Dirac field
+  lagrangian_available: 'yes'
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper writes a Lagrangian for a spin-1/2 field coupled to scalar and pseudoscalar fields,
+    then develops a one-field classical-particle limit for cosmology.
+particle_content:
+  dark_matter_candidate:
+    name: evanescent matter particle
+    spin: 1/2 in the Dirac realization; scalar replacement also discussed in the classical limit
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: subcomponent
+  additional_dark_sector_particles:
+  - scalar field phi_1
+  - pseudoscalar field phi_2
+  mediators:
+  - light scalar/pseudoscalar fields sourcing a fifth force among evanescent particles
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - evanescent matter particles in the cosmological treatment
+  unstable_parent_particles: []
+  standard_model_extension: none
+symmetries:
+  stabilizing_mechanism: No decay channel or stabilizing symmetry is specified; longevity is assumed for
+    the added matter component.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  - other
+  standard_model_targets:
+  - baryons and CDM through gravity only
+  dark_sector_couplings:
+  - Yukawa coupling of the evanescent particle to scalar/pseudoscalar fields
+  - scalar-gradient fifth force among evanescent particles
+  mediator_types:
+  - scalar
+  - pseudoscalar
+  interaction_operators:
+  - mass m = sqrt((lambda_1 phi_1)^2 + (lambda_2 phi_2)^2)
+  - classical action with particle mass |phi| in the one-field limit
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: fifth-force strength
+    symbol: F_ev
+    description: Ratio controlling the scalar fifth force strength relative to gravity for evanescent
+      particles.
+    range: F_ev = 1/(4*pi*G*phi_i^2) in the paper notation
+    status: inferred
+    role: core
+  - name: initial evanescent-to-CDM density ratio
+    symbol: R_ev
+    description: Primeval evanescent matter mass density relative to dark matter density.
+    range: R_ev = n*phi_i/rho_dm in the paper notation
+    status: inferred
+    role: core
+  - name: evolving evanescent particle mass
+    symbol: m
+    description: Particle mass set by scalar and pseudoscalar field values.
+    range: time- and environment-dependent
+    status: inferred
+    role: core
+  derived:
+  - name: fifth-force to gravity ratio
+    symbol: f_ev/f_g
+    description: Subhorizon ratio for evanescent-particle interactions.
+    value: 1/(4*pi*G*phi^2)
+    status: inferred
+    role: derived
+production:
+  mechanisms:
+  - phenomenological primordial abundance of evanescent particles
+  - late evolution from scalar-field-driven mass decrease rather than a specified particle-production
+    process
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - initial number density n
+  - initial field value phi_i
+  - parameter R_ev relative to CDM
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'no'
+  nonthermal_momentum_distribution: unknown
+  notes: The paper treats evanescent matter as an added subcomponent and explicitly reserves CDM as the
+    main dark matter component.
+relic_density:
+  full_or_subcomponent: subcomponent
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - R_ev
+  - F_ev
+  - evolution of scalar field values
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - added evanescent matter component with decreasing mass
+  - fifth-force-driven early evanescent clumping
+  - possible transient relativistic behavior near mass zero crossings
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: unknown
+  distribution_function_available: 'no'
+  notes: The paper assumes de Broglie wavelengths much shorter than the scales of interest and uses a
+    classical-particle description.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: enhanced_small_scale_power
+    small_scale_power_effect: enhancement
+  nonlinear:
+    halo_mass_function_effect: Evanescent clumps can gravitationally attract CDM and promote earlier protogalaxy
+      assembly.
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: partial
+validity_domain:
+- id: evanescent_classical_particle_limit
+  applies_to: model
+  condition: Particle de Broglie wavelengths are short compared with cosmological scales and scalar fields
+    vary slowly.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: evanescent_subhorizon_fifth_force
+  applies_to: interaction
+  condition: The inverse-square fifth-force approximation is used on scales small compared with the Hubble
+    length.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: evanescent_subcomponent
+    description: Evanescent matter is an added subcomponent rather than the standard CDM component.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: evanescent_initial_conditions
+    description: Initial abundance and field values are encoded phenomenologically by R_ev and F_ev.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated implementation was identified from the assigned paper text.
+provenance:
+  model_id: 1204_0485_evanescent_matter_v1
+  model_name: Evanescent matter
+  model_family: evanescent_dark_sector_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Evanescent Matter
+      authors:
+      - P. J. E. Peebles
+      year: 2012
+      arxiv_id: '1204.0485'
+      doi: null
+      url: null
+      role: original_model
+      notes: Local assigned paper_id 1204_0485.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0249_worker
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      page: null
+      quote_or_summary: The paper adds evanescent matter with evolving mass and a fifth force to CDM.
+    - reference_id: primary
+      section: Model setup
+      page: null
+      quote_or_summary: The Lagrangian contains a Dirac particle coupled to scalar and pseudoscalar fields.
+    unresolved_items:
+    - No microphysical production history or decay/stability symmetry is specified.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The field is described as a spin-1/2 Dirac particle with Yukawa couplings to scalar and pseudoscalar
+        fields.
+      section: Model setup
+      confidence: medium
+    interactions:
+    - reference_id: primary
+      note: Scalar gradients generate a fifth force among evanescent particles in addition to gravity.
+      section: Equations of motion
+      confidence: medium
+    production_mechanism:
+    - reference_id: primary
+      note: The abundance is parameterized by the primeval ratio R_ev rather than a microphysical production
+        calculation.
+      section: Parameters
+      confidence: medium
+    cosmological_history:
+    - reference_id: primary
+      note: The mass decreases as field values are attracted toward zero, accelerating evanescent clumping.
+      section: Model discussion
+      confidence: medium
+    parameter_ranges:
+    - reference_id: primary
+      note: F_ev and R_ev are introduced as the key phenomenological parameters.
+      section: Parameters
+      confidence: medium
+    validity_domain:
+    - reference_id: primary
+      note: The classical-particle limit assumes short de Broglie wavelengths and large scalar field values.
+      section: Model setup
+      confidence: medium
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The author reserves the name dark matter for standard CDM; this extraction treats evanescent matter
+    as a dark-sector subcomponent relevant to dark-matter phenomenology.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Phenomenological initial abundance and no production mechanism in the paper text.
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: evanescent_not_all_dm
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat evanescent matter as replacing all CDM; the paper adds it as a subcomponent.
+    mitigation: Keep relic-density interpretation tied to R_ev and subcomponent status.

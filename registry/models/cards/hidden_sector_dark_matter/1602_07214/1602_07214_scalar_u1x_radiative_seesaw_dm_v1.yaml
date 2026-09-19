@@ -1,0 +1,380 @@
+_source:
+  shard: arXiv_src_1602_015_wds.tar
+  paper_id: '1602_07214'
+  source_member: 1602_07214.json
+schema_version: model_only_v0
+model_id: 1602_07214_scalar_u1x_radiative_seesaw_dm_v1
+identity:
+  name: Scalar dark matter in a local dark U(1)_X three-loop seesaw model
+  family: hidden_sector_dark_matter
+  aliases:
+  - S_I scalar dark matter
+  - lightest isospin-singlet boson of S
+  short_description: A scalar dark-matter variant of the paper's new local dark U(1)_X radiative seesaw
+    model, stabilized by the remnant Z2 and annihilating mainly into dark gauge bosons.
+  historical_origin_or_motivation: The scalar candidate is introduced alongside the fermion candidate
+    to connect neutrino masses, dark matter, muon g-2, and the diphoton excess.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - radiative three-loop seesaw
+  - local dark U(1)_X extension of the Standard Model
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  notes: The paper provides the scalar potential and the interaction Lagrangian used for the scalar relic-density
+    calculation.
+particle_content:
+  dark_matter_candidate:
+    name: S_I, the lightest isospin-singlet scalar component of S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - real scalar partner S_R
+  - local U(1)_X breaking scalar phi
+  - neutral fermion states
+  mediators:
+  - dark gauge boson Z'
+  - heavy CP-even scalar H
+  - SM-like Higgs h_SM
+  - S_R in t/u-channel annihilation
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - S_R scalar partner
+  long_lived_particles: []
+  unstable_parent_particles:
+  - exotic vector-like lepton doublets L'
+  - charged scalars introduced for diphoton decays
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A remnant Z2 symmetry after U(1)_X breaking stabilizes the lightest scalar component.
+  symmetries:
+  - name: U(1)_X
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneously broken by the dark scalar vev
+    breaking_scale: null
+  - name: remnant Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not broken in the model discussion
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - higgs
+  standard_model_targets:
+  - charged leptons through exotic charged fields
+  - Higgs sector
+  dark_sector_couplings:
+  - derivative S_R-S_I-Z' coupling
+  - quartic S_I S_I Z' Z' coupling
+  - scalar couplings to H and h_SM
+  mediator_types:
+  - Z' vector mediator
+  - CP-even scalar mediator
+  - S_R scalar exchange
+  interaction_operators:
+  - (S_R d_mu S_I - S_I d_mu S_R) Z'_mu
+  - S_I^2 Z'_mu Z'^mu
+  - S_I^2 H and S_I^2 h_SM scalar couplings
+  scattering:
+    elastic: unknown
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels:
+  - S_I S_I -> Z' Z'
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: Scalar dark matter is the CP-odd singlet component S_I in the notation of the paper.
+  flavor_structure: The scalar candidate is embedded in the same lepton-flavor model as the three-loop
+    neutrino mass construction.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: scalar dark matter mass
+    symbol: M_X
+    description: Mass of the S_I scalar dark matter candidate, denoted X in the relic-density section.
+    range:
+      min: m_Z'
+      max: 380
+      inclusive_min: false
+      inclusive_max: false
+      unit: GeV
+      notes: Paper assumes m_Z' < M_X < 380 GeV.
+    unit: GeV
+    role: core
+    status: assumed
+    source_reference_ids: []
+  - name: dark gauge coupling
+    symbol: g_X
+    description: Benchmark gauge coupling used in scalar relic-density plots.
+    value: 0.1
+    role: core
+    status: assumed
+    source_reference_ids: []
+  - name: scalar-sector couplings
+    symbol: lambda_S, lambda_SPhi
+    description: Couplings entering scalar-DM interactions with H and h_SM.
+    value: lambda_S = 0.1, lambda_SPhi = 0.1 in example
+    role: core
+    status: assumed
+    source_reference_ids: []
+  - name: scalar mixing angle
+    symbol: alpha
+    description: Scalar mixing angle used in the scalar relic-density benchmark.
+    value: 0.2
+    role: core
+    status: assumed
+    source_reference_ids: []
+  - name: heavy scalar mass
+    symbol: m_H
+    description: Heavy CP-even scalar associated with the 750 GeV diphoton excess.
+    value: 750
+    unit: GeV
+    role: core
+    status: assumed
+    source_reference_ids: []
+production:
+  mechanisms:
+  - thermal freeze-out through scalar annihilation into dark gauge boson pairs
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - S_I S_I -> Z' Z' annihilation
+  - dark gauge coupling
+  - scalar mixing and scalar quartics
+  - S_R mass
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The scalar-DM relic density is computed by substituting the scalar annihilation amplitude into
+    the same freeze-out formula used for the fermion case.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: Planck relic target
+    symbol: Omega h^2
+    description: Relic-density value quoted as the observed target.
+    value: 0.12
+    role: core
+    status: established
+    source_reference_ids: []
+  calculation_type: thermal
+  key_dependencies:
+  - m_Z'
+  - M_X
+  - m_S_R
+  - g_X
+  - scalar couplings lambda_S and lambda_SPhi
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - spontaneously broken local dark U(1)_X sector
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - U(1)_X breaking
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Cold thermal relic treatment; no distribution function is provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: mass_splitting_for_inelastic_detection
+  applies_to: model
+  condition: Direct-detection evasion for scalar DM requires enough mass splitting between S_I and S_R
+    if gauge mixing is not negligible.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1602_07214'
+  notes: null
+- id: dominant_annihilation_channel
+  applies_to: production
+  condition: Relic-density estimates assume S_I S_I -> Z' Z' dominates.
+  valid_range: null
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1602_07214'
+  notes: null
+assumptions:
+  global:
+  - id: scalar_dm_identity
+    description: The first-generation S_I component is identified as the scalar dark matter candidate.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1602_07214'
+    notes: null
+  - id: small_gauge_mixing
+    description: Kinetic mixing between Z' and the SM gauge bosons is taken small enough for direct-detection
+      evasion.
+    scope: theory
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1602_07214'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public model code or repository is identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1602_07214_scalar_u1x_radiative_seesaw_dm_v1
+  model_name: Scalar dark matter in a local dark U(1)_X three-loop seesaw model
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1602_07214'
+      title: Confronting a New Three-loop Seesaw Model with the 750 GeV Diphoton Excess
+      year: 2016
+      arxiv_id: '1602.07214'
+      doi: null
+      url: null
+      role: original_model
+      notes: Source text read from assigned SQLite database only.
+  extraction:
+    method: llm_assisted
+    extracted_by: gpt-5.5 batch worker batch-0007
+    extractor_name: codex-dark-matter-model-card-worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1602_07214'
+      section: Particle contents and model Lagrangian
+      page: null
+      quote_or_summary: The paper identifies S_I or the neutral fermion as dark matter candidates in the
+        local U(1)_X model.
+    - reference_id: '1602_07214'
+      section: The case of bosonic DM
+      page: null
+      quote_or_summary: The S_I scalar is assumed to be X and its X X -> Z' Z' relic density is computed.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1602_07214'
+      note: The paper identifies the lightest isospin-singlet boson of S, specifically S_I, as a dark
+        matter candidate.
+      confidence: high
+      section: Mass matrices for neutral scalar bosons and neutral fermions
+      page: null
+    symmetries:
+    - reference_id: '1602_07214'
+      note: The same remnant Z2 from U(1)_X breaking is stated to ensure dark matter stability.
+      confidence: high
+      section: Particle contents and model Lagrangian
+      page: null
+    interactions:
+    - reference_id: '1602_07214'
+      note: The bosonic-DM section lists derivative, quartic gauge, and scalar interactions for S_I.
+      confidence: high
+      section: The case of bosonic DM
+      page: null
+    production_mechanism:
+    - reference_id: '1602_07214'
+      note: The scalar relic calculation uses S_I S_I annihilation to Z' Z' and the standard freeze-out
+        expression.
+      confidence: high
+      section: The case of bosonic DM
+      page: null
+    parameter_ranges:
+    - reference_id: '1602_07214'
+      note: The paper uses m_Z' < M_X < 380 GeV and benchmark masses 150, 200, 300 GeV.
+      confidence: high
+      section: General remarks
+      page: null
+    validity_domain:
+    - reference_id: '1602_07214'
+      note: Scalar direct-detection evasion relies on a mass difference between the scalar and its real
+        partner when mixing is not negligible.
+      confidence: medium
+      section: General remarks
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - This row records the scalar dark matter variant; the same paper also contains a fermionic dark matter
+    variant.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: low
+  computational_robustness: medium
+  dominant_uncertainties:
+  - benchmark-dependent scalar masses and couplings
+  - small or inelastic direct-detection coupling assumptions
+  validation_status: expert_judgment_only
+  notes: The relic-density calculation is explicit but limited to simplifying benchmark choices.
+agent_failure_modes:
+  warnings:
+  - id: generic_x_notation
+    severity: medium
+    category: notation_conflict
+    warning: The paper denotes either dark matter candidate as X in general remarks; distinguish S_I from
+      the fermion candidate.
+    mitigation: null
+    source_reference_ids:
+    - '1602_07214'
+  - id: inelastic_detection_assumption
+    severity: medium
+    category: assumption_mismatch
+    warning: Direct-detection evasion for scalar DM depends on the S_I-S_R mass splitting and gauge mixing
+      assumptions.
+    mitigation: null
+    source_reference_ids:
+    - '1602_07214'

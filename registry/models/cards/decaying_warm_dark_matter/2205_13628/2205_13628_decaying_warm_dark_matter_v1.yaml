@@ -1,0 +1,611 @@
+_source:
+  shard: arXiv_src_2205_090_wds.tar
+  paper_id: '2205_13628'
+  source_member: 2205_13628.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2205_13628_decaying_warm_dark_matter_v1
+identity:
+  name: Decaying warm dark matter to invisible radiation
+  family: decaying_warm_dark_matter
+  aliases: []
+  short_description: A warm dark matter species that decays into invisible radiation, modeled through
+    a decaying-neutrino-like effective interaction and Boltzmann evolution of the parent and decay products.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  lagrangian_available: partial
+  renormalizable: unknown
+  parent_frameworks: []
+  embedded_in_larger_framework: unknown
+  notes: Populated only from the assigned paper text.
+particle_content:
+  dark_matter_candidate:
+    name: decaying warm dark matter species
+    spin: unknown
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - light decay product species
+  - light scalar phi
+  mediators:
+  - light scalar phi
+  dark_radiation_species:
+  - massless invisible decay products
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - heavy warm decaying species
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: not_applicable; the model intentionally allows dark matter decay
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  - other
+  standard_model_targets:
+  - invisible radiation
+  - light scalar
+  - light neutrino-like species
+  dark_sector_couplings:
+  - universal coupling g_ij = g in L_int = g phi nu_i nu_j
+  mediator_types:
+  - light scalar phi
+  interaction_operators: []
+  tree_or_loop_level: unknown
+  decay_channels:
+  - heavy species -> light species + scalar
+parameters:
+  core:
+  - name: decaying species mass
+    symbol: m_H
+    description: Mass of the warm decaying species.
+    role: core
+    status: inferred
+  - name: rest-frame decay rate
+    symbol: Gamma_dec
+    description: Rest frame decay rate, quoted as Gamma_dec = g^2 m_H / (4 pi) in the text.
+    role: core
+    status: inferred
+  - name: initial density
+    symbol: omega_dwdm_ini
+    description: Initial abundance or density parameter of the decaying warm species.
+    role: core
+    status: inferred
+  - name: coupling
+    symbol: g
+    description: Universal coupling in the effective decaying-neutrino interaction.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - warm_relic_initial_condition
+  - late_invisible_decay
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - primordial_warm_relic_with_late_decay
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper takes a Fermi-Dirac distribution at the Standard Model bath temperature, scaled by
+    a degeneracy parameter, as an initial condition.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: mixed
+  key_dependencies:
+  - initial density
+  - decay lifetime
+  - mass of decaying species
+  - time dilation of decays
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - energy transfer from matter-like warm component to invisible radiation
+  - possible pre- or post-recombination decay
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'yes'
+  notes: Detailed distribution not fully specified in the extracted model card.
+  f_of_p_or_q: Fermi-Dirac initial distribution scaled by a degeneracy parameter
+structure_formation:
+  linear:
+    behaves_like_cdm: 'no'
+    transfer_function_shape: scale_dependent_growth
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: neglect_inverse_decays
+  applies_to: model
+  condition: The extracted formalism is for massless decay products while disregarding inverse decay processes
+    and scattering contributions.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: small_g_decay_dominated
+  applies_to: model
+  condition: The text notes scattering can be neglected in a small-coupling regime where decays dominate
+    at late times.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: massless_decay_products
+    description: Decay products are treated as massless invisible radiation.
+    scope: production
+    status: assumed
+  - id: inverse_decays_neglected
+    description: Inverse decay processes are neglected in the extracted model formalism.
+    scope: production
+    status: assumed
+    impact_if_violated: Favored regions may lie where inverse processes become important.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper describes a computationally efficient method and mentions implementation in
+    a Boltzmann-code context, but no standalone public model code was extracted.
+provenance:
+  model_id: 2205_13628_decaying_warm_dark_matter_v1
+  model_name: Decaying warm dark matter to invisible radiation
+  model_family: decaying_warm_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Decaying warm dark matter revisited
+      authors: []
+      year: 2022
+      arxiv_id: '2205.13628'
+      role: original_model
+      notes: Assigned SQLite full text only.
+    - arxiv_id: '2205.13628'
+      authors:
+      - Brinch Holm, Emil
+      - Tram, Thomas
+      - Hannestad, Steen
+      doi: null
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2205.13628
+      role: original_model
+      title: Decaying warm dark matter revisited
+      url: https://arxiv.org/abs/2205.13628
+      year: 2022
+    constraint_papers:
+    - arxiv_id: '2008.09615'
+      authors:
+      - Abellán, Guillermo Franco
+      - Murgia, Riccardo
+      - Poulin, Vivian
+      - Lavalle, Julien
+      doi: 10.48550/arXiv.2008.09615
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2008.09615
+      role: constraint
+      title: Implications of the $S_8$ tension for decaying dark matter with warm decay products
+      url: https://arxiv.org/abs/2008.09615
+      year: 2020
+    - arxiv_id: '2102.12498'
+      authors:
+      - Abellán, Guillermo F.
+      - Murgia, Riccardo
+      - Poulin, Vivian
+      doi: 10.1103/PhysRevD.104.123533
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2102.12498
+      role: constraint
+      title: Linear cosmological constraints on two-body decaying dark matter scenarios and the S<SUB>8</SUB>
+        tension
+      url: https://arxiv.org/abs/2102.12498
+      year: 2021
+    - arxiv_id: '2203.07440'
+      authors:
+      - Simon, Théo
+      - Abellán, Guillermo Franco
+      - Du, Peizhi
+      - Poulin, Vivian
+      - Tsai, Yuhsin
+      doi: 10.1103/PhysRevD.106.023516
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2203.07440
+      role: constraint
+      title: Constraining decaying dark matter with BOSS data and the effective field theory of large-scale
+        structures
+      url: https://arxiv.org/abs/2203.07440
+      year: 2022
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0019
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract
+      quote_or_summary: The paper revisits warm dark matter decaying nonrelativistically to invisible
+        radiation and rederives its background and perturbation equations.
+    - reference_id: primary
+      section: physical system
+      quote_or_summary: A decaying-neutrino effective interaction is used as a particle-physics realization
+        while the analysis remains model agnostic.
+    unresolved_items:
+    - Inverse processes for relativistic decays remain unresolved in the primary analysis.
+    - No cosmological chains or EFTofLSS likelihoods were rerun.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model uses a warm decaying species equivalent to a heavy neutrino-like state plus a lighter
+        species and light scalar, with decays into invisible radiation.
+      section: physical system
+      confidence: high
+    interactions:
+    - reference_id: primary
+      note: An effective interaction L_int = g phi nu_i nu_j allows scattering and the heavy-to-light-plus-scalar
+        decay; the paper focuses on the decay process.
+      section: physical system
+      confidence: high
+    production_mechanism:
+    - reference_id: primary
+      note: The abundance history is governed by Boltzmann equations for the decaying warm species and
+        massless decay products; initial density, lifetime, and mass are model parameters.
+      section: formalism
+      confidence: high
+    cosmological_history:
+    - reference_id: primary
+      note: The species can be relativistic early, become nonrelativistic, and decay into radiation before
+        or after recombination depending on the decay rate.
+      section: model discussion
+      confidence: medium
+    validity_domain:
+    - reference_id: primary
+      note: The analysis disregards inverse decay and scattering processes and flags favored parameters
+        in a relativistic-decay regime where inverse processes matter.
+      section: abstract and physical system
+      confidence: high
+    constraints:
+    - confidence: high
+      note: Primary paper performs MCMC over initial density, lifetime, and mass and finds only mild CDM
+        improvement.
+      page: null
+      reference_id: arxiv:2205.13628
+      section: Parameter constraints
+    - confidence: high
+      note: Related BOSS EFTofLSS paper updates constraints on decaying dark matter models using BOSS
+        DR12.
+      page: null
+      reference_id: arxiv:2203.07440
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary paper reports that DWDM clusters less than decaying cold dark matter and stable warm
+        dark matter.
+      page: null
+      reference_id: arxiv:2205.13628
+      section: Perturbation discussion
+    - confidence: medium
+      note: Related decaying-DM paper targets the S8 tension with one massive and one massless decay product.
+      page: null
+      reference_id: arxiv:2008.09615
+      section: Abstract
+    - confidence: high
+      note: Related two-body DDM paper studies impacts on CMB and linear matter power spectra.
+      page: null
+      reference_id: arxiv:2102.12498
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper uses a general decaying-neutrino Boltzmann hierarchy and discusses numerical
+        implementation.
+      page: null
+      reference_id: arxiv:2205.13628
+      section: Boltzmann equations
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: unknown
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  validation_status: expert_judgment_only
+  notes: Machine-extracted candidate; not human reviewed.
+  dominant_uncertainties:
+  - inverse decay processes in relativistic-decay regime
+  - model-agnostic particle realization
+agent_failure_modes:
+  warnings:
+  - id: inverse_decay_regime
+    severity: high
+    category: assumption_mismatch
+    warning: The paper states favored parameters may enter a relativistic-decay regime where inverse processes
+      are important.
+  - id: machine_extracted_not_reviewed
+    severity: medium
+    category: other
+    warning: This model-card candidate is machine extracted and must be checked against the paper before
+      scientific use.
+observables:
+- caveats:
+  - The primary posterior preference lies partly in a relativistic-decay regime where inverse processes
+    matter.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - linear matter field
+  - weak lensing
+  - galaxy clustering
+  id: obs_dwdm_matter_power_suppression
+  key_quantities:
+  - description: Mass of the warm decaying mother species.
+    name: decaying particle mass
+    range: 0.001 to 500 eV prior in the primary MCMC setup
+    role: core
+    source_reference_ids:
+    - arxiv:2205.13628
+    status: inferred
+    symbol: m_H
+    unit: eV
+  - description: Decay rate or inverse lifetime of the mother species.
+    name: decay rate
+    range: 10^2 to 10^6 yr^-1 prior scale in the primary setup
+    role: core
+    source_reference_ids:
+    - arxiv:2205.13628
+    status: inferred
+    symbol: Gamma
+    unit: yr^-1
+  - description: Initial density parameter for the decaying warm component.
+    name: initial decaying-sector density
+    range: 0 to 3 in the primary priors
+    role: cosmological
+    source_reference_ids:
+    - arxiv:2205.13628
+    status: inferred
+    symbol: N_eff_ini,dwdm
+  linked_constraints:
+  - con_dwdm_cmb_lss_constraints
+  linked_routes:
+  - route_dwdm_boltzmann_to_lss
+  name: Decaying warm dark matter matter-power suppression
+  notes: null
+  observability: medium
+  predicted_effect: A non-cold decaying species clusters less than stable warm dark matter and less than
+    decaying cold dark matter, suppressing matter power in a momentum- and lifetime-dependent way.
+  redshift_range: late radiation era through today
+  relevance: critical
+  scale_range: k roughly 0.1-1 h/Mpc and smaller structure scales
+  source_reference_ids:
+  - arxiv:2205.13628
+  - arxiv:2102.12498
+  - arxiv:2203.07440
+  subchannel: linear matter power
+- caveats:
+  - A conclusive evaluation requires inverse decays in the relativistic regime.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - CMB
+  - weak lensing surveys
+  - BAO/LSS
+  id: obs_dwdm_s8_response
+  key_quantities:
+  - description: Amplitude combination sigma8(Omega_m/0.3)^0.5.
+    name: S8
+    role: cosmological
+    source_reference_ids:
+    - arxiv:2205.13628
+    - arxiv:2008.09615
+    - arxiv:2102.12498
+    status: inferred
+    symbol: S_8
+  - description: Fraction transferred to the massless daughter in related two-body DDM notation.
+    name: mass-energy fraction to radiation
+    range: small percent-level values in related S8-motivated studies
+    role: core
+    source_reference_ids:
+    - arxiv:2008.09615
+    - arxiv:2102.12498
+    status: inferred
+    symbol: epsilon
+  linked_constraints:
+  - con_dwdm_boss_eft_lss
+  linked_routes:
+  - route_dwdm_boltzmann_to_lss
+  name: S8 and H0 response to decaying warm dark matter
+  notes: null
+  observability: medium
+  predicted_effect: The model channels energy from matter into massive and massless decay products and
+    gives only mild improvement over CDM in the primary analysis, with related decaying-DM studies targeting
+    S8 reduction.
+  redshift_range: late-time cosmology
+  relevance: high
+  scale_range: 8 h^-1 Mpc and CMB/BAO distance scales
+  source_reference_ids:
+  - arxiv:2205.13628
+  - arxiv:2008.09615
+  - arxiv:2102.12498
+  - arxiv:2203.07440
+  subchannel: late-time tensions
+constraints:
+- allowed_regions:
+  - Primary MCMC fits find only mild improvement relative to CDM for the sampled non-relativistic-decay
+    treatment.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The primary analysis focuses on non-relativistic decays using a decaying-neutrino Boltzmann
+      hierarchy.
+    id: nonrelativistic-decay-treatment
+    impact_if_violated: Relativistic inverse processes can change the posterior and model viability.
+    notes: null
+    scope: Boltzmann hierarchy validity
+    source_reference_ids:
+    - arxiv:2205.13628
+    status: assumed
+  benchmark_implications:
+  - Favored parameters should be rechecked with inverse processes if they enter the relativistic decay
+    regime.
+  caveats:
+  - The batch did not inspect chains or rerun MCMC.
+  constrained_parameters:
+  - m_H
+  - Gamma
+  - N_eff_ini,dwdm
+  - matter power spectrum
+  constraint_type: cosmological
+  data_release: Planck and large-scale cosmology likelihoods used in the primary analysis
+  excluded_regions:
+  - Large decay rates or warm fractions that over-suppress clustering are disfavored by CMB/LSS data.
+  id: con_dwdm_cmb_lss_constraints
+  likelihood_available: partial
+  likelihood_reference: null
+  name: CMB and linear-LSS constraints on decaying warm species
+  notes: null
+  observable_channel: cmb+large_scale_structure
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2205.13628
+  - arxiv:2102.12498
+- allowed_regions:
+  - Related EFTofLSS analyses provide a route for nonlinear large-scale-structure recasts.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: Related BOSS limits are for decaying CDM models and require mapping to the primary warm
+      mother species.
+    id: model-mapping-required
+    impact_if_violated: A direct constraint transfer can be biased if the warm mother distribution is
+      ignored.
+    notes: null
+    scope: DDM recast
+    source_reference_ids:
+    - arxiv:2205.13628
+    - arxiv:2203.07440
+    status: assumed
+  benchmark_implications:
+  - The primary DWDM model should be mapped carefully onto cold-parent two-body DDM parameters before
+    importing limits.
+  caveats:
+  - No EFTofLSS likelihood was rerun.
+  constrained_parameters:
+  - lifetime
+  - warm daughter velocity
+  - epsilon
+  - P(k)
+  constraint_type: cosmological
+  data_release: BOSS DR12 EFTofLSS plus Planck/Pantheon/BAO in the related paper
+  excluded_regions:
+  - Two-body decays that produce too much late suppression are constrained by BOSS/BAO/CMB combinations.
+  id: con_dwdm_boss_eft_lss
+  likelihood_available: partial
+  likelihood_reference: null
+  name: BOSS EFTofLSS constraints on two-body decaying dark matter
+  notes: null
+  observable_channel: large_scale_structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2205.13628
+  - arxiv:2203.07440
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Inverse decay treatment remains a future-work requirement for favored relativistic regions.
+    constraint_ids:
+    - con_dwdm_cmb_lss_constraints
+    - con_dwdm_boss_eft_lss
+    derived_quantities:
+    - mother and daughter distribution functions
+    - CMB spectra
+    - linear matter power
+    - S8 posterior
+    description: Evolve a decaying warm species and its massless/massive daughters into CMB and LSS observables.
+    forward_model_chain:
+    - inputs:
+      - m_H
+      - Gamma
+      - initial distribution
+      notes: null
+      outputs:
+      - background and perturbation evolution
+      step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: CLASS-style decaying non-cold hierarchy
+      validity: Primary paper adapts a decaying-neutrino Boltzmann hierarchy.
+    - inputs:
+      - distribution functions
+      notes: null
+      outputs:
+      - matter power spectrum
+      - CMB spectra
+      step_id: s2
+      step_type: data_transform
+      tool_or_code: null
+      validity: Requires accurate collision integrals for daughter perturbations.
+    - inputs:
+      - CMB spectra
+      - P(k)
+      - distances
+      notes: null
+      outputs:
+      - posterior constraints
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: MCMC cosmology likelihood stack
+      validity: Use Planck/BAO/SN/LSS likelihoods for quantitative results.
+    id: route_dwdm_boltzmann_to_lss
+    input_parameters:
+    - m_H
+    - Gamma
+    - N_eff_ini,dwdm
+    - daughter masses or massless branch
+    likelihoods:
+    - Planck
+    - BAO/Pantheon
+    - weak-lensing S8 prior
+    - BOSS EFTofLSS
+    observable_ids:
+    - obs_dwdm_matter_power_suppression
+    - obs_dwdm_s8_response
+    required_code_resources:
+    - modified CLASS hierarchy
+    - MontePython/Cobaya-like sampler
+    route_status: planned
+    source_model_features:
+    - warm decaying mother particle
+    - massive daughter/radiation products
+    - momentum-dependent decay
+    - time-dilation of high-momentum bins
+    validation_tests:
+    - recover primary mild-improvement result
+    - check relativistic-decay parameter region

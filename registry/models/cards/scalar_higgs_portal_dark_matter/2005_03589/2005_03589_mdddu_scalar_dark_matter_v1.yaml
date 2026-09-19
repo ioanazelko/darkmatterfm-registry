@@ -1,0 +1,316 @@
+_source:
+  shard: arXiv_src_2005_012_wds.tar
+  paper_id: '2005_03589'
+  source_member: 2005_03589.json
+schema_version: model_only_v0
+model_id: 2005_03589_mdddu_scalar_dark_matter_v1
+identity:
+  name: Mass-degeneracy-driven unified scalar dark matter
+  family: scalar_higgs_portal_dark_matter
+  aliases:
+  - MDDU scalar dark matter
+  - singlet scalar S dark matter
+  short_description: A real neutral scalar S, stabilized by a Z2 parity and coupled to the Standard Model
+    through the Higgs portal, with a mass-degeneracy-driven unification relation reducing the viable scalar-DM
+    parameter space.
+  historical_origin_or_motivation: The paper uses a heavy scalar to address cold dark matter while keeping
+    the electroweak scale stable through mass-degeneracy-driven unification.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Standard Model plus real singlet scalar
+  - mass-degeneracy-driven unification
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The text specifies the Higgs-portal scalar potential terms, RG running, and a GUT-scale linkup
+    relation for lambda_HS.
+particle_content:
+  dark_matter_candidate:
+    name: S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Higgs boson
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - S
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: A Z2 parity makes S odd, forbids decays such as S to Standard Model states, and
+    sets the S vacuum expectation value to zero.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - Standard Model final states through Higgs exchange
+  dark_sector_couplings:
+  - lambda_HS H^dagger H S^2
+  - lambda_S S^4
+  mediator_types:
+  - Higgs boson
+  interaction_operators:
+  - H^dagger H S^2
+  scattering:
+    elastic: 'yes'
+    inelastic: 'no'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - S S annihilation through the Higgs portal into Standard Model states
+  decay_channels: []
+  self_scattering_channels:
+  - S self-interaction through lambda_S
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: singlet scalar mass
+    symbol: m_S
+    range: 0 to 1 TeV in the paper scans; heavier values are noted as possible for relic-density saturation
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs portal quartic
+    symbol: lambda_HS
+    range: 0 to 0.65 in the blind scan; fixed by the MDDU linkup in the linked scan
+    role: core
+    status: inferred
+  - name: singlet quartic
+    symbol: lambda_S
+    range: 0 to 1 in the scans
+    role: core
+    status: inferred
+  - name: Higgs quartic
+    symbol: lambda_H
+    range: 0 to 1 at Q0 in the scans
+    role: core
+    status: inferred
+  - name: MDDU link scale
+    symbol: Q0
+    value: M_G about 1e15 GeV
+    unit: GeV
+    role: core
+    status: assumed
+  derived:
+  - name: target relic density interval
+    symbol: Omega h^2
+    range: 0.114 to 0.126
+    role: core
+    status: assumed
+    notes: Planck interval used for accepted scan points.
+production:
+  mechanisms:
+  - thermal annihilation through Higgs-portal interactions
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Boltzmann equation for S annihilation processes
+  - m_S and lambda_HS
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The relic calculation is performed with MicrOmegas for scan points satisfying the scalar-Higgs
+    linkup or blind-scan assumptions.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed cold-dark-matter density
+    symbol: Omega h^2
+    range: 0.114 to 0.126
+    role: core
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - singlet mass
+  - Higgs portal coupling
+  - Higgs mass
+  - MDDU linkup relation
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Cold scalar relic treated as standard Higgs-portal cold dark matter.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: mdddu_linkup
+  applies_to: model
+  condition: lambda_HS at Q0 follows the mass-degeneracy-driven unification relation used in the paper.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Other linkup choices are possible.
+- id: z2_unbroken
+  applies_to: model
+  condition: The Z2 parity remains exact and S has zero vacuum expectation value.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - Breaking the parity removes the stability argument.
+assumptions:
+  global:
+  - id: standard_thermal_relic
+    description: The relic abundance is computed in a standard thermal history using annihilation processes.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: The inferred relic-density parameter space would change.
+  - id: perturbative_couplings
+    description: The scans restrict quartics to perturbative ranges.
+    scope: theory
+    status: assumed
+    can_be_relaxed: 'no'
+    impact_if_violated: The perturbative RG analysis would not apply.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports using SPheno generated by SARAH and MicrOmegas for the scans; no author
+    repository is identified in the assigned text.
+  primary_code_role: relic_density_calculation
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  caveats:
+  - Tool use is described, but an associated public model implementation is not identified.
+provenance:
+  model_id: 2005_03589_mdddu_scalar_dark_matter_v1
+  model_name: Mass-degeneracy-driven unified scalar dark matter
+  model_family: scalar_higgs_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2005_03589'
+      title: Scalar Dark Matter and Electroweak Stability
+      authors:
+      - Cem Salih Un
+      year: 2020
+      arxiv_id: '2005.03589'
+      role: original_model
+      notes: Assigned full text from target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: gpt-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2005_03589'
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: The paper says the MDDU scalar qualifies as a viable DM candidate and specializes
+        to a long-lived neutral scalar S.
+    - reference_id: '2005_03589'
+      section: Model scan
+      page: null
+      quote_or_summary: The scan uses Planck relic-density interval 0.114 < Omega h^2 < 0.126 and Boltzmann
+        annihilation calculations.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2005_03589'
+      note: The dark matter candidate is a long-lived neutral scalar S of mass m_S.
+      confidence: high
+      section: Introduction
+      page: null
+    symmetries:
+    - reference_id: '2005_03589'
+      note: Odd Z2 parity forbids S decays and enforces zero S vacuum expectation value.
+      confidence: high
+      section: Introduction
+      page: null
+    interactions:
+    - reference_id: '2005_03589'
+      note: The scalar couples to the Higgs sector through lambda_HS H^dagger H S^2 and has lambda_S self-coupling.
+      confidence: high
+      section: Model
+      page: null
+    production_mechanism:
+    - reference_id: '2005_03589'
+      note: The relic abundance is obtained by solving the Boltzmann equation for S annihilation processes.
+      confidence: high
+      section: Model scan
+      page: null
+    parameter_ranges:
+    - reference_id: '2005_03589'
+      note: The blind scan varies m_S up to 1 TeV, lambda_S and lambda_H up to 1, and lambda_HS up to
+        0.65.
+      confidence: high
+      section: Model scan
+      page: null
+    validity_domain:
+    - reference_id: '2005_03589'
+      note: The MDDU linkup is imposed at Q0 = M_G about 1e15 GeV in the linked scan.
+      confidence: medium
+      section: MDDU linkup
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - choice of MDDU linkup relation
+  - scan range
+  - Higgs-portal relic calculation
+  validation_status: expert_judgment_only
+  notes: The model-card fields are well supported, but the extraction has not been human reviewed.
+agent_failure_modes:
+  warnings:
+  - id: mdddu_not_generic_singlet
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat this row as the fully generic singlet-scalar Higgs-portal model; the MDDU linkup
+      is a central assumption.
+    mitigation: Preserve the linkup assumption when comparing with generic scalar-DM scans.
+    source_reference_ids:
+    - '2005_03589'

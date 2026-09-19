@@ -1,0 +1,266 @@
+_source:
+  shard: arXiv_src_2309_124_wds.tar
+  paper_id: '2309_16732'
+  source_member: 2309_16732.json
+schema_version: model_only_v0
+model_id: 2309_16732_kaniadakis_pev_decaying_dark_matter_v1
+identity:
+  name: Kaniadakis-governed PeV decaying dark matter
+  family: decaying_dark_matter
+  aliases:
+  - minimal PeV decaying DM in Kaniadakis cosmology
+  short_description: A phenomenological variant of minimal PeV-scale decaying dark matter whose freeze-in
+    abundance and decay interpretation are evaluated with Kaniadakis-entropy modified Friedmann evolution.
+  historical_origin_or_motivation: Motivated by the tension between PeV decaying-DM interpretations of
+    IceCube neutrinos, the required lifetime, and the relic abundance in standard cosmology.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - minimal DM-neutrino Yukawa coupling
+  - Kaniadakis entropy cosmology
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The particle interaction is the dimension-four Yukawa-like coupling between the DM particle,
+    lepton doublet, and Higgs doublet; the paper changes the background cosmological evolution through
+    Kaniadakis entropy.
+particle_content:
+  dark_matter_candidate:
+    name: PeV-scale DM particle psi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Standard Model Higgs doublet in the Yukawa interaction
+  dark_radiation_species: []
+  long_lived_particles:
+  - PeV-scale decaying DM particle
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: No exact stabilizing symmetry is specified; cosmological longevity is controlled
+    by a very small Yukawa coupling and an optimal lifetime near 1e28 s.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  - higgs
+  standard_model_targets:
+  - left-handed lepton doublets
+  - Higgs doublet
+  - active neutrinos from DM decay
+  dark_sector_couplings:
+  - dimension-four DM-neutrino Yukawa-like coupling y_alpha L_alpha H psi
+  mediator_types:
+  - Higgs doublet
+  interaction_operators:
+  - y_alpha L_alpha H psi
+  decay_channels:
+  - psi -> neutrino plus Higgs/electroweak final states before electroweak symmetry breaking
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: DM mass scale
+    symbol: m_psi
+    description: PeV-scale mass used for the IceCube-neutrino interpretation.
+    range: PeV scale
+    unit: eV
+    role: core
+    status: inferred
+  - name: Yukawa coupling
+    symbol: y_alpha
+    description: Dimensionless coupling in y_alpha L_alpha H psi.
+    range: Very small; fixed by relic abundance and lifetime requirements.
+    role: core
+    status: inferred
+  - name: DM lifetime
+    symbol: tau_psi
+    description: Lifetime relevant for PeV neutrino production.
+    value: ~1e28
+    unit: s
+    role: core
+    status: inferred
+  - name: Kaniadakis deformation parameter
+    symbol: kappa
+    description: Parameter controlling the entropy deformation and modified Friedmann factor.
+    range: Time-dependent/running in the paper's phenomenological setup.
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - freeze-in from inverse decays and Yukawa production processes
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Yukawa coupling
+  - modified Hubble rate H(T)=H_GR(T) Z_kappa(T)
+  - PeV mass scale
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper first writes the standard freeze-in abundance and then argues that Kaniadakis-modified
+    expansion can reconcile abundance and decay-rate requirements.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - DM mass
+  - Yukawa coupling
+  - Kaniadakis-modified Hubble factor
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - Kaniadakis entropy-area law
+  - modified Friedmann equations
+  - early-time deviation H(T)=H_GR(T) Z_kappa(T) returning toward GR at late time
+  dark_sector_temperature: null
+  delta_neff: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: unknown
+  notes: Freeze-in production is treated through the abundance equation rather than a stored distribution
+    function.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: kaniadakis-prebbn-domain
+  applies_to: cosmological_history
+  condition: Kaniadakis corrections are assumed important before direct cosmological constraints and to
+    approach standard GR at late time.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: minimal-yukawa-domain
+  applies_to: model
+  condition: Uses only the minimal dimension-four DM-neutrino Yukawa-like coupling for the DM interaction.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: running-kappa
+    description: The Kaniadakis deformation is assumed to decrease over time so that late cosmology recovers
+      the standard GR limit.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: Relic-density and lifetime reconciliation may fail if the expansion history is
+      not modified as assumed.
+  - id: minimal-coupling
+    description: The only specified particle interaction is the minimal y_alpha L_alpha H psi coupling.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text does not identify public model code.
+provenance:
+  model_id: 2309_16732_kaniadakis_pev_decaying_dark_matter_v1
+  model_name: Kaniadakis-governed PeV decaying dark matter
+  model_family: decaying_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2309_16732'
+      title: Kaniadakis entropy-based characterization of IceCube PeV neutrino signals
+      authors:
+      - M. Blasone
+      - G. Lambiase
+      - G. G. Luciano
+      year: 2023
+      arxiv_id: '2309.16732'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text from run SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex-batch-0012
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2309_16732'
+      section: Introduction and IceCube discussion
+      page: null
+      quote_or_summary: Minimal PeV decaying DM is reconsidered with Kaniadakis-governed expansion.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2309_16732'
+      note: The text defines a PeV-scale DM particle in the dimension-four Yukawa-like coupling and uses
+        two helicity projections for the DM abundance calculation.
+      confidence: medium
+      section: IceCube high-energy neutrino tension
+    interactions:
+    - reference_id: '2309_16732'
+      note: The interaction is written as y_alpha L_alpha H psi with left-handed lepton and Higgs doublets.
+      confidence: medium
+      section: IceCube high-energy neutrino tension
+    production_mechanism:
+    - reference_id: '2309_16732'
+      note: The paper describes freeze-in production from inverse decays and Yukawa production processes.
+      confidence: medium
+      section: Standard Cosmology
+    cosmological_history:
+    - reference_id: '2309_16732'
+      note: Kaniadakis entropy modifies the Friedmann equations and the Hubble rate through H_GR times
+        a Kaniadakis factor.
+      confidence: medium
+      section: Kaniadakis Cosmology
+    validity_domain:
+    - reference_id: '2309_16732'
+      note: The proposed resolution relies on Kaniadakis corrections being relevant early and fading to
+        standard GR late.
+      confidence: medium
+      section: Introduction
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - 'Borderline acceptance: the particle coupling is inherited from prior minimal decaying-DM work, while
+    this paper contributes the Kaniadakis cosmological-history variant.'
+robustness:
+  overall: low
+  theory_robustness: low
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  validation_status: expert_judgment_only
+  notes: Machine-extracted from a phenomenological modified-cosmology treatment; detailed particle identity
+    is only partly specified.
+agent_failure_modes:
+  warnings:
+  - id: generic-particle-identity
+    severity: medium
+    category: other
+    warning: The text uses a generic DM particle symbol; do not infer a fully specified UV particle model
+      beyond the Yukawa coupling and PeV scale.
+    source_reference_ids:
+    - '2309_16732'

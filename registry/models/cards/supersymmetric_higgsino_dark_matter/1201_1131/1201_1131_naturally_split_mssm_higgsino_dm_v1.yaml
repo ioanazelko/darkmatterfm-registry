@@ -1,0 +1,262 @@
+_source:
+  shard: arXiv_src_1201_002_wds.tar
+  paper_id: '1201_1131'
+  source_member: 1201_1131.json
+schema_version: model_only_v0
+model_id: 1201_1131_naturally_split_mssm_higgsino_dm_v1
+identity:
+  name: Naturally split brane-world MSSM Higgsino dark matter
+  family: supersymmetric_higgsino_dark_matter
+  aliases:
+  - naturally split supersymmetry Higgsino LSP scenario
+  short_description: A five-dimensional brane-world MSSM scenario with Scherk-Schwarz supersymmetry breaking,
+    light Higgsinos, heavier superpartners, and a Higgsino-like LSP whose thermal relic density can match
+    the WMAP range in parts of the scan.
+  historical_origin_or_motivation: Motivated by LHC nonobservation of superparticles, Higgs mass limits,
+    WMAP relic density, low-energy data, and naturalness.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - MSSM
+  - five-dimensional brane-world
+  - Scherk-Schwarz supersymmetry breaking
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives five-dimensional bulk gauge and Higgs actions and scans brane-localized and bulk
+    matter configurations.
+particle_content:
+  dark_matter_candidate:
+    name: Higgsino-like lightest supersymmetric particle
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - nearly degenerate lighter chargino
+  - heavy gauginos
+  - squarks and sleptons
+  - stop NLSP in one localization pattern
+  mediators:
+  - Higgs sector
+  - electroweak gauge bosons
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The lightest supersymmetric particle is treated as the dark matter candidate;
+    the specific stabilizing parity is not detailed in the extracted passages.
+  symmetries:
+  - name: LSP-stabilizing supersymmetry parity
+    type: unknown
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - electroweak sector
+  dark_sector_couplings:
+  - Higgsino electroweak interactions
+  mediator_types:
+  - Higgs bosons
+  - electroweak gauge bosons
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: compactification scale
+    symbol: R^-1
+    range: 0.5-50 TeV scan; WMAP-compatible lower limits depend on localization
+    unit: TeV
+    role: core
+    status: inferred
+    notes: The paper displays lower limits on R^-1 after applying WMAP, Higgs, and collider constraints.
+  - name: Higgsino mass parameter
+    symbol: mu
+    range: around TeV scale
+    unit: TeV
+    role: core
+    status: inferred
+    notes: For Higgsino-dominated dark matter the paper gives Omega_DM h^2 about 0.09 (mu/TeV)^2.
+  - name: Scherk-Schwarz twist parameters
+    range: 0 to 1 scan
+    role: core
+    status: inferred
+    notes: Twist parameters enter the brane-world supersymmetry breaking scan.
+  - name: bulk Higgs localization parameters
+    symbol: a, a0
+    range: a=1-2 and a0=0-1 scan
+    role: core
+    status: inferred
+    notes: A nonzero a0 helps obtain WMAP-compatible relic density at smaller R^-1.
+production:
+  mechanisms:
+  - thermal freeze-out of a Higgsino-dominated LSP
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Higgsino annihilation rate
+  - Higgsino mass parameter
+  - brane-world spectrum
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper applies the WMAP range 0.1018 < Omega_DM h^2 < 0.1234 and computes relic density with
+    micrOMEGAS.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - mu
+  - R^-1
+  - matter localization pattern
+  - Higgs mass constraints
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: wmapp_scan
+  applies_to: model
+  condition: Accepted regions are those satisfying WMAP relic density, Higgs mass limits, and collider
+    lower limits in the scanned brane-world parameter space.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: lsp_identity
+  applies_to: model
+  condition: The extracted dark matter interpretation applies where the Higgsino-like neutral state is
+    the LSP rather than a stau.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Some all-brane-localized regions are disfavored by a stau LSP.
+assumptions:
+  global:
+  - id: standard_thermal_history
+    description: The relic-density interpretation assumes the standard thermal WIMP calculation used by
+      micrOMEGAS.
+    scope: cosmological_history
+    status: assumed
+  - id: lsp_stability
+    description: The LSP is assumed stable on cosmological timescales.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports using micrOMEGAS for numerical estimates; no paper-specific public implementation
+    is identified in the text.
+  primary_code_role: relic_density_calculation
+  packages_or_modules:
+  - name: micrOMEGAS
+    resource_type: package
+    availability: unknown
+    relationship_to_model: wrapper_around_public_tool
+    purpose:
+    - compute_relic_density
+provenance:
+  model_id: 1201_1131_naturally_split_mssm_higgsino_dm_v1
+  model_name: Naturally split brane-world MSSM Higgsino dark matter
+  model_family: supersymmetric_higgsino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1201_1131'
+      title: Naturally split supersymmetry
+      authors:
+      - Gautam Bhattacharyya
+      - Tirtha Sankar Ray
+      year: 2012
+      arxiv_id: '1201.1131'
+      doi: null
+      url: null
+      role: original_model
+      notes: Paper performs a numerical study of brane-world induced supersymmetry breaking and its dark-matter
+        relic density implications.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0003
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1201_1131'
+      section: Introduction
+      page: null
+      quote_or_summary: The paper seeks SUSY spectra that evade early LHC searches, satisfy low-energy
+        data, and give sufficient WMAP-compatible dark matter abundance.
+    - reference_id: '1201_1131'
+      section: The parameter space of the model
+      page: null
+      quote_or_summary: The LSP is always a Higgsino and Higgsino-dominated dark matter has Omega_DM h^2
+        about 0.09 (mu/TeV)^2.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1201_1131'
+      note: The model has a Higgsino-like LSP with a nearly degenerate chargino and heavier superpartners.
+      confidence: medium
+      section: The parameter space of the model
+    production_mechanism:
+    - reference_id: '1201_1131'
+      note: WMAP-compatible relic abundance is computed for Higgsino-dominated dark matter using micrOMEGAS.
+      confidence: medium
+      section: The parameter space of the model
+    parameter_ranges:
+    - reference_id: '1201_1131'
+      note: The scan includes R^-1 from 0.5 to 50 TeV and twist/localization parameters over stated ranges.
+      confidence: medium
+      section: The parameter space of the model
+    validity_domain:
+    - reference_id: '1201_1131'
+      note: Viable regions also impose EWSB, Higgs mass, and collider mass constraints.
+      confidence: medium
+      section: The parameter space of the model
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - stability symmetry not explicit in extracted text
+  - viable regions depend on localization choices and collider bounds
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: lsp_parity_implicit
+    severity: medium
+    category: assumption_mismatch
+    warning: The model card records LSP stability, but the extracted text does not spell out the stabilizing
+      parity.

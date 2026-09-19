@@ -1,0 +1,654 @@
+_source:
+  shard: data/astro-ph-00159.tar
+  paper_id: '2012_04618'
+  source_member: 2012_04618.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2012_04618_triple_unification_ultralight_scalar_v1
+identity:
+  name: Triple-unification ultralight scalar dark fluid
+  family: fuzzy_ultralight_dark_matter
+  aliases: []
+  short_description: A single scalar field with symmetry breaking and non-minimal gravity couplings is
+    proposed to unify inflation, dark energy, and fuzzy-like ultralight dark matter.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - dark fluid scalar field
+  - fuzzy dark matter
+  - non-minimally coupled scalar-tensor cosmology
+  - R^2 inflation
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  notes: The paper defines an action with scalar coupling to R and R^2, plus a symmetry-breaking potential.
+particle_content:
+  dark_matter_candidate:
+    name: ultralight scalar fluctuation around the symmetry-broken minimum
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - gravity
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The late-time scalar oscillates around a symmetry-broken minimum and behaves
+    as dark matter through its mass term.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: broken
+    breaking: spontaneously broken before inflation
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - gravity
+  - cosmological expansion
+  dark_sector_couplings:
+  - scalar self-interactions from cubic and quartic terms after symmetry breaking
+  mediator_types:
+  - metric gravity
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: ultralight scalar mass
+    symbol: m
+    description: Mass term that gives fuzzy-like dark matter behavior.
+    value: approximately 10^-22
+    unit: eV
+    role: core
+    status: inferred
+  - name: dark energy constant
+    symbol: V0
+    description: Constant part of the potential acting like dark energy.
+    value: Lambda^4/(8 pi G)
+    role: core
+    status: inferred
+  - name: symmetry-breaking scale
+    symbol: v
+    description: Field value at the two minima after Z2 breaking.
+    range: v > 7e26 eV for higher-order terms to be negligible in galaxies
+    unit: eV
+    role: core
+    status: inferred
+  - name: quadratic curvature coupling
+    symbol: beta
+    description: Coefficient of the R^2 term in the action.
+    role: core
+    status: inferred
+  - name: non-minimal scalar-curvature coupling
+    symbol: alpha
+    description: Scalar coupling to R in the action.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - post-inflation scalar evolution after symmetry breaking
+  - radiation and scalar reheating through the Unruh effect as described in the paper
+  - late scalar oscillations around the potential minimum redshift as matter
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - scalar potential parameters
+  - initial scalar energy density
+  - symmetry-breaking scale
+  - BBN-compatible scalar energy density
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper treats the scalar energy density evolution, including a matter-like a^-3 phase when
+    the field oscillates around its minimum.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: phenomenological
+  key_dependencies:
+  - ultralight mass term
+  - constant V0
+  - symmetry-breaking scale
+  - BBN energy-density limits
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - single field drives inflation, dark energy, and dark matter
+  - symmetry breaking before inflation
+  - scalar energy density constrained during BBN
+  dark_sector_temperature: null
+  bbn_relevance: high
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  notes: The dark matter is a coherently oscillating ultralight scalar field.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: paper discusses galaxy-halo behaviour but not a calibrated halo mass function
+    subhalo_mass_function_effect: paper mentions missing-satellite or halo-scale motivation but gives
+      no calibrated subhalo function
+    simulation_calibrated: unknown
+validity_domain:
+- id: ultralight_mass
+  applies_to: parameter
+  condition: The mass term should be near the fuzzy-dark-matter value used to form galaxy-sized condensates.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  valid_range: m approximately 10^-22 eV
+- id: small_fluctuation_limit
+  applies_to: model
+  condition: After symmetry breaking, higher-order terms are negligible when field variations are much
+    smaller than v.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  valid_range: v > 7e26 eV in the paper's galaxy estimate
+- id: bbn_energy_density
+  applies_to: cosmological_history
+  condition: Scalar energy density during BBN must remain below the paper's upper limits for the relevant
+    scaling law.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+assumptions:
+  global:
+  - id: single_scalar_unification
+    description: The same scalar field accounts for inflation, late dark energy, and ultralight dark matter.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: symmetry_breaking_before_inflation
+    description: A Z2 symmetry breaks before inflation, leaving the late scalar fluctuation around a minimum.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+  - id: matter_like_oscillations
+    description: Rapid oscillations around the scalar potential minimum make the energy density scale
+      as a^-3.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper mentions using AlterBBN for BBN abundance predictions, but no model-specific
+    code release is identified in the assigned text.
+  primary_code_role: other
+provenance:
+  model_id: 2012_04618_triple_unification_ultralight_scalar_v1
+  model_name: Triple-unification ultralight scalar dark fluid
+  model_family: fuzzy_ultralight_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: '2012_04618'
+      title: unknown
+      authors:
+      - unknown
+      year: 2020
+      arxiv_id: '2012.04618'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '2012.04618'
+      authors:
+      - Coupechoux, J. F.
+      - Arbey, A.
+      doi: 10.22323/1.390.0589
+      notes: Primary local full text read for this enrichment.
+      reference_id: p_2012_04618
+      role: original_model
+      title: Cosmological scalar fields and Big-Bang nucleosynthesis
+      url: https://arxiv.org/abs/2012.04618
+      year: 2021
+    constraint_papers:
+    - arxiv_id: '1907.04367'
+      authors:
+      - Arbey, A.
+      - Coupechoux, J.-F.
+      doi: 10.1088/1475-7516/2019/11/038
+      notes: Local full text read for BBN constraints on scalar fields.
+      reference_id: rel_1907_04367_scalar_bbn
+      role: constraint
+      title: Cosmological scalar fields and Big-Bang nucleosynthesis
+      url: https://arxiv.org/abs/1907.04367
+      year: 2019
+    - arxiv_id: '2007.05376'
+      authors:
+      - Arbey, A.
+      - Coupechoux, J.-F.
+      doi: 10.1088/1475-7516/2021/01/033
+      notes: Local full text read for fuzzy dark fluid triple-unification context.
+      reference_id: rel_2007_05376_fuzzy_dark_fluid
+      role: extension
+      title: Unifying dark matter, dark energy and inflation with a fuzzy dark fluid
+      url: https://arxiv.org/abs/2007.05376
+      year: 2021
+    external_databases: []
+    review_papers:
+    - arxiv_id: astro-ph/9807002
+      authors:
+      - Zlatev, Ivaylo
+      - Wang, Limin
+      - Steinhardt, Paul J.
+      doi: 10.1103/PhysRevLett.82.896
+      notes: Local full text read for scalar-field quintessence background context.
+      reference_id: rel_astro_ph_9807002_quintessence
+      role: review
+      title: Quintessence, Cosmic Coincidence, and the Cosmological Constant
+      url: https://arxiv.org/abs/astro-ph/9807002
+      year: 1999
+  extraction:
+    method: llm_assisted
+    extracted_by: gpt-5.5_batch_worker_batch-0001
+    extractor_name: dark_matter_model_gpt55_batch_worker
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2012_04618'
+      section: opening sections
+      page: null
+      quote_or_summary: The paper presents a dark fluid scalar and then a triple-unification scalar model
+        for inflation, dark energy, and dark matter.
+    - reference_id: '2012_04618'
+      section: triple-unification model
+      page: null
+      quote_or_summary: The action includes Z2 symmetry, scalar couplings to R and R^2, and a symmetry-breaking
+        potential.
+    - reference_id: '2012_04618'
+      section: BBN discussion/conclusion
+      page: null
+      quote_or_summary: The paper derives upper limits on scalar energy densities during Big-Bang nucleosynthesis
+        and concludes with the triple-unification model.
+    unresolved_items:
+    - The author list is not available in the extracted text supplied to this worker.
+    - The OCR does not fully preserve the denominator notation of the BBN density ratios.
+    - No new AlterBBN run or halo-structure calculation was performed.
+  evidence:
+    particle_content:
+    - reference_id: '2012_04618'
+      note: The dark matter is the scalar field fluctuation around a symmetry-broken minimum with an ultralight
+        mass term.
+      confidence: medium
+      section: triple-unification model
+      page: null
+    symmetries:
+    - reference_id: '2012_04618'
+      note: The action assumes a Z2 symmetry that is spontaneously broken before inflation.
+      confidence: medium
+      section: triple-unification model
+      page: null
+    interactions:
+    - reference_id: '2012_04618'
+      note: The scalar couples non-minimally to gravity through R and R^2 terms.
+      confidence: medium
+      section: triple-unification model
+      page: null
+    production_mechanism:
+    - reference_id: '2012_04618'
+      note: After inflation, the scalar evolves like the dark fluid model and its mass term gives matter-like
+        behavior.
+      confidence: medium
+      section: triple-unification model
+      page: null
+    cosmological_history:
+    - reference_id: '2012_04618'
+      note: The paper discusses BBN limits on stable and decaying scalar field energy densities.
+      confidence: medium
+      section: BBN discussion
+      page: null
+    parameter_ranges:
+    - reference_id: '2012_04618'
+      note: The text states m about 10^-22 eV and v greater than 7e26 eV for the higher-order terms to
+        be negligible in galaxies.
+      confidence: medium
+      section: dark fluid/triple-unification sections
+      page: null
+    validity_domain:
+    - reference_id: '2012_04618'
+      note: The model relies on the small-fluctuation limit around the minimum and BBN-compatible scalar
+        energy density.
+      confidence: medium
+      section: triple-unification/BBN sections
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text provides the 95 percent C.L. BBN limits and lithium non-solution statement.
+      page: null
+      reference_id: p_2012_04618
+      section: null
+    - confidence: medium
+      note: Related local text supports the scalar-field BBN calculation context.
+      page: null
+      reference_id: rel_1907_04367_scalar_bbn
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text gives ultralight mass, V0 dark-energy behavior, and BBN Hubble-rate effects.
+      page: null
+      reference_id: p_2012_04618
+      section: null
+    - confidence: medium
+      note: Related local text supports fuzzy dark-fluid triple-unification framing.
+      page: null
+      reference_id: rel_2007_05376_fuzzy_dark_fluid
+      section: null
+    routes:
+    - confidence: high
+      note: Primary text defines scalar background plus BBN route.
+      page: null
+      reference_id: p_2012_04618
+      section: null
+    - confidence: medium
+      note: Related local text supports AlterBBN-style route.
+      page: null
+      reference_id: rel_1907_04367_scalar_bbn
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: low
+  dominant_uncertainties:
+  - The extraction text lacks clear author metadata.
+  - The model is an effective scalar-tensor cosmology rather than a conventional particle freeze-out model.
+  validation_status: expert_judgment_only
+  notes: Accepted as the paper's own triple-unification scalar dark matter model, not as a generic fuzzy-dark-matter
+    review.
+agent_failure_modes:
+  warnings:
+  - id: triple_role_scalar
+    severity: medium
+    category: assumption_mismatch
+    warning: The scalar simultaneously plays inflation, dark energy, and dark matter roles; treating it
+      as ordinary standalone fuzzy dark matter would lose model assumptions.
+    mitigation: Keep the non-minimal gravity and symmetry-breaking assumptions attached to this entry.
+observables:
+- caveats:
+  - Halo-scale phenomenology is cited as motivation; no transfer function or halo simulation was run.
+  channel: small_scale_structure
+  effect_direction: model_dependent
+  environments:
+  - galaxy halos
+  - cosmological background
+  id: obs_2012_fuzzy_dark_fluid
+  key_quantities:
+  - name: scalar mass
+    role: core
+    source_reference_ids:
+    - p_2012_04618
+    - rel_2007_05376_fuzzy_dark_fluid
+    status: approximate
+    symbol: m
+    unit: eV
+    value: approximately 1e-22
+  - name: constant potential offset
+    role: core
+    source_reference_ids:
+    - p_2012_04618
+    status: inferred
+    symbol: V_0
+    value: dark-energy-like cosmological constant contribution
+  linked_constraints:
+  - con_2012_bbn_energy_density
+  linked_routes:
+  - route_2012_scalar_bbn_darkfluid
+  name: Ultralight scalar dark-fluid halo behavior
+  notes: Primary text explicitly ties m ~ 1e-22 eV to fuzzy-dark-matter-like behavior.
+  observability: medium
+  predicted_effect: The scalar mass term makes the field oscillate as collisionless matter, with m approximately
+    1e-22 eV giving fuzzy-dark-matter-like galaxy-halo phenomenology while V0 supplies dark-energy-like
+    acceleration.
+  redshift_range: late-time halos and cosmic acceleration
+  relevance: high
+  scale_range: galaxy halos around 10 kpc and larger cosmological background
+  source_reference_ids:
+  - p_2012_04618
+  - rel_2007_05376_fuzzy_dark_fluid
+  subchannel: fuzzy dark matter halos
+- caveats:
+  - OCR does not preserve all mathematical symbols; ratios are kept as primary-text notation.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - Big-Bang nucleosynthesis
+  id: obs_2012_bbn_hubble_rate
+  key_quantities:
+  - name: scalar density power-law index
+    role: core
+    source_reference_ids:
+    - p_2012_04618
+    - rel_1907_04367_scalar_bbn
+    status: approximate
+    symbol: n
+    value: n = 6 for the simplest dark-fluid behavior during BBN in the primary text
+  - name: scalar energy density at 1 MeV
+    role: cosmological
+    source_reference_ids:
+    - p_2012_04618
+    - rel_1907_04367_scalar_bbn
+    status: inferred
+    symbol: rho_phi(1 MeV)
+    value: bounded by BBN light-element abundances
+  linked_constraints:
+  - con_2012_bbn_energy_density
+  - con_2012_lithium_non_solution
+  linked_routes:
+  - route_2012_scalar_bbn_darkfluid
+  name: BBN Hubble-rate shift from scalar energy density
+  notes: BBN is the clearest quantitative constraint channel in the assigned paper.
+  observability: high
+  predicted_effect: A stable or decaying scalar field present near T ~ 1 MeV changes the total energy
+    density and therefore the Hubble rate, altering light-element abundances.
+  redshift_range: BBN epoch, T about 1 MeV
+  relevance: high
+  scale_range: homogeneous early universe
+  source_reference_ids:
+  - p_2012_04618
+  - rel_1907_04367_scalar_bbn
+  subchannel: Big-Bang nucleosynthesis
+- caveats:
+  - Inflationary observables were not extracted from the assigned short proceedings text.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - inflation
+  - dark matter era
+  - dark energy era
+  id: obs_2012_triple_unification_background
+  key_quantities:
+  - name: nonminimal coupling
+    role: core
+    source_reference_ids:
+    - p_2012_04618
+    - rel_2007_05376_fuzzy_dark_fluid
+    status: inferred
+    symbol: xi^2 R^2
+    value: used in the triple-unification construction
+  linked_constraints:
+  - con_2012_bbn_energy_density
+  linked_routes:
+  - route_2012_scalar_bbn_darkfluid
+  name: Single-field inflation, dark matter, and dark energy background
+  notes: Quintessence source is background context for scalar-field dark-energy behavior.
+  observability: low
+  predicted_effect: With a nonminimal R^2 coupling and symmetry breaking before inflation, the same scalar
+    sector is proposed to drive inflation, later oscillate as fuzzy dark matter, and leave a constant
+    term acting as dark energy.
+  redshift_range: inflation through late-time acceleration
+  relevance: medium
+  scale_range: homogeneous cosmology
+  source_reference_ids:
+  - p_2012_04618
+  - rel_2007_05376_fuzzy_dark_fluid
+  - rel_astro_ph_9807002_quintessence
+  subchannel: triple unification
+constraints:
+- allowed_regions:
+  - 'Primary OCR reports 95 percent C.L. upper-limit ratios at 1 MeV: n=6 -> 1.40, n=4 -> 0.11, n=3 ->
+    0.005, n=0 -> 2e-7 in the paper notation.'
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The scalar energy density during BBN is approximated as rho_phi proportional to a^-n.
+    id: assume_2012_power_law_density
+    impact_if_violated: A different time dependence or decay channel changes the light-element constraints.
+    notes: null
+    scope: BBN constraint extraction
+    source_reference_ids:
+    - p_2012_04618
+    - rel_1907_04367_scalar_bbn
+    status: assumed
+  benchmark_implications:
+  - The simplest dark-fluid n=6 BBN behavior is constrained but not forced to vanish; without the scalar
+    field the standard model is recovered.
+  caveats:
+  - The denominator of the OCR upper-limit ratios is not fully disambiguated; the ratios are kept as source
+    notation.
+  constrained_parameters:
+  - rho_phi(1 MeV)
+  - n
+  - scalar decay time
+  constraint_type: cosmological
+  data_release: Observed helium-4, helium-3, deuterium, and lithium-7 abundance context in primary text
+  excluded_regions:
+  - Scalar densities at BBN that spoil helium-4, helium-3, or deuterium abundances are excluded.
+  id: con_2012_bbn_energy_density
+  likelihood_available: approximate
+  likelihood_reference: AlterBBN-style BBN calculation as described by primary and related texts
+  name: BBN upper limits on scalar-field energy density
+  notes: Most quantitative constraint in the assignment text.
+  observable_channel: light-element abundances and Hubble rate
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - p_2012_04618
+  - rel_1907_04367_scalar_bbn
+- allowed_regions:
+  - Primary text states stable or decaying scalar fields can be bounded by BBN abundances but do not solve
+    the lithium-7 problem.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - The model should not be marketed as a lithium-problem solution without new physics beyond the discussed
+    scalar field.
+  caveats:
+  - No abundance table was machine-extracted.
+  constrained_parameters:
+  - scalar density
+  - scalar decay history
+  constraint_type: cosmological
+  data_release: Light-element abundance comparison in primary text
+  excluded_regions: []
+  id: con_2012_lithium_non_solution
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Lithium problem not solved by scalar-field additions
+  notes: Recorded as a negative/limiting result.
+  observable_channel: lithium-7 abundance
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - p_2012_04618
+  - rel_1907_04367_scalar_bbn
+theory_to_observable_routing:
+  routes:
+  - agent_notes: No BBN code was run; source ratios were transcribed conservatively from OCR.
+    caveats:
+    - Proceedings text is brief and leaves some notation ambiguous.
+    constraint_ids:
+    - con_2012_bbn_energy_density
+    - con_2012_lithium_non_solution
+    derived_quantities:
+    - H(T)
+    - light-element abundances
+    - scalar equation of state
+    - halo-scale de Broglie/Compton scale
+    description: Evolve the ultralight scalar dark-fluid background through inflation, oscillatory dark-matter
+      behavior, late dark-energy behavior, and BBN-era Hubble-rate effects.
+    forward_model_chain:
+    - inputs:
+      - scalar potential
+      - Friedmann equations
+      notes: null
+      outputs:
+      - rho_phi(a)
+      - w_phi(a)
+      step_id: r2012_s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary text gives the scalar-field cosmological equations.
+    - inputs:
+      - rho_phi(T)
+      - decay history
+      notes: null
+      outputs:
+      - light-element abundances
+      step_id: r2012_s2
+      step_type: boltzmann_solver
+      tool_or_code: AlterBBN
+      validity: Primary and related texts use AlterBBN-style abundance calculations.
+    - inputs:
+      - light-element abundances
+      - observational bounds
+      notes: null
+      outputs:
+      - upper limits on rho_phi(1 MeV)
+      step_id: r2012_s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Needs explicit abundance likelihood for a modern recast.
+    id: route_2012_scalar_bbn_darkfluid
+    input_parameters:
+    - m
+    - V_0
+    - nonminimal coupling
+    - rho_phi(1 MeV)
+    - n
+    - decay time
+    likelihoods:
+    - BBN light-element abundance likelihoods
+    observable_ids:
+    - obs_2012_fuzzy_dark_fluid
+    - obs_2012_bbn_hubble_rate
+    - obs_2012_triple_unification_background
+    required_code_resources:
+    - scalar-field background integrator
+    - AlterBBN or equivalent BBN code
+    route_status: planned
+    source_model_features:
+    - single scalar field
+    - ultralight mass near 1e-22 eV
+    - constant V0 term
+    - nonminimal R^2 coupling for triple unification
+    validation_tests:
+    - Recover the quoted 95 percent C.L. BBN upper-limit ratios.
+    - Check the m ~ 1e-22 eV dark-fluid limit against fuzzy-DM phenomenology.

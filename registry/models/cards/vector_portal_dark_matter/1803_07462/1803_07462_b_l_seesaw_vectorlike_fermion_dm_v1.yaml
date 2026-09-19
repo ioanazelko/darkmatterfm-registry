@@ -1,0 +1,322 @@
+_source:
+  shard: arXiv_src_1803_021_wds.tar
+  paper_id: '1803_07462'
+  source_member: 1803_07462.json
+schema_version: model_only_v0
+model_id: 1803_07462_b_l_seesaw_vectorlike_fermion_dm_v1
+identity:
+  name: B-L seesaw vector-like fermion dark matter
+  family: vector_portal_dark_matter
+  aliases:
+  - U(1)_{B-L} vector-like fermion dark matter
+  - seesaw-scale B-L dark matter
+  short_description: A U(1)_{B-L} gauge theory tying the seesaw scale to a stable vector-like SM-singlet
+    Dirac fermion dark matter candidate charged under B-L.
+  historical_origin_or_motivation: The paper uses the dark matter relic density to bound the B-L symmetry-breaking
+    and seesaw scale in the multi-TeV region.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - gauged U(1)_{B-L}
+  - type-I seesaw
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The relevant Lagrangian includes the B-L gauge boson, right-handed neutrinos, the B-L Higgs S_BL,
+    and a vector-like fermion dark matter field.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac vector-like fermion chi = chi_L + chi_R
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - three right-handed neutrinos N_i
+  - B-L Higgs scalar S_BL / h_2
+  mediators:
+  - B-L gauge boson Z_BL
+  - scalar mass eigenstates h_1 and h_2
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - right-handed neutrinos can be long-lived for small Dirac Yukawa coupling
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The vector-like fermion is stabilized by its B-L charge assignment; the paper
+    states |n| not equal to 1 or 3 avoids decay, with even or fractional charges safer against higher-dimensional
+    mixing.
+  symmetries:
+  - name: U(1)_{B-L}
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneously broken by S_BL with charge 2
+    breaking_scale:
+      name: B-L breaking scale
+      symbol: v_BL
+      description: Vacuum expectation value setting M_ZBL = 2 g_BL v_BL
+      role: core
+      status: inferred
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - Standard Model fermions charged under B-L
+  - right-handed neutrinos
+  dark_sector_couplings:
+  - g_BL n coupling of chi to Z_BL
+  - Yukawa coupling of right-handed neutrinos to S_BL
+  mediator_types:
+  - Z_BL vector mediator
+  - mixed scalar h_1/h_2
+  annihilation_channels:
+  - Z_BL* to SM fermion pairs
+  - Z_BL* to right-handed neutrino pairs
+  - Z_BL Z_BL
+  - Z_BL h_1
+  - Z_BL h_2
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: B-L charge of dark matter
+    symbol: n
+    description: Charge assigned to chi_L and chi_R; controls stability and annihilation strength.
+    range: Examples studied include fractional and integer charges; |n| != 1,3 is required to avoid decay.
+    role: core
+    status: inferred
+    notes: Paper discusses n=1/3, 2/3, 1, 2 and perturbativity/direct-detection implications.
+  - name: B-L gauge coupling
+    symbol: g_BL
+    description: Gauge coupling of U(1)_{B-L}.
+    range: 0.25-1.0 in scan examples
+    role: core
+    status: inferred
+    notes: Used in relic-density and symmetry-scale bounds.
+  - name: dark matter mass
+    symbol: M_chi
+    description: Mass of the Dirac vector-like fermion.
+    range: TeV-scale viable region in scans
+    unit: GeV
+    role: core
+    status: inferred
+  - name: B-L gauge boson mass
+    symbol: M_ZBL
+    description: Mass of the vector mediator, M_ZBL = 2 g_BL v_BL.
+    range: multi-TeV, with upper bounds depending on n
+    unit: GeV
+    role: core
+    status: inferred
+  - name: heavy scalar mass
+    symbol: M_h2
+    description: Mass of the mostly B-L Higgs scalar.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: right-handed neutrino masses
+    symbol: M_Ni
+    description: Masses tied to the B-L breaking scale.
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through B-L gauge interactions
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - thermally averaged annihilation cross section
+  - freeze-out parameter x_f
+  - B-L charge n
+  - M_chi
+  - M_ZBL
+  - g_BL
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper computes the relic density with the standard freeze-out integral and uses the observed
+    cold dark matter density to bound the B-L scale.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - M_chi
+  - M_ZBL
+  - g_BL
+  - B-L charge n
+  - annihilation branching channels
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: freeze-out parameter
+    symbol: x_f
+    description: Computed from the thermally averaged annihilation cross section in the relic-density
+      calculation.
+    role: derived
+    status: inferred
+  phase_transitions:
+  - spontaneous U(1)_{B-L} breaking
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: Relic abundance is treated with the standard thermal freeze-out approximation.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: charge_stability
+  applies_to: model
+  condition: Dark matter charge must avoid decay; the paper states |n| not equal to 1 or 3 and notes even
+    or fractional charges are safer against higher-dimensional operators.
+  status: established
+  extrapolation_risk: medium
+- id: thermal_relic_scan
+  applies_to: parameter
+  condition: Relic-density bounds apply within the scanned B-L gauge coupling, mediator mass, scalar mass,
+    and right-handed-neutrino mass assumptions.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: neglect_kinetic_mixing
+    description: The kinetic mixing between the B-L gauge boson and hypercharge is neglected for simplicity.
+    scope: theory
+    status: assumed
+  - id: dirac_fermion_focus
+    description: The paper focuses on a Dirac fermion dark matter candidate because scalar or Majorana
+      alternatives have suppressed annihilation through the B-L gauge boson.
+    scope: theory
+    status: established
+  - id: full_cdm_relic
+    description: The relic-density calculation treats chi as the cold dark matter component used to bound
+      the B-L breaking scale.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public code was identified in the assigned paper text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  caveats: []
+provenance:
+  model_id: 1803_07462_b_l_seesaw_vectorlike_fermion_dm_v1
+  model_name: B-L seesaw vector-like fermion dark matter
+  model_family: vector_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Dark Matter and The Seesaw Scale
+      authors:
+      - Pavel Fileviez Perez
+      - Clara Murgui
+      year: 2018
+      arxiv_id: '1803.07462'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used for this batch extraction.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0003
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract and model sections
+      quote_or_summary: The paper links cold dark matter relic density to the B-L seesaw scale and defines
+        a vector-like SM-singlet fermion charged under B-L.
+    - reference_id: paper
+      section: Relic Density
+      quote_or_summary: The relic density is computed with a thermal freeze-out approximation and annihilation
+        channels through Z_BL and scalar states.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The dark matter candidate is chi_L + chi_R, a Dirac vector-like SM-singlet fermion charged
+        under B-L.
+      confidence: high
+      section: model section
+    symmetries:
+    - reference_id: paper
+      note: A spontaneously broken U(1)_{B-L} symmetry defines the seesaw scale and the charge assignment
+        stabilizes chi.
+      confidence: high
+      section: model section
+    interactions:
+    - reference_id: paper
+      note: The model includes Z_BL-mediated annihilation to SM fermions, right-handed neutrinos, Z_BL
+        pairs, and Z_BL plus scalar channels.
+      confidence: high
+      section: dark matter model section
+    production_mechanism:
+    - reference_id: paper
+      note: The paper computes thermal relic abundance using x_f and the thermally averaged annihilation
+        cross section.
+      confidence: high
+      section: Relic Density
+    parameter_ranges:
+    - reference_id: paper
+      note: Relevant parameters are listed as n, g_BL, M_chi, M_h2, M_ZBL, and M_Ni.
+      confidence: high
+      section: dark matter model section
+    validity_domain:
+    - reference_id: paper
+      note: Stability requires B-L charges avoiding decay; kinetic mixing is neglected for simplicity.
+      confidence: medium
+      section: model section
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - stability under higher-dimensional operators depends on B-L charge choice
+  - bounds depend on scanned masses and couplings
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: charge_choice_matters
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat every B-L charge assignment as stable; the paper flags |n| = 1 or 3 as allowing
+      decay and notes UV sensitivity for odd charges.
+  - id: constraints_not_extracted
+    severity: low
+    category: other
+    warning: This model card intentionally omits direct, indirect, collider, and cosmological constraints
+      for the model-only extraction pass.

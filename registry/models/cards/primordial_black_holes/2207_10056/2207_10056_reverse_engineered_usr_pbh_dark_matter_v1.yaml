@@ -1,0 +1,636 @@
+_source:
+  shard: arXiv_src_2207_072_wds.tar
+  paper_id: '2207_10056'
+  source_member: 2207_10056.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2207_10056_reverse_engineered_usr_pbh_dark_matter_v1
+identity:
+  name: Reverse-engineered ultra-slow-roll primordial black hole dark matter
+  family: primordial_black_holes
+  aliases:
+  - reverse engineering PBH dark matter from inflation
+  - USR PBH dark matter plateau model
+  short_description: A phenomenologically driven inflationary construction with an ultra-slow-roll phase
+    that raises the small-scale curvature power spectrum and produces asteroid-mass primordial black holes
+    as a dominant dark matter component.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - single_field_inflation
+  - ultra_slow_roll_inflation
+  - primordial_black_hole_dark_matter
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  embedded_in_larger_framework: 'yes'
+  notes: The paper reverse engineers inflationary dynamics and an inflaton potential from late-time observables
+    rather than starting from a fixed particle Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: asteroid-mass primordial black holes
+    spin: not_applicable
+    statistics: black_hole
+    elementary_or_composite: macroscopic
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - inflaton field
+  mediators: []
+  standard_model_extension: none
+symmetries:
+  stabilizing_mechanism: Primordial black holes are stable or sufficiently long-lived on cosmological
+    timescales in the mass window considered.
+  symmetries: []
+interactions:
+  portals:
+  - gravitational
+  standard_model_targets:
+  - radiation density perturbations through gravity
+  dark_sector_couplings: []
+  mediator_types:
+  - gravity
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: curvature power spectrum amplitude
+    symbol: P_R(k)
+    description: Small-scale curvature perturbation power spectrum raised above the CMB amplitude to seed
+      PBH formation.
+    role: core
+    status: inferred
+  - name: CMB pivot amplitude
+    symbol: A_s
+    description: Amplitude at k*=0.05 Mpc^-1 quoted in the paper.
+    value: about 2.1e-9
+    role: cosmological
+    status: inferred
+  - name: spectral index
+    symbol: n_s
+    description: CMB-scale scalar spectral index quoted in the paper.
+    value: about 0.965
+    role: cosmological
+    status: inferred
+  - name: USR duration
+    symbol: N_USR
+    description: Duration of the ultra-slow-roll phase; a benchmark value around 2.9 is discussed.
+    value: about 2.9
+    role: core
+    status: inferred
+  - name: PBH mass component
+    symbol: M_PBH
+    description: PBH mass scale targeted by the dominant dark matter component.
+    range: asteroid-mass/atomic-size component; additional subdominant stellar-mass component discussed
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - inflationary curvature perturbation enhancement
+  - gravitational collapse after horizon re-entry
+  thermal_equilibrium_with_standard_model: 'no'
+  abundance_set_by:
+  - small-scale curvature power spectrum plateau
+  - ultra-slow-roll phase
+  - PBH collapse threshold and mass function
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  notes: The reverse-engineered power spectrum can yield a dominant asteroid-mass PBH dark matter component
+    and a subdominant stellar-mass PBH merger component.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: nonthermal
+  key_dependencies:
+  - curvature power spectrum amplitude and shape
+  - PBH mass function
+  - USR timing and duration
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - ultra-slow-roll phase during inflation
+  - raised plateau in the small-scale curvature power spectrum
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: high
+phase_space:
+  distribution_type: not_applicable
+  distribution_function_available: not_applicable
+  notes: PBH dark matter is described by a mass function rather than a particle momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: inflation_reverse_engineering
+  applies_to: model
+  condition: Applies to inflationary histories with a raised small-scale curvature-power plateau generated
+    by a departure from slow roll, especially ultra-slow-roll dynamics.
+  status: inferred
+- id: pbh_mass_window
+  applies_to: model
+  condition: The headline dark matter component is asteroid-mass/atomic-size PBHs; a subdominant stellar-mass
+    PBH merger component is also discussed.
+  status: inferred
+  caveats:
+  - Extraction does not include observational constraints by design.
+assumptions:
+  global:
+  - id: inflationary_origin
+    description: PBHs arise from enhanced primordial curvature perturbations generated during inflation.
+    scope: global
+    status: assumed
+  - id: standard_post_inflation_mapping
+    description: The paper maps curvature perturbations to PBH formation after horizon re-entry under
+      the cosmological assumptions used in its reverse-engineering approach.
+    scope: cosmological_history
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - PBH abundance depends on the mapping from curvature perturbations to collapse fraction and mass function.
+  - The extraction omits observational constraints by run instruction.
+  validation_status: expert_judgment_only
+  notes: The paper provides a detailed phenomenological construction but this extraction does not reproduce
+    numerical PBH abundance calculations.
+agent_failure_modes:
+  warnings:
+  - id: pbh_not_particle
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not route this model as a particle dark matter candidate; the dark matter candidate is
+      macroscopic primordial black holes.
+  - id: constraints_omitted
+    severity: low
+    category: other
+    warning: PBH observational constraints and gravitational-wave signatures are intentionally omitted
+      for this model-only run.
+provenance:
+  model_id: 2207_10056_reverse_engineered_usr_pbh_dark_matter_v1
+  model_name: Reverse-engineered ultra-slow-roll primordial black hole dark matter
+  model_family: primordial_black_holes
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2207_10056'
+      title: 'Primordial black hole dark matter from inflation: the reverse engineering approach'
+      authors:
+      - Gabriele Franciolini
+      - Alfredo Urbano
+      year: 2022
+      arxiv_id: '2207.10056'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text in target_text.sqlite.
+    - arxiv_id: '2207.10056'
+      authors:
+      - Franciolini, Gabriele
+      - Urbano, Alfredo
+      doi: 10.1103/PhysRevD.106.123519
+      notes: Primary local full text read for this enrichment.
+      reference_id: p_2207_10056
+      role: original_model
+      title: 'Primordial black hole dark matter from inflation: The reverse engineering approach'
+      url: https://arxiv.org/abs/2207.10056
+      year: 2022
+    constraint_papers:
+    - arxiv_id: '2209.05959'
+      authors:
+      - Franciolini, Gabriele
+      - Musco, Ilia
+      - Pani, Paolo
+      - Urbano, Alfredo
+      doi: 10.1103/PhysRevD.106.123526
+      notes: Local full text read for gravitational-wave merger-data constraints on PBH scenarios.
+      reference_id: rel_2209_05959_gw_constraints
+      role: constraint
+      title: 'From inflation to black hole mergers and back again: Gravitational-wave data-driven constraints
+        on inflationary scenarios with a first-principle model of primordial black holes across the QCD
+        epoch'
+      url: https://arxiv.org/abs/2209.05959
+      year: 2022
+    - arxiv_id: '2008.12202'
+      authors:
+      - Ragavendra, H. V.
+      - Saha, Pankaj
+      - Sriramkumar, L.
+      - Silk, Joseph
+      doi: 10.1103/PhysRevD.103.083510
+      notes: Local full text read for ultra-slow-roll PBH and secondary-GW context.
+      reference_id: rel_2008_12202_usr_pbh_gw
+      role: extension
+      title: Primordial black holes and secondary gravitational waves from ultraslow roll and punctuated
+        inflation
+      url: https://arxiv.org/abs/2008.12202
+      year: 2021
+    external_databases: []
+    review_papers:
+    - arxiv_id: '2301.08887'
+      authors:
+      - Ragavendra, H. V.
+      - Sriramkumar, L.
+      doi: 10.3390/galaxies11010034
+      notes: Local full text read for observational imprints of enhanced small-scale scalar power.
+      reference_id: rel_2301_08887_usr_imprints
+      role: review
+      title: Observational Imprints of Enhanced Scalar Power on Small Scales in Ultra Slow Roll Inflation
+        and Associated Non-Gaussianities
+      url: https://arxiv.org/abs/2301.08887
+      year: 2023
+  extraction:
+    method: llm_assisted
+    extracted_by: codex-batch-0019
+    extractor_name: gpt-5.5 dark-matter model-card worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2207_10056'
+      section: abstract
+      page: null
+      quote_or_summary: The paper presents a reverse-engineering approach where inflation generates a
+        raised small-scale curvature plateau and asteroid-mass PBH dark matter.
+    - reference_id: '2207_10056'
+      section: introduction/model
+      page: null
+      quote_or_summary: Ultra-slow-roll dynamics enhance curvature perturbations; overdense regions later
+        collapse into PBHs.
+    unresolved_items:
+    - PBH abundance, induced-GW spectrum, and merger rates were not recomputed.
+    - Precise PTA frequency values were not extracted because OCR around powers of ten is unreliable.
+  evidence:
+    particle_content:
+    - reference_id: '2207_10056'
+      note: The abstract states the scenario can make a dominant dark matter component in asteroid-mass/atomic-size
+        primordial black holes.
+      confidence: high
+      section: abstract
+    production_mechanism:
+    - reference_id: '2207_10056'
+      note: The paper describes an ultra-slow-roll phase that enhances curvature perturbations, whose
+        overdense regions collapse into PBHs after inflation.
+      confidence: high
+      section: introduction
+    cosmological_history:
+    - reference_id: '2207_10056'
+      note: The model uses a raised plateau in the small-scale curvature power spectrum while retaining
+        CMB-scale slow-roll behavior.
+      confidence: high
+      section: abstract/introduction
+    parameter_ranges:
+    - reference_id: '2207_10056'
+      note: The text quotes A_s about 2.1e-9, n_s about 0.965, and discusses benchmark USR durations such
+        as N_USR=2.9.
+      confidence: medium
+      section: model/anatomy sections
+    validity_domain:
+    - reference_id: '2207_10056'
+      note: The construction is explicitly presented as a reverse-engineering approach connecting late-time
+        observables to inflationary dynamics and an inflaton potential.
+      confidence: high
+      section: abstract
+    constraints:
+    - confidence: high
+      note: Primary text frames the PBH/GW multi-observable target.
+      page: null
+      reference_id: p_2207_10056
+      section: null
+    - confidence: medium
+      note: Related local text supports the LVK merger-population recast context.
+      page: null
+      reference_id: rel_2209_05959_gw_constraints
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text links asteroid-mass PBH dark matter, induced stochastic gravitational waves,
+        and stellar-mass PBH mergers.
+      page: null
+      reference_id: p_2207_10056
+      section: null
+    - confidence: medium
+      note: Related review supports enhanced small-scale scalar power, PBHs, and secondary GWs.
+      page: null
+      reference_id: rel_2301_08887_usr_imprints
+      section: null
+    routes:
+    - confidence: high
+      note: Primary text supplies the reverse-engineering route from observables to inflationary dynamics.
+      page: null
+      reference_id: p_2207_10056
+      section: null
+    - confidence: medium
+      note: Related local text supports the USR to PBH/GW forward route.
+      page: null
+      reference_id: rel_2008_12202_usr_pbh_gw
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+observables:
+- caveats:
+  - The PBH mass function and non-Gaussian corrections were not recomputed here.
+  channel: black_holes
+  effect_direction: enhancement
+  environments:
+  - early universe
+  - PBH dark matter
+  id: obs_2207_pbh_dm_abundance
+  key_quantities:
+  - name: curvature power spectrum
+    role: derived
+    source_reference_ids:
+    - p_2207_10056
+    - rel_2301_08887_usr_imprints
+    status: inferred
+    symbol: P_R(k)
+    value: raised plateau above the CMB-normalized value on small scales
+  - name: PBH dark-matter fraction
+    role: derived
+    source_reference_ids:
+    - p_2207_10056
+    status: inferred
+    symbol: f_PBH
+    value: can be dominant in the targeted asteroid-mass window
+  linked_constraints:
+  - con_2207_multimessenger_pbh_window
+  linked_routes:
+  - route_2207_reverse_engineer_inflation
+  name: Asteroid-mass PBH dark-matter abundance
+  notes: Primary text frames the asteroid-mass PBH abundance as one of three linked observables.
+  observability: medium
+  predicted_effect: A raised small-scale curvature-power plateau from reverse-engineered inflation can
+    produce a dominant dark-matter component in asteroid-mass or atomic-size primordial black holes.
+  redshift_range: formation in the early radiation era; abundance observed today
+  relevance: critical
+  scale_range: small inflationary scales beyond direct CMB anisotropy constraints
+  source_reference_ids:
+  - p_2207_10056
+  - rel_2301_08887_usr_imprints
+  subchannel: primordial black holes
+- caveats:
+  - The OCR around PTA frequencies is imperfect; output avoids relying on a precise PTA number.
+  channel: gravitational_waves
+  effect_direction: enhancement
+  environments:
+  - LISA-like detectors
+  - pulsar timing arrays
+  id: obs_2207_scalar_induced_gw
+  key_quantities:
+  - name: GW frequency
+    role: derived
+    source_reference_ids:
+    - p_2207_10056
+    - rel_2008_12202_usr_pbh_gw
+    status: approximate
+    symbol: f
+    unit: Hz
+    value: space-interferometer and PTA bands
+  - name: comoving wavenumber
+    role: derived
+    source_reference_ids:
+    - p_2207_10056
+    status: approximate
+    symbol: k
+    unit: Mpc^-1
+    value: k approximately 7e14 (f/Hz) Mpc^-1 in the primary text
+  linked_constraints:
+  - con_2207_multimessenger_pbh_window
+  linked_routes:
+  - route_2207_reverse_engineer_inflation
+  name: Scalar-induced stochastic gravitational-wave background
+  notes: Related ultra-slow-roll PBH/GW local text supports the secondary-GW channel.
+  observability: medium
+  predicted_effect: The same broad curvature-power plateau can source second-order stochastic gravitational
+    waves, with the primary paper connecting plateau edges to space-interferometer and pulsar-timing frequency
+    ranges.
+  redshift_range: early-universe generation; present-day stochastic background
+  relevance: high
+  scale_range: small-scale curvature perturbations
+  source_reference_ids:
+  - p_2207_10056
+  - rel_2008_12202_usr_pbh_gw
+  subchannel: LISA/PTA-band stochastic background
+- caveats:
+  - Merger-rate astrophysical systematics were not reconstructed.
+  channel: gravitational_waves
+  effect_direction: rate_change
+  environments:
+  - LVK compact-binary catalogues
+  id: obs_2207_stellar_pbh_mergers
+  key_quantities:
+  - name: stellar-mass PBH merger fraction
+    role: derived
+    source_reference_ids:
+    - p_2207_10056
+    - rel_2209_05959_gw_constraints
+    status: inferred
+    symbol: f_PBH,stellar
+    value: subdominant in the primary scenario
+  linked_constraints:
+  - con_2207_lvk_merger_recast
+  linked_routes:
+  - route_2207_reverse_engineer_inflation
+  name: Subdominant stellar-mass PBH merger population
+  notes: This is a secondary observable in the primary paper, not the dominant DM target.
+  observability: medium
+  predicted_effect: The reverse-engineered plateau can also imply a subdominant stellar-mass PBH component
+    that contributes to gravitational-wave merger populations.
+  redshift_range: late-time compact-binary mergers
+  relevance: medium
+  scale_range: stellar-mass PBH population
+  source_reference_ids:
+  - p_2207_10056
+  - rel_2209_05959_gw_constraints
+  subchannel: compact-binary merger population
+constraints:
+- allowed_regions:
+  - Primary paper identifies broad plateau scenarios that can link asteroid-mass PBH dark matter with
+    detectable induced gravitational waves.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The mapping from curvature power to PBH abundance and induced gravitational waves is
+      treated with the same assumptions used in the primary paper.
+    id: assume_2207_pbh_mapping
+    impact_if_violated: Changing collapse thresholds, non-Gaussianity, or thermal history can shift the
+      allowed plateau.
+    notes: null
+    scope: PBH and SGWB recast
+    source_reference_ids:
+    - p_2207_10056
+    - rel_2008_12202_usr_pbh_gw
+    status: assumed
+  benchmark_implications:
+  - The inflationary potential must reproduce both the CMB normalization on large scales and enhanced
+    small-scale power.
+  caveats:
+  - No mass-function integration or SGWB likelihood was run.
+  constrained_parameters:
+  - P_R(k)
+  - plateau width
+  - plateau height
+  - PBH mass function
+  - f_PBH
+  constraint_type: cosmological
+  data_release: Planck/BICEP large-scale inflation context, PTA/LISA/PBH phenomenology as discussed in
+    primary and related texts
+  excluded_regions:
+  - Power spectra that overproduce PBHs or induced gravitational waves are excluded by the usual PBH/GW
+    recast logic.
+  id: con_2207_multimessenger_pbh_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: PBH abundance plus induced-GW multi-messenger window
+  notes: Constraint is a route-level recast target, not a new exclusion.
+  observable_channel: PBH abundance and stochastic gravitational waves
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - p_2207_10056
+  - rel_2301_08887_usr_imprints
+  - rel_2008_12202_usr_pbh_gw
+- allowed_regions:
+  - The primary model targets a subdominant stellar-mass PBH component rather than all dark matter in
+    this mass range.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Population inference must be coupled back to the same inflationary power spectrum.
+  caveats:
+  - Astrophysical binary black-hole backgrounds and PBH clustering were not modeled.
+  constrained_parameters:
+  - stellar-mass PBH abundance
+  - PBH merger rate
+  - PBH mass spectrum
+  constraint_type: astrophysical
+  data_release: LIGO/Virgo/KAGRA-era compact-binary context in related local text
+  excluded_regions:
+  - Merger rates inconsistent with observed compact-binary populations would be disfavored.
+  id: con_2207_lvk_merger_recast
+  likelihood_available: partial
+  likelihood_reference: null
+  name: LVK stellar-mass PBH merger-population recast
+  notes: Related local text supports the merger-data-driven constraint route.
+  observable_channel: compact-binary gravitational-wave mergers
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - p_2207_10056
+  - rel_2209_05959_gw_constraints
+theory_to_observable_routing:
+  routes:
+  - agent_notes: No numerical reverse-engineering run was performed in this enrichment pass.
+    caveats:
+    - Non-Gaussianity and PBH collapse-threshold uncertainties remain unresolved.
+    constraint_ids:
+    - con_2207_multimessenger_pbh_window
+    - con_2207_lvk_merger_recast
+    derived_quantities:
+    - PBH mass function
+    - f_PBH
+    - induced SGWB spectrum
+    - stellar-mass merger rate
+    description: Reverse engineer an inflationary curvature-power plateau, reconstruct compatible dynamics,
+      and propagate the small-scale power to PBH abundance, induced stochastic gravitational waves, and
+      compact-binary merger observables.
+    forward_model_chain:
+    - inputs:
+      - target observables
+      - curvature plateau ansatz
+      notes: null
+      outputs:
+      - reverse-engineered P_R(k)
+      step_id: r2207_s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary paper defines the reverse-engineering logic.
+    - inputs:
+      - P_R(k)
+      - inflationary dynamics
+      notes: null
+      outputs:
+      - inflaton potential
+      - USR-like phase
+      step_id: r2207_s2
+      step_type: simulation
+      tool_or_code: null
+      validity: Requires solving the inflationary background and perturbations.
+    - inputs:
+      - P_R(k)
+      - collapse threshold
+      notes: null
+      outputs:
+      - PBH abundance
+      - PBH mass function
+      step_id: r2207_s3
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: PBH formation assumptions dominate systematic uncertainty.
+    - inputs:
+      - PBH mass function
+      - induced SGWB
+      notes: null
+      outputs:
+      - PBH/GW allowed regions
+      step_id: r2207_s4
+      step_type: recasting
+      tool_or_code: null
+      validity: Needs PBH abundance, PTA/LISA, and LVK likelihoods.
+    id: route_2207_reverse_engineer_inflation
+    input_parameters:
+    - plateau height
+    - plateau width
+    - feature location in k
+    - collapse threshold
+    - inflationary potential parameters
+    likelihoods:
+    - PBH abundance constraints
+    - PTA stochastic-background constraints
+    - future LISA sensitivity
+    - LVK compact-binary population likelihoods
+    observable_ids:
+    - obs_2207_pbh_dm_abundance
+    - obs_2207_scalar_induced_gw
+    - obs_2207_stellar_pbh_mergers
+    required_code_resources:
+    - inflation perturbation solver
+    - PBH mass-function calculator
+    - induced-GW spectrum code
+    - GW population likelihood
+    route_status: planned
+    source_model_features:
+    - raised small-scale curvature-power plateau
+    - ultra-slow-roll-like departure from slow roll
+    - reverse-engineered inflationary potential
+    validation_tests:
+    - Recover the primary raised-plateau benchmark observables.
+    - Check CMB-normalized large-scale amplitude remains near the primary value.
+    - Verify PBH abundance and SGWB are derived from the same P_R(k).

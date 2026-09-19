@@ -1,0 +1,274 @@
+_source:
+  shard: arXiv_src_1511_019_wds.tar
+  paper_id: '1511_08432'
+  source_member: 1511_08432.json
+schema_version: model_only_v0
+model_id: 1511_08432_sism_two_component_scalar_dm_v1
+identity:
+  name: Scale-invariant two-component scalar dark matter
+  family: multi_component_dark_matter
+  aliases:
+  - two-component scalar dark matter in SISM
+  short_description: A scale-invariant Standard Model extension with two stable Z2-odd real scalar dark
+    matter components coupled through the scalon/Higgs sector.
+  historical_origin_or_motivation: Introduced as the two-scalar dark-sector variant of the paper's scale-invariant
+    WIMP construction.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - scale invariant standard model
+  - multi-component scalar dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The same quartic scale-invariant potential is evaluated for i=1,2 dark scalars, with an optional
+    phi_1^2 phi_2^2 interaction.
+particle_content:
+  dark_matter_candidate:
+    name: phi_1 and phi_2 real singlet scalars
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles: []
+  mediators:
+  - scalon s
+  - SM-like Higgs h through scalar mixing
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Both scalar components are stable, with zero vevs and Z2-symmetric interactions.
+  symmetries:
+  - name: Z2 dark parity for scalar components
+    type: discrete
+    exact_or_approximate: exact
+  - name: classical scale invariance
+    type: global
+    exact_or_approximate: broken
+    breaking: radiative breaking generates the scalon mass
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs doublet
+  - SM final states from phi_i phi_i annihilation
+  dark_sector_couplings:
+  - s^2 phi_i^2 quartics
+  - optional lambda_int phi_1^2 phi_2^2 interaction
+  mediator_types:
+  - scalon
+  - scalar Higgs portal
+  annihilation_channels:
+  - phi_1 phi_1 to SM states
+  - phi_2 phi_2 to SM states
+  self_scattering_channels:
+  - phi_1 phi_1 phi_2 phi_2 contact interaction if lambda_int is included
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: Higgs-scalon mixing quartic
+    symbol: lambda
+    description: Quartic coupling controlling the Higgs-scalon sector.
+    range: -0.128 < lambda < 0 after fixing m_h and v_H
+    role: core
+    status: inferred
+  - name: first dark scalar quartic
+    symbol: lambda_1
+    description: Coupling controlling phi_1 mass/interactions.
+    range: lambda_1 > -1.65/lambda_H
+    role: core
+    status: inferred
+  - name: second dark scalar quartic
+    symbol: lambda_2
+    description: Coupling controlling phi_2 mass/interactions.
+    range: lambda_2 > -1.65/lambda_H
+    role: core
+    status: inferred
+  - name: dark-component interaction
+    symbol: lambda_int
+    description: Optional phi_1^2 phi_2^2 quartic.
+    range: -3 < lambda_int < 3 in the paper's scan
+    role: core
+    status: inferred
+  - name: component masses
+    symbol: m_phi_i
+    description: Masses of each scalar dark matter component.
+    range: viable component masses lowered to roughly m_DM > 300 GeV in the two-component scan
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out of two components
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - two independent Boltzmann equations for phi_1 and phi_2
+  - annihilation cross sections phi_i phi_i to SM
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The optional intercomponent quartic was reported to change the relic density only mildly in the
+    scanned interval.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - lambda
+  - lambda_1
+  - lambda_2
+  - lambda_int
+  - m_phi_i
+  - m_s
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Both WIMP-like components are treated with thermal freeze-out.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: sism_two_component_stability
+  applies_to: model
+  condition: Both dark scalars must remain stable and must not decay into each other or SM particles.
+  status: assumed
+  extrapolation_risk: high
+- id: sism_two_component_scan
+  applies_to: parameter
+  condition: The reported viable region uses the paper's coupled scale-invariant parameter relations and
+    relic-density scan.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: independent_component_boltzmann
+    description: The baseline two-component calculation evolves phi_1 and phi_2 with independent Boltzmann
+      equations.
+    scope: production
+    status: assumed
+  - id: optional_component_interaction_small_effect
+    description: The optional lambda_int interaction is assumed not to significantly change the relic
+      abundance over the scanned interval.
+    scope: production
+    status: A different interaction regime could change the component abundances.
+associated_code:
+  has_associated_code: unknown
+  code_summary: The text reports micrOMEGAs calculations but no model-specific code release in the assigned
+    full text.
+provenance:
+  model_id: 1511_08432_sism_two_component_scalar_dm_v1
+  model_name: Scale-invariant two-component scalar dark matter
+  model_family: multi_component_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper_1511_08432
+      title: Scale invariant scalar dark matter in the Standard Model
+      authors: []
+      year: 2015
+      arxiv_id: '1511.08432'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker_batch-0019
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper_1511_08432
+      section: two-component dark matter
+      page: null
+      quote_or_summary: The paper treats two stable scalar components and solves two Boltzmann equations
+        for their relic density.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper_1511_08432
+      note: The paper explicitly adds two scalars as two-component DM candidates in the scale-invariant
+        SM.
+      confidence: medium
+      section: introduction/model
+      page: null
+    symmetries:
+    - reference_id: paper_1511_08432
+      note: The two DM particles are stated to be stable and not to decay into each other or SM particles.
+      confidence: medium
+      section: two-component section
+      page: null
+    interactions:
+    - reference_id: paper_1511_08432
+      note: The model includes scalar-Higgs/scalon interactions and optionally a lambda_int phi_1^2 phi_2^2
+        term.
+      confidence: medium
+      section: Interacting Dark Matter Components
+      page: null
+    production_mechanism:
+    - reference_id: paper_1511_08432
+      note: Each scalar component is evolved with its own freeze-out Boltzmann equation.
+      confidence: medium
+      section: two-component section
+      page: null
+    parameter_ranges:
+    - reference_id: paper_1511_08432
+      note: The allowed region includes -0.128 < lambda < 0 and lambda_i > -1.65/lambda_H for i=1,2.
+      confidence: medium
+      section: two-component section
+      page: null
+    validity_domain:
+    - reference_id: paper_1511_08432
+      note: The paper reports viable two-component masses down to roughly 300 GeV in the relic-density
+        allowed region.
+      confidence: medium
+      section: two-component section
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewed_by: null
+    expert_reviewer: null
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - component interaction treatment
+  - parameter scan details are compact in the extracted text
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: component_count_matters
+    severity: medium
+    category: invalid_mapping
+    warning: Do not collapse the two-component row into the single-scalar SISM model; the relic-density
+      logic and mass range differ.
+    mitigation: Track phi_1 and phi_2 as distinct stable components.

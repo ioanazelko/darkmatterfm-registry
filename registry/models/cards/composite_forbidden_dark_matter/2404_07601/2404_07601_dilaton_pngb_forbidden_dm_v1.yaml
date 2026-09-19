@@ -1,0 +1,756 @@
+_source:
+  shard: arXiv_src_2404_063_wds.tar
+  paper_id: '2404_07601'
+  source_member: 2404_07601.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2404_07601_dilaton_pngb_forbidden_dm_v1
+identity:
+  name: Dilaton forbidden dark matter
+  family: composite_forbidden_dark_matter
+  aliases:
+  - dEFT forbidden dark matter
+  - pNGB-dilaton forbidden dark matter
+  short_description: Composite pNGB dark matter in dilaton effective field theory, where thermal freeze-out
+    proceeds through finite-temperature forbidden annihilation into heavier dilatons.
+  historical_origin_or_motivation: Uses dEFT, motivated by near-conformal lattice gauge theories, as a
+    natural implementation of forbidden dark matter.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - dilaton effective field theory
+  - near-conformal confining gauge theory
+  - forbidden dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The dEFT can arise from an SU(3) gauge theory with N_f=8 fundamental Dirac fermions, but the
+    model card records the low-energy effective description used for dark matter.
+particle_content:
+  dark_matter_candidate:
+    name: composite pNGB multiplet
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: composite
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - dilaton scalar
+  - heavier composite states ignored in the dEFT treatment
+  mediators:
+  - dilaton scalar
+  - high-scale contact interactions to SM singlet operators
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - N_f^2 - 1 pNGB species in the benchmark gauge theory
+  long_lived_particles:
+  - pNGB dark matter multiplet
+  unstable_parent_particles:
+  - dilaton decays to SM particles through weak contact interactions
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper treats the pNGB multiplet as the dark matter; the exact stabilizing
+    symmetry or decay-forbidding operator is not fully specified in the extracted text.
+  symmetries:
+  - name: approximate continuous internal symmetry
+    type: global
+    exact_or_approximate: approximate
+    breaking: spontaneously broken to produce pNGBs
+    breaking_scale: null
+  - name: approximate scale invariance
+    type: approximate
+    exact_or_approximate: broken
+    breaking: spontaneously and explicitly broken, producing a dilaton
+    breaking_scale:
+      name: dilaton decay constant
+      symbol: F_d
+      description: Scale associated with approximate scale symmetry breaking.
+      range: model dependent
+      role: core
+      status: inferred
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - unspecified SM-singlet operators built from light SM fields
+  dark_sector_couplings:
+  - pNGB-dilaton dEFT interactions
+  - dilaton self-interactions
+  - 3-to-2 pNGB processes subdominant in the chosen range
+  mediator_types:
+  - dilaton
+  - contact interaction
+  interaction_operators:
+  - dEFT pNGB kinetic and mass terms dressed by dilaton powers
+  - weak dilaton-SM contact operator
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: none
+  annihilation_channels:
+  - pNGB pNGB forbidden annihilation into two dilatons
+  - subdominant 3-to-2 processes
+  decay_channels:
+  - dilaton to SM particles through weak contact interactions
+  self_scattering_channels:
+  - pNGB self-interactions in dEFT
+  cp_structure: unknown
+  flavor_structure: N_f^2 - 1 pNGB multiplet in the SU(3), N_f=8 example
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: pNGB mass
+    symbol: M_pi
+    description: Mass of the composite pNGB dark matter multiplet.
+    range: roughly 10 MeV to 10 GeV for M_pi/F_pi = 1 in the paper example; broader model-dependent values
+      for other ratios
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dilaton mass
+    symbol: M_d
+    description: Mass of the heavier dilaton final state.
+    range: M_d > M_pi with mass gap Delta = (M_d - M_pi)/M_pi
+    unit: GeV
+    role: core
+    status: inferred
+  - name: pNGB decay constant
+    symbol: F_pi
+    description: pNGB decay constant in dEFT.
+    range: model dependent
+    role: core
+    status: inferred
+  - name: dilaton decay constant
+    symbol: F_d
+    description: Dilaton decay constant; paper uses F_pi^2/F_d^2 about 0.1 from lattice guidance.
+    range: F_pi^2/F_d^2 about 0.1 benchmark
+    role: core
+    status: inferred
+  - name: mass splitting
+    symbol: Delta
+    description: Relative dilaton-pNGB mass splitting.
+    range: below about 0.4 in a highlighted regime where forbidden 2-to-2 dominates over 3-to-2
+    role: core
+    status: inferred
+  - name: dilaton-SM contact coupling
+    symbol: epsilon
+    description: Small coupling that controls dilaton decay and SM thermal contact.
+    range: for M_pi around 1 GeV and d_SM=3, roughly 1e-9 to 1e-4 in the paper estimate
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: freeze-out temperature
+    symbol: T_f
+    description: Approximate freeze-out temperature.
+    value: about M_pi/25
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  - forbidden annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - finite-temperature pNGB pNGB to dilaton dilaton forbidden process
+  - dilaton-SM thermal contact and decay rate
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The forbidden rate vanishes at zero temperature for M_pi < M_d but is nonzero at finite temperature.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - M_pi
+  - M_d - M_pi
+  - F_pi
+  - F_d
+  - pNGB multiplicity
+  - dilaton-SM decay rate
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - near-conformal dark confinement encoded by dEFT
+  - dilaton-mediated thermal contact with the SM
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: pNGB freeze-out temperature
+    symbol: T_f
+    description: Temperature of forbidden freeze-out.
+    value: about M_pi/25
+    role: derived
+    status: inferred
+  phase_transitions:
+  - underlying dark confinement/approximate scale symmetry breaking is implicit in dEFT
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: medium
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Nonrelativistic thermal freeze-out is assumed; no detailed f(p) is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: unknown
+    thermal_wdm_mapping:
+      available: false
+      validity: not_applicable
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: self-interaction strengths may vary but no calibrated structure-formation
+      model is supplied
+    simulation_calibrated: 'no'
+validity_domain:
+- id: deft_low_energy_regime
+  applies_to: EFT
+  condition: Use dEFT at momenta of order M_pi or smaller and freeze-out around M_pi/25.
+  valid_range: Expansion parameter M_pi^2 N_pi/(4 pi F_d)^2 remains perturbative in the chosen examples.
+  status: approximate
+  extrapolation_risk: medium
+  caveats:
+  - Heavier composite states are ignored.
+  source_reference_ids:
+  - '2404_07601'
+  notes: null
+- id: forbidden_hierarchy
+  applies_to: model
+  condition: Forbidden annihilation requires dilaton heavier than pNGB but not so split that the rate
+    is too Boltzmann suppressed.
+  valid_range: M_d > M_pi; Delta values correlated with M_pi to fit the relic density.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2404_07601'
+  notes: null
+assumptions:
+  global:
+  - id: dilaton_sm_equilibrium
+    description: Weak dilaton-SM contact interactions keep the dilaton in thermal equilibrium with the
+      SM during freeze-out without dominating pNGB annihilation.
+    scope: production
+    status: assumed
+    impact_if_violated: The forbidden relic-density calculation no longer applies.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2404_07601'
+    notes: null
+  - id: light_state_truncation
+    description: Only pNGBs and the dilaton are kept in the dark-sector EFT; heavier composites are ignored.
+    scope: theory
+    status: assumed
+    impact_if_violated: Additional annihilation or decay channels may alter the relic abundance.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2404_07601'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public model-specific code is identified in the extracted paper text.
+  primary_code_role: null
+provenance:
+  model_id: 2404_07601_dilaton_pngb_forbidden_dm_v1
+  model_name: Dilaton forbidden dark matter
+  model_family: composite_forbidden_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-06-01'
+  last_updated: '2026-06-01'
+  sources:
+    primary_papers:
+    - reference_id: '2404_07601'
+      title: Dilaton forbidden dark matter
+      year: 2024
+      arxiv_id: '2404.07601'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+      authors:
+      - Thomas Appelquist
+      - James Ingoldby
+      - Maurizio Piai
+    - arxiv_id: '2404.07601'
+      authors:
+      - Appelquist, Thomas
+      - Ingoldby, James
+      - Piai, Maurizio
+      doi: 10.1103/PhysRevD.110.035013
+      notes: Primary paper text resolved from local SQLite cache; ADS used only for metadata.
+      reference_id: '2404.07601'
+      role: original_model
+      title: Dilaton forbidden dark matter
+      url: https://arxiv.org/abs/2404.07601
+      year: 2024
+    constraint_papers: []
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1702.07716'
+      authors:
+      - Cline, James M.
+      - Liu, Hongwan
+      - Slatyer, Tracy R.
+      - Xue, Wei
+      doi: 10.1103/PhysRevD.96.083521
+      notes: Related paper read locally for bounded context; structured claims in this row are supported
+        by the cited primary paper unless this reference is cited explicitly.
+      reference_id: '1702.07716'
+      role: extension
+      title: Enabling forbidden dark matter
+      url: https://arxiv.org/abs/1702.07716
+      year: 2017
+    - arxiv_id: '1411.3727'
+      authors:
+      - Hochberg, Yonit
+      - Kuflik, Eric
+      - Murayama, Hitoshi
+      - Volansky, Tomer
+      - Wacker, Jay G.
+      doi: 10.1103/PhysRevLett.115.021301
+      notes: Related paper read locally for bounded context; structured claims in this row are supported
+        by the cited primary paper unless this reference is cited explicitly.
+      reference_id: '1411.3727'
+      role: extension
+      title: Model for Thermal Relic Dark Matter of Strongly Interacting Massive Particles
+      url: https://arxiv.org/abs/1411.3727
+      year: 2015
+    - arxiv_id: '1505.07107'
+      authors:
+      - D'Agnolo, Raffaele Tito
+      - Ruderman, Joshua T.
+      doi: 10.1103/PhysRevLett.115.061301
+      notes: Related paper read locally for bounded context; structured claims in this row are supported
+        by the cited primary paper unless this reference is cited explicitly.
+      reference_id: '1505.07107'
+      role: extension
+      title: Light Dark Matter from Forbidden Channels
+      url: https://arxiv.org/abs/1505.07107
+      year: 2015
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0009
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-06-01'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2404_07601'
+      section: Abstract/Introduction
+      page: null
+      quote_or_summary: The paper proposes dEFT pNGBs as dark matter and identifies forbidden annihilation
+        to heavier dilatons as the relic mechanism.
+    - reference_id: '2404_07601'
+      section: Relic density/Discussion
+      page: null
+      quote_or_summary: A Boltzmann treatment maps pNGB mass, dilaton mass gap, and decay constants to
+        the observed relic density.
+    unresolved_items:
+    - No operator-specific direct-detection, indirect-detection, or collider likelihood was structured
+      because the primary paper leaves dilaton-SM interactions model-dependent.
+  evidence:
+    particle_content:
+    - reference_id: '2404_07601'
+      note: The dark matter particles are composite pNGBs from a near-conformal gauge theory, coupled
+        to a somewhat heavier dilaton scalar.
+      confidence: high
+      section: Abstract/Introduction
+      page: null
+    symmetries:
+    - reference_id: '2404_07601'
+      note: The pNGBs emerge from breaking approximate continuous internal symmetries and the dilaton
+        from approximate scale symmetry breaking.
+      confidence: high
+      section: Abstract/framework
+      page: null
+    interactions:
+    - reference_id: '2404_07601'
+      note: The dEFT includes pNGB-dilaton interactions and weak contact interactions between the dilaton
+        and SM singlet operators.
+      confidence: high
+      section: framework/SM interactions
+      page: null
+    production_mechanism:
+    - reference_id: '2404_07601'
+      note: Freeze-out is controlled by forbidden 2-to-2 pNGB scattering into heavier dilatons that subsequently
+        decay to SM particles.
+      confidence: high
+      section: relic density
+      page: null
+    cosmological_history:
+    - reference_id: '2404_07601'
+      note: The dilaton remains in thermal equilibrium with the SM during freeze-out and the pNGB relic
+        density is solved with a Boltzmann equation.
+      confidence: high
+      section: relic density/SM interactions
+      page: null
+    parameter_ranges:
+    - reference_id: '2404_07601'
+      note: For M_pi/F_pi = 1, the paper finds M_pi from roughly 10 MeV to roughly 10 GeV can yield the
+        measured relic density for suitable mass splitting.
+      confidence: high
+      section: discussion
+      page: null
+    validity_domain:
+    - reference_id: '2404_07601'
+      note: The dEFT is used at freeze-out temperatures of order M_pi/25, where dark matter is nonrelativistic
+        and the EFT is assumed reliable.
+      confidence: high
+      section: discussion
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text quotes Omega_CDM h^2 = 0.120 +/- 0.001.
+      page: null
+      reference_id: '2404.07601'
+      section: null
+    - confidence: high
+      note: Primary text assumes dilaton thermal equilibrium with the SM during freeze-out and discusses
+        contact interactions.
+      page: null
+      reference_id: '2404.07601'
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text states dEFT realizes forbidden dark matter and identifies relic-density regions.
+      page: null
+      reference_id: '2404.07601'
+      section: null
+    - confidence: high
+      note: Primary text says contact operators determine collider, direct, and indirect signatures.
+      page: null
+      reference_id: '2404.07601'
+      section: null
+    - confidence: high
+      note: Primary text notes possible first-order dark-sector phase transitions and gravitational waves
+        as a broader motivation.
+      page: null
+      reference_id: '2404.07601'
+      section: null
+    routes:
+    - confidence: medium
+      note: Route follows the paper's dEFT cross section, Boltzmann equation, and thermodynamic table
+        inputs.
+      page: null
+      reference_id: '2404.07601'
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - unspecified SM contact operator
+  - dEFT parameter choices
+  - ignored heavier composite states
+  validation_status: expert_judgment_only
+  notes: The effective theory and relic calculation are explicit, but UV/stabilization details and SM
+    portal operators are only parametrized.
+agent_failure_modes:
+  warnings:
+  - id: portal_unspecified
+    severity: medium
+    category: assumption_mismatch
+    warning: The SM contact operator is intentionally left generic; do not infer a specific direct-detection
+      or collider signature from this model card.
+    mitigation: null
+    source_reference_ids: []
+  - id: stability_implicit
+    severity: medium
+    category: other
+    warning: The paper treats pNGBs as dark matter but the extracted text does not spell out a separate
+      exact stabilizing symmetry.
+    mitigation: null
+    source_reference_ids: []
+observables:
+- caveats:
+  - Assumes the dilaton stays in thermal contact with the SM during freeze-out.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early universe thermal plasma
+  id: forbidden_thermal_relic
+  key_quantities:
+  - description: Dark matter particle mass.
+    name: pNGB mass
+    role: core
+    source_reference_ids:
+    - '2404.07601'
+    status: inferred
+    symbol: M_pi
+  - description: Heavier final-state mass controlling forbidden suppression.
+    name: dilaton mass
+    role: core
+    source_reference_ids:
+    - '2404.07601'
+    status: inferred
+    symbol: M_d
+  - description: Set dEFT interaction strengths.
+    name: decay constants
+    role: core
+    source_reference_ids:
+    - '2404.07601'
+    status: inferred
+    symbol: F_pi, F_d
+  linked_constraints:
+  - observed_cdm_density_target
+  linked_routes:
+  - deft_forbidden_freezeout_route
+  name: Forbidden pNGB annihilation into dilatons
+  notes: null
+  observability: high
+  predicted_effect: The dark pNGB population is depleted through finite-temperature 2-to-2 scattering
+    into heavier dilatons, yielding the measured relic density in regions of dEFT parameter space.
+  redshift_range: null
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - '2404.07601'
+  subchannel: thermal freeze-out
+- caveats:
+  - The primary paper does not choose a unique Standard Model operator basis for limits.
+  channel: other
+  effect_direction: model_dependent
+  environments:
+  - colliders
+  - direct-detection targets
+  - indirect-detection targets
+  id: dilaton_sm_contact_signals
+  key_quantities:
+  - description: Suppresses dilaton-SM operators.
+    name: contact scale
+    role: core
+    source_reference_ids:
+    - '2404.07601'
+    status: inferred
+    symbol: M_*
+  - description: Determines collider and detection channel.
+    name: operator structure
+    role: core
+    source_reference_ids:
+    - '2404.07601'
+    status: inferred
+    symbol: O_SM
+  linked_constraints:
+  - dilaton_equilibrium_and_contact_validity
+  linked_routes:
+  - deft_forbidden_freezeout_route
+  name: Dilaton-SM contact-interaction signatures
+  notes: null
+  observability: unknown
+  predicted_effect: Weak dilaton-SM contact operators determine whether dilaton production/decay, nuclear
+    scattering, or annihilation products are observable; the paper identifies these as future phenomenology
+    targets.
+  redshift_range: null
+  relevance: medium
+  scale_range: null
+  source_reference_ids:
+  - '2404.07601'
+  subchannel: collider, direct detection, and indirect detection
+- caveats:
+  - Mentioned as a possible consequence of strong dynamics, not as a prediction of every dEFT point.
+  channel: gravitational_waves
+  effect_direction: model_dependent
+  environments:
+  - early universe
+  id: possible_dark_phase_transition_gw
+  key_quantities:
+  - description: Scale of the underlying strong dynamics.
+    name: dark confinement scale
+    role: core
+    source_reference_ids:
+    - '2404.07601'
+    status: inferred
+  - description: Controls gravitational-wave amplitude.
+    name: phase-transition strength
+    role: core
+    source_reference_ids:
+    - '2404.07601'
+    status: inferred
+  linked_constraints: []
+  linked_routes:
+  - deft_forbidden_freezeout_route
+  name: Possible gravitational waves from strong dark dynamics
+  notes: null
+  observability: unknown
+  predicted_effect: The paper notes that strong dark-sector dynamics could yield a first-order early-universe
+    phase transition and a stochastic gravitational-wave background, though this is not computed for the
+    benchmark relic-density scan.
+  redshift_range: null
+  relevance: low
+  scale_range: null
+  source_reference_ids:
+  - '2404.07601'
+  subchannel: first-order phase transition
+constraints:
+- allowed_regions:
+  - The paper identifies dEFT regions whose thermal history yields Omega_CDM h^2 = 0.120 +/- 0.001.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - Benchmark points should be checked against the numerical Boltzmann solution, not only the analytic
+    scaling.
+  caveats:
+  - The target is quoted from global cosmological fits; no likelihood file is packaged.
+  constrained_parameters:
+  - Omega_CDM h^2
+  - M_pi
+  - M_d - M_pi
+  - F_pi
+  - F_d
+  - N_pi
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - dEFT parameter points whose Boltzmann solution misses the observed cold-dark-matter density are outside
+    the favored thermal-history band.
+  id: observed_cdm_density_target
+  likelihood_available: approximate
+  likelihood_reference: null
+  name: Cold-dark-matter relic-density target
+  notes: null
+  observable_channel: relic density
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - '2404.07601'
+- allowed_regions:
+  - A sizable range of very weak couplings can satisfy equilibrium/decay requirements according to the
+    primary discussion.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The forbidden freeze-out calculation assumes the dilaton remains in thermal equilibrium
+      with the SM plasma during freeze-out.
+    id: thermal_dilaton_bath
+    impact_if_violated: If violated, the one-equation relic-density route is incomplete.
+    notes: null
+    scope: Boltzmann calculation
+    source_reference_ids:
+    - '2404.07601'
+    status: inferred
+  benchmark_implications:
+  - Detection forecasts require specifying the contact operators and mass scale.
+  caveats:
+  - Operator-specific direct and indirect detection limits are deferred by the paper.
+  constrained_parameters:
+  - dilaton-SM contact coupling
+  - M_*
+  - dilaton decay rate
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Too-weak contact interactions can invalidate the assumption that the dilaton remains thermally coupled
+    to the SM during freeze-out.
+  id: dilaton_equilibrium_and_contact_validity
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Dilaton equilibrium and contact-operator validity
+  notes: null
+  observable_channel: thermal history and SM coupling
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - '2404.07601'
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Relic-density route is explicit; experimental route needs a concrete SM contact operator.
+    caveats: []
+    constraint_ids:
+    - observed_cdm_density_target
+    - dilaton_equilibrium_and_contact_validity
+    derived_quantities:
+    - thermal cross section
+    - late-time Y_pi
+    - Omega_CDM h^2
+    - operator-specific detection rates
+    description: Route dEFT parameters through forbidden freeze-out and contact-operator phenomenology.
+    forward_model_chain:
+    - inputs:
+      - M_pi
+      - M_d
+      - F_pi
+      - F_d
+      - N_pi
+      notes: Use the paper's dEFT scattering result.
+      outputs:
+      - pNGB-pNGB to dilaton-dilaton cross section
+      step_id: compute_deft_cross_section
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Within dEFT and nonrelativistic freeze-out assumptions.
+    - inputs:
+      - cross section
+      - h(T)
+      - g(T)
+      - x=M_pi/T
+      notes: Primary paper solves this numerically.
+      outputs:
+      - Y_pi(infinity)
+      - Omega_CDM h^2
+      step_id: solve_forbidden_boltzmann
+      step_type: boltzmann_solver
+      tool_or_code: custom numerical Boltzmann solver with micrOMEGAs g/h tables
+      validity: Valid when dilatons remain in equilibrium with the SM.
+    - inputs:
+      - O_SM
+      - M_*
+      - dilaton mass
+      notes: Needed for experimental constraints beyond relic density.
+      outputs:
+      - collider/direct/indirect signal estimates
+      step_id: contact_operator_recast
+      step_type: recasting
+      tool_or_code: null
+      validity: Planned; operator basis not fixed in primary paper.
+    id: deft_forbidden_freezeout_route
+    input_parameters:
+    - M_pi
+    - M_d
+    - F_pi
+    - F_d
+    - N_pi
+    - dilaton-SM contact scale
+    likelihoods:
+    - cosmological relic-density target
+    observable_ids:
+    - forbidden_thermal_relic
+    - dilaton_sm_contact_signals
+    - possible_dark_phase_transition_gw
+    required_code_resources:
+    - custom Boltzmann integration
+    - micrOMEGAs thermodynamic tables
+    route_status: partially_implemented
+    source_model_features:
+    - near-conformal confining dark sector
+    - pNGB dark matter
+    - light dilaton mediator
+    - forbidden finite-temperature annihilation
+    validation_tests:
+    - reproduce Omega_CDM band in paper figures
+    - check detailed balance in forbidden channel

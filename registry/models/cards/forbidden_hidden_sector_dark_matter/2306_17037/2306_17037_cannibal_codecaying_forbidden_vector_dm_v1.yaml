@@ -1,0 +1,825 @@
+_source:
+  shard: arXiv_src_2306_128_wds.tar
+  paper_id: '2306_17037'
+  source_member: 2306_17037.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2306_17037_cannibal_codecaying_forbidden_vector_dm_v1
+identity:
+  name: Self-interacting forbidden vector dark matter with a cannibally co-decaying phase
+  family: forbidden_hidden_sector_dark_matter
+  aliases:
+  - cannibally co-decaying forbidden vector DM
+  - self-interacting forbidden vector dark matter
+  short_description: A sub-GeV Abelian vector dark matter particle annihilates through forbidden channels
+    to a heavier Higgs-like scalar while a decoupled hidden sector undergoes cannibalization and scalar
+    co-decay.
+  historical_origin_or_motivation: Designed to obtain both the observed relic density and sizable dark
+    matter self-interactions in a hidden-sector forbidden dark matter scenario.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - hidden-sector vector dark matter
+  - forbidden dark matter
+  - self-interacting dark matter
+  - Higgs portal
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The paper explicitly calls the setup the simplest renormalizable vector dark matter model for
+    the cannibally co-decaying forbidden scenario.
+particle_content:
+  dark_matter_candidate:
+    name: Abelian gauge vector boson X
+    spin: '1'
+    statistics: vector
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - complex scalar Phi_S
+  - hidden Higgs-like scalar S
+  mediators:
+  - hidden Higgs-like scalar S
+  - SM-like Higgs admixture h
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - vector dark matter X
+  unstable_parent_particles:
+  - hidden scalar S
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Residual Z2 symmetry after spontaneous symmetry breaking stabilizes X in the
+    simplified model.
+  symmetries:
+  - name: U(1)_X
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneously broken by the hidden scalar vev v_S
+    breaking_scale: null
+  - name: residual Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: persists after symmetry breaking as X_mu -> -X_mu and Phi_S -> Phi_S*
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - SM Higgs doublet
+  - SM fermions from scalar decay
+  dark_sector_couplings:
+  - g_dm coupling between X and Phi_S
+  - Higgs portal mixing lambda_HS
+  - hidden scalar self-couplings
+  mediator_types:
+  - scalar mediator S
+  - Higgs-mixed scalar mediator
+  interaction_operators:
+  - D_mu Phi_S = (partial_mu + i g_dm Q_X X_mu) Phi_S
+  - lambda_HS (Phi_H^dagger Phi_H)(Phi_S^dagger Phi_S)
+  - forbidden XX -> SS annihilation
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels:
+  - XX -> SS at finite temperature
+  - XX -> SM SM subdominant in the chosen region
+  decay_channels:
+  - S -> SM particles through Higgs mixing
+  self_scattering_channels:
+  - XX -> XX via scalar mediator exchange
+  cp_structure: unknown
+  flavor_structure: Higgs-portal scalar mixing; no dark flavor structure specified
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: vector dark matter mass
+    symbol: m_X
+    description: 'Mass from the hidden scalar vev: m_X = g_dm Q_X v_S.'
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: The paper studies sub-GeV/MeV-scale X with m_X < m_S.
+  - name: hidden scalar mass
+    symbol: m_S
+    description: Mass of the unstable Higgs-like scalar mediator.
+    range:
+      min: 9
+      max: 114
+      inclusive_min: true
+      inclusive_max: true
+      unit: MeV
+      notes: Favored abstract range.
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Favored region quoted in abstract.
+  - name: mass ratio
+    symbol: r = m_S/m_X
+    description: Scalar-to-vector mass ratio; must exceed one for forbidden annihilation.
+    range:
+      min: 1.1
+      max: 1.33
+      inclusive_min: true
+      inclusive_max: true
+      unit: null
+      notes: Favored abstract range for cannibally co-decaying case.
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Thermal-equilibrium-before-freezeout comparison prefers a larger excluded ratio 1.5-1.65.
+  - name: dark gauge coupling
+    symbol: g_dm
+    description: Gauge coupling between X and the hidden scalar.
+    range: O(1) in the relevant cannibally co-decaying parameter region
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Needed for both relic density and sizable self-interactions.
+  - name: Higgs mixing angle
+    symbol: theta
+    description: Mixing angle between hidden Higgs and SM-like Higgs.
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Small enough for early hidden-sector decoupling in the favored scenario.
+  - name: hidden-sector decoupling temperature
+    symbol: T_dec
+    description: Temperature at which the hidden sector decouples from the SM bath.
+    range: of order m_X in the scenario description
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Example thermal evolution has T_dec about 8 MeV for m_X=20 MeV.
+production:
+  mechanisms:
+  - forbidden thermal freeze-out through XX -> SS
+  - 3-to-2 cannibal annihilations in the hidden sector
+  - co-decay through out-of-equilibrium S decay
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - forbidden annihilation rate
+  - mass ratio m_S/m_X
+  - g_dm
+  - hidden-sector temperature T_X
+  - out-of-equilibrium S decay
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The hidden sector thermally decouples from the visible bath before freeze-out, but hidden particles
+    maintain a common hidden-sector temperature through number-changing interactions.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: target relic abundance
+    description: Observed dark matter relic density in the paper parameter scans.
+    value: 1
+    role: derived
+    status: assumed
+    source_reference_ids: []
+  calculation_type: mixed
+  key_dependencies:
+  - m_X
+  - m_S/m_X
+  - g_dm
+  - theta
+  - S lifetime
+  - 3-to-2 rates
+  - hidden-sector temperature evolution
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - hidden-sector thermal decoupling from the SM
+  - cannibal phase
+  - out-of-equilibrium scalar co-decay
+  - entropy injection from S decay
+  dark_sector_temperature:
+    name: hidden-sector temperature
+    symbol: T_X
+    description: Temperature shared by X and S before freeze-out.
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Generally differs from the SM bath temperature after decoupling.
+  delta_neff: null
+  kinetic_decoupling:
+    name: elastic decoupling temperature
+    symbol: T_dec
+    description: Example decoupling temperature for the benchmark evolution.
+    value: about 8
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Given for m_X=20 MeV, r=1.25 benchmark.
+  chemical_decoupling: null
+  phase_transitions:
+  - spontaneous breaking of U(1)_X by hidden scalar vev
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: thermal hidden-sector distributions at T_X are used in Boltzmann equations
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The model uses thermal hidden-sector number densities with a hidden temperature that can differ
+    from the SM bath temperature.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: self-interactions are intended to affect small-scale halo structure
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: forbidden_hierarchy
+  applies_to: parameter
+  condition: Requires m_X < m_S so XX -> SS is kinematically forbidden at zero temperature but active
+    at finite T_X.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: early_hidden_decoupling
+  applies_to: cosmological_history
+  condition: Favored scenario has the hidden sector decouple from the SM near T ~ m_X before freeze-out.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: residual_z2_stability
+  applies_to: model
+  condition: Vector stability relies on the residual Z2 symmetry of the simplified low-energy model and
+    negligible higher-dimensional decay operators.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: small_higgs_mixing
+    description: The Higgs-hidden-scalar mixing is small enough that the hidden sector decouples early
+      from the visible bath.
+    scope: theory
+    status: assumed
+    impact_if_violated: Large mixing moves the model toward the thermal-equilibrium case disfavored in
+      the paper.
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+  - id: common_hidden_temperature
+    description: X and S share a hidden temperature before freeze-out because dark-sector interactions
+      are active.
+    scope: production
+    status: assumed
+    impact_if_violated: Separate temperatures would change the coupled Boltzmann evolution.
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+  - id: negligible_decay_operators
+    description: Higher-dimensional operators that could make vector DM decay are neglected.
+    scope: theory
+    status: assumed
+    impact_if_violated: Such operators could spoil cosmological stability.
+    can_be_relaxed: unknown
+    source_reference_ids: []
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper text used for this extraction did not identify model-specific public code.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  reproducibility:
+    reproducibility_level: unknown
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: null
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - model-parameter dependence
+  - cosmological-history assumptions
+  validation_status: expert_judgment_only
+  notes: 'Relatively high extraction confidence for the main vector model: the paper provides field content,
+    symmetry, interactions, Boltzmann logic, and parameter ranges.'
+agent_failure_modes:
+  warnings:
+  - id: higher_dimensional_decay
+    severity: medium
+    category: extrapolation
+    warning: The authors note that higher-dimensional operators could allow vector DM decay.
+    mitigation: Keep the residual Z2 and EFT assumptions explicit.
+    source_reference_ids: []
+  - id: thermal_history_specific
+    severity: medium
+    category: assumption_mismatch
+    warning: The relic result depends on early hidden-sector decoupling plus cannibal/co-decay evolution.
+    mitigation: Do not replace it with ordinary forbidden freeze-out without recalculating.
+    source_reference_ids: []
+provenance:
+  model_id: 2306_17037_cannibal_codecaying_forbidden_vector_dm_v1
+  model_name: Self-interacting forbidden vector dark matter with a cannibally co-decaying phase
+  model_family: forbidden_hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2306.17037
+      title: Self-Interacting Forbidden Dark Matter under a Cannibally Co-Decaying Phase
+      authors:
+      - Kwei-Chou Yang
+      year: 2023
+      arxiv_id: '2306.17037'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '2306.17037'
+      authors:
+      - Yang, Kwei-Chou
+      doi: 10.1007/JHEP06(2024)005
+      notes: Primary paper text read locally.
+      reference_id: src_2306_17037
+      role: original_model
+      title: Self-interacting forbidden dark matter under a cannibally co-decaying phase
+      url: https://arxiv.org/abs/2306.17037
+      year: 2024
+    constraint_papers:
+    - arxiv_id: '2209.10827'
+      authors:
+      - Yang, Kwei-Chou
+      doi: 10.1007/JHEP11(2022)083
+      notes: Related source text resolved and read from the local full-text cache.
+      reference_id: src_2209_10827
+      role: extension
+      title: Freeze-out forbidden dark matter in the hidden sector in the mass range from sub-GeV to TeV
+      url: https://arxiv.org/abs/2209.10827
+      year: 2022
+    - arxiv_id: '1508.03339'
+      authors:
+      - Kaplinghat, Manoj
+      - Tulin, Sean
+      - Yu, Hai-Bo
+      doi: 10.1103/PhysRevLett.116.041302
+      notes: Related source text resolved and read from the local full-text cache.
+      reference_id: src_1508_03339
+      role: constraint
+      title: 'Dark Matter Halos as Particle Colliders: Unified Solution to Small-Scale Structure Puzzles
+        from Dwarfs to Clusters'
+      url: https://arxiv.org/abs/1508.03339
+      year: 2016
+    - arxiv_id: '1505.07107'
+      authors:
+      - D'Agnolo, Raffaele Tito
+      - Ruderman, Joshua T.
+      doi: 10.1103/PhysRevLett.115.061301
+      notes: Related source text resolved and read from the local full-text cache.
+      reference_id: src_1505_07107
+      role: benchmark
+      title: Light Dark Matter from Forbidden Channels
+      url: https://arxiv.org/abs/1505.07107
+      year: 2015
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: Codex GPT-5 batch-0006
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: arxiv:2306.17037
+      section: abstract
+      page: null
+      quote_or_summary: The model contains vector DM and a heavier unstable Higgs-like hidden scalar;
+        a cannibal co-decay phase depletes DM.
+    - reference_id: arxiv:2306.17037
+      section: model section
+      page: null
+      quote_or_summary: Dark sector contains Phi_S and U(1)_X gauge boson X with residual Z2 stability
+        after symmetry breaking.
+    - reference_id: arxiv:2306.17037
+      section: Boltzmann section
+      page: null
+      quote_or_summary: The authors solve coupled number-density and temperature equations for X and S
+        during cannibal/co-decay evolution.
+    unresolved_items:
+    - A velocity-dependent SIDM likelihood was not implemented; the route records it as a recast need.
+    - Scalar-search constraints are summarized from the primary paper rather than encoded as experiment-level
+      likelihood tables.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2306.17037
+      note: The hidden sector contains only a complex scalar S and an Abelian U(1)_X gauge vector boson
+        X; X is the vector dark matter candidate and S is heavier.
+      confidence: high
+      section: model section
+      page: null
+    symmetries:
+    - reference_id: arxiv:2306.17037
+      note: After symmetry breaking the paper states that a Z2 symmetry X_mu -> -X_mu and Phi_S -> Phi_S*
+        stabilizes the vector dark matter.
+      confidence: high
+      section: model section
+      page: null
+    interactions:
+    - reference_id: arxiv:2306.17037
+      note: The covariant derivative includes g_dm Q_X X_mu and the scalar potential contains a Higgs
+        portal mixing term between the SM Higgs and hidden scalar.
+      confidence: high
+      section: model section
+      page: null
+    production_mechanism:
+    - reference_id: arxiv:2306.17037
+      note: The relic abundance is set by finite-temperature forbidden XX -> SS annihilation, 3-to-2 cannibal
+        reactions, and out-of-equilibrium S decay after hidden-sector decoupling.
+      confidence: high
+      section: introduction and Boltzmann sections
+      page: null
+    cosmological_history:
+    - reference_id: arxiv:2306.17037
+      note: The relevant scenario has the hidden sector thermally decouple from the SM near T ~ m_X, enter
+        a cannibal phase, and co-decay through the unstable scalar.
+      confidence: high
+      section: introduction
+      page: null
+    parameter_ranges:
+    - reference_id: arxiv:2306.17037
+      note: Favored region quoted in the abstract has m_S/m_X in [1.1,1.33] and m_S in [9,114] MeV.
+      confidence: high
+      section: abstract
+      page: null
+    validity_domain:
+    - reference_id: arxiv:2306.17037
+      note: The model is studied for m_X < m_S so XX -> SS is forbidden at zero temperature but can occur
+        at finite hidden-sector temperature.
+      confidence: high
+      section: Boltzmann section
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text reports favored mass ratio, scalar mass range, and surviving constraints.
+      page: null
+      reference_id: src_2306_17037
+      section: null
+    - confidence: medium
+      note: Related hidden-sector forbidden-DM text supports scalar-mediator search context.
+      page: null
+      reference_id: src_2209_10827
+      section: null
+    observables:
+    - confidence: high
+      note: Primary text states the relic-density, SIDM, CMB, and scalar-search phenomenology.
+      page: null
+      reference_id: src_2306_17037
+      section: null
+    - confidence: medium
+      note: Related SIDM work supports dwarf-to-cluster cross-section target ranges.
+      page: null
+      reference_id: src_1508_03339
+      section: null
+    - confidence: medium
+      note: Related forbidden-DM paper supports late-time annihilation suppression.
+      page: null
+      reference_id: src_1505_07107
+      section: null
+    routes:
+    - confidence: high
+      note: Primary coupled-equation treatment defines the forward route.
+      page: null
+      reference_id: src_2306_17037
+      section: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+observables:
+- caveats:
+  - The primary model gives velocity-independent zero-temperature self-interactions; velocity dependence
+    may be preferred across all halo masses.
+  channel: small_scale_structure
+  effect_direction: morphology_change
+  environments:
+  - dwarf galaxies
+  - low-surface-brightness galaxies
+  - clusters
+  id: obs_sidm_cored_halos
+  key_quantities:
+  - description: Target range for halo phenomenology.
+    name: self-interaction cross section per mass
+    range: 0.1-10
+    role: core
+    source_reference_ids:
+    - src_2306_17037
+    - src_1508_03339
+    status: inferred
+    symbol: sigma_SI/m_X
+    unit: cm^2/g
+  linked_constraints:
+  - con_sidm_cross_section_target
+  linked_routes:
+  - route_cannibal_forbidden_to_observables
+  name: Self-interaction effects on dwarf-to-cluster halos
+  notes: Central-density effects are the main astrophysical motivation.
+  observability: medium
+  predicted_effect: The model targets self-interaction cross sections large enough to affect halo central
+    densities while maintaining the observed relic density through cannibal co-decay and forbidden channels.
+  redshift_range: today
+  relevance: high
+  scale_range: dwarf galaxies to clusters
+  source_reference_ids:
+  - src_2306_17037
+  - src_1508_03339
+  subchannel: SIDM halo cores
+- caveats:
+  - Signal rates depend on the scalar lifetime and Higgs mixing assumptions.
+  channel: precision_laboratory
+  effect_direction: rate_change
+  environments:
+  - beam dump experiments
+  - flavor factories
+  id: obs_scalar_mediator_fixed_target
+  key_quantities:
+  - description: Heavier unstable scalar partner of vector DM.
+    name: scalar mass
+    range: 9-114
+    role: core
+    source_reference_ids:
+    - src_2306_17037
+    status: inferred
+    symbol: m_S
+    unit: MeV
+  - description: Controls visible-sector production and decay.
+    name: scalar-Higgs mixing angle
+    role: core
+    source_reference_ids:
+    - src_2306_17037
+    status: assumed
+    symbol: theta
+  linked_constraints:
+  - con_scalar_mediator_searches
+  linked_routes:
+  - route_cannibal_forbidden_to_observables
+  name: Sub-GeV scalar mediator signals in flavor and fixed-target experiments
+  notes: This is the most concrete non-gravitational probe in the primary paper.
+  observability: medium
+  predicted_effect: The Higgs-mixed scalar partner can be produced and decay in intensity-frontier experiments,
+    with surviving parameter space noted as testable by near-future NA62 beam-dump running.
+  redshift_range: today
+  relevance: high
+  scale_range: MeV-scale fixed-target kinematics
+  source_reference_ids:
+  - src_2306_17037
+  - src_2209_10827
+  subchannel: beam dump and rare meson channels
+- caveats:
+  - Late-time suppression must be checked if additional open annihilation or decay channels are added.
+  channel: cmb
+  effect_direction: null_signal
+  environments:
+  - intergalactic medium
+  id: obs_recombination_annihilation_suppression
+  key_quantities:
+  - description: Scalar-to-DM mass splitting controls forbidden-channel suppression.
+    name: mass splitting
+    range: m_S/m_X about 1.1-1.33 in favored primary region
+    role: core
+    source_reference_ids:
+    - src_2306_17037
+    - src_1505_07107
+    status: inferred
+    symbol: Delta
+  linked_constraints:
+  - con_cmb_forbidden_annihilation
+  linked_routes:
+  - route_cannibal_forbidden_to_observables
+  name: Suppressed recombination-era annihilation energy injection
+  notes: Useful as a contrast with ordinary s-wave light thermal relics.
+  observability: low
+  predicted_effect: Forbidden annihilation is Boltzmann suppressed at late times, so light DM that annihilated
+    efficiently during freeze-out can evade CMB energy-injection bounds.
+  redshift_range: z ~ 1100
+  relevance: medium
+  scale_range: cosmological horizon at recombination
+  source_reference_ids:
+  - src_2306_17037
+  - src_1505_07107
+  subchannel: CMB anisotropy energy injection
+constraints:
+- allowed_regions:
+  - Primary favored points can realize sigma_SI/m_X around 0.1-10 cm^2/g with correct relic density.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Benchmarks should report both relic density and sigma_SI/m_X.
+  caveats: []
+  constrained_parameters:
+  - sigma_SI/m_X
+  - m_X
+  - g_dm
+  - m_S/m_X
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Cross sections far outside the 0.1-10 cm^2/g target do not address the stated small-scale motivation
+    and can conflict with halo-shape/merger bounds.
+  id: con_sidm_cross_section_target
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Astrophysical SIDM cross-section target
+  notes: null
+  observable_channel: halo density profiles and mergers
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2306_17037
+  - src_1508_03339
+- allowed_regions:
+  - Primary paper reports surviving mass-ratio and scalar-mass regions with NA62 sensitivity.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Near-future beam-dump searches can test currently surviving parameter space.
+  caveats:
+  - Detailed likelihood files are not provided in the primary text.
+  constrained_parameters:
+  - m_S
+  - theta
+  - scalar lifetime
+  constraint_type: laboratory
+  data_release: multiple intensity-frontier searches as recast in the primary paper
+  excluded_regions:
+  - Existing flavor/fixed-target constraints remove parts of the scalar mass-mixing plane.
+  id: con_scalar_mediator_searches
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Light Higgs-mixed scalar searches
+  notes: null
+  observable_channel: flavor and fixed-target experiments
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2306_17037
+  - src_2209_10827
+- allowed_regions:
+  - Forbidden annihilation turns off at late times in the stated regime, suppressing recombination-era
+    energy injection.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - CMB bounds are not the limiting constraint for the primary forbidden-channel benchmarks.
+  caveats:
+  - Must be revisited if additional unsuppressed annihilation channels are present.
+  constrained_parameters:
+  - Delta
+  - late-time annihilation rate
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions: []
+  id: con_cmb_forbidden_annihilation
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: CMB energy-injection constraint avoided by forbidden kinematics
+  notes: null
+  observable_channel: CMB anisotropies
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_2306_17037
+  - src_1505_07107
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary text gives equations and benchmark regions but not a packaged likelihood.
+    caveats:
+    - Velocity dependence may be needed for a global SIDM fit.
+    constraint_ids:
+    - con_sidm_cross_section_target
+    - con_scalar_mediator_searches
+    - con_cmb_forbidden_annihilation
+    derived_quantities:
+    - Omega_X h^2
+    - sigma_SI/m_X
+    - scalar lifetime
+    - fixed-target event yield
+    description: Solve hidden-sector thermal evolution through cannibal 3-to-2 processes, scalar co-decay,
+      forbidden annihilation, and map the result to SIDM and light-scalar searches.
+    forward_model_chain:
+    - inputs:
+      - Y_X
+      - Y_S
+      - hidden-sector temperature
+      notes: Primary paper solves coupled yields and temperatures.
+      outputs:
+      - relic abundance
+      - freeze-out/co-decay history
+      step_id: coupled_boltzmann
+      step_type: boltzmann_solver
+      tool_or_code: custom coupled Boltzmann equations from primary paper
+      validity: Requires decoupled hidden-sector temperature evolution.
+    - inputs:
+      - m_X
+      - m_S
+      - g_dm
+      notes: Compare to dwarf/cluster target ranges.
+      outputs:
+      - sigma_SI/m_X
+      step_id: sidm_cross_section
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Zero-temperature velocity-independent limit in primary model.
+    - inputs:
+      - m_S
+      - theta
+      - lifetime
+      notes: Primary paper summarizes current and NA62 reach.
+      outputs:
+      - excluded and projected scalar regions
+      step_id: mediator_recast
+      step_type: recasting
+      tool_or_code: experiment-specific beam-dump/flavor recasts
+      validity: Depends on scalar production and detector acceptances.
+    id: route_cannibal_forbidden_to_observables
+    input_parameters:
+    - m_X
+    - m_S/m_X
+    - g_dm
+    - theta
+    - initial temperature ratio
+    likelihoods:
+    - No single public combined likelihood identified; use individual SIDM and beam-dump recasts.
+    observable_ids:
+    - obs_sidm_cored_halos
+    - obs_scalar_mediator_fixed_target
+    - obs_recombination_annihilation_suppression
+    required_code_resources:
+    - Boltzmann solver for coupled hidden-sector equations
+    - SIDM halo likelihood/recast inputs
+    - fixed-target scalar recast machinery
+    route_status: planned
+    source_model_features:
+    - vector DM plus heavier unstable scalar
+    - hidden sector decoupled from SM bath near T ~ m_X
+    - cannibal co-decay phase
+    validation_tests:
+    - Reproduce the primary relic-density curves and the stated m_S/m_X, m_S favored ranges.
+    - Check sigma_SI/m_X at benchmark points.

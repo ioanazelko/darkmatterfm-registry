@@ -1,0 +1,366 @@
+_source:
+  shard: arXiv_src_1202_002_wds.tar
+  paper_id: '1202_1316'
+  source_member: 1202_1316.json
+schema_version: model_only_v0
+model_id: 1202_1316_complex_scalar_singlet_dm_v1
+identity:
+  name: Complex scalar singlet dark matter
+  family: higgs_portal_scalar_singlet_dark_matter
+  aliases:
+  - cxSM scalar A dark matter
+  - complex singlet Higgs-portal dark matter
+  short_description: A complex scalar gauge-singlet extension of the SM where the imaginary singlet component
+    A is stabilized by a residual Z2 symmetry and interacts through the Higgs portal.
+  historical_origin_or_motivation: The paper uses the complex singlet scalar extension to jointly study
+    scalar dark matter, vacuum stability, and Higgs-sector phenomenology.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Standard Model plus complex scalar singlet
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'no'
+  notes: The paper gives the renormalizable tree-level scalar potential for H and the complex singlet.
+particle_content:
+  dark_matter_candidate:
+    name: A, the imaginary component of the complex singlet
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - real singlet scalar component S
+  mediators:
+  - mixed scalar mass eigenstates h' and S'
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - A
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Residual Z2 symmetry acting on Im(S) stabilizes A after soft and spontaneous
+    breaking of a global U(1).
+  symmetries:
+  - name: global U(1) of the complex singlet
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously by the singlet vev and softly by b1 and a1 terms
+    breaking_scale: null
+  - name: Z2 acting on Im(S)
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not broken for the dark matter component
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - SM Higgs doublet
+  - SM fermions through scalar mixing
+  - SM gauge bosons through scalar mixing
+  dark_sector_couplings:
+  - Higgs-singlet quartic coupling
+  - singlet self-coupling
+  - soft U(1)-breaking singlet terms
+  mediator_types:
+  - mixed neutral scalars h' and S'
+  interaction_operators:
+  - H^dagger H |S|^2
+  - soft singlet U(1)-breaking terms
+  annihilation_channels:
+  - AA to SM final states through h'/S'
+  - AA to h'h' or S'S' when kinematically open
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_A
+    description: Mass of the stable scalar A.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: Higgs-singlet portal coupling
+    symbol: delta_2
+    description: Quartic coupling connecting H and the complex singlet.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: singlet self-coupling
+    symbol: d_2
+    description: Quartic self-coupling of the complex singlet.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: singlet vev
+    symbol: x
+    description: Vacuum expectation value of the real singlet component.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: scalar mixing angle
+    symbol: alpha
+    description: Mixing angle between the SM-like Higgs and real singlet scalar.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: soft U(1)-breaking parameter
+    symbol: a_1
+    description: Chosen small in the scan, with the text giving a representative value a_1 = 10^3 GeV^3.
+    value: 10^3
+    unit: GeV^3
+    role: core
+    status: assumed
+    source_reference_ids:
+    - paper
+  nuisance: []
+  derived:
+  - name: thermal relic abundance
+    symbol: Omega_A h^2
+    description: Computed numerically with micrOMEGAs and required not to oversaturate total dark matter.
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - paper
+production:
+  mechanisms:
+  - thermal freeze-out through scalar annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - AA annihilation cross section
+  - scalar resonance structure
+  - available scalar final states
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper allows A to undersaturate the total dark matter density but forbids oversaturation.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_A
+  - h'/S' masses
+  - scalar mixing angle
+  - portal couplings
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak phase transition considered as phenomenological motivation
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The paper treats A as cold thermal scalar dark matter.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: bounded_potential
+  applies_to: model
+  condition: Quartic couplings must keep the effective potential stable and perturbative up to the chosen
+    cutoff.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: z2_stability
+  applies_to: model
+  condition: The residual Z2 for Im(S) must remain unbroken for A to be stable.
+  status: established
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - paper
+- id: relic_density
+  applies_to: parameter
+  condition: Parameter points that oversaturate the observed dark matter density are rejected in the paper.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: standard_thermal_history
+    description: Relic-density treatment assumes the usual thermal freeze-out calculation.
+    scope: cosmological_history
+    status: assumed
+    source_reference_ids:
+    - paper
+  - id: paper_only_constraints_omitted
+    description: This run records model content only; direct-detection and collider constraints discussed
+      in the paper are not copied into constraint fields.
+    scope: other
+    status: assumed
+    source_reference_ids:
+    - paper
+  constraint_specific: []
+  computation_specific: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper states that micrOMEGAs is used for relic-density calculations, but no model-specific
+    public code release is identified in the assigned text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1202_1316_complex_scalar_singlet_dm_v1
+  model_name: 'Complex Scalar Singlet Dark Matter: Vacuum Stability and Phenomenology'
+  model_family: higgs_portal_scalar_singlet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: 'Complex Scalar Singlet Dark Matter: Vacuum Stability and Phenomenology'
+      authors:
+      - Matthew Gonderinger
+      - Hyungjun Lim
+      - Michael J. Ramsey-Musolf
+      year: 2012
+      arxiv_id: '1202.1316'
+      doi: null
+      url: null
+      role: extension
+      notes: This row records the paper's substantial model development and vacuum-stability analysis
+        of the complex scalar singlet dark matter setup.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_extraction_worker_batch_0004
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract
+      page: null
+      quote_or_summary: Analyzes a complex singlet SM extension containing a scalar dark matter candidate.
+    - reference_id: paper
+      section: Tree Level Potential
+      page: null
+      quote_or_summary: Defines the scalar potential, singlet symmetries, and stable A field.
+    - reference_id: paper
+      section: Dark Matter Relic Density
+      page: null
+      quote_or_summary: Explains that A relic abundance is controlled by annihilation cross sections.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The paper studies a complex SM-gauge-singlet scalar whose imaginary component A is chosen
+        as a stable scalar dark matter candidate.
+      confidence: high
+      section: Tree Level Potential
+    - reference_id: paper
+      note: The real singlet component mixes with the SM Higgs, producing h' and S' scalar mass eigenstates.
+      confidence: high
+      section: Tree Level Potential
+    symmetries:
+    - reference_id: paper
+      note: A global U(1) is spontaneously and softly broken, while a Z2 symmetry for Im(S) remains to
+        ensure dark matter stability.
+      confidence: high
+      section: Tree Level Potential
+    interactions:
+    - reference_id: paper
+      note: The singlet couples to SM fermions and gauge bosons through the Higgs portal in the scalar
+        potential.
+      confidence: high
+      section: Tree Level Potential
+    production_mechanism:
+    - reference_id: paper
+      note: The thermal relic abundance of A is controlled by AA annihilation channels through h' and
+        S' exchange or final states.
+      confidence: high
+      section: Dark Matter Relic Density
+    parameter_ranges:
+    - reference_id: paper
+      note: The scan treats the dark matter mass m_A, scalar masses, mixing angle, singlet vev x, and
+        quartic couplings as core parameters.
+      confidence: high
+      section: Analysis Procedure
+    validity_domain:
+    - reference_id: paper
+      note: The model is restricted by vacuum stability, perturbativity, electroweak precision data, relic
+        density, direct detection, and LEP/LHC limits.
+      confidence: high
+      section: Analysis Procedure
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - High-scale vacuum stability depends on cutoff assumptions and RG treatment.
+  - Allowed relic density can be full or subcomponent depending on scalar parameters.
+  validation_status: expert_judgment_only
+  notes: The field values are model-card extraction summaries, not a reproduction of the paper's numerical
+    scan.
+agent_failure_modes:
+  warnings:
+  - id: do_not_record_constraints
+    severity: medium
+    category: other
+    warning: The paper contains direct-detection and collider limits, but this run intentionally omits
+      constraints.
+    source_reference_ids:
+    - paper
+  - id: subcomponent_possible
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not assume A is all of dark matter for every allowed parameter point; the paper permits
+      undersaturation.
+    source_reference_ids:
+    - paper

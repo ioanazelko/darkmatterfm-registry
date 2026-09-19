@@ -1,0 +1,278 @@
+_source:
+  shard: arXiv_src_1507_013_wds.tar
+  paper_id: '1507_06660'
+  source_member: 1507_06660.json
+schema_version: model_only_v0
+model_id: 1507_06660_leptophilic_scalar_muon_anomaly_dm_v1
+identity:
+  name: Leptophilic scalar dark matter from muon anomalies
+  family: leptophilic_dark_matter
+  aliases:
+  - Muon-anomaly scalar dark matter
+  - U(1)_X inert scalar dark matter
+  short_description: A weak-scale dark sector with a U(1)_X gauge boson, vector-like fermions, and an
+    inert complex scalar leaves an exact Z2 symmetry; the real scalar eta_0 is stable and annihilates
+    mainly to muons and neutrinos.
+  historical_origin_or_motivation: Built to address b -> s mu+ mu- anomalies and the muon g-2 discrepancy
+    while yielding a thermal dark matter relic.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - abelian U(1)_X dark sector with vector-like fermions
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper presents the relevant new Lagrangian interactions and states the model is phenomenological.
+particle_content:
+  dark_matter_candidate:
+    name: eta_0 inert scalar component
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - complex scalars eta and phi
+  - vector-like leptons L and L tilde
+  - vector-like quarks Q and Q tilde
+  mediators:
+  - Z prime gauge boson
+  - charged and neutral dark leptons
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: An exact residual Z2 symmetry remains because the singlet eta is inert; eta and
+    L are odd and the lightest odd state is stable.
+  symmetries:
+  - name: U(1)_X
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneously broken by scalar phi vev
+  - name: residual Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken in the inert eta setup
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - other
+  standard_model_targets:
+  - muons
+  - muon neutrinos
+  - quarks through loop-induced and vector-like-sector interactions
+  dark_sector_couplings:
+  - Yukawa coupling y between SM leptons, dark lepton L, and eta
+  - Yukawa coupling w between SM quarks, dark quark Q, and phi
+  - U(1)_X gauge coupling g prime
+  mediator_types:
+  - Z prime
+  - vector-like fermion
+  annihilation_channels:
+  - eta_0 eta_0 -> mu+ mu-
+  - eta_0 eta_0 -> neutrino_mu anti-neutrino_mu
+  - eta_0 eta_0 -> mu+ mu- gamma via virtual internal bremsstrahlung
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_eta0
+    description: Scan range for the scalar dark matter mass.
+    range:
+      min: 50
+      max: 450
+      unit: GeV
+      notes: Range used in the relic-density scan.
+    status: inferred
+  - name: Z prime mass
+    symbol: m_Zprime
+    description: Scan range for the new gauge boson.
+    range:
+      min: 200
+      max: 1000
+      unit: GeV
+      notes: Range used around anomaly-accommodating parameter points.
+    status: inferred
+  - name: leptonic Yukawa coupling
+    symbol: '|y|'
+    description: Magnitude of the dark lepton coupling to SM leptons.
+    range:
+      min: 1
+      max: 4
+      unit: null
+      notes: Scan range.
+    status: inferred
+  - name: U(1)_X gauge coupling
+    symbol: gprime
+    description: Dark gauge coupling scan range.
+    range:
+      min: 1
+      max: 5
+      unit: null
+      notes: Scan range.
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  - d-wave suppressed annihilation to leptons
+  - possible virtual internal bremsstrahlung contribution
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - eta_0 eta_0 annihilation through t-channel dark lepton exchange
+  - coannihilation in parts of parameter space
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The relic density is calculated analytically and with micrOMEGAs for parameter points compatible
+    with muon anomalies.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_eta0
+  - m_Zprime/gprime
+  - mass splitting with dark lepton
+  - Yukawa coupling y
+  - g prime
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Standard freeze-out treatment; no explicit distribution function is provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: v1
+  applies_to: parameter
+  condition: Relic-density scan is quoted for m_eta0 from 50 to 450 GeV, m_Zprime from 200 to 1000 GeV,
+    |y| from 1 to 4, and gprime from 1 to 5.
+  status: inferred
+  extrapolation_risk: medium
+- id: v2
+  applies_to: model
+  condition: The paper does not address the dynamical origin of the dark-sector mass hierarchy.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: a1
+    description: The inert scalar eta has no vev, leaving an exact Z2 symmetry.
+    scope: theory
+    status: inferred
+  - id: a2
+    description: Kinetic mixing and Higgs portal interactions are set to zero for the analysis.
+    scope: theory
+    status: inferred
+  - id: a3
+    description: The chosen spectrum has eta_0 lighter than the other dark-sector states.
+    scope: production
+    status: inferred
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 1507_06660_leptophilic_scalar_muon_anomaly_dm_v1
+  model_name: Leptophilic scalar dark matter from muon anomalies
+  model_family: leptophilic_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: A Dark Matter Relic from Muon Anomalies
+      authors: []
+      year: 2015
+      arxiv_id: '1507.06660'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text only.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0007
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: model
+      page: null
+      quote_or_summary: The model extends the SM by vector-like fermions, two complex scalars, and a U(1)_X
+        gauge boson.
+    - reference_id: primary
+      section: dark matter phenomenology
+      page: null
+      quote_or_summary: The eta_0 scalar is stable by Z2 and annihilates mainly to muons and neutrinos
+        through dark lepton exchange.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The scalar component eta_0 is selected as the dark matter candidate.
+      confidence: high
+    symmetries:
+    - reference_id: primary
+      note: An exact Z2 remains when eta is inert, making the lightest odd state stable.
+      confidence: high
+    interactions:
+    - reference_id: primary
+      note: Yukawa couplings to dark leptons and quarks and a U(1)_X Z prime mediate interactions.
+      confidence: high
+    production_mechanism:
+    - reference_id: primary
+      note: Freeze-out is driven by d-wave suppressed eta_0 eta_0 annihilation to leptons, with VIB and
+        coannihilation considered.
+      confidence: high
+    parameter_ranges:
+    - reference_id: primary
+      note: The paper scans m_eta0, m_Zprime, |y|, and gprime ranges around anomaly-compatible points.
+      confidence: high
+    validity_domain:
+    - reference_id: primary
+      note: The hierarchy m_eta0 < other dark-sector states is imposed rather than dynamically derived.
+      confidence: high
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  validation_status: unvalidated
+  notes: Machine-extracted model-only candidate; constraints and observables intentionally omitted.
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: assumption_mismatch
+    warning: The analysis sets kinetic mixing and Higgs portal interactions to zero; adding them changes
+      phenomenology.
+  - id: w2
+    severity: medium
+    category: extrapolation
+    warning: The simplified model does not explain the dynamical origin of the required spectrum.

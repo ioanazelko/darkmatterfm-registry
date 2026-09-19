@@ -1,0 +1,342 @@
+_source:
+  shard: arXiv_src_1811_025_wds.tar
+  paper_id: '1811_08905'
+  source_member: 1811_08905.json
+schema_version: model_only_v0
+model_id: 1811_08905_uv_ir_freeze_in_dirac_fermion_v1
+identity:
+  name: UV and IR freeze-in Dirac-fermion dark sector
+  family: freeze_in_dark_matter
+  aliases:
+  - fermionic Higgs portal UV/IR freeze-in model
+  short_description: A dark sector with a stable Dirac fermion charged under unbroken U(1)_x and coupled
+    to the Standard Model only by a non-renormalizable fermionic Higgs portal; both ultraviolet and late
+    infrared freeze-in can affect the relic density.
+  historical_origin_or_motivation: Shows that a non-renormalizable connector operator need not decouple
+    after reheating and can repopulate the dark sector during freeze-out.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - freeze-in dark matter
+  - hidden-sector dark matter
+  - fermionic Higgs portal
+  lagrangian_available: partial
+  renormalizable: 'no'
+  eft_cutoff:
+    name: connector scale
+    symbol: M
+    description: Large mass scale suppressing the fermionic Higgs portal.
+    role: core
+    status: inferred
+  embedded_in_larger_framework: unknown
+  notes: The paper treats the fermionic Higgs portal as an EFT operator valid below M and assumes no kinetic
+    mixing.
+particle_content:
+  dark_matter_candidate:
+    name: stable Dirac fermion psi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - massless Abelian vector boson X_mu of U(1)_x
+  mediators:
+  - fermionic Higgs portal operator
+  - dark U(1)_x vector boson X_mu
+  dark_radiation_species:
+  - massless dark vector X_mu
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The Dirac fermion is stable and charged under an unbroken U(1)_x gauge force;
+    dark charge conjugation can forbid kinetic mixing.
+  symmetries:
+  - name: U(1)_x
+    type: gauge
+    exact_or_approximate: exact
+    breaking: unbroken in the model studied
+    breaking_scale: null
+  - name: dark charge conjugation
+    type: discrete
+    exact_or_approximate: exact
+    breaking: used to enforce no kinetic mixing
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - SM Higgs doublet
+  dark_sector_couplings:
+  - U(1)_x gauge coupling alpha_x = g_x^2/4pi
+  - fermionic Higgs portal suppressed by M
+  mediator_types:
+  - scalar portal
+  - massless vector
+  interaction_operators:
+  - (1/M) |H|^2 psi-bar psi fermionic Higgs portal
+  - dark gauge interactions psi psi X_mu
+  annihilation_channels:
+  - psi anti-psi to X_mu X_mu
+  self_scattering_channels:
+  - dark matter self-interactions through the massless dark vector
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark fermion mass
+    symbol: m_psi
+    description: Mass of the stable Dirac dark matter fermion.
+    role: core
+    status: inferred
+  - name: dark gauge coupling
+    symbol: alpha_x
+    description: alpha_x = g_x^2 / 4 pi controls self-thermalization and annihilation.
+    role: core
+    status: inferred
+  - name: fermionic Higgs portal scale
+    symbol: M
+    description: Large mass scale suppressing (1/M)|H|^2 psi-bar psi.
+    role: core
+    status: inferred
+  - name: visible reheating temperature
+    symbol: T_RH
+    description: Assumed well below M and sets the initial UV freeze-in transfer.
+    role: core
+    status: assumed
+  - name: dark-to-visible temperature ratio
+    symbol: xi = T_x/T
+    description: Dark sector self-thermalizes to T_x below the SM temperature.
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: relic-density enhancement from late transfer
+    symbol: Omega / Omega_no-transfer
+    description: Late residual transfer can enhance relic density relative to dark-sector freeze-out alone.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - ultraviolet freeze-in from SM Higgs collisions
+  - dark-sector self-thermalization
+  - thermal freeze-out within the colder dark sector
+  - late infrared freeze-in during freeze-out
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - T_RH
+  - M
+  - m_psi
+  - alpha_x
+  - dark temperature T_x
+  - late transfer rate through the portal
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The central result is combined UV and IR freeze-in through one non-renormalizable connector.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - UV transfer through the Higgs portal
+  - dark annihilation psi anti-psi -> X X
+  - late residual transfer during freeze-out
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - asymmetric reheating populates the SM sector but not the dark sector
+  - colder self-thermalized dark sector
+  dark_sector_temperature:
+    name: dark temperature
+    symbol: T_x
+    description: Lower than the visible temperature after self-thermalization.
+    role: core
+    status: inferred
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: Equilibrium distribution at dark temperature T_x after self-thermalization; initial population
+    is freeze-in produced.
+  average_momentum_relative_to_thermal: colder than SM thermal bath after self-thermalization
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper tracks number and energy transfer and then dark-sector thermalization.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: Thermal WDM mapping is not used for this model-only extraction.
+  nonlinear:
+    halo_mass_function_effect: not calculated; massless-vector self-interactions are noted as astrophysically
+      relevant
+    subhalo_mass_function_effect: not discussed in the paper
+    simulation_calibrated: unknown
+validity_domain:
+- id: vd_eft_below_m
+  applies_to: EFT
+  condition: Visible reheating temperature and relevant scattering energies remain below the connector
+    scale M.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - If T_RH approaches M, the EFT connector description can fail.
+  source_reference_ids:
+  - paper
+- id: vd_no_kinetic_mixing
+  applies_to: model
+  condition: No U(1)_x-hypercharge kinetic mixing is assumed, enforced by dark charge conjugation.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Kinetic mixing would open additional production and detection channels.
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: a_sm_only_reheating
+    description: Reheating after inflation significantly populates only the visible SM sector, with T_RH
+      below M.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Initial dark-sector abundance and freeze-in history would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper
+    notes: null
+  - id: a_unbroken_u1x
+    description: The dark U(1)_x remains unbroken and the vector is massless in the studied model.
+    scope: theory
+    status: assumed
+    impact_if_violated: Self-interactions, thermalization, and dark radiation content would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - paper
+    notes: The paper comments a small vector mass could soften astrophysical issues.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated code was identified in the assigned paper text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine extraction from one paper; no external validation performed.
+agent_failure_modes:
+  warnings:
+  - id: w_massless_vector_astrophysics
+    severity: medium
+    category: assumption_mismatch
+    warning: The studied massless dark vector affects self-interactions and dark radiation; applying the
+      relic-density result to a massive-vector variant requires checking the paper conditions.
+    mitigation: Keep U(1)_x/vector assumptions explicit when reusing the model card.
+    source_reference_ids:
+    - paper
+provenance:
+  model_id: 1811_08905_uv_ir_freeze_in_dirac_fermion_v1
+  model_name: UV and IR freeze-in Dirac-fermion dark sector
+  model_family: freeze_in_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Infrared Effects of Ultraviolet Operators on Dark Matter Freeze-In
+      authors:
+      - Lindsay Forestell
+      - David E. Morrissey
+      year: 2018
+      arxiv_id: '1811.08905'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0000
+    extractor_name: gpt-5.5-codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: abstract, introduction, and transfer/freeze-out sections
+      page: null
+      quote_or_summary: Massive Dirac fermion plus massless U(1)_x vector coupled to the SM by a fermionic
+        Higgs portal; both UV and IR freeze-in contribute.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The model consists of a stable Dirac fermion dark matter candidate and a massless Abelian
+        vector boson.
+      confidence: high
+    symmetries:
+    - reference_id: paper
+      note: The Dirac fermion is charged under unbroken U(1)_x; dark charge conjugation forbids kinetic
+        mixing.
+      confidence: high
+    interactions:
+    - reference_id: paper
+      note: The only SM connection is the non-renormalizable fermionic Higgs portal (1/M)|H|^2 psi-bar
+        psi.
+      confidence: high
+    production_mechanism:
+    - reference_id: paper
+      note: The dark sector is populated by UV freeze-in, self-thermalizes colder than the SM, freezes
+        out, and can receive late IR freeze-in transfer.
+      confidence: high
+    cosmological_history:
+    - reference_id: paper
+      note: The scenario assumes SM-only reheating with T_RH below the connector mass scale M.
+      confidence: high
+    parameter_ranges:
+    - reference_id: paper
+      note: Core quantities include M, T_RH, alpha_x, m_psi, and the dark temperature T_x/T ratio.
+      confidence: medium
+    validity_domain:
+    - reference_id: paper
+      note: The EFT connector requires temperatures below M and no kinetic mixing.
+      confidence: medium
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium

@@ -1,0 +1,781 @@
+_source:
+  shard: arXiv_src_2301_017_wds.tar
+  paper_id: '2301_02514'
+  source_member: 2301_02514.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2301_02514_singlet_doublet_freeze_in_fast_expansion_dm_v1
+identity:
+  name: Singlet-doublet freeze-in dark matter in fast-expansion cosmology
+  family: freeze_in_dark_matter
+  aliases:
+  - singlet-doublet FIMP dark matter with non-standard cosmology
+  short_description: A Z2-odd singlet-doublet fermion dark sector where the mostly singlet neutral state
+    is produced by freeze-in in a pre-BBN fast-expansion cosmology.
+  historical_origin_or_motivation: Uses non-standard early expansion to enlarge freeze-in couplings and
+    change collider signatures from displaced to prompt boosted-boson plus missing-energy searches.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - singlet-doublet dark matter
+  - FIMP freeze-in
+  - non-standard pre-BBN cosmology
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes the BSM fermion Lagrangian with singlet Dirac fermion, SU(2)_L doublet Dirac
+    fermion, and Yukawa coupling to the Higgs.
+particle_content:
+  dark_matter_candidate:
+    name: mostly singlet neutral fermion chi_1
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - Z2-odd SU(2)_L fermion doublet with charged and neutral components
+  - heavier neutral fermion chi_2
+  - charged fermion psi_pm
+  mediators:
+  - Higgs boson
+  - Z boson
+  - W boson
+  - heavier doublet-like fermions
+  long_lived_particles:
+  - heavier fermions in standard cosmology regions
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A discrete Z2 symmetry assigns odd parity to the BSM fermions and even parity
+    to Standard Model fields, stabilizing the lightest neutral state.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - Higgs boson
+  - electroweak gauge bosons
+  - Standard Model fermions through boson decays
+  dark_sector_couplings:
+  - Yukawa term y H coupling singlet and doublet fermions
+  mediator_types:
+  - scalar
+  - vector
+  - fermion
+  interaction_operators:
+  - singlet-doublet-Higgs Yukawa interaction
+  decay_channels:
+  - chi_2 -> h chi_1
+  - chi_2 -> Z chi_1
+  - psi_pm -> W_pm chi_1
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi1
+    description: Mass of the mostly singlet neutral state.
+    range: keV-scale light dark matter emphasized for freeze-in phenomenology
+    unit: GeV
+    role: core
+    status: inferred
+  - name: doublet mass
+    symbol: m_psi
+    description: Common mass scale for the heavier doublet-like states.
+    range: 100-2000
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Yukawa coupling
+    symbol: y
+    description: Feeble singlet-doublet-Higgs coupling controlling freeze-in and heavy-state decays.
+    role: core
+    status: inferred
+  - name: fast-expansion transition temperature
+    symbol: T_r
+    description: Temperature at which the non-standard component gives way to radiation domination.
+    role: core
+    status: inferred
+  - name: fast-expansion index
+    symbol: n
+    description: Parameter controlling the faster-than-radiation redshifting component; kination n=2 is
+      used as a case study.
+    value: n=2 case study
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - freeze-in from decays of thermalized doublet-like states
+  - freeze-in from subdominant scatterings
+  - modified Hubble expansion in a fast-expansion pre-BBN epoch
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - Yukawa coupling y
+  - doublet mass
+  - dark matter mass
+  - non-standard cosmology parameters n and T_r
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The doublet is in the bath through gauge interactions, while the dark matter never thermalizes
+    because y is feeble.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - y
+  - m_chi1
+  - m_psi
+  - n
+  - T_r
+  - thermally averaged decay widths
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - pre-BBN fast-expansion component redshifting faster than radiation
+  - kination-like benchmark with n=2
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak symmetry breaking changes production channels
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: unknown
+  notes: The paper discusses frozen-in warm dark matter and small-scale suppression qualitatively, but
+    no full distribution function is extracted.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'no'
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: pre_bbn_fast_expansion
+  applies_to: cosmological_history
+  condition: The fast-expanding component must dominate before BBN and give way to radiation domination
+    consistently with BBN bounds.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Collider prompt-decay region depends on the modified cosmology.
+  source_reference_ids:
+  - paper
+  notes: null
+assumptions:
+  global:
+  - id: zero_initial_dm
+    description: The freeze-in abundance starts from zero or negligible dark matter number density.
+    scope: production
+    status: assumed
+    impact_if_violated: A primordial abundance would change the relic-density calculation.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The authors implement the model in FeynRules and use MadGraph, Pythia, Delphes, and FastJet
+    for collider simulation; no public model files are identified.
+  primary_code_role: collider_simulation
+provenance:
+  model_id: 2301_02514_singlet_doublet_freeze_in_fast_expansion_dm_v1
+  model_name: Singlet-doublet freeze-in dark matter in fast-expansion cosmology
+  model_family: freeze_in_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: unknown
+      authors: []
+      year: 2023
+      arxiv_id: '2301.02514'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '2301.02514'
+      authors:
+      - Das, Prasanta Kumar
+      - Konar, Partha
+      - Kundu, Saumyen
+      - Show, Sudipta
+      doi: 10.1007/JHEP06(2023)198
+      notes: Primary paper text resolved locally and used as the support for structured enrichment claims.
+      reference_id: src_2301_02514_primary
+      role: original_model
+      title: Jet substructure probe to unfold singlet-doublet dark matter in the presence of non-standard
+        cosmology
+      url: https://arxiv.org/abs/2301.02514
+      year: 2023
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for primary metadata and bounded reference/citation discovery; metadata alone was not
+        used as scientific evidence.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: gpt-5.5-codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections: []
+    unresolved_items:
+    - No public collider likelihood or executable MVA/recast pipeline was extracted.
+    - Warm-DM/Lyman-alpha treatment needs a model-specific nonthermal distribution recast.
+    - One related paper was read through arXiv fallback for triage but not used as structured evidence.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The model has a hyperchargeless singlet Dirac fermion and an SU(2)_L Dirac doublet; after
+        mixing, chi_1 is the dark matter candidate.
+      confidence: medium
+      section: Model
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: A Z2 symmetry makes BSM fields odd and SM fields even.
+      confidence: medium
+      section: Model
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The BSM Lagrangian includes masses for singlet and doublet fermions and a Yukawa coupling
+        y H linking them.
+      confidence: medium
+      section: Model
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The doublet thermalizes through gauge interactions while chi_1 is gradually produced by freeze-in
+        from decays and scatterings.
+      confidence: medium
+      section: DM phenomenology
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: The paper adopts a fast-expansion species redshifting faster than radiation and studies the
+        kination case.
+      confidence: medium
+      section: Non-standard cosmology
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: The heavy doublet mass range 100-2000 GeV and feeble y enter the relic and collider parameter
+        plane.
+      confidence: medium
+      section: Model
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: BBN limits on the non-standard cosmology bound large couplings and the allowed parameter space.
+      confidence: medium
+      section: DM phenomenology
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary-paper text supports constraint con_relic_density_fast_expansion.
+      page: null
+      reference_id: src_2301_02514_primary
+      section: model, phenomenology, or constraints section
+    - confidence: high
+      note: Primary-paper text supports constraint con_bbn_transition_temperature.
+      page: null
+      reference_id: src_2301_02514_primary
+      section: model, phenomenology, or constraints section
+    - confidence: high
+      note: Primary-paper text supports constraint con_lhc_boosted_boson_met.
+      page: null
+      reference_id: src_2301_02514_primary
+      section: model, phenomenology, or constraints section
+    - confidence: high
+      note: Primary-paper text supports constraint con_warm_dm_lyman_alpha_context.
+      page: null
+      reference_id: src_2301_02514_primary
+      section: model, phenomenology, or constraints section
+    observables:
+    - confidence: high
+      note: Primary-paper text supports observable obs_boosted_boson_met.
+      page: null
+      reference_id: src_2301_02514_primary
+      section: abstract/body/conclusion
+    - confidence: high
+      note: Primary-paper text supports observable obs_displaced_vertex_contrast.
+      page: null
+      reference_id: src_2301_02514_primary
+      section: abstract/body/conclusion
+    - confidence: high
+      note: Primary-paper text supports observable obs_warm_dm_small_scale_suppression.
+      page: null
+      reference_id: src_2301_02514_primary
+      section: abstract/body/conclusion
+    routes:
+    - confidence: high
+      note: Primary-paper text describes the modeling chain for route route_fast_expansion_to_lhc.
+      page: null
+      reference_id: src_2301_02514_primary
+      section: analysis workflow
+    - confidence: high
+      note: Primary-paper text describes the modeling chain for route route_warm_phase_space_to_lss.
+      page: null
+      reference_id: src_2301_02514_primary
+      section: analysis workflow
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Machine extraction from converted full text; mathematical notation may be degraded.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - Converted text obscures some symbols and section labels.
+  validation_status: expert_judgment_only
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: notation_loss
+    severity: medium
+    category: notation_conflict
+    warning: Converted text drops or mangles some field symbols; do not infer exact charges or equations
+      beyond the compact evidence.
+    mitigation: Consult original paper before final registry inclusion.
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - Reach depends on benchmark branching fractions, mass splittings, jet-substructure tagging, and the
+    chosen non-standard expansion parameters.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - LHC
+  - HL-LHC
+  id: obs_boosted_boson_met
+  key_quantities:
+  - description: Common mass scale of chi_2 and charged psi states in the collider study.
+    name: doublet-like fermion mass
+    range: 100-2000
+    role: core
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: inferred
+    symbol: m_2
+    unit: GeV
+  - description: Controls freeze-in abundance, mixing angle, and mediator decay length.
+    name: singlet-doublet Yukawa coupling
+    role: core
+    scale: log
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: inferred
+    symbol: y
+  - description: Luminosity used for projected LHC reach.
+    name: integrated luminosity
+    role: experimental
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: inferred
+    symbol: L
+    unit: fb^-1
+    value: 300 and 3000
+  linked_constraints:
+  - con_lhc_boosted_boson_met
+  linked_routes:
+  - route_fast_expansion_to_lhc
+  name: Boosted electroweak or Higgs boson plus missing transverse momentum at the LHC
+  notes: The primary paper reports boosted Z/W/h jet substructure with multivariate analysis as the prompt-decay
+    search mode.
+  observability: high
+  predicted_effect: Fast pre-BBN expansion requires larger freeze-in couplings than the standard cosmology
+    benchmark, making heavy doublet-like states decay promptly to W/Z/h plus chi_1 and producing boosted-boson
+    plus missing-momentum events.
+  redshift_range: laboratory, z=0
+  relevance: high
+  scale_range: LHC proton-proton collisions with boosted large-radius jets
+  source_reference_ids:
+  - src_2301_02514_primary
+  subchannel: fat-jet substructure with W, Z, or h candidates plus MET
+- caveats:
+  - Displaced-vertex coverage is not the main search strategy for the non-standard cosmology benchmarks
+    in this paper.
+  channel: collider
+  effect_direction: morphology_change
+  environments:
+  - LHC detectors
+  id: obs_displaced_vertex_contrast
+  key_quantities:
+  - description: Heavy-state decay length that moves the signature between displaced and prompt regimes.
+    name: proper decay length
+    role: core
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: inferred
+    symbol: c_tau
+    unit: cm
+    value: benchmark dependent; BP-3 about 5 cm
+  - description: Feeble coupling controlling the heavy-state lifetime.
+    name: Yukawa coupling
+    role: core
+    scale: log
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: inferred
+    symbol: y
+  linked_constraints:
+  - con_lhc_boosted_boson_met
+  linked_routes:
+  - route_fast_expansion_to_lhc
+  name: Displaced h/Z/W plus missing-momentum signatures in the standard-cosmology limit
+  notes: Used as contrast for the collider-routing change caused by the larger freeze-in coupling.
+  observability: medium
+  predicted_effect: For smaller freeze-in couplings, heavy fermions can be long-lived and yield displaced
+    vertices; the paper contrasts this with the prompt regime preferred by fast expansion benchmarks.
+  redshift_range: laboratory, z=0
+  relevance: medium
+  scale_range: inner tracker to prompt-decay region
+  source_reference_ids:
+  - src_2301_02514_primary
+  subchannel: long-lived heavy fermion decays
+- caveats:
+  - The primary paper discusses warmness qualitatively; it does not provide a reusable likelihood or transfer-function
+    implementation.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - cosmological structure formation
+  id: obs_warm_dm_small_scale_suppression
+  key_quantities:
+  - description: Mostly singlet frozen-in fermion mass.
+    name: dark matter mass
+    range: keV scale in warm-DM discussion
+    role: core
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: inferred
+    symbol: m_chi1
+    unit: keV
+  - description: Distribution produced by decays and scatterings during freeze-in.
+    name: nonthermal momentum distribution
+    role: core
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: unknown
+    symbol: f_chi1(p)
+  linked_constraints:
+  - con_warm_dm_lyman_alpha_context
+  linked_routes:
+  - route_warm_phase_space_to_lss
+  name: Small-scale suppression from light frozen-in dark matter
+  notes: null
+  observability: medium
+  predicted_effect: KeV-scale frozen-in chi_1 can behave as warm dark matter and suppress structure formation
+    at short distances.
+  redshift_range: early Universe through structure formation
+  relevance: medium
+  scale_range: small-scale linear power; no transfer-function fit extracted
+  source_reference_ids:
+  - src_2301_02514_primary
+  subchannel: warm nonthermal phase-space distribution
+constraints:
+- allowed_regions:
+  - Benchmark points chosen in the paper satisfy the relic-density target for suitable T_r and n.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: Pre-BBN energy density contains a component redshifting faster than radiation and transitions
+      to radiation domination before BBN.
+    id: assume_fast_expansion
+    impact_if_violated: Changing H(T) changes the required freeze-in coupling and collider lifetime.
+    notes: null
+    scope: cosmological history
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: assumed
+  benchmark_implications:
+  - Fast expansion permits larger y than standard cosmology for the same relic density, moving collider
+    decays toward the prompt regime.
+  caveats:
+  - The output row does not encode a full Boltzmann solver.
+  constrained_parameters:
+  - m_chi1
+  - m_2
+  - y
+  - n
+  - T_r
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Combinations that overproduce or underproduce the observed dark matter abundance.
+  id: con_relic_density_fast_expansion
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Freeze-in relic-density target in a fast-expansion pre-BBN epoch
+  notes: null
+  observable_channel: relic abundance
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2301_02514_primary
+- allowed_regions:
+  - The paper quotes T_r > (15.4)^(1/n) MeV from BBN constraints on relativistic degrees of freedom.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The non-standard phase ends before light-element synthesis.
+    id: assume_radiation_by_bbn
+    impact_if_violated: A later transition would invalidate the cosmology used for freeze-in benchmarks.
+    notes: null
+    scope: BBN consistency
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: assumed
+  benchmark_implications:
+  - For n=2 kination-like benchmarks, T_r must remain above the BBN floor.
+  caveats:
+  - Only the analytic lower-bound statement is captured, not a full BBN likelihood.
+  constrained_parameters:
+  - T_r
+  - n
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - T_r below the BBN-compatible lower bound quoted in the paper.
+  id: con_bbn_transition_temperature
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN lower bound on the fast-expansion transition temperature
+  notes: null
+  observable_channel: pre-BBN expansion history
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_2301_02514_primary
+- allowed_regions: []
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Heavy doublet-like states decay promptly in the non-standard cosmology benchmarks.
+    id: assume_prompt_mediator_decay
+    impact_if_violated: Longer lifetimes would move sensitivity to displaced searches.
+    notes: null
+    scope: collider reinterpretation
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: assumed
+  benchmark_implications:
+  - The paper reports doublet-mass reach up to about 880 GeV at 300 fb^-1 and beyond 1235 GeV at 3000
+    fb^-1 for its boosted-boson MVA setup.
+  caveats:
+  - Reach is benchmark and analysis dependent; no public likelihood was extracted.
+  constrained_parameters:
+  - m_2
+  - y
+  - branching fractions
+  - luminosity
+  constraint_type: collider
+  data_release: null
+  excluded_regions: []
+  id: con_lhc_boosted_boson_met
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Projected LHC reach for boosted boson plus missing transverse momentum
+  notes: null
+  observable_channel: boosted W/Z/h jets plus MET
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_2301_02514_primary
+- allowed_regions: []
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: A model-specific nonthermal distribution can be mapped to an equivalent warm-DM observable.
+    id: assume_distribution_mapping
+    impact_if_violated: Thermal-WDM limits cannot be applied without a distribution-level mapping.
+    notes: null
+    scope: structure-formation recast
+    source_reference_ids:
+    - src_2301_02514_primary
+    status: assumed
+  benchmark_implications:
+  - The paper notes that keV-scale frozen-in dark matter is in the regime probed by warm-DM astrophysical
+    constraints.
+  caveats:
+  - No structured exclusion value is recorded because the primary paper does not provide a full recast
+    in the extracted text.
+  constrained_parameters:
+  - m_chi1
+  - f_chi1(p)
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions: []
+  id: con_warm_dm_lyman_alpha_context
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Warm-DM small-scale-structure context for keV freeze-in dark matter
+  notes: null
+  observable_channel: Lyman-alpha and small-scale structure
+  recasting_needed: 'yes'
+  robustness: unknown
+  source_reference_ids:
+  - src_2301_02514_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Route is described at the workflow level; no executable recast was available in the local
+      text.
+    caveats:
+    - Detector-level assumptions are not encoded.
+    constraint_ids:
+    - con_relic_density_fast_expansion
+    - con_bbn_transition_temperature
+    - con_lhc_boosted_boson_met
+    derived_quantities:
+    - freeze-in yield
+    - Omega_chi h^2
+    - mixing angle
+    - heavy-state decay length
+    - boosted-boson event rate
+    description: Map non-standard freeze-in cosmology to prompt or displaced heavy-fermion collider signatures.
+    forward_model_chain:
+    - inputs:
+      - n
+      - T_r
+      notes: null
+      outputs:
+      - H(T)
+      step_id: hubble_history
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: pre-BBN fast-expansion parameterization in the primary paper
+    - inputs:
+      - H(T)
+      - m_chi1
+      - m_2
+      - y
+      notes: Implementation not provided in this output.
+      outputs:
+      - Omega_chi h^2
+      step_id: freeze_in_yield
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: feeble coupling with thermalized doublet-like states
+    - inputs:
+      - m_2
+      - decay length
+      - branching fractions
+      - luminosity
+      notes: null
+      outputs:
+      - boosted-boson plus MET reach
+      step_id: collider_recast
+      step_type: recasting
+      tool_or_code: jet-substructure MVA described in the primary paper
+      validity: benchmark dependent
+    id: route_fast_expansion_to_lhc
+    input_parameters:
+    - m_chi1
+    - m_2
+    - y
+    - n
+    - T_r
+    - branching fractions
+    likelihoods: []
+    observable_ids:
+    - obs_boosted_boson_met
+    - obs_displaced_vertex_contrast
+    required_code_resources:
+    - Boltzmann freeze-in calculator
+    - collider event generation and MVA/recast pipeline
+    route_status: planned
+    source_model_features:
+    - Z2-stabilized singlet-doublet fermion sector
+    - fast pre-BBN expansion
+    - freeze-in production from thermalized doublet states
+    validation_tests:
+    - Reproduce relic-density contours and quoted LHC mass reach for the paper benchmarks.
+  - agent_notes: Primary text motivates this route but does not provide enough details for a structured
+      exclusion.
+    caveats:
+    - Thermal-WDM bounds are not directly interchangeable with freeze-in spectra.
+    constraint_ids:
+    - con_warm_dm_lyman_alpha_context
+    derived_quantities:
+    - f_chi1(p)
+    - free-streaming scale
+    - linear transfer function
+    description: Translate frozen-in keV dark matter into small-scale power suppression.
+    forward_model_chain:
+    - inputs:
+      - decay and scattering source terms
+      notes: null
+      outputs:
+      - f_chi1(p)
+      step_id: distribution
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: requires distribution-level freeze-in calculation
+    - inputs:
+      - f_chi1(p)
+      notes: null
+      outputs:
+      - small-scale matter transfer function
+      step_id: transfer
+      step_type: transfer_function
+      tool_or_code: null
+      validity: requires cosmological perturbation treatment
+    id: route_warm_phase_space_to_lss
+    input_parameters:
+    - m_chi1
+    - production channels
+    - H(T)
+    likelihoods: []
+    observable_ids:
+    - obs_warm_dm_small_scale_suppression
+    required_code_resources:
+    - phase-space distribution solver
+    - Boltzmann transfer code
+    route_status: planned
+    source_model_features:
+    - nonthermal freeze-in momentum distribution
+    - keV-scale mostly singlet fermion
+    validation_tests:
+    - Check that nonthermal mapping reproduces any published warm-DM bounds before applying Lyman-alpha
+      constraints.

@@ -1,0 +1,767 @@
+_source:
+  shard: arXiv_src_2108_008_wds.tar
+  paper_id: '2108_01340'
+  source_member: 2108_01340.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: w1
+    mitigation: Keep the scalar-Gauss-Bonnet fixed-point condition attached to the model.
+    severity: medium
+    source_reference_ids: []
+    warning: Do not use this as a generic PBH model independent of its Gauss-Bonnet-inflation production
+      mechanism.
+  - category: extrapolation
+    id: w2
+    mitigation: Avoid extrapolating the quoted f_PBH values outside the benchmark setup.
+    severity: high
+    source_reference_ids: []
+    warning: PBH abundance is highly sensitive to collapse threshold, mass-function assumptions, and benchmark
+      parameters.
+associated_code:
+  caveats: []
+  code_summary: The paper describes numerical solutions for background and perturbation equations, but
+    no associated public model code is identified in the extracted text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+  supported_observable_channels: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The scalar potential is the natural-inflation potential and the Gauss-Bonnet coupling
+      is a smeared step function.
+    id: a1
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Large curvature perturbations collapse into PBHs at horizon reentry using the stated
+      threshold and collapse fraction.
+    id: a2
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The computed PBH mass function can be compared to the cold dark matter abundance using
+      the standard M(k) mapping.
+    id: a3
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: inferred
+benchmarks:
+  points:
+  - description: Benchmark parameter set whose PBHs account for the total dark matter relic density.
+    id: set_1
+    parameter_values:
+      f_PBH_tot: '1'
+    purpose:
+    - full_dark_matter_abundance
+    - induced_gravitational_wave_signal
+    status: unknown
+  - description: Benchmark parameter set whose PBHs form a subcomponent of dark matter.
+    id: set_2
+    parameter_values:
+      f_PBH_tot: '0.087'
+    purpose:
+    - subcomponent_dark_matter_abundance
+    - induced_gravitational_wave_signal
+    status: unknown
+  regimes:
+  - ultra-slow-roll near Gauss-Bonnet fixed point
+  - PBH formation at horizon reentry
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: high
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - Gauss-Bonnet corrected inflation
+  - ultra-slow-roll near a nontrivial fixed point
+  - PBH formation at horizon reentry
+  - scalar-induced second-order gravitational waves
+  phase_transitions: []
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - Gauss-Bonnet PBH dark matter
+  - PBHs from Gauss-Bonnet-corrected natural inflation
+  family: primordial_black_holes
+  historical_origin_or_motivation: Motivated by generating PBH dark matter without the usual fine-tuned
+    inflection point, using higher-curvature Gauss-Bonnet corrections expected from effective gravity.
+  model_kind: phenomenological_parameterization
+  name: Gauss-Bonnet-corrected single-field-inflation primordial black hole dark matter
+  short_description: A primordial-black-hole dark matter model where a scalar inflaton coupled to the
+    Gauss-Bonnet term reaches an ultra-slow-roll regime near a nontrivial fixed point, enhancing curvature
+    perturbations that collapse into PBHs.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: unknown
+  dark_sector_couplings:
+  - inflaton coupling to Gauss-Bonnet curvature term
+  decay_channels: []
+  flavor_structure: not_applicable
+  interaction_operators:
+  - xi(phi) R_GB^2 / 16
+  - natural-inflation scalar potential
+  mediator_types:
+  - gravity
+  portals:
+  - gravitational
+  scattering:
+    elastic: not_applicable
+    inelastic: not_applicable
+    momentum_dependence: not_applicable
+    spin_dependence: not_applicable
+    velocity_dependence: not_applicable
+  self_scattering_channels:
+  - gravitational interactions between PBHs
+  standard_model_targets: []
+  tree_or_loop_level: not_applicable
+model_id: 2108_01340_gauss_bonnet_pbh_dark_matter_v1
+parameters:
+  core:
+  - description: Natural-inflation potential scale parameter.
+    name: inflaton decay constant
+    range: benchmark-dependent; table values not preserved in extracted text
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: f
+    unit: GeV
+  - description: Scale in the natural-inflation potential.
+    name: inflation potential scale
+    range: fixed by A_s in the text; energy scale about 1.46-1.58 x 10^16 GeV for PBH-seeding modes
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: Lambda
+    unit: GeV
+  - description: Controls the magnitude of the enhanced curvature-power peak.
+    name: Gauss-Bonnet coupling amplitude
+    range: chosen near the nontrivial fixed-point value
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: xi_0
+    unit: null
+  - description: Controls the width of the curvature-power peak.
+    name: Gauss-Bonnet step width
+    range: benchmark-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: xi_1
+    unit: null
+  - description: Controls the peak position and therefore PBH mass scale.
+    name: Gauss-Bonnet step location
+    range: chosen near the nontrivial fixed point
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: phi_c
+    unit: GeV
+  - description: Density threshold used for PBH abundance calculation.
+    name: collapse threshold
+    role: computational
+    source_reference_ids: []
+    status: assumed
+    symbol: delta_c
+    unit: null
+    value: 1/3
+  - description: Fraction of horizon mass forming PBHs.
+    name: horizon-mass collapse fraction
+    role: computational
+    source_reference_ids: []
+    status: assumed
+    symbol: gamma
+    unit: null
+    value: '0.2'
+  derived:
+  - description: First benchmark accounts for all dark matter.
+    name: total PBH fraction set 1
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: f_PBH_tot
+    unit: null
+    value: '1'
+  - description: Second benchmark yields a subcomponent.
+    name: total PBH fraction set 2
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: f_PBH_tot
+    unit: null
+    value: '0.087'
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - inflaton scalar field
+  dark_matter_candidate:
+    elementary_or_composite: macroscopic
+    name: primordial black holes formed from enhanced curvature perturbations
+    number_of_components: single_component
+    spin: not_applicable
+    statistics: black_hole
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - gravity
+  - Gauss-Bonnet curvature coupling
+  standard_model_extension: none
+  unstable_parent_particles:
+  - large primordial curvature perturbations
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: not_applicable
+  distribution_type: not_applicable
+  f_of_p_or_q: PBHs are macroscopic compact objects; no particle phase-space distribution is provided.
+  free_streaming_length: null
+  notes: The relevant distribution is a PBH mass function rather than a particle momentum distribution.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - curvature power spectrum peak
+  - phi_c
+  - xi_0
+  - xi_1
+  - collapse threshold delta_c
+  - collapse fraction gamma
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - inflationary enhancement of curvature perturbations
+  - horizon reentry and gravitational collapse
+  - primordial black hole formation
+  nonthermal_momentum_distribution: 'yes'
+  notes: The PBH abundance is computed from the enhanced curvature spectrum; benchmark set 1 gives f_PBH_tot
+    about 1 and set 2 gives about 0.087.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The paper computes PBH abundance from inflationary perturbations and second-order gravitational
+        waves sourced by the same perturbations.
+      page: null
+      reference_id: '2108_01340'
+      section: PBH and induced gravitational waves
+    interactions:
+    - confidence: high
+      note: The inflaton couples to the Gauss-Bonnet curvature term through a field-dependent coupling
+        function.
+      page: null
+      reference_id: '2108_01340'
+      section: Benchmark model
+    parameter_ranges:
+    - confidence: medium
+      note: Two benchmark parameter sets are used; the text reports f_PBH_tot near 1 and 0.087 and inflationary
+        scales around 1.46-1.58 x 10^16 GeV.
+      page: null
+      reference_id: '2108_01340'
+      section: Benchmark results
+    particle_content:
+    - confidence: high
+      note: PBHs formed from enhanced curvature perturbations are the dark matter candidate.
+      page: null
+      reference_id: '2108_01340'
+      section: Introduction
+    production_mechanism:
+    - confidence: high
+      note: Ultra-slow-roll near a nontrivial fixed point enhances curvature perturbations; reentry of
+        those modes forms PBHs.
+      page: null
+      reference_id: '2108_01340'
+      section: Model and PBH production
+    symmetries:
+    - confidence: medium
+      note: The model is gravitational and uses diffeomorphism-invariant scalar-Gauss-Bonnet dynamics
+        rather than a stabilizing particle symmetry.
+      page: null
+      reference_id: '2108_01340'
+      section: Model action
+    validity_domain:
+    - confidence: high
+      note: The mechanism is tied to the balance between the scalar potential and Gauss-Bonnet coupling
+        near the nontrivial fixed point.
+      page: null
+      reference_id: '2108_01340'
+      section: Summary
+    constraints:
+    - confidence: high
+      note: Primary paper overlays the benchmark PBH mass functions with current constraints and future
+        GW sensitivities.
+      page: null
+      reference_id: src_primary
+      section: null
+    - confidence: medium
+      note: LISA candidate record provides future detector context for the gravitational-wave comparison.
+      page: null
+      reference_id: src_lisa
+      section: null
+    observables:
+    - confidence: high
+      note: Primary paper states the f_PBH benchmark totals and second-order gravitational-wave sourcing.
+      page: null
+      reference_id: src_primary
+      section: PBH abundance / gravitational waves
+    - confidence: medium
+      note: Related PBH review was read through arXiv fallback for the mass-dependent constraint context.
+      page: null
+      reference_id: src_pbh_constraints
+      section: null
+    routes:
+    - confidence: high
+      note: Primary paper describes the chain from Gauss-Bonnet inflation to enhanced curvature perturbations,
+        PBHs, and induced GWs.
+      page: null
+      reference_id: src_primary
+      section: null
+  extraction:
+    confidence: high
+    extracted_by: codex_dark_matter_batch_worker
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper proposes PBH production from a scalar field coupled to the Gauss-Bonnet
+        term.
+      reference_id: '2108_01340'
+      section: Opening summary
+    - page: null
+      quote_or_summary: The action includes an inflaton potential and field-dependent Gauss-Bonnet coupling;
+        two benchmark parameter sets are studied.
+      reference_id: '2108_01340'
+      section: Benchmark model
+    - page: null
+      quote_or_summary: Set 1 gives f_PBH_tot near 1; set 2 gives f_PBH_tot about 0.087.
+      reference_id: '2108_01340'
+      section: PBH abundance
+    unresolved_items:
+    - Full numerical benchmark table values beyond f_PBH^tot were not promoted because the extracted text
+      did not preserve the table reliably.
+  last_updated: '2026-05-31'
+  model_family: primordial_black_holes
+  model_id: 2108_01340_gauss_bonnet_pbh_dark_matter_v1
+  model_name: Gauss-Bonnet-corrected single-field-inflation primordial black hole dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2108.01340'
+      authors:
+      - Shinsuke Kawai
+      - Jinsu Kim
+      doi: null
+      notes: Source text taken from the assigned run SQLite database only.
+      reference_id: '2108_01340'
+      role: original_model
+      title: Primordial blackholes from Gauss-Bonnet-corrected single field inflation
+      url: null
+      year: 2021
+    - arxiv_id: '2108.01340'
+      authors:
+      - Shinsuke Kawai
+      - Jinsu Kim
+      doi: 10.1103/PhysRevD.104.083545
+      notes: Primary paper text read locally from completed_dark_matter_target.
+      reference_id: src_primary
+      role: original_model
+      title: Primordial black holes from Gauss-Bonnet-corrected single field inflation
+      url: https://arxiv.org/abs/2108.01340
+      year: 2021
+    constraint_papers:
+    - arxiv_id: '2002.12778'
+      authors:
+      - Bernard Carr
+      - Kazunori Kohri
+      - Yuuiti Sendouda
+      - Junichi Yokoyama
+      doi: 10.1088/1361-6633/ac1e31
+      notes: arXiv fallback abstract page read for PBH constraint context.
+      reference_id: src_pbh_constraints
+      role: review
+      title: Constraints on primordial black holes
+      url: https://arxiv.org/abs/2002.12778
+      year: 2021
+    - arxiv_id: '1702.00786'
+      authors:
+      - Pau Amaro-Seoane
+      - Heather Audley
+      doi: null
+      notes: arXiv fallback abstract page read for future-space-interferometer context.
+      reference_id: src_lisa
+      role: dataset
+      title: Laser Interferometer Space Antenna
+      url: https://arxiv.org/abs/1702.00786
+      year: 2017
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1807.06211'
+      authors:
+      - Planck Collaboration
+      - Y. Akrami
+      doi: 10.1051/0004-6361/201833887
+      notes: arXiv fallback abstract page read for inflationary CMB context.
+      reference_id: src_planck_inflation
+      role: constraint
+      title: Planck 2018 results. X. Constraints on inflation
+      url: https://arxiv.org/abs/1807.06211
+      year: 2020
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: either
+  key_dependencies:
+  - curvature power spectrum
+  - PBH mass-scale mapping M(k)
+  - delta_c
+  - gamma
+  - benchmark Gauss-Bonnet coupling parameters
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    description: Total present PBH fraction relative to cold dark matter.
+    name: PBH dark matter fraction
+    range: 1 for benchmark set 1; 0.087 for benchmark set 2
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: f_PBH_tot
+    unit: null
+  tuning_assessment: mild_tuning
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - benchmark parameter dependence
+  - PBH abundance sensitivity to threshold and non-Gaussianity
+  - lack of extracted table values for the benchmark parameters
+  notes: The construction and PBH abundance logic are explicit, but the model is benchmark-driven and
+    abundance estimates depend on collapse assumptions.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: unknown
+    thermal_wdm_mapping:
+      available: false
+      validity: not_applicable
+      warning: PBHs are compact-object dark matter, not thermal warm dark matter.
+    transfer_function_shape: unknown
+  nonlinear:
+    concentration_mass_relation_effect: unknown
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: PBH discreteness and mass-function effects are not analyzed in the extracted
+      text
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: PBH discreteness and mass-function effects are not analyzed in the extracted
+      text
+    subhalo_mass_function_effect: PBH discreteness and mass-function effects are not analyzed in the extracted
+      text
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+symmetries:
+  stabilizing_mechanism: PBHs are stable on cosmological timescales in the mass ranges considered; stability
+    is gravitational rather than a particle symmetry.
+  symmetries:
+  - breaking: not_applicable
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: diffeomorphism invariance
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: 'yes'
+  notes: The paper writes an action with Einstein gravity, an inflaton potential, and a field-dependent
+    Gauss-Bonnet coupling function modeled as a smeared step.
+  parent_frameworks:
+  - single-field inflation
+  - Gauss-Bonnet corrected gravity
+  - natural inflation
+  - primordial black hole dark matter
+  renormalizable: not_applicable
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: PBH production relies on a balance between the scalar potential term and the Gauss-Bonnet
+    coupling term near a nontrivial fixed point.
+  extrapolation_risk: medium
+  id: fixed_point_balance
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: parameter
+  caveats: []
+  condition: The PBH mass scale and abundance depend on the chosen benchmark parameters, especially phi_c,
+    xi_0, and xi_1.
+  extrapolation_risk: medium
+  id: benchmark_dependence
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: The abundance calculation uses a Gaussian window and threshold delta_c = 1/3 with gamma =
+    0.2.
+  extrapolation_risk: high
+  id: gaussian_abundance_estimate
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+observables:
+- caveats:
+  - PBH abundance is very sensitive to collapse threshold and mass-function assumptions.
+  channel: black_holes
+  effect_direction: enhancement
+  environments: []
+  id: pbh_mass_function
+  key_quantities:
+  - name: total PBH dark-matter fraction
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: f_PBH^tot
+    value: 1 or 0.087
+  - name: PBH mass-scale mapping
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: approximate
+    symbol: M(k)
+    unit: solar_mass
+    value: 4.64e15 Msun * (g*/106.75)^(-1/6) * (k/k*)^-2
+  linked_constraints:
+  - pbh_abundance_constraints
+  linked_routes:
+  - route_curvature_to_pbh_and_gw
+  name: PBH mass function and dark-matter fraction
+  notes: Benchmark totals are from the primary paper; broad PBH limits require updated mass-window recasts.
+  observability: medium
+  predicted_effect: Enhanced small-scale curvature perturbations near the Gauss-Bonnet fixed-point regime
+    seed PBHs; the paper reports benchmark totals f_PBH^tot = 1 and f_PBH^tot = 0.087.
+  redshift_range: radiation era horizon re-entry
+  relevance: critical
+  scale_range: small-scale modes enhanced after CMB pivot; mass scale from M(k)
+  source_reference_ids:
+  - src_primary
+  - src_pbh_constraints
+  subchannel: primordial-black-hole abundance
+- caveats:
+  - Gauge choices and nonlinear scalar sourcing are part of the theoretical systematics.
+  channel: gravitational_waves
+  effect_direction: enhancement
+  environments: []
+  id: scalar_induced_gw_background
+  key_quantities:
+  - name: present gravitational-wave density
+    role: derived
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    symbol: Omega_GW,0
+  - name: detector targets
+    role: experimental
+    source_reference_ids:
+    - src_primary
+    status: inferred
+    value: LISA, DECIGO, BBO
+  linked_constraints:
+  - future_gw_sensitivity
+  linked_routes:
+  - route_curvature_to_pbh_and_gw
+  name: Second-order scalar-induced stochastic gravitational waves
+  notes: null
+  observability: medium
+  predicted_effect: The enhanced scalar power that produces PBHs also sources a stochastic tensor background
+    at second order, to be compared with future gravitational-wave sensitivities.
+  redshift_range: post-inflation radiation era source, observed today
+  relevance: high
+  scale_range: frequency set by PBH-producing scalar modes
+  source_reference_ids:
+  - src_primary
+  - src_lisa
+  subchannel: LISA/DECIGO/BBO-band stochastic background
+constraints:
+- allowed_regions:
+  - Primary benchmark set 1 is presented as all PBH dark matter; set 2 as a subcomponent with f_PBH^tot
+    = 0.087.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Set 1 is viable only where the computed mass function evades the current PBH bound compilation used
+    by the paper.
+  caveats:
+  - The exact bound curve is external to the model calculation and evolves with PBH constraint updates.
+  constrained_parameters:
+  - f_PBH
+  - M_PBH
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions:
+  - Mass-dependent PBH windows where existing evaporation, microlensing, dynamical, CMB, and accretion
+    limits exceed the model mass function.
+  id: pbh_abundance_constraints
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Current PBH abundance constraints by mass window
+  notes: null
+  observable_channel: black_holes
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_primary
+  - src_pbh_constraints
+- allowed_regions:
+  - Signals may be detectable in projected future interferometer bands for the benchmark-induced spectra.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - A nondetection would constrain the same scalar-power enhancement responsible for PBHs.
+  caveats:
+  - Future sensitivity curves are not likelihoods and need detector-specific forecasts.
+  constrained_parameters:
+  - Omega_GW
+  - peak frequency
+  constraint_type: astrophysical
+  data_release: null
+  excluded_regions: []
+  id: future_gw_sensitivity
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Future stochastic gravitational-wave sensitivity comparison
+  notes: null
+  observable_channel: gravitational_waves
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_primary
+  - src_lisa
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Primary paper gives the full physics chain but not a public reusable likelihood.
+    caveats:
+    - Do not detach the PBH prediction from the Gauss-Bonnet inflation mechanism.
+    constraint_ids:
+    - pbh_abundance_constraints
+    - future_gw_sensitivity
+    derived_quantities:
+    - curvature power spectrum
+    - collapse fraction beta(M)
+    - PBH mass function f_PBH(M)
+    - Omega_GW(f)
+    description: Map the Gauss-Bonnet-corrected inflationary background to PBH abundance and scalar-induced
+      gravitational waves.
+    forward_model_chain:
+    - inputs:
+      - background solution
+      - Gauss-Bonnet coupling
+      notes: The fixed-point regime drives the small-scale enhancement.
+      outputs:
+      - curvature power spectrum
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: inflation perturbation equations
+      validity: model-specific; primary paper solves numerically
+    - inputs:
+      - curvature power spectrum
+      - collapse threshold
+      notes: null
+      outputs:
+      - beta(M)
+      - f_PBH(M)
+      step_id: s2
+      step_type: semi_analytic_model
+      tool_or_code: PBH collapse mapping
+      validity: sensitive to threshold and mass-function choices
+    - inputs:
+      - curvature power spectrum
+      notes: null
+      outputs:
+      - Omega_GW(f)
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: second-order scalar-induced GW integral
+      validity: standard radiation-era approximation with gauge caveats
+    - inputs:
+      - f_PBH(M)
+      - Omega_GW(f)
+      notes: null
+      outputs:
+      - allowed benchmark regions
+      step_id: s4
+      step_type: recasting
+      tool_or_code: PBH and GW sensitivity overlays
+      validity: requires current external constraints
+    id: route_curvature_to_pbh_and_gw
+    input_parameters:
+    - Gauss-Bonnet coupling function
+    - inflation potential parameters
+    - collapse threshold
+    - radiation-era degrees of freedom
+    likelihoods: []
+    observable_ids:
+    - pbh_mass_function
+    - scalar_induced_gw_background
+    required_code_resources: []
+    route_status: partially_implemented
+    source_model_features:
+    - single-field natural inflation
+    - scalar coupling to Gauss-Bonnet curvature
+    - near balance of potential and Gauss-Bonnet terms
+    - ultra-slow-roll enhancement
+    validation_tests:
+    - Reproduce f_PBH^tot = 1 and 0.087 benchmarks
+    - Check sensitivity to collapse threshold

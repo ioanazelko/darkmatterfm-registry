@@ -1,0 +1,814 @@
+_source:
+  shard: arXiv_src_1604_012_wds.tar
+  paper_id: '1604_04769'
+  source_member: 1604_04769.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: invalid_mapping
+    id: not_generic_mssm
+    mitigation: null
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: Do not treat this as the full MSSM neutralino parameter space; it is a narrow long-lived-stau
+      coannihilation and BBN scenario.
+  - category: assumption_mismatch
+    id: bbn_history_required
+    mitigation: Keep BBN relevance marked critical.
+    severity: high
+    source_reference_ids:
+    - primary
+    warning: Using the row without the nonstandard BBN history loses the defining physics of the paper.
+  - category: other
+    id: review_borderline
+    mitigation: null
+    severity: low
+    source_reference_ids:
+    - primary
+    warning: The paper partly reviews prior work; the accepted row is for its developed lithium-problem
+      variant and neutralino abundance treatment.
+associated_code:
+  code_summary: The paper describes numerical Boltzmann calculations and refers to details elsewhere,
+    but no code resource is identified in the assigned text.
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: unknown
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: R parity is conserved so the lightest neutralino is stable.
+    id: r_parity_conserved
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The LSP is bino-like and functions as WIMP dark matter.
+    id: bino_like_lsp
+    impact_if_violated: null
+    notes: null
+    scope: particle_content
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The stau is the NLSP and nearly mass-degenerate with the neutralino.
+    id: stau_nlsp_degenerate
+    impact_if_violated: null
+    notes: null
+    scope: production
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The main analysis assumes exact tau number conservation; a tiny lepton-flavor-violating
+      variant is discussed separately.
+    id: exact_tau_number_main_case
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Stau-nucleus bound-state reactions are included in the BBN history.
+    id: nonstandard_bbn_reactions
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: critical
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - long-lived charged stau survives into BBN
+  - stau-nucleus bound states
+  - internal conversion of Be-7 and Li-7
+  - He-4 spallation and catalyzed fusion reactions
+  phase_transitions: []
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - small-mass-difference stau-neutralino scenario
+  - long-lived stau BBN neutralino DM
+  family: supersymmetric_neutralino_dark_matter
+  historical_origin_or_motivation: The paper reviews and develops a non-standard BBN solution to lithium
+    abundance discrepancies while fitting neutralino dark matter abundance.
+  model_kind: phenomenological_parameterization
+  name: Long-lived stau coannihilation neutralino dark matter scenario
+  short_description: A minimal supersymmetric scenario with a bino-like neutralino LSP dark matter candidate
+    and a nearly degenerate long-lived stau NLSP whose BBN-era bound states alter lithium abundances.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - stau-stau annihilation
+  - stau-neutralino annihilation
+  - stau anti-stau to W+ W-
+  - neutralino-stau to W nu
+  - stau anti-stau to t tbar through heavy Higgses
+  cp_structure: CP phase in stau mixing is included in the effective coupling notation but not central
+    to the scenario.
+  dark_sector_couplings:
+  - neutralino-stau-tau effective coupling
+  - stau-nucleus bound-state weak conversion processes
+  - stau-neutralino coannihilation channels
+  decay_channels:
+  - stau to neutralino plus multi-body tau/neutrino final states when two-body tau decay is closed
+  - optional slepton decay to neutralino plus electron for tiny lepton flavor violation
+  flavor_structure: Main scenario assumes exact tau number conservation; an optional tiny selectron admixture
+    c_e is discussed.
+  interaction_operators:
+  - stau* chi_1^0 (g_L P_L + g_R P_R) tau
+  - Fermi weak current terms for bound-state nuclear conversion
+  mediator_types:
+  - stau
+  - electroweak gauge bosons
+  - heavy Higgs bosons
+  - weak charged current
+  portals:
+  - vector
+  - other
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - tau leptons
+  - W bosons
+  - heavy Higgs sector
+  - light nuclei during BBN
+  tree_or_loop_level: tree
+model_id: 1604_04769_long_lived_stau_coannihilation_neutralino_dm_v1
+parameters:
+  core:
+  - description: Mass of the bino-like neutralino LSP.
+    name: neutralino mass
+    notes: null
+    range: order 100 GeV stated; stau-abundance plots use related masses around 300 to 400 GeV
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_chi1_0
+    unit: GeV
+    value: null
+  - description: Mass of the long-lived stau NLSP.
+    name: stau mass
+    notes: null
+    range: examples 300, 350, and 400 GeV in number-density plots
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: m_stau
+    unit: GeV
+    value: null
+  - description: m_stau - m_chi1_0; controls stau lifetime and BBN reaction rates.
+    name: stau-neutralino mass difference
+    notes: null
+    range: less than tau mass for long lifetime; narrow lithium-compatible window in the main scenario
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: Delta m
+    unit: GeV
+    value: null
+  - description: Mixing angle between left- and right-handed stau components.
+    name: stau left-right mixing angle
+    notes: null
+    range: model-dependent; right-handed component should be significant for spallation-rate estimates
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: theta_tau
+    unit: null
+    value: null
+  - description: CP-violating phase in stau mixing.
+    name: stau CP phase
+    notes: null
+    range: not central in the paper examples
+    role: core
+    source_reference_ids: []
+    status: unknown
+    symbol: phi_tau
+    unit: null
+    value: null
+  - description: Optional lepton-flavor-violating mixing parameter in the variant discussed before conclusion.
+    name: tiny selectron admixture
+    notes: null
+    range: order 1e-10 for the stau to remain long-lived
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: c_e
+    unit: null
+    value: null
+particle_content:
+  additional_dark_sector_particles:
+  - long-lived stau NLSP
+  - left- and right-handed stau components
+  - possible tiny selectron admixture in the lepton-flavor-violating variant
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: bino-like lightest neutralino chi_1^0
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - nearly mass-degenerate stau NLSP
+  - left-handed sneutrino in part of the parameter discussion
+  long_lived_particles:
+  - stau NLSP
+  mediators:
+  - stau
+  - electroweak gauge bosons
+  - heavy Higgs bosons
+  - weak hadronic current in stau-nucleus bound states
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - stau NLSP decaying to neutralino during or around BBN
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: decay_produced
+  f_of_p_or_q: not specified
+  free_streaming_length: null
+  notes: The assigned text does not provide a phase-space distribution for neutralinos from stau decay.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - stau-neutralino mass degeneracy
+  - stau-stau and stau-neutralino coannihilation
+  - number density of stau plus neutralino before BBN
+  - stau decay into neutralino
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal coannihilation
+  - late stau decay into neutralino LSP during BBN-era cosmology
+  nonthermal_momentum_distribution: unknown
+  notes: The paper states that the neutralino LSP is the dark matter and that most neutralinos are produced
+    via long-lived stau decays during BBN, while the total pre-BBN stau-plus-neutralino abundance must
+    match the observed dark matter density.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The scenario requires stau bound states during BBN, internal conversion of Be-7/Li-7, and
+        He-4 spallation/catalyzed fusion effects.
+      page: null
+      reference_id: primary
+      section: BBN reactions
+    interactions:
+    - confidence: high
+      note: The text writes the neutralino-stau-tau effective coupling and weak current terms used in
+        stau-nucleus bound-state reactions.
+      page: null
+      reference_id: primary
+      section: Interactions
+    parameter_ranges:
+    - confidence: high
+      note: The mass difference must be below the tau mass for long stau lifetime; examples include stau
+        masses 300, 350, and 400 GeV and c_e of order 1e-10 in the LFV variant.
+      page: null
+      reference_id: primary
+      section: Long-lived stau and summary
+    particle_content:
+    - confidence: high
+      note: The paper specifies a bino-like neutralino LSP as WIMP dark matter and a nearly degenerate
+        long-lived stau NLSP.
+      page: null
+      reference_id: primary
+      section: Long-lived stau
+    production_mechanism:
+    - confidence: high
+      note: Coannihilation yields the observed neutralino relic abundance and long-lived stau decays produce
+        most neutralinos during BBN.
+      page: null
+      reference_id: primary
+      section: Long-lived stau and stau number density
+    symmetries:
+    - confidence: high
+      note: R-parity conservation makes the neutralino stable; exact tau number is assumed in the main
+        scenario.
+      page: null
+      reference_id: primary
+      section: Long-lived stau
+    validity_domain:
+    - confidence: high
+      note: The allowed parameter region is narrow in the exact tau-number case because the stau must
+        live long enough to affect Li-7 but not overproduce light elements.
+      page: null
+      reference_id: primary
+      section: Summary
+    constraints:
+    - confidence: high
+      note: Primary text quotes the Li7 discrepancy and describes D/T overproduction as a strict parameter-space
+        constraint.
+      page: null
+      reference_id: arxiv:1604.04769
+      section: Introduction
+    - confidence: medium
+      note: Related local text treats catalyzed BBN implications in supersymmetric scenarios with dark
+        matter.
+      page: null
+      reference_id: arxiv:0710.2213
+      section: CBBN discussion
+    observables:
+    - confidence: high
+      note: Primary text says long-lived stau bound states accelerate Be7/Li7 destruction and enhance
+        Li6, D, and T production.
+      page: null
+      reference_id: arxiv:1604.04769
+      section: Abstract/Introduction
+    - confidence: medium
+      note: Related local text studies catalyzed BBN with long-lived negatively charged massive particles.
+      page: null
+      reference_id: arxiv:1001.1410
+      section: Abstract/Introduction
+    routes:
+    - confidence: high
+      note: Primary paper links compressed stau-neutralino coannihilation, long stau lifetime, CBBN reactions,
+        and neutralino relic density.
+      page: null
+      reference_id: arxiv:1604.04769
+      section: Model and numerical discussion
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0005
+    extraction_date: '2026-05-31'
+    extractor_name: Codex dark-matter model-card worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper reviews a non-standard BBN scenario in the MSSM and proposes an idea
+        to solve both Li-7 and Li-6 problems while fitting neutralino dark matter.
+      reference_id: primary
+      section: Abstract and introduction
+    - page: null
+      quote_or_summary: A bino-like neutralino WIMP with a nearly degenerate stau NLSP gives the observed
+        relic abundance through coannihilation.
+      reference_id: primary
+      section: Long-lived stau
+    - page: null
+      quote_or_summary: The neutralino LSP is the dark matter; most neutralinos are produced via decays
+        of long-lived staus during BBN.
+      reference_id: primary
+      section: Stau number density
+    unresolved_items:
+    - The paper is partly a review of an existing scenario, so this row records the paper-specific developed
+      long-lived-stau variant rather than claiming the MSSM neutralino model was first introduced here.
+    - Structure-formation implications are not discussed.
+    - No nonstandard BBN network was rerun in this batch.
+    - The Li6 abundance problem is noted by the source as controversial, so Li6 claims are treated as
+      conditional.
+  last_updated: '2026-05-31'
+  model_family: supersymmetric_neutralino_dark_matter
+  model_id: 1604_04769_long_lived_stau_coannihilation_neutralino_dm_v1
+  model_name: Long-lived stau coannihilation neutralino dark matter scenario
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1604.04769'
+      authors:
+      - Joe Sato
+      - Takashi Shimomura
+      - Masato Yamanaka
+      doi: null
+      notes: Only the assigned SQLite full text was used.
+      reference_id: primary
+      role: extension
+      title: A Solution to Lithium Problem by Long-Lived Stau
+      url: null
+      year: 2016
+    - arxiv_id: '1604.04769'
+      authors:
+      - Sato, Joe
+      - Shimomura, Takashi
+      - Yamanaka, Masato
+      doi: 10.1142/S0218301317410051
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1604.04769
+      role: original_model
+      title: A solution to lithium problem by long-lived stau
+      url: https://arxiv.org/abs/1604.04769
+      year: 2017
+    constraint_papers:
+    - arxiv_id: '0710.2213'
+      authors:
+      - Pradler, Josef
+      - Steffen, Frank Daniel
+      doi: 10.1016/j.physletb.2008.07.050
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:0710.2213
+      role: constraint
+      title: Implications of catalyzed BBN in the CMSSM with gravitino dark matter
+      url: https://arxiv.org/abs/0710.2213
+      year: 2008
+    - arxiv_id: '1001.1410'
+      authors:
+      - Kusakabe, Motohiko
+      - Kajino, Toshitaka
+      - Yoshida, Takashi
+      - Mathews, Grant J.
+      doi: 10.1103/PhysRevD.81.083521
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1001.1410
+      role: constraint
+      title: New results on catalyzed big bang nucleosynthesis with a long-lived negatively charged massive
+        particle
+      url: https://arxiv.org/abs/1001.1410
+      year: 2010
+    - arxiv_id: '0804.3745'
+      authors:
+      - Kawasaki, Masahiro
+      - Kohri, Kazunori
+      - Moroi, Takeo
+      - Yotsuyanagi, Akira
+      doi: 10.1103/PhysRevD.78.065011
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:0804.3745
+      role: constraint
+      title: Big-bang nucleosynthesis and gravitinos
+      url: https://arxiv.org/abs/0804.3745
+      year: 2008
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: mixed
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - Delta m
+  - stau left-right mixing
+  - coannihilation rates
+  - stau lifetime
+  - BBN reaction network
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    description: WMAP abundance band used for the stau plus neutralino system.
+    name: observed neutralino abundance target
+    notes: null
+    range: 0.0913 to 0.1285 at 3 sigma; 0.0963 to 0.1213 at 2 sigma
+    role: cosmological
+    source_reference_ids: []
+    status: established
+    symbol: Omega_DM h^2
+    unit: null
+    value: null
+  tuning_assessment: tuned
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - narrow stau-neutralino mass-difference window
+  - BBN nuclear reaction modeling
+  - dependence on exact tau-number or tiny lepton-flavor violation assumptions
+  notes: Accepted as a substantive paper-specific stau-neutralino dark-matter scenario, not as a new generic
+    neutralino model.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    half_mode_mass: null
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: R-parity conservation makes the lightest neutralino stable; near-degenerate stau
+    is long-lived because two-body decay is kinematically closed.
+  symmetries:
+  - breaking: unbroken in the scenario
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: R parity
+    type: discrete
+  - breaking: main scenario assumes exact tau number; an optional tiny lepton-flavor-violating variant
+      is discussed
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: tau flavor conservation
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The underlying framework is the MSSM, but the paper focuses on a narrow stau-neutralino mass-degenerate
+    scenario and effective BBN reactions.
+  parent_frameworks:
+  - minimal supersymmetric standard model
+  - R-parity conserving neutralino dark matter
+  - coannihilation scenario with stau NLSP
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: R-parity conserving MSSM with a bino-like neutralino LSP and stau NLSP.
+  extrapolation_risk: medium
+  id: r_parity_mssm
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: parameter
+  caveats:
+  - The paper emphasizes a narrow allowed region in the exact tau-number scenario.
+  condition: The stau-neutralino mass difference must be small, especially below the tau mass, so the
+    stau is long-lived and coannihilation yields the relic abundance.
+  extrapolation_risk: medium
+  id: small_mass_difference
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: cosmological_history
+  caveats:
+  - Optional tiny lepton flavor violation changes the viable mass-difference window.
+  condition: Stau lifetime and abundance must allow Be-7/Li-7 destruction without excessive He-4 spallation
+    products.
+  extrapolation_risk: medium
+  id: bbn_bound_state_window
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+observables:
+- caveats:
+  - Astrophysical depletion of lithium is an external systematic.
+  channel: cosmology
+  effect_direction: suppression
+  environments:
+  - primordial plasma
+  - metal-poor-star abundance inference
+  id: obs_stau_catalyzed_li7_reduction
+  key_quantities:
+  - description: Lifetime must overlap the BBN epoch for bound-state reactions.
+    name: stau lifetime
+    range: BBN epoch roughly 1-1000 s; source requires long-lived stau
+    role: core
+    source_reference_ids:
+    - arxiv:1604.04769
+    status: inferred
+    symbol: tau_stau
+    unit: s
+  - description: Observed and standard-BBN abundance tension motivating the model.
+    name: Li7/H abundance
+    range: observed about (1-2)e-10; SBBN about (5.24 +/- 0.7)e-10 in the primary text
+    role: core
+    source_reference_ids:
+    - arxiv:1604.04769
+    status: inferred
+    symbol: Li7/H
+  linked_constraints:
+  - con_cbbn_light_element_window
+  linked_routes:
+  - route_stau_cbbn_neutralino
+  name: Stau-catalyzed Be7/Li7 destruction during BBN
+  notes: null
+  observability: medium
+  predicted_effect: A long-lived negatively charged stau forms bound states with nuclei and enables internal
+    conversion processes that accelerate Be7 and Li7 destruction, reducing the primordial Li7 abundance
+    relative to standard BBN.
+  redshift_range: BBN epoch
+  relevance: critical
+  scale_range: primordial light-element abundances
+  source_reference_ids:
+  - arxiv:1604.04769
+  - arxiv:1001.1410
+  - arxiv:0710.2213
+  subchannel: catalyzed Big Bang nucleosynthesis
+- caveats:
+  - Li6 observational status is controversial in the primary text.
+  channel: cosmology
+  effect_direction: enhancement
+  environments:
+  - stau-nucleus bound states
+  id: obs_stau_helium_bound_state_li6_dt
+  key_quantities:
+  - description: Pre-BBN abundance of long-lived charged staus.
+    name: stau yield
+    role: core
+    source_reference_ids:
+    - arxiv:1604.04769
+    - arxiv:0710.2213
+    status: inferred
+    symbol: Y_stau
+  - description: Stau-neutralino mass difference controlling lifetime and coannihilation.
+    name: mass splitting
+    range: smaller than tau mass for two-body decay closure; primary notes percent-level degeneracy
+    role: core
+    source_reference_ids:
+    - arxiv:1604.04769
+    status: inferred
+    symbol: Delta m
+    unit: GeV
+  linked_constraints:
+  - con_cbbn_light_element_window
+  - con_stau_neutralino_degeneracy
+  linked_routes:
+  - route_stau_cbbn_neutralino
+  name: Stau-He4 bound-state production of Li6, D, and T
+  notes: null
+  observability: medium
+  predicted_effect: The stau-He4 bound state enhances production of n, D, T, and Li6; this may address
+    Li6 but can overproduce D and T, sharply restricting the parameter space.
+  redshift_range: BBN epoch
+  relevance: high
+  scale_range: primordial light-element abundances
+  source_reference_ids:
+  - arxiv:1604.04769
+  - arxiv:1001.1410
+  - arxiv:0804.3745
+  subchannel: catalyzed bound-state nuclear reactions
+constraints:
+- allowed_regions:
+  - The primary text states the long-lived stau scenario can fit light elements and neutralino dark matter
+    in a narrow parameter region.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Long-lived negatively charged staus survive long enough to form bound states during BBN.
+    id: charged-bound-state-cbbn-network
+    impact_if_violated: If staus decay too early or are too rare, catalyzed reactions cannot solve the
+      lithium problem.
+    notes: null
+    scope: CBBN abundance calculation
+    source_reference_ids:
+    - arxiv:1604.04769
+    - arxiv:1001.1410
+    status: assumed
+  benchmark_implications:
+  - The viable window fixes both stau and neutralino parameters with high sensitivity to CBBN rates.
+  caveats:
+  - Nuclear reaction rates and observational Li6 systematics remain uncertain.
+  constrained_parameters:
+  - tau_stau
+  - Y_stau
+  - Delta m
+  - m_stau
+  - m_neutralino
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Regions overproducing D or T, or failing to reduce Be7/Li7, are disfavored by light-element observations.
+  id: con_cbbn_light_element_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: CBBN light-element abundance window
+  notes: null
+  observable_channel: D, T, He3, He4, Li6, and Li7 abundances
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1604.04769
+  - arxiv:0710.2213
+  - arxiv:1001.1410
+  - arxiv:0804.3745
+- allowed_regions:
+  - The primary text requires near-degeneracy so the stau is long-lived and coannihilation can produce
+    the observed neutralino dark matter abundance.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The lightest neutralino is the dark matter LSP and the stau is the next-to-lightest superpartner.
+    id: neutralino-lsp-stau-nlsp
+    impact_if_violated: A different LSP/NLSP ordering changes both relic density and CBBN phenomenology.
+    notes: null
+    scope: MSSM spectrum
+    source_reference_ids:
+    - arxiv:1604.04769
+    status: assumed
+  benchmark_implications:
+  - The lithium solution ties the MSSM spectrum to both relic density and BBN lifetime requirements.
+  caveats:
+  - Collider limits on such compressed spectra are not recast here.
+  constrained_parameters:
+  - Delta m
+  - m_stau
+  - m_neutralino
+  - neutralino relic density
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Mass splittings opening prompt two-body stau decay do not yield the long-lived charged particle needed
+    for CBBN.
+  id: con_stau_neutralino_degeneracy
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Long-lived stau and neutralino coannihilation degeneracy
+  notes: null
+  observable_channel: MSSM spectrum and relic density
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1604.04769
+  - arxiv:0710.2213
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Li6 observational status and nuclear reaction uncertainties affect robustness.
+    constraint_ids:
+    - con_cbbn_light_element_window
+    - con_stau_neutralino_degeneracy
+    derived_quantities:
+    - bound-state fractions
+    - Li7 destruction
+    - Li6/D/T production
+    - neutralino relic density
+    description: Propagate a compressed neutralino-stau spectrum into stau lifetime/yield, catalyzed BBN
+      reaction rates, and neutralino dark matter abundance.
+    forward_model_chain:
+    - inputs:
+      - m_stau
+      - m_neutralino
+      - Delta m
+      notes: null
+      outputs:
+      - stau lifetime
+      - coannihilation efficiency
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid in compressed MSSM spectrum with tau number conservation assumption.
+    - inputs:
+      - tau_stau
+      - Y_stau
+      - nuclear rates
+      notes: null
+      outputs:
+      - light-element abundances
+      step_id: s2
+      step_type: other
+      tool_or_code: CBBN reaction network
+      validity: Requires nonstandard BBN network including charged bound states.
+    - inputs:
+      - predicted light elements
+      - observed abundances
+      notes: null
+      outputs:
+      - allowed CBBN window
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: No likelihood rerun in this batch.
+    id: route_stau_cbbn_neutralino
+    input_parameters:
+    - m_stau
+    - m_neutralino
+    - Delta m
+    - tau_stau
+    - Y_stau
+    likelihoods:
+    - No BBN likelihood asset included.
+    observable_ids:
+    - obs_stau_catalyzed_li7_reduction
+    - obs_stau_helium_bound_state_li6_dt
+    required_code_resources:
+    - CBBN nuclear reaction network
+    - compressed-spectrum relic-density code
+    route_status: planned
+    source_model_features:
+    - neutralino LSP dark matter
+    - long-lived stau NLSP
+    - stau-nucleus bound states
+    validation_tests:
+    - recover Li7 reduction window
+    - avoid D/T overproduction

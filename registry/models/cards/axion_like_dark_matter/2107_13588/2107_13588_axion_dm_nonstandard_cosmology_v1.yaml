@@ -1,0 +1,465 @@
+_source:
+  shard: arXiv_src_2107_079_wds.tar
+  paper_id: '2107_13588'
+  source_member: 2107_13588.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: w1
+    mitigation: Retain theta_i, w, and T_end as core parameters.
+    severity: medium
+    source_reference_ids: []
+    warning: Do not use the quoted mass windows without also carrying the assumed theta_i range and pre-BBN
+      equation-of-state regime.
+  - category: extrapolation
+    id: w2
+    mitigation: Treat w and the transition temperature as phenomenological inputs unless a UV completion
+      is supplied.
+    severity: medium
+    source_reference_ids: []
+    warning: A generic nonstandard cosmology is not a unique UV-complete model of the dominant pre-BBN
+      field.
+associated_code:
+  caveats: []
+  code_summary: The paper reports analytical and numerical relic-density calculations, but no associated
+    public code is identified in the extracted text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+  supported_observable_channels: []
+assumptions:
+  global:
+  - can_be_relaxed: 'yes'
+    description: The Peccei-Quinn symmetry is broken so that the axion field has a homogeneous initial
+      misalignment angle in the considered pre-inflationary setup.
+    id: a1
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: A pre-BBN field dominates the expansion with an effective equation-of-state parameter
+      w.
+    id: a2
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: 'no'
+    description: The nonstandard epoch ends early enough to preserve Big Bang nucleosynthesis.
+    id: a3
+    impact_if_violated: BBN predictions would be altered.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+benchmarks:
+  points:
+  - description: w=0 benchmark with entropy injection; lighter axion masses can account for dark matter.
+    id: early_matter_domination
+    parameter_values:
+      quoted_m_a_window_eV: 4e-9 to 2e-5 for 0.5 < theta_i < pi/3
+      w: 0
+    purpose:
+    - relic-density benchmark
+    status: unknown
+  - description: w=1 benchmark with enhanced Hubble expansion; heavier axion masses can account for dark
+      matter.
+    id: kination
+    parameter_values:
+      quoted_m_a_window_eV: 2e-6 to 1e-2 for 0.5 < theta_i < pi/3
+      w: 1
+    purpose:
+    - relic-density benchmark
+    status: unknown
+  regimes:
+  - w < 1/3 entropy-diluting histories
+  - w > 1/3 kination-like histories
+cosmological_history:
+  bbn_relevance: critical
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: parameter_dependent
+  kinetic_decoupling: null
+  nonstandard_features:
+  - pre-BBN domination by a field with general equation of state
+  - enhanced Hubble rate shifting the onset of axion oscillations
+  - entropy injection for w<1/3 early-matter-like histories
+  - kination-like w>1/3 histories allowing heavier axions
+  phase_transitions:
+  - Peccei-Quinn symmetry breaking
+  - QCD epoch when the axion mass turns on
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - QCD axion dark matter in nonstandard cosmology
+  - pre-BBN nonstandard-cosmology axion misalignment
+  family: axion_like_dark_matter
+  historical_origin_or_motivation: Motivated by using axion dark matter searches to probe the expansion
+    history before Big Bang nucleosynthesis.
+  model_kind: phenomenological_parameterization
+  name: Axion dark matter from misalignment in a nonstandard pre-BBN cosmology
+  short_description: A QCD axion dark matter scenario where misalignment production is recalculated during
+    a pre-BBN nonstandard cosmological epoch dominated by a field with general equation of state, allowing
+    lighter or heavier axions than in the standard window.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: QCD axion solves the strong CP problem through relaxation of the theta angle
+  dark_sector_couplings:
+  - axion potential from QCD
+  - gravitational coupling to the nonstandard expansion history
+  decay_channels: []
+  flavor_structure: not_applicable
+  interaction_operators:
+  - axion-gluon anomaly coupling
+  - axion-photon coupling used for parameter-space mapping
+  mediator_types:
+  - axion field
+  - QCD instanton effects
+  portals:
+  - axion
+  - gravitational
+  scattering:
+    elastic: not_applicable
+    inelastic: not_applicable
+    momentum_dependence: not_applicable
+    spin_dependence: not_applicable
+    velocity_dependence: not_applicable
+  self_scattering_channels: []
+  standard_model_targets:
+  - QCD topological susceptibility
+  - gluons through the axion anomaly
+  - photons through the axion-photon coupling
+  tree_or_loop_level: unknown
+model_id: 2107_13588_axion_dm_nonstandard_cosmology_v1
+parameters:
+  core:
+  - description: Zero-temperature QCD axion mass related to f_a.
+    name: axion mass
+    range: expanded windows include 4e-9 to 2e-5 eV for early matter domination and 2e-6 to 1e-2 eV for
+      kination at 0.5 < theta_i < pi/3
+    role: core
+    status: inferred
+    symbol: m_a
+    unit: eV
+  - description: PQ scale determining the axion mass via QCD topological susceptibility.
+    name: axion decay constant
+    range: inverse QCD relation to m_a
+    role: core
+    status: inferred
+    symbol: f_a
+    unit: GeV
+  - description: Initial field displacement in the pre-inflationary misalignment calculation.
+    name: initial misalignment angle
+    range: 0.5 < theta_i < pi/3 for the quoted expanded windows
+    role: core
+    status: inferred
+    symbol: theta_i
+  - description: Equation of state of the field dominating the pre-BBN energy density.
+    name: nonstandard equation-of-state parameter
+    range: benchmarks w=0 and w=-1/3 for w<1/3; w=1 and w=5/3 for w>1/3
+    role: core
+    status: inferred
+    symbol: w
+  - description: Temperature by which the nonstandard era ends before BBN.
+    name: transition or reheating temperature
+    range: must be before Big Bang nucleosynthesis; exact range depends on scenario
+    role: core
+    status: inferred
+    symbol: T_end
+    unit: GeV
+  derived:
+  - description: Axion abundance matched to the observed cold dark matter abundance.
+    name: target relic density
+    role: derived
+    status: inferred
+    symbol: Omega_a h^2
+    value: approximately 0.12
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - pre-BBN field dominating the energy density with equation-of-state parameter w
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: QCD axion
+    number_of_components: single_component
+    spin: '0'
+    statistics: boson
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - QCD instanton potential
+  - axion-photon coupling used to map parameter space
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - dominant pre-BBN field that can inject entropy for w<1/3
+phase_space:
+  average_momentum_relative_to_thermal: cold population from field oscillations
+  distribution_function_available: 'no'
+  distribution_type: field_like
+  f_of_p_or_q: Coherent field misalignment production; no particle distribution function is provided.
+  free_streaming_length: null
+  notes: The paper describes axions from misalignment as a cold dark matter population.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - m_a
+  - f_a
+  - theta_i
+  - w
+  - nonstandard-era end temperature
+  - entropy injection when w<1/3
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: parameter_dependent
+  mechanisms:
+  - nonthermal misalignment
+  - modified onset of oscillations during a nonstandard pre-BBN expansion era
+  - entropy dilution for w<1/3 scenarios
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper analytically and numerically finds axion masses that account for the whole observed
+    dark matter abundance as a function of the nonstandard cosmology parameters.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: Before BBN, the universe is dominated by a field with general equation of state; w<1/3 and
+        w>1/3 cases change the relic density differently.
+      page: null
+      reference_id: '2107_13588'
+      section: Nonstandard cosmology
+    interactions:
+    - confidence: medium
+      note: The model uses the QCD axion mass relation and maps the axion-photon coupling plane for the
+        nonstandard cosmologies.
+      page: null
+      reference_id: '2107_13588'
+      section: Axion coupling
+    parameter_ranges:
+    - confidence: high
+      note: For 0.5 < theta_i < pi/3, the abstract quotes expanded mass windows for early matter domination
+        and kination.
+      page: null
+      reference_id: '2107_13588'
+      section: Abstract
+    particle_content:
+    - confidence: high
+      note: The axion is described as a pseudo-Nambu-Goldstone boson of PQ symmetry and a cold dark matter
+        candidate.
+      page: null
+      reference_id: '2107_13588'
+      section: Introduction
+    production_mechanism:
+    - confidence: high
+      note: The paper studies misalignment production during a nonstandard cosmology and solves for the
+        axion mass giving the whole dark matter abundance.
+      page: null
+      reference_id: '2107_13588'
+      section: Introduction and NSC analysis
+    symmetries:
+    - confidence: high
+      note: The text identifies the Peccei-Quinn symmetry breaking scale f_a and QCD topological susceptibility
+        as setting the axion mass.
+      page: null
+      reference_id: '2107_13588'
+      section: Misalignment review
+    validity_domain:
+    - confidence: high
+      note: The nonstandard era is explicitly placed before Big Bang nucleosynthesis.
+      page: null
+      reference_id: '2107_13588'
+      section: Introduction
+  extraction:
+    confidence: high
+    extracted_by: codex_dark_matter_batch_worker
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Axion dark matter is produced by misalignment in a general nonstandard cosmology
+        before BBN.
+      reference_id: '2107_13588'
+      section: Abstract
+    - page: null
+      quote_or_summary: The work analytically studies axion relic density and masses that account for
+        all observed dark matter.
+      reference_id: '2107_13588'
+      section: Introduction
+    - page: null
+      quote_or_summary: Benchmark equations of state include w=0, -1/3, 1, and 5/3.
+      reference_id: '2107_13588'
+      section: Nonstandard cosmology setup
+    unresolved_items: []
+  last_updated: '2026-05-31'
+  model_family: axion_like_dark_matter
+  model_id: 2107_13588_axion_dm_nonstandard_cosmology_v1
+  model_name: Axion dark matter from misalignment in a nonstandard pre-BBN cosmology
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '2107.13588'
+      authors:
+      - Paola Arias
+      - Nicolas Bernal
+      - Dimitrios Karamitros
+      - Carlos Maldonado
+      - Leszek Roszkowski
+      - Moira Venegas
+      doi: null
+      notes: Source text taken from the assigned run SQLite database only.
+      reference_id: '2107_13588'
+      role: original_model
+      title: New opportunities for axion dark matter searches in nonstandard cosmological models
+      url: null
+      year: 2021
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_a
+  - f_a
+  - theta_i
+  - w
+  - Hubble rate during the nonstandard era
+  - entropy injection
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: parameter_dependent
+  target_fraction:
+    description: The analysis solves for axion masses that account for all observed dark matter.
+    name: axion dark matter fraction
+    role: derived
+    status: assumed
+    symbol: Omega_a/Omega_DM
+    value: 1
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - the pre-BBN component is parameterized rather than specified by a unique particle model
+  - quoted mass windows depend on the assumed misalignment angle and cosmological transition
+  - post-inflationary topological-defect contributions are not part of this model card
+  notes: The particle identity, nonstandard cosmological history, and relic-density logic are explicit
+    in the text.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper treats the produced axions as cold dark matter and does not develop a transfer-function
+        or halo-level model.
+    transfer_function_shape: cdm_like
+  nonlinear:
+    concentration_mass_relation_effect: unknown
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: The paper treats the produced axions as cold dark matter and does not develop
+      a transfer-function or halo-level model.
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: The paper treats the produced axions as cold dark matter and does not develop
+      a transfer-function or halo-level model.
+    subhalo_mass_function_effect: The paper treats the produced axions as cold dark matter and does not
+      develop a transfer-function or halo-level model.
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+symmetries:
+  stabilizing_mechanism: The axion is the pseudo-Nambu-Goldstone boson of the Peccei-Quinn symmetry; its
+    long lifetime and small mass are inherited from the approximate PQ symmetry and QCD potential.
+  symmetries:
+  - breaking: spontaneously broken at f_a and explicitly broken by QCD instantons
+    breaking_scale:
+      description: PQ breaking scale related to the axion mass.
+      name: axion decay constant
+      range: mapped through the QCD axion mass relation
+      role: core
+      status: inferred
+      symbol: f_a
+      unit: GeV
+    exact_or_approximate: broken
+    name: Peccei-Quinn U(1)
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: partial
+  notes: The axion sector and QCD mass relation are specified, while the pre-BBN component is parameterized
+    by its equation of state and cosmological transition/decay effects rather than a complete particle
+    model.
+  parent_frameworks:
+  - QCD axion
+  - Peccei-Quinn solution to strong CP
+  - nonstandard pre-BBN cosmology
+  - misalignment mechanism
+  renormalizable: unknown
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: cosmological_history
+  caveats: []
+  condition: The nonstandard cosmological epoch occurs before Big Bang nucleosynthesis and must end consistently
+    with BBN.
+  extrapolation_risk: high
+  id: pre_bbn_nsc
+  notes: null
+  source_reference_ids: []
+  status: assumed
+  valid_range: null
+- applies_to: parameter
+  caveats: []
+  condition: The quoted expanded mass windows are stated for 0.5 < theta_i < pi/3.
+  extrapolation_risk: medium
+  id: quoted_theta_window
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: 0.5 < theta_i < pi/3
+- applies_to: model
+  caveats: []
+  condition: The axion mass is tied to the PQ scale using QCD topological susceptibility.
+  extrapolation_risk: low
+  id: qcd_axion_relation
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null

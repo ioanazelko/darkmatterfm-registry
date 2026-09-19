@@ -1,0 +1,647 @@
+_source:
+  shard: arXiv_src_1412_010_wds.tar
+  paper_id: '1412_4899'
+  source_member: 1412_4899.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1412_4899_sterile_neutrino_freeze_in_leptogenesis_v1
+identity:
+  name: 7.1 keV sterile-neutrino dark matter with low-scale leptogenesis
+  family: sterile_neutrino_dark_matter
+  aliases: []
+  short_description: A seesaw extension with an extra 7.1 keV singlet fermion produced by freeze-in decays
+    of a singlet scalar and connected to low-scale leptogenesis.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks: []
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: Seesaw extension with extra singlet fermion and scalar, broken Z2 symmetry, and low-scale leptogenesis.
+particle_content:
+  dark_matter_candidate:
+    name: extra singlet sterile neutrino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - singlet scalar field
+  - right-handed Majorana neutrinos
+  - SM Higgs doublet
+  mediators:
+  - singlet scalar
+  - heavy right-handed neutrino
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - extra singlet sterile neutrino
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z2 symmetry would stabilize the lightest singlet neutrino, but it is broken
+    by the singlet-scalar VEV; the sterile neutrino remains viable because its lifetime is much longer
+    than the universe age.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: broken
+    breaking: broken by the singlet scalar vacuum expectation value
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  - higgs
+  standard_model_targets:
+  - active neutrinos
+  - Higgs field
+  dark_sector_couplings:
+  - Y_D
+  - Y_eta
+  - scalar-Higgs coupling
+  mediator_types:
+  - singlet scalar
+  - right-handed neutrino
+  - active-sterile mixing
+  interaction_operators:
+  - Yukawa couplings among singlet neutrino, singlet scalar, and heavy right-handed neutrinos
+  decay_channels:
+  - singlet scalar decay to sterile neutrino pairs
+  - sterile neutrino radiative decay producing a photon
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: sterile neutrino mass
+    role: core
+    status: inferred
+    symbol: m_s
+    description: Mass used for 3.55 keV photon line
+    value: '7.1'
+    unit: keV
+  - name: singlet scalar mass
+    role: core
+    status: inferred
+    symbol: m_eta
+    description: Scalar mass in relic benchmark
+    value: '71.3'
+    unit: GeV
+  - name: singlet scalar VEV
+    role: core
+    status: inferred
+    symbol: u
+    description: Benchmark singlet VEV
+    value: '100'
+    unit: GeV
+  - name: active-sterile mixing
+    role: core
+    status: inferred
+    symbol: sin^2(2 theta)
+    description: Mixing required for X-ray interpretation
+    range: order 10^-10 to 10^-11 in the paper discussion
+production:
+  mechanisms:
+  - freeze-in from out-of-equilibrium singlet-scalar decay
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'no'
+  abundance_set_by:
+  - singlet scalar decay width
+  - Y_eta
+  - m_eta
+  - heavy neutrino mass
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The sterile neutrino is out of equilibrium and produced by scalar decays.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_eta
+  - m_s
+  - Y_eta
+  - v_eta
+  - M_N2
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - freeze-in production below scalar decoupling
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: approximate
+  notes: Produced by out-of-equilibrium scalar decay.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: freeze_in_benchmark
+  applies_to: model
+  condition: Benchmark with m_s = 7.1 keV, u = 100 GeV, and m_eta = 71.3 GeV.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - primary
+assumptions:
+  global:
+  - id: initial_abundance
+    description: The initial sterile-neutrino abundance is negligible.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+  - id: scalar_heat_bath
+    description: The singlet scalar remains in equilibrium through Higgs interactions until around its
+      mass.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+  - id: long_lived_sterile
+    description: The sterile neutrino lifetime is longer than the age of the universe.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+  primary_code_role: null
+provenance:
+  model_id: 1412_4899_sterile_neutrino_freeze_in_leptogenesis_v1
+  model_name: 7.1 keV sterile-neutrino dark matter with low-scale leptogenesis
+  model_family: sterile_neutrino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Sterile Neutrino Dark Matter and Low Scale Leptogenesis
+      authors:
+      - Sin Kyu Kang
+      - Ayon Patra
+      year: 2014
+      arxiv_id: '1412.4899'
+      doi: null
+      url: null
+      role: original_model
+      notes: Extracted only from the assigned SQLite full text.
+    - arxiv_id: '1412.4899'
+      authors:
+      - Kang, Sin Kyu
+      - Patra, Ayon
+      doi: 10.3938/jkps.69.1375
+      notes: Primary paper full text resolved locally; ADS metadata used for bibliographic fields.
+      reference_id: primary
+      role: original_model
+      title: keV sterile neutrino dark matter and low scale leptogenesis
+      url: https://arxiv.org/abs/1412.4899
+      year: 2016
+    constraint_papers: []
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections: []
+    unresolved_items:
+    - The primary paper did not compute a detailed nonthermal momentum distribution or Lyman-alpha likelihood
+      for the freeze-in sterile-neutrino benchmark.
+    - Current observational status of the 3.55 keV line was not evaluated; the structured row records
+      the paper-level interpretation only.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model introduces an extra singlet neutrino and singlet scalar on top of the seesaw model.
+      confidence: high
+      section: Model
+    symmetries:
+    - reference_id: primary
+      note: A Z2 symmetry is imposed and then broken by the singlet scalar VEV.
+      confidence: high
+      section: Model
+    interactions:
+    - reference_id: primary
+      note: The Lagrangian has Yukawa interactions between singlet neutrinos, heavy right-handed neutrinos,
+        and the singlet scalar.
+      confidence: high
+      section: Model
+    production_mechanism:
+    - reference_id: primary
+      note: The sterile neutrino is produced by out-of-equilibrium decay of a singlet scalar initially
+        in thermal equilibrium.
+      confidence: high
+      section: Introduction/Relic density
+    cosmological_history:
+    - reference_id: primary
+      note: The sterile neutrino is out of equilibrium after inflation and produced through freeze-in.
+      confidence: high
+      section: Relic density
+    parameter_ranges:
+    - reference_id: primary
+      note: Benchmark values include 7.1 keV sterile-neutrino mass, 100 GeV singlet VEV, and 71.3 GeV
+        singlet scalar mass.
+      confidence: high
+      section: Model
+    validity_domain:
+    - reference_id: primary
+      note: The Boltzmann treatment assumes negligible initial sterile abundance and Maxwell-Boltzmann
+        statistics.
+      confidence: medium
+      section: Relic density
+    constraints:
+    - confidence: high
+      note: Benchmark with m_eta=71.3 GeV, u=100 GeV, Y_eta2=1e-3, M_N2=15 TeV, m_s=7.1 keV gives Omega
+        h^2=0.1198.
+      page: null
+      reference_id: primary
+      section: Relic density section
+    - confidence: high
+      note: X-ray line interpretation fixes photon energy and requires tiny active-sterile mixing/long
+        lifetime.
+      page: null
+      reference_id: primary
+      section: Radiative decay discussion
+    observables:
+    - confidence: high
+      note: 7.1 keV sterile neutrino decays to a 3.55 keV photon and has lifetime much longer than the
+        age of the Universe.
+      page: null
+      reference_id: primary
+      section: Abstract / radiative decay discussion
+    - confidence: high
+      note: Freeze-in at production scale around 100 GeV is colder than Dodelson-Widrow but warmer than
+        CDM; detailed free-streaming is left for later.
+      page: null
+      reference_id: primary
+      section: Relic density/free-streaming discussion
+    routes:
+    - confidence: high
+      note: Mass/mixing, freeze-in abundance, radiative decay, and free-streaming discussion define the
+        forward route.
+      page: null
+      reference_id: primary
+      section: Model, relic density, and free-streaming sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+  caveats:
+  - Structure-formation behavior is inferred from the keV warm sterile-neutrino identity, not from a dedicated
+    analysis in the paper.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine extracted from paper text only.
+agent_failure_modes:
+  warnings:
+  - id: no_thermal_mapping
+    severity: high
+    category: invalid_mapping
+    warning: Do not map this freeze-in sterile-neutrino model to thermal WDM without a distribution calculation.
+    source_reference_ids:
+    - primary
+observables:
+- caveats:
+  - The paper interprets the then-reported 3.55 keV feature; subsequent observational status is not adjudicated
+    in this batch.
+  channel: indirect_detection
+  effect_direction: spectral_line
+  environments:
+  - galactic halos
+  - clusters
+  - Andromeda/Perseus-like X-ray targets
+  id: sterile_355kev_xray_line
+  key_quantities:
+  - description: Mass giving a 3.55 keV photon line.
+    name: sterile neutrino mass
+    notes: null
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: m_s
+    unit: keV
+    value: 7.1
+  - description: Mixing angle controlling radiative decay rate.
+    name: active-sterile mixing
+    notes: null
+    range: order 1e-10 to 1e-11
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: sin^2(2 theta)
+  linked_constraints:
+  - xray_line_lifetime_window
+  linked_routes:
+  - freezein_xray_leptogenesis_route
+  name: 3.55 keV photon line from 7.1 keV sterile-neutrino decay
+  notes: null
+  observability: high
+  predicted_effect: The 7.1 keV sterile neutrino decays radiatively to an active neutrino plus a photon
+    with energy m_s/2, producing a 3.55 keV X-ray line while having lifetime much longer than the age
+    of the Universe.
+  redshift_range: present day and low-redshift halos
+  relevance: critical
+  scale_range: galaxy and cluster X-ray observations
+  source_reference_ids:
+  - primary
+  subchannel: X-ray spectral line
+- caveats:
+  - Primary paper states detailed free-streaming or velocity-profile analysis is beyond its scope.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - cosmic structure formation
+  id: freezein_coldish_free_streaming
+  key_quantities:
+  - description: Approximate scalar-decay production scale.
+    name: production temperature
+    notes: null
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: T_prod
+    unit: GeV
+    value: order 100
+  - description: Benchmark scalar mass for the relic density.
+    name: singlet scalar mass
+    notes: null
+    role: core
+    source_reference_ids:
+    - primary
+    status: inferred
+    symbol: m_eta
+    unit: GeV
+    value: 71.3
+  linked_constraints:
+  - freezein_relic_density_benchmark
+  linked_routes:
+  - freezein_xray_leptogenesis_route
+  name: Free-streaming of scalar-decay freeze-in sterile neutrinos
+  notes: null
+  observability: medium
+  predicted_effect: Freeze-in from singlet scalar decays near the electroweak scale gives a colder momentum
+    distribution than Dodelson-Widrow production, but the free-streaming length remains larger than for
+    CDM.
+  redshift_range: early production through structure formation
+  relevance: high
+  scale_range: small-scale matter power/free-streaming scales
+  source_reference_ids:
+  - primary
+  subchannel: warm/cold dark matter free-streaming
+constraints:
+- allowed_regions:
+  - The benchmark m_s = 7.1 keV gives E_gamma = 3.55 keV and the paper chooses very small mixing so the
+    lifetime exceeds the age of the Universe.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The observed 3.55 keV feature is interpreted as dark-matter decay rather than astrophysical/instrumental
+      emission.
+    id: line_interpretation
+    impact_if_violated: If the line is not dark matter, this becomes an upper-limit rather than signal
+      target.
+    notes: null
+    scope: indirect detection interpretation
+    source_reference_ids:
+    - primary
+    status: assumed
+  benchmark_implications:
+  - The model targets the 3.55 keV line while preserving long-lived dark matter.
+  caveats:
+  - This batch did not evaluate later X-ray null results or updated line status.
+  constrained_parameters:
+  - m_s
+  - sin^2(2 theta)
+  - radiative decay width
+  constraint_type: indirect_detection
+  data_release: 3.55 keV line observations discussed in the primary paper
+  excluded_regions:
+  - Mixing angles yielding too short a lifetime or wrong photon energy are incompatible with the sterile-neutrino
+    X-ray interpretation.
+  id: xray_line_lifetime_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Radiative-decay lifetime and X-ray line requirement
+  notes: null
+  observable_channel: X-ray line searches
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - primary
+- allowed_regions:
+  - The paper obtains Omega h^2 = 0.1198 for v_eta/u = 100 GeV, m_eta = 71.3 GeV, Y_eta2 = 1e-3, M_N2
+    = 15 TeV, and m_s = 7.1 keV.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The singlet scalar is initially in thermal equilibrium and decays out of equilibrium
+      to sterile neutrinos.
+    id: scalar_heat_bath
+    impact_if_violated: A different scalar abundance or thermal history changes the relic density.
+    notes: null
+    scope: freeze-in production
+    source_reference_ids:
+    - primary
+    status: assumed
+  benchmark_implications:
+  - The same benchmark supports low-scale leptogenesis and the sterile-neutrino relic density.
+  caveats:
+  - The benchmark is specific; broader parameter scans require recomputation.
+  constrained_parameters:
+  - m_s
+  - m_eta
+  - u
+  - Y_eta2
+  - M_N2
+  constraint_type: cosmological
+  data_release: Relic density target in primary paper
+  excluded_regions:
+  - Scalar-decay couplings and masses that overproduce or underproduce Omega_DM h^2 are not viable.
+  id: freezein_relic_density_benchmark
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Freeze-in relic density benchmark
+  notes: null
+  observable_channel: dark matter relic density
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - primary
+- allowed_regions:
+  - Primary paper argues freeze-in production around 100 GeV is colder than Dodelson-Widrow for the same
+    mass.
+  applies: unknown
+  assumptions:
+  - can_be_relaxed: unknown
+    description: No detailed momentum distribution or free-streaming likelihood is computed in the primary
+      paper.
+    id: momentum_distribution_uncomputed
+    impact_if_violated: Lyman-alpha or satellite constraints could be stronger or weaker than inferred
+      from qualitative free-streaming arguments.
+    notes: null
+    scope: structure formation
+    source_reference_ids:
+    - primary
+    status: assumed
+  benchmark_implications:
+  - The sterile neutrino is warmer than CDM but colder than typical Dodelson-Widrow production.
+  caveats:
+  - Kept as a caveated constraint because the primary paper explicitly leaves detailed free-streaming
+    analysis beyond scope.
+  constrained_parameters:
+  - m_s
+  - production temperature
+  - momentum distribution
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions: []
+  id: free_streaming_needs_followup
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Small-scale-structure free-streaming caveat
+  notes: null
+  observable_channel: free-streaming / matter power
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: Primary paper provides analytic benchmark; no detailed free-streaming code was verified.
+    caveats:
+    - Current X-ray line status and Lyman-alpha constraints require updated external analyses.
+    constraint_ids:
+    - xray_line_lifetime_window
+    - freezein_relic_density_benchmark
+    - free_streaming_needs_followup
+    derived_quantities:
+    - radiative decay width
+    - E_gamma = m_s/2
+    - Omega_DM h^2
+    - free-streaming length estimate
+    - lepton asymmetry
+    description: Compute sterile-neutrino mass/mixing and scalar-decay freeze-in abundance, verify low-scale
+      leptogenesis benchmark, then propagate radiative decay to X-ray line and free-streaming observables.
+    forward_model_chain:
+    - inputs:
+      - Yukawa couplings
+      - M_N
+      - u
+      notes: Primary paper derives mixing/mass relations.
+      outputs:
+      - m_s
+      - active-sterile mixing
+      step_id: mass_mixing
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Seesaw hierarchy assumed.
+    - inputs:
+      - m_eta
+      - Y_eta2
+      - g_*
+      - m_s
+      notes: Benchmark gives Omega h^2 = 0.1198.
+      outputs:
+      - Omega_DM h^2
+      step_id: freezein
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Scalar initially thermal; sterile neutrino never thermalizes.
+    - inputs:
+      - m_s
+      - mixing
+      notes: E_gamma = m_s/2 targets 3.55 keV.
+      outputs:
+      - decay width
+      - photon energy
+      step_id: xray
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Radiative decay loop formula; lifetime must exceed cosmic age.
+    - inputs:
+      - production temperature
+      - momentum distribution
+      notes: Needs detailed distribution for Lyman-alpha recast.
+      outputs:
+      - free-streaming length
+      step_id: streaming
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Only qualitative in primary paper.
+    id: freezein_xray_leptogenesis_route
+    input_parameters:
+    - m_s
+    - sin^2(2 theta)
+    - m_eta
+    - u
+    - Y_eta2
+    - M_N2
+    likelihoods:
+    - Relic-density target
+    - X-ray line/decay-rate recast
+    - future free-streaming likelihood
+    observable_ids:
+    - sterile_355kev_xray_line
+    - freezein_coldish_free_streaming
+    required_code_resources:
+    - Freeze-in abundance calculator
+    - Radiative sterile-neutrino decay calculator
+    - Free-streaming/matter-power solver for nonthermal distribution
+    route_status: planned
+    source_model_features:
+    - 7.1 keV singlet fermion sterile-neutrino dark matter
+    - singlet scalar decay freeze-in
+    - TeV-scale heavy neutrino leptogenesis
+    validation_tests:
+    - Recover E_gamma = 3.55 keV for m_s = 7.1 keV
+    - Reproduce Omega h^2 = 0.1198 benchmark
+    - Check sterile-neutrino lifetime exceeds age of Universe

@@ -1,0 +1,275 @@
+_source:
+  shard: arXiv_src_1903_002_wds.tar
+  paper_id: '1903_00496'
+  source_member: 1903_00496.json
+schema_version: model_only_v0
+model_id: 1903_00496_heavy_quark_spin1_mediator_dirac_dm_v1
+identity:
+  name: Leptophobic heavy-quark spin-1 mediator Dirac dark matter
+  family: simplified_mediator_dark_matter
+  aliases:
+  - spin-1 mediator R with spinor DSP
+  - heavy-quark mediator dark matter
+  short_description: A simplified SM extension with a Dirac spinor dark sector particle coupled through
+    a leptophobic spin-1 mediator R whose first-generation quark couplings are switched off.
+  historical_origin_or_motivation: Motivated by mediator models that evade dilepton and direct-detection
+    limits by removing lepton and first-generation quark couplings.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - Standard Model extension with leptophobic vector mediator
+  lagrangian_available: 'yes'
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper gives a simplified Lagrangian with a massive spin-1 mediator and discusses perturbativity
+    and axial-vector unitarity limits rather than a UV completion.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac spinor dark sector particle
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - massive spin-1 mediator R
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Stability of the DSP is assumed in the simplified model; no explicit stabilizing
+    symmetry is specified in the extracted text.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - strange quark vector current
+  - bottom quark vector/axial current
+  - top quark vector/axial current
+  dark_sector_couplings:
+  - R-DSP vector coupling
+  - R-DSP axial-vector coupling
+  mediator_types:
+  - massive spin-1 vector mediator R
+  interaction_operators:
+  - R_mu q gamma^mu q
+  - R_mu q gamma^mu gamma5 q
+  - R_mu chi gamma^mu chi
+  - R_mu chi gamma^mu gamma5 chi
+  annihilation_channels:
+  - DSP pair annihilation to heavy quarks through R when kinematically allowed
+  decay_channels:
+  - R to invisible DSP pairs
+  - R to b bbar
+  - R to t tbar
+  - R to strange/charm quarks for vector-coupling scenarios
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: mediator mass
+    symbol: m_R
+    description: Mass of the spin-1 mediator R.
+    range: paper focuses on m_R above about 10 GeV for the LHC recast
+    unit: GeV
+    role: core
+    status: inferred
+  - name: vector quark coupling
+    symbol: g_q^V
+    description: Common nonzero vector coupling to allowed quark generations.
+    role: core
+    status: assumed
+  - name: axial-vector quark coupling
+    symbol: g_q^A
+    description: Common nonzero axial-vector coupling to third-generation quarks.
+    role: core
+    status: assumed
+  - name: invisible mediator branching ratio
+    symbol: Br(R -> chi chi)
+    description: Branching ratio replacing explicit dark-sector mass/coupling dependence in the collider
+      recast.
+    role: core
+    status: assumed
+  - name: dark matter mass
+    symbol: m_chi
+    description: DSP mass, entering the collider signal mainly through the invisible branching ratio in
+      the paper setup.
+    role: core
+    status: unknown
+production:
+  mechanisms:
+  - thermal freeze-out through annihilation mediated by R
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - annihilation through nonzero heavy-quark mediator couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  notes: Relic-density logic is stated qualitatively; the paper primarily performs collider recasts.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - m_R
+  - m_chi
+  - Br(R -> chi chi)
+  - g_q^V
+  - g_q^A
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: No explicit phase-space distribution is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: tree_level_recast
+  applies_to: model
+  condition: Collider simulations use leading-order tree-level diagrams; couplings should remain perturbative.
+  status: assumed
+  extrapolation_risk: medium
+  source_reference_ids: []
+- id: axial_unitarity
+  applies_to: parameter
+  condition: Axial-vector couplings are limited by the top-quark unitarity condition discussed in the
+    paper.
+  status: inferred
+  extrapolation_risk: medium
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: leptophobic_mediator
+    description: The mediator has vanishing couplings to charged leptons.
+    scope: theory
+    status: assumed
+    source_reference_ids: []
+  - id: no_first_generation_quark_couplings
+    description: Mediator couplings to first-generation quarks are set to zero.
+    scope: theory
+    status: assumed
+    source_reference_ids: []
+  - id: common_nonzero_quark_couplings
+    description: Nonzero quark couplings are taken equal after reducing the free-parameter set.
+    scope: theory
+    status: assumed
+    source_reference_ids: []
+associated_code:
+  has_associated_code: partial
+  code_summary: The text states that the model was encoded in FeynRules and simulated with MadGraph, PYTHIA,
+    DELPHES, and CheckMATE; no public model repository is identified in the assigned text.
+  primary_code_role: collider_simulation
+provenance:
+  model_id: 1903_00496_heavy_quark_spin1_mediator_dirac_dm_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1903_00496'
+      title: LHC Constraints on a Mediator Coupled to Heavy Quarks
+      authors:
+      - Manuel Drees
+      - Zhongyi Zhang
+      year: 2019
+      arxiv_id: '1903.00496'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_worker_batch-0003
+    extractor_name: Codex dark-matter model extraction worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1903_00496'
+      section: Lagrangian and Free Parameters
+      page: null
+      quote_or_summary: Defines the spinor DSP, spin-1 mediator R, Lagrangian terms, and reduced free
+        parameters.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1903_00496'
+      note: Section 2 introduces a spinor dark sector particle and a new spin-1 mediator R connecting
+        it to SM quarks.
+      confidence: high
+      section: Lagrangian and Free Parameters
+      page: null
+    interactions:
+    - reference_id: '1903_00496'
+      note: The interaction terms couple R to the DSP and to strange, bottom, and top quarks while switching
+        off first-generation quark and lepton couplings.
+      confidence: high
+      section: Lagrangian and Free Parameters
+      page: null
+    production_mechanism:
+    - reference_id: '1903_00496'
+      note: The text states that remaining nonzero quark couplings can generate an annihilation rate explaining
+        the observed DM relic density through thermal freeze-out.
+      confidence: medium
+      section: Introduction
+      page: null
+    parameter_ranges:
+    - reference_id: '1903_00496'
+      note: The relevant free parameters are reduced to vector and axial quark couplings, invisible branching
+        ratio, and mediator mass.
+      confidence: high
+      section: Lagrangian and Free Parameters
+      page: null
+    validity_domain:
+    - reference_id: '1903_00496'
+      note: The recast uses leading-order tree-level diagrams and imposes perturbativity plus a unitarity
+        condition for axial couplings.
+      confidence: medium
+      section: Perturbativity and Unitarity Conditions
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - UV completion of massive spin-1 mediator not specified
+  - Relic-density treatment is qualitative in the assigned text
+  validation_status: expert_judgment_only
+  notes: Good paper support for model definition; less support for cosmological history beyond freeze-out
+    statement.
+agent_failure_modes:
+  warnings:
+  - id: simplified_vector_uv_warning
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat the massive spin-1 mediator setup as UV-complete without additional assumptions.
+    source_reference_ids: []
+    mitigation: Keep UV-completion-dependent statements separate from the simplified model card.

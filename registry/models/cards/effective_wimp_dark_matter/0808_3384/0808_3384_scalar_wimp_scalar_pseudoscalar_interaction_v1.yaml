@@ -1,0 +1,309 @@
+_source:
+  shard: arXiv_src_0808_003_wds.tar
+  paper_id: 0808_3384
+  source_member: 0808_3384.json
+schema_version: model_only_v0
+model_id: 0808_3384_scalar_wimp_scalar_pseudoscalar_interaction_v1
+identity:
+  name: Model-independent scalar WIMP with scalar-pseudoscalar interaction
+  family: effective_wimp_dark_matter
+  aliases:
+  - scalar WIMP scalar-pseudoscalar EFT
+  short_description: A phenomenological single-species cold thermal relic WIMP parameterization in which
+    a scalar dark-matter particle couples to Standard Model fermions through a dominant scalar-pseudoscalar
+    contact interaction.
+  historical_origin_or_motivation: Designed to infer WIMP spin and interaction form from direct and indirect
+    detection data when collider signatures of new physics are absent.
+  status: benchmark
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - model-independent WIMP effective theory
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff:
+    name: heavy mediator scale
+    symbol: M
+    description: Mass scale integrated out to form the contact interaction.
+    range: M much larger than momentum transfer q
+    status: assumed
+  embedded_in_larger_framework: unknown
+  notes: The effective Lagrangians keep the leading term in a (q/M)^2 expansion and are intended below
+    electroweak-symmetry-breaking scales.
+particle_content:
+  dark_matter_candidate:
+    name: generic scalar WIMP
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - heavy mediator integrated out of the EFT
+  dark_radiation_species: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The WIMP is assumed stable on cosmological timescales; the stabilizing symmetry
+    is not specified in the paper.
+  symmetries:
+  - name: unspecified WIMP stabilizing symmetry
+    type: unknown
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - Standard Model fermions
+  dark_sector_couplings:
+  - F_SCALARPSEUDOSCALAR
+  mediator_types:
+  - contact interaction from a heavy propagator
+  interaction_operators:
+  - L = (F_SP,f/2) (phi phi)(f gamma5 f)
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels:
+  - WIMP WIMP -> fermion-antifermion
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+operators:
+  eft_operators:
+  - L = (F_SP,f/2) (phi phi)(f gamma5 f)
+  contact_or_light_mediator: contact
+  coupling_types:
+  - scalar-pseudoscalar
+parameters:
+  core:
+  - name: WIMP mass
+    symbol: M_chi
+    description: Mass of the generic scalar WIMP.
+    range: surveyed over electroweak-scale WIMP masses in the figures
+    unit: GeV
+    role: core
+    status: approximate
+  - name: effective interaction coupling
+    symbol: F_SCALARPSEUDOSCALAR
+    description: Coefficient of the scalar-pseudoscalar contact interaction.
+    range: set by requiring thermal relic density in the paper plots
+    unit: model-dependent
+    role: core
+    status: approximate
+  - name: freeze-out parameter
+    symbol: x_F
+    description: Ratio of WIMP mass to freeze-out temperature.
+    range: about 20-30 for electroweak-scale WIMPs
+    role: core
+    status: approximate
+  - name: thermal annihilation rate
+    symbol: <sigma v>
+    description: Thermal annihilation rate needed for the observed abundance.
+    value: about 3e-26 cm^3/s
+    unit: cm^3/s
+    role: core
+    status: approximate
+production:
+  mechanisms:
+  - thermal freeze-out
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - WIMP mass
+  - dominant contact coupling
+  - annihilation to Standard Model fermions
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper assumes a single cold thermal relic and computes the effective coupling required to
+    match WMAP abundance.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: cold dark matter relic density
+    symbol: Omega_chi h^2
+    value: 0.1099 +/- 0.0062
+    status: established
+    source_reference_ids:
+    - 0808_3384
+  calculation_type: thermal
+  key_dependencies:
+  - M_chi
+  - F_SCALARPSEUDOSCALAR
+  - annihilation channel
+  - freeze-out parameter x_F
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: low
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: Cold nonrelativistic thermal freeze-out is assumed; the paper does not tabulate a present-day
+    distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: single_species
+  applies_to: model
+  condition: Dark matter is one WIMP species and makes up the cosmological dark matter.
+  status: assumed
+- id: heavy_other_particles
+  applies_to: EFT
+  condition: Any additional new particle species are much heavier than the WIMP.
+  status: assumed
+- id: dominant_interaction
+  applies_to: interaction
+  condition: The scalar-pseudoscalar interaction dominates WIMP couplings to Standard Model fermions.
+  status: assumed
+- id: no_special_freezeout_effects
+  applies_to: production
+  condition: Resonances, coannihilations, and annihilations to gauge or Higgs bosons are neglected in
+    the base calculation.
+  status: approximate
+- id: below_ewsb
+  applies_to: EFT
+  condition: The contact operators are used below the electroweak-symmetry-breaking scale and need not
+    be SU(2)_W x U(1)_Y invariant.
+  status: assumed
+assumptions:
+  global:
+  - id: cold_thermal_relic
+    description: The WIMP was once in thermal equilibrium and froze out while nonrelativistic.
+    scope: production
+    status: assumed
+  - id: contact_operator_validity
+    description: The heavy mediator can be integrated out, keeping only the leading propagator expansion
+      term.
+    scope: theory
+    status: assumed
+  - id: standard_cosmology
+    description: The relic-density calculation uses the standard Boltzmann freeze-out history.
+    scope: cosmological_history
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text gives analytic calculations and plots but does not identify public model
+    code.
+provenance:
+  model_id: 0808_3384_scalar_wimp_scalar_pseudoscalar_interaction_v1
+  model_name: Model-independent scalar WIMP with scalar-pseudoscalar interaction
+  model_family: effective_wimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: 0808_3384
+      title: Deducing the nature of dark matter from direct and indirect detection experiments in the
+        absence of collider signatures of new physics
+      authors:
+      - Maria Beltran
+      - Dan Hooper
+      - Edward W. Kolb
+      - Zosia A. C. Krusberg
+      year: 2008
+      arxiv_id: '0808.3384'
+      doi: null
+      url: null
+      role: original_model
+      notes: Primary assigned SQLite full text.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0009
+    extractor_name: Codex
+    extraction_date: '2026-05-30'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: 0808_3384
+      section: Introduction
+      page: null
+      quote_or_summary: The paper studies model-independent fermionic and scalar WIMPs with Lorentz-invariant
+        interaction forms.
+    - reference_id: 0808_3384
+      section: Annihilation and relic density
+      page: null
+      quote_or_summary: It computes annihilation cross sections and solves thermal freeze-out for each
+        interaction class.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: 0808_3384
+      section: Introduction
+      confidence: high
+      note: The paper assumes a single cold thermal relic WIMP and studies the scalar spin case.
+    interactions:
+    - reference_id: 0808_3384
+      section: Effective interaction Lagrangians
+      confidence: high
+      note: The scalar-WIMP section includes the scalar-pseudoscalar mixed interaction as a non-redundant
+        scalar-WIMP benchmark.
+    production_mechanism:
+    - reference_id: 0808_3384
+      section: Annihilation and relic density
+      confidence: high
+      note: The relic density is obtained by solving the thermal Boltzmann freeze-out equation for WIMP
+        annihilation to Standard Model fermions.
+    parameter_ranges:
+    - reference_id: 0808_3384
+      section: Annihilation and relic density
+      confidence: medium
+      note: The text uses M_chi, an effective coupling, x_F about 20-30, and <sigma v> near 3e-26 cm^3/s
+        for the observed abundance.
+    validity_domain:
+    - reference_id: 0808_3384
+      section: Introduction and conclusions
+      confidence: high
+      note: The analysis assumes other new particles are heavier, one interaction dominates, and resonances/coannihilations
+        are absent unless treated as caveats.
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - EFT validity scale
+  - neglected resonances or coannihilations
+  - fermion coupling flavor structure
+  validation_status: expert_judgment_only
+  notes: The paper treats this as one of the scalar-WIMP interaction forms for relic-density and detection
+    comparisons.
+agent_failure_modes:
+  warnings:
+  - id: eft_not_uv_complete
+    severity: medium
+    category: invalid_mapping
+    warning: This is a phenomenological contact-interaction benchmark, not a UV-complete particle model.
+    mitigation: Check any UV interpretation against a concrete mediator model.
+  - id: freezeout_caveats
+    severity: medium
+    category: assumption_mismatch
+    warning: Resonances, coannihilations, and gauge/Higgs final states can change the coupling required
+      for the relic density.
+    mitigation: Use the paper assumptions when comparing to detection expectations.

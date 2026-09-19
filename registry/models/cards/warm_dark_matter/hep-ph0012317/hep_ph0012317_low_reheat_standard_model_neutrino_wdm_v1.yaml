@@ -1,0 +1,789 @@
+_source:
+  shard: arXiv_src_0012_001_wds.tar
+  paper_id: hep-ph0012317
+  source_member: hep-ph0012317.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: hep_ph0012317_low_reheat_standard_model_neutrino_wdm_v1
+identity:
+  name: Low-reheat Standard Model neutrino warm dark matter
+  family: warm_dark_matter
+  aliases:
+  - Standard Model neutrinos as warm dark matter
+  - low-reheat active neutrino WDM
+  short_description: A nonstandard low-reheating cosmology in which active Standard Model tau or muon
+    neutrinos never reach chemical equilibrium, leaving a suppressed number density that permits a keV-scale
+    neutrino to behave as warm dark matter.
+  historical_origin_or_motivation: Motivated by revisiting the usual hot-neutrino dark matter bound when
+    the last radiation era may have started at a reheating temperature of only a few MeV.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - Standard Model weak interactions
+  - low-reheating cosmology
+  - warm dark matter
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper uses Standard Model neutrino interactions plus a phenomenological reheating history
+    driven by a decaying field or unstable massive species.
+particle_content:
+  dark_matter_candidate:
+    name: active tau or muon Standard Model neutrino
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - weak interaction mediators
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - decaying reheating field or unstable massive species
+  standard_model_extension: none
+symmetries:
+  stabilizing_mechanism: The paper treats the active neutrino as cosmologically stable; no additional
+    stabilizing dark-sector symmetry is introduced.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - electrons
+  - positrons
+  - other active neutrinos
+  dark_sector_couplings: []
+  mediator_types:
+  - Standard Model weak interactions
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: tau- and muon-neutrino abundances are equal in the calculation; electron neutrinos
+    are not used as dark matter because their mass bound is in the eV range.
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: neutrino mass
+    symbol: m_nu
+    description: Mass scale for the active neutrino warm dark matter candidate.
+    range: keV range; the text summarizes the viable combination as a mass of a few keV with reheating
+      temperature about an MeV
+    unit: keV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - hep-ph0012317
+    notes: The paper argues that suppressed number density removes the usual eV-scale hot dark matter
+      bound.
+  - name: reheating temperature
+    symbol: T_RH
+    description: Temperature at which the universe enters the radiation-dominated phase after the last
+      reheating episode.
+    range:
+      min: 1
+      max: 8
+      inclusive_min: true
+      inclusive_max: false
+      unit: MeV
+      notes: Departure from equilibrium becomes important below about 8 MeV; analytic abundance fits are
+        given for 1-3 MeV and 3-8 MeV.
+    unit: MeV
+    role: cosmological
+    status: inferred
+    source_reference_ids:
+    - hep-ph0012317
+    notes: The text states that reheating temperatures of order 1 MeV remain compatible with nucleosynthesis
+      bounds within the paper discussion.
+  - name: suppressed neutrino number density
+    symbol: n_nu_over_n_eq
+    description: Final tau- or muon-neutrino number density normalized to the equilibrium number density.
+    value: approximately 0.024*(T_RH/1 MeV)^3 for 1 MeV <= T_RH <= 3 MeV
+    unit: null
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - hep-ph0012317
+    notes: At T_RH around 1 MeV the abundance is about 2.7e-2 of the standard abundance.
+  - name: target dark matter density
+    symbol: Omega_nu
+    description: Illustrative dark matter density used when estimating the smoothing scale.
+    value: 0.3
+    unit: null
+    role: cosmological
+    status: assumed
+    source_reference_ids:
+    - hep-ph0012317
+    notes: The paper gives an example assuming Omega_nu = 0.3 in one neutrino species and h = 0.65.
+production:
+  mechanisms:
+  - incomplete production during low-temperature reheating
+  - electron-positron annihilation to neutrino pairs
+  - neutrino-antineutrino flavor conversion processes
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - reheating temperature
+  - weak interaction production rate
+  - expansion rate during reheating
+  - entropy production from the decaying reheating component
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: For sufficiently small T_RH the active neutrinos are produced but never reach chemical equilibrium,
+    leaving a suppressed relic number density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: illustrative neutrino density fraction
+    symbol: Omega_nu
+    value: 0.3
+    role: cosmological
+    status: assumed
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_nu
+  - T_RH
+  - g_star(T_RH)
+  - weak production collision integrals
+  - initial reheating-field decay rate
+  requires_entropy_dilution: 'yes'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - last radiation-dominated era begins at low T_RH
+  - pre-radiation energy density dominated by a decaying field or unstable massive species
+  - continued entropy creation during reheating
+  - active neutrinos not initially in chemical equilibrium
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: neutrino chemical equilibration threshold
+    symbol: T_RH
+    range:
+      min: null
+      max: 8
+      inclusive_max: false
+      unit: MeV
+      notes: Number density falls below equilibrium for T_RH below about 8 MeV.
+    role: cosmological
+    status: inferred
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: medium
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'yes'
+  f_of_p_or_q: The paper solves kinetic equations for f_nu(p,t) and parameterizes the final spectrum as
+    an approximately thermal form with an effective temperature and chemical potential.
+  average_momentum_relative_to_thermal: effective temperature differs from the standard neutrino temperature
+    by only a few percent in the paper fit
+  free_streaming_length:
+    name: comoving smoothing scale
+    symbol: R
+    value: 0.4*(T_RH/MeV)^4 for Omega_nu=0.3 in one species and h=0.65
+    unit: Mpc
+    role: derived
+    status: inferred
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The warm behavior comes from keV-scale mass with a suppressed, non-equilibrium abundance after
+    low-temperature reheating.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'no'
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper uses its own non-equilibrium neutrino distribution rather than a thermal WDM
+        mapping.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: suppression of sufficiently small halos is expected from free streaming,
+      but the paper calls for detailed numerical investigation
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: low_reheat_active_neutrino_wdm_regime
+  applies_to: model
+  condition: Applies when the last reheating temperature is low enough that active tau or muon neutrinos
+    do not reach chemical equilibrium, allowing a keV-scale mass without the standard hot-dark-matter
+    abundance.
+  valid_range: T_RH below about 8 MeV, with the main WDM example around 1 MeV and m_nu in the keV range.
+  status: speculative
+  extrapolation_risk: high
+  caveats:
+  - Requires a nonstandard reheating history close to nucleosynthesis temperatures.
+  - Compatibility with atmospheric and solar neutrino anomalies requires additional mass/mixing assumptions
+    noted but not fully built in the paper.
+  source_reference_ids:
+  - hep-ph0012317
+  notes: The paper emphasizes that the standard high-temperature equilibrium assumption is untested before
+    nucleosynthesis.
+assumptions:
+  global:
+  - id: low_reheating_temperature
+    description: The maximum temperature of the last radiation-dominated era is only of order a few MeV
+      rather than much larger than the neutrino decoupling temperature.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: Active neutrinos would reach the usual equilibrium abundance and behave as excluded
+      hot dark matter for keV masses.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - hep-ph0012317
+    notes: null
+  - id: active_neutrino_keV_mass
+    description: A tau or muon active neutrino has a keV-scale mass while remaining compatible with the
+      oscillation discussion in the paper.
+    scope: theory
+    status: assumed
+    impact_if_violated: The candidate would not provide the warm dark matter behavior emphasized by the
+      paper.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - hep-ph0012317
+    notes: The text notes possible quasi-degenerate active states or sterile-state oscillation patterns
+      as ways to address atmospheric and solar data.
+  - id: non_equilibrium_initial_condition
+    description: The relevant neutrino population is generated during reheating and does not start in
+      chemical equilibrium at high temperature.
+    scope: production
+    status: assumed
+    impact_if_violated: The abundance suppression central to the model would disappear.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - hep-ph0012317
+    notes: The paper reports that the final distribution is insensitive to initial abundances within its
+      calculation.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses a numerical kinetic-equation code developed in an earlier reference; no
+    public repository or reusable model package is identified in the assigned text.
+  primary_code_role: other
+  packages_or_modules: []
+  caveats:
+  - No downloadable or named model-specific code resource is given in the paper text.
+provenance:
+  model_id: hep_ph0012317_low_reheat_standard_model_neutrino_wdm_v1
+  model_name: Low-reheat Standard Model neutrino warm dark matter
+  model_family: warm_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-30'
+  last_updated: '2026-05-30'
+  sources:
+    primary_papers:
+    - reference_id: hep-ph0012317
+      title: Standard Model Neutrinos as Warm Dark Matter
+      authors:
+      - Gian F. Giudice
+      - Edward W. Kolb
+      - Antonio Riotto
+      - Dmitry V. Semikoz
+      - Igor I. Tkachev
+      year: 2000
+      arxiv_id: hep-ph/0012317
+      doi: null
+      url: null
+      role: original_model
+      notes: The paper proposes active Standard Model neutrinos as warm dark matter in a low-reheating
+        cosmology.
+    - arxiv_id: hep-ph/0012317
+      authors:
+      - Giudice, Gian F.
+      - Kolb, Edward W.
+      - Riotto, Antonio
+      - Semikoz, Dmitry V.
+      - Tkachev, Igor I.
+      doi: 10.1103/PhysRevD.64.043512
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:hep-ph/0012317
+      role: original_model
+      title: Standard model neutrinos as warm dark matter
+      url: https://arxiv.org/abs/hep-ph/0012317
+      year: 2001
+    constraint_papers:
+    - arxiv_id: hep-ph/0005123
+      authors:
+      - Giudice, Gian Francesco
+      - Kolb, Edward W.
+      - Riotto, Antonio
+      doi: 10.1103/PhysRevD.64.023508
+      notes: 'Related local full text read: low-reheating cosmology and massive neutrino abundance.'
+      reference_id: arxiv:hep-ph/0005123
+      role: benchmark
+      title: Largest temperature of the radiation era and its cosmological implications
+      url: https://arxiv.org/abs/hep-ph/0005123
+      year: 2001
+    - arxiv_id: '0803.2735'
+      authors:
+      - Gelmini, Graciela
+      - Osoba, Efunwande
+      - Palomares-Ruiz, Sergio
+      - Pascoli, Silvia
+      doi: 10.1088/1475-7516/2008/10/029
+      notes: 'Related local full text read: low-reheating sterile-neutrino abundance and BBN bounds.'
+      reference_id: arxiv:0803.2735
+      role: constraint
+      title: MeV sterile neutrinos in low reheating temperature cosmological scenarios
+      url: https://arxiv.org/abs/0803.2735
+      year: 2008
+    - arxiv_id: '1106.0536'
+      authors:
+      - Erickcek, Adrienne L.
+      - Sigurdson, Kris
+      doi: 10.1103/PhysRevD.84.083503
+      notes: 'Related local full text read: reheating effects in matter power and substructure.'
+      reference_id: arxiv:1106.0536
+      role: constraint
+      title: Reheating effects in the matter power spectrum and implications for substructure
+      url: https://arxiv.org/abs/1106.0536
+      year: 2011
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-30'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: hep-ph0012317
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: The paper states that low-reheat neutrino decoupling can suppress densities enough
+        for keV Standard Model neutrinos to be WDM.
+    - reference_id: hep-ph0012317
+      section: Kinetic-equation calculation
+      page: null
+      quote_or_summary: The paper solves kinetic equations for f_nu(p,t) during reheating and gives abundance
+        fits versus T_RH.
+    - reference_id: hep-ph0012317
+      section: Conclusion
+      page: null
+      quote_or_summary: The paper summarizes the candidate as a few-keV Standard Model neutrino with reheating
+        temperature about an MeV.
+    unresolved_items:
+    - The paper does not provide a complete neutrino mass model; it only sketches compatibility with oscillation
+      anomalies.
+    - Modern BBN constraints with oscillations were not rerun.
+    - No Lyman-alpha, satellite, or CMB transfer-function likelihood was evaluated.
+    - The nonthermal momentum distribution was not exported for downstream codes.
+  evidence:
+    particle_content:
+    - reference_id: hep-ph0012317
+      note: The title and abstract identify Standard Model neutrinos, especially tau or muon neutrinos,
+        as the proposed WDM candidates.
+      confidence: high
+      section: Abstract and introduction
+      page: null
+    interactions:
+    - reference_id: hep-ph0012317
+      note: The production calculation includes e+e- -> nu_i nu_i and neutrino-antineutrino processes,
+        with electron-neutrino charged-current production treated separately.
+      confidence: high
+      section: Kinetic equations
+      page: null
+    production_mechanism:
+    - reference_id: hep-ph0012317
+      note: For small enough T_RH, weak interactions cannot bring active neutrinos into chemical equilibrium
+        during reheating.
+      confidence: high
+      section: Low reheating discussion
+      page: null
+    relic_density:
+    - reference_id: hep-ph0012317
+      note: The paper gives Omega_nu h^2 proportional to m_nu and T_RH^3 for 1-3 MeV, showing how suppressed
+        abundance permits keV masses.
+      confidence: high
+      section: Abundance fit
+      page: null
+    cosmological_history:
+    - reference_id: hep-ph0012317
+      note: The scenario assumes a pre-radiation era dominated by an inflaton, modulus, or unstable species
+        that decays into light states.
+      confidence: high
+      section: Reheating setup
+      page: null
+    phase_space:
+    - reference_id: hep-ph0012317
+      note: The paper computes the final momentum distribution and fits it with an effective temperature
+        and chemical potential.
+      confidence: high
+      section: Distribution-function calculation
+      page: null
+    structure_formation:
+    - reference_id: hep-ph0012317
+      note: The paper argues that warm free streaming reduces small-scale power and gives an illustrative
+        smoothing scale for one neutrino species.
+      confidence: medium
+      section: WDM discussion
+      page: null
+    parameter_ranges:
+    - reference_id: hep-ph0012317
+      note: The text emphasizes T_RH around 1 MeV, departure from equilibrium below about 8 MeV, and a
+        neutrino mass in the keV range.
+      confidence: high
+      section: Numerical results and conclusion
+      page: null
+    validity_domain:
+    - reference_id: hep-ph0012317
+      note: The conclusion notes that the WDM hypothesis is not automatically inconsistent with atmospheric
+        and solar neutrino anomalies, but requires specific oscillation patterns.
+      confidence: medium
+      section: Conclusion
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper gives departure below about 8 MeV, abundance fits, and BBN-compatible MeV reheating.
+      page: null
+      reference_id: arxiv:hep-ph/0012317
+      section: Neutrino abundance
+    - confidence: medium
+      note: Related paper notes low reheating suppresses sterile-neutrino abundance and discusses BBN
+        lower bounds.
+      page: null
+      reference_id: arxiv:0803.2735
+      section: Introduction
+    observables:
+    - confidence: high
+      note: Primary paper states low reheating suppresses SM neutrino densities and permits keV SM-neutrino
+        WDM.
+      page: null
+      reference_id: arxiv:hep-ph/0012317
+      section: Introduction/results
+    - confidence: medium
+      note: Related paper states low reheating can make SM neutrinos up to about 33 keV cosmologically
+        compatible.
+      page: null
+      reference_id: arxiv:hep-ph/0005123
+      section: Cosmological implications
+    routes:
+    - confidence: high
+      note: Primary paper connects T_RH, abundance, Omega_nu, and free-streaming scale via kinetic equations.
+      page: null
+      reference_id: arxiv:hep-ph/0012317
+      section: Calculation
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Machine extracted from the assigned paper only; not deduplicated against later active-neutrino cosmology
+    literature.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: low
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - low-reheating cosmology near BBN temperatures
+  - compatibility of keV active neutrino masses with neutrino oscillation data
+  - non-equilibrium phase-space distribution and structure-formation impact
+  validation_status: expert_judgment_only
+  notes: The assigned paper gives a concrete Boltzmann calculation but leaves the full neutrino mass model
+    and detailed structure simulations unresolved.
+agent_failure_modes:
+  warnings:
+  - id: do_not_apply_standard_equilibrium_neutrino_abundance
+    severity: high
+    category: assumption_mismatch
+    warning: This model only works in a low-reheat non-equilibrium history; using the usual equilibrium
+      relic neutrino abundance changes it back into hot dark matter and overcloses or erases structure.
+    mitigation: Carry the T_RH-dependent suppressed abundance whenever reasoning about relic density or
+      free streaming.
+    source_reference_ids:
+    - hep-ph0012317
+  - id: active_neutrino_mass_model_unresolved
+    severity: medium
+    category: missing_likelihood
+    warning: The paper proposes keV active tau or muon neutrinos but does not build a complete neutrino
+      mass and mixing model.
+    mitigation: Treat oscillation-data compatibility as an unresolved paper-local assumption unless another
+      source supplies the mass model.
+    source_reference_ids:
+    - hep-ph0012317
+observables:
+- caveats:
+  - Requires nonstandard pre-BBN history.
+  channel: cosmology
+  effect_direction: suppression
+  environments:
+  - early-universe plasma
+  id: obs_low_reheat_abundance
+  key_quantities:
+  - name: reheating temperature
+    range:
+      inclusive_max: false
+      inclusive_min: true
+      max: 8
+      min: 1
+      notes: Departure from equilibrium below about 8 MeV.
+      unit: MeV
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0012317
+    status: inferred
+    symbol: T_RH
+    unit: MeV
+  - name: abundance ratio
+    range: about 0.024*(T_RH/1 MeV)^3 for 1-3 MeV; arctangent fit for 3-8 MeV
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0012317
+    status: inferred
+    symbol: n_nu/n_eq
+  - name: neutrino mass
+    range: few-keV examples; up to about 33 keV in related low-reheat bound
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0012317
+    - arxiv:hep-ph/0005123
+    status: inferred
+    symbol: m_nu
+    unit: keV
+  linked_constraints:
+  - con_low_reheat_bbn
+  - con_low_reheat_matter_power
+  linked_routes:
+  - route_low_reheat_neutrino_wdm
+  name: Suppressed SM-neutrino abundance in low reheating
+  notes: null
+  observability: medium
+  predicted_effect: For T_RH below about 8 MeV, weak interactions do not fully thermalize muon/tau neutrinos,
+    so keV-scale SM neutrinos can have a suppressed relic density.
+  redshift_range: reheating through neutrino decoupling
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - arxiv:hep-ph/0012317
+  - arxiv:hep-ph/0005123
+  - arxiv:0803.2735
+  subchannel: nonstandard thermal history
+- caveats:
+  - Transfer function depends on nonthermal momentum distribution.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - linear matter power
+  - substructure
+  id: obs_low_reheat_wdm_cutoff
+  key_quantities:
+  - name: dark matter density fraction
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0012317
+    status: inferred
+    symbol: Omega_nu
+    value: 0.3
+  - name: free-streaming scale
+    range: about 0.4*(T_RH/MeV)^4 Mpc
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0012317
+    status: inferred
+    symbol: R
+    unit: Mpc
+  linked_constraints:
+  - con_low_reheat_matter_power
+  linked_routes:
+  - route_low_reheat_neutrino_wdm
+  name: Low-reheat neutrino WDM free-streaming cutoff
+  notes: null
+  observability: medium
+  predicted_effect: A few-keV SM neutrino with suppressed abundance behaves as WDM; the primary gives
+    a free-streaming scale roughly R=0.4*(T_RH/MeV)^4 Mpc for Omega_nu=0.3 and h=0.65.
+  redshift_range: matter-radiation equality through structure formation
+  relevance: critical
+  scale_range: sub-Mpc to Mpc cutoff scales
+  source_reference_ids:
+  - arxiv:hep-ph/0012317
+  - arxiv:1106.0536
+  subchannel: warm-dark-matter transfer function
+constraints:
+- allowed_regions:
+  - Primary quotes T_RH near 1 MeV as BBN-compatible; related work notes oscillation-dependent BBN strengthening
+    around MeV scales.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The last radiation era begins at MeV-scale reheating temperature.
+    id: last-low-reheat
+    impact_if_violated: Higher T_RH thermalizes neutrinos and closes the keV SM-neutrino WDM window.
+    notes: null
+    scope: thermal history
+    source_reference_ids:
+    - arxiv:hep-ph/0012317
+    - arxiv:hep-ph/0005123
+    - arxiv:0803.2735
+    status: assumed
+  benchmark_implications:
+  - The WDM window lives near the MeV reheating boundary.
+  caveats:
+  - Modern BBN calculation was not rerun.
+  constrained_parameters:
+  - T_RH
+  - m_nu
+  - n_nu/n_eq
+  - Omega_nu
+  constraint_type: cosmological
+  data_release: light-element nucleosynthesis constraints cited in primary and related papers
+  excluded_regions:
+  - T_RH below the BBN-compatible floor is excluded; T_RH above about 8 MeV restores equilibrium and standard
+    neutrino mass bounds.
+  id: con_low_reheat_bbn
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN and abundance bounds on low reheating
+  notes: null
+  observable_channel: BBN/relic abundance
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0012317
+  - arxiv:hep-ph/0005123
+  - arxiv:0803.2735
+- allowed_regions:
+  - Few-keV neutrino and T_RH around an MeV can yield WDM-like clustering in the primary example.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: The low-reheat neutrino momentum distribution must be propagated into T(k).
+    id: nonthermal-transfer
+    impact_if_violated: Thermal WDM bounds cannot be applied directly.
+    notes: null
+    scope: structure recast
+    source_reference_ids:
+    - arxiv:hep-ph/0012317
+    - arxiv:1106.0536
+    status: assumed
+  benchmark_implications:
+  - A transfer-function recast with the nonthermal distribution is needed.
+  caveats:
+  - No Lyman-alpha or satellite likelihood was run.
+  constrained_parameters:
+  - m_nu
+  - T_RH
+  - momentum distribution
+  - R
+  constraint_type: cosmological
+  data_release: CMB, matter power, and substructure constraints discussed in related reheating-effects
+    paper
+  excluded_regions:
+  - Too-large free streaming suppresses small-scale power and substructure beyond observations.
+  id: con_low_reheat_matter_power
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Matter-power and substructure constraint
+  notes: null
+  observable_channel: large-scale structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0012317
+  - arxiv:1106.0536
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats: []
+    constraint_ids:
+    - con_low_reheat_bbn
+    - con_low_reheat_matter_power
+    derived_quantities:
+    - n_nu/n_eq
+    - Omega_nu h^2
+    - momentum distribution
+    - free-streaming scale
+    - T(k)
+    description: Solve low-reheating neutrino production and propagate the nonthermal keV-neutrino distribution
+      to relic density and matter power.
+    forward_model_chain:
+    - inputs:
+      - T_RH
+      - weak rates
+      - expansion history
+      notes: null
+      outputs:
+      - f_nu(p)
+      - n_nu/n_eq
+      step_id: s1
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Kinetic equations during reheating.
+    - inputs:
+      - m_nu
+      - n_nu/n_eq
+      notes: null
+      outputs:
+      - Omega_nu h^2
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Use primary abundance fits.
+    - inputs:
+      - f_nu(p)
+      - Omega_nu
+      notes: null
+      outputs:
+      - T(k)
+      - cutoff scale
+      step_id: s3
+      step_type: transfer_function
+      tool_or_code: null
+      validity: Requires nonthermal distribution.
+    id: route_low_reheat_neutrino_wdm
+    input_parameters:
+    - T_RH
+    - m_nu
+    - flavor
+    - reheating dynamics
+    likelihoods:
+    - BBN light-element likelihood
+    - Planck matter density
+    - matter power/substructure likelihood
+    observable_ids:
+    - obs_low_reheat_abundance
+    - obs_low_reheat_wdm_cutoff
+    required_code_resources:
+    - neutrino kinetic-equation solver
+    - Boltzmann transfer solver
+    route_status: planned
+    source_model_features:
+    - SM neutrino dark matter
+    - MeV-scale reheating
+    - suppressed weak thermalization
+    validation_tests:
+    - recover departure below 8 MeV
+    - recover n_nu/n_eq fit
+    - recover Omega_nu=0.3 few-keV benchmark

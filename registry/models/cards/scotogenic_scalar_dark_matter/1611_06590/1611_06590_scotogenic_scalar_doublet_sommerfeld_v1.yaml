@@ -1,0 +1,314 @@
+_source:
+  shard: arXiv_src_1611_015_wds.tar
+  paper_id: '1611_06590'
+  source_member: 1611_06590.json
+agent_failure_modes:
+  warnings:
+  - category: other
+    id: do_not_treat_hess_projection_as_constraint_field
+    severity: medium
+    warning: The paper projects H.E.S.S./CTA sensitivities, but this run excludes constraints and observables
+      from model cards.
+  - category: assumption_mismatch
+    id: variant_specific_multiplet
+    severity: medium
+    warning: Do not merge doublet and quartet parameters without checking which electroweak representation
+      is intended.
+associated_code:
+  caveats: []
+  code_summary: The paper states that the Schrodinger equation is solved using Mathematica with a modified
+    variable phase method, but no public model code is specified in the extracted text.
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The stabilizing Z2 symmetry remains exact.
+    id: z2_exact
+    impact_if_violated: If broken, the neutral scalar need not be stable.
+    scope: theory
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Relic-density discussion often assumes the scalar candidate can be the dominant DM component.
+    id: dominant_scalar_dm_optional
+    impact_if_violated: A subcomponent interpretation would change relic-density requirements.
+    scope: production
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Sommerfeld-enhanced indirect signals are evaluated for nonrelativistic Milky Way halo
+      velocities.
+    id: halo_nonrelativistic_velocity
+    scope: computation
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  nonstandard_features: []
+  standard_history_assumed: true
+identity:
+  aliases:
+  - minimal scotogenic scalar doublet DM
+  - inert doublet scotogenic DM
+  family: scotogenic_scalar_dark_matter
+  historical_origin_or_motivation: The paper uses the scotogenic framework, which can provide scalar dark
+    matter and one-loop neutrino masses, and studies how larger electroweak multiplets change Sommerfeld-enhanced
+    annihilation.
+  model_kind: simplified_model
+  name: Scotogenic scalar doublet dark matter with Sommerfeld enhancement
+  short_description: A Z2-odd electroweak scalar doublet scotogenic dark matter variant, with neutral
+    scalar S chosen as the dark matter and TeV Sommerfeld enhancement analyzed.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - SS -> W W
+  - SS -> Z Z
+  - SS -> gamma gamma
+  - SS -> gamma Z
+  dark_sector_couplings:
+  - Higgs-scalar quartic couplings
+  - electroweak gauge interactions among scalar multiplet components
+  interaction_operators:
+  - Z2-symmetric Higgs-scalar potential terms
+  - gauge current interactions for W, Z, and photon exchange
+  mediator_types:
+  - electroweak gauge bosons
+  - Higgs boson
+  portals:
+  - higgs
+  - vector
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: strong
+    spin_dependence: not_applicable
+    velocity_dependence: strong
+  standard_model_targets:
+  - W bosons
+  - Z bosons
+  - photons
+  - Higgs bosons
+  tree_or_loop_level: both
+model_id: 1611_06590_scotogenic_scalar_doublet_sommerfeld_v1
+parameters:
+  core:
+  - description: Neutral scalar S mass scanned in the high-mass Sommerfeld analysis.
+    name: dark matter mass
+    range: 1-30 TeV in the numerical analysis
+    role: core
+    status: established
+    symbol: m_S
+    unit: TeV
+  - description: Minimal scalar doublet representation compared against the quartet.
+    name: doublet electroweak representation
+    role: core
+    status: established
+    symbol: (J,Y)
+    value: (1/2, 1/2)
+  - description: Mass gaps between S and the charged/pseudoscalar doublet partners constrained by direct-detection
+      and electroweak considerations.
+    name: mass splittings
+    range: model-dependent allowed splittings
+    role: core
+    status: established
+    symbol: Delta_i^d
+    unit: GeV
+  - description: Quartic Higgs-doublet couplings controlling masses, splittings, and Higgs-DM coupling.
+    name: scalar potential couplings
+    role: core
+    status: established
+particle_content:
+  additional_dark_sector_particles:
+  - Z2-odd scalar doublet components
+  - singlet fermion multiplets for radiative neutrino mass
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: neutral scalar S
+    number_of_components: single_component
+    spin: '0'
+    statistics: boson
+  excited_or_degenerate_states:
+  - charged scalar multiplet partners
+  - pseudoscalar A
+  mediators:
+  - W boson
+  - Z boson
+  - photon
+  - Higgs boson
+  standard_model_extension: substantial
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: The indirect-detection analysis treats present-day halo DM as nonrelativistic with velocity about
+    220 km/s.
+production:
+  abundance_set_by:
+  - DM coannihilation into Standard Model particles
+  - mass splittings within the scalar multiplet
+  - possible fermion-multiplet decays
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through gauge and scalar coannihilation
+  - nonthermal production from out-of-equilibrium fermion multiplet decays
+  nonthermal_momentum_distribution: unknown
+  notes: The paper discusses the scalar candidate as the dominant DM component when matching the Planck
+    relic density.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: Gauge-boson exchange induces Yukawa and Coulomb potentials between multiplet components; Higgs-DM
+        cubic couplings are specified for doublet and quartet.
+      reference_id: '1611.06590'
+      section: Sommerfeld enhancement setup
+    parameter_ranges:
+    - confidence: medium
+      note: Paper compares the scalar doublet against the quartet in the high-mass nonrelativistic regime,
+        especially 1-30 TeV.
+      reference_id: '1611.06590'
+      section: Results and discussion
+    particle_content:
+    - confidence: high
+      note: The paper states that the scalar doublet contains a neutral scalar S/A and chooses S as the
+        dark matter candidate.
+      reference_id: '1611.06590'
+      section: Scalar Dark Matter
+    production_mechanism:
+    - confidence: high
+      note: The relic-density section says scalar scotogenic DM can be produced by thermal freeze-out
+        through gauge/scalar coannihilation or nonthermally through fermion multiplet decays.
+      reference_id: '1611.06590'
+      section: DM constraints and allowed parameter space
+    symmetries:
+    - confidence: high
+      note: The scalar multiplet potential is symmetric under a Z2, and the Z2 symmetry permits S or A
+        to be the dark matter candidate.
+      reference_id: '1611.06590'
+      section: The Scalar Potential and the Particle states
+    validity_domain:
+    - confidence: high
+      note: The Sommerfeld calculation is for nonrelativistic TeV-scale electroweak scalar DM in the Milky
+        Way halo, with Yukawa potentials dominating in the region of interest.
+      reference_id: '1611.06590'
+      section: Sommerfeld enhancement setup
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0017_dark_matter_worker
+    extraction_date: '2026-05-31'
+    extractor_name: codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Focuses on scalar DM in generalized scotogenic multiplets and compares doublet
+        with quartet.
+      reference_id: '1611.06590'
+      section: Abstract and introduction
+    - page: null
+      quote_or_summary: Z2 permits S or A; this work sets S to be DM.
+      reference_id: '1611.06590'
+      section: Scalar Dark Matter
+    - page: null
+      quote_or_summary: Relic density can arise from thermal freeze-out or nonthermal fermion decays.
+      reference_id: '1611.06590'
+      section: DM constraints and allowed parameter space
+    unresolved_items:
+    - The paper text used here supports the scalar-sector and Sommerfeld treatment but not a full registry-ready
+      neutrino-sector implementation.
+  last_updated: '2026-05-31'
+  model_family: scotogenic_scalar_dark_matter
+  model_id: 1611_06590_scotogenic_scalar_doublet_sommerfeld_v1
+  model_name: Scotogenic scalar doublet dark matter with Sommerfeld enhancement
+  review:
+    expert_reviewed: false
+    human_reviewed: false
+    implementation_confidence: medium
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1611.06590'
+      authors:
+      - Talal Ahmed Chowdhury
+      - Salah Nasri
+      doi: null
+      notes: Primary source for this extracted scotogenic scalar multiplet variant.
+      reference_id: '1611.06590'
+      role: extension
+      title: The Sommerfeld Enhancement in the Scotogenic Model with Large Electroweak Scalar Multiplets
+      url: null
+      year: 2016
+  status: machine_extracted
+relic_density:
+  calculation_type: mixed
+  full_or_subcomponent: either
+  key_dependencies:
+  - m_S
+  - mass splittings between S and scalar partners
+  - gauge/scalar annihilation rates
+  - fermion multiplet decay channels
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Relic-density production mode may be thermal or nonthermal.
+  - Mass-splitting assumptions strongly affect Sommerfeld enhancement.
+  notes: Machine extraction from the paper text; indirect-detection constraints themselves are intentionally
+    not encoded in this run.
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: An exact Z2 parity makes the lightest odd neutral scalar stable; the paper chooses
+    S rather than A as the dark matter state.
+  symmetries:
+  - exact_or_approximate: exact
+    name: Z2
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper presents the Z2-symmetric scalar potential and the nonrelativistic potential/annihilation
+    setup for the scalar multiplet sector.
+  parent_frameworks:
+  - generalized scotogenic model
+  - electroweak scalar multiplet dark matter
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  condition: Sommerfeld enhancement is analyzed for nonrelativistic TeV-scale electroweak scalar dark
+    matter where gauge-boson exchange modifies the incoming wavefunction.
+  extrapolation_risk: medium
+  id: nonrelativistic_sommerfeld_regime
+  status: established
+- applies_to: model
+  condition: The extraction assumes the paper choice S, rather than A, is the lightest neutral scalar
+    dark matter candidate.
+  extrapolation_risk: medium
+  id: scalar_s_candidate
+  status: assumed

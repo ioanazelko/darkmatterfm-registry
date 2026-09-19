@@ -1,0 +1,290 @@
+_source:
+  shard: arXiv_src_2101_066_wds.tar
+  paper_id: '2101_12138'
+  source_member: 2101_12138.json
+schema_version: model_only_v0
+model_id: 2101_12138_solution_b_dark_dirac_fermion_v1
+identity:
+  name: Solution B dark U(1)_D Dirac fermion dark matter
+  family: hidden_sector_dark_matter
+  aliases:
+  - anomaly-free U(1)_D solution B
+  short_description: An anomaly-free dark U(1)_D model linking small Dirac neutrino masses to a hidden
+    sector whose lightest Dirac fermion is dark matter.
+  historical_origin_or_motivation: The paper proposes gauging a new U(1)_D for right-handed neutrinos
+    so that anomaly-canceling singlet fermions form a dark sector.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - Standard Model plus anomaly-free U(1)_D
+  - Dirac neutrino Type-II-like seesaw
+  lagrangian_available: partial
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives scalar potentials, charge assignments, and benchmark annihilation formulae for
+    Solution B.
+particle_content:
+  dark_matter_candidate:
+    name: lightest dark Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - other dark Dirac fermions from singlet combinations
+  mediators:
+  - Z_D gauge boson
+  - U(1)_D-breaking scalar H
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Residual dark number after spontaneous U(1)_D breaking stabilizes the lightest
+    dark Dirac fermion.
+  symmetries:
+  - name: U(1)_D
+    type: gauge
+    exact_or_approximate: broken
+    breaking: broken by a singlet scalar vev u
+  - name: dark number
+    type: global
+    exact_or_approximate: exact
+  - name: lepton number
+    type: global
+    exact_or_approximate: exact
+interactions:
+  portals:
+  - vector
+  - higgs
+  standard_model_targets:
+  - right-handed neutrinos
+  - SM Higgs through h-H mixing
+  dark_sector_couplings:
+  - g_D Z_D chi current
+  - f H chi chi
+  mediator_types:
+  - dark vector boson
+  - dark scalar mixed with Higgs
+  annihilation_channels:
+  - chi anti-chi to Z_D Z_D
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark Dirac fermion mass
+    symbol: m_chi
+    description: Benchmark dark fermion mass used for relic abundance estimate.
+    value: '1'
+    unit: TeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: dark gauge boson mass
+    symbol: m_D
+    description: Benchmark mass of the lighter Z_D gauge boson.
+    value: '800'
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: dark gauge coupling
+    symbol: g_D
+    description: Coupling satisfying the canonical annihilation cross section in the benchmark.
+    value: 0.86
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: U(1)_D breaking scale
+    symbol: u
+    description: Singlet scalar vacuum expectation value in the benchmark.
+    value: about 2
+    unit: TeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+  - name: induced second-doublet vev
+    symbol: v_prime
+    description: Small vev generating Dirac neutrino masses.
+    value: about 0.5
+    unit: eV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - primary
+production:
+  mechanisms:
+  - thermal annihilation of dark Dirac fermions into lighter Z_D bosons
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - chi anti-chi to Z_D Z_D annihilation rate
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: The paper matches the canonical Dirac-fermion annihilation rate for its benchmark.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_D
+  - g_D
+  - u
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - broken dark U(1)_D sector connected to Dirac neutrino masses
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: No phase-space distribution is provided; the candidate is a TeV-scale thermal relic in the benchmark.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: solution_b_charge_assignment
+  applies_to: model
+  condition: Applies to the anomaly-free Solution B charge assignment and scalar content described in
+    the paper.
+  status: speculative
+  extrapolation_risk: medium
+  source_reference_ids:
+  - primary
+- id: zd_lighter_than_chi
+  applies_to: parameter
+  condition: Benchmark relic calculation assumes Z_D is lighter than the dark Dirac fermion.
+  status: assumed
+  extrapolation_risk: high
+  source_reference_ids:
+  - primary
+assumptions:
+  global:
+  - id: solution_b_anomaly_free_content
+    description: The charge assignment and added singlet fermions cancel U(1)_D anomalies.
+    scope: theory
+    status: inferred
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+  - id: solution_b_lighter_zd
+    description: The relic-density benchmark assumes m_D < m_chi so chi anti-chi annihilates to Z_D pairs.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code is identified in the assigned text.
+provenance:
+  model_id: 2101_12138_solution_b_dark_dirac_fermion_v1
+  model_name: Solution B dark U(1)_D Dirac fermion dark matter
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Linkage of Dirac Neutrinos to Dark U(1) Gauge Symmetry
+      authors: []
+      year: 2021
+      arxiv_id: '2101.12138'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0000
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Solution (B)
+      page: null
+      quote_or_summary: Solution B defines an anomaly-free dark U(1)_D sector with Dirac fermion dark
+        matter and a Z_D annihilation benchmark.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: Solution B connects (4,2,2) and (-3,-3,-3) singlet fermions into massive dark Dirac fermions;
+        the lightest combination is used as dark matter.
+      confidence: high
+      section: Solution (B)
+    symmetries:
+    - reference_id: primary
+      note: After U(1)_D breaking the chosen field content leaves lepton number and a residual dark number
+        stabilizing the dark fermions.
+      confidence: high
+      section: Solution (B)
+    interactions:
+    - reference_id: primary
+      note: The dark fermion couples to the U(1)_D gauge boson Z_D and to the singlet scalar H, with Higgs
+        mixing providing the SM connection.
+      confidence: high
+      section: Solution (B)
+    production_mechanism:
+    - reference_id: primary
+      note: The paper says the relic abundance is determined by annihilation to a lighter Z_D and gives
+        a benchmark annihilation cross section.
+      confidence: high
+      section: Solution (B)
+    parameter_ranges:
+    - reference_id: primary
+      note: A benchmark uses m_chi = 1 TeV, m_D = 800 GeV, g_D = 0.86, and u about 2 TeV.
+      confidence: high
+      section: Solution (B)
+    validity_domain:
+    - reference_id: primary
+      note: The construction depends on the anomaly-free charge assignment (4,-3,-3,-3,2,2,1) and the
+        specified scalar content.
+      confidence: medium
+      section: Solution (B)
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  notes: Machine extraction from one paper; no cross-paper deduplication or external validation was attempted.
+agent_failure_modes:
+  warnings:
+  - id: direct_detection_ignored
+    severity: medium
+    category: other
+    warning: The paper discusses direct-search limits, but this run intentionally omits constraints and
+      observable routing.
+    source_reference_ids:
+    - primary
+  - id: benchmark_dependence
+    severity: medium
+    category: extrapolation
+    warning: Relic-density statements are benchmark-dependent and should not be extrapolated without the
+      annihilation formula.
+    source_reference_ids:
+    - primary

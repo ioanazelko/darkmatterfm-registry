@@ -1,0 +1,787 @@
+_source:
+  shard: arXiv_src_2205_037_wds.tar
+  paper_id: '2205_05714'
+  source_member: 2205_05714.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2205_05714_flavor_blind_zprime_mev_scalar_dm_v1
+identity:
+  name: Flavor-blind Z-prime mediated complex scalar MeV dark matter
+  family: thermal_mev_dark_matter
+  aliases:
+  - complex scalar MeV DM with flavor-blind Z-prime mediator
+  - flavor-blind vector-mediated scalar DM
+  short_description: A complex scalar MeV-scale thermal dark-matter benchmark with an off-shell Z-prime
+    mediator coupling flavor-blindly to charged and neutral leptons, used to self-consistently compute
+    relic abundance and N_eff during neutrino decoupling.
+  historical_origin_or_motivation: The paper develops a full MeV freeze-out treatment and demonstrates
+    it on this representative scalar model.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - thermal MeV dark matter
+  - vector-mediated leptophilic dark matter
+  - three-sector Boltzmann decoupling
+  lagrangian_available: partial
+  renormalizable: unknown
+  eft_cutoff:
+    name: Z-prime effective scale
+    symbol: Lambda_Z'
+    description: Effective scale used when the Z-prime is off shell during freeze-out.
+    range: m_Z'/(g_chi g_l) in the paper notation
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2205_05714'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the Z-prime interactions with the complex scalar and SM leptons and then treats
+    them as an effective operator during freeze-out.
+particle_content:
+  dark_matter_candidate:
+    name: complex scalar dark matter chi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - off-shell Z' mediator
+  mediators:
+  - Z' vector mediator
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - complex scalar dark matter chi
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: The scalar is assumed stable as the populated dark-sector particle; the stabilizing
+    symmetry is not specified in the extracted text.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - electrons
+  - positrons
+  - active neutrinos
+  dark_sector_couplings:
+  - g_chi coupling between chi and Z'
+  - flavor-blind lepton coupling g_l
+  mediator_types:
+  - off-shell Z' vector mediator
+  interaction_operators:
+  - g_chi^2 Z' Z' chi* chi
+  - i g_chi Z'_mu (chi* partial_mu chi)
+  - -g_l Z'_mu l gamma^mu l
+  - effective chi-lepton operator with scale Lambda_Z'
+  scattering:
+    elastic: 'yes'
+    inelastic: 'yes'
+    momentum_dependence: unknown
+    velocity_dependence: strong
+    spin_dependence: not_applicable
+  annihilation_channels:
+  - chi chi* -> e+ e-
+  - chi chi* -> neutrino antineutrino for each active flavor
+  decay_channels: []
+  self_scattering_channels:
+  - dark-sector self-scattering sufficient to maintain kinetic equilibrium in the benchmark assumptions
+  cp_structure: complex scalar with vector mediator
+  flavor_structure: flavor-blind coupling to charged and neutral leptons in the benchmark
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark-matter mass
+    symbol: m_chi
+    description: Mass of the complex scalar MeV dark matter.
+    range: MeV scale; Planck+BAO lower limit around m_chi > 7 MeV for the flavor-blind p-wave benchmark
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2205_05714'
+  - name: Z-prime mediator mass
+    symbol: m_Z'
+    description: Mass of the vector mediator, assumed heavy enough to be off shell during freeze-out.
+    range: m_Z prime greater than about 1 GeV in the benchmark assumption
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2205_05714'
+  - name: effective vector scale
+    symbol: Lambda_Z'
+    description: Combination of mediator mass and couplings used to present the results.
+    range: m_Z'/(g_chi g_l), model-dependent
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2205_05714'
+  - name: flavor branching ratio
+    symbol: BR_e:BR_nu
+    description: Relative annihilation branching to charged electrons and active neutrinos.
+    range: 2:3 in the flavor-blind massless-electron limit described in the paper
+    role: core
+    status: inferred
+    source_reference_ids:
+    - '2205_05714'
+  - name: thermal yield fraction
+    symbol: Y/Y_DM
+    description: Relic yield fraction shown in the numerical results.
+    range: 1, 0.1, or 0.01 examples
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2205_05714'
+production:
+  mechanisms:
+  - thermal freeze-out during neutrino decoupling and electron-positron annihilation
+  - p-wave annihilation through an off-shell vector mediator
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - p-wave annihilation into electrons and neutrinos
+  - elastic energy exchange with EM and neutrino sectors
+  - dark-sector temperature evolution
+  - effective scale Lambda_Z'
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper self-consistently solves coupled Boltzmann equations for the dark, neutrino, and electromagnetic
+    sectors to obtain the thermal relic abundance.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - Lambda_Z'
+  - branching to electrons versus neutrinos
+  - dark-sector temperature
+  - elastic scattering
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - separate photon/electron, neutrino, and dark-sector temperatures during MeV freeze-out
+  - dark-sector chemical potential tracked through decoupling
+  dark_sector_temperature: null
+  delta_neff:
+    name: change in effective neutrino number
+    symbol: Delta N_eff
+    description: Predicted shift tied to MeV dark-matter annihilation and sector heating.
+    range: computed numerically; benchmark constrained by CMB data
+    role: derived
+    status: inferred
+    source_reference_ids:
+    - '2205_05714'
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  f_of_p_or_q: Thermal distribution with separate sector temperature and chemical potential approximations.
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The numerical treatment tracks temperatures and chemical potentials rather than a full arbitrary
+    momentum distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No structure-formation mapping is provided.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    concentration_mass_relation_effect: unknown
+    density_profile_effect: unknown
+    core_or_cusp_effect: unknown
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+    smallest_galaxies_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: mev_zprime_offshell
+  applies_to: model
+  condition: The Z-prime remains off shell and negligibly populated during freeze-out.
+  valid_range: m_Z' above roughly 1 GeV in the benchmark
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2205_05714'
+  notes: null
+- id: mev_flavor_blind_lepton_coupling
+  applies_to: model
+  condition: The benchmark assumes flavor-blind couplings to charged and neutral leptons.
+  valid_range: branching ratio approximately 2:3 to EM versus neutrino sectors in the massless-electron
+    limit
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2205_05714'
+  notes: null
+- id: mev_distribution_approximation
+  applies_to: Boltzmann treatment
+  condition: The solver uses temperature and chemical-potential approximations for the dark and neutrino
+    sectors.
+  valid_range: percent-level uncertainties discussed for m_chi around 5 MeV examples
+  status: approximate
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '2205_05714'
+  notes: null
+assumptions:
+  global:
+  - id: mev_only_dm_populated
+    description: Only the DM particle is populated in abundance in the dark sector during the relevant
+      epoch.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: A populated mediator or other dark species would change the coupled-sector evolution.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2205_05714'
+    notes: null
+  - id: mev_self_scattering_kinetic_equilibrium
+    description: Dark-sector self-scattering keeps the scalar distribution describable by a temperature
+      and chemical potential until after freeze-out.
+    scope: production
+    status: assumed
+    impact_if_violated: A nonthermal distribution would require solving the full momentum-dependent Boltzmann
+      equation.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2205_05714'
+    notes: null
+  - id: mev_no_tree_photon_coupling
+    description: The benchmark has no tree-level coupling between chi/Z-prime and photons.
+    scope: theory
+    status: assumed
+    impact_if_violated: A photon coupling would alter EM-sector heating and relic/N_eff predictions.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2205_05714'
+    notes: null
+associated_code:
+  has_associated_code: 'no'
+  code_summary: No public model-specific code release is identified; the paper describes a numerical coupled-Boltzmann
+    implementation and tabulations.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  reproducibility:
+    reproducibility_level: not_reproducible
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: No public model-specific code artifact was extracted from the paper text.
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats: []
+provenance:
+  model_id: 2205_05714_flavor_blind_zprime_mev_scalar_dm_v1
+  model_name: Flavor-blind Z-prime mediated complex scalar MeV dark matter
+  model_family: thermal_mev_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2205_05714'
+      title: 'Towards a full description of MeV dark matter decoupling: a self-consistent determination
+        of relic abundance and N_eff'
+      authors:
+      - Xiaoyong Chu
+      - Jui-Lin Kuo
+      - Josef Pradler
+      year: 2022
+      arxiv_id: '2205.05714'
+      doi: null
+      url: null
+      role: extension
+      notes: null
+    - arxiv_id: '2205.05714'
+      authors:
+      - Chu, Xiaoyong
+      - Kuo, Jui-Lin
+      - Pradler, Josef
+      doi: 10.1103/PhysRevD.106.055022
+      notes: Primary model paper read from local full text and discovered through ADS.
+      reference_id: 2205_05714_primary
+      role: original_model
+      title: 'Toward a full description of MeV dark matter decoupling: A self-consistent determination
+        of relic abundance and N<SUB>eff</SUB>'
+      url: https://arxiv.org/abs/2205.05714
+      year: 2022
+    constraint_papers:
+    - arxiv_id: '1312.5725'
+      authors:
+      - Nollett, Kenneth M.
+      - Steigman, Gary
+      doi: 10.1103/PhysRevD.89.083508
+      notes: Related local full text on BBN/CMB constraints for electromagnetically coupled light WIMPs.
+      reference_id: 2205_05714_rel_em_coupled_light_wimps
+      role: constraint
+      title: BBN and the CMB constrain light, electromagnetically coupled WIMPs
+      url: https://arxiv.org/abs/1312.5725
+      year: 2014
+    - arxiv_id: '1411.6005'
+      authors:
+      - Nollett, Kenneth M.
+      - Steigman, Gary
+      doi: 10.1103/PhysRevD.91.083505
+      notes: Related local full text on BBN/CMB constraints for neutrino-coupled light WIMPs.
+      reference_id: 2205_05714_rel_neutrino_coupled_light_wimps
+      role: constraint
+      title: BBN and the CMB constrain neutrino coupled light WIMPs
+      url: https://arxiv.org/abs/1411.6005
+      year: 2015
+    - arxiv_id: '1910.01649'
+      authors:
+      - Sabti, Nashwan
+      - Alvey, James
+      - Escudero, Miguel
+      - Fairbairn, Malcolm
+      - Blas, Diego
+      doi: 10.1088/1475-7516/2020/01/004
+      notes: Related local full text on refined MeV thermal dark-sector bounds from BBN and CMB.
+      reference_id: 2205_05714_rel_mev_bbn_cmb_bounds
+      role: constraint
+      title: Refined bounds on MeV-scale thermal dark sectors from BBN and the CMB
+      url: https://arxiv.org/abs/1910.01649
+      year: 2020
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch-0001
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2205_05714'
+      section: introduction
+      page: null
+      quote_or_summary: The paper presents a complete MeV dark-matter decoupling treatment and demonstrates
+        it on a complex scalar Z-prime benchmark.
+    - reference_id: '2205_05714'
+      section: representative particle physics model
+      page: null
+      quote_or_summary: The benchmark is a complex scalar DM candidate with flavor-blind Z-prime mediated
+        couplings to charged and neutral leptons.
+    unresolved_items:
+    - The stabilizing symmetry and full UV completion of the complex scalar benchmark are not specified
+      in the extracted text.
+    - The exact Planck likelihood grid is not included in this batch output.
+    - Model variants with non-flavor-blind branching ratios must be recomputed.
+    - Indirect-detection constraints on s-wave electromagnetic annihilation are noted by the primary text
+      but not structured for this p-wave benchmark.
+  evidence:
+    particle_content:
+    - reference_id: '2205_05714'
+      note: The quantitative example is a complex scalar DM candidate with a Z-prime mediator.
+      confidence: high
+      section: representative model
+      page: null
+    interactions:
+    - reference_id: '2205_05714'
+      note: The paper writes Z-prime interactions with chi and SM leptons and treats the mediator as off
+        shell with an effective scale.
+      confidence: high
+      section: representative model
+      page: null
+    production_mechanism:
+    - reference_id: '2205_05714'
+      note: The abundance is set by p-wave thermal freeze-out while solving energy transfer among dark,
+        neutrino, and EM sectors.
+      confidence: high
+      section: Boltzmann treatment
+      page: null
+    cosmological_history:
+    - reference_id: '2205_05714'
+      note: The freeze-out occurs during neutrino decoupling and electron-positron annihilation with separate
+        sector temperatures.
+      confidence: high
+      section: overview
+      page: null
+    parameter_ranges:
+    - reference_id: '2205_05714'
+      note: Examples and limits include m_chi near MeV scales, m_chi greater than about 7 MeV for the
+        benchmark, and mediator scale scans.
+      confidence: medium
+      section: N_eff results
+      page: null
+    validity_domain:
+    - reference_id: '2205_05714'
+      note: The benchmark assumes off-shell Z-prime mediation, flavor-blind lepton coupling, and a temperature/chemical-potential
+        approximation.
+      confidence: medium
+      section: representative model
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper quotes the Planck exclusion of the flavor-blind p-wave complex scalar benchmark
+        below about 7 MeV.
+      page: null
+      reference_id: 2205_05714_primary
+      section: Abstract/results
+    - confidence: medium
+      note: Related paper gives refined BBN/CMB bounds and a generic BBN lower mass around 0.4 MeV for
+        thermal dark sectors.
+      page: null
+      reference_id: 2205_05714_rel_mev_bbn_cmb_bounds
+      section: Abstract/results
+    observables:
+    - confidence: high
+      note: Primary paper states MeV thermal DM freezes out during neutrino decoupling and computes relic
+        abundance together with N_eff.
+      page: null
+      reference_id: 2205_05714_primary
+      section: Abstract/introduction
+    - confidence: medium
+      note: Related MeV dark-sector paper supports BBN/CMB sensitivity to light thermal states.
+      page: null
+      reference_id: 2205_05714_rel_mev_bbn_cmb_bounds
+      section: Abstract/methods
+    routes:
+    - confidence: high
+      note: Primary paper lays out the coupled collision-term and Boltzmann-equation route to relic abundance
+        and N_eff.
+      page: null
+      reference_id: 2205_05714_primary
+      section: Methodology
+    - confidence: medium
+      note: Electromagnetically coupled light-WIMP paper provides external BBN/CMB constraint context.
+      page: null
+      reference_id: 2205_05714_rel_em_coupled_light_wimps
+      section: BBN/CMB constraints
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - Accepted as a substantive relic-density/decoupling development for an explicit benchmark, not as the
+    first proposal of vector-mediated MeV dark matter.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - approximate distribution treatment
+  - benchmark flavor assumptions
+  - absence of a public code artifact in the extracted text
+  validation_status: expert_judgment_only
+  notes: The relic-density logic is explicit and central, while the particle model is used as a representative
+    benchmark.
+agent_failure_modes:
+  warnings:
+  - id: mev_not_generic_branching
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not apply the benchmark N_eff/relic conclusions to arbitrary electron-neutrino branching
+      ratios.
+    mitigation: Track the flavor-blind branching assumption or recompute.
+    source_reference_ids:
+    - '2205_05714'
+  - id: mev_distribution_approximation
+    severity: medium
+    category: extrapolation
+    warning: The treatment uses controlled thermodynamic approximations rather than a full momentum-distribution
+      solution.
+    mitigation: Avoid extrapolating beyond the stated MeV freeze-out setup.
+    source_reference_ids:
+    - '2205_05714'
+observables:
+- caveats:
+  - N_eff response depends on final-state branching ratios and thermal history approximations.
+  channel: cmb
+  effect_direction: model_dependent
+  environments:
+  - CMB
+  - BBN epoch
+  - electron-positron annihilation epoch
+  id: obs_neff_from_mev_annihilation
+  key_quantities:
+  - description: Complex scalar mass
+    name: dark matter mass
+    role: core
+    status: inferred
+    symbol: m_chi
+    unit: MeV
+    value: MeV scale; Planck excludes roughly m_chi below 7 MeV for the flavor-blind p-wave benchmark
+  - description: Branching fractions into electrons/photons and neutrinos
+    name: annihilation branching ratios
+    role: core
+    status: inferred
+    value: flavor-blind benchmark
+  - description: CMB effective relativistic degrees of freedom
+    name: N_eff
+    role: derived
+    status: inferred
+    symbol: N_eff
+  linked_constraints:
+  - con_planck_neff_mass_floor
+  - con_bbn_cmb_light_wimp
+  linked_routes:
+  - route_coupled_boltzmann_neff
+  name: N_eff shift from MeV dark-matter annihilation during neutrino decoupling
+  notes: This is the main observable computed self-consistently in the primary paper.
+  observability: high
+  predicted_effect: Thermal MeV-scale complex scalar dark matter freezes out during neutrino decoupling
+    and electron-positron annihilation, changing photon/neutrino temperatures and the predicted N_eff
+    measured by the CMB.
+  redshift_range: neutrino decoupling to CMB decoupling
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - 2205_05714_primary
+  - 2205_05714_rel_em_coupled_light_wimps
+  - 2205_05714_rel_neutrino_coupled_light_wimps
+  - 2205_05714_rel_mev_bbn_cmb_bounds
+  subchannel: effective number of relativistic species
+- caveats:
+  - The primary benchmark is flavor-blind; other branching choices require recomputation.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - thermal plasma
+  - neutrino sector
+  - electromagnetic sector
+  id: obs_relic_abundance_joint_solution
+  key_quantities:
+  - description: Comoving complex scalar abundance
+    name: yield
+    role: derived
+    status: inferred
+    symbol: Y_chi
+    value: must match observed DM density
+  - description: Effective UV scale controlling rates
+    name: Z-prime scale
+    role: core
+    status: unknown
+    symbol: Lambda_Zprime
+  - description: p-wave annihilation into charged and neutral leptons
+    name: thermally averaged annihilation rate
+    role: derived
+    status: inferred
+    symbol: <sigma v>
+  linked_constraints:
+  - con_planck_neff_mass_floor
+  linked_routes:
+  - route_coupled_boltzmann_neff
+  name: Joint relic-density and temperature-evolution solution
+  notes: Relevant for recasting MeV-scale thermal dark sectors.
+  observability: medium
+  predicted_effect: The same coupled Boltzmann treatment determines the DM yield and sector temperatures,
+    so the relic abundance and N_eff constraints are correlated rather than separable.
+  redshift_range: T around MeV
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - 2205_05714_primary
+  - 2205_05714_rel_mev_bbn_cmb_bounds
+  subchannel: thermal freeze-out during neutrino decoupling
+constraints:
+- allowed_regions:
+  - Masses above the Planck-driven threshold remain viable subject to the relic-density solution and model
+    couplings.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The exclusion quoted is for p-wave annihilation into electron and neutrino pairs of all
+      generations with flavor-blind Z-prime couplings.
+    id: assume_flavor_blind_p_wave
+    impact_if_violated: Different branching ratios or s-wave annihilation require a separate N_eff and
+      indirect-detection treatment.
+    notes: null
+    scope: constraint scope
+    source_reference_ids:
+    - 2205_05714_primary
+    status: assumed
+  benchmark_implications:
+  - A MeV scalar benchmark cannot be assessed with relic abundance alone; the CMB N_eff prediction is
+    decisive.
+  caveats:
+  - The paper computes the exclusion, but this output does not reproduce the numerical likelihood grid.
+  constrained_parameters:
+  - m_chi
+  - annihilation branching ratios
+  - Z-prime scale
+  - N_eff
+  constraint_type: cosmological
+  data_release: Planck CMB data as used in the primary paper
+  excluded_regions:
+  - For the flavor-blind p-wave benchmark, present Planck data exclude complex scalar dark matter masses
+    roughly below 7 MeV.
+  id: con_planck_neff_mass_floor
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Planck N_eff lower mass bound for flavor-blind p-wave scalar DM
+  notes: Use the quoted limit only for the stated benchmark.
+  observable_channel: CMB N_eff
+  recasting_needed: partial
+  robustness: high
+  source_reference_ids:
+  - 2205_05714_primary
+- allowed_regions:
+  - Refined related analyses find generic BBN lower masses around 0.4 MeV, with CMB N_eff often stronger
+    depending on final state.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The light state was in thermal contact with the electromagnetic or neutrino sector during
+      the relevant MeV epoch.
+    id: assume_thermal_contact
+    impact_if_violated: If not thermalized, the mass bounds change and production must be modeled explicitly.
+    notes: null
+    scope: BBN/CMB recast
+    source_reference_ids:
+    - 2205_05714_rel_em_coupled_light_wimps
+    - 2205_05714_rel_neutrino_coupled_light_wimps
+    - 2205_05714_rel_mev_bbn_cmb_bounds
+    status: assumed
+  benchmark_implications:
+  - BBN gives an independent floor that complements the primary Planck N_eff bound.
+  caveats:
+  - Related constraints cover broader light-WIMP classes; matching to the flavor-blind Z-prime benchmark
+    requires branch-by-branch recasting.
+  constrained_parameters:
+  - m_chi
+  - spin/internal degrees of freedom
+  - annihilation final state
+  - N_eff
+  - light-element yields
+  constraint_type: cosmological
+  data_release: Primordial abundance and Planck-era CMB data in related papers
+  excluded_regions:
+  - Thermal dark sectors light enough to heat photons or neutrinos after neutrino decoupling beyond BBN/CMB
+    limits.
+  id: con_bbn_cmb_light_wimp
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN and CMB bounds on light thermal dark sectors
+  notes: Useful external constraint context for the primary model.
+  observable_channel: BBN/CMB
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - 2205_05714_rel_em_coupled_light_wimps
+  - 2205_05714_rel_neutrino_coupled_light_wimps
+  - 2205_05714_rel_mev_bbn_cmb_bounds
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The primary paper effectively implements the route for its benchmark; external BBN recasting
+      is needed for broader variants.
+    caveats:
+    - S-wave electromagnetic annihilation has additional indirect-detection constraints not structured
+      here.
+    constraint_ids:
+    - con_planck_neff_mass_floor
+    - con_bbn_cmb_light_wimp
+    derived_quantities:
+    - Y_chi
+    - T_gamma/T_nu
+    - chemical potentials
+    - N_eff
+    description: Solve the coupled MeV-era relic abundance and N_eff evolution for the Z-prime-mediated
+      scalar benchmark.
+    forward_model_chain:
+    - inputs:
+      - matrix elements
+      - thermal distributions
+      notes: Needs separate terms for electromagnetic and neutrino sectors.
+      outputs:
+      - annihilation and energy-exchange rates
+      step_id: compute_collision_terms
+      step_type: analytic_formula
+      tool_or_code: model-specific collision integrals
+      validity: valid for the off-shell mediator benchmark and approximations in the primary paper
+    - inputs:
+      - rates
+      - Hubble expansion
+      - entropy densities
+      notes: Track freeze-out through neutrino decoupling.
+      outputs:
+      - Y_chi(T)
+      - T_gamma(T)
+      - T_nu(T)
+      step_id: integrate_mev_evolution
+      step_type: boltzmann_solver
+      tool_or_code: coupled temperature/yield ODE solver
+      validity: core numerical calculation of the primary paper
+    - inputs:
+      - N_eff
+      - relic abundance
+      notes: Reproduce the roughly 7 MeV exclusion for the flavor-blind p-wave benchmark.
+      outputs:
+      - excluded mass range
+      step_id: compare_planck
+      step_type: likelihood
+      tool_or_code: CMB N_eff comparison
+      validity: Planck comparison quoted by primary paper
+    id: route_coupled_boltzmann_neff
+    input_parameters:
+    - m_chi
+    - annihilation branching ratios
+    - Z-prime scale
+    - initial sector temperatures
+    likelihoods:
+    - CMB N_eff likelihood
+    - BBN light-element likelihood for broader recasts
+    observable_ids:
+    - obs_neff_from_mev_annihilation
+    - obs_relic_abundance_joint_solution
+    required_code_resources:
+    - coupled Boltzmann/ODE solver
+    - BBN code for light-element yields
+    - Planck N_eff likelihood
+    route_status: partially_implemented
+    source_model_features:
+    - complex scalar MeV dark matter
+    - off-shell flavor-blind Z-prime mediator
+    - thermal contact with electrons and neutrinos
+    validation_tests:
+    - recover Standard Model N_eff when dark sector is removed
+    - reproduce quoted m_chi around 7 MeV Planck exclusion

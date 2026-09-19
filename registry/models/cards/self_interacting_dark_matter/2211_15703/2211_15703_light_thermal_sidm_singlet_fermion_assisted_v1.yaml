@@ -1,0 +1,298 @@
+_source:
+  shard: arXiv_src_2211_116_wds.tar
+  paper_id: '2211_15703'
+  source_member: 2211_15703.json
+schema_version: model_only_v0
+model_id: 2211_15703_light_thermal_sidm_singlet_fermion_assisted_v1
+identity:
+  name: Singlet-fermion-assisted light thermal self-interacting dark matter
+  family: self_interacting_dark_matter
+  aliases:
+  - light thermal SIDM
+  - U(1)_D Dirac fermion SIDM
+  short_description: A GeV-scale Dirac fermion SIDM model under U(1)_D where a singlet fermion close in
+    mass helps generate the correct freeze-out relic density.
+  historical_origin_or_motivation: unknown
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - hidden U(1)_D gauge theory
+  - singlet fermion seesaw-motivated extension
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes fermion, gauge, kinetic-mixing, and scalar-sector Lagrangian terms.
+particle_content:
+  dark_matter_candidate:
+    name: chi_1
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - chi_2 next-to-lightest stable particle
+  - singlet fermion N
+  - singlet scalar phi
+  mediators:
+  - light U(1)_D gauge boson Z_D
+  - mixed scalar states h_1 and h_2
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Lightest mass eigenstate chi_1 is stable in the hidden U(1)_D setup.
+  symmetries:
+  - name: U(1)_D
+    type: gauge
+    exact_or_approximate: broken
+    breaking: spontaneously broken by singlet scalar vev
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - higgs
+  standard_model_targets:
+  - hypercharge through kinetic mixing
+  - SM Higgs through scalar mixing
+  dark_sector_couplings:
+  - g_D coupling to Z_D
+  - Y_N mixing between singlet fermions
+  - kinetic mixing epsilon
+  - Higgs-singlet scalar portal lambda_Hphi
+  mediator_types:
+  - vector
+  - scalar
+  tree_or_loop_level: tree
+  annihilation_channels:
+  - chi_1 chi_1 to Z_D Z_D
+  - chi_2-assisted annihilation into dark matter
+  self_scattering_channels:
+  - t-channel Z_D mediated chi_1 self-scattering
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: M_chi1
+    range: GeV scale
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: mediator mass
+    symbol: M_ZD
+    description: Light dark gauge boson mass
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: dark gauge coupling
+    symbol: g_D
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: singlet fermion mass splitting
+    symbol: Delta M
+    description: Mass gap between chi_2 and chi_1
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: kinetic mixing
+    symbol: epsilon
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: singlet scalar vev
+    symbol: v_phi
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+production:
+  mechanisms:
+  - thermal freeze-out
+  - coannihilation or assisted annihilation through singlet fermion state
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - annihilation into light mediators
+  - singlet-fermion-assisted annihilation into dark matter
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: The nearby singlet fermion state compensates the depletion caused by efficient annihilation into
+    light mediators.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - M_chi1
+  - M_chi2
+  - M_ZD
+  - g_D
+  - Y_N
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Thermal relic SIDM.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    density_profile_effect: self-interactions are intended to address small-scale CDM issues
+validity_domain:
+- id: light-sidm-regime
+  applies_to: model
+  condition: GeV-scale dark matter with a much lighter Z_D mediator and mass-proximate singlet fermion
+    assistant.
+  status: inferred
+  extrapolation_risk: unknown
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: hidden-gauge-setup
+    description: DM is a Dirac fermion charged under U(1)_D and the singlet scalar breaks U(1)_D.
+    scope: global
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: thermal-freezeout
+    description: The relic abundance is computed using a thermal freeze-out history.
+    scope: production
+    status: assumed
+    impact_if_violated: null
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: null
+provenance:
+  model_id: 2211_15703_light_thermal_sidm_singlet_fermion_assisted_v1
+  model_name: Singlet-fermion-assisted light thermal self-interacting dark matter
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Minimal realisation of light thermal self-interacting dark matter
+      authors:
+      - Debasish Borah
+      - Satyabrata Mahapatra
+      - Narendra Sahu
+      year: 2022
+      arxiv_id: '2211.15703'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text used as sole source.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0010
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract
+      page: null
+      quote_or_summary: The paper proposes GeV-scale SIDM with correct thermal relic assisted by a singlet
+        fermion.
+    - reference_id: paper
+      section: Minimal setup
+      page: null
+      quote_or_summary: It gives the U(1)_D Lagrangian, scalar sector, mass mixing, and identifies chi_1
+        as stable DM.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: DM is a Dirac fermion under U(1)_D; after mixing the lightest state chi_1 is the stable candidate.
+      confidence: high
+      section: Minimal setup
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: A hidden U(1)_D gauge symmetry is spontaneously broken by a singlet scalar vev.
+      confidence: high
+      section: Minimal setup
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The model includes Z_D vector interactions, kinetic mixing, scalar mixing, and singlet-fermion
+        Yukawa mixing.
+      confidence: high
+      section: Minimal setup
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The paper states that the singlet fermion assists freeze-out to obtain the correct SIDM relic
+        density.
+      confidence: high
+      section: Abstract
+      page: null
+    cosmological_history:
+    - reference_id: paper
+      note: The scenario is a thermal relic SIDM construction with light mediator self-interactions.
+      confidence: medium
+      section: DM self-interaction and thermal relic
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: high
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine extraction from paper text; model-only profile excludes constraints and observables.
+agent_failure_modes:
+  warnings: []

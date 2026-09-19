@@ -1,0 +1,615 @@
+_source:
+  shard: arXiv_src_2111_037_wds.tar
+  paper_id: '2111_05868'
+  source_member: 2111_05868.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2111_05868_neutrino_portal_dirac_fermion_freezeout_v1
+identity:
+  name: Neutrino-portal Dirac fermion thermal freeze-out dark matter
+  family: neutrino_portal_dark_matter
+  aliases:
+  - DF neutrino-portal freeze-out
+  - neutrinophilic scalar Dirac fermion DM
+  short_description: A simplified dark matter benchmark where a Z_2-stabilized Dirac fermion thermalizes
+    with Standard Model neutrinos through a massive neutrinophilic scalar and freezes out by annihilating
+    into neutrinos.
+  historical_origin_or_motivation: Used as a predictive neutrino self-interaction target for Forward Physics
+    Facility searches.
+  status: benchmark
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - neutrinophilic scalar mediator
+  - neutrino self-interaction benchmark
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  embedded_in_larger_framework: unknown
+  notes: The low-energy neutrino coupling is not SM SU(2)_L gauge invariant but can arise from higher-dimensional
+    operators; the dark-sector operators are described as marginal.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion dark matter
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - massive neutrinophilic scalar
+  dark_radiation_species: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z_2 symmetry stabilizes the Dirac fermion dark matter candidate.
+  symmetries:
+  - name: Z_2
+    type: discrete
+    exact_or_approximate: unknown
+    breaking: not specified
+  - name: possible U(1) lepton number
+    type: global
+    exact_or_approximate: unknown
+    breaking: not specified
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  standard_model_targets:
+  - active neutrinos
+  dark_sector_couplings:
+  - neutrinophilic scalar coupling to neutrinos
+  - scalar coupling y to Dirac fermion dark matter
+  mediator_types:
+  - massive scalar
+  interaction_operators:
+  - low-energy scalar-neutrino coupling
+  - Dirac fermion dark matter-scalar interaction
+  annihilation_channels:
+  - Dirac fermion dark matter annihilation into neutrinos through scalar exchange
+  decay_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: mediator mass
+    symbol: m_phi
+    description: Mass of the neutrinophilic scalar mediator.
+    range: 0.3-20 GeV FPF target; heavy-mediator freeze-out case assumes m_phi > m_DM
+    unit: GeV
+    role: core
+    status: inferred
+  - name: dark matter mass
+    symbol: m_DM
+    description: Dirac fermion dark matter mass.
+    range: benchmark relic curves use m_phi = 3 m_DM
+    role: core
+    status: inferred
+  - name: neutrino-mediator coupling
+    symbol: lambda
+    description: Scalar coupling to neutrinos; only one matrix element is assumed nonzero in cross-section
+      examples.
+    range: small couplings up to O(0.1) probed by FPF
+    role: core
+    status: inferred
+  - name: dark matter-mediator coupling
+    symbol: y
+    description: Scalar coupling to Dirac fermion dark matter.
+    range: benchmark target uses y = lambda
+    role: core
+    status: assumed
+production:
+  mechanisms:
+  - thermal freeze-out
+  - annihilation into neutrinos via neutrinophilic scalar exchange
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - annihilation cross section
+  - mediator mass
+  - dark matter mass
+  - neutrino and dark-sector couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper displays thermal freeze-out target curves where the Planck-observed relic density is
+    produced.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: observed relic density target
+    symbol: Omega_DM
+    description: Planck-observed dark matter relic density target curve.
+    value: Planck-observed value
+    role: core
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - m_phi
+  - m_DM
+  - lambda
+  - y
+  - heavy mediator assumption
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: low_energy_neutrino_operator
+  applies_to: EFT
+  condition: The scalar-neutrino coupling is a low-energy operator that is not SM SU(2)_L gauge invariant.
+  status: established
+  extrapolation_risk: medium
+- id: heavy_mediator_freezeout
+  applies_to: parameter
+  condition: The paper restricts this freeze-out analysis to m_phi > m_DM and does not treat the m_phi
+    < m_DM channel.
+  status: established
+  extrapolation_risk: high
+- id: single_neutrino_coupling
+  applies_to: parameter
+  condition: Cross-section examples assume only one scalar-neutrino coupling matrix element is nonzero.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: single_lambda
+    description: Only one element of the neutrino coupling matrix is nonzero in the freeze-out cross-section
+      examples.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: heavy_mediator
+    description: The freeze-out target is evaluated for m_phi > m_DM.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+  - id: benchmark_ratio
+    description: Displayed relic target curves fix m_phi = 3 m_DM and y = lambda.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper mentions simulation and analysis packages, but the extracted text does not identify
+    model-specific public code.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 2111_05868_neutrino_portal_dirac_fermion_freezeout_v1
+  model_name: Neutrino-portal Dirac fermion thermal freeze-out dark matter
+  model_family: neutrino_portal_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2111_05868'
+      title: Probing Neutrino-Portal Dark Matter at the Forward Physics Facility
+      year: 2021
+      arxiv_id: '2111.05868'
+      role: benchmark
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '2111.05868'
+      authors:
+      - Kelly, Kevin J.
+      - Kling, Felix
+      - Tuckler, Douglas
+      - Zhang, Yue
+      doi: 10.1103/PhysRevD.105.075026
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2111.05868
+      role: original_model
+      title: Probing neutrino-portal dark matter at the Forward Physics Facility
+      url: https://arxiv.org/abs/2111.05868
+      year: 2022
+    constraint_papers:
+    - arxiv_id: '2301.08299'
+      authors:
+      - An, Rui
+      - Gluscevic, Vera
+      - Nadler, Ethan O.
+      - Zhang, Yue
+      doi: 10.3847/2041-8213/acf049
+      notes: Related sterile-neutrino self-interaction structure paper resolved locally and read.
+      reference_id: arxiv:2301.08299
+      role: constraint
+      title: Can Neutrino Self-interactions Save Sterile Neutrino Dark Matter?
+      url: https://arxiv.org/abs/2301.08299
+      year: 2023
+    - arxiv_id: '2107.00666'
+      authors:
+      - Batell, Brian
+      - Feng, Jonathan L.
+      - Ismail, Ahmed
+      - Kling, Felix
+      - Mammen Abraham, Roshan
+      - Trojanowski, Sebastian
+      doi: 10.1103/PhysRevD.104.035036
+      notes: Related far-forward detector dark-matter search paper resolved locally and read.
+      reference_id: arxiv:2107.00666
+      role: implementation
+      title: Discovering dark matter at the LHC through its nuclear scattering in far-forward emulsion
+        and liquid argon detectors
+      url: https://arxiv.org/abs/2107.00666
+      year: 2021
+    - arxiv_id: '1807.06209'
+      authors:
+      - Planck Collaboration
+      - Aghanim, N.
+      - Akrami, Y.
+      - Ashdown, M.
+      - Aumont, J.
+      - Baccigalupi, C.
+      - Ballardini, M.
+      - Banday, A. J.
+      doi: 10.1051/0004-6361/201833910
+      notes: Planck cosmological-parameter paper resolved locally and read for cosmology context.
+      reference_id: arxiv:1807.06209
+      role: constraint
+      title: Planck 2018 results. VI. Cosmological parameters
+      url: https://arxiv.org/abs/1807.06209
+      year: 2020
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0008
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2111_05868'
+      section: benchmark model
+      quote_or_summary: The paper introduces a massive neutrinophilic scalar with a low-energy coupling
+        to neutrinos.
+    - reference_id: '2111_05868'
+      section: dark matter targets
+      quote_or_summary: It considers thermal freeze-out and sterile-neutrino freeze-in dark matter realizations
+        tied to that mediator.
+    unresolved_items:
+    - The Dirac fermion relic-density contour was not numerically regenerated.
+    - Flavor off-diagonal mediator couplings can change both relic and detector interpretations.
+  evidence:
+    particle_content:
+    - reference_id: '2111_05868'
+      note: The paper considers dark matter as a Dirac fermion in the thermal freeze-out class of models.
+      confidence: high
+      section: Thermal Freeze-Out Dark Matter
+    symmetries:
+    - reference_id: '2111_05868'
+      note: The Dirac fermion case is stated to be stabilized by a Z_2 symmetry, promotable to a U(1)
+        lepton number symmetry.
+      confidence: high
+      section: Thermal Freeze-Out Dark Matter
+    interactions:
+    - reference_id: '2111_05868'
+      note: A massive scalar couples to neutrinos and serves as the portal between visible and dark sectors;
+        the paper gives a Dirac-fermion interaction Lagrangian and annihilation cross section.
+      confidence: high
+      section: Thermal Freeze-Out Dark Matter
+    production_mechanism:
+    - reference_id: '2111_05868'
+      note: The Dirac fermion relic density is set by thermal freeze-out and annihilation into neutrinos
+        through scalar exchange.
+      confidence: high
+      section: Thermal Freeze-Out Dark Matter
+    parameter_ranges:
+    - reference_id: '2111_05868'
+      note: FPF sensitivity targets mediator masses of roughly 0.3-20 GeV and the relic target curves
+        use m_phi = 3 m_DM with y = lambda in the displayed benchmarks.
+      confidence: medium
+      section: results
+    validity_domain:
+    - reference_id: '2111_05868'
+      note: The paper restricts the discussed freeze-out target to the heavy mediator case m_phi > m_DM
+        and assumes one nonzero neutrino coupling matrix element for the cross sections.
+      confidence: high
+      section: Thermal Freeze-Out Dark Matter
+    constraints:
+    - confidence: high
+      note: Primary paper gives heavy-mediator freeze-out assumptions and annihilation channels into neutrinos.
+      page: null
+      reference_id: arxiv:2111.05868
+      section: Thermal freeze-out DM
+    observables:
+    - confidence: high
+      note: Primary paper states the thermal freeze-out benchmarks and the FPF missing-momentum/tau-like
+        signatures.
+      page: null
+      reference_id: arxiv:2111.05868
+      section: Thermal freeze-out DM
+    routes:
+    - confidence: high
+      note: Primary paper supplies the route from mediator parameters to FPF event signatures.
+      page: null
+      reference_id: arxiv:2111.05868
+      section: Simulation/analysis
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - The neutrinophilic scalar operator is explicitly described as not gauge invariant under SM SU(2)_L
+    and as a low-energy benchmark.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - UV completion of neutrino operator
+  - coupling assumptions
+  - detector reach not encoded in this model-only card
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: not_uv_complete
+    severity: medium
+    category: assumption_mismatch
+    warning: The low-energy neutrino coupling is not a UV-complete gauge-invariant model by itself.
+    mitigation: Treat the card as a simplified benchmark unless a UV completion is supplied.
+observables:
+- caveats:
+  - Detector sensitivity depends strongly on hadronic energy resolution and mediator flavor coupling.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - FASER/FASER2-like detectors
+  - FLArE-like liquid argon detector
+  id: obs_fpf_neutrinophilic_mediator
+  key_quantities:
+  - description: Mass of the neutrinophilic scalar mediator.
+    name: mediator mass
+    range: 0.3-20
+    role: core
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: inferred
+    symbol: m_phi
+    unit: GeV
+  - description: Mediator coupling to active neutrinos.
+    name: neutrino coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: inferred
+    symbol: lambda
+  - description: Dirac fermion coupling entering the freeze-out annihilation cross section.
+    name: dark-matter coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: inferred
+    symbol: y
+  linked_constraints:
+  - con_fpf_mediator_reach
+  linked_routes:
+  - route_neutrino_portal_dirac_freezeout_to_fpf
+  name: FPF neutrino-scattering signal of a neutrinophilic mediator
+  notes: null
+  observability: medium
+  predicted_effect: A 0.3-20 GeV mediator coupled predominantly to neutrinos can produce charged-current
+    neutrino events with large missing transverse momentum and apparent tau-neutrino excesses.
+  redshift_range: LHC running era
+  relevance: critical
+  scale_range: far-forward LHC neutrino energies
+  source_reference_ids:
+  - arxiv:2111.05868
+  - arxiv:2107.00666
+  subchannel: Forward Physics Facility neutrino scattering
+- caveats:
+  - Relic-density computation depends on the assumed nonzero flavor element of the coupling matrix.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early-universe neutrino bath
+  id: obs_neutrino_freezeout_relic
+  key_quantities:
+  - description: Mass of the thermal relic.
+    name: dark-matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: inferred
+    symbol: m_DM
+  - description: Primary analysis restricts to the heavy-mediator case m_phi > m_DM.
+    name: mediator mass
+    role: core
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: inferred
+    symbol: m_phi
+  - description: Symmetry stabilizing the Dirac fermion benchmark.
+    name: stabilizing symmetry
+    role: core
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: inferred
+    symbol: Z_2
+    value: Z_2
+  linked_constraints:
+  - con_freezeout_relic_target
+  linked_routes:
+  - route_neutrino_portal_dirac_freezeout_to_fpf
+  name: Thermal relic annihilation into neutrinos
+  notes: null
+  observability: low
+  predicted_effect: The dark matter thermalizes with Standard Model neutrinos through the mediator; its
+    relic density is set by thermal freeze-out and annihilation into neutrinos.
+  redshift_range: radiation era freeze-out
+  relevance: high
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2111.05868
+  subchannel: neutrino-portal freeze-out
+constraints:
+- allowed_regions:
+  - Primary paper projects FPF sensitivity to mediator masses between 0.3 and 20 GeV.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Hadronic energy reconstruction is close to the benchmark assumptions.
+    id: fpf-detector-performance
+    impact_if_violated: Poorer resolution weakens missing-transverse-momentum discrimination.
+    notes: null
+    scope: FPF projection
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: assumed
+  benchmark_implications:
+  - A mediator signal would test the portal required by the freeze-out benchmark.
+  caveats:
+  - Projection, not an observed exclusion.
+  constrained_parameters:
+  - m_phi
+  - lambda
+  - flavor structure
+  constraint_type: collider
+  data_release: Projected FPF detector configurations
+  excluded_regions:
+  - Existing searches leave part of the small-coupling 0.3-20 GeV mediator space open.
+  id: con_fpf_mediator_reach
+  likelihood_available: partial
+  likelihood_reference: null
+  name: FPF reach for neutrinophilic scalar mediator
+  notes: null
+  observable_channel: far-forward neutrino scattering
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2111.05868
+  - arxiv:2107.00666
+- allowed_regions:
+  - Primary text states the relic density is set by annihilation into neutrinos, with the heavy-mediator
+    case m_phi > m_DM used for the analysis.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Only one element of the mediator-neutrino coupling matrix is nonzero.
+    id: single-flavor-coupling
+    impact_if_violated: Multiple flavor entries alter the annihilation rate and FPF flavor signature.
+    notes: null
+    scope: freeze-out formula
+    source_reference_ids:
+    - arxiv:2111.05868
+    status: assumed
+  benchmark_implications:
+  - The benchmark target regions are tied to the same mediator parameter space searched at the FPF.
+  caveats:
+  - No relic-density solver was run in this batch.
+  constrained_parameters:
+  - m_DM
+  - m_phi
+  - lambda
+  - y
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Couplings and masses yielding too large or too small an annihilation rate miss the observed DM abundance.
+  id: con_freezeout_relic_target
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Thermal freeze-out relic-density target
+  notes: null
+  observable_channel: dark matter relic abundance
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2111.05868
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - No FPF detector simulation or relic solver was run.
+    constraint_ids:
+    - con_fpf_mediator_reach
+    - con_freezeout_relic_target
+    derived_quantities:
+    - thermal relic density
+    - FPF missing-pT event spectrum
+    - apparent tau-neutrino rate
+    description: Connect Dirac fermion neutrino-portal freeze-out to FPF mediator observables.
+    forward_model_chain:
+    - inputs:
+      - m_DM
+      - m_phi
+      - lambda
+      - y
+      notes: No thermal average was recomputed.
+      outputs:
+      - annihilation cross section
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary formula assumes heavy mediator and one coupling-matrix element.
+    - inputs:
+      - annihilation cross section
+      notes: Structured as target.
+      outputs:
+      - relic-density target
+      step_id: s2
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires solving freeze-out for chosen benchmark.
+    - inputs:
+      - m_phi
+      - lambda
+      - detector response
+      notes: Primary paper supplies expected signatures.
+      outputs:
+      - FPF event rates
+      step_id: s3
+      step_type: simulation
+      tool_or_code: null
+      validity: Projection depends on detector concept.
+    id: route_neutrino_portal_dirac_freezeout_to_fpf
+    input_parameters:
+    - m_DM
+    - m_phi
+    - lambda
+    - y
+    - flavor coupling
+    likelihoods:
+    - thermal relic density target
+    - FPF projected event analysis
+    observable_ids:
+    - obs_fpf_neutrinophilic_mediator
+    - obs_neutrino_freezeout_relic
+    required_code_resources:
+    - freeze-out solver
+    - FPF neutrino-scattering simulation
+    route_status: planned
+    source_model_features:
+    - Z_2-stabilized Dirac fermion dark matter
+    - heavy neutrinophilic mediator
+    - annihilation to neutrinos
+    validation_tests:
+    - recover heavy-mediator assumption
+    - recover primary FPF reach contours

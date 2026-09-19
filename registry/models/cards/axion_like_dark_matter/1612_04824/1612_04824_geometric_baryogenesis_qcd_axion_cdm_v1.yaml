@@ -1,0 +1,736 @@
+_source:
+  shard: arXiv_src_1612_012_wds.tar
+  paper_id: '1612_04824'
+  source_member: 1612_04824.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1612_04824_geometric_baryogenesis_qcd_axion_cdm_v1
+identity:
+  name: Geometric-baryogenesis QCD axion cold dark matter
+  family: axion_like_dark_matter
+  aliases:
+  - baryon-generating QCD axion dark matter
+  - shift-symmetric QCD axion geometric baryogenesis
+  short_description: A QCD axion realization of shift-symmetric geometric baryogenesis in which curvature-induced
+    axion motion generates the baryon asymmetry and late axion oscillations can provide cold dark matter.
+  historical_origin_or_motivation: Motivated by using the axion shift symmetry to link baryogenesis, the
+    strong CP problem, and axion cold dark matter.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - QCD axion
+  - shift-symmetric geometric baryogenesis
+  - spontaneous baryogenesis
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff:
+    name: Gauss-Bonnet coupling scale
+    symbol: M
+    description: Mass scale suppressing the axion coupling to the Gauss-Bonnet curvature term.
+    value: example 1e5 GeV for an unfine-tuned full-CDM QCD axion point
+    unit: GeV
+    role: core
+    status: inferred
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives a shift-symmetric Lagrangian with derivative baryon-current coupling and a Gauss-Bonnet
+    curvature coupling; the QCD axion adds its nonperturbative periodic potential.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion
+    spin: '0'
+    statistics: boson
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - axion condensate
+  - spacetime curvature through the Gauss-Bonnet term
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - QCD axion
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Approximate axion shift symmetry keeps the pseudo-Nambu-Goldstone boson light
+    and long-lived; QCD effects generate the late periodic potential.
+  symmetries:
+  - name: axion shift symmetry
+    type: shift
+    exact_or_approximate: approximate
+    breaking: broken by nonperturbative QCD effects in the QCD axion realization
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - axion
+  - gravitational
+  - other
+  standard_model_targets:
+  - baryon current
+  - SU(2) gauge fields through the anomaly
+  - QCD topological effects
+  dark_sector_couplings:
+  - axion derivative coupling to the baryon current
+  - axion coupling to the Gauss-Bonnet curvature term
+  mediator_types:
+  - pseudo-Nambu-Goldstone scalar
+  - curvature-induced effective chemical potential
+  interaction_operators:
+  - (partial_mu phi / f) j_B^mu
+  - phi G / M
+  - axion coupling to gauge-field topological terms
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: axion decay constant
+    symbol: f_a
+    description: QCD axion decay constant; the text discusses f_a identified with the shift-symmetry scale
+      f.
+    value: example f_a = f = 1e12 GeV for a full-CDM point with low M
+    unit: GeV
+    role: core
+    status: inferred
+  - name: QCD axion mass
+    symbol: m_a
+    description: Temperature-dependent QCD axion mass with zero-temperature scaling quoted in the text.
+    value: m_a about 6e-6 eV * (1e12 GeV / f_a)
+    unit: eV
+    role: derived
+    status: established
+  - name: Gauss-Bonnet coupling scale
+    symbol: M
+    description: Mass scale controlling the curvature source for coherent axion motion.
+    value: example 1e5 GeV for baryogenesis without significant backreaction and full QCD-axion CDM
+    unit: GeV
+    role: core
+    status: inferred
+  - name: initial misalignment at oscillation onset
+    symbol: theta_osc
+    description: Axion field value at the onset of QCD-potential oscillations.
+    value: order unity in the unfine-tuned example
+    role: core
+    status: inferred
+  - name: baryon-violation decoupling temperature
+    symbol: T_dec
+    description: Temperature at which baryon-number-violating interactions freeze out and the baryon asymmetry
+      is fixed.
+    range: chosen along the paper's n_B/s = 8.6e-11 curves and above the regime where QCD effects dominate
+      baryogenesis
+    unit: GeV
+    role: cosmological
+    status: inferred
+  nuisance: []
+  derived: []
+production:
+  mechanisms:
+  - vacuum misalignment production from late QCD axion oscillations
+  - geometric baryogenesis from curvature-induced coherent axion motion
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - f_a
+  - m_a
+  - theta_osc
+  - M
+  - T_dec
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper states that for M about 1e5 GeV, f_a = f about 1e12 GeV, and theta_osc of order unity,
+    the QCD axion can generate the baryon asymmetry and constitute all CDM.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: axion abundance relative to CDM
+    symbol: Omega_a / Omega_CDM
+    description: Misalignment abundance scaling quoted for the QCD axion.
+    value: theta_osc^2 * (f_a / 1e12 GeV)^(7/6)
+    role: derived
+    status: inferred
+  calculation_type: nonthermal
+  key_dependencies:
+  - theta_osc
+  - f_a
+  - QCD axion mass scaling
+  - whether low M avoids extra misalignment tuning
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: parameter_dependent
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - curvature-induced coherent axion motion before baryon-number violation freezes out
+  - late QCD-potential oscillations set the axion abundance
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - QCD effects generate the periodic axion potential before oscillations
+  topological_defects: []
+  isocurvature_perturbations: parameter_dependent
+  bbn_relevance: unknown
+  cmb_relevance: high
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: not_applicable
+  phase_space_bounds: []
+  notes: The dark matter is described as a coherently oscillating axion field rather than by a particle
+    distribution function.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: qcd_effects_subdominant_during_baryogenesis
+  applies_to: production
+  condition: The QCD potential is negligible during baryogenesis when the decoupling temperature is above
+    roughly 1e3 GeV, as stated in the text.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - '1612_04824'
+- id: low_m_full_cdm_example
+  applies_to: parameter
+  condition: The unfine-tuned full-CDM QCD axion example uses low M about 1e5 GeV with f_a = f about 1e12
+    GeV and theta_osc about 1.
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - The paper notes higher-dimensional gravitational couplings must be suppressed for low M.
+  source_reference_ids:
+  - '1612_04824'
+assumptions:
+  global:
+  - id: shift_symmetric_operator_control
+    description: The axion shift symmetry controls the derivative, topological, and gravitational operators
+      used in the effective theory.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1612_04824'
+  - id: radiation_dominated_baryogenesis
+    description: The baryogenesis estimate is made during radiation domination with baryon-number-violating
+      interactions in equilibrium until T_dec.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1612_04824'
+  - id: misalignment_sets_qcd_axion_abundance
+    description: The late QCD axion abundance is set by the misalignment angle at the onset of oscillations.
+    scope: production
+    status: inferred
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '1612_04824'
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific code resource is identified in the assigned paper text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1612_04824_geometric_baryogenesis_qcd_axion_cdm_v1
+  model_name: Geometric-baryogenesis QCD axion cold dark matter
+  model_family: axion_like_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1612_04824'
+      title: Geometric Baryogenesis from Shift Symmetry
+      authors:
+      - Andrea De Simone
+      - Takeshi Kobayashi
+      - Stefano Liberati
+      year: 2016
+      arxiv_id: '1612.04824'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from the run SQLite database.
+    - arxiv_id: '1612.04824'
+      authors:
+      - De Simone, Andrea
+      - Kobayashi, Takeshi
+      - Liberati, Stefano
+      doi: 10.1103/PhysRevLett.118.131101
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1612.04824
+      role: original_model
+      title: Geometric Baryogenesis from Shift Symmetry
+      url: https://arxiv.org/abs/1612.04824
+      year: 2017
+    constraint_papers:
+    - arxiv_id: '1708.00015'
+      authors:
+      - Kobayashi, Takeshi
+      - Murgia, Riccardo
+      - De Simone, Andrea
+      - Iršič, Vid
+      - Viel, Matteo
+      doi: 10.1103/PhysRevD.96.123514
+      notes: Related full text read via bounded ar5iv fallback.
+      reference_id: arxiv:1708.00015
+      role: constraint
+      title: 'Lyman-α constraints on ultralight scalar dark matter: Implications for the early and late
+        universe'
+      url: https://arxiv.org/abs/1708.00015
+      year: 2017
+    external_databases: []
+    review_papers:
+    - arxiv_id: '0905.4720'
+      authors:
+      - Arvanitaki, Asimina
+      - Dimopoulos, Savas
+      - Dubovsky, Sergei
+      - Kaloper, Nemanja
+      - March-Russell, John
+      doi: 10.1103/PhysRevD.81.123530
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:0905.4720
+      role: review
+      title: String axiverse
+      url: https://arxiv.org/abs/0905.4720
+      year: 2010
+    - arxiv_id: '1605.00670'
+      authors:
+      - De Simone, Andrea
+      - Kobayashi, Takeshi
+      doi: 10.1088/1475-7516/2016/08/052
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1605.00670
+      role: extension
+      title: Cosmological aspects of spontaneous baryogenesis
+      url: https://arxiv.org/abs/1605.00670
+      year: 2016
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1612_04824'
+      section: null
+      page: null
+      quote_or_summary: The paper presents a new shift-symmetric Nambu-Goldstone-boson scenario for baryogenesis.
+    - reference_id: '1612_04824'
+      section: null
+      page: null
+      quote_or_summary: It states that QCD axion and axion-like fields can induce baryogenesis and later
+        serve as dark matter.
+    - reference_id: '1612_04824'
+      section: null
+      page: null
+      quote_or_summary: For low M, f_a about 1e12 GeV, and theta_osc about 1, the QCD axion can provide
+        all CDM.
+    unresolved_items:
+    - The assigned text gives example viable regions rather than a full scan of all axion cosmology variants.
+    - The allowed QCD axion region depends on assumptions about higher-dimensional gravitational couplings
+      at low M.
+    - No axion relic-density or isocurvature likelihood was numerically evaluated here.
+  evidence:
+    particle_content:
+    - reference_id: '1612_04824'
+      note: The text identifies the QCD axion as a candidate baryon-generating Nambu-Goldstone boson that
+        can also serve as dark matter.
+      confidence: high
+      section: null
+      page: null
+    symmetries:
+    - reference_id: '1612_04824'
+      note: The scenario is organized by an approximate shift symmetry of the Nambu-Goldstone or pseudo-Nambu-Goldstone
+        boson.
+      confidence: high
+      section: null
+      page: null
+    interactions:
+    - reference_id: '1612_04824'
+      note: The effective Lagrangian includes derivative baryon-current coupling and a coupling to the
+        Gauss-Bonnet curvature term.
+      confidence: high
+      section: null
+      page: null
+    production_mechanism:
+    - reference_id: '1612_04824'
+      note: The paper combines curvature-driven early axion motion for baryogenesis with late QCD axion
+        oscillations for cold dark matter.
+      confidence: medium
+      section: null
+      page: null
+    cosmological_history:
+    - reference_id: '1612_04824'
+      note: Radiation domination, baryon-violation decoupling, QCD-potential onset, and possible isocurvature
+        are discussed.
+      confidence: medium
+      section: null
+      page: null
+    parameter_ranges:
+    - reference_id: '1612_04824'
+      note: The text quotes examples including f_a around 1e12 GeV, M around 1e5 GeV, and theta_osc around
+        unity for full QCD-axion CDM.
+      confidence: medium
+      section: null
+      page: null
+    validity_domain:
+    - reference_id: '1612_04824'
+      note: The paper requires QCD effects to be negligible during baryogenesis and notes possible higher-dimensional
+        gravitational issues for low M.
+      confidence: medium
+      section: null
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text gives the QCD axion overclosure/isocurvature caveat and the low-M f_a about 1e12
+        GeV viable example.
+      page: null
+      reference_id: arxiv:1612.04824
+      section: QCD axion discussion
+    - confidence: high
+      note: Primary text gives backreaction and Planck inflation-scale excluded regions in the f-T_dec
+        plane.
+      page: null
+      reference_id: arxiv:1612.04824
+      section: backreaction and consistency
+    observables:
+    - confidence: high
+      note: Primary text states the QCD axion can induce baryogenesis, solve strong CP, and serve as dark
+        matter in the late universe.
+      page: null
+      reference_id: arxiv:1612.04824
+      section: QCD axion and axion-like fields
+    - confidence: high
+      note: Primary text estimates the present axion-minimum shift as far below the neutron EDM bound
+        except for extremely tiny M.
+      page: null
+      reference_id: arxiv:1612.04824
+      section: QCD axion discussion
+    routes:
+    - confidence: high
+      note: Primary text provides the chain from geometric source to baryogenesis and later QCD-axion
+        relic density.
+      page: null
+      reference_id: arxiv:1612.04824
+      section: model discussion
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - The QCD axion full-CDM point depends on suppressing higher-dimensional gravitational operators for
+    low M and on parameter-dependent isocurvature considerations.
+  validation_status: expert_judgment_only
+  notes: The model identity and production logic are explicit, while broad parameter viability is summarized
+    through example regions.
+agent_failure_modes:
+  warnings:
+  - id: do_not_ignore_low_m_eft_caveat
+    severity: medium
+    category: extrapolation
+    warning: Do not use the low-M full-CDM QCD axion example without preserving the paper's caveat about
+      suppressing higher-dimensional gravitational couplings.
+    source_reference_ids:
+    - '1612_04824'
+  - id: separate_baryogenesis_from_dm_relic
+    severity: medium
+    category: assumption_mismatch
+    warning: The curvature coupling generates baryon asymmetry; the QCD axion dark-matter abundance is
+      still set by late misalignment oscillations.
+    source_reference_ids:
+    - '1612_04824'
+observables:
+- caveats:
+  - Relic-density and isocurvature viability depends sensitively on f_a, M, and the initial displacement.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early universe
+  - CMB
+  id: obs_qcd_axion_misalignment_cdm
+  key_quantities:
+  - description: Primary low-M example uses f_a around 1e12 GeV.
+    name: QCD axion decay constant
+    role: core
+    source_reference_ids:
+    - arxiv:1612.04824
+    status: inferred
+    symbol: f_a
+    unit: GeV
+    value: 1e12
+  - description: Temperature-dependent mass with zero-temperature scaling m_a about 6e-6 eV*(1e12 GeV/f_a).
+    name: QCD axion mass
+    role: core
+    source_reference_ids:
+    - arxiv:1612.04824
+    status: inferred
+    symbol: m_a
+    unit: eV
+    value: 6e-6*(1e12 GeV/f_a)
+  - description: Controls QCD axion abundance.
+    name: misalignment field value
+    role: core
+    source_reference_ids:
+    - arxiv:1612.04824
+    status: inferred
+    symbol: theta_osc
+  linked_constraints:
+  - con_qcd_axion_overclosure_isocurvature
+  linked_routes:
+  - route_geometric_baryogenesis_qcd_axion
+  name: QCD axion misalignment CDM in geometric baryogenesis
+  notes: null
+  observability: medium
+  predicted_effect: The QCD axion can generate the baryon asymmetry and later behave as CDM, but the usual
+    misalignment abundance can overclose the universe unless parameters or initial angle are chosen appropriately.
+  redshift_range: QCD epoch through late-time CDM
+  relevance: critical
+  scale_range: homogeneous relic density and CMB isocurvature
+  source_reference_ids:
+  - arxiv:1612.04824
+  subchannel: QCD axion relic abundance
+- caveats:
+  - This is a consistency check, not a detection route for the dark matter abundance.
+  channel: precision_laboratory
+  effect_direction: null_signal
+  environments:
+  - neutron EDM experiments
+  id: obs_qcd_axion_strong_cp_consistency
+  key_quantities:
+  - description: Primary estimate for Gauss-Bonnet-induced present shift.
+    name: present axion minimum shift
+    role: core
+    source_reference_ids:
+    - arxiv:1612.04824
+    status: inferred
+    symbol: theta_0
+    value: about 1e-162*(f_a/M)
+  - description: Bound quoted by primary text.
+    name: neutron EDM theta bound
+    range: < 1e-10
+    role: core
+    source_reference_ids:
+    - arxiv:1612.04824
+    status: inferred
+    symbol: theta_0 bound
+  linked_constraints:
+  - con_qcd_axion_overclosure_isocurvature
+  linked_routes:
+  - route_geometric_baryogenesis_qcd_axion
+  name: Strong-CP consistency of the baryon-generating QCD axion
+  notes: null
+  observability: low
+  predicted_effect: The primary paper estimates that the present Gauss-Bonnet-induced shift of the axion
+    minimum is far below the neutron electric dipole bound unless M is extremely tiny.
+  redshift_range: today
+  relevance: medium
+  scale_range: laboratory EDM observable
+  source_reference_ids:
+  - arxiv:1612.04824
+  subchannel: neutron electric dipole moment consistency
+constraints:
+- allowed_regions:
+  - Primary text notes that M around 1e5 GeV with f_a around 1e12 GeV and theta_osc around 1 can generate
+    baryon asymmetry and constitute all CDM without significant backreaction, with CDM isocurvature consistent
+    with limits.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The QCD axion abundance follows the standard misalignment scaling quoted in the primary
+      paper.
+    id: standard-misalignment
+    impact_if_violated: Entropy dilution or nonstandard post-inflationary history would alter overclosure
+      and isocurvature conclusions.
+    notes: null
+    scope: QCD axion relic density
+    source_reference_ids:
+    - arxiv:1612.04824
+    status: assumed
+  benchmark_implications:
+  - The QCD axion row is viable only in selected low-M or tuned-misalignment regions.
+  caveats:
+  - No axion isocurvature likelihood was rerun.
+  constrained_parameters:
+  - f_a
+  - theta_osc
+  - M
+  - H_inf
+  constraint_type: cosmological
+  data_release: CMB isocurvature bound quoted by primary paper
+  excluded_regions:
+  - For f_a following the primary baryogenesis benchmark lines, the QCD axion abundance can exceed the
+    total CDM density; CMB isocurvature can further force the axion to be only a small fraction unless
+    parameters are adjusted.
+  id: con_qcd_axion_overclosure_isocurvature
+  likelihood_available: partial
+  likelihood_reference: null
+  name: QCD axion overclosure and CDM-isocurvature consistency
+  notes: null
+  observable_channel: relic_density_and_cmb_isocurvature
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1612.04824
+- allowed_regions:
+  - Primary text identifies low-M choices as a way to avoid overclosure/tuning while preserving baryogenesis.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The Gauss-Bonnet source dominates over the QCD potential during baryogenesis for T_dec
+      above about 1e3 GeV.
+    id: qcd-potential-subdominant
+    impact_if_violated: If the QCD potential matters earlier, the coherent-motion solution changes.
+    notes: null
+    scope: QCD axion baryogenesis
+    source_reference_ids:
+    - arxiv:1612.04824
+    status: assumed
+  benchmark_implications:
+  - For T_dec above about 1e3 GeV the QCD potential is negligible during baryogenesis in the primary estimate.
+  caveats:
+  - Higher-dimensional gravitational couplings are not specified.
+  constrained_parameters:
+  - M
+  - f_a
+  - T_dec
+  - H_inf
+  constraint_type: theoretical
+  data_release: Primary consistency estimates
+  excluded_regions:
+  - Backreaction, cutoff, and inflation-scale exclusions remove parts of the f-T_dec plane in the primary
+    benchmark figure.
+  id: con_qcd_geometric_baryogenesis_consistency
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: QCD-axion geometric-baryogenesis consistency region
+  notes: null
+  observable_channel: early-universe consistency
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1612.04824
+  - arxiv:1605.00670
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Strong-CP and relic-density consistency are parameter-region statements.
+    constraint_ids:
+    - con_qcd_axion_overclosure_isocurvature
+    - con_qcd_geometric_baryogenesis_consistency
+    derived_quantities:
+    - n_B/s
+    - Omega_a/Omega_CDM
+    - theta_0
+    - CDM isocurvature
+    description: Route QCD axion geometric baryogenesis through baryon asymmetry, strong-CP consistency,
+      relic density, and CMB isocurvature.
+    forward_model_chain:
+    - inputs:
+      - M
+      - f_a
+      - T_dec
+      notes: null
+      outputs:
+      - n_B/s
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Same geometric-baryogenesis expression as ALP row.
+    - inputs:
+      - f_a
+      - theta_osc
+      notes: null
+      outputs:
+      - QCD axion relic abundance
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Uses primary scaling Omega_a/Omega_CDM proportional to theta_osc^2*(f_a/1e12 GeV)^(7/6).
+    - inputs:
+      - M
+      - f_a
+      - m_a
+      notes: null
+      outputs:
+      - present theta_0 shift
+      step_id: s3
+      step_type: validation
+      tool_or_code: null
+      validity: Primary estimates neutron-EDM consistency.
+    - inputs:
+      - Omega_a fraction
+      - H_inf
+      - theta_osc
+      notes: null
+      outputs:
+      - CMB isocurvature allowed region
+      step_id: s4
+      step_type: likelihood
+      tool_or_code: null
+      validity: Likelihood not rerun in this batch.
+    id: route_geometric_baryogenesis_qcd_axion
+    input_parameters:
+    - f_a
+    - m_a
+    - theta_osc
+    - M
+    - T_dec
+    - H_inf
+    likelihoods:
+    - CMB isocurvature likelihood
+    - axion relic-density target
+    observable_ids:
+    - obs_qcd_axion_misalignment_cdm
+    - obs_qcd_axion_strong_cp_consistency
+    required_code_resources:
+    - axion relic-density calculator
+    - CMB isocurvature recast
+    route_status: planned
+    source_model_features:
+    - QCD axion
+    - Gauss-Bonnet coupling
+    - baryon-current coupling
+    - misalignment CDM
+    validation_tests:
+    - recover Omega_a/Omega_CDM scaling
+    - recover low-M f_a=1e12 GeV viability statement

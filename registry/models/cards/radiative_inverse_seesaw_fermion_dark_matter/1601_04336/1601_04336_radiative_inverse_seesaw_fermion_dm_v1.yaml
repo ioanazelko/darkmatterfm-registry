@@ -1,0 +1,425 @@
+_source:
+  shard: arXiv_src_1601_009_wds.tar
+  paper_id: '1601_04336'
+  source_member: 1601_04336.json
+agent_failure_modes:
+  warnings:
+  - category: notation_conflict
+    id: symbol_rendering
+    mitigation: Use descriptive names and cite the model section.
+    severity: medium
+    source_reference_ids:
+    - '1601_04336'
+    warning: The assigned text drops the chi symbol in several places; avoid over-specific symbol claims
+      beyond the singlet fermion identity.
+  - category: assumption_mismatch
+    id: soft_breaking_uv
+    mitigation: Keep UV-completion claims marked unknown or model-dependent.
+    severity: medium
+    source_reference_ids:
+    - '1601_04336'
+    warning: The discrete symmetry is softly broken by a term whose UV origin is not specified.
+associated_code:
+  code_summary: The authors implemented the model in micrOmegas and generated model files with FeynRules
+    for the scan; no public release is indicated in the assigned text.
+  has_associated_code: partial
+  primary_code_role: relic_density_calculation
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The imposed discrete 4 symmetry/charge assignment both stabilizes DM and forbids tree-level
+      inverse seesaw terms.
+    id: discrete_symmetry_assignment
+    impact_if_violated: Changing charge assignments may remove stability or radiative neutrino-mass generation.
+    scope: theory
+    source_reference_ids:
+    - '1601_04336'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The loop generation of inverse-seesaw terms uses the condition that the complex singlet
+      S has zero VEV.
+    id: zero_singlet_vev
+    impact_if_violated: null
+    scope: theory
+    source_reference_ids:
+    - '1601_04336'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The relic abundance is calculated using nonrelativistic thermal freeze-out.
+    id: thermal_freezeout
+    impact_if_violated: null
+    scope: production
+    source_reference_ids:
+    - '1601_04336'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Positive lambda_HS is used because negative values destabilize the potential not far
+      from the electroweak scale.
+    id: positive_portal_coupling
+    impact_if_violated: null
+    scope: theory
+    source_reference_ids:
+    - '1601_04336'
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - strong first-order electroweak phase transition can occur in viable parameter space
+  phase_transitions:
+  - strong first-order electroweak phase transition
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - dark radiative inverse seesaw model
+  - fermionic singlet DM radiative inverse seesaw
+  family: radiative_inverse_seesaw_fermion_dark_matter
+  historical_origin_or_motivation: Designed to explain neutrino masses, dark matter, and a strong electroweak
+    phase transition in one low-scale framework.
+  model_kind: simplified_model
+  name: Dark radiative inverse seesaw fermion dark matter
+  short_description: A TeV-scale singlet-fermion and complex-singlet-scalar extension where a discrete
+    symmetry stabilizes fermion dark matter and DM loops generate the inverse-seesaw lepton-number-violating
+    term.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - annihilation to heavy singlet neutrinos N_L N_L through scalar exchange
+  cp_structure: A realistic baryogenesis version requires an added CP-violating source, but the DM/relic
+    setup is described without fixing that completion.
+  dark_sector_couplings:
+  - y_N S N_L chi
+  - Majorana mass for chi
+  - Dirac mass M N_L N_R
+  - Higgs portal lambda_HS H^dagger H S^dagger S
+  decay_channels: []
+  flavor_structure: Three singlet fermion generations are included; scans often take y_N1 = y_N2 for simplicity.
+  interaction_operators:
+  - y_L L H N_R
+  - M N_L N_R
+  - y_N S N_L chi
+  - m_chi chi^T C^{-1} chi
+  - lambda_HS H^dagger H S^dagger S
+  - mu^2(S^2+h.c.)
+  mediator_types:
+  - singlet scalar
+  - heavy sterile fermion
+  portals:
+  - higgs
+  - other
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: mild
+  self_scattering_channels: []
+  standard_model_targets:
+  - SM lepton doublets
+  - Higgs doublet
+  - nucleons through Higgs portal at loop level
+  tree_or_loop_level: both
+model_id: 1601_04336_radiative_inverse_seesaw_fermion_dm_v1
+parameters:
+  core:
+  - description: Mass of the fermionic singlet DM candidate.
+    name: dark matter mass
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 1000
+      min: 10
+      notes: Random scan range in the paper.
+      unit: GeV
+    role: core
+    source_reference_ids:
+    - '1601_04336'
+    status: established
+    symbol: m_chi
+    unit: GeV
+  - description: Mass scale for the lighter heavy neutrinos in the freeze-out hierarchy.
+    name: heavy singlet neutrino mass
+    range: 1 GeV to about 1.05 m_chi in the scan; M1 = M2 < m_chi
+    role: core
+    source_reference_ids:
+    - '1601_04336'
+    status: established
+    symbol: M_N
+    unit: GeV
+  - description: Mass of the heavier singlet state in the scan.
+    name: third heavy singlet mass
+    range: 1 TeV to 2.5 TeV
+    role: core
+    source_reference_ids:
+    - '1601_04336'
+    status: established
+    symbol: M_3
+    unit: TeV
+  - description: Mass of the complex scalar mediator.
+    name: complex scalar mass
+    range: m_h/2 to 1.5 TeV
+    role: core
+    source_reference_ids:
+    - '1601_04336'
+    status: established
+    symbol: m_S
+    unit: TeV
+  - description: Coupling connecting S, N_L, and the fermion DM candidate.
+    name: dark Yukawa coupling
+    range: 10^-4 to 4 in the random scan
+    role: core
+    source_reference_ids:
+    - '1601_04336'
+    status: established
+    symbol: y_N
+  - description: Portal coupling between the Higgs doublet and complex singlet scalar.
+    name: Higgs portal coupling
+    range: 10^-4 to 4 in the random scan; positive values used for stability
+    role: core
+    source_reference_ids:
+    - '1601_04336'
+    status: established
+    symbol: lambda_HS
+  - description: Soft term that breaks the discrete symmetry and sources lepton-number violation.
+    name: soft symmetry-breaking parameter
+    role: core
+    source_reference_ids:
+    - '1601_04336'
+    status: assumed
+    symbol: mu
+    unit: GeV
+    value: 1
+particle_content:
+  additional_dark_sector_particles:
+  - three generations of singlet chiral fermion pairs N_R and N_L
+  - complex scalar S
+  - heavy singlet neutrinos
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: singlet fermion chi
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - complex scalar S
+  - Higgs portal scalar mixing
+  - singlet heavy neutrinos
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: The paper uses standard nonrelativistic freeze-out formulas but does not give an explicit distribution
+    function.
+production:
+  abundance_set_by:
+  - m_chi
+  - m_S
+  - M_N
+  - y_N
+  - lambda_HS
+  - freeze-out temperature
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through annihilation in the singlet fermion/scalar sector
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper states the observed relic density can be naturally reproduced and implements a parameter
+    scan in micrOmegas.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: The Yukawa Lagrangian contains y_L L H N_R, M N_L N_R, y_N S N_L chi, and a Majorana mass
+        term for the extra fermion; the potential includes S and Higgs-portal terms.
+      page: null
+      reference_id: '1601_04336'
+      section: model section
+    parameter_ranges:
+    - confidence: high
+      note: The scan uses DM mass 10 GeV to 1 TeV, heavy singlet masses up to the TeV range, m_S above
+        m_h/2 to 1.5 TeV, and couplings from 10^-4 to 4.
+      page: null
+      reference_id: '1601_04336'
+      section: dark matter section
+    particle_content:
+    - confidence: high
+      note: The SM is enlarged by singlet chiral fermion pairs, one additional chiral fermion, and a complex
+        scalar; the fermionic case is chosen as the DM candidate.
+      page: null
+      reference_id: '1601_04336'
+      section: model section
+    production_mechanism:
+    - confidence: high
+      note: DM production is thermal freeze-out through annihilation diagrams involving the new singlet
+        sector; at least one heavy neutrino is lighter than the DM.
+      page: null
+      reference_id: '1601_04336'
+      section: dark matter section
+    symmetries:
+    - confidence: high
+      note: The paper invokes a discrete 4 symmetry to forbid the tree-level inverse-seesaw contribution
+        and provide a stable DM candidate, with a soft-breaking scalar term tied to lepton-number violation.
+      page: null
+      reference_id: '1601_04336'
+      section: introduction and model section
+    validity_domain:
+    - confidence: high
+      note: The model assumes singlet-sector mass hierarchies and positive Higgs portal coupling; the
+        authors note a more complete theory above about 10^6 GeV.
+      page: null
+      reference_id: '1601_04336'
+      section: model and dark matter sections
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0016
+    extraction_date: '2026-05-31'
+    extractor_name: dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: Introduces minimal singlet extension for neutrino masses, DM, and strong electroweak
+        phase transition.
+      reference_id: '1601_04336'
+      section: abstract and introduction
+    - page: null
+      quote_or_summary: Gives field content, discrete symmetry, Yukawa Lagrangian, and scalar potential.
+      reference_id: '1601_04336'
+      section: model
+    - page: null
+      quote_or_summary: Selects fermionic DM and computes thermal freeze-out relic abundance.
+      reference_id: '1601_04336'
+      section: dark matter
+    unresolved_items:
+    - The extracted text strips some Greek/chi symbols; candidate and parameter names are normalized descriptively.
+  last_updated: '2026-05-31'
+  model_family: radiative_inverse_seesaw_fermion_dark_matter
+  model_id: 1601_04336_radiative_inverse_seesaw_fermion_dm_v1
+  model_name: Dark radiative inverse seesaw fermion dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1601.04336'
+      authors:
+      - Amine Ahriche
+      - Sofiane M. Boucenna
+      - Salah Nasri
+      doi: null
+      notes: null
+      reference_id: '1601_04336'
+      role: original_model
+      title: Dark Radiative Inverse Seesaw Mechanism
+      url: null
+      year: 2016
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - annihilation cross section coefficients a and b
+  - x_f
+  - m_chi
+  - m_S
+  - M_N
+  - y_N
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - The soft symmetry-breaking term is UV-agnostic.
+  - Symbol rendering in the assigned text is degraded for the fermion name.
+  notes: The model has explicit field content, Lagrangian, and relic-density scan, with some notation
+    normalized from context.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: partially_validated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: not discussed in assigned text
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: not discussed in assigned text
+symmetries:
+  stabilizing_mechanism: A discrete 4 symmetry is invoked to stabilize the DM candidate while forbidding
+    the tree-level inverse-seesaw term; a soft scalar term breaks the symmetry as the origin of lepton-number
+    violation.
+  symmetries:
+  - breaking: Soft scalar term mu^2(S^2 + h.c.) breaks the symmetry and induces lepton-number violation.
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: discrete 4 symmetry (Z4 in paper notation as rendered)
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: The soft symmetry-breaking scalar term is treated as a low-energy manifestation of an unspecified
+    UV completion.
+  parent_frameworks:
+  - radiative inverse seesaw
+  - singlet fermion dark matter
+  - Higgs portal scalar extension
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: production
+  caveats: []
+  condition: The freeze-out discussion uses M1 = M2 = M_N < m_chi and M3 > 1 TeV.
+  extrapolation_risk: medium
+  id: singlet_mass_hierarchy
+  notes: null
+  source_reference_ids:
+  - '1601_04336'
+  status: established
+- applies_to: parameter
+  caveats: []
+  condition: Random scan ranges are 10 GeV <= m_chi <= 1 TeV, 1 GeV <= M_N <= 1.05 m_chi, 1-2.5 TeV for
+    M3, m_h/2 < m_S <= 1.5 TeV, and 10^-4 <= |y_Ni|, lambda_HS <= 4.
+  extrapolation_risk: medium
+  id: scan_ranges
+  notes: null
+  source_reference_ids:
+  - '1601_04336'
+  status: established
+- applies_to: model
+  caveats: []
+  condition: The authors describe the soft breaking term as a low-energy manifestation of an unspecified
+    UV completion and note completion above about 10^6 GeV.
+  extrapolation_risk: medium
+  id: uv_completion_needed
+  notes: null
+  source_reference_ids:
+  - '1601_04336'
+  status: established

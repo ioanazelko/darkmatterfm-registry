@@ -1,0 +1,751 @@
+_source:
+  shard: arXiv_src_2110_098_wds.tar
+  paper_id: '2110_15391'
+  source_member: 2110_15391.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: invalid_mapping
+    id: two_ps_single_mediator_confusion
+    mitigation: Keep P1/P2 mixing and interference explicit.
+    severity: medium
+    source_reference_ids:
+    - arxiv:2110.15391
+    warning: Do not collapse this row to the standard single-pseudoscalar simplified model; the extracted
+      model is the two-mediator variant.
+associated_code:
+  caveats:
+  - The assigned text does not state that the UFO/model files are public.
+  code_summary: The analysis uses micrOMEGAs, MadGraph5_aMC@NLO, FeynRules/NLOCT/MoGRe, Pythia, Delphes,
+    and MadAnalysis 5; no public model repository is identified in the assigned text.
+  expected_inputs:
+  - model parameters
+  - mediator masses
+  - dark matter mass
+  expected_outputs:
+  - relic density
+  - collider signal samples
+  has_associated_code: partial
+  primary_code_role: relic_density_calculation
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: null
+    pinned_dependencies: unknown
+    reproducibility_level: partial
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: Pseudoscalar couplings to quarks follow minimal flavour violation and lepton couplings
+      are neglected.
+    id: two_ps_mfv
+    scope: theory
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Benchmark scans take maximal pseudoscalar mixing theta = pi/4 and y_chi = 1.
+    id: two_ps_maximal_mixing
+    scope: theory
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Relic abundance is computed in a standard thermal freeze-out treatment.
+    id: two_ps_standard_freezeout
+    scope: production
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: high
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features: []
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - less-simplified two-pseudoscalar dark matter model
+  - multi-pseudoscalar mediated dark matter
+  family: pseudoscalar_mediated_wimp
+  historical_origin_or_motivation: The paper motivates the model as a less-simplified extension of single-pseudoscalar
+    simplified dark matter, retaining a model-independent language while adding mediator effects and collider
+    channels.
+  model_kind: simplified_model
+  name: Two-pseudoscalar-mediated simplified dark matter model
+  short_description: A fermionic WIMP couples to the Standard Model through two mixed pseudoscalar mediators
+    P1 and P2, with P1^0 coupled to quarks and P2^0 coupled to dark matter before mixing.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - chi chi to fermion pairs through s-channel P1/P2 exchange
+  - chi chi to P1 P1 when kinematically open
+  cp_structure: pseudoscalar mediator interactions
+  dark_sector_couplings:
+  - pseudoscalar Yukawa coupling y_chi to P2^0 before mixing
+  - mixed P1/P2 pseudoscalar couplings to chi
+  decay_channels: []
+  flavor_structure: quark couplings follow minimal flavour violation and lepton couplings are neglected
+  interaction_operators:
+  - i y_q g_q q gamma5 q P_i
+  - i y_chi chi gamma5 chi P_i
+  - P_i F Fdual and P_i G Gdual loop-induced couplings
+  - H P1 P2, H P1 P1, and H P2 P2 trilinears
+  mediator_types:
+  - pseudoscalar
+  portals:
+  - higgs
+  - other
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - quarks
+  - gluons
+  - photons
+  - SM Higgs boson
+  tree_or_loop_level: both
+model_id: 2110_15391_two_pseudoscalar_mediated_dm_v1
+parameters:
+  core:
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: m_chi
+  - name: light pseudoscalar mass
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: m_P1
+  - name: heavy pseudoscalar mass
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: m_P2
+  - name: universal quark coupling modifier
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: g_q
+  - name: dark matter pseudoscalar coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: y_chi
+    value: fixed to 1 in benchmark scans
+  - name: pseudoscalar mixing angle
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: theta
+    value: pi/4 in benchmark scans
+  - name: Higgs-pseudoscalar trilinear couplings
+    notes: m_11 is set to 1 TeV; m_22 and m_33 are kept small to satisfy Higgs invisible decay limits
+      in the paper.
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: m_11, m_22, m_33
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: fermionic dark matter chi
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - light pseudoscalar P1
+  - heavier pseudoscalar P2
+  standard_model_extension: minimal
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  notes: The model is treated as a thermal WIMP relic; no explicit phase-space distribution function is
+    supplied.
+production:
+  abundance_set_by:
+  - pseudoscalar mediator masses
+  - couplings g_q and y_chi
+  - P1/P2 interference
+  - opening of chi chi to P1 P1
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out through pseudoscalar-mediated annihilation
+  - resonant annihilation through P1 or P2
+  - annihilation to light pseudoscalar pairs when m_P1 < m_chi
+  nonthermal_momentum_distribution: unknown
+  notes: The paper computes the relic density at leading order using micrOMEGAs and selects parameter
+    regions compatible with the Planck abundance range.
+  thermal_equilibrium_with_hidden_sector: unknown
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - The true title and author block are not present in the extracted SQLite text.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: P1^0 couples to SM quarks, P2^0 couples to dark matter, and mixing generates interactions
+        of both mass eigenstates with both sectors.
+      reference_id: arxiv:2110.15391
+      section: models
+    parameter_ranges:
+    - confidence: medium
+      note: The paper reduces the scan to g_q, m_P1, m_P2, and m_chi after fixing y_chi, theta, and trilinear
+        assumptions.
+      reference_id: arxiv:2110.15391
+      section: models
+    particle_content:
+    - confidence: high
+      note: The model contains a fermionic dark matter candidate and two pseudoscalar states P1 and P2.
+      reference_id: arxiv:2110.15391
+      section: models
+    production_mechanism:
+    - confidence: high
+      note: The relic density calculation uses thermal annihilation to fermion pairs via pseudoscalar
+        exchange or to P1 pairs when open.
+      reference_id: arxiv:2110.15391
+      section: dark matter aspects
+    validity_domain:
+    - confidence: medium
+      note: The authors flag omitted UV details and impose narrow-width and Higgs-invisible assumptions.
+      reference_id: arxiv:2110.15391
+      section: models
+    constraints:
+    - confidence: high
+      note: Primary paper text directly supports the listed constraints and caveats.
+      page: null
+      reference_id: arxiv:2110.15391
+      section: primary text
+    observables:
+    - confidence: high
+      note: Primary paper text directly supports the listed observables.
+      page: null
+      reference_id: arxiv:2110.15391
+      section: primary text
+    routes:
+    - confidence: high
+      note: Route steps are derived from methods and workflows described in the primary paper.
+      page: null
+      reference_id: arxiv:2110.15391
+      section: methods/phenomenology sections
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0018
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5.5 dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper describes a two-pseudoscalar-mediated less-simplified model and gives
+        its mass-basis Lagrangian.
+      reference_id: arxiv:2110.15391
+      section: models
+    - page: null
+      quote_or_summary: Relic density is computed with micrOMEGAs and annihilation channels through P1/P2
+        are identified.
+      reference_id: arxiv:2110.15391
+      section: dark matter aspects
+    unresolved_items:
+    - Public release status of the model implementation is not established in the assigned text.
+  last_updated: '2026-05-31'
+  model_family: pseudoscalar_mediated_wimp
+  model_id: 2110_15391_two_pseudoscalar_mediated_dm_v1
+  model_name: Two-pseudoscalar-mediated simplified dark matter model
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2110.15391'
+      doi: null
+      notes: Only the assigned SQLite full text was used.
+      reference_id: arxiv:2110.15391
+      role: original_model
+      title: Unknown title in extracted text; paper studies two-pseudoscalar-mediated less-simplified
+        dark matter
+      url: null
+      year: 2021
+    - arxiv_id: '2110.15391'
+      authors:
+      - Banerjee, Shankha
+      - Bélanger, Geneviève
+      - Bhatia, Disha
+      - Fuks, Benjamin
+      - Raychaudhuri, Sreerup
+      doi: 10.1007/JHEP07(2022)111
+      notes: Primary paper text resolved from local cache and metadata from ADS.
+      reference_id: arxiv:2110.15391
+      role: original_model
+      title: Phenomenological analysis of multi-pseudoscalar mediated dark matter models
+      url: https://arxiv.org/abs/2110.15391
+      year: 2022
+    constraint_papers: []
+    external_databases:
+    - name: NASA ADS
+      note: Used for primary metadata and sanitized related-paper candidate discovery.
+      url: https://ui.adsabs.harvard.edu/
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - s-channel pseudoscalar resonances
+  - destructive interference between P1 and P2 exchange
+  - annihilation to fermions or P1 pairs
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    name: Omega_chi h^2 target
+    role: cosmological
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: Omega h^2
+    value: 0.096-0.144
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - UV completion not specified
+  - benchmark assumptions reduce the parameter space
+  notes: The model definition is explicit, but parts of the UV structure are intentionally omitted.
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: not discussed
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: not discussed
+symmetries:
+  stabilizing_mechanism: The dark matter particle is assumed stable in the simplified setup; the underlying
+    stabilizing symmetry is not specified in the extracted text.
+  symmetries:
+  - breaking: not specified
+    breaking_scale: null
+    exact_or_approximate: assumed
+    name: minimal flavour violation
+    type: unknown
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: unknown
+  lagrangian_available: 'yes'
+  notes: The interaction Lagrangian is written in the mass basis. The paper states that omitted UV details
+    would restore electroweak gauge invariance.
+  parent_frameworks:
+  - less-simplified dark matter
+  - pseudoscalar-mediated WIMP
+  renormalizable: unknown
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  condition: Pseudoscalar width-over-mass ratios are kept in the narrow-state regime in the scans.
+  extrapolation_risk: medium
+  id: two_ps_narrow_width
+  source_reference_ids:
+  - arxiv:2110.15391
+  status: assumed
+- applies_to: model
+  condition: CP-even scalars beyond the SM-like Higgs are assumed effectively decoupled from dark matter
+    formation.
+  extrapolation_risk: medium
+  id: two_ps_decoupled_cp_even
+  source_reference_ids:
+  - arxiv:2110.15391
+  status: assumed
+- applies_to: EFT
+  condition: The mass-basis Lagrangian omits UV details needed for manifest electroweak gauge invariance.
+  extrapolation_risk: high
+  id: two_ps_simplified_uv
+  source_reference_ids:
+  - arxiv:2110.15391
+  status: approximate
+observables:
+- caveats:
+  - Leading-order micrOMEGAs calculation is assigned a 10% theory allowance.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments: []
+  id: two_ps_relic_density
+  key_quantities:
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: m_chi
+  - name: light pseudoscalar mass
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: m_P1
+  - name: heavy pseudoscalar mass
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: m_P2
+  - name: relic density
+    role: derived
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: Omega_chi h^2
+    value: 0.096-0.144 target band
+  linked_constraints:
+  - planck_relic_band
+  linked_routes:
+  - two_ps_freezeout_route
+  name: Thermal relic density band
+  notes: null
+  observability: high
+  predicted_effect: The scan treats the Planck relic abundance as a target band, Omega_chi h^2 = 0.096-0.144
+    after adding a 10% theory allowance; resonant P1/P2 exchange and chi chi -> P1 P1 can set the annihilation
+    rate.
+  redshift_range: null
+  relevance: critical
+  scale_range: null
+  source_reference_ids:
+  - arxiv:2110.15391
+  subchannel: thermal_freezeout
+- caveats:
+  - Detailed collider reach is analysis- and benchmark-dependent.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - LHC
+  id: two_ps_missing_energy_lhc
+  key_quantities:
+  - name: quark coupling modifier
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: g_q
+  - name: pseudoscalar mixing angle
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: theta
+  - name: trilinear Higgs-pseudoscalar couplings
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: m_11,m_22,m_33
+  linked_constraints:
+  - lhc_missing_energy_recasts
+  linked_routes:
+  - two_ps_lhc_recast_route
+  name: LHC missing-energy mediator topologies
+  notes: null
+  observability: high
+  predicted_effect: The two mixed pseudoscalars can produce missing-transverse-energy signatures beyond
+    the minimal mono-jet topology, including mono-Higgs and mediator-associated final states that are
+    recast against LHC Run-2 analyses.
+  redshift_range: null
+  relevance: high
+  scale_range: LHC 13 TeV proton-proton collisions
+  source_reference_ids:
+  - arxiv:2110.15391
+  subchannel: monojet_monohiggs_and_visible_mediator_channels
+- caveats:
+  - The P1 P1 final state is p-wave suppressed in the primary discussion and is subdominant for present-day
+    indirect limits.
+  channel: indirect_detection
+  effect_direction: rate_change
+  environments:
+  - dwarf spheroidal galaxies
+  id: two_ps_indirect_bbar_gamma
+  key_quantities:
+  - name: annihilation cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: <sigma v>
+  - name: dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:2110.15391
+    status: inferred
+    symbol: m_chi
+  linked_constraints:
+  - fermi_dwarf_bbar_limit
+  linked_routes:
+  - two_ps_freezeout_route
+  name: Dwarf-spheroidal gamma-ray annihilation signal
+  notes: null
+  observability: medium
+  predicted_effect: For sub-electroweak WIMP masses the dominant present-day annihilation to b bbar can
+    be compared with Fermi-LAT dwarf-spheroidal limits on thermal annihilation rates.
+  redshift_range: null
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - arxiv:2110.15391
+  subchannel: dwarf_spheroidal_gamma_rays
+constraints:
+- allowed_regions:
+  - 0.096 < Omega_chi h^2 < 0.144 in the primary scan
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Parameter points outside the band are not treated as matching the full thermal relic target.
+  caveats: []
+  constrained_parameters:
+  - m_chi
+  - m_P1
+  - m_P2
+  - g_q
+  - y_chi
+  - theta
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions: []
+  id: planck_relic_band
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Planck relic-density target band
+  notes: The primary paper adds a 10% theory allowance around the Planck central value.
+  observable_channel: cosmology
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - arxiv:2110.15391
+- allowed_regions: []
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications: []
+  caveats:
+  - Background modeling can relax the limits.
+  constrained_parameters:
+  - m_chi
+  - <sigma v>
+  constraint_type: indirect_detection
+  data_release: null
+  excluded_regions:
+  - Thermal b bbar annihilation cross sections are excluded at 95% CL for WIMPs below about 100 GeV in
+    the primary-paper comparison.
+  id: fermi_dwarf_bbar_limit
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Fermi-LAT dwarf-spheroidal b bbar limit
+  notes: null
+  observable_channel: indirect_detection
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2110.15391
+- allowed_regions:
+  - The primary analysis ignores present direct-detection bounds because spin-independent scattering is
+    loop-induced and below current XENON1T/PandaX-4T sensitivity for the considered benchmark couplings.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications: []
+  caveats:
+  - Future experiments may probe light-mediator regions above the neutrino floor.
+  constrained_parameters:
+  - g_q
+  - y_chi
+  - m_P1
+  - m_P2
+  - m_chi
+  constraint_type: direct_detection
+  data_release: null
+  excluded_regions: []
+  id: xenon_pandax_loop_suppressed
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Loop-suppressed pseudoscalar direct detection
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2110.15391
+- allowed_regions: []
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications: []
+  caveats: []
+  constrained_parameters:
+  - m_chi
+  - m_P1
+  - m_P2
+  - g_q
+  - theta
+  - m_11
+  constraint_type: collider
+  data_release: Partial LHC Run-2 analyses recast through MadAnalysis 5
+  excluded_regions:
+  - Benchmark-dependent missing-energy signal regions constrain parts of the mediator-mass and coupling
+    space.
+  id: lhc_missing_energy_recasts
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Run-2 LHC missing-energy recasts
+  notes: null
+  observable_channel: collider
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2110.15391
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats: []
+    constraint_ids:
+    - planck_relic_band
+    - fermi_dwarf_bbar_limit
+    derived_quantities:
+    - Omega_chi h^2
+    - <sigma v>
+    description: Compute the thermal abundance and indirect signal from the two-pseudoscalar spectrum
+      and couplings.
+    forward_model_chain:
+    - inputs:
+      - model spectrum
+      - couplings
+      notes: null
+      outputs:
+      - annihilation rates
+      - Omega_chi h^2
+      step_id: annihilation_rates
+      step_type: boltzmann_solver
+      tool_or_code: micrOMEGAs 5.1
+      validity: Leading-order calculation with stated theory allowance.
+    - inputs:
+      - m_chi
+      - <sigma v>
+      notes: null
+      outputs:
+      - excluded or allowed point
+      step_id: indirect_comparison
+      step_type: likelihood
+      tool_or_code: Fermi-LAT b bbar limits as tabulated/recast in primary paper
+      validity: Most direct for b bbar-dominated annihilation.
+    id: two_ps_freezeout_route
+    input_parameters:
+    - m_chi
+    - m_P1
+    - m_P2
+    - g_q
+    - y_chi
+    - theta
+    likelihoods:
+    - Planck relic-density band
+    - Fermi-LAT dwarf-spheroidal 95% CL b bbar limit
+    observable_ids:
+    - two_ps_relic_density
+    - two_ps_indirect_bbar_gamma
+    required_code_resources:
+    - micrOMEGAs
+    - FeynRules model implementation
+    route_status: partially_implemented
+    source_model_features:
+    - fermionic WIMP
+    - two mixed pseudoscalar mediators
+    - MFV quark couplings
+    validation_tests:
+    - Recover the Planck target band near pseudoscalar resonances.
+  - agent_notes: null
+    caveats: []
+    constraint_ids:
+    - lhc_missing_energy_recasts
+    derived_quantities:
+    - signal efficiencies
+    - excluded signal regions
+    description: Generate collider events for the mixed-pseudoscalar model and recast missing-energy searches.
+    forward_model_chain:
+    - inputs:
+      - UFO model
+      - benchmark point
+      notes: null
+      outputs:
+      - parton showered events
+      step_id: event_generation
+      step_type: simulation
+      tool_or_code: MadGraph5_aMC@NLO + Pythia 8
+      validity: Collider-level validity follows the simplified model assumptions.
+    - inputs:
+      - showered events
+      notes: null
+      outputs:
+      - signal-region yields
+      step_id: detector_recast
+      step_type: recasting
+      tool_or_code: Delphes + MadAnalysis 5
+      validity: Detector response follows recast analysis cards.
+    id: two_ps_lhc_recast_route
+    input_parameters:
+    - m_chi
+    - m_P1
+    - m_P2
+    - g_q
+    - theta
+    - m_11
+    likelihoods:
+    - LHC missing-energy signal regions
+    observable_ids:
+    - two_ps_missing_energy_lhc
+    required_code_resources:
+    - MG5_aMC
+    - Pythia 8
+    - Delphes
+    - MadAnalysis 5
+    route_status: partially_implemented
+    source_model_features:
+    - two pseudoscalar mediators
+    - Higgs-pseudoscalar trilinears
+    - missing transverse momentum
+    validation_tests:
+    - Reproduce public-analysis validation material where available.

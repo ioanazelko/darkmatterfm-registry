@@ -1,0 +1,369 @@
+_source:
+  shard: arXiv_src_1607_010_wds.tar
+  paper_id: '1607_04046'
+  source_member: 1607_04046.json
+schema_version: model_only_v0
+model_id: 1607_04046_gauged_lmu_ltau_vectorlike_fermion_dm_v1
+identity:
+  name: Gauged L_mu-L_tau vector-like singlet fermion dark matter
+  family: hidden_sector_dark_matter
+  aliases:
+  - U(1)_{L_mu-L_tau} leptophilic fermion dark matter
+  - residual-Z2 L_mu-L_tau dark matter
+  short_description: A gauged U(1)_{L_mu-L_tau} extension with right-handed neutrinos, a vector-like neutral
+    singlet fermion stabilized by residual Z2 symmetry, and an extra scalar channel for viable relic abundance.
+  historical_origin_or_motivation: Motivated by simultaneous treatment of muon g-2, neutrino mass, and
+    dark matter in a leptophilic gauge extension.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - gauged U(1)_{L_mu-L_tau}
+  - type-I seesaw
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The full interaction Lagrangian includes the L_mu-L_tau gauge boson, right-handed neutrinos,
+    singlet scalars S and eta, and the vector-like fermion dark matter candidate.
+particle_content:
+  dark_matter_candidate:
+    name: vector-like neutral singlet fermion
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - right-handed neutrinos N_e, N_mu, N_tau
+  - SM-singlet scalar S
+  - extra SM-singlet scalar eta charged under U(1)_{L_mu-L_tau}
+  - Z-prime gauge boson
+  mediators:
+  - Z-prime gauge boson
+  - eta scalar
+  - Higgs-mixed singlet scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Spontaneous breaking of U(1)_{L_mu-L_tau} leaves a residual Z2 under which only
+    the vector-like fermion is odd.
+  symmetries:
+  - name: U(1)_{L_mu-L_tau}
+    type: gauge
+    exact_or_approximate: broken
+    breaking: broken by the singlet scalar S vacuum expectation value
+    breaking_scale:
+      name: U(1) breaking scale
+      symbol: v_S
+      description: VEV of S that gives mass to Z-prime and right-handed neutrinos.
+      range: TeV scale in examples
+      unit: GeV
+      role: core
+      status: inferred
+  - name: residual Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken remnant after U(1) breaking
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  - higgs
+  - neutrino
+  - other
+  standard_model_targets:
+  - muon-family leptons
+  - tau-family leptons
+  - Standard Model Higgs sector
+  dark_sector_couplings:
+  - U(1)_{L_mu-L_tau} gauge coupling g_prime
+  - fermion coupling to eta scalar
+  - scalar mixing with the Higgs sector
+  mediator_types:
+  - Z-prime gauge boson
+  - SM-singlet scalar eta
+  - Higgs-mixed scalar
+  interaction_operators:
+  - Z-prime vector interaction with L_mu-L_tau charges
+  - fermion-scalar coupling enabling chi chi to eta eta
+  - singlet-scalar/Higgs mixing terms
+  annihilation_channels:
+  - dark matter annihilation to muon and tau families through Z-prime
+  - dark matter annihilation to eta eta
+  - dark matter annihilation to eta h
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: M_chi
+    description: Mass of the vector-like neutral singlet fermion.
+    range: model dependent; scanned against eta mass and couplings
+    unit: GeV
+    role: core
+    status: inferred
+  - name: L_mu-L_tau gauge coupling
+    symbol: g_prime
+    description: Gauge coupling controlling Z-prime interactions and leptophilic annihilation.
+    range: g_prime > 5e-3 for Z-prime-only relic with M_Zprime > 100 MeV; smaller values allowed with
+      eta channel
+    role: core
+    status: inferred
+  - name: Z-prime mass
+    symbol: M_Zprime
+    description: Mass of the U(1)_{L_mu-L_tau} gauge boson.
+    range: from above 100 MeV to TeV scale in the discussion
+    unit: GeV
+    role: core
+    status: inferred
+  - name: eta mass
+    symbol: M_eta
+    description: Mass of the extra scalar that opens the dominant chi chi to eta eta channel.
+    range: sub-GeV example around 0.1 GeV
+    unit: GeV
+    role: core
+    status: inferred
+  - name: fermion-eta coupling
+    symbol: f_chi
+    description: Coupling entering the chi chi to eta eta annihilation cross section.
+    range: chosen to obtain correct relic abundance
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through Z-prime mediated leptonic annihilation
+  - thermal freeze-out dominated by eta eta annihilation after adding eta
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - g_prime
+  - M_Zprime
+  - M_chi
+  - M_eta
+  - f_chi
+  - scalar mixing angle
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The eta channel is introduced because the Z-prime-only channel cannot simultaneously satisfy
+    the relic-density and muon g-2 preferred coupling regions in the studied setup.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - Z-prime mass
+  - g_prime
+  - eta mass
+  - dark matter mass
+  - fermion-eta coupling
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - late remnant Z2 after U(1)_{L_mu-L_tau} breaking
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - U(1)_{L_mu-L_tau} breaking by S
+  - electroweak symmetry breaking by H
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The paper treats the candidate as a thermal WIMP-like relic with annihilation cross sections
+    computed for the relevant channels.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: v1_residual_z2
+  applies_to: model
+  condition: The residual Z2 after U(1) breaking must remain exact so the vector-like fermion is stable.
+  status: assumed
+  extrapolation_risk: high
+- id: v1_eta_channel_needed
+  applies_to: model
+  condition: The viable simultaneous g-2/relic-density region relies on adding the eta scalar and opening
+    chi chi to eta eta.
+  status: inferred
+  extrapolation_risk: medium
+- id: v1_scalar_mixing_small
+  applies_to: parameter
+  condition: Higgs-eta mixing is taken small to keep the eta-mediated relic channel while limiting elastic
+    scattering.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: a1_s_breaking
+    description: The singlet scalar S gets a VEV that breaks U(1)_{L_mu-L_tau} to residual Z2.
+    scope: theory
+    status: assumed
+  - id: a2_vector_fermion_odd
+    description: Only the vector-like neutral fermion is odd under the residual Z2.
+    scope: theory
+    status: assumed
+  - id: a3_eta_extension
+    description: The eta scalar is included so that the eta eta annihilation channel can set the relic
+      abundance.
+    scope: production
+    status: inferred
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper mentions a full relic-density calculation using micrOMEGAs, but no released
+    model-specific code is identified.
+provenance:
+  model_id: 1607_04046_gauged_lmu_ltau_vectorlike_fermion_dm_v1
+  model_name: Gauged L_mu-L_tau vector-like singlet fermion dark matter
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1607_04046'
+      title: Gauged U(1)_{L_mu-L_tau} model in light of muon g-2 anomaly, neutrino mass and dark matter
+        phenomenology
+      authors:
+      - Sudhanwa Patra
+      - Soumya Rao
+      - Nirakar Sahoo
+      - Narendra Sahu
+      year: 2016
+      arxiv_id: '1607.04046'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned SQLite full text was the only source used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0016
+    extractor_name: dark-matter model-card extraction worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1607_04046'
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: Paper augments gauged L_mu-L_tau with right-handed neutrinos and a vector-like
+        singlet fermion for dark matter.
+    - reference_id: '1607_04046'
+      section: Model and relic abundance sections
+      page: null
+      quote_or_summary: Defines residual Z2 stabilization, the interaction Lagrangian, and relic channels
+        including eta eta.
+    unresolved_items:
+    - The symbol for the vector-like fermion is degraded in the plain-text extraction, so the card uses
+      a descriptive name rather than relying on the missing glyph.
+  evidence:
+    particle_content:
+    - reference_id: '1607_04046'
+      note: The model adds N_e, N_mu, N_tau, a vector-like neutral fermion, S, eta, and Z-prime.
+      confidence: high
+      section: Model
+      page: null
+    symmetries:
+    - reference_id: '1607_04046'
+      note: U(1)_{L_mu-L_tau} is broken by S to a remnant Z2 under which the vector-like fermion is odd.
+      confidence: high
+      section: Spontaneous symmetry breaking
+      page: null
+    interactions:
+    - reference_id: '1607_04046'
+      note: The paper gives the complete interaction Lagrangian and scalar potential for the gauge and
+        scalar sectors.
+      confidence: high
+      section: Interaction Lagrangian
+      page: null
+    production_mechanism:
+    - reference_id: '1607_04046'
+      note: Relic abundance is first studied through Z-prime exchange, then through the added eta eta
+        channel.
+      confidence: high
+      section: Relic abundance
+      page: null
+    cosmological_history:
+    - reference_id: '1607_04046'
+      note: Thermal relic abundance is computed in the broken U(1) phase with residual Z2.
+      confidence: medium
+      section: Relic abundance
+      page: null
+    parameter_ranges:
+    - reference_id: '1607_04046'
+      note: The text discusses M_Zprime above 100 MeV, g_prime thresholds, and a sub-GeV eta example.
+      confidence: medium
+      section: Relic abundance
+      page: null
+    validity_domain:
+    - reference_id: '1607_04046'
+      note: The eta scalar is introduced because the Z-prime-only setup overproduces dark matter in the
+        muon g-2 region.
+      confidence: high
+      section: Relic abundance and conclusions
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - scalar mixing assumptions
+  - eta-channel parameter dependence
+  - plain-text loss of some particle symbols
+  validation_status: partially_validated
+  notes: Core particle content, residual symmetry, and relic-density channels are explicit in the text.
+agent_failure_modes:
+  warnings:
+  - id: w1_symbol_loss
+    severity: low
+    category: notation_conflict
+    warning: The assigned text drops the glyph for the vector-like fermion; use the descriptive candidate
+      name unless reviewing the source.
+    source_reference_ids:
+    - '1607_04046'
+  - id: w2_zprime_only_not_final
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not use the Z-prime-only relic channel as the final viable setup without the eta extension
+      discussed by the paper.
+    source_reference_ids:
+    - '1607_04046'
+  - id: w3_constraints_omitted_by_run
+    severity: low
+    category: other
+    warning: The paper discusses direct and indirect searches, but this run intentionally omits constraints
+      and observable routing.
+    source_reference_ids:
+    - '1607_04046'

@@ -1,0 +1,726 @@
+_source:
+  shard: arXiv_src_1308_012_wds.tar
+  paper_id: '1308_6630'
+  source_member: 1308_6630.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1308_6630_331_wimpy_dark_radiation_v1
+identity:
+  name: 331 WIMPy dark radiation model
+  family: mixed_thermal_nonthermal_wimp_dark_radiation
+  aliases:
+  - 3-3-1LHN WIMPy dark radiation
+  short_description: A 3-3-1LHN gauge-model scenario in which a scalar WIMP is mostly thermally produced
+    cold dark matter, with a small relativistic component from heavy N_R decays that behaves as dark radiation.
+  historical_origin_or_motivation: Motivated by possible excess effective relativistic degrees of freedom
+    while retaining weak-scale WIMP dark matter.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - SU(3)_c x SU(3)_L x U(1)_N 3-3-1LHN gauge model
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper writes the scalar potential and Yukawa terms for the 3-3-1LHN setup used for the WIMPy
+    dark-radiation mechanism.
+particle_content:
+  dark_matter_candidate:
+    name: scalar WIMP eta
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavy neutral fermions N_L and N_R
+  - new heavy quarks from the 3-3-1 multiplets
+  mediators:
+  - scalar triplet components
+  - N_1R mother particle
+  - 3-3-1 gauge bosons
+  dark_radiation_species:
+  - relativistic fraction of scalar WIMPs from N_1R decays
+  unstable_parent_particles:
+  - lightest right-handed neutral fermion N_1R
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The lightest neutral R-parity-odd particle in the 3-3-1LHN spectrum is stable.
+  symmetries:
+  - name: SU(3)_c x SU(3)_L x U(1)_N
+    type: gauge
+    exact_or_approximate: exact
+    breaking: broken to the Standard Model electroweak group and electromagnetism
+    breaking_scale:
+      name: 3-3-1 breaking scale
+      symbol: v_chi
+      description: Scale controlling heavy 3-3-1 states
+      range: 1-10 TeV benchmarks
+      unit: GeV
+      role: core
+      status: assumed
+      source_reference_ids: []
+  - name: 3-3-1 R-parity
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not broken in the construction
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  - other
+  standard_model_targets:
+  - neutrinos in N_R decays
+  - Standard Model particles through scalar and gauge interactions
+  dark_sector_couplings:
+  - Yukawa coupling g_11 between N_R, the scalar WIMP, and neutrino-like states
+  - scalar-potential quartic couplings
+  mediator_types:
+  - heavy neutral fermion
+  - scalar
+  - new gauge boson
+  interaction_operators:
+  - 3-3-1 scalar potential terms
+  - 3-3-1 Yukawa interactions with Majorana N_R mass
+  annihilation_channels:
+  - thermal WIMP annihilation through 3-3-1 interactions
+  decay_channels:
+  - N_1R -> scalar WIMP plus neutrino-like final state
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: scalar WIMP mass
+    symbol: M_wimp
+    description: Mass of the scalar WIMP daughter particle
+    range: few GeV to weak scale; example viable bands include a few to a few tens of GeV
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+    notes: Paper also discusses 100 GeV illustrative WIMPs.
+  - name: mother-particle mass
+    symbol: M_N1R
+    description: Mass of the lightest heavy right-handed neutral fermion producing relativistic WIMPs
+    range: 10-100 TeV in one benchmark band; larger masses require dilution
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: mother-daughter mass ratio
+    symbol: M_N1R/M_wimp
+    description: Large hierarchy needed for dark-radiation effect
+    range: '> about 2.5e5 for Delta N_eff around 0.62'
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: nonthermal WIMP mass fraction
+    symbol: f
+    description: Fraction of dark matter produced relativistically from N_1R decays
+    value: 0.01 benchmark
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: 3-3-1 breaking scale
+    symbol: v_chi
+    description: Scale used in benchmark plots
+    range: 1-10 TeV
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: Yukawa coupling
+    symbol: g_11
+    description: Coupling controlling N_1R decays and relic densities
+    range: 0.1-1 benchmark values
+    role: core
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - thermal freeze-out of scalar WIMP
+  - nonthermal relativistic production from heavy N_1R decay
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - standard WIMP freeze-out
+  - small inherited abundance from N_1R decays
+  - possible entropy dilution of N_1R abundance
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The dominant dark matter population is cold and thermal; the nonthermal relativistic tail is
+    tuned to about a percent in the examples.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: relativistic fraction
+    symbol: f
+    description: Fraction of final WIMP dark matter from N_1R decay
+    value: 0.01 benchmark
+    role: derived
+    status: assumed
+    source_reference_ids: []
+  calculation_type: mixed
+  key_dependencies:
+  - M_N1R/M_wimp
+  - N_1R lifetime
+  - g_11 coupling
+  - entropy dilution factor
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - late heavy-particle decay before BBN
+  - possible entropy injection or dilution before decay
+  - small relativistic WIMP component
+  dark_sector_temperature: null
+  delta_neff:
+    name: effective-neutrino enhancement
+    symbol: Delta N_eff
+    description: Extra radiation-like energy density targeted by the relativistic WIMP component
+    range: about 0.1 to 0.62 in examples
+    role: derived
+    status: inferred
+    source_reference_ids: []
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - 3-3-1 gauge symmetry breaking
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: mixed_cold_warm
+  distribution_function_available: unknown
+  notes: A mostly cold thermal WIMP population is supplemented by a relativistic daughter population from
+    decays.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: unknown
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: decay-before-bbn
+  applies_to: cosmological_history
+  condition: N_1R lifetime should be shorter than about 10^4 seconds
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: small-relativistic-fraction
+  applies_to: model
+  condition: Only a small fraction of WIMPs may be produced relativistically to avoid structure-formation
+    problems
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+  notes: null
+- id: large-mass-hierarchy
+  applies_to: parameter
+  condition: The mother particle must be much heavier than the WIMP daughter
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+  notes: null
+assumptions:
+  global:
+  - id: rparity-stable
+    description: The discrete R-parity assignment remains exact so the lightest odd neutral scalar is
+      stable.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: mostly-thermal-wimp
+    description: Most of the dark matter abundance is produced through the usual cold WIMP freeze-out
+      channel.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: controlled-dilution
+    description: Any required entropy dilution of the N_1R population can occur without spoiling the intended
+      cosmology.
+    scope: cosmological_history
+    status: speculative
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated public model code is identified in the extracted text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 1308_6630_331_wimpy_dark_radiation_v1
+  model_name: A 331 WIMPy Dark Radiation Model
+  model_family: mixed_thermal_nonthermal_wimp_dark_radiation
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: A 331 WIMPy Dark Radiation Model
+      year: 2013
+      arxiv_id: '1308.6630'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+    - arxiv_id: '1308.6630'
+      authors:
+      - Kelso, Chris
+      - Pires, C. A. de S.
+      - Profumo, Stefano
+      - Queiroz, Farinaldo S.
+      - Rodrigues da Silva, P. S.
+      doi: 10.1140/epjc/s10052-014-2797-3
+      notes: Primary model paper read from local full text and discovered through ADS.
+      reference_id: 1308_6630_primary
+      role: original_model
+      title: A 331 WIMPy dark radiation model
+      url: https://arxiv.org/abs/1308.6630
+      year: 2014
+    constraint_papers:
+    - arxiv_id: '1301.7428'
+      authors:
+      - Bae, Kyu Jung
+      - Baer, Howard
+      - Lessa, Andre
+      doi: 10.1088/1475-7516/2013/04/041
+      notes: Related local full text on dark-radiation constraints in mixed axion/neutralino dark matter.
+      reference_id: 1308_6630_rel_axion_neutralino_dark_radiation
+      role: constraint
+      title: Dark radiation constraints on mixed Axion/Neutralino dark matter
+      url: https://arxiv.org/abs/1301.7428
+      year: 2013
+    - arxiv_id: '1511.01018'
+      authors:
+      - Okada, Hiroshi
+      - Orikasa, Yuta
+      - Toma, Takashi
+      doi: 10.1103/PhysRevD.93.055007
+      notes: Related local full text on nonthermal dark matter signals and BBN/relic-density constraints.
+      reference_id: 1308_6630_rel_nonthermal_signals
+      role: extension
+      title: Nonthermal dark matter models and signals
+      url: https://arxiv.org/abs/1511.01018
+      year: 2016
+    - arxiv_id: '1304.5243'
+      authors:
+      - Kelso, Chris
+      - Profumo, Stefano
+      - Queiroz, Farinaldo S.
+      doi: 10.1103/PhysRevD.88.023511
+      notes: Related local full text by overlapping authors on nonthermal WIMPs as dark radiation.
+      reference_id: 1308_6630_rel_nonthermal_wimps_dark_radiation
+      role: benchmark
+      title: Nonthermal WIMPs as ``dark radiation'' in light of ATACAMA, SPT, WMAP9, and Planck
+      url: https://arxiv.org/abs/1304.5243
+      year: 2013
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_batch_worker
+    extractor_name: gpt-5.5-rolling-batch-subagent
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Introduction
+      page: null
+      quote_or_summary: The paper says a weak-scale WIMP in a 3-3-1 model is mostly thermally produced,
+        with a nonthermal fraction from N_R decays.
+    - reference_id: primary
+      section: 3-3-1LHN model
+      page: null
+      quote_or_summary: The text identifies neutral fermions N_L,N_R and a scalar field as a dark matter
+        candidate.
+    unresolved_items:
+    - A concrete entropy-injection sector is not specified.
+    - Direct-detection and Galactic-center gamma-ray claims for the scalar WIMP are cited in the primary
+      text but not recast here.
+    - A modern CMB/BBN likelihood update would be needed for current numerical limits.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The paper focuses on 3-3-1LHN with neutral fermions N_L,N_R and a scalar WIMP dark matter
+        candidate that is a linear combination of neutral scalars.
+      confidence: high
+      section: Particle content
+      page: null
+    symmetries:
+    - reference_id: primary
+      note: A discrete R-parity assignment is described as guaranteeing stability of the lightest neutral
+        odd particle.
+      confidence: high
+      section: Particle content
+      page: null
+    interactions:
+    - reference_id: primary
+      note: The scalar potential and Yukawa Lagrangian include 3-3-1 scalar interactions and a Majorana
+        mass term for N_R; N_R decays generate the nonthermal WIMP component.
+      confidence: high
+      section: Particle content
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: Most dark matter is a thermally produced WIMP, while a small fraction is produced relativistically
+        from N_1R decays into WIMP-neutrino pairs.
+      confidence: high
+      section: Introduction and parameter-space discussion
+      page: null
+    cosmological_history:
+    - reference_id: primary
+      note: The viable scenario requires a heavy mother particle, decay before about 10^4 s, and about
+        a percent-level relativistic WIMP fraction to mimic dark radiation without spoiling structure
+        formation.
+      confidence: high
+      section: WIMPy dark radiation setup
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: Illustrative viable regions include WIMP masses from a few GeV to a few tens of GeV and N_1R
+        masses between about 10 and 100 TeV for one benchmark.
+      confidence: medium
+      section: Parameter-space discussion
+      page: null
+    validity_domain:
+    - reference_id: primary
+      note: The construction relies on the 3-3-1LHN spectrum, R-parity assignments, and a very large mother-to-daughter
+        mass hierarchy.
+      confidence: medium
+      section: 3-3-1LHN model
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary benchmark fixes f=0.01 and discusses Delta N_eff=0.1 together with entropy dilution
+        requirements.
+      page: null
+      reference_id: 1308_6630_primary
+      section: Parameter-space discussion
+    - confidence: medium
+      note: Related mixed dark-radiation paper summarizes N_eff constraints from CMB data sets.
+      page: null
+      reference_id: 1308_6630_rel_axion_neutralino_dark_radiation
+      section: N_eff constraints
+    observables:
+    - confidence: high
+      note: Primary paper states that a percent-level relativistic WIMP fraction can mimic extra radiation
+        at matter-radiation equality while respecting BBN/CMB/structure bounds.
+      page: null
+      reference_id: 1308_6630_primary
+      section: Abstract/introduction
+    - confidence: medium
+      note: Related nonthermal WIMP dark-radiation paper develops similar Delta N_eff relations and cosmological
+        bounds.
+      page: null
+      reference_id: 1308_6630_rel_nonthermal_wimps_dark_radiation
+      section: Dark-radiation setup
+    routes:
+    - confidence: high
+      note: Primary paper provides the N_1R decay to WIMP-neutrino route and MicrOMEGAs thermal-abundance
+        context.
+      page: null
+      reference_id: 1308_6630_primary
+      section: Model/parameter-space sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats: []
+  related_entries: []
+  external_links: {}
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  dominant_uncertainties:
+  - entropy dilution history
+  - exact WIMP scalar identity after mixing
+  - structure-formation impact of the relativistic fraction
+  notes: Extraction is based on the paper's model-construction sections and benchmark discussion.
+agent_failure_modes:
+  warnings:
+  - id: mixed-component-confusion
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat the whole dark matter abundance as relativistic; the paper uses a mostly cold
+      WIMP abundance plus a small relativistic tail.
+    mitigation: null
+    source_reference_ids: []
+observables:
+- caveats:
+  - Current CMB preference for extra radiation is data-set dependent and weak in the primary paper discussion.
+  channel: cmb
+  effect_direction: enhancement
+  environments:
+  - CMB
+  - early Universe radiation density
+  id: obs_neff_from_relativistic_wimp_tail
+  key_quantities:
+  - description: Fraction of dark matter from N_1R decay
+    name: relativistic WIMP mass fraction
+    role: derived
+    status: inferred
+    symbol: f
+    value: 0.01 benchmark
+  - description: Target extra-radiation contribution
+    name: effective neutrino increment
+    role: derived
+    status: inferred
+    symbol: Delta N_eff
+    value: 0.1 benchmark
+  - description: Ratio needed for a relativistic daughter population
+    name: mother-particle to WIMP mass ratio
+    role: derived
+    status: inferred
+    symbol: M_N1R/M_WIMP
+    value: large; about 10^6 for a 100 GeV WIMP and Delta N_eff=0.1 in the text
+  linked_constraints:
+  - con_cmb_bbn_structure_neff
+  linked_routes:
+  - route_decay_fraction_to_neff
+  name: Effective extra radiation from a relativistic WIMP subcomponent
+  notes: This is the distinctive observable of the 331 WIMPy dark-radiation setup.
+  observability: medium
+  predicted_effect: A percent-level fraction of WIMPs produced relativistically by heavy N_1R decays can
+    behave as an additional radiation component near matter-radiation equality while most dark matter
+    remains cold and thermally produced.
+  redshift_range: matter-radiation equality and CMB decoupling
+  relevance: high
+  scale_range: null
+  source_reference_ids:
+  - 1308_6630_primary
+  - 1308_6630_rel_nonthermal_wimps_dark_radiation
+  - 1308_6630_rel_axion_neutralino_dark_radiation
+  subchannel: N_eff at matter-radiation equality
+- caveats:
+  - The primary paper uses a phenomenological entropy injection rather than a complete reheating model.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe
+  id: obs_heavy_neutrino_decay_history
+  key_quantities:
+  - description: Decay time of the mother particle
+    name: heavy neutrino lifetime
+    role: cosmological
+    status: unknown
+    symbol: tau_N1R
+  - description: Phenomenological dilution between N_1R freeze-out and decay
+    name: entropy dilution factor
+    role: cosmological
+    status: inferred
+    value: often required in benchmark scans
+  linked_constraints:
+  - con_entropy_dilution_mother_abundance
+  - con_cmb_bbn_structure_neff
+  linked_routes:
+  - route_decay_fraction_to_neff
+  name: Late heavy-neutrino decay into WIMP-neutrino pairs
+  notes: Useful for tracking which cosmological history assumptions are needed.
+  observability: low
+  predicted_effect: The heavy singlet neutrino decay injects energetic WIMPs and neutrinos; the timing
+    and dilution history control whether the injected WIMP component behaves as dark radiation without
+    violating BBN or structure constraints.
+  redshift_range: before or around epochs relevant to BBN/CMB depending on benchmark
+  relevance: medium
+  scale_range: null
+  source_reference_ids:
+  - 1308_6630_primary
+  - 1308_6630_rel_nonthermal_signals
+  - 1308_6630_rel_nonthermal_wimps_dark_radiation
+  subchannel: nonthermal injection history
+constraints:
+- allowed_regions:
+  - The paper studies f=0.01 and Delta N_eff=0.1 as a benchmark that can obey BBN, CMB, and structure-formation
+    bounds.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Only a percent-level fraction of WIMPs is produced relativistically.
+    id: assume_small_relativistic_fraction
+    impact_if_violated: Larger fractions would more strongly affect structure formation and CMB bounds.
+    notes: null
+    scope: dark radiation observable
+    source_reference_ids:
+    - 1308_6630_primary
+    - 1308_6630_rel_nonthermal_wimps_dark_radiation
+    status: assumed
+  benchmark_implications:
+  - The model can make a small dark-radiation-like component without replacing the ordinary cold WIMP
+    relic.
+  caveats:
+  - No full likelihood implementation is supplied; the paper benchmarks against published bounds.
+  constrained_parameters:
+  - f
+  - Delta N_eff
+  - M_N1R/M_WIMP
+  - tau_N1R
+  - WIMP thermal relic density
+  constraint_type: cosmological
+  data_release: Planck-era CMB N_eff measurements discussed in the primary paper
+  excluded_regions:
+  - Large relativistic fractions or decay histories that overproduce Delta N_eff, disrupt BBN, or leave
+    WIMPs too warm for structure formation.
+  id: con_cmb_bbn_structure_neff
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: CMB, BBN, and structure bounds on WIMPy dark radiation
+  notes: Treat as a cosmological recast target rather than a closed likelihood.
+  observable_channel: CMB/BBN/structure_formation
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - 1308_6630_primary
+  - 1308_6630_rel_axion_neutralino_dark_radiation
+  - 1308_6630_rel_nonthermal_wimps_dark_radiation
+- allowed_regions:
+  - Benchmarks can be kept viable by a phenomenological entropy injection episode between N_1R freeze-out
+    and decay.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: An entropy injection episode dilutes the mother particle abundance before decay.
+    id: assume_entropy_injection
+    impact_if_violated: Without it, the N_1R abundance is often too large to yield only one percent of
+      the WIMP density.
+    notes: null
+    scope: benchmark viability
+    source_reference_ids:
+    - 1308_6630_primary
+    status: assumed
+  benchmark_implications:
+  - The dark-radiation explanation is tied to a nonstandard cosmological dilution history.
+  caveats:
+  - The entropy source is not modeled explicitly.
+  constrained_parameters:
+  - N_1R freeze-out abundance
+  - entropy dilution factor
+  - g_11
+  - v_chi
+  - M_N1R
+  - M_WIMP
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Regions where frozen-out N_1R abundance would overproduce the nonthermal WIMP fraction without entropy
+    injection.
+  id: con_entropy_dilution_mother_abundance
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Mother-particle abundance and entropy dilution requirement
+  notes: This is a model-building consistency condition highlighted by the primary paper.
+  observable_channel: relic_density/cosmological_history
+  recasting_needed: partial
+  robustness: low
+  source_reference_ids:
+  - 1308_6630_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route is analytically clear, but a complete entropy-injection model is outside the
+      primary paper.
+    caveats:
+    - Treat entropy dilution as an explicit nuisance/history parameter.
+    constraint_ids:
+    - con_cmb_bbn_structure_neff
+    - con_entropy_dilution_mother_abundance
+    derived_quantities:
+    - relativistic WIMP energy density
+    - Delta N_eff at matter-radiation equality
+    - thermal plus nonthermal relic fractions
+    description: Map heavy N_1R decays to a WIMP dark-radiation contribution and cosmological bounds.
+    forward_model_chain:
+    - inputs:
+      - WIMP mass
+      - 331 couplings
+      notes: Needed before adding the nonthermal fraction.
+      outputs:
+      - thermal WIMP abundance
+      step_id: thermal_wimp_relic
+      step_type: boltzmann_solver
+      tool_or_code: MicrOMEGAs-style freeze-out calculation
+      validity: primary paper uses MicrOMEGAs for abundance inputs
+    - inputs:
+      - N_1R abundance
+      - mass ratio
+      - decay time
+      notes: Imposes f=0.01 and target Delta N_eff in the paper.
+      outputs:
+      - relativistic WIMP fraction
+      - energy density ratio
+      step_id: mother_decay_injection
+      step_type: analytic_formula
+      tool_or_code: two-body decay kinematics and abundance relation
+      validity: valid for the benchmark phenomenology
+    - inputs:
+      - Delta N_eff
+      - decay time
+      - warm fraction
+      notes: Use Planck/BBN/structure constraints as data are updated.
+      outputs:
+      - allowed benchmark set
+      step_id: cosmology_bounds
+      step_type: recasting
+      tool_or_code: CMB/BBN/structure comparison
+      validity: requires external cosmological likelihoods for precision
+    id: route_decay_fraction_to_neff
+    input_parameters:
+    - M_N1R
+    - M_WIMP
+    - tau_N1R
+    - f
+    - Delta N_eff
+    - entropy dilution factor
+    likelihoods:
+    - CMB N_eff likelihood
+    - BBN light-element likelihood
+    - warm-fraction structure bound
+    observable_ids:
+    - obs_neff_from_relativistic_wimp_tail
+    - obs_heavy_neutrino_decay_history
+    required_code_resources:
+    - thermal relic solver
+    - decay-history integrator
+    - CMB/BBN recast module
+    route_status: planned
+    source_model_features:
+    - 3-3-1LHN gauge sector
+    - scalar thermal WIMP
+    - heavy N_1R mother particle
+    validation_tests:
+    - reproduce f=0.01 and Delta N_eff=0.1 benchmark relation
+    - check cold-WIMP relic abundance remains dominant

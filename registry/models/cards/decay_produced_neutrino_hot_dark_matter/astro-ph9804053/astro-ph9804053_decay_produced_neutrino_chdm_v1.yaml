@@ -1,0 +1,769 @@
+_source:
+  shard: arXiv_src_9804_001_wds.tar
+  paper_id: astro-ph9804053
+  source_member: astro-ph9804053.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: astro-ph9804053_decay_produced_neutrino_chdm_v1
+identity:
+  name: Decay-produced neutrino cold-plus-hot dark matter
+  family: decay_produced_neutrino_hot_dark_matter
+  aliases:
+  - D CHDM
+  - decaying neutrino CHDM
+  short_description: A cold-plus-hot dark-matter scenario in which a heavy neutrino decays after neutrino
+    decoupling into light neutrino hot dark matter plus a scalar or pseudoscalar particle.
+  historical_origin_or_motivation: Introduced as a way to obtain a two-neutrino-like hot dark-matter component
+    without requiring a degenerate thermal light-neutrino hierarchy.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - cold plus hot dark matter
+  - majoron-like neutrino decay
+  lagrangian_available: partial
+  renormalizable: unknown
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  notes: The paper discusses the scenario as naturally occurring in majoron models but analyzes it through
+    decay Boltzmann equations and cosmological spectra.
+particle_content:
+  dark_matter_candidate:
+    name: light neutrino hot dark matter from heavy-neutrino decay
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - heavy neutrino nu_H
+  - scalar or pseudoscalar phi, majoron-like in examples
+  mediators:
+  - majoron-like scalar or pseudoscalar
+  dark_radiation_species:
+  - scalar or pseudoscalar decay product phi
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - light neutrino daughters
+  unstable_parent_particles:
+  - heavy neutrino nu_H
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The hot dark-matter component is made of light neutrino daughters assumed stable
+    on cosmological timescales.
+  symmetries:
+  - name: majoron-like global symmetry
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneous breaking yields a Nambu-Goldstone boson called the majoron in the motivating
+      models
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  - other
+  standard_model_targets:
+  - light neutrinos
+  dark_sector_couplings:
+  - Yukawa-type coupling of neutrinos to a majoron-like scalar
+  mediator_types:
+  - scalar or pseudoscalar decay product
+  interaction_operators:
+  - nu_H -> nu_L + phi
+  scattering:
+    elastic: not_applicable
+    inelastic: not_applicable
+    momentum_dependence: not_applicable
+    velocity_dependence: not_applicable
+    spin_dependence: not_applicable
+  annihilation_channels: []
+  decay_channels:
+  - heavy neutrino nu_H -> light neutrino nu_L + scalar phi
+  self_scattering_channels: []
+  cp_structure: unknown
+  flavor_structure: Example assumes nu_H = nu_tau and nu_L = nu_mu, with nu_e massless.
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: heavy neutrino mass
+    symbol: m_H
+    description: Mass of the unstable parent neutrino.
+    range: free; spectra depend on the combined relativity parameter
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: heavy neutrino lifetime
+    symbol: tau_H
+    description: Lifetime of the decaying heavy neutrino.
+    range: decay after neutrino decoupling and before matter-radiation equality
+    unit: s
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: decay relativity parameter
+    symbol: alpha
+    description: Parameter proportional to (m_H/MeV)^2 (tau_H/s) that controls whether the decay is relativistic
+      or nonrelativistic.
+    range: alpha below or above 1 separates relativistic and nonrelativistic decay regimes
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: light neutrino mass
+    symbol: m_L
+    description: Mass assigned to the light neutrino daughter for structure and CMB spectra.
+    range: eV-scale in CHDM-like comparisons
+    unit: eV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: hot dark matter fraction
+    symbol: Omega_HDM
+    description: Fraction of matter density in hot neutrino dark matter.
+    range: examples include values comparable to two-neutrino CHDM scenarios
+    role: core
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - decay production of light neutrino hot dark matter from a heavy neutrino parent
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - heavy-neutrino abundance before decay
+  - heavy-neutrino lifetime
+  - decay kinematics
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'no'
+  nonthermal_momentum_distribution: 'yes'
+  notes: The hot component is produced after neutrino decoupling; the paper compares this D CHDM scenario
+    to standard two-neutrino CHDM.
+relic_density:
+  full_or_subcomponent: subcomponent
+  target_fraction:
+    name: hot dark matter density fraction
+    symbol: Omega_HDM
+    description: Hot component used in CHDM comparisons.
+    range: about 0.25 is discussed for CHDM motivation
+    role: core
+    status: inferred
+    source_reference_ids: []
+  calculation_type: nonthermal
+  key_dependencies:
+  - m_H
+  - tau_H
+  - alpha
+  - m_L
+  - initial heavy-neutrino abundance
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - heavy neutrino decays after neutrino decoupling
+  - decay before matter-radiation equality
+  - extra relativistic scalar energy density
+  dark_sector_temperature: null
+  delta_neff:
+    name: extra relativistic energy density
+    symbol: N_eff,rel
+    description: Relativistic energy density from decay products affects matter-radiation equality.
+    range: model-dependent
+    role: core
+    status: inferred
+    source_reference_ids: []
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: neutrino decoupling temperature
+    symbol: T_dec
+    description: Decay is assumed to occur after neutrino decoupling so daughter distributions are not
+      thermalized away.
+    value: about 1 MeV
+    unit: MeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: high
+phase_space:
+  distribution_type: decay_produced
+  distribution_function_available: 'yes'
+  f_of_p_or_q: Boltzmann equations for f_H, f_L, and f_phi are written and solved; the light-neutrino
+    distribution is also parameterized by an effective temperature and pseudo-chemical potential.
+  average_momentum_relative_to_thermal: depends on the decay relativity parameter alpha
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Nonrelativistic decays produce nonthermal light-neutrino spectra and larger differences from
+    standard two-neutrino CHDM.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'no'
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The model is a hot-neutrino CHDM scenario rather than a thermal-WDM mapping.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    density_profile_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: decay_epoch
+  applies_to: cosmological_history
+  condition: Decay occurs after neutrino decoupling but before matter-radiation equality.
+  valid_range: T below about 1 MeV and before equality; very early post-decoupling decays may affect light-element
+    synthesis
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - BBN can exclude parts of the mass-lifetime parameter space.
+  source_reference_ids:
+  - primary
+  notes: null
+- id: boltzmann_mass_approximation
+  applies_to: computation
+  condition: Light daughter masses are neglected in the decay Boltzmann equations but restored for transfer-function
+    and CMB calculations.
+  valid_range: m_L and m_phi set to zero in the decay calculation
+  status: approximate
+  extrapolation_risk: medium
+  caveats:
+  - Exact distribution details depend on decay kinematics.
+  source_reference_ids:
+  - primary
+  notes: null
+assumptions:
+  global:
+  - id: invisible_decay
+    description: Electromagnetically interacting decay products are avoided; the analyzed channel is effectively
+      invisible.
+    scope: theory
+    status: assumed
+    impact_if_violated: Electromagnetic decay channels are strongly constrained and would change cosmological
+      signatures.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+    notes: null
+  - id: example_flavors
+    description: The worked example takes the heavy neutrino to be tau-like and the light daughter to
+      be muon-like, with the electron neutrino massless.
+    scope: theory
+    status: assumed
+    impact_if_violated: Detailed spectra and flavor interpretation would change.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - primary
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports using CMBFAST modified to include a non-equilibrium light-neutrino species;
+    no public model-specific code release is identified in the text.
+  primary_code_role: transfer_function
+  repositories: []
+  packages_or_modules:
+  - name: CMBFAST
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - compute_transfer_function
+    - compute_matter_power_spectrum
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families:
+    - CHDM-like neutrino cosmologies
+    inputs: []
+    outputs:
+    - matter power spectrum
+    - CMB power spectrum
+    validity_domain: []
+    citation_reference_ids:
+    - primary
+    notes: The model-specific non-equilibrium modification is not described as a public release.
+  notebooks: []
+  scripts: []
+  containers_or_environments: []
+  expected_inputs:
+  - decay parameters
+  - cosmological parameters
+  - neutrino masses
+  expected_outputs:
+  - matter power spectrum
+  - CMB fluctuation spectrum
+  reproducibility:
+    reproducibility_level: partial
+    has_tests: unknown
+    has_examples: unknown
+    has_documentation: unknown
+    pinned_dependencies: unknown
+    notes: No released modified CMBFAST package is identified in the paper text.
+  validation:
+    validation_status: unknown
+    benchmark_references: []
+    validation_notes: null
+  caveats:
+  - Model-specific CMBFAST modifications are not available from the assigned text.
+provenance:
+  model_id: astro-ph9804053_decay_produced_neutrino_chdm_v1
+  model_name: Decay-produced neutrino cold-plus-hot dark matter
+  model_family: decay_produced_neutrino_hot_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-06-01'
+  last_updated: '2026-06-01'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Decay-Produced Neutrino Hot Dark Matter
+      authors:
+      - Steen Hannestad
+      year: 1998
+      arxiv_id: astro-ph/9804053
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used for this extraction.
+    - arxiv_id: astro-ph/9804053
+      authors:
+      - Hannestad, Steen
+      doi: 10.1103/PhysRevLett.80.4621
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:astro-ph/9804053
+      role: original_model
+      title: Decay-Produced Neutrino Hot Dark Matter
+      url: https://arxiv.org/abs/astro-ph/9804053
+      year: 1998
+    constraint_papers:
+    - arxiv_id: astro-ph/9702099
+      authors:
+      - Smith, Clay C.
+      - Klypin, Anatoly
+      - Gross, Michael A. K.
+      - Primack, Joel R.
+      - Holtzman, Jon
+      doi: 10.1046/j.1365-8711.1998.01561.x
+      notes: 'Related local full text read: observed power-spectrum comparison for CDM/CHDM models.'
+      reference_id: arxiv:astro-ph/9702099
+      role: constraint
+      title: Linearizing the observed power spectrum
+      url: https://arxiv.org/abs/astro-ph/9702099
+      year: 1998
+    - arxiv_id: '1405.6736'
+      authors:
+      - Hasenkamp, Jasper
+      doi: 10.1088/1475-7516/2014/09/048
+      notes: 'Related local full text read: decay-produced hot dark matter and sterile-neutrino degeneracies.'
+      reference_id: arxiv:1405.6736
+      role: extension
+      title: Daughters mimic sterile neutrinos (almost!) perfectly
+      url: https://arxiv.org/abs/1405.6736
+      year: 2014
+    - arxiv_id: astro-ph/9903475
+      authors:
+      - Hannestad, Steen
+      doi: 10.1103/PhysRevD.59.125020
+      notes: 'Related local full text read: CMB sensitivity to neutrino decays.'
+      reference_id: arxiv:astro-ph/9903475
+      role: constraint
+      title: Probing neutrino decays with the cosmic microwave background
+      url: https://arxiv.org/abs/astro-ph/9903475
+      year: 1999
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0008
+    extractor_name: Codex
+    extraction_date: '2026-06-01'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      page: null
+      quote_or_summary: The abstract says the paper investigates neutrino hot dark matter produced by
+        heavy-neutrino decay into a light neutrino plus a scalar.
+    - reference_id: primary
+      section: Model setup
+      page: null
+      quote_or_summary: The text defines nu_H -> nu_L + phi, assumes post-decoupling pre-equality decay,
+        and names the D CHDM scenario.
+    - reference_id: primary
+      section: Conclusion
+      page: null
+      quote_or_summary: The conclusion states that heavy-neutrino decay naturally produces a two-neutrino-CHDM-like
+        model with relativistic and nonrelativistic decay regimes.
+    unresolved_items:
+    - Historical LSS/CMB comparisons were not updated to modern data.
+    - The nonthermal daughter distribution was not exported as a transfer-function file.
+    - BBN exclusions near decay temperatures about 0.01 MeV were not recast.
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The model contains a heavy neutrino parent, light neutrino daughters, and a scalar or pseudoscalar
+        phi such as a majoron.
+      confidence: high
+      section: Model setup
+      page: null
+    interactions:
+    - reference_id: primary
+      note: The analyzed invisible decay channel is nu_H -> nu_L + phi.
+      confidence: high
+      section: Model setup
+      page: null
+    production_mechanism:
+    - reference_id: primary
+      note: The hot component is produced through heavy-neutrino decay after neutrino decoupling and before
+        equality.
+      confidence: high
+      section: Model setup
+      page: null
+    cosmological_history:
+    - reference_id: primary
+      note: The decay epoch is restricted so light-neutrino density is not thermalized away and equality/CMB
+        effects remain.
+      confidence: high
+      section: Model setup
+      page: null
+    phase_space:
+    - reference_id: primary
+      note: The paper writes Boltzmann equations for parent, daughter neutrino, and scalar distributions
+        and discusses nonthermal spectra.
+      confidence: high
+      section: Model setup
+      page: null
+    structure_formation:
+    - reference_id: primary
+      note: Matter power spectra differ from CDM and standard two-neutrino CHDM, especially for nonrelativistic
+        decays.
+      confidence: medium
+      section: Structure formation discussion
+      page: null
+    parameter_ranges:
+    - reference_id: primary
+      note: The model is controlled by m_H, tau_H, light-neutrino mass, Omega_HDM, and a decay relativity
+        parameter alpha.
+      confidence: high
+      section: Model setup
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper computes modified matter and CMB spectra for relativistic and nonrelativistic
+        decays.
+      page: null
+      reference_id: arxiv:astro-ph/9804053
+      section: Power spectra
+    - confidence: medium
+      note: Related paper estimates CMB sensitivity to neutrino decays.
+      page: null
+      reference_id: arxiv:astro-ph/9903475
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary paper compares decay-produced neutrino HDM to standard CHDM using matter and CMB spectra.
+      page: null
+      reference_id: arxiv:astro-ph/9804053
+      section: Abstract/results
+    - confidence: medium
+      note: Related paper discusses decay-produced HDM as a nonthermal alternative to sterile-neutrino
+        interpretations.
+      page: null
+      reference_id: arxiv:1405.6736
+      section: Introduction
+    routes:
+    - confidence: high
+      note: Primary paper defines alpha and uses modified CMBFAST to propagate decay parameters to P(k)
+        and C_l.
+      page: null
+      reference_id: arxiv:astro-ph/9804053
+      section: Calculation
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+  caveats:
+  - The paper is a phenomenological cosmology model rather than a full particle-physics UV completion.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - heavy-neutrino mass and lifetime
+  - BBN-sensitive parts of parameter space
+  - availability of modified CMBFAST implementation
+  validation_status: expert_judgment_only
+  notes: The cosmological setup and Boltzmann treatment are explicit, but UV model details are only sketched
+    through majoron motivation.
+agent_failure_modes:
+  warnings:
+  - id: not_thermal_2chdm
+    severity: medium
+    category: invalid_mapping
+    warning: Do not automatically replace this decay-produced model with standard thermal two-neutrino
+      CHDM; nonrelativistic decays yield different spectra.
+    mitigation: Use the decay-produced phase-space distribution when alpha is not in the relativistic
+      limit.
+    source_reference_ids:
+    - primary
+  - id: bbn_epoch_caveat
+    severity: medium
+    category: extrapolation
+    warning: Decays soon after neutrino decoupling can affect light-element synthesis.
+    mitigation: Check BBN consistency before using early decay benchmarks.
+    source_reference_ids:
+    - primary
+observables:
+- caveats:
+  - Historical data require modern recast.
+  channel: large_scale_structure
+  effect_direction: suppression
+  environments:
+  - large-scale structure
+  id: obs_decay_chdm_pk
+  key_quantities:
+  - description: alpha=(1/9)(m_H/MeV)^2(tau_H/s); alpha=1 separates relativistic and nonrelativistic decay.
+    name: decay relativity parameter
+    role: core
+    source_reference_ids:
+    - arxiv:astro-ph/9804053
+    status: inferred
+    symbol: alpha
+  - name: hot dark matter fraction
+    range: examples around 0.25 in CHDM-like comparisons
+    role: core
+    source_reference_ids:
+    - arxiv:astro-ph/9804053
+    status: inferred
+    symbol: Omega_HDM
+  linked_constraints:
+  - con_decay_chdm_lss
+  - con_decay_chdm_cmb
+  linked_routes:
+  - route_decay_neutrino_chdm
+  name: Decay-produced neutrino matter-power suppression
+  notes: null
+  observability: medium
+  predicted_effect: Heavy-neutrino decay to a light neutrino plus scalar gives a nonthermal hot component
+    whose free streaming suppresses small-scale power; relativistic decays mimic two-neutrino CHDM more
+    closely than nonrelativistic decays.
+  redshift_range: after neutrino decoupling and before matter-radiation equality
+  relevance: critical
+  scale_range: linear galaxy power-spectrum scales
+  source_reference_ids:
+  - arxiv:astro-ph/9804053
+  - arxiv:astro-ph/9702099
+  - arxiv:1405.6736
+  subchannel: linear matter power spectrum
+- caveats:
+  - Primary predates Planck.
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - CMB
+  id: obs_decay_chdm_cmb
+  key_quantities:
+  - name: heavy-neutrino lifetime
+    role: core
+    source_reference_ids:
+    - arxiv:astro-ph/9804053
+    status: inferred
+    symbol: tau_H
+  - name: heavy-neutrino mass
+    role: core
+    source_reference_ids:
+    - arxiv:astro-ph/9804053
+    status: inferred
+    symbol: m_H
+  linked_constraints:
+  - con_decay_chdm_cmb
+  linked_routes:
+  - route_decay_neutrino_chdm
+  name: CMB anisotropy response to decaying neutrino HDM
+  notes: null
+  observability: medium
+  predicted_effect: The daughter-neutrino distribution and extra scalar radiation alter CMB anisotropies,
+    offering a discriminator from standard CHDM.
+  redshift_range: neutrino decoupling through recombination
+  relevance: high
+  scale_range: CMB angular multipoles
+  source_reference_ids:
+  - arxiv:astro-ph/9804053
+  - arxiv:astro-ph/9903475
+  subchannel: temperature anisotropies
+constraints:
+- allowed_regions:
+  - Relativistic decays at fixed hot fraction can resemble two-neutrino CHDM.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: Modified Boltzmann transfer functions can be compared to linear power data.
+    id: linear-spectrum
+    impact_if_violated: null
+    notes: null
+    scope: LSS recast
+    source_reference_ids:
+    - arxiv:astro-ph/9804053
+    - arxiv:astro-ph/9702099
+    status: assumed
+  benchmark_implications:
+  - The model is tested by transfer-function shape, not only total hot fraction.
+  caveats:
+  - Modern LSS/Lyman-alpha likelihoods were not rerun.
+  constrained_parameters:
+  - alpha
+  - Omega_HDM
+  - m_L
+  - tau_H
+  constraint_type: astrophysical
+  data_release: Peacock-Dodds-era power spectrum and CHDM comparisons
+  excluded_regions:
+  - Parameter regions with too much or too little small-scale suppression fail observed linear power.
+  id: con_decay_chdm_lss
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Observed power-spectrum constraint on decay-produced CHDM
+  notes: null
+  observable_channel: large-scale structure
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:astro-ph/9804053
+  - arxiv:astro-ph/9702099
+  - arxiv:1405.6736
+- allowed_regions:
+  - Nearly standard-distribution cases can mimic stable hot neutrino components.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Momentum-dependent Boltzmann evolution is needed for relativistic decays.
+    id: momentum-boltzmann
+    impact_if_violated: null
+    notes: null
+    scope: CMB recast
+    source_reference_ids:
+    - arxiv:astro-ph/9903475
+    status: assumed
+  benchmark_implications:
+  - CMB spectra are a leading discriminator.
+  caveats:
+  - Forecast predates modern CMB; no Planck likelihood was applied.
+  constrained_parameters:
+  - m_H
+  - tau_H
+  - alpha
+  - Omega_HDM
+  constraint_type: cosmological
+  data_release: CMB anisotropy spectra forecasts
+  excluded_regions:
+  - Related work estimates order-eV neutrinos decaying before today should be detectable in future CMB
+    data.
+  id: con_decay_chdm_cmb
+  likelihood_available: partial
+  likelihood_reference: null
+  name: CMB sensitivity to cosmological neutrino decay
+  notes: null
+  observable_channel: cmb
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:astro-ph/9804053
+  - arxiv:astro-ph/9903475
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats: []
+    constraint_ids:
+    - con_decay_chdm_lss
+    - con_decay_chdm_cmb
+    derived_quantities:
+    - daughter momentum distribution
+    - free-streaming scale
+    - P(k)
+    - C_l
+    description: Route heavy-neutrino decay timing and daughter spectrum into LSS and CMB observables.
+    forward_model_chain:
+    - inputs:
+      - m_H
+      - tau_H
+      notes: null
+      outputs:
+      - alpha
+      - decay regime
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: alpha=1 separates decay regimes.
+    - inputs:
+      - daughter distribution
+      - Omega_HDM
+      notes: null
+      outputs:
+      - P(k)
+      - C_l
+      step_id: s2
+      step_type: boltzmann_solver
+      tool_or_code: CMBFAST/CLASS/CAMB with decays
+      validity: Primary used modified CMBFAST; modern CLASS/CAMB recast needed.
+    - inputs:
+      - P(k)
+      - C_l
+      notes: null
+      outputs:
+      - LSS/CMB constraints
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: Modern likelihoods required.
+    id: route_decay_neutrino_chdm
+    input_parameters:
+    - m_H
+    - tau_H
+    - m_L
+    - Omega_HDM
+    - alpha
+    likelihoods:
+    - linear power spectrum
+    - CMB likelihood
+    observable_ids:
+    - obs_decay_chdm_pk
+    - obs_decay_chdm_cmb
+    required_code_resources:
+    - Boltzmann solver with decays
+    - modern LSS/CMB likelihoods
+    route_status: planned
+    source_model_features:
+    - H -> L + scalar decay
+    - nonthermal light-neutrino HDM
+    - cold-plus-hot dark matter
+    validation_tests:
+    - recover relativistic CHDM-like limit
+    - recover nonrelativistic departure

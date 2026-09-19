@@ -1,0 +1,896 @@
+_source:
+  shard: arXiv_src_1812_007_wds.tar
+  paper_id: '1812_02182'
+  source_member: 1812_02182.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: other
+    id: do_not_treat_motivations_as_model_fields
+    mitigation: Keep this entry limited to the model-only physics blocks requested for this run.
+    severity: medium
+    source_reference_ids:
+    - '1812_02182'
+    warning: DAMPE, BBN/CMB, and small-scale-structure discussions motivate or test the benchmark but
+      are not extracted here as separate model-card claim families.
+  - category: extrapolation
+    id: benchmark_sensitive_structure
+    mitigation: Avoid extrapolating the small-scale claims outside the quoted hierarchy without re-deriving
+      rates.
+    severity: medium
+    source_reference_ids:
+    - '1812_02182'
+    warning: Late kinetic decoupling and SIDM behavior rely on a specific keV-scale scalar and coupling
+      benchmark.
+associated_code:
+  caveats: []
+  code_summary: The assigned text does not identify a public code package for the model.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The dark matter field is a stable Dirac, not Majorana, SM-singlet fermion.
+    id: dirac_dark_electron
+    impact_if_violated: Majorana dark matter would remove the desired s-wave annihilation behavior described
+      by the paper.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1812_02182'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The relic abundance consists mostly of dark electrons and dark positrons, with the charged-scalar
+      relic density neglected.
+    id: symmetric_dark_relic
+    impact_if_violated: The quoted relic-density scaling and full-dark-matter interpretation would change.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '1812_02182'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The only Standard Model portal emphasized is a gauge-invariant Yukawa interaction with
+      right-handed charged leptons.
+    id: minimal_leptophilic_portal
+    impact_if_violated: Additional portals could alter direct phenomenology, relic density, and kinetic
+      decoupling.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1812_02182'
+    status: assumed
+cosmological_history:
+  bbn_relevance: high
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling:
+    description: Late kinetic decoupling benchmark from neutral-scalar scattering.
+    fiducial_value: 0.42
+    name: kinetic decoupling temperature
+    notes: Quoted for the benchmark with M = 1.4 TeV, M0 = 7.1 keV, and alpha0 = 1.3e-4.
+    range: null
+    role: derived
+    source_reference_ids:
+    - '1812_02182'
+    status: approximate
+    symbol: T_kd
+    unit: keV
+  nonstandard_features:
+  - late kinetic decoupling from neutral-scalar scattering
+  - self-interacting dark matter behavior
+  - light neutral scalar contribution discussed for BBN and CMB
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - minimal leptophilic theory
+  - charged leptophilic dark matter
+  - dark electron model
+  family: charged_leptophilic_self_interacting_dark_matter
+  historical_origin_or_motivation: Built to explain the DAMPE charged cosmic-ray electron/positron excess
+    while addressing CDM small-scale-structure issues.
+  model_kind: complete_theory
+  name: Charged leptophilic dark electron model
+  short_description: A gauge-invariant leptophilic Standard Model extension with a stable Dirac dark electron,
+    a nearly degenerate charged scalar, and a light neutral scalar that can realize thermal WIMP dark
+    matter with late kinetic decoupling and self-interactions.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - dark electron and positron annihilation to Standard Model charged leptons
+  cp_structure: unknown
+  dark_sector_couplings:
+  - Yukawa coupling g_i between dark electron, charged scalar, and right-handed charged leptons
+  - pure dark interactions involving the neutral scalar phi0
+  - attractive dark-electron self-interactions mediated by phi0
+  decay_channels:
+  - charged scalar decays to dark electron/positron and Standard Model charged lepton
+  - neutral scalar decays dominantly to photons for M0 below twice the electron mass
+  flavor_structure: generation-dependent leptophilic couplings g_i
+  interaction_operators:
+  - L_l = -g_i e phi+ l_R^i + h.c.
+  - dimension-4 pure dark interactions in L_1
+  mediator_types:
+  - charged scalar
+  - neutral scalar
+  portals:
+  - other
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    spin_dependence: unknown
+    velocity_dependence: strong
+  self_scattering_channels:
+  - dark-electron self-interaction through uncharged scalar exchange
+  standard_model_targets:
+  - right-handed charged leptons
+  - Standard Model electrons and positrons
+  - Standard Model charged-lepton triplet
+  tree_or_loop_level: both
+model_id: 1812_02182_charged_leptophilic_dark_electron_v1
+parameters:
+  core:
+  - description: Mass of the stable Dirac dark electron.
+    fiducial_value: 1.4
+    name: dark electron mass
+    notes: Benchmark chosen to explain the DAMPE charged cosmic-ray electron/positron feature.
+    range: TeV scale
+    role: core
+    source_reference_ids:
+    - '1812_02182'
+    status: assumed
+    symbol: M
+    unit: TeV
+  - description: Mass of the charged auxiliary scalar.
+    name: charged scalar mass
+    notes: The benchmark keeps M' nearly degenerate with the 1.4 TeV dark electron.
+    range: M' - M = d > m_e with d/M much less than 1
+    role: core
+    source_reference_ids:
+    - '1812_02182'
+    status: assumed
+    symbol: M'
+    unit: null
+  - description: Mass of the light uncharged scalar mediating self-interactions and late kinetic decoupling.
+    fiducial_value: 7.1
+    name: neutral scalar mass
+    notes: The text also writes the benchmark relation M_0 = 22 alpha_0 = 7.1 keV.
+    range: O(1) keV
+    role: core
+    source_reference_ids:
+    - '1812_02182'
+    status: assumed
+    symbol: M_0
+    unit: keV
+  - description: Combination of generation-dependent leptophilic couplings controlling annihilation and
+      relic density.
+    fiducial_value: 0.1
+    name: leptophilic coupling strength
+    notes: The relic-density estimate is normalized to lambda_l = 0.1.
+    range: null
+    role: core
+    source_reference_ids:
+    - '1812_02182'
+    status: assumed
+    symbol: lambda_l
+    unit: null
+  - description: Coupling controlling phi0-mediated self-interactions.
+    fiducial_value: '1.3e-4'
+    name: neutral-scalar singlet coupling
+    notes: Benchmark used for late kinetic decoupling and SIDM-like cross-sections.
+    range: O(1e-4)
+    role: core
+    source_reference_ids:
+    - '1812_02182'
+    status: assumed
+    symbol: alpha_0
+    unit: null
+particle_content:
+  additional_dark_sector_particles:
+  - complex charged scalar phi+
+  - real uncharged scalar phi0
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: dark electron e
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - nearly degenerate charged scalar phi+
+  long_lived_particles: []
+  mediators:
+  - charged scalar phi+
+  - uncharged scalar phi0
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - charged scalar phi+
+  - uncharged scalar phi0
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: approximate
+  distribution_type: thermal
+  free_streaming_length: null
+  notes: The relic abundance is obtained from thermal freeze-out, while late kinetic decoupling modifies
+    the small-scale linear power spectrum.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - chemical freeze-out
+  - leptophilic coupling lambda_l
+  - dark electron mass M
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out of dark electrons and positrons
+  - annihilation to Standard Model charged leptons through the charged-scalar Yukawa portal
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper solves a Boltzmann equation numerically and quotes a relic-density scaling for a symmetric
+    dark-electron/dark-positron ensemble.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: partial
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The benchmark realizes late kinetic decoupling near T_kd = 0.42 keV and discusses BBN/CMB
+        relevance of the light scalar.
+      page: null
+      reference_id: '1812_02182'
+      section: Multiple kinetic decoupling regimes
+    interactions:
+    - confidence: high
+      note: The leptophilic interaction is a gauge-invariant Yukawa coupling between the dark electron,
+        the charged scalar, and right-handed charged leptons.
+      page: null
+      reference_id: '1812_02182'
+      section: The partition function
+    - confidence: medium
+      note: The neutral scalar mediates attractive velocity-dependent self-interactions of dark matter.
+      page: null
+      reference_id: '1812_02182'
+      section: Scatterings in the leptophilic theory
+    parameter_ranges:
+    - confidence: medium
+      note: The benchmark uses M = 1.4 TeV, M0 = 7.1 keV, and alpha0 = 1.3e-4, with M' nearly degenerate
+        with M.
+      page: null
+      reference_id: '1812_02182'
+      section: The small-scale structure
+    particle_content:
+    - confidence: high
+      note: The paper defines the dark electron e as a stable Dirac SM singlet and adds charged phi+ and
+        uncharged phi0 scalar fields.
+      page: null
+      reference_id: '1812_02182'
+      section: The partition function
+    production_mechanism:
+    - confidence: high
+      note: The paper computes the dark-electron relic density by solving a Boltzmann equation through
+        chemical freeze-out.
+      page: null
+      reference_id: '1812_02182'
+      section: The present DM density
+    symmetries:
+    - confidence: high
+      note: The dark sector is based on a new global Abelian U(1)_r symmetry under which the dark electron
+        is charged.
+      page: null
+      reference_id: '1812_02182'
+      section: The partition function
+    validity_domain:
+    - confidence: medium
+      note: The desired small-scale behavior depends on the hierarchy M approximately M' much greater
+        than M0 and on late decoupling before recombination.
+      page: null
+      reference_id: '1812_02182'
+      section: The small-scale structure
+    constraints:
+    - confidence: high
+      note: Primary paper summarizes direct-detection, BBN/CMB N_eff, and LEP/ILC parameter bounds.
+      page: null
+      reference_id: arxiv:1812.02182
+      section: Bounds on parameters
+    observables:
+    - confidence: high
+      note: Primary paper motivates the 1.4 TeV charged-lepton CRE feature and the small-scale-structure
+        application.
+      page: null
+      reference_id: arxiv:1812.02182
+      section: Introduction and spectrum discussion
+    - confidence: high
+      note: Primary paper derives resonant elastic scattering and light-scalar self-interaction ingredients
+        for late decoupling/SIDM.
+      page: null
+      reference_id: arxiv:1812.02182
+      section: Scatterings in the leptophilic theory
+    routes:
+    - confidence: high
+      note: Primary paper connects the UV-complete leptophilic spectrum to relic density, scattering,
+        decoupling, and small-scale structure.
+      page: null
+      reference_id: arxiv:1812.02182
+      section: Thermal evolution and structure discussion
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0015
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5.5 dark-matter model-card worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper says it introduces a TeV-scale DM candidate with gauge-invariant leptophilic
+        interactions.
+      reference_id: '1812_02182'
+      section: Motivation of the framework
+    - page: null
+      quote_or_summary: The dark sector is built from a global U(1)_r, a stable Dirac dark electron, a
+        charged scalar, and a neutral scalar.
+      reference_id: '1812_02182'
+      section: The partition function
+    - page: null
+      quote_or_summary: The relic abundance is computed with a Boltzmann equation at chemical freeze-out.
+      reference_id: '1812_02182'
+      section: The present DM density
+    - page: null
+      quote_or_summary: A benchmark late-decoupling/SIDM parameter set is proposed for dwarf-scale suppression
+        and cores.
+      reference_id: '1812_02182'
+      section: The small-scale structure
+    unresolved_items:
+    - No public code artifact is identified in the assigned text.
+    - Exact normalization of several symbols is degraded by text extraction.
+    - DAMPE cosmic-ray interpretation is tentative and propagation-dependent.
+    - No direct-detection, collider, or CMB/BBN likelihood was rerun.
+  last_updated: '2026-05-31'
+  model_family: charged_leptophilic_self_interacting_dark_matter
+  model_id: 1812_02182_charged_leptophilic_dark_electron_v1
+  model_name: Charged leptophilic dark electron model
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '1812.02182'
+      authors:
+      - Ottavia Balducci
+      - Stefan Hofmann
+      - Alexis Kassiteridis
+      doi: null
+      notes: Assigned full text from target_text.sqlite.
+      reference_id: '1812_02182'
+      role: original_model
+      title: Small-scale structure from charged leptophilia
+      url: null
+      year: 2018
+    - arxiv_id: '1812.02182'
+      authors:
+      - Balducci, Ottavia
+      - Hofmann, Stefan
+      - Kassiteridis, Alexis
+      doi: 10.48550/arXiv.1812.02182
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1812.02182
+      role: original_model
+      title: Small-scale structure from charged leptophilia
+      url: https://arxiv.org/abs/1812.02182
+      year: 2018
+    constraint_papers:
+    - arxiv_id: '1902.04916'
+      authors:
+      - Liu, Xuewen
+      - Liu, Zuowei
+      - Su, Yushan
+      doi: 10.1007/JHEP06(2019)109
+      notes: Related source read through bounded arXiv fallback; logged for triage and not used alone
+        for structured claims.
+      reference_id: arxiv:1902.04916
+      role: constraint
+      title: Two-mediator dark matter models and cosmic electron excess
+      url: https://arxiv.org/abs/1902.04916
+      year: 2019
+    - arxiv_id: '1905.10136'
+      authors:
+      - Geng, Chao-Qiang
+      - Huang, Da
+      - Yin, Lu
+      doi: 10.1016/j.nuclphysb.2020.115153
+      notes: Related source read through bounded arXiv fallback; logged for triage and not used alone
+        for structured claims.
+      reference_id: arxiv:1905.10136
+      role: constraint
+      title: Multicomponent dark matter in the light of CALET and DAMPE
+      url: https://arxiv.org/abs/1905.10136
+      year: 2020
+    - arxiv_id: '2009.11308'
+      authors:
+      - Hager, Patrick
+      - Kassiteridis, Alexis
+      doi: 10.48550/arXiv.2009.11308
+      notes: Related source resolved/read during bounded enrichment; primary text remains the support
+        for structured claims unless cited explicitly.
+      reference_id: arxiv:2009.11308
+      role: constraint
+      title: Small-scale Cosmic Signatures of Feebly Interacting Massive Particles
+      url: https://arxiv.org/abs/2009.11308
+      year: 2020
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - M
+  - lambda_l
+  - chemical freeze-out
+  - symmetric dark electron/positron abundance
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - Benchmark-dependent mass hierarchy and coupling choices
+  - Text extraction obscures some mathematical notation
+  - Small-scale-structure claims are presented analytically/phenomenologically
+  notes: The model-building evidence is strong in the paper text, but quantitative details should be reviewed
+    against the original equations.
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    half_mode_mass: null
+    small_scale_power_effect: suppression
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper frames the effect through late kinetic decoupling and SIDM behavior, not a thermal-WDM
+        mapping.
+    transfer_function_shape: smooth_cutoff
+  nonlinear:
+    core_or_cusp_effect: Velocity-dependent self-interactions are proposed to lower inner galaxy densities.
+    halo_mass_function_effect: Suppression of small-scale structure is proposed to alleviate the missing-satellite
+      problem.
+    simulation_calibrated: partial
+    smallest_galaxies_effect: Damping masses from late decoupling are used to target dwarf-galaxy scales.
+    subhalo_mass_function_effect: Subhalo abundance is expected to be reduced by late kinetic decoupling
+      at dwarf-galaxy scales.
+symmetries:
+  stabilizing_mechanism: The stable Dirac dark electron is charged under a new global U(1)_r while Standard
+    Model fields are not charged under dark symmetries.
+  symmetries:
+  - breaking: not discussed in the assigned text
+    breaking_scale: null
+    exact_or_approximate: unknown
+    name: U(1)_r
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'no'
+  lagrangian_available: 'yes'
+  notes: The paper presents a UV-complete partition function and dimension-4 gauge-invariant interactions;
+    it is agnostic about the mass origin.
+  parent_frameworks:
+  - Standard Model extension
+  - global U(1)_r dark-sector symmetry
+  - leptophilic Yukawa portal
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats:
+  - The desired small-scale behavior is benchmark-dependent.
+  condition: Requires a TeV-scale dark electron nearly degenerate with a charged scalar and a much lighter
+    keV-scale neutral scalar.
+  extrapolation_risk: high
+  id: valid_mass_hierarchy
+  notes: null
+  source_reference_ids:
+  - '1812_02182'
+  status: assumed
+  valid_range: M around 1.4 TeV, M' - M = d > m_e with d/M much less than 1, and M0 of order keV.
+- applies_to: production
+  caveats:
+  - Generation-dependent couplings are not fixed by the relic-density normalization alone.
+  condition: Relic-density estimate assumes a symmetric dark-electron/dark-positron ensemble and neglects
+    the charged-scalar relic density.
+  extrapolation_risk: medium
+  id: valid_thermal_relic
+  notes: null
+  source_reference_ids:
+  - '1812_02182'
+  status: assumed
+  valid_range: null
+- applies_to: structure_formation
+  caveats:
+  - The paper notes smaller M0 can over-deplete small-scale structure.
+  condition: Late kinetic decoupling must occur after BBN but before recombination and be driven efficiently
+    by the neutral scalar.
+  extrapolation_risk: medium
+  id: valid_late_decoupling
+  notes: null
+  source_reference_ids:
+  - '1812_02182'
+  status: approximate
+  valid_range: Benchmark T_kd approximately 0.42 keV.
+observables:
+- caveats:
+  - The DAMPE peak is treated as tentative motivation rather than established evidence.
+  channel: indirect_detection
+  effect_direction: spectral_line
+  environments:
+  - local cosmic-ray electron/positron flux
+  id: obs_leptophilic_cre_peak
+  key_quantities:
+  - description: TeV-scale stable Dirac dark electron mass.
+    name: dark electron mass
+    role: core
+    source_reference_ids:
+    - arxiv:1812.02182
+    status: inferred
+    symbol: M
+    unit: TeV
+    value: 1.4
+  - description: Coupling between the dark electron, charged scalar, and SM charged lepton.
+    name: leptophilic Yukawa coupling
+    range: perturbative; flavor choices control CRE channels
+    role: core
+    source_reference_ids:
+    - arxiv:1812.02182
+    status: inferred
+    symbol: lambda_l
+  linked_constraints:
+  - con_leptophilic_cre_model_dependence
+  linked_routes:
+  - route_leptophilic_cre_structure
+  name: Charged-lepton cosmic-ray excess
+  notes: null
+  observability: medium
+  predicted_effect: The TeV dark electron can annihilate through charged-lepton channels, targeting the
+    DAMPE electron/positron spectral feature near 1.4 TeV.
+  redshift_range: null
+  relevance: high
+  scale_range: TeV cosmic-ray lepton energies
+  source_reference_ids:
+  - arxiv:1812.02182
+  subchannel: cosmic-ray electrons and positrons
+- caveats:
+  - Requires a transfer-function or simulation-level recast for quantitative satellite predictions.
+  channel: small_scale_structure
+  effect_direction: suppression
+  environments:
+  - dwarf-galaxy halos
+  - Milky Way satellites
+  id: obs_leptophilic_late_decoupling
+  key_quantities:
+  - description: TeV-scale stable Dirac dark electron mass.
+    name: dark electron mass
+    role: core
+    source_reference_ids:
+    - arxiv:1812.02182
+    status: inferred
+    symbol: M
+    unit: TeV
+    value: 1.4
+  - description: Light neutral scalar mediator mass relevant for late decoupling and self-interactions.
+    name: neutral scalar mass
+    range: O(1) keV benchmark
+    role: core
+    source_reference_ids:
+    - arxiv:1812.02182
+    status: inferred
+    symbol: M_0
+    unit: keV
+  - description: Near-degeneracy between dark electron and charged scalar controlling resonant scattering.
+    name: resonant mass splitting
+    range: of order the electron mass in the benchmark hierarchy
+    role: core
+    source_reference_ids:
+    - arxiv:1812.02182
+    status: inferred
+    symbol: Delta M
+  linked_constraints:
+  - con_leptophilic_neff_bbn_cmb
+  linked_routes:
+  - route_leptophilic_cre_structure
+  name: Late kinetic decoupling and small-scale structure
+  notes: null
+  observability: medium
+  predicted_effect: Resonant elastic scattering with SM electrons and strong scattering on the light neutral
+    scalar can delay kinetic decoupling, suppressing dwarf-scale structure and addressing missing satellites,
+    cores, and too-big-to-fail.
+  redshift_range: null
+  relevance: critical
+  scale_range: dwarf-galaxy and subhalo scales
+  source_reference_ids:
+  - arxiv:1812.02182
+  subchannel: matter-power cutoff and satellite abundance
+- caveats:
+  - Cluster-scale bounds require a dedicated velocity-dependent SIDM recast.
+  channel: dwarf_galaxies
+  effect_direction: morphology_change
+  environments:
+  - dwarf galaxies
+  - galaxy clusters
+  id: obs_leptophilic_sidm_cores
+  key_quantities:
+  - description: TeV-scale stable Dirac dark electron mass.
+    name: dark electron mass
+    role: core
+    source_reference_ids:
+    - arxiv:1812.02182
+    status: inferred
+    symbol: M
+    unit: TeV
+    value: 1.4
+  - description: Light neutral scalar mediator mass relevant for late decoupling and self-interactions.
+    name: neutral scalar mass
+    range: O(1) keV benchmark
+    role: core
+    source_reference_ids:
+    - arxiv:1812.02182
+    status: inferred
+    symbol: M_0
+    unit: keV
+  - description: Coupling controlling attractive self-interactions through the light scalar.
+    name: neutral-scalar coupling
+    range: chosen to realize SIDM-like cross sections
+    role: core
+    source_reference_ids:
+    - arxiv:1812.02182
+    status: inferred
+    symbol: alpha_0
+  linked_constraints:
+  - con_leptophilic_direct_detection
+  linked_routes:
+  - route_leptophilic_cre_structure
+  name: Velocity-dependent self-interactions from light scalar exchange
+  notes: null
+  observability: medium
+  predicted_effect: The neutral scalar mediator yields attractive, velocity-dependent dark-matter self-interactions
+    that can modify halo cores in the SIDM regime.
+  redshift_range: null
+  relevance: high
+  scale_range: dwarf-to-cluster halo velocities
+  source_reference_ids:
+  - arxiv:1812.02182
+  subchannel: self-interaction driven cores
+constraints:
+- allowed_regions:
+  - The primary benchmark estimates a spin-dependent WIMP-proton cross-section of order 10^-40 cm^2, described
+    as consistent with LUX and XENON measurements.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - The benchmark remains testable in direct detection and collider follow-up.
+  caveats:
+  - The paper gives an order-of-magnitude estimate rather than a detector likelihood.
+  constrained_parameters:
+  - M
+  - lambda_l
+  - induced magnetic moment
+  constraint_type: direct_detection
+  data_release: LUX/XENON constraints as summarized by the primary paper
+  excluded_regions:
+  - Magnetic-moment induced proton scattering is constrained by LUX/XENON-style WIMP searches.
+  id: con_leptophilic_direct_detection
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Magnetic-moment direct-detection bound
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1812.02182
+- allowed_regions:
+  - For the M_0 ~ O(1) keV benchmark and perturbative couplings, the primary paper estimates compatibility
+    with BBN and CMB, including N_eff values near the standard result after reheating.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The primary N_eff estimate uses equilibrium physics as a first approximation.
+    id: equilibrium-neff-estimate
+    impact_if_violated: A full Boltzmann treatment could change the precise radiation history.
+    notes: null
+    scope: light scalar cosmology
+    source_reference_ids:
+    - arxiv:1812.02182
+    status: approximate
+  benchmark_implications:
+  - The light neutral scalar benchmark is not automatically excluded by radiation constraints.
+  caveats:
+  - No BBN/CMB Boltzmann calculation was rerun.
+  constrained_parameters:
+  - M_0
+  - Delta N_eff
+  constraint_type: cosmological
+  data_release: BBN and Planck-era CMB constraints summarized by primary paper
+  excluded_regions:
+  - Light modes that thermalize too late or too strongly could alter BBN and CMB radiation observables.
+  id: con_leptophilic_neff_bbn_cmb
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Light-degree BBN/CMB radiation bound
+  notes: null
+  observable_channel: cmb
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1812.02182
+- allowed_regions:
+  - For M and M_prime around or above 1.4 TeV the primary paper states that LEP does not infer a coupling
+    bound, while the scale should be testable at ILC.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - Future lepton colliders are a direct probe of the benchmark mass scale.
+  caveats: []
+  constrained_parameters:
+  - M
+  - M_prime
+  - lambda_e
+  constraint_type: collider
+  data_release: LEP/ILC discussion in primary paper
+  excluded_regions:
+  - Lighter charged mediators or larger accessible couplings can be constrained by lepton-collider data.
+  id: con_leptophilic_lep_ilc
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Lepton-collider bound on charged scalar and dark electron
+  notes: null
+  observable_channel: collider
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1812.02182
+- allowed_regions:
+  - A 1.4 TeV benchmark with charged-lepton final states is the target model point in the primary paper.
+  applies: parameter_dependent
+  assumptions: []
+  benchmark_implications:
+  - CRE explanation should remain tagged as tentative until propagation and multi-messenger constraints
+    are recast.
+  caveats:
+  - The primary paper uses the excess as motivation and does not provide a full cosmic-ray likelihood.
+  constrained_parameters:
+  - M
+  - lambda_l
+  - annihilation channel
+  constraint_type: astrophysical
+  data_release: DAMPE cosmic-ray electron/positron spectrum as discussed by primary paper
+  excluded_regions:
+  - The DAMPE feature requires model-dependent cosmic-ray propagation and annihilation-channel assumptions.
+  id: con_leptophilic_cre_model_dependence
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Cosmic-ray excess interpretation
+  notes: null
+  observable_channel: indirect_detection
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:1812.02182
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Two arXiv fallback abstracts were read for discovery but not used as structured evidence.
+    constraint_ids:
+    - con_leptophilic_direct_detection
+    - con_leptophilic_neff_bbn_cmb
+    - con_leptophilic_lep_ilc
+    - con_leptophilic_cre_model_dependence
+    derived_quantities:
+    - thermal relic density
+    - annihilation rate to charged leptons
+    - kinetic-decoupling temperature
+    - SIDM transfer cross section
+    - direct-detection cross section
+    description: Connect the charged leptophilic particle spectrum to CRE annihilation, late kinetic decoupling,
+      SIDM, and laboratory constraints.
+    forward_model_chain:
+    - inputs:
+      - M
+      - lambda_l
+      notes: Propagation not modeled.
+      outputs:
+      - annihilation cross section
+      - CRE source spectrum
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary gives s-wave annihilation channel.
+    - inputs:
+      - mass splitting
+      - M_0
+      - alpha_0
+      notes: Needs thermal-history integration.
+      outputs:
+      - elastic momentum-transfer rate
+      - kinetic decoupling temperature
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Near resonance and light-scalar scattering are benchmark mechanisms.
+    - inputs:
+      - kinetic decoupling temperature
+      - self-interaction cross section
+      notes: Not run in batch.
+      outputs:
+      - matter-power cutoff
+      - halo-core response
+      step_id: s3
+      step_type: transfer_function
+      tool_or_code: ETHOS-like mapping
+      validity: Appropriate for small-scale structure recast.
+    - inputs:
+      - magnetic moment
+      - charged mediator mass
+      notes: Planned only.
+      outputs:
+      - direct-detection/collider exclusions
+      step_id: s4
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires detector and collider likelihoods.
+    id: route_leptophilic_cre_structure
+    input_parameters:
+    - M
+    - M_prime
+    - M_0
+    - lambda_l
+    - alpha_0
+    - mass splitting
+    likelihoods:
+    - No CRE propagation likelihood bundled
+    - No LUX/XENON likelihood bundled
+    observable_ids:
+    - obs_leptophilic_cre_peak
+    - obs_leptophilic_late_decoupling
+    - obs_leptophilic_sidm_cores
+    required_code_resources:
+    - cosmic-ray propagation code
+    - Boltzmann kinetic-decoupling integrator
+    - SIDM halo emulator
+    route_status: planned
+    source_model_features:
+    - stable Dirac dark electron
+    - nearly degenerate charged scalar
+    - keV neutral scalar mediator
+    - charged-lepton Yukawa portal
+    validation_tests:
+    - recover M=1.4 TeV CRE benchmark
+    - recover N_eff compatibility estimate
+    - reproduce order 10^-40 cm^2 magnetic-moment estimate

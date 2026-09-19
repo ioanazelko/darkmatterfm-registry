@@ -1,0 +1,814 @@
+_source:
+  shard: arXiv_src_2107_071_wds.tar
+  paper_id: '2107_12161'
+  source_member: 2107_12161.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: invalid_mapping
+    id: w1
+    mitigation: null
+    severity: medium
+    source_reference_ids: []
+    warning: Do not treat this as a WIMP or particle-freeze-out model; the dark matter component is a
+      Noether-current dust term in modified gravity.
+  - category: extrapolation
+    id: w2
+    mitigation: null
+    severity: medium
+    source_reference_ids: []
+    warning: Background expansion agreement does not by itself validate perturbations or small-scale structure
+      in MiTeVeS.
+associated_code:
+  caveats: []
+  code_summary: The text mentions Polychord and GetDist for the MCMC/background fit, but no associated
+    model code or repository is identified in the extracted text.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  scripts: []
+  supported_observable_channels: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The MiTeVeS theory is taken in the ghost-free form described in the paper.
+    id: a1
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The homogeneous FLRW ansatz for the scalar and vector fields captures the background
+      dark components.
+    id: a2
+    impact_if_violated: null
+    notes: null
+    scope: cosmological_history
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Constant functions yield an exact scalar shift symmetry and conserved Noether current.
+    id: a3
+    impact_if_violated: null
+    notes: null
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: high
+  chemical_decoupling: null
+  cmb_relevance: high
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - modified gravity scalar-vector sector
+  - dark matter, dark energy, and stiff matter from one homogeneous solution
+  - possible interactions when shift symmetry is broken
+  phase_transitions: []
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - Mimetic Tensor-Vector-Scalar dark matter
+  - MiTeVeS unified dark matter and dark energy
+  family: mimetic_dark_matter
+  historical_origin_or_motivation: Motivated by extending mimetic dark matter and TeVeS-like modified
+    gravity to unify dark matter, dark energy, and a stiff component in a ghost-free framework.
+  model_kind: phenomenological_parameterization
+  name: MiTeVeS Noether-current mimetic dark matter cosmology
+  short_description: A Mimetic Tensor-Vector-Scalar cosmology where a scalar-vector interaction with constant
+    functions yields a shift-symmetry Noether current whose energy density scales as a pressureless dark
+    matter component, alongside dark energy and stiff matter.
+  status: speculative
+interactions:
+  annihilation_channels: []
+  cp_structure: not_applicable
+  dark_sector_couplings:
+  - scalar-vector interaction h2 u^mu partial_mu phi
+  - function f(phi) in the vector constraint
+  - potential V(phi)
+  - interaction h1 u_mu u^mu
+  decay_channels: []
+  flavor_structure: not_applicable
+  interaction_operators:
+  - MiTeVeS scalar-vector interaction terms up to second power in u_mu and linear in scalar derivatives
+  mediator_types:
+  - metric
+  - scalar field
+  - vector field
+  portals:
+  - gravitational
+  - other
+  scattering:
+    elastic: not_applicable
+    inelastic: not_applicable
+    momentum_dependence: not_applicable
+    spin_dependence: not_applicable
+    velocity_dependence: not_applicable
+  self_scattering_channels: []
+  standard_model_targets:
+  - universal matter coupling to the physical metric
+  tree_or_loop_level: not_applicable
+model_id: 2107_12161_miteves_noether_current_dm_v1
+parameters:
+  core:
+  - description: Integration constant in the homogeneous scalar solution that sets the stiff and dark-matter-like
+      densities.
+    name: Noether integration constant
+    notes: null
+    range: fit-dependent positive constant
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: C0
+    unit: null
+  - description: Constant interaction coefficient whose product with C0 gives the dark matter density
+      term.
+    name: vector-scalar derivative coupling
+    notes: null
+    range: fit-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: h2
+    unit: null
+  - description: Constant function entering the vector normalization and density ratios.
+    name: vector constraint function
+    notes: null
+    range: positive constant in the homogeneous solution
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: f
+    unit: null
+  - description: Constant potential contribution to the dark-energy-like density.
+    name: effective potential contribution
+    notes: null
+    range: fit-dependent
+    role: core
+    source_reference_ids: []
+    status: inferred
+    symbol: V
+    unit: null
+  - description: Density fraction of the a^-6 stiff component.
+    name: stiff matter density ratio
+    notes: null
+    range: constrained to about 1e-25 or smaller by the analysis
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: Omega_s
+    unit: null
+  - description: Density ratio proportional to C0 h2/(3 f H0^2).
+    name: dark-matter-like density ratio
+    notes: null
+    range: fit near 0.31 for the matter density in the MiTeVeS cosmology
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: Omega_m
+    unit: null
+  derived:
+  - description: Effective cosmological-constant-like density ratio from V, h1, h2, and f.
+    name: dark energy density ratio
+    notes: null
+    range: fit near 0.698
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: Omega_Lambda
+    unit: null
+  nuisance:
+  - description: Hubble parameter fitted in the background cosmology analysis.
+    name: Hubble constant
+    notes: null
+    range: about 66.52 km/sec/Mpc in the reported MiTeVeS fit
+    role: cosmological
+    source_reference_ids: []
+    status: inferred
+    symbol: H0
+    unit: km/sec/Mpc
+particle_content:
+  additional_dark_sector_particles:
+  - homogeneous scalar field phi
+  - vector field u_mu
+  - mimetic/conformal scalar sector
+  dark_matter_candidate:
+    elementary_or_composite: unknown
+    name: conserved Noether-current dust component from the scalar-vector sector
+    number_of_components: single_component
+    spin: unknown
+    statistics: unknown
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - metric
+  - scalar field
+  - vector field
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: not_applicable
+  distribution_type: not_applicable
+  f_of_p_or_q: The model uses a cosmological dust-like Noether-current component rather than a particle
+    momentum distribution.
+  free_streaming_length: null
+  notes: No particle phase-space distribution is supplied.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - C0
+  - h2
+  - f
+  - H0
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - Noether-current cosmological integration constant
+  - background scalar-vector dynamics
+  nonthermal_momentum_distribution: unknown
+  notes: The dark-matter-like density is not thermally produced; it arises as an a^-3 term in the homogeneous
+    solution.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats: []
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: high
+      note: The background contains dark energy, dark matter, radiation, and a stiff a^-6 component constrained
+        by BBN and distance data.
+      page: null
+      reference_id: '2107_12161'
+      section: Cosmological constraints
+    interactions:
+    - confidence: high
+      note: The Lagrangian includes scalar-vector interaction terms h1 and h2 in MiTeVeS.
+      page: null
+      reference_id: '2107_12161'
+      section: Lagrangian
+    parameter_ranges:
+    - confidence: medium
+      note: The fit reports matter density near 0.31 and stiff density constrained around 1e-25 or smaller.
+      page: null
+      reference_id: '2107_12161'
+      section: Results
+    particle_content:
+    - confidence: high
+      note: The dark matter is the dust-like contribution from the scalar-vector Noether current rather
+        than a particle candidate.
+      page: null
+      reference_id: '2107_12161'
+      section: Homogeneous Solution
+    production_mechanism:
+    - confidence: high
+      note: The a^-3 density term is generated by the homogeneous solution with integration constant C0
+        and h2/f.
+      page: null
+      reference_id: '2107_12161'
+      section: Homogeneous Solution
+    symmetries:
+    - confidence: high
+      note: Constant functions give a hidden scalar shift symmetry and covariantly conserved Noether current.
+      page: null
+      reference_id: '2107_12161'
+      section: Noether symmetry
+    validity_domain:
+    - confidence: medium
+      note: The authors state that perturbation solutions are important future work for validating the
+        formulation.
+      page: null
+      reference_id: '2107_12161'
+      section: Conclusion
+    constraints:
+    - confidence: high
+      note: Primary paper imposes the BBN speed-up bound and uses CC, Pantheon, BAO, and CMB distance-prior
+        data.
+      page: null
+      reference_id: arxiv:2107.12161
+      section: Observational constraints
+    - confidence: medium
+      note: Related BAO paper gives D_V(z_eff=0.15) = (664 +/- 25)(r_d/r_d,fid) Mpc.
+      page: null
+      reference_id: arxiv:1409.3242
+      section: Abstract
+    - confidence: medium
+      note: Related BAO paper reports SDSS DR7 distance measures including r_s(z_d)/D_V(0.275) and D_V(0.35)/D_V(0.2).
+      page: null
+      reference_id: arxiv:0907.1660
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary text derives the H(z) form with dark-energy, matter, radiation, and stiff terms and
+        identifies the Noether current as the dark-matter-like component.
+      page: null
+      reference_id: arxiv:2107.12161
+      section: Cosmology and constraints
+    - confidence: medium
+      note: Related mimetic paper discusses perturbative issues and nonzero sound speed as context for
+        future structure tests.
+      page: null
+      reference_id: arxiv:1803.02620
+      section: Introduction
+    routes:
+    - confidence: high
+      note: Primary paper supplies the analytic H(z) mapping from MiTeVeS constants to observables.
+      page: null
+      reference_id: arxiv:2107.12161
+      section: Background equations
+  extraction:
+    confidence: medium
+    extracted_by: codex_dark_matter_batch_worker
+    extraction_date: '2026-05-31'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper studies MiTeVeS and states that a conserved Noether current behaves
+        as a dark matter component.
+      reference_id: '2107_12161'
+      section: Opening summary
+    - page: null
+      quote_or_summary: For constant functions, the Friedmann equations contain a^-3 dark matter, a cosmological
+        constant, and a^-6 stiff matter terms.
+      reference_id: '2107_12161'
+      section: Homogeneous Solution
+    - page: null
+      quote_or_summary: The model is fitted to BBN, CC, SN, BAO, and CMB distance-prior data and perturbations
+        are left for future work.
+      reference_id: '2107_12161'
+      section: Data analysis and conclusion
+    unresolved_items:
+    - Perturbation solutions and structure-growth constraints remain future work in the primary paper.
+    - The combined background likelihood was not reconstructed from the individual datasets.
+  last_updated: '2026-05-31'
+  model_family: mimetic_dark_matter
+  model_id: 2107_12161_miteves_noether_current_dm_v1
+  model_name: MiTeVeS Noether-current mimetic dark matter cosmology
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: '2107.12161'
+      authors:
+      - David Benisty
+      - Masud Chaichian
+      - Markku Oksanen
+      doi: null
+      notes: Source text taken from the assigned run SQLite database only.
+      reference_id: '2107_12161'
+      role: extension
+      title: 'Mimetic Tensor-Vector-Scalar Cosmology: Unified Dark Energy, Dark Matter and Stiff Matter'
+      url: null
+      year: 2021
+    - arxiv_id: '2107.12161'
+      authors:
+      - Benisty, David
+      - Chaichian, Moshe M.
+      - Oksanen, Markku
+      doi: 10.1016/j.dark.2023.101280
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2107.12161
+      role: original_model
+      title: 'Mimetic tensor-vector-scalar cosmology: Incorporating dark matter, dark energy and stiff
+        matter'
+      url: https://arxiv.org/abs/2107.12161
+      year: 2023
+    constraint_papers:
+    - arxiv_id: '1803.02620'
+      authors:
+      - Casalino, Alessandro
+      - Rinaldi, Massimiliano
+      - Sebastiani, Lorenzo
+      - Vagnozzi, Sunny
+      doi: 10.1016/j.dark.2018.10.001
+      notes: Related full text resolved locally and read for mimetic dark matter/dark energy perturbation
+        context.
+      reference_id: arxiv:1803.02620
+      role: constraint
+      title: Mimicking dark matter and dark energy in a mimetic model compatible with GW170817
+      url: https://arxiv.org/abs/1803.02620
+      year: 2018
+    - arxiv_id: '1409.3242'
+      authors:
+      - Ross, Ashley J.
+      - Samushia, Lado
+      - Howlett, Cullan
+      - Percival, Will J.
+      - Burden, Angela
+      - Manera, Marc
+      doi: 10.1093/mnras/stv154
+      notes: Related full text resolved locally and read for SDSS DR7 low-redshift BAO distance measurement.
+      reference_id: arxiv:1409.3242
+      role: dataset
+      title: The clustering of the SDSS DR7 main Galaxy sample - I. A 4 per cent distance measure at z
+        = 0.15
+      url: https://arxiv.org/abs/1409.3242
+      year: 2015
+    - arxiv_id: '0907.1660'
+      authors:
+      - Percival, Will J.
+      - Reid, Beth A.
+      - Eisenstein, Daniel J.
+      - Bahcall, Neta A.
+      - Budavari, Tamas
+      - Frieman, Joshua A.
+      - Fukugita, Masataka
+      - Gunn, James E.
+      doi: 10.1111/j.1365-2966.2009.15812.x
+      notes: Related full text resolved locally and read for SDSS DR7 BAO distance-ratio constraints.
+      reference_id: arxiv:0907.1660
+      role: dataset
+      title: Baryon acoustic oscillations in the Sloan Digital Sky Survey Data Release 7 galaxy sample
+      url: https://arxiv.org/abs/0907.1660
+      year: 2010
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: phenomenological
+  full_or_subcomponent: either
+  key_dependencies:
+  - C0 h2/(3 f H0^2)
+  - shift symmetry
+  - constant interaction functions
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction:
+    description: The model fits a matter-density parameter from the Noether-current a^-3 term.
+    name: dark-matter-like density
+    notes: null
+    range: about 0.31 in the background fit
+    role: derived
+    source_reference_ids: []
+    status: inferred
+    symbol: Omega_m
+    unit: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  dominant_uncertainties:
+  - perturbation-level behavior is not worked out in the paper
+  - the dark matter interpretation relies on the constant-function shift-symmetric limit
+  notes: The background solution and dark-matter-like scaling are explicit, but the model is not a particle
+    relic construction.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: unknown
+    thermal_wdm_mapping:
+      available: false
+      validity: invalid
+      warning: The extracted model is not a thermal warm-dark-matter transfer-function model.
+    transfer_function_shape: cdm_like
+  nonlinear:
+    concentration_mass_relation_effect: unknown
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: not analyzed; perturbation solutions are identified as future work
+    infall_subhalo_mass_function_effect: unknown
+    present_day_bound_subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    smallest_galaxies_effect: not analyzed; perturbation solutions are identified as future work
+    subhalo_mass_function_effect: not analyzed; perturbation solutions are identified as future work
+    subhalo_survival_effect: unknown
+    tidal_stripping_effect: unknown
+symmetries:
+  stabilizing_mechanism: For constant functions, a scalar-field shift symmetry gives a covariantly conserved
+    Noether current; the associated term scales as a^-3 and behaves as dark matter.
+  symmetries:
+  - breaking: broken when V(phi) or h(phi) is nonconstant, producing interactions among dark components
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: scalar shift symmetry
+    type: shift
+  - breaking: fixed by choosing the Einstein-frame gauge
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: local scale invariance of MiTeVeS variables
+    type: gauge
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: 'yes'
+  notes: The paper writes the MiTeVeS Lagrangian, fixes to an Einstein-frame form, and solves the homogeneous
+    FLRW equations for constant interaction functions.
+  parent_frameworks:
+  - mimetic gravity
+  - Tensor-Vector-Scalar gravity
+  - modified gravity dark matter
+  renormalizable: not_applicable
+  theory_level: phenomenological_parameterization
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The explicit unified dark matter, dark energy, and stiff matter solution assumes constant
+    V, f, h1, and h2.
+  extrapolation_risk: medium
+  id: constant_functions_solution
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: The a^-3 component relies on an exact shift symmetry and conserved Noether current; nonconstant
+    functions break the current and introduce interactions.
+  extrapolation_risk: medium
+  id: shift_symmetry_conservation
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: parameter
+  caveats: []
+  condition: The stiff density fraction must be around 1e-25 or smaller to leave the background expansion
+    close to observations.
+  extrapolation_risk: medium
+  id: small_stiff_component
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+- applies_to: model
+  caveats: []
+  condition: The paper fits background expansion data and leaves perturbation solutions for future validation.
+  extrapolation_risk: high
+  id: background_only
+  notes: null
+  source_reference_ids: []
+  status: inferred
+  valid_range: null
+observables:
+- caveats:
+  - This is a background-level observable; perturbation and halo-scale predictions are explicitly unresolved.
+  channel: cosmology
+  effect_direction: shape_change
+  environments:
+  - cosmic chronometers
+  - Pantheon supernovae
+  - BAO surveys
+  - CMB distance priors
+  - BBN
+  id: obs_miteves_background_expansion
+  key_quantities:
+  - description: Matter-like density ratio proportional to C0 h2/(3 f H0^2).
+    name: Noether-current matter density
+    role: derived
+    source_reference_ids:
+    - arxiv:2107.12161
+    status: inferred
+    symbol: Omega_m
+  - description: a^-6 density contribution bounded by BBN speed-up.
+    name: stiff-matter density
+    range: prior upper range about 10^22-10^30 in the primary paper parameterization
+    role: derived
+    source_reference_ids:
+    - arxiv:2107.12161
+    status: inferred
+    symbol: Omega_stiff
+  - description: Current expansion rate fit to CC, supernova, BAO, and CMB distance-prior data.
+    name: Hubble parameter
+    role: cosmological
+    source_reference_ids:
+    - arxiv:2107.12161
+    status: inferred
+    symbol: H0
+  linked_constraints:
+  - con_miteves_bbn_speedup
+  - con_miteves_distance_data
+  linked_routes:
+  - route_miteves_background_distances
+  name: MiTeVeS background expansion with a Noether-current matter term
+  notes: null
+  observability: high
+  predicted_effect: The homogeneous solution contains density terms scaling as dark energy, pressureless
+    matter from a conserved Noether current, radiation, and stiff matter, changing H(z) and distance observables.
+  redshift_range: z = 0 to z_BBN about 10^9
+  relevance: critical
+  scale_range: homogeneous FRW distances and expansion rate
+  source_reference_ids:
+  - arxiv:2107.12161
+  - arxiv:1409.3242
+  - arxiv:0907.1660
+  subchannel: distance-redshift expansion history
+- caveats:
+  - No perturbation likelihood or transfer function is provided in the primary paper.
+  channel: large_scale_structure
+  effect_direction: unknown
+  environments:
+  - galaxy clustering
+  - large-scale structure
+  id: obs_miteves_perturbation_target
+  key_quantities:
+  - description: Effective scalar/mimetic perturbation speed or closure relation.
+    name: scalar perturbation sound speed
+    role: derived
+    source_reference_ids:
+    - arxiv:1803.02620
+    - arxiv:2107.12161
+    status: unknown
+    symbol: c_s
+  linked_constraints: []
+  linked_routes:
+  - route_miteves_background_distances
+  name: Future perturbation and structure-growth target for MiTeVeS
+  notes: null
+  observability: unknown
+  predicted_effect: The primary paper identifies perturbation solutions as necessary future work before
+    comparing the theory with structure-growth datasets.
+  redshift_range: late-time linear structure
+  relevance: medium
+  scale_range: linear matter power spectrum
+  source_reference_ids:
+  - arxiv:2107.12161
+  - arxiv:1803.02620
+  subchannel: linear perturbations
+constraints:
+- allowed_regions:
+  - The primary paper sets the Omega_stiff prior between zero and the BBN-derived maximum.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The BBN bound is expressed relative to the CDM expansion rate used by the primary paper.
+    id: lcdm_bbn_reference
+    impact_if_violated: Changing the reference radiation/matter content changes the allowed stiff prior.
+    notes: null
+    scope: BBN speed-up constraint
+    source_reference_ids:
+    - arxiv:2107.12161
+    status: assumed
+  benchmark_implications:
+  - The a^-6 term must remain small enough at z_BBN about 10^9 to preserve BBN expansion history.
+  caveats:
+  - The paper encodes the BBN bound as a prior rather than a full nucleosynthesis likelihood.
+  constrained_parameters:
+  - Omega_stiff
+  - H(z_BBN)
+  constraint_type: cosmological
+  data_release: BBN speed-up bound used in the primary paper
+  excluded_regions:
+  - Stiff-matter values making (H/H_CDM)^2 depart by more than the quoted 0.01 BBN speed-up limit are
+    excluded by the primary analysis.
+  id: con_miteves_bbn_speedup
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN speed-up bound on the stiff component
+  notes: null
+  observable_channel: background_expansion
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2107.12161
+- allowed_regions:
+  - The Noether-current a^-3 term can act as the background matter component in the model fit.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The primary fit uses homogeneous expansion observables, not a full perturbation likelihood.
+    id: background_only_fit
+    impact_if_violated: Growth data could break degeneracies or exclude parameter regions.
+    notes: null
+    scope: background-data comparison
+    source_reference_ids:
+    - arxiv:2107.12161
+    status: assumed
+  benchmark_implications:
+  - The model is constrained primarily through H(z), luminosity distance, BAO distance ratios, and CMB
+    distance priors in the primary paper.
+  caveats:
+  - Related BAO papers provide distance measurements, but the complete combined likelihood was not reconstructed.
+  constrained_parameters:
+  - Omega_m
+  - Omega_Lambda
+  - Omega_stiff
+  - H0
+  constraint_type: cosmological
+  data_release: Cosmic chronometers, Pantheon Type Ia supernovae, BAO, and CMB distance-prior data as
+    used in the primary paper
+  excluded_regions:
+  - Parameter combinations that fail the CC, Pantheon, BAO, and CMB distance-prior fit are disfavored.
+  id: con_miteves_distance_data
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Background distance-data fit for MiTeVeS expansion history
+  notes: null
+  observable_channel: distance_redshift
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2107.12161
+  - arxiv:1409.3242
+  - arxiv:0907.1660
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Large-scale-structure observables need a perturbation treatment not present in the primary paper.
+    constraint_ids:
+    - con_miteves_bbn_speedup
+    - con_miteves_distance_data
+    derived_quantities:
+    - Omega_m
+    - Omega_Lambda
+    - Omega_stiff
+    - H(z)
+    - D_L(z)
+    - D_V(z)
+    description: Map MiTeVeS integration constants and interaction functions to H(z), distance probes,
+      and BBN expansion bounds.
+    forward_model_chain:
+    - inputs:
+      - C0
+      - h2
+      - f
+      - V
+      - h1
+      - H0
+      notes: null
+      outputs:
+      - Omega_m
+      - Omega_Lambda
+      - Omega_stiff
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for the constant-function MiTeVeS background solution.
+    - inputs:
+      - H(z)
+      notes: null
+      outputs:
+      - luminosity distances
+      - BAO distances
+      - CMB distance prior
+      step_id: s2
+      step_type: data_transform
+      tool_or_code: null
+      validity: Uses background FRW distance relations.
+    - inputs:
+      - distances
+      - H(z)
+      - BBN speed-up
+      notes: null
+      outputs:
+      - allowed background parameter region
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: Combined likelihood not rerun in this batch.
+    id: route_miteves_background_distances
+    input_parameters:
+    - C0
+    - h2
+    - f
+    - V
+    - h1
+    - H0
+    likelihoods:
+    - background-data likelihood from the primary paper unavailable
+    - no perturbation likelihood
+    observable_ids:
+    - obs_miteves_background_expansion
+    - obs_miteves_perturbation_target
+    required_code_resources:
+    - background cosmology fitter
+    - future perturbation solver for MiTeVeS
+    route_status: planned
+    source_model_features:
+    - shift-symmetry Noether current
+    - constant scalar-vector interaction functions
+    - stiff a^-6 contribution
+    validation_tests:
+    - recover H(z)^2/H0^2 = Omega_Lambda + Omega_m(1+z)^3 + Omega_r(1+z)^4 + Omega_stiff(1+z)^6
+    - enforce BBN speed-up prior

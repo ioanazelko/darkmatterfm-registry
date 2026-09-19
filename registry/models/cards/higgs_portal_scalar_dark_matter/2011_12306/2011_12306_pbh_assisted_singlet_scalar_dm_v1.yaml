@@ -1,0 +1,337 @@
+_source:
+  shard: arXiv_src_2011_069_wds.tar
+  paper_id: '2011_12306'
+  source_member: 2011_12306.json
+schema_version: model_only_v0
+model_id: 2011_12306_pbh_assisted_singlet_scalar_dm_v1
+identity:
+  name: PBH-assisted singlet scalar dark matter
+  family: higgs_portal_scalar_dark_matter
+  aliases:
+  - singlet scalar dark matter with primordial-black-hole evaporation
+  short_description: A real Z2-odd singlet scalar dark matter model whose relic abundance receives combined
+    contributions from primordial-black-hole evaporation and either FIMP freeze-in or WIMP freeze-out.
+  historical_origin_or_motivation: The paper uses the minimal singlet scalar model to study how an early
+    PBH-dominated era reshapes standard FIMP and WIMP production.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - real singlet scalar Higgs-portal dark matter
+  - primordial black hole early cosmology
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The scalar potential includes the SM Higgs doublet and a real singlet s with a Z2 symmetry.
+particle_content:
+  dark_matter_candidate:
+    name: real singlet scalar s
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Higgs boson
+  - primordial black holes as Hawking sources
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - light primordial black holes
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: An exact Z2 parity makes the singlet scalar odd and guarantees its stability.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: not specified
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - gravitational
+  standard_model_targets:
+  - Higgs bosons
+  - SM radiation bath
+  - W bosons
+  dark_sector_couplings:
+  - Higgs portal coupling lambda
+  - singlet quartic self-coupling lambda_s
+  mediator_types:
+  - Higgs boson
+  - primordial black holes
+  interaction_operators:
+  - '|H|^2 s^2'
+  - s^4
+  scattering:
+    elastic: unknown
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  annihilation_channels:
+  - SM SM -> s s freeze-in
+  - s s -> SM SM freeze-out
+  decay_channels: []
+  self_scattering_channels:
+  - s self-interactions through lambda_s
+  cp_structure: real scalar CP structure not further specified
+  flavor_structure: flavor universal Higgs portal
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: singlet scalar mass
+    symbol: m_s
+    description: Dark matter mass scanned from light MeV/FIMP regions to superheavy regions.
+    role: core
+    status: inferred
+  - name: Higgs portal coupling
+    symbol: lambda
+    description: Controls FIMP or WIMP production through the Higgs portal.
+    role: core
+    status: inferred
+  - name: singlet quartic coupling
+    symbol: lambda_s
+    description: Does not affect WIMP/FIMP abundance in the paper but is part of the scalar potential.
+    role: core
+    status: inferred
+  - name: initial PBH mass
+    symbol: M_in
+    range: 0.1-2e8
+    unit: g
+    role: core
+    status: inferred
+    notes: Range quoted after inflation-scale and BBN evaporation requirements.
+  - name: initial PBH abundance
+    symbol: beta
+    description: Initial ratio of PBH to SM radiation energy density.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - Hawking evaporation from primordial black holes
+  - FIMP freeze-in through Higgs portal
+  - WIMP freeze-out through Higgs portal
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - PBH mass and abundance
+  - Higgs portal coupling
+  - DM mass
+  - entropy injection from PBH evaporation
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: parameter_dependent
+  notes: The final abundance can be the sum of PBH evaporation plus FIMP or WIMP production, with dilution
+    if PBHs dominate before evaporation.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: mixed
+  key_dependencies:
+  - M_in
+  - beta
+  - lambda
+  - m_s
+  - PBH entropy dilution
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - possible early PBH matter domination
+  - entropy injection from PBH evaporation
+  - Hawking radiation source term for dark matter
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: medium
+phase_space:
+  distribution_type: mixed_cold_warm
+  distribution_function_available: 'no'
+  notes: FIMP/WIMP production is cold, while PBH-radiated dark matter may be noncold in part of the parameter
+    space.
+structure_formation:
+  linear:
+    behaves_like_cdm: scale_dependent
+    transfer_function_shape: mixed_cold_warm
+    small_scale_power_effect: suppression
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: pbh_evaporate_before_bbn
+  applies_to: cosmological_history
+  condition: Light PBHs must fully evaporate before BBN.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Late evaporation would spoil the intended cosmology.
+  source_reference_ids:
+  - '2011_12306'
+  notes: null
+- id: singlet_scalar_framework
+  applies_to: model
+  condition: The singlet scalar potential with Z2 symmetry is used as the concrete dark matter framework.
+  status: established
+  extrapolation_risk: low
+  caveats: []
+  source_reference_ids:
+  - '2011_12306'
+  notes: null
+assumptions:
+  global:
+  - id: light_pbh_population
+    description: A population of light PBHs exists before BBN and can Hawking-radiate dark matter.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The PBH contribution and entropy dilution vanish.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - '2011_12306'
+    notes: null
+  - id: z2_stability
+    description: The real scalar is odd under an exact Z2 symmetry.
+    scope: theory
+    status: established
+    impact_if_violated: The singlet scalar need not be stable dark matter.
+    can_be_relaxed: 'no'
+    source_reference_ids:
+    - '2011_12306'
+    notes: null
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper states that micrOMEGAs is used for WIMP and FIMP results in the radiation-dominated
+    era; no public model repository is identified in the extracted text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 2011_12306_pbh_assisted_singlet_scalar_dm_v1
+  model_name: PBH-assisted singlet scalar dark matter
+  model_family: higgs_portal_scalar_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2011_12306'
+      title: unknown
+      authors: []
+      year: 2020
+      arxiv_id: '2011.12306'
+      doi: null
+      url: null
+      role: original_model
+      notes: Title/authors were not reliably available in the assigned SQLite text extraction.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex
+    extractor_name: gpt-5.5-dark-matter-model-batch-worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2011_12306'
+      section: Singlet scalar DM model
+      page: null
+      quote_or_summary: The model contains a real scalar s, singlet under the SM gauge group and odd under
+        Z2, with a Higgs-portal scalar potential.
+    - reference_id: '2011_12306'
+      section: DM production mechanisms
+      page: null
+      quote_or_summary: The paper analyzes PBH evaporation together with FIMP and WIMP production and
+        the associated entropy dilution.
+    - reference_id: '2011_12306'
+      section: Conclusions
+      page: null
+      quote_or_summary: PBH domination opens parameter regions excluded in ordinary radiation domination.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2011_12306'
+      note: The concrete model adds only a real scalar s to the SM.
+      confidence: medium
+      section: Singlet scalar DM model
+      page: null
+    symmetries:
+    - reference_id: '2011_12306'
+      note: The scalar is odd under a Z2 symmetry, guaranteeing stability.
+      confidence: medium
+      section: Singlet scalar DM model
+      page: null
+    interactions:
+    - reference_id: '2011_12306'
+      note: The scalar potential includes the Higgs portal |H|^2 s^2 and singlet quartic self-coupling.
+      confidence: medium
+      section: Singlet scalar DM model
+      page: null
+    production_mechanism:
+    - reference_id: '2011_12306'
+      note: The abundance combines Hawking radiation from PBHs with FIMP or WIMP production.
+      confidence: medium
+      section: DM production mechanisms
+      page: null
+    cosmological_history:
+    - reference_id: '2011_12306'
+      note: Subdominant PBHs can come to dominate before evaporation, producing entropy dilution.
+      confidence: medium
+      section: PBH review
+      page: null
+    parameter_ranges:
+    - reference_id: '2011_12306'
+      note: The paper quotes an initial PBH mass window about 0.1 g to 2e8 g.
+      confidence: medium
+      section: PBH review
+      page: null
+    validity_domain:
+    - reference_id: '2011_12306'
+      note: PBHs are required to evaporate before BBN and hot PBH-produced components are limited by structure
+        formation.
+      confidence: medium
+      section: DM production mechanisms
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The singlet scalar particle model is pre-existing; the substantive extracted variant is its production
+    in a PBH-modified cosmology.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - PBH abundance and mass distribution
+  - hot component from Hawking radiation
+  - semi-analytic WIMP treatment in PBH domination
+  validation_status: partially_validated
+  notes: null
+agent_failure_modes:
+  warnings:
+  - id: pbh_variant_not_new_particle_model
+    severity: medium
+    category: other
+    warning: This row treats the paper as a substantive production-history variant of an existing singlet-scalar
+      model.
+    source_reference_ids: []

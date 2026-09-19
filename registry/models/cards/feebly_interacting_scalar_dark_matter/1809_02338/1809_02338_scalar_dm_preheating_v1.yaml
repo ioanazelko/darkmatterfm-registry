@@ -1,0 +1,1015 @@
+_source:
+  shard: arXiv_src_1809_007_wds.tar
+  paper_id: '1809_02338'
+  source_member: 1809_02338.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: do_not_assume_sm_thermalization
+    mitigation: Use nonthermal preheating/reheating production unless a larger portal coupling is explicitly
+      introduced.
+    severity: high
+    source_reference_ids:
+    - '1809_02338'
+    warning: The model assumes negligible Standard Model coupling; treating it as ordinary thermal Higgs-portal
+      scalar dark matter would be wrong.
+  - category: extrapolation
+    id: viability_requires_depletion
+    mitigation: Check the reheating history, self-coupling, and self-interaction bounds for any benchmark.
+    severity: medium
+    source_reference_ids:
+    - '1809_02338'
+    warning: The paper finds preheating can produce too much dark matter unless additional history suppresses
+      the abundance.
+associated_code:
+  code_summary: The paper states that LATTICEEASY was used to simulate preheating dynamics; no model-specific
+    public repository is identified in the assigned text.
+  expected_inputs:
+  - scalar potential parameters
+  - initial inflaton field configuration
+  expected_outputs:
+  - preheating energy-density evolution
+  has_associated_code: partial
+  notebooks: []
+  packages_or_modules:
+  - availability: public
+    documentation_url: null
+    name: LATTICEEASY
+    purpose:
+    - run_simulations
+    relationship_to_model: wrapper_around_public_tool
+    repository_url: null
+    resource_type: package
+    url: null
+  primary_code_role: structure_formation_simulation
+  repositories: []
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: Dark and visible sectors are treated as kinetically decoupled with separately conserved
+      entropies after production.
+    id: separate_sector_entropy
+    impact_if_violated: The relic-abundance relation between initial and present energy-density ratios
+      would change.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids:
+    - '1809_02338'
+    status: assumed
+  - can_be_relaxed: 'yes'
+    description: The Higgs quartic is assumed to remain positive during the preheating epoch, possibly
+      due to additional physics not explicitly modeled.
+    id: positive_high_scale_higgs_quartic
+    impact_if_violated: Vacuum stability during preheating could fail or require extra fields.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1809_02338'
+    status: assumed
+cosmological_history:
+  bbn_relevance: medium
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature:
+    description: Temperature assigned to the dark sector after production.
+    name: dark-sector temperature
+    role: cosmological
+    status: inferred
+    symbol: Tprime
+    value: null
+  delta_neff: null
+  isocurvature_perturbations: parameter_dependent
+  kinetic_decoupling: null
+  nonstandard_features:
+  - inflation followed by preheating
+  - separate dark and visible sector temperatures
+  - dark matter never thermalizes with the Standard Model
+  - possible nonrelativistic inflaton phase before decay
+  phase_transitions:
+  - preheating/reheating transition after inflation
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - scalar DM produced during (p)reheating
+  family: feebly_interacting_scalar_dark_matter
+  historical_origin_or_motivation: Motivated by dark matter with negligible Standard Model interactions
+    and by computing its initial abundance from post-inflationary particle production rather than assuming
+    it.
+  model_kind: complete_theory
+  name: Z2-stabilized scalar dark matter from preheating and reheating
+  short_description: A real scalar dark matter field, odd under an effective Z2 symmetry and nearly decoupled
+    from the Standard Model, is produced after inflation through inflaton couplings during preheating
+    and reheating.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - 4-to-2 scalar self-annihilation when Z2 forbids 3-to-2 processes
+  cp_structure: not discussed
+  dark_sector_couplings:
+  - inflaton-DM quartic coupling
+  - DM self-quartic coupling
+  - suppressed Higgs portal coupling
+  decay_channels: []
+  flavor_structure: not_applicable
+  interaction_operators:
+  - phi^2 chi^2 inflaton-DM coupling
+  - phi^4 dark matter self-interaction
+  - phi^2 |H|^2 Higgs portal term
+  mediator_types:
+  - scalar inflaton
+  - Higgs portal, negligible in the benchmark
+  portals:
+  - higgs
+  - other
+  scattering:
+    elastic: 'yes'
+    inelastic: not_applicable
+    momentum_dependence: unknown
+    spin_dependence: not_applicable
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - quartic scalar self-interaction
+  standard_model_targets:
+  - Higgs field through a negligible portal coupling
+  - inflaton-coupled SM/Higgs sector during reheating
+  tree_or_loop_level: tree
+model_id: 1809_02338_scalar_dm_preheating_v1
+parameters:
+  core:
+  - description: Mass of the scalar dark matter.
+    name: dark matter mass
+    range: examples from 0.01 MeV to 300 MeV in relic-abundance plots
+    role: core
+    status: inferred
+    symbol: m_phi
+    unit: MeV
+  - description: Quartic self-coupling controlling self-scattering and 4-to-2 number-changing reactions.
+    name: dark matter self-coupling
+    range: restricted by perturbativity and Bullet Cluster self-interaction bounds
+    role: core
+    status: inferred
+    symbol: lambda_phi
+  - description: Coupling that produces dark matter during preheating/reheating and suppresses inflationary
+      isocurvature.
+    name: inflaton-dark matter coupling
+    range: varied in simulations
+    role: core
+    status: inferred
+    symbol: lambda_phi_chi
+  - description: Coupling between scalar DM and Higgs field.
+    name: Higgs portal coupling
+    range: assumed very small/negligible so DM never thermalizes with the SM
+    role: core
+    status: inferred
+    symbol: lambda_phiH
+  - description: Inflaton mass in the quadratic inflation benchmark.
+    name: inflaton mass
+    role: core
+    status: inferred
+    symbol: m_chi
+    unit: M_Pl
+    value: 5.3e-6 M_Pl benchmark
+  - description: Non-minimal coupling used to make quadratic inflation compatible with Planck data.
+    name: non-minimal inflaton-gravity coupling
+    role: core
+    status: inferred
+    symbol: xi_chi
+    value: 2e-3 benchmark
+  derived:
+  - description: Ratio rho_DM(Tprime)/rho_SM(T) used to match the relic abundance.
+    name: dark-to-visible energy-density ratio
+    role: derived
+    status: inferred
+    symbol: f(T)
+    value: f(T0) about 5.3 today
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles: []
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: real scalar phi
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Z2-stabilized scalar dark matter
+  mediators:
+  - inflaton scalar
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - inflaton
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: nonthermal
+  free_streaming_length: null
+  notes: The paper tracks energy-density ratios and dark temperature rather than providing a full momentum
+    distribution.
+  phase_space_bounds:
+  - Large scale structure and Lyman-alpha motivate dark matter mass above order 10 keV in the discussion.
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - inflaton-DM coupling
+  - inflaton decay branching to SM versus DM
+  - DM self-coupling
+  - dark-to-visible entropy ratio
+  - duration of an inflaton nonrelativistic phase
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: 'yes'
+  mechanisms:
+  - nonthermal production during preheating by parametric resonance
+  - perturbative reheating from inflaton decay
+  - dark-sector number changing through 4-to-2 reactions after production
+  nonthermal_momentum_distribution: 'yes'
+  notes: The authors simulate preheating and argue extra dilution or an inflaton nonrelativistic phase
+    may be needed to obtain the observed relic abundance while respecting self-interaction bounds.
+  thermal_equilibrium_with_hidden_sector: partial
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats:
+  - The model viability is parameter dependent; the authors note tension between preheating abundance,
+    self-interaction bounds, and relic-density matching.
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The dark matter is assumed to have negligible SM interaction and never thermalizes with the
+        SM sector.
+      page: null
+      reference_id: '1809_02338'
+      section: Constraints/model
+    interactions:
+    - confidence: high
+      note: The scalar potential includes inflaton-DM, Higgs-portal, and dark self-interaction terms.
+      page: null
+      reference_id: '1809_02338'
+      section: Model
+    parameter_ranges:
+    - confidence: medium
+      note: Relic-abundance plots consider m_phi values from 0.01 to 300 MeV and impose perturbativity/self-interaction
+        restrictions.
+      page: null
+      reference_id: '1809_02338'
+      section: Relic abundance discussion
+    particle_content:
+    - confidence: high
+      note: 'The model contains two real scalar fields beyond the SM: an inflaton and a scalar dark matter
+        particle.'
+      page: null
+      reference_id: '1809_02338'
+      section: Model
+    production_mechanism:
+    - confidence: high
+      note: Dark matter is produced during preheating and reheating, with parametric resonance and inflaton
+        decay setting the abundance.
+      page: null
+      reference_id: '1809_02338'
+      section: Introduction/results
+    symmetries:
+    - confidence: high
+      note: A Z2 symmetry is imposed with only the dark matter field odd, ensuring stability.
+      page: null
+      reference_id: '1809_02338'
+      section: Model
+    validity_domain:
+    - confidence: high
+      note: The authors conclude preheating alone can overproduce DM and that an inflaton nonrelativistic
+        phase or additional depletion may be required.
+      page: null
+      reference_id: '1809_02338'
+      section: Conclusion
+    constraints:
+    - confidence: high
+      note: Primary paper states the order-10-keV LSS/Lyman-alpha floor, BBN thermalization caveat, Bullet
+        Cluster self-interaction issue, and Planck isocurvature concern.
+      page: null
+      reference_id: arxiv:1809.02338
+      section: Constraints section
+    observables:
+    - confidence: high
+      note: Primary paper discusses preheating/reheating production, 4-to-2 reactions, and isocurvature
+        considerations.
+      page: null
+      reference_id: arxiv:1809.02338
+      section: Model, constraints, and results
+    - confidence: medium
+      note: Related self-interacting-DM production paper provides context for number-changing production
+        regimes.
+      page: null
+      reference_id: arxiv:1510.08063
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper describes the chain from lattice preheating abundance through reheating and
+        dark-sector number changing to the relic density.
+      page: null
+      reference_id: arxiv:1809.02338
+      section: Results and conclusion
+  extraction:
+    confidence: high
+    extracted_by: codex_batch-0004
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5.5 dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper considers a simple SM extension with an inflaton and scalar DM stabilized
+        by an effective Z2 symmetry.
+      reference_id: '1809_02338'
+      section: Introduction
+    - page: null
+      quote_or_summary: The model adds two real scalars and gives the scalar potential including inflaton,
+        DM, Higgs, portal, and self-interaction terms.
+      reference_id: '1809_02338'
+      section: Model
+    - page: null
+      quote_or_summary: The paper studies DM production during preheating/reheating and matching the observed
+        relic abundance.
+      reference_id: '1809_02338'
+      section: Results/conclusion
+    unresolved_items:
+    - Exact title and author metadata were not available in the assigned SQLite text.
+    - The paper text does not provide a complete dark-matter momentum distribution.
+    - No LATTICEEASY preheating simulation, 4-to-2 Boltzmann integration, Lyman-alpha transfer-function
+      recast, or Bullet Cluster likelihood was rerun.
+    - The scalar momentum distribution is not available in the extracted text.
+  last_updated: '2026-05-31'
+  model_family: feebly_interacting_scalar_dark_matter
+  model_id: 1809_02338_scalar_dm_preheating_v1
+  model_name: Z2-stabilized scalar dark matter from preheating and reheating
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1809.02338'
+      doi: null
+      notes: Assigned full text from run-local SQLite database.
+      reference_id: '1809_02338'
+      role: original_model
+      title: Scalar dark matter production during preheating and reheating
+      url: null
+      year: 2018
+    - arxiv_id: '1809.02338'
+      authors:
+      - Bernal, Nicolás
+      - Chatterjee, Arindam
+      - Paul, Arnab
+      doi: 10.1088/1475-7516/2018/12/020
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1809.02338
+      role: original_model
+      title: Non-thermal production of Dark Matter after inflation
+      url: https://arxiv.org/abs/1809.02338
+      year: 2018
+    constraint_papers:
+    - arxiv_id: '1510.08063'
+      authors:
+      - Bernal, Nicolás
+      - Chu, Xiaoyong
+      - Garcia-Cely, Camilo
+      - Hambye, Thomas
+      - Zaldivar, Bryan
+      doi: 10.1088/1475-7516/2016/03/018
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1510.08063
+      role: constraint
+      title: Production regimes for Self-Interacting Dark Matter
+      url: https://arxiv.org/abs/1510.08063
+      year: 2016
+    - arxiv_id: '2104.10699'
+      authors:
+      - Barman, Basabendu
+      - Bernal, Nicolás
+      doi: 10.1088/1475-7516/2021/06/011
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:2104.10699
+      role: constraint
+      title: Gravitational SIMPs
+      url: https://arxiv.org/abs/2104.10699
+      year: 2021
+    - arxiv_id: '1807.06209'
+      authors:
+      - Planck Collaboration
+      - Aghanim, N.
+      - Akrami, Y.
+      - Ashdown, M.
+      - Aumont, J.
+      - Baccigalupi, C.
+      - Ballardini, M.
+      - Banday, A. J.
+      - Barreiro, R. B.
+      - Bartolo, N.
+      - Basak, S.
+      - Battye, R.
+      - Benabed, K.
+      - Bernard, J.-P.
+      - Bersanelli, M.
+      - Bielewicz, P.
+      - Bock, J. J.
+      - Bond, J. R.
+      - Borrill, J.
+      - Bouchet, F. R.
+      - Boulanger, F.
+      - Bucher, M.
+      - Burigana, C.
+      - Butler, R. C.
+      - Calabrese, E.
+      - Cardoso, J.-F.
+      - Carron, J.
+      - Challinor, A.
+      - Chiang, H. C.
+      - Chluba, J.
+      - Colombo, L. P. L.
+      - Combet, C.
+      - Contreras, D.
+      - Crill, B. P.
+      - Cuttaia, F.
+      - de Bernardis, P.
+      - de Zotti, G.
+      - Delabrouille, J.
+      - Delouis, J.-M.
+      - Di Valentino, E.
+      - Diego, J. M.
+      - Doré, O.
+      - Douspis, M.
+      - Ducout, A.
+      - Dupac, X.
+      - Dusini, S.
+      - Efstathiou, G.
+      - Elsner, F.
+      - Enßlin, T. A.
+      - Eriksen, H. K.
+      - Fantaye, Y.
+      - Farhang, M.
+      - Fergusson, J.
+      - Fernandez-Cobos, R.
+      - Finelli, F.
+      - Forastieri, F.
+      - Frailis, M.
+      - Fraisse, A. A.
+      - Franceschi, E.
+      - Frolov, A.
+      - Galeotta, S.
+      - Galli, S.
+      - Ganga, K.
+      - Génova-Santos, R. T.
+      - Gerbino, M.
+      - Ghosh, T.
+      - González-Nuevo, J.
+      - Górski, K. M.
+      - Gratton, S.
+      - Gruppuso, A.
+      - Gudmundsson, J. E.
+      - Hamann, J.
+      - Handley, W.
+      - Hansen, F. K.
+      - Herranz, D.
+      - Hildebrandt, S. R.
+      - Hivon, E.
+      - Huang, Z.
+      - Jaffe, A. H.
+      - Jones, W. C.
+      - Karakci, A.
+      - Keihänen, E.
+      - Keskitalo, R.
+      - Kiiveri, K.
+      - Kim, J.
+      - Kisner, T. S.
+      - Knox, L.
+      - Krachmalnicoff, N.
+      - Kunz, M.
+      - Kurki-Suonio, H.
+      - Lagache, G.
+      - Lamarre, J.-M.
+      - Lasenby, A.
+      - Lattanzi, M.
+      - Lawrence, C. R.
+      - Le Jeune, M.
+      - Lemos, P.
+      - Lesgourgues, J.
+      - Levrier, F.
+      - Lewis, A.
+      - Liguori, M.
+      - Lilje, P. B.
+      - Lilley, M.
+      - Lindholm, V.
+      - López-Caniego, M.
+      - Lubin, P. M.
+      - Ma, Y.-Z.
+      - Macías-Pérez, J. F.
+      - Maggio, G.
+      - Maino, D.
+      - Mandolesi, N.
+      - Mangilli, A.
+      - Marcos-Caballero, A.
+      - Maris, M.
+      - Martin, P. G.
+      - Martinelli, M.
+      - Martínez-González, E.
+      - Matarrese, S.
+      - Mauri, N.
+      - McEwen, J. D.
+      - Meinhold, P. R.
+      - Melchiorri, A.
+      - Mennella, A.
+      - Migliaccio, M.
+      - Millea, M.
+      - Mitra, S.
+      - Miville-Deschênes, M.-A.
+      - Molinari, D.
+      - Montier, L.
+      - Morgante, G.
+      - Moss, A.
+      - Natoli, P.
+      - Nørgaard-Nielsen, H. U.
+      - Pagano, L.
+      - Paoletti, D.
+      - Partridge, B.
+      - Patanchon, G.
+      - Peiris, H. V.
+      - Perrotta, F.
+      - Pettorino, V.
+      - Piacentini, F.
+      - Polastri, L.
+      - Polenta, G.
+      - Puget, J.-L.
+      - Rachen, J. P.
+      - Reinecke, M.
+      - Remazeilles, M.
+      - Renzi, A.
+      - Rocha, G.
+      - Rosset, C.
+      - Roudier, G.
+      - Rubiño-Martín, J. A.
+      - Ruiz-Granados, B.
+      - Salvati, L.
+      - Sandri, M.
+      - Savelainen, M.
+      - Scott, D.
+      - Shellard, E. P. S.
+      - Sirignano, C.
+      - Sirri, G.
+      - Spencer, L. D.
+      - Sunyaev, R.
+      - Suur-Uski, A.-S.
+      - Tauber, J. A.
+      - Tavagnacco, D.
+      - Tenti, M.
+      - Toffolatti, L.
+      - Tomasi, M.
+      - Trombetti, T.
+      - Valenziano, L.
+      - Valiviita, J.
+      - Van Tent, B.
+      - Vibert, L.
+      - Vielva, P.
+      - Villa, F.
+      - Vittorio, N.
+      - Wandelt, B. D.
+      - Wehus, I. K.
+      - White, M.
+      - White, S. D. M.
+      - Zacchei, A.
+      - Zonca, A.
+      doi: 10.1051/0004-6361/201833910
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1807.06209
+      role: constraint
+      title: Planck 2018 results. VI. Cosmological parameters
+      url: https://arxiv.org/abs/1807.06209
+      year: 2020
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: nonthermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - preheating abundance from lattice simulation
+  - inflaton branching ratios during reheating
+  - dark-sector entropy conservation
+  - 4-to-2 cannibal annihilation
+  - self-interaction bounds
+  overclosure_risk: 'yes'
+  requires_entropy_dilution: parameter_dependent
+  target_fraction:
+    description: Ratio used by the paper for the observed dark matter abundance.
+    name: present dark-to-SM energy-density ratio
+    role: derived
+    status: established
+    symbol: f(T0)
+    value: '5.3'
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - preheating lattice dynamics
+  - inflaton decay history
+  - self-interaction depletion
+  - portal coupling smallness
+  notes: The paper uses LATTICEEASY for preheating simulations, but this extracted card has not been human
+    reviewed.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: partially_validated
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    half_mode_mass: null
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    core_or_cusp_effect: self-interactions are bounded by Bullet Cluster limits rather than modeled for
+      halo cores
+    density_profile_effect: unknown
+    halo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: An effective Z2 symmetry is imposed under which only the dark matter scalar is
+    odd.
+  symmetries:
+  - breaking: not discussed; imposed to ensure stability
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: Z2 dark-matter parity
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper specifies a scalar potential with SM Higgs, inflaton, and dark matter fields plus non-minimal
+    gravity couplings; gravitational/inflation details are treated phenomenologically.
+  parent_frameworks:
+  - singlet scalar dark matter
+  - inflationary reheating production
+  - feebly interacting massive particle dark matter
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: model
+  caveats:
+  - A larger portal coupling would change production to a thermal or freeze-in scenario.
+  condition: The Higgs portal must be small enough that dark matter never thermalizes with the Standard
+    Model.
+  extrapolation_risk: high
+  id: negligible_sm_portal
+  notes: null
+  source_reference_ids:
+  - '1809_02338'
+  status: assumed
+  valid_range: qualitatively negligible portal coupling in the paper
+- applies_to: parameter
+  caveats: []
+  condition: The scalar self-coupling must satisfy perturbativity and self-interaction bounds while enabling
+    relic depletion.
+  extrapolation_risk: medium
+  id: self_interaction_and_perturbativity_window
+  notes: null
+  source_reference_ids:
+  - '1809_02338'
+  status: inferred
+  valid_range: lambda_phi below nonperturbative values and Bullet Cluster self-interaction bound
+observables:
+- caveats:
+  - Initial abundance comes from source simulations; no rerun was performed.
+  channel: cosmology
+  effect_direction: enhancement
+  environments:
+  - post-inflationary Universe
+  - decoupled dark sector
+  id: obs_preheating_scalar_abundance
+  key_quantities:
+  - description: Observed target ratio used by the paper.
+    name: present dark-to-SM energy-density ratio
+    role: derived
+    source_reference_ids:
+    - arxiv:1809.02338
+    status: established
+    symbol: f(T0)
+    value: '5.3'
+  - description: Controls preheating production efficiency.
+    name: inflaton-DM coupling
+    role: core
+    source_reference_ids:
+    - arxiv:1809.02338
+    status: inferred
+  - description: Scalar dark matter mass entering relic abundance and self-interaction limits.
+    name: dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:1809.02338
+    status: inferred
+    symbol: m_phi
+  linked_constraints:
+  - con_lss_lya_kev_mass_floor
+  - con_bullet_self_interaction_window
+  linked_routes:
+  - route_preheating_to_scalar_relic
+  name: Scalar dark matter abundance generated during preheating and reheating
+  notes: null
+  observability: medium
+  predicted_effect: Parametric resonance during preheating and perturbative reheating produce a decoupled
+    scalar dark matter abundance whose initial value must be depleted or matched to the observed ratio.
+  redshift_range: end of inflation through today
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:1809.02338
+  subchannel: post-inflationary nonthermal production
+- caveats:
+  - Requires a dark temperature description rather than a full momentum distribution.
+  channel: cosmology
+  effect_direction: suppression
+  environments:
+  - decoupled scalar dark sector
+  id: obs_scalar_cannibal_depletion
+  key_quantities:
+  - description: Sets 4-to-2 depletion and self-interaction strength.
+    name: quartic self-coupling
+    role: core
+    source_reference_ids:
+    - arxiv:1809.02338
+    - arxiv:1510.08063
+    status: inferred
+    symbol: lambda_phi
+  - description: Number-changing rate in the dark-sector Boltzmann equation.
+    name: generalized 4-to-2 rate
+    role: derived
+    source_reference_ids:
+    - arxiv:1809.02338
+    status: inferred
+    symbol: <sigma v^3>_4to2
+  linked_constraints:
+  - con_bullet_self_interaction_window
+  linked_routes:
+  - route_preheating_to_scalar_relic
+  name: 4-to-2 dark-sector depletion of scalar number density
+  notes: null
+  observability: low
+  predicted_effect: For a Z2-stabilized scalar, 3-to-2 reactions are absent and 4-to-2 self-annihilations
+    can reduce an initially overproduced dark abundance.
+  redshift_range: after production, before late matter domination
+  relevance: high
+  scale_range: dark-sector thermal scale
+  source_reference_ids:
+  - arxiv:1809.02338
+  - arxiv:1510.08063
+  subchannel: cannibal number-changing reactions
+- caveats:
+  - This is a consistency condition, not a dedicated isocurvature likelihood in the batch.
+  channel: cmb
+  effect_direction: shape_change
+  environments:
+  - primordial perturbations
+  - CMB
+  id: obs_light_scalar_isocurvature
+  key_quantities:
+  - description: Compared with H_inf to decide whether the scalar behaves as a light field.
+    name: effective scalar mass during inflation
+    role: core
+    source_reference_ids:
+    - arxiv:1809.02338
+    status: inferred
+    symbol: m_eff
+  - description: Sets the spectator-lightness criterion.
+    name: inflationary Hubble rate
+    role: core
+    source_reference_ids:
+    - arxiv:1809.02338
+    status: inferred
+    symbol: H_inf
+  linked_constraints:
+  - con_planck_isocurvature_subdominance
+  linked_routes:
+  - route_preheating_to_scalar_relic
+  name: Inflationary isocurvature from a light spectator-like scalar
+  notes: null
+  observability: medium
+  predicted_effect: If the dark scalar is light during inflation, it can contribute non-Gaussianity or
+    isocurvature modes; the source notes Planck finds no evidence for isocurvature.
+  redshift_range: inflation through recombination
+  relevance: medium
+  scale_range: CMB angular scales
+  source_reference_ids:
+  - arxiv:1809.02338
+  - arxiv:1807.06209
+  subchannel: primordial isocurvature
+constraints:
+- allowed_regions:
+  - Use m_phi above order 10 keV unless a dedicated nonthermal phase-space recast is performed.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: The order-10-keV statement is a qualitative mass floor, not a transfer-function likelihood
+      for this nonthermal spectrum.
+    id: thermal_floor_applied_qualitatively
+    impact_if_violated: A colder nonthermal spectrum could weaken the mapping.
+    notes: null
+    scope: phase-space recast
+    source_reference_ids:
+    - arxiv:1809.02338
+    status: assumed
+  benchmark_implications:
+  - Very light scalar benchmarks need a nonthermal Lyman-alpha/free-streaming recast.
+  caveats:
+  - The paper does not provide a full momentum distribution.
+  constrained_parameters:
+  - m_phi
+  - free-streaming length
+  constraint_type: astrophysical
+  data_release: Large-scale-structure and Lyman-alpha constraints cited by the primary paper
+  excluded_regions:
+  - The primary paper states that large-scale structure and Lyman-alpha data constrain dark matter masses
+    below order 10 keV.
+  id: con_lss_lya_kev_mass_floor
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Large-scale-structure and Lyman-alpha lower-mass floor
+  notes: null
+  observable_channel: large_scale_structure+lyman_alpha
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1809.02338
+- allowed_regions:
+  - Perturbative/self-interaction-safe regions with enough abundance depletion remain the target.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The scalar quartic self-interaction is mapped to the cluster self-interaction bound in
+      the source approximation.
+    id: contact_self_interaction_mapping
+    impact_if_violated: Velocity dependence or additional mediators would alter the mapping.
+    notes: null
+    scope: self-interaction recast
+    source_reference_ids:
+    - arxiv:1809.02338
+    - arxiv:1510.08063
+    status: assumed
+  benchmark_implications:
+  - Initial overproduction cannot be solved by arbitrarily large self-coupling because cluster self-interaction
+    bounds intervene.
+  caveats:
+  - No cluster likelihood was rerun.
+  constrained_parameters:
+  - lambda_phi
+  - m_phi
+  - sigma_self/m_phi
+  constraint_type: astrophysical
+  data_release: Bullet Cluster self-interaction bound as cited by the primary paper
+  excluded_regions:
+  - The primary paper says the m_phi around 0.02 MeV, large-self-coupling region is disfavored by Bullet
+    Cluster bounds.
+  id: con_bullet_self_interaction_window
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Bullet-Cluster self-interaction pressure on light/high-coupling benchmarks
+  notes: null
+  observable_channel: cluster self-interactions
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1809.02338
+  - arxiv:1510.08063
+- allowed_regions:
+  - The dark scalar contribution must remain subdominant or heavy enough during inflation.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Inflation is effectively dominated by the inflaton rather than the dark scalar.
+    id: single_field_dominance
+    impact_if_violated: Multifield dynamics could require a dedicated perturbation analysis.
+    notes: null
+    scope: inflation
+    source_reference_ids:
+    - arxiv:1809.02338
+    - arxiv:1807.06209
+    status: assumed
+  benchmark_implications:
+  - Viable benchmarks should avoid producing observable isocurvature.
+  caveats:
+  - No CMB likelihood was rerun.
+  constrained_parameters:
+  - m_eff/H_inf
+  - dark scalar energy fraction
+  constraint_type: cosmological
+  data_release: Planck CMB constraints as cited by the primary paper
+  excluded_regions:
+  - A light field contributing appreciably to inflationary energy density can generate isocurvature modes
+    disfavored by Planck.
+  id: con_planck_isocurvature_subdominance
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Planck no-isocurvature condition for light scalar during inflation
+  notes: null
+  observable_channel: cmb_isocurvature
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1809.02338
+  - arxiv:1807.06209
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Production is sensitive to the preheating model and inflaton decay history.
+    constraint_ids:
+    - con_lss_lya_kev_mass_floor
+    - con_bullet_self_interaction_window
+    - con_planck_isocurvature_subdominance
+    derived_quantities:
+    - post-preheating abundance
+    - dark-sector entropy ratio
+    - 4-to-2 depletion
+    - present relic density
+    - self-interaction cross section
+    description: Track scalar dark matter production during preheating/reheating, subsequent dark-sector
+      number changing, and cosmological/self-interaction constraints.
+    forward_model_chain:
+    - inputs:
+      - inflaton potential
+      - inflaton-DM couplings
+      notes: The batch did not rerun the lattice simulation.
+      outputs:
+      - initial scalar abundance
+      step_id: s1
+      step_type: simulation
+      tool_or_code: LATTICEEASY-style lattice simulation
+      validity: Valid for the source preheating setup.
+    - inputs:
+      - initial abundance
+      - separate sector entropy
+      notes: Use source equations for numerical values.
+      outputs:
+      - dark temperature
+      - relic abundance estimate
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Requires negligible SM thermalization.
+    - inputs:
+      - lambda_phi
+      - m_phi
+      notes: No Boltzmann integration rerun here.
+      outputs:
+      - 4-to-2 depletion
+      - self-interaction cross section
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Applies in the Z2 case where 3-to-2 is absent.
+    id: route_preheating_to_scalar_relic
+    input_parameters:
+    - inflaton-DM couplings
+    - m_phi
+    - lambda_phi
+    - initial dark abundance
+    - dark temperature
+    likelihoods:
+    - Planck/isocurvature constraints not rerun
+    - Lyman-alpha mass floor used qualitatively
+    - Bullet Cluster self-interaction bound used qualitatively
+    observable_ids:
+    - obs_preheating_scalar_abundance
+    - obs_scalar_cannibal_depletion
+    - obs_light_scalar_isocurvature
+    required_code_resources:
+    - lattice preheating code
+    - dark-sector Boltzmann solver
+    - self-interaction recast
+    route_status: partially_implemented
+    source_model_features:
+    - Z2-stabilized real scalar
+    - negligible Higgs portal
+    - inflaton-to-dark-sector couplings
+    - 4-to-2 self-annihilation
+    validation_tests:
+    - recover source benchmark f(T0)=5.3
+    - recover exclusion of too-light/high-self-coupling region

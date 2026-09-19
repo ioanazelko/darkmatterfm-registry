@@ -1,0 +1,312 @@
+_source:
+  shard: arXiv_src_0909_001_wds.tar
+  paper_id: 0909_0520
+  source_member: 0909_0520.json
+schema_version: model_only_v0
+model_id: 0909_0520_real_singlet_scalar_inflaton_dm_v1
+identity:
+  name: Real gauge-singlet scalar inflaton dark matter
+  family: higgs_portal_scalar_dark_matter
+  aliases:
+  - real S inflation dark matter
+  - Z2 gauge singlet scalar thermal relic
+  short_description: A real gauge-singlet scalar S added to the Standard Model with a Z_2 stabilizing
+    symmetry, Higgs-portal thermal freeze-out, and non-minimal gravitational coupling so S can also drive
+    inflation.
+  historical_origin_or_motivation: The paper proposes a minimally extended Standard Model in which one
+    weak-scale scalar accounts for both inflation and thermal relic dark matter.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - Standard Model plus real gauge singlet scalar
+  - non-minimal inflation
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  embedded_in_larger_framework: unknown
+  notes: The scalar potential is renormalizable in flat-space fields, while the model includes non-minimal
+    coupling to gravity and is treated as an effective theory below the Planck scale.
+particle_content:
+  dark_matter_candidate:
+    name: real gauge singlet scalar S
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - Higgs boson
+  - gravity during inflation
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: A discrete Z_2 symmetry stabilizes the real singlet scalar.
+  symmetries:
+  - name: Z_2
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - gravitational
+  standard_model_targets:
+  - Higgs doublet
+  - W bosons
+  - Z bosons
+  - Standard Model fermions
+  dark_sector_couplings:
+  - lambda_hs S^2 H^2
+  - xi_s S^2 R
+  mediator_types:
+  - Higgs boson
+  - metric/gravity in the inflationary regime
+  annihilation_channels:
+  - SS to hh
+  - SS to WW
+  - SS to ZZ
+  - SS to f fbar
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: singlet scalar mass
+    symbol: m_s
+    description: Real S mass compatible with inflation and relic density in the paper.
+    range:
+      min: '45'
+      max: '1000'
+      unit: GeV
+      notes: Quoted for real S with large quartic self-coupling
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: Higgs mass
+    symbol: m_h
+    description: Higgs mass range compatible with the combined constraints in the paper.
+    range:
+      min: '145'
+      max: '170'
+      unit: GeV
+    unit: GeV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: Higgs portal coupling
+    symbol: lambda_hs
+    description: Coupling between S*S and H*H controlling annihilation and relic density.
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: singlet quartic coupling
+    symbol: lambda_s
+    description: S self-coupling; examples include small 0.025 and large 0.2 at the top mass scale.
+    value: examples 0.025 and 0.2
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: non-minimal gravitational coupling
+    symbol: xi_s
+    description: Non-minimal S*S R coupling used for S inflation.
+    role: core
+    status: inferred
+    source_reference_ids: []
+production:
+  mechanisms:
+  - thermal freeze-out through Higgs-portal annihilation
+  - inflation along the S direction
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - Higgs portal coupling
+  - m_s
+  - m_h
+  - annihilation cross sections to SM final states
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper relates m_s and the portal coupling by imposing the observed thermal relic density.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - m_s
+  - m_h
+  - lambda_hs
+  - SS annihilation cross sections
+  - freeze-out temperature
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - S-field inflation before the thermal dark-matter era
+  phase_transitions: []
+  bbn_relevance: unknown
+  cmb_relevance: high
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: Lee-Weinberg freeze-out approximation is used for the relic density.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: s_direction_inflation
+  applies_to: model
+  condition: The extracted model is the paper's S-direction inflation case; mixed h-S inflation trajectories
+    are explicitly left for future work.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: perturbative_stable_region
+  applies_to: model
+  condition: Parameter ranges must satisfy vacuum-stability and perturbativity bounds in addition to relic
+    density and spectral-index requirements.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: z2_exact
+    description: The stabilizing Z_2 symmetry remains exact after electroweak symmetry breaking.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: standard_freezeout
+    description: The late-time dark-matter abundance is computed with standard thermal freeze-out.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: s_direction
+    description: Inflation occurs along the S direction.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: 'no'
+  code_summary: No associated model code release is described in the assigned paper text.
+  primary_code_role: null
+provenance:
+  model_id: 0909_0520_real_singlet_scalar_inflaton_dm_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: 0909_0520
+      title: Gauge singlet scalar as inflaton and thermal relic dark matter
+      year: 2009
+      arxiv_id: '0909.0520'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used for extraction.
+  extraction:
+    method: llm_assisted
+    extracted_by: Codex batch-0002 dark-matter extraction worker
+    extractor_name: gpt-5.5 dark-matter model-card pass
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: 0909_0520
+      section: introduction, model definition, dark matter density appendix
+      page: null
+      quote_or_summary: A stable real singlet scalar S is added, coupled to Higgs and gravity, and treated
+        as thermal relic dark matter and inflaton.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: 0909_0520
+      note: The paper adds a stable gauge singlet scalar S to the Standard Model; the real case is tied
+        to a Z_2 symmetry.
+      confidence: medium
+      section: introduction
+      page: null
+    symmetries:
+    - reference_id: 0909_0520
+      note: A discrete Z_2 is imposed for stability of real scalars.
+      confidence: medium
+      section: introduction
+      page: null
+    interactions:
+    - reference_id: 0909_0520
+      note: The Jordan-frame action includes S*S H*H and non-minimal S*S R couplings; annihilation proceeds
+        through Higgs-portal channels.
+      confidence: medium
+      section: model and Appendix B
+      page: null
+    production_mechanism:
+    - reference_id: 0909_0520
+      note: The paper assumes thermal relic gauge-singlet scalars and uses the Lee-Weinberg approximation
+        for the relic density.
+      confidence: medium
+      section: dark matter density
+      page: null
+    cosmological_history:
+    - reference_id: 0909_0520
+      note: S is also the inflaton; reheating is expected through S oscillations to Higgs bosons via the
+        |S|^2 |H|^2 interaction.
+      confidence: medium
+      section: conclusions
+      page: null
+    parameter_ranges:
+    - reference_id: 0909_0520
+      note: For real S, the abstract quotes 45 GeV <= m_s <= 1 TeV and 145 GeV <= m_h <= 170 GeV in the
+        compatible region.
+      confidence: medium
+      section: abstract
+      page: null
+    validity_domain:
+    - reference_id: 0909_0520
+      note: The paper focuses on inflation along the s direction and notes that more general trajectories
+        remain to be investigated.
+      confidence: medium
+      section: conclusions
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - inflation trajectory and singlet self-coupling are not fixed by late-time observables
+  validation_status: expert_judgment_only
+  notes: The card records model definition and relic logic only, not the paper's excluded constraints
+    block.
+agent_failure_modes:
+  warnings:
+  - id: inflation_direction
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper focuses on S-direction inflation; using the card for mixed Higgs-singlet trajectories
+      would exceed the extracted model scope.
+    source_reference_ids: []
+    mitigation: Keep the S-direction assumption attached to inflation claims.

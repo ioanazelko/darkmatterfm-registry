@@ -1,0 +1,658 @@
+_source:
+  shard: arXiv_src_2309_003_wds.tar
+  paper_id: '2309_00323'
+  source_member: 2309_00323.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2309_00323_majorana_tchannel_freezein_v1
+identity:
+  name: Majorana t-channel mediator freeze-in dark matter
+  family: freeze_in_dark_matter
+  aliases:
+  - Majorana dark matter with t-channel scalar mediator
+  - SM-charged mediator freeze-in benchmark
+  short_description: A Majorana fermion dark matter benchmark produced by freeze-in through decays of
+    a heavier SM-charged scalar mediator, with thermal masses and modified expansion histories included.
+  historical_origin_or_motivation: Used to illustrate how thermal masses in decay processes and faster
+    cosmological expansion affect freeze-in abundance.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - freeze-in dark matter
+  - t-channel mediator model
+  - minimal flavour violation
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The mediator quantum numbers are tied to the selected SM fermion f=q,l through hypercharge Y_eta=-Y_f.
+particle_content:
+  dark_matter_candidate:
+    name: Majorana fermion X
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - SM-charged scalar mediator eta
+  mediators:
+  - t-channel scalar mediator eta
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles:
+  - eta mediator
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper requires M_eta > M to make X stable; the exact symmetry enforcing stability
+    is not specified in the extracted text.
+  symmetries:
+  - name: unknown mediator parity
+    type: unknown
+    exact_or_approximate: unknown
+    breaking: not specified
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - one SM right-handed fermion generation f=q,l
+  - SM gauge fields through the mediator covariant derivative
+  dark_sector_couplings:
+  - y X P_R f eta plus hermitian conjugate
+  mediator_types:
+  - SM-charged scalar t-channel mediator
+  interaction_operators:
+  - y X P_R f eta
+  - lambda_3 eta^dagger eta H^dagger H
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels:
+  - eta -> X f
+  - eta^* -> X anti-f
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: M
+    description: Mass of the Majorana fermion.
+    role: core
+    status: unknown
+    source_reference_ids: []
+  - name: mediator mass
+    symbol: M_eta
+    description: Mass of the scalar mediator, assumed larger than M.
+    range: M_eta > M
+    role: core
+    status: assumed
+    source_reference_ids: []
+  - name: Yukawa coupling
+    symbol: y
+    description: Freeze-in coupling between X, eta, and one SM fermion generation.
+    role: core
+    status: unknown
+    source_reference_ids: []
+  - name: Higgs portal quartic
+    symbol: lambda_3
+    description: eta-Higgs portal coupling; numerical examples set it to zero.
+    value: 0 in numerical freeze-in examples
+    role: core
+    status: assumed
+    source_reference_ids: []
+  - name: modified-expansion index
+    symbol: n
+    description: Exponent controlling faster-than-radiation expansion.
+    role: cosmological
+    status: assumed
+    source_reference_ids: []
+production:
+  mechanisms:
+  - freeze-in from mediator decays
+  - thermal-mass-modified 1-to-2 decays
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - eta -> X f decay rate
+  - thermal masses of eta and f
+  - Yukawa coupling y
+  - Hubble rate
+  depends_on_reheating_temperature: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper writes a source-only rate equation for freeze-in and studies how thermal masses suppress
+    or enhance production.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - y
+  - M
+  - M_eta
+  - thermal masses
+  - T_max
+  - modified Hubble rate
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - faster-than-radiation expansion before BBN
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - thermal-mass effects in the plasma; first-order electroweak phase transition possible for finite lambda_3
+    in lepton scenario
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: high
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: unknown
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper solves for the yield rather than giving a full phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: valid_freeze_in
+  applies_to: production calculation
+  condition: Dark matter abundance is small enough that inverse processes and loss terms can be neglected.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: valid_decay_only
+  applies_to: thermal rate calculation
+  condition: Only 1-to-2 decays are included when assessing thermal masses; 2-to-2 scatterings are noted
+    but not included in the extracted rate.
+  status: approximate
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids: []
+- id: valid_mass_hierarchy
+  applies_to: stability
+  condition: The scalar mediator is heavier than the Majorana dark matter particle.
+  valid_range: M_eta > M
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids: []
+assumptions:
+  global:
+  - id: a1
+    description: The freeze-in coupling y is feeble enough that X never equilibrates.
+    scope: production
+    status: assumed
+    impact_if_violated: Equilibration would turn the model into a different production regime.
+    can_be_relaxed: unknown
+    source_reference_ids: []
+  - id: a2
+    description: Minimal flavour violation is used by coupling to one SM fermion generation at a time.
+    scope: theory
+    status: assumed
+    impact_if_violated: Different flavor structure changes mediator quantum numbers and thermal rates.
+    can_be_relaxed: unknown
+    source_reference_ids: []
+associated_code:
+  has_associated_code: unknown
+  code_summary: No associated model code is identified in the extracted paper text.
+  primary_code_role: null
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  expected_inputs: []
+  expected_outputs: []
+  supported_observable_channels: []
+  caveats: []
+provenance:
+  model_id: 2309_00323_majorana_tchannel_freezein_v1
+  model_name: Majorana t-channel mediator freeze-in dark matter
+  model_family: freeze_in_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2309.00323
+      title: Interplay between improved particle rates and modified cosmological histories for dark matter
+      authors:
+      - S. Biondini
+      year: 2023
+      arxiv_id: '2309.00323'
+      doi: null
+      url: null
+      role: benchmark
+      notes: Assigned full text from the run SQLite database.
+    - arxiv_id: '2309.00323'
+      authors:
+      - Biondini, Simone
+      doi: 10.3389/fphy.2023.1285986
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: src_2309_primary
+      role: original_model
+      title: Interplay between improved interaction rates and modified cosmological histories for dark
+        matter
+      url: https://arxiv.org/abs/2309.00323
+      year: 2023
+    constraint_papers:
+    - arxiv_id: '2203.04326'
+      authors:
+      - Becker, Mathias
+      - Copello, Emanuele
+      - Harz, Julia
+      - Mohan, Kirtimaan A.
+      - Sengupta, Dipan
+      doi: 10.1007/JHEP08(2022)145
+      notes: Related local full text read for t-channel freeze-out and search-recast context.
+      reference_id: src_2203_tchannel_bsf
+      role: constraint
+      title: Impact of Sommerfeld effect and bound state formation in simplified t-channel dark matter
+        models
+      url: https://arxiv.org/abs/2203.04326
+      year: 2022
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1902.08623'
+      authors:
+      - Dvorkin, Cora
+      - Lin, Tongyan
+      - Schutz, Katelin
+      doi: 10.1103/PhysRevD.99.115009
+      notes: Related local full text read for freeze-in thermal/plasma effects context.
+      reference_id: src_1902_plasma_freezein
+      role: review
+      title: 'Making dark matter out of light: Freeze-in from plasma effects'
+      url: https://arxiv.org/abs/1902.08623
+      year: 2019
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_worker_batch_0003
+    extractor_name: Codex GPT-5.5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:2309.00323
+      section: Majorana dark matter and t channel mediators
+      page: null
+      quote_or_summary: The paper gives a Lagrangian for Majorana fermion dark matter X with a SM-charged
+        scalar mediator eta and Yukawa coupling y to one SM fermion generation.
+    - reference_id: arxiv:2309.00323
+      section: Freeze-in
+      page: null
+      quote_or_summary: Dark matter production is computed from 1-to-2 decays with thermal masses and
+        a source-only rate equation.
+    unresolved_items:
+    - 2-to-2 scattering network not included.
+    - Nonthermal momentum distribution and small-scale-structure impact were not extracted.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2309.00323
+      note: Dark matter is a Majorana fermion X; the accompanying mediator eta is charged under SM gauge
+        groups.
+      confidence: high
+      section: Majorana dark matter and t channel mediators
+      page: null
+    symmetries:
+    - reference_id: arxiv:2309.00323
+      note: The paper imposes M_eta > M so X is a stable dark matter candidate; the detailed stabilizing
+        symmetry is not specified.
+      confidence: medium
+      section: Majorana dark matter and t channel mediators
+      page: null
+    interactions:
+    - reference_id: arxiv:2309.00323
+      note: The Lagrangian includes eta kinetic/mass terms, quartics, and y X P_R f eta plus its conjugate.
+      confidence: high
+      section: Majorana dark matter and t channel mediators
+      page: null
+    production_mechanism:
+    - reference_id: arxiv:2309.00323
+      note: In freeze-in, X is produced in final states through eta -> X f decays, with thermal masses
+        included in the rate.
+      confidence: high
+      section: Majorana dark matter and t channel mediators; Freeze-in
+      page: null
+    cosmological_history:
+    - reference_id: arxiv:2309.00323
+      note: Freeze-in yields are evaluated together with modified expansion histories through the Hubble
+        rate.
+      confidence: high
+      section: Modified cosmological histories
+      page: null
+    parameter_ranges:
+    - reference_id: arxiv:2309.00323
+      note: The analysis fixes lambda_3=0 in numerical freeze-in examples and considers separate lepton
+        and top-quark couplings.
+      confidence: medium
+      section: Freeze-in
+      page: null
+    validity_domain:
+    - reference_id: arxiv:2309.00323
+      note: The freeze-in equation has no loss term and the paper keeps only 1-to-2 decays when assessing
+        thermal masses.
+      confidence: medium
+      section: Majorana dark matter and t channel mediators
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper quotes Planck Omega_DM h^2=0.1200 +/- 0.0012 and BBN-motivated lower reference
+        temperatures.
+      page: null
+      reference_id: src_2309_primary
+      section: Introduction and modified cosmology
+    observables:
+    - confidence: high
+      note: Primary paper compares Sommerfeld/bound-state freeze-out and thermal-mass freeze-in under
+        faster-than-radiation expansion.
+      page: null
+      reference_id: src_2309_primary
+      section: Abstract and model sections
+    - confidence: medium
+      note: Related local freeze-in text supports plasma/thermal production caveats for freeze-in calculations.
+      page: null
+      reference_id: src_1902_plasma_freezein
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary paper lays out rate inputs plus modified Hubble histories for relic-density evaluation.
+      page: null
+      reference_id: src_2309_primary
+      section: Freeze-out/freeze-in sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The paper uses this as an exemplary freeze-in class rather than naming a new canonical model.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - thermal masses
+  - omitted scattering processes
+  - modified cosmological history
+  - feeble coupling assumption
+  validation_status: expert_judgment_only
+  notes: The freeze-in source term and thermal-mass treatment are explicit, but the full scattering network
+    is not included.
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: extrapolation
+    warning: Do not extrapolate this card to compressed spectra or scattering-dominated freeze-in without
+      adding the processes the paper omits.
+    mitigation: Use the card only for the decay-driven thermal-mass setup extracted here.
+    source_reference_ids:
+    - arxiv:2309.00323
+observables:
+- caveats:
+  - Only 1-to-2 decays are included in the extracted primary calculation; scatterings are a missing network.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - thermal plasma
+  id: obs_tchannel_thermal_mass_freezein
+  key_quantities:
+  - description: Freeze-in dark matter mass.
+    name: Majorana DM mass
+    role: core
+    source_reference_ids:
+    - src_2309_primary
+    status: inferred
+    symbol: M
+  - description: Scalar mediator mass, heavier than DM.
+    name: mediator mass
+    range: M_eta > M
+    role: core
+    source_reference_ids:
+    - src_2309_primary
+    status: inferred
+    symbol: M_eta
+  - description: Feeble coupling controlling eta -> X f production.
+    name: Yukawa coupling
+    role: core
+    source_reference_ids:
+    - src_2309_primary
+    status: inferred
+    symbol: y
+  - description: Temperature controlling recovery to radiation-dominated expansion.
+    name: reference temperature
+    range: examples above BBN lower bounds
+    role: cosmological
+    source_reference_ids:
+    - src_2309_primary
+    status: inferred
+    symbol: T_ref
+    unit: GeV
+  linked_constraints:
+  - con_freezein_feeble_validity
+  - con_relic_planck_target
+  - con_modified_expansion_bbn_floor
+  linked_routes:
+  - route_tchannel_freezein_modified_history
+  name: Thermal-mass-modified t-channel freeze-in yield
+  notes: null
+  observability: medium
+  predicted_effect: Feeble Majorana DM production from mediator decays is sensitive to thermal masses;
+    the primary paper finds thermal effects can suppress or enhance the freeze-in yield and modified expansion
+    can reduce the abundance.
+  redshift_range: freeze-in epoch at temperatures of order mediator/DM masses
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - src_2309_primary
+  - src_1902_plasma_freezein
+  subchannel: freeze-in production
+constraints:
+- allowed_regions:
+  - Use feeble couplings and M_eta > M so decays produce out-of-equilibrium Majorana DM.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Freeze-in is dominated by thermal-mass-corrected 1-to-2 decays.
+    id: decay_dominated_freezein
+    impact_if_violated: 2-to-2 scatterings or inverse reactions can alter the yield.
+    notes: null
+    scope: t-channel freeze-in route
+    source_reference_ids:
+    - src_2309_primary
+    - src_1902_plasma_freezein
+    status: assumed
+  benchmark_implications:
+  - The model can match the relic target only inside the source-only/feeble-production regime.
+  caveats:
+  - Thermal masses and phase transitions are model-dependent.
+  constrained_parameters:
+  - y
+  - M
+  - M_eta
+  - thermal masses
+  constraint_type: theoretical
+  data_release: null
+  excluded_regions:
+  - Large y or small abundance hierarchy would require inverse processes and scatterings, invalidating
+    the source-only freeze-in equation.
+  id: con_freezein_feeble_validity
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Freeze-in source-only validity
+  notes: null
+  observable_channel: freeze-in Boltzmann equation
+  recasting_needed: partial
+  robustness: medium
+  source_reference_ids:
+  - src_2309_primary
+  - src_1902_plasma_freezein
+- allowed_regions:
+  - Relic curves are tuned to Omega_DM h^2=0.1200 +/- 0.0012.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - Mass/coupling benchmarks should be read as relic-density contour points, not hard exclusions.
+  caveats:
+  - No Planck likelihood was rerun.
+  constrained_parameters:
+  - Omega_DM h^2
+  - M
+  - couplings
+  constraint_type: cosmological
+  data_release: Planck 2018 relic abundance quoted by the primary paper
+  excluded_regions:
+  - Benchmarks missing Omega_DM h^2=0.1200 +/- 0.0012 fail the source target.
+  id: con_relic_planck_target
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Planck relic-density target
+  notes: null
+  observable_channel: relic_density
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - src_2309_primary
+- allowed_regions:
+  - Displayed examples stay above about 3.9 MeV for n=2 and 1.9 MeV for n=4; BBN occurs at O(1-4) MeV.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'no'
+    description: The additional energy density becomes subdominant by BBN.
+    id: radiation_by_bbn
+    impact_if_violated: Relic-density points with too-late recovery conflict with BBN.
+    notes: null
+    scope: modified Hubble history
+    source_reference_ids:
+    - src_2309_primary
+    status: assumed
+  benchmark_implications:
+  - Modified-history relic contours need the BBN floor before interpreting small T_ref points.
+  caveats:
+  - The exact BBN likelihood for the extra component was not run.
+  constrained_parameters:
+  - T_ref
+  - n
+  - rho_extra/rho_rad
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Reference temperatures below the source lower bounds would spoil the assumed BBN-safe recovery of
+    radiation domination.
+  id: con_modified_expansion_bbn_floor
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: BBN floor for faster pre-BBN expansion
+  notes: null
+  observable_channel: modified_expansion
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - src_2309_primary
+theory_to_observable_routing:
+  routes:
+  - agent_notes: No freeze-in integral was rerun.
+    caveats:
+    - Scattering channels and phase-transition dependence remain unresolved.
+    constraint_ids:
+    - con_freezein_feeble_validity
+    - con_relic_planck_target
+    - con_modified_expansion_bbn_floor
+    derived_quantities:
+    - thermal masses
+    - decay width
+    - freeze-in yield
+    - Omega_DM h^2
+    description: Compute Majorana t-channel freeze-in with thermal masses and a faster pre-BBN expansion
+      history.
+    forward_model_chain:
+    - inputs:
+      - temperature
+      - M_eta
+      - SM thermal parameters
+      notes: null
+      outputs:
+      - m_eta(T)
+      - m_f(T)
+      step_id: thermal_masses
+      step_type: data_transform
+      tool_or_code: null
+      validity: Source thermal-mass approximation.
+    - inputs:
+      - m_eta(T)
+      - m_f(T)
+      - y
+      notes: null
+      outputs:
+      - production rate
+      step_id: decay_source
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: 1-to-2 decays only.
+    - inputs:
+      - production rate
+      - H(T;n,T_ref)
+      notes: null
+      outputs:
+      - Y_X
+      - Omega_DM h^2
+      step_id: yield_integral
+      step_type: boltzmann_solver
+      tool_or_code: null
+      validity: Freeze-in source term; neglect inverse processes.
+    id: route_tchannel_freezein_modified_history
+    input_parameters:
+    - M
+    - M_eta
+    - y
+    - lambda_3
+    - T_max
+    - n
+    - T_ref
+    likelihoods:
+    - Planck relic target
+    - BBN floor
+    observable_ids:
+    - obs_tchannel_thermal_mass_freezein
+    required_code_resources:
+    - thermal-mass module
+    - freeze-in Boltzmann integrator
+    route_status: planned
+    source_model_features:
+    - Majorana DM
+    - heavier scalar mediator
+    - feeble Yukawa coupling
+    - thermal-mass corrected decays
+    validation_tests:
+    - recover source yield suppression/enhancement examples

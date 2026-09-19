@@ -1,0 +1,310 @@
+_source:
+  shard: arXiv_src_1711_017_wds.tar
+  paper_id: '1711_06590'
+  source_member: 1711_06590.json
+schema_version: model_only_v0
+model_id: 1711_06590_qcd_axion_hidden_photon_coupled_v1
+identity:
+  name: QCD axion dark matter coupled to hidden photons
+  family: axion_like_dark_matter
+  aliases:
+  - QCD axion with hidden photon coupling
+  - hidden-photon-coupled QCD axion
+  short_description: A QCD axion dark matter scenario in which a coupling to massless hidden photons triggers
+    tachyonic hidden-photon production, backreacting on the axion and changing the final misalignment
+    abundance.
+  historical_origin_or_motivation: Motivated by relaxing the usual cosmological upper bound on the QCD
+    axion decay constant through nonstandard coupling to hidden photons.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - Peccei-Quinn QCD axion
+  - hidden U(1) gauge sector
+  - clockwork/aligned axion motivation for large coupling
+  lagrangian_available: 'yes'
+  renormalizable: 'no'
+  eft_cutoff: null
+  embedded_in_larger_framework: unknown
+  notes: The relevant low-energy axion electrodynamics Lagrangian is written explicitly.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion field phi
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - massless hidden photon A_H
+  mediators:
+  - hidden U(1)_H photon
+  dark_radiation_species:
+  - hidden photons produced by tachyonic instability
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - QCD axion condensate
+  unstable_parent_particles: []
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: Axion longevity follows from Peccei-Quinn pseudo-Nambu-Goldstone structure; the
+    hidden photon coupling modifies abundance rather than destabilizing the axion in the paper analysis.
+  symmetries:
+  - name: Peccei-Quinn symmetry
+    type: global
+    exact_or_approximate: broken
+    breaking: QCD anomaly gives temperature-dependent axion potential
+    breaking_scale:
+      name: axion decay constant
+      symbol: f_a
+      description: PQ breaking/decay constant scale.
+      value: 10^16
+      unit: GeV
+      role: core
+      status: established
+  - name: hidden U(1)_H
+    type: gauge
+    exact_or_approximate: exact
+    breaking: unbroken massless hidden photon in the paper setup
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - axion
+  - other
+  standard_model_targets:
+  - QCD topological susceptibility
+  dark_sector_couplings:
+  - axion-hidden-photon Chern-Simons coupling
+  mediator_types:
+  - hidden photon
+  interaction_operators:
+  - phi F_H Ftilde_H / f_a
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: pseudoscalar axion coupling to hidden gauge-field dual
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: axion decay constant
+    symbol: f_a
+    description: Decay constant setting axion mass and couplings; f_a=10^16 GeV is emphasized in simulations.
+    value: 10^16
+    unit: GeV
+    role: core
+    status: established
+  - name: hidden photon coupling
+    symbol: alpha_H
+    description: Dimensionless coefficient of the axion-hidden-photon coupling.
+    range: O(100); suppression around alpha_H about 200 and transition near 300-400 in the paper discussion
+    role: core
+    status: approximate
+  - name: QCD crossover temperature
+    symbol: T_c
+    description: Temperature scale used in the lattice-QCD fit to topological susceptibility.
+    value: '0.16'
+    unit: GeV
+    role: core
+    status: established
+production:
+  mechanisms:
+  - misalignment production
+  - tachyonic hidden photon production
+  - backreaction of produced hidden photons on axion evolution
+  thermal_equilibrium_with_standard_model: 'no'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - initial axion misalignment
+  - axion decay constant
+  - hidden photon coupling alpha_H
+  - QCD temperature-dependent potential
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'yes'
+  notes: The hidden photon coupling can suppress or enhance the final axion abundance depending on alpha_H.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: nonthermal
+  key_dependencies:
+  - f_a
+  - alpha_H
+  - initial misalignment angle
+  - hidden photon backreaction
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - explosive production of hidden photons by tachyonic instability
+  - nonlinear backreaction on the axion field
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - QCD crossover controls the temperature-dependent axion potential
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: approximate
+  notes: The axion is evolved as a classical field on a lattice, with nonzero modes and hidden photon
+    backreaction.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: partial
+validity_domain:
+- id: no_light_hidden_matter
+  applies_to: model
+  condition: Applies to the massless hidden photon setup with no light U(1)_H-charged hidden matter fields.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+- id: lattice_evolution_regime
+  applies_to: model
+  condition: Abundance modification relies on lattice simulation of the nonlinear hidden photon production
+    regime.
+  status: established
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: a1
+    description: No light hidden matter fields are charged under U(1)_H.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: a2
+    description: The QCD topological susceptibility fit used in the paper adequately describes the temperature-dependent
+      axion potential.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper reports lattice simulations, but no public code resource is identified in the
+    extracted text.
+provenance:
+  model_id: 1711_06590_qcd_axion_hidden_photon_coupled_v1
+  model_name: null
+  model_family: null
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1711.06590'
+      title: Cosmological abundance of the QCD axion coupled to hidden photons
+      authors:
+      - Naoya Kitajima
+      - Toyokazu Sekiguchi
+      - Fuminobu Takahashi
+      year: 2017
+      arxiv_id: '1711.06590'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex GPT-5 batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1711.06590'
+      section: introduction and axion electrodynamics
+      page: null
+      quote_or_summary: QCD axion coupled to hidden photons is simulated to determine abundance changes
+        from tachyonic hidden-photon production.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '1711.06590'
+      note: The dark matter candidate is the QCD axion, coupled to a massless hidden U(1)_H photon field.
+      confidence: high
+      section: introduction/axion electrodynamics
+      page: null
+    symmetries:
+    - reference_id: '1711.06590'
+      note: The axion is a pseudo Nambu-Goldstone boson of the Peccei-Quinn mechanism; the hidden photon
+        is a U(1)_H gauge field with no light hidden matter fields.
+      confidence: high
+      section: introduction
+      page: null
+    interactions:
+    - reference_id: '1711.06590'
+      note: The Lagrangian contains the QCD axion potential plus the coupling alpha_H/(4 f_a) phi F_H
+        Ftilde_H.
+      confidence: high
+      section: axion electrodynamics
+      page: null
+    production_mechanism:
+    - reference_id: '1711.06590'
+      note: The axion abundance arises from misalignment, modified by tachyonic production of hidden photons
+        and backreaction on the axion.
+      confidence: high
+      section: axion electrodynamics/results
+      page: null
+    parameter_ranges:
+    - reference_id: '1711.06590'
+      note: The study highlights f_a=10^16 GeV and coupling alpha_H around a few hundred, with abundance
+        suppression or enhancement depending on alpha_H.
+      confidence: medium
+      section: results
+      page: null
+    cosmological_history:
+    - reference_id: '1711.06590'
+      note: Hidden photon production converts axion kinetic energy into hidden photons and can relax the
+        upper bound on f_a by a few hundred in some coupling range.
+      confidence: medium
+      section: results
+      page: null
+    validity_domain:
+    - reference_id: '1711.06590'
+      note: The paper assumes no light hidden matter charged under U(1)_H and uses lattice simulations
+        for the nonlinear regime.
+      confidence: high
+      section: model setup
+      page: null
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Final abundance is non-monotonic in the hidden-photon coupling and depends on nonlinear lattice evolution.
+  validation_status: partially_validated
+agent_failure_modes:
+  warnings:
+  - id: w1
+    severity: medium
+    category: extrapolation
+    warning: Do not apply the abundance suppression monotonically with alpha_H; the paper finds suppression
+      for moderate coupling and enhancement for sufficiently large coupling.
+    source_reference_ids:
+    - '1711.06590'

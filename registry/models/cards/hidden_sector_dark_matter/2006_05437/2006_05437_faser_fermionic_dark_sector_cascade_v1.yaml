@@ -1,0 +1,646 @@
+_source:
+  shard: arXiv_src_2006_019_wds.tar
+  paper_id: '2006_05437'
+  source_member: 2006_05437.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2006_05437_faser_fermionic_dark_sector_cascade_v1
+identity:
+  name: FASER fermionic dark-sector cascade model
+  family: hidden_sector_dark_matter
+  aliases:
+  - fermionic X and Y FASER model
+  - light dark-sector cascade model
+  short_description: A sub-10 GeV fermionic dark matter model where stable Y freezes out by annihilating
+    to neutral dark-sector intermediates that later yield FASER-visible cascade decays.
+  historical_origin_or_motivation: Motivated by light dark matter needing interactions beyond weak annihilation
+    to obtain the observed relic abundance and by FASER sensitivity to long-lived dark-sector cascades.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - light dark sector
+  - FASER long-lived particle scenario
+  lagrangian_available: partial
+  renormalizable: 'no'
+  embedded_in_larger_framework: unknown
+  notes: The paper provides effective interactions for an axion-like X prime coupled to gluons plus dark-sector
+    couplings; full UV completion is not specified.
+particle_content:
+  dark_matter_candidate:
+    name: Y
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - X
+  - neutral eta-like intermediate states
+  mediators:
+  - heavy SM-singlet fermion V
+  - axion-like X prime
+  long_lived_particles:
+  - X
+  - neutral eta-like intermediates
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Exact Z2 symmetry makes the lighter odd state Y stable.
+  symmetries:
+  - name: dark-sector Z2 stabilizing Y
+    type: discrete
+    exact_or_approximate: exact
+  - name: approximate Z2 suppressing X decay coupling
+    type: discrete
+    exact_or_approximate: approximate
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - gluons
+  - electrons
+  - positrons
+  - charged leptons
+  dark_sector_couplings:
+  - g_Y coupling among Y, neutral scalar, and V
+  - g_X coupling among X, neutral scalar, and V
+  - X prime to dark-sector pair coupling
+  mediator_types:
+  - axion-like pseudoscalar X prime
+  - heavy fermion V
+  - neutral scalar intermediate
+  annihilation_channels:
+  - Y plus anti-Y to neutral intermediate pair
+  decay_channels:
+  - X to Y plus two neutral intermediates
+  - neutral intermediates to charged lepton pairs
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_Y
+    description: Mass of the stable fermionic dark matter particle Y.
+    range: sub-10 GeV light dark matter regime
+    unit: GeV
+    role: core
+    status: assumed
+  - name: X mass
+    symbol: m_X
+    description: Mass of the heavier Z2-odd state X appearing in the cascade.
+    range: model-dependent; benchmark formulas use GeV scale
+    unit: GeV
+    role: core
+    status: assumed
+  - name: heavy fermion mass
+    symbol: m_V
+    description: Mass of the SM-singlet fermion mediating Y annihilation.
+    value: 10 GeV benchmark
+    unit: GeV
+    role: core
+    status: assumed
+  - name: annihilation coupling
+    symbol: g_Y
+    description: Coupling controlling Y annihilation to neutral intermediates.
+    value: about 0.07 (m_V/10 GeV)^1/2 for 1 pb annihilation
+    role: core
+    status: inferred
+  - name: cascade coupling
+    symbol: g_X
+    description: Small coupling controlling displaced X decay.
+    value: about 1e-4 times benchmark factors
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through Y anti-Y annihilation to neutral intermediates
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - annihilation cross section near 1 pb
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The neutral intermediates are kept connected to the plasma through their charged-lepton coupling
+    while X and Y remain equilibrated above their masses.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - g_Y
+  - m_V
+  - m_Y
+  - neutral intermediate mass
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - long-lived X decays arranged to avoid BBN problems
+  bbn_relevance: medium
+  cmb_relevance: low
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Relic abundance is treated through freeze-out cross-section estimates rather than an explicit
+    phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: Not studied in the paper; GeV thermal relic is implicitly cold on structure-formation
+      scales.
+    subhalo_mass_function_effect: Not studied in the paper; GeV thermal relic is implicitly cold on structure-formation
+      scales.
+    simulation_calibrated: 'no'
+validity_domain:
+- id: valid_faser_fermionic_01
+  applies_to: model
+  condition: Applies to light dark matter below about 10 GeV with a dark-sector annihilation mode replacing
+    weak-only annihilation.
+  status: assumed
+  extrapolation_risk: medium
+- id: valid_faser_fermionic_02
+  applies_to: parameter
+  condition: FASER cascade discussion assumes long-lived X and neutral intermediates with decay lengths
+    compatible with the detector geometry.
+  status: assumed
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: asm_faser_fermionic_01
+    description: Y is the lighter exact-Z2-odd state and is stable cosmologically.
+    scope: global
+    status: assumed
+  - id: asm_faser_fermionic_02
+    description: Dark-sector couplings maintain equilibrium until freeze-out and yield an annihilation
+      cross section near 1 pb.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code was identified in the assigned paper text.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+provenance:
+  model_id: 2006_05437_faser_fermionic_dark_sector_cascade_v1
+  model_name: FASER fermionic dark-sector cascade model
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2006_05437'
+      title: Unravelling the richness of dark sector by FASER
+      authors:
+      - Pouya Bakhti
+      - Yasaman Farzan
+      - Silvia Pascoli
+      year: 2020
+      arxiv_id: '2006.05437'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text was the only source used.
+    - arxiv_id: '2006.05437'
+      authors:
+      - Bakhti, Pouya
+      - Farzan, Yasaman
+      - Pascoli, Silvia
+      doi: 10.1007/JHEP10(2020)008
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2006.05437
+      role: original_model
+      title: Unravelling the richness of dark sector by FASERnu
+      url: https://arxiv.org/abs/2006.05437
+      year: 2020
+    constraint_papers:
+    - arxiv_id: '1811.12522'
+      authors:
+      - FASER Collaboration
+      - Ariga, Akitaka
+      - Ariga, Tomoko
+      - Boyd, Jamie
+      - Cadoux, Franck
+      - Casper, David W.
+      - Favre, Yannick
+      - Feng, Jonathan L.
+      doi: 10.48550/arXiv.1811.12522
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1811.12522
+      role: implementation
+      title: FASER's Physics Reach for Long-Lived Particles
+      url: https://arxiv.org/abs/1811.12522
+      year: 2018
+    - arxiv_id: '1801.08947'
+      authors:
+      - Kling, Felix
+      - Trojanowski, Sebastian
+      doi: 10.1103/PhysRevD.97.095016
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1801.08947
+      role: implementation
+      title: Heavy neutral leptons at FASER
+      url: https://arxiv.org/abs/1801.08947
+      year: 2018
+    - arxiv_id: '1911.11346'
+      authors:
+      - Jodłowski, Krzysztof
+      - Kling, Felix
+      - Roszkowski, Leszek
+      - Trojanowski, Sebastian
+      doi: 10.1103/PhysRevD.101.095020
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1911.11346
+      role: implementation
+      title: Extending the reach of FASER, MATHUSLA, and SHiP towards smaller lifetimes using secondary
+        particle production
+      url: https://arxiv.org/abs/1911.11346
+      year: 2020
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_dark_matter_model_worker_batch_0003
+    extractor_name: Codex GPT-5 dark-matter batch worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2006_05437'
+      section: Introduction
+      page: null
+      quote_or_summary: The authors say they develop a class of dark matter models with cascade decays
+        and freeze-out production.
+    - reference_id: '2006_05437'
+      section: Connection to dark matter
+      page: null
+      quote_or_summary: Fermionic X and Y require a heavy singlet fermion V and a Z2 symmetry stabilizing
+        Y.
+    unresolved_items:
+    - The text extraction drops some Greek field names, so neutral scalar labels are recorded descriptively.
+    - FASER detector efficiency and background model were not reproduced.
+    - The relic-density relation is a benchmark target, not a computed likelihood in this pass.
+  evidence:
+    particle_content:
+    - reference_id: '2006_05437'
+      note: The paper builds a light dark matter model in which Y is the stable dark matter state, with
+        X and lighter neutral states forming a cascade decay chain.
+      confidence: high
+      section: Connection to dark matter
+    symmetries:
+    - reference_id: '2006_05437'
+      note: An exact Z2 symmetry under which X and Y are odd stabilizes the lighter state Y; an approximate
+        Z2 explains suppressed X decay couplings.
+      confidence: high
+      section: Connection to dark matter
+    interactions:
+    - reference_id: '2006_05437'
+      note: For fermionic X and Y the authors introduce a heavy SM-singlet fermion V and couplings schematically
+        g_Y Y eta V and g_X X eta V.
+      confidence: high
+      section: Connection to dark matter
+    production_mechanism:
+    - reference_id: '2006_05437'
+      note: The model is designed so Y annihilation to neutral intermediates has cross section near 1
+        pb, giving standard thermal freeze-out.
+      confidence: high
+      section: Connection to dark matter
+    parameter_ranges:
+    - reference_id: '2006_05437'
+      note: Representative values include g_Y about 0.07 (m_V/10 GeV)^1/2 and much smaller g_X for displaced
+        X decays.
+      confidence: medium
+      section: Connection to dark matter
+    validity_domain:
+    - reference_id: '2006_05437'
+      note: The scenario targets sub-10 GeV light dark matter whose weak-only annihilation would underproduce
+        the needed freeze-out cross section.
+      confidence: high
+      section: Introduction
+    constraints:
+    - confidence: high
+      note: Primary paper gives the FASER-testable lifetime interval 10^-10 s < tau_X < 10^-4 s and benchmark
+        couplings for fermion/scalar dark matter.
+      page: null
+      reference_id: arxiv:2006.05437
+      section: Connection to dark matter
+    - confidence: medium
+      note: Related lifetime-frontier paper motivates recasting FASER/MATHUSLA/SHiP reach at smaller lifetimes.
+      page: null
+      reference_id: arxiv:1911.11346
+      section: Lifetime reach
+    observables:
+    - confidence: high
+      note: Primary paper describes FASERnu/FASER signatures with two charged-lepton pairs plus missing
+        transverse momentum from X decays.
+      page: null
+      reference_id: arxiv:2006.05437
+      section: Model and signal
+    - confidence: medium
+      note: FASER physics-reach paper provides local full-text context for long-lived-particle acceptance
+        in the forward detector.
+      page: null
+      reference_id: arxiv:1811.12522
+      section: FASER reach
+    routes:
+    - confidence: high
+      note: Primary paper writes the production, decay-length, and event-number chain from IP production
+        to decays in the forward detector.
+      page: null
+      reference_id: arxiv:2006.05437
+      section: FASER event rate
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: low
+  dominant_uncertainties:
+  - full UV completion not specified
+  - Greek field labels partially lost in text extraction
+  validation_status: expert_judgment_only
+  notes: Model-building ingredients and freeze-out estimates are explicit, but no dedicated cosmological
+    code or full UV model is provided.
+agent_failure_modes:
+  warnings:
+  - id: warn_faser_fermionic_01
+    severity: medium
+    category: notation_conflict
+    warning: The extracted text suppresses some Greek symbols, so eta-like neutral intermediates should
+      be checked against the paper source before final registry use.
+    mitigation: Verify field names during human review.
+  - id: warn_faser_fermionic_02
+    severity: medium
+    category: assumption_mismatch
+    warning: The model relies on approximate discrete symmetries to suppress unwanted two-body decays
+      and explain coupling hierarchies.
+    mitigation: Keep the approximate-symmetry assumptions attached to phenomenological uses.
+observables:
+- caveats:
+  - Background rejection depends on reconstructing charged-lepton-pair invariant masses.
+  channel: collider
+  effect_direction: morphology_change
+  environments:
+  - FASERnu/FASER detector
+  - ATLAS forward line
+  id: obs_faser_fermion_cascade
+  key_quantities:
+  - description: Rest-frame lifetime window with FASER sensitivity.
+    name: X lifetime
+    range: 10^-10 to 10^-4
+    role: core
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: tau_X
+    unit: s
+  - description: Distance from ATLAS IP used for decay acceptance.
+    name: detector distance
+    role: experimental
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: d
+    unit: m
+    value: 480
+  - description: Light dark matter mass scale in the model.
+    name: dark matter mass
+    range: around a few GeV
+    role: core
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: m_Y
+    unit: GeV
+  linked_constraints:
+  - con_faser_lifetime_window_fermion
+  linked_routes:
+  - route_fermion_cascade_to_faser
+  name: FASER forward cascade with fermionic dark matter
+  notes: null
+  observability: high
+  predicted_effect: Forward-produced X particles can reach the detector and decay to fermionic dark matter
+    Y plus visible charged fermions, giving displaced multi-lepton pairs and missing momentum.
+  redshift_range: LHC Run III forward events
+  relevance: critical
+  scale_range: 480 m baseline, highly forward production
+  source_reference_ids:
+  - arxiv:2006.05437
+  - arxiv:1811.12522
+  subchannel: long-lived neutral cascade
+- caveats:
+  - Relic-density target assumes the simplified mediator and approximate symmetry structure.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early universe
+  - hidden sector
+  id: obs_fermion_freezeout_couplings
+  key_quantities:
+  - description: Coupling giving roughly pb annihilation for m_V=10 GeV.
+    name: Y-vector coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: g_Y
+    value: 0.07 (m_V/10 GeV)^1/2
+  - description: Small coupling selected by the decay length.
+    name: X-vector coupling
+    role: core
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: g_X
+    value: about 10^-4 times benchmark mass and boost factors
+  - description: Benchmark vector mediator mass.
+    name: mediator mass
+    role: core
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: inferred
+    symbol: m_V
+    unit: GeV
+    value: 10
+  linked_constraints:
+  - con_fermion_coupling_relic_target
+  linked_routes:
+  - route_fermion_cascade_to_faser
+  name: Fermionic freeze-out coupling target
+  notes: null
+  observability: medium
+  predicted_effect: The fermionic model can realize a standard freeze-out target through Y annihilation
+    with g_Y near 0.07 and a much smaller g_X controlling the long-lived X decay.
+  redshift_range: thermal freeze-out
+  relevance: high
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:2006.05437
+  subchannel: thermal annihilation through vector mediator
+constraints:
+- allowed_regions:
+  - 10^-10 s < tau_X < 10^-4 s is quoted as an unexplored FASER-testable range in the primary paper.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The parent X-prime decay is prompt compared with the 480 m baseline.
+    id: prompt-parent-production
+    impact_if_violated: A displaced X-prime parent changes the effective baseline and event acceptance.
+    notes: null
+    scope: FASER acceptance
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: assumed
+  benchmark_implications:
+  - Forward cascade searches target multi-lepton plus missing-energy topologies.
+  caveats:
+  - Detector efficiency and backgrounds were not simulated in this batch.
+  constrained_parameters:
+  - tau_X
+  - m_X
+  - E_X
+  - d
+  constraint_type: collider
+  data_release: FASER/FASERnu LHC Run III forward-detector geometry
+  excluded_regions:
+  - tau_X much below 10^-10 s decays before the detector; tau_X much above 10^-4 s reduces decays inside
+    the fiducial volume.
+  id: con_faser_lifetime_window_fermion
+  likelihood_available: partial
+  likelihood_reference: null
+  name: FASER lifetime acceptance for fermionic cascade
+  notes: null
+  observable_channel: FASER displaced vertices
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2006.05437
+  - arxiv:1811.12522
+  - arxiv:1911.11346
+- allowed_regions:
+  - g_Y about 0.07 (m_V/10 GeV)^1/2 gives the benchmark annihilation cross section; g_X about 10^-4 times
+    benchmark factors gives the forward decay length.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: partial
+    description: The annihilation formula assumes the complex/light state setup described in the primary
+      paper.
+    id: complex-light-state
+    impact_if_violated: Changing the field content alters the annihilation channel and coupling relation.
+    notes: null
+    scope: fermionic model
+    source_reference_ids:
+    - arxiv:2006.05437
+    status: assumed
+  benchmark_implications:
+  - The same parameter region controls relic abundance and FASER lifetime reach.
+  caveats:
+  - No relic-density code was run.
+  constrained_parameters:
+  - g_Y
+  - g_X
+  - m_V
+  - m_Y
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions: []
+  id: con_fermion_coupling_relic_target
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Fermionic dark-sector freeze-out coupling target
+  notes: null
+  observable_channel: thermal relic density
+  recasting_needed: 'no'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2006.05437
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Parent-production and detector-efficiency systematics remain external.
+    constraint_ids:
+    - con_faser_lifetime_window_fermion
+    - con_fermion_coupling_relic_target
+    derived_quantities:
+    - annihilation cross section
+    - boosted decay length
+    - visible-pair invariant masses
+    - event yield
+    description: Propagate the fermionic hidden-sector cascade from production at the ATLAS IP to displaced
+      visible decays in FASER.
+    forward_model_chain:
+    - inputs:
+      - g_Y
+      - m_V
+      notes: Use pb-scale freeze-out target.
+      outputs:
+      - Y annihilation cross section
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary simplified-model limit.
+    - inputs:
+      - g_X
+      - g_Y
+      - m_X
+      - m_V
+      - E_X
+      notes: Use source decay-rate scaling.
+      outputs:
+      - tau_X
+      - decay probability at 480 m
+      step_id: s2
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid for the benchmark cascade kinematics.
+    - inputs:
+      - decay probability
+      - visible branching ratios
+      - detector geometry
+      notes: Not run in this batch.
+      outputs:
+      - FASER event count
+      step_id: s3
+      step_type: likelihood
+      tool_or_code: null
+      validity: Requires detector efficiency model.
+    id: route_fermion_cascade_to_faser
+    input_parameters:
+    - m_Y
+    - m_X
+    - m_V
+    - g_Y
+    - g_X
+    - tau_X
+    - E_X
+    likelihoods:
+    - FASER event-count likelihood unavailable
+    observable_ids:
+    - obs_faser_fermion_cascade
+    - obs_fermion_freezeout_couplings
+    required_code_resources:
+    - forward-detector acceptance simulation
+    - thermal relic calculator
+    route_status: planned
+    source_model_features:
+    - fermionic GeV-scale Y dark matter
+    - neutral long-lived X mediator
+    - vector mediator V
+    validation_tests:
+    - recover 10^-10 s < tau_X < 10^-4 s reach
+    - recover g_Y benchmark relation

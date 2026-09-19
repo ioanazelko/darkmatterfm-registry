@@ -1,0 +1,281 @@
+_source:
+  shard: arXiv_src_2008_020_wds.tar
+  paper_id: '2008_03746'
+  source_member: 2008_03746.json
+schema_version: model_only_v0
+model_id: 2008_03746_nl_mssm_higgs_portal_scalar_dm_v1
+identity:
+  name: Higgs-portal scalar dark matter in the nonlinear MSSM
+  family: higgs_portal_dark_matter
+  aliases:
+  - NL-MSSM Higgs-portal DM
+  - Z2-odd singlet chiral-superfield scalar DM
+  short_description: A minimal nonlinear-MSSM extension with a Z2-odd SM-singlet chiral superfield whose
+    lightest real scalar is stable and couples to the MSSM Higgs sector as Higgs-portal dark matter.
+  historical_origin_or_motivation: Introduced to supply a viable dark matter candidate because the very
+    light gravitino in low-scale nonlinear MSSM cannot be the dominant dark matter component.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - nonlinear MSSM
+  - low-scale supersymmetry
+  - Higgs-portal scalar dark matter
+  lagrangian_available: 'yes'
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper works in a low-energy nonlinear-MSSM description with nilpotent goldstino superfield
+    X and an added Z2-odd singlet chiral superfield.
+particle_content:
+  dark_matter_candidate:
+    name: lightest Z2-odd real scalar from the singlet chiral superfield
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - heavier real scalar component of the singlet chiral superfield
+  - very light gravitino/goldstino
+  mediators:
+  - SM-like Higgs boson
+  - MSSM Higgs doublets before decoupling
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z2 parity assigns odd parity to the singlet chiral superfield and even parity
+    to MSSM fields, stabilizing the lightest singlet component.
+  symmetries:
+  - name: z2_singlet_parity
+    type: discrete
+    exact_or_approximate: exact
+  - name: nilpotent_goldstino_constraint_x2_zero
+    type: unknown
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - Higgs boson
+  - weak gauge bosons
+  - SM fermions
+  dark_sector_couplings:
+  - singlet scalar coupling to MSSM Higgs doublets induced after eliminating goldstino auxiliary fields
+  - effective H^dagger H S^2 Higgs-portal interaction
+  mediator_types:
+  - scalar Higgs mediator
+  annihilation_channels:
+  - annihilation through Higgs boson to W bosons, Z bosons, quarks, and leptons
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_DM
+    description: Mass of the real scalar Higgs-portal dark matter state.
+    range: focused viable region near M_h/2
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs portal coupling
+    symbol: lambda_HSS
+    description: Effective coupling between the scalar dark matter and the Higgs doublet.
+    range: 10^-4 to 10^-3 in the limited viable Higgs-resonance region quoted by the paper
+    role: core
+    status: inferred
+  - name: SUSY breaking order parameter
+    symbol: sqrt(f)
+    description: Low-scale SUSY-breaking scale controlling the nonlinear-MSSM effects.
+    range: multi-TeV to O(100 TeV) scale in the paper discussion
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet supersymmetric mass
+    symbol: mu_phi
+    description: Mass parameter in the added singlet chiral-superfield sector.
+    range: model dependent
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet soft mass
+    symbol: m_phi
+    description: Soft SUSY-breaking mass for the singlet chiral superfield.
+    range: model dependent
+    unit: GeV
+    role: core
+    status: inferred
+  - name: singlet B term
+    symbol: B_phi
+    description: Soft bilinear parameter splitting real scalar components.
+    range: positive real in the focused setup
+    unit: GeV^2
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through Higgs-portal annihilation to Standard Model particles
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - Higgs-portal annihilation cross section
+  - Boltzmann equation for scalar yield
+  can_produce_all_dark_matter: parameter_dependent
+  notes: The paper solves the Boltzmann equation and chooses m_DM and lambda_HSS to reproduce Omega_DM
+    h^2 = 0.12.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - m_DM
+  - lambda_HSS
+  - thermal averaged annihilation cross section
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: The abundance calculation uses the usual thermal yield and equilibrium yield in the Boltzmann
+    equation.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: not discussed in the paper text
+    subhalo_mass_function_effect: not discussed in the paper text
+    simulation_calibrated: unknown
+validity_domain:
+- id: focused_decoupling_limit
+  applies_to: model
+  condition: Paper focuses on decoupled sparticles and heavy Higgs bosons so the low-energy theory reduces
+    to real-scalar Higgs-portal dark matter plus a very light gravitino.
+  status: assumed
+  extrapolation_risk: medium
+- id: higgs_resonance_region
+  applies_to: parameter
+  condition: The quoted viable parameter region is near m_DM = M_h/2 with small absolute Higgs-portal
+    coupling.
+  status: inferred
+  extrapolation_risk: medium
+assumptions:
+  global:
+  - id: z2_exact
+    description: The singlet chiral superfield is exactly odd under Z2 while MSSM fields are even.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: decoupled_heavy_states
+    description: Sfermions and heavy Higgs bosons are taken heavy enough that the low-energy dark matter
+      physics is Higgs-portal dominated.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: standard_freezeout
+    description: The relic density calculation assumes a standard thermal freeze-out history.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper describes numerical relic-density calculations but the extracted text does not
+    identify a public model-specific code release.
+  primary_code_role: null
+provenance:
+  model_id: 2008_03746_nl_mssm_higgs_portal_scalar_dm_v1
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:2008.03746
+      title: Higgs-Portal Dark Matter in Nonlinear MSSM
+      year: 2020
+      arxiv_id: '2008.03746'
+      role: original_model
+      authors:
+      - Masato Arai
+      - Nobuchika Okada
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0014
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: arxiv:2008.03746
+      section: abstract/model/relic-density discussion
+      quote_or_summary: Minimal NL-MSSM extension with Z2-odd singlet scalar Higgs-portal DM and thermal
+        Boltzmann relic calculation.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:2008.03746
+      note: The paper introduces a parity-odd SM-singlet chiral superfield and states that the lightest
+        real scalar is the Higgs-portal dark matter candidate.
+      confidence: high
+      section: abstract and model section
+    symmetries:
+    - reference_id: arxiv:2008.03746
+      note: Odd Z2 parity is assigned to the singlet superfield while MSSM fields are even, ensuring stability
+        of the lightest component.
+      confidence: high
+      section: model section
+    interactions:
+    - reference_id: arxiv:2008.03746
+      note: After eliminating auxiliary fields, the singlet scalar couples to the MSSM Higgs doublets
+        and reduces to an H^dagger H S^2 Higgs portal in the decoupling limit.
+      confidence: high
+      section: model section
+    production_mechanism:
+    - reference_id: arxiv:2008.03746
+      note: The scalar dark matter annihilates through the Higgs boson to SM particles and the paper solves
+        the Boltzmann equation for its yield.
+      confidence: high
+      section: relic-density discussion
+    parameter_ranges:
+    - reference_id: arxiv:2008.03746
+      note: The paper quotes a limited viable Higgs-portal region near m_DM = M_h/2 with |lambda_HSS|
+        around 10^-4 to 10^-3.
+      confidence: medium
+      section: Higgs-portal review paragraph
+    validity_domain:
+    - reference_id: arxiv:2008.03746
+      note: The authors focus on the decoupling limit where the low-energy theory is the simplest real-scalar
+        Higgs portal plus an extremely light gravitino.
+      confidence: medium
+      section: summary
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - focused parameter region
+  - effective-theory nature of the nonlinear MSSM
+  - decoupling assumptions for heavy superpartners
+  validation_status: expert_judgment_only
+  notes: Extraction is high-confidence for the model identity and production logic, but detailed viability
+    is parameter dependent.
+agent_failure_modes:
+  warnings:
+  - id: do_not_treat_gravitino_as_dm
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper says the very light gravitino is not the main dark matter component; the scalar
+      singlet is the extracted dark matter candidate.
+  - id: focused_region_only
+    severity: medium
+    category: extrapolation
+    warning: The detailed extraction reflects the paper focus on the decoupled Higgs-portal limit near
+      the Higgs resonance.

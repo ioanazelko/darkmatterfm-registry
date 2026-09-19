@@ -1,0 +1,237 @@
+_source:
+  shard: arXiv_src_1705_015_wds.tar
+  paper_id: '1705_06221'
+  source_member: 1705_06221.json
+schema_version: model_only_v0
+model_id: 1705_06221_majorana_sidm_heavier_zprime_v1
+identity:
+  name: Majorana self-interacting dark matter with a heavier Zprime
+  family: self_interacting_dark_matter
+  aliases:
+  - majorana MeV SIDM with dark vector mediator
+  short_description: Majorana MeV-scale SIDM coupled to a slightly heavier dark vector Zprime; p-wave
+    annihilation into SM fermions sets the relic density while self-interactions address small-scale structure.
+  historical_origin_or_motivation: Model-card candidate extracted from the assigned paper text.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  lagrangian_available: 'yes'
+  renormalizable: unknown
+  parent_frameworks: []
+  notes: The paper describes a minimal dark-vector mediator scenario.
+particle_content:
+  dark_matter_candidate:
+    name: Majorana fermion DM
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - slightly heavier dark vector Zprime
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Unknown dark-sector stabilization; the candidate is treated as stable dark matter.
+  symmetries:
+  - name: dark-sector stabilizing symmetry
+    type: unknown
+    exact_or_approximate: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - SM fermions
+  dark_sector_couplings:
+  - dark fine-structure constant alpha_D
+  - kinetic mixing epsilon
+  mediator_types:
+  - massive dark vector Zprime
+  annihilation_channels:
+  - DM DM -> Zprime -> SM fermions
+  self_scattering_channels:
+  - DM DM -> DM DM through Zprime exchange
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_DM
+    description: MeV-scale DM mass.
+    range:
+      min: 10
+      max: 500
+      unit: MeV
+      notes: Range stated in the paper.
+    unit: MeV
+    role: core
+    status: inferred
+  - name: Zprime mass
+    symbol: m_Zprime
+    description: Mediator mass, slightly heavier than DM.
+    role: core
+    status: inferred
+  - name: kinetic mixing
+    symbol: epsilon
+    description: Overall multiplicative kinetic mixing parameter.
+    role: core
+    status: inferred
+  - name: dark fine-structure constant
+    symbol: alpha_D
+    description: Dark-sector coupling controlling self-interactions.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - p-wave thermal freeze-out into SM fermions via an s-channel Zprime mediator
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - DM DM -> Zprime -> f_SM f_SM
+  can_produce_all_dark_matter: parameter_dependent
+  notes: Freeze-out and self-interaction requirements constrain two of the four main parameters.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - m_DM
+  - m_Zprime
+  - epsilon
+  - alpha_D
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - slightly heavier dark vector mediator
+  bbn_relevance: medium
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: self-interactions can modify inner halo density profiles
+    subhalo_mass_function_effect: self-interactions may affect too-big-to-fail scale halos
+    simulation_calibrated: partial
+validity_domain:
+- id: mass_range
+  applies_to: model
+  condition: The supported DM mass range is 10-500 MeV with a slightly heavier Zprime.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+- id: p_wave_required
+  applies_to: production
+  condition: MeV-scale annihilations are assumed p-wave suppressed to avoid strong CMB limits.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: thermal_contact
+    description: DM and SM sectors were in thermal equilibrium for freeze-out.
+    scope: cosmological_history
+    status: assumed
+  - id: heavy_mediator_variant
+    description: The mediator is heavier than the DM.
+    scope: theory
+    status: assumed
+  - id: p_wave_annihilation
+    description: Annihilation into SM fermions is p-wave suppressed.
+    scope: production
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is identified in the assigned text.
+provenance:
+  model_id: 1705_06221_majorana_sidm_heavier_zprime_v1
+  model_name: Majorana self-interacting dark matter with a heavier Zprime
+  model_family: self_interacting_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Self-Interacting Dark Matter as a Solution to the Problems in Small-Scale Structures
+      authors:
+      - Camilo Garcia-Cely
+      - Xiaoyong Chu
+      year: 2017
+      arxiv_id: '1705.06221'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Abstract
+      page: null
+      quote_or_summary: Scalar and Majorana SIDM in the 10-500 MeV range with a slightly heavier gauge
+        boson are identified.
+    - reference_id: primary
+      section: Minimal heavy-mediator scenario
+      page: null
+      quote_or_summary: P-wave freeze-out through Zprime to SM fermions sets the abundance.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The abstract identifies majorana dark matter in the 10-500 MeV range coupled to a slightly
+        heavier massive gauge boson.
+      section: Abstract
+      confidence: high
+    interactions:
+    - reference_id: primary
+      note: Zprime exchange mediates self-interactions.
+      section: Minimal heavy-mediator scenario
+      confidence: high
+    production_mechanism:
+    - reference_id: primary
+      note: Annihilations into fermions are p-wave suppressed and determine the relic density via freeze-out.
+      section: Minimal heavy-mediator scenario
+      confidence: high
+    cosmological_history:
+    - reference_id: primary
+      note: The text requires thermal equilibrium for ordinary freeze-out and discusses BBN/CMB relevance.
+      section: SIDM overview
+      confidence: medium
+    parameter_ranges:
+    - reference_id: primary
+      note: 'The model has four parameters: DM mass, Zprime mass, kinetic mixing, and alpha_D.'
+      section: Minimal heavy-mediator scenario
+      confidence: high
+    validity_domain:
+    - reference_id: primary
+      note: The mediator classification leaves scalar and Majorana DM coupled to a slightly heavier dark
+        vector as p-wave cases.
+      section: Minimal heavy-mediator scenario
+      confidence: high
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: high
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+agent_failure_modes:
+  warnings:
+  - id: constraints_omitted
+    severity: medium
+    category: other
+    warning: The paper discusses viability under constraints, but this run intentionally omits constraints
+      records.

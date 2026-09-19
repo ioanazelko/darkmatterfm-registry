@@ -1,0 +1,979 @@
+_source:
+  shard: arXiv_src_2303_091_wds.tar
+  paper_id: '2303_11645'
+  source_member: 2303_11645.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 2303_11645_susy_dfsz_base_b_iii_mixed_axion_neutralino_v1
+identity:
+  name: SUSY DFSZ axion base model B_III with mixed axion/neutralino dark matter
+  family: multi_component_dark_matter
+  aliases:
+  - base model B_III
+  - SUSY DFSZ axion model
+  - mixed axion/neutralino dark matter
+  short_description: B_III is one of four SUSY DFSZ axion variants introduced in the paper, with a QCD
+    axion plus a Higgsino-like neutralino LSP accounting for dark matter.
+  historical_origin_or_motivation: Built to solve the strong CP problem via Peccei-Quinn symmetry and
+    the SUSY mu problem via the Kim-Nilles mechanism while allowing mixed axion/neutralino dark matter.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - MSSM
+  - SUSY DFSZ axion model
+  - Peccei-Quinn mechanism
+  - Kim-Nilles mechanism
+  lagrangian_available: partial
+  renormalizable: 'no'
+  eft_cutoff:
+    name: reduced Planck scale
+    symbol: M_P
+    description: Suppression scale for nonrenormalizable superpotential terms.
+    value: 2.4e18
+    unit: GeV
+    role: core
+    status: established
+  embedded_in_larger_framework: 'yes'
+  notes: Base model with superpotential exponents (2,1); no vectorlike pairs are added.
+particle_content:
+  dark_matter_candidate:
+    name: QCD axion A plus Higgsino-like neutralino LSP
+    spin: axion spin 0; neutralino spin 1/2
+    statistics: unknown
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - gauge-singlet chiral superfields X, Y, Z
+  - saxions S_i
+  - axinos a_i
+  - pseudoscalars A_i^prime
+  mediators:
+  - axion A
+  - MSSM Higgs/Higgsino sector
+  - saxions S_i
+  - axinos a_i
+  dark_radiation_species:
+  - relativistic axions from thermal scattering or saxion decays, checked through Delta N_eff
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - Higgsino-like neutralino LSP
+  unstable_parent_particles:
+  - saxions S_i
+  - axinos a_i
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Global U(1)_PQ yields the axion and is protected as an accidental symmetry by
+    discrete Z_n^R assumptions; the Higgsino-like neutralino LSP is treated as stable in the SUSY setup.
+  symmetries:
+  - name: U(1)_PQ
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken by VEVs of X, Y and Z; explicitly protected against quality-problem
+      terms by Z_n^R assumptions
+    breaking_scale:
+      name: PQ breaking scale
+      symbol: f_A
+      description: Axion decay constant related to v_A/(2N).
+      range:
+        min: 8.01e9
+        max: 1e12
+        inclusive_min: true
+        inclusive_max: true
+        unit: GeV
+        notes: Run text reports these lower limits and restricts attention to f_A <= 1e12 GeV.
+      unit: GeV
+      role: core
+      status: established
+  - name: Z_n^R
+    type: discrete
+    exact_or_approximate: unknown
+    breaking: Used as a discrete R symmetry to protect U(1)_PQ from quantum-gravity-induced operators.
+    breaking_scale: null
+  topological_defects_possible: 'yes'
+interactions:
+  portals:
+  - axion
+  - higgs
+  standard_model_targets:
+  - gluons
+  - photons
+  - MSSM Higgs doublets
+  - quarks
+  - leptons
+  dark_sector_couplings:
+  - (lambda/M_P) X^2 H_u H_d
+  - (lambda_1/M_P) X^alpha Y^(4-alpha)
+  - (lambda_2/M_P) X^beta Z^(4-beta)
+  mediator_types:
+  - axion
+  - Higgs/Higgsino sector
+  - saxion
+  - axino
+  interaction_operators:
+  - A G Gtilde / f_A
+  - A F Ftilde / f_A
+  - Kim-Nilles X^2 H_u H_d / M_P term
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels:
+  - Higgsino-like neutralino thermal annihilation channels, not enumerated in the extracted text
+  decay_channels:
+  - saxion decays to axions and to SM/MSSM states
+  - axino decays before LSP freeze-out in viable regions
+  self_scattering_channels: []
+  cp_structure: Peccei-Quinn mechanism dynamically addresses the strong CP problem.
+  flavor_structure: MSSM Yukawa terms plus seesaw neutrino superfield terms are included.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: model variant
+    description: Paper-local SUSY DFSZ variant label.
+    value: B_III
+    role: core
+    status: established
+  - name: superpotential exponents or extension
+    description: Choice defining W_PQ_2, or the E_I vectorlike extension.
+    value: (alpha_w, beta_w) = (2, 1)
+    role: core
+    status: established
+  - name: axion decay constant
+    symbol: f_A
+    description: PQ/axion decay constant used in the relic-density and axion-coupling analysis.
+    range:
+      min: 8.01e9
+      max: 1e12
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Run text reports these lower limits and restricts attention to f_A <= 1e12 GeV.
+    unit: GeV
+    role: core
+    status: established
+    notes: Lower limit quoted for B_III; upper range is the paper focus.
+  - name: Higgsino mass parameter
+    symbol: mu
+    description: Kim-Nilles generated Higgsino mass parameter; a conservative benchmark is used for the
+      LSP relic fraction.
+    value: '250'
+    unit: GeV
+    role: benchmark
+    status: assumed
+    notes: Paper states that with mu = 250 GeV the LSP contributes about 5.8 percent of total dark matter.
+  - name: neutralino relic fraction
+    symbol: Omega_LSP/Omega_DM
+    description: Fraction of total dark matter carried by the Higgsino-like neutralino in the conservative
+      benchmark.
+    value: about 0.058
+    role: derived
+    status: approximate
+  - name: domain-wall number
+    symbol: N_DW
+    description: Domain-wall number of the variant.
+    value: N_DW = 6N = 18 with N = 3; pre-inflationary PQ breaking is needed to avoid the domain-wall
+      problem.
+    role: derived
+    status: established
+  - name: PQ anomaly coefficients
+    symbol: N,E
+    description: Base-model anomaly coefficients used for f_A and domain-wall number.
+    value: N = 3, E = 6
+    role: derived
+    status: established
+production:
+  mechanisms:
+  - Higgsino-like neutralino thermal freeze-out
+  - QCD axion conventional misalignment mechanism
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - neutralino annihilation/freeze-out
+  - axion initial misalignment angle and f_A
+  - saxion and axino decay history
+  depends_on_reheating_temperature: parameter_dependent
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper rejects kinetic misalignment for these models and uses conventional misalignment for
+    the cold axion component.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction:
+    name: target relic density
+    symbol: Omega_DM h^2
+    description: Observed dark matter relic-density target cited from Planck.
+    value: about 0.12
+    role: cosmological
+    status: established
+  calculation_type: mixed
+  key_dependencies:
+  - f_A
+  - initial misalignment angle
+  - Higgsino mass parameter mu
+  - saxion and axino masses/decays
+  - reheating temperature
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - PQ symmetry broken before or during inflation because the base model has N_DW > 1
+  - saxion and axino cosmology checked over viable parameter space
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling:
+    name: neutralino freeze-out temperature
+    symbol: T_fr^chi
+    description: Compared to saxion/axino decay temperatures so late decays do not alter the LSP relic
+      density.
+    value: model-dependent
+    role: derived
+    status: inferred
+  phase_transitions:
+  - PQ symmetry breaking
+  - QCD axion mass turn-on
+  topological_defects:
+  - domain walls avoided by the paper assumptions
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: field_like
+  distribution_function_available: 'no'
+  f_of_p_or_q: not provided for the mixed axion/neutralino components
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: Axion component is a cold coherent field from conventional misalignment; neutralino component
+    is thermal freeze-out cold dark matter.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: The paper treats cold axion plus neutralino dark matter, not a thermal warm component.
+    impact_on_sigma8_s8: not discussed
+  nonlinear:
+    halo_mass_function_effect: not discussed; expected to be CDM-like within the paper assumptions
+    subhalo_mass_function_effect: not discussed; expected to be CDM-like within the paper assumptions
+    infall_subhalo_mass_function_effect: not discussed
+    present_day_bound_subhalo_mass_function_effect: not discussed
+    concentration_mass_relation_effect: not discussed
+    density_profile_effect: not discussed
+    core_or_cusp_effect: not discussed
+    subhalo_survival_effect: not discussed
+    tidal_stripping_effect: not discussed
+    smallest_galaxies_effect: not discussed
+    simulation_calibrated: 'no'
+validity_domain:
+- id: valid_cmm
+  applies_to: production
+  condition: Cold axion abundance is computed with the conventional misalignment mechanism; the kinetic
+    misalignment mechanism is rejected for these models in the paper.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - Kinetic misalignment would make saxions/axinos too light in the setup considered.
+  source_reference_ids:
+  - '2303_11645'
+  notes: null
+- id: valid_fa_window
+  applies_to: parameter
+  condition: f_A in the extracted paper window for B_III.
+  valid_range:
+    min: 8.01e9
+    max: 1e12
+    inclusive_min: true
+    inclusive_max: true
+    unit: GeV
+    notes: Run text reports these lower limits and restricts attention to f_A <= 1e12 GeV.
+  status: established
+  extrapolation_risk: medium
+  caveats:
+  - The paper does not claim generic validity outside the scanned/focused f_A region.
+  source_reference_ids:
+  - '2303_11645'
+  notes: null
+- id: valid_preinflationary_pq
+  applies_to: cosmological_history
+  condition: B_III has N_DW > 1, so the paper treats axion production in a pre-inflationary PQ-breaking
+    scenario.
+  status: assumed
+  extrapolation_risk: high
+  caveats:
+  - Post-inflationary PQ breaking would create a domain-wall problem for the base models.
+  source_reference_ids:
+  - '2303_11645'
+  notes: null
+assumptions:
+  global:
+  - id: assume_mixed_dm
+    description: The Higgsino-like neutralino LSP supplies a subcomponent and the QCD axion supplies the
+      remaining dark matter.
+    scope: production
+    status: assumed
+    impact_if_violated: Relic-density accounting and direct-detection interpretation would change.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2303_11645'
+    notes: null
+  - id: assume_cmm
+    description: Cold axions are produced by the conventional misalignment mechanism.
+    scope: cosmological_history
+    status: assumed
+    impact_if_violated: The paper states kinetic misalignment is not viable for these models; alternative
+      histories would need a new calculation.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2303_11645'
+    notes: null
+  - id: assume_saxion_axino_viable
+    description: Saxion and axino decays do not spoil the assumed LSP relic density in the reported viable
+      parameter regions.
+    scope: cosmological_history
+    status: inferred
+    impact_if_violated: Late decays or matter domination could modify the neutralino and axion abundances.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - '2303_11645'
+    notes: null
+associated_code:
+  has_associated_code: unknown
+  code_summary: The assigned text does not identify a public model-specific code release.
+  repositories: []
+  packages_or_modules: []
+  notebooks: []
+  scripts: []
+  expected_inputs: []
+  expected_outputs: []
+  caveats:
+  - No external lookup was used for code availability.
+provenance:
+  model_id: 2303_11645_susy_dfsz_base_b_iii_mixed_axion_neutralino_v1
+  model_name: SUSY DFSZ axion base model B_III with mixed axion/neutralino dark matter
+  model_family: multi_component_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '2303_11645'
+      title: On the possibility of mixed axion/neutralino dark matter in specific SUSY DFSZ axion models
+      authors:
+      - Zhong-Jun Yang
+      - Tai-Fu Feng
+      - Xing-Gang Wu
+      year: 2023
+      arxiv_id: '2303.11645'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text explicitly states that it introduces four SUSY axion models.
+    - arxiv_id: '2303.11645'
+      authors:
+      - Yang, Zhong-Jun
+      - Feng, Tai-Fu
+      - Wu, Xing-Gang
+      doi: 10.1088/1361-6471/ad38cf
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:2303.11645
+      role: original_model
+      title: On the possibility of mixed axion/neutralino dark matter in specific SUSY DFSZ axion models
+      url: https://arxiv.org/abs/2303.11645
+      year: 2024
+    constraint_papers:
+    - arxiv_id: '1107.5581'
+      authors:
+      - Baer, Howard
+      - Barger, Vernon
+      - Huang, Peisi
+      doi: 10.1007/JHEP11(2011)031
+      notes: Related full text resolved locally and read; used for Higgsino-world direct/collider detection
+        caveats.
+      reference_id: arxiv:1107.5581
+      role: benchmark
+      title: 'Hidden SUSY at the LHC: the light higgsino-world scenario and the role of a lepton collider'
+      url: https://arxiv.org/abs/1107.5581
+      year: 2011
+    - arxiv_id: '1103.5413'
+      authors:
+      - Baer, Howard
+      - Lessa, Andre
+      - Rajagopalan, Shibi
+      - Sreethawong, Warintorn
+      doi: 10.1088/1475-7516/2011/06/031
+      notes: Related full text resolved locally and read; used for mixed axion/neutralino relic-density
+        context.
+      reference_id: arxiv:1103.5413
+      role: benchmark
+      title: Mixed axion/neutralino cold dark matter in supersymmetric models
+      url: https://arxiv.org/abs/1103.5413
+      year: 2011
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1510.07633'
+      authors:
+      - Marsh, David J. E.
+      doi: 10.1016/j.physrep.2016.06.005
+      notes: Related full text resolved locally and read; used for axion misalignment/search context.
+      reference_id: arxiv:1510.07633
+      role: review
+      title: Axion cosmology
+      url: https://arxiv.org/abs/1510.07633
+      year: 2016
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0011
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '2303_11645'
+      section: Abstract
+      page: null
+      quote_or_summary: Paper introduces four SUSY axion models with axion dark matter and a Higgsino-like
+        LSP subcomponent.
+    - reference_id: '2303_11645'
+      section: Superpotential
+      page: null
+      quote_or_summary: Defines W_PQ_1, W_PQ_2 and the B_I/B_II/B_III variants by exponent choices; E_I
+        adds W_PQ_3 vectorlike pairs.
+    - reference_id: '2303_11645'
+      section: Axion properties in our models
+      page: null
+      quote_or_summary: Derives PQ charges, anomaly coefficients, f_A, axion couplings, and domain-wall
+        numbers.
+    - reference_id: '2303_11645'
+      section: Low-energy effective theory
+      page: null
+      quote_or_summary: Identifies saxions, axinos, pseudoscalars, and the mixed neutralino/axion dark
+        matter analysis.
+    - reference_id: '2303_11645'
+      section: Summary
+      page: null
+      quote_or_summary: States that the LSP and QCD axion can together give the Planck dark matter relic
+        density.
+    unresolved_items:
+    - Detailed neutralino annihilation channels are not enumerated in the converted text used for extraction.
+    - No full LZ likelihood, SUSY spectrum generation, or saxion/axino Boltzmann solve was rerun.
+    - Axion-search limits are recorded as recast targets rather than digitized likelihoods.
+  evidence:
+    particle_content:
+    - reference_id: '2303_11645'
+      note: The paper names the QCD axion A and the Higgsino-like neutralino LSP as the two dark matter
+        components.
+      confidence: high
+      section: Abstract and Summary
+      page: null
+    - reference_id: '2303_11645'
+      note: The low-energy theory contains saxions S_i, axinos a_i and additional pseudoscalars built
+        from X, Y and Z.
+      confidence: high
+      section: Low-energy effective theory
+      page: null
+    symmetries:
+    - reference_id: '2303_11645'
+      note: The model imposes global U(1)_PQ symmetry, uses the Kim-Nilles mechanism, and studies Z_n^R
+        protection of PQ quality.
+      confidence: high
+      section: Introduction and Discrete R symmetries
+      page: null
+    - reference_id: '2303_11645'
+      note: N_DW = 6N = 18 with N = 3; pre-inflationary PQ breaking is needed to avoid the domain-wall
+        problem.
+      confidence: high
+      section: Axion properties in our models
+      page: null
+    interactions:
+    - reference_id: '2303_11645'
+      note: The superpotential includes X^2 H_u H_d / M_P and gauge-singlet X,Y,Z terms; the axion effective
+        Lagrangian includes gluon and photon anomaly couplings.
+      confidence: high
+      section: Superpotential and Axion properties
+      page: null
+    - reference_id: '2303_11645'
+      note: This base variant does not add the W_PQ_3 vectorlike-pair extension.
+      confidence: high
+      section: Superpotential
+      page: null
+    production_mechanism:
+    - reference_id: '2303_11645'
+      note: The LSP is treated as a freeze-out component while the axion makes up the remaining dark matter
+        through conventional misalignment.
+      confidence: high
+      section: Low-energy effective theory and Summary
+      page: null
+    - reference_id: '2303_11645'
+      note: The paper says kinetic misalignment is not viable for these models and uses CMM for cold axion
+        production.
+      confidence: high
+      section: Summary
+      page: null
+    cosmological_history:
+    - reference_id: '2303_11645'
+      note: Saxion/axino decay and domination histories are checked so they do not spoil the LSP relic
+        density in viable regions.
+      confidence: high
+      section: Numerical analysis and Summary
+      page: null
+    - reference_id: '2303_11645'
+      note: Base models require pre-inflationary PQ breaking due to N_DW > 1.
+      confidence: high
+      section: Summary
+      page: null
+    parameter_ranges:
+    - reference_id: '2303_11645'
+      note: The summary quotes the lower f_A limit 8.01e9 GeV for B_III and uses f_A up to 1e12 GeV.
+      confidence: high
+      section: Summary
+      page: null
+    - reference_id: '2303_11645'
+      note: With mu = 250 GeV, the paper states the LSP contributes about 5.8 percent of total dark matter.
+      confidence: high
+      section: Summary
+      page: null
+    validity_domain:
+    - reference_id: '2303_11645'
+      note: The accepted parameter space depends on f_A, saxion/axino masses and decay temperatures, and
+        the assumed PQ-breaking history.
+      confidence: high
+      section: Numerical analysis and Summary
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary text reports the variant f_A windows, neutralino fraction benchmark, LZ use, and domain-wall
+        assumptions.
+      page: null
+      reference_id: arxiv:2303.11645
+      section: Numerical analysis
+    - confidence: medium
+      note: Related Higgsino-world paper discusses direct/indirect detection and collider caveats for
+        light Higgsinos.
+      page: null
+      reference_id: arxiv:1107.5581
+      section: Higgsino-world phenomenology
+    observables:
+    - confidence: high
+      note: Primary text states LZ, relic-density, saxion/axino, and axion-photon constraints for four
+        SUSY DFSZ variants.
+      page: null
+      reference_id: arxiv:2303.11645
+      section: Abstract and numerical analysis
+    - confidence: medium
+      note: Axion cosmology review supports conventional misalignment and axion-search context.
+      page: null
+      reference_id: arxiv:1510.07633
+      section: Axion cosmology
+    routes:
+    - confidence: high
+      note: Primary paper connects the DFSZ model parameters to neutralino relic density, axion misalignment
+        abundance, LZ, and axion-photon searches.
+      page: null
+      reference_id: arxiv:2303.11645
+      section: Model analysis
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - PQ-breaking history
+  - saxion/axino decay cosmology
+  - neutralino subfraction benchmark
+  - axion quality assumptions
+  validation_status: expert_judgment_only
+  notes: Machine extraction from a converted full text; no external lookup was used.
+agent_failure_modes:
+  warnings:
+  - id: multi_component_fraction_warning
+    severity: medium
+    category: assumption_mismatch
+    warning: The row describes the axion plus Higgsino-like neutralino together; using either component
+      alone would not reproduce the paper relic-density logic.
+    mitigation: Preserve the mixed axion/neutralino interpretation and the stated LSP subfraction.
+    source_reference_ids:
+    - '2303_11645'
+  - id: saxion_axino_cosmology_warning
+    severity: medium
+    category: extrapolation
+    warning: Viability depends on saxion and axino decay/equality temperatures in the scanned parameter
+      space.
+    mitigation: Check the paper-specific f_A, soft terms, and reheating assumptions before extrapolating.
+    source_reference_ids:
+    - '2303_11645'
+  - id: domain_wall_warning
+    severity: high
+    category: assumption_mismatch
+    warning: Base models have N_DW greater than one and rely on pre-inflationary PQ breaking to avoid
+      domain walls.
+    mitigation: Do not apply a post-inflationary PQ-breaking history to this base-model row.
+    source_reference_ids:
+    - '2303_11645'
+observables:
+- caveats:
+  - Saxion/axino cosmology can dilute or alter the simple two-component abundance.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe
+  - Milky Way halo for local neutralino fraction
+  id: obs_mixed_axion_neutralino_relic
+  key_quantities:
+  - description: PQ/axion decay constant in the paper window.
+    name: axion decay constant
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 1e12
+      min: 8.01e9
+      notes: Variant B_III lower limit from assignment/primary text.
+      unit: GeV
+    role: core
+    source_reference_ids:
+    - arxiv:2303.11645
+    status: inferred
+    symbol: f_A
+    unit: GeV
+  - description: Conservative benchmark used for the neutralino fraction.
+    name: Higgsino mass parameter
+    role: benchmark
+    source_reference_ids:
+    - arxiv:2303.11645
+    status: inferred
+    symbol: mu
+    unit: GeV
+    value: 250
+  - description: Subdominant Higgsino-like LSP fraction in the benchmark.
+    name: neutralino relic fraction
+    role: derived
+    source_reference_ids:
+    - arxiv:2303.11645
+    status: inferred
+    symbol: Omega_LSP/Omega_DM
+    value: about 0.058
+  linked_constraints:
+  - con_planck_mixed_relic_density
+  - con_lz_higgsino_lsp
+  linked_routes:
+  - route_dfsz_mixed_dm_recast
+  name: B_III mixed axion/neutralino relic density
+  notes: 'Variant definition: (alpha_w, beta_w) = (2, 1).'
+  observability: high
+  predicted_effect: A Higgsino-like neutralino contributes a subdominant thermal relic fraction while
+    the QCD axion from conventional misalignment supplies the remaining dark matter.
+  redshift_range: neutralino freeze-out through axion oscillation epoch
+  relevance: critical
+  scale_range: homogeneous relic density; cold-dark-matter-like clustering
+  source_reference_ids:
+  - arxiv:2303.11645
+  - arxiv:1103.5413
+  - arxiv:1510.07633
+  subchannel: multi-component relic abundance
+- caveats:
+  - Detection depends on MSSM spectrum details and the local neutralino fraction.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - LUX-ZEPLIN detector
+  - terrestrial direct detection
+  id: obs_lz_rescaled_higgsino_scattering
+  key_quantities:
+  - description: Fraction used to rescale direct-detection rates.
+    name: local neutralino fraction
+    role: derived
+    source_reference_ids:
+    - arxiv:2303.11645
+    status: inferred
+    symbol: xi_LSP
+    value: about 0.058 in the mu=250 GeV benchmark
+  - description: Neutralino-nucleon cross section subject to LZ recast.
+    name: spin-independent cross section
+    range: model dependent
+    role: core
+    source_reference_ids:
+    - arxiv:2303.11645
+    - arxiv:1107.5581
+    status: inferred
+    symbol: sigma_SI
+  linked_constraints:
+  - con_lz_higgsino_lsp
+  linked_routes:
+  - route_dfsz_mixed_dm_recast
+  name: Rescaled Higgsino-like LSP direct-detection signal
+  notes: null
+  observability: high
+  predicted_effect: The LZ bound constrains the Higgsino-like LSP cross section after accounting for the
+    fact that neutralinos are only a subcomponent of the total dark matter.
+  redshift_range: z=0
+  relevance: high
+  scale_range: laboratory nuclear recoils
+  source_reference_ids:
+  - arxiv:2303.11645
+  - arxiv:1107.5581
+  subchannel: spin-independent neutralino scattering
+- caveats:
+  - Base-model couplings are close to the E/N cancellation and can be difficult to probe.
+  channel: precision_laboratory
+  effect_direction: spectral_line
+  environments:
+  - haloscopes
+  - helioscopes
+  - stellar environments
+  id: obs_axion_photon_searches
+  key_quantities:
+  - description: Low-energy axion-photon coupling.
+    name: axion-photon coupling
+    range: variant dependent through E/N and f_A
+    role: core
+    source_reference_ids:
+    - arxiv:2303.11645
+    - arxiv:1510.07633
+    status: inferred
+    symbol: g_Agamma
+  - description: Variant-specific domain-wall number and PQ-breaking assumption.
+    name: domain-wall condition
+    role: derived
+    source_reference_ids:
+    - arxiv:2303.11645
+    status: inferred
+    symbol: N_DW
+    value: N_DW = 18 with N = 3; pre-inflationary PQ breaking is needed.
+  linked_constraints:
+  - con_axion_photon_domain_wall
+  linked_routes:
+  - route_dfsz_mixed_dm_recast
+  name: B_III axion-photon search target
+  notes: null
+  observability: medium
+  predicted_effect: The axion-photon coupling g_Agamma is compared with CAST/ADMX-class bounds and future
+    IAXO/haloscope projections; base models have E/N=2 suppression while E_I is more testable.
+  redshift_range: z=0 laboratory/solar searches
+  relevance: high
+  scale_range: axion mass/coupling plane
+  source_reference_ids:
+  - arxiv:2303.11645
+  - arxiv:1510.07633
+  subchannel: haloscope and helioscope axion searches
+constraints:
+- allowed_regions:
+  - 'B_III: f_A from 8.01e9 to 1e12 GeV with conventional misalignment, subject to saxion/axino cosmology.'
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The axion abundance is computed with the conventional misalignment mechanism.
+    id: conventional_misalignment
+    impact_if_violated: A different production mechanism would change the f_A window.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - arxiv:2303.11645
+    - arxiv:1510.07633
+    status: assumed
+  benchmark_implications:
+  - For mu=250 GeV the LSP is about 5.8 percent of total dark matter, so axions make up the remainder.
+  caveats:
+  - Entropy dilution from moduli or saxion/axino decays can modify the simple abundance accounting.
+  constrained_parameters:
+  - f_A
+  - theta_i
+  - Omega_LSP/Omega_DM
+  - mu
+  - saxion/axino history
+  constraint_type: cosmological
+  data_release: Planck relic-density target quoted by the source
+  excluded_regions:
+  - Parameter points where the neutralino plus axion abundance overshoots the observed dark matter density.
+  - Kinetic-misalignment production is rejected for these models in the primary paper.
+  id: con_planck_mixed_relic_density
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Planck relic density with axion plus neutralino components
+  notes: null
+  observable_channel: relic density
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2303.11645
+  - arxiv:1510.07633
+  - arxiv:1103.5413
+- allowed_regions:
+  - Subdominant neutralino fractions relax direct-detection tension relative to all-neutralino dark matter.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The local neutralino density fraction is approximated by the cosmological neutralino
+      fraction.
+    id: local_fraction_tracks_cosmic_fraction
+    impact_if_violated: Direct-detection limits would rescale differently.
+    notes: null
+    scope: direct_detection
+    source_reference_ids:
+    - arxiv:2303.11645
+    status: assumed
+  benchmark_implications:
+  - The mu=250 GeV benchmark should be recast with the 5.8 percent neutralino fraction.
+  caveats:
+  - Full MSSM spectrum and nuclear likelihood are not reproduced in this batch.
+  constrained_parameters:
+  - sigma_SI
+  - Omega_LSP/Omega_DM
+  - mu
+  - neutralino mixing
+  constraint_type: direct_detection
+  data_release: LZ
+  excluded_regions:
+  - Higgsino-like LSP parameter points whose fraction-rescaled scattering exceeds LZ bounds.
+  id: con_lz_higgsino_lsp
+  likelihood_available: partial
+  likelihood_reference: LUX-ZEPLIN limits as used in primary paper
+  name: LZ direct-detection constraint on the Higgsino-like LSP subcomponent
+  notes: null
+  observable_channel: spin-independent nuclear recoils
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2303.11645
+  - arxiv:1107.5581
+- allowed_regions:
+  - N_DW = 18 with N = 3; pre-inflationary PQ breaking is needed.
+  - Primary text reports that the plotted models are not ruled out by current axion-photon searches.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The PQ-breaking history follows the variant-specific domain-wall assumption.
+    id: pq_history_variant
+    impact_if_violated: Domain-wall viability changes if the PQ history differs.
+    notes: null
+    scope: cosmological_history
+    source_reference_ids:
+    - arxiv:2303.11645
+    status: assumed
+  benchmark_implications:
+  - E_I has N_DW=1 and a more promising g_Agamma target; base models have suppressed coupling near E/N=2.
+  caveats:
+  - Axion-photon limits are read from compiled plots, not rerun as likelihoods.
+  constrained_parameters:
+  - g_Agamma
+  - f_A
+  - E/N
+  - N_DW
+  constraint_type: laboratory
+  data_release: CAST, ADMX, CAPP, HAYSTAC, QUAX, ORGAN limits and IAXO/haloscope projections as compiled
+    by the source
+  excluded_regions:
+  - Post-inflationary base-model histories with N_DW > 1 would have a domain-wall problem.
+  - Axion-photon regions above existing CAST/haloscope bounds are excluded.
+  id: con_axion_photon_domain_wall
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Axion-photon searches and domain-wall viability
+  notes: null
+  observable_channel: axion-photon coupling and PQ cosmology
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:2303.11645
+  - arxiv:1510.07633
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Saxion/axino cosmology and entropy dilution can change the final abundance.
+    constraint_ids:
+    - con_planck_mixed_relic_density
+    - con_lz_higgsino_lsp
+    - con_axion_photon_domain_wall
+    derived_quantities:
+    - Omega_LSP h^2
+    - Omega_a h^2
+    - sigma_SI rescaled
+    - g_Agamma
+    - domain-wall viability
+    description: Recast B_III into neutralino freeze-out, axion misalignment, LZ scattering, and axion-photon/domain-wall
+      observables.
+    forward_model_chain:
+    - inputs:
+      - f_A
+      - theta_i
+      notes: null
+      outputs:
+      - axion misalignment abundance
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Conventional misalignment regime.
+    - inputs:
+      - neutralino spectrum
+      - mu
+      notes: Not run in this batch.
+      outputs:
+      - thermal LSP abundance
+      - sigma_SI
+      step_id: s2
+      step_type: other
+      tool_or_code: micrOMEGAs/IsaReD-style relic code
+      validity: Requires SUSY spectrum and relic code.
+    - inputs:
+      - Omega_LSP/Omega_DM
+      - sigma_SI
+      - g_Agamma
+      notes: null
+      outputs:
+      - LZ and axion-search comparison
+      step_id: s3
+      step_type: recasting
+      tool_or_code: null
+      validity: Fraction-rescaled direct detection and compiled axion bounds.
+    id: route_dfsz_mixed_dm_recast
+    input_parameters:
+    - f_A
+    - theta_i
+    - mu
+    - neutralino spectrum
+    - saxion/axino masses
+    - E/N
+    - N_DW
+    likelihoods:
+    - Planck relic-density target
+    - LZ direct-detection likelihood not reproduced
+    - axion-search curves not digitized
+    observable_ids:
+    - obs_mixed_axion_neutralino_relic
+    - obs_lz_rescaled_higgsino_scattering
+    - obs_axion_photon_searches
+    required_code_resources:
+    - SUSY spectrum generator
+    - neutralino relic/direct-detection code
+    - axion abundance calculator
+    route_status: planned
+    source_model_features:
+    - SUSY DFSZ axion sector
+    - Higgsino-like neutralino LSP
+    - (alpha_w, beta_w) = (2, 1)
+    validation_tests:
+    - recover Omega_LSP/Omega_DM about 0.058 for mu=250 GeV
+    - recover B_III f_A lower limit

@@ -1,0 +1,308 @@
+_source:
+  shard: arXiv_src_0806_002_wds.tar
+  paper_id: 0806_3746
+  source_member: 0806_3746.json
+agent_failure_modes:
+  warnings:
+  - category: other
+    id: dama_context_not_encoded
+    severity: medium
+    warning: This model card records the model proposal only; this run intentionally omits experimental
+      constraints and observable-routing details.
+  - category: assumption_mismatch
+    id: stability_unspecified
+    severity: medium
+    warning: Do not infer a specific stabilizing symmetry for X beyond the paper's assumption that it
+      is a stable relic.
+associated_code:
+  code_summary: No associated model code is identified in the assigned text.
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  repositories: []
+  scripts: []
+assumptions:
+  global:
+  - can_be_relaxed: unknown
+    description: The WIMPless particle X is stable on cosmological timescales.
+    id: stable_x
+    impact_if_violated: Without stability X would not be the dark matter relic.
+    scope: theory
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The WIMPless thermal relic-density scaling applies to the hidden-sector particle.
+    id: hidden_thermal_relic
+    scope: production
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The connector coupling to b quarks dominates the direct-detection interaction.
+    id: dominant_bottom_coupling
+    scope: theory
+    status: assumed
+cosmological_history:
+  bbn_relevance: unknown
+  chemical_decoupling: null
+  cmb_relevance: high
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - hidden sector with its own gauge interactions
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - WIMPless DAMA model
+  - scalar WIMPless X with connector fermions
+  family: wimpless_dark_matter
+  historical_origin_or_motivation: The paper proposes the model as a theoretically motivated explanation
+    of the low-mass DAMA region.
+  model_kind: simplified_model
+  name: WIMPless dark matter with connector-mediated DAMA scattering
+  short_description: A low-mass scalar WIMPless hidden-sector particle X coupled to Standard Model fermions
+    through heavy connector fermions, proposed to explain the DAMA modulation while retaining a WIMPless
+    thermal relic-density relation.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - X X -> b b through t-channel connector exchange
+  dark_sector_couplings:
+  - hidden-sector gauge coupling g_X
+  - connector Yukawa couplings lambda_f X Y f
+  decay_channels: []
+  interaction_operators:
+  - lambda_f X Y_L f_L + lambda_f X Y_R f_R
+  mediator_types:
+  - heavy chiral connector fermions charged under Standard Model and hidden-sector gauge groups
+  portals:
+  - other
+  scattering:
+    elastic: 'yes'
+    inelastic: 'no'
+    momentum_dependence: unknown
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - quarks, with dominant coupling assumed to the bottom quark
+  tree_or_loop_level: tree
+model_id: 0806_3746_wimpless_dama_connector_v1
+parameters:
+  core:
+  - description: Low-mass DAMA-motivated scalar dark matter mass.
+    name: WIMPless mass
+    range:
+      inclusive_max: true
+      inclusive_min: true
+      max: 10
+      min: 2
+      notes: Quoted as the promising low-mass range.
+      unit: GeV
+    role: core
+    status: inferred
+    symbol: m_X
+    unit: GeV
+  - description: Representative hidden gauge coupling in the WIMPless relation.
+    name: hidden-sector gauge coupling
+    notes: The text quotes g_X around 0.1 for the DAMA region.
+    role: core
+    status: inferred
+    symbol: g_X
+    value: 0.1
+  - description: Yukawa coupling used to obtain the required spin-independent cross section.
+    name: bottom connector coupling
+    notes: The paper states lambda_b around 0.5 gives the required range.
+    role: core
+    status: inferred
+    symbol: lambda_b
+    value: 0.5
+  - description: Mass of heavy connector fermions.
+    name: connector mass
+    range: of order max(m_W, m_X), about the weak scale for m_X < m_W
+    role: core
+    status: inferred
+    symbol: m_Y
+    unit: GeV
+particle_content:
+  additional_dark_sector_particles:
+  - hidden-sector states associated with gauge-mediated supersymmetry breaking
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: X
+    number_of_components: single_component
+    spin: '0'
+    statistics: scalar
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  mediators:
+  - chiral connector fermions Y_L and Y_R
+  standard_model_extension: substantial
+  unstable_parent_particles: []
+phase_space:
+  distribution_function_available: unknown
+  distribution_type: thermal
+  free_streaming_length: null
+  notes: The paper does not discuss the phase-space distribution beyond thermal relic-density scaling.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - hidden-sector gauge annihilation cross section
+  - WIMPless mass-coupling relation
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal freeze-out in the hidden sector with the WIMPless relation m_X/g_X^2 approximately m_W/g_W^2
+  nonthermal_momentum_distribution: unknown
+  notes: The paper argues the WIMPless relation naturally gives approximately the observed dark matter
+    density.
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  thermal_equilibrium_with_standard_model: 'no'
+provenance:
+  caveats:
+  - The exact stabilizing symmetry for X is not specified in the extracted text.
+  created_at: '2026-05-30'
+  entry_version: 0.1.0
+  evidence:
+    interactions:
+    - confidence: high
+      note: The text writes lambda_f X Y_L f_L + lambda_f X Y_R f_R and describes spin-independent X-nucleus
+        scattering.
+      reference_id: primary
+      section: Direct Detection
+    parameter_ranges:
+    - confidence: high
+      note: The paper quotes m_X about 2-10 GeV, g_X about 0.1, and lambda_b about 0.5 for the DAMA region.
+      reference_id: primary
+      section: WIMPless Models / Direct Detection
+    particle_content:
+    - confidence: high
+      note: The direct-detection section names scalar WIMPless candidate X and connector fermions Y_L,R.
+      reference_id: primary
+      section: Direct Detection
+    production_mechanism:
+    - confidence: high
+      note: The WIMPless section ties the relic density to m_X/g_X^2 and the usual WIMP relic-density
+        scaling.
+      reference_id: primary
+      section: WIMPless Models
+    validity_domain:
+    - confidence: medium
+      note: The proposal is explicitly aimed at the DAMA low-mass region and assumes suppressed light-quark
+        connector couplings.
+      reference_id: primary
+      section: DAMA Regions / Direct Detection
+  extraction:
+    confidence: high
+    extracted_by: codex_batch_0003
+    extraction_date: '2026-05-30'
+    extractor_name: Codex GPT-5
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The abstract says WIMPless dark matter with mass around 2-10 GeV can explain DAMA
+        while retaining the correct thermal relic density.
+      reference_id: primary
+      section: Abstract
+    - page: null
+      quote_or_summary: The paper introduces scalar X and connector fermions Y_L,R with Yukawa interactions
+        to Standard Model fermions.
+      reference_id: primary
+      section: WIMPless Models / Direct Detection
+    unresolved_items: []
+  last_updated: '2026-05-30'
+  model_family: wimpless_dark_matter
+  model_id: 0806_3746_wimpless_dama_connector_v1
+  model_name: WIMPless dark matter with connector-mediated DAMA scattering
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '0806.3746'
+      authors:
+      - Jonathan L. Feng
+      - Jason Kumar
+      - Louis E. Strigari
+      doi: null
+      notes: Assigned SQLite full text for this batch.
+      reference_id: primary
+      role: original_model
+      title: Explaining the DAMA Signal with WIMPless Dark Matter
+      url: null
+      year: 2008
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - m_X/g_X^2 relation
+  - hidden-sector gauge annihilation strength
+  overclosure_risk: unknown
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: unknown
+robustness:
+  computational_robustness: unknown
+  dominant_uncertainties:
+  - connector flavor structure
+  - DAMA-region astrophysical assumptions
+  - hidden-sector completion
+  notes: The model identity and relic-density logic are explicit, while several UV-completion details
+    are left open.
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    small_scale_power_effect: unknown
+    transfer_function_shape: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: The paper treats X as a stable WIMPless relic; the exact stabilizing symmetry
+    is not specified in the extracted text.
+  symmetries: []
+  topological_defects_possible: unknown
+theory:
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The text specifies connector Yukawa interactions for a scalar WIMPless candidate but does not
+    present a full hidden-sector Lagrangian.
+  parent_frameworks:
+  - gauge-mediated supersymmetry breaking
+  - hidden-sector WIMPless framework
+  - intersecting-brane-motivated connector sectors
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats: []
+  condition: The concrete proposal is aimed at the low-mass DAMA-compatible region with m_X about 2-10
+    GeV.
+  extrapolation_risk: medium
+  id: dama_low_mass_region
+  status: inferred
+- applies_to: interaction
+  caveats: []
+  condition: Only lambda_b and lambda_t are taken significant to avoid flavor bounds, with bottom coupling
+    dominating scattering.
+  extrapolation_risk: high
+  id: connector_flavor_assumption
+  status: assumed

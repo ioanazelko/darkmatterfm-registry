@@ -1,0 +1,293 @@
+_source:
+  shard: data/astro-ph-00014.tar
+  paper_id: '1003_0459'
+  source_member: 1003_0459.json
+schema_version: model_only_v0
+model_id: 1003_0459_1p5ev_neutrino_hot_dark_matter_v1
+identity:
+  name: 1.5 eV neutrino hot dark matter
+  family: neutrino_hot_dark_matter
+  aliases:
+  - 1.5 eV neutrino HDM
+  - isothermal fermion neutrino dark matter
+  short_description: A phenomenological hot dark matter scenario in which near-1.5 eV active and possibly
+    sterile neutrino states fit cluster lensing and provide a large cosmic dark matter fraction.
+  historical_origin_or_motivation: The paper motivates the scenario from Abell 1689 lensing fits and failed
+    searches for heavier cold or warm dark matter candidates.
+  status: speculative
+  model_kind: phenomenological_parameterization
+theory:
+  theory_level: phenomenological_parameterization
+  parent_frameworks:
+  - isothermal fermion halo model
+  - neutrino hot dark matter
+  lagrangian_available: 'no'
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: The text uses Fermi-Dirac/isothermal halo modeling and a possible meV Majorana mass matrix, but
+    does not present a particle Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: active and sterile neutrino states near 1.5 eV
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: multi_component
+  additional_dark_sector_particles:
+  - right-handed sterile neutrino modes
+  - left-handed sterile antineutrino modes
+  mediators: []
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - neutrino mass eigenstates with meV-scale splittings
+  long_lived_particles:
+  - neutrinos
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: No explicit stabilizing symmetry is supplied; neutrino longevity and weak or
+    sterile interactions are assumed.
+  symmetries: []
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - neutrino
+  - gravitational
+  standard_model_targets:
+  - gravity
+  - weak interactions for active neutrino states
+  dark_sector_couplings: []
+  mediator_types:
+  - not specified
+  interaction_operators: []
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: unknown
+  annihilation_channels: []
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: not_applicable
+parameters:
+  core:
+  - name: neutrino mass
+    symbol: m
+    description: Mass inferred from the Abell 1689 isothermal fermion fit.
+    value: 1.445-1.5
+    unit: eV
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: filled neutrino states
+    symbol: g
+    description: Filling factor or number of created neutrino degrees of freedom.
+    value: 6 active, about 12 if sterile modes are created
+    role: core
+    status: inferred
+    source_reference_ids: []
+  - name: Majorana mass matrix scale
+    description: Possible meV-scale Majorana mass matrix creating sterile modes and enabling an anti-see-saw
+      interpretation.
+    value: meV scale
+    unit: eV
+    role: core
+    status: speculative
+    source_reference_ids: []
+production:
+  mechanisms:
+  - early-Universe creation of active neutrino states
+  - possible early-Universe creation of right-handed sterile modes
+  - late gravitational condensation on galaxy clusters
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - neutrino mass
+  - created degrees of freedom g
+  - presence or absence of sterile modes
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper states that active states give a smaller fraction, while active plus sterile states
+    can give about 20 percent hot dark matter.
+relic_density:
+  full_or_subcomponent: either
+  calculation_type: phenomenological
+  key_dependencies:
+  - m
+  - g
+  - sterile mode creation
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - possible creation of right-handed sterile modes from a meV Majorana mass matrix
+  - late cluster condensation at about z = 7
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions: []
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'yes'
+  f_of_p_or_q: Fermi-Dirac distribution used for the cluster dark matter component
+  notes: The paper invokes free streaming at decoupling and violent relaxation leading to a Fermi-Dirac
+    distribution in clusters.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'no'
+    transfer_function_shape: smooth_cutoff
+    small_scale_power_effect: suppression
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+  nonlinear:
+    halo_mass_function_effect: late neutrino condensation on galaxy clusters is claimed
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: cluster_fit_domain
+  applies_to: model
+  condition: The mass estimate is tied to an isothermal fermion fit to Abell 1689 lensing data.
+  status: inferred
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - primary
+- id: sterile_abundance
+  applies_to: production
+  condition: The larger cosmic dark matter fraction requires early creation of sterile neutrino modes.
+  status: speculative
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - primary
+assumptions:
+  global:
+  - id: isothermal_cluster
+    description: Galaxy cluster components can be treated as stationary, spherical, and isothermal for
+      the fit.
+    scope: structure_formation
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+  - id: sterile_creation
+    description: Right-handed sterile modes may be created in the early Universe if a meV Majorana mass
+      matrix exists.
+    scope: production
+    status: speculative
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - primary
+    impact_if_violated: Without sterile modes the model supplies only a smaller hot dark matter fraction.
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific associated code is identified in the assigned text.
+provenance:
+  model_id: 1003_0459_1p5ev_neutrino_hot_dark_matter_v1
+  model_name: The Case of 1.5 eV Neutrino Hot Dark Matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-28'
+  last_updated: '2026-05-28'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: The Case of 1.5 eV Neutrino Hot Dark Matter
+      authors:
+      - Theo M. Nieuwenhuizen
+      year: 2010
+      arxiv_id: '1003.0459'
+      doi: null
+      url: null
+      role: original_model
+      notes: null
+  extraction:
+    method: llm_assisted
+    extracted_by: gpt55_dark_matter_batch_worker_batch_0000
+    extractor_name: Codex
+    extraction_date: '2026-05-28'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: abstract/opening
+      page: null
+      quote_or_summary: The text names the 1.5 eV neutrino as the best candidate and says sterile modes
+        could supply about 20 percent hot dark matter.
+    - reference_id: primary
+      section: cluster fit and neutrino abundance
+      page: null
+      quote_or_summary: The fit yields a mass around 1.445 eV and discusses active versus sterile degrees
+        of freedom.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The dark matter candidate is identified as neutrino states with mass about 1.5 eV, with optional
+        sterile right-handed modes.
+      confidence: high
+      section: abstract and abundance discussion
+    production_mechanism:
+    - reference_id: primary
+      note: The larger abundance depends on sterile modes being created in the early Universe; the paper
+        also discusses late cluster condensation.
+      confidence: medium
+      section: abundance discussion
+    parameter_ranges:
+    - reference_id: primary
+      note: The paper quotes m = 1.445(30) h_70^(1/2) eV and contrasts g = 6 active states with about
+        g = 12 including sterile modes.
+      confidence: high
+      section: fit paragraph
+    cosmological_history:
+    - reference_id: primary
+      note: Neutrinos are described as free-streaming at decoupling and condensing on clusters around
+        z = 7.
+      confidence: medium
+      section: cosmology paragraph
+    validity_domain:
+    - reference_id: primary
+      note: The model is calibrated to Abell 1689 lensing through an isothermal fermion model.
+      confidence: high
+      section: cluster model section
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: low
+    implementation_confidence: medium
+    reviewer_notes: []
+  caveats:
+  - The assigned text makes broad claims about structure formation from a cluster-scale fit; this is recorded
+    as speculative rather than canonical.
+robustness:
+  overall: low
+  theory_robustness: low
+  observational_robustness: low
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  notes: The paper gives a concrete model but relies on speculative sterile production and cluster-to-cosmology
+    extrapolation.
+agent_failure_modes:
+  warnings:
+  - id: cluster_extrapolation
+    severity: high
+    category: extrapolation
+    warning: Do not generalize the Abell 1689 fit to all structure formation without additional evidence.
+    source_reference_ids:
+    - primary
+  - id: sterile_modes
+    severity: medium
+    category: assumption_mismatch
+    warning: The high hot-dark-matter fraction depends on sterile modes that are conditional in the text.
+    source_reference_ids:
+    - primary

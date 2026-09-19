@@ -1,0 +1,332 @@
+_source:
+  shard: arXiv_src_2401_028_wds.tar
+  paper_id: '2401_03657'
+  source_member: 2401_03657.json
+schema_version: model_only_v0
+model_id: 2401_03657_codecaying_complex_scalar_secluded_dm_v1
+identity:
+  name: Codecaying complex scalar secluded-sector dark matter
+  family: hidden_sector_dark_matter
+  aliases:
+  - codecaying dark matter benchmark
+  - secluded-sector phi_A phi_B codecay model
+  short_description: A secluded-sector benchmark where complex scalar dark matter phi_A stays in chemical
+    equilibrium with a real scalar mediator phi_B after SM decoupling, and phi_B decays deplete the dark
+    matter abundance.
+  historical_origin_or_motivation: Used to test how non-thermal phase-space distributions modify relic-density
+    calculations in codecaying dark matter.
+  status: speculative
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - secluded-sector dark matter
+  - codecaying dark matter
+  - confining dark pion motivation
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper gives a scalar benchmark Lagrangian and notes it can be motivated by confining secluded
+    sectors with dark pions.
+particle_content:
+  dark_matter_candidate:
+    name: phi_A complex scalar
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - phi_B real scalar mediator
+  mediators:
+  - phi_B real scalar
+  - Higgs boson through phi_B^2 h^2 coupling
+  unstable_parent_particles:
+  - phi_B
+  standard_model_extension: minimal
+symmetries:
+  stabilizing_mechanism: A global U(1) symmetry stabilizes phi_A.
+  symmetries:
+  - name: global U(1) acting on phi_A
+    type: global
+    exact_or_approximate: exact
+  - name: phi_B Z2
+    type: discrete
+    exact_or_approximate: broken
+    breaking: A small phi_B decay width breaks the Z2 and is technically natural.
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - Higgs boson
+  - SM thermal bath particles from phi_B decay
+  dark_sector_couplings:
+  - lambda_AB phi_A^* phi_A phi_B^2
+  - lambda_Bh phi_B^2 h^2
+  - phi_B decay width Gamma_B
+  mediator_types:
+  - real scalar mediator phi_B
+  interaction_operators:
+  - (phi_A^* phi_A) phi_B^2
+  - phi_B^2 h^2
+  annihilation_channels:
+  - phi_A phi_A^* to phi_B phi_B
+  decay_channels:
+  - phi_B to unspecified particles in thermal equilibrium with the SM
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: not_applicable
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_A
+    description: Complex scalar phi_A mass; assumed near the electroweak scale.
+    range: around electroweak scale
+    unit: GeV
+    role: core
+    status: assumed
+  - name: mediator mass
+    symbol: m_B
+    description: Real scalar phi_B mass, taken similar to m_A in codecaying scenarios.
+    range: similar to m_A
+    unit: GeV
+    role: core
+    status: assumed
+  - name: dark-sector quartic coupling
+    symbol: lambda_AB
+    description: Coupling for phi_A^* phi_A phi_B^2.
+    role: core
+    status: inferred
+  - name: Higgs portal coupling
+    symbol: lambda_Bh
+    description: Coupling for phi_B^2 h^2.
+    role: core
+    status: inferred
+  - name: mediator decay width
+    symbol: Gamma_B
+    description: Small decay width of phi_B to SM-equilibrated particles.
+    role: core
+    status: assumed
+  - name: phase-space distributions
+    symbol: f_A, f_B
+    description: Evolved distributions for the dark matter and mediator.
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - codecaying freeze-out
+  - annihilation of phi_A into phi_B
+  - mediator phi_B decays to the SM bath
+  thermal_equilibrium_with_standard_model: partial
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  can_produce_all_dark_matter: parameter_dependent
+  abundance_set_by:
+  - phi_A phi_A^* to phi_B phi_B conversion
+  - phi_B decay width
+  - departure from kinetic equilibrium
+  depends_on_reheating_temperature: unknown
+  nonthermal_momentum_distribution: 'yes'
+  notes: The paper studies corrections from evolving full phase-space distributions rather than assuming
+    thermal distributions.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: mixed
+  key_dependencies:
+  - m_A
+  - m_B
+  - lambda_AB
+  - lambda_Bh
+  - Gamma_B
+  - phase-space evolution
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - secluded sector decouples early from the SM bath
+  - mediator decays after decoupling
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: nonthermal
+  distribution_function_available: 'yes'
+  f_of_p_or_q: The paper solves Boltzmann equations for f_A(p,t) and f_B(p,t), initialized near Maxwell-Boltzmann
+    and evolved through codecaying freeze-out.
+  notes: Nonthermal mediator distributions alter the annihilation/inverse-annihilation balance but leave
+    only a small final abundance correction in the benchmark.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+validity_domain:
+- id: secluded_codecay_regime
+  applies_to: model
+  condition: Mediator and dark matter masses must be similar, mediator decays to the SM must be slow,
+    and dark-sector interactions must keep chemical equilibrium after SM decoupling.
+  status: inferred
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '2401_03657'
+- id: ew_scale_benchmark
+  applies_to: parameter
+  condition: The explicit benchmark assumes an electroweak-scale dark matter mass and few Higgs bosons
+    after secluded-sector decoupling.
+  status: assumed
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '2401_03657'
+- id: phase_space_required_for_precision
+  applies_to: computation
+  condition: For precision relic-density work, the full phase-space distributions may need to be tracked
+    rather than using integrated thermal densities.
+  status: inferred
+  extrapolation_risk: medium
+  source_reference_ids:
+  - '2401_03657'
+assumptions:
+  global:
+  - id: sm_radiation_dominated
+    description: The numerical treatment assumes the energy content of the universe is dominated by the
+      SM plasma.
+    scope: cosmological_history
+    status: assumed
+    source_reference_ids:
+    - '2401_03657'
+  - id: isotropic_uniform_distributions
+    description: The Boltzmann treatment assumes isotropic and homogeneous phase-space distributions.
+    scope: computation
+    status: assumed
+    source_reference_ids:
+    - '2401_03657'
+  - id: unspecified_phi_b_decay_products
+    description: The exact particles receiving phi_B decays are not specified, only that they stay in
+      thermal equilibrium with the SM.
+    scope: production
+    status: assumed
+    source_reference_ids:
+    - '2401_03657'
+associated_code:
+  has_associated_code: unknown
+  code_summary: The paper presents a numerical Boltzmann procedure but the assigned text does not identify
+    a public code release.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 2401_03657_codecaying_complex_scalar_secluded_dm_v1
+  model_name: Codecaying complex scalar secluded-sector dark matter
+  model_family: hidden_sector_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-06-01'
+  last_updated: '2026-06-01'
+  sources:
+    primary_papers:
+    - reference_id: '2401_03657'
+      title: unknown
+      authors: []
+      year: 2024
+      arxiv_id: '2401.03657'
+      doi: null
+      url: null
+      role: extension
+      notes: Assigned full text from run-local SQLite database.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0018
+    extractor_name: Codex GPT-5
+    extraction_date: '2026-06-01'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '2401_03657'
+      section: model section
+      page: null
+      quote_or_summary: The benchmark has complex scalar phi_A dark matter and real scalar phi_B mediator
+        with a scalar Lagrangian.
+    - reference_id: '2401_03657'
+      section: conclusions
+      page: null
+      quote_or_summary: The paper studies nonthermal phase-space effects on codecaying dark matter and
+        finds small final abundance corrections.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: '2401_03657'
+      note: The benchmark model has a complex scalar phi_A, neutral under SM gauge groups, as dark matter,
+        plus a real scalar mediator phi_B.
+      confidence: high
+      section: model section
+    symmetries:
+    - reference_id: '2401_03657'
+      note: The text states phi_A is kept stable by a global U(1) symmetry, while the small phi_B decay
+        width breaks a Z2 symmetry in a technically natural way.
+      confidence: high
+      section: model section
+    interactions:
+    - reference_id: '2401_03657'
+      note: The scalar Lagrangian includes m_A, m_B, lambda_AB (phi_A* phi_A) phi_B^2, and lambda_Bh phi_B^2
+        h^2 terms; phi_B decays to particles in thermal equilibrium with the SM.
+      confidence: high
+      section: model section
+    production_mechanism:
+    - reference_id: '2401_03657'
+      note: Dark matter and mediator maintain chemical equilibrium after decoupling from the SM; phi_A
+        converts to phi_B, which decays to SM particles, setting the codecaying abundance.
+      confidence: high
+      section: model section
+    phase_space:
+    - reference_id: '2401_03657'
+      note: The paper evolves the full phase-space distributions and finds deviations from Maxwell-Boltzmann
+        during codecaying freeze-out.
+      confidence: high
+      section: numerical procedure and results
+    parameter_ranges:
+    - reference_id: '2401_03657'
+      note: The benchmark assumes electroweak-scale phi_A mass and similar phi_A and phi_B masses; a displayed
+        benchmark has a phi_B momentum peak near 28 GeV.
+      confidence: medium
+      section: model and results sections
+    validity_domain:
+    - reference_id: '2401_03657'
+      note: The authors conclude thermal distributions are a relatively good approximation for codecaying
+        dark matter final abundance, but phase-space evolution gives corrections.
+      confidence: high
+      section: conclusions
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - Only a simple benchmark is studied; public code availability is not identified in the assigned text.
+  validation_status: partially_validated
+  notes: The paper supplies detailed Boltzmann machinery, but this extraction treats the benchmark as
+    a model-card candidate rather than a final registry entry.
+agent_failure_modes:
+  warnings:
+  - id: codecay_not_standard_wimp_freezeout
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not approximate this as ordinary WIMP freeze-out; the abundance is set by secluded-sector
+      codecay dynamics and mediator decays.
+    source_reference_ids:
+    - '2401_03657'

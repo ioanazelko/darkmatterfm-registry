@@ -1,0 +1,284 @@
+_source:
+  shard: arXiv_src_1002_001_wds.tar
+  paper_id: '1002_1031'
+  source_member: 1002_1031.json
+schema_version: model_only_v0
+model_id: 1002_1031_f_theory_scenario_i_bino_neutralino_v1
+identity:
+  name: F-theory scenario I bino-neutralino dark matter
+  family: supersymmetric_neutralino_dark_matter
+  aliases:
+  - F-theory gaugino-mass-relation scenario I
+  short_description: Gravity-mediated F-theory SU(5) model variant with a distinctive gaugino mass relation
+    and a mostly bino neutralino LSP whose relic density is computed in the paper.
+  historical_origin_or_motivation: Introduced to make F-theory GUT gaugino mass relations testable at
+    colliders while retaining a neutralino dark matter candidate.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - F-theory SU(5) GUT with U(1)_Y flux
+  - gravity-mediated supersymmetry breaking
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: 'yes'
+  notes: The paper derives gauge kinetic functions and a low-energy gaugino mass relation rather than
+    listing a full component Lagrangian.
+particle_content:
+  dark_matter_candidate:
+    name: lightest neutralino chi_1^0
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - MSSM Higgs sector
+  - sfermions
+  - gauginos
+  unstable_parent_particles:
+  - heavier neutralinos
+  - charginos
+  - squarks
+  - gluino
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: R parity stabilizes the lightest supersymmetric particle.
+  symmetries:
+  - name: R parity
+    type: discrete
+    exact_or_approximate: exact
+  - name: F-theory U(1)_Y flux breaking
+    type: gauge
+    exact_or_approximate: broken
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - other
+  standard_model_targets:
+  - electroweak gauge and Higgs sectors
+  - quarks and leptons through MSSM superpartners
+  dark_sector_couplings:
+  - neutralino couplings fixed by the F-theory gaugino spectrum and MSSM electroweakino mixing
+  mediator_types:
+  - Higgs bosons
+  - sfermions
+  - gauginos
+  annihilation_channels:
+  - neutralino annihilation channels evaluated with MicrOMEGAs
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: universal gaugino mass scale
+    symbol: M_1/2
+    description: Overall gaugino mass parameter used in the scenario I spectrum.
+    role: core
+    status: assumed
+  - name: universal scalar mass
+    symbol: m_0
+    description: Universal scalar mass; the benchmark has large m_0 and A_0=m_0.
+    role: core
+    status: assumed
+  - name: trilinear soft term
+    symbol: A_0
+    description: Universal trilinear parameter, set equal to m_0 in the favored scan.
+    role: core
+    status: assumed
+  - name: Higgs vev ratio
+    symbol: tan beta
+    description: Scenario I WMAP-compatible region includes large tan beta near the benchmark quoted by
+      the paper.
+    role: core
+    status: inferred
+  - name: neutralino mass
+    symbol: m_chi_1^0
+    description: Scenario I benchmark neutralino mass quoted near 316 GeV.
+    value: '316'
+    unit: GeV
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out of the neutralino LSP in the supersymmetric plasma
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  abundance_set_by:
+  - neutralino annihilation spectrum from the F-theory soft terms
+  can_produce_all_dark_matter: parameter_dependent
+  notes: The paper reports a scenario I benchmark relic density of about 0.1156 and allows underabundance
+    for multicomponent dark matter or overabundance with dilution.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - F-theory gaugino mass relation
+  - M_1/2
+  - m_0
+  - A_0
+  - tan beta
+  - neutralino composition
+  requires_entropy_dilution: parameter_dependent
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - possible O(10) dilution factor mentioned as an allowance for overabundant points
+  dark_sector_temperature: null
+  delta_neff: null
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  notes: Cold WIMP-like neutralino phase space is assumed, but no distribution function is provided.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+    half_mode_mass: null
+  nonlinear:
+    halo_mass_function_effect: not discussed beyond cold neutralino behavior
+    subhalo_mass_function_effect: not discussed
+    simulation_calibrated: unknown
+validity_domain:
+- id: scenario_i_soft_terms
+  applies_to: model
+  condition: Scenario I uses the dilaton-dominated F-theory gaugino hierarchy M3 < M1 < M2 with the paper's
+    benchmark choices.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Spectrum and relic density are benchmark-dependent.
+  source_reference_ids:
+  - arxiv:1002.1031
+assumptions:
+  global:
+  - id: r_parity_stability
+    description: The neutralino LSP is stable on cosmological timescales due to R parity.
+    scope: theory
+    status: assumed
+    impact_if_violated: The neutralino would not be a viable dark matter candidate.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - arxiv:1002.1031
+  - id: standard_neutralino_freezeout
+    description: MicrOMEGAs thermal relic calculations are used for the neutralino abundance.
+    scope: production
+    status: assumed
+    impact_if_violated: Relic density regions would shift or require dilution/multicomponent dark matter.
+    can_be_relaxed: 'yes'
+    source_reference_ids:
+    - arxiv:1002.1031
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses SuSpect and MicrOMEGAs for spectrum, relic density, and direct-detection
+    calculations; no model-specific public code release is stated.
+  primary_code_role: relic_density_calculation
+  repositories: []
+provenance:
+  model_id: 1002_1031_f_theory_scenario_i_bino_neutralino_v1
+  model_name: F-theory scenario I bino-neutralino dark matter
+  model_family: supersymmetric_neutralino_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: arxiv:1002.1031
+      title: F-Theory Grand Unification at the Colliders
+      authors:
+      - Tianjun Li
+      - James A. Maxin
+      - Dimitri V. Nanopoulos
+      year: 2010
+      arxiv_id: '1002.1031'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text in batch-0006.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: GPT-5 Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: arxiv:1002.1031
+      section: model setup and scenario I benchmark
+      page: null
+      quote_or_summary: The paper defines scenario I gaugino masses, scans M_1/2, m_0, A_0, tan beta,
+        and computes neutralino relic density with MicrOMEGAs.
+    unresolved_items:
+    - The text gives benchmark spectra but not a full model-file implementation.
+  evidence:
+    particle_content:
+    - reference_id: arxiv:1002.1031
+      note: Scenario I has a lightest neutralino LSP that is reported as 98 percent bino at the benchmark.
+      confidence: high
+      section: scenario I benchmark
+      page: null
+    symmetries:
+    - reference_id: arxiv:1002.1031
+      note: The construction is a supersymmetric F-theory GUT; LSP stability follows the usual R-parity
+        assumption used for neutralino dark matter.
+      confidence: medium
+      section: model setup
+      page: null
+    interactions:
+    - reference_id: arxiv:1002.1031
+      note: Neutralino interactions and spectrum are obtained from the F-theory soft terms run to the
+        electroweak scale.
+      confidence: medium
+      section: numerical analysis
+      page: null
+    production_mechanism:
+    - reference_id: arxiv:1002.1031
+      note: The paper uses SuSpect plus MicrOMEGAs to calculate the corresponding neutralino relic density.
+      confidence: high
+      section: numerical analysis
+      page: null
+    parameter_ranges:
+    - reference_id: arxiv:1002.1031
+      note: Scenario I benchmark has relic density about 0.1156 and m_chi_1^0 about 316 GeV.
+      confidence: high
+      section: scenario I benchmark
+      page: null
+    validity_domain:
+    - reference_id: arxiv:1002.1031
+      note: Scenario I is tied to the F-theory dilaton-dominated gaugino hierarchy M3 < M1 < M2.
+      confidence: medium
+      section: scenario definitions
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: not_applicable
+  computational_robustness: medium
+  dominant_uncertainties:
+  - benchmark dependence
+  - incomplete full Lagrangian in extracted text
+  validation_status: expert_judgment_only
+  notes: Accepted as a substantive F-theory neutralino dark matter variant, but it is collider/GUT motivated
+    rather than solely a dark matter construction.
+agent_failure_modes:
+  warnings:
+  - id: do_not_merge_with_mssm
+    severity: medium
+    category: invalid_mapping
+    warning: Do not collapse this row to generic MSSM neutralino dark matter; the paper-specific feature
+      is the F-theory gaugino mass relation.

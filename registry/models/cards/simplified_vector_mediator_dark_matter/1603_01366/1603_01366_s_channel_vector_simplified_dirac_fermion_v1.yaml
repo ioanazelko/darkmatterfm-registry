@@ -1,0 +1,695 @@
+_source:
+  shard: arXiv_src_1603_003_wds.tar
+  paper_id: '1603_01366'
+  source_member: 1603_01366.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1603_01366_s_channel_vector_simplified_dirac_fermion_v1
+identity:
+  name: s-channel vector simplified Dirac fermion dark matter
+  family: simplified_vector_mediator_dark_matter
+  aliases:
+  - sv
+  short_description: A simplified model in which a stable SM-singlet Dirac fermion couples to quarks through
+    an s-channel vector mediator.
+  historical_origin_or_motivation: The paper uses simplified models as alternatives to EFT interpretations
+    of collider dark-matter searches when mediator masses can be accessible at the LHC.
+  status: benchmark
+  model_kind: simplified_model
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - simplified dark matter model
+  - heavy-mediator EFT limit
+  lagrangian_available: partial
+  renormalizable: unknown
+  embedded_in_larger_framework: unknown
+  notes: The paper provides interaction Lagrangians for the benchmark simplified model but does not specify
+    a complete UV completion.
+particle_content:
+  dark_matter_candidate:
+    name: SM-singlet Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles: []
+  mediators:
+  - s-channel spin-1 vector mediator
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The dark fermion is assumed to be the lightest stable new particle.
+  symmetries:
+  - name: stability assumption for the lightest new particle
+    type: unknown
+    exact_or_approximate: unknown
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - vector
+  standard_model_targets:
+  - quarks
+  dark_sector_couplings:
+  - vector couplings to both quarks and the dark fermion
+  mediator_types:
+  - s-channel spin-1 vector mediator
+  interaction_operators:
+  - D5-like vector current in the heavy-mediator limit
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - annihilation to quarks through the mediator
+  decay_channels: []
+  self_scattering_channels: []
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the Dirac fermion dark matter particle.
+    role: core
+    status: inferred
+  - name: mediator mass
+    symbol: M
+    description: Mass of the simplified mediator.
+    role: core
+    status: inferred
+  - name: quark-mediator coupling
+    symbol: g_q
+    description: Universal mediator coupling to quarks under the paper assumptions.
+    value: 1 in baseline scans; varied in coupling-limit plots
+    role: core
+    status: assumed
+  - name: DM-mediator coupling
+    symbol: g_chi
+    description: Mediator coupling to the dark fermion.
+    range: 0.2 to 5 in s-channel scans; coupling limits reported for all models
+    role: core
+    status: inferred
+  - name: mediator width
+    symbol: Gamma
+    description: Minimal width from decays to kinematically accessible dark matter and quarks.
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through dark matter self-annihilation
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - self-annihilation cross section
+  - dark matter mass
+  - mediator mass
+  - mediator couplings
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: parameter_dependent
+  nonthermal_momentum_distribution: unknown
+  notes: The paper uses thermal-relic abundance as a benchmark rather than a full cosmological history.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - annihilation cross section
+  - Planck abundance target
+  - micrOMEGAs calculation
+  - possible additional annihilation channels not included
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: unknown
+  notes: Thermal relic assumption used only for benchmark coupling contours.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: perturbative_couplings
+  applies_to: couplings
+  condition: Mediator and quark couplings are required to remain within the perturbative regime.
+  status: assumed
+  extrapolation_risk: medium
+- id: minimal_width_quality
+  applies_to: mediator_width
+  condition: The paper treats the mediator width as the minimal natural width and rejects regions with
+    width too large relative to the mediator mass.
+  status: assumed
+  extrapolation_risk: high
+assumptions:
+  global:
+  - id: dirac_sm_singlet
+    description: The dark matter particle is a weakly interacting Dirac fermion and SM singlet.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+  - id: quark_only_couplings
+    description: The new sector couples only to Standard Model quarks in the model space studied.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+  - id: universal_quark_couplings
+    description: The mediator coupling to quarks is generation universal, following minimal-flavor-violation
+      assumptions.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+  - id: thermal_relic_benchmark
+    description: Thermal relic abundance is used as a benchmark comparison and may fail if nonthermal
+      history or additional channels are present.
+    scope: production
+    status: assumed
+    can_be_relaxed: 'yes'
+    impact_if_violated: Thermal coupling contours would not be definitive relic-density requirements.
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper uses micrOMEGAs to determine couplings leading to the correct relic density;
+    no model-specific public implementation is identified in the extracted text.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 1603_01366_s_channel_vector_simplified_dirac_fermion_v1
+  model_name: s-channel vector simplified Dirac fermion dark matter
+  model_family: simplified_vector_mediator_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1603_01366'
+      title: unknown
+      authors: []
+      year: 2016
+      arxiv_id: '1603.01366'
+      doi: null
+      url: null
+      role: benchmark
+      notes: Only the assigned SQLite full text was used.
+    - arxiv_id: '1603.01366'
+      authors:
+      - Brennan, A. J.
+      - McDonald, M. F.
+      - Gramling, J.
+      - Jacques, T. D.
+      doi: 10.48550/arXiv.1603.01366
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1603.01366
+      role: original_model
+      title: 'Collide and Conquer: Constraints on Simplified Dark Matter Models using Mono-X Collider
+        Searches'
+      url: https://arxiv.org/abs/1603.01366
+      year: 2016
+    constraint_papers:
+    - arxiv_id: '1308.0592'
+      authors:
+      - An, Haipeng
+      - Wang, Lian-Tao
+      - Zhang, Hao
+      doi: 10.1103/PhysRevD.89.115014
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1308.0592
+      role: constraint
+      title: 'Dark matter with t-channel mediator: A simple step beyond contact interaction'
+      url: https://arxiv.org/abs/1308.0592
+      year: 2014
+    - arxiv_id: '1308.0612'
+      authors:
+      - Bai, Yang
+      - Berger, Joshua
+      doi: 10.1007/JHEP11(2013)171
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1308.0612
+      role: constraint
+      title: Fermion portal dark matter
+      url: https://arxiv.org/abs/1308.0612
+      year: 2013
+    - arxiv_id: '1407.8257'
+      authors:
+      - Buchmueller, Oliver
+      - Dolan, Matthew J.
+      - Malik, Sarah A.
+      - McCabe, Christopher
+      doi: 10.1007/JHEP01(2015)037
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:1407.8257
+      role: constraint
+      title: 'Characterising dark matter searches at colliders and direct detection experiments: vector
+        mediators'
+      url: https://arxiv.org/abs/1407.8257
+      year: 2015
+    external_databases: []
+    review_papers: []
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0010
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: '1603_01366'
+      section: Model descriptions
+      page: null
+      quote_or_summary: Defines Dirac SM-singlet DM, mediator choices, and interaction Lagrangians for
+        sV, sA, and tS simplified models.
+    - reference_id: '1603_01366'
+      section: Comparison with relic density constraints
+      page: null
+      quote_or_summary: Uses thermal relic abundance and micrOMEGAs to obtain benchmark couplings.
+    unresolved_items:
+    - Modern LHC and direct-detection datasets are not folded in; this preserves the source-paper Run-I
+      recast context.
+  evidence:
+    particle_content:
+    - reference_id: '1603_01366'
+      note: Model assumptions state that the DM particle is a weakly interacting Dirac fermion, a SM singlet,
+        and the lightest stable new particle.
+      confidence: high
+      section: Model descriptions
+      page: null
+    interactions:
+    - reference_id: '1603_01366'
+      note: The paper chooses Z-prime-type s-channel models and gives vector-current interaction terms
+        for quarks and the Dirac DM.
+      confidence: high
+      section: Model descriptions
+      page: null
+    production_mechanism:
+    - reference_id: '1603_01366'
+      note: The relic-density comparison assumes thermal relic DM and uses self-annihilation cross sections
+        and micrOMEGAs to find couplings reproducing the Planck abundance.
+      confidence: medium
+      section: Comparison with relic density constraints
+      page: null
+    parameter_ranges:
+    - reference_id: '1603_01366'
+      note: The paper scans representative DM and mediator masses, sets quark couplings to unity in baseline
+        scans, varies the dark coupling, and imposes perturbativity and width quality criteria.
+      confidence: medium
+      section: Mass and coupling points
+      page: null
+    validity_domain:
+    - reference_id: '1603_01366'
+      note: The paper treats the mediator width as the minimal natural width and regards regions with
+        excessive width or nonperturbative couplings as invalid.
+      confidence: medium
+      section: Treatment of the width
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary paper compares mono-X limits with relic-density and direct-detection constraints using
+        minimal mediator widths.
+      page: null
+      reference_id: arxiv:1603.01366
+      section: Results sections
+    - confidence: high
+      note: Related t-channel paper states that thermally produced Dirac fermion dark matter has no allowed
+        region after combined monojet and direct-detection constraints in that model.
+      page: null
+      reference_id: arxiv:1308.0592
+      section: Abstract
+    - confidence: medium
+      note: Related fermion-portal paper states direct detection and collider searches probe complementary
+        regions of mediator-DM parameter space.
+      page: null
+      reference_id: arxiv:1308.0612
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary paper recasts ATLAS monojet, mono-Z, and mono-W/Z searches for s-channel vector/axial-vector
+        and t-channel scalar simplified models.
+      page: null
+      reference_id: arxiv:1603.01366
+      section: Introduction and collider recast sections
+    - confidence: high
+      note: Related t-channel paper studies monojet, mediator pair production, relic, and direct-detection
+        complementarity.
+      page: null
+      reference_id: arxiv:1308.0592
+      section: Abstract
+    - confidence: high
+      note: Related vector-mediator paper develops a collider/direct-detection comparison for vector and
+        axial-vector mediators.
+      page: null
+      reference_id: arxiv:1407.8257
+      section: Model and results sections
+    routes:
+    - confidence: high
+      note: Primary paper describes the simulation and recasting chain from simplified-model parameters
+        to mono-X limits.
+      page: null
+      reference_id: arxiv:1603.01366
+      section: Signal simulation and recast sections
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+  caveats:
+  - The paper is primarily a collider reinterpretation/constraint study; the model-card row is limited
+    to the explicitly defined simplified-model benchmarks.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  computational_robustness: medium
+  dominant_uncertainties:
+  - simplified mediator completion not specified
+  - thermal relic comparison ignores possible additional channels
+  validation_status: partially_validated
+agent_failure_modes:
+  warnings:
+  - id: simplified_model_scope
+    severity: medium
+    category: assumption_mismatch
+    warning: Do not treat this simplified benchmark as a complete UV theory; the paper only specifies
+      the interaction-level model used for collider/relic comparisons.
+    mitigation: Check any downstream use against the stated mediator-width and coupling assumptions.
+observables:
+- caveats:
+  - Primary recast is based on Run-I mono-X searches and minimal mediator widths.
+  channel: collider
+  effect_direction: rate_change
+  environments:
+  - ATLAS/CMS monojet and mono-boson searches
+  id: obs_svector_mono_x
+  key_quantities:
+  - description: Dirac fermion dark matter mass.
+    name: dark matter mass
+    role: core
+    source_reference_ids:
+    - arxiv:1603.01366
+    status: inferred
+    symbol: m_chi
+  - description: Mass of the s-channel or t-channel mediator.
+    name: mediator mass
+    role: core
+    source_reference_ids:
+    - arxiv:1603.01366
+    - arxiv:1407.8257
+    status: inferred
+    symbol: m_med
+  - description: Couplings controlling production and scattering rates.
+    name: SM and DM couplings
+    role: core
+    source_reference_ids:
+    - arxiv:1603.01366
+    - arxiv:1407.8257
+    status: inferred
+    symbol: g_q, g_chi or lambda
+  linked_constraints: []
+  linked_routes: []
+  name: Vector s-channel mono-X missing energy
+  notes: null
+  observability: high
+  predicted_effect: Missing-energy searches with initial-state jets or electroweak bosons constrain the
+    mediator and coupling parameter space of the simplified model.
+  redshift_range: null
+  relevance: high
+  scale_range: 8 TeV LHC mono-X kinematics
+  source_reference_ids:
+  - arxiv:1603.01366
+  - arxiv:1407.8257
+  subchannel: monojet, mono-Z, and mono-W/Z
+- caveats:
+  - Direct-detection mapping is model-dependent for broad or light mediators.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - xenon detectors
+  - LUX-style analyses
+  id: obs_svector_spin_independent_direct
+  key_quantities:
+  - description: Nuclear scattering cross section induced by vector exchange.
+    name: spin-independent cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:1603.01366
+    - arxiv:1407.8257
+    status: inferred
+    symbol: sigma_SI
+  - description: Minimal mediator width used in the primary collider comparison.
+    name: mediator width
+    role: core
+    source_reference_ids:
+    - arxiv:1603.01366
+    status: inferred
+    symbol: Gamma_med
+  linked_constraints:
+  - con_svector_si_direct
+  linked_routes:
+  - route_svector_recast
+  name: Vector-mediator spin-independent direct detection
+  notes: null
+  observability: high
+  predicted_effect: Vector mediator exchange maps to spin-independent nuclear scattering, making direct-detection
+    constraints highly complementary to collider searches except where recoil sensitivity is poor.
+  redshift_range: null
+  relevance: high
+  scale_range: nuclear recoil scales
+  source_reference_ids:
+  - arxiv:1603.01366
+  - arxiv:1407.8257
+  subchannel: spin-independent nuclear scattering
+- caveats:
+  - The relic-density line is a target rather than a full likelihood.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - early Universe thermal bath
+  id: obs_svector_thermal_relic
+  key_quantities:
+  - description: Annihilation cross section for a thermal relic target.
+    name: thermal annihilation cross section
+    role: derived
+    source_reference_ids:
+    - arxiv:1603.01366
+    status: inferred
+    symbol: <sigma v>
+  - description: Coupling combination controlling annihilation and production.
+    name: coupling product
+    role: core
+    source_reference_ids:
+    - arxiv:1603.01366
+    status: inferred
+    symbol: g_q g_chi
+  linked_constraints:
+  - con_svector_relic
+  linked_routes:
+  - route_svector_recast
+  name: Vector-mediator thermal relic target
+  notes: null
+  observability: medium
+  predicted_effect: The primary paper overlays thermal-relic coupling contours for the vector simplified
+    model to compare collider and direct-detection reach.
+  redshift_range: thermal freeze-out epoch
+  relevance: medium
+  scale_range: weak-scale mediator masses
+  source_reference_ids:
+  - arxiv:1603.01366
+  subchannel: thermal freeze-out
+constraints:
+- allowed_regions:
+  - Unexcluded regions require comparison with spin-independent direct detection and relic-density targets.
+  applies: 'yes'
+  assumptions: []
+  benchmark_implications:
+  - Monojet is the strongest of the three mono-X channels for vector mediators in the primary comparison.
+  caveats:
+  - Run-I recast and conservative uncertainties.
+  constrained_parameters:
+  - m_chi
+  - m_med
+  - g_q
+  - g_chi
+  constraint_type: collider
+  data_release: ATLAS 8 TeV monojet, mono-Z, mono-W/Z searches
+  excluded_regions:
+  - Regions producing mono-X visible cross sections above ATLAS Run-I limits are excluded in the primary
+    recast.
+  id: con_svector_mono_x
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: ATLAS mono-X vector-mediator bounds
+  notes: null
+  observable_channel: collider
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1603.01366
+- allowed_regions:
+  - Collider searches cover low-mass regions where direct detection loses sensitivity; direct detection
+    covers much of the higher-mass SI parameter space.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: Mapping vector couplings to sigma_SI assumes the source simplified-model nucleon matching.
+    id: nucleon-coupling-map
+    impact_if_violated: Different quark coupling structures can alter the nucleon cross section.
+    notes: null
+    scope: direct-detection recast
+    source_reference_ids:
+    - arxiv:1407.8257
+    status: assumed
+  benchmark_implications:
+  - Vector mediator models need a joint collider/direct-detection presentation.
+  caveats:
+  - No direct-detection likelihood was rerun.
+  constrained_parameters:
+  - sigma_SI
+  - m_chi
+  - m_med
+  - g_q
+  - g_chi
+  constraint_type: direct_detection
+  data_release: LUX and xenon direct-detection comparisons in related paper
+  excluded_regions:
+  - Spin-independent cross sections above LUX/xenon-style limits are excluded in related vector-mediator
+    comparisons.
+  id: con_svector_si_direct
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Spin-independent direct-detection limits
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1603.01366
+  - arxiv:1407.8257
+- allowed_regions:
+  - Source relic contours identify couplings reproducing the correct thermal abundance.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Thermal target assumes standard cosmology and a single dominant vector-mediated Dirac
+      fermion component.
+    id: standard-freezeout-vector
+    impact_if_violated: Subcomponent or nonstandard cosmology changes the contour.
+    notes: null
+    scope: relic target
+    source_reference_ids:
+    - arxiv:1603.01366
+    status: assumed
+  benchmark_implications:
+  - Relic target helps classify allowed collider/direct-detection space.
+  caveats:
+  - No relic likelihood was rerun.
+  constrained_parameters:
+  - m_chi
+  - m_med
+  - g_q
+  - g_chi
+  - Omega h^2
+  constraint_type: cosmological
+  data_release: null
+  excluded_regions:
+  - Parameter points far from the thermal target cannot be interpreted as the full standard thermal relic
+    without changing assumptions.
+  id: con_svector_relic
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Vector-mediator thermal relic target
+  notes: null
+  observable_channel: cosmology
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - arxiv:1603.01366
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Modern datasets should supersede the source Run-I contours for current limits.
+    constraint_ids:
+    - con_svector_mono_x
+    - con_svector_si_direct
+    - con_svector_relic
+    derived_quantities:
+    - mono-X visible cross sections
+    - sigma_SI
+    - thermal relic contour
+    description: Recast s-channel vector mediator parameters into mono-X, spin-independent direct detection,
+      and relic-density targets.
+    forward_model_chain:
+    - inputs:
+      - m_chi
+      - m_med
+      - g_q
+      - g_chi
+      notes: null
+      outputs:
+      - monojet/mono-boson acceptances
+      step_id: s1
+      step_type: simulation
+      tool_or_code: MadGraph/Pythia/Delphes-style chain
+      validity: Matches the primary collider recast setup.
+    - inputs:
+      - acceptances
+      - ATLAS visible cross-section limits
+      notes: null
+      outputs:
+      - collider exclusion contour
+      step_id: s2
+      step_type: recasting
+      tool_or_code: null
+      validity: Run-I searches only in the source.
+    - inputs:
+      - couplings
+      - masses
+      notes: null
+      outputs:
+      - sigma_SI
+      - thermal annihilation rate
+      step_id: s3
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Requires simplified-model nucleon matching.
+    id: route_svector_recast
+    input_parameters:
+    - m_chi
+    - m_med
+    - g_q
+    - g_chi
+    likelihoods:
+    - ATLAS likelihood unavailable
+    - direct-detection likelihood unavailable
+    observable_ids:
+    - obs_svector_mono_x
+    - obs_svector_spin_independent_direct
+    - obs_svector_thermal_relic
+    required_code_resources:
+    - event generator and detector recast
+    - direct-detection matching code
+    - thermal relic calculator
+    route_status: planned
+    source_model_features:
+    - Dirac fermion DM
+    - s-channel vector mediator
+    - minimal mediator width
+    validation_tests:
+    - recover source monojet vs LUX complementarity

@@ -1,0 +1,437 @@
+_source:
+  shard: arXiv_src_1908_015_wds.tar
+  paper_id: '1908_04276'
+  source_member: 1908_04276.json
+schema_version: model_only_v0
+model_id: 1908_04276_scotogenic_majorana_fermion_spontaneous_lepton_number_v1
+identity:
+  name: Scotogenic Majorana fermion dark matter with spontaneous lepton-number breaking
+  family: radiative_neutrino_mass_fermion_dark_matter
+  aliases:
+  - fermion dark matter from spontaneous lepton number breaking
+  - scotogenic Majorana fermion dark matter with Majoron
+  short_description: A scotogenic extension in which the lightest Z2-odd Majorana fermion N1 is stable
+    dark matter, Majorana masses arise from a lepton-number-carrying scalar singlet vev, and scalar singlet-Higgs
+    mixing opens an s-channel annihilation portal below the TeV scale.
+  historical_origin_or_motivation: The paper links loop-level neutrino mass generation to a fermion dark
+    matter candidate and adds spontaneous lepton-number breaking to the scotogenic setup.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - scotogenic radiative neutrino mass model
+  - spontaneously broken global lepton number
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: 'yes'
+  notes: The paper gives the renormalizable SM x U(1)_L x Z2 invariant leptonic Lagrangian and scalar
+    potential for the added singlet, inert doublet, and Majorana fermions.
+particle_content:
+  dark_matter_candidate:
+    name: N1, the lightest Z2-odd Majorana fermion
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - inert scalar doublet eta
+  - heavier Majorana fermions N2 and N3
+  - lepton-number-carrying scalar singlet
+  - Majoron J
+  - extra CP-even scalar from singlet-Higgs mixing
+  mediators:
+  - Z2-odd inert scalars
+  - mixed CP-even scalar states h1 and h2
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - N2
+  - N3
+  - eta_R
+  - eta_I
+  - eta^+
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: An unbroken discrete Z2 symmetry makes the lightest Z2-odd particle stable; the
+    paper focuses on N1 as the lightest odd state.
+  symmetries:
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+    breaking: unbroken
+    breaking_scale: null
+  - name: U(1)_L lepton number
+    type: global
+    exact_or_approximate: broken
+    breaking: spontaneously broken by the scalar singlet vacuum expectation value, yielding a Majoron
+    breaking_scale: null
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - neutrino
+  - other
+  standard_model_targets:
+  - leptons
+  - Higgs doublet
+  - electroweak gauge bosons
+  - heavy fermion final states through scalar mixing
+  dark_sector_couplings:
+  - Yukawa coupling of lepton doublets to eta and N
+  - singlet coupling generating Majorana masses for N_i
+  - scalar-potential mixing between the singlet and Higgs doublet
+  mediator_types:
+  - inert scalar doublet components
+  - mixed CP-even scalars
+  interaction_operators:
+  - L eta N Yukawa interaction
+  - singlet N N Majorana-mass-generating interaction
+  - Higgs-singlet scalar mixing terms
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: unknown
+    velocity_dependence: unknown
+    spin_dependence: spin_independent
+  annihilation_channels:
+  - N1 N1 to b bbar in the low-mass region
+  - N1 N1 to electroweak gauge bosons in the high-mass region
+  - N1 N1 to Majorons, required to be subdominant at freeze-out
+  - t-channel annihilation through inert scalars
+  decay_channels: []
+  self_scattering_channels: []
+  cp_structure: CP-even singlet-Higgs mixing and CP-odd Majoron sector are discussed; detailed CP phases
+    are not extracted.
+  flavor_structure: The numerical analysis assumes real diagonal Y^eta and Y^N matrices and fits neutrino
+    oscillation data through the charged-lepton sector.
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_N1
+    description: Mass of the lightest Majorana fermion DM candidate
+    range:
+      min: 8
+      max: 1000
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Scan range reported for N1; viable regions include about 8-20 GeV, near mh/2, and above 80
+        GeV.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: heavier Majorana fermion masses
+    symbol: m_N2,3
+    description: Masses of the heavier Z2-odd Majorana fermions
+    range:
+      min: 100
+      max: 5000
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Scan range reported for N2 and N3.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: scalar quartic couplings
+    symbol: lambda_i
+    description: Dimensionless scalar-potential couplings constrained by perturbativity and boundedness
+    range: 10^-6 <= |lambda_2,...,lambda_8| <= 1 in the numerical scan; perturbativity requires |lambda_i|
+      < 4 pi
+    role: core
+    status: inferred
+  - name: neutrino and Majorana Yukawa couplings
+    symbol: Y^eta, Y^N
+    description: Yukawa couplings entering neutrino masses, DM annihilation, and lepton-flavor violation
+    range: '|Y^a_jk|^2 < 4 pi; numerical benchmarks keep neutrino Yukawas small'
+    role: core
+    status: inferred
+  - name: singlet-Higgs CP-even mixing angle
+    symbol: alpha
+    description: Mixing angle between the CP-even part of the scalar singlet and the SM Higgs doublet
+    range: scan-dependent
+    role: core
+    status: inferred
+  nuisance: []
+  derived:
+  - name: spin-independent DM-nucleon cross section
+    symbol: sigma_SI
+    description: Derived prediction computed in the paper but not extracted as a constraint in this run
+    role: derived
+    status: inferred
+  - name: thermal relic abundance
+    symbol: Omega h^2
+    description: Computed relic abundance; some scan points account for 100 percent of dark matter
+    value: 0.1200 +/- 0.0012 target quoted from Planck
+    role: derived
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out
+  - s-channel annihilation through singlet-Higgs mixed scalars
+  - t-channel annihilation mediated by Z2-odd inert scalars
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: partial
+  abundance_set_by:
+  - N1 mass
+  - scalar mixing
+  - Yukawa couplings
+  - annihilation to fermions/gauge bosons/Majorons
+  - mass hierarchy keeping N1 the lightest Z2-odd state
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: unknown
+  notes: The paper identifies full-relic-abundance points below 1 TeV, with scalar singlet-Higgs mixing
+    providing an annihilation portal absent in the simplest scotogenic model.
+relic_density:
+  full_or_subcomponent: either
+  target_fraction:
+    name: target dark matter abundance
+    symbol: Omega h^2
+    description: Planck relic-density target quoted by the paper
+    value: 0.1200 +/- 0.0012
+    role: derived
+    status: inferred
+  calculation_type: thermal
+  key_dependencies:
+  - m_N1
+  - scalar singlet-Higgs mixing
+  - Yukawa couplings
+  - annihilation channel composition
+  - Majoron final-state fraction
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - spontaneous lepton-number breaking produces a Majoron in the particle model
+  dark_sector_temperature: null
+  delta_neff: null
+  kinetic_decoupling: null
+  chemical_decoupling: null
+  phase_transitions:
+  - electroweak symmetry breaking
+  - spontaneous breaking of global U(1)_L by the singlet vev
+  topological_defects: []
+  isocurvature_perturbations: unknown
+  bbn_relevance: unknown
+  cmb_relevance: medium
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  f_of_p_or_q: not provided
+  average_momentum_relative_to_thermal: null
+  free_streaming_length: null
+  velocity_dispersion_today: null
+  phase_space_bounds: []
+  notes: The paper treats N1 as WIMP-like thermal relic dark matter; no phase-space distribution is given.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+    half_mode_mass: null
+    thermal_wdm_mapping:
+      available: false
+      validity: unknown
+      warning: No thermal warm-dark-matter mapping is provided.
+    impact_on_sigma8_s8: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: n1_lightest_z2_odd
+  applies_to: model
+  condition: N1 must be lighter than N2, N3, and the inert scalar components so that N1 is the stable
+    dark matter candidate.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+- id: scan_mass_range
+  applies_to: parameter
+  condition: The paper's numerical dark-matter scan takes m_N1 from 8 GeV to 1000 GeV and identifies viable
+    regions below 1 TeV.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  valid_range:
+    min: 8
+    max: 1000
+    inclusive_min: true
+    inclusive_max: true
+    unit: GeV
+    notes: For m_N1 only.
+- id: majoron_channel_subdominant
+  applies_to: production
+  condition: The scan requires N1 N1 to Majorons to be subdominant at freeze-out.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: unbroken_z2
+    description: The Z2 symmetry remains unbroken and stabilizes the lightest odd particle.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    impact_if_violated: If broken, N1 would decay and fail as dark matter.
+  - id: fermion_dm_choice
+    description: The study focuses on the Majorana fermion N1, not the inert-doublet scalar, as the dark
+      matter candidate.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: small_neutrino_yukawas
+    description: Neutrino Yukawa couplings are kept small in the analysis to suppress lepton-flavor-violating
+      processes.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+  - id: standard_thermal_history
+    description: Relic-density calculation is treated as standard thermal freeze-out unless otherwise
+      specified by the paper.
+    scope: cosmological_history
+    status: inferred
+    can_be_relaxed: unknown
+  constraint_specific: []
+  computation_specific:
+  - id: micromegas_scan
+    description: The numerical scan is reported as performed with MicrOMEGAS.
+    scope: computation
+    status: inferred
+    can_be_relaxed: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper reports using MicrOMEGAS for the numerical analysis, but the text does not identify
+    released model files or a repository.
+  primary_code_role: relic_density_calculation
+provenance:
+  model_id: 1908_04276_scotogenic_majorana_fermion_spontaneous_lepton_number_v1
+  model_name: Scotogenic Majorana fermion dark matter with spontaneous lepton-number breaking
+  model_family: radiative_neutrino_mass_fermion_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: '1908_04276'
+      title: Fermion Dark Matter and Radiative Neutrino Masses from Spontaneous Lepton Number Breaking
+      authors:
+      - Cesar Bonilla
+      - Leon M. G. de la Vega
+      - J. M. Lamprea
+      - Roberto A. Lineros
+      - Eduardo Peinado
+      year: 2019
+      arxiv_id: '1908.04276'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text in batch-0001.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0001
+    extractor_name: dark_matter_model_extraction_worker
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: '1908_04276'
+      section: abstract/introduction
+      page: null
+      quote_or_summary: Paper studies sub-TeV fermion dark matter in a scotogenic model with spontaneous
+        lepton-number breaking.
+    - reference_id: '1908_04276'
+      section: model section
+      page: null
+      quote_or_summary: Adds a scalar singlet, inert scalar doublet, and three Majorana fermions; Z2 odd
+        states make N1 stable.
+    - reference_id: '1908_04276'
+      section: dark matter analysis
+      page: null
+      quote_or_summary: Finds low, resonant, and high N1 mass regions that can reproduce the relic abundance.
+    unresolved_items:
+    - Precise scalar-potential notation is degraded in the extracted text; parameter names are recorded
+      at a compact level.
+  evidence:
+    particle_content:
+    - reference_id: '1908_04276'
+      note: The model adds a scalar singlet, an SU(2)_L scalar doublet, and three Majorana fermions N_i;
+        N1 is taken as the dark matter candidate.
+      confidence: high
+      section: model section
+    symmetries:
+    - reference_id: '1908_04276'
+      note: The inert doublet and Majorana fermions are odd under an unbroken Z2, making the lightest
+        odd particle stable; U(1)_L is spontaneously broken by the singlet.
+      confidence: high
+      section: model section
+    interactions:
+    - reference_id: '1908_04276'
+      note: Dark matter annihilates via t-channel Z2-odd particles and an s-channel from singlet-Higgs
+        mixing after spontaneous symmetry breaking.
+      confidence: high
+      section: introduction and DM analysis
+    production_mechanism:
+    - reference_id: '1908_04276'
+      note: The paper computes thermal relic abundance and identifies N1 mass regions below 1 TeV that
+        can account for the observed abundance.
+      confidence: high
+      section: DM analysis
+    cosmological_history:
+    - reference_id: '1908_04276'
+      note: Relic-density discussion uses standard WIMP freeze-out language and the Planck abundance target.
+      confidence: medium
+      section: constraints and analysis
+    parameter_ranges:
+    - reference_id: '1908_04276'
+      note: The numerical scan varies m_N1 from 8 to 1000 GeV and m_N2,3 from 100 to 5000 GeV.
+      confidence: high
+      section: analysis
+    validity_domain:
+    - reference_id: '1908_04276'
+      note: Viable points require N1 to be the lightest Z2-odd state and the Majoron annihilation channel
+        to stay subdominant at freeze-out.
+      confidence: medium
+      section: analysis
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: medium
+    implementation_confidence: medium
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: medium
+  constraint_robustness: unknown
+  dominant_uncertainties:
+  - Model-card extraction uses degraded text for equations
+  - Constraints and observables intentionally omitted in this run
+  validation_status: expert_judgment_only
+  notes: The model identity and relic mechanism are explicit in the paper; detailed parameter extraction
+    is approximate.
+agent_failure_modes:
+  warnings:
+  - id: mass_regions_not_separate_models
+    severity: low
+    category: other
+    warning: The low, resonant, and high N1 mass regions are recorded as regimes of one model, not separate
+      model cards.
+    mitigation: Split only if a downstream registry policy treats benchmark mass regimes as separate variants.
+  - id: constraints_omitted_by_profile
+    severity: low
+    category: other
+    warning: Direct and indirect detection constraints discussed by the paper are intentionally not extracted
+      in this model-only run.

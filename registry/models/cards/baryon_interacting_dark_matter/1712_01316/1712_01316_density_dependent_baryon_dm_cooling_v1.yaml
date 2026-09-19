@@ -1,0 +1,739 @@
+_source:
+  shard: arXiv_src_1712_004_wds.tar
+  paper_id: '1712_01316'
+  source_member: 1712_01316.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1712_01316_density_dependent_baryon_dm_cooling_v1
+identity:
+  name: Density-dependent baryon-DM cooling interaction model
+  family: baryon_interacting_dark_matter
+  aliases:
+  - MDAR from dark matter-baryon interactions
+  - heavy DM cooling case
+  short_description: A proof-of-principle nonrelativistic dark-matter model in which heavy DM elastically
+    exchanges heat with baryons and has an environment-dependent baryon-DM cross section that can generate
+    the mass discrepancy-acceleration relation in disk galaxies.
+  historical_origin_or_motivation: Motivated by the tight mass discrepancy-acceleration relation in disk
+    galaxies without modifying gravity or invoking finely tuned feedback.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  parent_frameworks:
+  - nonrelativistic dark matter-baryon interaction model
+  - Schrodinger-invariant effective theory
+  lagrangian_available: partial
+  renormalizable: not_applicable
+  embedded_in_larger_framework: unknown
+  notes: The authors state this is not a full-fledged BSM completion, but give a nonrelativistic action
+    as a proof-of-principle toy model for the required density and velocity dependence.
+particle_content:
+  dark_matter_candidate:
+    name: very heavy nonrelativistic dark matter particle or fluid element
+    spin: unknown
+    statistics: unknown
+    elementary_or_composite: unknown
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - nonrelativistic DM field psi
+  - dilaton-like scalar mediator phi
+  mediators:
+  - dilaton-like scalar mediator phi controlling DM self-interactions and DM-baryon interactions
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: The paper assumes a persistent nonrelativistic DM fluid; no explicit microscopic
+    stabilizing symmetry is specified.
+  symmetries:
+  - name: Galilean invariance
+    type: global
+    exact_or_approximate: approximate
+    breaking: nonrelativistic effective symmetry
+  - name: Schrodinger scaling symmetry
+    type: global
+    exact_or_approximate: broken
+    breaking: finite DM density and chemical potential break the vacuum scaling symmetry
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - baryons
+  dark_sector_couplings:
+  - density-dependent baryon-DM momentum-transfer cross section
+  - DM self-interactions mediated by phi
+  mediator_types:
+  - dilaton-like scalar
+  - baryons as heat-exchange medium
+  interaction_operators:
+  - nonrelativistic action with DM field psi, mediator phi, and finite-density terms
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    velocity_dependence: strong
+    spin_dependence: unknown
+  self_scattering_channels:
+  - DM self-interactions through the mediator field in the effective action
+  tree_or_loop_level: unknown
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m
+    description: Heavy cooling branch requires m much larger than the baryon mass.
+    range: m >> m_b
+    role: core
+    status: assumed
+    source_reference_ids:
+    - paper
+  - name: baryon-DM momentum-transfer cross section
+    symbol: sigma_int
+    description: Required to scale approximately as the inverse of DM density times velocity squared in
+      the heavy cooling case.
+    range: proportional to 1/(n v^2)
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: MOND-like acceleration scale
+    symbol: a_0
+    description: Sets the master relation n sigma_int m_b approximately a_0.
+    value: a_0
+    role: core
+    status: assumed
+    source_reference_ids:
+    - paper
+  - name: DM number density
+    symbol: n
+    description: Local number density entering the environmental cross-section dependence.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+  - name: DM velocity dispersion
+    symbol: v
+    description: Velocity dispersion used in the heat equation and pressure relation.
+    role: core
+    status: inferred
+    source_reference_ids:
+    - paper
+production:
+  mechanisms:
+  - late-time baryon-DM heat exchange drives disk-galaxy equilibrium
+  - early-universe production mechanism not specified
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - unknown early-universe abundance
+  - galactic thermal relaxation assumptions
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: unknown
+  nonthermal_momentum_distribution: unknown
+  notes: The paper develops galactic equilibrium and heat-exchange logic, not a relic-abundance calculation.
+relic_density:
+  full_or_subcomponent: unknown
+  target_fraction: null
+  calculation_type: unknown
+  key_dependencies:
+  - not calculated in the assigned text
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: false
+  nonstandard_features:
+  - late-time collisional interactions between DM and baryons in galaxies
+  - Knudsen-regime relaxation time comparable to disk-galaxy dynamical time
+  dark_sector_temperature: null
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: approximate
+  notes: The toy model uses a nonrelativistic thermal distribution and treats n v^2 as proportional to
+    DM pressure.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+    density_profile_effect: disk-galaxy equilibrium profiles can satisfy an MDAR after baryon-DM cooling
+validity_domain:
+- id: heavy_cooling_branch
+  applies_to: model
+  condition: The paper focuses on the heavy DM cooling branch with m much larger than baryon masses.
+  status: assumed
+  extrapolation_risk: medium
+  caveats:
+  - The light heating branch is deferred to future work.
+  source_reference_ids:
+  - paper
+- id: master_relation
+  applies_to: interaction
+  condition: Requires n sigma_int m_b of order a_0, equivalently sigma_int proportional to 1/(n v^2) in
+    the cooling case.
+  status: inferred
+  extrapolation_risk: high
+  caveats:
+  - Environmental density dependence is demonstrated only in a proof-of-principle toy model.
+  source_reference_ids:
+  - paper
+- id: knudsen_regime
+  applies_to: model
+  condition: The DM relaxation time should be comparable to the dynamical time in disk galaxies.
+  status: assumed
+  extrapolation_risk: high
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: elastic_baryon_dm_collisions
+    description: DM exchanges energy with baryons through elastic collisions.
+    scope: theory
+    status: assumed
+    impact_if_violated: The heat-equation mechanism for the MDAR would not apply.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: coarse_grained_distributions
+    description: Baryon and DM distribution functions are coarse-grained over scales of order 10 pc.
+    scope: production
+    status: assumed
+    impact_if_violated: Small-scale baryonic clumpiness could alter the heating-rate modeling.
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: No public implementation code for the model was identified in the assigned text.
+provenance:
+  model_id: 1712_01316_density_dependent_baryon_dm_cooling_v1
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Emergence of the mass discrepancy-acceleration relation from dark matter-baryon interactions
+      authors: []
+      year: 2017
+      arxiv_id: '1712.01316'
+      doi: null
+      url: null
+      role: original_model
+      notes: Only the assigned SQLite full text was used for this machine extraction.
+    - arxiv_id: '1712.01316'
+      authors:
+      - Famaey, Benoit
+      - Khoury, Justin
+      - Penco, Riccardo
+      doi: 10.1088/1475-7516/2018/03/038
+      notes: Primary density-dependent baryon-DM cooling interaction paper resolved locally.
+      reference_id: src_1712_primary
+      role: original_model
+      title: Emergence of the mass discrepancy-acceleration relation from dark matter-baryon interactions
+      url: https://arxiv.org/abs/1712.01316
+      year: 2018
+    constraint_papers:
+    - arxiv_id: astro-ph/0301188
+      authors:
+      - Albuquerque, Ivone F.
+      doi: 10.1103/PhysRevLett.90.221301
+      notes: Related superheavy direct-detection constraint paper read locally for heavy-DM/baryon-scattering
+        caveat.
+      reference_id: src_1712_albuquerque2003
+      role: constraint
+      title: Direct Detection Constraints on Superheavy Dark Matter
+      url: https://arxiv.org/abs/astro-ph/0301188
+      year: 2003
+    external_databases: []
+    review_papers:
+    - arxiv_id: '2207.10638'
+      authors:
+      - Adhikari, Susmita
+      doi: 10.1103/m2vm-59y3
+      notes: Related SIDM review read locally for velocity-dependent cross-section and cluster-scale caveats.
+      reference_id: src_1712_adhikari2025
+      role: review
+      title: Astrophysical tests of dark matter self-interactions
+      url: https://arxiv.org/abs/2207.10638
+      year: 2025
+    - arxiv_id: '2211.13988'
+      authors:
+      - Banerjee, Shreya
+      doi: 10.1088/1475-7516/2023/03/041
+      notes: Related dark-matter-condensate gravitational-wave paper read locally; logged but only weakly
+        relevant to this baryon-DM model.
+      reference_id: src_1712_banerjee2023
+      role: constraint
+      title: Prospects of probing dark matter condensates with gravitational waves
+      url: https://arxiv.org/abs/2211.13988
+      year: 2023
+  extraction:
+    method: llm_assisted
+    extracted_by: codex-batch-0007
+    extractor_name: Codex GPT-5.5 dark-matter batch worker
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract
+      page: null
+      quote_or_summary: The paper proposes collisional interactions between baryons and DM particles and
+        a particle-physics example for the desired cross-section dependence.
+    - reference_id: paper
+      section: Particle physics models
+      page: null
+      quote_or_summary: The text presents a proof-of-principle toy model rather than a full BSM completion.
+    unresolved_items:
+    - No full galaxy-formation, cluster-merger, CMB/LSS, 21-cm, or direct-detection recast was performed.
+    - The model remains a proof-of-principle effective construction without a relic-density calculation.
+    - The related gravitational-wave condensate paper was read but not used for structured claims because
+      it is only weakly relevant to this baryon-DM cooling model.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The effective action contains a nonrelativistic DM field psi and a mediator controlling DM
+        self-interactions and DM-baryon interactions.
+      confidence: high
+      section: particle physics models
+    symmetries:
+    - reference_id: paper
+      note: The toy Lagrangian is described as invariant in vacuum under the Schrodinger group, with finite
+        density breaking the scaling symmetry.
+      confidence: medium
+      section: particle physics models
+    interactions:
+    - reference_id: paper
+      note: The proposed mechanism requires elastic baryon-DM collisions with sigma_int times exchanged
+        energy inversely proportional to DM number density.
+      confidence: high
+      section: abstract and setup
+    production_mechanism:
+    - reference_id: paper
+      note: The developed mechanism concerns late-time galactic heat exchange and equilibrium; no early-universe
+        relic-production calculation is given.
+      confidence: medium
+      section: setup
+    cosmological_history:
+    - reference_id: paper
+      note: The authors discuss heavy cooling and light heating branches, focusing on the heavy cooling
+        case for disk-galaxy equilibrium.
+      confidence: high
+      section: setup
+    parameter_ranges:
+    - reference_id: paper
+      note: The master relation n sigma_int m_b approximately a_0 and sigma_int proportional to 1/(n v^2)
+        are central requirements.
+      confidence: high
+      section: heuristics and particle physics models
+    validity_domain:
+    - reference_id: paper
+      note: The authors emphasize the model is exploratory and not a full-fledged BSM theory.
+      confidence: high
+      section: introduction and particle physics models
+    constraints:
+    - confidence: high
+      note: Primary text states direct-detection mass-branch requirement, CMB/LSS estimate, 21-cm/Lyman
+        future signatures, and Bullet Cluster bound discussion.
+      page: null
+      reference_id: src_1712_primary
+      section: Constraints sections
+    - confidence: medium
+      note: Related SIDM review supports cluster and velocity-dependent cross-section context.
+      page: null
+      reference_id: src_1712_adhikari2025
+      section: Astrophysical tests review
+    - confidence: medium
+      note: Related superheavy-DM direct-detection paper motivates care for heavy particles scattering
+        with normal matter.
+      page: null
+      reference_id: src_1712_albuquerque2003
+      section: Abstract and direct-detection limits
+    observables:
+    - confidence: high
+      note: Primary text gives MDAR mechanism, master relation, heavy cooling branch, late thermalization
+        estimate, and cluster caveat.
+      page: null
+      reference_id: src_1712_primary
+      section: Abstract, setup, cosmological and cluster constraints
+    routes:
+    - confidence: high
+      note: Primary paper derives the heat-equation and master-relation route from interactions to MDAR.
+      page: null
+      reference_id: src_1712_primary
+      section: Heuristics and particle-physics model sections
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: low
+  theory_robustness: low
+  dominant_uncertainties:
+  - proof-of-principle rather than full BSM completion
+  - early-universe relic abundance not calculated
+  - environment-dependent cross section model building left for future work
+  validation_status: expert_judgment_only
+agent_failure_modes:
+  warnings:
+  - id: not_modified_gravity
+    severity: medium
+    category: invalid_mapping
+    warning: Do not treat this entry as a modified-gravity model; the paper frames the MDAR as emerging
+      from baryon-DM particle interactions.
+    mitigation: Keep the interaction and heat-equation assumptions explicit.
+    source_reference_ids:
+    - paper
+  - id: toy_model_relic_gap
+    severity: high
+    category: assumption_mismatch
+    warning: The paper does not provide a full BSM completion or relic-density computation.
+    mitigation: Use unknown relic-density fields and do not infer early-universe production beyond the
+      text.
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - The paper is exploratory and equilibrium-based rather than a full galaxy-formation simulation.
+  - It does not compute relic abundance.
+  channel: dwarf_galaxies
+  effect_direction: shape_change
+  environments:
+  - rotationally supported disk galaxies
+  - low-surface-brightness galaxies
+  id: mdar_rotation_curve_equilibrium
+  key_quantities:
+  - description: Sets the master relation n sigma_int m_b of order a_0.
+    name: MOND-like acceleration scale
+    role: core
+    source_reference_ids:
+    - src_1712_primary
+    status: assumed
+    symbol: a_0
+  - name: interaction master relation
+    role: core
+    source_reference_ids:
+    - src_1712_primary
+    status: inferred
+    symbol: n sigma_int m_b
+    value: O(a_0)
+  - description: Primary paper focuses on heavy-DM cooling case.
+    name: heavy DM branch
+    role: core
+    source_reference_ids:
+    - src_1712_primary
+    status: assumed
+    symbol: m >> m_b
+  linked_constraints:
+  - direct_detection_mass_branch_requirement
+  - bullet_cluster_energy_exchange_recast
+  linked_routes:
+  - baryon_dm_cooling_to_mdar_route
+  name: Mass discrepancy-acceleration relation from baryon-DM heat exchange
+  notes: Core phenomenological target.
+  observability: medium
+  predicted_effect: Elastic baryon-DM collisions with a density- and velocity-dependent cross section
+    can cool/heal the DM distribution until rotationally supported disk galaxies satisfy an MDAR at all
+    radii.
+  redshift_range: late-time galaxies
+  relevance: critical
+  scale_range: disk-galaxy radii; coarse-grained over about 10 pc scales in the model discussion
+  source_reference_ids:
+  - src_1712_primary
+  subchannel: galaxy rotation curves and disk equilibrium
+- caveats:
+  - Primary text explicitly leaves detailed 21-cm/Lyman analysis to future work.
+  channel: cosmology
+  effect_direction: rate_change
+  environments:
+  - 21-cm experiments
+  - Lyman-alpha forest
+  id: late_thermalization_21cm_lyman
+  key_quantities:
+  - name: thermalization redshift
+    role: derived
+    source_reference_ids:
+    - src_1712_primary
+    status: approximate
+    symbol: z_*
+    value: about 100
+  - name: cosmological cross-section scaling
+    role: derived
+    source_reference_ids:
+    - src_1712_primary
+    status: approximate
+    symbol: v^2 sigma_int/m
+    unit: cm^2/g
+    value: 0.7(1+z)^3 cm^2/g
+  linked_constraints:
+  - cmb_lss_late_thermalization_bound
+  linked_routes:
+  - baryon_dm_cooling_to_mdar_route
+  name: Late-time thermalization signatures in 21-cm and Lyman-alpha observables
+  notes: Future signature rather than established constraint.
+  observability: low
+  predicted_effect: The primary text estimates that the interaction rate can become comparable to the
+    Hubble time around z about 100, after recombination, giving negligible CMB impact but possible 21-cm
+    and Lyman-alpha signatures.
+  redshift_range: z around 100 and later
+  relevance: medium
+  scale_range: cosmological gas and Lyman-alpha forest scales
+  source_reference_ids:
+  - src_1712_primary
+  subchannel: post-recombination baryon-DM thermal coupling
+- caveats:
+  - Self-interaction limits cannot be applied naively to a density-dependent baryon-DM model.
+  channel: clusters
+  effect_direction: rate_change
+  environments:
+  - Bullet Cluster-like mergers
+  id: cluster_merger_energy_exchange
+  key_quantities:
+  - name: cluster self-interaction scale
+    range: 0.5 to 2
+    role: experimental
+    source_reference_ids:
+    - src_1712_primary
+    - src_1712_adhikari2025
+    status: approximate
+    symbol: sigma/m
+    unit: cm^2/g
+  - name: energy-exchange rate
+    role: derived
+    source_reference_ids:
+    - src_1712_primary
+    status: approximate
+    symbol: Gamma
+    unit: s^-1
+    value: O(1e-16 s^-1)
+  linked_constraints:
+  - bullet_cluster_energy_exchange_recast
+  linked_routes:
+  - baryon_dm_cooling_to_mdar_route
+  name: Cluster-merger energy-exchange test of large cross sections
+  notes: null
+  observability: medium
+  predicted_effect: Large baryon-DM or DM self-interaction rates can be tested by cluster mergers through
+    the number of collisions per passage; the primary paper argues the relevant constraint is an energy-exchange
+    rate and requires care because the cross section is density dependent.
+  redshift_range: low-redshift cluster mergers
+  relevance: high
+  scale_range: Mpc-scale cluster passage
+  source_reference_ids:
+  - src_1712_primary
+  - src_1712_adhikari2025
+  subchannel: Bullet-Cluster-like merger constraints
+constraints:
+- allowed_regions:
+  - Primary text states consistency with direct detection requires m much smaller than baryon masses or
+    much larger than baryon masses; the paper focuses on the heavy cooling case.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: This enrichment follows the primary heavy-DM cooling branch, m much larger than baryon
+      masses.
+    id: heavy_cooling_branch
+    impact_if_violated: The heating branch has different energy exchange and constraints.
+    notes: null
+    scope: model branch
+    source_reference_ids:
+    - src_1712_primary
+    status: assumed
+  benchmark_implications:
+  - The model row should remain on the heavy cooling branch unless a separate light-heating analysis is
+    done.
+  caveats:
+  - A dedicated detector energy-loss calculation was not reconstructed.
+  constrained_parameters:
+  - m
+  - sigma_int
+  - local velocity
+  - local density
+  constraint_type: direct_detection
+  data_release: Primary direct-detection consistency discussion; related superheavy-DM direct-detection
+    context
+  excluded_regions:
+  - Intermediate masses with large baryon-DM scattering would be vulnerable to direct-detection constraints.
+  id: direct_detection_mass_branch_requirement
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: Direct-detection consistency requires very light or very heavy DM branch
+  notes: null
+  observable_channel: direct_detection
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1712_primary
+  - src_1712_albuquerque2003
+- allowed_regions:
+  - The primary cosmological estimate says the interaction comfortably satisfies the quoted early-universe
+    bound for 1e4 < z < 1e5 and thermalizes only around z about 100, after recombination.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: The galactic master relation is extrapolated to cosmological densities and velocities.
+    id: cosmological_scaling_valid
+    impact_if_violated: If the density-dependent coupling behaves differently in the early universe, CMB/LSS
+      constraints change.
+    notes: null
+    scope: cosmological extrapolation
+    source_reference_ids:
+    - src_1712_primary
+    status: assumed
+  benchmark_implications:
+  - Negligible CMB impact is plausible in the primary scaling, while 21-cm and Lyman-alpha signatures
+    remain possible.
+  caveats:
+  - Detailed 21-cm and Lyman-alpha likelihoods are deferred by the primary paper.
+  constrained_parameters:
+  - sigma_int/m
+  - z_*
+  - v^2 sigma_int/m
+  constraint_type: cosmological
+  data_release: Primary CMB/LSS scaling estimate
+  excluded_regions: []
+  id: cmb_lss_late_thermalization_bound
+  likelihood_available: unknown
+  likelihood_reference: null
+  name: CMB/LSS consistency and late thermalization caveat
+  notes: null
+  observable_channel: cmb/lyman_alpha/21cm
+  recasting_needed: 'yes'
+  robustness: low
+  source_reference_ids:
+  - src_1712_primary
+- allowed_regions:
+  - The primary paper argues these bounds constrain the energy-exchange rate and can be applied only after
+    accounting for the density-dependent baryon-DM interaction.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: partial
+    description: Cluster self-interaction bounds are mapped to baryon-DM energy exchange with the model-specific
+      density dependence.
+    id: energy_exchange_mapping
+    impact_if_violated: Using constant-cross-section SIDM bounds directly could overstate exclusion.
+    notes: null
+    scope: cluster recast
+    source_reference_ids:
+    - src_1712_primary
+    - src_1712_adhikari2025
+    status: inferred
+  benchmark_implications:
+  - Cluster constraints are important but not a one-line exclusion for this model.
+  caveats:
+  - Requires cluster simulations or analytic recast with baryon fractions.
+  constrained_parameters:
+  - sigma_int/m
+  - energy-exchange rate
+  - cluster density
+  - cluster velocity
+  constraint_type: astrophysical
+  data_release: Bullet Cluster/cluster-shape constraints as discussed in primary text and SIDM review
+  excluded_regions:
+  - Cluster merger and cluster-shape studies bound order-unity cm^2/g self-interaction cross sections
+    in ordinary SIDM models.
+  id: bullet_cluster_energy_exchange_recast
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Bullet Cluster and cluster-shape energy-exchange recast
+  notes: null
+  observable_channel: clusters
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - src_1712_primary
+  - src_1712_adhikari2025
+theory_to_observable_routing:
+  routes:
+  - agent_notes: The route is conceptually explicit but still exploratory; full simulations are the missing
+      piece.
+    caveats:
+    - No relic-density calculation is provided by the primary paper.
+    constraint_ids:
+    - direct_detection_mass_branch_requirement
+    - cmb_lss_late_thermalization_bound
+    - bullet_cluster_energy_exchange_recast
+    derived_quantities:
+    - local heating/cooling rate
+    - equilibrium DM pressure profile
+    - rotation curve and MDAR residuals
+    - cosmological thermalization redshift
+    - cluster energy-exchange rate
+    description: Route from density-dependent baryon-DM scattering to galaxy heat equation, MDAR rotation
+      curves, and cosmological/cluster consistency checks.
+    forward_model_chain:
+    - inputs:
+      - n
+      - sigma_int
+      - m_b
+      - v
+      notes: Evaluate the required interaction scaling.
+      outputs:
+      - heat-exchange rate and master relation
+      step_id: r1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Primary equilibrium derivation; not a full BSM completion.
+    - inputs:
+      - baryon distribution
+      - DM pressure relation
+      - a0
+      notes: Solve for disk-galaxy equilibrium.
+      outputs:
+      - equilibrium MDAR rotation curve
+      step_id: r2
+      step_type: semi_analytic_model
+      tool_or_code: null
+      validity: Equilibrium approximation; galaxy formation dynamics omitted.
+    - inputs:
+      - sigma_int(n,v)
+      - cosmological and cluster environments
+      notes: Check non-galaxy constraints.
+      outputs:
+      - CMB/LSS/21-cm/cluster consistency
+      step_id: r3
+      step_type: recasting
+      tool_or_code: null
+      validity: Requires environment-specific recast because the cross section is density dependent.
+    id: baryon_dm_cooling_to_mdar_route
+    input_parameters:
+    - m
+    - sigma_int(n,v)
+    - baryon density distribution
+    - DM density and velocity dispersion
+    - cluster and cosmological densities
+    likelihoods:
+    - galaxy rotation-curve likelihood
+    - CMB/LSS baryon-DM scattering likelihood
+    - 21-cm/Lyman-alpha forecast
+    - cluster merger likelihood
+    observable_ids:
+    - mdar_rotation_curve_equilibrium
+    - late_thermalization_21cm_lyman
+    - cluster_merger_energy_exchange
+    required_code_resources:
+    - galaxy rotation-curve data
+    - hydrodynamic or kinetic simulations
+    - cluster merger recast tools
+    - 21-cm/Lyman-alpha likelihoods
+    route_status: planned
+    source_model_features:
+    - elastic baryon-DM collisions
+    - heavy-DM cooling branch
+    - master relation n sigma_int m_b ~ a0
+    - density-dependent effective coupling
+    validation_tests:
+    - Recover the primary master relation and MDAR scaling.
+    - Verify the z about 100 thermalization estimate under the same scaling.
+    - Check cluster energy-exchange rate against merger passage time.

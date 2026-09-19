@@ -1,0 +1,373 @@
+_source:
+  shard: arXiv_src_1306_010_wds.tar
+  paper_id: '1306_5878'
+  source_member: 1306_5878.json
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: do_not_use_for_vector_mediator
+    mitigation: Keep the Higgs-portal singlet scalar and m_phi < m_DM assumptions with this card.
+    severity: medium
+    source_reference_ids:
+    - '1306_5878'
+    warning: The accepted row is for the scalar mediator case; the paper explicitly leaves the vector
+      mediator option to earlier work.
+associated_code:
+  code_summary: The paper uses HDECAY-scaled widths for mediator decays above charm threshold; no model-specific
+    public code is identified in the assigned text.
+  has_associated_code: partial
+assumptions:
+  global:
+  - can_be_relaxed: 'yes'
+    description: A B-L conserving but dark-matter-number-violating interaction transfers the asymmetry
+      between SM and dark sectors.
+    id: adm_asymmetry_transfer
+    impact_if_violated: The ADM mass-abundance relation would not follow.
+    notes: null
+    scope: production
+    source_reference_ids:
+    - '1306_5878'
+    status: assumed
+  - can_be_relaxed: unknown
+    description: A light singlet scalar mediator is needed to annihilate the symmetric ADM component.
+    id: light_scalar_mediator
+    impact_if_violated: The symmetric component may remain too large.
+    notes: null
+    scope: theory
+    source_reference_ids:
+    - '1306_5878'
+    status: assumed
+cosmological_history:
+  bbn_relevance: medium
+  chemical_decoupling: null
+  cmb_relevance: unknown
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - B-L asymmetry transfer between SM and dark sectors
+  - symmetric component annihilation
+  - light scalar mediator decay before BBN
+  phase_transitions:
+  - high-scale U(1)_{B-L} breaking implied by residual symmetry
+  standard_history_assumed: false
+  topological_defects: []
+identity:
+  aliases:
+  - minimal GeV-scale fermionic ADM
+  - light scalar mediated ADM
+  family: asymmetric_dark_matter
+  historical_origin_or_motivation: Motivated by relating baryon and dark matter abundances through B-L
+    asymmetry while avoiding neutron-star limits on bosonic ADM.
+  model_kind: simplified_model
+  name: Fermionic asymmetric dark matter with light scalar mediator
+  short_description: A GeV-scale SM-singlet fermionic asymmetric dark matter model whose symmetric component
+    annihilates through a light real singlet scalar that mixes with the Higgs.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - ADM anti-ADM annihilation through the light scalar mediator
+  cp_structure: CP-even scalar mediator in the main study; pseudoscalar portal discussed as an alternative
+  dark_sector_couplings:
+  - fermion-scalar ADM coupling
+  - scalar-Higgs mixing angle
+  decay_channels:
+  - scalar mediator decays to photons, electrons, muons, pions, charm, leptons, and b quarks depending
+    on mass
+  flavor_structure: scalar mediator inherits Higgs-like couplings after mixing
+  interaction_operators:
+  - dimension-5 ADM-SM asymmetry-transfer operator
+  - Higgs-portal scalar potential terms
+  mediator_types:
+  - real singlet scalar
+  - SM Higgs boson
+  portals:
+  - higgs
+  scattering:
+    elastic: 'yes'
+    inelastic: unknown
+    momentum_dependence: strong
+    spin_dependence: spin_independent
+    velocity_dependence: unknown
+  self_scattering_channels:
+  - ADM self-scattering through light scalar exchange
+  standard_model_targets:
+  - Higgs boson
+  - SM fermions
+  - nucleons
+  tree_or_loop_level: both
+model_id: 1306_5878_fermionic_adm_light_scalar_v1
+parameters:
+  core:
+  - description: Predicted from B-L charge for relativistic asymmetry-transfer decoupling.
+    name: ADM mass
+    range: 5.7 GeV / Q_DM; examples 17.1 GeV for Q_DM=1/3 and 3.42 GeV for Q_DM=5/3
+    role: core
+    status: inferred
+    symbol: m_DM
+    unit: GeV
+  - description: Dark matter B-L charge used to set the asymmetric abundance.
+    name: B-L charge
+    range: 1/3 or 5/3 in the paper examples
+    role: core
+    status: inferred
+    symbol: Q_DM
+  - description: Light scalar mediator mass in the focused regime.
+    name: scalar mediator mass
+    range: m_phi < m_DM; below 17.1 GeV for the displayed examples
+    role: core
+    status: inferred
+    symbol: m_phi
+    unit: GeV
+  - description: Coupling controlling annihilation of the symmetric component and self-scattering.
+    name: ADM-scalar coupling
+    range: lower bounds around 0.1-0.2 in the paper summary
+    role: core
+    status: inferred
+    symbol: lambda
+  - description: Mixing controls mediator decay and SM-sector couplings.
+    name: scalar-Higgs mixing angle
+    range: bounded below by cosmology around 1e-6 to 1e-7 and probed in future searches
+    role: core
+    status: inferred
+    symbol: theta
+  derived:
+  - description: Observed abundance used in the ADM mass relation.
+    name: dark matter abundance
+    role: cosmological
+    status: inferred
+    symbol: Omega_DM h^2
+    value: 0.12
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - real singlet scalar mediator phi
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: SM-singlet fermionic ADM particle
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles:
+  - fermionic ADM particle
+  mediators:
+  - light scalar mediator mixed with the SM Higgs
+  - SM-like Higgs boson
+  standard_model_extension: minimal
+  unstable_parent_particles: []
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: unknown
+  distribution_type: nonthermal
+  f_of_p_or_q: unknown
+  free_streaming_length: null
+  notes: The abundance is asymmetric; no phase-space distribution is given, and GeV-scale ADM is effectively
+    cold.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - B-L charge
+  - baryon asymmetry relation
+  - ADM anti-ADM annihilation strength
+  can_produce_all_dark_matter: 'yes'
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - asymmetric dark matter abundance tied to B-L asymmetry
+  - thermal annihilation of the symmetric ADM component through the light scalar mediator
+  nonthermal_momentum_distribution: unknown
+  notes: The paper assumes ADM is in thermal and chemical equilibrium with the SM sector in the early
+    universe and that annihilation removes the symmetric component.
+  thermal_equilibrium_with_hidden_sector: partial
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  created_at: '2026-05-31'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The paper imposes thermal and chemical equilibrium with the SM sector at freeze-out and BBN-safe
+        scalar-mediator decay.
+      page: null
+      reference_id: '1306_5878'
+      section: Other cosmological constraints
+    interactions:
+    - confidence: high
+      note: The scalar mediator mixes with the SM Higgs after electroweak symmetry breaking and couples
+        the ADM sector to the SM.
+      page: null
+      reference_id: '1306_5878'
+      section: Fermionic ADM with a light scalar mediator
+    parameter_ranges:
+    - confidence: high
+      note: The two benchmark charges give m_DM = 17.1 GeV and 3.42 GeV, and the focused regime is m_phi
+        < m_DM.
+      page: null
+      reference_id: '1306_5878'
+      section: Fermionic ADM with a light scalar mediator
+    particle_content:
+    - confidence: high
+      note: The model uses a SM-singlet fermionic ADM particle and introduces a new light SM-singlet scalar
+        mediator.
+      page: null
+      reference_id: '1306_5878'
+      section: Fermionic ADM with a light scalar mediator
+    production_mechanism:
+    - confidence: high
+      note: A dark anti-dark asymmetry is related to the baryon asymmetry, while annihilation removes
+        the symmetric component.
+      page: null
+      reference_id: '1306_5878'
+      section: ADM scenario
+    relic_density:
+    - confidence: high
+      note: For relativistic asymmetry-transfer decoupling the paper derives m_DM about 5.7 GeV divided
+        by Q_DM and studies Q_DM = 1/3 and 5/3.
+      page: null
+      reference_id: '1306_5878'
+      section: ADM scenario
+    symmetries:
+    - confidence: medium
+      note: The text motivates stability from a residual symmetry of gauged U(1)_{B-L}, with fractional
+        B-L charges also stable.
+      page: null
+      reference_id: '1306_5878'
+      section: Introduction/ADM scenario
+    validity_domain:
+    - confidence: medium
+      note: The scalar-mediator coupling must be large enough to remove the symmetric component; the paper
+        quotes lower bounds around 0.1-0.2 for the two masses.
+      page: null
+      reference_id: '1306_5878'
+      section: Summary
+  extraction:
+    confidence: high
+    extracted_by: codex_batch-0016
+    extraction_date: '2026-05-31'
+    extractor_name: GPT-5 dark-matter model-card extraction worker
+    method: llm_assisted
+    source_chunks_or_sections: []
+    unresolved_items:
+    - First author and exact title are missing from the assigned text header.
+  last_updated: '2026-05-31'
+  model_family: asymmetric_dark_matter
+  model_id: 1306_5878_fermionic_adm_light_scalar_v1
+  model_name: Fermionic asymmetric dark matter with light scalar mediator
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: high
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: high
+  sources:
+    primary_papers:
+    - arxiv_id: '1306.5878'
+      authors:
+      - Shigeki Matsumoto
+      - Satyanarayan Mukhopadhyay
+      - Mihoko M. Nojiri
+      doi: null
+      notes: Title is descriptive because the extracted header omits a title line; visible author list
+        in the text is incomplete.
+      reference_id: '1306_5878'
+      role: original_model
+      title: Minimal GeV-scale fermionic asymmetric dark matter with a light scalar mediator
+      url: null
+      year: 2013
+  status: machine_extracted
+relic_density:
+  calculation_type: mixed
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - B-L asymmetry transfer
+  - Q_DM charge
+  - symmetric-component annihilation through scalar mediator
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: unknown
+  target_fraction: null
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: medium
+  constraint_robustness: not_applicable
+  dominant_uncertainties:
+  - scalar-Higgs mixing angle
+  - ADM-scalar coupling
+  - mediator decay modeling below charm threshold
+  - asymmetry-transfer history
+  notes: The card records the paper-local CP-even scalar mediator scenario and not the briefly mentioned
+    vector mediator option.
+  observational_robustness: medium
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    half_mode_mass: null
+    impact_on_sigma8_s8: unknown
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    core_or_cusp_effect: unknown
+    density_profile_effect: unknown
+    halo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+    subhalo_mass_function_effect: unknown
+symmetries:
+  stabilizing_mechanism: The ADM particle is stable through a residual symmetry associated with gauged
+    U(1)_{B-L} or through fractional B-L charge assignments.
+  symmetries:
+  - breaking: broken at high scale leaving a residual stabilizing symmetry
+    breaking_scale: null
+    exact_or_approximate: broken
+    name: U(1)_{B-L}
+    type: gauge
+  - breaking: not broken for the ADM candidate
+    breaking_scale: null
+    exact_or_approximate: exact
+    name: residual Z2-like parity
+    type: discrete
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The text gives a fermionic ADM plus real singlet scalar Lagrangian and a Higgs-portal scalar
+    potential; the asymmetry-transfer operator is effective.
+  parent_frameworks:
+  - asymmetric dark matter
+  - gauged U(1)_{B-L}
+  - Higgs portal singlet scalar
+  renormalizable: 'yes'
+  theory_level: simplified_model
+validity_domain:
+- applies_to: model
+  caveats:
+  - The resonance region m_phi about 2 m_DM is explicitly not the focus.
+  condition: The detailed analysis focuses on the scalar mediator lighter than the ADM particle.
+  extrapolation_risk: medium
+  id: light_scalar_regime
+  notes: null
+  source_reference_ids:
+  - '1306_5878'
+  status: inferred
+  valid_range: m_phi < m_DM for m_DM = 17.1 or 3.42 GeV examples
+- applies_to: production
+  caveats: []
+  condition: The ADM-scalar coupling must be large enough to eliminate the symmetric component.
+  extrapolation_risk: medium
+  id: symmetric_component_removed
+  notes: null
+  source_reference_ids:
+  - '1306_5878'
+  status: inferred
+  valid_range: lambda lower bounds around 0.1 for 3.4 GeV and 0.2 for 17.1 GeV in the summary

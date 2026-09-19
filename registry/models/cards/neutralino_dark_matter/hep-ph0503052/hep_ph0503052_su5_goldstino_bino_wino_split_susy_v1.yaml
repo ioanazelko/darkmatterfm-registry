@@ -1,0 +1,771 @@
+_source:
+  shard: arXiv_src_0503_001_wds.tar
+  paper_id: hep-ph0503052
+  source_member: hep-ph0503052.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+agent_failure_modes:
+  warnings:
+  - category: assumption_mismatch
+    id: implicit_stability
+    mitigation: Check the model's R-parity or equivalent before using the card as a complete dark matter
+      model.
+    severity: medium
+    source_reference_ids:
+    - primary
+    warning: The extraction treats the lightest neutralino as stable, but the assigned text does not explicitly
+      state the stabilizing parity.
+  - category: other
+    id: prior_relic_surfaces
+    mitigation: Treat detailed relic-density boundaries as paper-level guidance, not a standalone calculation.
+    severity: low
+    source_reference_ids:
+    - primary
+    warning: Some relic-density conditions are imported from cited split-SUSY studies rather than recomputed
+      in the paper.
+associated_code:
+  caveats: []
+  code_summary: No dedicated code release is stated in the assigned text; the paper cites DarkSUSY-based
+    relic-density studies in the literature.
+  containers_or_environments: []
+  expected_inputs: []
+  expected_outputs: []
+  has_associated_code: unknown
+  notebooks: []
+  packages_or_modules: []
+  primary_code_role: null
+  repositories: []
+  reproducibility:
+    has_documentation: unknown
+    has_examples: unknown
+    has_tests: unknown
+    notes: Relic-density code use is not directly documented for this paper's extraction.
+    pinned_dependencies: unknown
+    reproducibility_level: unknown
+  scripts: []
+  supported_observable_channels: []
+  validation:
+    benchmark_references: []
+    validation_notes: null
+    validation_status: unknown
+assumptions:
+  computation_specific: []
+  global:
+  - can_be_relaxed: unknown
+    description: Sfermions are heavy while gauginos and Higgsinos remain near the TeV scale.
+    id: split_susy_spectrum
+    impact_if_violated: The dark matter and unification discussion changes if scalar partners are light.
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: Ordinary unified gaugino mass sources are suppressed so the Goldstino contribution controls
+      the spectrum.
+    id: suppressed_unified_mass
+    impact_if_violated: The predictive SU(5) mass ratio would be lost.
+    scope: theory
+    source_reference_ids: []
+    status: assumed
+  - can_be_relaxed: unknown
+    description: The lightest neutralino is the stable cold dark matter candidate.
+    id: neutralino_lsp
+    impact_if_violated: A different LSP would invalidate the extracted relic-density interpretation.
+    scope: production
+    source_reference_ids: []
+    status: assumed
+cosmological_history:
+  bbn_relevance: medium
+  chemical_decoupling: null
+  cmb_relevance: medium
+  dark_sector_temperature: null
+  delta_neff: null
+  isocurvature_perturbations: unknown
+  kinetic_decoupling: null
+  nonstandard_features:
+  - split-SUSY heavy scalar sector
+  - potentially long-lived gluino constrained by cosmology
+  phase_transitions: []
+  standard_history_assumed: true
+  topological_defects: []
+identity:
+  aliases:
+  - Bino-like split-SUSY dark matter
+  - SU(5) Goldstino gaugino-mass split SUSY
+  family: neutralino_dark_matter
+  historical_origin_or_motivation: The paper constructs unified split-SUSY gaugino spectra that preserve
+    gauge coupling unification and neutralino dark matter after WMAP relic-density constraints.
+  model_kind: complete_theory
+  name: SU(5) Goldstino split-SUSY Bino-Wino neutralino dark matter
+  short_description: A split-supersymmetry SU(5) unified model in which Goldstino loop contributions yield
+    near-degenerate Bino and Wino masses, making a Bino-like neutralino relic density viable.
+  status: speculative
+interactions:
+  annihilation_channels:
+  - neutralino annihilation and coannihilation controlled by Bino-Wino/Higgsino mixing
+  cp_structure: unknown
+  dark_sector_couplings:
+  - Bino-Wino mixing
+  - Bino-Higgsino mixing
+  - electroweak neutralino interactions
+  decay_channels: []
+  flavor_structure: heavy sfermions suppress FCNC problems
+  interaction_operators: []
+  mediator_types:
+  - W boson
+  - Z boson
+  - Higgs boson
+  portals:
+  - higgs
+  - vector
+  scattering:
+    elastic: unknown
+    inelastic: unknown
+    momentum_dependence: unknown
+    spin_dependence: unknown
+    velocity_dependence: unknown
+  self_scattering_channels: []
+  standard_model_targets:
+  - electroweak gauge sector
+  - Higgs sector
+  tree_or_loop_level: both
+model_id: hep_ph0503052_su5_goldstino_bino_wino_split_susy_v1
+parameters:
+  core:
+  - description: Near the Wino soft mass for the Bino-like dark matter solution
+    name: Bino soft mass
+    range: 100 GeV to 1 TeV with M1 close to M2
+    role: core
+    status: inferred
+    symbol: M1
+  - description: Near-degenerate with M1 in the SU(5) Goldstino scenario
+    name: Wino soft mass
+    range: same order as M1
+    role: core
+    status: inferred
+    symbol: M2
+  - description: Can be around the TeV scale in the SU(5) scenario
+    name: gluino soft mass
+    role: core
+    status: inferred
+    symbol: M3
+    unit: TeV
+    value: about 1
+  - description: Must be heavy relative to Bino/Wino for the Bino-Wino mixed solution described
+    name: Higgsino mass
+    range: M1 much less than mu
+    role: core
+    status: inferred
+    symbol: mu
+  - description: SU(5) broken-generator contribution at the GUT scale
+    name: GUT-scale Goldstino gaugino mass ratio
+    role: core
+    status: inferred
+    symbol: M1:M2:M3
+    value: '5:3:2'
+  - description: Chosen low enough to avoid cosmological problems from long-lived gluinos in the TeV-gluino
+      case
+    name: split-SUSY scalar scale
+    role: core
+    status: inferred
+    symbol: m_SUSY
+    unit: GeV
+    value: about 1e7
+  derived:
+  - description: Goldstino contribution makes the ratio close to one at the weak scale
+    name: weak-scale Wino/Bino mass ratio
+    role: derived
+    status: inferred
+    symbol: M2/M1
+    value: close to 1
+  nuisance: []
+particle_content:
+  additional_dark_sector_particles:
+  - Wino-like chargino and neutralino
+  - Higgsinos
+  - gluino
+  - heavy squarks and sleptons
+  - Goldstinos from broken SU(5) generators
+  dark_matter_candidate:
+    elementary_or_composite: elementary
+    name: Bino-like lightest neutralino with Wino mixing
+    number_of_components: single_component
+    spin: 1/2
+    statistics: fermion
+  dark_radiation_species: []
+  excited_or_degenerate_states:
+  - nearly degenerate chargino
+  - second neutralino
+  long_lived_particles:
+  - gluino if scalar masses are too high
+  mediators:
+  - electroweak gauge bosons
+  - Higgs bosons
+  standard_model_extension: substantial
+  unstable_parent_particles:
+  - gluino
+phase_space:
+  average_momentum_relative_to_thermal: null
+  distribution_function_available: 'no'
+  distribution_type: thermal
+  f_of_p_or_q: not provided
+  free_streaming_length: null
+  notes: TeV-scale neutralino is treated as cold dark matter.
+  phase_space_bounds: []
+  velocity_dispersion_today: null
+production:
+  abundance_set_by:
+  - M1
+  - M2
+  - mu
+  - neutralino mixing
+  - coannihilation with near-degenerate electroweakinos
+  can_produce_all_dark_matter: parameter_dependent
+  depends_on_reheating_temperature: unknown
+  mechanisms:
+  - thermal neutralino freeze-out with enhanced annihilation/coannihilation from Bino-Wino or Bino-Higgsino
+    mixing
+  nonthermal_momentum_distribution: 'no'
+  notes: The paper relies on WMAP-compatible split-SUSY neutralino relic-density conditions and emphasizes
+    that near M1-M2 degeneracy solves Bino overclosure.
+  thermal_equilibrium_with_hidden_sector: not_applicable
+  thermal_equilibrium_with_standard_model: 'yes'
+provenance:
+  caveats:
+  - The stabilizing parity for the neutralino is implicit rather than spelled out in the assigned text.
+  created_at: '2026-05-30'
+  entry_version: 0.1.0
+  evidence:
+    cosmological_history:
+    - confidence: medium
+      note: The gluino lifetime and scalar mass scale are chosen so the gluino does not create a cosmological
+        problem.
+      page: null
+      reference_id: primary
+      section: introduction and SU(5) discussion
+    interactions:
+    - confidence: medium
+      note: The viable Bino-like case requires Bino-Wino or Bino-Higgsino mixing; in the SU(5) Goldstino
+        case the Wino/Bino mass ratio is close to one.
+      page: null
+      reference_id: primary
+      section: SU(5) model
+    parameter_ranges:
+    - confidence: high
+      note: For the Bino-like solution the paper gives 100 GeV < M1 < 1 TeV, M1 close to M2, and the SU(5)
+        Goldstino ratio M1:M2:M3 = 5:3:2 at the GUT scale.
+      page: null
+      reference_id: primary
+      section: SU(5) model
+    particle_content:
+    - confidence: high
+      note: The model keeps gauginos and Higgsinos light while sfermions are heavy; the lightest neutralino
+        is the cold dark matter candidate.
+      page: null
+      reference_id: primary
+      section: introduction
+    production_mechanism:
+    - confidence: medium
+      note: The paper uses the neutralino relic-density conditions from WMAP-compatible split-SUSY surfaces
+        and highlights Bino-like dark matter with M1 near M2.
+      page: null
+      reference_id: primary
+      section: dark matter condition
+    symmetries:
+    - confidence: medium
+      note: R symmetry or related symmetries suppress ordinary gaugino masses, allowing Goldstino loop
+        contributions to dominate.
+      page: null
+      reference_id: primary
+      section: gaugino mass origins
+    validity_domain:
+    - confidence: medium
+      note: The SU(5) Goldstino contribution is predictive when the unified symmetry is broken by the
+        Higgs mechanism and other gaugino-mass sources are suppressed.
+      page: null
+      reference_id: primary
+      section: SU(5) model
+    constraints:
+    - confidence: high
+      note: Primary paper quotes WMAP 0.094 < Omega_DM h^2 < 0.129 and states pure Bino overcloses unless
+        mixed.
+      page: null
+      reference_id: arxiv:hep-ph/0503052
+      section: Neutralino dark matter condition
+    - confidence: medium
+      note: Related paper computes WMAP-era relic curves and spin-independent neutralino-proton scattering
+        in split-SUSY parameter space.
+      page: null
+      reference_id: arxiv:hep-ph/0412058
+      section: Relic and direct detection
+    observables:
+    - confidence: high
+      note: Primary SU(5) discussion states Bino/Wino mass ratio can be close to one at weak scale, helping
+        satisfy WMAP.
+      page: null
+      reference_id: arxiv:hep-ph/0503052
+      section: Abstract and SU(5) discussion
+    - confidence: medium
+      note: Related split-SUSY detection paper studies Bino-Wino transition and Wino-Higgsino mixing with
+        direct/indirect/collider complementarity.
+      page: null
+      reference_id: arxiv:hep-ph/0412058
+      section: Detection overview
+    routes:
+    - confidence: high
+      note: Primary paper maps unified-model gaugino sources into weak-scale Bino/Wino/gluino spectra
+        relevant for relic density.
+      page: null
+      reference_id: arxiv:hep-ph/0503052
+      section: Gaugino mass classification
+  extraction:
+    confidence: medium
+    extracted_by: codex_batch_0014
+    extraction_date: '2026-05-30'
+    extractor_name: codex
+    method: llm_assisted
+    source_chunks_or_sections:
+    - page: null
+      quote_or_summary: The paper connects split-SUSY gaugino spectra to dark matter and unification.
+      reference_id: primary
+      section: abstract/introduction
+    - page: null
+      quote_or_summary: It lists Bino-like, Wino, and Higgsino thermal relic conditions compatible with
+        WMAP.
+      reference_id: primary
+      section: dark matter condition
+    - page: null
+      quote_or_summary: The SU(5) Goldstino mass ratio makes M1 and M2 close, favoring Bino-like dark
+        matter.
+      reference_id: primary
+      section: SU(5) Goldstino contribution
+    unresolved_items:
+    - Modern Planck, indirect-detection, direct-detection, and electroweakino collider limits were not
+      rerun.
+    - The exact Higgsino mass and signs must be fixed to obtain a detector prediction.
+  last_updated: '2026-05-30'
+  model_family: neutralino_dark_matter
+  model_id: hep_ph0503052_su5_goldstino_bino_wino_split_susy_v1
+  model_name: SU(5) Goldstino split-SUSY Bino-Wino neutralino dark matter
+  review:
+    expert_review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    human_reviewed: false
+    implementation_confidence: medium
+    review_date: null
+    reviewed_by: null
+    reviewer_notes: []
+    scientific_confidence: medium
+  sources:
+    primary_papers:
+    - arxiv_id: hep-ph/0503052
+      authors:
+      - Bhaskar Dutta
+      - Yukihiro Mimura
+      doi: null
+      notes: Only the assigned SQLite full text was used.
+      reference_id: primary
+      role: original_model
+      title: Split Supersymmetry in Unified Models
+      url: null
+      year: 2005
+    - arxiv_id: hep-ph/0503052
+      authors:
+      - Dutta, Bhaskar
+      - Mimura, Yukihiro
+      doi: null
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:hep-ph/0503052
+      role: original_model
+      title: Split supersymmetry in unified models
+      url: https://arxiv.org/abs/hep-ph/0503052
+      year: 2005
+    constraint_papers:
+    - arxiv_id: hep-ph/0412058
+      authors:
+      - Masiero, A.
+      - Profumo, S.
+      - Ullio, P.
+      doi: 10.1016/j.nuclphysb.2005.01.028
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:hep-ph/0412058
+      role: constraint
+      title: Neutralino dark matter detection in split supersymmetry scenarios
+      url: https://arxiv.org/abs/hep-ph/0412058
+      year: 2005
+    - arxiv_id: hep-ph/0501265
+      authors:
+      - Cheung, Kingman
+      - Chiang, Cheng-Wei
+      doi: 10.1103/PhysRevD.71.095003
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:hep-ph/0501265
+      role: constraint
+      title: Splitting split supersymmetry
+      url: https://arxiv.org/abs/hep-ph/0501265
+      year: 2005
+    - arxiv_id: hep-ph/0408296
+      authors:
+      - Gupta, Sudhir Kumar
+      - Konar, Partha
+      - Mukhopadhyaya, Biswarup
+      doi: 10.1016/j.physletb.2004.12.014
+      notes: Related full text resolved locally and read for bounded enrichment.
+      reference_id: arxiv:hep-ph/0408296
+      role: other
+      title: R-parity violation in split supersymmetry
+      url: https://arxiv.org/abs/hep-ph/0408296
+      year: 2005
+    external_databases: []
+    review_papers: []
+  status: machine_extracted
+relic_density:
+  calculation_type: thermal
+  full_or_subcomponent: full_dark_matter
+  key_dependencies:
+  - M1
+  - M2
+  - mu
+  - neutralino mixing
+  - electroweakino coannihilation
+  overclosure_risk: parameter_dependent
+  requires_entropy_dilution: 'no'
+  target_fraction:
+    name: WMAP dark matter relic density
+    range: 0.094-0.129
+    role: cosmological
+    status: inferred
+    symbol: Omega_DM h^2
+  tuning_assessment: unknown
+  underproduction_risk: parameter_dependent
+robustness:
+  computational_robustness: unknown
+  constraint_robustness: not_applicable
+  dominant_uncertainties: []
+  notes: null
+  observational_robustness: unknown
+  overall: medium
+  theory_robustness: medium
+  validation_status: expert_judgment_only
+schema_version: model_only_v0
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    small_scale_power_effect: none
+    transfer_function_shape: cdm_like
+  nonlinear:
+    halo_mass_function_effect: not developed in the paper
+    simulation_calibrated: 'no'
+    subhalo_mass_function_effect: not developed in the paper
+symmetries:
+  stabilizing_mechanism: The paper treats the lightest neutralino as cold dark matter; the explicit stabilizing
+    parity is not specified in the assigned text.
+  symmetries:
+  - breaking: R breaking is incorporated in GUT symmetry breaking
+    breaking_scale:
+      name: GUT breaking scale
+      role: core
+      status: inferred
+      symbol: M_GUT
+      unit: GeV
+      value: about 1e16
+    exact_or_approximate: broken
+    name: R symmetry controlling gaugino masses
+    type: global
+  topological_defects_possible: unknown
+theory:
+  eft_cutoff: null
+  embedded_in_larger_framework: 'yes'
+  lagrangian_available: partial
+  notes: The paper gives the SU(5) breaking setup and Goldstino contribution to gaugino mass ratios; the
+    low-energy relic calculation is treated through split-SUSY neutralino conditions.
+  parent_frameworks:
+  - split supersymmetry
+  - SU(5) grand unification
+  - Goldstino loop gaugino masses
+  renormalizable: 'yes'
+  theory_level: uv_complete
+validity_domain:
+- applies_to: theory
+  caveats: []
+  condition: Goldstino loop contribution dominates over other gaugino mass sources.
+  extrapolation_risk: medium
+  id: goldstino_dominance
+  source_reference_ids: []
+  status: assumed
+- applies_to: parameter
+  caveats: []
+  condition: M1 and M2 are close enough for Bino-like neutralino dark matter not to overclose the universe.
+  extrapolation_risk: high
+  id: near_degenerate_bino_wino
+  source_reference_ids: []
+  status: inferred
+- applies_to: cosmological_history
+  caveats: []
+  condition: The gluino lifetime is short enough to avoid the nucleosynthesis problem.
+  extrapolation_risk: medium
+  id: gluino_cosmology
+  source_reference_ids: []
+  status: assumed
+observables:
+- caveats:
+  - The source identifies surfaces in M1, M2, mu rather than a unique benchmark.
+  channel: cosmology
+  effect_direction: model_dependent
+  environments:
+  - early-universe plasma
+  id: obs_su5_bino_wino_relic_surface
+  key_quantities:
+  - description: Weak-scale Bino mass parameter.
+    name: Bino mass
+    range: near M2 for Bino-Wino mixing in the source SU(5) scenario
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0503052
+    status: inferred
+    symbol: M1
+    unit: GeV
+  - description: Weak-scale Wino mass parameter.
+    name: Wino mass
+    range: near M1 for Bino-like mixed dark matter; pure Wino thermal target around 2-2.5 TeV
+    role: core
+    source_reference_ids:
+    - arxiv:hep-ph/0503052
+    status: inferred
+    symbol: M2
+    unit: GeV
+  - description: Source WMAP dark matter target.
+    name: WMAP relic density
+    range: 0.094-0.129
+    role: derived
+    source_reference_ids:
+    - arxiv:hep-ph/0503052
+    - arxiv:hep-ph/0501265
+    status: inferred
+    symbol: Omega_DM h^2
+  linked_constraints:
+  - con_split_susy_wmap_relic
+  - con_bino_wino_transition_detection
+  linked_routes:
+  - route_su5_goldstino_to_neutralino_observables
+  name: SU(5) Bino-Wino mixed relic-density surface
+  notes: null
+  observability: high
+  predicted_effect: Goldstino contributions in SU(5) can make the weak-scale Bino/Wino mass ratio close
+    to one, enabling Bino-like neutralino dark matter through Bino-Wino or Bino-Higgsino mixing.
+  redshift_range: thermal freeze-out through today
+  relevance: critical
+  scale_range: not_applicable
+  source_reference_ids:
+  - arxiv:hep-ph/0503052
+  - arxiv:hep-ph/0412058
+  subchannel: split-SUSY neutralino freeze-out
+- caveats:
+  - Scalar masses are heavy, so detection depends strongly on electroweakino composition.
+  channel: direct_detection
+  effect_direction: rate_change
+  environments:
+  - direct-detection targets
+  - cosmic-ray environment
+  - Sun
+  - colliders
+  id: obs_bino_wino_detection_complementarity
+  key_quantities:
+  - description: Neutralino-proton scalar scattering cross section in split-SUSY scans.
+    name: spin-independent cross section
+    range: composition dependent
+    role: derived
+    source_reference_ids:
+    - arxiv:hep-ph/0412058
+    status: inferred
+    symbol: sigma_SI
+    unit: cm^2
+  - description: Bino, Wino, and Higgsino components of the LSP.
+    name: neutralino mixing fractions
+    range: set by M1, M2, mu, and tan_beta
+    role: derived
+    source_reference_ids:
+    - arxiv:hep-ph/0412058
+    status: inferred
+    symbol: N_1j
+  linked_constraints:
+  - con_bino_wino_transition_detection
+  linked_routes:
+  - route_su5_goldstino_to_neutralino_observables
+  name: Bino-Wino transition direct and indirect detection complementarity
+  notes: null
+  observability: medium
+  predicted_effect: Split-SUSY neutralino studies find complementarity among direct detection, antimatter/gamma
+    searches, neutrino telescopes, and colliders near Bino-Wino and Wino-Higgsino transition regimes.
+  redshift_range: today
+  relevance: high
+  scale_range: nuclear recoil, cosmic-ray, and solar-capture scales
+  source_reference_ids:
+  - arxiv:hep-ph/0412058
+  subchannel: split-SUSY neutralino searches
+constraints:
+- allowed_regions:
+  - WMAP target 0.094 < Omega_DM h^2 < 0.129 is satisfied on Bino-Wino, Wino, or Higgsino surfaces; SU(5)
+    Goldstino terms can realize M1 about M2.
+  applies: 'yes'
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Neutralino relic density is set by standard thermal freeze-out with heavy scalars and
+      R-parity conservation.
+    id: standard-split-susy-freezeout
+    impact_if_violated: Nonthermal production or R-parity violation changes the target.
+    notes: null
+    scope: relic-density target
+    source_reference_ids:
+    - arxiv:hep-ph/0503052
+    status: assumed
+  benchmark_implications:
+  - Assigned SU(5) Bino-Wino model is viable only near degeneracy or with enough Higgsino mixing.
+  caveats:
+  - Modern Planck relic target was not substituted.
+  constrained_parameters:
+  - Omega_DM h^2
+  - M1
+  - M2
+  - mu
+  constraint_type: cosmological
+  data_release: WMAP range quoted by primary source
+  excluded_regions:
+  - Pure Bino with M1 well below M2 and mu overcloses the Universe in the source discussion.
+  id: con_split_susy_wmap_relic
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: WMAP relic-density condition for split-SUSY neutralinos
+  notes: null
+  observable_channel: thermal relic density
+  recasting_needed: 'no'
+  robustness: high
+  source_reference_ids:
+  - arxiv:hep-ph/0503052
+  - arxiv:hep-ph/0412058
+  - arxiv:hep-ph/0501265
+- allowed_regions:
+  - Related source highlights complementarity rather than a single exclusion curve for the Bino-Wino transition.
+  applies: recast_required
+  assumptions:
+  - can_be_relaxed: 'yes'
+    description: Related split-SUSY detection scans map onto the SU(5) Goldstino Bino-Wino transition.
+    id: transition-regime-mapping
+    impact_if_violated: Different Higgsino mass or signs can shift scattering and annihilation rates.
+    notes: null
+    scope: detection recast
+    source_reference_ids:
+    - arxiv:hep-ph/0412058
+    status: assumed
+  benchmark_implications:
+  - The assigned SU(5) row needs a modern DarkSUSY/micrOMEGAs plus detector-likelihood recast.
+  caveats:
+  - No detector likelihoods were run.
+  constrained_parameters:
+  - sigma_SI
+  - M1
+  - M2
+  - mu
+  - neutralino mixing
+  constraint_type: direct_detection
+  data_release: WMAP-era direct, antimatter, gamma, neutrino telescope, and collider discussions
+  excluded_regions:
+  - Current and future direct/indirect searches constrain portions of split-SUSY neutralino transition
+    parameter space.
+  id: con_bino_wino_transition_detection
+  likelihood_available: partial
+  likelihood_reference: null
+  name: Detection constraints in Bino-Wino and Wino-Higgsino transition regimes
+  notes: null
+  observable_channel: direct, indirect, neutrino, and collider searches
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:hep-ph/0412058
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - Primary source does not provide a full modern detector likelihood.
+    constraint_ids:
+    - con_split_susy_wmap_relic
+    - con_bino_wino_transition_detection
+    derived_quantities:
+    - neutralino mixing matrix
+    - Omega_DM h^2
+    - sigma_SI
+    - indirect annihilation rates
+    - gluino lifetime target
+    description: Run SU(5) Goldstino gaugino masses to weak-scale neutralino mixing, relic density, and
+      detection observables.
+    forward_model_chain:
+    - inputs:
+      - unified model
+      - Goldstino contribution
+      notes: null
+      outputs:
+      - GUT-scale gaugino mass ratios
+      step_id: s1
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Use primary SU(5) mass-ratio construction.
+    - inputs:
+      - GUT-scale masses
+      - m_SUSY
+      - mu
+      notes: null
+      outputs:
+      - weak-scale M1, M2, M3 and neutralino mixing
+      step_id: s2
+      step_type: other
+      tool_or_code: RGE spectrum code
+      validity: Split-SUSY thresholds are important.
+    - inputs:
+      - electroweakino spectrum
+      notes: null
+      outputs:
+      - Omega_DM h^2
+      - annihilation rates
+      step_id: s3
+      step_type: boltzmann_solver
+      tool_or_code: DarkSUSY or micrOMEGAs
+      validity: Primary cites DarkSUSY-style relic surfaces.
+    - inputs:
+      - mixing
+      - cross sections
+      notes: null
+      outputs:
+      - direct and indirect constraints
+      step_id: s4
+      step_type: recasting
+      tool_or_code: null
+      validity: Modern search likelihoods required.
+    id: route_su5_goldstino_to_neutralino_observables
+    input_parameters:
+    - M1
+    - M2
+    - M3
+    - mu
+    - tan_beta
+    - m_SUSY
+    - Goldstino mass contribution
+    likelihoods:
+    - WMAP/Planck relic target
+    - direct-detection limits
+    - indirect gamma/antimatter limits
+    - collider electroweakino searches
+    observable_ids:
+    - obs_su5_bino_wino_relic_surface
+    - obs_bino_wino_detection_complementarity
+    required_code_resources:
+    - RGE spectrum code
+    - DarkSUSY or micrOMEGAs
+    - direct/indirect detection recast
+    route_status: planned
+    source_model_features:
+    - split supersymmetry
+    - SU(5) unified gaugino masses plus Goldstino loop terms
+    - Bino-Wino near degeneracy
+    validation_tests:
+    - recover 0.094-0.129 relic window
+    - recover need for M1 about M2 in Bino-like case

@@ -1,0 +1,782 @@
+_source:
+  shard: arXiv_src_1504_008_wds.tar
+  paper_id: '1504_03610'
+  source_member: 1504_03610.json
+  enriched: true
+  enrichment_schema_version: dm_model_ocr_enrichment_smoke_v0
+schema_version: model_only_v0
+model_id: 1504_03610_two_portal_fermionic_dark_matter_v1
+identity:
+  name: Two-portal fermionic dark matter model
+  family: wimp_dark_matter
+  aliases:
+  - Higgs and vector portal fermionic dark matter
+  - U(1) prime two-portal dark matter
+  short_description: A renormalizable WIMP model where a Dirac fermion dark matter candidate couples to
+    the Standard Model through both a Higgs-mixed scalar and a leptophobic U(1) prime vector boson.
+  historical_origin_or_motivation: Introduced to combine Higgs and vector portals, evade direct-detection
+    limits through loop-suppressed nucleon scattering, and allow relic-density and Galactic-center gamma-ray
+    explanations.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: uv_complete
+  parent_frameworks:
+  - extra U(1) prime gauge symmetry
+  - Higgs portal
+  - leptophobic vector portal
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes L = L_SM + L_DM + L_int with a Dirac fermion and complex scalar charged under
+    U(1) prime.
+particle_content:
+  dark_matter_candidate:
+    name: Dirac fermion chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - complex scalar phi charged under U(1) prime
+  mediators:
+  - dark vector boson Z prime
+  - singlet-like scalar h prime mixed with the Standard Model Higgs
+  dark_radiation_species: []
+  excited_or_degenerate_states: []
+  long_lived_particles: []
+  unstable_parent_particles: []
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Stability is assumed for the fermionic WIMP in the dark sector; the paper focuses
+    on U(1) prime gauge interactions rather than an explicit stabilizing parity.
+  symmetries:
+  - name: U(1) prime
+    type: gauge
+    exact_or_approximate: broken
+    breaking: Broken by the dark scalar vacuum expectation value, giving mass to Z prime.
+    breaking_scale:
+      name: dark scalar vev
+      symbol: v_prime
+      description: Vacuum expectation value of the complex scalar.
+      range: 100-1000
+      unit: GeV
+      role: core
+      status: inferred
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  - vector
+  standard_model_targets:
+  - third-generation quarks
+  - Higgs doublet
+  dark_sector_couplings:
+  - Dirac fermion and complex scalar couple covariantly to U(1) prime
+  - scalar-Higgs portal term couples phi^* phi to H H^dagger
+  mediator_types:
+  - scalar
+  - vector
+  interaction_operators:
+  - Higgs portal scalar mixing
+  - leptophobic Z prime couplings to quarks
+  - fermion-Z prime gauge coupling
+  annihilation_channels:
+  - chi chi -> b bbar
+  - chi chi -> t tbar
+  - chi chi -> Z prime h
+  - chi chi -> Z prime h prime
+  - chi chi -> Z prime Z prime
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    description: Mass of the Dirac fermion dark matter candidate.
+    range: few GeV to 1 TeV
+    unit: GeV
+    role: core
+    status: inferred
+    notes: Viable parameter space includes a few GeV up to 1 TeV; a 34 GeV point is highlighted for the
+      gamma-ray excess.
+  - name: dark gauge coupling
+    symbol: g_prime
+    description: U(1) prime gauge coupling.
+    range:
+      min: 0.001
+      max: 1
+      unit: null
+      notes: Scan range quoted in the paper.
+    role: core
+    status: inferred
+  - name: dark scalar vev
+    symbol: v_prime
+    description: Vacuum expectation value of the complex scalar.
+    range: 100-1000
+    unit: GeV
+    role: core
+    status: inferred
+  - name: scalar mixing angle
+    symbol: alpha
+    description: Mixing angle between the SM Higgs and singlet-like scalar.
+    range: 0 to pi/2
+    role: core
+    status: inferred
+  - name: singlet scalar mass
+    symbol: m_h_prime
+    description: Mass of the scalar mediator.
+    unit: GeV
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out through annihilation into Standard Model and dark-sector final states
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: 'yes'
+  abundance_set_by:
+  - annihilation cross sections through Z prime and scalar portals
+  - Boltzmann freeze-out calculation
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The relic abundance is computed by solving the Boltzmann equation with thermally averaged annihilation
+    cross sections.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_h_prime
+  - g_prime
+  - v_prime
+  - scalar mixing angle
+  - annihilation channels into b bbar, t tbar, Z prime h, Z prime h prime, and Z prime Z prime
+  requires_entropy_dilution: unknown
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: Thermal freeze-out relic-density treatment is discussed; no explicit distribution function is
+    supplied.
+structure_formation:
+  linear:
+    behaves_like_cdm: approximately
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: 'no'
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+associated_code:
+  has_associated_code: partial
+  code_summary: The paper says the model was implemented in LanHEP, with MicrOMEGAs used for relic density
+    and CalcHEP for cross-checks; no public repository is specified.
+  primary_code_role: relic_density_calculation
+  packages_or_modules:
+  - name: LanHEP
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - define_lagrangian
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families: []
+    inputs:
+    - model_lagrangian
+    outputs:
+    - vertices
+    - Feynman rules
+    validity_domain: []
+    citation_reference_ids:
+    - paper
+    notes: Used by the authors to generate vertices and Feynman rules; no model-specific public files
+      are specified.
+  - name: MicrOMEGAs
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - compute_relic_density
+    - solve_boltzmann_equations
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families: []
+    inputs:
+    - LanHEP model files
+    - model parameters
+    outputs:
+    - relic density
+    validity_domain: []
+    citation_reference_ids:
+    - paper
+    notes: Used by the authors for relic-density analysis.
+  - name: CalcHEP
+    resource_type: package
+    availability: public
+    relationship_to_model: related_but_not_model_specific
+    purpose:
+    - compute_cross_sections
+    url: null
+    repository_url: null
+    documentation_url: null
+    archive_url: null
+    doi: null
+    license: null
+    languages: []
+    version: null
+    commit: null
+    last_checked: null
+    maintained: unknown
+    dependencies: []
+    supported_parameters: []
+    supported_model_families: []
+    inputs:
+    - LanHEP output files
+    - model parameters
+    outputs:
+    - annihilation cross sections
+    validity_domain: []
+    citation_reference_ids:
+    - paper
+    notes: Used by the authors to check analytical annihilation cross sections.
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  validation_status: expert_judgment_only
+  dominant_uncertainties: []
+  notes: null
+validity_domain:
+- id: renormalizable_two_portal_region
+  applies_to: model
+  condition: Applies where the U(1) prime charge assignments are anomaly-free, scalar potential is stable
+    and perturbative, and the chosen masses and couplings satisfy the paper-selected relic-density and
+    Higgs-width requirements.
+  status: inferred
+  extrapolation_risk: medium
+  caveats:
+  - Light-quark Z prime couplings are taken negligible, so direct-detection statements depend on that
+    model assumption.
+  source_reference_ids:
+  - paper
+  notes: null
+assumptions:
+  global:
+  - id: leptophobic_vector_portal
+    description: The U(1) prime gauge boson couples to quarks but not leptons, with negligible first-
+      and second-generation quark couplings.
+    scope: global
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+  - id: thermal_history
+    description: The fermion dark matter was in thermal equilibrium in the early universe and froze out
+      in the standard way.
+    scope: cosmological_history
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+  - id: anomaly_free_charges
+    description: Appropriate quark dark charges can make the U(1) prime theory anomaly-free.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+    notes: null
+provenance:
+  model_id: 1504_03610_two_portal_fermionic_dark_matter_v1
+  model_name: Two-portal fermionic dark matter model
+  model_family: wimp_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Renormalizable two-portal fermionic dark matter model
+      authors: []
+      year: 2015
+      arxiv_id: '1504.03610'
+      doi: null
+      url: null
+      role: original_model
+      notes: Text supplied by run-local SQLite database.
+    - arxiv_id: '1504.03610'
+      authors:
+      - Ghorbani, Karim
+      - Ghorbani, Hossein
+      doi: 10.1103/PhysRevD.91.123541
+      notes: Primary assigned paper read from local SQLite full text.
+      reference_id: arxiv:1504.03610
+      role: original_model
+      title: Two-portal dark matter
+      url: https://arxiv.org/abs/1504.03610
+      year: 2015
+    constraint_papers: []
+    external_databases: []
+    review_papers:
+    - arxiv_id: '1506.06767'
+      authors:
+      - Alves, Alexandre
+      - Berlin, Asher
+      - Profumo, Stefano
+      - Queiroz, Farinaldo S.
+      doi: 10.1007/JHEP10(2015)076
+      notes: Related scholarly text read in the bounded enrichment pass; used only when explicitly cited
+        in evidence.
+      reference_id: arxiv:1506.06767
+      role: review
+      title: Dirac-fermionic dark matter in U(1)<SUB>X</SUB> models
+      url: https://arxiv.org/abs/1506.06767
+      year: 2015
+    - arxiv_id: '1505.06758'
+      authors:
+      - Balázs, Csaba
+      - Li, Tong
+      - Savage, Chris
+      - White, Martin
+      doi: 10.1103/PhysRevD.92.123520
+      notes: Related scholarly text read in the bounded enrichment pass; used only when explicitly cited
+        in evidence.
+      reference_id: arxiv:1505.06758
+      role: review
+      title: Interpreting the Fermi-LAT gamma ray excess in the simplified framework
+      url: https://arxiv.org/abs/1505.06758
+      year: 2015
+    - arxiv_id: '1506.05665'
+      authors:
+      - Dutta Banik, Amit
+      - Majumdar, Debasish
+      - Biswas, Anirban
+      doi: 10.1140/epjc/s10052-016-4159-9
+      notes: Related scholarly text read in the bounded enrichment pass; used only when explicitly cited
+        in evidence.
+      reference_id: arxiv:1506.05665
+      role: review
+      title: Possible explanation of indirect gamma ray signatures from hidden sector fermionic dark matter
+      url: https://arxiv.org/abs/1506.05665
+      year: 2016
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0012
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: abstract/introduction
+      page: null
+      quote_or_summary: The paper proposes a renormalizable fermionic DM model with Higgs and vector portals
+        under U(1) prime.
+    - reference_id: paper
+      section: model
+      page: null
+      quote_or_summary: The dark sector contains a Dirac fermion and complex scalar charged under U(1)
+        prime, plus a leptophobic Z prime.
+    - reference_id: paper
+      section: relic-density
+      page: null
+      quote_or_summary: The relic density is treated with thermal freeze-out and annihilation channels
+        through Z prime and scalar portals.
+    unresolved_items:
+    - No direct-detection, relic-density, Higgs-width, or Fermi-LAT likelihood was rerun.
+    - The Galactic-center excess interpretation remains astrophysics-dependent.
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: Dirac fermion DM and complex scalar are both charged under the dark U(1) prime; Z prime and
+        h prime mediate interactions.
+      confidence: high
+      section: model
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: A broken U(1) prime gauge symmetry defines the dark/vector portal structure.
+      confidence: high
+      section: model
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The model uses Higgs and vector portals in tandem with leptophobic Z prime couplings to quarks.
+      confidence: high
+      section: introduction/model
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: Freeze-out abundance is computed from annihilation channels such as b bbar, t tbar, Z prime
+        h, Z prime h prime, and Z prime Z prime.
+      confidence: high
+      section: relic-density
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: The viable DM mass can range from a few GeV to 1 TeV, with a 34 GeV point used for the gamma-ray
+        excess example.
+      confidence: high
+      section: abstract/numerical
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: Direct detection is loop-suppressed because tree-level scattering off nuclei is absent under
+        the model charge assumptions.
+      confidence: medium
+      section: model/direct detection
+      page: null
+    constraints:
+    - confidence: high
+      note: Primary abstract lists LUX/XENON100, WMAP/Planck, and invisible-Higgs-width constraints applied
+        to the model.
+      page: null
+      reference_id: arxiv:1504.03610
+      section: Abstract
+    observables:
+    - confidence: high
+      note: Primary abstract states that DM-nucleon elastic scattering starts at one loop and satisfies
+        LUX/XENON100 bounds.
+      page: null
+      reference_id: arxiv:1504.03610
+      section: Abstract
+    - confidence: high
+      note: Primary abstract identifies an m_chi about 34 GeV b bbar annihilation region for the Fermi-LAT
+        Galactic-center excess.
+      page: null
+      reference_id: arxiv:1504.03610
+      section: Abstract
+    routes:
+    - confidence: high
+      note: Primary text describes the Higgs and vector portals, U(1) prime gauge structure, and computation
+        path through LanHEP/MicrOMEGAs/CalcHEP.
+      page: null
+      reference_id: arxiv:1504.03610
+      section: Model/analysis
+  review:
+    human_reviewed: false
+    reviewed_by: null
+    review_date: null
+    expert_reviewed: false
+    expert_reviewer: null
+    expert_review_date: null
+    reviewer_notes: []
+    scientific_confidence: high
+    implementation_confidence: high
+  caveats: []
+agent_failure_modes:
+  warnings:
+  - id: do_not_treat_as_single_portal
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper emphasizes that the viable mass range arises from having both Higgs and vector
+      portals; reducing it to a one-portal model changes the physics.
+    mitigation: null
+    source_reference_ids:
+    - paper
+  - id: charge_assignment_needed
+    severity: medium
+    category: missing_likelihood
+    warning: The extracted card does not specify a complete anomaly-free charge assignment; downstream
+      use should verify the charge choices before model-building calculations.
+    mitigation: null
+    source_reference_ids:
+    - paper
+observables:
+- caveats:
+  - One-loop calculation and detector efficiencies were not rerun.
+  channel: direct_detection
+  effect_direction: suppression
+  environments:
+  - LUX
+  - XENON100
+  - terrestrial direct-detection detectors
+  id: obs_two_portal_loop_direct_detection
+  key_quantities:
+  - description: One-loop leading recoil cross section.
+    name: DM-nucleon elastic scattering cross section
+    role: core
+    source_reference_ids:
+    - arxiv:1504.03610
+    status: inferred
+    symbol: sigma_chiN
+  - description: Viable masses range from a few GeV up to about 1 TeV in the source summary.
+    name: dark matter mass
+    range: few GeV to 1 TeV
+    role: core
+    source_reference_ids:
+    - arxiv:1504.03610
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+  - description: Higgs-portal mixing controlling scalar interactions.
+    name: scalar mixing angle
+    role: core
+    source_reference_ids:
+    - arxiv:1504.03610
+    status: inferred
+    symbol: alpha
+  linked_constraints:
+  - con_two_portal_lux_xenon
+  linked_routes:
+  - route_two_portal_to_relic_recoil_gamma
+  name: Loop-suppressed nuclear recoils in two-portal fermionic dark matter
+  notes: null
+  observability: medium
+  predicted_effect: Because the leading DM-nucleon elastic scattering contribution starts at one loop,
+    the Higgs-plus-vector two-portal model can evade LUX and XENON100 direct-detection limits over viable
+    parameter regions.
+  redshift_range: z=0 laboratory searches
+  relevance: high
+  scale_range: few-GeV to TeV WIMP masses
+  source_reference_ids:
+  - arxiv:1504.03610
+  subchannel: nuclear_recoil
+- caveats:
+  - The Galactic-center excess interpretation is astrophysics-dependent and no Fermi likelihood was rerun.
+  channel: indirect_detection
+  effect_direction: rate_change
+  environments:
+  - Galactic Center
+  - Fermi-LAT
+  id: obs_two_portal_galactic_center_bbbar
+  key_quantities:
+  - name: dark matter mass for the gamma-ray-excess region
+    role: core
+    source_reference_ids:
+    - arxiv:1504.03610
+    status: inferred
+    symbol: m_chi
+    unit: GeV
+    value: about 34
+  - name: dominant annihilation final state
+    role: core
+    source_reference_ids:
+    - arxiv:1504.03610
+    status: inferred
+    symbol: chi chi -> b bbar
+    value: b bbar
+  - description: WMAP/Planck relic-density target applied with the gamma-ray and direct-detection constraints.
+    name: thermal relic density
+    role: core
+    source_reference_ids:
+    - arxiv:1504.03610
+    status: inferred
+    symbol: Omega h^2
+  linked_constraints:
+  - con_two_portal_relic_higgs_gce
+  linked_routes:
+  - route_two_portal_to_relic_recoil_gamma
+  name: Galactic-center gamma-ray excess region from b-quark annihilation
+  notes: null
+  observability: medium
+  predicted_effect: A constrained region with m_chi around 34 GeV annihilating to b bbar is identified
+    by the primary paper as capable of explaining the Fermi-LAT Galactic-center gamma-ray excess.
+  redshift_range: z=0 Galactic Center
+  relevance: medium
+  scale_range: GeV gamma rays from tens-of-GeV WIMP annihilation
+  source_reference_ids:
+  - arxiv:1504.03610
+  subchannel: galactic_center_gamma_rays
+constraints:
+- allowed_regions:
+  - Loop-suppressed scattering leaves viable regions compatible with direct-detection limits.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The leading nucleon recoil amplitude starts at one loop as stated in the model analysis.
+    id: one-loop-leading-recoil
+    impact_if_violated: Additional tree-level couplings would strengthen direct-detection limits.
+    scope: direct-detection recast
+    source_reference_ids:
+    - arxiv:1504.03610
+    status: assumed
+  benchmark_implications:
+  - The two-portal construction can evade direct detection while keeping relic-density and gamma-ray regions.
+  caveats:
+  - Detector response and halo assumptions were not independently checked.
+  constrained_parameters:
+  - sigma_chiN
+  - m_chi
+  - g_prime
+  - scalar mixing angle
+  - m_Z_prime
+  - m_h_prime
+  constraint_type: direct_detection
+  data_release: LUX and XENON100 limits summarized in the primary paper
+  excluded_regions:
+  - Parameter points whose one-loop elastic scattering cross section exceeds LUX or XENON100 limits are
+    excluded.
+  id: con_two_portal_lux_xenon
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: LUX and XENON100 direct-detection limits on loop-level two-portal scattering
+  notes: null
+  observable_channel: nuclear recoil
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1504.03610
+- allowed_regions:
+  - The viable parameter space spans a few GeV to about 1 TeV, including an m_chi about 34 GeV b bbar-annihilation
+    region for the gamma-ray excess.
+  applies: parameter_dependent
+  assumptions:
+  - can_be_relaxed: partial
+    description: The source interprets the candidate as a thermal WIMP and the Galactic-center excess
+      as potentially due to dark-matter annihilation.
+    id: thermal-wimp-and-gce-interpretation
+    impact_if_violated: Nonstandard cosmology or astrophysical explanations of the excess would change
+      the interpretation.
+    scope: two-portal relic/gamma analysis
+    source_reference_ids:
+    - arxiv:1504.03610
+    status: assumed
+  benchmark_implications:
+  - The Higgs and vector portals jointly open mass regions absent in one-portal versions.
+  caveats:
+  - The Galactic-center gamma-ray excess is not treated as an exclusion likelihood here.
+  constrained_parameters:
+  - Omega h^2
+  - m_chi
+  - Higgs invisible width
+  - annihilation branching fractions
+  - g_prime
+  constraint_type: cosmological
+  data_release: WMAP/Planck relic density, LHC invisible Higgs width, and Fermi-LAT gamma-ray excess as
+    summarized by the paper
+  excluded_regions:
+  - Points outside the WMAP/Planck relic-density band or exceeding the LHC invisible-Higgs-width bound
+    are rejected in the source analysis.
+  id: con_two_portal_relic_higgs_gce
+  likelihood_available: 'no'
+  likelihood_reference: null
+  name: Relic-density, invisible-Higgs-width, and gamma-ray-excess compatibility
+  notes: null
+  observable_channel: thermal relic abundance, invisible Higgs width, and Galactic-center gamma rays
+  recasting_needed: 'yes'
+  robustness: medium
+  source_reference_ids:
+  - arxiv:1504.03610
+theory_to_observable_routing:
+  routes:
+  - agent_notes: null
+    caveats:
+    - The source gamma-ray-excess interpretation is not a robust discovery claim.
+    constraint_ids:
+    - con_two_portal_lux_xenon
+    - con_two_portal_relic_higgs_gce
+    derived_quantities:
+    - annihilation cross sections
+    - Omega h^2
+    - sigma_chiN
+    - Higgs invisible width
+    - gamma-ray b bbar region
+    description: Translate the U(1) prime Higgs-plus-vector portal Lagrangian into annihilation rates,
+      thermal relic density, one-loop nuclear recoils, invisible Higgs decay, and Galactic-center gamma-ray
+      signatures.
+    forward_model_chain:
+    - inputs:
+      - two-portal Lagrangian
+      notes: null
+      outputs:
+      - vertices and Feynman rules
+      step_id: model-implementation
+      step_type: other
+      tool_or_code: LanHEP
+      validity: Model implementation used by the authors; files not captured here.
+    - inputs:
+      - annihilation channels
+      - model parameters
+      notes: null
+      outputs:
+      - Omega h^2
+      step_id: annihilation-relic
+      step_type: boltzmann_solver
+      tool_or_code: MicrOMEGAs/CalcHEP
+      validity: Thermal freeze-out treatment in the source analysis.
+    - inputs:
+      - one-loop diagrams
+      - mediator masses and couplings
+      notes: null
+      outputs:
+      - DM-nucleon elastic cross section
+      step_id: loop-recoil
+      step_type: analytic_formula
+      tool_or_code: null
+      validity: Valid when tree-level nucleon scattering is absent as assumed.
+    - inputs:
+      - Omega h^2
+      - sigma_chiN
+      - Higgs width
+      - annihilation to b bbar
+      notes: null
+      outputs:
+      - allowed parameter regions
+      - GCE-compatible region
+      step_id: constraint-overlay
+      step_type: recasting
+      tool_or_code: null
+      validity: No public likelihood rerun.
+    id: route_two_portal_to_relic_recoil_gamma
+    input_parameters:
+    - m_chi
+    - m_Z_prime
+    - m_h_prime
+    - g_prime
+    - v_prime
+    - scalar mixing angle
+    - Z prime quark charges
+    likelihoods:
+    - no public LUX/XENON/Higgs/Fermi likelihood included
+    observable_ids:
+    - obs_two_portal_loop_direct_detection
+    - obs_two_portal_galactic_center_bbbar
+    required_code_resources:
+    - LanHEP model implementation
+    - MicrOMEGAs
+    - CalcHEP
+    - direct-detection and gamma-ray likelihoods for a full recast
+    route_status: planned
+    source_model_features:
+    - Dirac fermion dark matter
+    - Higgs-mixed scalar mediator
+    - leptophobic Z prime vector mediator
+    - one-loop leading nuclear recoil
+    validation_tests:
+    - recover the few-GeV-to-TeV viable mass range
+    - recover the m_chi about 34 GeV b bbar gamma-ray-excess point
+    - reproduce loop-level recoil suppression

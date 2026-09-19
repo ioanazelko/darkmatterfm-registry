@@ -1,0 +1,225 @@
+_source:
+  shard: arXiv_src_1705_003_wds.tar
+  paper_id: '1705_01105'
+  source_member: 1705_01105.json
+schema_version: model_only_v0
+model_id: 1705_01105_fermionic_dm_pseudoscalar_dark_isr_v1
+identity:
+  name: Fermionic dark matter with pseudoscalar dark initial-state radiation
+  family: dark_bremsstrahlung_dark_matter
+  aliases:
+  - S S plus dark pseudoscalar ISR
+  short_description: Fermionic DM annihilates to SM fermions through a scalar four-Fermi EFT operator
+    and radiates a dark pseudoscalar, opening an unsuppressed s-wave channel.
+  historical_origin_or_motivation: Model-card candidate extracted from the assigned paper text.
+  status: speculative
+  model_kind: effective_field_theory
+theory:
+  theory_level: effective_field_theory
+  lagrangian_available: 'yes'
+  renormalizable: unknown
+  parent_frameworks: []
+  notes: The model is written as a four-Fermi EFT plus a dark pseudoscalar coupling.
+particle_content:
+  dark_matter_candidate:
+    name: chi
+    spin: 1/2
+    statistics: fermion
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - dark pseudoscalar phi
+  mediators:
+  - heavy EFT mediator
+  - dark pseudoscalar phi
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: Unknown; the paper notes dark-sector charges can stabilize DM in complete theories.
+  symmetries:
+  - name: dark-sector stabilizing charge
+    type: unknown
+    exact_or_approximate: unknown
+interactions:
+  portals:
+  - other
+  standard_model_targets:
+  - SM fermions f
+  dark_sector_couplings:
+  - i g_phi phi chi gamma5 chi
+  mediator_types:
+  - pseudoscalar dark radiation
+  - heavy EFT mediator
+  interaction_operators:
+  - (1/Lambda^2)(chi chi)(f f)
+  - i g_phi phi chi gamma5 chi
+  annihilation_channels:
+  - chi chi -> f f phi
+  - chi chi -> f f
+  - chi chi -> phi phi phi
+  tree_or_loop_level: tree
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: m_chi
+    role: core
+    status: inferred
+  - name: pseudoscalar mass
+    symbol: m_phi
+    role: core
+    status: inferred
+  - name: pseudoscalar coupling
+    symbol: g_phi
+    role: core
+    status: inferred
+  - name: EFT cutoff
+    symbol: Lambda
+    role: core
+    status: inferred
+production:
+  mechanisms:
+  - thermal freeze-out with dark ISR potentially contributing to the dominant annihilation channel
+  thermal_equilibrium_with_standard_model: unknown
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - p-wave chi chi -> f f
+  - s-wave chi chi -> f f phi or phi phi phi depending on parameters
+  can_produce_all_dark_matter: parameter_dependent
+  notes: The paper focuses on annihilation-rate structure rather than a complete relic-density fit.
+relic_density:
+  full_or_subcomponent: unknown
+  calculation_type: thermal
+  key_dependencies:
+  - m_chi
+  - m_phi
+  - g_phi
+  - Lambda
+  requires_entropy_dilution: unknown
+  overclosure_risk: unknown
+  underproduction_risk: unknown
+  tuning_assessment: unknown
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features:
+  - multi-particle dark sector with dark radiation that should decay or remain cosmologically harmless
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The paper discusses annihilation channels rather than a phase-space distribution.
+structure_formation:
+  linear:
+    behaves_like_cdm: unknown
+    transfer_function_shape: unknown
+    small_scale_power_effect: unknown
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: eft_validity
+  applies_to: EFT
+  condition: The integrated-out mediator represented by Lambda must be heavy enough for the EFT description.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+- id: dark_radiation_decay
+  applies_to: cosmological_history
+  condition: Dark radiation should not add appreciably to the relic density and must eventually decay.
+  status: assumed
+  extrapolation_risk: medium
+  caveats: []
+assumptions:
+  global:
+  - id: scalar_operator
+    description: The f f annihilation is described by the scalar four-Fermi operator.
+    scope: theory
+    status: assumed
+  - id: independent_parameters
+    description: Masses and couplings are treated as independent illustrative parameters.
+    scope: theory
+    status: assumed
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is identified in the assigned text.
+provenance:
+  model_id: 1705_01105_fermionic_dm_pseudoscalar_dark_isr_v1
+  model_name: Fermionic dark matter with pseudoscalar dark initial-state radiation
+  model_family: dark_bremsstrahlung_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: primary
+      title: Enhancing Dark Matter Annihilation Rates with Dark Bremsstrahlung
+      authors:
+      - Nicole F. Bell
+      - Yi Cai
+      - James B. Dent
+      - Rebecca K. Leane
+      - Thomas J. Weiler
+      year: 2017
+      arxiv_id: '1705.01105'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned full text from target_text.sqlite.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0006
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: medium
+    source_chunks_or_sections:
+    - reference_id: primary
+      section: Introduction
+      page: null
+      quote_or_summary: Dark spin-0 bremsstrahlung from fermionic DM is introduced as dark ISR.
+    - reference_id: primary
+      section: Dark pseudoscalar ISR
+      page: null
+      quote_or_summary: Scalar four-Fermi operator plus pseudoscalar coupling opens an s-wave channel.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: primary
+      note: The paper investigates fermionic DM radiating a dark spin-0 field in f f phi dark bremsstrahlung.
+      section: Introduction
+      confidence: high
+    interactions:
+    - reference_id: primary
+      note: The S S Lorentz structure is augmented by a DM-pseudoscalar coupling.
+      section: Dark pseudoscalar ISR
+      confidence: high
+    production_mechanism:
+    - reference_id: primary
+      note: Pseudoscalar dark ISR lifts p-wave suppression and opens an s-wave channel.
+      section: Dark pseudoscalar ISR
+      confidence: high
+    cosmological_history:
+    - reference_id: primary
+      note: The text states dark radiation must eventually decay to avoid contributing to the relic density.
+      section: Dark ISR setup
+      confidence: medium
+    validity_domain:
+    - reference_id: primary
+      note: The authors present the result as an EFT/Lorentz-structure example.
+      section: Dark ISR setup
+      confidence: medium
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: medium
+    reviewer_notes: []
+robustness:
+  overall: medium
+agent_failure_modes:
+  warnings:
+  - id: not_full_relic_model
+    severity: medium
+    category: other
+    warning: The paper demonstrates suppression lifting but does not provide a complete relic-density
+      scan for this variant.

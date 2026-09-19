@@ -1,0 +1,284 @@
+_source:
+  shard: arXiv_src_1707_015_wds.tar
+  paper_id: '1707_06083'
+  source_member: 1707_06083.json
+schema_version: model_only_v0
+model_id: 1707_06083_inert_doublet_u1l_neutrino_mass_dm_v1
+identity:
+  name: Flavor-dependent U(1)_L radiative neutrino model with inert doublet dark matter
+  family: radiative_neutrino_mass_inert_doublet_dark_matter
+  aliases:
+  - U(1)_L inert-doublet dark matter
+  - bosonic dark matter from inert doublet
+  short_description: A gauged lepton-flavor radiative neutrino-mass model in which the neutral component
+    of an inert doublet is stabilized by Z2 and thermally freezes out through the Higgs portal.
+  historical_origin_or_motivation: Built to link two-loop active neutrino masses, one-loop charged-lepton
+    masses, and a testable bosonic dark matter candidate.
+  status: speculative
+  model_kind: complete_theory
+theory:
+  theory_level: simplified_model
+  parent_frameworks:
+  - gauged lepton flavor symmetry U(1)_L
+  - radiative neutrino mass
+  - inert doublet dark matter
+  lagrangian_available: 'yes'
+  renormalizable: 'yes'
+  embedded_in_larger_framework: unknown
+  notes: The paper writes renormalizable lepton-sector and scalar-potential terms after fixing the anomaly-free
+    U(1)_L charges.
+particle_content:
+  dark_matter_candidate:
+    name: X, neutral component of the inert doublet
+    spin: '0'
+    statistics: scalar
+    elementary_or_composite: elementary
+    number_of_components: single_component
+  additional_dark_sector_particles:
+  - inert singlet scalar s
+  - charged scalars h+ and k++
+  - exotic charged fermions E
+  mediators:
+  - SM-like Higgs h1
+  - exotic charged fermions in loop processes
+  standard_model_extension: substantial
+symmetries:
+  stabilizing_mechanism: A Z2 parity on the new fields stabilizes the neutral inert-doublet component.
+  symmetries:
+  - name: U(1)_L
+    type: gauge
+    exact_or_approximate: broken
+  - name: Z2
+    type: discrete
+    exact_or_approximate: exact
+  topological_defects_possible: unknown
+interactions:
+  portals:
+  - higgs
+  standard_model_targets:
+  - bottom quarks through SM Higgs
+  - leptons through radiative neutrino-sector couplings
+  dark_sector_couplings:
+  - lambda_XXh1 Higgs-portal trilinear
+  - Yukawa F couplings to exotic charged fermions
+  mediator_types:
+  - scalar Higgs mediator
+  - charged exotic fermions
+  interaction_operators:
+  - '|eta|^2 |H|^2'
+  - '|eta dagger H|^2'
+  - (eta dagger H)^2
+  annihilation_channels:
+  - X X -> h1* -> b bbar
+  - d-wave leptonic annihilation through F couplings
+  tree_or_loop_level: both
+parameters:
+  core:
+  - name: dark matter mass
+    symbol: M_X
+    range:
+      min: 54
+      max: 62.5
+      inclusive_min: true
+      inclusive_max: true
+      unit: GeV
+      notes: Allowed interval quoted after relic-density and direct-detection considerations.
+    unit: GeV
+    role: core
+    status: inferred
+  - name: Higgs portal coupling
+    symbol: lambda_XXh1
+    range: lambda_XXh1 <= 0.01
+    role: core
+    status: inferred
+    notes: Paper uses the conservative direct-detection upper bound.
+  - name: freeze-out ratio
+    symbol: x_f
+    value: 25
+    role: core
+    status: assumed
+  derived:
+  - name: relic density target
+    symbol: Omega h^2
+    value: 0.12
+    role: derived
+    status: assumed
+production:
+  mechanisms:
+  - thermal freeze-out through Higgs-portal annihilation
+  thermal_equilibrium_with_standard_model: 'yes'
+  thermal_equilibrium_with_hidden_sector: unknown
+  abundance_set_by:
+  - annihilation cross section through h1 pole region
+  depends_on_reheating_temperature: unknown
+  can_produce_all_dark_matter: 'yes'
+  nonthermal_momentum_distribution: 'no'
+  notes: The d-wave Yukawa channel is reported too small, so the viable abundance relies on the Higgs
+    portal near the half-Higgs mass region.
+relic_density:
+  full_or_subcomponent: full_dark_matter
+  target_fraction: null
+  calculation_type: thermal
+  key_dependencies:
+  - M_X
+  - lambda_XXh1
+  - Higgs pole
+  - freeze-out integral J(x_f)
+  requires_entropy_dilution: 'no'
+  overclosure_risk: parameter_dependent
+  underproduction_risk: parameter_dependent
+  tuning_assessment: mild_tuning
+cosmological_history:
+  standard_history_assumed: true
+  nonstandard_features: []
+  bbn_relevance: unknown
+  cmb_relevance: unknown
+phase_space:
+  distribution_type: thermal
+  distribution_function_available: 'no'
+  notes: The candidate is treated as a cold thermal relic.
+structure_formation:
+  linear:
+    behaves_like_cdm: 'yes'
+    transfer_function_shape: cdm_like
+    small_scale_power_effect: none
+  nonlinear:
+    halo_mass_function_effect: unknown
+    subhalo_mass_function_effect: unknown
+    simulation_calibrated: unknown
+validity_domain:
+- id: vx_mass_window
+  applies_to: parameter
+  condition: Paper restricts the extracted DM scenario to m_Z/2 < M_X < m_W and the Higgs-pole-compatible
+    interval.
+  status: inferred
+  extrapolation_risk: medium
+  caveats: []
+  source_reference_ids:
+  - paper
+assumptions:
+  global:
+  - id: a_neutral_component
+    description: The neutral inert-doublet component is lighter than the alternative singlet scalar candidate
+      considered in the model.
+    scope: theory
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+  - id: a_higgs_portal
+    description: The viable relic-density calculation assumes Higgs-portal annihilation dominates over
+      the d-wave leptonic channel.
+    scope: production
+    status: assumed
+    can_be_relaxed: unknown
+    source_reference_ids:
+    - paper
+associated_code:
+  has_associated_code: unknown
+  code_summary: No model-specific public code is identified in the assigned paper text.
+  primary_code_role: null
+robustness:
+  overall: medium
+  theory_robustness: medium
+  observational_robustness: unknown
+  computational_robustness: unknown
+  dominant_uncertainties: []
+  validation_status: expert_judgment_only
+  notes: Machine extraction from assigned paper text; observables and constraints omitted by run profile.
+agent_failure_modes:
+  warnings:
+  - id: w_alt_candidate
+    severity: medium
+    category: assumption_mismatch
+    warning: The paper mentions both eta and s as possible candidates but only analyzes the neutral inert-doublet
+      component X in detail.
+    source_reference_ids:
+    - paper
+provenance:
+  model_id: 1707_06083_inert_doublet_u1l_neutrino_mass_dm_v1
+  model_name: Flavor-dependent U(1)_L radiative neutrino model with inert doublet dark matter
+  model_family: radiative_neutrino_mass_inert_doublet_dark_matter
+  entry_version: 0.1.0
+  status: machine_extracted
+  created_at: '2026-05-31'
+  last_updated: '2026-05-31'
+  sources:
+    primary_papers:
+    - reference_id: paper
+      title: Neutrino mass in flavor dependent gauged lepton model
+      authors:
+      - Takaaki Nomura
+      - Hiroshi Okada
+      year: 2017
+      arxiv_id: '1707.06083'
+      doi: null
+      url: null
+      role: original_model
+      notes: Assigned SQLite full text only; no external lookup used.
+  extraction:
+    method: llm_assisted
+    extracted_by: codex_batch_0005
+    extractor_name: Codex
+    extraction_date: '2026-05-31'
+    confidence: high
+    source_chunks_or_sections:
+    - reference_id: paper
+      section: Abstract and introduction
+      page: null
+      quote_or_summary: Constructs a U(1)_L neutrino model with a dark matter candidate and relic-density
+        analysis.
+    - reference_id: paper
+      section: Dark matter
+      page: null
+      quote_or_summary: Focuses on neutral inert-doublet component X and derives the Higgs-portal freeze-out
+        range.
+    unresolved_items: []
+  evidence:
+    particle_content:
+    - reference_id: paper
+      note: The model adds exotic charged fermions, singlet scalars, charged scalars, and an inert doublet
+        whose neutral component X is the dark matter candidate.
+      confidence: high
+      section: model setup
+      page: null
+    symmetries:
+    - reference_id: paper
+      note: A Z2 parity is imposed on new fields to prevent SM-exotic mixing and stabilize the neutral
+        inert component.
+      confidence: high
+      section: model setup
+      page: null
+    interactions:
+    - reference_id: paper
+      note: The dark matter relic density is dominated by Higgs-portal annihilation to bottom quarks;
+        a Yukawa d-wave channel is too small.
+      confidence: high
+      section: dark matter
+      page: null
+    production_mechanism:
+    - reference_id: paper
+      note: The paper computes a thermal freeze-out relic density with x_f about 25 and requires h^2 about
+        0.12.
+      confidence: high
+      section: dark matter
+      page: null
+    parameter_ranges:
+    - reference_id: paper
+      note: For lambda_XXh1 <= 0.01, the allowed mass interval is about 54-62.5 GeV.
+      confidence: high
+      section: dark matter
+      page: null
+    validity_domain:
+    - reference_id: paper
+      note: The extraction follows the paper focus on the neutral inert-doublet component X rather than
+        the singlet scalar option.
+      confidence: medium
+      section: dark matter
+      page: null
+  review:
+    human_reviewed: false
+    expert_reviewed: false
+    scientific_confidence: medium
+    implementation_confidence: high
+    reviewer_notes: []
