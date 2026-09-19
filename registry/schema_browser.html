@@ -2566,7 +2566,8 @@ $defs:
     var h=decodeURIComponent(location.hash.slice(1)); if(!h) return;
     var el=document.getElementById(h); if(!el) return;
     openAncestors(el); if(el.tagName==='DETAILS') el.open=true;
-    requestAnimationFrame(function(){ el.scrollIntoView({block:'start'}); window.scrollBy(0,-64); });
+    var go=function(){ el.scrollIntoView({block:'start'}); window.scrollBy(0,-64); };
+    requestAnimationFrame(go); setTimeout(go,150); setTimeout(go,500);
   }
   window.addEventListener('hashchange',goHash); window.addEventListener('load',goHash);
   var box=document.getElementById('q'), hits=document.getElementById('hits');
