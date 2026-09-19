@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DarkMatterFM-Registry</title>
+<style>
+:root{--fg:#1b1f23;--muted:#5c6470;--line:#e1e4e8;--accent:#0b5fff;--chip:#f1f3f5;--card:#fff;--bg:#fafbfc}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--fg);background:var(--bg)}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+code{font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--chip);padding:1px 5px;border-radius:4px}
+main{max-width:880px;margin:0 auto;padding:40px 24px 80px}
+h1{font-size:28px;margin:0 0 4px}
+.lead{color:var(--muted);font-size:16px;max-width:70ch;margin:0 0 28px}
+h2{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:32px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;color:var(--fg)}
+.card:hover{border-color:var(--accent);text-decoration:none}
+.card h3{margin:0 0 6px;font-size:16px;color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.card .size{display:inline-block;margin-top:8px;font-size:12px;color:var(--muted)}
+ul.files{list-style:none;padding:0;margin:0}
+ul.files li{padding:7px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:baseline}
+ul.files li span{color:var(--muted);font-size:14px}
+footer{margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+</style></head>
+<body><main>
+<h1>DarkMatterFM-Registry</h1>
+<p class="lead">A machine-readable registry of beyond-the-Standard-Model dark-matter models extracted from the arXiv literature. Every model is a structured card recording what the model is, which observables and constraints apply, which computational routes evaluate it, and what is still missing to evaluate it. This site hosts the schema suite, its browser, and the capability-gap roadmap with the research projects derived from it.</p>
+
+<h2>Interactive viewers</h2>
+<div class="grid">
+  <a class="card" href="registry/schema_browser.html">
+    <h3>Schema browser</h3>
+    <p>All seven schema files as a navigable tree: every field with its description, type, enum values, examples and required flag; cross-file references resolved; search; a permalink per field.</p>
+    <span class="size">7 files &middot; 528 fields</span>
+  </a>
+  <a class="card" href="registry/darkmatterfm_research_roadmap.html">
+    <h3>Research-project ranking</h3>
+    <p>25 concrete projects, one per missing capability, ranked by impact, structure-formation impact, cost and value ratio, with the highest-priority models each would unblock.</p>
+    <span class="size">25 projects &middot; 2,004 models</span>
+  </a>
+  <a class="card" href="registry/gap_roadmap.html">
+    <h3>Capability-gap roadmap</h3>
+    <p>The 5,166 capability-gap entries grouped into 150 themes and weighted by the priority of the models they block, with every member model listed per group.</p>
+    <span class="size">150 groups &middot; 4 MB page</span>
+  </a>
+</div>
+
+<h2>Schemas</h2>
+<ul class="files">
+  <li><a href="registry/schemas/bsm_model.schema.yaml">bsm_model.schema.yaml</a><span>the model card: 31 top-level sections</span></li>
+  <li><a href="registry/schemas/common.schema.yaml">common.schema.yaml</a><span>shared definitions (parameters, ranges, assumptions, agent warnings, status)</span></li>
+  <li><a href="registry/schemas/observable.schema.yaml">observable.schema.yaml</a><span>one observable channel</span></li>
+  <li><a href="registry/schemas/constraint.schema.yaml">constraint.schema.yaml</a><span>one constraint with its assumptions and robustness grade</span></li>
+  <li><a href="registry/schemas/route.schema.yaml">route.schema.yaml</a><span>a theory-to-observable route: solvers, emulators, likelihoods, step status</span></li>
+  <li><a href="registry/schemas/provenance.schema.yaml">provenance.schema.yaml</a><span>sources, extraction and review status per claim</span></li>
+  <li><a href="registry/schemas/code.schema.yaml">code.schema.yaml</a><span>associated code and execution environments</span></li>
+  <li><a href="registry/schemas/README.md">schemas/README.md</a><span>how the files fit together</span></li>
+</ul>
+
+<h2>Data and reports</h2>
+<ul class="files">
+  <li><a href="registry/models/research_projects_ranked.jsonl">research_projects_ranked.jsonl</a><span>the 25 projects with full member lists</span></li>
+  <li><a href="research_project_ranking.md">research_project_ranking.md</a><span>three orderings and per-project descriptions</span></li>
+  <li><a href="registry/models/capability_gap_roadmap.jsonl">capability_gap_roadmap.jsonl</a><span>the 150 gap groups</span></li>
+  <li><a href="capability_gap_roadmap_report.md">capability_gap_roadmap_report.md</a><span>the roadmap as a report</span></li>
+  <li><a href="registry/models/capability_gaps_full.jsonl">capability_gaps_full.jsonl</a><span>per-card gap annotations, 2,004 cards (7 MB)</span></li>
+  <li><a href="registry/models/ranking_full_ranked.jsonl">ranking_full_ranked.jsonl</a><span>priority ranking of all 6,145 cards (7 MB)</span></li>
+  <li><a href="registry/capability_gap_prompt.md">capability_gap_prompt.md</a><span>the annotation specification</span></li>
+</ul>
+
+<h2>Scripts</h2>
+<ul class="files">
+  <li><a href="registry/build_schema_browser.py">build_schema_browser.py</a><span>schemas &rarr; schema browser</span></li>
+  <li><a href="registry/build_gap_roadmap.py">build_gap_roadmap.py</a><span>gap annotations + ranking &rarr; roadmap</span></li>
+  <li><a href="registry/build_research_project_ranking.py">build_research_project_ranking.py</a><span>roadmap &rarr; project ranking</span></li>
+  <li><a href="scripts/validate_schema.py">validate_schema.py</a><span>validate a card against the schema suite</span></li>
+</ul>
+
+<footer>Source and issues: <a href="https://github.com/ioanazelko/darkmatterfm-registry">github.com/ioanazelko/darkmatterfm-registry</a>. Card content is machine-extracted and not yet expert-verified; see the README for scope and provenance.</footer>
+</main></body></html>
