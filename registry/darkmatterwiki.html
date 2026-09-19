@@ -495,23 +495,35 @@
     }).sort((a, b) => state.sortDir * compare(a, b, state.sortKey));
   }
 
-  // Hosted variant: card detail subtrees live in darkmatterwiki_data/shard-XX.json
-  // and are fetched the first time a row is expanded.
+  // Hosted variant: card detail subtrees live in darkmatterwiki_data/shard-XX.js
+  // and are loaded (as scripts, which need no CORS) the first time a row is expanded.
   const DATA_DIR = 'darkmatterwiki_data/';
   const shardCache = {};
+  const shardWaiters = {};
+  window.__dmwShard = (id, data) => { const w = shardWaiters[id]; if (w) w.resolve(data); };
   function shardOf(id) {
     let h = 0;
     for (let i = 0; i < id.length; i++) h = (Math.imul(h, 31) + id.charCodeAt(i)) >>> 0;
     return (h % 256).toString(16).padStart(2, '0');
   }
+  function loadShard(sh) {
+    if (shardCache[sh]) return shardCache[sh];
+    shardCache[sh] = new Promise((resolve, reject) => {
+      shardWaiters[sh] = { resolve };
+      const el = document.createElement('script');
+      el.src = DATA_DIR + 'shard-' + sh + '.js';
+      el.async = true;
+      el.onerror = () => { delete shardCache[sh]; reject(new Error('could not load ' + el.src)); };
+      document.head.appendChild(el);
+    });
+    return shardCache[sh];
+  }
   function loadCard(r) {
     if (r.card || r._loading) return;
     r._loading = true;
-    const sh = shardOf(r.model_id);
-    const p = shardCache[sh] || (shardCache[sh] = fetch(DATA_DIR + 'shard-' + sh + '.json')
-      .then(x => { if (!x.ok) throw new Error('HTTP ' + x.status); return x.json(); }));
-    p.then(m => { r.card = m[r.model_id] || {}; r._loading = false; render(); })
-     .catch(e => { r.card = { _error: String(e) }; r._loading = false; render(); });
+    loadShard(shardOf(r.model_id))
+      .then(m => { r.card = m[r.model_id] || {}; r._loading = false; render(); })
+      .catch(e => { r.card = { _error: String(e.message || e) }; r._loading = false; render(); });
   }
   function render() {
     const data = filtered();

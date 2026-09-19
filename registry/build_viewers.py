@@ -7,9 +7,12 @@
 
 With --hosted, build instead the hosted variant of the wiki for web mirrors
 that refuse a 62 MB page: hosted/darkmatterwiki.html embeds only the ~3 MB
-index and fetches each card's detail subtree on demand from
-hosted/darkmatterwiki_data/shard-XX.json (256 shards keyed by a hash of
-model_id). Serve the hosted/ directory over HTTP; file:// will not work.
+index and loads each card's detail subtree on demand from
+hosted/darkmatterwiki_data/shard-XX.js (256 shards keyed by a hash of
+model_id). Shards are JavaScript files that call window.__dmwShard(id, data)
+rather than JSON, because script tags work from a sandboxed (null-origin)
+page such as an anonymized mirror, where fetch() is blocked by CORS.
+Serve the hosted/ directory over HTTP; file:// will not work.
 """
 
 import html
@@ -1351,23 +1354,35 @@ def shard_of(model_id: str) -> str:
 
 
 HOSTED_WIKI_JS_LOADER = r"""
-  // Hosted variant: card detail subtrees live in darkmatterwiki_data/shard-XX.json
-  // and are fetched the first time a row is expanded.
+  // Hosted variant: card detail subtrees live in darkmatterwiki_data/shard-XX.js
+  // and are loaded (as scripts, which need no CORS) the first time a row is expanded.
   const DATA_DIR = 'darkmatterwiki_data/';
   const shardCache = {};
+  const shardWaiters = {};
+  window.__dmwShard = (id, data) => { const w = shardWaiters[id]; if (w) w.resolve(data); };
   function shardOf(id) {
     let h = 0;
     for (let i = 0; i < id.length; i++) h = (Math.imul(h, 31) + id.charCodeAt(i)) >>> 0;
     return (h % 256).toString(16).padStart(2, '0');
   }
+  function loadShard(sh) {
+    if (shardCache[sh]) return shardCache[sh];
+    shardCache[sh] = new Promise((resolve, reject) => {
+      shardWaiters[sh] = { resolve };
+      const el = document.createElement('script');
+      el.src = DATA_DIR + 'shard-' + sh + '.js';
+      el.async = true;
+      el.onerror = () => { delete shardCache[sh]; reject(new Error('could not load ' + el.src)); };
+      document.head.appendChild(el);
+    });
+    return shardCache[sh];
+  }
   function loadCard(r) {
     if (r.card || r._loading) return;
     r._loading = true;
-    const sh = shardOf(r.model_id);
-    const p = shardCache[sh] || (shardCache[sh] = fetch(DATA_DIR + 'shard-' + sh + '.json')
-      .then(x => { if (!x.ok) throw new Error('HTTP ' + x.status); return x.json(); }));
-    p.then(m => { r.card = m[r.model_id] || {}; r._loading = false; render(); })
-     .catch(e => { r.card = { _error: String(e) }; r._loading = false; render(); });
+    loadShard(shardOf(r.model_id))
+      .then(m => { r.card = m[r.model_id] || {}; r._loading = false; render(); })
+      .catch(e => { r.card = { _error: String(e.message || e) }; r._loading = false; render(); });
   }
 """
 
@@ -1396,7 +1411,7 @@ def build_hosted_wiki() -> int:
     out_dir = REGISTRY / "hosted"
     data_dir = out_dir / "darkmatterwiki_data"
     data_dir.mkdir(parents=True, exist_ok=True)
-    for old in data_dir.glob("shard-*.json"):
+    for old in list(data_dir.glob("shard-*.json")) + list(data_dir.glob("shard-*.js")):
         old.unlink()
     rows = [trim_card(r) for r in load_jsonl(REGISTRY / "models" / "all_outputs_combined.jsonl")]
     shards: dict[str, dict] = {}
@@ -1407,8 +1422,9 @@ def build_hosted_wiki() -> int:
         index.append(r)
     total = 0
     for sh, cards in sorted(shards.items()):
-        p = data_dir / f"shard-{sh}.json"
-        p.write_text(json.dumps(cards, separators=(",", ":"), ensure_ascii=False), encoding="utf-8")
+        p = data_dir / f"shard-{sh}.js"
+        body = json.dumps(cards, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
+        p.write_text(f"window.__dmwShard({json.dumps(sh)}, {body});\n", encoding="utf-8")
         total += p.stat().st_size
     print(f"  wrote {len(shards)} shards to {data_dir.relative_to(REGISTRY)}/  ({total / 1024 / 1024:.1f} MB)")
     path = out_dir / "darkmatterwiki.html"
