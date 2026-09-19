@@ -272,7 +272,7 @@ def main() -> None:
         lines.append("")
         return "\n".join(lines)
 
-    md = ["# Capability-gap development roadmap (item #9, application A7)", "",
+    md = ["# Capability-gap development roadmap", "",
           f"Built from the full run: **2,004 annotated model cards, "
           f"{n_gaps} capability-gap entries** in "
           f"`registry/models/capability_gaps_full.jsonl`, grouped into "
@@ -318,7 +318,7 @@ details{margin:4px 0 14px} summary{cursor:pointer;font-size:13px;color:#1a58c2}
 .badge{display:inline-block;background:#eef1f5;border-radius:10px;
 padding:1px 9px;font-size:12px;margin-right:6px}
 </style></head><body>
-<h1>Capability-gap development roadmap (item #9, application A7)</h1>"""]
+<h1>Capability-gap development roadmap</h1>"""]
     parts.append(
         f'<div class="summary">Full production run: <b>2,004 model cards</b> '
         f'annotated · <b>{n_gaps} gap entries</b> · grouped into '

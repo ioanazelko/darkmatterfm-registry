@@ -1,4 +1,4 @@
-# Capability-gap development roadmap (item #9, application A7)
+# Capability-gap development roadmap
 
 Built from the full run: **2,004 annotated model cards, 5166 capability-gap entries** in `registry/models/capability_gaps_full.jsonl`, grouped into **150 (gap type, capability theme) groups** and weighted by the summed `adjusted_priority_score` of the models each group blocks (from `ranking_full_ranked.jsonl`).
 
