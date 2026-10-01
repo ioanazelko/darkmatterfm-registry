@@ -74,6 +74,21 @@ Sonnet 69.5% recall / 14.7% FP, Opus 83.9% / 8.9%, Fable 80.0% / 7.5%; Opus ∪ 
 (8,402 candidates kept); any of the three 87.7% / 18.2% (9,908). Opus and Fable agree on keep/drop
 for 96.1% of candidates (κ 0.88); Sonnet agrees with either at ~90% (κ 0.66–0.68).
 
+## MINT-1T-ArXiv vs minty-astro-ph (2026-09-30)
+
+Is minty-astro-ph missing astro-ph papers that its parent MINT-1T-ArXiv holds? We listed all
+8,087 MINT-1T-ArXiv shards (865,312 documents; `corpus_members_mint-1t-arxiv.jsonl`, local) and
+compared (`build_mint_astro_gap.py` → `mint_astro_gap.jsonl`, `mint_astro_gap.md`).
+
+- 158,162 MINT documents carry an astro-ph category; minty holds 156,031 of them, and every
+  minty paper is a MINT member.
+- **2,131 are missing from minty, all cross-listed only** (primary hep-ph 783, gr-qc 572,
+  hep-th 421, nucl-th 134, …). 2,130 have old-style ids (`hep-ph/0405083`) from 1993–2007; from
+  2008 to 2024 the gap is one paper. This fits a selection by `astro-ph/` id prefix in the
+  old scheme and by category in the new one (inferred, not checked against minty's code).
+- 396 match the DM lexicon: 251 reached the registry through the hep-ph slice, and the other
+  145 are all already on `missing_candidates.jsonl`. **The gap adds no new candidates.**
+
 ## Files
 
 | File | What |
@@ -83,6 +98,8 @@ for 96.1% of candidates (κ 0.88); Sonnet agrees with either at ~90% (κ 0.66–
 | `missing_summary.md`, `screen_summary.md`, `gold_recall.md` | The numbers above (`screen_summary.md` and the gold-set "kept" line are Sonnet-only) |
 | `arxiv_meta_physics_{astro-ph,hep-ph}.jsonl.gz` | Full OAI harvest (330 MB) |
 | `corpus_members_minty-astro-ph.jsonl` | Rebuilt minty-astro-ph manifest (156,031 papers, 287 shards) |
+| `corpus_members_mint-1t-arxiv.jsonl`, `mint_shards.txt` | MINT-1T-ArXiv manifest (865,312 papers, 8,087 shards; local) and its shard list |
+| `mint_astro_gap.jsonl`, `mint_astro_gap.md` | astro-ph papers in MINT-1T-ArXiv but not in minty-astro-ph, with registry and missing-list flags (`build_mint_astro_gap.py`) |
 | `gold_review_refs.jsonl` | Review-cited gold set |
 | `screen_batches/` | Screen inputs, 192 batches with hidden calibration rows; `keymap.jsonl` maps keys to arXiv ids |
 | `screen_results/`, `screen_results_opus/`, `screen_results_fable/` | Per-batch decisions from Sonnet 5, Opus 5.5 and Fable 5.1 |

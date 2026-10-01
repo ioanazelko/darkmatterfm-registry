@@ -4,6 +4,7 @@ Walks the tar headers with HTTP range requests (512 bytes per member, then skips
 member body), so a 3 GB shard costs about one small request per paper.
 
 Usage: python3 list_tar_members.py Smith42/minty-astro-ph 'data/astro-ph-{00000..00286}.tar' out.jsonl
+Or pass @shards.txt (one path per line) in place of the pattern.
 Output: one row per member {shard, name, size}. Resumable: shards already in out.jsonl are skipped.
 """
 import concurrent.futures as cf, json, os, re, sys, threading, time, urllib.request
@@ -22,13 +23,19 @@ def cdn_url(repo, path):
     """Resolve the HF file once to its signed CDN URL (reused for every range read)."""
     url = f"https://huggingface.co/datasets/{repo}/resolve/main/{path}"
     opener = urllib.request.build_opener(NoRedirect)
-    try:
-        opener.open(urllib.request.Request(url, method="HEAD", headers=UA), timeout=60)
-    except urllib.error.HTTPError as e:
-        if e.code in (301, 302, 303, 307, 308):
-            return e.headers["Location"], int(e.headers.get("X-Linked-Size") or 0)
-        raise
-    raise RuntimeError("no redirect for " + url)
+    for attempt in range(6):
+        try:
+            opener.open(urllib.request.Request(url, method="HEAD", headers=UA), timeout=60)
+        except urllib.error.HTTPError as e:
+            if e.code in (301, 302, 303, 307, 308):
+                return e.headers["Location"], int(e.headers.get("X-Linked-Size") or 0)
+            raise
+        except (urllib.error.URLError, OSError):  # timeouts and dropped TLS handshakes
+            if attempt == 5:
+                raise
+            time.sleep(5 * (attempt + 1))
+            continue
+        raise RuntimeError("no redirect for " + url)
 
 
 WINDOW = 64 << 10  # bytes per range request: covers a header plus a typical .json member; big members are jumped over
@@ -114,13 +121,16 @@ def expand(pattern):
 
 def main():
     repo, pattern, out = sys.argv[1], sys.argv[2], sys.argv[3]
-    paths = expand(pattern) if "{" in pattern else [p for p in pattern.split(",")]
+    if pattern.startswith("@"):  # @file: one shard path per line (too many for one argv string)
+        paths = [l.strip() for l in open(pattern[1:]) if l.strip()]
+    else:
+        paths = expand(pattern) if "{" in pattern else [p for p in pattern.split(",")]
     done = set()
     if os.path.exists(out):
         done = {json.loads(l)["shard"] for l in open(out)}
     todo = [p for p in paths if p not in done]
     print(f"{len(todo)} shards to list ({len(done)} done)", flush=True)
-    with cf.ThreadPoolExecutor(max_workers=16) as ex, open(out, "a") as f:
+    with cf.ThreadPoolExecutor(max_workers=int(os.environ.get("MANIFEST_WORKERS", 16))) as ex, open(out, "a") as f:
         futs = {ex.submit(walk, repo, p): p for p in todo}
         for fut in cf.as_completed(futs):
             p = futs[fut]
