@@ -31,8 +31,10 @@ covers **90.6%**. The remaining 9% have no lexicon term in their title or abstra
 
 - **Lexicon filter** (title + abstract): catches 96.5% of the 4,922 accepted registry papers.
   The misses are mostly inflation, brane and dark-energy papers that Codex accepted loosely.
-- **Abstract screen** (the Gemini gate's question applied to title + abstract, three-label
-  output). Run three times on the same 192 batches and prompt, with three models. Each batch
+- **Abstract screen** (the Gemini gate's prompt, which also ran on abstracts, adapted for
+  batches of ~210 papers per agent: same question and three labels, plus a list of what counts
+  as a model, "or is not about dark matter" under NOT_NOVEL_MODEL, UNSURE defined as "unclear
+  from the abstract", and a `model_class` field). Run three times on the same 192 batches and prompt, with three models. Each batch
   hides 10 calibration papers that Codex had already triaged from full text (1,920 total:
   521 accepted, 1,399 rejected):
 
@@ -51,6 +53,7 @@ covers **90.6%**. The remaining 9% have no lexicon term in their title or abstra
   recall for +1,500 papers, mostly false positives. The first run was meant to use Opus and
   ran on Sonnet by mistake (run log: `screen_run_log.md`). Even the best screen misses ~14% of
   real model papers, because abstracts undersell the model: **use it to rank, not to drop.**
+- **Row shifts:** in a few places an agent wrote decisions one or two rows off, so a paper got its neighbour's label (`alignment_report.md`): Sonnet 54 rows (batches 121, 169; 5 calibration rows), Opus 7 rows (batch 064), Fable none. Too few to change the scores; flagged ⚠ in the viewer.
 - **Known ambiguity:** the prompt has no rule for "modified gravity instead of dark matter"
   papers; all three models mark these UNSURE or NOT_NOVEL_MODEL inconsistently.
 - Expected yield: at ~84% recall on a pool resembling the triaged one, roughly 5–7k
@@ -94,7 +97,8 @@ compared (`build_mint_astro_gap.py` → `mint_astro_gap.jsonl`, `mint_astro_gap.
 | File | What |
 |---|---|
 | `missing_candidates.jsonl` | One row per candidate: id, categories, submitted, missing_reason, slice, lexicon hits, title, abstract, authors, DOI/journal, INSPIRE citations / doc type, screen_decision, screen_model_class |
-| `missing_candidates.html` | Viewer: filters by reason, slice, screen decision, "dark matter" phrase, minimum citations; sortable (19 MB, local) |
+| `missing_candidates.html` | Viewer comparing the three screens (28 MB, `build_missing_viewer.py`): each paper shows the Sonnet, Opus and Fable decision + model class side by side; a keep/drop-pattern table (clickable) and per-screen recall / false positives; the 1,920 calibration papers with their Codex answer; filters for disagreement, pattern, per-run decision, row shifts, reason, slice, citations. Full abstracts for calibration papers and disagreements |
+| `check_alignment.py`, `alignment_report.md`, `alignment_flags.json` | Row-shift check: decisions written against a neighbouring paper (Sonnet 54 rows in batches 121 and 169, Opus 7 rows in batch 064, Fable none) |
 | `missing_summary.md`, `screen_summary.md`, `gold_recall.md` | The numbers above (`screen_summary.md` and the gold-set "kept" line are Sonnet-only) |
 | `arxiv_meta_physics_{astro-ph,hep-ph}.jsonl.gz` | Full OAI harvest (330 MB) |
 | `corpus_members_minty-astro-ph.jsonl` | Rebuilt minty-astro-ph manifest (156,031 papers, 287 shards) |
