@@ -5,14 +5,14 @@ five-year bin. Writes gold_recall.md.
 """
 import collections, gzip, glob, json, os
 
-from build_missing_list import MODELS, norm_id
+from build_missing_list import HARVESTS, MODELS, norm_id
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def main():
     universe = {}
-    for f in glob.glob(os.path.join(HERE, "arxiv_meta_physics_*.jsonl.gz")):
+    for f in HARVESTS:
         for l in gzip.open(f, "rt"):
             r = json.loads(l)
             universe[r["id"]] = r

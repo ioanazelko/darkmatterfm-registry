@@ -6,8 +6,12 @@ Drafted 2026-09-30. Extends `missing_papers_plan.md` (astro-ph + hep-ph, steps A
 > records, 75 MB) and `arxiv_meta_physics_gr-qc.jsonl.gz` (125,153, 57 MB); log
 > `harvest_hepth_grqc.log`. Lexicon hits: hep-th-only 3,572 of 137,514 (603 with "dark matter" in
 > abstract, 7 gold review refs); gr-qc-only (not astro-ph/hep-ph/hep-th) 2,797 of 44,277 (1,390 DM
-> in abstract, 10 gold refs). Combined ≈6.4k new candidates. Next: H2 into a separate
-> `missing_candidates_hepth.jsonl`.
+> in abstract, 10 gold refs). Combined ≈6.4k new candidates.
+> H2–H4 done 2026-10-07: `build_missing_list_hepth.py` → `missing_candidates_hepth.jsonl` (6,369:
+> hep-th 3,572, gr-qc 2,797; 1,133 after the cutoff; 2,037 with "dark matter"; 1,656 have source in
+> MINT) and `missing_summary_hepth.md`. None were in the corpus or the existing list. Gold set: 17
+> review-cited papers are hep-th/gr-qc-only, 8 match the lexicon. `build_missing_list.py` and
+> `gold_recall.py` now read only the astro-ph/hep-ph harvests (outputs unchanged). Next: H5 INSPIRE.
 
 ## 1. How big the hep-th gap is
 

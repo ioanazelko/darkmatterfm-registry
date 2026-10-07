@@ -20,6 +20,8 @@ import collections, glob, gzip, json, os, re
 HERE = os.path.dirname(os.path.abspath(__file__))
 MODELS = os.path.join(HERE, "..", "darkmatterfm_schema_starter", "registry", "models")
 CUTOFF = "2024-06-01"  # first month absent from both MINT slices
+# The astro-ph / hep-ph list reads only these two harvests; the hep-th / gr-qc ones feed build_missing_list_hepth.py.
+HARVESTS = [os.path.join(HERE, f"arxiv_meta_physics_{s}.jsonl.gz") for s in ("astro-ph", "hep-ph")]
 
 LEXICON = [
     r"dark[\s-]+matter", r"dark[\s-]+sector", r"hidden[\s-]+sector", r"dark[\s-]+photons?",
@@ -59,7 +61,7 @@ def lexicon_hits(title, abstract):
 
 def main():
     universe = {}
-    for f in sorted(glob.glob(os.path.join(HERE, "arxiv_meta_physics_*.jsonl.gz"))):
+    for f in HARVESTS:
         for line in gzip.open(f, "rt"):
             r = json.loads(line)
             universe[r["id"]] = r  # later harvest rows win (dedupes resumed pages and cross-set duplicates)
