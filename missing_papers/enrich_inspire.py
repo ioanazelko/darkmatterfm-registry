@@ -2,12 +2,14 @@
 
 Queries INSPIRE in batches ("arxiv:a or arxiv:b ..."), caching results in inspire_cache.jsonl
 so re-runs only ask for ids not yet seen. Papers INSPIRE does not index (common for
-astro-ph-only work) get inspire_found = false. Rewrites missing_candidates.jsonl in place.
+astro-ph-only work) get inspire_found = false. Rewrites the candidate file in place.
+
+Usage: python3 enrich_inspire.py [candidate file, default missing_candidates.jsonl]
 """
-import json, os, subprocess, time, urllib.parse
+import json, os, subprocess, sys, time, urllib.parse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CAND = os.path.join(HERE, "missing_candidates.jsonl")
+CAND = os.path.join(HERE, sys.argv[1] if len(sys.argv) > 1 else "missing_candidates.jsonl")
 CACHE = os.path.join(HERE, "inspire_cache.jsonl")
 BATCH = 40
 FIELDS = "arxiv_eprints.value,citation_count,document_type,publication_info.journal_title,titles.title"
