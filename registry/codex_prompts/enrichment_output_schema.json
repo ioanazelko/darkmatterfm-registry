@@ -1,0 +1,864 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project.local/schemas/dark_matter_enrichment_smoke_v0.json",
+  "title": "Dark matter model-card enrichment smoke-test output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "paper_id",
+    "arxiv_id",
+    "model_id",
+    "enrichment_schema_version",
+    "observables",
+    "constraints",
+    "theory_to_observable_routing",
+    "provenance_updates",
+    "unresolved_items"
+  ],
+  "properties": {
+    "paper_id": {
+      "type": "string"
+    },
+    "arxiv_id": {
+      "type": "string"
+    },
+    "model_id": {
+      "type": "string"
+    },
+    "enrichment_schema_version": {
+      "const": "dm_model_ocr_enrichment_smoke_v0"
+    },
+    "observables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/observable"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/constraint"
+      }
+    },
+    "theory_to_observable_routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "routes"
+      ],
+      "properties": {
+        "routes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/route"
+          }
+        }
+      }
+    },
+    "provenance_updates": {
+      "$ref": "#/$defs/provenance_updates"
+    },
+    "unresolved_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "string_array": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nullable_string": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "numeric_or_symbolic_value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "parameter_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "min",
+        "max"
+      ],
+      "properties": {
+        "min": {
+          "$ref": "#/$defs/numeric_or_symbolic_value"
+        },
+        "max": {
+          "$ref": "#/$defs/numeric_or_symbolic_value"
+        },
+        "inclusive_min": {
+          "type": "boolean"
+        },
+        "inclusive_max": {
+          "type": "boolean"
+        },
+        "unit": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "notes": {
+          "$ref": "#/$defs/nullable_string"
+        }
+      }
+    },
+    "parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "symbol": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "description": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "value": {
+          "$ref": "#/$defs/numeric_or_symbolic_value"
+        },
+        "fiducial_value": {
+          "$ref": "#/$defs/numeric_or_symbolic_value"
+        },
+        "range": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/parameter_range"
+            },
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "$ref": "#/$defs/numeric_or_symbolic_value"
+              }
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unit": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "prior": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "scale": {
+          "enum": [
+            "linear",
+            "log",
+            "log10",
+            "natural_log",
+            "categorical",
+            "derived",
+            null
+          ]
+        },
+        "role": {
+          "enum": [
+            "core",
+            "nuisance",
+            "derived",
+            "benchmark",
+            "computational",
+            "cosmological",
+            "astrophysical",
+            "experimental",
+            null
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "source_reference_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "notes": {
+          "$ref": "#/$defs/nullable_string"
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "established",
+        "inferred",
+        "assumed",
+        "approximate",
+        "speculative",
+        "disputed",
+        "excluded",
+        "deprecated",
+        "unknown",
+        "not_applicable"
+      ]
+    },
+    "assumption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "scope",
+        "status",
+        "impact_if_violated",
+        "can_be_relaxed",
+        "source_reference_ids"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "impact_if_violated": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "can_be_relaxed": {
+          "enum": [
+            "yes",
+            "no",
+            "partial",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "source_reference_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "notes": {
+          "$ref": "#/$defs/nullable_string"
+        }
+      }
+    },
+    "observable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "channel",
+        "subchannel",
+        "predicted_effect",
+        "effect_direction",
+        "key_quantities",
+        "redshift_range",
+        "scale_range",
+        "environments",
+        "observability",
+        "relevance",
+        "linked_constraints",
+        "linked_routes",
+        "caveats",
+        "source_reference_ids",
+        "notes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]+$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "channel": {
+          "enum": [
+            "cosmology",
+            "cmb",
+            "lyman_alpha",
+            "large_scale_structure",
+            "small_scale_structure",
+            "milky_way_satellites",
+            "stellar_streams",
+            "strong_lensing",
+            "dwarf_galaxies",
+            "clusters",
+            "direct_detection",
+            "indirect_detection",
+            "collider",
+            "precision_laboratory",
+            "gravitational_waves",
+            "black_holes",
+            "other",
+            "unknown"
+          ]
+        },
+        "subchannel": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "predicted_effect": {
+          "type": "string"
+        },
+        "effect_direction": {
+          "enum": [
+            "suppression",
+            "enhancement",
+            "oscillatory",
+            "shape_change",
+            "rate_change",
+            "spectral_line",
+            "morphology_change",
+            "null_signal",
+            "model_dependent",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "key_quantities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/parameter"
+          }
+        },
+        "redshift_range": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/parameter_range"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scale_range": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/parameter_range"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "environments": {
+          "$ref": "#/$defs/string_array"
+        },
+        "observability": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "relevance": {
+          "$ref": "#/$defs/relevance"
+        },
+        "linked_constraints": {
+          "$ref": "#/$defs/string_array"
+        },
+        "linked_routes": {
+          "$ref": "#/$defs/string_array"
+        },
+        "caveats": {
+          "$ref": "#/$defs/string_array"
+        },
+        "source_reference_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "notes": {
+          "$ref": "#/$defs/nullable_string"
+        }
+      }
+    },
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "constraint_type",
+        "observable_channel",
+        "applies",
+        "constrained_parameters",
+        "excluded_regions",
+        "allowed_regions",
+        "benchmark_implications",
+        "likelihood_available",
+        "likelihood_reference",
+        "data_release",
+        "recasting_needed",
+        "robustness",
+        "assumptions",
+        "caveats",
+        "source_reference_ids",
+        "notes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]+$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "constraint_type": {
+          "enum": [
+            "direct_detection",
+            "indirect_detection",
+            "cosmological",
+            "astrophysical",
+            "collider",
+            "laboratory",
+            "theoretical",
+            "numerical",
+            "other",
+            "unknown"
+          ]
+        },
+        "observable_channel": {
+          "type": "string"
+        },
+        "applies": {
+          "enum": [
+            "yes",
+            "no",
+            "parameter_dependent",
+            "recast_required",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "constrained_parameters": {
+          "$ref": "#/$defs/string_array"
+        },
+        "excluded_regions": {
+          "$ref": "#/$defs/string_array"
+        },
+        "allowed_regions": {
+          "$ref": "#/$defs/string_array"
+        },
+        "benchmark_implications": {
+          "$ref": "#/$defs/string_array"
+        },
+        "likelihood_available": {
+          "enum": [
+            "yes",
+            "no",
+            "partial",
+            "approximate",
+            "unknown"
+          ]
+        },
+        "likelihood_reference": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "data_release": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "recasting_needed": {
+          "enum": [
+            "yes",
+            "no",
+            "partial",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "robustness": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/assumption"
+          }
+        },
+        "caveats": {
+          "$ref": "#/$defs/string_array"
+        },
+        "source_reference_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "notes": {
+          "$ref": "#/$defs/nullable_string"
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "source_model_features",
+        "input_parameters",
+        "derived_quantities",
+        "forward_model_chain",
+        "observable_ids",
+        "constraint_ids",
+        "likelihoods",
+        "required_code_resources",
+        "validation_tests",
+        "route_status",
+        "agent_notes",
+        "caveats"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]+$"
+        },
+        "description": {
+          "type": "string"
+        },
+        "source_model_features": {
+          "$ref": "#/$defs/string_array"
+        },
+        "input_parameters": {
+          "$ref": "#/$defs/string_array"
+        },
+        "derived_quantities": {
+          "$ref": "#/$defs/string_array"
+        },
+        "forward_model_chain": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/route_step"
+          }
+        },
+        "observable_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "constraint_ids": {
+          "$ref": "#/$defs/string_array"
+        },
+        "likelihoods": {
+          "$ref": "#/$defs/string_array"
+        },
+        "required_code_resources": {
+          "$ref": "#/$defs/string_array"
+        },
+        "validation_tests": {
+          "$ref": "#/$defs/string_array"
+        },
+        "route_status": {
+          "enum": [
+            "implemented",
+            "partially_implemented",
+            "planned",
+            "unavailable",
+            "unknown"
+          ]
+        },
+        "agent_notes": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "caveats": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "route_step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "step_id",
+        "step_type",
+        "tool_or_code",
+        "inputs",
+        "outputs",
+        "validity",
+        "notes"
+      ],
+      "properties": {
+        "step_id": {
+          "type": "string"
+        },
+        "step_type": {
+          "enum": [
+            "analytic_formula",
+            "boltzmann_solver",
+            "transfer_function",
+            "emulator",
+            "semi_analytic_model",
+            "simulation",
+            "likelihood",
+            "recasting",
+            "data_transform",
+            "validation",
+            "other"
+          ]
+        },
+        "tool_or_code": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "inputs": {
+          "$ref": "#/$defs/string_array"
+        },
+        "outputs": {
+          "$ref": "#/$defs/string_array"
+        },
+        "validity": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "notes": {
+          "$ref": "#/$defs/nullable_string"
+        }
+      }
+    },
+    "provenance_updates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sources",
+        "evidence"
+      ],
+      "properties": {
+        "sources": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "primary_papers",
+            "constraint_papers",
+            "review_papers",
+            "external_databases"
+          ],
+          "properties": {
+            "primary_papers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/source_document"
+              }
+            },
+            "constraint_papers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/source_document"
+              }
+            },
+            "review_papers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/source_document"
+              }
+            },
+            "external_databases": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/external_database"
+              }
+            }
+          }
+        },
+        "evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "observables",
+            "constraints",
+            "routes"
+          ],
+          "properties": {
+            "observables": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence_item"
+              }
+            },
+            "constraints": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence_item"
+              }
+            },
+            "routes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence_item"
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_id",
+        "title",
+        "authors",
+        "year",
+        "arxiv_id",
+        "doi",
+        "url",
+        "role",
+        "notes"
+      ],
+      "properties": {
+        "reference_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "authors": {
+          "$ref": "#/$defs/string_array"
+        },
+        "year": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "arxiv_id": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "doi": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "url": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "role": {
+          "enum": [
+            "original_model",
+            "extension",
+            "benchmark",
+            "review",
+            "constraint",
+            "implementation",
+            "dataset",
+            "likelihood",
+            "other"
+          ]
+        },
+        "notes": {
+          "$ref": "#/$defs/nullable_string"
+        }
+      }
+    },
+    "external_database": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "url",
+        "note"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_id",
+        "note",
+        "confidence",
+        "section",
+        "page"
+      ],
+      "properties": {
+        "reference_id": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "confidence": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "section": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "relevance": {
+      "enum": [
+        "none",
+        "low",
+        "medium",
+        "high",
+        "critical",
+        "unknown",
+        "not_applicable"
+      ]
+    }
+  }
+}

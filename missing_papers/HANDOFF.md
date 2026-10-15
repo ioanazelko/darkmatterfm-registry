@@ -40,9 +40,10 @@ Local-only inputs already copied to this server: the four `arxiv_meta_physics_*.
     with the reconstructed `fulltext_triage_prompt.md` if one was already drafted, and prefer the
     original acceptance rule so the new cards match the existing 6,145.
   - Check against the calibration papers first (accept/reject agreement with Codex), then run.
-  - `schema_profile_model_only.json` was not recovered; the required and optional `model_card`
-    fields are listed in `extraction_output_guide.md`, and the field meanings are in
-    `registry/schemas/`.
+  - Check new cards against `registry/codex_prompts/schema_profile_model_only.json` (required,
+    optional and excluded fields, enum overrides); all 6,145 existing cards meet it. Field meanings
+    are in `registry/schemas/`. Use the current schemas: the profile names commit `7c53379`, and the
+    only later revision (`7b952a0`) fixed `yes`/`no` parsing and widened enums.
   - Outputs per batch: `outputs.jsonl`, `paper_status.jsonl`, `run_summary.json` (formats in the
     guide), so they merge with `all_outputs_combined.jsonl` / `all_paper_status_combined.jsonl`.
 
