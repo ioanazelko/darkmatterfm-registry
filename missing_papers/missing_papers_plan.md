@@ -95,7 +95,7 @@ JSON file, needs a download OK). Output: `missing_papers/arxiv_universe.jsonl`.
 
 **B. Recover the corpus manifest.** Get the full ID lists of the 156,006 astro-ph and 69,093
 hep-ph papers, plus the 39,004 / 36,919 astro-ph lexical hits, from whoever ran the lexical
-filter (Nolan did the 156,006 count). Fallback: list tar member names straight from Hugging
+filter and counted the 156,006. Fallback: list tar member names straight from Hugging
 Face with HTTP range reads of the tar headers. That is slow (one request per member) but needs
 no 800 GB download. Output: `missing_papers/corpus_manifest.jsonl` (`arxiv_id`, `slice`,
 `shard`).
