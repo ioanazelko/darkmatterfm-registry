@@ -1,4 +1,4 @@
-# Handoff: missing-papers work, as of 2026-10-07
+# Handoff: missing-papers work, as of 2026-10-07 (updated 2026-10-14)
 
 For a Claude session picking this up on the server. Read `README.md` (astro-ph + hep-ph list and the
 three abstract screens) and `hep_th_plan.md` (hep-th / gr-qc extension) first.
@@ -29,10 +29,22 @@ Local-only inputs already copied to this server: the four `arxiv_meta_physics_*.
 - **B. Full-text download** of the fetch set (Opus ∪ Fable 8,402, plus whatever A keeps) from arXiv
   e-prints, ~1 request/s (~3 h). No script exists yet. Keep the `.tex` text in MINT JSON form. This
   server has ~1.3 TB free, so the laptop's batch-and-delete scheme is not needed.
-- **C. Full-text accept/reject** of the downloaded papers. The original step ran on GPT-5.5/Codex; write a
-  Claude version of the prompt, check it against the 1,920 Codex-labelled calibration papers before the
-  full run. Roughly 25k tokens per paper.
-- **D. Card extraction** for accepted papers (schema in `registry/`).
+- **C + D. Full-text accept/reject and card writing, as one step.** The original Codex prompts are
+  now in the repo: `registry/codex_prompts/` (added 2026-10-14; see its `README.md`). They show the
+  original pipeline did **not** have a separate full-text triage: each GPT-5.5 worker took ~10
+  papers, read the full text, and either wrote 1–10 model-only cards or a rejected status with a
+  reason, following `extraction_output_guide.md` ("prefer precision over recall"). The 1,920
+  calibration labels (Codex accepted / rejected) come from that combined step.
+  - Reuse `extraction_output_guide.md` and the worker prompt in `extraction_batch_hep-ph.md` for
+    Claude workers (Opus 5.5), adapted to read `fulltext/*.json` instead of the SQLite DB. Compare
+    with the reconstructed `fulltext_triage_prompt.md` if one was already drafted, and prefer the
+    original acceptance rule so the new cards match the existing 6,145.
+  - Check against the calibration papers first (accept/reject agreement with Codex), then run.
+  - `schema_profile_model_only.json` was not recovered; the required and optional `model_card`
+    fields are listed in `extraction_output_guide.md`, and the field meanings are in
+    `registry/schemas/`.
+  - Outputs per batch: `outputs.jsonl`, `paper_status.jsonl`, `run_summary.json` (formats in the
+    guide), so they merge with `all_outputs_combined.jsonl` / `all_paper_status_combined.jsonl`.
 
 ## Rules from the user
 
