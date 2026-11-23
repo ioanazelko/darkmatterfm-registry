@@ -75,3 +75,12 @@ expert-verified; provenance and review-status fields in the schema record
 this per claim. The documents `BSM Dark-Matter Theory Registry: Model
 Aspects.md` and `Table Relating Concepts to Schema Modules.md` describe the
 conceptual scope that the schema modules implement.
+
+## License
+
+The source code (`*.py` and `*.sh` files) is released under the MIT License
+(`LICENSE`). Everything else, including the model cards, schemas, data files,
+prompts, reports and viewers, is released under the Creative Commons
+Attribution 4.0 International License (CC BY 4.0; `LICENSE-DATA.md`). Paper
+metadata from arXiv and INSPIRE-HEP, and short quotations from papers inside
+the cards, keep their original terms.
